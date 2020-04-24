@@ -1,0 +1,735 @@
+% \documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+\usepackage{hyperref} 
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+ 
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\}}}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{{{\rm 1\mkern-1.5mu}\!{\rm I}}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw}}}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf}}}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi}}}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc}}}
+\newcommand{\He}{\ensuremath{\mathrm{He}}}
+
+\def\crtL{\theta}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+
+% % Set up mdframe for questions.
+\newcounter{NQ}
+\newcounter{LQ}
+\newcounter{ZQ}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{%
+   middlelinecolor=lightgray,
+   middlelinewidth=2pt,
+   backgroundcolor=red!20,
+   roundcorner=10pt}
+\newenvironment{NickQuestion}[1][] %
+  {\refstepcounter{NQ}
+  \begin{mdframed}[backgroundcolor=lightgray]\textbf{Nick's Question \theNQ \: #1~~}~~~\noindent}%
+  {\end{mdframed}}
+\newenvironment{LeQuestion}[1][] %
+  {\refstepcounter{LQ}
+  \begin{mdframed}[backgroundcolor=red!10]\textbf{Le's Question \theLQ \: #1~~}~~~\noindent}%
+  {\end{mdframed}}
+\newenvironment{ZhijianQuestion}[1][] %
+  {\refstepcounter{ZQ}
+  \begin{mdframed}[backgroundcolor=blue!10]\textbf{Zhijian's Question \theZQ \: #1~~}~~~\noindent}%
+  {\end{mdframed}}
+\numberwithin{NQ}{section}
+\numberwithin{LQ}{section}
+\numberwithin{ZQ}{section}
+  
+\title{Nick Eisenberg's Meeting Notes}
+\author{Le Chen, Nick Eisenberg, Zhijian Wu}
+\date{October 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+\section{April 25th, 2020 Meeting}
+\subsection{Our Paper}
+\begin{NickQuestion}
+I think we can strengthen Thereom 3.2 from our paper for when we have a $L^2_\rho$ initial conditon. The result from Theorem 3.2 is that if we start with a SPDE 
+$$  \begin{cases}
+ \dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
+ \\ u(0,\cdot) = \mu(\cdot)  & 
+ \end{cases} $$
+ and then consider 
+ $$  \begin{cases}
+ \dfrac{\partial v}{\partial t}(t,x)-\frac{1}{2}\Delta_x v(t,x) = b(x,v(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
+ \\ v(0,x) = u(t_0,x)  & 
+ \end{cases} $$
+ then this new SPDE satisfies 
+ $$ \sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty.$$
+But $v(t,x)=u(t+t_0,x)$ so really what this theorem is saying is that 
+$$ \sup_{t\ge t_0} \E |u(t,\cdot)|_\rho^2 < \infty. $$
+But I was thinking about what happens for $t\in[0,t_0]$. From your paper with Huang \cite{CH16Comparison}, you proved that 
+$$ (t,x) \mapsto E\big(|u(t,x)|^2\big)$$ 
+is continuous on $(0,\infty)\times \R^d$ if assuming the appropriate conditions listed in \cite{CH16Comparison}. But I think that this can imply that 
+$$ t \mapsto E\big(|u(t,\cdot)|_\rho^2\big) $$ is continuous on $(0,\infty)$ and this is sort of what Theorem 2.3 from the Tessitore paper is saying \cite{TessitoreZabczyk98M}.
+
+Now, are there situations where we can say that 
+$$t \mapsto E\big(|u(t,\cdot)|_\rho^2\big) $$ is continuous on $[0,\infty)$? This cant be the case if we have $\delta_0$ as the initial condition because 
+$$ E\big(|u(0,\cdot)|_\rho^2\big) = E\big(|\delta_0(\cdot)|_\rho^2\big)$$
+does not exist. But I believe that if we have a $\varphi \in L^2_\rho$ initial condition, then
+$$t \mapsto E\big(|u(t,\cdot)|_\rho^2\big) $$ is continuous on $[0,\infty)$. More specifically, this would imply that 
+$$ \sup_{0\le t\le t_0} \E |u(t,\cdot)|_\rho^2 < \infty $$ which further implies that 
+$$\sup_{t \ge 0} \E |u(t,\cdot)|_\rho^2 < \infty.$$
+This would be an improvement to the result we already proved. 
+\end{NickQuestion}
+
+\subsection{Misiat and Stanzhytski Paper}
+
+\begin{remark}
+A somewhat stonger result has already been proven in Misiats and Stanzhyrski paper \cite{MSY16}. In their paper they consider the SPDE 
+$$ \begin{cases}
+ \dfrac{\partial u}{\partial t}(t,x)- Au(t,x) = f(x,u(t,x)) + b(x,u(t,x)\dot W(t,x) & \text{$x\in G$ , $t>0$}
+ \\ u(0,\cdot) = \mu(\cdot)  & 
+ \end{cases} $$
+ where $A$ is any elliptic operator and $G\subseteq \R^d$. They proved that when starting with a $L^2$ function, hence not any $L^2_\rho$ function, then 
+ $$ \sup_{t\ge 0} \E |u(t,\cdot)|_\rho^2 < \infty. $$ However, in their paper they require that there exists a function $\psi \in L^1 \cap L^\infty$ and constant $\sigma_0 >0$ such that 
+ \begin{enumerate}
+     \item $|b(x,u)|\le \sigma_0$
+     \item $|f(x,u)|\le \psi(x)$ for any $(x,u) \in \R^d \times \R$
+ \end{enumerate}
+ I don't believe that we required the first assumption to get the result but we only considered $f \equiv 0$, so if we do not assume that then I am not sure if we will also need the second assumption or not. However our proof relies on the Moment estimates from \cite{CH16Comparison} which only apply to the case of $A=\frac{1}{2}\Delta$. Also the moment bounds are for the case for $f \equiv 0$ so extra work is going to need to be done if we are going to want to relax the second condition above which is used in \cite{MSY16}. However, since 
+ $$ \int_0^t\int_{\R^d} f(s,u(s,y))G(t-s,x-y)\;\ud x \ud y $$
+ is not a stochastic integral then we could copy the proof in \cite{MSY16} which deal with this integral exactly and keep the second condition listed above. This may help us to prove the existence of an invariant with non-zero $f$ term with the $\delta_0$ initial condition. 
+\end{remark}
+
+\begin{NickQuestion}
+In Theorem 1 in the paper \cite{MSY16}. They are trying to show that
+$$ E\left|\int_0^t\int_{\R^d}G(t-s,x-y)\sigma(y,u(s,y))\ud y \ud W(s,y)\right| < \text{Const.} $$
+Here is a part of what they did:
+\begin{align*} 
+\int_0^{t-1}\int_{\R^d} G^2(t-s,y) \: \ud y \ud s &\le C_1\int_0^{t-1} \dfrac{1}{(t-s)^{d/2}} \: \ud s \le C_2 < \infty 
+\end{align*} 
+I don't see why the first inequality is true unless we are dealing with heat equation for which it would then be true since $G(t,x)$ would be the standard heat kernel  
+\begin{align*}
+    \int_0^{t-1}\int_{\R^d} G^2(t-s,y) \: \ud y \ud s &= \int_0^{t-1} G(2(t-s),0) \: \ud s 
+\\ &\le \int_0^{t-1} \dfrac{1}{(t-s)^{d/2}} \: \ud s 
+\end{align*}
+
+Also Misiat and Stanzhyrski never make mention of any restriction on the correlation function of the Gaussian noise. What they are essentially doing is finding a bound on the second moment but for this to be done, we need to make assumptions on the correlation function of the Gaussian noise, namely we need to assume 
+$$ \int_{\R^d} \dfrac{f(\ud \xi)}{|\xi|^2} < \infty $$
+\end{NickQuestion}
+
+\begin{remark}[\textbf{Uniqueness of the invariant measure}]
+There is a property called exponential stability defined in \cite{MSY16}: A solution of an SPDE $u$ is said to be exponentially stable is there exists $K>0$ and $\gamma >0$ such that for any $t_0$ and any other other solution $\eta$ with  $\eta(t_0) \in \mathcal F_{t_0}$ and $\E\Vert \eta(t_0) \Vert _H^2 < \infty$, we have that 
+$$ \E\Vert u(t)- \eta(t) \Vert _H^2 \le K\exp\left( -\gamma(t-t_0)\right)\E\Vert u(t_0) - \eta(t_0) \Vert _H^2 $$
+for any $t \ge t_0$.
+
+This property can be used to show the existence and uniqueness of an invariant measure. In \cite{MSY16}, they show that the solution to 
+$$ \begin{cases}
+ \dfrac{\partial u}{\partial t}(t,x)- Au(t,x) = f(x,u(t,x)) + b(x,u(t,x)\dot W(t,x) & \text{$x\in G$ , $t>0$}
+ \\ u(0,\cdot) = u_0(\cdot)  & 
+ \end{cases} $$
+ where 
+ \begin{itemize}
+     \item $G$ is the upper half plane 
+     \item $\rho(x) = \exp(-|x|^2)$ 
+     \item $Au := \frac{1}{\rho}\text{div}(\rho \nabla u)$
+     \item $u_0 \in L^2_\rho$
+     \item Both $f$ and $b$ are Lipscitz in the second variable with LIP constant independent of $x$ and $f(x,0)$ and $b(x,0$ are in $L^\infty$ 
+ \end{itemize}
+ has this exponential stability property and then refer to two propositions (11.2 and 11.4) in \cite{DZ92} which give the existence and uniqueness of an invariant measure. 
+ 
+ In general, if we are given SPDE 
+ $$ \begin{cases}
+ \dfrac{\partial u}{\partial t}(t,x)- Au(t,x) = f(x,u(t,x)) + b(x,u(t,x)\dot W(t,x) & \text{$x\in G$ , $t>t_0$}
+ \\ u(0,\cdot) = u_0(\cdot)  & 
+ \end{cases} $$
+ with solution $u(t,t_0,u_0)$ that satisfies the exponential stability property and in addition satisfies the semigroup property (like the solution to the heat equation does), then we can show that for any $t_0$, that $u(t,t_0,u_{t_0}) \to \mu$ as $t \to \infty$ where $\mu$ is invariant and $\mu = \mathscr L (u(t_0))$.
+
+
+\subsection{Case when $f \not = 0$}
+$$ \begin{cases}
+ \dfrac{\partial u}{\partial t}(t,x)- \frac{1}{2}\Delta_xu(t,x) = f(x,u(t,x)) + b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
+ \\ u(0,\cdot) = \mu(\cdot)  & 
+ \end{cases} $$
+\cite{AM03} proves the exist of an invariant measure when the initial condition is a function $\varphi_0(\cdot) \in L^p_\rho(\R^d)$ where the $p=2\wedge \nu$ and $\nu$ depends on the function $f$. I have not read this paper yet but I plan on it so I am not sure how they prove this. 
+
+I have tried to see if the proof from our paper (which is a mimic of the proof by Tessitore in \cite{TessitoreZabczyk98M}) would work but I ran into the following issue. Our proof for the existance of an invariant measure relies on the the fact that for fixed $0<\delta_0 \le 1$ we can find in this set $\mathscr K(\Theta) \subset L^2_\rho$ defined in the following way 
+$$ \mathscr K (\Theta) = \{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+(F^{\delta_0}_\alpha h)(x), \quad \text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $} \} $$
+and if we still assume that $f\equiv 0$ then we can use the factorization theorem and say that the solution $u$ can be written as 
+$$ u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x)+\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x)$$
+and because of the compactness of the operators $G$ and $F_\alpha^{t_0}$, the set $\mathscr K(\Theta)$ is relatively compact. 
+
+The issue when we now consider $f\not \equiv 0$ is the following. By the factorization theorem, we could now represent $u$ as 
+$$ u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x) + \bigg(G(\circ,\cdot)\star f\big(\cdot,u(\circ,\cdot)\big) \bigg)(t_0,x) +\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x) $$ 
+and we could try to mimic our proof and define a new $\mathscr K^*(\Theta)$ as follows 
+\begin{align*} \mathscr K^* (\Theta) = \bigg\{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+ \bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x) +(F^{\delta_0}_\alpha h)(x), \quad \\ \hspace{5em}\text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $  and   $q$ has some property} \bigg\} \end{align*}
+We need this new set $\mthscr K^* (\Theta)$ to be relatively compact in $L^2_\rho$ but then we would need the operator $\bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x)$ to be compact so that $\mathscr K^*(\Theta)$ remains relatively compact. So we need to see what space this function $q$ needs to be in. Note that we want $ f\big(x,u(t,x)\big)$ to be a specific example of $f\big(x,q(t,x)\big)$. Maybe we want the following 
+\begin{enumerate}
+    \item $t \mapsto q(x,t)$ is continuous or even just bounded on $t \in [0,T]$ for any $T>0$. 
+    \item $x \mapsto q(x,t)$ is in $L^2_\rho$
+\end{enumerate}
+and the solution $u$ satisfies these properties. However I was unable to show that the operator $\bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(t_0,x)$ was bounded (continuous). Following the steps in  \cite{TessitoreZabczyk98M} we would first want to show something like 
+$$ \bigg| \bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x) \bigg|_\rho^2 \le K |q(\delta_0,\cdot)|_\rho^2  $$
+However the best I could do was show that 
+$$ \bigg| \bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x) \bigg|_\rho^2 \le K(T) |q(t^*,\cdot)|_\rho^2  $$
+where 
+$$ q(t,x) \le q(t^*,x) \quad \text{where we need to assume that $q(\cdot,x)$ has a max at $t^*$ on the interval $[0,T]$} $$
+Things seem off about this so I will read Assing and Manthey's paper  \cite{AM03} to see how they consider the case when $f \not \equiv 0$. 
+\begin{small}
+\addcontentsline{toc}{section}{Bibliography}
+\begin{thebibliography}{999}
+
+
+
+
+\bibitem{ACQ11}
+Amir, Gideon, Ivan Corwin and Jeremy Quastel.
+\newblock Probability distribution of the free energy of the continuum directed random polymer in $1+1 $ dimensions. 
+\newblock {\it Comm. Pure Appl. Math.} 64 (2011), no. 4, 466--537. 
+
+
+% \bibitem{Adam03SecondEd}
+% Adams, Robert A. and John J. F. Fournier.
+% \newblock {\em Sobolev spaces}~(2$^{\text{nd}}$ ed.).
+% \newblock Elsevier/Academic Press, Amsterdam, 2003.
+%
+
+
+\bibitem{AM03}
+Assing, Sigurd and Ralf Manthey.
+\newblock Invariant measures for stochastic heat equations with unbounded coefficients. 
+\newblock {\it Stochastic Process. Appl.} 103 (2003), no. 2, 237--256.
+
+
+% \bibitem{BainovSimeonov92}
+% D.~Ba{\u\i}nov and P.~Simeonov.
+% \newblock {\em Integral inequalities and applications}, volume~57 of {\em
+%   Mathematics and its Applications (East European Series)}.
+% \newblock Kluwer Academic Publishers Group, Dordrecht, 1992.
+% 
+
+\bibitem{BC16}
+Balan, Raluca M. and Le Chen.
+\newblock Parabolic Anderson model with space-time homogeneous Gaussian noise and rough initial condition
+\newblock {\em J. Theoret. Probab.}, to appear 2017. 
+
+\bibitem{BP98}
+V.~Bally and E.~Pardoux.
+\newblock Malliavin calculus for white noise driven parabolic {SPDEs}.
+\newblock {\em Potential Anal.} 9 (1998), no. 1, 27--64.
+
+\bibitem{BG97}
+Bertini, Lorenzo and Giambattista Giacomin.
+\newblock Stochastic Burgers and KPZ equations from particle systems. 
+\newblock {\it Comm. Math. Phys.} 183 (1997), no. 3, 571--607. 
+
+\bibitem{BG99}
+Bertini, Lorenzo and Giambattista Giacomin.
+\newblock On the long-time behavior of the stochastic heat equation.
+\newblock {\em Probab. Theory Related Fields}, 114 (1999), no. 3, 279--289.
+
+\bibitem{BH91}
+Bouleau, Nicolas and Francis Hirsch. 
+\newblock {\em Dirichlet forms and analysis on Wiener space.} 
+\newblock De Gruyter Studies in Mathematics, 14. Walter de Gruyter \& Co., Berlin, 1991. x+325 pp.
+
+\bibitem{CFG17gPAM}
+Cannizzaro, Giuseppe, Peter K. Friz and Paul Gassiat.
+\newblock Malliavin Calculus for regularity structures: the case of gPAM.
+\newblock {\em J. Funct. Anal.}, 272 (2017), no. 1, 363--419.
+
+
+
+\bibitem{CarmonaMolchanov94}
+Carmona, Ren\'e~A.  and Stanislav~A. Molchanov.
+\newblock Parabolic Anderson problem and intermittency.
+\newblock {\em Mem. Amer. Math. Soc.}, 108 (1994), no. 518, viii+125 pp. 
+%Mem. Amer. Math. Soc. 
+%
+% \bibitem{LeChen13Thesis}
+% Chen, Le.
+% \newblock {\em Moments, intermittency, and growth indices for nonlinear
+%   stochastic PDE's with rough initial conditions}.
+% \newblock PhD thesis, No. 5712, \'Ecole Polytechnique F\'ed\'erale de Lausanne,
+% 2013.
+% %
+
+
+\bibitem{Cer01}
+Cerrai, Sandra.
+\newblock {\it Second order PDE's in finite and infinite dimension.} 
+\newblock A probabilistic approach. Lecture Notes in Mathematics, 1762. Springer-Verlag, Berlin, 2001. x+330 pp. 
+
+\bibitem{Cer03}
+Cerrai, Sandra.
+\newblock Stochastic reaction-diffusion systems with multiplicative noise and non-Lipschitz reaction term.
+\newblock {\it Probab. Theory Related Fields} 125 (2003), no. 2, 271--304. 
+
+\bibitem{Cer06}
+Cerrai, Sandra.
+\newblock Asymptotic behavior of systems of stochastic partial differential equations with multiplicative noise. 
+\newblock {\it Stochastic partial differential equations and applications--VII}, 61--75, 
+Lect. Notes Pure Appl. Math., 245, Chapman \& Hall/CRC, Boca Raton, FL, 2006. 
+
+\bibitem{ChenDalang13Heat}
+Chen, Le and Robert C. Dalang.
+\newblock Moments and growth indices for nonlinear stochastic heat equation
+  with rough initial conditions.
+\newblock {\em Ann.\ Probab.}  43 (2015), no. 6, 3006--3051.
+
+% \bibitem{ChenDalangHolder}
+% Chen, Le and Robert C. Dalang.
+% \newblock H\"older-continuity for the nonlinear stochastic heat equation with rough initial conditions. 
+% \newblock{\it Stoch. Partial Differ. Equ. Anal. Comput.} 2 (2014), no. 3, 316--352. 
+
+
+\bibitem{CHN16Density}
+Chen, Le, Yaozhong Hu and David Nualart.
+\newblock Regularity and strict positivity of densities for the nonlinear stochastic heat equation.
+% \newblock {\em Preprint at arXiv:1611.03909,} 2016.
+\newblock {\em Mem. Amer. Math. Soc.}, 2019, to appear. 
+
+\bibitem{CH16Comparison}
+Chen, Le and Jingyu Huang.
+\newblock Comparison principle for stochastic heat equation on $\R^d$.
+\newblock {\em Ann.\ Probab.}  2019, to appear.
+% \newblock {\em Preprint arXiv:1607.03998,} 2016.
+
+% \bibitem{CHKK16Bad}
+% Chen, Le, Jingyu Huang, Davar Khoshnevisan and Kunwoo Kim.
+% \newblock A badly-behaved parabolic SPDE.
+% \newblock {\em In preparation,} 2016.
+
+
+\bibitem{CK15SHE}
+Chen, Le and Kunwoo Kim.
+\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
+\newblock {\em Acta Math. Sci. Ser. B}, 2019, to appear.
+
+% \bibitem{CK14Comp}
+% Chen, Le and Kunwoo Kim.
+% \newblock On comparison principle and strict positivity of solutions to the nonlinear stochastic fractional heat equations.
+% \newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat.}, 53 (2017), no. 1, 358--388.
+%
+
+% \bibitem{CJK12}
+% Conus, Daniel, Mathew Joseph and Davar Khoshnevisan.
+% \newblock Correlation-length bounds, and estimates for intermittent islands in parabolic SPDEs. 
+% \newblock {\em Electron. J. Probab.} 17 (2012), no. 102, 15 pp.
+
+% \bibitem{ConusKhosh10Farthest}
+% Conus, Daniel and Davar Khoshnevisan.
+% \newblock On the existence and position of the farthest peaks of a family of
+%   stochastic heat and wave equations.
+% \newblock {\em Probab. Theory Related Fields }, {\bf 152}{\it (3-4)} (2012), 681--701.
+
+\bibitem{Dalang99} Dalang, Robert C.
+\newblock Extending the martingale measure stochastic integral with applications to spatially homogeneous s.p.d.e.'s.
+\newblock {\it Electron.\ J. Probab.} 4 (1999), no. 6, 29 pp.
+%
+% \bibitem{DalangFrangos98}
+% Dalang, Robert C. and Nicholas E. Frangos.
+% \newblock The stochastic wave equation in two spatial dimensions.
+% \newblock {\em Ann. Probab.}, {\bf 26}{\it (1)} (1998), 187--212.
+
+\bibitem{DalangEtc09Minicourse} Dalang, Robert, Davar Khoshnevisan, Carl 
+Mueller, David Nualart, and Yimin Xiao
+\newblock {\it A minicourse on stochastic partial differential equations}.
+\newblock Held at the University of Utah, Salt Lake City, UT, May 8–19, 2006. 
+Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics, 
+1962.  
+\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+
+
+%
+% \bibitem{DalangMueller03} Dalang, Robert C. and Carl Mueller.
+% 	\newblock Some non-linear S.P.D.E.'s that are second order in time.
+% 	\newblock {\it Electron.\ J. Probab.}\ {\bf 8}{\it (1)} (2003) 21 pp. (electronic).
+%
+% \bibitem{DonohoStark} Donoho, David L. and Philip B. Stark.
+% 	\newblock Uncertainty principles and signal recovery.
+% 	\newblock {\it SIAM J. Appl.\ Math.}\ {\bf 49}{\it (3)} (1989) 906--931.
+%
+\bibitem{DalangQuer} 
+Dalang, Robert C. and Llu\'is Quer-Sardanyons.
+\newblock Stochastic integrals for spde's: a comparison.
+\newblock {\it Expo. Math.} 29 (2011), no. 1, 67--109. 
+
+\bibitem{DZ92}
+Da Prato, Giuseppe and Jerzy Zabczyk.
+\newblock {\it Stochastic equations in infinite dimensions.}
+Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
+
+\bibitem{DZ96}
+Da Prato, Giuseppe and Jerzy Zabczyk.
+\newblock {\it Ergodicity for infinite-dimensional systems. }
+\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996. 
+
+% \bibitem{DS80}
+% Dawson, Donald A. and Habib Salehi.
+% \newblock Spatially homogeneous random evolutions. 
+% \newblock{\it J. Multivar. Anal.} 10 (1980), no. 2, 141--180. 
+
+\bibitem{EH01}
+Eckmann,  Jean-Pierre and Martin Hairer.
+\newblock Invariant measures for stochastic partial differential equations in unbounded domains. 
+\newblock {\it Nonlinearity} 14 (2001), no. 1, 133--151. 
+
+% \bibitem{Flores} Flores, G. R. Moreno.
+% \newblock On the (strict) positivity of solutions of the stochastic heat equation. 
+% \newblock {\it Ann. Probab.}  42 (2014), no. 4, 1635--1643.
+
+
+%
+% \bibitem{FK14Cor} Foondun, Mohammud and Davar Khoshnevisan.
+% \newblock Corrections and improvements to: ``On the stochastic heat equation with spatially-colored random forcing''.
+% \newblock {\it Trans. Amer. Math. Soc.} 366 (2014), no. 1, 561--562.
+%
+
+\bibitem{FK13SHE} Foondun, Mohammud and Davar Khoshnevisan.
+\newblock On the stochastic heat equation with spatially-colored random forcing.
+\newblock {\it Trans. Amer. Math. Soc.} 365 (2013), no. 1, 409--458.
+
+%
+%  \bibitem{FLO14MB} Foondun, Mohammud and  Liu Wei and Omaba McSylvester.
+% 	\newblock Moment bounds  for a class of fractional stochastic heat equations.
+% 	\newblock Preprint available at \texttt{arXiv:1409.5687} (2014).
+%
+% \bibitem{FK} Foondun, Mohammud and Davar Khoshnevisan.
+% 	\newblock On the global maximum of the solution to a stochastic
+% 		heat equation with compact-support initial data.
+% 	\newblock {\it Ann.\ Inst.\ Henri Poincar\'e Probab.\ Stat.}\
+% 		{\bf 46}{\it (4)} (2010) 895--907.
+%
+% \bibitem{FK09EJP} Foondun, Mohammud and Davar Khoshnevisan.
+% \newblock Intermittence and nonlinear parabolic stochastic partial differential equations.
+% \newblock {\it Electron. J. Probab.} {\bf 14}{\it (21)} (2009), 548--568.
+
+% 		
+% \bibitem{GP15KPZ} 
+% Gubinelli, Massimiliano  and Nicolas Perkowski.
+% \newblock KPZ reloaded.
+% \newblock {\it Preprint at arXiv:1508.03877}, 2015.
+
+		
+% \bibitem{Grafakos} Grafakos, Loukas. 
+% \newblock {\it Classical Fourier analysis}. 
+% \newblock Second edition. Graduate Texts in Mathematics, 249. Springer, New York, 2008. xvi+489 pp
+%
+
+
+\bibitem{Grafakos14Modern}
+Grafakos, Loukas
+\newblock {\it Modern Fourier analysis. } Third edition. 
+\newblock Graduate Texts in Mathematics, 250. Springer, New York, 2014. xvi+624 pp.
+
+\bibitem{GM01}
+Goldys, Beniamin, and Bohdan Maslowski.
+\newblock Uniform exponential ergodicity of stochastic dissipative systems. 
+\newblock {\it Czechoslovak Math. J.} 51(126) (2001), no. 4, 745--762. 
+
+\bibitem{Hairer2014RS}
+Hairer, Martin.
+\newblock A theory of regularity structures.
+\newblock {\em Invent. Math.}, 198 (2) (2014), 1--236.
+
+\bibitem{Hairer2011solving}
+Hairer, Martin.
+\newblock Solving the KPZ equation.
+\newblock {\em Ann. of Math.}, (2) 178 (2013), no. 2, 559--664.
+
+
+% \bibitem{HHN}
+% Hu, Yaozhong, Jingyu Huang and David Nualart. 
+% \newblock On the intermittency front of stochastic heat equation driven by colored noises. 
+% \newblock {\it Electron. Commun. Probab.} 21 (2016), no. 21, 13 pp.
+
+
+\bibitem{HHNS14}
+Y.~Hu, J.~Huang, D.~Nualart, X.~Sun.
+\newblock Smoothness of the joint density for spatially homogeneous SPDEs.
+\newblock {\em J. Math. Soc. Japan},
+Vol. 67, No. 4 (2015), 1605--1630.
+% arXiv:1410.1581, 2014.
+
+%
+% \bibitem{HHNT} 
+% Hu, Yaozhong, Jingyu Huang, David Nualart and Samy Tindel.
+% \newblock Stochastic heat equations with general multiplicative Gaussian noises:
+% H\"older continuity and intermittency.
+% \newblock {\it Electron. J. Probab.} 20 (2015), no. 55, 50 pp.
+% %
+% \bibitem{HLN}
+% Huang, Jingyu, Khoa L\^e and David Nualart. 
+% \newblock Large time asymptotics for the parabolic Anderson model driven by spatially correlated noise.
+% \newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat.} to appear, 2016. 
+% 
+
+
+
+% %
+% \bibitem{KZ} Karczewska, Anna and Jerzy Zabczyk. 
+% \newblock Stochastic PDEs with function-valued solutions. 
+% \newblock In {\it Infinite dimensional stochastic analysis (Amsterdam 1999)}, 197--216,
+
+
+%
+% \bibitem{khosh1}  Khoshnevisan, Davar.
+% \newblock Analysis of stochastic partial differential equations.
+% \newblock {\it CBMS Regional Conference Series in Mathematics}, 119. 
+% American Mathematical Society, Providence, RI, 2014.
+
+% \bibitem{KK13LCA}  Khoshnevisan, Davar and Kunwoo Kim.
+% \newblock Non-linear noise excitation of intermittent stochastic PDEs and the topology of LCA groups.
+% \newblock To appear in {\it Ann. Probab.} Preprint available at \texttt{arXiv:1302.3266} (2013).
+
+%
+% \bibitem{Liggett} Liggett, T. M.
+% 	\newblock {\it Interacting Particle Systems}.
+% 	\newblock Springer-Verlag, New York, 1985.
+
+\bibitem{MS99}
+Maslowski, Bohdan and Jan Seidler.
+\newblock On sequentially weakly Feller solutions to SPDE's. 
+\newblock {\it Atti Accad. Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei (9) Mat. Appl.} 10 (1999), no. 2, 69--78. 
+
+
+\bibitem{MSY16}
+Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
+\newblock Existence and uniqueness of invariant measures for stochastic reaction-diffusion equations in unbounded domains. 
+\newblock {\it J. Theoret. Probab.} 29 (2016), no. 3, 996--1026.
+
+%
+% \bibitem{Mueller2} Mueller, Carl.
+% 	\newblock {\it Some Tools and Results for Parabolic Stochastic Partial
+% 		Differential Equations} (English summary).
+% 	\newblock In: A Minicourse on Stochastic Partial Differential Equations, 111--144,
+% 	\newblock Lecture Notes in Math.\ {\bf 1962} Springer, Berlin, 2009.
+% %
+
+
+% %%
+% \bibitem{Mueller91} Mueller, Carl.
+% \newblock On the support of solutions to the heat equation with noise.
+% \newblock {\it Stochastics Stochastics Rep.} 37 (1991), no. 4, 225--245.
+% %%
+
+
+
+\bibitem{MuellerNualart08}
+Mueller, Carl and David Nualart. 
+\newblock Regularity of the density for the stochastic heat equation. 
+\newblock {\it Electron. J. Probab.}, 13 (2008), no. 74, 2248--2258.
+
+
+\bibitem{Nualart09}
+D.~Nualart.
+\newblock {\em Malliavin calculus and its applications.}
+\newblock CBMS Regional Conference Series in Mathematics, 110. Published for the
+Conference Board of the Mathematical Sciences, Washington, DC; by the American
+Mathematical Society, Providence, RI, 2009.
+
+\bibitem{NualartQuer07}
+D.~Nualart and L.~Quer-Sardanyons.
+\newblock Existence and smoothness of the density for spatially homogeneous {SPDEs}.
+\newblock {\em Potential Anal.} 27 (2007), no. 3, 281--299.
+
+\bibitem{Nualart13Density}
+E.~Nualart.
+\newblock On the density of systems of non-linear spatially homogeneous {SPDEs}.
+\newblock {\em Stochastics}, 85 (2013), no. 1, 48--70.
+
+% %
+% \bibitem{Nobel97} Noble, John M.
+% \newblock Evolution equation with Gaussian potential.
+% \newblock {\it Nonlinear Anal.}\ {\bf 28}{\it (1)} (1997) 103--135.
+
+% \bibitem{oldham2008atlas}
+% Oldham Keith and J.~Myland and J.~Spanier.
+% \newblock {\em An atlas of functions}.
+% \newblock Springer, New York, second edition, 2009.
+%
+\bibitem{NIST2010}
+F.~W.~J. Olver, D.~W. Lozier, R.~F. Boisvert, and C.~W. Clark, editors.
+\newblock {\em N{IST} handbook of mathematical functions}.
+\newblock U.S. Department of Commerce National Institute of Standards  and Technology, Washington, DC. Cambridge Univ. Press, Cambridge, 2010.
+
+\bibitem{PardouxZhang93}
+Pardoux, Etienne and Tusheng Zhang.
+\newblock Absolute continuity of the law of the solution of a parabolic SPDE.
+\newblock {\em J. Funct. Anal.} 112 (1993), no. 2, 447--458.
+ 
+ \bibitem{PZ95}
+Peszat, and Zabczyk
+\newblock Stochastic Evolution Equations with a Spatially Homogenous Wiener Processes.
+\newblock {\em SNS} (1995)
+ 
+\bibitem{QuerSanz04WaveSmooth}
+Quer-Sardanyons, Llu{\'{\i}}s and Marta Sanz-Sol{\'e}.
+\newblock A stochastic wave equation in dimension 3: smoothness of the law.
+\newblock {\em Bernoulli}, 10 (2004), no. 1, 165--186. 
+
+% \bibitem{SanzSoleSarra02}
+% Sanz-Sol\'e, Marta and M\`onica Sarr\`a.
+% \newblock H\"older continuity for the stochastic heat equation with spatially correlated noise.
+% \newblock {\em Seminar on Stochastic Analysis, Random Fields  and Applications, III (Ascona, 1999)},
+% 259--268, Progr. Probab., 52, Birkhäuser, Basel, 2002.
+
+% \bibitem{Spitzer1981} Spitzer, Frank.
+% 	\newblock Infinite systems with locally interacting components.
+% 	\newblock {\it Ann.\ Probab.}\ {\bf 9} (1981) 349--364.
+%
+
+% \bibitem{Stein70Singular}
+% Elias~M. Stein.
+% \newblock {\em Singular integrals and differentiability properties of
+%   functions}.
+% \newblock Princeton University Press, Princeton, N.J., 1970.
+% %
+
+% \bibitem{Shiga}
+% Shiga, Tokuzo.
+% \newblock Two contrasting properties of solutions for one-dimensional stochastic partial differential equations. 
+% \newblock {\it Canad. J. Math.} 46 (1994), no. 2, 415--437. 
+
+
+% %
+% \bibitem{TessitoreZabczyk98}
+% Tessitore, Gianmario and Jerzy Zabczyk.
+% \newblock Strict positivity for stochastic heat equations.
+% \newblock {\it Stochastic Process. Appl.} 77 (1998), no. 1, 83--98.
+
+\bibitem{TessitoreZabczyk98M}
+Tessitore, Gianmario and Jerzy Zabczyk.
+\newblock Invariant measures for stochastic heat equations. 
+\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287. 
+
+
+\bibitem{Walsh} Walsh, John B.
+	\newblock {\it An Introduction to Stochastic Partial Differential Equations}.
+	\newblock In: \`Ecole d'\`et\'e de probabilit\'es de
+	Saint-Flour, XIV---1984, 265--439.
+	Lecture Notes in Math.\ 1180, Springer, Berlin, 1986.
+%
+\end{thebibliography}
+\end{small}
+\end{document}

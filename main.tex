@@ -1,0 +1,1498 @@
+% \documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+\usepackage{hyperref} 
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+ 
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\}}}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{{{\rm 1\mkern-1.5mu}\!{\rm I}}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw}}}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf}}}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi}}}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc}}}
+\newcommand{\He}{\ensuremath{\mathrm{He}}}
+
+\def\crtL{\theta}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+
+% % Set up mdframe for questions.
+\newcounter{NQ}
+\newcounter{LQ}
+\newcounter{ZQ}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{%
+   middlelinecolor=lightgray,
+   middlelinewidth=2pt,
+   backgroundcolor=red!20,
+   roundcorner=10pt}
+\newenvironment{NickQuestion}[1][] %
+  {\refstepcounter{NQ}
+  \begin{mdframed}[backgroundcolor=lightgray]\textbf{Nick's Question \theNQ \: #1~~}~~~\noindent}%
+  {\end{mdframed}}
+\newenvironment{LeQuestion}[1][] %
+  {\refstepcounter{LQ}
+  \begin{mdframed}[backgroundcolor=red!10]\textbf{Le's Question \theLQ \: #1~~}~~~\noindent}%
+  {\end{mdframed}}
+\newenvironment{ZhijianQuestion}[1][] %
+  {\refstepcounter{ZQ}
+  \begin{mdframed}[backgroundcolor=blue!10]\textbf{Zhijian's Question \theZQ \: #1~~}~~~\noindent}%
+  {\end{mdframed}}
+\numberwithin{NQ}{section}
+\numberwithin{LQ}{section}
+\numberwithin{ZQ}{section}
+  
+\title{Nick Eisenberg's Meeting Notes}
+\author{Le Chen, Nick Eisenberg, Zhijian Wu}
+\date{October 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This is a document to keep track of meetings between Nick Eisenberg, Dr. Zhijian Wu  and Dr. Le Chen. We can use the following environments to pose questions. 
+
+\begin{NickQuestion}[(Spectral measure)]
+Here is a question by Nick related to spectral measure.
+\end{NickQuestion}
+\begin{proof}[Le's solution.]
+Le's sketch of proof is here.
+\end{proof}
+\begin{proof}[Zhijian's suggestion.]
+Zhijian's suggestions go here.
+\end{proof}
+
+\begin{proof}[Nick's solution.]
+Here is the proof by Nick.
+\end{proof}
+
+\begin{LeQuestion}
+Here is a question by Le.
+\end{LeQuestion}
+\begin{proof}[Nick's solution.]
+Here is the proof by Nick.
+\end{proof}
+
+
+\begin{ZhijianQuestion}[(White noise)]
+Here is a question by Zhijian.
+\end{ZhijianQuestion}
+\begin{proof}[Nick's solution.]
+Here is the proof by Nick.
+\end{proof}
+
+
+\section{Meeting Oct. 8}
+
+\section{Meeting Oct. 22}
+\begin{NickQuestion}[(delta)]
+\end{NickQuestion}
+
+\begin{NickQuestion}
+\end{NickQuestion}
+
+
+\section{Meeting Oct. 29}
+\begin{LeQuestion}
+We are interested in stochastic heat equation: 
+\begin{align}\label{E:SHE}
+\begin{cases}
+\left( \frac{\partial}{\partial t}-\frac{1}{2} \Delta \right)
+u(t,x) = \rho(u(t,x)) \dot{W}(t,x),& t>0,\: x\in\R^d,\\
+\quad u(0,\cdot) = \mu,
+\end{cases}
+\end{align}
+where $\rho$ is Lipschitz continuous and $\dot{W}$ is some noise that is
+white in time and colored in space. 
+The SHE \eqref{E:SHE}, sometimes with a nonlinear drift term $b(u(t,x))$ on the right-hand side, describes systems in physics and mathematical biology, where there is a strong need to know the ergodic behavior of such systems. The first step in understanding the ergodicity of these systems is, of course, to show the existence of an invariant measure for the corresponding dynamical system. There is a rich literature for the study of invariant measure in case of bounded spatial domain; see, e.g., \cite{BG99, Cer01, Cer03, Cer06, DZ96, GM01,MS99}. However, the case of unbounded domain has been much less studied; see \cite{AM03,EH01, MSY16,TessitoreZabczyk98M}.
+
+In this preliminary project, we will focus on the case when $b\equiv 0$ and the spatial domain is unbounded, namely, $\R^d$.  The case with with nonvanishing drift term $b$ will be studied in the future upon completion of this project.  
+For the case of unbounded domain, one has to include some {\it weight functions}. 
+Let $\rho$ be a positive bounded function in $L^1(\R^d)$, associated with which is the weighted $L^2_\rho(\R^d)$ space with the norm $\Norm{\phi}_\rho^2 = \int_{\R^d}\phi^2(x)\rho(x)\ud x$. Following \cite{TessitoreZabczyk98M}, the problem reduces to prove that for any fixed $T>0$, $\Norm{u}_{2,T,\rho}^2:=\sup_{t\in [0,T]}\E(\Norm{u(t,\cdot)}_\rho^2)<\infty$. Notice that $\Norm{u}_{2,T,\rho}^2=\sup_{t\in [0,T]}\int_{\R^d} \Norm{u(t,x)}_2^2 \rho(x)\ud x$. Now we can apply our sharp moment formula/bounds:
+\begin{align}\label{E:MF-SHERD}
+\Norm{u(t,x)}_p\le C \left[1+(|\mu|*G(t,\cdot)(x))\right] H_p^{1/2}(t)
+\end{align}
+from \cite{CH16Comparison}.
+Tessitore and Zabczyk  \cite{TessitoreZabczyk98M} studied this problem under strong conditions on: (1) the correlation functions $\Lambda$, which exclude the important Riesz kernel case, (2) the weight functions (polynomial decay or exponential decay), and (3) the initial data (in some Weighted $L_\rho^2(\R^d)$ space). Accordingly, with help of our sharp moment formula/bounds, we will be able to relax their conditions to allow (1) more general correlation function $\Lambda$ (including the Riesz kernel); (2) smaller admissible weight functions (e.g., $\rho(x) = e^{-c_T |x|^2}$ for some sufficiently large constant $c_T>0$, note that the smaller is $\rho$, the larger is the space $L^2_\rho(\R^d)$); (3) rough initial data. In particular, our extension will include the PAM with, e.g., delta initial data. 
+\end{LeQuestion}
+
+\section{Meeting on Nov. 5th}
+\begin{LeQuestion}
+Regarding the two approaches --- the random field approach (ours) and semigroup approach, you may read paper by Dalang and Quer-Sardanyons \cite{DalangQuer} for the equivalence of the two approaches. You may also take a brief look at Da Prato's book \cite{DZ92}, the counterpart of the Walsh notes for random field approach, for the semigroup approach.  
+\end{LeQuestion}
+
+\begin{NickQuestion}[(spatial variable of the solution/ what type of object is the solution)]
+In \cite{TessitoreZabczyk98M} we write the solution of (1.1) as (2.3). More specifically we write the solution as $$ X^x(t) \;\;\;\; \text{for $x\in L^2_\rho$ and $t>0$}$$ but we lose the spatial component of $X$ from (1.1) namely we no longer write $X$ as $$ X^x(t,\xi) \;\;\;\; \text{for $x\in L^2_\rho$, $\xi \in \mathbb R^d$ and $t>0$} $$ however by Theorem 2.3 of $\cite{TessitoreZabczyk98M}$ we still know that the solution to (1.1) is in $L^2_\rho$ for each $\omega \in \Omega$ . Namely for each $x \in L^2_\rho$, $t>0$, and $\omega \in \Omega$ then $X^x(t)(\omega) \in L^2_\rho$. So does this mean that the solution in fact does have a spatial element but we don't write it since we lose this information about it? What I mean by this is that according to the Theorem 2.3, our solution $X^x(\cdot) \in \mathscr C_{\mathscr P}(0,T,L^2(\Omega,L^2_\rho))$ which is the set of all predictable processes \\ $Y:\Omega \times [0,T] \to L^2_\rho$ with the property that $t\mapsto E(|Y(t)|^2_\rho)$ is continuous so you can see here that we are integrating out the spatial variable when taking the $|\cdot|^2_\rho$ norm. 
+\end{NickQuestion}
+
+\begin{proof}[Nick's solution]
+After careful reading of the Da Prato text \cite{DZ96} and the Tessitore paper $\cite{TessitoreZabczyk98M}$. I am fairly confident that what I am saying above is correct. 
+\end{proof}
+
+\begin{proof}[Le's comment]
+You are right. From here, you see that Da Prato's approach is really an infinite-dimensional SDE. In the finite dimensional case, you simply replace the $|\cdot|_\rho$ norm by Euclidean norm.
+\end{proof}
+
+
+\begin{NickQuestion}[(Law of the solution)]
+ Now how are we defining the Law of the solution? Are we saying that \begin{align} \mathscr L(X^x(t))(A)=\textbf{P}\{\omega \in \Omega : X^x(t)(\omega)\in A \;\; \text{for $A \subset L^2_\rho$} \} \end{align} so we are fixing $ t$ and $x$ and the law of $X$ is a probability measure on $L^2_\rho$? So if this was the case then by \cite{DZ96} on page 89 equation (6.1.2) we see if $\dfrac{1}{T}\int_0^T\mathscr L(X^x(t))dt$ is tight then that there exists an invariant measure for $L^2_\rho$. (Also I have the details worked out which proves the statement about equation (6.1.2) )
+ 
+ However there is a minor discrepancy here when comparing the Law defined the way I just had defined it above and how \cite{DZ96} defines it. Again on page 89 of \cite{DZ96} they define the law to be a measure on $\mathcal B(H)$ but does not define what $\mathcal B(H)$ is. Im guessing that it means the space of bounded linear functionals on some hilbert space $H$. The Law I defined above would be defined on $H=L^2_\rho$ not $\mathcal B(H)=\mathcal B(L^2_\rho)$. We are looking for a measure on $L^2_\rho$ and so I believe the way I had defined it above is how it is supposed to be defined in the Tessitore paper $\cite{TessitoreZabczyk98M}$. 
+\end{NickQuestion}
+ 
+ 
+\begin{proof}[Nick's Solution]
+The law of $X$ is what I defined it to be in equation (5.1) and this can be seen from (3.2) on page 276 of the Tessitore paper $\cite{TessitoreZabczyk98M}$.    
+\end{proof}
+
+\begin{proof}[Le's Comment]
+In equation (5.1), you cannot take arbitrary subsets $A$ from $L_\rho^2$. It has to have certain measurability property, like Borel sets in the finite dimensional case. That's why in the book \cite{DZ96}, they use $\mathcal{B}(H)$. Please double check the meaning of this notation in their book.    
+\end{proof}
+
+\begin{NickQuestion}
+ 
+      The integral in (2.3) shown below \begin{align}
+         X^x(t)=S(t)x+\int_0^tS(t-s)M(B(X^x(s)))dW_s
+     \end{align} is used in the proof however in (5.2) they turn $\mathscr W$ into $W$ for the integrator. They claim that this follows from $\cite{PZ95}$ but I could not find an explaination for it in there. In addition the $M$ function in this paper $\cite{TessitoreZabczyk98M}$ is not the same as the $M$ function in $\cite{PZ95}$.
+  \end{NickQuestion}  
+  
+ \begin{proof}[Le's comment]
+ Study Da Prato's red book \cite{DZ92} and \cite{DalangQuer}. 
+ \end{proof} 
+  
+  \newpage
+     \begin{NickQuestion}(Proof of Theorem 3.1)
+      
+     In \textbf{Step 1} of the proof, Tessitore defines an operator \begin{align}F_\alpha f = \int_0^1(1-s)^{\alpha-1}S(1-s)f(s)ds \end{align} and says that this operator is compact from $L^q[(0,1),L^2_{\hat\rho} ]$ to $L^2_\rho$. First, what is $L^q[(0,1),L^2_{\hat\rho} ]$? Second how is $F_\alpha f \in L^2_\rho$? It seems that the integrand in a function of $s$ and we are integrating out the $s$ variable so there are no variables left which would just make $F_\alpha f \in \mathbb R$ . Also, does $S(1-s)f(s)=\big(G(1-s,\cdot)*f(\cdot)\big)(s)?$ 
+     \end{NickQuestion}
+     \begin{proof}
+I believe the answer to why $F_\alpha f$ is in $L^2_\rho$ is essentially the same reason as my solution for my question (5.5), ie. it comes from Da Pratos construction of the stochastic integral in $\cite{PZ95}$. Also I believe that $L^q[(0,1),L^2_{\hat\rho} ]$ is the space of predictable processes, $f(s)$ such that $f:(0,1)\times \Omega \to L^2_\rho$ and $\int_0^1|f(s)|^q_{\hat \rho}ds < \infty $. This can be verified by comparing the $|h|^q_{L^q(0,1,L^2_{\hat\rho})}$ in the definition of $\mathscr K (\theta)$ with integral on the right hand side of the first inequality after the mention of Chebyshev's inequality. 
+\end{proof}
+
+     \begin{NickQuestion}(Proof of Theorem 3.1)
+       In \textbf{Step 2} the $Y^x(s)$ that is defined is apparently in $L^2_{\hat\rho}$ since in this step we use $|Y^x(s)|_{\hat\rho}^2$. However from the definition of $Y$ in the beginning of step 2, I don't see why $Y^x(s) \in L^2_{\hat\rho}$. Also I am having trouble in filling in the details for the inequality \begin{align}
+         E\int_0^1|Y^x(s)|^q_{\hat\rho} ds \le k\int_0^1\left( E\int_0^s(s-\varsigma)^{-2\alpha}\Vert S(s-\varsigma)M(B(X^x(\varsigma))) \Vert _{L_2(L^2,L^2_{\hat\rho})}d\varsigma \right)^{q/2}ds
+     \end{align}
+\end{NickQuestion}
+
+\begin{proof}[Nick's Solution]
+As for the reason why $Y\in L^2_\rho$, I believe this comes from Da Prato's contruction of the stochastic integral $\int_0^t\psi(x)dW_x$, see and page 57 of $\cite{DZ96}$. In genera we can define the stochastic integral $\int_0^t\psi(x)dW_x$ when $\psi$ is a Hilbert schmidt operator from a Hilbert space $U$ to another Hilbert space $H$. In this paper, the integrand of $Y^x(s)$ is playing the role of $\psi$ but here it is a hilbert schmidt operator from $L^2 \to L^2_\rho$ and this is why our stochastic integral $Y$ takes values in $L^2_\rho$. 
+\\ \\
+The inequality follows from (5.2.13) from $\cite{DZ96}$ and also page 192 of $\cite{PZ95}$. Ie. we can use (5.2.13) to show that \begin{align}
+      E\int_0^1|Y^x(s)|^q_{\hat \rho} ds &\le k\int_0^1E\left( \int_0^s(s-\varsigma)^{-2\alpha}\Vert S(s-\varsigma)M(B(X^x(\varsigma))) \Vert _{L_2(L^2,L^2_{\hat\rho})}^2d\varsigma \right)^{q/2}ds
+      \\ & \le kC^q\int_0^1E\left( \int_0^s(s-\varsigma)^{-(2\alpha+\sigma)}|B(X(^x(\varsigma))|^2_\rho d\varsigma \right)^{q/2}ds 
+\end{align}
+where $\sigma$ is defined in the in the paper and comes from Proposition 2.4 on the previous page. Also there is a small type in (5.4) which is the inequality how it is written in the paper. The $E$ needs to be outside of the $(\cdot)^{q/2}$ and there is also a missing power of 2 on the $\Vert \cdot \Vert$ term in the integrand in (5.4). I fixed both of these in (5.5). 
+\end{proof}
+
+\begin{NickQuestion}
+ On page 279 in the proof of Theorem 3.3, I am unable to see why \begin{align}
+     l_0^2\int_0^\infty\int_{\mathbb R^d}\left((G(s,\cdot )*|\widehat{\gamma^{1/2}}|)(z)\right)^2dz ds = \int_0^\infty \int_{\mathbb R^d}G(2s,z)\tilde\Gamma (z)dzds
+ \end{align}
+\end{NickQuestion}
+ \begin{NickQuestion}
+  What is the $\beta_s^i$ integrator and how do we obatain the moment estimate for $Z_1^2$
+ \end{NickQuestion}
+ \begin{NickQuestion}
+  How do we get the last equality on the top of page 280. This is similar to my question 5.6. as well as the moment estimate for $Z_2^2$? 
+ \end{NickQuestion}
+\begin{LeQuestion}
+Nick, I saw your questions. I will go over them this evening or tomorrow morning. Talk to you tomorrow then.
+\end{LeQuestion}
+
+\section{Meeting on Nov. 12th}
+\begin{LeQuestion}
+Keep reading the paper by Tessitore and Zabczyk \cite{TessitoreZabczyk98M} and try to figure out more details in the paper. 
+\end{LeQuestion}
+
+\begin{LeQuestion}
+See Remark 3.6 of \cite{TessitoreZabczyk98M}. Let's at least prove the same result, i.e., Theorem 3.3 of \cite{TessitoreZabczyk98M} under condition that
+\begin{align}
+    \int_{\R^d} \Gamma(y) |y|^{2-d}\ud y<\infty,
+\end{align}
+where $\Gamma(\cdot)$ is the correlation function as in \cite{TessitoreZabczyk98M}. Check my paper with Kunwoo Kim \cite{CK15SHE}. Lemma 2.5 of \cite{CK15SHE} gives the condition when $H(t)$ is bounded, which translates to 
+\begin{align}\label{E:PHASE}
+d\ge 3 \quad\text{and}\quad 
+\int_{\R^d}\frac{f(x)}{|x|^{d-2}}\ud x<\infty;
+\end{align}
+see Eq. (1.12) of \cite{CK15SHE}. Here $f$ is the spatial correlation function, which is $\Gamma$ in \cite{TessitoreZabczyk98M}. Then instead of Hypothesis 2.1 (i) of \cite{TessitoreZabczyk98M}, we only need $L_\rho$ (the Lipschitz constant of $\rho$ in \eqref{E:SHE}) is small enough. 
+
+Here is my conjecture and please try to prove the following statement:
+\vspace{2em}
+ \begin{NickQuestion}
+  Should the integral in (6.10) be written as $$ \int_{\mathbb R^d}\Gamma(dy)|y|^{2-d} $$ as it is in chapter 2 of the mini course? And then $f$ in (6.2) is the spectral density of $\Gamma$? Then from using the relation that $\Gamma = \mathcal F \mu$ where $\mu(dx)=f(x)dx$ we see that $$ \int_{\mathbb R^d}\Gamma(dy)|y|^{2-d} = k\int_{\R^d}\frac{f(x)}{|x|^{2}}\ud x $$ where $k$ is the constant from example 4.1 from page 55 of the mini course.    
+ \end{NickQuestion}
+{\bf\noindent Conjecture~} Under condition \eqref{E:PHASE}, let $L_\rho$ be the Lipschitz constant of $\rho$ (see \eqref{E:SHE}), if $L_\rho$ is sufficiently small, for any rough initial data and weight functions $w(\cdot)$ (more general than those in \cite{TessitoreZabczyk98M}), we have that
+\[
+\sup_{t\ge 0}\E\left(|u^\mu(t)|_w^2\right)<\infty,
+\]
+where $\mu$ denotes the rough initial data (not necessarily to be nonnegative).
+
+\vspace{2em}
+Here are a list contributions: 
+\begin{itemize}
+    \item Initial data can be more general.
+    \item I believe condition \eqref{E:PHASE} small is more general than Hypothesis 2.1 (i) of \cite{TessitoreZabczyk98M}. See Question \ref{LQ:PHASE} below. Nevertheless, we have one additional condition, namely, $L_\rho$ should be small enough.
+\end{itemize}
+\end{LeQuestion}
+
+\begin{LeQuestion}\label{LQ:PHASE}\label{LQ:Examples}
+Figure out the difference between condition \eqref{E:PHASE} and Hypothesis 2.1 (i) of \cite{TessitoreZabczyk98M}. Why  \eqref{E:PHASE}  is more general? Can you give several examples?   
+\end{LeQuestion}
+\begin{NickQuestion}
+ Im a little confused, is our goal to drop hypothesis 2.1 (i) and make up for it by putting a restriction on $L_\rho$ but in doing so we can use more general initial data? Hypothesis 2.1 (i) is used in the assumption of proposition 2.4 which is used to prove Theorem 3.1 which showed the existence of an invariant measure so if we drop hypothesis 2.1 (i) then we would have to reprove this result but I dont think this result was used in Theorem 3.3.
+ 
+ How about the condition (2.1) on the weight functions. Do we still want to assume that they satisfy the property that $G(t,\cdot)*\rho < C(T)\rho$ for every $t\in[0,T]? $ Also, condition (2.1) was only used for proposition 2.4 which was only used to prove Theorem 3.1 so if out only goal is to focus on Theorem 3.3 the nI believe we can drop assumption (2.1) on the weight functions. 
+\end{NickQuestion}
+
+\begin{proof}[Le's comment~]
+The question for condition (2.1) is slightly trickier. I wish we could do better than $\rho(x)=e^{-r|x|}$ for $r>0$. For example, it would be good if we can cover $\rho(x)=e^{-|x|^\alpha}$ with $\alpha\in (1,2)$. For such weight function, I don't believe condition (2.1) is true anymore. This will change slightly the statements in Proposition 2.1. 
+\end{proof}
+
+
+\begin{NickQuestion}
+ Where in Theorem 3.3 is hypothesis 2.1 (i) used? 
+\end{NickQuestion}
+
+\begin{proof}[(nick's proof)]
+I believe it is only indirectly used to show that the stochastic integrals are are defined in the proof. Proposition 2.4 says that if we assume hypothesis 2.1 (i) then for $\phi \in L^2_\rho$ we have  $S(t)M(\phi)$ is a Hilbert Schmidt operator from $L^2 \to L^2_\rho$ which is needed to ensure all the $\{X_n\}_{n \in \mathbb N}$ defined in the proof are well defined stochastic integrals.
+\end{proof}
+\begin{proof}[Le's comment~]
+This is no longer relevant. We can establish Theorem 3.3 using our language and under possibly weaker conditions on the spectral measure. 
+\end{proof}
+
+\begin{NickQuestion}
+I still think there are several inconsistencies with this paper that I can't justify. 
+\begin{enumerate}
+    \item First, this paper claims that the solution (2.3) on page 275 follows from $\cite{PZ95}$ but in that paper the $M$ is defined differently and I have found no justification in any other text as to why the $M$ is defined differently in this paper. 
+    
+    \item This paper states that $\mathscr W$ is a Wiener Processes on $L^2$ with covarience operator $I$ which I am assuming is the identity operator which according to De Prato means that $\mathscr W$ is a cylindrical Wiener processes. But this paper never states the range of $\mathscr W$ but in order for the stochastic integral in (2.3) to makes sense, $\mathscr W$ needs to be $L^2$ valued since our integrand in (2.3) is a hilbert schmidt operator from $L^2$ to $L^2_\rho$. 
+    
+    \item I havent quite been able to verify the represention of $Z_1(t,\xi)$ on page 279 \begin{align}
+        Z_1(t,\xi) = \sum_i\int_0^t\left(\int_{\mathbb R^d}G(s,\xi - \eta)b(\eta,0)(\widehat {\gamma^{1/2}} * e_i)(\eta)d\eta\right)d\beta^i_s
+    \end{align}
+Here's what I have been able to verify. First, sine the covariane operator is $I$, we use (4.2) page 82 of $\cite{DZ92}$ to write \begin{align}
+    W(s)=\sum_i<W(s),e_i>e_i
+\end{align}
+ where $\{e_i\}$ is the orthonormal basis (not sure the space it is a basis for?). Then we use the definition of $Z_1$ given in the beginning of the proof as $Z_n=X_n-X_{n-1}$. The proof says we let $X_0=0$. Then we have the following \begin{align}
+     Z_1(t,\xi) = X_1(t,\xi) &= 1+\int_0^tS(t-s)M(B(0))dW_s 
+     \\ &= 1+\sum_i\int_0^tS(t-s)M(B(0))d<W(s),e_i>e_i
+     \\ &= 1+\sum_i\int_0^tS(t-s)M(B(0))e_id<W(s),e_i>
+     \\&= 1+\sum_i\int_0^tS(t-s)M(B(0))e_id\beta^i_s
+     \\ &= 1+\sum_i\int_0^t S(t-s)B(0)(\eta)(\widehat {\gamma^{1/2}} * e_i)(\eta) d\beta^i_s
+     \\&= 1+\sum_i\int_0^t\left( \int_{\mathbb R^d}G(t-s,\xi-\eta)b(\eta,0)(\widehat {\gamma^{1/2}} * e_i)(\eta) d\eta\right)d\beta^i_s
+ \end{align}
+ However (6.10) is not quite the same as (6.3). The two differences are the 1 being added in the beginning of (6.10) and that there is an $G(t-s)$ in (6.10) and a $G(s)$ in (6.3). 
+\end{enumerate}
+\end{NickQuestion}
+
+\begin{LeQuestion}
+Nick, I will go over your questions tomorrow morning... Talk to you soon.
+\end{LeQuestion}
+
+\section{Meeting on Nov. 19th}
+\begin{LeQuestion}
+Try to decode the proof of Theorem 3.1 and see if we can prove this theorem using our language (in the Walsh framework instead of Da Prato's). You need to study the green book \cite{DZ96} for invariant measures. 
+\end{LeQuestion}
+\section{Meeting on Nov. 26}
+
+\begin{LeQuestion}\label{Q:Bessel}
+This is related to Le's Question \ref{LQ:Examples}. The Bessel kernel function is a good example. Let's use the notion from wikipedia: 
+
+\url{https://en.wikipedia.org/wiki/Bessel_potential}
+
+Then, let $f(x)= \frac{1}{(1+|x|^2)^{s/2}}$. Then the Fourier transform of $f$ is given by $G_s$ on the wikipage. The condition \eqref{E:PHASE} requires that 
+\[
+s>2.
+\]
+Let's take $s>d$, then we see that $G_s(x)$, which is $\gamma(x)$ in \cite{TessitoreZabczyk98M}, is in $L^p(\R^d)$ for all $p$. However, in Hypothesis 2.1 of \cite{TessitoreZabczyk98M}, one requires that 
+\[
+p\le \frac{d}{d-2}.
+\]
+Hence, we find examples that are allowed under our condition, namely \eqref{E:PHASE}, but not under Tessitore \& Zabczyk \cite{TessitoreZabczyk98M}.
+\bigskip
+
+Please work out the above details.
+
+\end{LeQuestion}
+\begin{proof}[\textbf{(Nick's Comments)}] I came up with something similar to what you just did but to the function $f(x)=\dfrac{1}{1+|x|^\beta}$ which we were working on earlier. Like you said above, Hypothesis 2.1 requires that there exists a $p<\dfrac{d}{d-2}$ such that \begin{align} \int\left( \dfrac{1}{1+|x|^\beta}\right)^pdx < \infty \end{align} but I believe this means that (correct me if im wrong) we need $$\beta\cdot p >d$$
+We already agreed that under the Dalang condition we only require that $\beta>2$ in order for $$ \int{ \dfrac{\dfrac{1}{1+|x|^\beta}}{|x|^{d-2}}dx} < \infty $$ So for a $\beta$ sufficiently close to $2$ and for a large $d$, we will not be able to find a $p<\dfrac{d}{d-2}$ such that $\beta\cdot p >d$. For example, when $d=50$ and $\beta =3$ then there does not exist $p<\dfrac{50}{48}$ so that (8.1) above holds. This proves that the Dalang condition is more general. 
+
+However, my counter exampal does not work for smaller $d$ and more specifically for $d=3$. 
+
+
+\end{proof}
+
+\begin{NickQuestion}
+I believe what I have below is the whole question and set up in our language. As of now there seem to be five steps which I have addressed below that need to be completed.  
+
+First let $\rho(x)$ be an admissable weight as in \cite{TessitoreZabczyk98M} and consider the following SPDE.
+\begin{equation}
+\begin{cases}
+   \dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
+   \\ u(0,x)=\varphi(x) & \varphi(x) \in L^2_\rho(\mathbb R^d)
+\end{cases}  
+\end{equation}
+
+In (8.2), $b$ satisfies some Lipschitz conditions to be determined and $W$ is a Gaussian Processes that is white in time and colored in space as definied on page 51 of \cite{DalangEtc09Minicourse}(the minicourse).
+
+\textbf{Step 1:} Following \cite{TessitoreZabczyk98M} we first need to define a mild solution to (8.2). Im guessing the correct mild solution to define is 
+\begin{equation}
+    u(t,x)=\int_{\mathbb R^d}\varphi (y)P_t(x-y)dy + \int_0^t\int_{\mathbb R^d}b(s,u(s,y))P_{t-s}(x-y)W(ds,dy)
+\end{equation}
+where $P_t(x)$ is the standard heat kernel. For the followng, we denote the solution to (8.3) as $u(t,x,\varphi)$
+
+\textbf{Step 2:} We need to show the existence and uniqueness to a solution of (8.3).
+
+\textbf{Step 3:} We need to show that $u(t,\cdot,\varphi)$ is an object in $L^2_\rho(\mathbb R^d)$
+
+\textbf{Step 4:} Can we show that the moment estimates in your paper \cite{ChenDalang13Heat} hold for the solution of (8.3)? 
+
+\vspace{.2in} 
+The above steps address all of the topics discussed in part 1 and part 2 of \cite{TessitoreZabczyk98M}. After verifying each of the above four steps we can start to address Theorem 3.1 in \cite{TessitoreZabczyk98M}. 
+\vspace{.2in}
+
+First, in \cite{TessitoreZabczyk98M} they assume that the solution to (8.2) is bounded in probability and we may or may not need to assume the same. Second,  we define the law of our solution $u(t,\cdot,\varphi)$ as follows: 
+\begin{equation}
+    \mathscr L\big(u(t,\cdot,\varphi)\big)(A)=\mathbb P \big(\omega \in \Omega : u(t,\cdot,\varphi) \in A\big) \;\;\; A \in \mathscr B(L^2_\rho(\mathbb R^d)
+\end{equation}
+Then $\mathscr L\big(u(t,\cdot,\varphi)\big)$ is a measure on $L^2_\rho(\mathbb R^d)$
+
+\textbf{Step 5:} As in the proof of Theorem 3.1 in \cite{TessitoreZabczyk98M}, if we can show that $\{\mathscr L\big(u(t,\cdot,\varphi)\big)\}_{t>1}$ is tight in $L^2_\rho$ then the family of laws 
+\begin{equation}
+    \frac{1}{T}\int_1^{T+1}\mathscr L(u(t,\cdot,\varphi)dt, \;\;\;\; T>0
+\end{equation}
+will also be tight and by (6.1.2) of \cite{DZ96}, the weak limit of any converging sequence 
+\begin{equation}
+    \frac{1}{T_j}\int_1^{T_j+1}\mathscr L(u(t,\cdot,\varphi)dt, \;\;\;\; T_j \to \infty
+\end{equation} 
+is invariant for (8.3) in $L^2_\rho$.
+\end{NickQuestion}
+
+
+\section{Discussions on Dec. 3rd}
+
+\[
+\left(F_{\alpha} f\right)(x) := \int_0^1 ds \int_{\R^d} dy \: (1-s)^{\alpha-1}G(1-s,x-y)f(s,y) .
+\]
+
+\[
+Y(s,y) =\int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)\rho(u(r,z))W(dr,dz).
+\]
+
+Then 
+\begin{align*}
+    \left(F_\alpha Y\right)(x) &= \int_0^1 ds \int_{\R^d} dy \: (1-s)^{\alpha-1}G(1-s,x-y)\\
+    &\qquad\times\int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)\rho(u(r,z))W(dr,dz)\\
+    &= \int_0^1 ds  \: (1-s)^{\alpha-1} \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(1-r,x-z)\rho(u(r,z))W(dr,dz)\\
+    &= \int_0^1  \int_{\R^d}  \left(\int_r^1 ds \: (1-s)^{\alpha-1}(s-r)^{-\alpha}\right)G(1-r,x-z)\rho(u(r,z))W(dr,dz)\\
+        &= \frac{\pi}{\sin(\pi\alpha)}\int_0^1   \int_{\R^d} G(1-r,x-z)\rho(u(r,z))W(dr,dz)\\
+\end{align*}
+
+As for the Step 2 of Theorem 3.1, we can do the following: 
+
+\section{Discussions on Dec. 10th}
+\begin{NickQuestion}
+On page 275 of the paper, Tessitore defines the solution in equation (2.3) and the intgrator is $dW_s$ and right below it says that $W$ has the identity operator as the covariance operator but the this means that $W$ is a white noise. In the minicousre is says that we can not deal with equations in higher dimensions that are forced by white noise so why can the integrator here a white noise when we are working with the heat equation on $\mathbb R^d$? 
+\end{NickQuestion}
+
+\begin{NickQuestion}
+This is something that I didn't notice until now, but in your question 6.2, you said you wanted to prove Theorem 3.3 with only the condition that $$\int_{\mathbb R^d}\Gamma(dy)|y|^{2-d} < \infty$$ Did you mean Theorem 3.1? 
+
+Also im guessing we also need to assume Dalang's condition $$ \Upsilon(\beta)=\int_{\mathbb R^d}\dfrac{\hat{f}(d\xi)}{\beta+|\xi|^2} < \infty \;\;\; \beta>0 $$ which is required by your paper \cite{CH16Comparison} to have a solution and use the moment estimates which will show that our solution is almost surely in the weighted space, $L^2_\rho$.
+\end{NickQuestion}
+
+\begin{NickQuestion}[(Showing step 2 from my question (8.1))]
+An issue we have is that we need to show that our solution is inside the weighted space so that the Law of the solution will be a measure in the $L^2_\rho$ space. There have been two ways that we discussed that we could show this: \begin{enumerate}[(1)] 
+\item $$E(||u(t,\cdot)||_\rho^2)=\int_{\mathbb R^d}||u(t,x)||_2^2\rho(x)dx < \infty$$ 
+\item $$\sup_{0\le t \le T}E(||u(t,\cdot)||_\rho^2)=\sup_{0\le t \le T}\int_{\mathbb R^d}||u(t,x)||_2^2\rho(x)dx < \infty$$
+\end{enumerate} First of all, in either (1) or (2) all we would have at best is that $u(t,\cdot)\in L_\rho^2$ almost surely and I can't tell from reading the Tessitore paper if that is good enough. For sure, in the Tessitore paper, their solution $X^x(t)(\omega)\in L_\rho^2$ for every $ \omega \in \Omega$ and this is because of the way the stochastic integral is defined in the Da Prato textbook. Also, I'm not sure whether we need $(1)$ or $(2)$ but from the looks of the Tessitore paper it seems like $(2)$ would be needed. That is because in the Tessitore paper we, have to work with $$ \dfrac{1}{T}\int_1^{T+1}\mathscr L(u(t,x))dt $$ which is used to find the invariant measure and above the laws $\mathscr L(u(t,x))$ I believed are defined as $$ \mathscr L(u(t,x))(A)=\mathbb P(\omega \in \Omega:u(t,\cdot)(\omega)\in A \;\;\; A \in \mathscr B (L_\rho^2) $$
+
+There is an issue with even showing $(1)$ from above. We need for $H(t,\gamma_2)<\infty$ from the moment bounds from your paper $\cite{CH16Comparison}$. It seems the best we can do is Lemma 2.1 from \cite{CH16Comparison} which says that \begin{align} \limsup_{t\to\infty}\frac{1}{t}\log(H(t:\gamma))\le \inf\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\} \end{align} So first we would need to make sure that $\inf\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\}<\infty$ or in other words show that $\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\}$ is nonempty. This will restrict us to certain correlation functions $f(x)$. Another concern is that even if we assume the right hand side of (10.1) is finite, then all we know really is that infinitely often $$ H(t,\gamma) \le \exp(Kt) \;\;\;\; K=\text{RHS of (10.1)}$$ so there may still be some $t$ such that $H(t,\gamma)$ is infinite and then this would cause a trouble in showing (2) from above. 
+\end{NickQuestion}
+\begin{NickQuestion}[(Continue of question 10.3)]
+I have looked through your paper \cite{CK15SHE} and have found more information about the behavior of $H(t;\gamma)$. However there seems to be a couple differences of the definitions of $H$ from \cite{CK15SHE} and \cite{CH16Comparison}. 
+
+\textbf{Definition from \cite{CH16Comparison}:} Let $f$ be the correlation function the following functions: 
+\begin{align}
+      k(t)&:= \int_{\mathbb R^d}f(z)G(t,z)dz = (2\pi)^{-d}\int_{\mathbb R^d}\hat{f}(d\xi)\exp\left(-\dfrac{t|\xi|^2}{2}\right)
+  \\  h_0(t)&:=1
+  \\  h_n(t)&:=\int_0^tds h_{n-1}(s)k(t-s)
+  \\  H(t;\gamma)&:= \sum_{n=0}^\infty \gamma^nh_n(t)
+    \end{align}
+One question I have from (10.2) is that if $\hat{f}(d\xi) = f(\xi)d\xi$. I know we are using the identity $\int f\hat g = \int \hat f g$ to get the equality in (10.2).
+
+\vspace{.05in}
+
+\textbf{Definition from \cite{CK15SHE}:}  Let $f$ be the correlation function the following functions: 
+\begin{align}
+   k(t)&:= \int_{\mathbb R^d}f(z)G(t,z)dz = (2\pi)^{-d}\int_{\mathbb R^d}\hat{f}(d\xi)\exp\left(-\dfrac{\nu t}{2}|\xi|^2\right)
+  \\ T_\nu(t,x)&:=\exp\left(-\dfrac{|x|^2}{2\nu}\right)
+  \\  h_0(t,y)&:=1 \;\;\; \text{for $t>0$ and $y\in \mathbb R^d$}
+  \\  h_n(t,y)&:=\int_0^tds h_{n-1}(s,y)k(t-s)T_{\nu/4}(t-s,y)
+  \\  H_\nu(t,y;\gamma)&:= \sum_{n=0}^\infty \gamma^nh_n(t,y)
+\end{align}
+So above in \cite{CK15SHE} there is the addition of the $T$ function and another parameter $\nu$. Page 4 of \cite{CK15SHE} explains where the $\nu$ is coming from. 
+
+Aside from the differences in the definitions of $H$, \cite{CK15SHE} gives us further information about the finiteness of $H$ as defined in \cite{CK15SHE}. We have the following Lemma on page 11. 
+
+\vspace{.05in} 
+
+ \textbf{Lemma 2.5} \textit{For all $t\ge 0$ and $\gamma \ge 0$,} 
+\begin{align}
+H_\nu(t;\gamma) \le \exp(\theta t)
+\end{align}
+\textit{where this constant $\theta$ can be chosen as}
+\begin{align}
+\theta := \theta(\nu,\gamma)=\inf\{\beta >0 : \Upsilon(2\beta/\nu)<\frac{\nu}{2\gamma}\}
+\end{align}
+\textit{Moreover, if $\Upsilon(0) < \infty$ and $\gamma <2\Upsilon(0)/\nu$ then,}
+\begin{align}
+    H_\nu(t;\gamma)\le\frac{\nu}{\nu- 2\gamma \Upsilon(0)} \;\;\; \textit{for all $t \ge 0$}
+\end{align}
+
+After seeing Lemma 2.5 we have some necessary requirements to ensure the solution (8.3) of the SPDE (8.2) to be almost surely in $L^2_\rho$. Namely, we need that $\gamma_2 < 2\Upsilon(0)/\nu$ and that $\theta$ and $\Upsilon(0)$ from lemma 2.5 to be finite. 
+\end{NickQuestion}
+
+\newpage
+
+\begin{proof}[\textbf{Details Showing the Solution of (8.2) is in $L^2_\rho$}].  
+\\
+We consider the SPDE 
+$$\begin{cases}
+   \dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
+   \\ u(0,x)=\varphi(x) & \varphi(x) \in L^2_\rho(\mathbb R^d)
+\end{cases}$$ 
+with mild solution given as 
+$$     u(t,x)=\int_{\mathbb R^d}\varphi (y)G_t(x-y)dy + \int_0^t\int_{\mathbb R^d}b(s,u(s,y))G_{t-s}(x-y)W(ds,dy) $$
+We use the moment estimates from \cite{CH16Comparison} to show that $u(t,x)$ is almost surely in $L^2_\rho$ but first there are assumptions that need to be made which are as follows: 
+\begin{enumerate}[(a)]
+    \item In order for the solution to exist and be unique we must assume Dalang's condition, \mbox{$\Upsilon(\beta)<\infty$} for some and therefore every $\beta>0$
+    \item The initial condition needs to satisfy the integrability property (1.2) from \cite{CH16Comparison} which states that $$ \int_{\mathbb R^d}e^{-a|x|^2}|\mu|(dx) < \infty $$
+    and I believe that this translates to $$ \int_{\mathbb R^d}e^{-a|x|^2}|\varphi(x)|dx < \infty $$
+    \textcolor{red}{Instead, we may need to work under condition 
+    \[
+    \phi\in L_\rho^1(\R^d).
+    \]
+    Because $\rho(x)\ge C e^{-|x|^2}=:\rho_*(x)$ for all $x$, $L_\rho^1(\R^d)\subseteq L_{\rho_*}^1(\R^d)$.}
+    \item Mentioned above we also need that $\theta$ and $\Upsilon(0)$ from lemma 2.5 to be finite and as well as $\gamma_2 < 2\Upsilon(0)/\nu$ 
+\end{enumerate}   
+Assuming the above we can now justify the following steps:
+\begin{align}
+    \E\left(\Vert u(t,\cdot)\Vert_\rho^2\right) &= \E \int_{\mathbb R^d}\vert u(t,x) \vert^2 \rho(x)dx 
+    \\&\le C_1\cdot H(t,\gamma_2)\int_{\mathbb R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)dx 
+    \\&\le C_2H(t,\gamma_2)\int_{\mathbb R^d}\bigg(1+(|\varphi|*G(t,\cdot))^2(x)\bigg)\rho(x)dx
+    \\ &= C_2H(t,\gamma_2)\int_{\mathbb R^d}\rho(x)+\left(\int_{\R^d}G_t(x-y)|\varphi(y)|dy\right)^2\rho(x)dx
+    \\ &\le C_3H(t,\gamma_2)\int_{\mathbb R^d}\left(\int_{\R^d}G_t(x-y)|\varphi(y)|dy\right)^2\rho(x)dx
+    \\ &\le C_3H(t,\gamma_2)\int_{\mathbb R^d}\int_{\R^d}G_t(x-y)|\varphi(y)|^2\rho(x)dxdy
+    \\ &= C_3H(t,\gamma_2) \int_{\R^d}(\rho*G_t)(y)|\varphi(y)|^2dy
+    \\ &\le C_3H(t,\gamma_2)C(T)\int_{\R^d}\rho(y)|\varphi(y)|^2dy
+    \\ &\le \infty \quad \text{$t \in [0,T]$} 
+\end{align}
+Since we assume (a)-(c) then Lemma 2.5 ensures that $H(t,\gamma_2)$ is finite for every $t$.
+\begin{LeQuestion}
+Can we allow the following weight functions: 
+\[
+\rho(x) = e^{-|x|^{\alpha}}, \quad \alpha\in(1,2)?
+\]
+Can we make such $\rho$ in order that 
+\[
+G(t,\cdot)* \rho \le C_\rho (T)\rho?
+\]
+\end{LeQuestion}
+\end{proof}
+
+\section{Discussions on Jan. 16th}
+
+\begin{NickQuestion}[(Compactness of the $F_\alpha$ operator)]
+The reason for compactness stated in the paper on page 277 for the $F_\alpha$ operator should transfer to the $F_\alpha$ operator defined as follows.
+$$\left(F_{\alpha} f\right)(x) := \int_0^1 ds \int_{\R^d} dy \: (1-s)^{\alpha-1}G(1-s,x-y)f(s,y)$$ 
+The compactness of this operator relies solely on proposition 2.1 which has no relation to hypothesis 2.1 (i). 
+\end{NickQuestion}
+
+\begin{NickQuestion}[(Step 2 details)]
+$$ Y^x(s)=\int_0^s(s-\varsigma)^{-\alpha}S(s-\varsigma)M(B(X^x(\varsigma)))dW_\varsigma  $$
+Below, the constant $K$ changes to satisfy certain inequalities. This shouldn't cause too much confusion. 
+
+The main claim in this step is that \begin{align} E\int_0^1|Y^x(s)|_{\hat\rho}^q \; ds \le k_1|x|_{\hat\rho}^q \end{align}
+but there are a lot of details skipped in showing this. First, lets just assume that all of the claims on the bottom of page 277 are justified, namely the last centered equation which says that 
+\begin{align} E\int_0^1|Y^x(s)|_{\hat\rho}^q \; ds \le K\cdot E\int_0^1|X^x(\varsigma)|_{\hat\rho}^q  d\varsigma \end{align} 
+Then according to the top of page 278 we can conclude (11.1) by using using the result (not proven in this paper) that \begin{align} E|X^x(t)|_{\hat\rho}^q \le k_2(1+|x|_{\hat\rho}^q \end{align}. 
+But if we use (11.3) then all we can say is that 
+\begin{align}
+    E\int_0^1|Y^x(s)|_{\hat\rho}^q \; ds &\le K\cdot E\int_0^1|X^x(\varsigma)|_{\hat\rho}^q  d\varsigma
+    \\&\le K \int_0^1 1+|x|_{\hat\rho}^q d\varsigma 
+    \\&=K ( 1+|x|_{\hat\rho}^q )
+\end{align}
+This is an issue since all this doesn't prove (11.1). However if $|x|_{\hat\rho}\not=0$ then we could say (11.1) is true and it seems safe to  say that $|x|_{\hat\rho}\not=0$ so I don't think this really is an issue. 
+\\ \\
+Now going back to (11.2), we have the following. 
+\begin{align}
+   E\int_0^1|Y^x(s)|_{\hat\rho}^q \; ds &= E\int_0^1|\int_0^s(s-\varsigma)^{-\alpha}S(s-\varsigma)M(B(X^x(\varsigma)))dW_\varsigma|_{\hat\rho}^q \; ds 
+   \\ &\le E\int_0^1\left(\int_0^s(s-\varsigma)^{-2\alpha}||S(s-\varsigma)M(B(X^x(\varsigma)))||^2_{L^2}d\varsigma\right)^{q/2} \; ds
+   \\ &\le K \cdot E\int_0^1\left(\int_0^s(s-\varsigma)^{-2\alpha-\sigma}|B(X^x(\varsigma))|_{\hat\rho}^2d\varsigma\right)^{q/2} \; ds
+\end{align}
+In (11.9) we used propostion 2.4. Now we can use youngs inequality for convolutions which says that $$ ||f*g||_r\le||f||_p||g||_q$$ where $1\le p,q \le r <\infty$ and $\frac{1}{p}+\frac{1}{q}=\frac{1}{r}+1$. To do this we say that $$f(t)=t^{-2\alpha+\sigma}$$ and $$ g(t)=|B(X^x(t))|_{\hat\rho}^2$$
+and lastly let $p=1$, $q=\frac{q}{2}$ and $r=\frac{q}{2}$. We also need to multiply $f(t)$ by something like $1_{[0,\infty)}(t)$ since the bounds on the inner integral in (11.9) are from $0$ to $s$ instead of $-\infty$ to $\infty$. After applying Youngs inequality on (11.9) we are left with the following 
+\begin{align}
+    K \cdot E\int_0^1\left(\int_0^s(s-\varsigma)^{-2\alpha-\sigma}|B(X^x(\varsigma))|_{\hat\rho}^2d\varsigma\right)^{q/2} ds &\le K\cdot E \left(\int_0^1 t^{-2\alpha - \sigma}dt\right)^{q/2}  \int_0^1|B(X^x(t))|_{\hat\rho}^q dt
+    \\ &=K\cdot(1-2\alpha - \sigma)^{-q/2} E \int_0^1|B(X^x(t))|_{\hat\rho}^q dt
+\end{align}
+At this point the paper skips a lot of steps. As you can see from the bottom centered equation on page 277, the paper claims that $$ |B(X^x(t))|_{\hat\rho}^q \le l^q|\hat\rho|_{L^1}^q|X^x(t)|_{\hat\rho}^q $$ and this not necessarily true. Usig the Lipschitz property of $B$, what we can say is that 
+\begin{align} |B(X^x(t))|_{\hat\rho}^q &\le \left(|B(0)|_{\hat\rho}+l|X^x(t)|_{\hat\rho} \right)^q
+\\ &\le 2^{q-1}\left(|B(0)|_{\hat\rho}^q + l^q|X^x(t)|_{\hat\rho}^q  \right)
+\\ &\le 2^{q-1}\left(\l_0^q|\hat\rho|_{L^1}^q + l^q|X^x(t)|_{\hat\rho}^q  \right)
+\\ &\le K(1+|X^x(t)|_{\hat\rho}^q)
+\end{align} 
+Now plugging (11.15) into (11.11) we see that 
+\begin{align}
+    K\cdot(1-2\alpha - \sigma)^{-q/2} E \int_0^1|B(X^x(t))|_{\hat\rho}^q dt &\le K\cdot(1-2\alpha - \sigma)^{-q/2} E \int_0^11+|X^x(t)|_{\hat\rho}^q dt 
+    \\ &\le K\left(1+E\int_0^1|X^x(t)|_{\hat\rho}^q dt \right)
+\end{align}
+And as before if $$E\int_0^1|X^x(t)|_{\hat\rho}^q dt \not = 0$$ then we may say that $$ K\left(1+E\int_0^1|X^x(t)|_{\hat\rho}^q dt \right) \le K E\int_0^1|X^x(t)|_{\hat\rho}^q dt  $$ 
+and it makes sense that $$E\int_0^1|X^x(t)|_{\hat\rho}^q dt \not = 0$$ so maybe this isn't an issue.  
+\end{NickQuestion}
+ 
+ \begin{NickQuestion}[(Clarifiation of Spectral Density vs Correlation function)]
+ 
+ I might have asked this before but I just wanted to clarify the difference between the correlation function and spectral density how it is defined in the mini course and how it is also referred to in the paper \cite{TessitoreZabczyk98M} as well in your paper \cite{CH16Comparison}.  
+
+ First in the mini-course we start with a non-negative and non-negative definite tempered measure $\Gamma(dx)$ which means that \begin{align} \int_{\mathbb R^d}\Gamma(dx)(\varphi * \tilde \varphi)(x) \ge 0 \end{align}
+ We also require that 
+\begin{align}
+    \int_{\mathbb R^d}\dfrac{\Gamma(dx)}{(1+|x|^2)^r} < \infty
+\end{align}
+ 
+ Now, define $$ \{F(\varphi): \; \varphi \in C_0^\infty(\mathbb R^{d+1} \} $$ to be a gaussian process that is white in time and colured in space where $$ E(F(\varphi)F(\psi)) = J(\varphi,\psi)=\int_{\mathbb R_+}ds\int_{\mathbb R^d}dx\int_{\mathbb R^d}dy\varphi(s,x)f(x-y)\psi(s,y) $$
+ whenever $\Gamma(dx)=f(x)dx$. We informally say that $$ E(\dot F(t,x)\dot F(s,y) = \delta_0(t-s)f(x-y) $$ and above we call $f$ the correlation function. 
+ Now by Bochner's Theroem, there exists a measure $\mu$ such that $\Gamma(dx)=\mathcal F\mu(dx)$ which means that $$ \int \Gamma(dx) \varphi(x) = \int \mu(dx)\mathcal F \varphi (x) $$
+ Now, the mini course calls $\mu(dx)$ the spectral measure and when this has density, say, $\mu(dx)=s(x)dx$ then $s(x)$ is the spectral density. 
+ 
+ \vspace{.1 in}
+ Now this seems to be a little different from your paper \cite{CH16Comparison} and also your paper \cite{CK15SHE}. In those papers you say that $\hat f(x) = \int e^{-i x \xi}f(\xi)d\xi$ is called the spectral measure. However this seems a little off. From above we know that $$\Gamma(dx) = f(x)dx = \mathcal F \mu (dx) = \mathcal F s(x) dx $$ and we call $\mu(dx) = s(x)dx$ the spectral measure not $\hat f$.
+ 
+ \vspace{.1 in} 
+ \textbf{Question 1}
+ 
+ With all this being said, in the paper \cite{TessitoreZabczyk98M}, does the $\gamma(x)$, which is called the spectral density of $\Gamma$, from hypothesis 2.1(i) refer to $s(x)$ above and not $f(x)$? Our goal was to show that Dalang's condition $$ \int \dfrac{\hat f(dx)}{\beta + |x|^2} < \infty $$ could replace hypothesis 2.1(i) but Dalangs condition is on the correlation function and hypothesis 2.1(i) is about the spectral density. The two are related but not the same thing. 
+  
+ \vspace{.1 in} 
+ \textbf{Question 2}
+ 
+ This all goes back to "Le Question 6.2" where you say that you want to prove the same result from \cite{TessitoreZabczyk98M} except under the condition that $$ \int \Gamma(dy)|y|^{2-d} = \int f(y)|y|^{2-d}dy < \infty $$ but why do we want this to be the condition? This is a little different from Dalang's condition which says that $$ \int \dfrac{\hat f(dy)}{\beta + |y|^2} < \infty $$
+ 
+  \end{NickQuestion}
+ 
+\begin{LeQuestion}
+Hi, Nick, I have uploaded that page on overleaf. The file is called 2020-01-16.pdf.
+\end{LeQuestion}
+ 
+ \begin{NickQuestion}
+ This is something I just realized but I feel like line (11.8) above needs some justification. This is almost the BDG-inequality which is given in the Green 
+ Book on page 58 however here we have $E|\int ...  |^q_\rho$ instead of $E|\int ... |^q$. 
+ \end{NickQuestion}
+ \begin{NickQuestion}
+ Is there a factorization formula for the Dalang language like in the Red Book on page 58? If not then if we want to follow the same proof outline as in the Tessitore paper then we would need to prove one. 
+ \end{NickQuestion}
+
+\noindent\textbf{A Possible Step 2 Inequality} \\ The step two inequality is only place where the paper really relies on hypothesis 2.1 (i). Aside from this inequality, we would also need to prove a similar factorization formula which is what step 3 relies on. Below in Claim 1 is a possible step 2 inequality but there are a few steps that may be incorrect. 
+\\ \\
+\textbf{Claim 1:}Let $\varphi \in L^2_{\hat\rho}$ be the initial condition. Then we have the following  $$E\int_0^1|Y^\alpha(s,y)|_{\hat\rho}^2\; ds \le \text{const.}\left(1+|\varphi|_{\hat\rho}^2\right) $$
+where $$Y^\alpha(s,y)=\int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(u(r,z))W(dr,dz)$$
+\textbf{\textit{Proof:}} \\
+\begin{align*}
+    E\int_0^1|Y^\alpha(s,y)|_{\hat\rho}^2 \; ds  &= \int_0^1ds\int_{\mathbb R^d}dy E|Y^\alpha(s,y)|^2\hat\rho(y)
+    \\ &= \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; E|Y^\alpha(s,y)|^2
+    \\ &\le \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; E\Bigg|\int_0^s dr \int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi (s-r)^{-\alpha}G_{s-r}(y-z) \\ & \quad \quad \quad \quad \quad \quad \quad  \times b(u(r,z))f(z-\xi)(s-r)^{-\alpha}G_{s-r}(y-\xi)b(u(r,\xi))\Bigg|
+    \\ &\le \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; E\int_0^s dr \int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi (s-r)^{-\alpha}G_{s-r}(y-z) \\ & \quad \quad \quad \quad \quad \quad \quad  \times \Bigg|b(u(r,z))\Bigg|f(z-\xi)(s-r)^{-\alpha}G_{s-r}(y-\xi)\Bigg|b(u(r,\xi))\Bigg|
+    \\ &= \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; \int_0^s dr \int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi (s-r)^{-\alpha}G_{s-r}(y-z) \\ & \quad \quad \quad \quad \quad \quad \quad  \times f(z-\xi)(s-r)^{-\alpha}G_{s-r}(y-\xi)E\left(\Bigg|b(u(r,\xi))\Bigg|\Bigg|b(u(r,z))\Bigg|\right)
+    \\ &= \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; \int_0^s dr \int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi (s-r)^{-\alpha}G_{s-r}(z) \\ & \quad \quad \quad \quad \quad \quad \quad  \times f(z-\xi)(s-r)^{-\alpha}G_{s-r}(\xi)E\left(\Bigg|b(u(r,y-\xi))\Bigg|\Bigg|b(u(r,y-z))\Bigg|\right)
+    \\ &\le K_1 \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; \int_0^s dr \int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi (s-r)^{-\alpha}G_{s-r}(z) \\ & \quad \quad \quad \quad \quad \quad \quad  \times f(z-\xi)(s-r)^{-\alpha}G_{s-r}(\xi)E\left(\left(1+\Big|u(r,y-\xi))\Big|\right)\left(1+\Big|u(r,y-z)\Big|\right)\right)
+    \\ &\le K_1 \int_{\mathbb R^d}dy \; \hat\rho(y)\int_0^1ds \; \int_0^s dr \int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi (s-r)^{-2\alpha}G_{s-r}(z) \\ & \quad \quad \quad \quad \quad \quad  \times f(z-\xi)G_{s-r}(\xi)\sqrt{E\left(1+\Big|u(r,y-\xi))\Big|\right)^2}\sqrt{E\left(1+\Big|u(r,y-z)\Big|\right)^2}
+    \\ &\le K_1 \int_{\mathbb R^d}dy \; \hat\rho(y) \; \sup_{x \in \mathbb R^d}E\left(1+\Big|u(r,y-x)\Big|\right)^2\;\int_0^1ds \; \int_0^s dr \;(s-r)^{-2\alpha}   \\ & \quad \quad \quad \quad \quad \quad   \underbrace{\int_{\mathbb R^d} dz \int_{\mathbb R^d} d\xi \;G_{s-r}(z)f(z-\xi)G_{s-r}(\xi)}_{\text{finite by page 57 of mini course}}
+    \\ &\le K_2 \int_{\mathbb R^d}dy \; \hat\rho(y) \; \sup_{x \in \mathbb R^d}E\left(1+\Big|u(r,y-x)\Big|\right)^2\;\underbrace{\int_0^1ds \; \int_0^s dr \;(s-r)^{-2\alpha}}_{\text{finite when $\alpha < 1/2$}}
+    \\ &\le K_3 \int_{\mathbb R^d}dy \; \hat\rho(y) \; \sup_{x \in \mathbb R^d}E\left(1+\Big|u(r,y-x)\Big|\right)^2
+    \\&\le K_4 \int_{\mathbb R^d}dy \; \hat\rho(y) \; \sup_{x \in \mathbb R^d}E\left(1+\Big|u(r,y-x)\Big|^2\right)
+    \\ &= K_4 \sup_{x \in \mathbb R^d} E\int_{\mathbb R^d}dy \; \left(\hat\rho(y)+\hat\rho(y)\Big|u(r,y-x)\Big|^2\right) \quad \text{switching sup and $\int$ is troublesome}
+    \\ &= K_4 \sup_{x \in \mathbb R^d} \int_{\mathbb R^d} \hat\rho(y)dy \; +E\Big|u(r,\cdot-x)\Big|_{\hat\rho(y)}^2 
+     \\ &\le K_4 \sup_{x \in \mathbb R^d}\left( \int_{\mathbb R^d}\hat\rho(y)\; dy\;+k(1+|\varphi|_{\hat\rho}^2 \right) \quad \begin{minipage}[t]{0.45\textwidth}
+Inequality top of page 278, Tessitore paper. Not sure if this is possible since the inequality is for $E\Big|u(r,\cdot)\Big|_{\hat\rho(y)}^2$ 
+\end{minipage}
+     \\ &\le K_5(1+|\varphi|_{\hat\rho}^2)
+\end{align*}
+
+\begin{LeQuestion}
+Here is what I want to try: 
+For any $q\ge 2$, we have by the BDG-inequality, 
+\begin{align*}
+\Norm{Y^{\alpha}(s,y)}_q^2 \le & C_q \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)  \Norm{b(u(r,z_1))}_q f(z_1-z_2)\\
+&\hspace{13.5em} \times  G(s-r,y-z_2) \Norm{b(u(r,z_2))}_q 
+\end{align*}
+For simplicity, let's assume that $|b(u)|\le \LIP_b |u|$. By the moment bounds from \cite{CH16Comparison}, we have that 
+\[
+ \Norm{b(u(r,z_i))}_q \le c_q \LIP_b J_0(r,z_i),\quad i=1,2.
+\]
+Hence, 
+\begin{align*}
+\Norm{Y^{\alpha}(s,y)}_q^2 \le & C_q c_q^2\LIP_b^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \\
+&\times \iint_{\R^{2d}} \ud z_1\ud z_2\:  G(s-r,y-z_1) G(s-r,y-z_2)  f(z_1-z_2)\\
+&\times \iint_{\R^{2d}}\mu(\ud  w_1) \mu(\ud w_2)\:  G(r,z_1-w_1)G(r,z_2-w_2) 
+\end{align*}
+Notice that, for $i=1,2$, it holds that 
+\begin{align}
+    G(s-r,y-z_i) G(r,z_i-w_i) = G(s, y-w_i) G\left(\frac{r(s-r)}{s}, z_i-w_i-\frac{r}{s}(y-w_i) \right).
+\end{align}
+Therefore, 
+\begin{align*}
+\Norm{Y^{\alpha}(s,y)}_q^2 \le & C_q c_q^2\LIP_b^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \\
+&\times \iint_{\R^{2d}}\mu(\ud  w_1) \mu(\ud w_2)\:  G(r,y-w_1)G(r,y-w_2) \\
+&\times \iint_{\R^{2d}} \ud z_1\ud z_2\:  f(z_1-z_2) \\
+&\times \prod_{i=1}^2 G\left(\frac{r(s-r)}{s}, z_i-w_i-\frac{r}{s}(y-w_i) \right).
+\end{align*}
+By the Fourier transform, we see that 
+\begin{multline}
+     \iint_{\R^{2d}} \ud z_1\ud z_2\:  f(z_1-z_2)  \prod_{i=1}^2 G\left(\frac{r(s-r)}{s}, z_i-w_i-\frac{r}{s}(y-w_i) \right) \\
+\le   (2\pi)^{-d} \int_{\R^d} \hat{f}(\ud \xi) \exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
+\end{multline}
+Therefore, 
+\begin{align*}
+\Norm{Y^{\alpha}(s,y)}_q^2 \le & (2\pi)^{-d} C_q c_q^2\LIP_b^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \\
+&\times \int_{\R^{d}} \hat{f}(\ud \xi) \exp\left(-\frac{r(s-r)}{s}|\xi|^2\right)\\
+&\times \iint_{\R^{2d}}\mu(\ud  w_1) \mu(\ud w_2)\:  G(r,y-w_1)G(r,y-w_2).
+\end{align*}
+Then, when we take into account of the weight function $\hat{\rho}(\cdot)$, we have 
+\begin{align}
+\int_{\R^d}\Norm{Y^{\alpha}(s,y)}_q^2 \hat{\rho}(y)\ud y \le & (2\pi)^{-d} C_q c_q^2\LIP_b^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \\
+&\times \int_{\R^{d}} \hat{f}(\ud \xi) \exp\left(-\frac{r(s-r)}{s}|\xi|^2\right)\\
+&\times \int_{\R^d}\ud y \: \hat{\rho}(y) \iint_{\R^{2d}}\mu(\ud  w_1) \mu(\ud w_2)\:  G(r,y-w_1)G(r,y-w_2).
+\end{align}
+It reduce to study the following function near zero: 
+\[
+r\mapsto \int_{\R^d}\ud y \: \hat{\rho}(y) \iint_{\R^{2d}}\mu(\ud  w_1) \mu(\ud w_2)\:  G(r,y-w_1)G(r,y-w_2) =:Q(r).
+\]
+If $\mu(\ud x)=\ud x$, then  $Q(r) = \Norm{\hat{\rho}}_{L^1}$, which is a constant function in $r$.
+When $\mu=\delta_0$, then 
+\[
+Q(r) = \int_{\R^d } G(r,y)^2 \hat{\rho}(y)\ud y \approx \frac{C}{r^{d/2}} \qquad \text{as $r\downarrow 0$}.
+\]
+
+Suppose that we do assume that the initial data $\mu$ is a function, then $Q(r)$ will not blow up as $r\downarrow 0$. Hence, for some constant depending on the initial data $K_\rho$
+\begin{align}
+\int_{\R^d}\Norm{Y^{\alpha}(s,y)}_q^2 \hat{\rho}(y)\ud y \le & (2\pi)^{-d} K_\rho C_q c_q^2\LIP_b^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \\
+&\times \int_{\R^{d}} \hat{f}(\ud \xi) \exp\left(-\frac{r(s-r)}{s}|\xi|^2\right)
+\end{align}
+Now the finiteness of the above integral gives the condition on $f$. Therefore, 
+\[
+Y^\alpha \in L^q((0,1),L^2_{\hat{\rho}}).
+\]
+Here $K_\rho$ is somehow $\Norm{\mu}_{\hat{\rho}}^2$. Once you can show that, we are dnoe. 
+\end{LeQuestion}
+
+\noindent \textbf{Step 2 Inequality:} Let $\varphi \in L_\rho^2$ be the intial condition then for $q>2$ \begin{align}E\int_0^1 |Y(s,y)|_{\rho}^q ds \le K|\varphi|_\rho^q \end{align} for some constant $K$.
+\\
+\textit{Proof:} In the following proof, all constants get absorbed into $K$ so $K$ will change from line to line. The following continues from equation (11.22) 
+\begin{align*}
+    \underbrace{\int_{\mathbb R^d}||Y(s,y)||_q^2\rho(y)dy}_{=\big|||Y(s,y)||_q\big|_\rho^2} &\le  K\int_0^sdr(s-r)^{-2\alpha}\int_{\mathbb R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)
+    \\ &\quad\quad \times \int_{\R^d}\ud y  \rho(y) \iint_{\R^{2d}}\mu(\ud  w_1) \mu(\ud w_2)  G(r,y-w_1)G(r,y-w_2) 
+    \\ &= K\int_0^sdr(s-r)^{-2\alpha}\int_{\mathbb R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)
+    \\ &\quad\quad \times \int_{\R^d}\ud y  \rho(y)\left(\int_{\mathbb R^d}dwG(r,y-w)|\varphi(w)|\right)^2 
+    \\ &\le K\int_0^sdr(s-r)^{-2\alpha}\int_{\mathbb R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)
+    \\ &\quad\quad \times \int_{\R^d}\ud y  \rho(y)\int_{\mathbb R^d}dwG(r,y-w)|\varphi(w)|^2\underbrace{\int_{\R^d}dwG(r,y-w)}_{\text{integral of heat kernel =1}} \quad \text{by holders inequality}
+    \\ &= K\int_0^sdr(s-r)^{-2\alpha}\int_{\mathbb R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)
+    \\ &\quad\quad \times \int_{\R^d}dw  |\varphi(w)|^2\int_{\mathbb R^d}dy G(r,y-w)\rho(y)
+    \\ &\le K\int_0^sdr(s-r)^{-2\alpha}\int_{\mathbb R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)
+    \\ &\quad\quad \times \int_{\R^d}dw  |\varphi(w)|^2C_\rho(T)\rho(w) \quad \text{admissible weight property}
+    \\ &=C(T)K|\varphi|_\rho^2 \underbrace{\int_0^sdr(s-r)^{-2\alpha}\int_{\mathbb R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)}_{\text{assumption on $f$ makes this finite}}
+    \\ &= K|\varphi|_\rho^2 \quad \text{for every $s\in[0,T]$ by the admissible weight property}
+\end{align*}
+The above implies that 
+\begin{align}
+    \bigg|||Y(s,y)||_q\bigg|_\rho \le K |\varphi|_\rho
+\end{align}
+Now I will use (11.28) to prove (11.27)
+\begin{align*}
+    E |Y(s,y)|_{\rho}^q &= \int_\Omega dP \left(\int_{\R^d} dy Y(s,y)^2\rho(y) \right)^{q/2} 
+    \\ &\le \left(\int_{\R^d}dy \left( \int_\Omega dP \; Y(s,y)^q \rho(y)^{q/2} \right)^{2/q}\right)^{q/2} \quad \text{minkowski integral inequality}
+    \\ &= \left(\int_{\R^d}dy \rho(y) || Y(s,y) ||_q^2 \right)^{q/2}
+    \\ &= \bigg|||Y(s,y)||_q\bigg|_\rho^q
+    \\ & \le K |\varphi|_\rho^q \quad \text{by (11.28)}
+\end{align*}
+Now by integrating out $s$ from $0\to1$ we are able to obtain the inequality in (11.27)
+\begin{align}
+    E\int_0^1  |Y(s,y)|_{\rho}^q\;ds \le \int_0^1 K |\varphi|_\rho^q \;ds = K |\varphi|_\rho^q
+\end{align}
+\qedsymbol{}
+\vspace{.2in}
+
+ \noindent\textbf{The Factorization Formula} \\
+We want to show that the following factorization formula holds true.  
+\begin{align} \int_0^t\int_{\mathbb R^d}G_{t-s}(x-y)b(u(s,y))W(ds,dy)=\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}G_{t-s}Y^\alpha(s)ds \end{align}
+where $$Y^\alpha(s,y)=\int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(u(r,y))W(dr,dy)$$
+
+This factorization is key for the proof on the tessitore paper to work. In the Da Pratos Green book on page 58 we have the following factorization 
+\begin{align} \int_0^t S(t-s)\phi(s) dW_s = \dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}Y_\alpha(s)ds \end{align} 
+where
+$$Y_\alpha (s)=\int_0^s(s-r)^{-\alpha}S(s-r)\phi(r)dW_r $$
+and above $\phi(t)\in L_2(U,H)$, which are the Hibert-Schmidt operators from $U$ to $H$, and $W_t$ is $H$ valued. 
+
+\begin{NickQuestion}
+How do you prove (11.21)? It says in the Green Textbook that it is an easy application of the stochastic Fubini's theorem but I couldn't see how to do it. 
+\end{NickQuestion}
+
+\begin{LeQuestion}
+We also have the stochastic Fubini's theorem, see Mini Course p.27 Theorem 5.30. You need to verify that we indeed can apply that theorem. Once that is done, the stochastic Fubini's theorem shows that 
+\begin{align*}
+    &\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G_{t-s}Y^\alpha(s)\right](x) \ud s \\
+    =&\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t \ud s (t-s)^{\alpha-1}\int_{\R^d} \ud y G_{t-s}(x-y)
+    \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(u(r,z))W(\ud r,\ud z)\\
+    =& \dfrac{\sin(\alpha \pi)}{\pi}\int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(t-r,x-z)b(u(r,z))W(\ud r,\ud z)\\
+    =& \dfrac{\sin(\alpha \pi)}{\pi}
+    \int_0^t  \int_{\R^d} W(\ud r,\ud z)G(t-r,x-z)b(u(r,z)) 
+    \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1} \\
+    =& \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z)
+\end{align*}
+where the last step is true provided $\alpha\in (0,1)$. This is the desired formula in Dalang's language. 
+\end{LeQuestion}
+\textbf{Possible Justification of the Above Use of Fubini's Theorem:} Fubini's Theorem is given in the Walsh  Notes on page 296. In your question 11.3, Fubini's Theorem is applied in two different spots. \\ 
+
+\noindent \textbf{First} we use it here,
+\begin{align*}
+     \dfrac{\sin(\alpha \pi)}{\pi}\int_0^t \ud s (t-s)^{\alpha-1}\underbrace{\int_{\R^d} \ud y G_{t-s}(x-y)
+    \int_0^s \int_{\R^d}  (s-r)^{-\alpha}G(s-r,y-z)b(u(r,z))W(\ud r,\ud z)}_{\int_{\R^d}\mu(dy)\int_0^s\int_{\R^d}f(r,z,\omega,y)W(dr,dz)}
+    \\ = \dfrac{\sin(\alpha \pi)}{\pi}\int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s \int_{\R^d}  (s-r)^{-\alpha}G(t-r,x-z)b(u(r,z))W(\ud r,\ud z)
+\end{align*}
+\textbf{Second} we use it here, 
+\begin{align*}
+   \dfrac{\sin(\alpha \pi)}{\pi}\int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(t-r,x-z)b(u(r,z))W(\ud r,\ud z)\\
+    = \dfrac{\sin(\alpha \pi)}{\pi}
+    \int_0^t  \int_{\R^d} W(\ud r,\ud z)G(t-r,x-z)b(u(r,z)) 
+    \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1} 
+\end{align*}
+
+\noindent \textbf{For the first case:} According to the Walsh notes, what we need to show is that 
+\begin{align}
+E \Bigg[\int_{\R^d}dyG_{t-s}(x-y)&\int_0^sdr(s-r)^{-2\alpha} \notag \\ &\times\iint_{\R^{2d}}dz_1dz_2  G_{s-r}(y-z_1)G_{s-r}(y-z_2)\bigg|b(u(r,z_1))b(u(r,z_2)\bigg|\textcolor{red}{f(z_1-z_2)} \Bigg] < \infty
+\end{align}
+We can show using the same techniques used in "Le's Question 11.2" and also in the proof of (11.27)to see that the integral in (11.32) is bounded above by
+\begin{align}
+    (11.32) &\le \int_{\R^d}dyG_{t-s}(x-y)\int_0^sdr(s-r)^{-2\alpha}\int_{\R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)\int_{\R^d}dwG_r(y-w)|\varphi(w)|^2 \notag
+    \\&=\int_0^sdr(s-r)^{-2\alpha}\int_{\R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)\int_{\R^d}dy\int_{\R^d}dwG_r(y-w)G_{t-s}(x-y)|\varphi(w)|^2 \notag
+    \\ &= \int_0^sdr(s-r)^{-2\alpha}\int_{\R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)\underbrace{\int_{\R^d}dw \;G_{t-(s-r)}(x-w)|\varphi(w)|^2}_{a(r) \;\;\; r\in[0,s]} 
+\end{align}
+Since $a(r)$ is a continuous function on $[0,s]$ then it is bounded by some constant, $M$. So we se that (11.33) is bounded by 
+\begin{align}
+    (11.33) &\le M \underbrace{\int_0^sdr(s-r)^{-2\alpha}\int_{\R^d}\hat f(d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)}_{\text{finite by assumption}}
+\end{align}
+And this verifies (11.32) so the first appication of Fubini's Theorem is ok. \\
+
+
+\noindent \textbf{For the second case:} For this case we need to show that 
+\begin{align}
+E\Bigg[\int_0^t \ud s (t-s&)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha} \notag
+    \\ &\times \iint_{\R^{2d}}dz_1dz_2 \: G(t-r,x-z_1)G(t-r,x-z_2)\bigg|b(u(r,z_1))b(u(r,z_2))\bigg|f(z_1-z_2) \Bigg] < \infty
+\end{align}
+We again can pass he expectation through the integral, apply the lipschitz property of $b$, apply holders inequality, and then the moments estimates to see that 
+\begin{align}
+(11.35) &\le \int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha}\notag \\&\quad \quad \times \iint_{\R^{2d}}dz_1dz_2 G(t-r,x-z_1)G(t-r,x-z_2)\Vert u(r,z_1)\Vert_2\Vert u(r,z_2)\Vert_2f(z_1-z_2) \notag
+\\ &\le \int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha}\iint_{\R^{2d}}dw_1dw_2\;\textcolor{red}{G_t(x-w_1)G_t(x-w_2)}|\varphi(w_1)||\varphi(w_2)| \notag
+    \\ &\quad\quad \times \iint_{\R^{2d}}dz_1dz_2\;f(z_1-z_2)\prod_{i=1}^2G\left(-\dfrac{r(t-r)}{t},z_i-w_i-\frac{r}{s}(x-w_i\right) \notag
+\\ &\le \int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha}\iint_{\R^{2d}}dw_1dw_2\;G_t(x-w_1)G_t(x-w_2)|\varphi(w_1)||\varphi(w_2)| \notag
+    \\ &\quad\quad \times \int_{\R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right) \notag
+\\ & = \textcolor{red}{J_0^2(t,x) \int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha} \int_{\R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right)} 
+\\ &= \int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha}\int_{R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right)\left(\int_{\R^d}dw\;G_t(x-w)|\varphi(w)|\right)^2 \notag
+\\ &\le \int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha}\int_{R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right)\int_{\R^d}dw\;G_t(x-w)|\varphi(w)|^2 
+\end{align}
+In this situation we need to be careful with $a(r)$. We know $a(r)$ is continuous on $(0,s]$ but also we know that $a(r) \to |\varphi(x)|^2 $ as $r \to 0$ and thus this shows that $a(r)$ is bounded by some constant $M_s$ on $[0,s]$. \\
+Now we can see that (11.36) is bounded by 
+\begin{align}
+(11.36) &\le M_t\int_0^t \ud s (t-s)^{\alpha-1}
+    \int_0^s dr (s-r)^{-2\alpha}\int_{R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right) \notag
+\\ &= M_t \int_0^t dr \int_{R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right) \underbrace{\int_r^t ds (t-s)^{(\alpha -1)}(s-r)^{-2\alpha}}_{=K\cdot(t-r)^{-\alpha}} 
+\\ &=K\cdot M_t \int_0^t dr (t-r)^{-\alpha}\int_{R^d}\hat f(d\xi)\exp\left( -\dfrac{r(t-r)}{t}|\xi|^2 \right) 
+\end{align}
+\begin{NickQuestion}
+Is (11.39) finite? 
+\end{NickQuestion}
+
+\begin{LeQuestion}
+Here are some comments to your previous question. Firstly, did you forget a minus sign in exponential? This makes a big difference. 
+Secondly, when $\alpha=0$, this is finite, which is equivalent to Dalang's condition. But when $\alpha\in(0,1)$, then finiteness of this quantity will 
+impose a slightly stronger condition than Dalang's condition. Lastly, please use \textbackslash label\{\}" and \textbackslash eqref\{\} to refer equations.
+\end{LeQuestion}
+Yes I did mean for there to be a minus sign in all of the exponentials, I just fixed it. Also we will need $\alpha \in \left(0,\dfrac{1}{2}\right)$ in order for the underlined integral in (11.37) to be finite. $\alpha$ is also assumed to be less than $\frac{1}{2}$ in the Tessitore paper. Ill go back and use label and eqref. 
+
+\begin{LeQuestion}
+It would be nice that $\alpha$ can be any value between $0$ and $2\wedge d$ (open interval), certainly if only that is the truth. 
+\end{LeQuestion}
+\begin{NickQuestion}
+Here are the details concerning $f(x)=\dfrac{1}{|x|^\beta}$. We want to ensure that \begin{align} \int_0^s(s-r)^{-2\alpha}\int_{\R^d}\hat f (d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right) < \infty \end{align}
+And in this case $$ \hat f (x) = K\dfrac{1}{|x|^{d-\beta}}$$
+and therefore (11.40) becomes 
+\begin{align}
+    \int_0^s(s-r)^{-2\alpha}\int_{\R^d} d\xi\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right)\dfrac{1}{|\xi|^{d-\beta}} 
+\end{align}
+Now we apply a change of variables to (11.41). We let $$\sqrt{\dfrac{r(s-r)}{s}}\xi_i=z_i \quad \implies \quad d\xi=\left(\dfrac{r(s-r)}{s}\right)^{-d/2}dz$$
+
+and applying this to (11.41) transforms the integral into 
+\begin{align}
+     \int_0^s(s-r)^{-2\alpha}\int_{\R^d} dz\dfrac{\exp\left(-|z|^2\right)}{|z|^2}s^{\beta/2}r^{-\beta/2}(s-r)^{-\beta/2} 
+\end{align}
+
+\textcolor{red}{L.C.: $|z|^{-2}$ should be $|z|^{\beta/2}$.}
+
+and using (11.40) this simplifies us to only show that 
+\begin{align}
+    &\int_0^s(s-r)^{-(2\alpha + \beta/2)}r^{-\beta/2}dr < \infty
+\\ &\implies \quad (2\alpha + \beta/2)<1 \quad \text{and} \quad \beta/2 <1
+\end{align}
+However this seems to be an issue because we originally assumed that $\alpha \in (0,\frac{1}{2})$ and $\beta \in (0,2\wedge d)$ which would imply that $$ (2\alpha + \beta/2)\in (0,2)  $$
+
+\textcolor{red}{L.C.: here we are not going to prove that all Riesz kernels with $\beta\in  (0,d\wedge 2)$ work. We need only to find one such Riesz kernel. Since $\alpha<1/2$, so there any $\beta$ such that 
+\[
+\beta < \min(2(1-2\alpha),d)
+\]
+will do the job.
+The above argument is given $\alpha$ first and find a $\beta$. One can also argue reversely. Given a $\beta\in (0,2\wedge d)$, then we need to require 
+\[
+\alpha < \frac12 (1-\beta/2).
+\]
+}
+
+Considering this issue, is it really necessary to have (11.40) be finite for every $\alpha \in (0,1/2)$? Say we are given some Riesz Kernel $|x|^{-\beta_0}$ with $\beta_0 \in (0,d \wedge 2)$ then we can choose $\alpha \in (0,1/2)$ small enough so that $(2\alpha +\beta_0/2)<1$. One problem with that however is that in the Tessitore paper, they say that $\alpha \in (q^{-1},2^{-1})$. I need to see if this also needs to apply to our work or if we could say that $\alpha \in (0,2^{-1})$. I believe we actually do need $\alpha \in (q^{-1},2^{-1})$ for the $F_\alpha$ operators to be compact. And because of this, then the biggest $\beta_0$ we can choose for the Riesz Kernel is such that $(q^{-1}+\beta_0/2) <1$\\
+
+Another thing to consider is then can we just let $q$ be really big so given any $\beta_0\in(0,d \wedge 2)$ then we just choose $q$ to be large enough so that there exists an $\alpha \in (q^{-1},2^{-1})$ such that $(2\alpha +\beta_0/2)<1$. I think this can be possible since as long as we can find some $\alpha \in (q^{-1},2^{-1})$ then we just continue along with that $\alpha$ in the proof and everything works since essentially $\alpha$ is a fixed value all throughout the proof. $q>2$ is also just some fixed number throughout the proof so this also seems possible to just let $q$ be big enough.
+\end{NickQuestion}
+
+\begin{NickQuestion}
+In order for our solution to exist and to be in $L_\rho^2$ then we need to make several assumptions. (see page 13 of this document)
+\begin{enumerate}
+    \item Dalang's condition needs to be met, hence we need $\Upsilon(\beta)<\infty$ for every $\beta >0$. \\
+    \textcolor{red}{(for one and hence for all $\beta>0$).}
+    \item The initial condition must satisfy $\int_{\R^d}e^{-a|x|^2}|\varphi(x)|dx <\infty$ \\
+    \textcolor{red}{Let's write $\int_{\R^d}e^{-a|x|^2}|\varphi|(dx) <\infty$ in case $\varphi$ might be a measure.}
+    \item $\Theta$ and $\Upsilon(0)$ from lemma 2.5 of \cite{CH16Comparison} need to be finite and $\gamma_2<2\Upsilon(0)/\nu$
+\end{enumerate} 
+
+For the following we consider $f(x)=|x|^{-\beta}$ which means $\hat f(x)=\textcolor{red}{C_{d,\beta}}|x|^{\beta-d}$ \\
+\textbf{Item 1:} As long as $\beta \in (0,2\wedge d)$ then (1) is satisfied for $\beta >0$ \\ \\
+\textbf{Item 2:} Since we assume that $\varphi \in \L_\rho^2$ then this implies that $\varphi \in L_\rho ^1$ which further implies that $\varphi \in L_{\rho^*}^1$ where $\rho^*=e^{-|x|^2}$. \\ \\
+\textbf{Item 3:} This condition ensures that our solution is in the $L_\rho^2$ space where as (1) and (2) just ensure the existence and uniqueness of the solution. I believe that there is a problem with showing $\Upsilon(0)<\infty$. Considering $f(x)=|x|^{-\beta}$ then what we need is that \begin{align}
+    \int_{\R^d}\dfrac{f(x)}{|x|^{d-2}}dx = \int_{\R^d}\dfrac{\hat f(x)}{|x|^{2}}dx = \int_{\R^d}\dfrac{|x|^{\beta-d}}{|x|^2}dx  = \int_{\R^d}\dfrac{1}{|x|^{d-\beta +2}}dx <\infty
+\end{align}
+However, the last integral in (11.45) is never finite. \\[1em]
+\textcolor{red}{L.C.: You are right. Please try the Bessel kernel as in Le's Question \ref{Q:Bessel}.}
+\end{NickQuestion}
+
+\section{Discussions on Feb. 21--23}
+\begin{LeQuestion}
+Here are several questions related to the weight functions: 
+\begin{enumerate}
+    \item Show that $\rho(\xi) = \exp(-r|\xi|)$ is admissible, i.e., Eq. (2.1) of \cite{TessitoreZabczyk98M} is satisfied. The constant $C_\rho(T) = e^{r^2 T/2}$ (for one dimensional case); check Proposition A.11 of \cite{ChenDalang13Heat}.
+\item Show that $\rho(\xi) = (1+|\xi|^r)^{-1}$ is admissible in the sense of Eq. (2.1) of \cite{TessitoreZabczyk98M}. Moreover, can you show that $C_\rho(T)$ is bounded function in $T$? 
+\item Conditions for initial data seem to be: any nonnegative measures $\mu$ such that   \[
+\sup_{x\in\R^d} (\rho * \mu)(x)<+\infty.
+\]
+\end{enumerate}
+\end{LeQuestion}
+
+\section{Discussions on March 4}
+\begin{NickQuestion}
+As stated in the email, The inequality (11.27), and the justification of fubini's theorem for the factorization theorem all assumed that 
+\begin{enumerate}
+    \item $|b(u)|<K|u|$
+    \item $\Vert u(r,z) \Vert_q \le K J_0(r,z)$
+\end{enumerate}
+However in general for Lipscitz functions we can only say that $|b(u)|\le K(1+|u|)$ unless $b(0)=0$. And for the moment bounds we have that $\Vert u(r,z) \Vert_q \le K(1+J_0(r,z))$ and it is not necessarily true that $K(1+J_0(r,z)) \le K J_0(r,z)$. For example if $J_0(r,z)\to 0$ as $|z|\to \infty$ then there would not exist a $K$ so $K(1+J_0(r,z)) \le K J_0(r,z)$. But if $J_0(r,z)$ was bounded below by a number $k>0$ then we could say that $K(1+J_0(r,z)) \le K J_0(r,z)$ but I am not sure if this is always the case? 
+
+\textcolor{red}{L.C.: You are right. In many cases, we have additional condition that sets $b(0)=0$. This condition is required in order to keep the solution to be nonnegative (if the initial data is nonnegative). }
+
+So I tried to reprove the inequality in (11.27) using $|b(u)|\le K(1+|u|)$ and $\Vert u(r,z) \Vert_q \le K(1+J_0(r,z))$ and I came up with the following three things we need to assume to be finite which are: 
+\begin{enumerate}
+    \item $\int_0^s(s-r)^{-2\alpha}\int_{\R^d}\hat f (d\xi)\exp\left(-\dfrac{r(s-r)}{s}|\xi|^2\right) < \infty$
+    \item $\int_0^s(s-r)^{-2\alpha}\int_{\R^d}\hat f (d\xi)\exp\left(-(s-r)|\xi|^2\right) < \infty$
+    \item $\int_0^s(s-r)^{-2\alpha}\int_{\R^d}\hat f (d\xi)\exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right) < \infty$
+\end{enumerate}
+We already assumed that (1) was going to be finite but is that going to imply that (2) and (3) are going to be finite? 
+
+\textcolor{red}{L.C.: Yes, most probably it is the case. We still need to prove that.}
+
+I have not yet tried to prove the justification of Fubini's Theorem yet with the assumptions that $|b(u)|\le K(1+|u|)$ and $\Vert u(r,z) \Vert_q \le K(1+J_0(r,z))$ but I am pretty sure that I will once again come up with those three things above that need to be finite.
+
+\textcolor{red}{I just went through all the details for justifying Fubini's theorem and again came up with needing (1), (2) and (3) above to be finite. I have a lot of pages of calculations handwritten in my notebook and will type them all up}
+\end{NickQuestion}
+
+
+
+\begin{small}
+\addcontentsline{toc}{section}{Bibliography}
+\begin{thebibliography}{999}
+
+
+
+
+\bibitem{ACQ11}
+Amir, Gideon, Ivan Corwin and Jeremy Quastel.
+\newblock Probability distribution of the free energy of the continuum directed random polymer in $1+1 $ dimensions. 
+\newblock {\it Comm. Pure Appl. Math.} 64 (2011), no. 4, 466--537. 
+
+
+% \bibitem{Adam03SecondEd}
+% Adams, Robert A. and John J. F. Fournier.
+% \newblock {\em Sobolev spaces}~(2$^{\text{nd}}$ ed.).
+% \newblock Elsevier/Academic Press, Amsterdam, 2003.
+%
+
+
+\bibitem{AM03}
+Assing, Sigurd and Ralf Manthey.
+\newblock Invariant measures for stochastic heat equations with unbounded coefficients. 
+\newblock {\it Stochastic Process. Appl.} 103 (2003), no. 2, 237--256.
+
+
+% \bibitem{BainovSimeonov92}
+% D.~Ba{\u\i}nov and P.~Simeonov.
+% \newblock {\em Integral inequalities and applications}, volume~57 of {\em
+%   Mathematics and its Applications (East European Series)}.
+% \newblock Kluwer Academic Publishers Group, Dordrecht, 1992.
+% 
+
+\bibitem{BC16}
+Balan, Raluca M. and Le Chen.
+\newblock Parabolic Anderson model with space-time homogeneous Gaussian noise and rough initial condition
+\newblock {\em J. Theoret. Probab.}, to appear 2017. 
+
+\bibitem{BP98}
+V.~Bally and E.~Pardoux.
+\newblock Malliavin calculus for white noise driven parabolic {SPDEs}.
+\newblock {\em Potential Anal.} 9 (1998), no. 1, 27--64.
+
+\bibitem{BG97}
+Bertini, Lorenzo and Giambattista Giacomin.
+\newblock Stochastic Burgers and KPZ equations from particle systems. 
+\newblock {\it Comm. Math. Phys.} 183 (1997), no. 3, 571--607. 
+
+\bibitem{BG99}
+Bertini, Lorenzo and Giambattista Giacomin.
+\newblock On the long-time behavior of the stochastic heat equation.
+\newblock {\em Probab. Theory Related Fields}, 114 (1999), no. 3, 279--289.
+
+\bibitem{BH91}
+Bouleau, Nicolas and Francis Hirsch. 
+\newblock {\em Dirichlet forms and analysis on Wiener space.} 
+\newblock De Gruyter Studies in Mathematics, 14. Walter de Gruyter \& Co., Berlin, 1991. x+325 pp.
+
+\bibitem{CFG17gPAM}
+Cannizzaro, Giuseppe, Peter K. Friz and Paul Gassiat.
+\newblock Malliavin Calculus for regularity structures: the case of gPAM.
+\newblock {\em J. Funct. Anal.}, 272 (2017), no. 1, 363--419.
+
+
+
+\bibitem{CarmonaMolchanov94}
+Carmona, Ren\'e~A.  and Stanislav~A. Molchanov.
+\newblock Parabolic Anderson problem and intermittency.
+\newblock {\em Mem. Amer. Math. Soc.}, 108 (1994), no. 518, viii+125 pp. 
+%Mem. Amer. Math. Soc. 
+%
+% \bibitem{LeChen13Thesis}
+% Chen, Le.
+% \newblock {\em Moments, intermittency, and growth indices for nonlinear
+%   stochastic PDE's with rough initial conditions}.
+% \newblock PhD thesis, No. 5712, \'Ecole Polytechnique F\'ed\'erale de Lausanne,
+% 2013.
+% %
+
+
+\bibitem{Cer01}
+Cerrai, Sandra.
+\newblock {\it Second order PDE's in finite and infinite dimension.} 
+\newblock A probabilistic approach. Lecture Notes in Mathematics, 1762. Springer-Verlag, Berlin, 2001. x+330 pp. 
+
+\bibitem{Cer03}
+Cerrai, Sandra.
+\newblock Stochastic reaction-diffusion systems with multiplicative noise and non-Lipschitz reaction term.
+\newblock {\it Probab. Theory Related Fields} 125 (2003), no. 2, 271--304. 
+
+\bibitem{Cer06}
+Cerrai, Sandra.
+\newblock Asymptotic behavior of systems of stochastic partial differential equations with multiplicative noise. 
+\newblock {\it Stochastic partial differential equations and applications--VII}, 61--75, 
+Lect. Notes Pure Appl. Math., 245, Chapman \& Hall/CRC, Boca Raton, FL, 2006. 
+
+\bibitem{ChenDalang13Heat}
+Chen, Le and Robert C. Dalang.
+\newblock Moments and growth indices for nonlinear stochastic heat equation
+  with rough initial conditions.
+\newblock {\em Ann.\ Probab.}  43 (2015), no. 6, 3006--3051.
+
+% \bibitem{ChenDalangHolder}
+% Chen, Le and Robert C. Dalang.
+% \newblock H\"older-continuity for the nonlinear stochastic heat equation with rough initial conditions. 
+% \newblock{\it Stoch. Partial Differ. Equ. Anal. Comput.} 2 (2014), no. 3, 316--352. 
+
+
+\bibitem{CHN16Density}
+Chen, Le, Yaozhong Hu and David Nualart.
+\newblock Regularity and strict positivity of densities for the nonlinear stochastic heat equation.
+% \newblock {\em Preprint at arXiv:1611.03909,} 2016.
+\newblock {\em Mem. Amer. Math. Soc.}, 2019, to appear. 
+
+\bibitem{CH16Comparison}
+Chen, Le and Jingyu Huang.
+\newblock Comparison principle for stochastic heat equation on $\R^d$.
+\newblock {\em Ann.\ Probab.}  2019, to appear.
+% \newblock {\em Preprint arXiv:1607.03998,} 2016.
+
+% \bibitem{CHKK16Bad}
+% Chen, Le, Jingyu Huang, Davar Khoshnevisan and Kunwoo Kim.
+% \newblock A badly-behaved parabolic SPDE.
+% \newblock {\em In preparation,} 2016.
+
+
+\bibitem{CK15SHE}
+Chen, Le and Kunwoo Kim.
+\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
+\newblock {\em Acta Math. Sci. Ser. B}, 2019, to appear.
+
+% \bibitem{CK14Comp}
+% Chen, Le and Kunwoo Kim.
+% \newblock On comparison principle and strict positivity of solutions to the nonlinear stochastic fractional heat equations.
+% \newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat.}, 53 (2017), no. 1, 358--388.
+%
+
+% \bibitem{CJK12}
+% Conus, Daniel, Mathew Joseph and Davar Khoshnevisan.
+% \newblock Correlation-length bounds, and estimates for intermittent islands in parabolic SPDEs. 
+% \newblock {\em Electron. J. Probab.} 17 (2012), no. 102, 15 pp.
+
+% \bibitem{ConusKhosh10Farthest}
+% Conus, Daniel and Davar Khoshnevisan.
+% \newblock On the existence and position of the farthest peaks of a family of
+%   stochastic heat and wave equations.
+% \newblock {\em Probab. Theory Related Fields }, {\bf 152}{\it (3-4)} (2012), 681--701.
+
+\bibitem{Dalang99} Dalang, Robert C.
+\newblock Extending the martingale measure stochastic integral with applications to spatially homogeneous s.p.d.e.'s.
+\newblock {\it Electron.\ J. Probab.} 4 (1999), no. 6, 29 pp.
+%
+% \bibitem{DalangFrangos98}
+% Dalang, Robert C. and Nicholas E. Frangos.
+% \newblock The stochastic wave equation in two spatial dimensions.
+% \newblock {\em Ann. Probab.}, {\bf 26}{\it (1)} (1998), 187--212.
+
+\bibitem{DalangEtc09Minicourse} Dalang, Robert, Davar Khoshnevisan, Carl 
+Mueller, David Nualart, and Yimin Xiao
+\newblock {\it A minicourse on stochastic partial differential equations}.
+\newblock Held at the University of Utah, Salt Lake City, UT, May 8–19, 2006. 
+Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics, 
+1962.  
+\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+
+
+%
+% \bibitem{DalangMueller03} Dalang, Robert C. and Carl Mueller.
+% 	\newblock Some non-linear S.P.D.E.'s that are second order in time.
+% 	\newblock {\it Electron.\ J. Probab.}\ {\bf 8}{\it (1)} (2003) 21 pp. (electronic).
+%
+% \bibitem{DonohoStark} Donoho, David L. and Philip B. Stark.
+% 	\newblock Uncertainty principles and signal recovery.
+% 	\newblock {\it SIAM J. Appl.\ Math.}\ {\bf 49}{\it (3)} (1989) 906--931.
+%
+\bibitem{DalangQuer} 
+Dalang, Robert C. and Llu\'is Quer-Sardanyons.
+\newblock Stochastic integrals for spde's: a comparison.
+\newblock {\it Expo. Math.} 29 (2011), no. 1, 67--109. 
+
+\bibitem{DZ92}
+Da Prato, Giuseppe and Jerzy Zabczyk.
+\newblock {\it Stochastic equations in infinite dimensions.}
+Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
+
+\bibitem{DZ96}
+Da Prato, Giuseppe and Jerzy Zabczyk.
+\newblock {\it Ergodicity for infinite-dimensional systems. }
+\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996. 
+
+% \bibitem{DS80}
+% Dawson, Donald A. and Habib Salehi.
+% \newblock Spatially homogeneous random evolutions. 
+% \newblock{\it J. Multivar. Anal.} 10 (1980), no. 2, 141--180. 
+
+\bibitem{EH01}
+Eckmann,  Jean-Pierre and Martin Hairer.
+\newblock Invariant measures for stochastic partial differential equations in unbounded domains. 
+\newblock {\it Nonlinearity} 14 (2001), no. 1, 133--151. 
+
+% \bibitem{Flores} Flores, G. R. Moreno.
+% \newblock On the (strict) positivity of solutions of the stochastic heat equation. 
+% \newblock {\it Ann. Probab.}  42 (2014), no. 4, 1635--1643.
+
+
+%
+% \bibitem{FK14Cor} Foondun, Mohammud and Davar Khoshnevisan.
+% \newblock Corrections and improvements to: ``On the stochastic heat equation with spatially-colored random forcing''.
+% \newblock {\it Trans. Amer. Math. Soc.} 366 (2014), no. 1, 561--562.
+%
+
+\bibitem{FK13SHE} Foondun, Mohammud and Davar Khoshnevisan.
+\newblock On the stochastic heat equation with spatially-colored random forcing.
+\newblock {\it Trans. Amer. Math. Soc.} 365 (2013), no. 1, 409--458.
+
+%
+%  \bibitem{FLO14MB} Foondun, Mohammud and  Liu Wei and Omaba McSylvester.
+% 	\newblock Moment bounds  for a class of fractional stochastic heat equations.
+% 	\newblock Preprint available at \texttt{arXiv:1409.5687} (2014).
+%
+% \bibitem{FK} Foondun, Mohammud and Davar Khoshnevisan.
+% 	\newblock On the global maximum of the solution to a stochastic
+% 		heat equation with compact-support initial data.
+% 	\newblock {\it Ann.\ Inst.\ Henri Poincar\'e Probab.\ Stat.}\
+% 		{\bf 46}{\it (4)} (2010) 895--907.
+%
+% \bibitem{FK09EJP} Foondun, Mohammud and Davar Khoshnevisan.
+% \newblock Intermittence and nonlinear parabolic stochastic partial differential equations.
+% \newblock {\it Electron. J. Probab.} {\bf 14}{\it (21)} (2009), 548--568.
+
+% 		
+% \bibitem{GP15KPZ} 
+% Gubinelli, Massimiliano  and Nicolas Perkowski.
+% \newblock KPZ reloaded.
+% \newblock {\it Preprint at arXiv:1508.03877}, 2015.
+
+		
+% \bibitem{Grafakos} Grafakos, Loukas. 
+% \newblock {\it Classical Fourier analysis}. 
+% \newblock Second edition. Graduate Texts in Mathematics, 249. Springer, New York, 2008. xvi+489 pp
+%
+
+
+\bibitem{Grafakos14Modern}
+Grafakos, Loukas
+\newblock {\it Modern Fourier analysis. } Third edition. 
+\newblock Graduate Texts in Mathematics, 250. Springer, New York, 2014. xvi+624 pp.
+
+\bibitem{GM01}
+Goldys, Beniamin, and Bohdan Maslowski.
+\newblock Uniform exponential ergodicity of stochastic dissipative systems. 
+\newblock {\it Czechoslovak Math. J.} 51(126) (2001), no. 4, 745--762. 
+
+\bibitem{Hairer2014RS}
+Hairer, Martin.
+\newblock A theory of regularity structures.
+\newblock {\em Invent. Math.}, 198 (2) (2014), 1--236.
+
+\bibitem{Hairer2011solving}
+Hairer, Martin.
+\newblock Solving the KPZ equation.
+\newblock {\em Ann. of Math.}, (2) 178 (2013), no. 2, 559--664.
+
+
+% \bibitem{HHN}
+% Hu, Yaozhong, Jingyu Huang and David Nualart. 
+% \newblock On the intermittency front of stochastic heat equation driven by colored noises. 
+% \newblock {\it Electron. Commun. Probab.} 21 (2016), no. 21, 13 pp.
+
+
+\bibitem{HHNS14}
+Y.~Hu, J.~Huang, D.~Nualart, X.~Sun.
+\newblock Smoothness of the joint density for spatially homogeneous SPDEs.
+\newblock {\em J. Math. Soc. Japan},
+Vol. 67, No. 4 (2015), 1605--1630.
+% arXiv:1410.1581, 2014.
+
+%
+% \bibitem{HHNT} 
+% Hu, Yaozhong, Jingyu Huang, David Nualart and Samy Tindel.
+% \newblock Stochastic heat equations with general multiplicative Gaussian noises:
+% H\"older continuity and intermittency.
+% \newblock {\it Electron. J. Probab.} 20 (2015), no. 55, 50 pp.
+% %
+% \bibitem{HLN}
+% Huang, Jingyu, Khoa L\^e and David Nualart. 
+% \newblock Large time asymptotics for the parabolic Anderson model driven by spatially correlated noise.
+% \newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat.} to appear, 2016. 
+% 
+
+
+
+% %
+% \bibitem{KZ} Karczewska, Anna and Jerzy Zabczyk. 
+% \newblock Stochastic PDEs with function-valued solutions. 
+% \newblock In {\it Infinite dimensional stochastic analysis (Amsterdam 1999)}, 197--216,
+
+
+%
+% \bibitem{khosh1}  Khoshnevisan, Davar.
+% \newblock Analysis of stochastic partial differential equations.
+% \newblock {\it CBMS Regional Conference Series in Mathematics}, 119. 
+% American Mathematical Society, Providence, RI, 2014.
+
+% \bibitem{KK13LCA}  Khoshnevisan, Davar and Kunwoo Kim.
+% \newblock Non-linear noise excitation of intermittent stochastic PDEs and the topology of LCA groups.
+% \newblock To appear in {\it Ann. Probab.} Preprint available at \texttt{arXiv:1302.3266} (2013).
+
+%
+% \bibitem{Liggett} Liggett, T. M.
+% 	\newblock {\it Interacting Particle Systems}.
+% 	\newblock Springer-Verlag, New York, 1985.
+
+\bibitem{MS99}
+Maslowski, Bohdan and Jan Seidler.
+\newblock On sequentially weakly Feller solutions to SPDE's. 
+\newblock {\it Atti Accad. Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei (9) Mat. Appl.} 10 (1999), no. 2, 69--78. 
+
+
+\bibitem{MSY16}
+Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
+\newblock Existence and uniqueness of invariant measures for stochastic reaction-diffusion equations in unbounded domains. 
+\newblock {\it J. Theoret. Probab.} 29 (2016), no. 3, 996--1026.
+
+%
+% \bibitem{Mueller2} Mueller, Carl.
+% 	\newblock {\it Some Tools and Results for Parabolic Stochastic Partial
+% 		Differential Equations} (English summary).
+% 	\newblock In: A Minicourse on Stochastic Partial Differential Equations, 111--144,
+% 	\newblock Lecture Notes in Math.\ {\bf 1962} Springer, Berlin, 2009.
+% %
+
+
+% %%
+% \bibitem{Mueller91} Mueller, Carl.
+% \newblock On the support of solutions to the heat equation with noise.
+% \newblock {\it Stochastics Stochastics Rep.} 37 (1991), no. 4, 225--245.
+% %%
+
+
+
+\bibitem{MuellerNualart08}
+Mueller, Carl and David Nualart. 
+\newblock Regularity of the density for the stochastic heat equation. 
+\newblock {\it Electron. J. Probab.}, 13 (2008), no. 74, 2248--2258.
+
+
+\bibitem{Nualart09}
+D.~Nualart.
+\newblock {\em Malliavin calculus and its applications.}
+\newblock CBMS Regional Conference Series in Mathematics, 110. Published for the
+Conference Board of the Mathematical Sciences, Washington, DC; by the American
+Mathematical Society, Providence, RI, 2009.
+
+\bibitem{NualartQuer07}
+D.~Nualart and L.~Quer-Sardanyons.
+\newblock Existence and smoothness of the density for spatially homogeneous {SPDEs}.
+\newblock {\em Potential Anal.} 27 (2007), no. 3, 281--299.
+
+\bibitem{Nualart13Density}
+E.~Nualart.
+\newblock On the density of systems of non-linear spatially homogeneous {SPDEs}.
+\newblock {\em Stochastics}, 85 (2013), no. 1, 48--70.
+
+% %
+% \bibitem{Nobel97} Noble, John M.
+% \newblock Evolution equation with Gaussian potential.
+% \newblock {\it Nonlinear Anal.}\ {\bf 28}{\it (1)} (1997) 103--135.
+
+% \bibitem{oldham2008atlas}
+% Oldham Keith and J.~Myland and J.~Spanier.
+% \newblock {\em An atlas of functions}.
+% \newblock Springer, New York, second edition, 2009.
+%
+\bibitem{NIST2010}
+F.~W.~J. Olver, D.~W. Lozier, R.~F. Boisvert, and C.~W. Clark, editors.
+\newblock {\em N{IST} handbook of mathematical functions}.
+\newblock U.S. Department of Commerce National Institute of Standards  and Technology, Washington, DC. Cambridge Univ. Press, Cambridge, 2010.
+
+\bibitem{PardouxZhang93}
+Pardoux, Etienne and Tusheng Zhang.
+\newblock Absolute continuity of the law of the solution of a parabolic SPDE.
+\newblock {\em J. Funct. Anal.} 112 (1993), no. 2, 447--458.
+ 
+ \bibitem{PZ95}
+Peszat, and Zabczyk
+\newblock Stochastic Evolution Equations with a Spatially Homogenous Wiener Processes.
+\newblock {\em SNS} (1995)
+ 
+\bibitem{QuerSanz04WaveSmooth}
+Quer-Sardanyons, Llu{\'{\i}}s and Marta Sanz-Sol{\'e}.
+\newblock A stochastic wave equation in dimension 3: smoothness of the law.
+\newblock {\em Bernoulli}, 10 (2004), no. 1, 165--186. 
+
+% \bibitem{SanzSoleSarra02}
+% Sanz-Sol\'e, Marta and M\`onica Sarr\`a.
+% \newblock H\"older continuity for the stochastic heat equation with spatially correlated noise.
+% \newblock {\em Seminar on Stochastic Analysis, Random Fields  and Applications, III (Ascona, 1999)},
+% 259--268, Progr. Probab., 52, Birkhäuser, Basel, 2002.
+
+% \bibitem{Spitzer1981} Spitzer, Frank.
+% 	\newblock Infinite systems with locally interacting components.
+% 	\newblock {\it Ann.\ Probab.}\ {\bf 9} (1981) 349--364.
+%
+
+% \bibitem{Stein70Singular}
+% Elias~M. Stein.
+% \newblock {\em Singular integrals and differentiability properties of
+%   functions}.
+% \newblock Princeton University Press, Princeton, N.J., 1970.
+% %
+
+% \bibitem{Shiga}
+% Shiga, Tokuzo.
+% \newblock Two contrasting properties of solutions for one-dimensional stochastic partial differential equations. 
+% \newblock {\it Canad. J. Math.} 46 (1994), no. 2, 415--437. 
+
+
+% %
+% \bibitem{TessitoreZabczyk98}
+% Tessitore, Gianmario and Jerzy Zabczyk.
+% \newblock Strict positivity for stochastic heat equations.
+% \newblock {\it Stochastic Process. Appl.} 77 (1998), no. 1, 83--98.
+
+\bibitem{TessitoreZabczyk98M}
+Tessitore, Gianmario and Jerzy Zabczyk.
+\newblock Invariant measures for stochastic heat equations. 
+\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287. 
+
+
+\bibitem{Walsh} Walsh, John B.
+	\newblock {\it An Introduction to Stochastic Partial Differential Equations}.
+	\newblock In: \`Ecole d'\`et\'e de probabilit\'es de
+	Saint-Flour, XIV---1984, 265--439.
+	Lecture Notes in Math.\ 1180, Springer, Berlin, 1986.
+%
+\end{thebibliography}
+\end{small}
+\end{document}
+
