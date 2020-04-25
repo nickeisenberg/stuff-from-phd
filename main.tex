@@ -11,24 +11,21 @@
 % Load Packages here
 % -------------------------------------------------
 \usepackage{hyperref} 
-\usepackage{graphicx,url,subfig}
-\RequirePackage[OT1]{fontenc}
-\RequirePackage{amsthm,amsmath,amssymb,amscd}
-\RequirePackage[numbers]{natbib}
-\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage{graphics}
-\usepackage{enumerate}
+\usepackage{graphicx,url,subfig}
 \usepackage{datetime}
+\usepackage{enumerate}
 \usepackage{etex}
 % \usepackage[notcite,notref,color]{showkeys}
 \usepackage[normalem]{ulem} % either use this (simple) or
 \usepackage{soul} % use this (many fancier options)
 \makeatother
-\numberwithin{equation}{section}
-\allowdisplaybreaks
 \usepackage{mathrsfs}
+\usepackage[OT1]{fontenc}
+\usepackage{amsthm,amsmath,amssymb,amscd}
+\usepackage[numbers]{natbib}
+% \usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 
- 
 % -------------------------------------------------
 % check references
 % -------------------------------------------------
@@ -36,6 +33,11 @@
 % \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
+
+% \numberwithin{equation}{section}
+% \allowdisplaybreaks
+
+
 
 % -------------------------------------------------
 % Environments here
@@ -245,11 +247,12 @@ Regarding the two approaches --- the random field approach (ours) and semigroup 
 \end{LeQuestion}
 
 \begin{NickQuestion}[(spatial variable of the solution/ what type of object is the solution)]
-In \cite{TessitoreZabczyk98M} we write the solution of (1.1) as (2.3). More specifically we write the solution as $$ X^x(t) \;\;\;\; \text{for $x\in L^2_\rho$ and $t>0$}$$ but we lose the spatial component of $X$ from (1.1) namely we no longer write $X$ as $$ X^x(t,\xi) \;\;\;\; \text{for $x\in L^2_\rho$, $\xi \in \mathbb R^d$ and $t>0$} $$ however by Theorem 2.3 of $\cite{TessitoreZabczyk98M}$ we still know that the solution to (1.1) is in $L^2_\rho$ for each $\omega \in \Omega$ . Namely for each $x \in L^2_\rho$, $t>0$, and $\omega \in \Omega$ then $X^x(t)(\omega) \in L^2_\rho$. So does this mean that the solution in fact does have a spatial element but we don't write it since we lose this information about it? What I mean by this is that according to the Theorem 2.3, our solution $X^x(\cdot) \in \mathscr C_{\mathscr P}(0,T,L^2(\Omega,L^2_\rho))$ which is the set of all predictable processes \\ $Y:\Omega \times [0,T] \to L^2_\rho$ with the property that $t\mapsto E(|Y(t)|^2_\rho)$ is continuous so you can see here that we are integrating out the spatial variable when taking the $|\cdot|^2_\rho$ norm. 
+In \cite{TessitoreZabczyk98M} we write the solution of (1.1) as (2.3). More specifically we write the 
+solution as $$ X^x(t) \;\;\;\; \text{for $x\in L^2_\rho$ and $t>0$}$$ but we lose the spatial component of $X$ from (1.1) namely we no longer write $X$ as $$ X^x(t,\xi) \;\;\;\; \text{for $x\in L^2_\rho$, $\xi \in \mathbb R^d$ and $t>0$} $$ however by Theorem 2.3 of \cite{TessitoreZabczyk98M} we still know that the solution to (1.1) is in $L^2_\rho$ for each $\omega \in \Omega$ . Namely for each $x \in L^2_\rho$, $t>0$, and $\omega \in \Omega$ then $X^x(t)(\omega) \in L^2_\rho$. So does this mean that the solution in fact does have a spatial element but we don't write it since we lose this information about it? What I mean by this is that according to the Theorem 2.3, our solution $X^x(\cdot) \in \mathscr C_{\mathscr P}(0,T,L^2(\Omega,L^2_\rho))$ which is the set of all predictable processes \\ $Y:\Omega \times [0,T] \to L^2_\rho$ with the property that $t\mapsto E(|Y(t)|^2_\rho)$ is continuous so you can see here that we are integrating out the spatial variable when taking the $|\cdot|^2_\rho$ norm. 
 \end{NickQuestion}
 
 \begin{proof}[Nick's solution]
-After careful reading of the Da Prato text \cite{DZ96} and the Tessitore paper $\cite{TessitoreZabczyk98M}$. I am fairly confident that what I am saying above is correct. 
+After careful reading of the Da Prato text \cite{DZ96} and the Tessitore paper \cite{TessitoreZabczyk98M}. I am fairly confident that what I am saying above is correct. 
 \end{proof}
 
 \begin{proof}[Le's comment]
@@ -260,12 +263,18 @@ You are right. From here, you see that Da Prato's approach is really an infinite
 \begin{NickQuestion}[(Law of the solution)]
  Now how are we defining the Law of the solution? Are we saying that \begin{align} \mathscr L(X^x(t))(A)=\textbf{P}\{\omega \in \Omega : X^x(t)(\omega)\in A \;\; \text{for $A \subset L^2_\rho$} \} \end{align} so we are fixing $ t$ and $x$ and the law of $X$ is a probability measure on $L^2_\rho$? So if this was the case then by \cite{DZ96} on page 89 equation (6.1.2) we see if $\dfrac{1}{T}\int_0^T\mathscr L(X^x(t))dt$ is tight then that there exists an invariant measure for $L^2_\rho$. (Also I have the details worked out which proves the statement about equation (6.1.2) )
  
- However there is a minor discrepancy here when comparing the Law defined the way I just had defined it above and how \cite{DZ96} defines it. Again on page 89 of \cite{DZ96} they define the law to be a measure on $\mathcal B(H)$ but does not define what $\mathcal B(H)$ is. Im guessing that it means the space of bounded linear functionals on some hilbert space $H$. The Law I defined above would be defined on $H=L^2_\rho$ not $\mathcal B(H)=\mathcal B(L^2_\rho)$. We are looking for a measure on $L^2_\rho$ and so I believe the way I had defined it above is how it is supposed to be defined in the Tessitore paper $\cite{TessitoreZabczyk98M}$. 
+ However there is a minor discrepancy here when comparing the Law defined the way I just had defined
+ it above and how \cite{DZ96} defines it. Again on page 89 of \cite{DZ96} they define the law to be
+ a measure on $\mathcal B(H)$ but does not define what $\mathcal B(H)$ is. Im guessing that it means
+ the space of bounded linear functionals on some hilbert space $H$. The Law I defined above would be
+ defined on $H=L^2_\rho$ not $\mathcal B(H)=\mathcal B(L^2_\rho)$. We are looking for a measure on
+ $L^2_\rho$ and so I believe the way I had defined it above is how it is supposed to be defined in
+ the Tessitore paper \cite{TessitoreZabczyk98M}. 
 \end{NickQuestion}
  
  
 \begin{proof}[Nick's Solution]
-The law of $X$ is what I defined it to be in equation (5.1) and this can be seen from (3.2) on page 276 of the Tessitore paper $\cite{TessitoreZabczyk98M}$.    
+The law of $X$ is what I defined it to be in equation (5.1) and this can be seen from (3.2) on page 276 of the Tessitore paper \cite{TessitoreZabczyk98M}.    
 \end{proof}
 
 \begin{proof}[Le's Comment]
@@ -273,10 +282,9 @@ In equation (5.1), you cannot take arbitrary subsets $A$ from $L_\rho^2$. It has
 \end{proof}
 
 \begin{NickQuestion}
- 
-      The integral in (2.3) shown below \begin{align}
+     The integral in (2.3) shown below \begin{align}
          X^x(t)=S(t)x+\int_0^tS(t-s)M(B(X^x(s)))dW_s
-     \end{align} is used in the proof however in (5.2) they turn $\mathscr W$ into $W$ for the integrator. They claim that this follows from $\cite{PZ95}$ but I could not find an explaination for it in there. In addition the $M$ function in this paper $\cite{TessitoreZabczyk98M}$ is not the same as the $M$ function in $\cite{PZ95}$.
+     \end{align} is used in the proof however in (5.2) they turn $\mathscr W$ into $W$ for the integrator. They claim that this follows from \cite{PZ95} but I could not find an explaination for it in there. In addition the $M$ function in this paper \cite{TessitoreZabczyk98M} is not the same as the $M$ function in \cite{PZ95}.
   \end{NickQuestion}  
   
  \begin{proof}[Le's comment]
@@ -289,7 +297,7 @@ In equation (5.1), you cannot take arbitrary subsets $A$ from $L_\rho^2$. It has
      In \textbf{Step 1} of the proof, Tessitore defines an operator \begin{align}F_\alpha f = \int_0^1(1-s)^{\alpha-1}S(1-s)f(s)ds \end{align} and says that this operator is compact from $L^q[(0,1),L^2_{\hat\rho} ]$ to $L^2_\rho$. First, what is $L^q[(0,1),L^2_{\hat\rho} ]$? Second how is $F_\alpha f \in L^2_\rho$? It seems that the integrand in a function of $s$ and we are integrating out the $s$ variable so there are no variables left which would just make $F_\alpha f \in \mathbb R$ . Also, does $S(1-s)f(s)=\big(G(1-s,\cdot)*f(\cdot)\big)(s)?$ 
      \end{NickQuestion}
      \begin{proof}
-I believe the answer to why $F_\alpha f$ is in $L^2_\rho$ is essentially the same reason as my solution for my question (5.5), ie. it comes from Da Pratos construction of the stochastic integral in $\cite{PZ95}$. Also I believe that $L^q[(0,1),L^2_{\hat\rho} ]$ is the space of predictable processes, $f(s)$ such that $f:(0,1)\times \Omega \to L^2_\rho$ and $\int_0^1|f(s)|^q_{\hat \rho}ds < \infty $. This can be verified by comparing the $|h|^q_{L^q(0,1,L^2_{\hat\rho})}$ in the definition of $\mathscr K (\theta)$ with integral on the right hand side of the first inequality after the mention of Chebyshev's inequality. 
+I believe the answer to why $F_\alpha f$ is in $L^2_\rho$ is essentially the same reason as my solution for my question (5.5), ie. it comes from Da Pratos construction of the stochastic integral in \cite{PZ95}. Also I believe that $L^q[(0,1),L^2_{\hat\rho} ]$ is the space of predictable processes, $f(s)$ such that $f:(0,1)\times \Omega \to L^2_\rho$ and $\int_0^1|f(s)|^q_{\hat \rho}ds < \infty $. This can be verified by comparing the $|h|^q_{L^q(0,1,L^2_{\hat\rho})}$ in the definition of $\mathscr K (\theta)$ with integral on the right hand side of the first inequality after the mention of Chebyshev's inequality. 
 \end{proof}
 
      \begin{NickQuestion}(Proof of Theorem 3.1)
@@ -299,9 +307,9 @@ I believe the answer to why $F_\alpha f$ is in $L^2_\rho$ is essentially the sam
 \end{NickQuestion}
 
 \begin{proof}[Nick's Solution]
-As for the reason why $Y\in L^2_\rho$, I believe this comes from Da Prato's contruction of the stochastic integral $\int_0^t\psi(x)dW_x$, see and page 57 of $\cite{DZ96}$. In genera we can define the stochastic integral $\int_0^t\psi(x)dW_x$ when $\psi$ is a Hilbert schmidt operator from a Hilbert space $U$ to another Hilbert space $H$. In this paper, the integrand of $Y^x(s)$ is playing the role of $\psi$ but here it is a hilbert schmidt operator from $L^2 \to L^2_\rho$ and this is why our stochastic integral $Y$ takes values in $L^2_\rho$. 
+As for the reason why $Y\in L^2_\rho$, I believe this comes from Da Prato's contruction of the stochastic integral $\int_0^t\psi(x)dW_x$, see and page 57 of \cite{DZ96}. In genera we can define the stochastic integral $\int_0^t\psi(x)dW_x$ when $\psi$ is a Hilbert schmidt operator from a Hilbert space $U$ to another Hilbert space $H$. In this paper, the integrand of $Y^x(s)$ is playing the role of $\psi$ but here it is a hilbert schmidt operator from $L^2 \to L^2_\rho$ and this is why our stochastic integral $Y$ takes values in $L^2_\rho$. 
 \\ \\
-The inequality follows from (5.2.13) from $\cite{DZ96}$ and also page 192 of $\cite{PZ95}$. Ie. we can use (5.2.13) to show that \begin{align}
+The inequality follows from (5.2.13) from \cite{DZ96} and also page 192 of \cite{PZ95}. Ie. we can use (5.2.13) to show that \begin{align}
       E\int_0^1|Y^x(s)|^q_{\hat \rho} ds &\le k\int_0^1E\left( \int_0^s(s-\varsigma)^{-2\alpha}\Vert S(s-\varsigma)M(B(X^x(\varsigma))) \Vert _{L_2(L^2,L^2_{\hat\rho})}^2d\varsigma \right)^{q/2}ds
       \\ & \le kC^q\int_0^1E\left( \int_0^s(s-\varsigma)^{-(2\alpha+\sigma)}|B(X(^x(\varsigma))|^2_\rho d\varsigma \right)^{q/2}ds 
 \end{align}
@@ -387,14 +395,14 @@ This is no longer relevant. We can establish Theorem 3.3 using our language and 
 \begin{NickQuestion}
 I still think there are several inconsistencies with this paper that I can't justify. 
 \begin{enumerate}
-    \item First, this paper claims that the solution (2.3) on page 275 follows from $\cite{PZ95}$ but in that paper the $M$ is defined differently and I have found no justification in any other text as to why the $M$ is defined differently in this paper. 
+    \item First, this paper claims that the solution (2.3) on page 275 follows from \cite{PZ95} but in that paper the $M$ is defined differently and I have found no justification in any other text as to why the $M$ is defined differently in this paper. 
     
     \item This paper states that $\mathscr W$ is a Wiener Processes on $L^2$ with covarience operator $I$ which I am assuming is the identity operator which according to De Prato means that $\mathscr W$ is a cylindrical Wiener processes. But this paper never states the range of $\mathscr W$ but in order for the stochastic integral in (2.3) to makes sense, $\mathscr W$ needs to be $L^2$ valued since our integrand in (2.3) is a hilbert schmidt operator from $L^2$ to $L^2_\rho$. 
     
     \item I havent quite been able to verify the represention of $Z_1(t,\xi)$ on page 279 \begin{align}
         Z_1(t,\xi) = \sum_i\int_0^t\left(\int_{\mathbb R^d}G(s,\xi - \eta)b(\eta,0)(\widehat {\gamma^{1/2}} * e_i)(\eta)d\eta\right)d\beta^i_s
     \end{align}
-Here's what I have been able to verify. First, sine the covariane operator is $I$, we use (4.2) page 82 of $\cite{DZ92}$ to write \begin{align}
+Here's what I have been able to verify. First, sine the covariane operator is $I$, we use (4.2) page 82 of \cite{DZ92} to write \begin{align}
     W(s)=\sum_i<W(s),e_i>e_i
 \end{align}
  where $\{e_i\}$ is the orthonormal basis (not sure the space it is a basis for?). Then we use the definition of $Z_1$ given in the beginning of the proof as $Z_n=X_n-X_{n-1}$. The proof says we let $X_0=0$. Then we have the following \begin{align}
@@ -531,7 +539,7 @@ An issue we have is that we need to show that our solution is inside the weighte
 \item $$\sup_{0\le t \le T}E(||u(t,\cdot)||_\rho^2)=\sup_{0\le t \le T}\int_{\mathbb R^d}||u(t,x)||_2^2\rho(x)dx < \infty$$
 \end{enumerate} First of all, in either (1) or (2) all we would have at best is that $u(t,\cdot)\in L_\rho^2$ almost surely and I can't tell from reading the Tessitore paper if that is good enough. For sure, in the Tessitore paper, their solution $X^x(t)(\omega)\in L_\rho^2$ for every $ \omega \in \Omega$ and this is because of the way the stochastic integral is defined in the Da Prato textbook. Also, I'm not sure whether we need $(1)$ or $(2)$ but from the looks of the Tessitore paper it seems like $(2)$ would be needed. That is because in the Tessitore paper we, have to work with $$ \dfrac{1}{T}\int_1^{T+1}\mathscr L(u(t,x))dt $$ which is used to find the invariant measure and above the laws $\mathscr L(u(t,x))$ I believed are defined as $$ \mathscr L(u(t,x))(A)=\mathbb P(\omega \in \Omega:u(t,\cdot)(\omega)\in A \;\;\; A \in \mathscr B (L_\rho^2) $$
 
-There is an issue with even showing $(1)$ from above. We need for $H(t,\gamma_2)<\infty$ from the moment bounds from your paper $\cite{CH16Comparison}$. It seems the best we can do is Lemma 2.1 from \cite{CH16Comparison} which says that \begin{align} \limsup_{t\to\infty}\frac{1}{t}\log(H(t:\gamma))\le \inf\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\} \end{align} So first we would need to make sure that $\inf\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\}<\infty$ or in other words show that $\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\}$ is nonempty. This will restrict us to certain correlation functions $f(x)$. Another concern is that even if we assume the right hand side of (10.1) is finite, then all we know really is that infinitely often $$ H(t,\gamma) \le \exp(Kt) \;\;\;\; K=\text{RHS of (10.1)}$$ so there may still be some $t$ such that $H(t,\gamma)$ is infinite and then this would cause a trouble in showing (2) from above. 
+There is an issue with even showing $(1)$ from above. We need for $H(t,\gamma_2)<\infty$ from the moment bounds from your paper \cite{CH16Comparison}. It seems the best we can do is Lemma 2.1 from \cite{CH16Comparison} which says that \begin{align} \limsup_{t\to\infty}\frac{1}{t}\log(H(t:\gamma))\le \inf\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\} \end{align} So first we would need to make sure that $\inf\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\}<\infty$ or in other words show that $\{\beta >0 : \Upsilon(2\beta)<\frac{1}{2\gamma}\}$ is nonempty. This will restrict us to certain correlation functions $f(x)$. Another concern is that even if we assume the right hand side of (10.1) is finite, then all we know really is that infinitely often $$ H(t,\gamma) \le \exp(Kt) \;\;\;\; K=\text{RHS of (10.1)}$$ so there may still be some $t$ such that $H(t,\gamma)$ is infinite and then this would cause a trouble in showing (2) from above. 
 \end{NickQuestion}
 \begin{NickQuestion}[(Continue of question 10.3)]
 I have looked through your paper \cite{CK15SHE} and have found more information about the behavior of $H(t;\gamma)$. However there seems to be a couple differences of the definitions of $H$ from \cite{CK15SHE} and \cite{CH16Comparison}. 
