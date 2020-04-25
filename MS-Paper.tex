@@ -11,24 +11,21 @@
 % Load Packages here
 % -------------------------------------------------
 \usepackage{hyperref} 
-\usepackage{graphicx,url,subfig}
-\RequirePackage[OT1]{fontenc}
-\RequirePackage{amsthm,amsmath,amssymb,amscd}
-\RequirePackage[numbers]{natbib}
-\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 \usepackage{graphics}
-\usepackage{enumerate}
+\usepackage{graphicx,url,subfig}
 \usepackage{datetime}
+\usepackage{enumerate}
 \usepackage{etex}
 % \usepackage[notcite,notref,color]{showkeys}
 \usepackage[normalem]{ulem} % either use this (simple) or
 \usepackage{soul} % use this (many fancier options)
 \makeatother
-\numberwithin{equation}{section}
-\allowdisplaybreaks
 \usepackage{mathrsfs}
+\usepackage[OT1]{fontenc}
+\usepackage{amsthm,amsmath,amssymb,amscd}
+\usepackage[numbers]{natbib}
+% \usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 
- 
 % -------------------------------------------------
 % check references
 % -------------------------------------------------
@@ -36,6 +33,11 @@
 % \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
+
+% \numberwithin{equation}{section}
+% \allowdisplaybreaks
+
+
 
 % -------------------------------------------------
 % Environments here
@@ -241,6 +243,7 @@ $$ \int_{\R^d} \dfrac{f(\ud \xi)}{|\xi|^2} < \infty $$
 There is a property called exponential stability defined in \cite{MSY16}: A solution of an SPDE $u$ is said to be exponentially stable is there exists $K>0$ and $\gamma >0$ such that for any $t_0$ and any other other solution $\eta$ with  $\eta(t_0) \in \mathcal F_{t_0}$ and $\E\Vert \eta(t_0) \Vert _H^2 < \infty$, we have that 
 $$ \E\Vert u(t)- \eta(t) \Vert _H^2 \le K\exp\left( -\gamma(t-t_0)\right)\E\Vert u(t_0) - \eta(t_0) \Vert _H^2 $$
 for any $t \ge t_0$.
+\end{remark}
 
 This property can be used to show the existence and uniqueness of an invariant measure. In \cite{MSY16}, they show that the solution to 
 $$ \begin{cases}
@@ -282,7 +285,7 @@ The issue when we now consider $f\not \equiv 0$ is the following. By the factori
 $$ u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x) + \bigg(G(\circ,\cdot)\star f\big(\cdot,u(\circ,\cdot)\big) \bigg)(t_0,x) +\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x) $$ 
 and we could try to mimic our proof and define a new $\mathscr K^*(\Theta)$ as follows 
 \begin{align*} \mathscr K^* (\Theta) = \bigg\{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+ \bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x) +(F^{\delta_0}_\alpha h)(x), \quad \\ \hspace{5em}\text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $  and   $q$ has some property} \bigg\} \end{align*}
-We need this new set $\mthscr K^* (\Theta)$ to be relatively compact in $L^2_\rho$ but then we would need the operator $\bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x)$ to be compact so that $\mathscr K^*(\Theta)$ remains relatively compact. So we need to see what space this function $q$ needs to be in. Note that we want $ f\big(x,u(t,x)\big)$ to be a specific example of $f\big(x,q(t,x)\big)$. Maybe we want the following 
+We need this new set $\mathscr{K}^* (\Theta)$ to be relatively compact in $L^2_\rho$ but then we would need the operator $\bigg(G(\circ,\cdot)\star f\big(\cdot,q(\circ,\cdot)\big) \bigg)(\delta_0,x)$ to be compact so that $\mathscr K^*(\Theta)$ remains relatively compact. So we need to see what space this function $q$ needs to be in. Note that we want $ f\big(x,u(t,x)\big)$ to be a specific example of $f\big(x,q(t,x)\big)$. Maybe we want the following 
 \begin{enumerate}
     \item $t \mapsto q(x,t)$ is continuous or even just bounded on $t \in [0,T]$ for any $T>0$. 
     \item $x \mapsto q(x,t)$ is in $L^2_\rho$
