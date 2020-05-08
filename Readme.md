@@ -1,9 +1,10 @@
 # This is the wikipage for Nick's thesis work.
 1.  Discussions started from `main.tex`
 2.  `MS-Paper.tex` is the most recent work.
+3. Let's store all references in the folder `./Refs`
+3. Let's store all codes in the folder `./Codes`
 
 
-~~Scratch through ~~
 
 # Some useful tech. links
 
