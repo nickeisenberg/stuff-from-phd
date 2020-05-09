@@ -1,0 +1,1129 @@
+\documentclass[a4paper,12pt]{article}
+
+% -------------------------------------------------
+%
+% | |    ___   / ___| |__   ___ _ __  
+% | |   / _ \ | |   | '_ \ / _ \ '_ \ 
+% | |__|  __/ | |___| | | |  __/ | | |
+% |_____\___|  \____|_| |_|\___|_| |_|
+%                                                                        
+%  Created on Fri 08 May 2020 05:28:34 PM EDT
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+\usepackage[margin=1in]{geometry}
+% \setlength{\topmargin}{-0.25in}
+
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+\usepackage{graphicx,url,subfig}
+% \RequirePackage[OT1]{fontenc}
+% \usepackage{etex}
+\RequirePackage{amsthm,amsmath,amssymb,amscd,mathrsfs}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\RequirePackage[numbers]{natbib}
+\usepackage{luacode}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\usepackage{xcolor}
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Norm}[1]{\left|\left|  #1   \right|\right|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand*{\one}{{{\rm 1\mkern-1.5mu}\!{\rm I}}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf}}}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi}}}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc}}}
+\newcommand{\He}{\ensuremath{\mathrm{He}}}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+\newcommand{\Dxa}{{}_x D_\delta^a}
+\newcommand{\Dtb}{{}_t D_*^\beta}
+\newcommand{\lMr}[3]{\:{}_{#1} #2_{#3}}
+\newcommand{\tlMr}[4]{\:{}^{\hspace{0.2em}#1}_{#2} \hspace{-0.1em}#3_{#4}}
+
+
+% -------------------------------------------------
+% Title, authors and date go here. 
+% -------------------------------------------------
+\title{Stochastic Heat Equation in the Real World}
+\author{Le Chen}
+\date{\today}
+\begin{document}
+\maketitle
+
+% -------------------------------------------------
+% Document begins here 
+% -------------------------------------------------
+
+Hi, Nick, 
+\bigskip
+
+
+Here is a rather complete references. I will keep maintain this file. Please it
+for private use.
+\bigskip
+
+
+Here are some references where you find SHE naturally arises from physical
+world:   
+\begin{enumerate}
+	\item Random polymer model. \cite{AmirCorwinQuastel11Stationary},
+		\cite{Moreno14Pos}.  
+	\item Karda-Parasi-Zhang equation. \cite{KPZ86}, \cite{Hairer2014RS},
+		\cite{Quastel12KPZ}, \cite{GP15KPZ}.       
+	\item Parabolic Anderson model: \cite{CarmonaMolchanov94}.  
+	\item Intermittence:
+		\cite{Zeldovich90Almighty}, \cite{BertiniCancrini94Intermittence}.
+	\item Evolution of the universe: \cite{AMS94},
+		\cite{BertiniEtc94Burgers}.  
+\end{enumerate}
+These topics are related to each other. This is a very active and
+fast-developing field. 
+
+\bigskip
+
+As for SHE with non Lipschitz coefficients, here are several other references
+that may interest you: 
+\cite{DKZ19}, \cite{Mueller91Support}, \cite{FLN19}.   
+
+\bigskip
+
+
+More to come in the future. 
+
+
+
+% -------------------------------------------------
+% References go here. 
+% -------------------------------------------------
+\begin{thebibliography}{999}
+
+
+\bibitem{Adam03SecondEd}
+Adams, Robert A. and John J. F. Fournier.
+\newblock {\em Sobolev spaces}~(2$^{\text{nd}}$ ed.).
+\newblock Elsevier/Academic Press, Amsterdam, 2003.
+
+
+
+\bibitem[AMS94]{AMS94}
+Albeverio, Sergio,  Stanislav A. Molchanov, and  Donatas Surgailis.
+\newblock Stratified structure of the Universe and Burgers' equation -- a probabilistic approach. 
+\newblock {\it Probab. Theory Related Fields}, 100 (1994), no. 4, 457--484. 
+
+
+\bibitem[ACQ11]{AmirCorwinQuastel11Stationary}
+Amir, Gideon, Ivan Corwin, and Jeremy Quastel.
+\newblock Probability distribution of the free energy of the continuum directed
+  random polymer in {$1+1$} dimensions.
+\newblock {\em Comm. Pure Appl. Math.}, 64 (2011), no. 4, 466--537.
+
+\bibitem[AM03]{AM03}
+Assing, Sigurd and Ralf Manthey.
+\newblock Invariant measures for stochastic heat equations with unbounded coefficients. 
+\newblock {\it Stochastic Process. Appl.} 103 (2003), no. 2, 237--256.
+
+\bibitem[AD11]{AurzadaDoring11Intermittency}
+Frank Aurzada and Leif D{\"o}ring.
+\newblock Intermittency and aging for the symbiotic branching model.
+\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.}, 47(2):376--394,
+  2011.
+
+\bibitem[AR02]{aki2002quantitative}
+K.~Aki and P.G. Richards.
+\newblock {\em Quantitative Seismology}.
+\newblock Geology (University Science Books): Seismology. University Science
+  Books, 2002.
+
+\bibitem[BC18]{BC18}
+Balan, Raluca and Le Chen.
+\newblock Parabolic Anderson model with space-time homogeneous Gaussian noise
+and rough initial condition.
+\newblock {\em J. Theoret. Probab.}, 31 (2018), no. 4, 2216--2265.
+
+
+\bibitem[BP98]{BP98}
+Bally, Vlad and Etienne Pardoux.
+\newblock Malliavin calculus for white noise driven parabolic {SPDEs}.
+\newblock {\em Potential Anal.} 9 (1998), no. 1, 27--64.
+
+
+\bibitem[BC95]{BertiniCancrini94Intermittence}
+Bertini, Lorenzo and Nicoletta Cancrini.
+\newblock The stochastic heat equation: {F}eynman-{K}ac formula and intermittence.
+\newblock {\em J. Statist. Phys.}, 78 (1995), no. 5-6, 1377--1401.
+
+\bibitem[BC11]{BorodinCorwin11MP}
+Borodin, Alexei and Ivan Corwin.
+\newblock Macdonald processes.
+\newblock Preprint at {\em arXiv:1111.4408v2}, 2011.
+
+\bibitem[BCJL94]{BertiniEtc94Burgers}
+L.~Bertini, N.~Cancrini, and G.~Jona-Lasinio.
+\newblock The stochastic {B}urgers equation.
+\newblock {\em Comm. Math. Phys.}, 165(2):211--232, 1994.
+
+\bibitem[BG97]{BertiniGiacomin97BurgersKPZ}
+Bertini, Lorenzo and Giambattista Giacomin.
+\newblock Stochastic {B}urgers and {KPZ} equations from particle systems.
+\newblock {\em Comm. Math. Phys.}, 183 (1997), no. 3, 571--607.
+
+\bibitem[BG99]{BertiniGiacomin99Long}
+Bertini, Lorenzo and Giambattista Giacomin.
+\newblock On the long-time behavior of the stochastic heat equation.
+\newblock {\em Probab. Theory Related Fields}, 114 (1999), no. 3, 279--289.
+
+\bibitem[BO07]{BrzezniakOndrejat07StrongWave}
+Zdzis{\l}aw Brze{\'z}niak and Martin Ondrej{\'a}t.
+\newblock Strong solutions to stochastic wave equations with values in
+  {R}iemannian manifolds.
+\newblock {\em J. Funct. Anal.}, 253(2):449--481, 2007.
+
+\bibitem[BO11]{BrzezniakOndrejat011Weak}
+Z.~Brze{\'z}niak and M.~Ondrej{\'a}t.
+\newblock Weak solutions to stochastic wave equations with values in
+  {R}iemannian manifolds.
+\newblock {\em Commun. Part. Diff. Eq.}, 36(9):1624--1653, 2011.
+
+
+\bibitem[BC14]{BC14Moment}
+Borodin, Alexei and Ivan Corwin.
+\newblock Moments and Lyapunov exponents for the parabolic Anderson model.
+\newblock {\em Ann. Appl. Probab.,} 24 (2014), no. 3, 1172--1198.
+
+
+
+\bibitem[BH91]{BH91}
+Bouleau, Nicolas and Francis Hirsch.  
+\newblock {\em Dirichlet forms and analysis on Wiener space.}
+\newblock de Gruyter Studies in Mathematics, 14. Walter de Gruyter \& Co., Berlin, 1991. x+325 pp.
+
+\bibitem[BG99]{BG99}
+Brze{\'z}niak, Zdzis{\l}aw and  Dariusz Gatarek.
+\newblock Martingale solutions and invariant measures for stochastic evolution equations in Banach spaces. \newblock {\it Stochastic Process. Appl.} 84 (1999), no. 2, 187--225. 
+
+
+\bibitem[BP99]{BrzezniakPeszat99SpactTime}
+Brze{\'z}niak, Zdzis{\l}aw and Szymon Peszat.
+\newblock Space-time continuous solutions to {SPDE}'s driven by a homogeneous
+  {W}iener process.
+\newblock {\em Studia Math.}, 137(3):261--299, 1999.
+
+\bibitem[Bur74]{Burgers1974non}
+J.M. Burgers.
+\newblock {\em The Non-Linear Diffusion Equation: Asymptotic Solutions and
+  Statistical Problems}.
+\newblock Reidel Publishing Company, Dordrecht, Holland, 1974.
+
+
+\bibitem[CW75]{CairoliWalsh75SIPlane}
+R.~Cairoli and John~B. Walsh.
+\newblock Stochastic integrals in the plane.
+\newblock {\em Acta Math.}, 134:111--183, 1975.
+
+\bibitem[CM94]{CarmonaMolchanov94}
+Carmona, Ren{\'e}~A. and Stanislav~A. Molchanov.
+\newblock Parabolic {A}nderson problem and intermittency.
+\newblock {\em Mem. Amer. Math. Soc.}, 108(518):viii+125, 1994.
+
+\bibitem[CN88a]{CarmonaNualart88Propagation}
+Carmona, Ren{\'e} and David Nualart.
+\newblock Random nonlinear wave equations: propagation of singularities.
+\newblock {\em Ann. Probab.}, 16(2):730--751, 1988.
+
+\bibitem[CN88b]{CarmonaNualart88Smooth}
+Carmona, Ren{\'e} and David Nualart.
+\newblock Random nonlinear wave equations: smoothness of the solutions.
+\newblock {\em Probab. Theory Related Fields}, 79(4):469--508, 1988.
+
+\bibitem[CFG17]{CFG17gPAM}
+Cannizzaro, Giuseppe, Peter K. Friz and Paul Gassiat.
+\newblock Malliavin Calculus for regularity structures: the case of gPAM.
+\newblock {\em J. Funct. Anal.}, 272 (2017), no. 1, 363--419.
+
+\bibitem[CRA+08]{craiem2008fractional}
+Damian Craiem, Francisco~J Rojo, Jos{\'e}~Miguel Atienza, Ricardo~L Armentano,
+  and Gustavo~V Guinea.
+\newblock Fractional-order viscoelasticity applied to describe uniaxial stress
+  relaxation of human arteries.
+\newblock {\em Physics in medicine and biology}, 53(17):4543, 2008.
+
+\bibitem[CW01]{CardonWeber01Cahn}
+Cardon-Weber, Caroline.
+\newblock Cahn-{H}illiard stochastic equation: existence of the solution and of
+  its density.
+\newblock {\em Bernoulli}, 7(5):777--816, 2001.
+
+\bibitem[CWM04]{CardonWeberMillet04Strongly}
+Cardon-Weber, Caroline and Anne Millet.
+\newblock On strongly {P}etrovski\u\i's parabolic {SPDE}s in arbitrary
+  dimension and application to the stochastic {C}ahn-{H}illiard equation.
+\newblock {\em J. Theoret. Probab.}, 17(1):1--49, 2004.
+
+\bibitem[Cha00]{Chan2000scaling}
+Terence Chan.
+\newblock Scaling limits of {W}ick ordered {KPZ} equation.
+\newblock {\em Commun. Math. Phys.}, 209(3):671--690, 2000.
+
+\bibitem[Cer01]{Cer01}
+Cerrai, Sandra.
+\newblock {\it Second order PDE's in finite and infinite dimension.} 
+\newblock A probabilistic approach. Lecture Notes in Mathematics, 1762. Springer-Verlag, Berlin, 2001. x+330 pp. 
+
+\bibitem[Cer03]{Cer03}
+Cerrai, Sandra.
+\newblock Stochastic reaction-diffusion systems with multiplicative noise and non-Lipschitz reaction term.
+\newblock {\it Probab. Theory Related Fields} 125 (2003), no. 2, 271--304. 
+
+\bibitem[Cer06]{Cer06}
+Cerrai, Sandra.
+\newblock Asymptotic behavior of systems of stochastic partial differential equations with multiplicative noise. 
+\newblock {\it Stochastic partial differential equations and applications--VII}, 61--75, 
+Lect. Notes Pure Appl. Math., 245, Chapman \& Hall/CRC, Boca Raton, FL, 2006. 
+
+
+\bibitem[Che13]{Chen13Thesis}
+Chen, Le.
+\newblock {\em Moments, intermittency, and growth indices for nonlinear stochastic PDE's with rough initial conditions}.
+\newblock PhD thesis, No. 5712, \'Ecole Polytechnique F\'ed\'erale de Lausanne, 
+2013.
+
+\bibitem[Che17]{Chen17Time}
+Chen, Le.
+\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+\newblock {\em Trans. Amer. Math. Soc.}, 369 (2017), no. 12, 8497--8535.
+
+\bibitem[Che16]{Che16}
+Chen, Le.
+\newblock The third moment for the parabolic Anderson model. 
+\newblock {\em Unpublished note}, arXiv:1609.01005, 2016.
+
+\bibitem[C$^2$K$^2$17]{CCKK17}
+Chen, Le, Michael Cranston, Davar Khoshnevisan and Kunwoo Kim.
+\newblock Dissipation and high disorder.
+\newblock {\em Ann. Probab.}, 45 (2017), no. 1, 82--99.
+
+\bibitem[CD15H]{ChenDalang15Heat}
+Chen, Le and Robert~C. Dalang.
+\newblock Moments and growth indices for nonlinear stochastic heat equation with rough initial conditions.
+\newblock {\it Ann. Probab.}, 43 (2015), no. 6, 3006--3051.
+
+\bibitem[CD14R]{ChenDalang14Holder}
+Chen, Le  and Robert~C. Dalang.
+\newblock H\"older-continuity for the nonlinear stochastic heat equation with rough initial conditions.
+\newblock {\em Stoch. Partial Differ. Equ. Anal. Comput.}, 2 (2014), no. 3, 316--352.
+
+\bibitem[CD15W]{ChenDalang15Wave}
+Chen, Le  and Robert~C. Dalang.
+\newblock Moments, intermittency, and growth indices for nonlinear one-dimensional stochastic wave equation.
+\newblock {\em Stochastic Process. Appl.}, 125 (2015), no. 4, 1605--1628.
+
+\bibitem[CD15F]{ChenDalang15FSHE}
+Chen, Le  and Robert~C. Dalang.
+\newblock Moments, intermittency and growth indices for nonlinear stochastic fractional heat equation.
+\newblock {\em  Stoch. Partial Differ. Equ. Anal. Comput.}, 3 (2015), no. 3, 360--397.
+
+\bibitem[CH18]{CH18}
+Chen, Le and Jingyu Huang.
+\newblock Comparison principle for the stochastic heat equation on $\mathbb{R}^d$.
+\newblock  {\it Ann. Probab.},  47 (2019), no. 2, 989--1035.
+
+
+\bibitem[CHK+19]{CHKK16Bad}
+Chen, Le, Jingyu Huang, Davar Khoshnevisan and Kunwoo Kim.
+\newblock Dense blowup for parabolic SPDEs.
+\newblock {\em Electron. J. Probab.}, 24 (2019), Paper No. 118, 33 pp.
+
+\bibitem[CHHH17]{CHHH17}
+Chen, Le,  Guannan Hu, Yaozhong Hu and Jingyu Huang.
+\newblock Space-time fractional diffusions in Gaussian noisy environment.
+\newblock {\em Stochastics}, 89 (2017), no. 1, 171--206.
+
+\bibitem[CHKK17]{CHKK17Blowup}
+Chen, Le, Jingyu Huang, Davar Khoshnevisan, and Kunwoo Kim.
+\newblock Dense blowup for parabolic SPDEs.
+\newblock {\it Electron. J. Probab.}, accepted pending revision, 2019.
+
+
+\bibitem[CHKN18]{CHKN18}
+Chen, Le, Yaozhong  Hu, Kamran Kalbasi and David Nualart.
+\newblock Intermittency for the stochastic heat equation driven by a rough time
+fractional Gaussian noise.
+\newblock {\em Probab. Theory Related Fields}, 171 (2018), no. 1-2, 431--457.
+
+
+\bibitem[CHN18N]{CHN18N}
+Chen, Le,  Yaozhong Hu and David Nualart.
+\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations
+on $\R^d$.
+\newblock {\em Stochastic Process. Appl.}, in press, 2019.
+
+\bibitem[CHN16R]{CHN16R}
+Chen, Le, Yaozhong Hu and David Nualart.
+\newblock Regularity and positivity of densities for the fractional stochastic
+heat equation with rough initial conditions.
+\newblock {\em Mem. Amer. Math. Soc.}, (2018) to appear.
+
+\bibitem[CHN17T]{CHN17Two}
+Chen, Le,  Yaozhong Hu and David Nualart.
+\newblock Two-point correlation function and Feynman-Kac formula for the
+stochastic heat equation.
+\newblock {\em Potential Anal.}, 46 (2017), no. 4, 779--797.
+
+
+\bibitem[CK17]{CK17Comp}
+Chen, Le  and Kunwoo Kim.
+\newblock On comparison principle and strict positivity of solutions to the
+nonlinear stochastic fractional heat equations.
+\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.}, 53 (2017), no. 1, 358--388. 
+
+\bibitem[CK18]{CK18}
+Chen, Le and Kunwoo Kim.
+\newblock Nonlinear stochastic heat equation driven by spatially colored noise:
+moments and intermittency.
+\newblock {\em  Acta Math. Sci. Ser. B}, (2019), to appear.
+
+
+\bibitem[CK$^2$16]{CKK15a}
+Chen, Le, Davar Khoshnevisan and Kunwoo Kim.
+\newblock Decorrelation of total mass via energy.
+\newblock {\em Potential Anal.}, 45 (2016), no. 1, 157--166.
+
+\bibitem[CK$^2$17]{CKK17b}
+Chen, Le, Davar Khoshnevisan and Kunwoo Kim.
+\newblock A boundedness trichotomy for the stochastic heat equation.
+\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.}, 53 (2017), no. 4, 1991--2004. 
+
+\bibitem[Che17]{XChen17}
+Chen, Xia.
+\newblock Parabolic Anderson model with rough or cirtical Gaussian noise
+\newblock {\em Ann. Inst. Henri Poincaré Probab. Stat.}, 55 (2019), no. 2, 941--976.
+
+% 
+\bibitem[Cho02]{Chow02wave}
+Pao-Liu Chow.
+\newblock Stochastic wave equations with polynomial nonlinearity.
+\newblock {\em Ann. Appl. Probab.}, 12(1):361--381, 2002.
+
+\bibitem[CD08]{ConusDalang08Extending}
+Daniel Conus and Robert~C. Dalang.
+\newblock The non-linear stochastic wave equation in high dimensions.
+\newblock {\em Electron. J. Probab.}, 13:no. 22, 629--670, 2008.
+
+
+\bibitem[CJKS14]{ConusEct14Initial}
+Conus, Daniel, Mathew Joseph, Davar Khoshnevisan, and Shang-Yuan Shiu.
+\newblock Initial measures for the stochastic heat equation.
+\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.}, 50 (2014), no. 1, 136--153.
+
+\bibitem[CK12]{ConusKhosh10Farthest}
+Conus, Daniel and Davar Khoshnevisan.
+\newblock On the existence and position of the farthest peaks of a family of stochastic heat and wave equations.
+\newblock {\em Probab. Theory Related Fields}, 152 (2012), no. 3-4, 681--701.
+
+
+\bibitem[CK10]{ConusKhosh10Weak}
+Daniel Conus and Davar Khoshnevisan.
+\newblock Weak nonmild solutions to some {SPDEs}.
+\newblock {\em Illinois Journal of Mathematics}, 2010.
+
+
+\bibitem[Cor12]{Cor12} 
+Corwin, Ivan.
+\newblock The Kardar-Parisi-Zhang equation and universality class. 
+\newblock {\it Random Matrices Theory Appl.}, 1 (2012), no. 1, 1130001, 76 pp.
+
+\bibitem[CFG96]{CFG96}
+Cox, J. Theodore, Klaus Fleischmann and Andreas Greven.
+\newblock Comparison of interacting diffusions and an application to their ergodic theory. 
+\newblock {\it Probab. Theory Related Fields} 105 (1996), no. 4, 513--528. 
+
+\bibitem[Dal09]{Dalang09Mini}
+Robert~C. Dalang.
+\newblock The stochastic wave equation.
+\newblock Chapter 2 in \cite{DalangEtc08Minicourse}.
+
+\bibitem[Dal99]{Dalang99Extending}
+Dalang, Robert~C.
+\newblock Extending the martingale measure stochastic integral with applications to spatially homogeneous s.p.d.e.'s.
+\newblock {\em Electron. J. Probab.}, 4 (1999), no. 6, 29 pp.
+
+\bibitem{DalangFrangos98}
+Dalang, Robert C. and Nicholas E. Frangos.
+\newblock The stochastic wave equation in two spatial dimensions.
+\newblock {\em Ann. Probab.}, {\bf 26}{\it (1)} (1998), 187--212.
+
+\bibitem[DE88]{doi1988theory}
+M.~Doi and S.F. Edwards.
+\newblock {\em The Theory of Polymer Dynamics}.
+\newblock International series of monographs on physics. Clarendon Press,
+1988.
+
+\bibitem[DF98]{DalangFrangos98}
+Dalang, Robert~C. and N.~E. Frangos.
+\newblock The stochastic wave equation in two spatial dimensions.
+\newblock {\em Ann. Probab.}, 26(1):187--212, 1998.
+
+\bibitem{DalangMueller03} Dalang, Robert C. and Carl Mueller.
+\newblock Some non-linear S.P.D.E.'s that are second order in time.
+\newblock {\it Electron.\ J. Probab.}\ {\bf 8}{\it (1)} (2003) 21 pp.
+
+
+\bibitem{DalangQuer} 
+Dalang, Robert C. and Llu\'is Quer-Sardanyons.
+\newblock Stochastic integrals for spde's: a comparison.
+\newblock {\it Expo. Math.} 29 (2011), no. 1, 67--109. 
+
+
+\bibitem[DKM+09]{DalangEtc08Minicourse}
+Dalang, Robert~C., Davar Khoshnevisan, Carl Mueller, David Nualart, and Yimin Xiao.
+\newblock {\em A minicourse on stochastic partial differential equations},
+\newblock volume 1962 of {\em Lecture Notes in Mathematics}.  Springer-Verlag, Berlin, 2009.
+% \newblock Edited by D. Khoshnevisan and F. Rassoul-Agha.
+
+\bibitem[DKN07]{DalangKhNualart07HittingAdditive}
+Dalang, Robert~C., Davar Khoshnevisan, and Eulalia Nualart.
+\newblock Hitting probabilities for systems of non-linear stochastic heat equations with additive noise.
+\newblock {\em ALEA Lat. Am. J. Probab. Math. Stat.}, 3 (2007), 231--271. 
+
+\bibitem[DKN09]{DalangKhNualart09HittingMult}
+Dalang, Robert~C., Davar Khoshnevisan, and Eulalia Nualart.
+\newblock Hitting probabilities for systems for non-linear stochastic heat equations with multiplicative noise.
+\newblock {\em Probab. Theory Related Fields}, 144 (2009), no. 3-4, 371--427.
+
+\bibitem[DKN13]{DalangKhNualart13HittingSHE}
+Dalang, Robert~C., Davar Khoshnevisan, and Eulalia Nualart.
+\newblock Hitting probabilities for systems of non-linear stochastic heat equations in spatial dimension $k\ge 1$
+\newblock {\em Stoch. Partial Differ. Equ. Anal. Comput.} 1 (2013), no. 1, 94--151.
+
+\bibitem[DQ11]{DQ11}
+Dalang, Robert C. and Llu\'is Quer-Sardanyons.
+\newblock Stochastic integrals for spde's: a comparison. 
+\newblock {\em Expo. Math.} 29 (2011), no. 1, 67--109. 
+
+\bibitem[DM09]{DalangMueller09Intermittency}
+Dalang, Robert~C. and Carl Mueller.
+\newblock Intermittency properties in a hyperbolic {A}nderson problem.
+\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.}, 45(4):1150--1164, 2009.
+
+\bibitem[DMT08]{DalangMT06FKT}
+Dalang, Robert~C., Carl Mueller and Roger Tribe.
+\newblock A {F}eynman-{K}ac-type formula for the deterministic and stochastic wave equations and other {P}.{D}.{E}.'s.
+\newblock {\em Trans. Amer. Math. Soc.}, 360(9):4681--4703, 2008.
+
+\bibitem[DKZ19]{DKZ19}
+Dalang, Robert C., Davar Khoshnevisan and Tusheng Zhang.
+\newblock Global solutions to stochastic reaction-diffusion equations with super-linear drift and multiplicative noise. 
+\newblock {\it Ann. Probab.} 47 (2019), no. 1, 519--559.
+
+\bibitem[DS09]{DalangSanzSole09Holder}
+Dalang, Robert~C. and Marta Sanz-Sol{\'e}.
+\newblock H\"older-{S}obolev regularity of the solution to the stochastic wave equation in dimension three.
+\newblock {\em Mem. Amer. Math. Soc.}, 199(931):vi+70, 2009.
+
+\bibitem[DZ96]{DZ96}
+Da Prato, Giuseppe and Jerzy Zabczyk.
+\newblock {\it Ergodicity for infinite-dimensional systems. }
+\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996. 
+
+
+\bibitem[DZ14]{DaPrato14}
+Da Prato, Giuseppe and Jerzy Zabczyk.
+\newblock {\em Stochastic equations in infinite dimensions.} Second edition. 
+\newblock Encyclopedia of Mathematics and its Applications, 152. Cambridge University Press, Cambridge, 2014. 
+
+\bibitem[DP98]{DawsonPerkins98Mutual}
+Dawson, Donald~A. and Edwin~A. Perkins.
+\newblock Long-time behavior and coexistence in a mutually catalytic branching model.
+\newblock {\em Ann. Probab.}, 26(3):1088--1138, 1998.
+
+\bibitem{DS80}
+Dawson, Donald A. and Habib Salehi.
+\newblock Spatially homogeneous random evolutions. 
+\newblock{\it J. Multivar. Anal.} 10 (1980), no. 2, 141--180. 
+
+\bibitem[D$^2$05]{DebbiDozzi05On}
+Debbi, Latifa and Marco Dozzi.
+\newblock On the solutions of nonlinear stochastic fractional partial
+  differential equations in one spatial dimension.
+\newblock {\em Stochastic Process. Appl.},
+  115(11):1764--1781, 2005.
+
+
+
+\bibitem[Deb06]{Debbi06Explicit}
+Debbi, Latifa.
+\newblock Explicit solutions of some fractional partial differential equations via stable subordinators.
+\newblock {\em J. Appl. Math. Stoch. Anal.}, pages 1--18, 2006.
+
+\bibitem[Dim10]{dimitrienko2010nonlinear}
+Dimitrienko, Y.I.
+\newblock {\em Nonlinear Continuum Mechanics and Large Inelastic Deformations}.
+\newblock Solid mechanics and its applications. Springer, 2010.
+
+\bibitem{DonohoStark} 
+Donoho, David L. and Philip B. Stark.
+\newblock Uncertainty principles and signal recovery.
+\newblock {\it SIAM J. Appl.\ Math.}\ {\bf 49}{\it (3)} (1989) 906--931.
+
+\bibitem[EH01]{EH01}
+Eckmann,  Jean-Pierre and Martin Hairer.
+\newblock Invariant measures for stochastic partial differential equations in unbounded domains. 
+\newblock {\it Nonlinearity} 14 (2001), no. 1, 133--151. 
+
+\bibitem[EF04]{EtheridgeFleischmann04Compact}
+Etheridge, Alison~M. and Klaus Fleischmann.
+\newblock Compact interface property for symbiotic branching.
+\newblock {\em Stochastic Process. Appl.}, 114(1):127--160, 2004.
+
+\bibitem[Fer80]{ferry1980viscoelastic}
+Ferry, J.D.
+\newblock {\em Viscoelastic Properties of Polymers}.
+\newblock Wiley, 1980.
+
+
+\bibitem[FJL18]{FJL18} 
+Foondun, Mohammud, Mathew Joseph and Shiu-Tang Li.
+\newblock An approximation result for a class of stochastic heat equations.
+\newblock {\it  Ann.\ Appl.\ Probab.}, 28 (2018), no. 5, 2855--2895.
+
+
+\bibitem[FK09]{FK08EJP}
+Foondun, Mohammud and Davar Khoshnevisan.
+\newblock Intermittence and nonlinear parabolic stochastic partial differential equations.
+\newblock {\em Electron. J. Probab.}, 14 (2009), no. 21, 548--568. 
+
+\bibitem{FK} Foondun, Mohammud and Davar Khoshnevisan.
+\newblock On the global maximum of the solution to a stochastic heat equation with compact-support initial data.
+\newblock {\it Ann.\ Inst.\ Henri Poincar\'e Probab.\ Stat.}\ {\bf 46}{\it (4)} (2010) 895--907.
+
+\bibitem[FK13]{FK13SHE} 
+Foondun, Mohammud and Davar Khoshnevisan.
+\newblock On the stochastic heat equation with spatially-colored random forcing.
+\newblock {\it Trans. Amer. Math. Soc.} 365{\it (1)} (2013), 409--458.
+
+\bibitem{FK14Cor} Foondun, Mohammud and Davar Khoshnevisan.
+\newblock Corrections and improvements to: ``On the stochastic heat equation with spatially-colored random forcing''.
+\newblock {\it Trans. Amer. Math. Soc.} 366 (2014), no. 1, 561--562.
+
+\bibitem{FLM17MB} Foondun, Mohammud and  Wei Liu and Omaba McSylvester.
+\newblock Moment bounds  for a class of fractional stochastic heat equations.
+\newblock {\em Ann. Probab.}, 45 (2017), no. 4, 2131--2153.
+
+\bibitem[FLN19]{FLN19}
+Foondun, Mohammud, Wei Liu and Erkan Nane.
+\newblock Some non-existence results for a class of stochastic partial differential equations. 
+\newblock {\it J. Differential Equations} 266 (2019), no. 5, 2575--2596.
+
+\bibitem[Gra08Vol1]{GrafakosVol1} 
+Grafakos, Loukas. 
+\newblock {\it Classical Fourier analysis}. 
+\newblock Second edition. Graduate Texts in Mathematics, 249. Springer, New York, 2008. xvi+489 pp
+
+\bibitem[GP15]{GP15KPZ} 
+Gubinelli, Massimiliano  and Nicolas Perkowski.
+\newblock KPZ reloaded.
+\newblock {\it Comm. Math. Phys.} 349 (2017), no. 1, 165--269.
+
+\bibitem[GN99]{GyongyNualart99Burgers}
+Gy{\"o}ngy, Istv{\'a}n and David Nualart.
+\newblock On the stochastic {B}urgers' equation in the real line.
+\newblock {\em Ann. Probab.}, 27(2):782--802, 1999.
+
+\bibitem[GM01]{GM01}
+Goldys, Beniamin, and Bohdan Maslowski.
+\newblock Uniform exponential ergodicity of stochastic dissipative systems. 
+\newblock {\it Czechoslovak Math. J.} 51(126) (2001), no. 4, 745--762. 
+
+\bibitem[Hai14]{Hairer2014RS}
+Hairer, Martin.
+\newblock A theory of regularity structures.
+\newblock {\em Invent. Math.}, 198 (2) (2014), 1--236.
+
+\bibitem[Hai13]{Hairer2011solving}
+Hairer, Martin.
+\newblock Solving the KPZ equation.
+\newblock {\em Ann. of Math.}, (2) 178 (2013), no. 2, 559--664.
+
+
+\bibitem{HHN}
+Hu, Yaozhong, Jingyu Huang and David Nualart. 
+\newblock On the intermittency front of stochastic heat equation driven by colored noises. 
+\newblock {\it Electron. Commun. Probab.} 21 (2016), no. 21, 13 pp.
+
+\bibitem[H$^2$NS15]{HHNS14}
+Hu, Yaozhong, Jingyu Huang, David Nualart and Xiaobin Sun.
+\newblock Smoothness of the joint density for spatially homogeneous SPDEs.
+\newblock {\em J. Math. Soc. Japan},  67 (2015), no. 4, 1605--1630.
+
+
+\bibitem[H$^2$NT15]{HHNT15}
+Hu, Yaozhong, Jingyu Huang, David Nualart and Samy Tindel.
+\newblock Stochastic heat equations with general multiplicative Gaussian noises:
+H\"older continuity and intermittency.
+\newblock {\it Electron. J. Probab.}  20, (2015), no. 55, 1--50.
+
+
+\bibitem[HN09]{HuNualart09}
+Hu, Yaozhong and David Nualart.
+\newblock Stochastic heat equation driven by fractional noise and local time.
+\newblock {\em Probab. Theory Related Fields}, 143 (2009), no. 1--2, 28--328.
+
+
+\bibitem[Hua17]{Huang}
+Huang, Jingyu.
+\newblock On stochastic heat equation with measure initial data.
+\newblock {\em Electron. Commun. Probab.}, 22 (2017), no. 40, 6 pp.
+
+\bibitem[HLN17]{HLN17}
+Huang, Jingyu, Khoa L\^e and David Nualart.
+\newblock Large time asymptotics for the parabolic Anderson model driven by spatially correlated noise.
+\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.}, 53 (2017), no. 3, 1305--1340. 
+
+\bibitem{HHNT} 
+Hu, Yaozhong, Jingyu Huang, David Nualart and Samy Tindel.
+\newblock Stochastic heat equations with general multiplicative Gaussian noises:
+H\"older continuity and intermittency.
+\newblock {\it Electron. J. Probab.} 20 (2015), no. 55, 50 pp.
+
+\bibitem{HuangLeNualart2017}
+Huang, Jingyu, Khoa L\^e, and David Nualart, (2017).
+\newblock Large time asymptotics for the parabolic Anderson model driven by space and time correlated noise.
+\newblock {\it Stoch.\ Partial Differ.\ Equ.\ Anal.\ Comput.}\ {\bf 5}{\it (4)} 614--651.
+
+\bibitem{HuangNualartViitasaari2018}
+Huang, Jingyu, David Nualart, and Lauri Viitasaari (2018).
+A central limit theorem for the stochastic heat equation.
+Preprint available at \url{https://arxiv.org/abs/1810.09492}.
+
+\bibitem{HuangNualartViitasaariZheng2019}
+Huang, Jingyu, David Nualart, Lauri Viitasaari, and Guangqu Zheng (2019).
+Gaussian fluctuations for the stochastic heat equation with colored noise.
+Preprint available at \url{https://arxiv.org/abs/1903.02509}
+	
+	
+\bibitem[JKM17]{JKM17}
+Joseph, Mathew, Davar Khoshnevisan and Carl Mueller
+\newblock Strong invariance and noise-comparison principles for some parabolic stochastic PDEs
+\newblock {\em  Ann.\ Probab.}, 45 (2017), no. 1, 377--403. 
+
+\bibitem{KZ} Karczewska, Anna and Jerzy Zabczyk. 
+\newblock Stochastic PDEs with function-valued solutions. 
+\newblock In {\it Infinite dimensional stochastic analysis (Amsterdam 1999)}, 197--216,
+
+\bibitem[KPZ86]{KPZ86}
+Kardar, Mehran, Giorgio Parisi and Yi-Cheng Zhang.
+\newblock Dynamic scaling of growing interfaces.
+\newblock {\em Phys. Rev. Lett.}, 56 (1986), no. 9, 889--892.
+
+\bibitem[Kho09]{Khoshnevisan09Mini}
+Khoshnevisan, Davar.
+\newblock A primer on stochastic partial differential equations.
+\newblock Chapter 1 in \cite{DalangEtc08Minicourse}.
+
+\bibitem[Kho14]{Kho14CBMS}  
+Khoshnevisan, Davar.
+\newblock Analysis of stochastic partial differential equations.
+\newblock {\it CBMS Regional Conference Series in Mathematics}, 119. 
+\newblock American Mathematical Society, Providence, RI, 2014.
+
+\bibitem{KK13LCA}  Khoshnevisan, Davar and Kunwoo Kim.
+\newblock Nonlinear noise excitation of intermittent stochastic PDEs and the topology of LCA groups
+\newblock {\it Ann. Probab.} 43 (2015), no. 4, 1944--1991.  
+
+\bibitem[Kla91]{klausner1991fundamentals}
+Y.~Klausner.
+\newblock {\em Fundamentals of continuum mechanics of soils}.
+\newblock Springer-Verlag, 1991.
+
+\bibitem[KS04]{KilbasSaigo04H}
+Kilbas, Anatoly A. and Megumi Saigo.
+\newblock {\em H-transforms: theory and applications.}
+\newblock Analytical Methods and Special Functions, 9. Chapman \& Hall/CRC, Boca Raton, FL, 2004.
+
+\bibitem[K-H03]{K-H03}
+Kohatsu-Higa, Arturo.
+\newblock Lower bounds for densities of uniformly elliptic random variables on Wiener space. 
+\newblock {\em Probab. Theory Related Fields}, 126 (2003), no. 3, 421--457.
+% 
+\bibitem[Kon16]{Kon16}
+K\"onig, Wolfgang.
+\newblock {\it The parabolic Anderson model. }
+\newblock Random walk in random potential. Pathways in Mathematics. Birkh\"auser/Springer, 2016. xi+192. 
+
+
+\bibitem[LC94]{lemaitre1994mechanics}
+Lemaitre J. and J.L. Chaboche.
+\newblock {\em Mechanics of Solid Materials}.
+\newblock Cambridge University Press, 1994.
+
+\bibitem[LN09]{LeiNualart09}
+Lei, Pedro and David Nualart.
+\newblock A decomposition of the bifractional Brownian motion and some applications. 
+\newblock {\em Statist. Probab. Lett.} 79 (2009), no. 5, 619--624.
+
+
+\bibitem[L{\'e}v01]{Leveque01Thesis}
+L{\'e}v{\^e}que, Olivier.
+\newblock {\em Hyperbolic Stochastic Partial Differential Equations Driven by Boundary Noises}.
+\newblock PhD thesis, \'Ecole Polytechnique F\'ed\'erale de Lausanne, 2001.
+
+\bibitem{Liggett}
+Liggett, T. M.
+\newblock {\it Interacting Particle Systems}.
+\newblock Springer-Verlag, New York, 1985.
+
+\bibitem[LR15]{LiuRockner15}
+Liu, Wei and Michael R\"ockner.
+\newblock {\em Stochastic partial differential equations: an introduction.} 
+\newblock Universitext. Springer, Cham, 2015. vi+266 pp.
+
+
+\bibitem[Mag10]{magin2010fractional}
+Magin, R.~L.
+\newblock Fractional calculus models of complex dynamics in biological tissues.
+\newblock {\em Computers \& Mathematics with Applications}, 59(5):1586--1593, 2010.
+
+\bibitem[Mai10]{Mainardi10Book}
+Mainardi, Francesco.
+\newblock {\em Fractional calculus and waves in linear viscoelasticity}.
+\newblock Imperial College Press, London, 2010.
+\newblock An introduction to mathematical models.
+
+\bibitem[MLP01]{MainardiEtc01Fundamental}
+Mainardi, Francesco, Yuri Luchko, and Gianni Pagnini.
+\newblock The fundamental solution of the space-time fractional diffusion equation.
+\newblock {\em Fract. Calc. Appl. Anal.}, 4(2):153--192, 2001.
+
+\bibitem[MR06]{MR06}
+Marcus, Michael B. and Jay Rosen.
+\newblock {\em Markov processes, Gaussian processes, and local times.} 
+\newblock Cambridge Studies in Advanced Mathematics, 100. Cambridge University Press, Cambridge, 2006.
+
+\bibitem[MS99]{MS99}
+Maslowski, Bohdan and Jan Seidler.
+\newblock On sequentially weakly Feller solutions to SPDE's. 
+\newblock {\it Atti Accad. Naz. Lincei Cl. Sci. Fis. Mat. Natur. Rend. Lincei (9) Mat. Appl.} 10 (1999), no. 2, 69--78. 
+
+
+\bibitem[M$^2$00]{MilletMorien00Wave2}
+Millet, Annie and Pierre-Luc Morien.
+\newblock On a stochastic wave equation in two space dimensions: regularity of the solution and its density. 
+\newblock {\em Stochastic Process. Appl.} 86 (2000), no. 1, 141--162.
+
+\bibitem[MM01]{MilletMorien01On}
+Millet, Annie and Pierre-Luc Morien.
+\newblock On a nonlinear stochastic wave equation in the plane: existence and uniqueness of the solution.
+\newblock {\em Ann. Appl. Probab.}, 11(3):922--951, 2001.
+
+\bibitem[MSY16]{MSY16}
+Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
+\newblock Existence and uniqueness of invariant measures for stochastic reaction-diffusion equations in unbounded domains. 
+\newblock {\it J. Theoret. Probab.} 29 (2016), no. 3, 996--1026. 
+ 
+
+\bibitem{Mueller2} 
+Mueller, Carl.
+\newblock {\it Some Tools and Results for Parabolic Stochastic Partial Differential Equations} (English summary).
+\newblock In: A Minicourse on Stochastic Partial Differential Equations, 111--144,
+\newblock Lecture Notes in Math.\ {\bf 1962} Springer, Berlin, 2009.
+
+\bibitem[MMP12]{MuellerMythnikPerkins12Nonuniqueness}
+Mueller,Carl, Leonid Mytnik, and Edwin Perkins.
+\newblock Nonuniqueness for a parabolic spde with $3/4 -\epsilon$-hölder diffusion coefficients.
+\newblock {\it Ann. Probab.} 42 (2014), no. 5, 2032--2112. 
+
+\bibitem[MP11]{MytnikPerkins11Pathwise}
+Mytnik, Leonid and Edwin Perkins.
+\newblock Pathwise uniqueness for stochastic heat equations with {H}\"older continuous coefficients: the white noise case.
+\newblock {\em Probab. Theory Related Fields}, 149(1-2):1--96, 2011.
+
+\bibitem[MSS99]{MilletSanzSol99SmoothLaw}
+Annie Millet and Marta Sanz-Sol{\'e}.
+\newblock A stochastic wave equation in two space dimension: smoothness of the law.
+\newblock {\em Ann. Probab.}, 27(2):803--844, 1999.
+
+\bibitem[MF14]{Moreno14Pos}
+Moreno Flores, Gregorio~R.
+\newblock On the (strict) positivity of solutions of the stochastic heat equation. 
+\newblock {\it Ann. Probab.}  42 (2014), no. 4, 1635--1643.
+
+\bibitem[Mor99]{Morien99}
+Morien, Pierre-Luc.
+\newblock The H\"older and the Besov regularity of the density for the solution 
+of a parabolic stochastic partial differential equation. 
+\newblock {\em Bernoulli} 5 (1999), no. 2, 275--298.
+
+
+\bibitem[Mue91]{Mueller91Support}
+Mueller, Carl.
+\newblock On the support of solutions to the heat equation with noise.
+\newblock {\em Stochastics Stochastics Rep.}, 37 (1991), no. 4, 225--245. 
+
+\bibitem[MN08]{MuellerNualart08}
+Mueller, Carl and David Nualart.
+\newblock Regularity of the density for the stochastic heat equation.
+\newblock {\em Electron. J. Probab.} 13 (2008), no. 74, 2248--2258.
+
+\bibitem[Myt98]{Mytnik98Unique}
+Mytnik, Leonid.
+\newblock Uniqueness for a mutually catalytic branching model.
+\newblock {\em Probab. Theory Related Fields}, 112(2):245--253, 1998.
+
+\bibitem[Nob97]{Nobel97} 
+Noble, John M.
+\newblock Evolution equation with Gaussian potential.
+\newblock {\it Nonlinear Anal.}\ 28{\it (1)} (1997) 103--135.
+
+\bibitem[NV09]{NourdinViens09Density}
+Nourdin, Ivan and Frederi G. Viens.
+\newblock Density formula and concentration inequalities with Malliavin calculus. 
+\newblock {\em Electron. J. Probab.} 14 (2009), no. 78, 2287--2309.
+
+\bibitem[NP09]{NP09}
+Nourdin, Ivan and Peccati, Giovanni (2009).
+\newblock {\it Stein's method on wiener chaos.}
+\newblock \emph{ Probab. Theory Related Fields}, {\bf 145} {\it 1} 75--118.
+        
+\bibitem[NP12]{NP12} 
+Nourdin, Ivan  and Peccati, Giovanni (2012).
+\newblock {\it  Normal approximations with Malliavin calculus.  From Stein's method to universality}.
+\newblock Cambridge University Press, Cambridge, UK..
+       
+\bibitem[Nua06]{Nualart06}
+Nualart, David.
+\newblock {\em The Malliavin calculus and related topics} (Second edition).
+\newblock Probability and its Applications (New York). Springer-Verlag, Berlin, 2006.
+
+\bibitem[Nua13]{Nualart13Density}
+Nualart, Eulalia.
+\newblock On the density of systems of non-linear spatially homogeneous {SPDEs}.
+\newblock {\em Stochastics}, 85 (2013), no. 1, 48--70.
+
+
+\bibitem[NQ07]{NualartQue07Existence}
+Nualart, David and Llu{\'{\i}}s Quer-Sardanyons.
+\newblock Existence and smoothness of the density for spatially homogeneous {SPDE}s.
+\newblock {\em Potential Anal.}, 27 (2007), no. 3, 281--299. 
+
+\bibitem[NQ09]{NualartQue09Gaussian}
+Nualart, David and Llu{\'{\i}}s Quer-Sardanyons.
+\newblock Gaussian density estimates for solutions to quasi-linear stochastic partial differential equations.
+\newblock {\em Stochastic Process. Appl.}, 119 (2009), no. 11, 3914--3938.
+
+
+\bibitem[NQ11]{NualartQue11Optimal}
+Nualart, David and Llu{\'{\i}}s Quer-Sardanyons.
+\newblock Optimal Gaussian density estimates for a class of stochastic equations with additive noise.
+\newblock {\em Infin. Dimens. Anal. Quantum Probab. Relat. Top.}, 14 (2011), no. 1, 25--34.
+  
+\bibitem[NQ12]{NualartQue12Density}
+Nualart, Eulalia and  Llu{\'{\i}}s Quer-Sardanyons.
+\newblock Gaussian estimates for the density of the non-linear stochastic heat equation in any space dimension. 
+\newblock {\em Stochastic Process. Appl.}, 122 (2012), no. 1, 418--447.
+
+\bibitem[OMS09]{Oldham2008atlas}
+Oldham Keith and J.~Myland and J.~Spanier.
+\newblock {\em An atlas of functions}.
+\newblock Springer, New York, second edition, 2009.
+
+\bibitem[OLBC10]{NIST2010}
+Olver, F.~W.~J.,  D.~W. Lozier, R.~F. Boisvert, and C.~W. Clark, editors.
+\newblock {\em N{IST} handbook of mathematical functions}.
+\newblock U.S. Department of Commerce National Institute of Standar\ud s  and Technology, Washington, DC. Cambridge Univ. Press, Cambridge, 2010.
+
+\bibitem[Ond10a]{Ondrejat10WaveSobolev}
+Ondrej{\'a}t, Martin.
+\newblock Stochastic nonlinear wave equations in local {S}obolev spaces.
+\newblock {\em Electron. J. Probab.}, 15:no. 33, 1041--1091, 2010.
+
+\bibitem[Ond10b]{Ondrejat10WaveCritical}
+Ondrej{\'a}t, Martin.
+\newblock Stochastic wave equation with critical nonlinearities: temporal regularity and uniqueness.
+\newblock {\em J. Differential Equations}, 248(7):1579--1602, 2010.
+
+\bibitem[PZ93]{PardouxZhang93}
+Pardoux, Etienne and Tusheng Zhang.
+\newblock Absolute continuity of the law of the solution of a parabolic SPDE.
+\newblock {\em J. Funct. Anal.} 112 (1993), no. 2, 447--458.
+
+
+\bibitem[Pes02]{Peszat02Wave}
+Peszat,Szymon.
+\newblock The {C}auchy problem for a nonlinear stochastic wave equation in any dimension.
+\newblock {\em J. Evol. Equ.}, 2(3):383--394, 2002.
+
+\bibitem[PL11]{perkins2011viscoelasticity}
+Perkins, J.N. and T.M. Lach.
+\newblock {\em Viscoelasticity: Theories, Types, and Models}.
+\newblock Materials science and technologies series. Nova Science Publishers, Incorporated, 2011.
+
+\bibitem[PT07]{PospisilTribe07Parameter}
+Posp{\'{\i}}{\v{s}}il, Jan and Roger Tribe.
+\newblock Parameter estimates and exact variations for stochastic heat equations driven by space-time white noise.
+\newblock {\em Stoch. Anal. Appl.}, 25(3):593--611, 2007.
+
+\bibitem[PZ97]{PeszatZabczyk97Ev}
+Peszat, Szymon and Jerzy Zabczyk.
+\newblock Stochastic evolution equations with a spatially homogeneous {W}iener process.
+\newblock {\em Stochastic Process. Appl.}, 72 (1997), no. 2, 187--204.
+
+\bibitem[Pet90]{Peterson}
+Peterson, Karl.
+\newblock {\it Ergodic Theory}.
+\newblock Cambridge University Press, Cambridge, 1990.
+	
+\bibitem[Que13]{Que13}
+Quer-Sardanyons, Llu{\'{\i}}s.
+\newblock Gaussian upper density estimates for spatially homogeneous SPDEs.
+\newblock in {\em Malliavin calculus and stochastic analysis,} 299--314,
+\newblock Springer Proc. Math. Stat., 34, Springer, New York, 2013.
+
+
+\bibitem[QS04]{QuerSanz04WaveSmooth}
+Quer-Sardanyons, Llu{\'{\i}}s and Marta Sanz-Sol{\'e}.
+\newblock A stochastic wave equation in dimension 3: smoothness of the law.
+\newblock {\em Bernoulli}, 10 (2004), no. 1, 165--186. 
+
+\bibitem[Qua12]{Quastel12KPZ}
+Quastel, Jeremy.
+\newblock Introduction to KPZ.
+\newblock {Current developments in mathematics}, 2011, 125--194, Int. Press, Somerville, MA, 2012.
+
+\bibitem[San08]{SanSole08Wave}
+Sanz-Sol\'e, Marta.
+\newblock Properties of the density for a three-dimensional stochastic wave equation. 
+\newblock {\em J. Funct. Anal.} 255 (2008), no. 1, 255--281.
+
+\bibitem[SSS00]{SanSoleSarra99Path}
+Sanz-Sol{\'e}, Marta and M{\`o}nica Sarr{\`a}.
+\newblock Path properties of a class of {G}aussian processes with applications to spde's.
+\newblock In {\em Stochastic processes, physics and geometry: new interplays,
+  {I} ({L}eipzig, 1999)}, volume~28 of {\em CMS Conf. Proc.}, pages 303--316.
+  Amer. Math. Soc., Providence, RI, 2000.
+
+\bibitem{SanzSoleSarra02}
+Sanz-Sol\'e, Marta and M\`onica Sarr\`a.
+\newblock H\"older continuity for the stochastic heat equation with spatially correlated noise.
+\newblock {\em Seminar on Stochastic Analysis, Random Fields  and Applications, III (Ascona, 1999)}, 259--268, Progr. Probab., 52, Birkhäuser, Basel, 2002.
+
+\bibitem[S$^2$V12]{Schilling12Second}
+Schilling, Ren\'e L., Renming Song, and Zoran Vondra{\v{c}}ek, 
+\newblock {\em Bernstein functions. Theory and applications.} 
+\newblock Second edition. de Gruyter Studies in Mathematics, 37. Walter de Gruyter \& Co., Berlin, 2012.
+
+
+\bibitem[Shi94]{Shiga94Two}
+Shiga, Tokuzo.
+\newblock Two contrasting properties of solutions for one-dimensional stochastic partial differential equations.
+\newblock {\em Canad. J. Math.} 46 (1994), no. 2, 415--437.
+
+\bibitem[Spi81]{Spitzer1981} 
+Spitzer, Frank.
+\newblock Infinite systems with locally interacting components.
+\newblock {\it Ann.\ Probab.}\ {\bf 9} (1981) 349--364.
+
+\bibitem[Ste70]{Stein70Singular}
+Elias~M. Stein.
+\newblock {\em Singular integrals and differentiability properties of functions}.
+\newblock Princeton University Press, Princeton, N.J., 1970.
+
+\bibitem[TZ98P]{TessitoreZabczyk98St}
+Tessitore, Gianmario and Jerzy Zabczyk.
+\newblock Strict positivity for stochastic heat equations.
+\newblock {\it Stochastic Process. Appl.}, 77 (1998), no. 1, 83--98. 
+ 
+\bibitem[TZ98M]{TessitoreZabczyk98M}
+Tessitore, Gianmario and Jerzy Zabczyk.
+\newblock Invariant measures for stochastic heat equations. 
+\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287. 
+
+\bibitem[Wal86]{Walsh} Walsh, John B.
+\newblock {\it An Introduction to Stochastic Partial Differential Equations}.
+\newblock In: \`Ecole d'\`et\'e de probabilit\'es de Saint-Flour, XIV---1984, 265--439.
+\newblock Lecture Notes in Math.\ 1180, Springer, Berlin, 1986.
+%
+\bibitem[ZRS90]{Zeldovich90Almighty}
+Zeldovich, Ya.~B. , A.~A. Ruzma{\u\i}kin, and D.~D. Sokoloff.
+\newblock {\em The Almighty Chance}, volume~20 of {\em World Scientific Lecture
+  Notes in Physics}.
+\newblock World Scientific Publishing Co. Inc., River Edge, NJ, 1990.
+\newblock Translated from the Russian by Anvar Shukurov.
+
+\bibitem[Z$^2$03]{ZZ03SPDE}
+Zhang, Tusheng and Weian Zheng.
+\newblock SPDEs driven by space-time white noise in high dimensions: absolute 
+continuity of the law and convergence of solutions.
+\newblock {\em Stoch. Stoch. Rep.}, 75(3):103--128, 2003.
+
+\end{thebibliography}
+
+\end{document} 
+
