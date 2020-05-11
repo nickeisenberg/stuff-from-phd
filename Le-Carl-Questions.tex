@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+%\usepackage{color}
+%\newcommand{\red}[1]{{\color{red}{#1}}}
+%\pagenumbering{gobble}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{cor}{Corollary}
+\newtheorem{prop}{Proposition}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\title{Questions}
+\date{}
+\maketitle
+
+This involves the equation 
+\begin{align}
+\label{eq:spde}
+\partial_tu&=\partial_x^2u+\sigma(u)\dot{W}  \\
+u(0,x)&\geq0  \nonumber
+\end{align}
+
+Let $\sigma(0)=0$ and $0\leq\sigma(u)<u^\gamma$, with $\gamma<3/2$.  
+
+\section{Blowup for colored noise}
+
+What if we replace $\dot{W}$ by noise that is colored in space but white in 
+time.  Note:  Pavel Bezdek, Davar's student, did this for white noise and 
+fractional Laplacian as the operator.  
+
+Davar said Pavel had results for colored noise, but didn't write it up.  
+
+\section{Nonblowup on noncompact domains}
+
+Prove the non-blowup results on noncompact domains.  We would need the 
+following analysis.  
+
+\subsection{Analysis of $N(t,x)$}
+
+Assume that $u_0\in\mathbf{L}^1$.  We need to analyze $u(t,x)$ as 
+$x\to\infty$ in order to study 
+\begin{equation*}
+\sup_{0\leq t\leq T}\sup_{|x-a|\leq M}|N(t,x)|
+\end{equation*}
+
+\subsection{Growth of $u$ as $x\to\pm\infty$}
+
+We would need to study this to get information about $N(t,x)$ for large 
+values of $x$.  
+
+\section{Wave equation question}
+
+We might be able to prove non-blowup if we knew that:
+
+Given two martingales $M^{i}_t; i=1,2$ which are continuous and given that
+\begin{equation*}
+X_t:= tM^{(1)}_t+M^{(2)}_t\geq0
+\end{equation*}
+can we conclude that $X_t$ is a.s. bounded on $[0,T]$.  
+
+\section{Hitting Zero: Balancing the terms}
+
+\begin{equation*}
+\partial_tu=\partial_x^2u+u^{-\alpha}+u^{\gamma}\dot{W}(t,x)
+\end{equation*}
+We want $\gamma<1$.  What are the conditions on $\alpha,\gamma$ so that $u$ 
+can or can't hit 0.
+
+What about colored noise?
+
+
+\end{document}
