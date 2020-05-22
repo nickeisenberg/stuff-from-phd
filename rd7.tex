@@ -1,15 +1,20 @@
-\documentclass{article}
-\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc}
+% \documentclass{article}
+\documentclass[a4paper,12pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+\usepackage[headheight = .5in, headsep = \baselineskip, top = 1in, left = 1in, right = 1in, textwidth = 7.52 in]{geometry}
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \usepackage[margin=1in]{geometry}
+% \setlength{\topmargin}{-0.25in}
+
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, calc}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
 %\usepackage{eucal} this is a different font than \mathcal{•}
 \usetikzlibrary{arrows}
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{remark}{Remark}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{assumptions}{Assumptions}[section]
-\newtheorem{proposition}{Proposition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{notation}{Notation}
 \usepackage{mathrsfs}
 \usepackage[shortlabels]{enumitem}
 \usepackage{tikz}
@@ -24,6 +29,53 @@
 \newcolumntype{2}{D{.}{}{2.0}}
 \usepackage{multicol}
 \numberwithin{equation}{section}
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \cfoot{}
+% \renewcommand{\headrulewidth}{0pt}
+% \lhead{ \parbox[][\headheight][t]{5cm}{\textbf{Rough Draft 7}}}
+% \rhead{\parbox[][\headheight][t]{2cm}{\raggedleft Page\,\thepage{} of \pageref{LastPage}}}
+% \usepackage{lastpage}
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+% \theoremstyle{plain}
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+%
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{hypothesis}[theorem]{Hypothesis}
+% \newtheorem{assumption}[theorem]{Assumption}
+%
+% \newtheorem{remark}[theorem]{Remark}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{example}[theorem]{Example}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{assumptions}{Assumptions}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{notation}{Notation}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
 
 \newcommand{\lip}{\textup{Lip}_b}
 \newcommand{\liph}{\text{Lip}_{\hat\rho}}
@@ -32,26 +84,8 @@
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
 \newcommand{\ud}{\ensuremath{\mathrm{d}}}
 
-\usepackage{lipsum}%% a garbage package you don't need except to create examples.
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-%\lhead{\Huge Version A}
-%\rhead{\thepage}
-\cfoot{}
-\renewcommand{\headrulewidth}{0pt}
-
-\usepackage[headheight = .5in, headsep = \baselineskip, top = 1in, left = 1in, right = 1in, textwidth = 7.52 in]{geometry}
-\lhead{ \parbox[][\headheight][t]{5cm}{\textbf{Rough Draft 7}}}
-\rhead{\parbox[][\headheight][t]{2cm}{\raggedleft Page\,\thepage{} of \pageref{LastPage}}}
-\usepackage{lastpage}
-
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=newest}
-\usetikzlibrary{decorations.markings}
 
 \allowdisplaybreaks
-
 
 \begin{document}
 
@@ -64,8 +98,8 @@ This paper deals with the long term behavior of the solution to the nonlinear st
 We consider the following stochastic heat equation 
 \begin{equation}
 \begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
-\\ u(0,\cdot) = \mu(\cdot)  & 
+\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$} \\
+u(0,\cdot) = \mu(\cdot)  & 
 \end{cases}  \label{gspde}
 \end{equation} 
 where $b(x,u)$ is assumed to be a globally Lipschitz continuous function in $u$ with Lipschitz constant independent of $x$ and as well is bounded in $x$ when $t=0$ In particular, the linear case  $b(x,u) = \lambda u$ is referred to as the \textit{parabolic Anderson model} \cite{CarMol94}. $W(t,s)$  is a Gaussian noise that is white in time and homogeneously colored in space and  the initial measure, $\mu$, is a deterministic and locally finite (regular) Borel measure. In particular, we investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{gspde} for a more broad range of initial measures which will include the Dirac delta distribution $\delta_0$ as well any $L^2_\rho$ function. 
@@ -91,10 +125,10 @@ Misiats, Stanzhytski and Yip \cite{MSY15} show the existence of a invariant meas
 \end{enumerate}
 In our paper we do not require such an upper bound. We also allow for any $L^2_\rho(\R^d)$ initial condition which contains the $L^2(\R^d)$ initial conditions. However we only consider the case where the drift term $f \equiv 0$. For the case of unbounded coefficients, Manthey and Assing \cite{AM03} have showed the existence of an invariant measure when considering the weight $\rho(x)=(1+|x|^2)^{-a/2},\; a>d$ and a bounded continuous initial condition. Their diffusion coefficient follows the same growth properties as ours but they allow for non-zero drift term that follows a "one-sided" linear growth condition. In their paper they are able to squeeze the solution to their SPDE in between two other solutions, each satisfying a desired inequality that leads to the existence of an invariant measure. As of now, the theory of Walsh can not be applied to such drift coefficients so it is unclear if the results in this paper may apply to such a SPDE.
 
- This paper is broken into several sections. We first briefly develop some theory needed to complete the proofs of the main results which includes defining the spatially homogeneous Gaussian noise which is white in time and colored in space and defining the solution to \eqref{gspde} as well as list the necessary requirements for its exists and uniqueness. Lastly, before we list and prove the main results, we give a brief introduction to invariant measures. The proof of one of our main results, \textbf{Theorem 3.1}, relies on our \textbf{Lemma 3.1}. The proof of this lemma follows the same blueprint laid out in \cite{TessitoreZabczyk98M} however because of our use of the theory of Walsh, it is much longer and more technical so for this reason we devote the last section of this paper to prove it.
+This paper is broken into several sections. We first briefly develop some theory needed to complete the proofs of the main results which includes defining the spatially homogeneous Gaussian noise which is white in time and colored in space and defining the solution to \eqref{gspde} as well as list the necessary requirements for its exists and uniqueness. Lastly, before we list and prove the main results, we give a brief introduction to invariant measures. The proof of one of our main results, \textbf{Theorem 3.1}, relies on our \textbf{Lemma 3.1}. The proof of this lemma follows the same blueprint laid out in \cite{TessitoreZabczyk98M} however because of our use of the theory of Walsh, it is much longer and more technical so for this reason we devote the last section of this paper to prove it.
 
 \section{Preliminaries} 
-\subsection{Definition of the Gaussian noise and Walsh integral }
+\subsection{Definition of the Gaussian noise and Walsh integral}
 
 Following \cite{DalangEtc09Minicourse}, a Gaussian noise that is white in time and colored in space is an $L^2(\Omega,\mathcal F,P)$-valued zero mean Gaussian Processes on a complete probability space $(\Omega,\mathcal F,P)$
 $$ \{ F(\psi) : \psi \in C_0^\infty(\R^{d+1}) \} ,$$
@@ -294,13 +328,13 @@ Proof: We start by stating a lemma that will be used to complete the proof. The 
  
 \begin{lemma} \textit{Under the assumptions of \textbf{Theorem 3.1} and for arbitrary $\epsilon \in (0,1)$, $0< \delta_0 \le 1$ and $R>0$ there exists a compact set $\mathscr K$ in $L^2_{ \rho}$ such that} 
  \begin{equation}
- 	\textbf{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\textbf{P}\{|u^{ \hat{\varphi}}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} \label{cpt}
+ 	\mathbb{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{ \hat{\varphi}}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} \label{cpt}
  \end{equation}
  \end{lemma}
  
  We may now complete the proof of Theorem 3.1. By Lemma 3.1, given an $\epsilon \in (0,1)$ and $R>0$ then we could find a compact set $\mathscr K \in L^2_{\rho}$ such that  
  \begin{align*}
- \textbf{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\textbf{P}\{|u^{\hat \varphi}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} 
+ \mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} 
  \end{align*}
  The boundedness in probability of $u^{\hat \varphi}(\cdot,x)$ then implies that the family of laws $\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge \delta_0$ is  tight in $L^2_{\rho}$ and therefore the family of probability measures 
  \begin{equation}
@@ -313,7 +347,7 @@ Proof: We start by stating a lemma that will be used to complete the proof. The 
  	The condition \begin{equation} \sup_{t \ge 0} \E |u(t,\cdot)|_\rho^2 < \infty \label{bipc} \end{equation} 
  	is enough to verify that $u$ is bounded in probability. Indeed, let $\sup_{t\ge 0} \E |u(t,\cdot)|_\rho = B$ and let $\epsilon >0$. Then by applying Chebyshev's inequality we may choose $R>0$ large enough so that 
  	\begin{align*}
- 	\textbf{P}[|u(t,\cdot)|_\rho \ge R] \le R^{-2}\E |u(t,\cdot)|_\rho^2 \le R^{-2}B < \epsilon
+ 	\mathbb{P}[|u(t,\cdot)|_\rho \ge R] \le R^{-2}\E |u(t,\cdot)|_\rho^2 \le R^{-2}B < \epsilon
  	\end{align*}  
  	Hence $u(t,\cdot)$ is bounded in probability in $L^2_{\rho}$. 
  \end{remark}
@@ -718,21 +752,21 @@ Proof: We first define a set $\mathscr K (\Theta)$ as
 \end{align*}
 Then $\mathscr K (\Theta)$ is relatively compact in $L^2_{ \rho}$ for $\Theta >0$. Moreover, by \eqref{yineq}, \eqref{1fac} and Chebychev's inequality, and if we choose $R$ and $\Theta$ so that $| \hat{\varphi}|_{\hat\rho} < R < \Theta$  then we have 
 \begin{align*}
-\textbf{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \not \in \mathscr K(\Theta) \} & \le \textbf{P}\left[ \left(\int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Theta}{\sin(\alpha \pi )} \right]
+\mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \not \in \mathscr K(\Theta) \} & \le \mathbb{P}\left[ \left(\int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Theta}{\sin(\alpha \pi )} \right]
 \\&\le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\E \int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\hat \rho}^q \: \ud s
 \\& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg)
-\\ \implies \textbf{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg) 
+\\ \implies \mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg) 
 \\ &\ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) 
 \end{align*}
 Therefore if we choose $\Theta>0$ big enough such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ the we get that 
 \begin{align*} 
-\textbf{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \epsilon 
+\mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \epsilon 
 \end{align*} 
 We can now deduce from this and the semigroup property of the solution to the heat equation that 
 \begin{align*}
-\textbf{P}\{ u^{\hat{\varphi}}(t,\cdot) \in \mathscr K(\Theta) \} & \ge (1- \epsilon)\textbf{P}\{ |u^{\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat\rho} < R \}
+\mathbb{P}\{ u^{\hat{\varphi}}(t,\cdot) \in \mathscr K(\Theta) \} & \ge (1- \epsilon)\mathbb{P}\{ |u^{\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat\rho} < R \}
 \end{align*}
-Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\textbf{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim. \qed
+Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim. \qed
 
 
 \begin{small}
