@@ -1,5 +1,5 @@
 % \documentclass{article}
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,11pt]{article}
 % -------------------------------------------------
 % Set up the page margins.
 % -------------------------------------------------
@@ -82,6 +82,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\rhoNorm}[1]{\left|  #1   \right|}
 \newcommand{\ud}{\ensuremath{\mathrm{d}}}
 
 
@@ -436,7 +437,7 @@ Proof: First, notice by applying Minkowski's Integral Inequality that
 E |Y(s,y)|_{\rho}^q &= \int_\Omega dP \left(\int_{\R^d} dy Y(s,y)^2\rho(y) \right)^{q/2} 
 \\ &\le \left(\int_{\R^d}dy \left( \int_\Omega dP \; Y(s,y)^q \rho(y)^{q/2} \right)^{2/q}\right)^{q/2} 
 \\ &= \left(\int_{\R^d}dy \rho(y) || Y(s,y) ||_q^2 \right)^{q/2}
-\\ &= \bigg|||Y(s,y)||_q\bigg|_\rho^q
+\\ &= \rhoNorm{\: ||Y(s,y)||_q}_\rho^q
 \end{align*}
 Because of this, we look to find an appropriate upper bound for $\Norm{Y(s,y)}^2_q$ which for now we denote as $M(s,y)$. Then we integrate this bound $$ \int_{\R^d}M(s,y)\rho(y)\:\ud y$$ which gives us a bound for $\bigg|||Y(s,y)||_q\bigg|_\rho$. To do this, we start by applying the Burkholder-Davis-Gundy Inequality from \cite{DalangEtc09Minicourse} as well as Minkowski's Integral Inequality to see that
 \begin{align*}
@@ -454,12 +455,14 @@ Note that for Lipschitz functions, we have that $|b(u)|<k(1+|u|)$. We apply this
 Now applying this to the inequality for $\Norm{Y^{\alpha}(s,y)}_q^2$ above we get that 
 
 \begin{align*}
-\Norm{Y(s,y)}_q^2 &\le k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)  (1+J_0(r,z_1)) f(z_1-z_2)\\
+&\Norm{Y(s,y)}_q^2\\ 
+&\le k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)  (1+J_0(r,z_1)) f(z_1-z_2)\\
 &\hspace{13.5em} \times  G(s-r,y-z_2) (1+J_0(r,z_2))
-\\ &= \underbrace{ k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)}_{I_1}
-\\ &\hspace{1.5em}+ \underbrace{ k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)}_{I_2}
-\\ &\hspace{1.5em}+ \underbrace{ k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2)}_{I_3} 
-\\ &\hspace{1.5em}+ \underbrace{ k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)J_0(r,z_2)}_{I_4}
+\\ &=  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
+\\ &\hspace{1.5em}+  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)
+\\ &\hspace{1.5em}+  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2)
+\\ &\hspace{1.5em}+  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)J_0(r,z_2)\\
+   &=: I_1 +I_2+I_3+I_4.
 \end{align*}
 
 We now investigate each of the integrals $I_k$ above. Throughout the remainder of this proof and the proof of Lemma 4.2 we will be using the following relation 
@@ -532,18 +535,21 @@ and by assumption \ref{fcon} and Lemma 4.2 below,  the three integrals above are
 Lastly if we integrate out $s$ from $0\to1$ we get our desired inequality, 
 	$$ \int_0^1 E |Y(s,y)|_{\rho}^q ds \le \int_0^1 K_T \cdot |\varphi|_\rho^q ds = K_T \cdot |\varphi|_\rho^q $$ \qed 
 	
-\begin{lemma} \textit{Assuming \ref{fcon} then we may say the following two integrals are finite
+\begin{lemma}
+Assuming \ref{fcon} then we may say the following two integrals are finite
 \begin{equation}
 \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{r(s-r)}{s}|\xi|^2 \right) \label{fcon2}
 \end{equation}
 and 
 \begin{equation}
 \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left[ -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2 \right] \label{fcon3}
-\end{equation} }
+\end{equation} 
 \end{lemma}
 
 Proof: We first focus on \eqref{fcon2}. By applying the substitution $u=s-r$ the we may rewrite 
-$$ \ref{fcon} = \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -u|\xi|^2 \right)  $$ 
+\[
+	\ref{fcon} = \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -u|\xi|^2 \right) 
+\]
 and 
 $$ \eqref{fcon2} = \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{u(s-u)}{s}|\xi|^2 \right)$$
 Since $u(s-u) \ge \dfrac{us}{2}$ for all $u\in[0,s]$ then we may say that 
@@ -563,8 +569,7 @@ which completes the proof showing that assumption \ref{fcon}implies \eqref{fcon3
 \dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y(s,\cdot)\right](x) \ud s = \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z) \label{fac}
 \end{equation} } 
 \end{lemma}
-
-Proof: 
+\begin{proof}
 \begin{align*}
 &\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y(s,\cdot)\right](x) \ud s \\
 \stackrel{1}{=}&\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t \ud s (t-s)^{\alpha-1}\int_{\R^d} \ud y G(t-s,x-y)
@@ -576,9 +581,11 @@ Proof:
 \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1} \\
 \stackrel{4}{=}& \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z)
 \end{align*}
-where the last step is true provided $\alpha\in (0,1)$. \qed 
+where the last step is true provided $\alpha\in (0,1)$.
+\end{proof}
 
-\begin{remark} \textit{We also need to verify the use of Fubini's Theorem which is stated in stated in \cite{Walsh}. We used Fubini's Theorem twice above: first from equality 1 to 2 and then from equality 3 to 4. For reference, we will state Fubini's Theorem as given in \cite{Walsh} and verify the two uses of it in the proof of Lemma 4.2.} 
+\begin{remark} 
+We also need to verify the use of Fubini's Theorem which is stated in stated in \cite{Walsh}. We used Fubini's Theorem twice above: first from equality 1 to 2 and then from equality 3 to 4. For reference, we will state Fubini's Theorem as given in \cite{Walsh} and verify the two uses of it in the proof of Lemma 4.2.
 \end{remark}
 
 \begin{theorem}[Fubini's Theorem] \textit{Let $(G,\mathscr G, \mu)$ be a finite measure space and $(E, \mathscr E, \nu)$ be a $\sigma-$finite measure space. Let $g(z,s,\omega,y)$, $z \in E$, $s\ge0$, $\omega \in \Omega$, $y\in G$ be a $\mathscr E \times \mathscr G$ measurable function. Suppose that 
@@ -587,7 +594,8 @@ where the last step is true provided $\alpha\in (0,1)$. \qed
 	where $K$ is the dominating measure as in \cite{DalangEtc09Minicourse}.} 
 \end{theorem}
 
-\begin{remark} \textit{Following \cite{DalangEtc09Minicourse}, the dominating measure for this problem is given by $$K(\ud z_1. \ud z_2, \ud r)= f(z_1-z_2)\ud z_1 \ud z_2 \ud r $$ where $f$ is the correlation function of the spatially homogeneous Gaussian noise.}
+\begin{remark} 
+Following \cite{DalangEtc09Minicourse}, the dominating measure for this problem is given by $$K(\ud z_1. \ud z_2, \ud r)= f(z_1-z_2)\ud z_1 \ud z_2 \ud r $$ where $f$ is the correlation function of the spatially homogeneous Gaussian noise.
 \end{remark}
 
 We now verify \eqref{fcond} for both applications of Fubini's Theorem. \\
@@ -607,12 +615,13 @@ and so \eqref{fcond} becomes
 \end{align*}
 For simplicity, we first investigate the $\E\iint_{\R^{2d}} \ud z_1 \ud z_2$ part of the integral. We continue by applying the Lipschitz property of $b$. 
 \begin{align*}
-&\E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)|b(u(r,z_1)|f(z_1-z_2)G(s-r,y-z_2)|b(u(r,z_2))| 
-\\ & \le k_1\cdot  \E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)(1+u(r,z_1))f(z_1-z_2)G(s-r,y-z_2)(1+u(r,z_2)) 
-\\ &\le k_1\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)}_{L_1}
-\\&\hspace{5em}+k_1\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)\Norm{u(r,z_1)}_1f(z_1-z_2)G(s-r,y-z_2)}_{L_2} 
-\\&\hspace{5em}+k_1\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)\Norm{u(r,z_2)}_1}_{L_3}
-\\& \hspace{5em}+k_1\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)\Norm{u(r,z_1)}_2f(z_1-z_2)G(s-r,y-z_2)\Norm{u(r,z_2)}_2}_{L_4} 
+		 & \E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)|b(u(r,z_1)|f(z_1-z_2)G(s-r,y-z_2)|b(u(r,z_2))|
+	\\ \le   & k_1   \E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)(1+u(r,z_1))f(z_1-z_2)G(s-r,y-z_2)(1+u(r,z_2))
+	\\ \le   & k_1  \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
+	\\       & +k_1 \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)\Norm{u(r,z_1)}_1f(z_1-z_2)G(s-r,y-z_2)
+	\\       & +k_1 \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)\Norm{u(r,z_2)}_1
+	\\       & +k_1 \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)\Norm{u(r,z_1)}_2f(z_1-z_2)G(s-r,y-z_2)\Norm{u(r,z_2)}_2
+	\\    =: & L_1 +\cdots +L_4.
 \end{align*}
 \textbf{For $L_1$:} If we back at $I_1$ from the proof of Corollary 4.1 then we see that 
 \begin{align*}
@@ -634,15 +643,15 @@ L_2 &\le kL_1 + (2\pi)^{-2d}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfra
 \end{align*}
 And now if we include the $\int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}$ part of the integral we get that 
 \begin{align*}
-&\int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_2 
-\\&\le k\int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_1 
-\\&\hspace{3em}+ (2\pi)^{-2d}\int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
-\\&\le k\cdot (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2) 
-\\&\hspace{3em}+ (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)\int_{\R^d}\ud y \;G(t-s,x-y) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
-\\&= k \cdot (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-\\&\hspace{3em} +(2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)\underbrace{\int_{\R^d}\ud \sigma \: G(t,x-\sigma)|\varphi(\sigma)|}_{\text{continuous function of $x$ and $t$}}
-\\&\le k \cdot (2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-\\&\hspace{3em}+ (2\pi)^{-2d} \cdot k_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
+	   & \int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_2
+	\\ & \le k\int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_1
+	\\ & \hspace{3em}+ (2\pi)^{-2d}\int_{\R^d}\ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
+	\\ & \le k\cdot (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\ & \hspace{3em}+ (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)\int_{\R^d}\ud y \;G(t-s,x-y) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
+	\\ & = k \cdot (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\ & \hspace{3em} +(2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)\underbrace{\int_{\R^d}\ud \sigma \: G(t,x-\sigma)|\varphi(\sigma)|}_{\text{continuous function of $x$ and $t$}}
+	\\ & \le k \cdot (2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\ & \hspace{3em}+ (2\pi)^{-2d} \cdot k_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
 \end{align*}
 
 \noindent \textbf{For $L_3$:} Following the same steps for $L_2$ will get you the same exact bound as for $L_3$. \\ 
@@ -695,12 +704,13 @@ and so \eqref{fcond} become
 \end{align*}
 and again for simplicity we will first investigate the $\E\iint_{\R^{2d}}\ud z_1 \ud z_2$ integral. Using the Lipschitz property, we similarly get that 
 \begin{align*}
-&\E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)|b(u(r,z_1))f(z_1-z_2)G(t-r,x-z_2)|b(u(r,z_2))| 
-\\ & \le k\cdot  \E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)(1+u(r,z_1))f(z_1-z_2)G(t-r,x-z_2)(1+u(r,z_2)) 
-\\ &\le k\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)f(z_1-z_2)G(t-r,x-z_2)}_{K_1}
-\\&\hspace{5em}+k\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)\Norm{u(r,z_1)}_1f(z_1-z_2)G(t-r,x-z_2)}_{K_2} 
-\\&\hspace{5em}+ k\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)f(z_1-z_2)G(t-r,x-z_2)\Norm{u(r,z_2)}_1}_{K_3}
-\\& \hspace{5em}+ k\cdot \underbrace{\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)\Norm{u(r,z_1)}_2f(z_1-z_2)G(t-r,x-z_2)\Norm{u(r,z_2)}_2}_{K_4} 
+	       & \E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)|b(u(r,z_1))f(z_1-z_2)G(t-r,x-z_2)|b(u(r,z_2))|
+	\\ \le & k  \E\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)(1+u(r,z_1))f(z_1-z_2)G(t-r,x-z_2)(1+u(r,z_2))
+	\\ \le & k \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)f(z_1-z_2)G(t-r,x-z_2)
+	\\     &+k \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)\Norm{u(r,z_1)}_1f(z_1-z_2)G(t-r,x-z_2)
+	\\     &+k  \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)f(z_1-z_2)G(t-r,x-z_2)\Norm{u(r,z_2)}_1
+	\\     &+k  \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(t-r,x-z_1)\Norm{u(r,z_1)}_2f(z_1-z_2)G(t-r,x-z_2)\Norm{u(r,z_2)}_2
+	\\=:   & K_1+\cdots+K_4.
 \end{align*}
 We apply similar techniques as in for the first justification of Fubini's Theorem to get that 
 
@@ -729,7 +739,7 @@ and hence the bound for $K_2$ and $K_3$ is
 \begin{align*}
 &\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_4
 \\&\le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
-\\& \hspace{3em} + 2k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)\int_{\R^d}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)|
+| \\& \hspace{3em} + 2k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right) | \xi | ^2\right)\int_{\R^d}\ud \sigma \:G(t | x-\sigma) | \varphi(\sigma) |  |
 \\& \hspace{3em}+  k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\dfrac{r(t-r)}{t}|\xi|^2\right)\left(\int_{\R^{d}}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)\right)^2
 \\&\le k_t\int_0^t \ud s \: (t-s)^{\alpha-1} + 2k_tJ_0(t,x)\int_0^t \ud s \: (t-s)^{\alpha-1}+k_tJ_0(t,x)^2\int_0^t \ud s \: (t-s)^{\alpha-1}
 \end{align*}
@@ -738,15 +748,16 @@ Now we may say that that there exists some constant $K_t$ dependent on $t$ such 
 \eqref{fcond} \le K_t\bigg(1+2J_0(t,x)+J_0(t,x)^2\bigg)\int_0^t \ud s \: (t-s)^{\alpha-1}
 \end{align*} \qed 
 
-\begin{corollary} Let $u(t,x)$ denote the solution to \eqref{spde} and $\alpha \in (0,1)$. Then for $t_0>0$ we may say that \begin{equation} u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x)+\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x) \label{1fac}\end{equation} \\
+\begin{corollary} \label{C:explain}
+	Let $u(t,x)$ denote the solution to \eqref{spde} and $\alpha \in (0,1)$. Then for $t_0>0$ we may say that \begin{equation} u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x)+\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x) \label{1fac}\end{equation} \\
 \textit{Proof:} Follows directly from \eqref{fac}. \qed
 \end{corollary}
 
-We are now able to prove Lemma 3.1. \\
+We are now able to prove Lemma 3.1. 
 
-\noindent \textbf{Proof of Lemma 3.1} \\
 
-Proof: We first define a set $\mathscr K (\Theta)$ as 
+\begin{proof}[Proof of Lemma 3.1]
+We first define a set $\mathscr K (\Theta)$ as 
 \begin{align*}
 \mathscr K (\Theta) = \{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x), \quad \text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $} \}
 \end{align*}
@@ -755,19 +766,24 @@ Then $\mathscr K (\Theta)$ is relatively compact in $L^2_{ \rho}$ for $\Theta >0
 \mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \not \in \mathscr K(\Theta) \} & \le \mathbb{P}\left[ \left(\int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Theta}{\sin(\alpha \pi )} \right]
 \\&\le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\E \int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\hat \rho}^q \: \ud s
 \\& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg)
-\\ \implies \mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg) 
-\\ &\ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) 
 \end{align*}
-Therefore if we choose $\Theta>0$ big enough such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ the we get that 
+which implies that 
+\begin{align*}
+\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg) 
+\ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg).
+\end{align*}
+Therefore, if we choose $\Theta>0$ big enough such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ the we get that 
 \begin{align*} 
 \mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \epsilon 
 \end{align*} 
 We can now deduce from this and the semigroup property of the solution to the heat equation that 
 \begin{align*}
-\mathbb{P}\{ u^{\hat{\varphi}}(t,\cdot) \in \mathscr K(\Theta) \} & \ge (1- \epsilon)\mathbb{P}\{ |u^{\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat\rho} < R \}
+\mathbb{P}\{ u^{\hat{\varphi}}(t,\cdot) \in \mathscr K(\Theta) \} & \ge (1-
+\epsilon)\mathbb{P}\{ |u^{\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat\rho} < R
+\}.
 \end{align*}
-Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim. \qed
-
+Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim. 
+\end{proof}
 
 \begin{small}
 	\addcontentsline{toc}{section}{Bibliography}
