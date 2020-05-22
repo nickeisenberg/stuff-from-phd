@@ -16,6 +16,7 @@ followed the following link:
 * Here is a workflow [ref](https://www.geeksforgeeks.org/how-to-install-configure-and-use-git-on-ubuntu/), which may not  suit you since I am using linux.
 * There are tons of tutorials. 
 * [How to use ssh](https://devqa.io/install-git-mac-generate-ssh-keys/): 
+* `git push -u origin master`
 
 ## Vim 
 This is a big topic. It may takes you several months to get used to it. But it
