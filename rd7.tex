@@ -4,7 +4,8 @@
 % -------------------------------------------------
 % Set up the page margins.
 % -------------------------------------------------
-\usepackage[headheight = .5in, headsep = \baselineskip, top = 1in, left = 1in, right = 1in, textwidth = 7.52 in]{geometry}
+\usepackage[margin=1in]{geometry}
+% \usepackage[headheight = .5in, headsep = \baselineskip, top = 1in, left = 1in, right = 1in, textwidth = 7.52 in]{geometry}
 % \usepackage[text={6.5in,9.5in},centering]{geometry}
 % \usepackage[margin=1in]{geometry}
 % \setlength{\topmargin}{-0.25in}
@@ -42,7 +43,7 @@
 % check references
 % -------------------------------------------------
 % \usepackage{refcheck}
-% \usepackage[notref,notcite]{showkeys}
+\usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
 
@@ -50,29 +51,22 @@
 % -------------------------------------------------
 % Environments here
 % -------------------------------------------------
-% \theoremstyle{plain}
-% \newtheorem{theorem}{Theorem}[section]
-% \newtheorem{corollary}[theorem]{Corollary}
-% \newtheorem{lemma}[theorem]{Lemma}
-% \newtheorem{proposition}[theorem]{Proposition}
-%
-% \theoremstyle{definition}
-% \newtheorem{definition}[theorem]{Definition}
-% \newtheorem{hypothesis}[theorem]{Hypothesis}
-% \newtheorem{assumption}[theorem]{Assumption}
-%
-% \newtheorem{remark}[theorem]{Remark}
-% \newtheorem{conjecture}[theorem]{Conjecture}
-% \newtheorem{example}[theorem]{Example}
-
+\theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{remark}{Remark}[section]
-\newtheorem{corollary}{Corollary}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{assumptions}{Assumptions}[section]
-\newtheorem{proposition}{Proposition}[section]
-\newtheorem{definition}{Definition}[section]
-\newtheorem{notation}{Notation}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumptions}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
 
 % -------------------------------------------------
 %  Define short hand symbols.
@@ -87,104 +81,199 @@
 \newcommand{\ud}{\ensuremath{\mathrm{d}}}
 
 
+\title{Invariant measures for the stochastic heat equation on $\R^d$}
+\author{Le Chen\\Emory University\\\texttt{le.chen@emory.edu}\\
+	\and
+		Nicholas Eisenberg\\University of Nevada, Las Vegas\\\texttt{eisenn1@unlv.nevada.edu}
+	}
+\date{\today}
 \allowdisplaybreaks
 
 \begin{document}
+\maketitle
 
-\noindent \textbf{Abstract}
+\begin{abstract}
+	This paper deals with the long term behavior of the solution to the nonlinear stochastic heat equation 
+	$\partial u /\partial t - \frac{1}{2}\Delta u= b(u)\dot{W}$ for a Lipschitz continuous diffusion coefficient 
+	$b$ which is not necessarily bounded. Using the theory of the stochastic integral laid out by John Walsh, 
+	we provide conditions which will guarantee the existence of an invariant measure for a broad range of initial 
+	conditions which includes $L^2_\rho$ as well as the Dirac delta distribution $\delta_0$. 
+\end{abstract}
 
-This paper deals with the long term behavior of the solution to the nonlinear stochastic heat equation $\partial u /\partial t - \frac{1}{2}\Delta u= b(u)\dot{W}$ for a Lipschitz continuous diffusion coefficient $b$ which is not necessarily bounded. Using the theory of the stochastic integral laid out by John Walsh, we provide conditions which will guarantee the existence of an invariant measure for a broad range of initial conditions which includes $L^2_\rho$ as well as the Dirac delta distribution $\delta_0$. 
+\bigskip
+
+\noindent{\it \noindent MSC 2010 subject classification}: 60H15, 60H07, 60F05.
+ \smallskip
+
+\noindent{\it Keywords}: Stochastic heat equation, parabolic Anderson model, invariant measure, delta initial condition. 
+\smallskip
+	
+% \noindent{\it Running head:} Ergodicity and CLT for PAM.
+
 
 
 \section{Introduction} 
 We consider the following stochastic heat equation 
 \begin{equation}
-\begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$} \\
-u(0,\cdot) = \mu(\cdot)  & 
-\end{cases}  \label{gspde}
+	\begin{cases}
+	\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$} \\
+	u(0,\cdot) = \mu(\cdot)  & 
+	\end{cases}  \label{E:gspde}
 \end{equation} 
-where $b(x,u)$ is assumed to be a globally Lipschitz continuous function in $u$ with Lipschitz constant independent of $x$ and as well is bounded in $x$ when $t=0$ In particular, the linear case  $b(x,u) = \lambda u$ is referred to as the \textit{parabolic Anderson model} \cite{CarMol94}. $W(t,s)$  is a Gaussian noise that is white in time and homogeneously colored in space and  the initial measure, $\mu$, is a deterministic and locally finite (regular) Borel measure. In particular, we investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{gspde} for a more broad range of initial measures which will include the Dirac delta distribution $\delta_0$ as well any $L^2_\rho$ function. 
+where $b(x,u)$ is assumed to be a globally Lipschitz continuous function in $u$ with Lipschitz constant independent of $x$.
+In particular, the linear case  $b(x,u) = \lambda u$ is referred to as the \textit{parabolic Anderson model} \cite{CarMol94}.
+In this equation, $\dot{W}(t,s)$ refers to a centered Gaussian noise that is white in time and homogeneously correlated in space.
+The initial measure, $\mu$, is a deterministic and locally finite (regular) Borel measure. 
+In particular, we investigate the conditions required to guarantee the existence of invariant measures 
+for the solution to \eqref{E:gspde} for a more broad range of initial measures which include the Dirac delta
+distribution $\delta_0$ as well some weighted $L^2$ functions.
 
-The question of the existence of invariant measures in unbounded domains with dimension $d \ge 3$ has been handled in few papers such as \cite{TessitoreZabczyk98M, AM03, MSY15, MSY16}. One thing to note is that the just mentioned papers use the theory of the stochastic integral laid out by Da Prato and Jabczyk in \cite{DZ92} while in this paper we use the theory developed by Walsh in \cite{Walsh}. The former develops a theory of integration with respect to Hilbert-space-valued processes while the later emphasizes integration with respect to worthy martingale measures. Both theories have their advantages and disadvantages but have been proven to be more or less equivalent in \cite{DalQuer}. 
+The question of the existence of invariant measures in unbounded domains with dimension $d \ge 3$ has been handled in
+few papers such as \cite{TessitoreZabczyk98M, AM03, MSY15, MSY16}. One thing to note is that the just mentioned papers
+use the theory of the stochastic integral laid out by Da Prato and Jabczyk in \cite{DZ92} while in this paper we use the
+theory developed by Walsh in \cite{Walsh}. The former develops a theory of integration with respect to
+Hilbert-space-valued processes while the later emphasizes integration with respect to worthy martingale measures. Both
+theories have their advantages and disadvantages but have been proven to be more or less equivalent in \cite{DalQuer}. 
 
-The need to prove existence of invariant measures is apparent for the fact that they are crucial in order to study the ergodicity of dynamical systems. Da Prato and Jabczyk \cite{DZp92} established the following procedure 
+The need to prove existence of invariant measures is apparent for the fact that they are crucial in order to study the
+ergodicity of dynamical systems. Da Prato and Jabczyk \cite{DZp92} established the following procedure 
 \begin{itemize}
-	\item Show the existence of a Markovian solution to the SPDE in question in a certain function space where the transition group satisfies the Feller Property 
-	\item  Show that the solution starting from a particular initial condition is bounded in probability
+	\item Show the existence of a Markovian solution to the SPDE in question in a certain function space where the
+		transition group satisfies the Feller Property 
+	\item Show that the solution starting from a particular initial condition is bounded in probability
 \end{itemize}
-The first bullet point has been shown to be true \cite{DZ96} for a wider class of SPDEs which includes \eqref{gspde} and in fact has also been show to be true in other various cases of interest \cite{Cer01, MS99}. In \cite{TessitoreZabczyk98M} they follow this procedure to show the existence of an invariant measure for the solutions to \eqref{gspde} in two separate cases:
+The first bullet point has been shown to be true \cite{DZ96} for a wider class of SPDEs which includes \eqref{E:gspde}
+and in fact has also been show to be true in other various cases of interest \cite{Cer01, MS99}. 
+In \cite{TessitoreZabczyk98M} they follow this procedure to show the existence of an invariant measure for the solutions to
+\eqref{E:gspde} in two separate cases:
 \begin{enumerate}
-	\item The initial measure is a function, $\varphi \in L^2_\rho \cap L^2_{\hat\rho}$ where both $\rho$ and $\hat\rho$ satisfy the condition that $\rho \cdot (\hat\rho)^{-1} \in L^1(\R^d)$ and the solution is bounded in probability. 
-	\item The initial measure is a constant function while assuming certain integrability properties of the spectral density. 
+	\item The initial measure is a function, $\varphi \in L^2_\rho \cap L^2_{\hat\rho}$ where both $\rho$ and
+		$\hat\rho$ satisfy the condition that $\rho \cdot (\hat\rho)^{-1} \in L^1(\R^d)$ and the solution is
+		bounded in probability. 
+	\item The initial measure is a constant function while assuming certain integrability properties of the spectral
+		density. 
 \end{enumerate} 
-By now using the theory of Walsh as well as subsequent results proven in \cite{CH16Comparison} we are able to mimic the proof in \cite{TessitoreZabczyk98M}, but in the language of Walsh, and show the existence of invariant measures for a more broad group of initial conditions. However, because of the differences between the two theories of the stochastic integral, we must trade some of previous assumptions on the spectral density for new ones which are listed below. For example, in \cite{TessitoreZabczyk98M}, we drop hypothesis 2.1(i) as well as the assumptions in Theorem 3.3 for the new assumptions listed below. 
+By now using the theory of Walsh as well as subsequent results proven in \cite{CH16Comparison} we are able to mimic the
+proof in \cite{TessitoreZabczyk98M}, but in the language of Walsh, and show the existence of invariant measures for a
+more broad group of initial conditions. However, because of the differences between the two theories of the stochastic
+integral, we must trade some of previous assumptions on the spectral density for new ones which are listed below. For
+example, in \cite{TessitoreZabczyk98M}, we drop hypothesis 2.1(i) as well as the assumptions in Theorem \ref{??} for the new
+assumptions listed below. 
 
-Misiats, Stanzhytski and Yip \cite{MSY15} show the existence of a invariant measure for \eqref{gspde} with any $L^2(\R^d)$ initial condition but with non-zero drift term $f(x,u(t,x))$ added to the right side of the equal sign. However their drift term $f$ and diffusion coefficient $b$ must be bounded above by a some $\varphi \in L^\infty(\R^d) \cap L^1(\R^d)$ in the sense that 
+\textcolor{magenta}{Give the correct number for the above theorem.} 
+
+Misiats, Stanzhytski and Yip \cite{MSY15} show the existence of a invariant measure for \eqref{E:gspde} with any
+$L^2(\R^d)$ initial condition but with non-zero drift term $f(x,u(t,x))$ added to the right side of the equal sign.
+However their drift term $f$ and diffusion coefficient $b$ must be bounded above by a some $\varphi \in L^\infty(\R^d)
+\cap L^1(\R^d)$ in the sense that 
 \begin{enumerate}
 	\item $|f(x,0)|,\; |b(x,0)| \; \le \varphi(x)$
 	\item $|f(x,u)-f(x,v)|, \; |b(x,u)-b(x,v)|\; \le L\varphi(x)|u-v|$
 \end{enumerate}
-In our paper we do not require such an upper bound. We also allow for any $L^2_\rho(\R^d)$ initial condition which contains the $L^2(\R^d)$ initial conditions. However we only consider the case where the drift term $f \equiv 0$. For the case of unbounded coefficients, Manthey and Assing \cite{AM03} have showed the existence of an invariant measure when considering the weight $\rho(x)=(1+|x|^2)^{-a/2},\; a>d$ and a bounded continuous initial condition. Their diffusion coefficient follows the same growth properties as ours but they allow for non-zero drift term that follows a "one-sided" linear growth condition. In their paper they are able to squeeze the solution to their SPDE in between two other solutions, each satisfying a desired inequality that leads to the existence of an invariant measure. As of now, the theory of Walsh can not be applied to such drift coefficients so it is unclear if the results in this paper may apply to such a SPDE.
+In our paper we do not require such an upper bound. We also allow for any $L^2_\rho(\R^d)$ initial condition which
+contains the $L^2(\R^d)$ initial conditions. However we only consider the case where the drift term $f \equiv 0$.  For
+the case of unbounded coefficients, Manthey and Assing \cite{AM03} have showed the existence of an invariant measure
+when considering the weight $\rho(x)=(1+|x|^2)^{-a/2},\; a>d$ and a bounded continuous initial condition. Their
+diffusion coefficient follows the same growth properties as ours but they allow for non-zero drift term that follows a
+"one-sided" linear growth condition. In their paper they are able to squeeze the solution to their SPDE in between two
+other solutions, each satisfying a desired inequality that leads to the existence of an invariant measure. As of now,
+the theory of Walsh can not be applied to such drift coefficients so it is unclear if the results in this paper may
+apply to such a SPDE.
+\bigskip
 
-This paper is broken into several sections. We first briefly develop some theory needed to complete the proofs of the main results which includes defining the spatially homogeneous Gaussian noise which is white in time and colored in space and defining the solution to \eqref{gspde} as well as list the necessary requirements for its exists and uniqueness. Lastly, before we list and prove the main results, we give a brief introduction to invariant measures. The proof of one of our main results, \textbf{Theorem 3.1}, relies on our \textbf{Lemma 3.1}. The proof of this lemma follows the same blueprint laid out in \cite{TessitoreZabczyk98M} however because of our use of the theory of Walsh, it is much longer and more technical so for this reason we devote the last section of this paper to prove it.
+This paper is organized as follows: We first briefly develop some theory needed to complete the proofs of the main
+results which includes defining the spatially homogeneous Gaussian noise which is white in time and colored in space and
+defining the solution to \eqref{E:gspde} as well as list the necessary requirements for its exists and uniqueness.
+Lastly, before we list and prove the main results, we give a brief introduction to invariant measures. The proof of one
+of our main results, Theorem \ref{T:Main}, relies on our Lemma \ref{L:Main}. The proof of this lemma follows the same
+blueprint laid out in \cite{TessitoreZabczyk98M} however because of our use of the theory of Walsh, it is much longer
+and more technical so for this reason we devote the last section of this paper to prove it.
 
 \section{Preliminaries} 
 \subsection{Definition of the Gaussian noise and Walsh integral}
 
-Following \cite{DalangEtc09Minicourse}, a Gaussian noise that is white in time and colored in space is an $L^2(\Omega,\mathcal F,P)$-valued zero mean Gaussian Processes on a complete probability space $(\Omega,\mathcal F,P)$
-$$ \{ F(\psi) : \psi \in C_0^\infty(\R^{d+1}) \} ,$$
+Following \cite{DalangEtc09Minicourse}, a Gaussian noise that is white in time and colored in space is an
+$L^2(\Omega,\mathcal F,P)$-valued zero mean Gaussian Processes on a complete probability space $(\Omega,\mathcal F,P)$
+\begin{align*}
+	\{ F(\psi) : \psi \in C_0^\infty(\R^{d+1}) \} ,
+\end{align*}
 such that 
-$$ \E [ F(\psi)F(\varphi) ] = J(\psi,\varphi) := \int_0^\infty \ud s \int_{\R^d} \Gamma(dx)(\psi(s,\cdot)*\tilde{\varphi}(s,\cdot))(x)$$
+\begin{align*}
+	\E [ F(\psi)F(\varphi) ] = J(\psi,\varphi) := \int_0^\infty \ud s \int_{\R^d}
+	\Gamma(dx)(\psi(s,\cdot)*\tilde{\varphi}(s,\cdot))(x)
+\end{align*}
  where $\tilde{\varphi}(x):= \varphi(-x)$ and $\Gamma$ is a tempered measure on $\R^d$ that is nonnegative and nonnegative definite. When $\Gamma$ has density $\Gamma(\ud x) = f(x)\ud x$ then $J$ above can be written as 
-$$ J(\psi,\phi) = \int_0^\infty \ud s \int_{\R^d} \ud x \int_{\R^d} \ud y \: \psi(s,x)f(x-y)\varphi(s,y). $$
+ \begin{align*}
+	 J(\psi,\phi) = \int_0^\infty \ud s \int_{\R^d} \ud x \int_{\R^d} \ud y \: \psi(s,x)f(x-y)\varphi(s,y). 
+ \end{align*}
 $f$ is often referred to as the correlation function of the Gaussian Noise and its Fourier transform 
-$$ \hat{f}(\xi)=\mathcal Ff(\xi) = \int_{\R^d}\exp(-i\xi\cdot x)f(x) \: \ud x $$
-is often referred to as the spectral density. Now following \cite{Walsh} and \cite{DalangEtc09Minicourse} and by denoting $\mathscr B_b(\R^d)$ as the family of bounded Borel subsets of $\R^d$, one may construct out of this a worthy martingale measure $W=(W_t(A),t\ge 0, A \in \mathscr B_b(\R^d))$ where 
-$$ W_t(A):= \lim \limits_{t\to \infty} F(\psi_n),  $$
-where the limit is in $L^2(\Omega,\mathcal F,P)$, $\psi_n \in C_0^\infty(\R^{d+1})$ and $\psi_n \downarrow 1_{[0,t]\times A}. $ With this construction, one may show that $(W_t(A),t\ge 0, A \in \mathscr B_b(\R^d))$ is a worth martingale measure and its covariation measure $Q$ is given by 
-$$ Q(A \times B \times [s,t)) = (t-s)\int_{\R^d} \ud x \int_{\R^d} \ud y \: 1_A(x)f(x-y)1_B(y) $$
+\begin{align*}
+	\hat{f}(\xi)=\mathcal Ff(\xi) = \int_{\R^d}\exp(-i\xi\cdot x)f(x) \: \ud x 
+\end{align*}
+is often referred to as the spectral density. Now following \cite{Walsh} and \cite{DalangEtc09Minicourse} and by
+denoting $\mathscr B_b(\R^d)$ as the family of bounded Borel subsets of $\R^d$, one may construct out of this a worthy
+martingale measure $W=(W_t(A),t\ge 0, A \in \mathscr B_b(\R^d))$ where 
+\begin{align*}
+	W_t(A):= \lim \limits_{t\to \infty} F(\psi_n),  
+\end{align*}
+where the limit is in $L^2(\Omega,\mathcal F,P)$, $\psi_n \in C_0^\infty(\R^{d+1})$ and $\psi_n \downarrow
+1_{[0,t]\times A}. $ With this construction, one may show that $(W_t(A),t\ge 0, A \in \mathscr B_b(\R^d))$ is a worth
+martingale measure and its covariation measure $Q$ is given by 
+\begin{align*}
+	Q(A \times B \times [s,t)) = (t-s)\int_{\R^d} \ud x \int_{\R^d} \ud y \: 1_A(x)f(x-y)1_B(y) 
+\end{align*}
 and its dominating measure is $K \equiv Q$. The main point is that $F$ and $W$ are related by 
-$$ F(\psi) = \int_0^\infty \int_{\R^d} \psi (t,x) W(\ud t, \ud x) $$
+\begin{align*}
+	F(\psi) = \int_0^\infty \int_{\R^d} \psi (t,x) W(\ud t, \ud x) 
+\end{align*}
 where the integral is a martingale measure stochastic integral as in Walsh with filtration given by 
-$$\mathcal F_t = \sigma \big(W_s(A), s \le t, A \in \mathscr B_b(\R^d) \big) \vee \mathscr N $$ 
-where $\mathscr N$ is the sigma field generated by the $P$-null sets. 
+\begin{align*}
+	\mathcal F_t = \sigma \big(W_s(A), s \le t, A \in \mathscr B_b(\R^d) \big) \vee \mathscr N  
+\end{align*}
+where $\mathscr N$ is the sigma field generated by the $\P$-null sets. 
 
-Now for any adapted, jointly measurable processes (with respect to $\mathcal B((0,\infty)\times \R^d)\times \mathcal F)$ random field $\{X(t,x): t>0 \text{ and } x \in \R^d\}$ such that the for all integers $p \ge 2$, 
-$$ \int_0^\infty\iint_{\R^{2d}} \ud x \ud y \: \Vert X(s,y)X(s,x) \Vert_{\frac{p}{2}}f(x-y) < \infty,$$
+Now for any adapted, jointly measurable processes (with respect to $\mathcal B((0,\infty)\times \R^d)\times \mathcal F)$
+random field $\{X(t,x): t>0 \text{ and } x \in \R^d\}$ such that the for all integers $p \ge 2$, 
+\begin{align*}
+	\int_0^\infty\ud s\iint_{\R^{2d}} \ud x \ud y \: \Vert X(s,y)X(s,x) \Vert_{\frac{p}{2}}f(x-y) < \infty,
+\end{align*}
 the stochastic integral 
-$$ \int_0^\infty \int_{\R^d} X(s,y)\: W(\ud s, \ud y) $$
-is well defined in the sense of Walsh. Throughout this paper $\Vert \cdot \Vert_p$ will denote the standard $L^p(\Omega)$ norm, $\E\big[|\cdot|^p\big]^{\frac{1}{p}}$. 
+\begin{align*}
+	\int_0^\infty \int_{\R^d} X(s,y)\: W(\ud s, \ud y) 
+\end{align*}
+is well defined in the sense of Walsh. Throughout this paper $\Vert \cdot \Vert_p$ will denote the standard
+$L^p(\Omega)$ norm, $\E\big[|\cdot|^p\big]^{\frac{1}{p}}$. 
 
 \subsection{Existence and uniqueness of the mild solution}
 
-With all this said, we define the mild solution to \eqref{gspde} as 
+With all this said, we define the mild solution to \eqref{E:gspde} as 
 \begin{equation}
-u(t,x)=\int_{\mathbb R^d}G(t,x-y)\mu(\ud y) + \int_0^t\int_{\mathbb R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y) \label{gmsol}
+	u(t,x)=\int_{\R^d}G(t,x-y)\mu(\ud y) + \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y) \label{E:gmsol}
 \end{equation}
 where the second integral above is a Walsh integral and 
 \[
- G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\dfrac{|x|^2}{2t} \right).
+	 G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\dfrac{|x|^2}{2t} \right).
 \]
 We also denote 
 \[
- J(t,x) := \int_{\mathbb R^d}G(t,x-y)\mu(\ud y) 
+	 J(t,x) := \int_{\R^d}G(t,x-y)\mu(\ud y) 
 \]
 with the distinction that 
 \[
-J_0(t,x) := \int_{\mathbb R^d}G(t,x-y)|\mu|(\ud y) 
+	J_0(t,x) := \int_{\R^d}G(t,x-y)|\mu|(\ud y) 
 \]
 and lastly,
 \[
- I(t,x):= \int_0^t\int_{\mathbb R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y). 
+	 I(t,x):= \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y). 
 \]
 \begin{definition}
-A process $u=(u(t,x),(t,x)\in (0,\infty)\times \R^d)$ is called a random field solution to \eqref{gspde} if: 
+	\label{D:Sol}
+	A process $u=(u(t,x),(t,x)\in (0,\infty)\times \R^d)$ is called a random field solution to \eqref{E:gspde} if: 
 	\begin{enumerate}
 		\item $u$ satisfies almost surely and for all $(t,x) \in (0,\infty)\times \R^d$
-						\[ 
-							u(t,x) = \int_{\R^d}G(t,x-y)\:\mu( \ud y) + \int_0^t\int_{\R^d}G(t-s,x-y)b(y,u(s,y)) \: W(\ud s, \ud y)
-						\]
+			\[ 
+				u(t,x) = \int_{\R^d}G(t,x-y)\:\mu( \ud y) + \int_0^t\int_{\R^d}G(t-s,x-y)b(y,u(s,y)) \: W(\ud s, \ud y)
+			\]
 		\item $u$ is adapted, that is, for all $(t,x) \in (0,\infty)\times \R^d$, $u(t,x)$ is $\mathcal F_t$ measurable. 
 		\item $u$ is jointly measurable with respect to $\mathcal B((0,\infty)\times \R^d) \times \mathcal F$
 		\item $\Norm{I(t,x)}_2 < + \infty $ for all $(t,x) \in (0,\infty)\times \R^d$
@@ -192,18 +281,25 @@ A process $u=(u(t,x),(t,x)\in (0,\infty)\times \R^d)$ is called a random field s
 	\end{enumerate}
 \end{definition}
 
-We know state assumptions necessary for the existence and uniqueness of the solution to \eqref{gspde}. The result is found in \cite{CHN16Density}.
+We now state assumptions necessary for the existence and uniqueness of the solution to \eqref{E:gspde}. The result is
+found in \cite{CK15SHE,CH16Comparison}.
 
-\begin{assumptions} $\;$
+\begin{assumptions} 
+	\label{A:General}
 	\begin{enumerate}[(i)]
 		\item \[
-					 \int_{\R^d}\exp(-a|x|^2)|\mu|(\ud x) < \infty \quad \text{for any $a>0$} \label{icon} 
-				\]
+			\int_{\R^d}\exp(-a|x|^2)|\mu|(\ud x) < \infty \quad \text{for any $a>0$} \label{icon} 
+			\]
+			\textcolor{magenta}{(This is not the correct way to cite. You can either use equation number, or 
+			cite as part (i) of Assumption \ref{A:General}. Please update the documents for all these
+			problems.)} 
 		\item \[
-					\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{\beta + |\xi|^2} < \infty \quad \text{for some and therefore any $\beta>0$}  \label{dalcon} 
-				\]
-		\item \[  |b(x,u)-b(x,v)|< L |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad u,v \in \R, \; x \in \R^d \label{lipcon} 
-				\]
+				\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{\beta + |\xi|^2} <
+				\infty \quad \text{for some and therefore any $\beta>0$}  \label{dalcon} 
+			\]
+		\item \[  
+				|b(x,u)-b(x,v)|< L |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad u,v \in \R, \; x \in \R^d \label{lipcon} 
+			\]
 	\end{enumerate}
 \end{assumptions}
 
@@ -212,85 +308,101 @@ We know state assumptions necessary for the existence and uniqueness of the solu
 \end{notation}
 
 \begin{theorem}
-Suppose that Assumptions 2.1 are satisfied. Then \eqref{gspde} has a unique random field solution starting from $\mu$. The solution is $L^2(\Omega)$ continuous. 
+Suppose that Assumption \ref{A:General} are satisfied. Then \eqref{E:gspde} has a unique random field solution starting from $\mu$. The solution is $L^2(\Omega)$ continuous. 
 \end{theorem}
 
-The arguments in this paper have been made possible due to the moment bounds of the solution \eqref{gmsol} given in \cite{CH16Comparison} which we will now state again without proof.
+The arguments in this paper have been made possible due to the moment bounds of the solution \eqref{E:gmsol} given in \cite{CH16Comparison} which we will now state again without proof.
 
-\begin{theorem} Under Assumptions 2.1 and for any $t>0$ and $x \in \R^d$, the solution to \eqref{gspde},$u(t,x)$, given by \eqref{gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
-\begin{equation}
-	\Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big]H(t;\gamma_p)^{1/2} \label{mb}
-\end{equation}
-where $\bar{\varsigma}=L_0/L$ and $\gamma_p = 32pL^2$. The function $H$ is defined in \cite{CH16Comparison} but the definition is not important here. Moreover, if we assume that\begin{equation}
- \Upsilon(0) < \infty \label{dalcon0}
- \end{equation}
- then we may make the stronger assertion that for some constant $C$
-\begin{equation}
-	\Norm{u(t,x)}_p \le \text{Const.}\big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big] \le C[1+(|\mu|*G(t,\cdot))(x)\big] \label{mb0}.
-\end{equation} 
-Even further, if we assume that $b(x,0)=0$ for and $x \in \R^d$ then $L_0 = 0$ and we easily see that \eqref{mb0} becomes 
-\begin{equation}
-\Norm{u(t,x)}_p \le \text{Const.}\big[(|\mu|*G(t,\cdot))(x)\big] \label{mb00}.
-\end{equation}
+\begin{theorem} 
+	Under Assumption \ref{A:General} and for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:gspde},$u(t,x)$,
+	given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
+	\begin{equation}
+		\Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big]H(t;\gamma_p)^{1/2} \label{E:mb}
+	\end{equation}
+	where $\bar{\varsigma}=L_0/L$ and $\gamma_p = 32pL^2$. The function $H$ is defined in \cite{CH16Comparison} but
+	the definition is not important here. Moreover, if we assume that\begin{equation}
+	 \Upsilon(0) < \infty \label{E:dalcon0}
+	 \end{equation}
+	 then we may make the stronger assertion that for some constant $C$
+	\begin{equation}
+		\Norm{u(t,x)}_p \le \text{Const.}\big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big] \le
+		C[1+(|\mu|*G(t,\cdot))(x)\big] \label{E:mb0}.
+	\end{equation} 
+	Even further, if we assume that $b(x,0)=0$ for and $x \in \R^d$ then $L_0 = 0$ and we easily see that
+	\eqref{E:mb0} becomes 
+	\begin{equation}
+		\label{E:mb00}
+		\Norm{u(t,x)}_p \le \text{Const.}\big[(|\mu|*G(t,\cdot))(x)\big].
+	\end{equation}
 \end{theorem}
 
-\begin{remark} Throughout this paper we will in fact be working under the assumption that $\Upsilon(0) < \infty$ and so what will be important to us is \eqref{mb0}. Also the assumption that $b(x,0)=0$ is often assumed and in addition it is required to prove the strict positivity \cite{CH16Comparison} of the solution to \eqref{gspde}. 
+\begin{remark} 
+	Throughout this paper we will in fact be working under the assumption that $\Upsilon(0) < \infty$ and so what
+	will be important to us is \eqref{E:mb0}. Also the assumption that $b(x,0)=0$ is often assumed and in addition
+	it is required to prove the strict positivity \cite{CH16Comparison} of the solution to \eqref{E:gspde}. 
 \end{remark}
 
-\subsection{The $L^2_\rho(\R^d)$ weighted space}
+\subsection{The weighted space $L^2_\rho(\R^d)$}
 
-We denote by $L^2_\rho(\R^d)$ the weighted space $L^2(\R^d,\sqrt{\rho(x)}\ud x)$ with norm  
-\[
-|f|_\rho^2 :=	\int_{\R^d}f(x)^2\rho(x) \: \ud x < \infty
-\]
-and inner product 
-\[
-\langle f,g \rangle  :=	\int_{\R^d}f(x)g(x)\rho(x) \: \ud x.
-\]
-For the remainder of the paper, we assume that $\rho$ is an \textit{admissible weight} meaning that $\rho$ is a positive, bounded and continuous function in $L^1(\R^d)$ such that for $T>0$ there exists a constant $C_\rho(T)$ such that 
+Let $\rho$ be some nonnegative function on $\R^d$. 
+We denote by $L^2_\rho(\R^d)$ the weighted Hilbert space with the inner produce $\langle f,g \rangle_\rho  :=
+\int_{\R^d}f(x)g(x)\rho(x) \: \ud x$ and set $|f|_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$.
+Following Tessitore and Zabczyk \cite{TessitoreZabczyk98M}, we assume that $\rho$ is an \textit{admissible weight}
+meaning that $\rho$ is a positive, bounded and continuous function in $L^1(\R^d)$ such that for $T>0$ there exists a
+constant $C_\rho(T)$ such that 
 \begin{equation}
-	\big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x) \quad \text{for all $t\in[0,T]$.} \label{aw}
+	\big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x) \quad \text{for all $t\in[0,T]$.} \label{E:aw}
 \end{equation}   
 Several examples of admissible weights are 
 \begin{enumerate}
-		\item $\rho(x)=\exp(-a|x|), \; a>0$
-		\item $\rho(x) = (1+|x|^a)^{-1}, \; a>d$
+	\item $\rho(x)=\exp(-a|x|), \; a>0$; and
+	\item $\rho(x) = (1+|x|^a)^{-1}, \; a>d$.
 \end{enumerate}
 
-For the remainder of this section, we focus ourselves on \eqref{gspde} with initial condition $\varphi \in L^2_\rho$, namely the following stochastic heat equation. 
+For the remainder of this section, we focus ourselves on \eqref{E:gspde} with initial condition $\varphi \in L^2_\rho$,
+namely the following stochastic heat equation. 
 \begin{equation}
-\begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
-\\ u(0,x)=\varphi(x) & \varphi(x) \in L^2_\rho(\mathbb R^d)
-\end{cases}  \label{spde}
+	\begin{cases}
+	\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
+	\\ u(0,x)=\varphi(x) & \varphi(x) \in L^2_\rho(\R^d)
+	\end{cases}  \label{E:spde}
 \end{equation}
 which has mild solution given by
 \begin{equation}
-u(t,x)=\int_{\mathbb R^d}G_t(x-y)\varphi(y)\ud y + \int_0^t\int_{\mathbb R^d}b(u(s,y))G(t-s,x-y)W(\ud s,\ud y) \label{msol}.
+	u(t,x)=\int_{\R^d}G_t(x-y)\varphi(y)\ud y + \int_0^t\int_{\R^d}b(u(s,y))G(t-s,x-y)W(\ud s,\ud y) \label{E:msol}.
 \end{equation}
-We will show that the solution, denoted as $u^\varphi(t,x)$, is an object in $L^2_\rho(\R^d)$ for each $t>0$. We may denote the solution to \eqref{spde} as $u(t,x)$ or simply as $u$ when there is no confusion. First we state and prove a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \ref{icon}.\\
+We will show that the solution, denoted as $u^\varphi(t,x)$, is an object in $L^2_\rho(\R^d)$ for each $t>0$. We may
+denote the solution to \eqref{E:spde} as $u(t,x)$ or simply as $u$ when there is no confusion. First we state and prove
+a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \ref{icon}.
 
-\begin{lemma} \textit{Suppose that $\varphi \in L^2_\rho(\R^d)$. Then $\varphi$ satisfies \ref{icon}.} 
+\begin{lemma}
+	\label{L:phi}
+	Suppose that $\varphi \in L^2_\rho(\R^d)$. Then $\varphi$ satisfies \ref{icon}.
 \end{lemma}
 
 \begin{proof} It can be shown that for any admissible weight, there exists some constant $C>0$ such that $C \cdot \rho(x) \ge  \exp(-a|x|^2)$. This constant $C$ may depend on $a>0$. Now, since we assume $\int_{\R^d}\rho(x)|\varphi(x)|^2\ud x < \infty $ then this implies that $\int_{\R^d}\rho(x)|\varphi(x)|\ud x < \infty $ which now implies that $\int_{\R^d}\exp(-a|x|^2)|\varphi(x)|\ud x < \infty $ 
 \end{proof}
 
-\begin{theorem} Suppose Assumptions 2.1 hold. Then \eqref{msol} gives the unique (in the sense of versions) random field solution \{$u(t,x): t>0, \; x\in\R^d$\} of \eqref{spde} starting from $\varphi(x) \in L^2_\rho$. The solution is $L^2(\Omega)-continuous$. Moreover, if we assume $\Upsilon(0)<\infty$ so we may apply \eqref{mb0} then we may say
- $$\sup_{t\ge 0}\E|u(t,\cdot)|_\rho^2 < \infty $$ 
+\begin{theorem} 
+	\label{T:Moment}
+	Suppose Assumption \ref{A:General} hold. Then \eqref{E:msol} gives the unique (in the sense of versions) random field solution \{$u(t,x): t>0, \; x\in\R^d$\} of \eqref{E:spde} starting from $\varphi(x) \in L^2_\rho$. The solution is $L^2(\Omega)-continuous$. Moreover, if we assume $\Upsilon(0)<\infty$ so we may apply \eqref{E:mb0} then we may say
+	\begin{align*}
+		\sup_{t\ge 0}\E|u(t,\cdot)|_\rho^2 < \infty  
+	\end{align*}
 \end{theorem}
 
-\begin{proof} Lemma 2.1 along with Assumptions 2.1 guarantee the existence and uniqueness of the  solution which is show in \cite{CH16Comparison}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant. 
+\begin{proof} 
+	Lemma \ref{L:phi} along with Assumption \ref{A:General} guarantee the existence and uniqueness of the  solution which is show in \cite{CH16Comparison}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant. 
 \begin{align*}
-\E\left(| u(t,\cdot)|_\rho^2\right) &= \E \int_{\mathbb R^d}\vert u(t,x) \vert^2 \rho(x)dx 
-\\&\le C_1 \int_{\mathbb R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)dx  \quad \text{by the moment bounds \eqref{mb0}}
-\\&\le C_2 \int_{\mathbb R^d}\bigg(1+(|\varphi|*G(t,\cdot))^2(x)\bigg)\rho(x)dx
-\\ &= C_2\left[\int_{\mathbb R^d}\rho(x)\: \ud x +\int_{\mathbb R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx \right]
-\\ &\le C_3\left[1+\int_{\mathbb R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
-\\ &\le C_4\left[1+\int_{\mathbb R^d}\int_{\R^d}G(t,x-y)|\varphi(y)|^2\rho(x)dxdy\right]
+\E\left(| u(t,\cdot)|_\rho^2\right) &= \E \int_{\R^d}\vert u(t,x) \vert^2 \rho(x)dx 
+\\&\le C_1 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)dx  \quad \text{by the moment bounds \eqref{E:mb0}}
+\\&\le C_2 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))^2(x)\bigg)\rho(x)dx
+\\ &= C_2\left[\int_{\R^d}\rho(x)\: \ud x +\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx \right]
+\\ &\le C_3\left[1+\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
+\\ &\le C_4\left[1+\int_{\R^d}\int_{\R^d}G(t,x-y)|\varphi(y)|^2\rho(x)dxdy\right]
 \\ &= C_4 \left[1+\int_{\R^d}(\rho*G(t,\cdot))(y)|\varphi(y)|^2dy\right].
 \end{align*}
-Now by the admissible weight property \eqref{aw}, for any $t_0>$0, $t \in [0,t_0]$ 
+Now by the admissible weight property \eqref{E:aw}, for any $t_0>$0, $t \in [0,t_0]$ 
 \begin{align*}
 \\ \E\left(| u(t,\cdot)|_\rho^2\right)&\le C_4 C(t_0)\left(1+\int_{\R^d}\rho(y)|\varphi(y)|^2dy\right)
 \\  &< K\cdot C(t_0).
@@ -302,36 +414,61 @@ Hence,
 
 Now consider $t\ge t_0>0$. It can be shown that $G(t,x)\le K \cdot G(t_0,x)$ for some constant $K$ independent of $x \in \R^d$ and $t \ge t_0$. Now with this we see that  
 \begin{align*}
-\E\left(| u(t,\cdot)|_\rho^2\right) &\le  C\left[1+\int_{\mathbb R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
-\\ & \le  C\left[1+\int_{\mathbb R^d}\left(\int_{\R^d}G(t_0,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right] 
-\\ & \le C\left[1+\int_{\R^d}\ud x \: \rho(x) \int_{\R^d} \ud y \: G(t_0,x-y)|\varphi(y)|^2\right] 
-\\ & \le C \left[ 1+ C(t_0)|\varphi|_\rho^2  \right] < \infty \quad \text{by the admissible weight property}
+	\E\left(| u(t,\cdot)|_\rho^2\right) 
+	   & \le  C\left[1+\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
+	\\ & \le  C\left[1+\int_{\R^d}\left(\int_{\R^d}G(t_0,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
+	\\ & \le C\left[1+\int_{\R^d}\ud x \: \rho(x) \int_{\R^d} \ud y \: G(t_0,x-y)|\varphi(y)|^2\right]
+	\\ & \le C \left[ 1+ C(t_0)|\varphi|_\rho^2  \right] < \infty \quad \text{by the admissible weight property}
 \end{align*}
-which proves that $$ \sup_{t \ge t_0}\E |u(t,\cdot)|_\rho^2 < \infty $$
+
+\textcolor{magenta}{Never write sentence in equations. Instead to the following:} 
+
+\textcolor{blue}{where the last inequality is due to the admissible weitht property. This proves....} 
+
+which proves that 
+\begin{align*}
+	\sup_{t \ge t_0}\E |u(t,\cdot)|_\rho^2 < \infty 
+\end{align*}
 thus completing the proof of the claim. 
 \end{proof}
 
-We finish off this section with a proposition on the functions $G(t,x)$ which will be used later on in the proof of \textbf{Lemma 3.1}. The proof of this result can be found in \cite{TessitoreZabczyk98M} \\
+We finish off this section with a proposition on the functions $G(t,x)$ which will be used later on in the proof of Lemma \ref{L:Main}. The proof of this result can be found in \cite{TessitoreZabczyk98M} \\
 
-\begin{proposition} \textit{For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi(x) \mapsto \big(G(t,\cdot)*\varphi(\cdot)\big)(x))$ can be extended to a $C_0-semigroup$ on $L^2_\rho$. Moreover, if $\hat\rho$ is another admissible weight such that $$\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty$$ then for any $t<0$, the operators defined above are compact from $L^2_{\hat\rho}(\R^d)$ to $L^2_\rho(\R^d)$. }
+\begin{proposition} 
+	\label{P:weight}
+	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi(x) \mapsto \big(G(t,\cdot)*\varphi(\cdot)\big)(x))$ can be extended to a $C_0-semigroup$ on $L^2_\rho$. Moreover, if $\hat\rho$ is another admissible weight such that 
+	\begin{align*}
+		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty
+	\end{align*}
+	then for any $t<0$, the operators defined above are compact from $L^2_{\hat\rho}(\R^d)$ to $L^2_\rho(\R^d)$. 
 \end{proposition}
 
 \section{Main Results}
 \subsection{Invariant measures} 
 Let $(E, \mathscr E)$ denote an arbitrary measure space and $\mathcal M_1(E)$ be the set of all probability measure on $(E, \mathscr E)$. Let $P_t(x,A)$, $t\ge0$, $x\in E$, $A \in \mathscr E$ be a Markovian Transition function as in \cite{DZ96}. Associated with each Markovian transition function is a semigroup of linear operators, $P_t$ defined on the set of bounded measurable functions on $E$, $\mathcal B_b(E)$ defined by  
-$$ P_t \varphi (x) = \int_E P_t(x,\ud y)\varphi(y). $$
+\begin{align*}
+	P_t \varphi (x) = \int_E P_t(x,\ud y)\varphi(y). 
+\end{align*}
 Lastly we say that the above semigroup of linear operators satisfies the Feller Property if for each continuous and bounded function $\varphi$ on $E$ we have that $P_t\varphi (x)$ is also a bounded and continuous function on $E$.  
 
 Recall that a measure $\eta \in \mathcal M_1(E)$ is invariant for $P_t$ if 
-$$ \eta(A)=\int_E P_t(x,A)\eta(dx) \quad \text{for each $t\ge 0$}. $$   
-Following \cite{DZ96}, we define Markovian transition functions $P_t(\varphi,A) := \mathscr L (u^\varphi(t,\cdot))(A)$ for $\varphi \in L^2_{\rho}(\R^d)$, $t \ge 0$ and $A \in \mathscr B (L^2_{\rho}(\R^d))$ where $\mathscr B (L^2_\rho(\R^d))$ are the Borel subsets of the space $L^2_\rho(\R^d)$ and $\mathscr L (u^\varphi(t,\cdot))(A)$ denotes the laws of the solution of \eqref{spde} 
-$$ \mathscr L (u^\varphi(t,\cdot))(A) = P\{\omega \in \Omega : u^\varphi(t,\cdot) \in A \quad A \in \mathscr B(L^2_\rho(\R^d))\} $$ 
+\begin{align*}
+	\eta(A)=\int_E P_t(x,A)\eta(dx) \quad \text{for each $t\ge 0$}.    
+\end{align*}
+Following \cite{DZ96}, we define Markovian transition functions $P_t(\varphi,A) := \mathscr L (u^\varphi(t,\cdot))(A)$ for $\varphi \in L^2_{\rho}(\R^d)$, $t \ge 0$ and $A \in \mathscr B (L^2_{\rho}(\R^d))$ where $\mathscr B (L^2_\rho(\R^d))$ are the Borel subsets of the space $L^2_\rho(\R^d)$ and $\mathscr L (u^\varphi(t,\cdot))(A)$ denotes the laws of the solution of \eqref{E:spde} 
+\begin{align*}
+	\mathscr L (u^\varphi(t,\cdot))(A) = P\{\omega \in \Omega : u^\varphi(t,\cdot) \in A \quad A \in \mathscr B(L^2_\rho(\R^d))\}  
+\end{align*}
 which define a probability measure on $\mathscr B(L^2_\rho(\R^d))$. As mentioned in the introduction, we said our first goal was to establish the Feller property. However, this has been established in \cite{DZ96} and in fact they verfy this for a larger class of SPDEs. The second step was to show the solution is bounded in probability which means 
-$$ \forall \epsilon >0, \; \exists R>0: \; \forall t>0, \; P[|u^\varphi(t,\cdot)|_\rho \ge R] <  \epsilon .$$ 
-We verify this property and deduce the existence of an invariant measure for $L^2_\rho$ initial conditions in \textbf{Theorem 3.1} and then generalize the result for measure valued initial conditions, and in particular, the Dirac delta measure $\delta_0$ in \textbf{Theorem 3.2}.
+\begin{align*}
+	\forall \epsilon >0, \; \exists R>0: \; \forall t>0, \; P[|u^\varphi(t,\cdot)|_\rho \ge R] <  \epsilon . 
+\end{align*}
+We verify this property and deduce the existence of an invariant measure for $L^2_\rho$ initial conditions in Theorem
+\ref{T:Main} and then generalize the result for measure valued initial conditions, and in particular, the Dirac delta
+measure $\delta_0$ in Theorem \ref{T:Main2}.
 
 
-For the case when the initial condition is a measure, as in \eqref{gspde} the laws are defined for $t>0$ where $t$ needs to be strictly greater than $0$. This is indeed true by \textbf{Lemma 3.2}  below which states that under certain assumptions, the solution $u(t,\cdot)$ of \eqref{gspde} is almost surely in $L^2_{\rho}$ for every $t>0$. 
+For the case when the initial condition is a measure, as in \eqref{E:gspde} the laws are defined for $t>0$ where $t$ needs to be strictly greater than $0$. This is indeed true by Lemma \ref{L:Moments}  below which states that under certain assumptions, the solution $u(t,\cdot)$ of \eqref{E:gspde} is almost surely in $L^2_{\rho}$ for every $t>0$. 
 
 
 \subsection{Main results} 
@@ -344,59 +481,81 @@ Throughout this and next section may need to assume either one or both of the fo
 	\end{enumerate}
 \end{assumptions}
 
-In the proof of \textbf{Theorem 2.3}, we actually already showed that \ref{gicon} is satisfied when the initial condition is a $L^2_\rho(\R^d)$ function also \ref{fcon} will only need to be used if $b(x,0) \not = 0$. Throughout the remainder of this paper we never assume that $b(x,0) = 0$ so we will need this assumption in order to prove  \textbf{Lemma 3.1} which is crucial to complete the proof of \textbf{Theorem 3.1}. 
+In the proof of Theorem \ref{T:Moment}, we actually already showed that \ref{gicon} is satisfied when the initial condition is a $L^2_\rho(\R^d)$ function also \ref{fcon} will only need to be used if $b(x,0) \not = 0$. Throughout the remainder of this paper we never assume that $b(x,0) = 0$ so we will need this assumption in order to prove  Lemma \ref{L:Main} which is crucial to complete the proof of Theorem \ref{T:Main}. 
 
 We now state and prove the first main result guaranteeing the existence of an invariant measure. The proof follows the same scheme as in \cite{TessitoreZabczyk98M}.\\
 
-\begin{theorem} \textit{Assume that the Assumptions 2.1  with the stronger assumption that $\Upsilon(0) <\infty$. Also assume and \ref{fcon}. Now for any admissible weight $\rho$, suppose there exists another admissible weight $\hat\rho$ and an element $\hat{\varphi} \in L^2_\rho(\R^d) \cap L^2_{\hat\rho}(\R^d)$ such that 
-	$$ \int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty \quad \text{and $u^{\hat\varphi}(\cdot,x)$ is bounded in probability in $L^2_{\hat\rho}(\R^d)$.} $$ 
-Then for any $\delta_0 >0$ there exists an invariant measure for the laws of \eqref{msol}, $\{\mathscr L (u^{\hat\varphi}(t,\cdot))\}_{t \ge \delta_0}$,  in $L^2_\rho(\R^d)$} 
+\begin{theorem}  
+	\label{T:Main}
+	Assume that the Assumption \ref{A:General}  with the stronger assumption that $\Upsilon(0) <\infty$. Also assume and \ref{fcon}. Now for any admissible weight $\rho$, suppose there exists another admissible weight $\hat\rho$ and an element $\hat{\varphi} \in L^2_\rho(\R^d) \cap L^2_{\hat\rho}(\R^d)$ such that 
+	\begin{align*}
+		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty \quad \text{and $u^{\hat\varphi}(\cdot,x)$ is bounded in probability in $L^2_{\hat\rho}(\R^d)$.}  
+	\end{align*}
+	Then for any $\delta_0 >0$ there exists an invariant measure for the laws of \eqref{E:msol}, $\{\mathscr L (u^{\hat\varphi}(t,\cdot))\}_{t \ge \delta_0}$,  in $L^2_\rho(\R^d)$
 \end{theorem}
 
-\begin{proof} We start by stating a lemma that will be used to complete the proof. The proof of the lemma is very technical and serves no real purpose in understanding its use to complete the proof of Theorem 3.1. For that reason we postpone proving it until later. 
+\begin{proof} 
+	We start by stating a lemma that will be used to complete the proof. 
+	The proof of the lemma is very technical and serves no real purpose in understanding its use to complete 
+	the proof of Theorem \ref{T:Main} For that reason we postpone proving it until later. 
  
-\begin{lemma} \textit{Under the assumptions of \textbf{Theorem 3.1} and for arbitrary $\epsilon \in (0,1)$, $0< \delta_0 \le 1$ and $R>0$ there exists a compact set $\mathscr K$ in $L^2_{ \rho}$ such that} 
+\begin{lemma}
+	\label{L:Main}
+Under the assumptions of Theorem \ref{T:Main} and for arbitrary $\epsilon \in (0,1)$, $0< \delta_0 \le 1$ and $R>0$ there exists a compact set $\mathscr K$ in $L^2_{ \rho}$ such that
  \begin{equation}
- 	\mathbb{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{ \hat{\varphi}}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} \label{cpt}
+	 \label{E:cpt}
+	\mathbb{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{
+	\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$}
  \end{equation}
+ \textcolor{magenta}{Forget period. Update the whole document for this problem.} 
 \end{lemma}
  
- We may now complete the proof of Theorem 3.1. By Lemma 3.1, given an $\epsilon \in (0,1)$ and $R>0$ then we could find a compact set $\mathscr K \in L^2_{\rho}$ such that  
+ We may now complete the proof of Theorem \ref{T:Main} By Lemma \ref{L:Main}, given an $\epsilon \in (0,1)$ and $R>0$ then we could find a compact set $\mathscr K \in L^2_{\rho}$ such that  
  \begin{align*}
- \mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} 
+	 \mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} 
  \end{align*}
- The boundedness in probability of $u^{\hat \varphi}(\cdot,x)$ then implies that the family of laws $\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge \delta_0$ is  tight in $L^2_{\rho}$ and therefore the family of probability measures 
+The boundedness in probability of $u^{\hat \varphi}(\cdot,x)$ then implies that the family of laws 
+$\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge \delta_0$ is tight in $L^2_{\rho}$ and therefore,
+the family of probability measures 
  \begin{equation}
- \dfrac{1}{T}\int_{\delta_0}^{T+\delta_0} \mathscr L(u^{\hat \varphi}(t,\cdot))\: \ud t, \quad T>0 \label{intlaw}
+	 \label{E:intlaw}
+	 \dfrac{1}{T}\int_{\delta_0}^{T+\delta_0} \mathscr L(u^{\hat \varphi}(t,\cdot))\: \ud t, \quad T>0 
  \end{equation}
- is tight as well. Referring to \textbf{Corollary 3.1.2} from  \cite{DZ96} we may say that \eqref{intlaw} has a subsequence that weakly converges to some measure $\eta$ and that in fact $\eta$ is invariant for the laws of \eqref{msol}. 
+ is tight as well; see \cite[Corollary 3.1.2]{DZ96}. 
+ We may say that \eqref{E:intlaw} has a subsequence that weakly converges to some measure $\eta$ and that in fact $\eta$
+ is invariant for the laws of \eqref{E:msol}. 
  \end{proof}
  
  
  \begin{remark}
- 	The condition \begin{equation} \sup_{t \ge 0} \E |u(t,\cdot)|_\rho^2 < \infty \label{bipc} \end{equation} 
- 	is enough to verify that $u$ is bounded in probability. Indeed, let $\sup_{t\ge 0} \E |u(t,\cdot)|_\rho^2 = B$ and let $\epsilon >0$. Then by applying Chebyshev's inequality we may choose $R>0$ large enough so that 
+ 	The condition \begin{equation} \sup_{t \ge 0} \E |u(t,\cdot)|_\rho^2 < \infty \label{E:bipc} \end{equation} 
+ 	is enough to verify that $u$ is bounded in probability. 
+	Indeed, let $\sup_{t\ge 0} \E |u(t,\cdot)|_\rho^2 = B$ and let $\epsilon >0$.
+	Then by applying Chebyshev's inequality we may choose $R>0$ large enough so that 
  	\begin{align*}
- 	\mathbb{P}[|u(t,\cdot)|_\rho \ge R] \le R^{-2}\E |u(t,\cdot)|_\rho^2 \le R^{-2}B < \epsilon
+		\mathbb{P}[|u(t,\cdot)|_\rho \ge R] \le R^{-2}\E |u(t,\cdot)|_\rho^2 \le R^{-2}B < \epsilon
  	\end{align*}  
  	Hence $u(t,\cdot)$ is bounded in probability in $L^2_{\rho}$. 
  \end{remark}
 
- \begin{remark} \textbf{Theorem 2.3} shows that $u^\varphi(t,x)$ is bounded in probability for any $L^2_\rho$ initial condition when Assumptions 2.1 with $\Upsilon(0)<\infty$ are satisfied. 
+\begin{remark} Theorem \ref{T:Moment} shows that $u^\varphi(t,x)$ is bounded in probability for any $L^2_\rho$ initial condition when Assumption \ref{A:General} with $\Upsilon(0)<\infty$ are satisfied. 
 \end{remark} 	
-We now prove a result showing that \eqref{bipc} can be satisfied for \eqref{gspde} with more general initial conditions.  
+We now prove a result showing that \eqref{E:bipc} can be satisfied for \eqref{E:gspde} with more general initial conditions.  
  
-\begin{lemma}Consider the stochastic heat equation \eqref{gspde} and Suppose the assumption of \textbf{Theorem 3.1} remain true and \ref{gicon} holds true. Then for any $t_0>0$ $u(t_0,\cdot)\in L^2_\rho$ almost surely for any admissible weight. Also the solution to the following stochastic heat equation
+\begin{lemma}
+	\label{L:Moments}
+	Consider the stochastic heat equation \eqref{E:gspde} and Suppose the assumption of Theorem \ref{T:Main} remain true and \ref{gicon} holds true. Then for any $t_0>0$ $u(t_0,\cdot)\in L^2_\rho$ almost surely for any admissible weight. Also the solution to the following stochastic heat equation
  \begin{equation}
- \begin{cases}
- \dfrac{\partial v}{\partial t}(t,x)-\frac{1}{2}\Delta_x v(t,x) = b(x,v(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
- \\ v(0,x) = u(t_0,x)  & 
- \end{cases}  \label{vspde2}
+	\label{E:vspde2}
+	 \begin{cases}
+	 \dfrac{\partial v}{\partial t}(t,x)-\frac{1}{2}\Delta_x v(t,x) = b(x,v(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
+	 \\ v(0,x) = u(t_0,x)  & 
+	 \end{cases}  
  \end{equation}
- satisfies the property that 
-$$
- \sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty.
- $$
+satisfies the property that 
+\begin{align*}
+	 \sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty.
+\end{align*}
 \end{lemma}
 
 \begin{proof} We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
@@ -422,41 +581,69 @@ This shows that $u(t_0,x)\in L^2_\rho$ almost surely for any admissible weight. 
 for some constant, $K(t_0)$, dependent on $t_0$ by assumption \ref{gicon} and $t \mapsto G(t_0+t,x)$ is bounded by $G(t_0,x)$ up to a constant. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
 \end{proof}
 
-\begin{theorem} Suppose the assumption of \textbf{Theorem 3.1} remain true and \ref{gicon} holds true and suppose there existed another admissible weight $\hat{\rho}$ such that $$ \int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty. $$  	
-Recall from \textbf{Lemma 3.2} that $u^\mu(t_0,x) \in L^2_{\hat\rho}(\R^d)$ for any $t_0 >0$ and any admissible weight $\hat{\rho}$. Then there exists an invariant measure for the laws of the solutions to \eqref{gspde} in $L^2_\rho$ for $t>\delta>0$. In particular, for any $\delta>0$ there exists a measure that is invariant for $\{\mathscr L (u^\mu(t,\cdot))\}_{t>\delta}$ where $u$ is the solution to \eqref{gspde} with initial measure $\mu$.
+\begin{theorem} 
+	\label{T:Main2}
+	Suppose the assumption of Theorem \ref{T:Main} remain true and \ref{gicon} holds true and suppose there existed
+	another admissible weight $\hat{\rho}$ such that 
+	\begin{align*}
+		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty.   	
+	\end{align*}
+	Recall from Lemma \ref{L:Moments} that $u^\mu(t_0,x) \in L^2_{\hat\rho}(\R^d)$ for any $t_0 >0$ and any
+	admissible weight $\hat{\rho}$. Then there exists an invariant measure for the laws of the solutions to
+	\eqref{E:gspde} in $L^2_\rho$ for $t>\delta>0$. In particular, for any $\delta>0$ there exists a measure that is
+	invariant for $\{\mathscr L (u^\mu(t,\cdot))\}_{t>\delta}$ where $u$ is the solution to \eqref{E:gspde} with
+	initial measure $\mu$.
 \end{theorem}
 
-\begin{proof} Pick $t_0>0$ and $\delta_0>0$ such that $\delta=t_0+\delta_0$ for a given $\delta >0$.  By \textbf{Theorem 3.1}, there exists an invariant measure, $\eta$, for $\{\mathscr L(v(t,\cdot))\}_{t\ge \delta_0}$ where $v$ is the solution to \eqref{vspde2}. However, by a general property of the heat solution, $v(t,x)=u^\mu(t+t_0,x)$ and so $\eta$ is invariant for $\{\mathscr L(u^\mu(t+t_0,\cdot))\}_{t\ge \delta_0} = \{\mathscr L(u^\mu(t,\cdot))\}_{t\ge \delta}$. \end{proof}
-
-\begin{corollary}Suppose the assumption of \textbf{Theorem 3.1} remain true. Then for any $\delta>0$, the stochastic heat equation 
-\begin{equation}
-\begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \mathbb R^d$ , $t>0$}
-\\ u(0,\cdot) = \delta_0(\cdot)  & 
-\end{cases}  \label{dspde}
-\end{equation}
-has an invariant measure in $L^2_\rho$ for the laws of their solution for $t>\delta$ and for any $\rho$ which there exists $\hat{\rho}$ such that $\rho/\hat{\rho} \in L^1(\R^d)$.
-\end{corollary}
-
-\begin{proof} The SPDE above satisfies assumption \ref{gicon}. By \textbf{Lemma 3.2} we know that for an arbitrary $t_0>0$, the solution at $t=t_0$ from the SPDE is in $L^2_\rho \cap L^2_{\hat\rho}$. \textbf{Theorem 3.2} implies the result. 
+\begin{proof} Pick $t_0>0$ and $\delta_0>0$ such that $\delta=t_0+\delta_0$ for a given $\delta >0$.  By Theorem
+\ref{T:Main}, there exists an invariant measure, $\eta$, for $\{\mathscr L(v(t,\cdot))\}_{t\ge \delta_0}$ where $v$ is
+the solution to \eqref{E:vspde2}. However, by a general property of the heat solution, $v(t,x)=u^\mu(t+t_0,x)$ and so
+$\eta$ is invariant for $\{\mathscr L(u^\mu(t+t_0,\cdot))\}_{t\ge \delta_0} = \{\mathscr L(u^\mu(t,\cdot))\}_{t\ge
+\delta}$. 
 \end{proof}
 
-\section{Proof of Lemma 3.1}
+\begin{corollary}
+	Suppose the assumption of Theorem \ref{T:Main} remain true. Then for any $\delta>0$, the stochastic heat equation 
+	\begin{equation}
+		\label{E:dspde}
+		\begin{cases}
+		\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
+		\\ u(0,\cdot) = \delta_0(\cdot)  & 
+		\end{cases}  
+	\end{equation}
+	has an invariant measure in $L^2_\rho$ for the laws of their solution for $t>\delta$ and for any $\rho$ which
+	there exists $\hat{\rho}$ such that $\rho/\hat{\rho} \in L^1(\R^d)$.
+\end{corollary}
+
+\begin{proof} 
+	The SPDE above satisfies assumption \ref{gicon}. 
+	By Lemma \ref{L:Moments} we know that for an arbitrary $t_0>0$, the solution at $t=t_0$ from the SPDE is in $L^2_\rho \cap L^2_{\hat\rho}$. Theorem \ref{T:Main2} implies the result. 
+\end{proof}
+
+\section{Proof of Lemma \ref{L:Main}}
 We first define two operators. Let $q>2$ and $t_0>0$ be arbitrary and $\alpha \in (q^{-1},2^{-1})$. Define the operator $F_\alpha^{t_0}$ as follows
 \begin{equation}
-\left(F_{\alpha}^{t_0} f\right)(x) := \int_0^{t_0} ds \int_{\R^d} dy \: (t_0-s)^{\alpha-1}G(t_0-s,x-y)f(s,y) \label{fop}.
+	\label{E:fop}
+	\left(F_{\alpha}^{t_0} f\right)(x) := \int_0^{t_0} ds \int_{\R^d} dy \: (t_0-s)^{\alpha-1}G(t_0-s,x-y)f(s,y) .
 \end{equation}
-It is shown in \cite{TessitoreZabczyk98M} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to $L^2_\rho$ where $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ is the space of functions that map $s \mapsto f(s,\cdot)$ and $f(s,\cdot) \in L^2_{\hat\rho}$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\hat\rho}^q \: \ud s < \infty$. 
+It is shown in \cite{TessitoreZabczyk98M} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to
+$L^2_\rho$ where $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ is the space of functions that map $s \mapsto f(s,\cdot)$ and
+$f(s,\cdot) \in L^2_{\hat\rho}$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\hat\rho}^q \: \ud s < \infty$. 
 
-Next we define for $\varphi \in L^2_{\rho}$ the operators $Y^\varphi(s,y)$, or simply as $Y(s,y)$ when there is no confusion, as follows 
+Next we define for $\varphi \in L^2_{\rho}$ the operators $Y^\varphi(s,y)$, or simply as $Y(s,y)$ when there is no
+confusion, as follows 
 \begin{equation}
-Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W(dr,dz) \label{yop}.
+	\label{E:yop}
+	Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W(dr,dz).
 \end{equation} 
 
-\begin{lemma} Let $q>2$, then $Y^\varphi$ operators, \eqref{yop}, satisfies the inequality
-\begin{equation}
-\E\int_0^1 |Y^\varphi(s,\cdot)|_{\rho}^q ds \le K|\varphi|_\rho^q \label{yineq} .
-\end{equation} 
+\begin{lemma} 
+	\label{L:yineq}
+	Let $q>2$, then $Y^\varphi$ operators, \eqref{E:yop}, satisfies the inequality
+	\begin{equation}
+		\label{E:yineq}
+		\E\int_0^1 |Y^\varphi(s,\cdot)|_{\rho}^q ds \le K|\varphi|_\rho^q .
+	\end{equation} 
 \end{lemma}
 
 \begin{proof} First, notice by applying Minkowski's Integral Inequality that 
@@ -466,17 +653,22 @@ E |Y(s,\cdot)|_{\rho}^q &= \int_\Omega dP \left(\int_{\R^d} dy Y(s,y)^2\rho(y) \
 \\ &= \left(\int_{\R^d}dy \rho(y) \Norm{ Y(s,y) }_q^2 \right)^{q/2}
 \\ &= \big| \Norm{ Y(s,\cdot) }_q \big|_\rho^q
 \end{align*}
-and because of this, we look to find an appropriate upper bound for $\Norm{Y(s,y)}^2_q$ which for now we denote as $M(s,y)$. Then we integrate this bound $$ \int_{\R^d}M(s,y)\rho(y)\:\ud y$$ which gives us a bound for $\big| \Norm{Y(s,y)}_q\big|_\rho$. To do this, we start by applying the Burkholder-Davis-Gundy Inequality from \cite{DalangEtc09Minicourse} as well as Minkowski's Integral Inequality to see that
+and because of this, we look to find an appropriate upper bound for $\Norm{Y(s,y)}^2_q$ which for now we denote as
+$M(s,y)$. Then we integrate this bound $$ \int_{\R^d}M(s,y)\rho(y)\:\ud y$$ which gives us a bound for $\big|
+\Norm{Y(s,y)}_q\big|_\rho$. To do this, we start by applying the Burkholder-Davis-Gundy Inequality from
+\cite{DalangEtc09Minicourse} as well as Minkowski's Integral Inequality to see that
 \begin{align*}
-\Norm{Y(s,y)}_q^2 \le & C_q \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)  \Norm{b(u(r,z_1))}_q f(z_1-z_2)\\
-&\hspace{13.5em} \times  G(s-r,y-z_2) \Norm{b(u(r,z_2))}_q
+	\Norm{Y(s,y)}_q^2 \le & C_q \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)
+	\Norm{b(u(r,z_1))}_q f(z_1-z_2)\\
+	&\hspace{13.5em} \times  G(s-r,y-z_2) \Norm{b(u(r,z_2))}_q
 \end{align*}
-where $C_q$ is the standard constant from the BDG-inequality. Note that for Lipschitz functions, we have that $|b(u)|<k(1+|u|)$. We apply this and the moment bound \eqref{mb0} to $\Norm{b(u(r,z_i))}_q$ above to see that 
-
+where $C_q$ is the standard constant from the BDG-inequality. Note that for Lipschitz functions, we have that
+$|b(u)|<k(1+|u|)$. We apply this and the moment bound \eqref{E:mb0} to $\Norm{b(u(r,z_i))}_q$ above to see that 
 \begin{align*}
-\Norm{b(u(r,z_i))}_q  &\le k(1+\Norm{u(r,z_i)}_q)
-\\ &\le k_1\bigg(1+(1+J_0(r,z_i))\bigg) \quad \text{by \eqref{mb0}}
-\\ &\le k_2(1+J_0(r,z_i)).
+	\Norm{b(u(r,z_i))}_q  
+	   & \le k(1+\Norm{u(r,z_i)}_q)
+	\\ & \le k_1\bigg(1+(1+J_0(r,z_i))\bigg) \quad \text{by \eqref{E:mb0}}
+	\\ & \le k_2(1+J_0(r,z_i)).
 \end{align*}
 Now applying this to the inequality for $\Norm{Y(s,y)}_q^2$ above we get that 
 
@@ -493,20 +685,22 @@ Now applying this to the inequality for $\Norm{Y(s,y)}_q^2$ above we get that
 
 We now investigate each of the integrals $I_k$ above. Throughout the remainder of this proof and the proof of Lemma 4.2 we will be using the following relation 
 \begin{equation}
-	G(s-r,y-z_i)G(r,z_i-\sigma)=G(s,y-\sigma)G\left(\dfrac{r(s-r)}{s},z_i-\sigma-\dfrac{r}{s}(y-\sigma)\right) \label{gsim}.
+	\label{E:gsim}
+	G(s-r,y-z_i)G(r,z_i-\sigma)=G(s,y-\sigma)G\left(\dfrac{r(s-r)}{s},z_i-\sigma-\dfrac{r}{s}(y-\sigma)\right) .
 \end{equation}
 
 \noindent \textbf{For $I_1$:} 
 \begin{align*}
-I_1 &= \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
-\\&= \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \Gamma(\ud \xi) \big(G(s-r,y-\cdot)*G(s-r,y+\cdot)\big)(\xi).
+	I_1 & = \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
+	\\  & = \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \Gamma(\ud \xi) \big(G(s-r,y-\cdot)*G(s-r,y+\cdot)\big)(\xi).
 \end{align*}
 Now recalling that $\Gamma$ has density $f$ and by applying Plancherel's theorem, $I_1$ is bounded above by
 \begin{align*}
-(2\pi)^{-2d}\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right).
+	(2\pi)^{-2d}\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right).
 \end{align*}
 Now if we integrate this in $y$ over $\R^d$ with respect to $\rho(y)\ud y$ we get that 
-\begin{align*} \int_{\R^d}I_1\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)  \int_{\R^d}\rho(y)\ud y
+\begin{align*} 
+	\int_{\R^d}I_1\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)  \int_{\R^d}\rho(y)\ud y
 \\ &\le (2\pi)^{-2d}\cdot \Norm{\rho}_{L^1(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) .
 \end{align*}
 
@@ -579,38 +773,38 @@ Lastly if we integrate out $s$ from $0\to1$ we get our desired inequality,
 \begin{lemma}
 Assuming \ref{fcon} then we may say the following two integrals are finite
 \begin{equation}
-\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{r(s-r)}{s}|\xi|^2 \right) \label{fcon2}
+\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{r(s-r)}{s}|\xi|^2 \right) \label{E:fcon2}
 \end{equation}
 and 
 \begin{equation}
-\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left[ -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2 \right] \label{fcon3}.
+\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left[ -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2 \right] \label{E:fcon3}.
 \end{equation} 
 \end{lemma}
 
-\begin{proof} We first focus on \eqref{fcon2}. By applying the substitution $u=s-r$ the we may rewrite 
+\begin{proof} We first focus on \eqref{E:fcon2}. By applying the substitution $u=s-r$ the we may rewrite 
 \[
 	\ref{fcon} = \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -u|\xi|^2 \right) 
 \]
 and 
 \[ 
-	\eqref{fcon2} = \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{u(s-u)}{s}|\xi|^2 \right).
+	\eqref{E:fcon2} = \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{u(s-u)}{s}|\xi|^2 \right).
 \]
 Since $u(s-u) \ge \dfrac{us}{2}$ for all $u\in[0,s]$ then we may say that 
-\begin{align*} \eqref{fcon2} &\le \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{u}{2}|\xi|^2 \right) 
+\begin{align*} \eqref{E:fcon2} &\le \int_0^s \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -\dfrac{u}{2}|\xi|^2 \right) 
 \\ &= 2^{1-2\alpha}\int_0^{s/2} \ud t \: t^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left( -t|\xi|^2 \right) \quad \text{substitution $t=\dfrac{u}{2}$}
 \\& \le \ref{fcon} < \infty  \end{align*}
-which completes the proof showing assumption \ref{fcon} implies that \eqref{fcon2} is finite. The finiteness of \eqref{fcon3} follows easily by noting that 
+which completes the proof showing assumption \ref{fcon} implies that \eqref{E:fcon2} is finite. The finiteness of \eqref{E:fcon3} follows easily by noting that 
 \begin{align*}
-\eqref{fcon3} &\le \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left(-\dfrac{s-r}{2}|\xi|^2 \right)
+\eqref{E:fcon3} &\le \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left(-\dfrac{s-r}{2}|\xi|^2 \right)
 \\ &= 2^{1-2\alpha}\int_0^{s/2} \ud u \: u^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \exp\left(-u|\xi|^2 \right) \quad \text{using the substitution $u=\dfrac{s-r}{2}$}
 \\ & \le \ref{fcon} < \infty
 \end{align*}
-which completes the proof showing that assumption \ref{fcon} implies \eqref{fcon3}. 
+which completes the proof showing that assumption \ref{fcon} implies \eqref{E:fcon3}. 
 \end{proof}
 
 \begin{lemma} \textit{The following factorization holds for $\alpha \in (0,1)$  
 \begin{equation}
-\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y(s,\cdot)\right](x) \ud s = \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z) \label{fac}.
+\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y(s,\cdot)\right](x) \ud s = \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z) \label{E:fac}.
 \end{equation} } 
 \end{lemma}
 \begin{proof}
@@ -633,7 +827,7 @@ We also need to verify the use of Fubini's Theorem which is stated in stated in 
 \end{remark}
 
 \begin{theorem}[Fubini's Theorem] Let $(G,\mathscr G, \mu)$ be a finite measure space and $(E, \mathscr E, \nu)$ be a $\sigma-$finite measure space. Let $g(r,z,\omega,y)$, $z \in E$, $r\ge0$, $\omega \in \Omega$, $y\in G$ be a $\mathscr E \times \mathscr G$ measurable function. Suppose that 
-	\begin{equation} \E \left[ \int_{E\times E \times [0,T]\times G} |g(r,z_1,\omega,y)g(r, z_2,\omega,y)|K(\ud z_1. \ud z_2, \ud r)\mu(\ud y)]\right] < \infty \label{fcond}
+	\begin{equation} \E \left[ \int_{E\times E \times [0,T]\times G} |g(r,z_1,\omega,y)g(r, z_2,\omega,y)|K(\ud z_1. \ud z_2, \ud r)\mu(\ud y)]\right] < \infty \label{E:fcond}
 	\end{equation} 
 where $K$ is the dominating measure as in \cite{DalangEtc09Minicourse}. Then 
 \begin{align*}
@@ -646,7 +840,7 @@ where $K$ is the dominating measure as in \cite{DalangEtc09Minicourse}. Then
 Following \cite{DalangEtc09Minicourse}, the dominating measure for this problem is given by $$K(\ud z_1. \ud z_2, \ud r)= f(z_1-z_2)\ud z_1 \ud z_2 \ud r $$ where $f$ is the correlation function of the spatially homogeneous Gaussian noise.
 \end{remark}
 
-We now verify \eqref{fcond} for both applications of Fubini's Theorem. \\
+We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 
 \noindent \textbf{From Equality 1 to 2:} 
 
@@ -656,9 +850,9 @@ We now verify \eqref{fcond} for both applications of Fubini's Theorem. \\
 \\& (G,\mathscr G, \mu)=(\R^d,\mathscr B(\R^d),G(t-s,x-y) \ud y)
 \\& (E, \mathscr E, \nu) = (\R^d, \mathscr B(\R^d), \lambda)
 \end{align*}
-and so \eqref{fcond} becomes 
+and so \eqref{E:fcond} becomes 
 \begin{align*}
-\eqref{fcond} &= \E  \int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}
+\eqref{E:fcond} &= \E  \int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}
 \\&\hspace{8em} \times \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)|b(u(r,z_1))|f(z_1-z_2)G(s-r,y-z_2)|b(u(r,z_2))| .
 \end{align*}
 For simplicity, we first investigate the $\E\iint_{\R^{2d}} \ud z_1 \ud z_2$ part of the integral. We continue by applying the Lipschitz property of $b$. 
@@ -671,7 +865,7 @@ For simplicity, we first investigate the $\E\iint_{\R^{2d}} \ud z_1 \ud z_2$ par
 	\\       & +k_1 \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)\Norm{u(r,z_1)}_2f(z_1-z_2)G(s-r,y-z_2)\Norm{u(r,z_2)}_2
 	\\    =: & L_1 +\cdots +L_4.
 \end{align*}
-\textbf{For $L_1$:} If we back at $I_1$ from the proof of Lemma 4.1 then we see that 
+\textbf{For $L_1$:} If we back at $I_1$ from the proof of Lemma \ref{L:yineq} then we see that 
 \begin{align*}
 L_1 &\le (2\pi)^{-2d}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
 \end{align*}
@@ -713,7 +907,7 @@ L_4 &\le k\iint_{\R^{2d}}\ud z_1 \ud z_2\:G(s-r,y-z_1)(1+J_0(r,z_1))f(z_1-z_2)G(
 \\&\hspace{5em}+ k\iint_{\R^{2d}}\ud z_1 \ud z_2\:G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2)
 \\&\hspace{5em}+k\iint_{\R^{2d}}\ud z_1 \ud z_2\:G(s-r,y-z_1)J_0(r,z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2).
 \end{align*}
-These first three integrals have already been handled above in $L_1, L_2$ and $L_3$ of this proof so we only need to proceed with the fourth integral. However, notice from $I_4$ above in the proof of Lemma 4.1 that this fourth integral is bounded by the following
+These first three integrals have already been handled above in $L_1, L_2$ and $L_3$ of this proof so we only need to proceed with the fourth integral. However, notice from $I_4$ above in the proof of Lemma \ref{L:yineq} that this fourth integral is bounded by the following
 \begin{align*}
 &\iint_{\R^{2d}}\ud z_1 \ud z_2\:G(s-r,y-z_1)J_0(r,z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2)
 \\ &\le (2\pi)^{-2d}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right) \int_{\R^{d}}\ud \sigma\:G(s,y-\sigma)|\varphi(\sigma)|^2
@@ -734,7 +928,7 @@ and now putting this all together for $L_4$ we see that
 \end{align*}
 Considering the above arguments we may say that theres is a constant $K_{x,t}$ depending on $x$ and $t$ such that
 \begin{align*}
-\eqref{fcond} &\le K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+\eqref{E:fcond} &\le K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
 \\&\hspace{3em}+ K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
 \\&\hspace{3em} + K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right) < \infty
 \end{align*}
@@ -748,9 +942,9 @@ where the finiteness follows by assumption \ref{fcon} and Lemma 4.2. This comple
 \\& (G,\mathscr G, \mu)=((0,t),\mathscr B(0,t),(t-s)^{\alpha-1} \ud s)
 \\& (E, \mathscr E, \nu) = (\R^d, \mathscr B(\R^d), \lambda)
 \end{align*}
-and so \eqref{fcond} becomes 
+and so \eqref{E:fcond} becomes 
 \begin{align*}
-\eqref{fcond} = \E \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1 \ud z_2 \: f(z_1-z_2) \prod_{i=1}^{2} G(t-r,x-z_i)|b(u(r,z_i))|
+\eqref{E:fcond} = \E \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1 \ud z_2 \: f(z_1-z_2) \prod_{i=1}^{2} G(t-r,x-z_i)|b(u(r,z_i))|
 \end{align*}
 and again for simplicity we will first investigate the $\E\iint_{\R^{2d}}\ud z_1 \ud z_2$ integral. Using the Lipschitz property, we similarly get that 
 \begin{align*}
@@ -805,39 +999,42 @@ where
 \[
 k_{t,3} = \max_{0\le s \le t} \int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\dfrac{r(t-r)}{t}|\xi|^2\right)
 \]
-which is again finite by \textbf{Lemma 4.2}. Now we may say that that there exists some constant $K_t$ dependent on $t$ such that \eqref{fcond} has the following bound which is finite since $0<\alpha <1$
+which is again finite by \textbf{Lemma 4.2}. Now we may say that that there exists some constant $K_t$ dependent on $t$ such that \eqref{E:fcond} has the following bound which is finite since $0<\alpha <1$
 \begin{align*}
-\eqref{fcond} \le K_t\bigg(1+2J_0(t,x)+J_0(t,x)^2\bigg)\int_0^t \ud s \: (t-s)^{\alpha-1}.
+\eqref{E:fcond} \le K_t\bigg(1+2J_0(t,x)+J_0(t,x)^2\bigg)\int_0^t \ud s \: (t-s)^{\alpha-1}.
 \end{align*} 
 \end{proof} 
 
 \begin{corollary} \label{C:explain}
-	Let $u(t,x)$ denote the solution to \eqref{spde} and $\alpha \in (0,1)$. Then for $t_0>0$ we may say that \begin{equation} 
-	u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x)+\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x) \label{1fac}.
+	Let $u(t,x)$ denote the solution to \eqref{E:spde} and $\alpha \in (0,1)$. Then for $t_0>0$ we may say that \begin{equation} 
+	u(t_0,x)=\big( G(t_0,\cdot)*\varphi(\cdot) \big)(x)+\dfrac{\sin(\alpha \pi)}{\pi}F_\alpha^{t_0}\big(Y(s,\cdot)\big)(x) \label{E:1fac}.
 	\end{equation} 
 \begin{proof} 
-	Follows directly from \eqref{fac}. 
+	Follows directly from \eqref{E:fac}. 
 \end{proof}
 \end{corollary}
 
-We are now able to prove Lemma 3.1. 
+We are now able to prove Lemma \ref{L:Main}. 
 
 
-\begin{proof}[Proof of Lemma 3.1]
+\begin{proof}[Proof of Lemma \ref{L:Main}]
 We first define a set $\mathscr K (\Theta)$ as 
 \[
-\mathscr K (\Theta) = \{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x), \quad \text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $} \}.
+	\mathscr K (\Theta) = \{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x), 
+	\quad \text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $} \}.
 \]
-Then $\mathscr K (\Theta)$ is relatively compact in $L^2_{ \rho}$ for $\Theta >0$. Moreover, by \eqref{yineq}, \eqref{1fac} and Chebychev's inequality, and if we choose $R$ and $\Theta$ so that $| \hat{\varphi}|_{\hat\rho} < R < \Theta$  then we have 
+Then $\mathscr K (\Theta)$ is relatively compact in $L^2_{ \rho}$ for $\Theta >0$. Moreover, by \eqref{E:yineq}, \eqref{E:1fac} and Chebychev's inequality, and if we choose $R$ and $\Theta$ so that $| \hat{\varphi}|_{\hat\rho} < R < \Theta$  then we have 
 \begin{align*}
-\mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \not \in \mathscr K(\Theta) \} & \le \mathbb{P}\left[ \left(\int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Theta}{\sin(\alpha \pi )} \right]
-\\&\le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\E \int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\hat \rho}^q \: \ud s
-\\& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg)
+	\mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \not \in \mathscr K(\Theta) \} 
+	   & \le \mathbb{P}\left[ \left(\int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Theta}{\sin(\alpha \pi )} \right]
+	\\ & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\E \int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\hat \rho}^q \: \ud s
+	\\ & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg)
 \end{align*}
 which implies that 
 \begin{align*}
-\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg) 
-\ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg).
+	\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \} 
+	& \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg) 
+	\ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg).
 \end{align*}
 Therefore, if we choose $\Theta>0$ big enough such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ the we get that 
 \begin{align*} 
@@ -856,17 +1053,17 @@ Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat
 	\addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 
-	\bibitem{AM03}
+\bibitem{AM03}
 Assing, Sigurd and Ralf Manthey.
 \newblock Invariant measures for stochastic heat equations with unbounded coefficients. 
 \newblock {\it Stochastic Process. Appl.} 103 (2003), no. 2, 237--256.
 
-	\bibitem{CarMol94}
+\bibitem{CarMol94}
 Carmona, Ren\'e~A.  and Stanislav~A. Molchanov.
 \newblock Parabolic Anderson problem and intermittency.
 \newblock {\em Mem. Amer. Math. Soc.}, 108 (1994), no. 518, viii+125 pp. 
 
-	\bibitem{Cer01}
+\bibitem{Cer01}
 Cerrai, Sandra.
 \newblock {\it Second order PDE's in finite and infinite dimension.} 
 \newblock A probabilistic approach. Lecture Notes in Mathematics, 1762. Springer-Verlag, Berlin, 2001. x+330 pp. 
@@ -886,12 +1083,12 @@ Chen, Le, Yaozhong Hu and David Nualart.
 \bibitem{CH16Comparison}
 Chen, Le and Jingyu Huang.
 \newblock Comparison principle for stochastic heat equation on $\R^d$.
-\newblock {\em Ann.\ Probab.}  2019, to appear.
+\newblock {\em Ann.\ Probab.}  47 (2019), no. 2, 989--1035.
 
 \bibitem{CK15SHE}
 Chen, Le and Kunwoo Kim.
 \newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
-\newblock {\em Acta Math. Sci. Ser. B}, 2019, to appear.
+\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
 
 \bibitem{DalangEtc09Minicourse} Dalang, Robert, Davar Khoshnevisan, Carl 
 Mueller, David Nualart, and Yimin Xiao
