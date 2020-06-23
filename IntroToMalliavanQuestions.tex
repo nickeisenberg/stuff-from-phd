@@ -219,25 +219,25 @@ The integral in the parenthesis is the average of $u_s$ on $\big((j+1)T/n,(j+2)T
 \begin{NickQuestion}[(Problem 2.15)]
 	First we consider the $2-d$ Ito process
 	\[
-		\begin{pmatrix}
-			M_s 
-			\\ N_s
-		\end{pmatrix} 
-		=
-		\begin{pmatrix}
-		E(X^p) 
-		\\ E(Y^{q'})
-		\end{pmatrix}
-		+
-		\begin{pmatrix}
-		\varphi_s & 0
-		\\0 & \psi_s
-		\end{pmatrix}
-		\begin{pmatrix}
-		\hat{B_s} 
-		\\ B_s
-		\end{pmatrix}
-	\]
+\begin{pmatrix}
+M_s 
+\\ N_s
+\end{pmatrix} 
+=
+\begin{pmatrix}
+E(X^p) 
+\\ E(Y^{q'})
+\end{pmatrix}
++
+\int_0^t {	\begin{pmatrix}
+	\varphi_s & 0
+	\\0 & \psi_s
+	\end{pmatrix}
+	\begin{pmatrix}
+	\hat{d B_s} 
+	\\ d B_s
+	\end{pmatrix} }
+\]
 	
 and then following the hint we apply Ito's formula to $f(x,y) = x^{1/p}y^{1/q'}$. We get the following derivatives:
 \begin{itemize}
@@ -261,14 +261,14 @@ B_s
 \\ \tilde{B_s}
 \end{pmatrix} 
 =
-\begin{pmatrix}
-1 & 0
-\\0 & 1
-\end{pmatrix}
-\begin{pmatrix}
-B_s
-\\ \tilde{B_s}
-\end{pmatrix}
+\int_0^t { \begin{pmatrix}
+	1 & 0
+	\\0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+	d B_s
+	\\ \tilde{d B_s}
+	\end{pmatrix} }
 \]
 and applied Itos formula to $f(t,x,y) = e^{-t}x+ \sqrt{1-e^{-2t}}y$ which gives us 
 \begin{align*}
