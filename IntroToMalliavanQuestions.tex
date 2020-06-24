@@ -175,6 +175,8 @@
 
 \begin{NickQuestion}
 	Proof of lemma 1.8.4
+
+	\textcolor{magenta}{The proof is very nice.} 
 \end{NickQuestion}
 
 \section{Chapter 2}
@@ -190,18 +192,20 @@
 	\]
 	so, as in the Kuo text, this stochastic integral exists and a limit in probability of a sequence of stochastic integrals $\int_0^t u_n(s)dB_s$ where the $u_n$ are simple and are in $L^2_{ad}$ and hence $\int_0^t u_n(s)dB_s$ is a martingale and we know the first and second moment. But for the limit $ \int_0^t u(s)dB_s$ we know nothing about the moments. But in this text, it is claimed that 
 	\[
-	E \left[\int_{t_i}^{t_{i+1}}u^2(s)ds - \left(\int_{t_i}^{t_{i+1}}u(s)dB_s\right)^2 \bigg| \mathcal F_i\right] =0
+	\E \left[\int_{t_i}^{t_{i+1}}u^2(s)ds - \left(\int_{t_i}^{t_{i+1}}u(s)dB_s\right)^2 \bigg| \mathcal F_i\right] =0
 	\]
 	and I have never seen this claimed in any other text. 
-	
 
+	\textcolor{magenta}{Note that $u$ is bounded (we are assuming localization has been done). Hence, all moments exists.} 
 \end{NickQuestion}
+
 
 \begin{NickQuestion}
 	In the proof of theorem 2.5.1, why is it true that 
 	\[ 
 		E \left(\int_0^t |u_n'(B_s)-1_{(x,\infty)}(B_s)|^2 ds\right) \le \int_0^t \mathbb P \left( |B_s-x|\le \frac{2}{n}\right)ds
 	\]
+	\textcolor{magenta}{Please explore the mollifier $f$ and $f_n$. Plot these $u_n'$ and see how could it differ from $1_{(x,\infty)}$.} 
 \end{NickQuestion}	
 
 \begin{NickQuestion}
@@ -209,11 +213,25 @@
 	\[
 	\int_0^T u(s)\hat{d}B_s = \lim_{n \to \infty} \sum_{i=0}^{n-2}\left( \frac{n}{T}\int_{(j+1)T/n}^{(j+2)T/n}u(s)ds \right)(B_{(j+1)T/n}-B_{jT/n})
 	\]
-The integral in the parenthesis is the average of $u_s$ on $\big((j+1)T/n,(j+2)T/n\big)$. 
+	The integral in the parenthesis is the average of $u_s$ on $\big((j+1)T/n,(j+2)T/n\big)$. 
+
+	\bigskip
+	\textcolor{magenta}{Let's skip this part. I know nothing on the backward SDE and not particular interested either. 
+	It has applications in finance. If you don't do finance, I don't see the point here.} 
 \end{NickQuestion}
 
 \begin{NickQuestion}[(Problem 2.7)]
 	This problem follows easily from Levy's Characterization of Brownian Motion. But I can't figure out how to do this problem with the hint given. 
+
+	\bigskip
+	\textcolor{magenta}{This is a nice problem. The hints is to ask you to find the distribution of $X_t-X_s$ 
+	through the characteristic function. Once apply Ito's formula, take expectation and remove the martingale part, you should 
+	arrive at an integral equation. Take derivatives, you arrive at a differential equation. The solution for $a_s\left(t\right):=\E\left(e^{i\lambda \left(X_t-X_s\right)}\right)$
+	is 
+	\begin{align*}
+		a_s(t) = e^{-\frac{\lambda^2}{2}(t-s)}.
+	\end{align*}
+	} 
 \end{NickQuestion}
 
 \begin{NickQuestion}[(Problem 2.15)]
@@ -238,43 +256,45 @@ The integral in the parenthesis is the average of $u_s$ on $\big((j+1)T/n,(j+2)T
 		\\ d B_s
 		\end{pmatrix} }
 	\]
-	
-and then following the hint we apply Ito's formula to $f(x,y) = x^{1/p}y^{1/q'}$. We get the following derivatives:
-\begin{itemize}
-	\item $f_x = \frac{1}{p}x^{\frac{1}{p}-1}y^{\frac{1}{q'}}$
-	\item $f_{xx} = \frac{1}{p} \left(\frac{1}{p}-1\right)x^{\frac{1}{p}-2}y^{\frac{1}{q'}}$
-	\item $f_y = \frac{1}{q'}x^{\frac{1}{p}}y^{\frac{1}{q'}-1}$
-	\item $f_{yy} =\frac{1}{q'} \left(\frac{1}{q'}-1\right)x^{\frac{1}{p}}y^{\frac{1}{q'}-2}$
-\end{itemize} 
-Now putting this into Ito's Formula gives us 
-\begin{align*}
-	M_t^{1/p}N_t^{1/q'}&=\Norm{X}_p\Norm{Y}_{q'} + \frac{1}{p}\int_0^t M_s^{\frac{1}{p}-1}N_s^{\frac{1}{q'}} \varphi_s \: d\hat{B_s}+ \frac{1}{q'}\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-1}\psi_s \: dB_s
-	\\& + \frac{1}{2}\frac{1}{p} \left(\frac{1}{p}-1\right)\int_0^t M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}}\varphi_s^2 \: ds + \frac{1}{2}\frac{1}{q'} \left(\frac{1}{q'}-1\right)\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-2} \psi_s^2 \: ds
-\end{align*}
+	and then following the hint we apply Ito's formula to $f(x,y) = x^{1/p}y^{1/q'}$. We get the following derivatives:
+	\begin{itemize}
+		\item $f_x = \frac{1}{p}x^{\frac{1}{p}-1}y^{\frac{1}{q'}}$
+		\item $f_{xx} = \frac{1}{p} \left(\frac{1}{p}-1\right)x^{\frac{1}{p}-2}y^{\frac{1}{q'}}$
+		\item $f_y = \frac{1}{q'}x^{\frac{1}{p}}y^{\frac{1}{q'}-1}$
+		\item $f_{yy} =\frac{1}{q'} \left(\frac{1}{q'}-1\right)x^{\frac{1}{p}}y^{\frac{1}{q'}-2}$
+	\end{itemize} 
+	Now putting this into Ito's Formula gives us 
+	\begin{align*}
+		M_t^{1/p}N_t^{1/q'}&=\Norm{X}_p\Norm{Y}_{q'} + \frac{1}{p}\int_0^t M_s^{\frac{1}{p}-1}N_s^{\frac{1}{q'}} \varphi_s \: d\hat{B_s}+ \frac{1}{q'}\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-1}\psi_s \: dB_s
+		\\& + \frac{1}{2}\frac{1}{p} \left(\frac{1}{p}-1\right)\int_0^t M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}}\varphi_s^2 \: ds + \frac{1}{2}\frac{1}{q'} \left(\frac{1}{q'}-1\right)\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-2} \psi_s^2 \: ds
+	\end{align*}
 
-I am not really sure where to continue from here. I see that if we let $t \to \infty$ then $M_t^{1/p}N_t^{1/q'} \to XY$ so if we took the expected value of both sides then we would partially have what we are looking for since $E(XY)$ is on the left and $\Norm{X}_p\Norm{Y}_{q'}$ is on the right. But I am not sure about the other terms. Im guessing the Ito integrals in the right have $0$ expectation but I am not sure if that is in fact true since I dont see how it is easily seen that the integrands are in $L^2(\mathcal P)$. 
+	I am not really sure where to continue from here. I see that if we let $t \to \infty$ then $M_t^{1/p}N_t^{1/q'} \to XY$ so if we took the expected value of both sides then we would partially have what we are looking for since $E(XY)$ is on the left and $\Norm{X}_p\Norm{Y}_{q'}$ is on the right. But I am not sure about the other terms. Im guessing the Ito integrals in the right have $0$ expectation but I am not sure if that is in fact true since I dont see how it is easily seen that the integrands are in $L^2(\mathcal P)$. 
 
-What I did next was see what $\hat{B_s}$ was equal too and for this we define another Ito Process
-	\[
-\begin{pmatrix}
-B_s 
-\\ \tilde{B_s}
-\end{pmatrix} 
-=
-\int_0^t { \begin{pmatrix}
-1 & 0
-\\0 & 1
-\end{pmatrix}
-\begin{pmatrix}
-d B_s
-\\ \tilde{d B_s}
-\end{pmatrix} }
-\]
-and applied Itos formula to $f(t,x,y) = e^{-t}x+ \sqrt{1-e^{-2t}}y$ which gives us 
-\begin{align*}
-\hat{B}_s = e^{-t}B_s+ \sqrt{1-e^{-2t}}\tilde{B}_s = \int_0^t \frac{e^{-2s}}{\sqrt{1-e^{-2s}}}\tilde{B}_s - e^{-s}B_s \: ds + \int_0^t e^{-s} \: dB_s + \int_0^t \sqrt{1-e^{-2s}} \: d\tilde{B}_s
-\end{align*}
-However I am not sure if this step is necessary. 
+	What I did next was see what $\hat{B_s}$ was equal too and for this we define another Ito Process
+		\[
+	\begin{pmatrix}
+	B_s 
+	\\ \tilde{B_s}
+	\end{pmatrix} 
+	=
+	\int_0^t { \begin{pmatrix}
+	1 & 0
+	\\0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+	d B_s
+	\\ \tilde{d B_s}
+	\end{pmatrix} }
+	\]
+	and applied Itos formula to $f(t,x,y) = e^{-t}x+ \sqrt{1-e^{-2t}}y$ which gives us 
+	\begin{align*}
+	\hat{B}_s = e^{-t}B_s+ \sqrt{1-e^{-2t}}\tilde{B}_s = \int_0^t \frac{e^{-2s}}{\sqrt{1-e^{-2s}}}\tilde{B}_s - e^{-s}B_s \: ds + \int_0^t e^{-s} \: dB_s + \int_0^t \sqrt{1-e^{-2s}} \: d\tilde{B}_s
+	\end{align*}
+	However I am not sure if this step is necessary. 
+
+	\bigskip
+	\textcolor{magenta}{I will consider this problem by Friday.} 
 \end{NickQuestion}
 
 
