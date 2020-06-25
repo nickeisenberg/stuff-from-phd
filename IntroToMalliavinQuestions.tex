@@ -336,6 +336,53 @@
 	What does $D_su_t$ and $D_tv_s$ mean? 
 \end{NickQuestion}
 
+\textbf{Partial Proof of $$D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u).$$ }
+Since $u=\sum F_jh_j$ we just apply the definition of $\delta$ to get 
+\begin{align*}
+D_h(\delta(u)) &= D_h\left(  \sum_{j=1}^n F_j B(h_j) - \sum_{j=1}^n\langle DF_j, h_j \rangle \right)
+\\&=   \sum_{j=1}^n D_h(F_j B(h_j)) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle 
+\\&= \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle 
+\end{align*}
+where the third inequality follows from the product rule and $D_h(B(h_j)) =  \langle h, h_j \rangle$. 
+Now we focus on the last term from the last line above.
+\begin{align*}
+\sum_{j=1}^nD_h\langle DF_j, h_j \rangle & = \sum_{j=1}^n\langle D_\cdot \langle DF_j, h_j \rangle, h(\cdot) \rangle
+\end{align*}
+Before we continue, we simplify $D_\cdot \langle DF_j, h_j \rangle$. We may assume that $F_j=f^j(B(h_1^j(t),...,B(h_n^j(t)))$ where $f^j \in C_p^\infty(\R^n)$ and $h_i^j \in H$. 
+\begin{align*}
+D_\cdot \langle DF_j, h_j \rangle &= D_\cdot \langle\sum_{i=1}^n \frac{\partial f^j}{\partial x_i}h_i^j(\circ), h_j(\circ) \rangle 
+\\ &= \sum_{i=1}^n\langle h_i^j(\circ), h_j(\circ) \rangle D_\cdot\left( \frac{\partial f^j}{\partial x_i}\right)
+\end{align*}
+We now plug this in above to get 
+\begin{align*}
+\sum_{j=1}^n\langle D_\cdot \langle DF_j, h_j \rangle, h(\cdot) \rangle &= \sum_{j=1}^n \sum_{i=1}^n\langle h_i^j(\circ), h_j(\circ) \rangle \langle D_\cdot\left( \frac{\partial f^j}{\partial x_i}\right), h(\cdot)\rangle
+\\&= \sum_{j=1}^n \sum_{i=1}^n\left\langle h_i^j(\circ)\langle D_\cdot\left( \frac{\partial f^j}{\partial x_i}\right), h(\cdot)\rangle, h_j(\circ) \right\rangle 
+\\&= \sum_{j=1}^n \left\langle \langle D_\cdot\left(\sum_{i=1}^nh_i^j(\circ) \frac{\partial f^j}{\partial x_i}\right), h(\cdot)\rangle, h_j(\circ) \right\rangle 
+\\& = \sum_{j=1}^n \bigg\langle \langle D_\cdot\left(DF_j\right), h(\cdot)\rangle, h_j(\circ) \bigg\rangle 
+\\& = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j(\circ) \bigg\rangle 
+\end{align*}
+and if I haven't made a mistake, then what we have shown so far is that 
+\begin{align*}
+D_h(\delta(u))  & = \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle 
+\\&= \sum_{j=1}^n F_j \langle h, h_j \rangle + \sum_{j=1}^n B(h_j)D_h(F_j)- \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle 
+\end{align*}
+Also, the above is exactly line two of the first centered equations on page 53.
+
+
+Now we need to show that the last two terms add up to $\delta(D_h(u))$. This is not defined in the text but I think that we need to define $D_hu$ as the following 
+\[
+D_hu = D_h \sum_{j=1}^n F_jh_j(t) =  \sum_{j=1}^n h_j(t) D_h(F_j) 
+\]
+Thus now $D_h(u)$ is of the form $\sum F_j h_j$ and so we may apply the definition of $\delta$ to it to get the following 
+\begin{align*}
+\delta(D_hu) & = \sum_{j=1}^n B(h_j) D_h(F_j) -  \sum_{j=1}^n \langle D_\circ(D_hF_j), h_j(\circ) \rangle 
+\end{align*}
+Now we focus in the last term of the right hand side. From the above we note that we want to show that 
+\[
+\sum_{j=1}^n \langle D_\circ(D_hF_j), h_j(\circ) \rangle = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle 
+\]
+However I have not been able to how that this is true. 
+
 \begin{NickQuestion}[(Why is $\delta$ linear?)]
 	On page 55 it says that $\delta$ is linear. First, for $u=\sum_{j=1}^nF_jh_j$ we have
 	\[
