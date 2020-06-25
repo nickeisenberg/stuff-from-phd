@@ -297,5 +297,61 @@
 	\textcolor{magenta}{I will consider this problem by Friday.} 
 \end{NickQuestion}
 
+\section{Chapter 3}
+
+\begin{NickQuestion}[(Smooth Cylindrical Random Variable)]
+	Following chapter 3 of the Kuo text, denote C the Wiener space of continuous functions from [0,1] to $\R$, $\mathcal R$ the collection cylindrical sets
+	\[
+	A = \{\omega \in C : (\omega(t_1),...,\omega(t_n) \in U \big| t_i \in [0,1], n \in \mathbb N, U \in \mathscr B (\R^n)  \}
+	\]
+	and $\mu$ the associated Wiener measure. Consider the coordinate processes $B(t,\omega)=\omega(t)$ which are Brownian motions under $(C,\mathcal B(\mathcal R), \mu)$. There is a theorem that can be found \href{https://math.stackexchange.com/questions/750049/density-of-cylindrical-random-variables-in-classical-wiener-space}{here}.
+	
+	\textbf{Theorem} : The random variables 
+	\[
+	\{f(B(t_1,\cdot),...,B(t_n,\cdot)) \big| n\in \mathbb N,\; f \in \mathscr S (\R^n)  \}
+	\]
+	are dense in $L^2(C,\mu)$ where $\mathscr S (\R^n)$ are the Schwartz functions.
+	
+	How does this relate to $\mathcal S$ defined on page 51 of the intro to Malliavin textbook? How are the cylindrical random variables defined in this case? Why is $\mathcal S$ dense in $L^2(\Omega)$? Even in Diffusions Markov Processes and Martingales - Roger and Williams, they define the cylindrical sigma field in the same way Kuo does- through the use of coordinate processes. 
+\end{NickQuestion}
+
+\begin{NickQuestion}
+	Why is $(D_tF)_{t \ge 0}$ a stochastic processes in $L^2(\Omega ; H)$ where $H=L^2(\mathbb R^+)$? $D_tF$ is defined as 
+	\[
+	D_tF = \sum_{i=1}^n \frac{\partial f}{\partial x}(B(h_1),...,B(h_n))h_i(t)
+	\]
+	where $h_i \in H$ and $B(h_i) = \int_0^\infty h_i dB_s$ is the standard Wiener Integral. So isnt $D_tF$ real valued since we are evaluating the $h_i(\cdot)$ at $t$? Then shouldn't the $(D_tF)_{t \ge 0}$ be a $L^2(\Omega; \mathbb R)$ valued stochastic process? 
+	
+\end{NickQuestion}
+
+\begin{NickQuestion}[(Proposition 3.2.4)]
+	$D_h(F) = \langle DF, h \rangle$ is defined only for $F \in \mathcal S$ since the $D$ operator is only defined on $\mathcal S$. However in $(3.5)$ in this proposition, we want to calculate $D_h(u)$ but $u \in \mathcal S_H$ and in this case $D_h(u)$ has not been defined. I am not sure how they are getting equality 2 and 3 from the first three centered equations on page 53. 
+	
+	Also how do you get the RHS of the last inequality in the second set of centered equalities on page 53.
+	
+	Also as the bottom og page 52, we is it that 
+	\[
+	E \left( \sum_{i,j=1}^\infty D_{e_i}\langle u, e_j \rangle D_{e_j}\langle v, e_i \rangle  \right)) = E \left( \int_0^\infty\int_0^\infty D_su_tD_tv_s dsdt \right)
+	\]
+	What does $D_su_t$ and $D_tv_s$ mean? 
+\end{NickQuestion}
+
+\begin{NickQuestion}[(Why is $\delta$ linear?)]
+	On page 55 it says that $\delta$ is linear. First, for $u=\sum_{j=1}^nF_jh_j$ we have
+	\[
+	\delta(u) = \sum_{j=1}F_jB(h_j) - \sum_{j=1}^n \langle DF_j, h_j \rangle_H
+	\]
+	Now if we have a $v = \sum_{j=1}^nG_jh'_j$ how does $\delta(u+v) = \delta(u) + \delta(v)$. Also how could we write $\sum_{j=1}^nF_jh_j + \sum_{j=1}^nG_jh'_j = \sum_{j=1}^nK_jk_j$ where $K_j \in \mathcal S$ and $k_j \in H$ 
+	
+	Do we do this through the relationship $E(\langle DF,u \rangle ) = E(\delta(u)F)$ in the sense that 
+	\begin{align*}
+	E(\delta(u+v)F) &= E(\langle DF,u +v\rangle )  
+	\\&=  E(\langle DF,u\rangle ) +  E(\langle DF,v\rangle ) 
+	\\& = E(\delta(u)F) + E(\delta(v)F)
+	\\& = E((\delta(u)+\delta(v))F)
+	\end{align*}
+	and if this is true for every $F$ then I believe we can say  $\delta(u+v) = \delta(u) + \delta(v)$? 
+\end{NickQuestion}
+
 
 \end{document}
