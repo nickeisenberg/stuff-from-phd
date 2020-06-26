@@ -293,9 +293,73 @@
 	\end{align*}
 	However I am not sure if this step is necessary. 
 
-	\bigskip
-	\textcolor{magenta}{I will consider this problem by Friday.} 
 \end{NickQuestion}
+
+\bigskip
+\textcolor{magenta}{The followings are some of my thoughts:} 
+First of all, we need the absolute values: 
+\[
+	\begin{pmatrix}
+		M_s 
+		\\ N_s
+	\end{pmatrix} 
+	=
+	\begin{pmatrix}
+	\E(|X|^p) 
+	\\ \E(|Y|^{q'})
+	\end{pmatrix}
+	+
+	\int_0^t {	\begin{pmatrix}
+	\varphi_s & 0
+	\\0 & \psi_s
+	\end{pmatrix}
+	\begin{pmatrix}
+	\hat{d B_s} 
+	\\ d B_s
+	\end{pmatrix} }.
+\]
+Second, you forget 
+\begin{align*}
+	f_{xy} = \frac{1}{p} \frac{1}{q'} x^{-1/(p')} y^{-1/q}.
+\end{align*}
+Hence, by Ito's formula, we will have 
+\begin{align*}
+	M_t^{1/p}N_t^{1/q'}
+	= &\Norm{X}_p\Norm{Y}_{q'} 
+	+ \frac{1}{p}\int_0^t M_s^{\frac{1}{p}-1}N_s^{\frac{1}{q'}} \varphi_s \: d\hat{B_s}
+	+ \frac{1}{q'}\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-1}\psi_s \: dB_s \\
+	& + \frac{1}{2}\frac{1}{p} \left(\frac{1}{p}-1\right)\int_0^t M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}}\varphi_s^2 \: ds 
+	+ \frac{1}{2}\frac{1}{q'} \left(\frac{1}{q'}-1\right)\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-2} \psi_s^2 \: ds\\
+	&+\frac{1}{pq'} \int_0^t M_s^{-\frac{1}{p'}} N_s^{-\frac{1}{q}} \psi_s \phi_s d\InPrd{B,\hat{B}}_s\\
+	=: & \Norm{X}_p\Norm{Y}_{q'} + \sum_{i=1}^5 I_i.
+\end{align*}
+Upon taking expectation on both sides, we see that 
+\begin{align*}
+	LHS = \E\left(|X_t Y_t|\right)\ge \E\left(X_tY_t\right).
+\end{align*}
+We only need to prove that 
+\begin{align*}
+	\E\left(\sum_{i=1}^5 I_i\right)\le 0,
+\end{align*}
+which is clear for $i=1,2$, in which case we have the expectation equal to zero. 
+Now for the rest three parts, we see that 
+\begin{align*}
+	I_3+I_4+I_5
+	=& -\frac{1}{2pq'} M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}-2} \left(
+		N_s^2 \varphi_s^2 \frac{q'}{p'} -2M_s N_s \phi_s \psi_s e^{-s} + M_s \psi_s^2 \frac{p}{q}
+	\right),
+\end{align*}
+where we have used the fact that $d\InPrd{B,\hat{B}}_s=e^{-s}ds$.
+Hence, the condition become the condition that the quadratic form has no solution: 
+\begin{align*}
+	\Delta = 4 e^{-2s} -4\frac{q'p}{p'q} = 4\left(e^{-2s} - \frac{p-1}{q-1}\right)\le 0
+\end{align*}
+which is equivalent to 
+\begin{align*}
+	q\le e^{2s}(p-1) +1.
+\end{align*}
+Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
+
 
 \section{Chapter 3}
 
