@@ -76,6 +76,7 @@
 \newcommand{\liph}{\text{Lip}_{\hat\rho}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
+\newcommand{\e}{\mathrm{e}}
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
 \newcommand{\rhoNorm}[1]{\left|  #1   \right|}
 \newcommand{\ud}{\ensuremath{\mathrm{d}}}
@@ -159,10 +160,6 @@ more broad group of initial conditions. However, because of the differences betw
 integral, we must trade some of previous assumptions on the spectral density for new ones which are listed below. For
 example we drop hypothesis 2.1(i) as well as the assumptions from \cite[Theorem 3.3]{TessitoreZabczyk98M} for the new
 assumptions listed below.
-
-\textcolor{magenta}{Give the correct number for the above theorem.} 
-
-\textcolor{blue}{Theorem 3.3 above was in the Tessitore paper, I fixed the citation for it}
 
 Misiats, Stanzhytski and Yip \cite{MSY15} show the existence of a invariant measure for \eqref{E:gspde} with any
 $L^2(\R^d)$ initial condition but with non-zero drift term $f(x,u(t,x))$ added to the right side of the equal sign.
@@ -274,11 +271,13 @@ and lastly,
 	\begin{enumerate}
 		\item $u$ satisfies almost surely and for all $(t,x) \in (0,\infty)\times \R^d$
 			\[ 
-				u(t,x) = \int_{\R^d}G(t,x-y)\:\mu( \ud y) + \int_0^t\int_{\R^d}G(t-s,x-y)b(y,u(s,y)) \: W(\ud s, \ud y).
+				u(t,x) = \int_{\R^d}G(t,x-y)\:\mu( \ud y) +
+				\int_0^t\int_{\R^d}G(t-s,x-y)b(y,u(s,y)) \:
+				W(\ud s, \ud y);
 			\]
-		\item $u$ is adapted, that is, for all $(t,x) \in (0,\infty)\times \R^d$, $u(t,x)$ is $\mathcal F_t$ measurable. 
-		\item $u$ is jointly measurable with respect to $\mathcal B((0,\infty)\times \R^d) \times \mathcal F$.
-		\item $\Norm{I(t,x)}_2 < + \infty $ for all $(t,x) \in (0,\infty)\times \R^d$.
+		\item $u$ is adapted, that is, for all $(t,x) \in (0,\infty)\times \R^d$, $u(t,x)$ is $\mathcal F_t$ measurable; 
+		\item $u$ is jointly measurable with respect to $\mathcal B((0,\infty)\times \R^d) \times \mathcal F$;
+		\item $\Norm{I(t,x)}_2 < + \infty $ for all $(t,x) \in (0,\infty)\times \R^d$;
 		\item $I$ is $L^2(\Omega)$-continuous, that is, the function $(t,x) \mapsto I(t,x)$ mapping $(0,\infty)\times \R^d$ into $L^2(\Omega)$ is continuous. 
 	\end{enumerate}
 \end{definition}
@@ -286,60 +285,62 @@ and lastly,
 We now state assumptions necessary for the existence and uniqueness of the solution to \eqref{E:gspde}. The result is
 found in \cite{CK15SHE,CH16Comparison}.
 
-\begin{assumptions} $\;$
+\begin{assumptions} 
 	\label{A:General}
+	We make the following assumptions:
 	\begin{enumerate}[(i)]
-		\item \begin{equation}
-			\int_{\R^d}\exp(-a|x|^2)|\mu|(\ud x) < \infty \quad \text{for any $a>0$} \label{A:icon} 
-				\end{equation}
-			\textcolor{magenta}{(This is not the correct way to cite. You can either use equation number, or 
-			cite as part (i) of Assumption \ref{A:General}. Please update the documents for all these
-			problems.)} 
-		
-		\textcolor{blue}{I added equation numbers}
-		
-		\item \begin{equation}
+		\item The initial measure $\mu$ satisfies the following integrability condition: 
+			\begin{equation}
+				\int_{\R^d}\exp\left(-a|x|^2\right)|\mu|(\ud x) < \infty \quad \text{for any $a>0$;} \label{A:icon} 
+			\end{equation}
+		\item The spectral measure $\hat{f}$ satisfies {\it Dalang's condition}:
+			\begin{equation}
 				\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{\beta + |\xi|^2} <
 				\infty \quad \text{for some and therefore any $\beta>0$}  \label{A:dalcon} 
-				\end{equation}
-		\item \begin{equation}  
+			\end{equation}
+		\item The diffusion coefficient $b(x,u)$ satisfies the following Lipschitz and boundedness conditions: 
+			\begin{equation}  
 				|b(x,u)-b(x,v)|< L |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad u,v \in \R, \; x \in \R^d \label{A:lipcon} 
-				\end{equation}
+			\end{equation}
 	\end{enumerate}
 \end{assumptions}
 
 
-\begin{notation}
-	The notation $\hat{f}(\ud \xi)$ is use to denote a pairing in the sense that $\langle f, g \rangle = \langle \hat{f}, \hat{g} \rangle$. When $f$ is indeed a test function then $\hat{f}(\ud \xi)=\hat{f}(\xi)\ud \xi$. So for example, \eqref{A:dalcon} could be written as $\langle \hat{f} , (\beta + |\cdot|^2)^{-1} \rangle$. It is the value of $(\beta + |\cdot|^2)^{-1}$ under the distribution $\langle \hat{f} , \cdot \rangle$.
-\end{notation}
+% \begin{notation}
+% 	The notation $\hat{f}(\ud \xi)$ is use to denote a pairing in the sense that $\langle f, g \rangle = \langle \hat{f}, \hat{g} \rangle$. When $f$ is indeed a test function then $\hat{f}(\ud \xi)=\hat{f}(\xi)\ud \xi$. So for example, \eqref{A:dalcon} could be written as $\langle \hat{f} , (\beta + |\cdot|^2)^{-1} \rangle$. It is the value of $(\beta + |\cdot|^2)^{-1}$ under the distribution $\langle \hat{f} , \cdot \rangle$.
+% \end{notation}
 
 \begin{theorem}
-Suppose that Assumption \ref{A:General} is satisfied. Then \eqref{E:gspde} has a unique random field solution starting from $\mu$. The solution is $L^2(\Omega)$ continuous. 
+Under Assumption \ref{A:General}, \eqref{E:gspde} has a unique random field solution starting from $\mu$ and the solution is $L^2(\Omega)$ continuous. 
 \end{theorem}
 
 The arguments in this paper have been made possible due to the moment bounds of the solution \eqref{E:gmsol} given in \cite{CH16Comparison} which we will now state again without proof.
 
 \begin{theorem} 
-	Under Assumption \ref{A:General} and for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:gspde}, $u(t,x)$,
+	\label{T:ExUn}
+	Under Assumption \ref{A:General}, for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:gspde}, $u(t,x)$,
 	given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
 	\begin{equation}
-		\Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big]H(t;\gamma_p)^{1/2} \label{E:mb}
+		\label{E:mb}
+		\Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big]H(t;\gamma_p)^{1/2},
 	\end{equation}
-	where $\bar{\varsigma}=L_0/L$ and $\gamma_p = 32pL^2$. The function $H$ is defined in \cite{CH16Comparison} but
-	the definition is not important here. Moreover, if we assume that\begin{equation}
-	 \Upsilon(0) < \infty \label{A:dalcon0}
-	 \end{equation}
-	 then we may make the stronger assertion that for some constant $C$
+	where $\bar{\varsigma}=L_0/L$, $\gamma_p = 32pL^2$ and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{CH16Comparison} for
+	the concrete definition of $H$).
+	Moreover, if we assume that
 	\begin{equation}
-		\Norm{u(t,x)}_p \le \text{Const.}\big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big] \le
-		C[1+(|\mu|*G(t,\cdot))(x)\big] \label{E:mb0}.
+		 \Upsilon(0) < \infty \label{A:dalcon0}
+	\end{equation}
+	then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing 
+	$C=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, 
+	we have that
+	\begin{equation}
+		\label{E:mb0}
+		\Norm{u(t,x)}_p \le 
+		\begin{cases}
+			C\left[1+\left(|\mu|*G(t,\cdot)\right)(x)\right] & \text{if $L_0> 0$,}\\
+			C\left(|\mu|*G(t,\cdot)\right)(x) & \text{if $L_0= 0$}.
+		\end{cases}
 	\end{equation} 
-	Even further, if we assume that $b(x,0)=0$ for and $x \in \R^d$ then $L_0 = 0$ and we easily see that
-	\eqref{E:mb0} becomes 
-	\begin{equation}
-		\label{E:mb00}
-		\Norm{u(t,x)}_p \le \text{Const.}\big[(|\mu|*G(t,\cdot))(x)\big].
-	\end{equation}
 \end{theorem}
 
 \begin{remark} 
@@ -386,33 +387,81 @@ a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \eqref{A:ic
 	Suppose that $\varphi \in L^2_\rho(\R^d)$. Then $\varphi$ satisfies \eqref{A:icon}.
 \end{lemma}
 
-\begin{proof} It can be shown that for any admissible weight, there exists some constant $C>0$ such that $C \cdot \rho(x) \ge  \exp(-a|x|^2)$. This constant $C$ may depend on $a>0$. Now, since we assume $\int_{\R^d}\rho(x)|\varphi(x)|^2\ud x < \infty $ then this implies that $\int_{\R^d}\rho(x)|\varphi(x)|\ud x < \infty $ which now implies that $\int_{\R^d}\exp(-a|x|^2)|\varphi(x)|\ud x < \infty $ 
+\begin{proof} 
+	We first claim that the fact that $\rho$ is admissible implies that for some $C_a>0$,
+	\begin{align}
+		\label{E:RhoDom}
+		\exp\left(-a|x|^2\right)\le C_a\: \rho(x),\qquad \text{for all $x\in\R^d$.}
+	\end{align}
+	\textcolor{magenta}{(Please demonstrate \eqref{E:RhoDom}.)} 
+	Then by the Cauchy-Schwatz inequality, 
+	\begin{align*}
+		\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|\ud x
+		&\le C'_a \left(\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|^2\ud x\right)^{1/2}
+		\le C'_a C_a^{1/2} \Norm{\varphi}_\rho<\infty.
+	\end{align*}
 \end{proof}
+
+Lemma \ref{L:phi} and Theorem \ref{T:ExUn} implies that \eqref{E:spde} has a unique solution. 
+The following theorem tells us that the solution for any $t>0$ is still in $L_\rho^2(\R^d)$.
 
 \begin{theorem} 
 	\label{T:Moment}
-	Suppose Assumption \ref{A:General} holds. Then \eqref{E:msol} gives the unique (in the sense of versions) random field solution \{$u(t,x): t>0, \; x\in\R^d$\} of \eqref{E:spde} starting from $\varphi(x) \in L^2_\rho$. The solution is $L^2(\Omega)-continuous$. Moreover, if we assume $\Upsilon(0)<\infty$ then we may apply \eqref{E:mb0} and say
+	Suppose Assumption \ref{A:General} holds. 
+	Let $u$ be the unique solution to \eqref{E:spde} starting from  $\varphi(\cdot) \in L^2_\rho$.
+	Then for all $t>0$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with 
+	\begin{align}
+		\label{E:uNormRho}
+		\E\left(| u(t,\cdot)|_\rho^2\right) 
+		\le  2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + C_\rho(T) \Norm{\varphi}_{\rho}^2 \right]<\infty,
+	\end{align}
+	Moreover, if $\Upsilon(0)<\infty$, then as a consequence of \eqref{E:mb0} \textcolor{magenta}{and provided that we can show 
+	that $C_\rho(T)$ is bounded, we have that},
 	\begin{align*}
-		\sup_{t\ge 0}\E|u(t,\cdot)|_\rho^2 < \infty  
+		\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty  
 	\end{align*}
 \end{theorem}
 
+\textcolor{magenta}{Update all $dx$ by $\ud x$ throughout the document.} 
+
 \begin{proof} 
-	Lemma \ref{L:phi} along with Assumption \ref{A:General} guarantee the existence and uniqueness of the  solution which is show in \cite{CH16Comparison}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant. 
-\begin{align*}
-\E\left(| u(t,\cdot)|_\rho^2\right) &= \E \int_{\R^d}\vert u(t,x) \vert^2 \rho(x)dx 
-\\&\le C_1 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)dx  \quad \text{by the moment bounds \eqref{E:mb0}}
-\\&\le C_2 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))^2(x)\bigg)\rho(x)dx
-\\ &= C_2\left[\int_{\R^d}\rho(x)\: \ud x +\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx \right]
-\\ &\le C_3\left[1+\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
-\\ &\le C_4\left[1+\int_{\R^d}\int_{\R^d}G(t,x-y)|\varphi(y)|^2\rho(x)dxdy\right]
-\\ &= C_4 \left[1+\int_{\R^d}(\rho*G(t,\cdot))(y)|\varphi(y)|^2dy\right].
-\end{align*}
-Now by the admissible weight property \eqref{E:aw}, for any $t_0>$0, $t \in [0,t_0]$ 
-\begin{align*}
-\\ \E\left(| u(t,\cdot)|_\rho^2\right)&\le C_4 C(t_0)\left(1+\int_{\R^d}\rho(y)|\varphi(y)|^2dy\right)
-\\  &< K\cdot C(t_0).
-\end{align*}
+	Fix an arbitrary $T>0$. For any $t\in [0,t]$, by the Fubini theorem and the moment bound \eqref{E:mb}, we see that
+	\begin{align*}
+		\E\left(| u(t,\cdot)|_\rho^2\right) 
+		&= \E \left(\int_{\R^d}\vert u(t,x) \vert^2 \rho(x)\ud x\right) 
+		\le C_T \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)\ud x.
+	\end{align*}
+	Since the fact that $\rho$ is admissible implies that $\rho\in L^1(\R^d)$ \textcolor{magenta}{(Please prove this statement),} 
+	we see that 
+	\begin{align*}
+		\E\left(| u(t,\cdot)|_\rho^2\right) 
+		\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)\ud x\right].
+	\end{align*}
+	Another application of the Cauchy-Schwatz inequality shows that 
+	\begin{align*}
+		\E\left(| u(t,\cdot)|_\rho^2\right) 
+		\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}(\rho*G(t,\cdot))(y)|\varphi(y)|^2\ud y \right].
+	\end{align*}
+	Then an application of the admissible weight property \eqref{E:aw} proves \eqref{E:uNormRho}.   
+
+% 	Lemma \ref{L:phi} along with Assumption \ref{A:General} guarantee the existence and uniqueness of the  solution which is show in \cite{CH16Comparison}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant. 
+% \begin{align*}
+% \E\left(| u(t,\cdot)|_\rho^2\right) &= \E \int_{\R^d}\vert u(t,x) \vert^2 \rho(x)dx 
+% \\&\le C_1 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)dx  \quad \text{by the moment bounds \eqref{E:mb0}}
+% \\&\le C_2 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))^2(x)\bigg)\rho(x)dx
+% \\ &= C_2\left[\int_{\R^d}\rho(x)\: \ud x +\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx \right]
+% \\ &\le C_3\left[1+\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
+% \\ &\le C_4\left[1+\int_{\R^d}\int_{\R^d}G(t,x-y)|\varphi(y)|^2\rho(x)dxdy\right]
+% \\ &= C_4 \left[1+\int_{\R^d}(\rho*G(t,\cdot))(y)|\varphi(y)|^2dy\right].
+% \end{align*}
+% Now by the admissible weight property \eqref{E:aw}, for any $t_0>$0, $t \in [0,t_0]$ 
+% \begin{align*}
+% \\ \E\left(| u(t,\cdot)|_\rho^2\right)&\le C_4 C(t_0)\left(1+\int_{\R^d}\rho(y)|\varphi(y)|^2dy\right)
+% \\  &< K\cdot C(t_0).
+% \end{align*}
+	\bigskip
+\textcolor{magenta}{The following proof is not quite right. $K$ is a constant depending on $t_0$ and it will blow up as $t_0$ goes to $\infty$.
+You do need to use the condition $\Upsilon(0)<\infty$ to prove the uniform moment bounds.} 
 Hence,
  \[
  \sup_{0 \le t \le t_0}\E |u(t,\cdot)|_\rho^2 < \infty.
@@ -513,12 +562,6 @@ Under the assumptions of Theorem \ref{T:Main} and for arbitrary $\epsilon \in (0
 	\mathbb{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{
 	\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$}.
  \end{equation}
- 
- \textcolor{magenta}{Forget period. Update the whole document for this problem.} 
- 
-  
- \textcolor{blue}{fixed}
- 
 \end{lemma}
  
  We may now complete the proof of Theorem \ref{T:Main} By Lemma \ref{L:Main}, given an $\epsilon \in (0,1)$ and $R>0$ then we could find a compact set $\mathscr K \in L^2_{\rho}$ such that  
@@ -985,11 +1028,11 @@ and in fact $k_{t,1}$ is finite for each $t>0$ by Lemma \ref{L:equiv}.
 
 \noindent \textbf{For $K_2$ and $K_3$:} 
 \begin{align*}
-&\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_2
-\\&\le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
-\\&\hspace{2em}+ k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
-\\& \hspace{20em} \times \int_{\R^d}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)|
-\\& \le \big(k_{t,1}  + k J_0(t,x) k_{t,2} \big) \int_0^t \ud s \: (t-s)^{\alpha-1}
+	   & \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_2
+	\\ & \le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
+	\\ & \hspace{2em}+ k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
+	\\ & \hspace{20em} \times \int_{\R^d}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)|
+	\\ & \le \big(k_{t,1}  + k J_0(t,x) k_{t,2} \big) \int_0^t \ud s \: (t-s)^{\alpha-1}
 \end{align*}
 where 
 \[
