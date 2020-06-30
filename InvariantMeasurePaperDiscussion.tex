@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc}
+%\usepackage{eucal} this is a different font than \mathcal{•}
+\usetikzlibrary{arrows}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{assumptions}{Assumptions}[section]
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{notation}{Notation}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shadows.blur}
+\usepackage{pgfplots}
+\usepackage{mwe} % For dummy images
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+\usepackage{multicol}
+\numberwithin{equation}{section}
+
+\newcommand{\lip}{\textup{Lip}_b}
+\newcommand{\liph}{\text{Lip}_{\hat\rho}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+
+\usepackage{lipsum}%% a garbage package you don't need except to create examples.
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\lhead{\Huge Version A}
+%\rhead{\thepage}
+\cfoot{}
+\renewcommand{\headrulewidth}{0pt}
+
+\usepackage[headheight = .5in, headsep = \baselineskip, top = 1in, left = 1in, right = 1in, textwidth = 7.52 in]{geometry}
+\lhead{ \parbox[][\headheight][t]{5cm}{\textbf{}}}
+\rhead{\parbox[][\headheight][t]{2cm}{\raggedleft Page\,\thepage{} of \pageref{LastPage}}}
+\usepackage{lastpage}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+
+\allowdisplaybreaks
+
+
+\begin{document}
+
+\section{(2.11) verification}
+The admissible weight property 
+\[
+\left(G(t,\cdot)*\rho(\cdot)\right)(x) =(2\pi t)^{-d/2} \int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)dy \le K_t\rho(x) \quad \forall x \in \mathbb R^d,\; K_t \in \mathbb N 
+\]
+tells us that 
+\begin{equation} \label{aw}
+\lim_{|x| \to \infty}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le K_t.
+\end{equation}
+We want to show that 
+\begin{equation} \label{con}
+\exp\left(-a|x|^2\right) \le K_a'\rho(x)
+\end{equation}
+and it suffices to show that  
+\begin{equation} \label{con1}
+\lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le K_a'.
+\end{equation}
+since then 
+\[
+\exp\left(-a|x|^2\right) \le (K_a'+\epsilon)\rho(x) \quad |x|>R_\epsilon
+\] 
+and by the positivity and continuity of both $	\exp\left(-a|x|^2\right)$ and $\rho(x)$, we know that there exists some positive constant $K(a,\epsilon)$ such that 
+\[
+\exp\left(-a|x|^2\right) \le K'(a,\epsilon)\rho(x) \quad x\le R_\epsilon
+\]
+and by then letting $K(a,\epsilon) = \max\{K'(a,\epsilon),(K_a'+\epsilon)\}$ then
+\[
+	\exp\left(-a|x|^2\right) \le K(a,\epsilon)\rho(x) \quad x \in \R^d
+\]
+which is what we want to show. 
+
+In order to show \eqref{con1}, it suffices to show that 
+\begin{equation} \label{goal}
+	\lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\exp\left(-a|x|^2\right)} = \infty
+\end{equation}
+because this would mean that $\exp\left(-a|x|^2\right)$ is much smaller than $\left(G(t,\cdot)*\rho(\cdot)\right)(x)$ for all large $|x|$ and since \eqref{aw} is true then this would mean that \eqref{con1} would be true as well by squeeze theorem,
+\[
+	0 \le \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le  \lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le K_t
+\]
+
+\eqref{goal} is proved as follows: first recall that $|\rho(x)| < M$ for some $M \in \mathbb N$. Then, 
+\begin{align*}
+0 \le	\dfrac{\int_{\mathbb R^d}\exp\left(-a|x-y|^2\right)\rho(y)\ud y}{\exp\left(-a|x|^2\right)} &\le \dfrac{M\int_{\mathbb R^d}\exp\left(-a|x-y|^2\right) \ud y}{\exp\left(-a|x|^2\right)} 
+\\&  = \dfrac{M*\sqrt{\dfrac{\pi}{a}}}{\exp\left(-a|x|^2\right)} 
+\\& \to \infty \quad \text{as } |x|\to \infty
+\end{align*}
+
+Thus \eqref{goal} is proved which means that \eqref{con} is also true. 
+
+\section{Mistake involving the $G(t,x) \le K G(1,x)$ inequality}
+During a meeting we had, we proved that $G(t,x) \le K G(1,x)$ where the constant $K$ does not depend on $x$ or $t$ but we made a mistake in doing so. What we did is the following (for now we work in $\R$): 
+
+\begin{align*}
+\frac{G(t+1,x)}{G(1,x)} &= \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2(t+1)} + \frac{|x|^2}{2}\right)
+\\& = \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2} \left(-\frac{1}{t+1}+ 1\right)\right) \quad \text{mistake was made here when factoring}
+\\& = \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2}\frac{t}{t+1}\right)
+\\& \le K
+\end{align*}
+However if we fix the mistake, what we should get is that 
+\begin{align*}
+\frac{G(t+1,x)}{G(1,x)} &= \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2(t+1)} + \frac{|x|^2}{2}\right)
+\\& = \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2} \left(\frac{1}{t+1}- 1\right)\right)
+\\& = \sqrt{\frac{1}{t+1}}\exp\left( \frac{|x|^2}{2} \frac{t}{t+1} \right)
+\\& \not \le K
+\end{align*}
+\end{document}
