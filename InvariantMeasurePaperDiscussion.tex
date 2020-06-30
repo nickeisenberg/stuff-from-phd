@@ -64,10 +64,23 @@ tells us that
 \begin{equation} \label{aw}
 \lim_{|x| \to \infty}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le K_t.
 \end{equation}
+
+\bigskip
+\textcolor{magenta}{The expression for $K_t$ should be 
+\begin{align*}
+	K_t:= \sup_{x\in\R^d} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} 
+\end{align*}
+The limit in \eqref{aw} gives a sufficient (also necessary) condition for $K_t$ to be finite, but in general, this limit is not equal to the value of $K_t$. 
+} 
+
 We want to show that 
 \begin{equation} \label{con}
 \exp\left(-a|x|^2\right) \le K_a'\rho(x)
 \end{equation}
+
+\bigskip
+\textcolor{magenta}{Why does \eqref{aw} imply \eqref{con}?} 
+
 and it suffices to show that  
 \begin{equation} \label{con1}
 \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le K_a'.
@@ -104,6 +117,11 @@ because this would mean that $\exp\left(-a|x|^2\right)$ is much smaller than $\l
 
 Thus \eqref{goal} is proved which means that \eqref{con} is also true. 
 
+\bigskip
+
+\textcolor{magenta}{Can you give an explicit form of $C_\rho(T)$ so that we can check whether $\sup_{T>0}C_\rho(T)<\infty$, or your $K_t$? If not, can you derive some sufficient conditions that guarantee this
+property?} 
+
 \section{Mistake involving the $G(t,x) \le K G(1,x)$ inequality}
 During a meeting we had, we proved that $G(t,x) \le K G(1,x)$ where the constant $K$ does not depend on $x$ or $t$ but we made a mistake in doing so. What we did is the following (for now we work in $\R$): 
 
@@ -120,4 +138,7 @@ However if we fix the mistake, what we should get is that
 \\& = \sqrt{\frac{1}{t+1}}\exp\left( \frac{|x|^2}{2} \frac{t}{t+1} \right)
 \\& \not \le K
 \end{align*}
+
+
+\textcolor{magenta}{Let's remove the property $\sup_{t\ge 0}\E\left(\left|u(t,\cdot\right|_\rho^2\right)<\infty$ unless you can show that $C_\rho(T)$ is bounded in $T$.}
 \end{document}
