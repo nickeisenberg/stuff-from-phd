@@ -416,13 +416,13 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 	\label{T:Moment}
 	Suppose Assumption \ref{A:General} holds. 
 	Let $u$ be the unique solution to \eqref{E:spde} starting from  $\varphi(\cdot) \in L^2_\rho$.
-	\textcolor{blue}{Then for all $T>0$ there exists $C_T>0$ such that for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with} 
+	\textcolor{blue}{Then for all $T>0$ and for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with} 
 	\begin{align}
 		\label{E:uNormRho}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
 		\le  2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + C_\rho(T) |\varphi|_{\rho}^2 \right]<\infty.
 	\end{align}
-	Moreover, if $\Upsilon(0)<\infty$, then as a consequence of \eqref{E:mb0} \textcolor{magenta}{and provided that we can show 
+	where we use $C_T:= H(T,\gamma_2)$. Moreover, if $\Upsilon(0)<\infty$, then as a consequence of \eqref{E:mb0} \textcolor{magenta}{and provided that we can show 
 	that $C_\rho(T)$ is bounded, we have that},
 	\begin{align*}
 		\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty  
@@ -641,6 +641,14 @@ The finiteness in the last inequality follows from \eqref{A:gicon}. This shows t
 \\ & < K(t_0)
 \end{align*}
 for some constant, $K(t_0)$, dependent on $t_0$ by \eqref{A:gicon} and $t \mapsto G(t_0+t,x)$ is bounded by $G(t_0,x)$ up to a constant. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
+
+\textcolor{blue}{This is incorrect. $G(t+t_0,x)$ is not bounded above up to a constant by $G(t_0,x)$(see discussion document). As of now this proof is incorrect and stronger assumptions will need to be made. Specifically we need to assume that \eqref{A:gicon} is bounded in $t_0$, not just finite for each $t_0$. However, this may not be too bad because I think that the $\delta_0$ initial condition will still satisfy this stronger assumption. 
+	\begin{align*}
+		\int_{\R^d}\ud x \: \rho(x)\left(\int_{\R^d}\ud y \: G(t_0,x-y)\delta_0(\ud y) \right)^2 &= \int_{\R^d}\ud x \: \rho(x)G(t_0,x)^2
+		\\ & \le \int_{\R^d}\ud x \: \rho(x)
+		\\ & = \Norm{\rho}_{L^1(\R^d)}
+	\end{align*}
+since $G(t,x)$ is bounded by $1$ and $\rho(x)$ is assumed to be integrable. Therefore \eqref{C:delta} will remain true.}
 \end{proof}
 
 \begin{theorem} 
@@ -665,6 +673,7 @@ $\eta$ is invariant for $\{\mathscr L(u^\mu(t+t_0,\cdot))\}_{t\ge \delta_0} = \{
 \end{proof}
 
 \begin{corollary}
+	\label{C:delta}
 	Suppose the assumption of Theorem \ref{T:Main} remain true. Then for any $\delta>0$, the stochastic heat equation 
 	\begin{equation}
 		\label{E:dspde}
