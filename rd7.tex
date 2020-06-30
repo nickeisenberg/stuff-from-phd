@@ -409,7 +409,7 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 	\label{T:Moment}
 	Suppose Assumption \ref{A:General} holds. 
 	Let $u$ be the unique solution to \eqref{E:spde} starting from  $\varphi(\cdot) \in L^2_\rho$.
-	Then for all $t>0$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with 
+	Then for all $T>0$ there exists $C_T>0$ such that for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with 
 	\begin{align}
 		\label{E:uNormRho}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
@@ -425,14 +425,13 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 \textcolor{magenta}{Update all $dx$ by $\ud x$ throughout the document.} 
 
 \begin{proof} 
-	Fix an arbitrary $T>0$. For any $t\in [0,t]$, by the Fubini theorem and the moment bound \eqref{E:mb}, we see that
+	Fix an arbitrary $T>0$ and denote $C_T:=H(T,\gamma_2)^{	1/2}$. For any $t\in [0,T]$, by Fubini's Theorem and the moment bound \eqref{E:mb}, we see that
 	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
 		&= \E \left(\int_{\R^d}\vert u(t,x) \vert^2 \rho(x)\ud x\right) 
 		\le C_T \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)\ud x.
 	\end{align*}
-	Since the fact that $\rho$ is admissible implies that $\rho\in L^1(\R^d)$ \textcolor{magenta}{(Please prove this statement),} 
-	we see that 
+	By definition $\rho\in L^1(\R^d)$, hence
 	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
 		\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)\ud x\right].
@@ -462,6 +461,8 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 	\bigskip
 \textcolor{magenta}{The following proof is not quite right. $K$ is a constant depending on $t_0$ and it will blow up as $t_0$ goes to $\infty$.
 You do need to use the condition $\Upsilon(0)<\infty$ to prove the uniform moment bounds.} 
+\textcolor{blue}{There was a mistake made when we originally proved the inequality $G(t,x) \le K \cdot G(1,x)$. This in equality is actually untrue which I have shown in the other document. So the the best we can say for this Theorem is \eqref{E:uNormRho}. If $C_\rho(T)$ is bounded in $T$ then we may say $\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty$, but otherwise this is not true.}
+
 Hence,
  \[
  \sup_{0 \le t \le t_0}\E |u(t,\cdot)|_\rho^2 < \infty.
