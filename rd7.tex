@@ -366,6 +366,13 @@ Several examples of admissible weights are
 	\item $\rho(x) = (1+|x|^a)^{-1}, \; a>d$.
 \end{enumerate}
 
+\bigskip
+\textcolor{magenta}{Show that why the above two examples are admissible weights by giving more explicit form of the constant $C_\rho(T)$.
+I would expect that for the second example, $a$ can be any positive number.
+The key property for being admissible is \eqref{E:aw}, let's see if we can remove the $L^1(\R^d)$ condition in order 
+to include the case $\rho\equiv 1$.} 
+\bigskip
+
 For the remainder of this section, we focus ourselves on \eqref{E:gspde} with initial condition $\varphi \in L^2_\rho$,
 namely the following stochastic heat equation. 
 \begin{equation}
@@ -409,11 +416,11 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 	\label{T:Moment}
 	Suppose Assumption \ref{A:General} holds. 
 	Let $u$ be the unique solution to \eqref{E:spde} starting from  $\varphi(\cdot) \in L^2_\rho$.
-	Then for all $T>0$ there exists $C_T>0$ such that for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with 
+	\textcolor{blue}{Then for all $T>0$ there exists $C_T>0$ such that for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with} 
 	\begin{align}
 		\label{E:uNormRho}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
-		\le  2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + C_\rho(T) \Norm{\varphi}_{\rho}^2 \right]<\infty,
+		\le  2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + C_\rho(T) |\varphi|_{\rho}^2 \right]<\infty.
 	\end{align}
 	Moreover, if $\Upsilon(0)<\infty$, then as a consequence of \eqref{E:mb0} \textcolor{magenta}{and provided that we can show 
 	that $C_\rho(T)$ is bounded, we have that},
@@ -425,13 +432,13 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 \textcolor{magenta}{Update all $dx$ by $\ud x$ throughout the document.} 
 
 \begin{proof} 
-	Fix an arbitrary $T>0$ and denote $C_T:=H(T,\gamma_2)^{	1/2}$. For any $t\in [0,T]$, by Fubini's Theorem and the moment bound \eqref{E:mb}, we see that
+	\textcolor{blue}{Fix an arbitrary $T>0$ and denote $C_T:=H(T,\gamma_2)^{	1/2}$}. For any $t\in [0,T]$, by Fubini's Theorem and the moment bound \eqref{E:mb}, we see that
 	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
 		&= \E \left(\int_{\R^d}\vert u(t,x) \vert^2 \rho(x)\ud x\right) 
 		\le C_T \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)\ud x.
 	\end{align*}
-	By definition $\rho\in L^1(\R^d)$, hence
+	\textcolor{blue}{By definition $\rho\in L^1(\R^d)$, hence we see that} 
 	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
 		\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)\ud x\right].
@@ -461,7 +468,7 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 	\bigskip
 \textcolor{magenta}{The following proof is not quite right. $K$ is a constant depending on $t_0$ and it will blow up as $t_0$ goes to $\infty$.
 You do need to use the condition $\Upsilon(0)<\infty$ to prove the uniform moment bounds.} 
-\textcolor{blue}{There was a mistake made when we originally proved the inequality $G(t,x) \le K \cdot G(1,x)$. This in equality is actually untrue which I have shown in the other document. So the the best we can say for this Theorem is \eqref{E:uNormRho}. If $C_\rho(T)$ is bounded in $T$ then we may say $\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty$, but otherwise this is not true.}
+\textcolor{blue}{There was a mistake made when we originally proved the inequality $G(t,x) \le K \cdot G(1,x)$. This in equality is actually untrue which I have shown in the other document. So the the best we can say for this Theorem is \eqref{E:uNormRho}. If $C_\rho(T)$ is bounded in $T$ then we may say $\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty$, but otherwise this is not true. So the following is not correct.}
 
 Hence,
  \[
