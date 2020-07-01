@@ -371,6 +371,20 @@ Several examples of admissible weights are
 I would expect that for the second example, $a$ can be any positive number.
 The key property for being admissible is \eqref{E:aw}, let's see if we can remove the $L^1(\R^d)$ condition in order 
 to include the case $\rho\equiv 1$.} 
+
+\textcolor{blue}{I have an explicit formula for the first admissible weight. But I don't believe a nice closed form exists for the second admissible weight. I tried using mathematica to get a nice closed form for $C_\rho(T)$ for general $a>d$. For exmaple, I tried calculating the integral 
+	\[
+		\int_{\R}\frac{\exp \left(-|y-x|^2/(2t)\right)}{1+|y|^a} \ud y
+	\]  
+for general $a>1$, $t>0$ and $x\in \R$ but mathematica could not solve this. One thing we notice is that if we assume the admissible weight property is true for this example, in other words assume that 
+	\[
+		\int_{\R}\frac{\exp \left(-|y-x|^2/(2t)\right)}{1+|y|^a} \ud y \le \sqrt{2 \pi t}C_\rho(T)\rho(x)
+	\]
+then since $\rho(0)=(1+|0|^a)^{-1}=1$ then we must have that 
+	\[
+		C_\rho(T) \ge  \frac{1}{\sqrt{2 \pi t}}	\int_{\R}\frac{\exp \left(-|y|^2/(2t)\right)}{1+|y|^a} \ud y
+	\]
+but again in this situation, mathematica was unable to calculate when $x=0$, $t>0$ and $a>1$. However, when let $t>0$, $x=0$ and $a$ be an even integer, then mathematica can calculate the integral however it can't calculate for a arbitrary $a=2n$, only when you specifically let $a=2$ or $a=4$ etc. But the resulting answer is very ugly. I will email you a screenshot of the mathematica notebook showing you what I mean. Lastly, I believe that we need $\rho$ to be integrable since $\Norm{\rho}_{L^1(\R^d)}$ appears in \eqref{T:Moment} and the proof of \eqref{L:Moments}.}
 \bigskip
 
 For the remainder of this section, we focus ourselves on \eqref{E:gspde} with initial condition $\varphi \in L^2_\rho$,
