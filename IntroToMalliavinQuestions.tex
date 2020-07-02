@@ -387,10 +387,10 @@ Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
 	D_tF = \sum_{i=1}^n \frac{\partial f}{\partial x}(B(h_1),...,B(h_n))h_i(t)
 	\]
 	where $h_i \in H$ and $B(h_i) = \int_0^\infty h_i dB_s$ is the standard Wiener Integral. So isnt $D_tF$ real valued since we are evaluating the $h_i(\cdot)$ at $t$? Then shouldn't the $(D_tF)_{t \ge 0}$ be a $L^2(\Omega; \mathbb R)$ valued stochastic process? 
-	
-\end{NickQuestion}
+	\end{NickQuestion}
+\textbf{I believe that this is just a typo in the text}
 
-\begin{NickQuestion}[(Proposition 3.2.4)] $\;$
+\begin{NickQuestion}[(Proposition 3.2.4)(All questions have been solved with work below)] $\;$
 \begin{enumerate}
 \item Why does $D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u)$? (I have answered this below)
 	
@@ -399,7 +399,7 @@ Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
 	E \left( \sum_{i,j=1}^\infty D_{e_i}\langle u, e_j \rangle D_{e_j}\langle v, e_i \rangle  \right)) = E \left( \int_0^\infty\int_0^\infty D_su_tD_tv_s dsdt \right)
 	\]
 	
-\item In the proof of property 3.3 why do we have 
+\item In the proof of property 3.3 why do we have  (Answered below)
 \[
 	E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \delta(D_{e_i}(u))\bigg) \right) = E(\langle u,v \rangle ) + E \left(\sum_{i,j=1}^\infty D_{e_i}\langle e, e_j \rangle D_{e_j}\langle v,e_i \rangle \right)
 \]
@@ -480,7 +480,20 @@ Where above we use the identity
 \[
 	\langle f, g \rangle = \sum_{i=1}^\infty \langle f, e_i \rangle \langle g , e_i \rangle.
 \]
- 
+
+\textbf{Proof of step from property 3}
+
+
+\begin{align}
+E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \delta(D_{e_i}(u))\bigg) \right) &= E(\langle u,v \rangle ) + E\left(\sum_{i=1}^\infty \langle v,e_i \rangle\delta(D_{e_i}(u))\right) \nonumber
+\\&= E(\langle u,v \rangle ) + \sum_{i=1}^\infty E\bigg( \bigg\langle D(\langle v,e_i \rangle),D_{e_i}(u)\bigg\rangle\bigg) \label{s-1}
+\\&= E(\langle u,v \rangle ) + \sum_{i=1}^\infty E\bigg( \bigg\langle \langle D_s(v_t),e_i(t) \rangle,\langle D_t(u_s),e_i(t) \rangle\bigg\rangle\bigg) \nonumber
+\\&= E(\langle u,v \rangle ) + \sum_{i,j=1}^\infty E\left( \bigg\langle \langle D_s(v_t),e_i(t) \rangle,e_j(s)\bigg\rangle \bigg\langle \langle D_t(u_s),e_i(t)\rangle , e_j(s) \bigg\rangle \right) \nonumber
+\\&= E(\langle u,v \rangle ) + \sum_{i,j=1}^\infty E\left(  D_{e_j}\big\langle v_t,e_i(t)\big\rangle \bigg\langle \langle D_t(u_s),e_j(s)\rangle , e_i(t) \bigg\rangle \right) \label{s-2}
+\\&= E(\langle u,v \rangle ) + \sum_{i,j=1}^\infty E\left(  D_{e_j}\big\langle v_t,e_i(t)\big\rangle D_{e_i}\big\langle u_s, e_j(s)\big\rangle \right) \nonumber
+\\&= E(\langle u,v \rangle ) + \sum_{i,j=1}^\infty E\left(  D_{e_j}\big\langle v,e_i\big\rangle D_{e_i}\big\langle u, e_j\big\rangle \right) \nonumber
+\end{align}
+ where in \eqref{s-1} we used Proposition 3.2.3 and in \eqref{s-2} we use Fubini's Theorem. 
 \begin{NickQuestion}[(Why is $\delta$ linear?)]
 	On page 55 it says that $\delta$ is linear. First, for $u=\sum_{j=1}^nF_jh_j$ we have
 	\[
