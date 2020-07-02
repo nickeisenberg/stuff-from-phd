@@ -161,6 +161,8 @@
 \numberwithin{LQ}{section}
 \numberwithin{ZQ}{section}
 
+\usepackage[notref,notcite]{showkeys}
+
 \title{Nick Eisenberg's Meeting Notes}
 \author{Le Chen, Nick Eisenberg, Zhijian Wu}
 \date{October 2019}
@@ -388,64 +390,74 @@ Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
 	
 \end{NickQuestion}
 
-\begin{NickQuestion}[(Proposition 3.2.4)]
-	$D_h(F) = \langle DF, h \rangle$ is defined only for $F \in \mathcal S$ since the $D$ operator is only defined on $\mathcal S$. However in $(3.5)$ in this proposition, we want to calculate $D_h(u)$ but $u \in \mathcal S_H$ and in this case $D_h(u)$ has not been defined. I am not sure how they are getting equality 2 and 3 from the first three centered equations on page 53. 
+\begin{NickQuestion}[(Proposition 3.2.4)] $\;$
+\begin{enumerate}
+\item Why does $D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u)$? (I have answered this below)
 	
-	Also how do you get the RHS of the last inequality in the second set of centered equalities on page 53.
-	
-	Also as the bottom og page 52, we is it that 
+\item Also, at the bottom of page 52, why is it that 
 	\[
 	E \left( \sum_{i,j=1}^\infty D_{e_i}\langle u, e_j \rangle D_{e_j}\langle v, e_i \rangle  \right)) = E \left( \int_0^\infty\int_0^\infty D_su_tD_tv_s dsdt \right)
 	\]
-	What does $D_su_t$ and $D_tv_s$ mean? 
+\end{enumerate}
 \end{NickQuestion}
 
-\textbf{Partial Proof of $$D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u).$$ }
+\textbf{Proof of $D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u).$ }
+
 Since $u=\sum F_jh_j$ we just apply the definition of $\delta$ to get 
-\begin{align*}
-D_h(\delta(u)) &= D_h\left(  \sum_{j=1}^n F_j B(h_j) - \sum_{j=1}^n\langle DF_j, h_j \rangle \right)
-\\&=   \sum_{j=1}^n D_h(F_j B(h_j)) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle 
-\\&= \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle 
-\end{align*}
+\begin{align}
+D_h(\delta(u)) &= D_h\left(  \sum_{j=1}^n F_j B(h_j) - \sum_{j=1}^n\langle DF_j, h_j \rangle \right) \nonumber
+\\&=   \sum_{j=1}^n D_h(F_j B(h_j)) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle \nonumber
+\\&= \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle  \label{P:3.2.4-1}
+\end{align}
 where the third inequality follows from the product rule and $D_h(B(h_j)) =  \langle h, h_j \rangle$. 
-Now we focus on the last term from the last line above.
+Now we focus on the last term from the last line above \eqref{P:3.2.4-1}.
+\begin{align}
+\sum_{j=1}^nD_h\langle DF_j, h_j \rangle & = \sum_{j=1}^n\langle D_t \langle DF_j, h_j \rangle, h(t) \rangle \label{P:3.2.4-6}
+\end{align}
+Before we continue, we simplify $D_t \langle DF_j, h_j \rangle$. We may assume that $F_j=f^j(B(h_1^j(t),...,B(h_n^j(t)))$ where $f^j \in C_p^\infty(\R^n)$ and $h_i^j \in H$. 
+\begin{align}
+D_t \langle DF_j, h_j \rangle &= D_t \langle\sum_{i=1}^n \frac{\partial f^j}{\partial x_i}h_i^j(s), h_j(s) \rangle \nonumber
+\\ &= \sum_{i=1}^n\langle h_i^j(s), h_j(s) \rangle D_t\left( \frac{\partial f^j}{\partial x_i}\right) \label{P:3.2.4-2}
+\end{align}
+We now plug \eqref{P:3.2.4-2} into \eqref{P:3.2.4-6} above to get 
 \begin{align*}
-\sum_{j=1}^nD_h\langle DF_j, h_j \rangle & = \sum_{j=1}^n\langle D_\cdot \langle DF_j, h_j \rangle, h(\cdot) \rangle
-\end{align*}
-Before we continue, we simplify $D_\cdot \langle DF_j, h_j \rangle$. We may assume that $F_j=f^j(B(h_1^j(t),...,B(h_n^j(t)))$ where $f^j \in C_p^\infty(\R^n)$ and $h_i^j \in H$. 
-\begin{align*}
-D_\cdot \langle DF_j, h_j \rangle &= D_\cdot \langle\sum_{i=1}^n \frac{\partial f^j}{\partial x_i}h_i^j(\circ), h_j(\circ) \rangle 
-\\ &= \sum_{i=1}^n\langle h_i^j(\circ), h_j(\circ) \rangle D_\cdot\left( \frac{\partial f^j}{\partial x_i}\right)
-\end{align*}
-We now plug this in above to get 
-\begin{align*}
-\sum_{j=1}^n\langle D_\cdot \langle DF_j, h_j \rangle, h(\cdot) \rangle &= \sum_{j=1}^n \sum_{i=1}^n\langle h_i^j(\circ), h_j(\circ) \rangle \langle D_\cdot\left( \frac{\partial f^j}{\partial x_i}\right), h(\cdot)\rangle
-\\&= \sum_{j=1}^n \sum_{i=1}^n\left\langle h_i^j(\circ)\langle D_\cdot\left( \frac{\partial f^j}{\partial x_i}\right), h(\cdot)\rangle, h_j(\circ) \right\rangle 
-\\&= \sum_{j=1}^n \left\langle \langle D_\cdot\left(\sum_{i=1}^nh_i^j(\circ) \frac{\partial f^j}{\partial x_i}\right), h(\cdot)\rangle, h_j(\circ) \right\rangle 
-\\& = \sum_{j=1}^n \bigg\langle \langle D_\cdot\left(DF_j\right), h(\cdot)\rangle, h_j(\circ) \bigg\rangle 
-\\& = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j(\circ) \bigg\rangle 
+\sum_{j=1}^n\langle D_t \langle DF_j, h_j \rangle, h(t) \rangle &= \sum_{j=1}^n \sum_{i=1}^n\langle h_i^j(s), h_j(s) \rangle \langle D_t\left( \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle
+\\&= \sum_{j=1}^n \sum_{i=1}^n\left\langle h_i^j(s)\langle D_t\left( \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle, h_j(s) \right\rangle 
+\\&= \sum_{j=1}^n \left\langle \langle D_t\left(\sum_{i=1}^nh_i^j(s) \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle, h_j(s) \right\rangle 
+\\& = \sum_{j=1}^n \bigg\langle \langle D_t\left(DF_j\right), h(t)\rangle, h_j(s) \bigg\rangle 
+\\& = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j(s) \bigg\rangle 
 \end{align*}
 and if I haven't made a mistake, then what we have shown so far is that 
-\begin{align*}
-D_h(\delta(u))  & = \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle 
-\\&= \sum_{j=1}^n F_j \langle h, h_j \rangle + \sum_{j=1}^n B(h_j)D_h(F_j)- \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle 
-\end{align*}
+\begin{align}
+D_h(\delta(u))  & = \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle \nonumber
+\\&= \sum_{j=1}^n F_j \langle h, h_j \rangle + \sum_{j=1}^n B(h_j)D_h(F_j)- \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle \label{P:3.2.4-3}
+\end{align}
 Also, the above is exactly line two of the first centered equations on page 53.
 
 
 Now we need to show that the last two terms add up to $\delta(D_h(u))$. This is not defined in the text but I think that we need to define $D_hu$ as the following 
-\[
-D_hu = D_h \sum_{j=1}^n F_jh_j(t) =  \sum_{j=1}^n h_j(t) D_h(F_j) 
-\]
-Thus now $D_h(u)$ is of the form $\sum F_j h_j$ and so we may apply the definition of $\delta$ to it to get the following 
-\begin{align*}
-\delta(D_hu) & = \sum_{j=1}^n B(h_j) D_h(F_j) -  \sum_{j=1}^n \langle D_\circ(D_hF_j), h_j(\circ) \rangle 
+\begin{align}
+D_hu = D_h \sum_{j=1}^n F_jh_j(t) =  \sum_{j=1}^n h_j(t) D_h(F_j) \label{P:3.2.4-4} 
+\end{align}
+Thus now $D_h(u)$ \eqref{P:3.2.4-4} is of the form $\sum F_j h_j$ and so we may apply the definition of $\delta$ to it to get the following 
+\begin{align}
+\delta(D_hu) & = \sum_{j=1}^n B(h_j) D_h(F_j) -  \sum_{j=1}^n \langle D_s(D_hF_j), h_j(s) \rangle \label{P:3.2.4-5}
+\end{align}
+Now we focus in the last term of the right hand side of \eqref{P:3.2.4-5}. From \eqref{P:3.2.4-3} we note that we want to show that 
+\begin{align}
+\sum_{j=1}^n \langle D_s(D_hF_j), h_j(s) \rangle = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle \label{P:3.2.4-7}
+\end{align}
+Here are the steps,
+\begin{align*}	
+	\sum_{j=1}^n \langle D_s(D_hF_j), h_j(s) \rangle &= \sum_{j=1}^n \left\langle D_s\left( \left\langle \sum_{i=1}^n \frac{\partial f^j}{\partial x_i} h_i^j(t),h(t) \right\rangle \right), h_j(s) \right\rangle
+	\\&  = \sum_{j=1}^n \left\langle D_s\left( \sum_{i=1}^n \frac{\partial f^j}{\partial x_i} \left\langle  h_i^j(t),h(t) \right\rangle \right), h_j(s) \right\rangle
+	\\& = \sum_{j=1}^n \left\langle \sum_{i=1}^n D_s\left(  \frac{\partial f^j}{\partial x_i}\right) \left\langle  h_i^j(t),h(t) \right\rangle , h_j(s) \right\rangle
+	\\& = \sum_{j=1}^n \left\langle \left\langle \sum_{i=1}^n D_s\left(  \frac{\partial f^j}{\partial x_i}\right)   h_i^j(t),h(t) \right\rangle , h_j(s) \right\rangle
+	\\& = \sum_{j=1}^n \left\langle \left\langle \sum_{i=1}^n D_s\left(  \frac{\partial f^j}{\partial x_i}h_i^j(t)\right)  ,h(t) \right\rangle , h_j(s) \right\rangle
+	\\& = \sum_{j=1}^n \bigg\langle \big\langle  D_s\left(  D_tF_j\right)  ,h(t) \big\rangle , h_j(s) \bigg\rangle
+	\\& = \sum_{j=1}^n \bigg\langle  D_h\left(  DF_j\right) , h_j \bigg\rangle
 \end{align*}
-Now we focus in the last term of the right hand side. From the above we note that we want to show that 
-\[
-\sum_{j=1}^n \langle D_\circ(D_hF_j), h_j(\circ) \rangle = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle 
-\]
-However I have not been able to how that this is true. 
+Hence \eqref{P:3.2.4-7} is shown and we are done. 
 
 \begin{NickQuestion}[(Why is $\delta$ linear?)]
 	On page 55 it says that $\delta$ is linear. First, for $u=\sum_{j=1}^nF_jh_j$ we have
