@@ -394,10 +394,15 @@ Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
 \begin{enumerate}
 \item Why does $D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u)$? (I have answered this below)
 	
-\item Also, at the bottom of page 52, why is it that 
+\item Also, at the bottom of page 52, why is it that (I have answered this below)
 	\[
 	E \left( \sum_{i,j=1}^\infty D_{e_i}\langle u, e_j \rangle D_{e_j}\langle v, e_i \rangle  \right)) = E \left( \int_0^\infty\int_0^\infty D_su_tD_tv_s dsdt \right)
 	\]
+	
+\item In the proof of property 3.3 why do we have 
+\[
+	E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \delta(D_{e_i}(u))\bigg) \right) = E(\langle u,v \rangle ) + E \left(\sum_{i,j=1}^\infty D_{e_i}\langle e, e_j \rangle D_{e_j}\langle v,e_i \rangle \right)
+\]
 \end{enumerate}
 \end{NickQuestion}
 
@@ -459,6 +464,23 @@ Here are the steps,
 \end{align*}
 Hence \eqref{P:3.2.4-7} is shown and we are done. 
 
+\textbf{Proof of bottom of page 52}
+
+\begin{align*}
+	\sum_{i,j=1}^\infty D_{e_i}\langle u , e_j \rangle D_{e_j}\langle v, e_i \rangle &= 	\sum_{i,j=1}^\infty \bigg\langle D_s\langle u , e_j \rangle, e_i(s) \bigg\rangle \bigg\langle D_t\langle v, e_i\rangle, e_j(t) \bigg\rangle
+	\\& = \sum_{i,j=1}^\infty \bigg\langle \langle D_s(u_t) , e_j(t) \rangle, e_i(s) \bigg\rangle \bigg\langle \langle D_t(v_s), e_i(s)\rangle, e_j(t) \bigg\rangle
+		\\& = \sum_{i=1}^\infty \bigg\langle\sum_{j=1}^\infty \left( \langle D_s(u_t) , e_j(t) \rangle \bigg\langle \langle D_t(v_s), e_i(s)\rangle, e_j(t) \bigg\rangle\right) , e_i(s) \bigg\rangle 
+		\\& = \sum_{i=1}^\infty \bigg\langle  \bigg\langle D_s(u_t) , \big\langle D_t(v_s), e_i(s) \big\rangle \bigg\rangle , e_i(s) \bigg\rangle 
+		\\&= \sum_{i=1}^\infty \bigg\langle  \bigg\langle D_s(u_t) , \big\langle D_t(v_q), e_i(q) \big\rangle \bigg\rangle , e_i(s) \bigg\rangle 
+		\\& = \sum_{i=1}^\infty \int_0^\infty \left( \int_0^\infty D_s(u_t) \left( \int_0^\infty D_t(v_q)e_i(q) \ud q\right) \ud t \right) e_i(s) \ud s
+		\\& =  \int_0^\infty \left( \int_0^\infty D_s(u_t) \left(\sum_{i=1}^\infty \int_0^\infty D_t(v_q)e_i(q) \ud q \;  e_i(s) \right) \ud t \right)\ud s
+		\\& =  \int_0^\infty \int_0^\infty D_s(u_t) D_t(v_s) \ud t \ud s
+\end{align*}
+Where above we use the identity 
+\[
+	\langle f, g \rangle = \sum_{i=1}^\infty \langle f, e_i \rangle \langle g , e_i \rangle.
+\]
+
 \begin{NickQuestion}[(Why is $\delta$ linear?)]
 	On page 55 it says that $\delta$ is linear. First, for $u=\sum_{j=1}^nF_jh_j$ we have
 	\[
@@ -474,6 +496,8 @@ Hence \eqref{P:3.2.4-7} is shown and we are done.
 	\\& = E((\delta(u)+\delta(v))F)
 	\end{align*}
 	and if this is true for every $F$ then I believe we can say  $\delta(u+v) = \delta(u) + \delta(v)$? 
+	
+
 \end{NickQuestion}
 
 
