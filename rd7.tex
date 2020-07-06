@@ -436,14 +436,12 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
 		\le  2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + C_\rho(T) |\varphi|_{\rho}^2 \right]<\infty.
 	\end{align}
-	where we use $C_T:= H(T,\gamma_2)$. Moreover, if $\Upsilon(0)<\infty$, then as a consequence of \eqref{E:mb0} \textcolor{magenta}{and provided that we can show 
-	that $C_\rho(T)$ is bounded, we have that},
+	where we use $C_T:= H(T,\gamma_2)$. Moreover, if $\Upsilon(0)<\infty$ and 
+	 for each $t>0$ there exists a $K(t) \in \mathbb N$ such that $\sup\limits_{x\in \R^d}\big(|\varphi|*G(t,\cdot)\big)(x) < K(t)$, then one can show
 	\begin{align*}
 		\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty  
 	\end{align*}
 \end{theorem}
-
-\textcolor{magenta}{Update all $dx$ by $\ud x$ throughout the document.} 
 
 \begin{proof} 
 	\textcolor{blue}{Fix an arbitrary $T>0$ and denote $C_T:=H(T,\gamma_2)^{	1/2}$}. For any $t\in [0,T]$, by Fubini's Theorem and the moment bound \eqref{E:mb}, we see that
@@ -453,10 +451,10 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 		\le C_T \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)\ud x.
 	\end{align*}
 	\textcolor{blue}{By definition $\rho\in L^1(\R^d)$, hence we see that} 
-	\begin{align*}
+	\begin{align}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
-		\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)\ud x\right].
-	\end{align*}
+		\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)\ud x\right]. \label{mstep}
+	\end{align}
 	Another application of the Cauchy-Schwatz inequality shows that 
 	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right) 
@@ -479,31 +477,40 @@ The following theorem tells us that the solution for any $t>0$ is still in $L_\r
 % \\ \E\left(| u(t,\cdot)|_\rho^2\right)&\le C_4 C(t_0)\left(1+\int_{\R^d}\rho(y)|\varphi(y)|^2dy\right)
 % \\  &< K\cdot C(t_0).
 % \end{align*}
-	\bigskip
-\textcolor{magenta}{The following proof is not quite right. $K$ is a constant depending on $t_0$ and it will blow up as $t_0$ goes to $\infty$.
-You do need to use the condition $\Upsilon(0)<\infty$ to prove the uniform moment bounds.} 
-\textcolor{blue}{There was a mistake made when we originally proved the inequality $G(t,x) \le K \cdot G(1,x)$. This in equality is actually untrue which I have shown in the other document. So the the best we can say for this Theorem is \eqref{E:uNormRho}. If $C_\rho(T)$ is bounded in $T$ then we may say $\sup_{t\ge 0}\E\left(|u(t,\cdot)|_\rho^2\right) < \infty$, but otherwise this is not true. So the following is not correct.}
 
 Hence,
  \[
  \sup_{0 \le t \le t_0}\E |u(t,\cdot)|_\rho^2 < \infty.
  \]
 
-Now consider $t\ge t_0>0$. It can be shown that $G(t,x)\le K \cdot G(t_0,x)$ for some constant $K$ independent of $x \in \R^d$ and $t \ge t_0$. Now with this we see that  
+\textcolor{blue}{Now consider $t\ge t_0>0$ and further assume that $\Upsilon(0) < \infty$ and that $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x) \le K(t)$ for any $t>0$. Now starting with \eqref{mstep}, we see that
 \begin{align*}
 	\E\left(| u(t,\cdot)|_\rho^2\right) 
-	   & \le  C\left[1+\int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
-	\\ & \le  C\left[1+\int_{\R^d}\left(\int_{\R^d}G(t_0,x-y)|\varphi(y)|dy\right)^2\rho(x)dx\right]
-	\\ & \le C\left[1+\int_{\R^d}\ud x \: \rho(x) \int_{\R^d} \ud y \: G(t_0,x-y)|\varphi(y)|^2\right]
-	\\ & \le C \left[ 1+ C(t_0)|\varphi|_\rho^2  \right] < \infty 
+	   & \le  C\left[1+\int_{\R^d}(G(t,\cdot)*|\varphi(\cdot)|)(x)^2\rho(x)dx\right]
 \end{align*}
-where the last inequality is due to the admissible weight property. This proves that
-
+However, 
+\begin{align*}
+\big(G(t,\cdot)*|\varphi(\cdot)|\big)(x) = \big(G(t-t_0,\cdot)*G(t_0,\cdot)*|\varphi(\cdot)|\big)(x) \le K(t_0) \big(G(t-t_0,\cdot)*1\big)(x) = K(t_0)
+\end{align*}
+where $K(t_0)$ is the bound for $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x)$. Now continuing, we see that
+\begin{align*}
+	\E\left(| u(t,\cdot)|_\rho^2\right)& \le  C\left[1+\int_{\R^d}K(t_0)^2\rho(x)dx\right]
+	\\ & = C \left[ 1+ K(t_0)^2\Norm{\rho}_{L^1(\R^d)}  \right] < \infty.
+\end{align*}
+This proves that
 \begin{align*}
 	\sup_{t \ge t_0}\E |u(t,\cdot)|_\rho^2 < \infty 
 \end{align*}
-thus completing the proof of the claim. 
+thus completing the proof of the claim.}
 \end{proof}
+
+\begin{remark}
+	In general, the requirement on the initial condition $\mu$ 
+		\[
+			\sup\limits_{x\in \R^d}\big(|\mu|*G(t,\cdot)\big)(x) < K(t) \quad t>0
+		\]
+	is satisfied whenever $\mu=\varphi \in L^2_\rho$ is bounded and, as we will also see below, is also satisfied when $\mu = \delta_0$ where $\delta_0$ is the Dirac delta measure. 
+\end{remark}
 
 We finish off this section with a proposition on the functions $G(t,x)$ which will be used later in the proof of Lemma \ref{L:Main}. The proof of this result can be found in \cite{TessitoreZabczyk98M} \\
 
@@ -546,11 +553,17 @@ For the case when the initial condition is a measure, as in \eqref{E:gspde} the 
 
 \subsection{Main results} 
 Throughout this and next section may need to assume either one or both of the following assumptions. 
+
 \begin{assumptions} $\;$
-	\begin{enumerate}[(i')]
+	\begin{enumerate}[(i)]
 		\item \begin{equation} 
-					\int_{\R^d}\ud x \: \rho(x)\left(\int_{\R^d}\ud y \: G(t_0,x-y)|\mu|(dy) \right)^2 < \infty \quad \text{for any $t_0 >0$} \label{A:gicon} 
+					\int_{\R^d}\ud x \: \rho(x)\big(G(t_0,\cdot)*|\mu|)(x) \big)^2 < \infty \quad \text{for any $t_0 >0$} \label{A:gicon} 
 				\end{equation}
+				
+		\item \textcolor{blue}{\begin{equation} 
+				\sup_{x\in \R^d}	\big(G(t,\cdot)*|\mu|)(x) \big) < K(t), \quad \forall t>0 \text{ and } K(t)\in \mathbb N \label{A:newgicon}
+  			   	\end{equation}
+  			   }
 		
 		\item \begin{equation}
 					\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) < \infty \label{A:fcon} 
@@ -558,7 +571,7 @@ Throughout this and next section may need to assume either one or both of the fo
 	\end{enumerate}
 \end{assumptions}
 
-In the proof of Theorem \ref{T:Moment}, we actually already showed that \eqref{A:gicon} is satisfied when the initial condition is a $L^2_\rho(\R^d)$ function. Also, \eqref{A:fcon} will only need to be used if $b(x,0) \not = 0$. Throughout the remainder of this paper we never assume that $b(x,0) = 0$ so we will need this assumption in order to prove  Lemma \ref{L:Main} which is crucial to complete the proof of Theorem \ref{T:Main}. 
+In the proof of Theorem \ref{T:Moment}, we actually already showed that \eqref{A:newgicon} is satisfied when the initial condition is a bounded $L^2_\rho(\R^d)$ function. Also, \eqref{A:fcon} will only need to be used if $b(x,0) \not = 0$. Throughout the remainder of this paper we never assume that $b(x,0) = 0$ so we will need this assumption in order to prove  Lemma \ref{L:Main} which is crucial to complete the proof of Theorem \ref{T:Main}. 
 
 We now state and prove the first main result guaranteeing the existence of an invariant measure. The proof follows the same scheme as in \cite{TessitoreZabczyk98M}.\\
 
@@ -568,7 +581,7 @@ We now state and prove the first main result guaranteeing the existence of an in
 	\begin{align*}
 		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty \quad \text{and $u^{\hat\varphi}(\cdot,x)$ is bounded in probability in $L^2_{\hat\rho}(\R^d)$.}  
 	\end{align*}
-	Then for any $\delta_0 >0$ there exists an invariant measure for the laws of \eqref{E:msol}, $\{\mathscr L (u^{\hat\varphi}(t,\cdot))\}_{t \ge \delta_0}$,  in $L^2_\rho(\R^d)$.
+	Then for any $t_0 >0$ there exists an invariant measure for the laws of \eqref{E:msol}, $\{\mathscr L (u^{\hat\varphi}(t,\cdot))\}_{t \ge t_0}$,  in $L^2_\rho(\R^d)$.
 \end{theorem}
 
 \begin{proof} 
@@ -578,24 +591,24 @@ We now state and prove the first main result guaranteeing the existence of an in
  
 \begin{lemma}
 	\label{L:Main}
-Under the assumptions of Theorem \ref{T:Main} and for arbitrary $\epsilon \in (0,1)$, $0< \delta_0 \le 1$ and $R>0$ there exists a compact set $\mathscr K$ in $L^2_{ \rho}$ such that
+Under the assumptions of Theorem \ref{T:Main} and for arbitrary $\epsilon \in (0,1)$, $0< t_0 \le 1$ and $R>0$ there exists a compact set $\mathscr K$ in $L^2_{ \rho}$ such that
  \begin{equation}
 	 \label{E:cpt}
 	\mathbb{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{
-	\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$}.
+	\hat{\varphi}}(t-t_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>t_0$}.
  \end{equation}
 \end{lemma}
  
  We may now complete the proof of Theorem \ref{T:Main} By Lemma \ref{L:Main}, given an $\epsilon \in (0,1)$ and $R>0$ then we could find a compact set $\mathscr K \in L^2_{\rho}$ such that  
  \begin{align*}
-	 \mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-\delta_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>\delta_0$} .
+	 \mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>t_0$} .
  \end{align*}
 The boundedness in probability of $u^{\hat \varphi}(\cdot,x)$ then implies that the family of laws 
-$\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge \delta_0$ is tight in $L^2_{\rho}$ and therefore,
+$\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge t_0$ is tight in $L^2_{\rho}$ and therefore,
 the family of probability measures 
  \begin{equation}
 	 \label{E:intlaw}
-	 \dfrac{1}{T}\int_{\delta_0}^{T+\delta_0} \mathscr L(u^{\hat \varphi}(t,\cdot))\: \ud t, \quad T>0 
+	 \dfrac{1}{T}\int_{t_0}^{T+t_0} \mathscr L(u^{\hat \varphi}(t,\cdot))\: \ud t, \quad T>0 
  \end{equation}
  is tight as well; see \cite[Corollary 3.1.2]{DZ96}. 
  We may say that \eqref{E:intlaw} has a subsequence that weakly converges to some measure $\eta$ and that in fact $\eta$
@@ -614,13 +627,13 @@ the family of probability measures
  	Hence $u(t,\cdot)$ is bounded in probability in $L^2_{\rho}$. 
  \end{remark}
 
-\begin{remark} Theorem \ref{T:Moment} shows that $u^\varphi(t,x)$ is bounded in probability for any $L^2_\rho$ initial condition when Assumption \ref{A:General} with $\Upsilon(0)<\infty$ are both satisfied. 
+\begin{remark} Under the assumptions of Theorem \ref{T:Moment}, we have that $u^\varphi(t,x)$ is bounded in probability for any bounded $L^2_\rho$ initial condition.
 \end{remark} 	
 We now prove a result showing that \eqref{E:bipc} can be satisfied for \eqref{E:gspde} with more general initial conditions.  
  
 \begin{lemma}
 	\label{L:Moments}
-	Consider the stochastic heat equation \eqref{E:gspde} and suppose the assumption of Theorem \ref{T:Main} remain true and \eqref{A:gicon} holds true. Then for any $t_0>0$, $u(t_0,\cdot)\in L^2_\rho$ almost surely for any admissible weight. Also the solution to the following stochastic heat equation
+	Consider the stochastic heat equation \eqref{E:gspde} and suppose the assumption of Theorem \ref{T:Main} remain true and \eqref{A:newgicon} holds true. Then for any $t_0>0$, $u(t_0,\cdot)\in L^2_\rho$ almost surely for any admissible weight. Also the solution to the following stochastic heat equation
  \begin{equation}
 	\label{E:vspde2}
 	 \begin{cases}
@@ -634,61 +647,60 @@ satisfies the property that
 \end{align*}
 \end{lemma}
 
-\begin{proof} We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
+\begin{proof} \textcolor{blue}{We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
 \begin{align*}
 \E |u(t_0,\cdot)|_\rho^2 &= \int_{\R^d}\ud x \: \Norm{u(t_0,x)}_2^2\rho(x)
-\\& \le k  \int_{\R^d}\ud x \: \big(1+(|\mu|*G(t_0,\cdot)(x))\big)^2\rho(x) \quad \text{moment estimates}
-\\& = k \int_{\R^d}\ud x \: \left(1+\int_{\R^d}|\mu|(\ud y)\: G(t_0,x-y)\right)^2\rho(x)
-\\& \le k  \left(\int_{\R^d} \rho(x) \: \ud x+\int_{\R^d}\ud x \: \rho(x)\left(\int_{\R^d}|\mu|(\ud y)\: G(t_0,x-y)\right)^2\right)
-\\& < \infty.
+\\& \le C  \int_{\R^d}\ud x \: \big(1+(|\mu|*G(t_0,\cdot)(x))\big)^2\rho(x) 
 \end{align*}
-The finiteness in the last inequality follows from \eqref{A:gicon}. This shows that $u(t_0,x)\in L^2_\rho$ almost surely for any admissible weight. Now it remains to show $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$. 
+which follows from the moment estimates \eqref{E:mb0}. Now by applying \eqref{A:newgicon} we see that 
+\begin{align*}
+\E |u(t_0,\cdot)|_\rho^2 & \le C \int_{\R^d}\ud x \: \big(1+K(t_0)\big)^2\rho(x)
+\\& = C\big(1+K(t_0)\big)^2\Norm{\rho}_{L^1(\R^d)}
+\end{align*}
+which shows that $u(t_0,x)\in L^2_\rho$ almost surely for any admissible weight. Now it remains to show $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$. 
 \begin{align*}
 \E |v(t,\cdot)|_\rho^2 &= \int_{\R^d}\Norm{v(t,x)}_2^2\rho(x) \: \ud x
-\\& \le k \int_{\R^d} \left( 1+\left( \Norm{u(t_0,\cdot)}_2 * G(t,\cdot)(x) \right) \right)^2\rho(x) \: \ud x 
-\\& = k \int_{\R^d} \left( 1+\int_{\R^d}  \Norm{u(t_0,y)}_2G(t,x-y) \: \ud y \right)^2\rho(x) \: \ud x 
-\\& \le k \int_{\R^d} \left[1+\int_{\R^d}  \bigg(1+\big(|\mu|*G(t_0,\cdot)(y)\big)\bigg)G(t,x-y) \: \ud y \right]^2\rho(x) \: \ud x 
-\\& = k \int_{\R^d} \left[1+\int_{\R^d}  \bigg(1+\int_{\R^d}G(t_0,y-z) \: |\mu| (\ud z)\bigg)G(t,x-y) \: \ud y \right]^2\rho(x) \: \ud x 
-\\&=  k \int_{\R^d} \left[1+\int_{\R^d}  G(t,x-y) \: \ud y +\int_{\R^d}\int_{\R^d}G(t_0,y-z) G(t,x-y) \: \ud y \: |\mu| (\ud z)  \right]^2\rho(x) \: \ud x
-\\&=  k \int_{\R^d} \left(2 +\int_{\R^d} G(t+t_0,x-z) \: |\mu| (\ud z)  \right)^2\rho(x) \: \ud x
-\\& \le  k \int_{\R^d} 4 \rho(x) \: \ud x +\int_{\R^d}\left(\int_{\R^d} G(t+t_0,x-z) \: |\mu| (\ud z)  \right)^2\rho(x) \: \ud x
-\\ & < K(t_0)
+\\& \le C \int_{\R^d} \left( 1+\left( \Norm{u(t_0,\cdot)}_2 * G(t,\cdot)(x) \right) \right)^2\rho(x) \: \ud x 
 \end{align*}
-for some constant, $K(t_0)$, dependent on $t_0$ by \eqref{A:gicon} and $t \mapsto G(t_0+t,x)$ is bounded by $G(t_0,x)$ up to a constant. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
-
-\textcolor{blue}{This is incorrect. $G(t+t_0,x)$ is not bounded above up to a constant by $G(t_0,x)$(see discussion document). As of now this proof is incorrect and stronger assumptions will need to be made. Specifically we need to assume that \eqref{A:gicon} is bounded in $t_0$, not just finite for each $t_0$. However, this may not be too bad because I think that the $\delta_0$ initial condition will still satisfy this stronger assumption. 
-	\begin{align*}
-		\int_{\R^d}\ud x \: \rho(x)\left(\int_{\R^d}\ud y \: G(t_0,x-y)\delta_0(\ud y) \right)^2 &= \int_{\R^d}\ud x \: \rho(x)G(t_0,x)^2
-		\\ & \le \int_{\R^d}\ud x \: \rho(x)
-		\\ & = \Norm{\rho}_{L^1(\R^d)}
-	\end{align*}
-since $G(t,x)$ is bounded by $1$ and $\rho(x)$ is assumed to be integrable. Therefore \eqref{C:delta} will remain true.}
+which follows from an extension of moment estimates \eqref{E:mb0} for random initial conditions.We now continue by again applying the moment estimates.
+\begin{align*}
+\E |v(t,\cdot)|_\rho^2 & \le C \int_{\R^d} \bigg( 1+\bigg( \big(\big[1+(\mu*G(t_0,\circ))\big](\cdot) * G(t,\cdot)\big)(x) \bigg) \bigg)^2\rho(x) \: \ud x
+\\& \le C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0,\circ))(\cdot) * G(t,\cdot)\big](x) \bigg) \bigg)^2\rho(x) \: \ud x
+\\& = C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0+t,\cdot)) \big](x) \bigg) \bigg)^2\rho(x) \: \ud x.
+\end{align*}
+Now an application of \eqref{A:newgicon} gives us
+\begin{align*}
+\E |v(t,\cdot)|_\rho^2 &\le C \int_{\R^d} \bigg( 1+\bigg( 2+K(t_0) \bigg) \bigg)^2\rho(x) \: \ud x
+\\&= C\bigg( 1+\bigg( 2+K(t_0) \bigg) \bigg)^2 \Norm{\rho}_{L^1{\R^d}}
+\end{align*}
+which is true for every $t>0$. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$. 
+}
 \end{proof}
 
 \begin{theorem} 
 	\label{T:Main2}
-	Suppose the assumptions of Theorem \ref{T:Main} remain true and \eqref{A:gicon} holds true and suppose there existed
+	Suppose the assumptions of Theorem \ref{T:Main} remain true and \eqref{A:newgicon} holds true and suppose there existed
 	another admissible weight $\hat{\rho}$ such that 
 	\begin{align*}
 		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty.   	
 	\end{align*}
 	Recall from Lemma \ref{L:Moments} that $u^\mu(t_0,x) \in L^2_{\hat\rho}(\R^d)$ for any $t_0 >0$ and any
 	admissible weight $\hat{\rho}$. Then there exists an invariant measure for the laws of the solutions to
-	\eqref{E:gspde} in $L^2_\rho$ for $t>\delta>0$. In particular, for any $\delta>0$ there exists a measure that is
-	invariant for $\{\mathscr L (u^\mu(t,\cdot))\}_{t>\delta}$ where $u$ is the solution to \eqref{E:gspde} with
+	\eqref{E:gspde} in $L^2_\rho$ for $t>l>0$. In particular, for any $\delta>0$ there exists a measure that is
+	invariant for $\{\mathscr L (u^\mu(t,\cdot))\}_{t>l}$ where $u$ is the solution to \eqref{E:gspde} with
 	initial measure $\mu$.
 \end{theorem}
 
-\begin{proof} Pick $t_0>0$ and $\delta_0>0$ such that $\delta=t_0+\delta_0$ for a given $\delta >0$.  By Theorem
-\ref{T:Main}, there exists an invariant measure, $\eta$, for $\{\mathscr L(v(t,\cdot))\}_{t\ge \delta_0}$ where $v$ is
+\begin{proof} Pick $t_0>0$ and $l_0>0$ such that $l=t_0+l_0$ for a given $l >0$.  By Theorem
+\ref{T:Main}, there exists an invariant measure, $\eta$, for $\{\mathscr L(v(t,\cdot))\}_{t\ge l_0}$ where $v$ is
 the solution to \eqref{E:vspde2}. However, by a general property of the heat solution, $v(t,x)=u^\mu(t+t_0,x)$ and so
-$\eta$ is invariant for $\{\mathscr L(u^\mu(t+t_0,\cdot))\}_{t\ge \delta_0} = \{\mathscr L(u^\mu(t,\cdot))\}_{t\ge
-\delta}$. 
+$\eta$ is invariant for $\{\mathscr L(u^\mu(t+t_0,\cdot))\}_{t\ge l_0} = \{\mathscr L(u^\mu(t,\cdot))\}_{t\ge
+l}$. 
 \end{proof}
 
 \begin{corollary}
 	\label{C:delta}
-	Suppose the assumption of Theorem \ref{T:Main} remain true. Then for any $\delta>0$, the stochastic heat equation 
+	Suppose the assumption of Theorem \ref{T:Main} remain true. Then for any $l>0$, the stochastic heat equation 
 	\begin{equation}
 		\label{E:dspde}
 		\begin{cases}
@@ -696,12 +708,12 @@ $\eta$ is invariant for $\{\mathscr L(u^\mu(t+t_0,\cdot))\}_{t\ge \delta_0} = \{
 		\\ u(0,\cdot) = \delta_0(\cdot)  & 
 		\end{cases}  
 	\end{equation}
-	has an invariant measure in $L^2_\rho$ for the laws of their solution for $t>\delta$ and for any $\rho$ which
+	has an invariant measure in $L^2_\rho$ for the laws of their solution for $t>l$ and for any $\rho$ which
 	there exists $\hat{\rho}$ such that $\rho/\hat{\rho} \in L^1(\R^d)$.
 \end{corollary}
 
 \begin{proof} 
-	The SPDE above satisfies \eqref{A:gicon}. 
+	The SPDE above satisfies \eqref{A:newgicon}. 
 	By Lemma \ref{L:Moments} we know that for an arbitrary $t_0>0$, the solution at $t=t_0$ from the SPDE is in $L^2_\rho \cap L^2_{\hat\rho}$. Theorem \ref{T:Main2} implies the result. 
 \end{proof}
 
