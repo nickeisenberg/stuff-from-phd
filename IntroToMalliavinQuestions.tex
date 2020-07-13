@@ -523,7 +523,7 @@ E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \
 \end{NickQuestion}
 
 \begin{NickQuestion}[Exercise 3.1]
-	I don't see how we can apply this hint? Suppose we are able to show that the hint is true then how does that show $\mathcal P$ is dense in $L^q(\Omega)$? There is a theorem that $\{x_n\}$ is a basis for a Hilbert space $H$ if and only if $\sum \langle x,x_n \rangle x_n = 0$ implies $x=0$ but this is only valid for Hilbert space and $L^q(\Omega)$ for $q \not= 2$ is not a Hilbert space since there is not inner product. 
+	I don't see how we can apply this hint? Suppose we are able to show that the hint is true then how does that show $\mathcal P$ is dense in $L^q(\Omega)$? There is a theorem that $\{x_n\}$ is a basis for a Hilbert space $H$ if and only if $\sum \langle x,x_n \rangle x_n = 0$ implies $x=0$ but this is only valid for Hilbert space and $L^q(\Omega)$ for $q \not= 2$ is not a Hilbert space since there is no inner product. 
 \end{NickQuestion}
 
 \begin{NickQuestion}[Prop 3.3.2 page 54]
@@ -562,11 +562,49 @@ which is finite since $F \in \mathbb D^{1,p}$.
 	and thus we conclude as $k$ and $j$ go to infinity that $\varphi_k(F_j) \to \varphi(F)$ in $L^q(\Omega)$ and $\varphi_k(F_j)\in \mathcal S$. 
 	
 	I am unable to show why $D_t(\varphi_k(F_j)) \to D_t(\varphi(F))$ in $L^q(\Omega,H)$.
+	
+	However since $F_j=f^j(B(h^j_1),...,B(h^j_n))$, we see that 
+		\begin{align*}
+			D_t(\varphi_k(F_j)) &= \sum_{i=1}^n \dfrac{\partial}{\partial x_i}(\varphi * \alpha_k)(F_j)h^j_i(t)
+			\\&= \sum_{i=1}^n (\varphi' * \alpha_k)(F_j)\dfrac{\partial f^j}{\partial x_i}h^j_i(t)
+			\\& =  (\varphi' * \alpha_k)(F_j)\sum_{i=1}^n \dfrac{\partial f^j}{\partial x_i}h^j_i(t)
+			\\& = (\varphi' * \alpha_k)(F_j)D_t(F_j).
+		\end{align*}
+	We know that $\{\alpha_k\}$ are mollifiers so $ (\varphi' * \alpha_k)(F_j) \to \varphi '(F_j)$ almost surely and by assumption $D_t(F_j) \to D_t(F)$ in $L^p(\Omega,H)$. But I still am having trouble rigorously showing that $	D_t(\varphi_k(F_j)) \to 	D_t(\varphi(F_j))$ in $L^p(\Omega, H)$. 
+	
 \end{NickQuestion}
 
 \subsection{Exercises}
  
-
-
-
+\textbf{Exercise 3.3} Let $\alpha_n$ be a sequence of mollifiers and $\varphi_k := (\varphi * \alpha_k)$. Since $\varphi$ is Lipschitz with Lipschitz constant $K$ then this implies that $\varphi_k ' \le K$ and in addition $\varphi '$ exists almost everywhere and is also bounded by $K$. By proposition 3.3.2 we have that 
+\[
+	D_t(\varphi_k(F))=\varphi_k'(F)D_t(F)
+\]
+Also note that 
+\begin{align*}
+	|\varphi_k(F)-\varphi(F)|^2 &= \left| \int_\R (\varphi(F-y)-\varphi(F))\alpha_k(y) \ud y \right|^2
+	\\ &\le K \left| \int_\R y \alpha_k(y) \ud y \right|^2
+	\\ & \le K'
+\end{align*}
+Hence 	$|\varphi_k(F)-\varphi(F)|^2$ is bounded above and also converges to $0$ almost surely so by the dominated convergence theorem we have that 
+\[
+	\mathbb E |\varphi_k(F)-\varphi(F)|^2 \to 0
+\]
+and so the hypothesis of corollary 4.2.5 is satisfied. This implies that $\varphi(F) \in \mathbb D^{1,2}$ and 
+\[
+D_t(\varphi_n(F)) \to D_t(\varphi(F)) 
+\]
+ weakly in $L^2(\Omega,H)$. Lastly, since $\varphi_k'(F)D_t(F)$ is bounded in $L^2(\Omega,H)$ and also 
+ \[
+ \varphi_k'(F)D_t(F) \to G D_t(F)
+ \]
+ almost surely where $G$ is a random variable bounded by $K$ then  
+ \[
+ \varphi_k'(F)D_t(F) \to G D_t(F)
+ \] 
+ weakly in $L^2(\Omega,H)$ as well. Since weak limits are unique then we must have 
+\[
+	D_t(\varphi(F)) = G D_t(F)
+\]
+However note that in general we have as a property of mollifiers that $\varphi_n'(x) \to \varphi'(x)$ almost surely. But we said before that $\varphi'(x)$ only exists almost surely since $\varphi$ is Lipschitz. Therefore if the law of $F$ is absolutely continuous with respect to Lebesgue measure then we have $G=\varphi '(F)$ almost surely. Indeed, let $\mathcal N$ be the null set where $\varphi'$ is undefined. If the law of $F$ is absolutely continuous wit respect to Lebesgue measure then $P(F \in \mathcal N)=0$ and we must have $G=\varphi '(F)$ almost surely.   
 \end{document}
