@@ -45,7 +45,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
-
+\newtheorem{exercise}{Exercise}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{hypothesis}[theorem]{Hypothesis}
@@ -364,7 +364,7 @@ Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
 
 
 \section{Chapter 3}
-
+\subsection{Reading Material}
 \begin{NickQuestion}[(Smooth Cylindrical Random Variable)]
 	Following chapter 3 of the Kuo text, denote C the Wiener space of continuous functions from [0,1] to $\R$, $\mathcal R$ the collection cylindrical sets
 	\[
@@ -529,6 +529,44 @@ E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \
 \begin{NickQuestion}[Prop 3.3.2 page 54]
 	This relates to exercise 3. In the proof of prop 3.3.2 how can we use Holders inequality to show that $\varphi'(F)D(F) \in L^q(\Omega,H)$? 
 \end{NickQuestion}
+\begin{proof}[Nicks Solution]
+	\begin{align*}
+		\left[E\Norm{\varphi'(F)DF}_H^q\right]^{1/q} &= \left[\int_\Omega \left(\int_0^\infty \varphi'(F)^2(D_tF)^2 \ud t\right)^{q/2}\ud P\right]^{1/q}
+		\\& \le \left[\int_\Omega (1+|F|^\alpha)^q \left(\int_0^\infty(D_tF)^2 \ud t\right)^{q/2} \ud P\right]^{1/q}
+		\\&= \Norm{(1+|F|^\alpha)\left(\int_0^\infty(D_tF)^2 \ud t\right)^{1/2}}_q
+	\end{align*}
+Note that $\dfrac{1}{q} = \dfrac{1}{p} + \dfrac{1}{p/\alpha}$ and so if we apply Holders Inequality above we get that 
+	\begin{align*}
+			\left[E\Norm{\varphi'(F)DF}_H^q\right]^{1/q}  &\le \Norm{1+|F|^\alpha}_{p/\alpha}\Norm{\left(\int_0^\infty(D_tF)^2 \ud t\right)^{1/2}}_p
+	\end{align*}
+which is finite since $F \in \mathbb D^{1,p}$. 
+\end{proof}
+
+\begin{NickQuestion}[Prop 3.3.2 page 54]
+	I have not been able to verify why $\varphi(F) \in \mathbb D^{1,q}$. By definition, this means that we need to show that there exists $X_n \in \mathcal S$ such that
+	\begin{enumerate}
+		\item $X_n \to \varphi(F)$ in $L^q(\Omega)$
+		\item $D(X_n) \to D(\varphi(F))$ in $L^q(\Omega,H)$
+	\end{enumerate}
+	 By assumption we already have that there exists $\{F_n\} \subset \mathcal S$ such that $F_n \to F$ in $L^p(\Omega)$ and also $DF_n \to DF$ in $L^p(\Omega,H)$. We then take a sequence of mollifiers, $\{\alpha_n\}$ and consider the functions $\varphi_k(x) = (\varphi * \alpha_k)(x)$ which by the original assumption on $\varphi$ are $\alpha+1$ holder continuous. 
+	
+	Now, we notice that by properties of the mollifier since $\varphi(F) \in L^q(\Omega)$ then
+		\begin{align*}
+			E|\varphi_k(F_j)-\varphi(F_j)|^q \xrightarrow[\text{\text{$j \to \infty$}}]{\text{}} 0
+		\end{align*}
+	Next, since $\varphi$ is $\alpha +1$ holder continuous then we have 
+		\begin{align*}
+				E|\varphi(F_j)-\varphi(F)|^q &\le KE|F_j-F|^{q(\alpha+1)}
+				\\&=KE|F_j-F|^{p} \to 0
+		\end{align*}
+	and thus we conclude as $k$ and $j$ go to infinity that $\varphi_k(F_j) \to \varphi(F)$ in $L^q(\Omega)$ and $\varphi_k(F_j)\in \mathcal S$. 
+	
+	I am unable to show why $D_t(\varphi_k(F_j)) \to D_t(\varphi(F))$ in $L^q(\Omega,H)$.
+\end{NickQuestion}
+
+\subsection{Exercises}
+ 
+
 
 
 \end{document}
