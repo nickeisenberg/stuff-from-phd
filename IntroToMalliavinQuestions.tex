@@ -10,7 +10,7 @@
 % -------------------------------------------------
 % Load Packages here
 % -------------------------------------------------
-%\usepackage{hyperref} 
+%\usepackage{hyperref}
 \usepackage{graphicx,url,subfig}
 \RequirePackage[OT1]{fontenc}
 \RequirePackage{amsthm,amsmath,amssymb,amscd}
@@ -98,7 +98,6 @@
 \newcommand{\calN}{\mathcal{N}}
 \newcommand{\calO}{\mathcal{O}}
 \newcommand{\calT}{\mathcal{T}}
-\newcommand{\G}{\mathcal{G}}
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calR}{\mathcal{R}}
 \newcommand{\calS}{\mathcal{S}}
@@ -172,80 +171,80 @@
 
 
 \begin{document}
-	
+
 \section{Chapter 1}
 
 \begin{NickQuestion}
 	Proof of lemma 1.8.4
 
-	\textcolor{magenta}{The proof is very nice.} 
+	\textcolor{magenta}{The proof is very nice.}
 \end{NickQuestion}
 
 \section{Chapter 2}
 \begin{NickQuestion}
-	In the proof of Theorem 2.4.3 on the bottom of page 34 there are some claims made that I am unable to verify why they are true. First, 
-	we are considering 
+	In the proof of Theorem 2.4.3 on the bottom of page 34 there are some claims made that I am unable to verify why they are true. First,
+	we are considering
 	\[
 	X_t = X_0 + \int_0^t u(s)dB_s
 	\]
-	and here $u(s)$ only satisfies 
+	and here $u(s)$ only satisfies
 	\[
 	\mathbb P \left(\int_0^t u(s)^s ds < \infty \right) = 1
 	\]
-	so, as in the Kuo text, this stochastic integral exists and a limit in probability of a sequence of stochastic integrals $\int_0^t u_n(s)dB_s$ where the $u_n$ are simple and are in $L^2_{ad}$ and hence $\int_0^t u_n(s)dB_s$ is a martingale and we know the first and second moment. But for the limit $ \int_0^t u(s)dB_s$ we know nothing about the moments. But in this text, it is claimed that 
+	so, as in the Kuo text, this stochastic integral exists and a limit in probability of a sequence of stochastic integrals $\int_0^t u_n(s)dB_s$ where the $u_n$ are simple and are in $L^2_{ad}$ and hence $\int_0^t u_n(s)dB_s$ is a martingale and we know the first and second moment. But for the limit $ \int_0^t u(s)dB_s$ we know nothing about the moments. But in this text, it is claimed that
 	\[
 	\E \left[\int_{t_i}^{t_{i+1}}u^2(s)ds - \left(\int_{t_i}^{t_{i+1}}u(s)dB_s\right)^2 \bigg| \mathcal F_i\right] =0
 	\]
-	and I have never seen this claimed in any other text. 
+	and I have never seen this claimed in any other text.
 
-	\textcolor{magenta}{Note that $u$ is bounded (we are assuming localization has been done). Hence, all moments exists.} 
+	\textcolor{magenta}{Note that $u$ is bounded (we are assuming localization has been done). Hence, all moments exists.}
 \end{NickQuestion}
 
 
 \begin{NickQuestion}
-	In the proof of theorem 2.5.1, why is it true that 
-	\[ 
+	In the proof of theorem 2.5.1, why is it true that
+	\[
 		E \left(\int_0^t |u_n'(B_s)-1_{(x,\infty)}(B_s)|^2 ds\right) \le \int_0^t \mathbb P \left( |B_s-x|\le \frac{2}{n}\right)ds
 	\]
-	\textcolor{magenta}{Please explore the mollifier $f$ and $f_n$. Plot these $u_n'$ and see how could it differ from $1_{(x,\infty)}$.} 
-\end{NickQuestion}	
+	\textcolor{magenta}{Please explore the mollifier $f$ and $f_n$. Plot these $u_n'$ and see how could it differ from $1_{(x,\infty)}$.}
+\end{NickQuestion}
 
 \begin{NickQuestion}
-	What is the motivation on page 41 behind the following definition of the backward ito integral 
+	What is the motivation on page 41 behind the following definition of the backward ito integral
 	\[
 	\int_0^T u(s)\hat{d}B_s = \lim_{n \to \infty} \sum_{i=0}^{n-2}\left( \frac{n}{T}\int_{(j+1)T/n}^{(j+2)T/n}u(s)ds \right)(B_{(j+1)T/n}-B_{jT/n})
 	\]
-	The integral in the parenthesis is the average of $u_s$ on $\big((j+1)T/n,(j+2)T/n\big)$. 
+	The integral in the parenthesis is the average of $u_s$ on $\big((j+1)T/n,(j+2)T/n\big)$.
 
 	\bigskip
-	\textcolor{magenta}{Let's skip this part. I know nothing on the backward SDE and not particular interested either. 
-	It has applications in finance. If you don't do finance, I don't see the point here.} 
+	\textcolor{magenta}{Let's skip this part. I know nothing on the backward SDE and not particular interested either.
+	It has applications in finance. If you don't do finance, I don't see the point here.}
 \end{NickQuestion}
 
 \begin{NickQuestion}[(Problem 2.7)]
-	This problem follows easily from Levy's Characterization of Brownian Motion. But I can't figure out how to do this problem with the hint given. 
+	This problem follows easily from Levy's Characterization of Brownian Motion. But I can't figure out how to do this problem with the hint given.
 
 	\bigskip
-	\textcolor{magenta}{This is a nice problem. The hints is to ask you to find the distribution of $X_t-X_s$ 
-	through the characteristic function. Once apply Ito's formula, take expectation and remove the martingale part, you should 
+	\textcolor{magenta}{This is a nice problem. The hints is to ask you to find the distribution of $X_t-X_s$
+	through the characteristic function. Once apply Ito's formula, take expectation and remove the martingale part, you should
 	arrive at an integral equation. Take derivatives, you arrive at a differential equation. The solution for $a_s\left(t\right):=\E\left(e^{i\lambda \left(X_t-X_s\right)}\right)$
-	is 
+	is
 	\begin{align*}
 		a_s(t) = e^{-\frac{\lambda^2}{2}(t-s)}.
 	\end{align*}
-	} 
+	}
 \end{NickQuestion}
 
 \begin{NickQuestion}[(Problem 2.15)]
 	First we consider the $2-d$ Ito process
 	\[
 		\begin{pmatrix}
-			M_s 
+			M_s
 			\\ N_s
-		\end{pmatrix} 
+		\end{pmatrix}
 		=
 		\begin{pmatrix}
-		E(X^p) 
+		E(X^p)
 		\\ E(Y^{q'})
 		\end{pmatrix}
 		+
@@ -254,7 +253,7 @@
 		\\0 & \psi_s
 		\end{pmatrix}
 		\begin{pmatrix}
-		\hat{d B_s} 
+		\hat{d B_s}
 		\\ d B_s
 		\end{pmatrix} }
 	\]
@@ -264,21 +263,21 @@
 		\item $f_{xx} = \frac{1}{p} \left(\frac{1}{p}-1\right)x^{\frac{1}{p}-2}y^{\frac{1}{q'}}$
 		\item $f_y = \frac{1}{q'}x^{\frac{1}{p}}y^{\frac{1}{q'}-1}$
 		\item $f_{yy} =\frac{1}{q'} \left(\frac{1}{q'}-1\right)x^{\frac{1}{p}}y^{\frac{1}{q'}-2}$
-	\end{itemize} 
-	Now putting this into Ito's Formula gives us 
+	\end{itemize}
+	Now putting this into Ito's Formula gives us
 	\begin{align*}
 		M_t^{1/p}N_t^{1/q'}&=\Norm{X}_p\Norm{Y}_{q'} + \frac{1}{p}\int_0^t M_s^{\frac{1}{p}-1}N_s^{\frac{1}{q'}} \varphi_s \: d\hat{B_s}+ \frac{1}{q'}\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-1}\psi_s \: dB_s
 		\\& + \frac{1}{2}\frac{1}{p} \left(\frac{1}{p}-1\right)\int_0^t M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}}\varphi_s^2 \: ds + \frac{1}{2}\frac{1}{q'} \left(\frac{1}{q'}-1\right)\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-2} \psi_s^2 \: ds
 	\end{align*}
 
-	I am not really sure where to continue from here. I see that if we let $t \to \infty$ then $M_t^{1/p}N_t^{1/q'} \to XY$ so if we took the expected value of both sides then we would partially have what we are looking for since $E(XY)$ is on the left and $\Norm{X}_p\Norm{Y}_{q'}$ is on the right. But I am not sure about the other terms. Im guessing the Ito integrals in the right have $0$ expectation but I am not sure if that is in fact true since I dont see how it is easily seen that the integrands are in $L^2(\mathcal P)$. 
+	I am not really sure where to continue from here. I see that if we let $t \to \infty$ then $M_t^{1/p}N_t^{1/q'} \to XY$ so if we took the expected value of both sides then we would partially have what we are looking for since $E(XY)$ is on the left and $\Norm{X}_p\Norm{Y}_{q'}$ is on the right. But I am not sure about the other terms. Im guessing the Ito integrals in the right have $0$ expectation but I am not sure if that is in fact true since I dont see how it is easily seen that the integrands are in $L^2(\mathcal P)$.
 
 	What I did next was see what $\hat{B_s}$ was equal too and for this we define another Ito Process
 		\[
 	\begin{pmatrix}
-	B_s 
+	B_s
 	\\ \tilde{B_s}
-	\end{pmatrix} 
+	\end{pmatrix}
 	=
 	\int_0^t { \begin{pmatrix}
 	1 & 0
@@ -289,25 +288,25 @@
 	\\ \tilde{d B_s}
 	\end{pmatrix} }
 	\]
-	and applied Itos formula to $f(t,x,y) = e^{-t}x+ \sqrt{1-e^{-2t}}y$ which gives us 
+	and applied Itos formula to $f(t,x,y) = e^{-t}x+ \sqrt{1-e^{-2t}}y$ which gives us
 	\begin{align*}
 	\hat{B}_s = e^{-t}B_s+ \sqrt{1-e^{-2t}}\tilde{B}_s = \int_0^t \frac{e^{-2s}}{\sqrt{1-e^{-2s}}}\tilde{B}_s - e^{-s}B_s \: ds + \int_0^t e^{-s} \: dB_s + \int_0^t \sqrt{1-e^{-2s}} \: d\tilde{B}_s
 	\end{align*}
-	However I am not sure if this step is necessary. 
+	However I am not sure if this step is necessary.
 
 \end{NickQuestion}
 
 \bigskip
-\textcolor{magenta}{The followings are some of my thoughts:} 
-First of all, we need the absolute values: 
+\textcolor{magenta}{The followings are some of my thoughts:}
+First of all, we need the absolute values:
 \[
 	\begin{pmatrix}
-		M_s 
+		M_s
 		\\ N_s
-	\end{pmatrix} 
+	\end{pmatrix}
 	=
 	\begin{pmatrix}
-	\E(|X|^p) 
+	\E(|X|^p)
 	\\ \E(|Y|^{q'})
 	\end{pmatrix}
 	+
@@ -316,35 +315,35 @@ First of all, we need the absolute values:
 	\\0 & \psi_s
 	\end{pmatrix}
 	\begin{pmatrix}
-	\hat{d B_s} 
+	\hat{d B_s}
 	\\ d B_s
 	\end{pmatrix} }.
 \]
-Second, you forget 
+Second, you forget
 \begin{align*}
 	f_{xy} = \frac{1}{p} \frac{1}{q'} x^{-1/(p')} y^{-1/q}.
 \end{align*}
-Hence, by Ito's formula, we will have 
+Hence, by Ito's formula, we will have
 \begin{align*}
 	M_t^{1/p}N_t^{1/q'}
-	= &\Norm{X}_p\Norm{Y}_{q'} 
+	= &\Norm{X}_p\Norm{Y}_{q'}
 	+ \frac{1}{p}\int_0^t M_s^{\frac{1}{p}-1}N_s^{\frac{1}{q'}} \varphi_s \: d\hat{B_s}
 	+ \frac{1}{q'}\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-1}\psi_s \: dB_s \\
-	& + \frac{1}{2}\frac{1}{p} \left(\frac{1}{p}-1\right)\int_0^t M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}}\varphi_s^2 \: ds 
+	& + \frac{1}{2}\frac{1}{p} \left(\frac{1}{p}-1\right)\int_0^t M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}}\varphi_s^2 \: ds
 	+ \frac{1}{2}\frac{1}{q'} \left(\frac{1}{q'}-1\right)\int_0^t M_s^{\frac{1}{p}}N_s^{\frac{1}{q'}-2} \psi_s^2 \: ds\\
 	&+\frac{1}{pq'} \int_0^t M_s^{-\frac{1}{p'}} N_s^{-\frac{1}{q}} \psi_s \phi_s d\InPrd{B,\hat{B}}_s\\
 	=: & \Norm{X}_p\Norm{Y}_{q'} + \sum_{i=1}^5 I_i.
 \end{align*}
-Upon taking expectation on both sides, we see that 
+Upon taking expectation on both sides, we see that
 \begin{align*}
 	LHS = \E\left(|X_t Y_t|\right)\ge \E\left(X_tY_t\right).
 \end{align*}
-We only need to prove that 
+We only need to prove that
 \begin{align*}
 	\E\left(\sum_{i=1}^5 I_i\right)\le 0,
 \end{align*}
-which is clear for $i=1,2$, in which case we have the expectation equal to zero. 
-Now for the rest three parts, we see that 
+which is clear for $i=1,2$, in which case we have the expectation equal to zero.
+Now for the rest three parts, we see that
 \begin{align*}
 	I_3+I_4+I_5
 	=& -\frac{1}{2pq'} M_s^{\frac{1}{p}-2}N_s^{\frac{1}{q'}-2} \left(
@@ -352,11 +351,11 @@ Now for the rest three parts, we see that
 	\right),
 \end{align*}
 where we have used the fact that $d\InPrd{B,\hat{B}}_s=e^{-s}ds$.
-Hence, the condition become the condition that the quadratic form has no solution: 
+Hence, the condition become the condition that the quadratic form has no solution:
 \begin{align*}
 	\Delta = 4 e^{-2s} -4\frac{q'p}{p'q} = 4\left(e^{-2s} - \frac{p-1}{q-1}\right)\le 0
 \end{align*}
-which is equivalent to 
+which is equivalent to
 \begin{align*}
 	q\le e^{2s}(p-1) +1.
 \end{align*}
@@ -371,43 +370,43 @@ Hence, the largest $q$ that makes the inequality work is $q=e^{2s}(p-1) +1$.
 	A = \{\omega \in C : (\omega(t_1),...,\omega(t_n) \in U \big| t_i \in [0,1], n \in \mathbb N, U \in \mathscr B (\R^n)  \}
 	\]
 	and $\mu$ the associated Wiener measure. Consider the coordinate processes $B(t,\omega)=\omega(t)$ which are Brownian motions under $(C,\mathcal B(\mathcal R), \mu)$. There is a theorem that can be found \href{https://math.stackexchange.com/questions/750049/density-of-cylindrical-random-variables-in-classical-wiener-space}{here}.
-	
-	\textbf{Theorem} : The random variables 
+
+	\textbf{Theorem} : The random variables
 	\[
 	\{f(B(t_1,\cdot),...,B(t_n,\cdot)) \big| n\in \mathbb N,\; f \in \mathscr S (\R^n)  \}
 	\]
 	are dense in $L^2(C,\mu)$ where $\mathscr S (\R^n)$ are the Schwartz functions.
-	
-	How does this relate to $\mathcal S$ defined on page 51 of the intro to Malliavin textbook? How are the cylindrical random variables defined in this case? Why is $\mathcal S$ dense in $L^2(\Omega)$? Even in Diffusions Markov Processes and Martingales - Roger and Williams, they define the cylindrical sigma field in the same way Kuo does- through the use of coordinate processes. 
+
+	How does this relate to $\mathcal S$ defined on page 51 of the intro to Malliavin textbook? How are the cylindrical random variables defined in this case? Why is $\mathcal S$ dense in $L^2(\Omega)$? Even in Diffusions Markov Processes and Martingales - Roger and Williams, they define the cylindrical sigma field in the same way Kuo does- through the use of coordinate processes.
 \end{NickQuestion}
 \begin{proof}[Nick Solution]
 	\begin{theorem} \label{density}
 		Consider the probability space $(\Omega, \mathcal F, P)$ where $\mathcal F$ is the standard Brownian filtration. Then $\{f(B(h_1),...,f(B(h_n)), n\in \mathbb N,\; f\in C^\infty_p(\R^n), h_i \in H:=L^2(\R^+)   \}$ is dense in $L^2(\Omega)$.
 	\end{theorem}
-\textbf{Proof:} This proof follows the same scheme as the solution found \href{https://math.stackexchange.com/questions/750049/density-of-cylindrical-random-variables-in-classical-wiener-space}{here} which utilizes Dynkin's multiplicative system theorem. First, we can easily show that the sigma field generated by $\{B(h)\}_{h \in H}$ generates $\mathcal F$. This is true since $1_{[0,t]} \in H$ and $B(1_{[0,t]})=B_t$. Second, since $\mathscr S (\R) \subset C^\infty_p(\R)$ and since for every $h \in H$ there exists functions $f_n \in \mathscr S(\R)$ such that $f_n \to h$ in $L^2(\R)$ then by the Wiener Isometry we have $E|\int_0^\infty h(s)-f_n(s) dB_s|^2 = \int_0^\infty|h(s)-f_n(s)|^2 \ud s \to 0$. This implies that the sigma field generated by $\{f(B(h))\}$ where $h \in H$ and $f \in C^\infty_p(\R)$ is the same as $\mathcal F$. 
+\textbf{Proof:} This proof follows the same scheme as the solution found \href{https://math.stackexchange.com/questions/750049/density-of-cylindrical-random-variables-in-classical-wiener-space}{here} which utilizes Dynkin's multiplicative system theorem. First, we can easily show that the sigma field generated by $\{B(h)\}_{h \in H}$ generates $\mathcal F$. This is true since $1_{[0,t]} \in H$ and $B(1_{[0,t]})=B_t$. Second, since $\mathscr S (\R) \subset C^\infty_p(\R)$ and since for every $h \in H$ there exists functions $f_n \in \mathscr S(\R)$ such that $f_n \to h$ in $L^2(\R)$ then by the Wiener Isometry we have $E|\int_0^\infty h(s)-f_n(s) dB_s|^2 = \int_0^\infty|h(s)-f_n(s)|^2 \ud s \to 0$. This implies that the sigma field generated by $\{f(B(h))\}$ where $h \in H$ and $f \in C^\infty_p(\R)$ is the same as $\mathcal F$.
 
-Now we let $M=\{f(B(h_1),...,B(h_n))\}$. We have already shown that $\sigma (M)$ is the same as $\mathcal F$. Also, $M$ is closed under pointwise multiplication. Let $E:= \bar{M}$ where is closure is with respect to the $L^2(\Omega)$ norm. Let $H:=E \cap L^\infty(\Omega)$. We have $M \subset H$. It can be shown that $H$ is closed with respect to bounded pointwise convergence and also that $H$ contains all constant functions. Thus, the hypothesis is Dynkin's multiplicative theorem has been satisfied and this implies that $H$ contains all $\sigma (M) = \mathcal F$ measureable functions. But this means that is contains all bounded Borel measureable functions. But by the definition of $H$, this implies that $E$ contains all the bounded borel measureable functions. We know that the all $X\in L^2(\Omega)$ can be approximated in the $L^2(\Omega)$ norm by bounded measureable functions. Also since $E$ is closed and contains the bounded measureable functions, then $E$ itself must be equal to $L^2(\Omega)$. Therefore we conclude that $\bar{M} =E = L^2(\Omega)$. 
+Now we let $M=\{f(B(h_1),...,B(h_n))\}$. We have already shown that $\sigma (M)$ is the same as $\mathcal F$. Also, $M$ is closed under pointwise multiplication. Let $E:= \bar{M}$ where is closure is with respect to the $L^2(\Omega)$ norm. Let $H:=E \cap L^\infty(\Omega)$. We have $M \subset H$. It can be shown that $H$ is closed with respect to bounded pointwise convergence and also that $H$ contains all constant functions. Thus, the hypothesis is Dynkin's multiplicative theorem has been satisfied and this implies that $H$ contains all $\sigma (M) = \mathcal F$ measureable functions. But this means that is contains all bounded Borel measureable functions. But by the definition of $H$, this implies that $E$ contains all the bounded borel measureable functions. We know that the all $X\in L^2(\Omega)$ can be approximated in the $L^2(\Omega)$ norm by bounded measureable functions. Also since $E$ is closed and contains the bounded measureable functions, then $E$ itself must be equal to $L^2(\Omega)$. Therefore we conclude that $\bar{M} =E = L^2(\Omega)$.
 
 \end{proof}
 
 \begin{NickQuestion}
-	Why is $(D_tF)_{t \ge 0}$ a stochastic processes in $L^2(\Omega ; H)$ where $H=L^2(\mathbb R^+)$? $D_tF$ is defined as 
+	Why is $(D_tF)_{t \ge 0}$ a stochastic processes in $L^2(\Omega ; H)$ where $H=L^2(\mathbb R^+)$? $D_tF$ is defined as
 	\[
 	D_tF = \sum_{i=1}^n \frac{\partial f}{\partial x}(B(h_1),...,B(h_n))h_i(t)
 	\]
-	where $h_i \in H$ and $B(h_i) = \int_0^\infty h_i dB_s$ is the standard Wiener Integral. So isnt $D_tF$ real valued since we are evaluating the $h_i(\cdot)$ at $t$? Then shouldn't the $(D_tF)_{t \ge 0}$ be a $L^2(\Omega; \mathbb R)$ valued stochastic process? 
+	where $h_i \in H$ and $B(h_i) = \int_0^\infty h_i dB_s$ is the standard Wiener Integral. So isnt $D_tF$ real valued since we are evaluating the $h_i(\cdot)$ at $t$? Then shouldn't the $(D_tF)_{t \ge 0}$ be a $L^2(\Omega; \mathbb R)$ valued stochastic process?
 	\end{NickQuestion}
 \textbf{I believe that this is just a typo in the text}
 
 \begin{NickQuestion}[(Proposition 3.2.4)(All questions have been solved with work below)] $\;$
 \begin{enumerate}
 \item Why does $D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u)$? (I have answered this below)
-	
+
 \item Also, at the bottom of page 52, why is it that (I have answered this below)
 	\[
 	E \left( \sum_{i,j=1}^\infty D_{e_i}\langle u, e_j \rangle D_{e_j}\langle v, e_i \rangle  \right)) = E \left( \int_0^\infty\int_0^\infty D_su_tD_tv_s dsdt \right)
 	\]
-	
+
 \item In the proof of property 3.3 why do we have  (Answered below)
 \[
 	E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \delta(D_{e_i}(u))\bigg) \right) = E(\langle u,v \rangle ) + E \left(\sum_{i,j=1}^\infty D_{e_i}\langle e, e_j \rangle D_{e_j}\langle v,e_i \rangle \right)
@@ -417,31 +416,31 @@ Now we let $M=\{f(B(h_1),...,B(h_n))\}$. We have already shown that $\sigma (M)$
 
 \textbf{Proof of $D_h(\delta(u))=\langle u, h\rangle + \delta(D_h u).$ }
 
-Since $u=\sum F_jh_j$ we just apply the definition of $\delta$ to get 
+Since $u=\sum F_jh_j$ we just apply the definition of $\delta$ to get
 \begin{align}
 D_h(\delta(u)) &= D_h\left(  \sum_{j=1}^n F_j B(h_j) - \sum_{j=1}^n\langle DF_j, h_j \rangle \right) \nonumber
 \\&=   \sum_{j=1}^n D_h(F_j B(h_j)) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle \nonumber
 \\&= \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle  \label{P:3.2.4-1}
 \end{align}
-where the third inequality follows from the product rule and $D_h(B(h_j)) =  \langle h, h_j \rangle$. 
+where the third inequality follows from the product rule and $D_h(B(h_j)) =  \langle h, h_j \rangle$.
 Now we focus on the last term from the last line above \eqref{P:3.2.4-1}.
 \begin{align}
 \sum_{j=1}^nD_h\langle DF_j, h_j \rangle & = \sum_{j=1}^n\langle D_t \langle DF_j, h_j \rangle, h(t) \rangle \label{P:3.2.4-6}
 \end{align}
-Before we continue, we simplify $D_t \langle DF_j, h_j \rangle$. We may assume that $F_j=f^j(B(h_1^j(t),...,B(h_n^j(t)))$ where $f^j \in C_p^\infty(\R^n)$ and $h_i^j \in H$. 
+Before we continue, we simplify $D_t \langle DF_j, h_j \rangle$. We may assume that $F_j=f^j(B(h_1^j(t),...,B(h_n^j(t)))$ where $f^j \in C_p^\infty(\R^n)$ and $h_i^j \in H$.
 \begin{align}
 D_t \langle DF_j, h_j \rangle &= D_t \langle\sum_{i=1}^n \frac{\partial f^j}{\partial x_i}h_i^j(s), h_j(s) \rangle \nonumber
 \\ &= \sum_{i=1}^n\langle h_i^j(s), h_j(s) \rangle D_t\left( \frac{\partial f^j}{\partial x_i}\right) \label{P:3.2.4-2}
 \end{align}
-We now plug \eqref{P:3.2.4-2} into \eqref{P:3.2.4-6} above to get 
+We now plug \eqref{P:3.2.4-2} into \eqref{P:3.2.4-6} above to get
 \begin{align*}
 \sum_{j=1}^n\langle D_t \langle DF_j, h_j \rangle, h(t) \rangle &= \sum_{j=1}^n \sum_{i=1}^n\langle h_i^j(s), h_j(s) \rangle \langle D_t\left( \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle
-\\&= \sum_{j=1}^n \sum_{i=1}^n\left\langle h_i^j(s)\langle D_t\left( \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle, h_j(s) \right\rangle 
-\\&= \sum_{j=1}^n \left\langle \langle D_t\left(\sum_{i=1}^nh_i^j(s) \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle, h_j(s) \right\rangle 
-\\& = \sum_{j=1}^n \bigg\langle \langle D_t\left(DF_j\right), h(t)\rangle, h_j(s) \bigg\rangle 
-\\& = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j(s) \bigg\rangle 
+\\&= \sum_{j=1}^n \sum_{i=1}^n\left\langle h_i^j(s)\langle D_t\left( \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle, h_j(s) \right\rangle
+\\&= \sum_{j=1}^n \left\langle \langle D_t\left(\sum_{i=1}^nh_i^j(s) \frac{\partial f^j}{\partial x_i}\right), h(t)\rangle, h_j(s) \right\rangle
+\\& = \sum_{j=1}^n \bigg\langle \langle D_t\left(DF_j\right), h(t)\rangle, h_j(s) \bigg\rangle
+\\& = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j(s) \bigg\rangle
 \end{align*}
-and if I haven't made a mistake, then what we have shown so far is that 
+and if I haven't made a mistake, then what we have shown so far is that
 \begin{align}
 D_h(\delta(u))  & = \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)D_h(F_j) - \sum_{j=1}^nD_h\langle DF_j, h_j \rangle \nonumber
 \\&= \sum_{j=1}^n F_j \langle h, h_j \rangle + \sum_{j=1}^n B(h_j)D_h(F_j)- \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle \label{P:3.2.4-3}
@@ -449,20 +448,20 @@ D_h(\delta(u))  & = \sum_{j=1}^n F_j \langle h, h_j \rangle +\sum_{j=1}^n B(h_j)
 Also, the above is exactly line two of the first centered equations on page 53.
 
 
-Now we need to show that the last two terms add up to $\delta(D_h(u))$. This is not defined in the text but I think that we need to define $D_hu$ as the following 
+Now we need to show that the last two terms add up to $\delta(D_h(u))$. This is not defined in the text but I think that we need to define $D_hu$ as the following
 \begin{align}
-D_hu = D_h \sum_{j=1}^n F_jh_j(t) =  \sum_{j=1}^n h_j(t) D_h(F_j) \label{P:3.2.4-4} 
+D_hu = D_h \sum_{j=1}^n F_jh_j(t) =  \sum_{j=1}^n h_j(t) D_h(F_j) \label{P:3.2.4-4}
 \end{align}
-Thus now $D_h(u)$ \eqref{P:3.2.4-4} is of the form $\sum F_j h_j$ and so we may apply the definition of $\delta$ to it to get the following 
+Thus now $D_h(u)$ \eqref{P:3.2.4-4} is of the form $\sum F_j h_j$ and so we may apply the definition of $\delta$ to it to get the following
 \begin{align}
 \delta(D_hu) & = \sum_{j=1}^n B(h_j) D_h(F_j) -  \sum_{j=1}^n \langle D_s(D_hF_j), h_j(s) \rangle \label{P:3.2.4-5}
 \end{align}
-Now we focus in the last term of the right hand side of \eqref{P:3.2.4-5}. From \eqref{P:3.2.4-3} we note that we want to show that 
+Now we focus in the last term of the right hand side of \eqref{P:3.2.4-5}. From \eqref{P:3.2.4-3} we note that we want to show that
 \begin{align}
 \sum_{j=1}^n \langle D_s(D_hF_j), h_j(s) \rangle = \sum_{j=1}^n \bigg\langle D_h\left(DF_j\right), h_j \bigg\rangle \label{P:3.2.4-7}
 \end{align}
 Here are the steps,
-\begin{align*}	
+\begin{align*}
 	\sum_{j=1}^n \langle D_s(D_hF_j), h_j(s) \rangle &= \sum_{j=1}^n \left\langle D_s\left( \left\langle \sum_{i=1}^n \frac{\partial f^j}{\partial x_i} h_i^j(t),h(t) \right\rangle \right), h_j(s) \right\rangle
 	\\&  = \sum_{j=1}^n \left\langle D_s\left( \sum_{i=1}^n \frac{\partial f^j}{\partial x_i} \left\langle  h_i^j(t),h(t) \right\rangle \right), h_j(s) \right\rangle
 	\\& = \sum_{j=1}^n \left\langle \sum_{i=1}^n D_s\left(  \frac{\partial f^j}{\partial x_i}\right) \left\langle  h_i^j(t),h(t) \right\rangle , h_j(s) \right\rangle
@@ -471,21 +470,21 @@ Here are the steps,
 	\\& = \sum_{j=1}^n \bigg\langle \big\langle  D_s\left(  D_tF_j\right)  ,h(t) \big\rangle , h_j(s) \bigg\rangle
 	\\& = \sum_{j=1}^n \bigg\langle  D_h\left(  DF_j\right) , h_j \bigg\rangle
 \end{align*}
-Hence \eqref{P:3.2.4-7} is shown and we are done. 
+Hence \eqref{P:3.2.4-7} is shown and we are done.
 
 \textbf{Proof of bottom of page 52}
 
 \begin{align*}
 	\sum_{i,j=1}^\infty D_{e_i}\langle u , e_j \rangle D_{e_j}\langle v, e_i \rangle &= 	\sum_{i,j=1}^\infty \bigg\langle D_s\langle u , e_j \rangle, e_i(s) \bigg\rangle \bigg\langle D_t\langle v, e_i\rangle, e_j(t) \bigg\rangle
 	\\& = \sum_{i,j=1}^\infty \bigg\langle \langle D_s(u_t) , e_j(t) \rangle, e_i(s) \bigg\rangle \bigg\langle \langle D_t(v_s), e_i(s)\rangle, e_j(t) \bigg\rangle
-		\\& = \sum_{i=1}^\infty \bigg\langle\sum_{j=1}^\infty \left( \langle D_s(u_t) , e_j(t) \rangle \bigg\langle \langle D_t(v_s), e_i(s)\rangle, e_j(t) \bigg\rangle\right) , e_i(s) \bigg\rangle 
-		\\& = \sum_{i=1}^\infty \bigg\langle  \bigg\langle D_s(u_t) , \big\langle D_t(v_s), e_i(s) \big\rangle \bigg\rangle , e_i(s) \bigg\rangle 
-		\\&= \sum_{i=1}^\infty \bigg\langle  \bigg\langle D_s(u_t) , \big\langle D_t(v_q), e_i(q) \big\rangle \bigg\rangle , e_i(s) \bigg\rangle 
+		\\& = \sum_{i=1}^\infty \bigg\langle\sum_{j=1}^\infty \left( \langle D_s(u_t) , e_j(t) \rangle \bigg\langle \langle D_t(v_s), e_i(s)\rangle, e_j(t) \bigg\rangle\right) , e_i(s) \bigg\rangle
+		\\& = \sum_{i=1}^\infty \bigg\langle  \bigg\langle D_s(u_t) , \big\langle D_t(v_s), e_i(s) \big\rangle \bigg\rangle , e_i(s) \bigg\rangle
+		\\&= \sum_{i=1}^\infty \bigg\langle  \bigg\langle D_s(u_t) , \big\langle D_t(v_q), e_i(q) \big\rangle \bigg\rangle , e_i(s) \bigg\rangle
 		\\& = \sum_{i=1}^\infty \int_0^\infty \left( \int_0^\infty D_s(u_t) \left( \int_0^\infty D_t(v_q)e_i(q) \ud q\right) \ud t \right) e_i(s) \ud s
 		\\& =  \int_0^\infty \left( \int_0^\infty D_s(u_t) \left(\sum_{i=1}^\infty \int_0^\infty D_t(v_q)e_i(q) \ud q \;  e_i(s) \right) \ud t \right)\ud s
 		\\& =  \int_0^\infty \int_0^\infty D_s(u_t) D_t(v_s) \ud t \ud s
 \end{align*}
-Where above we use the identity 
+Where above we use the identity
 \[
 	\langle f, g \rangle = \sum_{i=1}^\infty \langle f, e_i \rangle \langle g , e_i \rangle.
 \]
@@ -502,32 +501,41 @@ E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \
 \\&= E(\langle u,v \rangle ) + \sum_{i,j=1}^\infty E\left(  D_{e_j}\big\langle v_t,e_i(t)\big\rangle D_{e_i}\big\langle u_s, e_j(s)\big\rangle \right) \nonumber
 \\&= E(\langle u,v \rangle ) + \sum_{i,j=1}^\infty E\left(  D_{e_j}\big\langle v,e_i\big\rangle D_{e_i}\big\langle u, e_j\big\rangle \right) \nonumber
 \end{align}
- where in \eqref{s-1} we used Proposition 3.2.3 and in \eqref{s-2} we use Fubini's Theorem. 
+ where in \eqref{s-1} we used Proposition 3.2.3 and in \eqref{s-2} we use Fubini's Theorem.
 \begin{NickQuestion}[(Why is $\delta$ linear?)]
 	On page 55 it says that $\delta$ is linear. First, for $u=\sum_{j=1}^nF_jh_j$ we have
 	\[
 	\delta(u) = \sum_{j=1}F_jB(h_j) - \sum_{j=1}^n \langle DF_j, h_j \rangle_H
 	\]
-	Now if we have a $v = \sum_{j=1}^nG_jh'_j$ how does $\delta(u+v) = \delta(u) + \delta(v)$. Also how could we write $\sum_{j=1}^nF_jh_j + \sum_{j=1}^nG_jh'_j = \sum_{j=1}^nK_jk_j$ where $K_j \in \mathcal S$ and $k_j \in H$ 
-	
-	Do we do this through the relationship $E(\langle DF,u \rangle ) = E(\delta(u)F)$ in the sense that 
+	Now if we have a $v = \sum_{j=1}^nG_jh'_j$ how does $\delta(u+v) = \delta(u) + \delta(v)$. Also how could we write $\sum_{j=1}^nF_jh_j + \sum_{j=1}^nG_jh'_j = \sum_{j=1}^nK_jk_j$ where $K_j \in \mathcal S$ and $k_j \in H$
+
+	Do we do this through the relationship $E(\langle DF,u \rangle ) = E(\delta(u)F)$ in the sense that
 	\begin{align*}
-	E(\delta(u+v)F) &= E(\langle DF,u +v\rangle )  
-	\\&=  E(\langle DF,u\rangle ) +  E(\langle DF,v\rangle ) 
+	E(\delta(u+v)F) &= E(\langle DF,u +v\rangle )
+	\\&=  E(\langle DF,u\rangle ) +  E(\langle DF,v\rangle )
 	\\& = E(\delta(u)F) + E(\delta(v)F)
 	\\& = E((\delta(u)+\delta(v))F)
 	\end{align*}
-	and if this is true for every $F$ then I believe we can say  $\delta(u+v) = \delta(u) + \delta(v)$? 
-	
+	and if this is true for every $F$ then I believe we can say  $\delta(u+v) = \delta(u) + \delta(v)$?
+	\textcolor{magenta}{Yes, this is the argument to show that $\delta$ is linear.
+	In general, for two distributions $F$ and $G$, how one identifies $F=G$? This is true iff $\InPrd{F,\varphi}=\InPrd{G,\varphi}$ for all test function $\varphi$.
+	Here, is the same. In order to identify that two random variables $\delta(u+v)$ and $\delta\left(v\right)+\delta(u)$ are same, this relation has to be tested against all functions in its dual
+	space, which is $\mathbb{D}^{1,2}$.}
 
 \end{NickQuestion}
 
 \begin{NickQuestion}[Exercise 3.1]
-	I don't see how we can apply this hint? Suppose we are able to show that the hint is true then how does that show $\mathcal P$ is dense in $L^q(\Omega)$? There is a theorem that $\{x_n\}$ is a basis for a Hilbert space $H$ if and only if $\sum \langle x,x_n \rangle x_n = 0$ implies $x=0$ but this is only valid for Hilbert space and $L^q(\Omega)$ for $q \not= 2$ is not a Hilbert space since there is no inner product. 
+	I don't see how we can apply this hint? Suppose we are able to show that the hint is true then how does that show $\mathcal{P}$ is dense in $L^q(\Omega)$? There is a theorem that $\{x_n\}$ is a
+	basis for a Hilbert space $H$ if and only if $\sum \langle x,x_n \rangle x_n = 0$ implies $x=0$ but this is only valid for Hilbert space and $L^q(\Omega)$ for $q \not= 2$ is not a Hilbert
+	space since there is no inner product.
+	\textcolor{magenta}{This is the standard argument to show one set is dense in another.
+		You may miss the fact that  the set of polynomial functions is dense in $C^{\infty}_0(\R^d)$, the latter is dense in the set of the Schwatz test function
+		$\mathcal{S}(\R^d)$.
+	Please do justify yourself this problem.}
 \end{NickQuestion}
 
 \begin{NickQuestion}[Prop 3.3.2 page 54]
-	This relates to exercise 3. In the proof of prop 3.3.2 how can we use Holders inequality to show that $\varphi'(F)D(F) \in L^q(\Omega,H)$? 
+	This relates to exercise 3. In the proof of prop 3.3.2 how can we use Holders inequality to show that $\varphi'(F)D(F) \in L^q(\Omega,H)$?
 \end{NickQuestion}
 \begin{proof}[Nicks Solution]
 	\begin{align*}
@@ -535,11 +543,20 @@ E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \
 		\\& \le \left[\int_\Omega (1+|F|^\alpha)^q \left(\int_0^\infty(D_tF)^2 \ud t\right)^{q/2} \ud P\right]^{1/q}
 		\\&= \Norm{(1+|F|^\alpha)\left(\int_0^\infty(D_tF)^2 \ud t\right)^{1/2}}_q
 	\end{align*}
-Note that $\dfrac{1}{q} = \dfrac{1}{p} + \dfrac{1}{p/\alpha}$ and so if we apply Holders Inequality above we get that 
+	Note that $\dfrac{1}{q} = \dfrac{1}{p} + \dfrac{1}{p/\alpha}$ and so if we apply Holders Inequality above we get that
 	\begin{align*}
 			\left[E\Norm{\varphi'(F)DF}_H^q\right]^{1/q}  &\le \Norm{1+|F|^\alpha}_{p/\alpha}\Norm{\left(\int_0^\infty(D_tF)^2 \ud t\right)^{1/2}}_p
 	\end{align*}
-which is finite since $F \in \mathbb D^{1,p}$. 
+	which is finite since $F \in \mathbb D^{1,p}$.
+	\textcolor{magenta}{
+		Or equivalently,
+		\begin{align*}
+			\Norm{\Norm{ \varphi'(F) DF}_H}_q^2
+			=& \Norm{\varphi(F)\Norm{DF}_H}_q^2\\
+			\le& \Norm{\varphi\left(F\right)}_{\frac{p}{\alpha}}^2 \Norm{\Norm{DF}_T}_p^2 \\
+			= & \Norm{\varphi\left(F\right)}_{\frac{p}{\alpha}}^2 \int_0^\infty \Norm{D_t F}_p^2 \ud t
+		\end{align*}
+	}
 \end{proof}
 
 \begin{NickQuestion}[Prop 3.3.2 page 54]
@@ -548,67 +565,88 @@ which is finite since $F \in \mathbb D^{1,p}$.
 		\item $X_n \to \varphi(F)$ in $L^q(\Omega)$
 		\item $D(X_n) \to D(\varphi(F))$ in $L^q(\Omega,H)$
 	\end{enumerate}
-	 By assumption we already have that there exists $\{F_n\} \subset \mathcal S$ such that $F_n \to F$ in $L^p(\Omega)$ and also $DF_n \to DF$ in $L^p(\Omega,H)$. We then take a sequence of mollifiers, $\{\alpha_n\}$ and consider the functions $\varphi_k(x) = (\varphi * \alpha_k)(x)$ which by the original assumption on $\varphi$ are $\alpha+1$ holder continuous. 
-	
+
+	\textcolor{magenta}{You have made the problem more complex than what it should be. You only need to check the seminorm $\Norm{\cdot}_{1,p}$ is finite.}
+
+	By assumption we already have that there exists $\{F_n\} \subset \mathcal S$ such that $F_n \to F$ in $L^p(\Omega)$ and also $DF_n \to DF$ in $L^p(\Omega,H)$. We then take a sequence of
+	mollifiers, $\{\alpha_n\}$ and consider the functions $\varphi_k(x) = (\varphi * \alpha_k)(x)$ which by the original assumption on $\varphi$ are $\alpha+1$ holder continuous.
+	\textcolor{magenta}{You cannot say a function is $\beta$-H\"older continuous with $\beta\ge 1$. That means the function is a constant.}
+
 	Now, we notice that by properties of the mollifier since $\varphi(F) \in L^q(\Omega)$ then
 		\begin{align*}
 			E|\varphi_k(F_j)-\varphi(F_j)|^q \xrightarrow[\text{\text{$j \to \infty$}}]{\text{}} 0
 		\end{align*}
-	Next, since $\varphi$ is $\alpha +1$ holder continuous then we have 
+	Next, since $\varphi$ is $\alpha +1$ holder continuous then we have
 		\begin{align*}
 				E|\varphi(F_j)-\varphi(F)|^q &\le KE|F_j-F|^{q(\alpha+1)}
 				\\&=KE|F_j-F|^{p} \to 0
 		\end{align*}
-	and thus we conclude as $k$ and $j$ go to infinity that $\varphi_k(F_j) \to \varphi(F)$ in $L^q(\Omega)$ and $\varphi_k(F_j)\in \mathcal S$. 
-	
+	and thus we conclude as $k$ and $j$ go to infinity that $\varphi_k(F_j) \to \varphi(F)$ in $L^q(\Omega)$ and $\varphi_k(F_j)\in \mathcal S$.
+
 	I am unable to show why $D_t(\varphi_k(F_j)) \to D_t(\varphi(F))$ in $L^q(\Omega,H)$.
-	
-	However since $F_j=f^j(B(h^j_1),...,B(h^j_n))$, we see that 
+
+	However since $F_j=f^j(B(h^j_1),...,B(h^j_n))$, we see that
 		\begin{align*}
 			D_t(\varphi_k(F_j)) &= \sum_{i=1}^n \dfrac{\partial}{\partial x_i}(\varphi * \alpha_k)(F_j)h^j_i(t)
 			\\&= \sum_{i=1}^n (\varphi' * \alpha_k)(F_j)\dfrac{\partial f^j}{\partial x_i}h^j_i(t)
 			\\& =  (\varphi' * \alpha_k)(F_j)\sum_{i=1}^n \dfrac{\partial f^j}{\partial x_i}h^j_i(t)
 			\\& = (\varphi' * \alpha_k)(F_j)D_t(F_j).
 		\end{align*}
-	We know that $\{\alpha_k\}$ are mollifiers so $ (\varphi' * \alpha_k)(F_j) \to \varphi '(F_j)$ almost surely and by assumption $D_t(F_j) \to D_t(F)$ in $L^p(\Omega,H)$. But I still am having trouble rigorously showing that $	D_t(\varphi_k(F_j)) \to 	D_t(\varphi(F_j))$ in $L^p(\Omega, H)$. 
-	
+	We know that $\{\alpha_k\}$ are mollifiers so $ (\varphi' * \alpha_k)(F_j) \to \varphi '(F_j)$ almost surely and by assumption $D_t(F_j) \to D_t(F)$ in $L^p(\Omega,H)$. But I still am having
+	trouble rigorously showing that $	D_t(\varphi_k(F_j)) \to 	D_t(\varphi(F_j))$ in $L^p(\Omega, H)$.
+	\textcolor{magenta}{You have two indices, you need to take the limit once for just one indices, not the two at the same time. More precisely,
+	\begin{align*}
+		\Norm{D_t\left(\varphi_k(F_j) - D_t\left(\varphi(F)\right)\right)}_p
+		\le \Norm{D_t\left(\varphi_k(F_j)\right)- D_t\left(\varphi(F_j)\right)}_p
+		+  \Norm{D_t\left(\varphi(F_j)\right)- D_t\left(\varphi(F)\right)}_p.
+	\end{align*}
+	Actually, you need to split to three such differences. I will explain to you during the meeting.
+	}
 \end{NickQuestion}
 
 \begin{NickQuestion}[Exercise 3.4]
-	Let $M = \sum_{t\in [0,1]} X_t$. The hint says to approximate this by taking the sup over a finite set. We know that since $X_t$ is continuous in $t$ then $M=\sup_{t\in \mathbb A}X_t$ where $A=\mathbb Q \cap [0,1]$. Let $\{a_n\}$ be an enumeration of $A\setminus \{0,1\}$ and let $S_k = \{0,a_1,...,a_k,1\}$ then each $S_k$ are finite and $M_k := \sup_{t \in S_k}X_t$ is an approximation of $M$ since $M_k \to M$ almost surely. The hint also tells us to use Corollary 4.2.5 but that requires us to find $D_tM_k$ which I am unsure of how to do. The hint says that we need to use exercise 3.3 which is chain rule for Lipschitz functions but I do not know how that applies. This corollary would also require us to show that $M_k \xrightarrow[]{L^2(\Omega)} M$ which I have been unable to show either.
+	Let $M = \sum_{t\in [0,1]} X_t$. The hint says to approximate this by taking the sup over a finite set. We know that since $X_t$ is continuous in $t$ then $M=\sup_{t\in \mathbb A}X_t$ where
+	$A=\mathbb{Q} \cap [0,1]$. Let $\{a_n\}$ be an enumeration of $A\setminus \{0,1\}$ and let $S_k = \{0,a_1,...,a_k,1\}$ then each $S_k$ are finite and $M_k := \sup_{t \in S_k}X_t$ is an
+	\textcolor{magenta}{(Note how to type $\mathcal{Q}$, you need curly braces.)}
+	approximation of $M$ since $M_k \to M$ almost surely. The hint also tells us to use Corollary 4.2.5 but that requires us to find $D_tM_k$ which I am unsure of how to do. The hint says that we
+	need to use exercise 3.3 which is chain rule for Lipschitz functions but I do not know how that applies. This corollary would also require us to show that
+	$M_k \stackrel{L^2(\Omega)}{\longrightarrow} M$ which I have been unable to show either.
+	\textcolor{magenta}{Try harder... This is an interesting problem that is related the hitting problems that Robert Dalang and Eulalia have done a lot work in the SPDE setting.}
 \end{NickQuestion}
 
 \subsection{Exercises}
- 
-\textbf{Exercise 3.3} Let $\alpha_n$ be a sequence of mollifiers and $\varphi_k := (\varphi * \alpha_k)$. Since $\varphi$ is Lipschitz with Lipschitz constant $K$ then this implies that $\varphi_k ' \le K$ and in addition $\varphi '$ exists almost everywhere and is also bounded by $K$. By proposition 3.3.2 we have that 
+
+\textbf{Exercise 3.3} Let $\alpha_n$ be a sequence of mollifiers and $\varphi_k := (\varphi * \alpha_k)$. Since $\varphi$ is Lipschitz with Lipschitz constant $K$ then this implies that $\varphi_k ' \le K$ and in addition $\varphi '$ exists almost everywhere and is also bounded by $K$. By proposition 3.3.2 we have that
 \[
 	D_t(\varphi_k(F))=\varphi_k'(F)D_t(F)
 \]
-Also note that 
+Also note that
 \begin{align*}
 	|\varphi_k(F)-\varphi(F)|^2 &= \left| \int_\R (\varphi(F-y)-\varphi(F))\alpha_k(y) \ud y \right|^2
 	\\ &\le K \left| \int_\R y \alpha_k(y) \ud y \right|^2
 	\\ & \le K'
 \end{align*}
-Hence 	$|\varphi_k(F)-\varphi(F)|^2$ is bounded above and also converges to $0$ almost surely so by the dominated convergence theorem we have that 
+Hence 	$|\varphi_k(F)-\varphi(F)|^2$ is bounded above and also converges to $0$ almost surely so by the dominated convergence theorem we have that
 \[
 	\mathbb E |\varphi_k(F)-\varphi(F)|^2 \to 0
 \]
-and so the hypothesis of corollary 4.2.5 is satisfied. This implies that $\varphi(F) \in \mathbb D^{1,2}$ and 
+and so the hypothesis of corollary 4.2.5 is satisfied. This implies that $\varphi(F) \in \mathbb D^{1,2}$ and
 \[
-D_t(\varphi_n(F)) \to D_t(\varphi(F)) 
+D_t(\varphi_n(F)) \to D_t(\varphi(F))
 \]
- weakly in $L^2(\Omega,H)$. Lastly, since $\varphi_k'(F)D_t(F)$ is bounded in $L^2(\Omega,H)$ and also 
+ weakly in $L^2(\Omega,H)$. Lastly, since $\varphi_k'(F)D_t(F)$ is bounded in $L^2(\Omega,H)$ and also
  \[
  \varphi_k'(F)D_t(F) \to G D_t(F)
  \]
- almost surely where $G$ is a random variable bounded by $K$ then  
+ almost surely where $G$ is a random variable bounded by $K$ then
  \[
  \varphi_k'(F)D_t(F) \to G D_t(F)
- \] 
- weakly in $L^2(\Omega,H)$ as well. Since weak limits are unique then we must have 
+ \]
+ weakly in $L^2(\Omega,H)$ as well. Since weak limits are unique then we must have
 \[
 	D_t(\varphi(F)) = G D_t(F)
 \]
-However note that in general we have as a property of mollifiers that $\varphi_n'(x) \to \varphi'(x)$ almost surely. But we said before that $\varphi'(x)$ only exists almost surely since $\varphi$ is Lipschitz. Therefore if the law of $F$ is absolutely continuous with respect to Lebesgue measure then we have $G=\varphi '(F)$ almost surely. Indeed, let $\mathcal N$ be the null set where $\varphi'$ is undefined. If the law of $F$ is absolutely continuous wit respect to Lebesgue measure then $P(F \in \mathcal N)=0$ and we must have $G=\varphi '(F)$ almost surely.   
+However note that in general we have as a property of mollifiers that $\varphi_n'(x) \to \varphi'(x)$ almost surely. But we said before that $\varphi'(x)$ only exists almost surely since $\varphi$ is
+Lipschitz. Therefore if the law of $F$ is absolutely continuous with respect to Lebesgue measure then we have $G=\varphi '(F)$ almost surely. Indeed, let $\mathcal N$ be the null set where $\varphi'$
+is undefined. If the law of $F$ is absolutely continuous wit respect to Lebesgue measure then $P(F \in \mathcal N)=0$ and we must have $G=\varphi '(F)$ almost surely.
 \end{document}
