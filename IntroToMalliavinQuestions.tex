@@ -568,6 +568,7 @@ E\left(\sum_{i=1}^\infty \langle v,e_i \rangle  \bigg(\langle u, e_i \rangle + \
 
 	\textcolor{magenta}{You have made the problem more complex than what it should be. You only need to check the seminorm $\Norm{\cdot}_{1,p}$ is finite.}
 
+
 	By assumption we already have that there exists $\{F_n\} \subset \mathcal S$ such that $F_n \to F$ in $L^p(\Omega)$ and also $DF_n \to DF$ in $L^p(\Omega,H)$. We then take a sequence of
 	mollifiers, $\{\alpha_n\}$ and consider the functions $\varphi_k(x) = (\varphi * \alpha_k)(x)$ which by the original assumption on $\varphi$ are $\alpha+1$ holder continuous.
 	\textcolor{magenta}{You cannot say a function is $\beta$-H\"older continuous with $\beta\ge 1$. That means the function is a constant.}
@@ -649,4 +650,47 @@ D_t(\varphi_n(F)) \to D_t(\varphi(F))
 However note that in general we have as a property of mollifiers that $\varphi_n'(x) \to \varphi'(x)$ almost surely. But we said before that $\varphi'(x)$ only exists almost surely since $\varphi$ is
 Lipschitz. Therefore if the law of $F$ is absolutely continuous with respect to Lebesgue measure then we have $G=\varphi '(F)$ almost surely. Indeed, let $\mathcal N$ be the null set where $\varphi'$
 is undefined. If the law of $F$ is absolutely continuous wit respect to Lebesgue measure then $P(F \in \mathcal N)=0$ and we must have $G=\varphi '(F)$ almost surely.
+
+\textbf{Exercise 3.4} I found a variant of this problem $\href{http://www.math.wisc.edu/~kurtz/NualartLectureNotes.pdf}{here}$ where they consider $\{B_t\}_{t\in[0,1]}$ instead of an arbitrary centered Gaussian processes $\{X_t; t\in[0,1]\}$ . They use the idea I was trying, which is we want to consider the function $f(x)=\max_{i\in \{1,...,n\}}x_i$ for $x \in \R^n$. $f$ is a Lipschitz function and if we consider $\{q_n\}$ an enumeration of $\mathbb{Q}\cap [0,1]$ and consider $Y_n=(X_{q_1},..., X_{q_n})$ then $M_n:= \max_{i\in \{1,...,n\}}\{X_{q_1},..., X_{q_n}\} = f(Y_n)$ and $M_n \to M$ almost surely. However in the above linked pdf they claim without proof that that $M_n \to M$ in $L^2(\Omega)$ which I have so far been unable to show. 
+
+I was unaware that there is an extension of the chain rule for Lipschitz functions that is given in the above linked pdf that says we may consider Lipschitz functions on $\R^d$ and random vectors $F=(F_1,...,F_n)$ whose components are in $\mathbb {D}^{1,2}$ and then $f(F)$ will also be in $\mathbb {D}^{1,2}$. We apply this above to see that $M_n:= \max_{i\in \{1,...,n\}}\{X_{q_1},..., X_{q_n}\} = f(Y_n) \in\mathbb {D}^{1,2} $. Next we define the sets 
+\begin{align*}
+	&A_1 = \{M_n = X_{q_1}\}
+	\\ &...
+	\\ & A_k = \{M_n \not= X_{q_1}, M_n \not= X_{q_2},...,M_n= X_{q_k}\}, 2 \le k \le n
+\end{align*}
+and by doing so 
+\begin{align*}
+DM_n &= D\left(\sum_{k=1}^n1_{A_k}X_{q_k}\right)
+\\&= \sum_{k=1}^n1_{A_k}D\left(X_{q_k}\right)
+\end{align*}
+where the last equality is to follow because Lemma 3.4.2 on page 56 but I need to verify why. Lets suppose for now that $\{X_t\}$ are Brownian motions. Then 
+\begin{align} \label{brown}
+	D\left(X_{q_k}\right) = 1_{[0,q_k]}(t)
+\end{align}
+and the above becomes 
+\begin{align*}
+	DM_n &= \sum_{k=1}^n1_{A_k}D\left(X_{q_k}\right)
+	\\ & = \sum_{k=1}^n1_{A_k}1_{[0,q_k]}(t)
+\end{align*}
+and we have that 
+\begin{align*}
+	\mathbb{E}\Norm{DM_n}_H^2 &= \mathbb{E}\Norm{\sum_{k=1}^n1_{A_k}1_{[0,q_k]}(t)}_H^2
+	\\& = \mathbb{E} \int \left( \sum_{k=1}^n1_{A_k}1_{[0,q_k]}(t) \ud t \right)^2
+	\\& = \sum_{k=1}^n  \mathbb{E}\left(1_{A_k}\int1_{[0,q_k]}(t) \ud t\right)
+\end{align*}
+where the last inequality follows from the disjointness of the $A_k$. Continuing the calculations we see 
+\begin{align*}
+\mathbb{E}\Norm{DM_n}_H^2 &= \sum_{k=1}^n  \mathbb{E}\left(1_{A_k}\int1_{[0,q_k]}(t) \ud t\right)
+\\& = \sum_{k=1}^n  q_k \mathbb{E}\left(1_{A_k}\right)
+\\& \le \sum_{k=1}^n  \mathbb{E}\left(1_{A_k}\right)
+\\& \le \mathbb{E}\left(\Omega \right) =1
+\end{align*}
+and so we apply Corollary 4.2.5 to conclude that $M=\sup_{t \in [0,1]}X_t \in \mathbb{D}^{1,2}$ and that $DM_n \to DM$ in the weak topology of $L^2(\Omega,H)$ which means that for all $G\in \mathbb{D}^{1,2}$
+\[
+\langle DM_n,G \rangle_{L^2(\Omega,H)} \to \langle DM,G\rangle_{L^2(\Omega,H)}
+\]
+To prove that $DX=1_{[0,T]}$ we note that $\sum_{k=1}^n1_{A_k}q_k$ which converges almost surely to $T$. Then we can conclude that $DM_n  = \sum_{k=1}^n1_{A_k}1_{[0,q_k]}(t)$ converges to $1_{[0,T]}$ almost surely. Since $DM_n$ converges both weakly and alost surely then a result from functional analysis says that these limits must be equal and we see that $DM=1_{[0,T]}$. 
+
+Now if we go back to \eqref{brown} and assume that $\{X_t\}$ is a centered Gaussian process then I am unsure of how to continue. For example we can not calculate $D(X_t)$ for any $t\in[0,1]$ unless we know that $X_t = \int_0^\infty h(s)dB_s$ for some $h \in H$ but I do not think that this can be claimed. 
 \end{document}
