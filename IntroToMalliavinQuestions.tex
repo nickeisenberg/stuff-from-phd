@@ -693,4 +693,90 @@ and so we apply Corollary 4.2.5 to conclude that $M=\sup_{t \in [0,1]}X_t \in \m
 To prove that $DX=1_{[0,T]}$ we note that $\sum_{k=1}^n1_{A_k}q_k$ which converges almost surely to $T$. Then we can conclude that $DM_n  = \sum_{k=1}^n1_{A_k}1_{[0,q_k]}(t)$ converges to $1_{[0,T]}$ almost surely. Since $DM_n$ converges both weakly and alost surely then a result from functional analysis says that these limits must be equal and we see that $DM=1_{[0,T]}$. 
 
 Now if we go back to \eqref{brown} and assume that $\{X_t\}$ is a centered Gaussian process then I am unsure of how to continue. For example we can not calculate $D(X_t)$ for any $t\in[0,1]$ unless we know that $X_t = \int_0^\infty h(s)dB_s$ for some $h \in H$ but I do not think that this can be claimed. 
+
+
+\section{Chapter 4}
+\subsection{Reading material} 
+\begin{NickQuestion}[proof of proposition 4.2.1]
+	In the conclusion of this proof, Naulart refers to a density argument but what is he referring too? We see that from (4.1) on page 64 that 
+	\[
+		\mathbb{E}I_n^2(f) = n!\Norm{\tilde{f}}_{L^2(\R_+^n)}
+	\]
+so is there a result that says that fuctions  
+\[
+A:=\{g^{\otimes n}(x_1,...,x_n) = g(x_1)\cdots g(x_n), g\in L^2(\R^+)\}
+\]
+ are dense in $L^2_s(\R^n_+)$? If thats the case then I believe that for a given $f \in L^2_s(\R^n_+)$ then we find $\{g_k\}\in A$ such that 
+ \[
+ 	\mathbb{E}|I_n(f-g_k)|^2 = n!\Norm{\tilde{f}-g_k}_{L^2(\R_+^n)} \to 0
+ \]
+ and I think since $D$ is a closed operator then we need 
+ \[
+ D_t(I_n(g_k)) = nI_{n-1}(g_k(\cdot,t)) \to D_t(I_n(f))?
+ \]
+\end{NickQuestion}
+
+\begin{NickQuestion}[Example 4.2.3]
+	We know that $B_1^3=\sum_{n=0}^\infty I_n(f_n)$ and by the bottom of page 66, for this example we se use the formula 
+	\[
+	f_n=\dfrac{1}{n!}\mathbb{E}(D^nB_1^3)
+	\]
+and calculating each of the above we see that 
+\begin{align*}
+&f_0 = \mathbb{E}B_1^3=0
+\\& f_1 = 31_{[0,1]}(t_1)
+\\& f_2 =0
+\\& f_3 = 1_{[0,1]}(t_1) 1_{[0,1]}(t_2) 1_{[0,1]}(t_3)
+\\& f_k = 0,\; k \ge 4
+\end{align*}
+thus we see that by using the definition on page 63 that
+\begin{align*}
+B_1^3 &= I_1(31_{[0,1]}(t_1)) + I_3(1_{[0,1]}(t_1) 1_{[0,1]}(t_2) 1_{[0,1]}(t_3))
+\\&= \int_0^\infty 31_{[0,1]}(t_1)) \ud B_{t_1} + \int_0^\infty \int_0^{t_3}\int_0^{t_2}1_{[0,1]}(t_1) 1_{[0,1]}(t_2) 1_{[0,1]}(t_3) \ud B_{t_1} \ud B_{t_2} \ud B_{t_3}
+\\&= 3B_1 + \int_0^1 \int_0^{t_3} 1_{[0,1]}(t_2) \int_0^{t_2}1_{[0,1]}(t_1)  \ud B_{t_1} \ud B_{t_2} \ud B_{t_3}
+\\&= 3B_1 + \int_0^1 \int_0^{t_3 \wedge 1} \int_0^{t_2 \wedge 1} \ud B_{t_1} \ud B_{t_2} \ud B_{t_3}
+\\& =  3B_1 + \int_0^1 \int_0^{t_3} \int_0^{t_2} \ud B_{t_1} \ud B_{t_2} \ud B_{t_3}
+\end{align*}
+This is different from the answer in the test on page 67. Is mine correct? 
+\end{NickQuestion}
+
+\begin{NickQuestion}[directional derivative page 69]
+	\begin{enumerate}
+\item $\tau_g(\omega) = \omega +g$ where $g$ is continuous on $\R^+$ and $g(0)=0$. Why does this imply that 
+\[
+	\tau_g(B(h))=B(h) + \langle h, \dot{g} \rangle_H. 
+\]
+when by definition 
+\[
+	\tau_g(B(h))=B(h) + g
+\]
+but also $B(h) \not \in \Omega$ where $\Omega$ is the Weiner space so why does $\tau_g(B(h))$ exist?
+
+\item Why does Girsonovs theorem imply that if $F \in L^2(\Omega)$ then $F(\omega +g)$ is almost surely defined? 
+
+\item What is the motivation behind the definition of the directional derivative 
+\[ 
+	\tilde{D}_gF = \lim_{\epsilon \to 0} \dfrac{1}{\epsilon}(F \circ \tau_{\epsilon g} -F)?
+\]
+$\href{http://www.math.wisc.edu/~kurtz/NualartLectureNotes.pdf}{\text{In this pdf}}$ they claim that when we have $DF = \sum_{i=1}^n\partial_i f(W(h_1),...,W(h_n))h_i$ then 
+\[
+\langle DF, h \rangle_H = \lim_{\epsilon \to 0}\frac{1}{\epsilon}(f(W(h_1)+\epsilon\langle h_1,h \rangle,...,W(h_n)-\epsilon \langle h_n,h \rangle)-F)
+\]
+but why is this true? 
+
+\item What is the definition of $F^g$ on the top of page 70? 
+	\end{enumerate}
+\end{NickQuestion}
+
+\begin{NickQuestion}[Proof of Theorem 4.4.2]
+\begin{enumerate}
+\item	Why does 
+	\[
+		\mathbb{E}\left(\left|\frac{1}{\epsilon}(F_n\circ \tau_{\epsilon g}-F_n)-\langle DF_n,\dot{g} \rangle_H \right|\right) \to 0
+	\]
+for fixed $n$ and $\epsilon \to 0$? 
+
+\item This is a hard proof to follow 
+\end{enumerate}
+\end{NickQuestion}
 \end{document}
