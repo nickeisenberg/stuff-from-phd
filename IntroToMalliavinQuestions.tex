@@ -750,7 +750,11 @@ when by definition
 \[
 	\tau_g(B(h))=B(h) + g
 \]
-but also $B(h) \not \in \Omega$ where $\Omega$ is the Weiner space so why does $\tau_g(B(h))$ exist?
+but also $B(h) \not \in \Omega$ where $\Omega$ is the Weiner space and 
+\[
+B(h)=\int_0^\infty h(s)\ud B_s
+\] 
+so why does $\tau_g(B(h))$ exist?
 
 \item Why does Girsonovs theorem imply that if $F \in L^2(\Omega)$ then $F(\omega +g)$ is almost surely defined? 
 
@@ -758,16 +762,46 @@ but also $B(h) \not \in \Omega$ where $\Omega$ is the Weiner space so why does $
 \[ 
 	\tilde{D}_gF = \lim_{\epsilon \to 0} \dfrac{1}{\epsilon}(F \circ \tau_{\epsilon g} -F)?
 \]
-$\href{http://www.math.wisc.edu/~kurtz/NualartLectureNotes.pdf}{\text{In this pdf}}$ they claim that when we have $DF = \sum_{i=1}^n\partial_i f(W(h_1),...,W(h_n))h_i$ then 
-\[
+$\href{http://www.math.wisc.edu/~kurtz/NualartLectureNotes.pdf}{\text{In this pdf}}$ they claim that when we have $DF = \sum_{i=1}^n\partial_i f(W(h_1),...,W(h_n))h_i$ then the directional derivative is 
+\begin{align} \label{pdf1}
 \langle DF, h \rangle_H = \lim_{\epsilon \to 0}\frac{1}{\epsilon}(f(W(h_1)+\epsilon\langle h_1,h \rangle,...,W(h_n)-\epsilon \langle h_n,h \rangle)-F)
-\]
-but why is this true? 
+\end{align}
+and also it clams that $\langle DF, h \rangle_H $ is the derivative at $\epsilon=0$ of the shifted processes 
+\begin{align} \label{pdf2}
+F(W(g)+\epsilon \langle g,h\rangle )
+\end{align}
+for $g\in H$ but what does this mean?
 
-\item What is the definition of $F^g$ on the top of page 70? 
+Consider $F=(W(h_1),...,W(h_n))$ and here we have 
+\[
+DF =\sum_{i=1}^n \frac{\partial f}{\partial x_i}(W(h_1),...,W(h_n))h_i
+\]
+and so if we try to calculate $\langle DF ,h \rangle$ we get 
+\begin{align*}
+	\langle DF ,h \rangle &=  \sum_{i=1}^n\frac{\partial f}{\partial x_i}(W(h_1),...,W(h_i),...,W(h_n))\langle h_i, h \rangle   
+	\\&= \sum_{i=1}^n\lim_{\epsilon \to 0} \dfrac{f(W(h_1),...,W(h_i)+\epsilon \langle h_i ,h \rangle, ,...,W(h_n))-F}{\epsilon \langle h_i, h \rangle } \langle h_i , h \rangle 
+	\\& = \lim_{\epsilon \to 0} \dfrac{f(W(h_1),...,W(h_i)+\epsilon \langle h_i ,h \rangle, ,...,W(h_n))-F}{\epsilon } 
+\end{align*}
+but I do not see how we can simplify this to \eqref{pdf1}? 
+
 	\end{enumerate}
 \end{NickQuestion}
 
+\textbf{Solution for 3 \eqref{pdf1}:} The definition of the directional derivative is 
+\[
+	D_v(f)=\lim_{h \to 0} \dfrac{f(x+hv)-f(x)}{h}  = \dfrac{d}{d\epsilon} f(x+\epsilon v) |_{\epsilon=0}
+\]  
+and according to wikipedia, when the partials of $f$ exist then it can be shown that 
+\begin{align}
+	D_v(f) = \sum_{i=1}^nv_i\dfrac{\partial f}{\partial x_i} \label{dirdiv}
+\end{align}
+where $v=(v_1,...,v_n)$. This is stated with out proof and is supposed to follow from the definition of the total derivative which is something I am not familiar too. However, if we let $v = (\langle h_1 ,h \rangle, ..., \langle h_n,h \rangle)$ then 
+\begin{align*}
+		D_v(f) &=  \lim_{\epsilon \to 0}\frac{1}{\epsilon}(f(W(h_1)+\epsilon\langle h_1,h \rangle,...,W(h_n)-\epsilon \langle h_n,h \rangle)-F)
+	\\& = \sum_{i=1}^n \langle h_i,h \rangle \dfrac{\partial f}{\partial x_i}
+	\\ & = \langle DF,h \rangle 
+	\end{align*}
+	where the second equality follows from \eqref{dirdiv} and the third equality follows from the work listed in the gray text from the question I asked. 
 \begin{NickQuestion}[Proof of Theorem 4.4.2]
 \begin{enumerate}
 \item	Why does 
@@ -776,7 +810,57 @@ but why is this true?
 	\]
 for fixed $n$ and $\epsilon \to 0$? 
 
+I believe that they are claiming without proof that if $F_n \in \mathcal S$ then 
+\[
+\dfrac{1}{\epsilon}(F_n\circ \tau_{\epsilon g} - F_n) \to \langle DF_n,\dot{g} \rangle_H
+\]
+ I assume in $L^2(\Omega)$ as $\epsilon \to 0$. 
+ 
+ I believe this is true in the most simple example where $F_n=\int_0^Th_n(s)\ud B_s$ where $h_n \in H$ and $B_s$ is the canonical brownian motion on the Wiener space, ie $B_s(\omega)=\omega(s)$. For any $g \in \mathcal H$, or in other words 
+ \[
+ g(t) = \int_0^t \dot{g}(s)\ud s
+ \]
+then we can easily calculate the following derivative 
+\begin{align*}
+	\tilde{D}_{g}(F_n)(\omega) = \lim_{\epsilon \to 0} \frac{1}{\epsilon}(F_n \circ \tau_{\epsilon g}-F_n) &=  \lim_{\epsilon \to 0} \frac{1}{\epsilon}\left( \int_0^t h_n(s) \ud B_s(\omega + \epsilon g) - \int_0^t h_n(s) \ud B_s(\omega) \right) 
+	\\&= \lim_{\epsilon \to 0} \frac{1}{\epsilon}\left( \int_0^t h_n(s) \ud (\omega(s) + \epsilon g(s)) - \int_0^t h_n(s) \ud (\omega(s)) \right)
+	\\&=   \lim_{\epsilon \to 0} \left( \int_0^t h_n(s) \ud (g(s)) \right)
+	\\& = \int_0^t h_n(s) \dot{g}(s)\ud s 
+\end{align*}
+and from this we conclude that 
+\[
+		\tilde{D}_{g}(F_n)(\omega) = \langle DF_n , \dot{g} \rangle_H.
+\]
+	Can we extend this to all $F_n \in \mathcal S$? 
 \item This is a hard proof to follow 
 \end{enumerate}
 \end{NickQuestion}
+\textbf{solution to 1:}
+
+The question is whether or not $F\in \mathcal S$ implies that the directional derivative exists and whether or not
+\[
+	\tilde{D}_g(F) = \langle DF, \dot{g} \rangle_H,\quad \text{where }  g=\int \dot{g}
+\]
+I showed above in the gray text that this is true when $F$ takes on the most simply form of 
+\[
+	F = \int_0^T h(s) \ud B_s
+\]
+where $h \in H$ and $B_s$ is the canonical brownian motion on the Weiner space. However we want this to be true for any general $F\in \mathcal S$ or in other words $F=f(B(h_1),...,B(h_n))$ where $f \in C^\infty_p(\R^n)$. However, such $f$ can be uniformly approximated by functions of the form $x^n$ so I believe that if we can show that for smooth random variables
+\[
+F=	\left(\int_0^T h(s) \ud Bs\right)^n 
+\]
+that 
+\[
+	\tilde{D}_g(F) = \langle DF, \dot{g}\rangle
+\]
+then we are done. However this is easily shown as follows 
+\begin{align*}
+	\dfrac{F \circ \tau_{\epsilon g}-F }{\epsilon} &= \dfrac{\left(\int_0^T h(s)\ud B_s(\omega +\epsilon g \right)^n-\left(\int_0^T h(s) \ud B_s(\omega) \right)^n }{\epsilon}
+	\\&= \dfrac{\left(\int_0^T h(s)\ud(\omega(s)) + \epsilon \int_0^T h(s) \ud(g(s))\right)^n-\left(\int_0^T h(s) \ud (\omega(s)) \right)^n }{\epsilon}
+	\\& = \dfrac{\sum_{i=1}^n {n\choose i }\epsilon^{i} \left(\int_0^T h(s)\ud(\omega(s)) \right) ^{n-i}\left(\int_0^T h(s) \dot{g}(s) \ud s \right)^{i}}{\epsilon}
+	\\&= n\left(\int_0^T h(s) \ud(\omega(s))\right)^{n-1}\langle h, \dot{g} \rangle_H +  \sum_{i=2}^n {n\choose i }\epsilon^{i-1} \left(\int_0^T h(s)\ud(\omega(s)) \right) ^{n-i}\left(\int_0^T h(s) \dot{g}(s) \ud s \right)^{i}
+	\\& \to n\left(\int_0^T h(s) \ud(\omega(s))\right)^{n-1}\langle h, \dot{g} \rangle_H \quad \text{as } \epsilon \to 0
+	\\& = \langle DF , \dot{g} \rangle_H
+\end{align*}
+which is what we wanted to show. 
 \end{document}
