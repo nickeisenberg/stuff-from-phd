@@ -836,15 +836,19 @@ and from this we conclude that
 \[
 	\dfrac{1}{\epsilon}(F_n\circ \tau_{\epsilon g}-F_n)=\frac{1}{\epsilon}\int_0^\epsilon \langle DF_n \circ \tau_{\alpha g}, \dot{g} \rangle_H \ud \alpha 
 \]
-when $F_n \in \mathcal S$. First I believe that this is a type and it needs to say 
+when $F_n \in \mathcal S$. Above I showed that for $F=\int_0^Th(s) \ud B_s$ that we have 
 \[
-	\dfrac{1}{\epsilon}(F_n\circ \tau_{\epsilon g}-F_n)=\int_0^\epsilon \langle DF_n \circ \tau_{\alpha g}, \dot{g} \rangle_H \ud \alpha
+		\dfrac{1}{\epsilon}(F_n\circ \tau_{\epsilon g}-F_n)= \langle h, \dot{g} \rangle_H
 \]
-because above I showed that for $F=\int_0^Th(s) \ud B_s$ that we have 
+Also since 
 \[
-		\dfrac{1}{\epsilon}(F_n\circ \tau_{\epsilon g}-F_n)= \langle h, \dot{g} \rangle_H = \int_0^\epsilon \langle DF_n \circ \tau_{\alpha g}, \dot{g} \rangle_H \ud \alpha
+	DF \circ \tau_{\epsilon g} = h(t)\circ \tau_{\epsilon g} = h(t)
 \]
-However I do not know how to show this for arbitrary $F \in \mathcal S$. 
+because in this case $DF$ is constant in $\omega$ then we see that 
+\[
+\langle h, \dot{g} \rangle_H = \dfrac{1}{\epsilon}	\int_0^\epsilon \langle DF_n \circ \tau_{\alpha g}, \dot{g} \rangle_H \ud \alpha
+\]
+so the statment is true for the most simple $F \in \mathcal S$. However I do not know how to show this for arbitrary $F \in \mathcal S$. 
 
 \item I don't see how Girsanov's theorem is used to conclude the convergence on the top of page 71? Also how is Girsanov's theorem used in steps 3 and 4 on page 72?
 \end{enumerate}
@@ -877,4 +881,25 @@ then we are done. However this is easily shown as follows
 	\\& = \langle DF , \dot{g} \rangle_H
 \end{align*}
 which is what we wanted to show. 
+
+\textbf{Partial solution for 2:} Suppose that $F=\left(\int_0^\infty h(t)\ud B_t\right)^2$. Then we can calculate the following
+\begin{align}
+	F\circ \tau_{\epsilon g} - F &= \left(\int_0^\infty h(t) \ud B_t(\omega + \epsilon g)\right)^2 -  \left(\int_0^\infty h(t) \ud B_t(\omega )\right)^2 \nonumber
+	\\&= 2\epsilon \int_0^\infty h(t) \ud B_t(\omega)\langle h, \dot{g} \rangle + \epsilon^2 \langle h, \dot{g} \rangle^2 \nonumber
+	\\&= \epsilon\langle DF, \dot{g} \rangle + \epsilon^2 \langle h, \dot{g} \rangle^2\label{lhs}
+\end{align}
+In addition, we can also calculate 
+\begin{align}
+\int_0^\epsilon \langle DF\circ\tau_{\epsilon g} ,\dot{g}\rangle \ud \alpha &= \int_0^\epsilon \int_0^\infty D_sF\circ \tau_{\epsilon g} \dot{g}(s) \ud s \ud \alpha \nonumber
+\\& =  \int_0^\epsilon \int_0^\infty \left(2h(s)\int_0^\infty h(t) \ud B_t(\cdot)\right)\circ \tau_{\epsilon g} \dot{g}(s) \ud s \ud \alpha \nonumber
+\\&= \int_0^\epsilon \int_0^\infty \left(2\int_0^\infty h(t) \ud B_t(\omega + \epsilon g)\right) h(s)\dot{g}(s) \ud s \ud \alpha \nonumber 
+\\&= \int_0^\epsilon \int_0^\infty \left(2\int_0^\infty h(t) \ud B_t(\omega) + 2\epsilon\int_0^\infty h(t)\dot{g}(t) \ud t\right)h(s) \dot{g}(s) \ud s \ud \alpha \nonumber 
+\\&= \int_0^\epsilon \int_0^\infty 2\int_0^\infty h(t) \ud B_t(\omega)h(s) \dot{g}(s) \ud s \ud \alpha  + \int_0^\epsilon \int_0^\infty2\epsilon\langle h,\dot{g} \rangle h(s) \dot{g}(s) \ud s \ud \alpha \nonumber 
+\\&=\epsilon \langle DF,\dot{g} \rangle + \epsilon^2\langle h, \dot{g}\rangle^2 \label{rhs} 
+\end{align}
+thus we see that $\eqref{rhs}$ and $\eqref{lhs}$ imply that 
+\[
+	\frac{1}{\epsilon}	\int_0^\epsilon \langle DF\circ\tau_{\epsilon g} ,\dot{g}\rangle \ud \alpha = \frac{1}{\epsilon}(F\circ \tau_{\epsilon g} - F )
+\]
+and so the claim is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^2$ which leads us to believe that it is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^n$ which again leads us to believe that it is true for all $F\in \mathcal S$. 
 \end{document}
