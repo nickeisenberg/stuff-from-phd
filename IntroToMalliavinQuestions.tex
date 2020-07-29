@@ -902,4 +902,40 @@ thus we see that $\eqref{rhs}$ and $\eqref{lhs}$ imply that
 	\frac{1}{\epsilon}	\int_0^\epsilon \langle DF\circ\tau_{\epsilon g} ,\dot{g}\rangle \ud \alpha = \frac{1}{\epsilon}(F\circ \tau_{\epsilon g} - F )
 \]
 and so the claim is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^2$ which leads us to believe that it is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^n$ which again leads us to believe that it is true for all $F\in \mathcal S$. 
+
+\begin{NickQuestion}[The formula  $$I_n(f)I_m(g) = \sum_{r=0}^{n \wedge m}r! {n \choose r}{m \choose r}I_{n+m -2r}(f \otimes_r g)$$ on page 64:] $\;$
+	
+	This also relates to exercise 2. I tried testing this formula out for the most basic example, for $f,g \in L^2(\R_+)$ and $I_1(f)I_1(g)$. 
+	
+	Using the formula we would need to get 
+	\begin{align}
+	I_1(f)I_1(g) &= I_2(f\otimes_0 g)+ I_0(f \otimes_1 g) \label{eqn}
+	\\&= \int_0^\infty \int_0^{t_2}f(t_1)g(t_2)\ud B_{t_1}\ud B_{t_2} +  \int_0^\infty f(x)g(x) \ud x
+	\end{align}
+	where $(f \otimes_r g)$ is defined on page 64. 
+	
+	But suppose that we do the following:
+	\begin{align*}
+		X_t &= \int_0^t f(s) \ud B_s
+		\\ Y_t &= \int _0^t g(s) \ud B_s
+	\end{align*}
+	then by applying Ito's formula we see that 
+	\begin{align*}
+	X_tY_t  &= \int_0^t X_s \ud Y_s + \int_0^t Y_s \ud X_s + \int_0^t \ud X_s \ud Y_s 
+	\\& = \int_0^t \left(\int_0^s f(\xi) \ud B_{\xi}\right)g(s) \ud B_s + \int_0^t \left(\int_0^s g(\xi) \ud B_{\xi}\right)f(s) \ud B_s + \int_0^t f(s)g(s) \ud s
+	\\& = \int_0^t \left(\int_0^s f(\xi)g(s)\ud B_{\xi}\right) \ud B_s + \int_0^t \left(\int_0^s g(\xi)f(s) \ud B_{\xi}\right) \ud B_s + \int_0^t f(s)g(s) \ud s
+	\\& = \int_0^t \int_0^s f(\xi)g(s)+g(\xi)f(s) \ud B_{\xi} \ud B_s  + \int_0^t f(s)g(s) \ud s
+	\\& = \int_0^t \int_0^s 2(f \tilde{\otimes}_0 g)(\xi,s)\ud B_{\xi} \ud B_s  + \int_0^t f(s)g(s) \ud s
+	\end{align*}
+	where above $(f \tilde{\otimes}_0 g)$ is the symmetrization of $(f \otimes_0 g)$. Thus by letting $t \to \infty$ we see that 
+	\begin{align}
+	\lim_{t\to \infty} 	X_tY_t = \int_0^\infty f(s) \ud B_s \int_0^\infty g(s) \ud B_s &= I_1(f)I_(g) \nonumber
+	\\& = \int_0^\infty \int_0^s 2(f \tilde{\otimes}_0 g)(\xi,s)\ud B_{\xi} \ud B_s  + \int_0^\infty f(s)g(s) \ud s \nonumber
+	\\&  = 2I_1(f \tilde{\otimes}_0 g) + I_0(f \otimes_1) \nonumber
+	\\& = 2I_1(f \otimes g) + I_0(f \otimes_1) \label {cont}
+	\end{align}
+	where the last line follows that $I_n(f) = I_n(\tilde{f})$ for any $f \in L^2(\R_+^n)$. However \eqref{eqn} and \eqref{cont} give us a contradiction. 
+\end{NickQuestion}
+
+
 \end{document}
