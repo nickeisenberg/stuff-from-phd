@@ -937,5 +937,41 @@ and so the claim is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^2$ whic
 	where the last line follows that $I_n(f) = I_n(\tilde{f})$ for any $f \in L^2(\R_+^n)$. However \eqref{eqn} and \eqref{cont} give us a contradiction. 
 \end{NickQuestion}
 
+\textbf{Exercises:}
+
+\textbf{Exercise 2:} We want to prove the following for $f,g \in L^2_s(\R_+^2)$
+\[
+I_2(f)I_2(g) =	I_4(f\otimes_0 g) + 4I_2(f \otimes_1 g) + 2 I_0(f \otimes_2 g).
+\]
+The hint tells us to use Ito's formula. Consider the following, 
+\begin{align*}
+	X_t &= \int_0^t \int_0^\xi f(z, \xi) \ud B_z \ud B_{\xi} = \int_0^t F(\xi) \ud B_\xi
+	\\Y_t &=  \int_0^t \int_0^\xi g(z, \xi) \ud B_z \ud B_{\xi} = \int_0^t G(\xi) \ud B_\xi
+\end{align*}
+where we let 
+\[
+F(\xi)= \int_0^\xi f(z, \xi) \ud B_z \; \quad \; G(\xi)= \int_0^\xi g(z, \xi) \ud B_z
+\]
+and so 
+\[
+\lim_{t \to \infty} X_tY_t = I_2(f)I_2(g).
+\]
+If we apply Ito's formula, we see that 
+\begin{align}
+	X_tY_t = \int_0^t X_s \ud Y_s + \int_0^t Y_s \ud X_s + \int_0^t \ud X_s \ud Y_s := L_1 + L_2 + L_3 \label{ito1}
+\end{align}
+If this is correct, then what does $\ud X_s$ and $\ud Y_s$ equal? For, example, is $ \ud X_s = F(s) \ud B_s = \left(\int_0^s f(z,s) \ud B_z\right) \ud B_s$? If this is right, then we can continue with \eqref{ito1}. 
+$ \; \\$ 
+
+\noindent \underline{We will just look at $L_1$ right now.}
+\begin{align*}
+L_1 &=  \int_0^t X_s \ud Y_s 
+\\&=  \int_0^t\underbrace{\left( \int_0^s F(\xi) \ud B_\xi \right)}_{X_s} G(s) \ud B_s
+\end{align*}
+notice the integrand is a product of two processes. The only way I think I can continue is to apply Ito's formula again. But the problem gets messy here. 
+\begin{align*}
+	X_sG_s = \int_0^s X_k\ud G_k + \int_0^s G_k \ud X_k+ \int_0^s \ud X_k \ud G_k
+\end{align*}
+I am not sure what $\ud G_k$ is equal too. I don't believe that it is equal to $g(k,\xi)\ud B_k$
 
 \end{document}
