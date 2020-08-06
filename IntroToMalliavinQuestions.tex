@@ -947,12 +947,12 @@ putting this together give us
 which completes the verification for step 4. 
 \begin{NickQuestion}[The formula  $$I_n(f)I_m(g) = \sum_{r=0}^{n \wedge m}r! {n \choose r}{m \choose r}I_{n+m -2r}(f \otimes_r g)$$ on page 64:] $\;$
 	
-	This also relates to exercise 2. I tried testing this formula out for the most basic example, for $f,g \in L^2(\R_+)$ and $I_1(f)I_1(g)$. 
+	This is not a question, just wanted to test this formula out for the most basic example, for $f,g \in L^2(\R_+)$ and $I_1(f)I_1(g)$ so I could have an example saved. 
 	
 	Using the formula we would need to get 
 	\begin{align}
 	I_1(f)I_1(g) &= I_2(f\otimes_0 g)+ I_0(f \otimes_1 g) \label{eqn}
-	\\&= \int_0^\infty \int_0^{t_2}f(t_1)g(t_2)\ud B_{t_1}\ud B_{t_2} +  \int_0^\infty f(x)g(x) \ud x
+	\\&= 2\int_0^\infty \int_0^{t_2}f(t_1)g(t_2)\ud B_{t_1}\ud B_{t_2} +  \int_0^\infty f(x)g(x) \ud x
 	\end{align}
 	where $(f \otimes_r g)$ is defined on page 64. 
 	
@@ -976,7 +976,7 @@ which completes the verification for step 4.
 	\\&  = 2I_1(f \tilde{\otimes}_0 g) + I_0(f \otimes_1) \nonumber
 	\\& = 2I_1(f \otimes g) + I_0(f \otimes_1) \label {cont}
 	\end{align}
-	where the last line follows that $I_n(f) = I_n(\tilde{f})$ for any $f \in L^2(\R_+^n)$. However \eqref{eqn} and \eqref{cont} give us a contradiction. 
+	where the last line follows that $I_n(f) = I_n(\tilde{f})$ for any $f \in L^2(\R_+^n)$. 
 \end{NickQuestion}
 
 \textbf{Exercises:}
@@ -1042,4 +1042,11 @@ I dont think continuing with this strategy gets us to the desired answer though.
 		This is because $E(\tilde{E}(F(\hat{B}))G) \in \R$ while $E(F(\hat{B})G) \in \R^{\Omega}$. I am not sure what the correction should be. 
 	\end{enumerate}
 \end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 5.14]
+	\begin{enumerate}
+		\item The first line uses Stroock's formula however this can only be used if $F \in \mathbb{D}^{\infty,2}$ and in this lemma we only assume that  $F \in \mathbb{D}^{k,2}$.
+	\end{enumerate}
+\end{NickQuestion}
+
 \end{document}
