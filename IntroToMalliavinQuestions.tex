@@ -777,11 +777,11 @@ Consider $F=(W(h_1),...,W(h_n))$ and here we have
 DF =\sum_{i=1}^n \frac{\partial f}{\partial x_i}(W(h_1),...,W(h_n))h_i
 \]
 and so if we try to calculate $\langle DF ,h \rangle$ we get 
-\begin{align*}
+\begin{align} \label{ddiv}
 	\langle DF ,h \rangle &=  \sum_{i=1}^n\frac{\partial f}{\partial x_i}(W(h_1),...,W(h_i),...,W(h_n))\langle h_i, h \rangle   
-	\\&= \sum_{i=1}^n\lim_{\epsilon \to 0} \dfrac{f(W(h_1),...,W(h_i)+\epsilon \langle h_i ,h \rangle, ,...,W(h_n))-F}{\epsilon \langle h_i, h \rangle } \langle h_i , h \rangle 
-	\\& = \sum_{i=1}^n df\lim_{\epsilon \to 0} \dfrac{f(W(h_1),...,W(h_i)+\epsilon \langle h_i ,h \rangle, ,...,W(h_n))-F}{\epsilon } 
-\end{align*}
+	\\&= \sum_{i=1}^n\lim_{\epsilon \to 0} \dfrac{f(W(h_1),...,W(h_i)+\epsilon \langle h_i ,h \rangle, ,...,W(h_n))-F}{\epsilon \langle h_i, h \rangle } \langle h_i , h \rangle \nonumber
+	\\& = \sum_{i=1}^n df\lim_{\epsilon \to 0} \dfrac{f(W(h_1),...,W(h_i)+\epsilon \langle h_i ,h \rangle, ,...,W(h_n))-F}{\epsilon } \nonumber
+\end{align}
 but I do not see how we can simplify this to \eqref{pdf1}? 
 
 	\end{enumerate}
@@ -903,6 +903,48 @@ thus we see that $\eqref{rhs}$ and $\eqref{lhs}$ imply that
 \]
 and so the claim is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^2$ which leads us to believe that it is true for $F= \left(\int_0^\infty h(t) \ud B_t\right)^n$ which again leads us to believe that it is true for all $F\in \mathcal S$. 
 
+\textbf{Informal explanation for some of Step 4:}
+The only line that I can't quite convince myself is the first centered equation with says 
+\[
+	\frac{1}{\alpha} \left(E((F\circ \tau_{\alpha g})G)-E(FG)\right) = E\left(F \frac{1}{\alpha}\left((G\circ \tau_{-\alpha g})\exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)-G\right)\right)
+\]
+I dont understand why we pass the $\tau_{\alpha g}$ from $F$ to $G$ and it then becomes a $\tau_{-\alpha g}$. Also is not formally stated but the first expectation is under $Q$ and the second is under $P$ with $Q(A)=E(1_AL_t)$ and here 
+\[
+	L_t = \exp\left( \int_0^t \dot{g_s} \ud B_s - \frac{1}{2}\int_0^t \dot{g}_s^2 \ud s \right)
+\]
+where $\dot{g} = h$ which is stated on the previous page. 
+
+The next three centered equations are 
+\begin{align}
+&\lim_{\alpha \to 0} \frac{1}{\alpha}\left((G\circ \tau_{-\alpha g})\exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)-G\right) \nonumber
+\\&= \frac{d}{d\alpha} \left( (G\circ \tau_{-\alpha g})\exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)) \right) \bigg\vert_{\alpha = 0}
+\\&= B(h)G - \langle DG,h \rangle_H 
+\\&= \delta(Gh)
+\end{align}
+The first equality follows from the limit definition of the derivative. The second equality follows from products rule. We have 
+\begin{align*}
+	 &\frac{d}{d\alpha} \left( (G\circ \tau_{-\alpha g})\exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)-G) \right) \bigg\vert_{\alpha = 0}
+	 \\&= \left( \frac{d}{d\alpha}  (G\circ \tau_{-\alpha g})\right)\exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)) \bigg\vert_{\alpha = 0} +  (G\circ \tau_{-\alpha g})\left(  \frac{d}{d\alpha}  \exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)\right) \bigg\vert_{\alpha = 0}
+\end{align*}
+Note that since $G \in \mathcal S$ then we have that $G=g(B(h_1),...,B(h_n))$ and therefore 
+\[
+G\circ \tau_{-\alpha g} = g(B(h_1),...,B(h_n))(\omega - \alpha g) = g(B(h_1)-\alpha \langle h_1, \dot{g} \rangle,...,B(h_n)-\alpha \langle h_n, \dot{g}\rangle)
+\]
+and from this we can calculate $d/d\alpha$
+\begin{align*}
+	  \frac{d}{d\alpha}  (G\circ \tau_{-\alpha g}) \bigg \vert_{\alpha = 0} &= \lim_{k \to 0} \frac{1}{k}\left(g(B(h_1)-(\alpha +k) \langle h_1, \dot{g} \rangle,...,B(h_n)-(\alpha+k) \langle h_n, \dot{g}\rangle) -G\right)  \bigg \vert_{\alpha = 0}
+	  \\&= -\langle DG, \dot{g} \rangle 
+\end{align*}
+where the last inequality follows from the work shown in \eqref{ddiv} which I believe can e applied because again $G \in \mathcal S$. Lastly, we simply take the derivative to see
+\begin{align*}
+	\left(  \frac{d}{d\alpha}  \exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)\right) \bigg\vert_{\alpha = 0} = B(h)
+\end{align*}
+putting this together give us 
+\begin{align*}
+		 &\frac{d}{d\alpha} \left( (G\circ \tau_{-\alpha g})\exp(\alpha B(h)-\frac{1}{2}\alpha^2 \Norm{h}_H^2)-G) \right) \bigg\vert_{\alpha = 0} &= B(h)G - \langle DF, \dot{g} \rangle_H
+		 \\& = B(h)G - \langle DF, h \rangle_H
+\end{align*} 
+which completes the verification for step 4. 
 \begin{NickQuestion}[The formula  $$I_n(f)I_m(g) = \sum_{r=0}^{n \wedge m}r! {n \choose r}{m \choose r}I_{n+m -2r}(f \otimes_r g)$$ on page 64:] $\;$
 	
 	This also relates to exercise 2. I tried testing this formula out for the most basic example, for $f,g \in L^2(\R_+)$ and $I_1(f)I_1(g)$. 
@@ -972,6 +1014,32 @@ notice the integrand is a product of two processes. The only way I think I can c
 \begin{align*}
 	X_sG_s = \int_0^s X_k\ud G_k + \int_0^s G_k \ud X_k+ \int_0^s \ud X_k \ud G_k
 \end{align*}
-I am not sure what $\ud G_k$ is equal too. I don't believe that it is equal to $g(k,\xi)\ud B_k$
+To continue, we need to calculate $dG_k$ which can be done with the following Stochastic Leibniz Rule Theorem which is found $\href{https://math.stackexchange.com/questions/2677654/stochastic-leibniz-rule}{here}$. However I believe we need to assume that $g$ is differentiable in addition to being square integrable. According to Leibniz rule we have that 
+\[
+\ud G_k = \left( \int_0^k\frac{\partial g}{\partial k} (z,k) \ud B_z \right) \ud k + g(k,k)\ud B_k	
+\]
+I dont think continuing with this strategy gets us to the desired answer though.
 
+\section{Chapter 5:}
+\begin{NickQuestion}[Proposition 5.1.2]
+	\begin{enumerate}	
+		\item What does $F(e^{-t}B+\sqrt{1-e^{-2t}}B')$ mean? What are $B$ and $B'$? Why is he dropping the subscripts $B_t$ and $B'_t$? I thought this was only notation but it seems that something else is happening as well? It seems like $F$ is being evaluated at $e^{-t}B+\sqrt{1-e^{-2t}}B'$ but this can't be possible since $e^{-t}B+\sqrt{1-e^{-2t}}B' \in \R$ and $F \in L^2(\Omega)$. David Naulart $\href{https://bgsmath.cat/wp-content/uploads/2019/02/Course.pdf}{\text{has this pdf}}$. Page 5 and page 20 have some info. 
+		\item How does \[ E'(|F(e^{-t}B+\sqrt{1-e^{-2t}}B')|^p)  = E|F|^p ?\]  
+		\item Where does \[ E'\left(\exp\left(e^{-t}\lambda B(h)+\sqrt{1-e^{-2t}}\lambda B'(h) -\frac{1}{2}\lambda^2\right)\right) \] come from? 
+	\end{enumerate}
+\end{NickQuestion}
+
+\begin{NickQuestion}
+	Why does Mehler's formula imply that the operator $T_t$ is nonnegative? 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Theorem 5.1.3]
+	There is a $\href{http://www.numdam.org/article/AIHPB_1976__12_2_105_0.pdf}{\text{refrence here}}$ however it is in French. 
+	\begin{enumerate}
+		\item Why is $|T_tF| \le |F|$? All I think that we can say is that \[|T_tF| \le \sum_ne^{-nt}|I_n(f_n)| \le \sum_n |I_n(f_n)|\] and \[ |F| \le \sum_n|I_n(f_n)| \] but this does not mean that \[ |T_t(F)| \le |F|. \]
+		\item Why does $|T_tF| \le |F|$ imply that we my assume that $F$ and $G$ are nonnegative? 
+		\item I think there is some typo in the claim that \[ E(\tilde{E}(F(\hat{B}))G) = E(F(\hat{B})G) \]
+		This is because $E(\tilde{E}(F(\hat{B}))G) \in \R$ while $E(F(\hat{B})G) \in \R^{\Omega}$. I am not sure what the correction should be. 
+	\end{enumerate}
+\end{NickQuestion}
 \end{document}
