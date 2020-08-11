@@ -1046,7 +1046,45 @@ I dont think continuing with this strategy gets us to the desired answer though.
 \begin{NickQuestion}[Lemma 5.14]
 	\begin{enumerate}
 		\item The first line uses Stroock's formula however this can only be used if $F \in \mathbb{D}^{\infty,2}$ and in this lemma we only assume that  $F \in \mathbb{D}^{k,2}$.
+		
 	\end{enumerate}
 \end{NickQuestion}
+
+\begin{NickQuestion}[Theorem 5.3.1]
+	\begin{enumerate}
+		\item On the top of page 81 how do we get 
+		\[
+			E(\langle u, DG, \rangle_H) = - \int_0^\infty E(\langle LT_tu,DG \rangle_H) \ud t ?
+		\]
+		
+			\item How can we show this 
+		\[ 
+		\tilde{E}\left( (D^2G)(e^{-t}B + \sqrt{1-e^{-2t}}\tilde{B}) \right) = \frac{1}{1-e^{-2t}}\tilde{E}\left( \tilde{D}^2(G(e^{-t}B+\sqrt{1-e^{-2t}}\tilde{B})) \right)
+		\]
+	\end{enumerate}
+\end{NickQuestion}
+\textbf{Solution for 1}
+		So we have that $u \in \mathbb{D}^{1,p}(H)$ and so $u=u_s(\omega)$. I believe we can say that $u$ has Weiner Expansion
+		\[
+			u_s = \sum_{n=0}^\infty I_n(f_{n,s})
+		\]
+		with $f_{n,s} \in L^2_s(\R^n)$. Therefore we have 
+		\[
+			T_t(u_s) = \sum_{n=0}^\infty e^{-nt}I_n(f_{n,s})
+		\]
+		and in return we then have using the formula for $L$ on page 78
+		\begin{align*}
+			LT_t(u_s) &= \sum_{n=1}^\infty -ne^{-nt}I_n(f_{n,s})
+			\\ &= \sum_{n=1}^\infty \frac{\ud}{\ud t}e^{-nt}I_n(f_{n,s})
+		\end{align*}
+	Now we integrate to see 
+	\begin{align*}
+\int_0^\infty LT_t(u_s)\ud t &= \int_0^\infty  \sum_{n=1}^\infty\frac{\ud}{\ud t}e^{-nt}I_n(f_{n,s}) \ud t
+\\& =  \sum_{n=1}^\infty I_n(f_{n,s}) [ e^{-nt} ]_0^\infty
+\\& = - \sum_{n=1}^\infty I_n(f_{n,s})  = -u_s
+\end{align*}
+
+	
+
 
 \end{document}
