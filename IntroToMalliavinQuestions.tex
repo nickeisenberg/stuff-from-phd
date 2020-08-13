@@ -1061,6 +1061,16 @@ I dont think continuing with this strategy gets us to the desired answer though.
 		\[ 
 		\tilde{E}\left( (D^2G)(e^{-t}B + \sqrt{1-e^{-2t}}\tilde{B}) \right) = \frac{1}{1-e^{-2t}}\tilde{E}\left( \tilde{D}^2(G(e^{-t}B+\sqrt{1-e^{-2t}}\tilde{B})) \right)
 		\]
+	This is how I am interpreting this. I am guessing that $G(e^{-t}B + \sqrt{1-e^{-2t}}\tilde{B})$ has the following wiener chaos expansion 
+	\begin{align*}
+		G = \sum_{n=0}^\infty I_n(f_n)
+	\end{align*} 
+	where we assume that $\hat{B} = e^{-t}B + \sqrt{1-e^{-2t}}\tilde{B}$ which means 
+	\begin{align*}
+		I_n(f_n) &= \int_0^\infty \cdots \int_0^{z_2} f(z_1,...,z_n)\ud\hat{B}_{z_1}...\ud\hat{B}_{z_n}
+		\\& = \int_0^\infty \cdots \int_0^{z_2} f(z_1,...,z_n)\ud \left(e^{-t}B_{z_1} + \sqrt{1-e^{-2t}}\tilde{B}_{z_1}\right)...\ud \left(e^{-t}B_{z_n} + \sqrt{1-e^{-2t}}\tilde{B}_{z_n}\right)
+	\end{align*}
+	but something does not seem right about this.
 	\end{enumerate}
 \end{NickQuestion}
 \textbf{Solution for 1}
