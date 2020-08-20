@@ -1102,5 +1102,104 @@ I dont think continuing with this strategy gets us to the desired answer though.
 	This assumes that $\rho$ is a symmetric across the y-axis  but this was never assumed to be the case? 
 \end{NickQuestion}
 
+\section{Chapter 6}
 
+\begin{NickQuestion}[page 88]
+	How can we show 
+	\[
+		E\left(1_{\sup_{t \le s \le 1}B_s-B_t \ge \sup_{0 \le s \le t}B_s-B_t} | \mathcal F_t\right) = 2-2\Phi\left( \frac{\sup_{0 \le s \le t}(B_s-B_t)}{\sqrt{1-t}} \right)
+	\]
+	
+The reflection principle states that for a Brownian motion, $B_t$, and if we define $M_t=\sup_{0 \le s \le t}B_s$ then 
+\[
+	P(M_t \ge a) = 2 P(B_t \ge a) = 2 - 2 \Phi(a/\sqrt{t})
+\]
+thus above it is like we are letting 
+\[
+	a:= \sup_{0 \le s \le t}B_s-B_t
+\]
+and 
+\[
+t:= \sqrt{1-t}
+\]
+but this seems to me that Naulart is applying a generalization of the reflection principle that is not stated in the text and I could not find a reference for. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Example 6.1.4]
+	\begin{enumerate} 
+		\item Why does Tanaka's formula imply that $\sup_{x\in \R}\Norm{L_t^x}_p < \infty$?
+		
+		\item Why does 
+		\[
+			E(p_\epsilon'(B_s-B_r+B_r-x | \mathcal F_r)) = p_\epsilon'(B_r-x)
+		\]
+	\end{enumerate}
+
+\end{NickQuestion}
+
+\begin{NickQuestion}[page 91]
+	How can we show 
+	\[
+		\alpha_t = \int_\R \left(\int_0^t \delta_x(B_s)\ud s\right)^2 \ud x = 2 \int_0^t\int_0^v \delta_0(B_v-B_u) \ud u \ud v
+	\]
+\end{NickQuestion}
+\textbf{Solution:}
+I believe we have the following 
+\begin{align*}
+	\int_\R (L_t^x)^2 \ud x & = \int_\R L_t^x L_t^x \ud x
+	\\&= \int_0^t L_t^{B_s} \ud s
+	\\&= \int_0^t \int_0^t \delta_0(B_v-B_s) \ud v \ud s
+	\\& = 2  \int_0^t \int_0^v \delta_0(B_v-B_s) \ud v \ud s
+\end{align*}
+where I think the last equality is by some sort of symmetry argument and the occupation formula, equation (2.17) in the book, is used in second equality.
+
+\begin{NickQuestion}[Use of backward integral on page 94]
+	I believe that there are a series of typos that luckily do not affect the proof. First, $\{B_r-B_s: 0\le s \le r\}$ is not a Brownian motion and I believe he wants to say that $\{\hat{B}_s:=B_r-B_{r-s}: 0\le s \le r\}$ which is a brownian motion. 
+	
+	Next, Naulart mentions that he is calculating $L_r^{B_r-y}$ and $L_r^{B_r+y}$ for $\hat{B}$ the reason he can do this is because 
+	\begin{align*}
+		L_r^{B_r-y} &= \int_0^r \delta_0(B_s-B_r+y) \ud s 
+		\\&= \int_0^r \delta_0(B_r-B_s -y) \ud s
+		\\& = \int_0^r \delta_0(B_r-B_{r-s}-y) \ud s
+		\\& = \int_0^r \delta_0(\hat{B}_s - y ) \ud s
+		\\& = L_r^y(\hat{B})
+	\end{align*}
+where $L_r^y(\hat{B})$ is the local time with respect to $\hat{B}$ which we will denote as $L_r^y$. Similarly we can show that $	L_r^{B_r-y} = L_r^{-y}(\hat{B})$ which we will again denote as $L_r^{-y}$.
+
+Now we apply Tanaka's formula for $\hat{B}$ to get the following
+\begin{align*}
+	L_t^y &= 2(\hat{B}_r-y)_{-}-2(-y)_{-}+2\int_0^r 1_{\{\hat{B}_s < y\}} \ud \hat{B}_s
+	\\& = 2(B_r-y)_{-}-2y+2\int_0^r 1_{\{\hat{B}_s < y\}} \ud \hat{B}_s
+\end{align*}
+where we use the fact that $y>0$ and $\hat{B}_r =B_r$. Now we apply Tanaka's formula again to see
+\begin{align*}
+L_t^{-y} &= 2(\hat{B}_r+y)_+ - (y)_+ - 2\int_0^r 1_{\{\hat{B}_s > -y\}} \ud \hat{B}_s
+\\& = 2(B_r+y)_+ - 2y - 2\int_0^r 1_{\{\hat{B}_s > -y\}} \ud \hat{B}_s
+\end{align*}
+
+Therefore 
+\begin{align*}
+	L_r^{B_r-y} - L_r^{B_r+ y}& = L_r^y - L_r^{-y}
+	\\& = 2(B_r-y)_{-}-2y+2\int_0^r 1_{\{\hat{B}_s < y\}} \ud \hat{B}_s - \left(2(B_r+y)_+ - 2y - 2\int_0^r 1_{\{\hat{B}_s > -y\}} \ud \hat{B}_s \right)
+	\\& = 2(B_r-y)_{-}-2(B_r+y)_+ + 2\int_0^r 1_{\{|\hat{B}_s| < y\}} \ud \hat{B}_s
+	\\&= 2(B_r-y)_{-}-2(B_r+y)_+ + 2\int_0^r 1_{\{|\hat{B}_{r-s}| < y\}} \hat{\ud} B_s
+	\\& =  2(B_r-y)_{-}-2(B_r+y)_+ + 2\int_0^r 1_{\{|B_r-B_s| < y\}} \hat{\ud} B_s
+\end{align*}
+where we use the property of the backward integral that 
+\[
+	\int_0^T u_s \ud \hat{B}_s = \int_0^T u_{T-s} \hat{\ud}B_s
+\]
+and also that $\hat{B}_{r-s} = B_r-B_s$. 
+
+Therefore we have that 
+\begin{align*}
+	\Psi_h(r) &= \int_0^h L_r^{B_r-y} - L_r^{B_r+ y} \ud y
+	\\& = \int_0^h L_r^{y} - L_r^{-y} \ud y
+	\\& = \int_0^h (2(B_r-y)_{-}-2(B_r+y)_+) \ud y + 2 \int_0^r(h-|B_r-B_s|)_+ \hat{\ud}B_s
+\end{align*}
+This is different than on page 94 but the $\int \ud y$ integral wont matter because $h \to 0$ and the $\int \hat{\ud}  B_s$ integral is the same. 
+\end{NickQuestion}
+\begin{NickQuestion}
+	Not sure how the conclusion of the proof of (6.8) proves what we want to show. 
+\end{NickQuestion}
 \end{document}
