@@ -1107,7 +1107,7 @@ I dont think continuing with this strategy gets us to the desired answer though.
 \begin{NickQuestion}[page 88]
 	How can we show 
 	\[
-		E\left(1_{\sup_{t \le s \le 1}B_s-B_t \ge \sup_{0 \le s \le t}B_s-B_t} | \mathcal F_t\right) = 2-2\Phi\left( \frac{\sup_{0 \le s \le t}(B_s-B_t)}{\sqrt{1-t}} \right)
+		E\left(1_{\{\sup_{t \le s \le 1}B_s-B_t \ge \sup_{0 \le s \le t}B_s-B_t\}} | \mathcal F_t\right) = 2-2\Phi\left( \frac{\sup_{0 \le s \le t}(B_s-B_t)}{\sqrt{1-t}} \right)
 	\]
 	
 The reflection principle states that for a Brownian motion, $B_t$, and if we define $M_t=\sup_{0 \le s \le t}B_s$ then 
@@ -1202,4 +1202,56 @@ This is different than on page 94 but the $\int \ud y$ integral wont matter beca
 \begin{NickQuestion}
 	Not sure how the conclusion of the proof of (6.8) proves what we want to show. 
 \end{NickQuestion}
+
+\begin{NickQuestion}[pg 100] $\;$
+	
+	Why does 
+	\[
+		E(\delta_0(B_s^H-B_t^H)) = (2\pi)^{-d/2}|t-s|^{-Hd}
+	\]
+\end{NickQuestion}
+\textbf{Solution for the case when $H=\frac{1}{2}$ and $d=1$ (Brownian Motion)}
+\begin{align*}
+	E\delta_0(B_s-B_t) &= \lim_{\epsilon \to 0} E\left[\frac{1}{2 \pi \epsilon} \exp\left(-\frac{(B_s-B_t)^2}{2\pi \epsilon}\right)\right]
+	\\&= \lim_{\epsilon \to 0}\frac{1}{\sqrt{2\pi(\epsilon + |s-t|)}}
+	\\&= \frac{|s-t|^{-1/2}}{\sqrt{2 \pi}}
+\end{align*}
+where above we just calculate the expectation since $B_s-B_t \sim N(0,s-t)$. I am assuming there is some type of uniform convergence so we can exchange the limit and expected value? 
+
+
+\section{Chapter 7}
+\begin{NickQuestion}[Typos in Prop 7.1.2]
+	I am pretty sure there are several typos in the proof of Prop 7.1.2. We are considering all the measurable $g:(-1,1) \to [0,1]$ such that $\int_{-1}^{1}g(y)\ud y = 0$ but this means that $g=0$ almost every where on $(-1,1)$ which does not seem like that is what we want. Also we then consider 
+	\[
+	\psi(x) = \int_{-\infty}^x g_n(y)\ud y
+	\]
+	which does not exist and I think needs to be 
+	\[
+	\psi(x) = \int_{-1}^x g_n(y)\ud y
+	\]
+	however then the claim is made that 
+	\[
+		\psi(F) = \int_{-1}^F g_n(y)\ud y \to 0
+	\]
+	as $n \to \infty$ because $\int_{-1}^1 g(y) \ud y =0$ but this can only happen when $ F \equiv 1$ which isn't always the case. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[pg 107]
+	Why can we replace $1_{F>x}$ with $1_{F<x}$ in (7.1) on page 106? It says its because the divergence has $0$ expectation but I can't see why that implies the above
+	
+	We have the following 
+	\begin{align*}
+	0&= E\left(\delta\left(\frac{DF}{\Norm{DF}_H^2}\right)\right)
+	\\&=  E\left((1_{\{F>x\}}+1_{\{F\le x\}})\delta\left(\frac{DF}{\Norm{DF}_H^2}\right)\right)
+	\end{align*}
+	and therefore we must have 
+	\[E\left(1_{\{F>x\}}\delta\left(\frac{DF}{\Norm{DF}_H^2}\right)\right) =-E\left(1_{\{F\le x\}}\delta\left(\frac{DF}{\Norm{DF}_H^2}\right)\right)\]
+	which means we cant just replace $1_{\{F>x\}}$ with $1_{\{F<x\}}$ 
+\end{NickQuestion}
+
+\begin{NickQuestion}[bottom of page 109]
+	What is the $q$ in the inequality (7.8) at the bottom of page 109?
+\end{NickQuestion}
+
+
 \end{document}
