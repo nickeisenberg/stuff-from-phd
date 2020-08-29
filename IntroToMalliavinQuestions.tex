@@ -1249,9 +1249,97 @@ where above we just calculate the expectation since $B_s-B_t \sim N(0,s-t)$. I a
 	which means we cant just replace $1_{\{F>x\}}$ with $1_{\{F<x\}}$ 
 \end{NickQuestion}
 
-\begin{NickQuestion}[bottom of page 109]
-	What is the $q$ in the inequality (7.8) at the bottom of page 109?
+\begin{NickQuestion}
+	\begin{enumerate}
+		\item Throughout all the existence of density results, it is claimed that the densities are bounded. Isn't this aways the case? A density needs to satisfy 
+	\[
+		\int p(x) \ud x = 1
+	\]
+	and so $p$ must be bounded almost everywhere and if $p$ is continuous then $p$ is bounded everywhere.
+	
+	\item Also why do we have that the density in Prop 7.2.5 or Theorem 7.3.1 is continuous?
+	
+		\end{enumerate} 
+\end{NickQuestion}
+\textbf{solution to 2:} For the case of prop 7.2.5 I believe that 
+\[
+p(x) = E \left(1_{[F>x]}H_\alpha(F,1)\right)
+\]
+is continuous because $H_\alpha(F,1) \in \mathbb D_\infty$ and $F$ has components that are all integrable and so I believe that it would be a easy result to show that 
+\[
+x \mapsto \int_\Omega 1_{[F>x]}(\omega)H_\alpha(F,1)(\omega) \ud P(\omega)
+\] 
+is a continuous function. This is sort of the same thing as the standard result in real analysis that when we have a function $f \in L^1(\R)$ then 
+\[
+x \mapsto \int_\R 1_{(-\infty,x]}(t)f(t)\ud t
+\]
+is continuous.
+
+\begin{NickQuestion}[page 111]
+	What is the definition of 
+	\[
+		\nabla \varphi * \nabla Q_m (x) 
+	\]
+	since both 	$\nabla \varphi $ and $ \nabla Q_m $ are vectors I do not know that it means to take the convolution between them. 
+	
+	Also is there a subscript missing on the $\partial \varphi$ in 
+	\[
+		\sum_{i=1}^m \int_{\R^m} \partial \varphi(x-y) \partial_i Q_m(y) \ud y
+	\]
+	and if so what should it be? On the next page it says
+	\[
+		\sum_{i=1}^m \int_{\R^m} \partial_{i} \varphi(x-y) \partial_i Q_m(y) \ud y?
+	\]
+
 \end{NickQuestion}
 
+\begin{NickQuestion}
+	There are some detail from the proof of Lemma 7.3.2 that are confusing to me. \begin{enumerate}
+		\item First why are we assuming $p$ is bounded? Theorem 7.3.1 already says that $p$ is bounded and since that is the case isn't it trivial that there exits a $c$ such that
+		\[
+		\Norm{p}_\infty \le c \left( \max_{1 \le i \le m} \Norm{H_{(i)}(F,1)}_p \right)^m
+		\]
+		or is this $c$ above then dependent on $F$ and we do not want that. But either way, what does it mean to assume $p$ to be bounded or not to be bounded? Why would $p$ not be bounded if theorem 7.3.1 already says it is bounded? 
+		
+		\item Why do we have 
+		\[
+			\int_{|z-x| \le \epsilon} |z-x|^{(1-m)q}p(x) \ud x \le C_{m,p}\epsilon^{(p-m)/(p-1)}M
+		\]
+		since they are pulling out the bound $M$ we need to show that 
+		\[ 
+			\int_{|z-x| \le \epsilon} |z-x|^{(1-m)q} \ud x \le C_{m,p}\epsilon^{(p-m)/(p-1)}
+		\]
+		but I dont see why this is going to be true because it seems possible that $(m-1)q \ge m$ which would mean that the integral is infinity. But since it seems that we are arbitrarily choosing $p$ and $q$ we can just choose $q\le m/(m-1)$ which avoids this problem. However I still can't figure out how they get $C_{m,p}\epsilon^{(p-m)/(p-1)}$.
+	\end{enumerate}
+\end{NickQuestion}
+\textbf{solution to 2}
+By polar coordinates and $q = p/(p-1)$ we can say that 
+\begin{align*}
+		\int_{|z-x| \le \epsilon} |z-x|^{(1-m)q} \ud x &= \int_{\mathcal S_{m-1}} \int_0^\epsilon r^{\frac{p(1-m)}{p-1}}r^{m-1} \ud r \ud \sigma
+		\\&=  \int_{\mathcal S_{m-1}} \int_0^\epsilon r^{\frac{1-m}{p-1}} \ud r \ud \sigma
+		\\& = \epsilon^{\frac{p-m}{p-1}}\int_{\mathcal S_{d-1}} \frac{p-1}{p-m} \ud \sigma 
+		\\& =  \epsilon^{\frac{p-m}{p-1}} \sigma(\mathcal S_{m-1})\frac{p-1}{p-m}
+		\\& = \epsilon^{\frac{p-m}{p-1}} C_{m,p}
+\end{align*}
+with $C_{m,p}=\sigma(\mathcal S_{m-1})\frac{p-1}{p-m}$
+
+\begin{NickQuestion}[typo on page 114 (covering  vector field)]
+	There is a typo on the top of page 114. It says that the covering vector field for $F$ is $u=\gamma_FDF$ but it needs to say $u=\gamma_F^{-1}DF$. For example, in the $d=2$ case we have the following 
+	\begin{itemize}
+		\item $DF = (DF^1,DF^2)$
+		\item $D(\varphi(F)) = \partial_1\varphi(F)DF^1 + \partial_2\varphi(F)DF^2$
+		\item $\gamma_F = \left(\langle DF^i, DF^j \rangle\right)_{1 \le i,j \le 2}$
+		\item $ \gamma_F^{-1} = \dfrac{1}{|\gamma_F|}
+		\begin{pmatrix}
+			\langle DF^2, DF^2\rangle\ & -\langle DF^1, DF^2 \rangle\
+			\\ -\langle DF^2, DF^1 \rangle\ & \langle DF^1, DF^1 \rangle\
+		\end{pmatrix}$
+		\item $u := \gamma_F^{-1}(DF^1,DF^2)^T$
+	\end{itemize}
+then from here it is an easy calculation to see that 
+\[
+	\langle D(\varphi(F)), u_k \rangle = \partial_k\varphi(F)
+\]
+\end{NickQuestion}
 
 \end{document}
