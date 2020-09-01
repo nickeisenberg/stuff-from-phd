@@ -1362,10 +1362,10 @@ Now I claim that for
 \[
 	Y_{r,t} =  \int_r^t \sigma'(X_s) \ud B_s + \int_r^t b'(X_s) - \frac{1}{2}(\sigma')^2(X_s) \ud s 
 \]
-that $\exp(Y_{r,t})$ solve \eqref{deq}. By Itos formula we have that 
+that $\exp(Y_{r,t})$ solve \eqref{deq}. By Itos formula with the function $f(x)=\exp(x)$ we have that 
 \begin{align*}
-	\exp(Y_{r,t}) & = \exp(Y_{r,r})  +  \int_r^t \sigma'(X_s)Y_{r,s} \ud B_s + \int_0^t Y_{r,s} \left(\frac{1}{2}(\sigma')^2(X_s)+b'(X_s) -\frac{1}{2}(\sigma')^2(X_s)\right) \ud s
-	\\& = \exp(Y_{r,r})  +  \int_r^t \sigma'(X_s)Y_{r,s} \ud B_s + \int_0^t Y_{r,s} b'(X_s)\ud s
+	\exp(Y_{r,t}) & = \exp(Y_{r,r})  +  \int_r^t \sigma'(X_s)\exp(Y_{r,s}) \ud B_s + \int_0^t \exp(Y_{r,s}) \left(\frac{1}{2}(\sigma')^2(X_s)+b'(X_s) -\frac{1}{2}(\sigma')^2(X_s)\right) \ud s
+	\\& = \exp(Y_{r,r})  +  \int_r^t \sigma'(X_s)\exp(Y_{r,s}) \ud B_s + \int_0^t \exp(Y_{r,s}) b'(X_s)\ud s
 \end{align*}
 and from with we see that $Y_{r,t}$ satisfies \eqref{deq}. However in the text book they say that 
 \[
