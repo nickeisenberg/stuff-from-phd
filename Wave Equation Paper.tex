@@ -185,7 +185,133 @@
 	\end{NickQuestion}
 
 \begin{NickQuestion}[top of page 6]
-	Why does assumption A imply that $\alpha \in (0, 2\wedge d)$? 
+	Why does assumption A imply that $\alpha \in (0, 2\wedge d)$?
+\end{NickQuestion}
+
+\begin{NickQuestion}[page 8]
+	Why do we have the representation (2.3)?
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 2.3]
+	\begin{enumerate}
+		\item Why does $f(cA) = c^{d-\alpha}f(A)$ imply that when $f$ is a density then $f(cx)=c^{-\alpha}f(x)$? 
+	
+		\item 	Does 
+	\[
+		\int_{\R^d}|\xi|^2|\mathcal{F}g(\xi)|^2 \ud \xi = \int_{\R^d} |\nabla g(x)|^2 \ud x ? 
+	\]
+	
+		\item Why does $(\tilde{g}^2*f)(x)=B^{-\alpha}(g^2*f)(B^{-1}x)$. Here is what I have
+			\begin{align*}
+				B^{-\alpha}(g^2*f)(B^{-1}x) &= B^{-\alpha}\int_{\R^d}g^2(y)f\left(\frac{x}{B}-y\right) \ud y
+				\\&= \int_{\R^d}g^2(y)f\left(x-By\right) \ud y
+			\end{align*}
+	since $B^{-\alpha}f\left(\frac{x}{B}-y\right) = f(x-By)$. Then, 
+	\begin{align*}
+		\int_{\R^d}g^2(y)f\left(x-By\right) \ud y &= B^{-d}\int_{\R^d}g^2\left(\frac{u}{B}\right)f(x-u) \ud u
+		\\&= B^{-d/2}\int_{\R^d}\tilde{g}^2\left(u\right)f(x-u) \ud u
+		\\& = B^{-d/2}(\tilde{g}^2*f)(x)
+	\end{align*}
+	and this shows that 
+	\[
+	B^{-d/2}(\tilde{g}^2*f)(x) = B^{-\alpha}(g^2*f)(B^{-1}x)
+	\]
+	
+	\item If I am correct on (3) then 
+	\[
+	\langle \tilde{g}^2*f, \tilde{g}^2 \rangle = B^{d-\alpha} 	\langle g^2*f, g^2 \rangle 
+	\]
+	
+	\item If I am incorrect in (3) then how do we use $(\tilde{g}^2*f)(x)=B^{-\alpha}(g^2*f)(B^{-1}x)$ to get that $\langle \tilde{g}^2*f, \tilde{g}^2 \rangle = B^{-\alpha} 	\langle g^2*f, g^2 \rangle $. We have that 
+	\begin{align*}
+		\langle \tilde{g}^2*f, \tilde{g}^2 \rangle &= \int_{\R^d}  (\tilde{g}^2*f)(x)\tilde{g}^2(x) \ud x
+		\\&=  \int_{\R^d}  B^{-\alpha}(g^2*f)(B^{-1}x)\tilde{g}^2(x) \ud x
+		\\&=  \int_{\R^d}  B^{-\alpha}(g^2*f)(B^{-1}x)B^{-d/2}g^2(B^{-1}x) \ud x
+		\\&= B^{-\alpha - \frac{d}{2}} \int_{\R^d} (g^2*f)(B^{-1}x)g^2(B^{-1}x) \ud x
+		\\&  = B^{-\alpha + \frac{d}{2}} \int_{\R^d} (g^2*f)(u)g^2(u) \ud u
+		\\& = B^{-\alpha + \frac{d}{2}}\langle g^2*f, g^2 \rangle 
+	\end{align*}
+	and this is also different from the paper. 
+\end{enumerate}
 \end{NickQuestion}
 	
+\begin{NickQuestion}[page 11]
+	When $d=3$ we know that $G(t,\cdot)$ is a measure so does $(G(t,\cdot)*p_\epsilon)(x) = \int p_\epsilon(x-y)G(t,\ud y)$?
+\end{NickQuestion}
+
+\begin{NickQuestion}[page 11 typos]
+\begin{enumerate}
+
+	\item on the middle of page you say $d \le 3$ right before (3.6) but I think it need to be $d=3$. 
+
+	\item 	There is a small typo on the bottom of page 11 when defining $L$ and $L_\epsilon$. There is a $\ud x$ in both integrals but there needs to be a $\ud t$. 
+	
+	\item When applying the change of variables to $L_n$ and $L_{n,\epsilon}$ the index on the sum I think should be $\Sigma_n$ not $S_n$. 
+\end{enumerate}
+\end{NickQuestion}
+
+\begin{NickQuestion}
+	How are the equations on the bottom of page 11 proved. For example, using (3.3), we see that 
+	\[
+		L_1(y_1)=\int_0^\infty e^{-t}\int_0^t G(s,y_1) \ud s \ud t
+	\]
+	but according to the equation for $L_n$ on the bottom of page 11 we should also have 
+	\[
+		L_1(y_1) = L(y_1)
+	\]
+	where 
+	\[
+		L(x) = \int_0^\infty e^{-t}G(t,x) \ud t
+	\]
+But it doesnt seem that $	L_1(y_1) = L(y_1)$. For example, consider $d=1$ then we have that $G(t,x) = \frac{1}{2}1_{|x| < t}$ and so 
+\begin{align*}
+		L_1(y_1)&=\int_0^\infty e^{-t}\int_0^t G(s,y_1) \ud s \ud t
+		\\&= \frac{1}{2} \int_0^\infty e^{-t}\int_0^t 1_{\{|y_1| < s \}}\ud s \ud t
+		\\& = \frac{1}{2}\int_0^\infty e^{-t}\int_{|y_1| \wedge t }^t \ud s \ud t
+		\\& = \frac{1}{2}\int_0^\infty e^{-t}(t- (|y_1| \wedge t )) \ud t
+		\\& = \frac{1}{2} \int_{|y_1|}^\infty e^{-t}(t- |y_1|  ) \ud t
+\end{align*}
+However 
+\begin{align*}
+L(y_1) &= \int_0^\infty e^{-t} G(t,y_1) \ud t
+\\&= \frac{1}{2} \int_0^\infty e^{-t} 1_{\{|y_1|<t\}} \ud t
+\\&= \frac{1}{2} \int_{|y_1|}^\infty e^{-t} \ud t
+\end{align*}
+and these do not seem to be equal. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 3.3]
+	What are the details showing 
+	\[
+		\int_{(\R^d)^n} \left[\int_{(\R^d)^n}  \prod_{k=1}^n K(x_k-y_k)L_n(y_1,...,y_n) \ud y  \right]^2 \ud x = \int_{(\R^d)^n}|\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1)...\mu(\ud \xi_n)
+	\]
+	
+	for example suppose that $n=1$ so we want to show 
+	\[
+			\int_{\R^d} \left[\int_{\R^d} K(x-y)L_n(y) \ud y \right]^2 \ud x = \int_{\R^d}|\mathcal{F}L_n(\xi)|^2 \mu(\ud \xi)
+	\]
+	By Plancherels Theorem we have 
+	\begin{align*}
+			\int_{\R^d} \left[\int_{\R^d} K(x-y)L_n(y) \ud y \right]^2 \ud x = 	\int_{\R^d} \left[\mathcal{F}\left(\int_{\R^d} K(\cdot-y)L_n(y) \ud y\right)(\xi) \right]^2 \ud \xi
+	\end{align*}
+	However anyway I continued seemed not to work. I thought we should use the property that $\mathcal{F}(f)\mathcal{F}(g) = \mathcal{F}(f*g)$ and this would give us 
+	\begin{align*}
+	\int_{\R^d} \left[\mathcal{F}\left(\int_{\R^d} K(\cdot-y)L_n(y) \ud y\right)(\xi) \right]^2 \ud \xi & = \int_{\R^d} \mathcal{F}\left(\int_{\R^d} K(\cdot-y)L_n(y) \ud y * \int_{\R^d} K(\cdot-y)L_n(y) \ud y\right)(\xi)  \ud \xi
+	\end{align*}
+	but continuing from this didnt seem to work. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 3.4]
+	\begin{enumerate}
+		\item Why does $\gamma(y_k - y_k') = \int_{\R^d}K(y_k-x_k)K(y_k'-x_k)\ud x_k$. We know that $\gamma = K*K$ so 
+		\begin{align*}
+			\gamma(y_k - y_k') &= \int_{R^d} K(y_k-y_k'-x_k)K(x_k) \ud x_k
+			\\&= \int_{R^d} K(y_k-u)K(u-x_k) \ud u
+		\end{align*}
+		by letting $u= y_k' +x_k $ 
+		
+		\item Where are the first and second equalities coming from?
+	\end{enumerate}
+\end{NickQuestion}
+
 \end{document}
