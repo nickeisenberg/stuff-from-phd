@@ -315,7 +315,46 @@ and these do not seem to be equal.
 \end{NickQuestion}
 
 \begin{NickQuestion}[Lemma 3.6 page 14]
-	How do we get this inequality right above equation (3.13)?
+	How do we get the inequality right above equation (3.13)?
 \end{NickQuestion}
 
+\begin{NickQuestion}[page 14]
+	How does (1.22) imply the scaling property (3.15)?
+\end{NickQuestion}
+
+\begin{NickQuestion}[Proof of Theorem 3.1]
+	
+		In the first line of the proof of Theorem 3.1 it says that by theorem 2.2 it suffices to show that 
+		\[
+			\sum_{n \ge 0} \theta^nn!\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal H^{\otimes n}}^2 < \infty 
+		\]
+		but this is not quite true since Theorem 2.2 says we need 
+		\[
+			\sum_{n \ge 0} \theta^nn!\Norm{\tilde{f}_n(\cdot,x,t)}_{\mathcal H^{\otimes n}}^2 < \infty 
+		\]
+		for every $x \in \R^d$. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Proof of Theorem 4.1]
+\begin{enumerate}
+	\item I am confused about the first line of the proof? Why does 
+	\[
+	\mathbb{E}(|u(t,x)|^2) = \sum_{n \ge 0} \theta^nn!\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal H^{\otimes n}}^2
+	\]
+	According to theorem 2.2 it should be 
+	\[
+			\mathbb{E}(|u(t,x)|^2) = \sum_{n \ge 0} \theta^nn!\Norm{\tilde{f}_n(\cdot,x,t)}_{\mathcal H^{\otimes n}}^2
+	\]
+	but then the rest of this proof would be incorrect since te very next line you use the scaling property for $\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal H^{\otimes n}}^2$. 
+	\item 	In part (iii) there is a scaling property used for $\Norm{\tilde{f}_n(\cdot,x,t)}_{\mathcal H^{\otimes n}}^2$ but a scaling property has never been proved for this, only $\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal H^{\otimes n}}^2$. You said that by the scaling property that 
+	\[
+			\mathbb{E}(|u(t,x)|^2) = \sum_{n \ge 0} \theta^nn!\Norm{\tilde{f}_n(\cdot,x,t)}_{\mathcal H^{\otimes n}}^2 =  \sum_{n \ge 0} \theta^nn!t^n\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal H^{\otimes n}}^2
+	\]
+	but this doesnt seem correct since if this is supposed to be true for every $x \in \R^d$ then this would mean that 
+	\[
+	\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal H^{\otimes n}}^2= 	t^n\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal H^{\otimes n}}^2
+	\]
+	which is not the same as the scaling property (3.15). 
+\end{enumerate}
+\end{NickQuestion}
 \end{document}
