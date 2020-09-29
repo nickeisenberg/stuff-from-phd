@@ -382,4 +382,45 @@ Also I see how $u_i \in (-\infty,\infty)$  shows that $\textbf{s} \in [0,t]^n<$ 
 \begin{NickQuestion}[page 29]
 	Three centered lines starting with $\rho(\mathcal{F}f)$ 
 \end{NickQuestion}
+
+\begin{NickQuestion}
+	I might have something that shows that 
+	\[
+		H(\xi) := \int_{\R^d} \dfrac{h(\xi+\eta)h(\eta)}{\sqrt{1+|\xi + \eta|^2}\sqrt{1+|\eta|^2}} \ud \eta
+	\]
+	is even if and only if $h$ is even. 
+	
+	First suppose that $h$ is even. Then, 
+	\begin{align*}
+			H(-\xi) &= \int_{\R^d} \dfrac{h(-\xi+\eta)h(\eta)}{\sqrt{1+|-\xi + \eta|^2}\sqrt{1+|\eta|^2}} \ud \eta
+			\\&= \int_{\R^d} \dfrac{h(\xi-\eta)h(\eta)}{\sqrt{1+|\xi - \eta|^2}\sqrt{1+|\eta|^2}} \ud \eta
+			\\&= \int_{\R^d} \dfrac{h(\xi+u)h(-u)}{\sqrt{1+|\xi +u|^2}\sqrt{1+|-u|^2}} \ud u
+			\\& = \int_{\R^d} \dfrac{h(\xi+u)h(u)}{\sqrt{1+|\xi +u|^2}\sqrt{1+|u|^2}} \ud u
+			\\& = H(\xi)
+	\end{align*}
+and so $H$ is even. 
+
+Now suppose that $h$ is not even. Then,
+\begin{align}
+		H(-\xi) &= \int_{\R^d} \dfrac{h(-\xi+\eta)h(\eta)}{\sqrt{1+|-\xi + \eta|^2}\sqrt{1+|\eta|^2}} \ud \eta \nonumber
+		\\&= -\int_{\R^d} \dfrac{h(\xi+u)h(u+2\xi)}{\sqrt{1+|\xi + u|^2}\sqrt{1+|u+2\xi|^2}} \ud \eta \label{cont1}
+\end{align}
+where above we use the substitution $-\xi +\eta = \xi +u$. Recall that our problem deals with looking at 
+\[
+	\sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d} \mathcal{F}{f}(\xi) \left[ \int_{\R^d} \dfrac{h(\xi+\eta)h(\eta)}{\sqrt{1+|\xi + \eta|^2}\sqrt{1+|\eta|^2}} \ud \eta \right] \ud \xi
+\]
+where $\mathcal{F}{f}(\cdot)$ is non-negative and non-negative definite. Since it is non-negative we can restrict our choices of $h$ to also be non-negative and in particular we have that 
+\[
+	\int_{\R^d} \dfrac{h(\xi+u)h(u+2\xi)}{\sqrt{1+|\xi + u|^2}\sqrt{1+|u+2\xi|^2}} \ud \eta \ge 0
+\]
+but then this means that 
+\begin{align}
+	-\int_{\R^d} \dfrac{h(\xi+u)h(u+2\xi)}{\sqrt{1+|\xi + u|^2}\sqrt{1+|u+2\xi|^2}} \ud \eta \le 0. \label{cont2}
+\end{align}
+But \eqref{cont1} and \eqref{cont2} then implies that 
+\[ 
+	H(-\xi) \le 0
+\]
+and since we assume $h \ge 0$ then $H(\xi) \ge 0$ for all $\xi \in \R^d$ and this mean $H(\xi)=0$ which can not always be the case. Thus we must have $h$ to be even in order to get a non-zero $H(\cdot)$. 
+\end{NickQuestion}
 \end{document}
