@@ -226,4 +226,51 @@ Does the $_tD_+^\theta$ operator commute with the Fourier transform?
 \end{enumerate}
 \end{NickQuestion}
 
+\begin{NickQuestion}[Proof of Lemma 4.11]
+	\begin{enumerate}
+		\item In the beginning of the proof it says that since $\Delta$ and $\delta$ are $0$ and $1$ respectively then Theorem 1.3 implies that for all $0<x<1$ that... But this is not a Theorem from this paper. Which paper is this theorem found in? 
+		\item Is (4.31) missing a $1/\pi$. Also should there be a $\pi$ in the power of the $e$ in the following line. We have the following formulas 
+			\begin{itemize}
+				\item $\Gamma(1+z)=z \Gamma(z)$
+				\item $ \sin(\pi x) = \dfrac{\pi}{-x \Gamma(x) \Gamma(-x)} \implies \sin(\pi k \theta) = \dfrac{\pi}{-k \theta \Gamma(k \theta) \Gamma(-k \theta)}$
+			\end{itemize}
+		and using these we see that 
+		\begin{align*}
+		\sum_k 	\frac{(-1)^k}{k!}\frac{\Gamma(k+1)}{\Gamma(-k\theta)\Gamma(1+k\theta)} x^{k/\theta} &= \sum_k \frac{-(-1)^k}{\pi}\frac{\pi}{-k\theta\Gamma(-k\theta)\Gamma(k\theta)} x^{k/\theta}
+			\\& =\sum_k \frac{-(-1)^k}{\pi}\sin(\pi k \theta) x^{k/\theta}
+			\\& =-\frac{1}{\pi}\text{IM} \left(\sum_k (-1)^ke^{\pi k \theta i} x^{k/ \theta} \right)
+			\\& = -\frac{1}{\pi} \text{IM} \frac{1}{1+e^{\pi \theta i}x^{1/ \theta}}
+		\end{align*}
+	I am not sure if there is a easy way to find the imaginary part and my wolfram subscription ran out so I can't use that. The same problem happens with the next group of centered equations on the same page.  
+	\end{enumerate}
+\end{NickQuestion}
+
+\begin{NickQuestion}[Proof lemma 4.12]
+	\begin{enumerate}
+		\item There is a small typo, right above where it says part(b), it should be $H^{2,0}_{1,2}$. Details for part $a$. We want to show that
+		\[
+			H^{2,1}_{2,3}\left(x^2 \bigg\vert \begin{matrix} (d,2) & (\mu,\theta) &
+			\\ (d/2,1) & (1,1) & (1+d,2) \end{matrix} \right) = -2 H^{2,0}_{1,2}\left(x^2 \bigg\vert \begin{matrix} (\mu,\theta) &
+			\\ ((d+1)/2,1) & (1,1)  \end{matrix} \right) 
+		\]
+		We have for the left hand side, just considering the $H^{21}_{23}$ part of $H^{2,1}_{2,3}$
+			\begin{align*}
+	H^{21}_{23}\left(x^2 \bigg\vert \begin{matrix} (d,2) & (\mu,\theta) &
+	\\ (d/2,1) & (1,1) & (1+d,2) \end{matrix} \right) &= \dfrac{\Gamma(\frac{d}{2}+s)\Gamma(1+s)\Gamma(1-d-2s)}{\Gamma(\mu+\theta s)\Gamma(1-1-d-2s)}
+	\\&= \dfrac{\Gamma(\frac{d}{2}+s)\Gamma(1-d-2s)}{\Gamma(-d-2s)} * \dfrac{\Gamma(1+s)}{\Gamma(\mu+\theta s)}
+	\\&= -2\dfrac{\Gamma(1+d/2+s)\Gamma(1+s)}{\Gamma(\mu+\theta s)}
+	\\& = -2H^{20}_{12}\left(x^2 \bigg\vert \begin{matrix} (\mu,\theta) &
+	\\ ((d+2)/2,1) & (1,1)  \end{matrix} \right)
+			\end{align*}
+			
+	\item There is a typo in part (b), from the definition of $f$ and $H$ we need 
+	\begin{align*}
+		f_{d+1,\mu,\theta}(x) &= x^{-(d+1)} H^{2,0}_{1,2}\left(x^2 \bigg\vert \begin{matrix} (\mu,\theta) &
+		\\ ((d+1)/2,1) & (1,1)  \end{matrix} \right) 
+		\\ & =  x^{-(d+1)} \frac{1}{2 \pi i} \int_{L_{i \gamma \infty}}\ud s \dfrac{\Gamma((d+1)/2+s)\Gamma(1+s)}{\Gamma(\mu + \theta s)}
+	\end{align*}
+	but this does not change anything since all the integral manipulations had to do with $x$ not $s$. 
+	\end{enumerate}
+\end{NickQuestion}
+
 \end{document}
