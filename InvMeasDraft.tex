@@ -366,27 +366,6 @@ Several examples of admissible weights are
 	\item $\rho(x) = (1+|x|^a)^{-1}, \; a>d$.
 \end{enumerate}
 
-\bigskip
-\textcolor{magenta}{Show that why the above two examples are admissible weights by giving more explicit form of the constant $C_\rho(T)$.
-I would expect that for the second example, $a$ can be any positive number.
-The key property for being admissible is \eqref{E:aw}, let's see if we can remove the $L^1(\R^d)$ condition in order 
-to include the case $\rho\equiv 1$.} 
-
-\textcolor{blue}{I have an explicit formula for the first admissible weight. But I don't believe a nice closed form exists for the second admissible weight. I tried using mathematica to get a nice closed form for $C_\rho(T)$ for general $a>d$. For exmaple, I tried calculating the integral 
-	\[
-		\int_{\R}\frac{\exp \left(-|y-x|^2/(2t)\right)}{1+|y|^a} \ud y
-	\]  
-for general $a>1$, $t>0$ and $x\in \R$ but mathematica could not solve this. One thing we notice is that if we assume the admissible weight property is true for this example, in other words assume that 
-	\[
-		\int_{\R}\frac{\exp \left(-|y-x|^2/(2t)\right)}{1+|y|^a} \ud y \le \sqrt{2 \pi t}C_\rho(T)\rho(x)
-	\]
-then since $\rho(0)=(1+|0|^a)^{-1}=1$ then we must have that 
-	\[
-		C_\rho(T) \ge  \frac{1}{\sqrt{2 \pi t}}	\int_{\R}\frac{\exp \left(-|y|^2/(2t)\right)}{1+|y|^a} \ud y
-	\]
-but again in this situation, mathematica was unable to calculate when $x=0$, $t>0$ and $a>1$. However, when let $t>0$, $x=0$ and $a$ be an even integer, then mathematica can calculate the integral however it can't calculate for a arbitrary $a=2n$, only when you specifically let $a=2$ or $a=4$ etc. But the resulting answer is very ugly. I will email you a screenshot of the mathematica notebook showing you what I mean. Lastly, I believe that we need $\rho$ to be integrable since $\Norm{\rho}_{L^1(\R^d)}$ appears in \eqref{T:Moment} and the proof of \eqref{L:Moments}.}
-\bigskip
-
 For the remainder of this section, we focus ourselves on \eqref{E:gspde} with initial condition $\varphi \in L^2_\rho$,
 namely the following stochastic heat equation. 
 \begin{equation}
@@ -413,8 +392,7 @@ a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \eqref{A:ic
 	\begin{align}
 		\label{E:RhoDom}
 		\exp\left(-a|x|^2\right)\le C_a\: \rho(x),\qquad \text{for all $x\in\R^d$.}
-	\end{align}
-	\textcolor{magenta}{(Please demonstrate \eqref{E:RhoDom}.)} 
+	\end{align} 
 	Then by the Cauchy-Schwatz inequality, 
 	\begin{align*}
 		\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|\ud x
@@ -556,9 +534,6 @@ Throughout this and next section may need to assume either one or both of the fo
 
 \begin{assumptions} $\;$
 	\begin{enumerate}[(i)]
-		\item \begin{equation} 
-					\int_{\R^d}\ud x \: \rho(x)\big(G(t_0,\cdot)*|\mu|)(x) \big)^2 < \infty \quad \text{for any $t_0 >0$} \label{A:gicon} 
-				\end{equation}
 				
 		\item \textcolor{blue}{\begin{equation} 
 				\sup_{x\in \R^d}	\big(G(t,\cdot)*|\mu|)(x) \big) < K(t), \quad \forall t>0 \text{ and } K(t)\in \mathbb N \label{A:newgicon}
@@ -647,7 +622,8 @@ satisfies the property that
 \end{align*}
 \end{lemma}
 
-\begin{proof} \textcolor{blue}{We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
+\begin{proof} \textcolor{blue}{
+We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
 \begin{align*}
 \E |u(t_0,\cdot)|_\rho^2 &= \int_{\R^d}\ud x \: \Norm{u(t_0,x)}_2^2\rho(x)
 \\& \le C  \int_{\R^d}\ud x \: \big(1+(|\mu|*G(t_0,\cdot)(x))\big)^2\rho(x) 
@@ -665,13 +641,12 @@ which shows that $u(t_0,x)\in L^2_\rho$ almost surely for any admissible weight.
 which follows from an extension of moment estimates \eqref{E:mb0} for random initial conditions.We now continue by again applying the moment estimates.
 \begin{align*}
 \E |v(t,\cdot)|_\rho^2 & \le C \int_{\R^d} \bigg( 1+\bigg( \big(\big[1+(\mu*G(t_0,\circ))\big](\cdot) * G(t,\cdot)\big)(x) \bigg) \bigg)^2\rho(x) \: \ud x
-\\& \le C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0,\circ))(\cdot) * G(t,\cdot)\big](x) \bigg) \bigg)^2\rho(x) \: \ud x
-\\& = C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0+t,\cdot)) \big](x) \bigg) \bigg)^2\rho(x) \: \ud x.
+\\& = C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0,\circ))(\cdot) * G(t,\cdot)\big](x) \bigg) \bigg)^2\rho(x) \: \ud x
 \end{align*}
 Now an application of \eqref{A:newgicon} gives us
 \begin{align*}
 \E |v(t,\cdot)|_\rho^2 &\le C \int_{\R^d} \bigg( 1+\bigg( 2+K(t_0) \bigg) \bigg)^2\rho(x) \: \ud x
-\\&= C\bigg( 1+\bigg( 2+K(t_0) \bigg) \bigg)^2 \Norm{\rho}_{L^1{\R^d}}
+\\&= C\bigg( 3 +K(t_0) \bigg)^2 \Norm{\rho}_{L^1{\R^d}}
 \end{align*}
 which is true for every $t>0$. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$. 
 }
@@ -686,7 +661,7 @@ which is true for every $t>0$. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 
 	\end{align*}
 	Recall from Lemma \ref{L:Moments} that $u^\mu(t_0,x) \in L^2_{\hat\rho}(\R^d)$ for any $t_0 >0$ and any
 	admissible weight $\hat{\rho}$. Then there exists an invariant measure for the laws of the solutions to
-	\eqref{E:gspde} in $L^2_\rho$ for $t>l>0$. In particular, for any $\delta>0$ there exists a measure that is
+	\eqref{E:gspde} in $L^2_\rho$ for $t>l>0$. In particular, for any $l>0$ there exists a measure that is
 	invariant for $\{\mathscr L (u^\mu(t,\cdot))\}_{t>l}$ where $u$ is the solution to \eqref{E:gspde} with
 	initial measure $\mu$.
 \end{theorem}
