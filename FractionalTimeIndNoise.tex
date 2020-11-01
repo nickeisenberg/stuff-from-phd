@@ -127,4 +127,17 @@ and so
 		\mathcal{F}Y_{\alpha, \beta, \gamma, d}(t, \cdot)(c\xi) = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^\beta |c\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}
 \]
 but I still don't see how to handle the $c$. 
+
+\bigskip
+\textcolor{magenta}{
+Here is how one should proceed:
+\begin{align*}
+    \mathcal{F}Y_{\alpha, \beta, \gamma, d}(t, \cdot)(c\xi) & = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^\beta |c\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)} \\
+                                                            & = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^\beta c^\alpha |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}\\
+							    & = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu (tc^{\frac{\alpha}{\beta}})^\beta |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}\\
+							    & =c^{\frac{\alpha}{\beta}(1-\gamma-\beta)} (tc^{\frac{\alpha}{\beta}})^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu (tc^{\frac{\alpha}{\beta}})^\beta |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}\\
+							    & =c^{\frac{\alpha}{\beta}(1-\gamma-\beta)} \mathcal{F}Y_{\alpha, \beta, \gamma, d}\left(c^{\frac{\alpha}{\beta}}t, \cdot\right)(c\xi) 
+\end{align*}
+Please check if this scaling reduces to heat and wave equations correctly.}
+
 \end{document}
