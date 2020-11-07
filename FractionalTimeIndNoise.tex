@@ -173,7 +173,7 @@
 \begin{document}
 
 \begin{NickQuestion}
-In the Wave equation paper you showed that for the Greens function, we have that 
+In the Wave equation paper you showed that for the Greens function, we have that
 \[
 	\mathcal{F}G(t,\cdot)(\xi)=\frac{\sin(t |\xi|)}{|\xi|}
 \]
@@ -182,7 +182,7 @@ and so we see that
 	\mathcal{F}G(t,\cdot)(c\xi) = \frac{1}{c}\mathcal{F}(ct, \cdot)(\xi)
 \]
 
-However in the Fractional SPDE paper the greens function is more complicated and we have that 
+However in the Fractional SPDE paper the greens function is more complicated and we have that
 
 \begin{align*}
 	\mathcal{F}Y_{\alpha, \beta, \gamma, d}(t, \cdot)(\xi) &= t^{\beta + \gamma -1} E_{\beta, \beta + \gamma}(-2^{-1}\nu t^\beta |\xi|^\alpha)
@@ -191,23 +191,23 @@ However in the Fractional SPDE paper the greens function is more complicated and
 	\\&= t^{\beta + \gamma -1} \frac{1}{2 \pi i} \int_L \mathcal{H}^{1\;1}_{1\;2}(s) \left(2^{-1}\nu t^\beta |\xi|^\alpha\right)^{-s} \ud s
 \end{align*}
 
-And so we see that 
+And so we see that
 \[
 \mathcal{F}Y_{\alpha, \beta, \gamma, d}(t, \cdot)(c\xi) =	t^{\beta + \gamma -1} \frac{1}{2 \pi i} \int_L \mathcal{H}^{1\;1}_{1\;2}(s) \left(2^{-1}\nu t^\beta |c\xi|^\alpha\right)^{-s} \ud s
 \]
 
-However I am unsure how to handle the constant, $c$, on the inside so we can get a nice scaling property like we do in the Wave Equation paper. 
+However I am unsure how to handle the constant, $c$, on the inside so we can get a nice scaling property like we do in the Wave Equation paper.
 
-Also, instead of using the Fox-H function we can just say 
+Also, instead of using the Fox-H function we can just say
 \begin{align*}
 		\mathcal{F}Y_{\alpha, \beta, \gamma, d}(t, \cdot)(\xi) &= t^{\beta + \gamma -1} E_{\beta, \beta + \gamma}(-2^{-1}\nu t^\beta |\xi|^\alpha)
 		\\&= t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^\beta |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}
 \end{align*}
-and so 
+and so
 \[
 		\mathcal{F}Y_{\alpha, \beta, \gamma, d}(t, \cdot)(c\xi) = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^\beta |c\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}
 \]
-but I still don't see how to handle the $c$. 
+but I still don't see how to handle the $c$.
 \end{NickQuestion}
 
 \bigskip
@@ -218,7 +218,7 @@ Here is how one should proceed:
                                                             & = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^\beta c^\alpha |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}\\
 							    & = t^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu (tc^{\frac{\alpha}{\beta}})^\beta |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}\\
 							    & =c^{\frac{\alpha}{\beta}(1-\gamma-\beta)} (tc^{\frac{\alpha}{\beta}})^{\beta + \gamma -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu (tc^{\frac{\alpha}{\beta}})^\beta |\xi|^\alpha\right)^k}{\Gamma\left(\beta k + (\beta + \gamma)\right)}\\
-							    & =c^{\frac{\alpha}{\beta}(1-\gamma-\beta)} \mathcal{F}Y_{\alpha, \beta, \gamma, d}\left(c^{\frac{\alpha}{\beta}}t, \cdot\right)(c\xi) 
+							    & =c^{\frac{\alpha}{\beta}(1-\gamma-\beta)} \mathcal{F}Y_{\alpha, \beta, \gamma, d}\left(c^{\frac{\alpha}{\beta}}t, \cdot\right)(c\xi)
 \end{align*}
 Please check if this scaling reduces to heat and wave equations correctly.}
 
@@ -226,20 +226,23 @@ Please check if this scaling reduces to heat and wave equations correctly.}
 \begin{NickQuestion}
 	In the wave equation paper with Xia Chen you said that that fundamental solution to the SPDE
 \begin{equation}
-\begin{cases}
-\dfrac{\partial^2 u}{\partial t^2}(t,x)-\frac{1}{2}\Delta u(t,x) = \sqrt{\Theta}u(t,x)\dot W(x) & \text{$x\in \R^d$ , $t>0$} \\
-u(0,\cdot) = 1  & 
-\\ u_t(0,\cdot) = 0
-\end{cases}  \label{wspde}
-\end{equation} 
-and the mild solution is defined to be 
-\begin{equation} \label{weqs}
-u(t,x) = 1 + \sqrt{\Theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y \right) \ud s 
+    \label{wspde}
+    \begin{cases}
+	\dfrac{\partial^2 u}{\partial t^2}(t,x)-\frac{1}{2}\Delta u(t,x) = \sqrt{\Theta}u(t,x)\dot W(x) & \text{$x\in \R^d$ , $t>0$} \\
+	u(0,\cdot) = 1                                                                                  &                            \\
+	u_t(0,\cdot) = 0
+    \end{cases}
 \end{equation}
-but for general initial conditions for the wave equation we have the solution to be 
+and the mild solution is defined to be
+\begin{equation} \label{weqs}
+u(t,x) = 1 + \sqrt{\Theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y \right) \ud s
+\end{equation}
+but for general initial conditions for the wave equation we have the solution to be
 
-\begin{align}u(t,x) = \dfrac{\partial}{\partial t} \int_{\R^d}G(t-s,x-y)u(0,y) \ud y &+ \int_{\R^d}G(t-s,x-y)u_t(0,y) \ud y \nonumber
-\\& + \sqrt{\Theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s \label{gweqs}
+\begin{align}
+    \label{gweqs}
+    u(t,x) = \dfrac{\partial}{\partial t} \int_{\R^d}G(t-s,x-y)u(0,y) \ud y &+ \int_{\R^d}G(t-s,x-y)u_t(0,y) \ud y \nonumber \\
+									    & + \sqrt{\Theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s
 \end{align}
 
 But when the initial conditions are such as in \ref{wspde} then the first two integral in \ref{gweqs} are $1$ and $0$ respectively and so we arrive at \ref{weqs}.
@@ -247,41 +250,64 @@ But when the initial conditions are such as in \ref{wspde} then the first two in
 In the fractional SPDE
 \begin{equation}
 \begin{cases}
-\left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\rho(u(t,x))\dot W(x) \right]& \text{$x\in \R^d$ , $t>0$} \\
-u(0,\cdot) = \mu  & \beta \in (0,1]
-\\ u(0,\cdot) = \mu_0, \quad u_t(0,\cdot) = \mu_1 & \beta \in (1,2]
+    \left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\rho(u(t,x))\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
+    u(0,\cdot) = \mu                                                                                                       & \beta \in (0,1]            \\
+    u(0,\cdot) = \mu_0, \quad u_t(0,\cdot) = \mu_1                                                                         & \beta \in (1,2]
 \end{cases}  \label{fspde}
-\end{equation} 
-and we define 
+\end{equation}
+and we define
 \[
-J_0(t.x) = \begin{cases}
-						(Z(t,\cdot)*\mu)(x) & \beta \in (0,1]
-						\\ 	(Z^*(t,\cdot)*\mu_0)(x) +  (Z(t,\cdot)*\mu_1)(x) & \beta \in (0,1]
-				\end{cases}	
+J_0(t.x) =
+\begin{cases}
+    (Z(t,\cdot)*\mu)(x)                              & \beta \in (0,1] \\
+    (Z^*(t,\cdot)*\mu_0)(x) +  (Z(t,\cdot)*\mu_1)(x) & \beta \in (0,1]
+\end{cases}
 \]
 and
-\[			
+\[
 I(t,x) \iint_{[0,t] \times \R} Y(t-s, x-y) \rho (u(s,y)) W(\delta y) \ud s
 \]
-and the general solution for \ref{fspde} is 
+and the general solution for \ref{fspde} is
 \begin{align}
 u(t,x) = J_0(t,x) + I(t,x) \label{feqs}
 \end{align}
 
 My question is that if we consider the following fractional spde
- \begin{equation}
- \begin{cases}
- \left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\rho(u(t,x))\dot W(x) \right]& \text{$x\in \R^d$ , $t>0$} \\
- u(0,\cdot) = 1  & \beta \in (0,1]
- \\ u(0,\cdot) = 1, \quad u_t(0,\cdot) = 0 & \beta \in (1,2]
- \end{cases}  \label{fspde1}
- \end{equation} 
- then can we calculate $J_0(t,x)$? More specifically is $J_0(t,x) = 1$ in this case? The wave equation paper worked out nicely because in that paper $J_0(t,x) =1$ and so the solution was able to be written as \ref{weqs}. The $1$ allows us to easily do the Piccard iteration to get equation (2.3) from the Wave equation paper with Xia Chen. 
- 
- So if our solution can not be written as 
- \[
- u(t,x) = 1 + I(t,x)
- \] 
- I am not sure at the moment how we can come up with an expression for the $f_n's$ in the Weiner Expansion like you did in equation (2.3) in the paper with Xia Chen. 
+\begin{equation}
+    \label{fspde1}
+    \begin{cases}
+	\left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\rho(u(t,x))\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
+	u(0,\cdot) = 1                                                                                                         & \beta \in (0,1]            \\
+	u(0,\cdot) = 1, \quad u_t(0,\cdot) = 0                                                                                 & \beta \in (1,2]
+    \end{cases}  
+\end{equation}
+then can we calculate $J_0(t,x)$? More specifically is $J_0(t,x) = 1$ in this
+case? The wave equation paper worked out nicely because in that paper
+$J_0(t,x) =1$ and so the solution was able to be written as \ref{weqs}. The
+$1$ allows us to easily do the Piccard iteration to get equation (2.3) from
+the Wave equation paper with Xia Chen.
+
+So if our solution can not be written as
+\[
+    u(t,x) = 1 + I(t,x)
+\]
+I am not sure at the moment how we can come up with an expression for the $f_n's$ in the Weiner Expansion like you did in equation (2.3) in the paper with Xia Chen.
 \end{NickQuestion}
+
+Hi, Nick, here is the answer:
+
+Notice that, by Theorem 4.1 of my paper,
+\begin{align*}
+    (Z_{\alpha,\beta,\gamma,d}(t,\cdot)*1)(x) & = \calF Z_{\alpha,\beta,\gamma,d}(t,\cdot)(0)  \\
+                                              & = t^{\Ceil{\beta}-1} E_{\beta,\Ceil{\beta}}(0) \\
+                                              & = \frac{ t^{\Ceil{\beta}-1} }{\Gamma(\Ceil{\beta})}.
+\end{align*}
+Hence, when $\beta\in(0,1]$, we see that $(Z_{\alpha,\beta,\gamma}(t,\cdot)*1)(x)=1$.
+When $\beta\in (1,2]$, 
+\begin{align*}
+    (Z_{\alpha,\beta,\gamma,d}^*(t,\cdot)*1)(x) & = \calF Z_{\alpha,\beta,\gamma,d}^*(t,\cdot)(0) \\
+                                                & = E_{\beta}(0)                     \\
+                                                & = \frac{1}{\Gamma(1)} = 1.
+\end{align*}
+Hence, under the initial conditions given by \eqref{fspde1}, $J_0(t,x)\equiv 1$.
 \end{document}
