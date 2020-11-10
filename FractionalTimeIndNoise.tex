@@ -310,4 +310,53 @@ When $\beta\in (1,2]$,
                                                 & = \frac{1}{\Gamma(1)} = 1.
 \end{align*}
 Hence, under the initial conditions given by \eqref{fspde1}, $J_0(t,x)\equiv 1$.
+
+\begin{NickQuestion}[Scaling Property]
+	Suppose that $\mu(\ud \xi) = \varphi(\xi)\ud \xi$ and $\varphi$ satisfies $\varphi(cx) = c^{-(d-\Delta)}$ for some $\Delta \in (0,d)$ and for any $c>0$. Also recall that 
+	\[
+		\mathcal{F}Y(ct,\cdot)(\xi) = c^{\beta+\gamma -1}\mathcal{F}Y(t,\cdot)(t^{\beta/\alpha} \xi). 
+	\]
+	Then 
+	\[
+		\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = t^{[2(\beta + \gamma -1)+2-\beta \Delta / \alpha]n} \Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+	\]
+\textbf{Proof:} 
+\begin{align*}
+\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
+\end{align*}
+where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$
+\begin{align*}
+ & \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2 \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y(t-t_n,\cdot)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y(t_2-t_1,\cdot)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+ \\&= t^{2n(\beta+\gamma-1)}\int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+  \\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+  \\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-\beta/\alpha}\vec{\xi})t^{-nd\beta/\alpha}\ud \vec{\xi}
+  \\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+  \\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi} 
+  \\&=  t^{[2(\beta+\gamma-1)+2 - \beta \Delta / \alpha]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+\end{align*}
+\end{NickQuestion}
+\begin{NickQuestion}[Guess for the constant (1.20) from the Wave Equation Paper]
+	In the wave equation paper, the constant (1.20) was 
+\[	
+C =	\begin{cases}
+		\dfrac{4-\alpha}{3-\alpha} & \text{under Assumption A}
+		\\ \\ \dfrac{4-d}{3-d} & \text{under Assumption B or C}
+	\end{cases}
+\]
+I believe in the fractional paper the constant will be 
+\[
+	\begin{cases}
+		\dfrac{2(\beta+\gamma-1)+2 - \beta \Delta / \alpha}{2(\beta+\gamma-1)+1 - \beta \Delta / \alpha} & \text{under Assumption A}
+		\\ \\ \dfrac{2(\beta+\gamma-1)+2 - \beta d/ \alpha}{2(\beta+\gamma-1)+1 - \beta d/ \alpha} & \text{under Assumption B or C}
+	\end{cases}
+\]
+I think this because in the wave equation paper where we use $(4-\Delta)$ this gets replaced by $(2(\beta+\gamma-1)+2 - \beta \Delta / \alpha)$ and thus we can guess that 
+\[
+	\begin{cases}
+		4- \Delta \quad  \to \quad  2(\beta+\gamma-1)+2 - \beta \Delta / \alpha
+		\\ 3 - \Delta \quad  \to \quad 2(\beta+\gamma-1)+1 - \beta \Delta / \alpha
+	\end{cases}
+\]
+Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces to the wave equation. 
+\end{NickQuestion}
 \end{document}
