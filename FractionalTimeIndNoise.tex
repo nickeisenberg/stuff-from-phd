@@ -337,15 +337,16 @@ where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$
 \end{NickQuestion}
 \begin{NickQuestion}[Guess for the constant (1.20) from the Wave Equation Paper]
 	In the wave equation paper, the constant (1.20) was 
-\[	
+	
+\begin{equation} \label{const}
 C =	\begin{cases}
 		\dfrac{4-\Delta}{3-\Delta} & \text{under Assumption A}
 		\\ \\ \dfrac{4-d}{3-d} & \text{under Assumption B or C}
 	\end{cases}
-\]
+\end{equation}
 I believe in the fractional paper the constant will be 
 \[
-	\begin{cases}
+	\begin{cases} 
 		\dfrac{2(\beta+\gamma-1)+2 - \beta \Delta / \alpha}{2(\beta+\gamma-1)+1 - \beta \Delta / \alpha} & \text{under Assumption A}
 		\\ \\ \dfrac{2(\beta+\gamma-1)+2 - \beta d/ \alpha}{2(\beta+\gamma-1)+1 - \beta d/ \alpha} & \text{under Assumption B or C}
 	\end{cases}
@@ -358,6 +359,50 @@ I think this because in the wave equation paper where we use $(4-\Delta)$ this g
 	\end{cases}
 \]
 Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces to the wave equation. 
+\end{NickQuestion}
+
+\begin{NickQuestion}
+	In order to come up with \ref{const}, we need a version of Lemma 4.3 from the wave equation paper. I was think that we could just use this Lemma directly in the following way. First the Lemma says that
+	\begin{lemma}
+		Under Assumption A with $0 < \Delta < d \le 3$, it holds that 
+		\begin{align}
+		&\lim_{n \to \infty}\frac{1}{n} 
+		\log\left(\Gamma((4-\Delta_0)n+1)\Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
+		\log\left[2^{4-\Delta_0}2^{-\Delta_0/2}\mathcal{M}^{\frac{4-\Delta_0}{2}}\right]	  
+	\\ & = \lim_{n \to \infty}\frac{1}{n} 
+		\log\left( (n!)^{4-\Delta_0} \Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
+		\log\left[\left(\dfrac{2}{4-\Delta_0}\right)2^{4-\Delta_0}2^{-\Delta_0/2}\mathcal{M}^{\frac{4-\Delta_0}{2}}\right]	
+		\end{align}
+		Both relations hold also under wither Assumption B or Assumption C with $\alpha$ and $\mathcal{M}$ replaced by $d$ and $\mathcal{M}(\delta_0)$ respectively.
+	\end{lemma} 
+What I was thinking was that the $\Delta_0$ in the above lemma only needs to satisfy $0 < \Delta_0 < d \le 3$. So if we set $\Delta_0$ to be
+\[
+	\Delta_0 = \dfrac{\beta \Delta}{\alpha} +2- 2(\beta + \gamma -1) = \dfrac{\beta \Delta}{\alpha} + 2(2-\beta - \gamma ) 
+\]
+Then 
+\[
+	4- \Delta_0 = 2(\beta + \gamma -1) +2 - \dfrac{\beta \Delta}{\alpha} = 2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}
+\]
+and by the above lemma this world mean we get the two equalities 
+		\begin{align}
+&\lim_{n \to \infty}\frac{1}{n} 
+\log\left(\Gamma((2(\beta + \gamma) - \frac{\beta \Delta}{\alpha})n+1)\Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
+\log\left[2^{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}2^{-(\dfrac{\beta \Delta}{\alpha} + 2(2-\beta - \gamma ) )/2}\mathcal{M}^{\frac{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}{2}}\right]	  
+\\ & = \lim_{n \to \infty}\frac{1}{n} 
+\log\left( (n!)^{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}} \Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
+\log\left[\left(\dfrac{2}{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}\right)2^{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}2^{-(\dfrac{\beta \Delta}{\alpha} + 2(2-\beta - \gamma ) )/2}\mathcal{M}^{\frac{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}{2}}\right]	
+\end{align}
+So in order to say this then we would need 
+\[ 0 < \Delta_0 < d \le 3\]
+which means we would need 
+\[
+0 < \dfrac{\beta \Delta}{\alpha} + 2(2-\beta + \gamma ) < d \le 3
+\]
+which implies that we need 
+\[
+\beta + \gamma - \dfrac{d}{2} < 2 + \frac{1}{2}\left(\frac{\beta \Delta}{\alpha}-d\right) < \beta + \gamma 
+\]
+I am not sure how restrictive this is yet and maybe Dalang's condition says this is ok. 
 \end{NickQuestion}
 
 
