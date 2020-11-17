@@ -172,6 +172,7 @@
 
 \begin{document}
 
+\section{Questions}
 \begin{NickQuestion}
 In the Wave equation paper you showed that for the Greens function, we have that
 \[
@@ -311,30 +312,7 @@ When $\beta\in (1,2]$,
 \end{align*}
 Hence, under the initial conditions given by \eqref{fspde1}, $J_0(t,x)\equiv 1$.
 
-\begin{NickQuestion}[Scaling Property]
-	Suppose that $\mu(\ud \xi) = \varphi(\xi)\ud \xi$ and $\varphi$ satisfies $\varphi(cx) = c^{-(d-\Delta)}$ for some $\Delta \in (0,d)$ and for any $c>0$. Also recall that 
-	\[
-		\mathcal{F}Y(ct,\cdot)(\xi) = c^{\beta+\gamma -1}\mathcal{F}Y(t,\cdot)(t^{\beta/\alpha} \xi). 
-	\]
-	Then 
-	\[
-		\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = t^{[2(\beta + \gamma -1)+2-\beta \Delta / \alpha]n} \Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
-	\]
-\textbf{Proof:} 
-\begin{align*}
-\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
-\end{align*}
-where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$
-\begin{align*}
- & \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2 \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y(t-t_n,\cdot)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y(t_2-t_1,\cdot)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
- \\&= t^{2n(\beta+\gamma-1)}\int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-  \\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-  \\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-\beta/\alpha}\vec{\xi})t^{-nd\beta/\alpha}\ud \vec{\xi}
-  \\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-  \\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi} 
-  \\&=  t^{[2(\beta+\gamma-1)+2 - \beta \Delta / \alpha]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
-\end{align*}
-\end{NickQuestion}
+
 \begin{NickQuestion}[Guess for the constant (1.20) from the Wave Equation Paper]
 	In the wave equation paper, the constant (1.20) was 
 	
@@ -361,7 +339,7 @@ I think this because in the wave equation paper where we use $(4-\Delta)$ this g
 Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces to the wave equation. 
 \end{NickQuestion}
 
-\begin{NickQuestion}
+\begin{NickQuestion}[Ignore, This is not correct]
 	In order to come up with \ref{const}, we need a version of Lemma 4.3 from the wave equation paper. I was think that we could just use this Lemma directly in the following way. First the Lemma says that
 	\begin{lemma}
 		Under Assumption A with $0 < \Delta < d \le 3$, it holds that 
@@ -405,5 +383,102 @@ which implies that we need
 I am not sure how restrictive this is yet and maybe Dalang's condition says this is ok. 
 \end{NickQuestion}
 
+
+\begin{NickQuestion}[Lemma 2.3 for the fractional equation]
+	\begin{enumerate}
+		\item In the outline you sent me, you use 
+		\[
+			\mathcal{F}_a = \left\{ g \in H^a(\R^d) : \Norm{g}_{L^2(\R^d)}=1, \mathcal{E}_a(g,g) < \infty \right\}
+		\]
+		Where $H^a(\R^d)$ is the fractional Sobelov Space where $H^2(\R^d) = W^{1,2}(\R^d)$. However, I saw on line that  $H^a(\R^d) = W^{a,2}(\R^d)$ and so $H^2(\R^d) = W^{2,2}(\R^d)$. Is there a mistake here? 
+		
+		\item Where is $\mathcal{M}$ defined with the sup over $\mathcal{F}_d$ and not $\mathcal{F}_a$? Is this a typo? 
+		
+		\item When defining $\mathcal{E}_a(g,g)$ why does the $(2\pi)^{-d}$ appear here but not in the wave paper? 
+		
+		\item How do we generalize $\rho$ from the wave paper to the fractional equation? For the wave equation we have that 
+		\[
+			\rho = \left(\mathcal{M}(\gamma,2)\right)^{(4-\alpha)/2}
+		\]
+		so it makes sense that it should generalize to 
+		\[
+				\rho = \left(\mathcal{M}_a(\gamma,2)\right)^{(2a-\alpha)/a} = 2^{-a/\alpha}\left(\mathcal{M}_a(\gamma,1)\right)^{(2a-\alpha)/a}
+		\]
+		but showing the first equality seems hard. 
+	\end{enumerate}
+\end{NickQuestion}
+
+\section{Proof Sketches}
+\begin{NickQuestion}[Scaling Property]
+	Suppose that $\mu(\ud \xi) = \varphi(\xi)\ud \xi$ and $\varphi$ satisfies $\varphi(cx) = c^{-(d-\Delta)}$ for some $\Delta \in (0,d)$ and for any $c>0$. Also recall that 
+	\[
+	\mathcal{F}Y(ct,\cdot)(\xi) = c^{\beta+\gamma -1}\mathcal{F}Y(t,\cdot)(t^{\beta/\alpha} \xi). 
+	\]
+	Then 
+	\[
+	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = t^{[2(\beta + \gamma -1)+2-\beta \Delta / \alpha]n} \Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+	\]
+	\textbf{Proof:} 
+	\begin{align*}
+	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
+	\end{align*}
+	where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$
+	\begin{align*}
+	& \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2 \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y(t-t_n,\cdot)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y(t_2-t_1,\cdot)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(\beta+\gamma-1)}\int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-\beta/\alpha}\vec{\xi})t^{-nd\beta/\alpha}\ud \vec{\xi}
+	\\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi} 
+	\\&=  t^{[2(\beta+\gamma-1)+2 - \beta \Delta / \alpha]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+	\end{align*}
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 2.3]
+	We define 
+		\[
+			\mathcal{F}_a = \left\{ g \in H^a(\R^d) : \Norm{g}_{L^2(\R^d)}=1, \mathcal{E}_a(g,g) < \infty \right\}
+		\]
+	and then we also define 
+		\begin{equation} \label{var}
+			\mathcal{M}_a(f,\theta)= \sup_{g \in \mathcal{F}_a}\left\{ \langle g^2*f,g^2 \rangle^{1/2} - \frac{\theta}{2}\int_{\R^d}|\xi|^a|\mathcal{F}g(\xi)|^2 \ud \xi   \right\}
+		\end{equation}
+		
+	Now we define $\tilde{g}(x)  = B^{-d/2}g(x/B)$. Its easy to show that $\mathcal{F}\tilde{g}(\xi) = B^{d/2}\mathcal{F}g(B\xi)$. By a change of variables, we can then show that  
+	\[
+		\int_{\R^d}|\xi|^a|\mathcal{F}\tilde{g}(\xi)|^2 \ud \xi = B^{-a}\int_{\R^d}|\xi|^a|\mathcal{F}g(\xi)|^2 \ud \xi
+	\]
+	
+	Next, by applying the scaling property of $f$, $f(cx) = c^{-\alpha}f(x)$, we can show by again using a change of variables that 
+	\begin{align*}
+		(\tilde{g}^2*f)(x) &= B^{-d} \int_{\R^d} \tilde{g}^2(y/B)f(x-y)\ud y
+		\\ & = \int_{\R^d} g^2(u)f(x-uB)\ud u
+		\\& = B^{-\alpha} \int_{\R^d} g^2(u)f\left(\frac{x}{B}-u\right)\ud u
+		\\&= B^{-\alpha}(g^2*f)(x/B)
+	\end{align*}
+	
+	This can be used to show that 
+	\[
+		\langle \tilde{g}^2*f, \tilde{g}^2  \rangle = 	B^{-\alpha}\langle g^2*f, g^2  \rangle
+	\]
+	
+	Now we can rewrite \eqref{var} as the following 
+	\[
+		\mathcal{M}_a(\Theta f,\theta)=\frac{1}{\theta} \sup_{g \in \mathcal{F}_a}\left\{ \frac{\sqrt{\Theta}}{\theta} B^{\alpha/2} \langle \tilde{g}^2*f,\tilde{g}^2 \rangle^{1/2} - \frac{B^a}{2}\int_{\R^d}|\xi|^a|\mathcal{F}\tilde{g}(\xi)|^2 \ud \xi   \right\}
+	\]
+	
+	and as before, in order to preserve a scaling property, we want to choose $B$ such that 
+	\[
+		\frac{\sqrt{\Theta}}{\theta} B^{\alpha/2} = B^a
+	\]
+	and solving for $B$ we get 
+	\[
+		B= \left(\frac{\sqrt{\Theta}}{\theta}\right)^{\frac{2}{2a-\alpha}}
+	\]
+	and after plugging this $B$ in we get that 
+	\[
+			\mathcal{M}_a(\Theta f,\theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}}
+	\]
+\end{NickQuestion}
 
 \end{document}
