@@ -339,50 +339,6 @@ I think this because in the wave equation paper where we use $(4-\Delta)$ this g
 Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces to the wave equation. 
 \end{NickQuestion}
 
-\begin{NickQuestion}[Ignore, This is not correct]
-	In order to come up with \ref{const}, we need a version of Lemma 4.3 from the wave equation paper. I was think that we could just use this Lemma directly in the following way. First the Lemma says that
-	\begin{lemma}
-		Under Assumption A with $0 < \Delta < d \le 3$, it holds that 
-		\begin{align}
-		&\lim_{n \to \infty}\frac{1}{n} 
-		\log\left(\Gamma((4-\Delta_0)n+1)\Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
-		\log\left[2^{4-\Delta_0}2^{-\Delta_0/2}\mathcal{M}^{\frac{4-\Delta_0}{2}}\right]	  
-	\\ & = \lim_{n \to \infty}\frac{1}{n} 
-		\log\left( (n!)^{4-\Delta_0} \Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
-		\log\left[\left(\dfrac{2}{4-\Delta_0}\right)2^{4-\Delta_0}2^{-\Delta_0/2}\mathcal{M}^{\frac{4-\Delta_0}{2}}\right]	
-		\end{align}
-		Both relations hold also under wither Assumption B or Assumption C with $\alpha$ and $\mathcal{M}$ replaced by $d$ and $\mathcal{M}(\delta_0)$ respectively.
-	\end{lemma} 
-What I was thinking was that the $\Delta_0$ in the above lemma only needs to satisfy $0 < \Delta_0 < d \le 3$. So if we set $\Delta_0$ to be
-\[
-	\Delta_0 = \dfrac{\beta \Delta}{\alpha} +2- 2(\beta + \gamma -1) = \dfrac{\beta \Delta}{\alpha} + 2(2-\beta - \gamma ) 
-\]
-Then 
-\[
-	4- \Delta_0 = 2(\beta + \gamma -1) +2 - \dfrac{\beta \Delta}{\alpha} = 2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}
-\]
-and by the above lemma this world mean we get the two equalities 
-		\begin{align}
-&\lim_{n \to \infty}\frac{1}{n} 
-\log\left(\Gamma((2(\beta + \gamma) - \frac{\beta \Delta}{\alpha})n+1)\Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
-\log\left[2^{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}2^{-(\dfrac{\beta \Delta}{\alpha} + 2(2-\beta - \gamma ) )/2}\mathcal{M}^{\frac{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}{2}}\right]	  
-\\ &  \lim_{n \to \infty}\frac{1}{n} 
-\log\left( (n!)^{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}} \Norm{\tilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \right) =
-\log\left[\left(\dfrac{2}{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}\right)2^{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}2^{-(\dfrac{\beta \Delta}{\alpha} + 2(2-\beta - \gamma ) )/2}\mathcal{M}^{\frac{2(\beta + \gamma) - \frac{\beta \Delta}{\alpha}}{2}}\right]	
-\end{align}
-So in order to say this then we would need 
-\[ 0 < \Delta_0 < d \le 3\]
-which means we would need 
-\[
-0 < \dfrac{\beta \Delta}{\alpha} + 2(2-\beta + \gamma ) < d \le 3
-\]
-which implies that we need 
-\[
-\beta + \gamma - \dfrac{d}{2} < 2 + \frac{1}{2}\left(\frac{\beta \Delta}{\alpha}-d\right) < \beta + \gamma 
-\]
-I am not sure how restrictive this is yet and maybe Dalang's condition says this is ok. 
-\end{NickQuestion}
-<<<<<<< HEAD
 
 
 \begin{NickQuestion}[Lemma 2.3 for the fractional equation]
@@ -401,23 +357,25 @@ I am not sure how restrictive this is yet and maybe Dalang's condition says this
 		\[
 			\rho = \left(\mathcal{M}(\gamma,2)\right)^{(4-\alpha)/2}
 		\]
-		so it makes sense that it should generalize to 
+		but why does it generalize to this in the fractional sense  
 		\[
 				\rho = \left(\mathcal{M}_a(\gamma,2)\right)^{(2a-\alpha)/a} = 2^{-a/\alpha}\left(\mathcal{M}_a(\gamma,1)\right)^{(2a-\alpha)/a}
 		\]
-		but showing the first equality seems hard. 
+		which is what you put in the outline you sent me. 
 	\end{enumerate}
 \end{NickQuestion}
 
+
+
 \section{Proof Sketches}
 \begin{NickQuestion}[Scaling Property]
-	Suppose that $\mu(\ud \xi) = \varphi(\xi)\ud \xi$ and $\varphi$ satisfies $\varphi(cx) = c^{-(d-\Delta)}$ for some $\Delta \in (0,d)$ and for any $c>0$. Also recall that 
+	Suppose that $\mu(\ud \xi) = \varphi(\xi)\ud \xi$ and $\varphi$ satisfies $\varphi(cx) = c^{-(d-\alpha)}$ for some $\alpha \in (0,d)$ and for any $c>0$. Also recall that 
 	\[
-	\mathcal{F}Y(ct,\cdot)(\xi) = c^{\beta+\gamma -1}\mathcal{F}Y(t,\cdot)(t^{\beta/\alpha} \xi). 
+	\mathcal{F}Y(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}Y(t,\cdot)(t^{b/a} \xi). 
 	\]
 	Then 
 	\[
-	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = t^{[2(\beta + \gamma -1)+2-\beta \Delta / \alpha]n} \Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = t^{[2(b + r ) -b \alpha / a]n} \Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
 	\]
 	\textbf{Proof:} 
 	\begin{align*}
@@ -426,12 +384,13 @@ I am not sure how restrictive this is yet and maybe Dalang's condition says this
 	where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$
 	\begin{align*}
 	& \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2 \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y(t-t_n,\cdot)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y(t_2-t_1,\cdot)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\&= t^{2n(\beta+\gamma-1)}\int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{\beta/\alpha}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{\beta/\alpha}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\&= t^{2n(\beta+\gamma-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-\beta/\alpha}\vec{\xi})t^{-nd\beta/\alpha}\ud \vec{\xi}
-	\\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\& = t^{2n(\beta+\gamma-1)+2n - n\beta \Delta / \alpha}\int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi} 
-	\\&=  t^{[2(\beta+\gamma-1)+2 - \beta \Delta / \alpha]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+	\\&= t^{2n(b+r-1)}\int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{b/a}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{b/a}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{b/a}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{b/a}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-b/a}\vec{\xi})t^{-nd b / a}\ud \vec{\xi}
+	\\& = t^{2n(b+r-1)+2n - n b \alpha / a}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\& = t^{2n(b+r-1)+2n - n b\alpha / a}\int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi} 
+	\\&=  t^{[2(b+r-1)+2 - b \alpha / a]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
+	\\&= t^{[2(b+r) - b \alpha / a]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
 	\end{align*}
 \end{NickQuestion}
 
@@ -478,10 +437,9 @@ I am not sure how restrictive this is yet and maybe Dalang's condition says this
 	\]
 	and after plugging this $B$ in we get that 
 	\[
-			\mathcal{M}_a(\Theta f,\theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}}
+			\mathcal{M}_a(\Theta f,\theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} 	\mathcal{M}_a(f,1)
 	\]
 \end{NickQuestion}
 
-=======
->>>>>>> 6fbc068a33104325cf433ff7054aa463491ea581
+
 \end{document}
