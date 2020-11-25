@@ -368,15 +368,54 @@ Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces
 
 
 \section{Proof Sketches}
-\begin{NickQuestion}[Scaling Property]
+
+\begin{NickQuestion}
+A mild solution for 
+\[ 
+    \begin{cases}
+	\left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\rho(u(t,x))\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
+	u(0,\cdot) = 1                                                                                                         & \beta \in (0,1]            \\
+	u(0,\cdot) = 1, \quad u_t(0,\cdot) = 0                                                                                 & \beta \in (1,2]
+\end{cases} 
+\]
+must satisfy the following integral equation
+\[
+	u(t,x) = 1 + \int_0^t \left(\int_{\R^d} u(t-s,x-y)Y(s,y) W(\delta y)\right) \ud s
+\]
+an through a Piccard Iteration Scheme we can see that the solution should be given by 
+\begin{equation} \label{sol}
+	u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t))
+\end{equation}
+where 
+\begin{align}\label{solker}
+	f_k(x_1,...,x_k,x,t) &= \int_0^t \int_0^{t_k}\cdots \int_0^{t_2} Y(t-t_k,x-x_k)\cdots Y(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n
+	\\&= \int_0^t \int_0^{t_k}\cdots \int_0^{t_2} Y(t_1,x-x_k)\cdots Y(t_k-t_{k-1},x_2-x_1) \ud t_1\cdots \ud t_n
+\end{align}
+and also 
+\begin{align} \label{fsolker}
+\mathcal{F}f_k(\cdot,x,t)(\xi_1,...,\xi_n) = e^{-i \left(\sum_{j=1}^n \xi_j \right) \cdot x} \int_{[0,t]^n <} \prod_{k=1}^n \overline{\mathcal{F}Y(t_{t_k+1}-t_k,\cdot)\left(\sum_{j=1}^k \xi_j\right) } \ud \textbf{t}
+\end{align}
+where $t_{n+1} = t$
+\end{NickQuestion}
+
+\begin{NickQuestion}[Greens Function Scaling Property]
+	For and $c>0$ we have
+		\begin{equation} \label{fscale}
+	\mathcal{F}Y(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}Y(t,\cdot)(t^{b/a} \xi). 
+	\end{equation}
+	which is shown above. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[$\mathcal{H}^{\otimes n}$ Norm Scaling Property]
 	Suppose that $\mu(\ud \xi) = \varphi(\xi)\ud \xi$ and $\varphi$ satisfies $\varphi(cx) = c^{-(d-\alpha)}$ for some $\alpha \in (0,d)$ and for any $c>0$. Also recall that 
 	\[
 	\mathcal{F}Y(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}Y(t,\cdot)(t^{b/a} \xi). 
 	\]
 	Then 
-	\[
+	\begin{equation}\label{nscale}
 	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = t^{[2(b + r ) -b \alpha / a]n} \Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
-	\]
+	\end{equation}
+	
 	\textbf{Proof:} 
 	\begin{align*}
 	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
@@ -441,5 +480,112 @@ Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces
 	\]
 \end{NickQuestion}
 
+Some definitions for solvability 
 
+\begin{align*}
+L_n(y_1,...,y_n) &= n! \int_0^\infty e^{-t}\tilde{f_n}(y_1,...,y_n,0,t) \ud t
+\\&= \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n<} \prod_{k=1}^n Y(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \textbf{s} \ud t
+\end{align*}
+where $s_0 = y_{\sigma(0)} = 0$.
+\begin{align*}
+	H_n(t, \textbf{x}) &= n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \tilde{f_n}(y_1,...,y_n,0,t) \ud \textbf{y}
+	\\&= \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) \prod_{k=1}^n Y(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \textbf{y} \ud s
+\end{align*}
+
+\begin{align*}
+	L(x) = \int_0^\infty e^{-t}Y(t,x) \ud t \quad \text{and} \quad \mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}Y(t,\cdot)(\xi) \ud t = \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a}
+\end{align*}
+
+\begin{align*}
+	L_n(y_1,...,y_n) = \sum_{\sigma \in \Sigma_n} L(y_{\sigma(1)}) L(y_{\sigma(2)}-y_{\sigma(1)}) \cdots L(y_{\sigma(n)}-y_{\sigma(n-1)})
+\end{align*}
+
+\begin{align*}
+	\mathcal{F}L_n(\xi_1,...,\xi_n) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}
+\end{align*}
+
+\begin{align*}
+	T_n = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^2 \xi_j \right|^a}\right] \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)
+\end{align*}
+
+\begin{align*}
+C_\mu ' = \int_{(\R^d)^n} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
+\end{align*}
+\begin{NickQuestion}[Lemma 3.3, 3.4, and 3.5]
+	Same proof as in wave paper. Have all details in my notebook.
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 3.6]
+	We have that 
+	\[
+		C_\mu' < \infty \quad \text{and} \quad T_n < (n!)^2(C_\mu')^n
+	\]
+	\textbf{proof:}
+	By the same spherical substitution in the wave paper we see that 
+	\[
+		C_\mu ' = \left(\int_{S^{d-1}}\varphi(\gamma) \ud \sigma(\gamma)\right) \left( \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho \right)
+	\]
+	The first integral is shown to be finite in the wave paper. The second integral is finite if 
+	\begin{align}\label{alpha2}
+		2a - \alpha +1 > 1
+	\end{align}
+	
+	Second inequality has the same proof as in the wave paper however I do not know why 
+	\begin{align*}
+		(n!)^2 \int_{(\R^d)^n} \prod_{k=1}^n \left( \frac{1}{1+ | \sum_{j=k}^n \xi_j|^2} \right)^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \le (n!)^2 \left[\sup_{\eta \in \R^d} \int_{(\R^d)^n} \prod_{k=1}^n \left( \frac{1}{1+ | \xi + \eta|^2} \right)^2  \mu(\ud \xi) \right]^n
+	\end{align*}
+	
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 3.7]
+	\[
+		\int_0^\infty e^{-t} \Norm{\tilde{f_n}(\cdot,0,t)}_{ \mathcal{H}^{ \otimes n } }^n \ud t \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n \le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} (C_\mu')^n
+	\]
+
+\textbf{Proof:} Details in my notebook
+\end{NickQuestion}
+
+\begin{NickQuestion}[Theorem 3.1]
+	\ref{fspde1} has a unique solution $\{ u(t,x) : t>0 x \in \R^d \}$ and 
+	\[
+		\sup_{(t,x) \in [0,T]\times \R^d} \mathbb{E} (|(u(t,x)|^p) < \infty \quad \forall p \ge 2 \text{ and } T>0.
+	\]
+	
+\textbf{Proof:} 
+First using \ref{fscale} (details in notebook) we can show that 
+\begin{equation}
+	\mathcal{F}\tilde{f_n}(\cdot,0,ct)(\xi_1,..., \xi_n) = c^{n(b+r)}\mathcal{F}\tilde{f_n}(\cdot,0,t)(c^{b/a}\xi_1,...,c^{b/a}\xi_n).
+\end{equation}
+
+In order to prove the theorem we need to show that $\sum_{n \ge 0} \theta^n n! \Norm{ \tilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 < \infty.$ From the scaling property \ref{nscale} we see that 
+\begin{align*}
+	\int_0^\infty e^{-t} \Norm{ \tilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t & = \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \int_0^\infty e^{-t} t^{ \left[ 2(b+r)-\frac{b \alpha}{a} \right] n } \ud t
+	\\&= \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
+\end{align*}
+as long as we have 
+\begin{equation} \label{alpha3}
+	2(b+r)-\frac{b\alpha}{a} >0
+\end{equation}
+By using Lemma 3.7 we can deduce that 
+\begin{align*}
+	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 &= \dfrac{ \int_0^\infty e^{-t} \Norm{ \tilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }
+	\\ &\le \dfrac{ 2^{n \left[ 2(b+r)- \frac{b \alpha}{a} \right]} }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } T_n
+	\\& \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } 
+\end{align*}
+
+By the same reasoning as in the proof in the wave paper (details in my notebook) we can say that there exists a constant depending on $\alpha$, $k_\alpha$, such that 
+\[
+		\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \le k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a } } 
+\]
+
+Therefore, 
+\begin{align*}
+	\sum_{n \ge 0} \theta^n n! \Norm{ \tilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 & \le \sum_{n \ge 0} \theta^n n!  k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a } } 
+	\\& =  \sum_{n \ge 0} \theta^n   k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a } } 
+\end{align*}
+and the last sum is finite when 
+\begin{equation}\label{alpha4}
+	 2(b+r) - 1 - b\alpha/a > 0 
+\end{equation}
+\end{NickQuestion}
 \end{document}
