@@ -5,47 +5,13 @@
 3. Let's store all codes in the folder `./Codes`
 4. Some references are given in `SHE-Reality.pdf`.
 
-# Discard all local changes and pull from upstream
-`git reset --hard origin/master`
-`git pull origin master`
-
-
-
-# Some useful tech. links
-
-## Git and github
-You can goolge to find out how to use it. The first set up is not easy. I
-followed the following link:
-
-* Here is a workflow [ref](https://www.geeksforgeeks.org/how-to-install-configure-and-use-git-on-ubuntu/), which may not  suit you since I am using linux.
-* There are tons of tutorials.
-* [How to use ssh](https://devqa.io/install-git-mac-generate-ssh-keys/):
-* `git push -u origin master`
-
-## Vim
-This is a big topic. It may takes you several months to get used to it. But it
-is worthy! You can learn from Youtube videos. You can install the modern
-version, which is called Newvim.
-
-## Markdown
-1. A  [cheatsheet](https://markdowntohtml.com/) or its page on [github](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
-2. Here are some tables
-
-|     | c 2   | Col 3 |
-| --- | ---   | ---   |
-| l 1 | col 2 | Col 3 |
-
-
-| name    | phone | iaha |
-|---------|-------|------|
-| Le Chen | aaa   | aa   |
-### If you use vim, here are some useful tools
-1. Install [plasticboy/vim-markdown](https://github.com/plasticboy/vim-markdown) to use vim to edit Markdown. Notice that it
-   supports mathematics!!!
-2. Install [grip](https://github.com/joeyespo/grip) for preview markdown.
-	The default page is [here](http://localhost:6419/)
-
-
-
-
+# Comments on Nick's slides: [CompMeetingSlides](./CompMeetingSlides.pdf)
+1. Try to use less words on each slides. 
+   Try to make 5 lines at most in a slides. (not absolutely, you may exceed this number certainly,
+   but try to keep at 5.)
+2. If you have too many things to say, slit into several slides.
+3. Reference pages takes too many slides. See my slides, how I write references. Simply write a
+   frame and use enumerate or itemize environments to list the reference.
+4. You may speak a bit more the current project if possible.
+5. Several sample beamer presentations are uploaded under [Le Sample Slides](./Le-Sample-Slides)
 
