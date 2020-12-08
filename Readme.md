@@ -14,4 +14,6 @@
    frame and use enumerate or itemize environments to list the reference.
 4. You may speak a bit more the current project if possible.
 5. Several sample beamer presentations are uploaded under [Le Sample Slides](./Le-Sample-Slides)
+   In particular, I have add all the source files for my talk to be given on Dec. 10th, 21:00pm EST.
+   Feel free to use anything from inside.
 
