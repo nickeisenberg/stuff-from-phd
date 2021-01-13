@@ -365,6 +365,100 @@ Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces
 	\end{enumerate}
 \end{NickQuestion}
 
+\begin{NickQuestion}[ : Typos from Xia Chen Paper (Large deviations for Riesz potentials of additive processes) ]
+	
+	From what I can tell there seem to be several typos that I can't justify from this paper that seem serious. The following are some definitions and a Theorem from Xia Chen's Paper. 
+	
+\textbf{Definitions:}
+
+	\begin{equation}
+		\rho = \sup_{\Norm{f}_2 =1}\int_{\R^d} \left[ \int_{\R^d} \frac{f(s + t)f(t)}{\sqrt{1 + |s+t|^\beta}\sqrt{1+|t|^\beta}}\ud t \right] \varphi_{d-\alpha} \ud s
+	\end{equation}
+	
+	\begin{equation} 
+		 \mathcal{E}_\beta(f,f) = (2\pi)^{-d}\int_{\R^d} |s|^\beta|\hat{f}(s)|^2 \ud s 
+	\end{equation}
+	 
+	\begin{equation}
+		\mathcal{F}_\beta = \left\{  f \in L^2(\R^d) : \Norm{f}_2 =1, \mathcal{E}_\beta(f,f) < \infty \right\}
+	\end{equation}
+	
+	\begin{equation}
+		 \Lambda_{\alpha} = \sup_{f \in \mathcal{F}_\beta} \left\{ \left( \int{\R^d} \frac{\prod_{j = 1}^p f^2(x_j)}{|x_1+...+x_p|^\alpha} \prod_{j = 1}^p \ud x_j \right)^{1/p} - \mathcal{E}_\beta(f,f) \right\} 
+	 \end{equation}
+
+\textbf{Theorem 1.5}
+	\[
+		\rho = (2\pi)^{-d}(\Lambda_{\alpha})^{p-(\alpha/\beta)}
+	\]
+
+This theorem is proved in section $7$ of the paper and starts with two lemmas.
+
+\noindent \textbf{Lemma 7.1:} Lemma $7.1$ claims that $\Lambda_{\alpha}$ is finite, however I believe that there is a typo in the proof. In the very first line of the proof, it references equation (A.2) and (A.2) is proved by referencing (A.8). I believe that equation (A.8) is wrong. (A.8) says that 
+\[
+	\int_{\R^{dp}}\frac{\prod_{j = 1}^pf_j(x_j)}{|x_1+\cdots+x_p|^{d-\alpha}} \prod_{j = 1}^p \ud x_j = 
+		\int_{\R^{d2}}\frac{f_1(x)(f_2*\cdots * f_p)(y)}{|x-y|^{d-\alpha}}  \ud x \ud y
+\]
+but if we let $p=2$ then (A.8) says that 
+\[
+\int_{\R^{2d}}\frac{f_1(x_1)f_2(x_2)}{|x_1+x_2|^{d-\alpha}}  \ud x_1 \ud x_2  = 
+\int_{\R^{d2}}\frac{f_1(x)f_2(y)}{|x-y|^{d-\alpha}}  \ud x \ud y
+\]
+which is not true. 
+
+
+\noindent \textbf{Lemma 7.2}
+
+From first glance I think Lemma 7.2 is okay.
+
+\noindent \textbf{Proof of Theorem 1.5:}
+
+There are several places in the proof that I think are typos.
+\begin{enumerate}
+	\item First is equation (7.21) which says by Parseval's Relation we get 
+	\begin{equation}\label{typo1}
+		\sup_{\langle g, Qg \rangle =1} \int_{\R^d} [(Qg)*(\widetilde{Qg})]^p(-s) \varphi(s) \ud s 
+		=
+			\sup_{\langle g, Qg \rangle =1} (2 \pi)^{-d}\int_{\R^d} \mathcal{F}( [ (Qg)*(\widetilde{Qg}) ]^p )(x)\mathcal{F}\varphi(x) \ud x
+	\end{equation}
+	where $\tilde{p}(x) = p(-x)$ and $g(x) = f(x)\sqrt{1+|x|^\beta}$ where $f$ is the same function from the definition of $\rho$. Notice the left hand side of \ref{typo1} has a $(-s)$ as the input of the function. Then when taking the Fourier transform of $[(Qg)*(\widetilde{Qg})]^p(-s) $ we should have the following 
+	\[
+		\mathcal{F}[(Qg)*(\widetilde{Qg})]^p(-x) 
+	\]
+	which follows from the property that if we let $\tilde{p}(x) = p(-x)$ then $\mathcal{F}(\tilde{p})(\xi) = \mathcal{F}(p)(-\xi)$. 
+	\item Im going to continue, assuming that the previous typo was actually not a typo. The next typo is the unlabeled centered equation right above (7.22) which says 
+	\begin{align*}
+		\sup_{\langle g, Qg \rangle =1}  &	(2 \pi)^{-d}\int_{\R^d} \mathcal{F}( [ (Qg)*(\widetilde{Qg}) ]^p )(x)\mathcal{F}\varphi(x) \ud x
+		\\ &= \sup_{\langle g, Qg \rangle =1} 	(2\pi)^{-d(p+1)} \int_{\R^d} [ |\widehat{Qg}|^2 ]^{*p}(x) \mathcal{F}\varphi(x) \ud x  
+	\end{align*}
+	It is stated in the paper that $\mathcal{F}(f*g) = \mathcal{F}(f)\mathcal{F}(g)$ and $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f) * \mathcal{F}(g)$ and $f^{*p}$ is the $p$-fold convolution. So using these rules we should get that 
+	\begin{align*}
+			\sup_{\langle g, Qg \rangle =1} &	(2 \pi)^{-d}\int_{\R^d} \mathcal{F}\bigg( \big[ (Qg)*(\widetilde{Qg}) \big]^p \bigg)(x)\mathcal{F}\varphi(x) \ud x
+			\\ &= 		\sup_{\langle g, Qg \rangle =1}  (2 \pi)^{-d}\int_{\R^d} (2\pi)^{-pd} \mathcal{F}\bigg( \big[ (Qg)*(\widetilde{Qg}) \big] \bigg)^{*p}(x)\mathcal{F}\varphi(x) \ud x
+			\\&=	\sup_{\langle g, Qg \rangle =1}  (2 \pi)^{-d(1+p)}\int_{\R^d}  \bigg[ \widehat{Qg}\;\widehat{\widetilde{Qg}} \bigg] ^{*p}(x)\mathcal{F}\varphi(x) \ud x
+	\end{align*}
+	
+	It seems as if they are assuming that $\widehat{\widetilde{Qg}} = \widehat{Qg}$ which is only true if $Qg$ is an even function. 
+	
+	\item \textbf{Details for (7.22)} Again I am going to continue as if the previous was not a typo. Im giving the details for (7.22) just for clarity. (7.22) says that if we define $h=(2\pi)^{-d}\widehat{Qg}$ then 
+	\begin{align*}
+		\sup_{\langle g, Qg \rangle =1} &	(2\pi)^{-d(p+1)} \int_{\R^d} [ |\widehat{Qg}|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x   
+		\\&= \sup_{(2\pi)^d \Norm{h}_2^2 + (2\pi)^d \tilde{L}(h) =1} 	(2\pi)^{-d(p-1)} \int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x  
+	\end{align*}
+	Since $(2\pi)^{d}h=\widehat{Qg}$ then this implies that $\hat{h} = \widetilde{Qg} = Q\tilde{g}$ since $Q$ is even and because when considering $\hat{f}(x) = \int \exp(ixs)f(s) \ud s$ as the definition of the Fourier transform then we have the property that $\hat{\hat{f}} = (2\pi)^d\tilde{f}$. Also we have that 
+	\[  
+		\langle g, Qg \rangle = \langle \tilde{g}, \widetilde{Qg} \rangle = \langle  \hat{h}Q^{-1}, \hat{h} \rangle = (2\pi)^d\Norm{h}_2^2 + (2\pi)^d\tilde{L}(h)
+	\]
+since for this definition of the Fourier transform we have $\langle f , g  \rangle = (2\pi)^{-d}\langle \hat{f} , \hat{g} \rangle$. Putting this together gives us (7.22). 
+
+	\item \textbf{Equation (7.23)} I am unsure why a change of variable implies that 
+	\begin{align*}
+		 \sup_{(2\pi)^d \Norm{h}_2^2 + (2\pi)^d \tilde{L}(h) =1} &	(2\pi)^{-d(p-1)} \int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x  
+		 \\ &= \sup_{\Norm{h}_2^2 + \tilde{L}(h) =1} (2\pi)^{-d}\int_{R^{dp}} \frac{\prod_{j = 1}^p |h(x_j)|^2}{|x_1+ \cdots x_p} \prod_{j = 1}^p \ud x_j
+	\end{align*}
+	In particular how the $\sup$ limits changed. 
+\end{enumerate} 
+\end{NickQuestion}
 
 
 \section{Proof Sketches}

@@ -25,6 +25,7 @@
 \usepackage{multicol}
 \numberwithin{equation}{section}
 
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\lip}{\textup{Lip}_b}
 \newcommand{\liph}{\text{Lip}_{\hat\rho}}
 \newcommand{\R}{\mathbb{R}}
@@ -64,12 +65,12 @@
 
 %Information to be included in the title page:
 \title[About Beamer] %optional
-{Invariant Measures for the Stochastic Heat Equation}
+{}
 
 \subtitle{Nick Eisenbergs Comprehensive Presentation}
 
-\author[Eisenberg, Chen] % (optional, for multiple authors)
-{Nick~Eisenberg \and Le~Chen}
+\author[] % (optional, for multiple authors)
+{ }
 
 %\institute[VFU] % (optional)
 %{
@@ -123,9 +124,36 @@ A Gaussian Processes, $G := \{G_t : t \in T\}$ is a stochastic process such that
 \end{frame}
 
 \begin{frame}[t]
-	\frametitle{White Noise as an Ito Integral}
+	\frametitle{Brownian Motion in terms of white noise}
+	\begin{itemize}
+		\item	Consider a white noise, $\dot{W} = \{\dot{W}(A):A \in \mathscr{B}(\R) \}$
+		\item Define $B(t) = \dot{W}([0,t])$
+		\item Since $\dot{W}$ is a white noise we have $\mathbb{E}(B_sB_s) = \mathbb{E}(\dot{W}[0,t]\dot{W}[0,s]) = \lambda([0,t]\cap[0,s]) = \min\{s,t\}$
+		\item This shows that $B$ is a Brownian Motion 
+	\end{itemize}
+\end{frame}
 
-First we will briefly explain the meaning of $\int_0^\infty u(t,\omega) \ud B(t,\omega)$, the Ito Integral of $u$, where $B$ is a Brownian Motion.
+\begin{frame}[t]
+	\frametitle{White Noise as an Ito Integral}
+	We define a set function on $\mathscr{B}(\R)$
+	\[
+	\dot{W}(A) = \int_0^\infty 1_A(t) \ud B(t,\omega)
+	\]
+	For any borel set, $A$, the deterministic indicator function $1_A \in L^2(\mathscr{P})$ and so the Ito Integral exists.
+	
+	From the theorem in the previous slide we see that
+	\begin{itemize}
+		\item $\E\dot{W}(A) = 0 $
+		\item $ \E(\dot{W}(A) \dot{W}(B) = \int_0^\infty 1_A(t)1_B(t) \ud t = \lambda (A \cap B) $
+	\end{itemize}
+	Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
+	
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Ito Integral}
+
+Wfe will briefly explain the meaning of $\int_0^\infty u(t,\omega) \ud B(t,\omega)$, the Ito Integral of $u$, where $B$ is a Brownian Motion.
 
 \begin{definition}[Progressively Measurable]
 	A processes, $u(t,\omega)$, is progressively measurable if $u$ restricted to $\Omega \times [0,t]$ is $\mathcal{F}_t \times \mathscr{B}([0,t])$ measurable where $\mathcal{F}_t = \sigma\{B(s) : 0 \le s \le t \}  $.
@@ -141,7 +169,7 @@ We define $L^2(\mathscr{P}) = L^2(\Omega \times [0, \infty), \mathscr{P}, \mathb
 \end{frame}
 
 \begin{frame}[t]
-	\frametitle{White Noise as an Ito Integral}
+	\frametitle{Ito Integral}
 \begin{theorem}
 	The simple processes are dense in $L^2(\mathscr{P})$. Thus for any processes, $u(t,\omega)$, there exists a sequence of simple processes, $u_n(t,\omega)$ such that $\E \left( \int_0^\infty (u(t,\omega) - u_n(t,\omega))^2 \ud t \right) \to 0$.
 \end{theorem}
@@ -159,23 +187,6 @@ We define $L^2(\mathscr{P}) = L^2(\Omega \times [0, \infty), \mathscr{P}, \mathb
 		\item $ \E\left( \int_0^\infty u(t,\omega) \ud B(t,\omega)\cdot \int_0^\infty v(t,\omega) \ud B(t,\omega) \right) = \E \left( \int_0^\infty u(t,\omega)v(t,\omega) \ud t \right) $
 	\end{enumerate}
 \end{theorem}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{White Noise as an Ito Integral}
-With the above in consideration, we define a set function on $\mathscr{B}(\R)$
-\[
-	\dot{W}(A) = \int_0^\infty 1_A(t) \ud B(t,\omega)
-\]
-For any borel set, $A$, the deterministic indicator function $1_A \in L^2(\mathscr{P})$ and so the Ito Integral exists.
-
-From the theorem in the previous slide we see that
-\begin{itemize}
-	\item $\E\dot{W}(A) = 0 $
-	\item $ \E(\dot{W}(A) \dot{W}(B) = \int_0^\infty 1_A(t)1_B(t) \ud t = \lambda (A \cap B) $
-\end{itemize}
-Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
-
 \end{frame}
 
 \begin{frame}[t]
@@ -294,7 +305,7 @@ Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
 \end{frame}
 
 \begin{frame}[t]
-	\frametitle{Definition of Invariant Measures}
+	\frametitle{Invariant Measures viewed as an average}
 	\begin{definition} [Invariant Measure]
 		A measure $\eta(\cdot) \in \mathcal M_1(E)$ is invariant for transition functions $\{P_t(x,\Gamma)\} _{t\ge 0}$ if for any $\Gamma \in \mathscr E$ we have that $$ \eta(\Gamma) = \int_E P_t(x,\Gamma)\eta(\ud x) \quad \text{for any $t\ge 0$} $$
 	\end{definition}
@@ -342,9 +353,9 @@ Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
 	\frametitle{Current Project: Fractional SPDE}
 	\begin{equation}
 	\begin{cases}
-		\left(\partial^b + \frac{\nu}{2}(-\Delta)^{a/2}\right)u(t,x) = I^r_t \left[\rho(u(t,x))\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
+		\left(\partial^b + \frac{\nu}{2}(-\Delta)^{a/2}\right)u(t,x) = I^r_t \left[\sqrt{\theta}u(t,x)\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
 		u(0,\cdot) = 1                                                                                           & \beta \in (0,1]            \\
-		u(0,\cdot) = 1, \quad u_t(0,\cdot) = 0                                                                   & \beta \in (1,2]
+		u(0,\cdot) = 1, \quad u_t(0,\cdot) = 0                                                                   & \beta \in (1,2)
 	\end{cases}  \label{fspde}
 	\end{equation}
 	
@@ -353,20 +364,91 @@ Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
 		\item $(-\Delta)^{a/2}$ refers to the fractional Laplacian \cite{FPDE} 
 		\item $\partial^b$ refers to the Caputo derivative \cite{PodFDE}
 		\item $I^r_t$ is the Riemann-Liouville fractional integral operator.
+		\item The time independent noise $W:= \{ W(\varphi) : \varphi \in \mathcal{D}(\R^d) \}$ arises from the covariance function 
+		\[
+	  \mathbb{E}(W(\varphi)W(\psi)) = 	\langle \varphi, \psi \rangle_{\mathcal{H}} =  \int_{\R^d}\mathcal{F}\varphi(\xi)\overline{\mathcal{F}\psi}(\xi) \mu(\ud \xi)
+		\]
 	\end{itemize}
 
 \end{frame}
 
 \begin{frame}[t]
-\frametitle{Current Project}
-\begin{itemize}
-	\item The time independent noise $W:= \{ W(\varphi) : \varphi \in \mathcal{D}(\R^d) \}$ arises from the covariance function 
+	\frametitle{Fractional Laplacian:}
+	\begin{itemize}
+		\item \textbf{Fractional Laplacian:} One way to define the fractional Laplacian is through the Fourier Transform. It can be shown that 
+		\[
+			\mathcal{F}(-\Delta f)(\xi) = K |\xi|^2\mathcal{F}f(\xi)
+		\]
+		where $K$ depends on the definition of the Fourier transform. So for $\psi \in \mathscr{S}(\R^d)$ we define 
+		\[
+			\mathcal{F}(\psi(-\Delta)f)(\xi) = \psi(K|\xi|^2)\mathcal{F}f(\xi)
+		\]
+		and in particular we can show that if we want to solve 
+		\[
+			(-\Delta^{\alpha/2})u = f \implies u = 	(-\Delta^{-\alpha/2})f
+		\]
+		then $u$ is given by $f*R_\alpha$ where $R_\alpha$ is the Reisz Kernal.
 	\[
-	\mathbb{E}(W(\varphi)W(\psi)) = \int_{\R^d}\mathcal{F}\varphi(\xi)\overline{\mathcal{F}\psi}(\xi) \mu(\ud \xi)
+		R_\alpha(x) = \frac{\Gamma((1/2)(d-\alpha)}{\Gamma((1/2)\alpha)2^{\alpha}\pi^{d/2}|x|^{d-\alpha}}
 	\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Fundamental solution to the deterministic FPDE}
+		\begin{equation}
+	\begin{cases}
+	\left(\partial^b + \frac{\nu}{2}(-\Delta)^{a/2}\right)u(t,x) = I^r_t \left[f(t,x) \right] & \text{$x\in \R^d$ , $t>0$} \\
+	u(0,\cdot) = \mu                                                                                           & \beta \in (0,1]            \\
+	u(0,\cdot) = \mu_0, \quad u_t(0,\cdot) = \mu_1                                                                  & \beta \in (1,2)
+	\end{cases}  \label{fpde}
+	\end{equation}
+	
+	\[
+	u(t,x) = \begin{cases} 
+	(Z(t,\cdot)*\mu)(x)  + (Y \star f)(t,x)   &   \beta \in (0,1]\\
+	(\frac{\partial Z}{\partial t}(t,\cdot)*\mu_0)(x) + 	(Z(t,\cdot)*\mu_1)(x) + (Y \star f)(t,x) & \beta \in (1,2)
+	\end{cases}	
+	\]
+\begin{itemize}
+	\item $ Z(t,x) = \pi^{-d/2}t^{\Ceil{\beta} -1}|x|^{-d} H^{2,1}_{2,3}\left(\frac{|x|^\alpha}{2^{\alpha -1} \nu t^\beta} \bigg\vert \begin{matrix} (1,1) & (\Ceil{\beta}, \beta)
+	\\ (d/2,\alpha/2) & (1,1) & (1,\alpha /2 )\end{matrix} \right) $
+	
+	\item $Y(t,x) = {}_{t}D_{+}^{\Ceil{\beta}-\beta-\gamma}Z(t,x)$
+\end{itemize}	
+	
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Reason for constant 1 initial conditions}
+	
+	It can be shown that for the above initial conditions that 
+	
+	\begin{itemize}
+		\item 	$(Z(t,\cdot)*1)(x) = 1$ when $\beta \in (0,1]$
+		\item  $ (\frac{\partial Z}{\partial t}(t,\cdot)*1)(x) =1$ when $\beta \in (1,2) $
+	\end{itemize}
+
+In addition, it can be shown that 
+\[
+	\mathcal{F}Y(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}Y(t,\cdot)(c^{b/a} \xi). 
+\]
+
+where as for the Wave equation we have 
+
+\[
+	\mathcal{F}G(ct, \cdot)(\xi) = c \mathcal{F}G(t,\cdot)(c\xi) 
+\]
+
+and because of these similar scaling properties, we can almost treat $Y$ and $G$ as the same. 
+\end{frame}
+
+\begin{frame}[t]
+\frametitle{FSPDE Integral Equation}
+\begin{itemize}
 	\item The time independence leads us to rigoursly defing the FSPDE through the following Skorohod integral equation 
 	\[
-	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y) W(\ud y)  \right) \ud s
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} Y(t-s,x-y)u(s,y) W(\ud y)  \right) \ud s
 	\]
 	\item Through Piccard iteration we show that 
 	\[
@@ -385,6 +467,9 @@ Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
 	For the SWE with time independent noise the following two have been proven in \cite{LeXiaReb}
 	\begin{itemize}
 		\item Existence and uniqueness of the solution. 
+				\begin{itemize}
+					\item Proven by showing $\mathbb{E}(|u(t,x)|^2) = \sum_{n \ge 0}\theta^nn!\Norm{\tilde{f}_n(\cdot,x,t))}_{\mathcal{H}^{\otimes n}}^2 < \infty$
+				\end{itemize}
 		\item Let $t_p = (p-1)^{\frac{1}{4-\alpha}}t$. The following moment asymptotic has been proven for the SWE for dimensions $0 < \alpha < d \le 3$
 				\[
 			\lim_{t_p \to \infty} t_p^{-\frac{4-\alpha}{3-\alpha}}\log\Norm{u(t,x)}_p = \theta^{\frac{1}{3-\alpha}}\left(\frac{1}{2}\right)^{\frac{\alpha}{2(3-\alpha)}}\frac{3-\alpha}{2}\left(\frac{2\mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{{4-\alpha}}{3-\alpha}}
@@ -394,7 +479,10 @@ Thus, $\dot{W}$ is a white noise on $\mathscr{B}(\R)$
 
 \begin{frame}[t]
 	\frametitle{FSPDE}
-	
+	\begin{itemize}
+		\item Existence and uniqueness of the solution
+		\item Similar asymptotics 
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]
