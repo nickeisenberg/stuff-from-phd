@@ -412,8 +412,24 @@ which is not true.
 From first glance I think Lemma 7.2 is okay.
 
 \noindent \textbf{Proof of Theorem 1.5:}
+First some definitions for this theorem. 
 
-There are several places in the proof that I think are typos.
+\textbf{Definitions:}
+\begin{enumerate}
+	\item 
+			\[
+					L(f)=\left(\int_{R^{dp}} \frac{\prod_{j = 1}^p |h(x_j)|^2}{|x_1+ \cdots x_p|^\sigma} \prod_{j = 1}^p \ud x_j\right)^{{1/p}}
+			\]
+	\item
+			\[
+					\tilde{L}(f) = \mathcal{E}_{\beta}(f,f)
+	 		\]
+		\item 
+			\[
+					J = \sup_{\Norm{f}_2^2 + \tilde{f} =1}L(f) = \sup_{f \in \mathcal{H} } \frac{L(f)}{\Norm{f}_2^2 + \tilde{L}(f)} 
+			\]
+\end{enumerate} 
+There are several places in the proof that I think are typos. Also I do not understand for sure why we have the equality in the supremems in definition (3) above. 
 \begin{enumerate}
 	\item First is equation (7.21) which says by Parseval's Relation we get 
 	\begin{equation}\label{typo1}
@@ -427,10 +443,10 @@ There are several places in the proof that I think are typos.
 	\]
 	which follows from the property that if we let $\tilde{p}(x) = p(-x)$ then $\mathcal{F}(\tilde{p})(\xi) = \mathcal{F}(p)(-\xi)$. 
 	\item Im going to continue, assuming that the previous typo was actually not a typo. The next typo is the unlabeled centered equation right above (7.22) which says 
-	\begin{align*}
+	\begin{align} \label{typo2}
 		\sup_{\langle g, Qg \rangle =1}  &	(2 \pi)^{-d}\int_{\R^d} \mathcal{F}( [ (Qg)*(\widetilde{Qg}) ]^p )(x)\mathcal{F}\varphi(x) \ud x
-		\\ &= \sup_{\langle g, Qg \rangle =1} 	(2\pi)^{-d(p+1)} \int_{\R^d} [ |\widehat{Qg}|^2 ]^{*p}(x) \mathcal{F}\varphi(x) \ud x  
-	\end{align*}
+		\\ &= \sup_{\langle g, Qg \rangle =1} 	(2\pi)^{-d(p+1)} \int_{\R^d} [ |\widehat{Qg}|^2 ]^{*p}(x) \mathcal{F}\varphi(x) \ud x  \nonumber
+	\end{align}
 	It is stated in the paper that $\mathcal{F}(f*g) = \mathcal{F}(f)\mathcal{F}(g)$ and $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f) * \mathcal{F}(g)$ and $f^{*p}$ is the $p$-fold convolution. So using these rules we should get that 
 	\begin{align*}
 			\sup_{\langle g, Qg \rangle =1} &	(2 \pi)^{-d}\int_{\R^d} \mathcal{F}\bigg( \big[ (Qg)*(\widetilde{Qg}) \big]^p \bigg)(x)\mathcal{F}\varphi(x) \ud x
@@ -454,10 +470,45 @@ since for this definition of the Fourier transform we have $\langle f , g  \rang
 	\item \textbf{Equation (7.23)} I am unsure why a change of variable implies that 
 	\begin{align*}
 		 \sup_{(2\pi)^d \Norm{h}_2^2 + (2\pi)^d \tilde{L}(h) =1} &	(2\pi)^{-d(p-1)} \int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x  
-		 \\ &= \sup_{\Norm{h}_2^2 + \tilde{L}(h) =1} (2\pi)^{-d}\int_{R^{dp}} \frac{\prod_{j = 1}^p |h(x_j)|^2}{|x_1+ \cdots x_p} \prod_{j = 1}^p \ud x_j
+		 \\ &= \sup_{\Norm{h}_2^2 + \tilde{L}(h) =1} (2\pi)^{-d}\int_{R^{dp}} \frac{\prod_{j = 1}^p |h(x_j)|^2}{|x_1+ \cdots x_p|^{\sigma}} \prod_{j = 1}^p \ud x_j
 	\end{align*}
 	In particular how the $\sup$ limits changed. 
 \end{enumerate} 
+\textit{Possible Justification:}
+The integrals can be shown to be equal through a change of variables. 
+\begin{align*}
+\int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x &= \int_{\R^d} (h*\cdots*h)(x) \frac{1}{|x|^\alpha} \ud x
+\\&= \int_{\R^d} \int_{\R^{d(p-1)}} h(x-y_1)h(y_1-y_2)\cdots h(y_{p-2}-y_{p-1})h(y_{p-1}) \prod_{j =1}^{p-1}\ud y_j \; \frac{1}{|x|^\alpha} \ud x
+\end{align*}
+then applying the substitution 
+\[
+	\begin{pmatrix}
+	x-y_1 = u_1
+	\\ y_1-y_2 = u_2 
+	\\ \cdots 
+	\\ y_{p-2} - y_{p-1} = u_{p-1}
+	\\ y_{p-1} = u_p
+	\end{pmatrix}
+\]
+will transform the integral as 
+\begin{align*}
+\int_{\R^d} (h*\cdots*h)(x) \; \frac{1}{|x|^\alpha} \ud x &= \int_{R^{dp}} \frac{\prod_{j = 1}^p |h(x_j)|^2}{|x_1+ \cdots x_p|^{\sigma}} \prod_{j = 1}^p \ud x_j
+\end{align*}
+As for the limits of the supremum, note that 
+\[
+	(2\pi)^d \Norm{h}_2^2 + (2\pi)^d \tilde{L}(h) =1 \implies \Norm{(2\pi)^{d/2} h}_2^2 +  \tilde{L}((2\pi)^{d/2} h) =1
+\]
+Therefore using the above definitions of $J$, $L(f)$ and $\tilde{L}(f)$ we see that 
+
+\begin{align*}
+	 \sup_{(2\pi)^d \Norm{h}_2^2 + (2\pi)^d \tilde{L}(h) =1} (2\pi)^{-d(p-1)} & \int_{R^{dp}} \frac{\prod_{j = 1}^p |h(x_j)|^2}{|x_1+ \cdots x_p|^{\sigma}} \prod_{j = 1}^p \ud x_j 
+	 \\ &= 	 \sup_{\Norm{(2\pi)^{d/2} h}_2^2 +  \tilde{L}((2\pi)^{d/2} h) =1} 	(2\pi)^{-d(p-1)} L(h)^p
+	 \\& =(2\pi)^{-d(p-1)}  \left[ \sup_{\Norm{(2\pi)^{d/2} h}_2^2 +  \tilde{L}((2\pi)^{d/2} h) =1} 	L(h) \right]^p
+	 \\& = (2\pi)^{-d(p-1)}  \left[ \sup_{h \in \mathcal{H}} 	\frac{L(h)}{\Norm{(2\pi)^{d/2} h}_2^2 +  \tilde{L}((2\pi)^{d/2} h)} \right]^p
+	 \\& = (2\pi)^{-d(p-1)}  \left[ (2\pi)^d \sup_{h \in \mathcal{H}} 	\frac{L(h)}{\Norm{ h}_2^2 +  \tilde{L}( h)} \right]^p
+	 \\& = (2\pi)^{-d}J^p
+\end{align*}
+which is exactly equation (7.23) in the Xia Chen paper. 
 \end{NickQuestion}
 
 
