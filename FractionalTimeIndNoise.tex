@@ -462,7 +462,7 @@ There are several places in the proof that I think are typos. Also I do not unde
 	 \[
 	 	s \mapsto \int_{\R^d} (Qg)(s+t)(Qg)(t) \ud t
 	 \]
-	 is an even function no matter what $(Qg)$ is.
+	 is an even function no matter what $(Qg)$ by just applying the substitution $u=s+t$.  
 	\item Im going to continue, assuming that the previous typo was actually not a typo. The next typo is the unlabeled centered equation right above (7.22) which says 
 	\begin{align} \label{typo2}
 		\sup_{\langle g, Qg \rangle =1}  &	(2 \pi)^{-d}\int_{\R^d} \mathcal{F}( [ (Qg)*(\widetilde{Qg}) ]^p )(x)\mathcal{F}\varphi(x) \ud x
@@ -540,8 +540,40 @@ Therefore using the above definitions of $J$, $L(f)$ and $\tilde{L}(f)$ we see t
 	 \\& = (2\pi)^{-d}J^p
 \end{align*}
 which is exactly equation (7.23) in the Xia Chen paper. 
-\end{NickQuestion}
 
+\textbf{How to apply the above to correlations functions other than the Reisz Kernal:}
+
+Suppose we have a spectral measure,$\mu$, with spectral density $\varphi$ with related tempered measure $\Gamma$ with density $\gamma$. In other words, for all Schwartz functions $\psi$ 
+
+\begin{align*}
+\int_{\R^d} \ud x \gamma( x) \psi(x) & = \int_{\R^d} \Gamma(\ud x) \psi(x)
+\\& = \int_{\R^d} \mu(\ud x) \mathcal{F}\psi(x)
+\\& = \int_{\R^d} \ud x \varphi(x) \mathcal{F}\psi(x)
+\end{align*}
+also suppose that we have the following scaling properties
+\[
+	\gamma(cx) = c^{-\alpha}\gamma(x) \quad \text{and} \quad \varphi(cx) = c^{-(d -\alpha)}
+\]
+We can follow the proof of Theorem 1.5 from the Xia Chen paper with minor modifications to show that 
+\[
+	\rho = (2\pi)^{-d}\Lambda(1)^{2-{\alpha/\beta}}
+\] 
+where 
+\[
+	\rho = \sup_{\Norm{f}_2 = 1} \int_{\R^d}\left[ \int_{\R^d} \frac{f(s+t)f(t)}{\sqrt{1+|s+t|^\beta}\sqrt{1+|t|^\beta}} \ud t \right] \varphi(s) \ud s 
+\]
+and
+\[
+	\Lambda(\theta) = \theta^{\beta/(\beta - \alpha/2)}\Lambda(1)
+\]
+and
+\begin{align*}
+	\Lambda(1) &= \sup_{\Norm{f}_2 =1} \left\{ \left( \int_{\R^{2d}} |f(x_1)|^2 |f(x_2)|^2 \gamma(x_1+x_2) \ud x_1 \; \ud x_2 \right)^{1/2} - \mathcal{E}_\beta(f,f) \right\}
+	\\& = \sup_{\Norm{f}_2 =1} \left\{ \left( \int_{\R^d} \left[|f|^2 * |f|^2\right](x) \gamma(x) \ud x\right)^{1/2} - \mathcal{E}_\beta(f,f) \right\}
+	\\& =  \sup_{\Norm{f}_2 =1} \left\{ \langle  |f|^2*|f|^2, \gamma \rangle^{1/2} - \mathcal{E}_\beta(f,f) \right\}
+\end{align*}
+If this is correct then this means that equation (1.7) in the wave paper is slightly is slightly off. 
+\end{NickQuestion}
 
 \section{Proof Sketches}
 
