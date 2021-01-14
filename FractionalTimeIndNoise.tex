@@ -372,7 +372,7 @@ Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces
 \textbf{Definitions:}
 
 	\begin{equation}
-		\rho = \sup_{\Norm{f}_2 =1}\int_{\R^d} \left[ \int_{\R^d} \frac{f(s + t)f(t)}{\sqrt{1 + |s+t|^\beta}\sqrt{1+|t|^\beta}}\ud t \right] \varphi_{d-\alpha} \ud s
+		\rho = \sup_{\Norm{f}_2 =1}\int_{\R^d} \left[ \int_{\R^d} \frac{f(s + t)f(t)}{\sqrt{1 + |s+t|^\beta}\sqrt{1+|t|^\beta}}\ud t \right] \varphi_{d-\alpha}(s) \ud s
 	\end{equation}
 	
 	\begin{equation} 
@@ -442,6 +442,27 @@ There are several places in the proof that I think are typos. Also I do not unde
 		\mathcal{F}[(Qg)*(\widetilde{Qg})]^p(-x) 
 	\]
 	which follows from the property that if we let $\tilde{p}(x) = p(-x)$ then $\mathcal{F}(\tilde{p})(\xi) = \mathcal{F}(p)(-\xi)$. 
+	
+	\textbf{Nicks Solution:} The centered equation (7.20) in the Xia Chen papers says 
+	\[
+		\int_{\R^d} \left[ \int_{\R^d} (Qg)(s+t)(Qg)(t) \ud t \right]^p \varphi(s) \ud s = \int_{\R^d} \left[ (Qg)*(\widetilde{Qg}) \right]^p(-s) \varphi(s) \ud s 
+	\]
+
+	and this equality is true, but we can continue is a different way. Using a substitution $u=s+t$ we see that  
+	\begin{align*}
+			\int_{\R^d} \left[ \int_{\R^d} (Qg)(s+t)(Qg)(t) \ud t \right]^p \varphi(s) \ud s &= 	\int_{\R^d} \left[ \int_{\R^d} (Qg)(u)(Qg)(u-s) \ud u \right]^p \varphi(s) \ud s
+			\\&= \int_{\R^d} \left[ \int_{\R^d} (Qg)(u)(\widetilde{Qg})(s-u) \ud u \right]^p \varphi(s) \ud s
+			\\&= \int_{\R^d} \left[ (Qg)*(\widetilde{Qg}) \right]^p(s) \varphi(s) \ud s
+	\end{align*}
+	 and know we can apply Parsevals to see that 
+	 \begin{align*}
+	 	 \int_{\R^d} \left[ (Qg)*(\widetilde{Qg}) \right]^p(s) \varphi(s) \ud s &=  (2\pi)^{-d}\int_{\R^d} \mathcal{F}\left[ (Qg)*(\widetilde{Qg}) \right]^p(x) \mathcal{F}\varphi(x) \ud x
+	 \end{align*}
+	 and this gives us equation (7.21). What this actually showed was 
+	 \[
+	 	s \mapsto \int_{\R^d} (Qg)(s+t)(Qg)(t) \ud t
+	 \]
+	 is an even function no matter what $(Qg)$ is.
 	\item Im going to continue, assuming that the previous typo was actually not a typo. The next typo is the unlabeled centered equation right above (7.22) which says 
 	\begin{align} \label{typo2}
 		\sup_{\langle g, Qg \rangle =1}  &	(2 \pi)^{-d}\int_{\R^d} \mathcal{F}( [ (Qg)*(\widetilde{Qg}) ]^p )(x)\mathcal{F}\varphi(x) \ud x
@@ -456,6 +477,16 @@ There are several places in the proof that I think are typos. Also I do not unde
 	
 	It seems as if they are assuming that $\widehat{\widetilde{Qg}} = \widehat{Qg}$ which is only true if $Qg$ is an even function. 
 	
+	\textbf{Nicks Solution:}
+	Since $Qg$ is a real valued function then we have the property that 
+	\[
+		\widehat{\widetilde{Qg}} = \overline{\widehat{Qg}}
+	\]
+	and therefore we have that 
+	\[
+		\int_{\R^d}  \bigg[ \widehat{Qg}\;\widehat{\widetilde{Qg}} \bigg] ^{*p}(x)\mathcal{F}\varphi(x) \ud x = \int_{\R^d}  \bigg[ |\widehat{Qg}|^2 \bigg] ^{*p}(x)\mathcal{F}\varphi(x) \ud x
+	\]
+	which verifies equation (7.22). 
 	\item \textbf{Details for (7.22)} Again I am going to continue as if the previous was not a typo. Im giving the details for (7.22) just for clarity. (7.22) says that if we define $h=(2\pi)^{-d}\widehat{Qg}$ then 
 	\begin{align*}
 		\sup_{\langle g, Qg \rangle =1} &	(2\pi)^{-d(p+1)} \int_{\R^d} [ |\widehat{Qg}|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x   
