@@ -613,6 +613,30 @@ and
 If this is correct then this means that equation (1.7) in the wave paper is slightly is slightly off.
 \end{NickQuestion}
 
+\begin{NickQuestion}[Addressing the (A.2) and (A.8) Typo from Xia Chen's Paper]
+	
+	(A.2) says the following, for $0 < \sigma < d$ and some constant $C$, 
+	\[
+		\left| \int_{\R^{dp}} \dfrac{\prod_{j =1}^p f_j(x_j)}{|x_1+\cdots+x_p|^{d-\sigma}} \prod_{j =1} \ud x_j \right| \le C^p \prod_{j =1}\Norm{f_j}_{pd/((p-1)d+\sigma)}
+	\]
+
+and the proof of this inequality relies on $(A.8)$ which says 
+	\[
+		\int_{\R^{dp}}\frac{\prod_{j = 1}^pf_j(x_j)}{|x_1+\cdots+x_p|^{d-\alpha}} \prod_{j = 1}^p \ud x_j =
+		\int_{\R^{d2}}\frac{f_1(x)(f_2*\cdots * f_p)(y)}{|x-y|^{d-\alpha}}  \ud x \ud y
+	\]
+	and (A.8) is only true for even functions. In the Xia Chen paper, (A.2) is used to prove (A.3) as well however these equations are only used in two spots. 
+	
+	For (A.2), it is used to show that $\Gamma_\sigma$ is finite. It seems like this is unnecessary because in section 7 if Chen's paper, it is proven that  $\rho = (2\pi)^{-d}(\Gamma(1))^{p-\sigma/\beta}$ and $\rho$ had already been proven to be finite in the beginning of the paper and so then $\Gamma$ must be finite. So using (A.2) to independently prove that $\Gamma$ is finite seems unnecessary at the moment but I am unsure. 
+	
+	(A.3), and also (A.2),  is used in the proof of Lemma 2.2 which says that 
+	\[
+		\mathbb{E} \left[ \zeta([0,t_1],...,[0,t_p])^m \right] = \int_{\R^{dm}} \left[ \sum_{\sigma \in \Sigma_m} \prod_{k=1}^m\frac{1}{\lambda_{\sigma(1)+ \cdots \lambda_\sigma(k)}} \right]^p\prod_{k=1}^m \varphi(\lambda_k) \ud \lambda_k.
+	\]
+	
+	It seems that once we have the expression on the right hand side that the proofs for the upper and lower bound in Theorem 2.3 work fine. So maybe in our paper this wont be an issue since we do not deal with the left hand side of the above centered equality.
+\end{NickQuestion}
+
 \section{Proof Sketches}
 
 \begin{NickQuestion}
