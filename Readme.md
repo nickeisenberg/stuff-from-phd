@@ -17,4 +17,9 @@
    In particular, I have add all the source files for my talk to be given on Dec. 10th, 21:00pm EST.
    Feel free to use anything from inside.
 
-# More to come...
+# Meetings || +service +nick +meeting
+## Meetings on 2021-01-21
+   * [X] Meeting Nick for discussions. (2021-01-21 13:00)  #48735a11
+   * Lemma 7.2 of Xia's paper relies strongly on the form of $L(f)$ and the $\widetilde{L}(f)$ and
+     the fact that they are of order 2.
+   * [ ] Please check how it works for (1.26) of Xia's paper in the fractional noise case.  #765ae5cb
