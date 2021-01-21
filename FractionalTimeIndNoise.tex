@@ -635,6 +635,24 @@ and the proof of this inequality relies on $(A.8)$ which says
 	\]
 	
 	It seems that once we have the expression on the right hand side that the proofs for the upper and lower bound in Theorem 2.3 work fine. So maybe in our paper this wont be an issue since we do not deal with the left hand side of the above centered equality.
+	
+	\textbf{Possible fix:} In the Wave paper, we only care about $\rho$ from Xia Chen's paper with $p=2$. We can rewrite (A.2) as 
+	\[
+		\int_{\R^{2d}} \frac{f(x)g(y)}{|x+y|^{d-\sigma}} \ud x \ud y = 	\int_{\R^{2d}} \frac{f(u)g(-v)}{|u-v|^{d-\sigma}} \ud x \ud y =	\int_{\R^{2d}} \frac{f(u)\tilde{g}(v)}{|u-v|^{d-\sigma}} \ud x \ud y
+	\]
+	Then we can apply (1.26) from Xia Chen's paper with $r=2d/(\sigma+d)$ and $s=2d/(\sigma +d)$ to obtain 
+	\[
+		\int_{\R^{2d}} \frac{f(u)\tilde{g}(v)}{|u-v|^{d-\sigma}} \ud x \ud y \le C \Norm{f}_{2d/(\sigma+d)} \Norm{\tilde{g}}_{2d/(\sigma+d)}
+	\]
+	but 
+	\[
+		\Norm{\tilde{g}}_{2d/(\sigma+d)} = \Norm{g}_{2d/(\sigma+d)}
+	\]
+	and so 
+	\[
+			\int_{\R^{2d}} \frac{f(x)g(y)}{|x+y|^{d-\sigma}} \ud x \ud y \le C \Norm{f}_{2d/(\sigma+d)} \Norm{\tilde{g}}_{2d/(\sigma+d)} = C \Norm{f}_{2d/(\sigma+d)} \Norm{g}_{2d/(\sigma+d)}
+	\]
+	and this is the inequality we need but only for $p=2$. 
 \end{NickQuestion}
 
 \section{Proof Sketches}
