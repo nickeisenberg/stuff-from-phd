@@ -659,7 +659,7 @@ and the proof of this inequality relies on $(A.8)$ which says
 \begin{NickQuestion}[1.26 From The Xia Chen Paper]
 	I am unsure why we can say 
 	\[
-		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\gamma}} \ud \lambda \ud \gamma \le C \Norm{F}_r \Norm{G}_s
+		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\sigma}} \ud \lambda \ud \gamma \le C \Norm{F}_r \Norm{G}_s
 	\]
 	where $s^{-1} + r^{-1} = 1 + \sigma/d$. It says it follows by page 275 of \textit{Donoghue - Distributions and Fourier transforms} but in that text what is stated is that 
 	\[
@@ -676,6 +676,30 @@ and the proof of this inequality relies on $(A.8)$ which says
 		 I_\sigma(F)(\gamma) = \int_{\R^d}\frac{F(x)}{|\gamma - x|^{d-\sigma}} \ud x
 	\]
 	and I tried using the theorem (Hardy Littlewood Fractional Integration Theorem) which says that $I_\sigma$ maps from $L^p$ to $L^q$ if and only if $1/p - 1/q = \sigma / d$ with $p>1$ but as of now I am still working on it. 
+	
+	\textbf{Partial Solution:} Let $q$ and $s$ be such that $1/q + 1/s = 1$ then Holders Inequality gives us that 
+	\begin{align*}
+		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\gamma}} \ud \lambda \ud \gamma &=  	\int_{\R^{d}} I_\sigma F(\lambda ) G(\gamma) \ud \lambda
+		\\& \le \Norm{ I_\sigma F}_q \Norm{G}_s
+	\end{align*}
+	Now recalling the Hardy Littlewood Fractional Integral Theorem, $I_\sigma$ is a bounded linear operator from $L_r$ to $L_q$ if and only if $1/q = 1/{r} - \sigma/d.$ Let $r$ be such. Then we have 
+	\[
+		\Norm{I_\sigma F}_q \le C \Norm{F}_r
+	\]
+	and putting this together we get that 
+	\[
+		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\gamma}} \ud \lambda \ud \gamma \le C \Norm{F}_r \Norm{G}_s
+	\]
+	whenever 
+	\begin{align*}
+			1 &= \frac{1}{q} + \frac{1}{s}
+			\\ &=\left( \frac{1}{r} - \frac{\sigma}{d} \right) + \frac{1}{s}
+	\end{align*}
+	hence 
+	\[
+		\frac{1}{r}  + \frac{1}{s} = 1 + \frac{\sigma}{d}
+	\]
+	which is what is given in the Xia Chen paper. 
 \end{NickQuestion}
 \section{Proof Sketches}
 
