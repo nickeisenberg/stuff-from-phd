@@ -711,7 +711,7 @@ and the proof of this inequality relies on $(A.8)$ which says
 	\[
 		\int_{\R^d}\int_{\R^d} \frac{F(\gamma)G(\lambda)}{ \prod_{j = 1}^d |\lambda_i - \gamma_i|^{1-\sigma_j}} \ud \gamma \ud \lambda \le C\Norm{F}_r \Norm{G}_s
 	\]
-	I am not sure how $r$ and $s$ will be related. In order to figure that how we need to find out properties about the following operator,
+	In order to figure that how we need to find out properties about the following operator,
 	\[
 		L_\sigma f (x) = \int_{\R^d} \frac{f(y)}{\prod_{j = 1}^d |x_i - y_i|^{1-\sigma_i} } \ud y.
 	\]
@@ -739,17 +739,23 @@ and the proof of this inequality relies on $(A.8)$ which says
 	\[
 		\Norm{f}_{{d/\lambda},w} = \frac{d}{d-\lambda}\left[ |\mathbb{S}^{d-1}|/d \right]^{\lambda/d} \quad \text{when } f(x) = |x|^{-\lambda} 
 	\]
-	If we use this but with $\lambda = d - \alpha$ and $q=d/ \lambda$ which means $1/p + 1/r =1 + \alpha / d$ then we see that 
+	If we use this but with $\lambda = d - \alpha$ and $q=d/ \lambda$ then we get that $1/p + 1/r =1 + \alpha / d$ and also
 	\[
 		\int_{\R^{2d}} \frac{f(x)g(x)}{|x-y|^{d-\lambda}} \ud x \ud y \le K  \frac{d}{\alpha}\left[ |\mathbb{S}^{d-1}|/d \right]^{(d-\alpha)/d}  \Norm{f}_p\Norm{g}_r.
 	\]
-	 This is another way to prove that $\rho$ from the Xia Chen paper is finite and this way avoids using the Sobelov-Hardy-Littlewood Theorem that I used above. Things  need some work here because we need $\Norm{f}_p$ and $\Norm{g}_r$ to be finite. In the Xia Chen paper you can see that these norms just reduced to $L^2$ norms because they have those function $F$ and $G$ and when they reduce to $f$ and $g$ then the norms become $L^2$ norms. Im pretty sure the same will happen in this case as well too. 
+	 This is another way to prove that $\rho$ from the Xia Chen paper is finite and this way avoids using the Sobelov-Hardy-Littlewood Theorem that I used above. Things  need some work here because we need $\Norm{f}_p$ and $\Norm{g}_r$ to be finite. In the Xia Chen paper you can see that these norms just reduced to $L^2$ norms because they have those functions $F$ and $G$ and when they reduce to $f$ and $g$ then the norms become $L^2$ norms. The same will happen in this case as well too. 
 	
-	If this works then the goal would be to apply the weak Young's inequality to $\varphi(x) = \prod |x_i|^{1-\alpha_i}$. This would require us calculate $\Norm{\varphi}_{q,w}$ to show that it is in the weak $L^q_w$ space.
+	We can try to apply the weak Young's inequality to $\varphi(x) = \prod |x_i|^{1-\alpha_i}$. This would require us calculate $\Norm{\varphi}_{q,w}$ to show that it is in the weak $L^q_w$ space.
 	
 	\noindent \textbf{Is fractional noise in the weak $L^p$ space?}
 	
-	Let $\varphi(x) = \prod_{j = 1}^d|x_i|^{\alpha_i-1}$ From the definition of the weak $L^p$ space on wiki, we need to show that for 
+	Let $\varphi(x) = \prod_{j = 1}^d|x_i|^{\alpha_i-1}$. We would like for $\varphi \in L^{d/(d-\alpha)}_w$ because then we would apply weak young's inequality with $q= d/(d-\alpha)$ and see that 
+	\[
+		\int_{\R^{2d}} F(x)\varphi(x-y)G(y) \le \Norm{\varphi}_{d/(d-\alpha) , w} \Norm{F}_{p}  \Norm{G}_r
+	\]
+	where $1/p + 1/r =1 + \alpha / d$. Then we could follow the Xia Chen paper exactly to show $\rho$ is finite. 
+	
+	From the definition of the weak $L^p$ space on wiki, we need to show that for 
 	\[
 			K_\varphi(t) = \left| \{ x: \prod_{j = 1}^d|x_i|^{\alpha_i-1} > t \} \right|
 	\]
