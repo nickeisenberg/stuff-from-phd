@@ -384,7 +384,7 @@ Note that when $\alpha = \beta =2 $ and when $\gamma = 0$ then the guess reduces
 	\end{equation}
 
 	\begin{equation}
-		 \Lambda_{\alpha} = \sup_{f \in \mathcal{F}_\beta} \left\{ \left( \int{\R^d} \frac{\prod_{j = 1}^p f^2(x_j)}{|x_1+...+x_p|^\alpha} \prod_{j = 1}^p \ud x_j \right)^{1/p} - \mathcal{E}_\beta(f,f) \right\}
+		 \Lambda_{\alpha} = \sup_{f \in \mathcal{F}_\beta} \left\{ \left( \int_{\R^d} \frac{\prod_{j = 1}^p f^2(x_j)}{|x_1+...+x_p|^\alpha} \prod_{j = 1}^p \ud x_j \right)^{1/p} - \mathcal{E}_\beta(f,f) \right\}
 	 \end{equation}
 
 \textbf{Theorem 1.5}
@@ -513,7 +513,7 @@ Hence,
 	Since $(2\pi)^{d}h=\widehat{Qg}$ then this implies that $\hat{h} = \widetilde{Qg} = Q\tilde{g}$
 	since $Q$ is even and because when considering $\hat{f}(x) = \int \exp(ixs)f(s) \ud s$ as the
 	definition of the Fourier transform then we have the property that $\hat{\hat{f}} =
-	(2\pi)^d\tilde{f}$ \textcolor{magenta}{(no this is not right)}. Also we have that
+	(2\pi)^d\tilde{f}$. Also we have that
 	\[
 		\langle g, Qg \rangle = \langle \tilde{g}, \widetilde{Qg} \rangle = \langle  \hat{h}Q^{-1}, \hat{h} \rangle = (2\pi)^d\Norm{h}_2^2 + (2\pi)^d\tilde{L}(h)
 	\]
@@ -546,7 +546,7 @@ Hence,
 The integrals can be shown to be equal through a change of variables.
 \begin{align*}
 \int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x 
-&= \int_{\R^d} (h*\cdots*h)(x) \frac{1}{|x|^\alpha} \ud x \\
+&= \int_{\R^d} (|h|^2*\cdots*|h|^2)(x) \frac{1}{|x|^\alpha} \ud x \\
 &= \int_{\R^d} \int_{\R^{d(p-1)}} \textcolor{magenta}{|h|^2}(x-y_1)\textcolor{magenta}{|h|^2}(y_1-y_2)\cdots \textcolor{magenta}{|h|^2}(y_{p-2}-y_{p-1})\textcolor{magenta}{|h|^2}(y_{p-1}) \prod_{j =1}^{p-1}\ud y_j \; \frac{1}{|x|^\alpha} \ud x
 \end{align*}
 then applying the substitution
@@ -765,13 +765,37 @@ and the proof of this inequality relies on $(A.8)$ which says
 	\]
 
 \end{NickQuestion}
+
+\begin{NickQuestion}[Representation (1.19) from the wave paper]
+	I have a question about (1.19), here are my steps trying to prove it but I am unsure why the last step is true. For notation, let $\xi = (\xi_1,...,\xi_n)$ and $\mu(\ud \xi) = \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)$. Also $x = (x_1,...,x_n)$
+	
+	\begin{align*}
+		&\Norm{\tilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \int_{\R^{nd}} \mathcal{F}(\tilde{f}_n(\cdot, 0, t))(\xi_1,\cdots \xi_n)\mathcal{F}(\tilde{f}_n(\cdot, 0, t))(\xi_1,\cdots, \xi_n) \mu (\ud \xi_1)\cdots \mu(\ud \xi_n)
+		\\&= \int_{\R^{nd}} \mathcal{F}(\tilde{f}_n(\cdot, 0, t))(\xi)\mathcal{F}(\tilde{f}_n(\cdot, 0, t))(\xi) \mu (\ud \xi)
+		\\&= (2 \pi)^d \int_{\R^{dn}} [\tilde{f}_n(\cdot, 0, t) * \tilde{f}_n(\cdot, 0, t)](x) \Gamma(\ud x)
+		\\& = (2 \pi)^d \int_{\R^{dn}} [\tilde{f}_n(\cdot, 0, t) * \tilde{f}_n(\cdot, 0, t)](x) \gamma( x) \ud x
+		\\&= (2 \pi)^d \int_{\R^{dn}} [\tilde{f}_n(\cdot, 0, t) * \tilde{f}_n(\cdot, 0, t)](x) (K*K)(x) \ud x
+		\\&= (2 \pi)^d\langle \tilde{f}_n(\cdot,0,t) *\tilde{f}_n(\cdot,0,t), K*K\rangle
+		\\&=(2 \pi)^d \langle \tilde{f}_n(\cdot,0,t) *K, \tilde{f}_n(\cdot,0,t)*K\rangle
+		\\& = (2 \pi)^d  \int_{\R^{dn}} \left( [\tilde{f}_n(\cdot,0,t)*K](x) \right)^2 \ud x
+		\\& = (2 \pi)^d  \int_{\R^{dn}} \left( \int_{\R^{dn}}\tilde{f}_n(y,0,t)K(x-y) \ud y \right)^2 \ud x
+		\\& = (2 \pi)^d  \int_{\R^{dn}} \left( \int_{\R^{dn}}\frac{1}{n!}\sum_{\sigma \in \Sigma_n}  f_n(y_{\sigma(1),...,y_{\sigma(n)}}) K(x-y) \ud y \right)^2 \ud x
+		\\& = (2 \pi)^d  \int_{\R^{dn}} \left( \int_{\R^{dn}}\frac{1}{n!}\sum_{\sigma \in \Sigma_n}  \int_{[0,t]^n<} G(s_1,y_{\sigma(1)}) \cdots G(s_n-s_{n-1},y_{\sigma(n)}-y_{\sigma(n-1)}) \ud s  K(x-y) \ud y \right)^2 \ud x
+	\end{align*}
+This is pretty much (1.19) but if you look at (1.19) you can see that 
+\[
+K(x-y) = K(x_1-y_1)\cdots K(x_n-y_n)
+\]
+but why does this have to be true? 
+\end{NickQuestion}
+
 \section{Proof Sketches}
 
 \begin{NickQuestion}
 A mild solution for
 \[
     \begin{cases}
-	\left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\rho(u(t,x))\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
+	\left(\partial^\beta + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)u(t,x) = I^\gamma_t \left[\sqrt{\theta}u(t,x)\dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
 	u(0,\cdot) = 1                                                                                                         & \beta \in (0,1]            \\
 	u(0,\cdot) = 1, \quad u_t(0,\cdot) = 0                                                                                 & \beta \in (1,2]
 \end{cases}
@@ -985,5 +1009,32 @@ and the last sum is finite when
 \begin{equation}\label{alpha4}
 	 2(b+r) - 1 - b\alpha/a > 0
 \end{equation}
+\end{NickQuestion}
+Some definitions for the following lemma which come from the Xia Chen paper.
+\[
+	\rho = \sup_{\Norm{f}_2 =1} \int_{\R^d}\left[ \int_{\R^d} \frac{f(x+y)(f(y))}{\sqrt{1+|x+y|^a}\sqrt{1+|y|^a}} \ud y \right] \ud x
+\]
+
+\[
+ \mathcal{E}_a(f,f) = (2 \pi)^{-d}\int_{\R^d} |x|^a |\mathcal{F}(x)|^2 \ud x
+\]
+
+\[
+	\Lambda_{\alpha} = \sup_{f\in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x+y|^\alpha} \ud x \ud y \right)^{1/2} - \mathcal{E}_a(f,f) \right\}
+\]
+
+\[
+\rho = (2 \pi)^{-d} \Lambda_{\alpha}^{(2a-\alpha)/a}
+\]
+\begin{NickQuestion}[Lemma 4.3]
+	
+	\begin{align}
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) = \log{2^{2(b+r)-\frac{b\alpha}{a}}} + \log(\rho)
+	\end{align}
+	
+	\begin{align}
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) =  \log\left[\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log(\rho) 
+	\end{align}
+\textbf{proof:} Follows the same proof as in wave paper
 \end{NickQuestion}
 \end{document}
