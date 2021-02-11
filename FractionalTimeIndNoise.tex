@@ -927,7 +927,7 @@ where $s_0 = y_{\sigma(0)} = 0$.
 \end{align*}
 
 \begin{align*}
-	T_n = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^2 \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)
+	T_n = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)
 \end{align*}
 
 \begin{align*}
@@ -1029,12 +1029,80 @@ Some definitions for the following lemma which come from the Xia Chen paper.
 \begin{NickQuestion}[Lemma 4.3]
 	
 	\begin{align}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) = \log{2^{2(b+r)-\frac{b\alpha}{a}}} + \log(\rho)
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) = \log\left(\left( \frac{\nu}{2} \right)^{-\alpha/a}2^{2(b+r)-\frac{b\alpha}{a}}\right) + \log(\rho) \label{2ineqa}
 	\end{align}
 	
 	\begin{align}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) =  \log\left[\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log(\rho) 
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) =  \log\left[\left( \frac{\nu}{2} \right)^{-\alpha/a}\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log(\rho) \label{2ineqb}
 	\end{align}
-\textbf{proof:} Follows the same proof as in wave paper
+\textbf{proof:} Denote $T_n'$ to be $T_n$ with $\nu=2$, in other words
+\[
+		T_n' = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n).
+\]
+Recall Theorem 2.3 from the Xia Chen paper which says that 
+\[
+	\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2} T_n'\right) \to \log(\rho)
+\]
+Note that through a change of variables, $\xi_i = \left(\frac{\nu}{2}\right)^{1/a}\xi_i$, we can rewrite $T_n = \left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'$. We already showed in the proof of Theorem 3.1 above that 
+\[
+	\int_0^\infty e^{-t} \Norm{ \tilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t = \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
+\]
+and then Lemma 3.7 above shows that 
+\[
+	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n = \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'.
+\]
+Combining this and Theorem 2.3 from the Xia Chen paper we see that 
+\begin{align*}
+	\limsup_{n \to \infty} \frac{1}{n}& \log\left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)  \right) 
+\\	&\le \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a}  2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right) + \lim_{n \to \infty} \frac{1}{n} \log\left( \frac{T_n'}{(n!)^2} \right)
+\\& = \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a}  2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right)  + \log(\rho)
+\end{align*}
+which proves the upper bound for \ref{2ineqa}.
+
+Now define for $t>0$ and $t'>0$
+\[
+	J_n(t,t') = \int_{\R^{nd}} H_n(t,x)H_n(t',x) \ud x
+\]
+and recall Lemma 3.4 which says 
+\[
+	\Norm{\tilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2} \int_{\R^{nd}} H_n(t,x)^2\ud x = \frac{1}{(n!)^2} J_n(t,t).
+\]
+Thus $J_n(t,t)$ satisfies the scaling property 
+\[
+	J_n(t,t) =  t^{[2(b + r ) -b \alpha / a]n} J_n(1,1).
+\]
+Let $\tau$ and $\tilde{\tau}$ be independent exponential random variables with mean 1. By lemma 3.3,
+\begin{align*}
+\mathbb{E}[J_n(\tau, \tau')] &= \int_0^\infty \int_0^\infty e^{-t}e^{-\tilde{t}}J_n(t,\tilde{t}) \ud t \ud \tilde{t} = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x
+\\&= \int_{\R^{nd}} |\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) = T_n
+\end{align*}
+In addition, 
+\[
+	J_n(t,t') \le J_n(t,t)^{1/2}J_n(t',t')^{1/2} =  t^{[2(b + r ) -b \alpha / a]n/2} {t'}^{[2(b + r ) -b \alpha / a]n/2} J_n(1,1).
+\]
+Combining all of this gives us 
+\begin{align*}
+	T_n & = \mathbb{E}[J_n(\tau,\tilde{\tau})] \le \mathbb{E}\left[  {\tau}^{[2(b + r ) -b \alpha / a]n/2} \right] \mathbb{E}\left[  {\tilde{\tau}}^{[2(b + r ) -b \alpha / a]n/2} \right]J_n(1,1)
+	\\& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 J_n(1,1)
+	\\& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
+\end{align*}
+where the last line follows from Lemma 3.4. Thus so far we have shown 
+\begin{align}
+\frac{T_n}{(n!)^2} = \frac{\left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'}{(n!)^2}\le	\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \label{2lowbd}
+\end{align}
+Now, another application of Stirling's formula shows that 
+\[
+	\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n
+\]
+where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. We now infer from \ref{2lowbd} that 
+\[
+	c_{\alpha} \frac{2^{[2(b + r ) -b \alpha / a]n}}{C_n} \frac{1}{(n!)^2}\left( \frac{\nu}{2} \right)^{-n\alpha/a}T_n' \le \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right) 	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 
+\]
+where $c_{\alpha}$ is a constant depending on $\alpha$. Since $\frac{1}{c}C_n \to 0$ as $n \to \infty$, we obtain the lower bound
+\begin{align*}
+	\liminf_{n\to \infty} \frac{1}{n} &\log \left( \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right) 	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
+	\\ & \ge \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} 2^{[2(b + r ) -b \alpha / a]} \right) + \log(\rho)
+\end{align*}
+Thus \ref{2ineqa} is proven. \ref{2ineqb} is shown in the same way as in the wave paper. 
 \end{NickQuestion}
 \end{document}
