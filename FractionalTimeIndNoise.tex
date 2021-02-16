@@ -1,4 +1,4 @@
-% \documentclass[a4paper,12pt]{article}
+% \documentclass[a4paper,12pt]{article}{{{
 \documentclass[a4paper,11pt]{article}
 % -------------------------------------------------
 % Set up the page margins.
@@ -62,14 +62,14 @@
 \newcommand{\W}{\dot{W}}
 \newcommand{\B}{\textbf{B}}
 \newcommand{\D}{\mathbb{D}}
-\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
 \newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
 \newcommand{\sgn}{\text{sgn}}
 \newcommand{\Lad}{\text{L}_{\text{ad}}^2}
 \newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
 \newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
-\newcommand{\Indt}[1]{1_{\left\{#1 \right\}}}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\} }}
 \newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
 \newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
@@ -108,18 +108,18 @@
 \newcommand{\myVec}[1]{\overrightarrow{#1}}
 \newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
 \newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
-\newcommand*{\one}{{{\rm 1\mkern-1.5mu}\!{\rm I}}}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\myEnd}{\hfill$\square$}
 \newcommand{\ds}{\displaystyle}
 \newcommand{\Shi}{\text{Shi}}
 \newcommand{\Chi}{\text{Chi}}
-\newcommand{\Daw}{\ensuremath{\mathrm{daw}}}
-\newcommand{\Erf}{\ensuremath{\mathrm{erf}}}
-\newcommand{\Erfi}{\ensuremath{\mathrm{erfi}}}
-\newcommand{\Erfc}{\ensuremath{\mathrm{erfc}}}
-\newcommand{\He}{\ensuremath{\mathrm{He}}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw} }}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
 
 \def\crtL{\theta}
 
@@ -168,7 +168,7 @@
 
 \usepackage{natbib}
 \usepackage{graphicx}
-
+% }}}
 
 \begin{document}
 
@@ -545,8 +545,13 @@ Hence,
 \textit{Possible Justification:}
 The integrals can be shown to be equal through a change of variables.
 \begin{align*}
+<<<<<<< HEAD
 \int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x 
 &= \int_{\R^d} (|h|^2*\cdots*|h|^2)(x) \frac{1}{|x|^\alpha} \ud x \\
+=======
+\int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x
+&= \int_{\R^d} (h*\cdots*h)(x) \frac{1}{|x|^\alpha} \ud x \\
+>>>>>>> e6b1d1442880f2a56719c2006e193c9da8da0727
 &= \int_{\R^d} \int_{\R^{d(p-1)}} \textcolor{magenta}{|h|^2}(x-y_1)\textcolor{magenta}{|h|^2}(y_1-y_2)\cdots \textcolor{magenta}{|h|^2}(y_{p-2}-y_{p-1})\textcolor{magenta}{|h|^2}(y_{p-1}) \prod_{j =1}^{p-1}\ud y_j \; \frac{1}{|x|^\alpha} \ud x
 \end{align*}
 then applying the substitution
@@ -614,100 +619,103 @@ If this is correct then this means that equation (1.7) in the wave paper is slig
 \end{NickQuestion}
 
 \begin{NickQuestion}[Addressing the (A.2) and (A.8) Typo from Xia Chen's Paper]
-	
-	(A.2) says the following, for $0 < \sigma < d$ and some constant $C$, 
+
+	(A.2) says the following, for $0 < \sigma < d$ and some constant $C$,
 	\[
 		\left| \int_{\R^{dp}} \dfrac{\prod_{j =1}^p f_j(x_j)}{|x_1+\cdots+x_p|^{d-\sigma}} \prod_{j =1} \ud x_j \right| \le C^p \prod_{j =1}\Norm{f_j}_{pd/((p-1)d+\sigma)}
 	\]
 
-and the proof of this inequality relies on $(A.8)$ which says 
+and the proof of this inequality relies on $(A.8)$ which says
 	\[
 		\int_{\R^{dp}}\frac{\prod_{j = 1}^pf_j(x_j)}{|x_1+\cdots+x_p|^{d-\alpha}} \prod_{j = 1}^p \ud x_j =
 		\int_{\R^{d2}}\frac{f_1(x)(f_2*\cdots * f_p)(y)}{|x-y|^{d-\alpha}}  \ud x \ud y
 	\]
-	and (A.8) is only true for even functions. In the Xia Chen paper, (A.2) is used to prove (A.3) as well however these equations are only used in two spots. 
-	
-	For (A.2), it is used to show that $\Gamma_\sigma$ is finite. It seems like this is unnecessary because in section 7 if Chen's paper, it is proven that  $\rho = (2\pi)^{-d}(\Gamma(1))^{p-\sigma/\beta}$ and $\rho$ had already been proven to be finite in the beginning of the paper and so then $\Gamma$ must be finite. So using (A.2) to independently prove that $\Gamma$ is finite seems unnecessary at the moment but I am unsure. 
-	
-	(A.3), and also (A.2),  is used in the proof of Lemma 2.2 which says that 
+	and (A.8) is only true for even functions. In the Xia Chen paper, (A.2) is used to prove (A.3) as well however these equations are only used in two spots.
+
+	For (A.2), it is used to show that $\Gamma_\sigma$ is finite. It seems like this is unnecessary because in section 7 if Chen's paper, it is proven that  $\rho = (2\pi)^{-d}(\Gamma(1))^{p-\sigma/\beta}$ and $\rho$ had already been proven to be finite in the beginning of the paper and so then $\Gamma$ must be finite. So using (A.2) to independently prove that $\Gamma$ is finite seems unnecessary at the moment but I am unsure.
+
+	(A.3), and also (A.2),  is used in the proof of Lemma 2.2 which says that
 	\[
 		\mathbb{E} \left[ \zeta([0,t_1],...,[0,t_p])^m \right] = \int_{\R^{dm}} \left[ \sum_{\sigma \in \Sigma_m} \prod_{k=1}^m\frac{1}{\lambda_{\sigma(1)+ \cdots \lambda_\sigma(k)}} \right]^p\prod_{k=1}^m \varphi(\lambda_k) \ud \lambda_k.
 	\]
-	
+
 	It seems that once we have the expression on the right hand side that the proofs for the upper and lower bound in Theorem 2.3 work fine. So maybe in our paper this wont be an issue since we do not deal with the left hand side of the above centered equality.
-	
-\noindent	\textbf{Possible fix for the (A.2) Inequality :} In the Wave paper, we only care about $\rho$ from Xia Chen's paper with $p=2$. We can rewrite (A.2) as 
+
+\noindent	\textbf{Possible fix for the (A.2) Inequality :} In the Wave paper, we only care about $\rho$ from Xia Chen's paper with $p=2$. We can rewrite (A.2) as
 	\[
 		\int_{\R^{2d}} \frac{f(x)g(y)}{|x+y|^{d-\sigma}} \ud x \ud y = 	\int_{\R^{2d}} \frac{f(u)g(-v)}{|u-v|^{d-\sigma}} \ud x \ud y =	\int_{\R^{2d}} \frac{f(u)\tilde{g}(v)}{|u-v|^{d-\sigma}} \ud x \ud y
 	\]
-	Then we can apply (1.26) from Xia Chen's paper with $r=2d/(\sigma+d)$ and $s=2d/(\sigma +d)$ to obtain 
+	Then we can apply (1.26) from Xia Chen's paper with $r=2d/(\sigma+d)$ and $s=2d/(\sigma +d)$ to obtain
 	\[
 		\int_{\R^{2d}} \frac{f(u)\tilde{g}(v)}{|u-v|^{d-\sigma}} \ud x \ud y \le C \Norm{f}_{2d/(\sigma+d)} \Norm{\tilde{g}}_{2d/(\sigma+d)}
 	\]
-	but 
+	but
 	\[
 		\Norm{\tilde{g}}_{2d/(\sigma+d)} = \Norm{g}_{2d/(\sigma+d)}
 	\]
-	and so 
+	and so
 	\[
 			\int_{\R^{2d}} \frac{f(x)g(y)}{|x+y|^{d-\sigma}} \ud x \ud y \le C \Norm{f}_{2d/(\sigma+d)} \Norm{\tilde{g}}_{2d/(\sigma+d)} = C \Norm{f}_{2d/(\sigma+d)} \Norm{g}_{2d/(\sigma+d)}
 	\]
-	and this is the inequality we need but only for $p=2$. 
+	and this is the inequality we need but only for $p=2$.
 \end{NickQuestion}
 
 
 \begin{NickQuestion}[1.26 From The Xia Chen Paper]
-	I am unsure why we can say 
+	I am unsure why we can say
 	\[
 		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\sigma}} \ud \lambda \ud \gamma \le C \Norm{F}_r \Norm{G}_s
 	\]
-	where $s^{-1} + r^{-1} = 1 + \sigma/d$. It says it follows by page 275 of \textit{Donoghue - Distributions and Fourier transforms} but in that text what is stated is that 
+	where $s^{-1} + r^{-1} = 1 + \sigma/d$. It says it follows by page 275 of \textit{Donoghue - Distributions and Fourier transforms} but in that text what is stated is that
 	\[
 			\int_{\R^{2d}} u(\lambda) v(\gamma)T(\lambda - \gamma) \ud \lambda \ud \gamma \le \Norm{T}_r \Norm{v}_{r'} \Norm{u}_1
 	\]
-	where I am unsure what $r$ and $r'$ satisfy but $T$ is required to be in $L^r(\R^d)$ and in the case in Xia Chen's paper, $T(x) = \varphi(x) = \frac{1}{|x|^{d-\sigma}}$ is not in $L^r{\R^d}$. I think in the Donoghue text we have $1/r + 1/{r'} + 1 = 2$ which would follow from Young's Convolution Inequality. 
-	
-	The equation (1.26) can be written as 
+	where I am unsure what $r$ and $r'$ satisfy but $T$ is required to be in $L^r(\R^d)$ and in the case in Xia Chen's paper, $T(x) = \varphi(x) = \frac{1}{|x|^{d-\sigma}}$ is not in $L^r{\R^d}$. I think in the Donoghue text we have $1/r + 1/{r'} + 1 = 2$ which would follow from Young's Convolution Inequality.
+
+	The equation (1.26) can be written as
 	\[
 		\int_{\R^d} I_\sigma(F)(\gamma) G(\gamma) \ud \gamma \le  C \Norm{F}_r \Norm{G}_s
 	\]
-	where 
+	where
 	\[
 		 I_\sigma(F)(\gamma) = \int_{\R^d}\frac{F(x)}{|\gamma - x|^{d-\sigma}} \ud x
 	\]
-	and I tried using the theorem (Hardy Littlewood Fractional Integration Theorem) which says that $I_\sigma$ maps from $L^p$ to $L^q$ if and only if $1/p - 1/q = \sigma / d$ with $p>1$ but as of now I am still working on it. 
-	
-	\textbf{Partial Solution:} Let $q$ and $s$ be such that $1/q + 1/s = 1$ then Holders Inequality gives us that 
+	and I tried using the theorem (Hardy Littlewood Fractional Integration Theorem) which says that $I_\sigma$ maps from $L^p$ to $L^q$ if and only if $1/p - 1/q = \sigma / d$ with $p>1$ but as of now I am still working on it.
+
+	\textbf{Partial Solution:} Let $q$ and $s$ be such that $1/q + 1/s = 1$ then Holders Inequality gives us that
 	\begin{align*}
 		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\gamma}} \ud \lambda \ud \gamma &=  	\int_{\R^{d}} I_\sigma F(\lambda ) G(\gamma) \ud \lambda
 		\\& \le \Norm{ I_\sigma F}_q \Norm{G}_s
 	\end{align*}
-	Now recalling the Hardy Littlewood Fractional Integral Theorem, $I_\sigma$ is a bounded linear operator from $L_r$ to $L_q$ if and only if $1/q = 1/{r} - \sigma/d.$ Let $r$ be such. Then we have 
+	Now recalling the Hardy Littlewood Fractional Integral Theorem, $I_\sigma$ is a bounded linear operator from $L_r$ to $L_q$ if and only if $1/q = 1/{r} - \sigma/d.$ Let $r$ be such. Then we have
 	\[
 		\Norm{I_\sigma F}_q \le C \Norm{F}_r
 	\]
-	and putting this together we get that 
+	and putting this together we get that
 	\[
 		\int_{\R^{2d}} \frac{F(\lambda ) G(\gamma)}{|\lambda - \gamma|^{d-\gamma}} \ud \lambda \ud \gamma \le C \Norm{F}_r \Norm{G}_s
 	\]
-	whenever 
+	whenever
 	\begin{align*}
 			1 &= \frac{1}{q} + \frac{1}{s}
 			\\ &=\left( \frac{1}{r} - \frac{\sigma}{d} \right) + \frac{1}{s}
 	\end{align*}
-	hence 
+	hence
 	\[
 		\frac{1}{r}  + \frac{1}{s} = 1 + \frac{\sigma}{d}
 	\]
-	which is what is given in the Xia Chen paper. 
+	which is what is given in the Xia Chen paper.
+	\bigskip
+
+\textcolor{magenta}{Your solutions above look very good.}
 \end{NickQuestion}
 
 \begin{NickQuestion}[(1.26) for the fractional noise.]
-	If we want to apply the results to 
+	If we want to apply the results to
 	\[
 		\varphi(x) = \prod_{j = 1}^d \frac{1}{|x|^{1-\sigma_j}}
 	\]
-	then we need to be able to prove equation (1.26) for this noise which is 
+	then we need to be able to prove equation (1.26) for this noise which is
 	\[
 		\int_{\R^d}\int_{\R^d} \frac{F(\gamma)G(\lambda)}{ \prod_{j = 1}^d |\lambda_i - \gamma_i|^{1-\sigma_j}} \ud \gamma \ud \lambda \le C\Norm{F}_r \Norm{G}_s
 	\]
@@ -715,51 +723,51 @@ and the proof of this inequality relies on $(A.8)$ which says
 	\[
 		L_\sigma f (x) = \int_{\R^d} \frac{f(y)}{\prod_{j = 1}^d |x_i - y_i|^{1-\sigma_i} } \ud y.
 	\]
-	Specifically can we say that $L_\sigma$ is a bounded linear operator from $L_p$ to $L_q$ for some related pair $(p,q)$? 
-	
-	The issue with copying the proof for the Hardy-Littlewood fractional integral theorem in this situation is that polar coordinates do not seem to be so easily applied in this situation. 
-	
-	\noindent \textbf{Weak Young's Inequality:} 
-	
+	Specifically can we say that $L_\sigma$ is a bounded linear operator from $L_p$ to $L_q$ for some related pair $(p,q)$?
+
+	The issue with copying the proof for the Hardy-Littlewood fractional integral theorem in this situation is that polar coordinates do not seem to be so easily applied in this situation.
+
+	\noindent \textbf{Weak Young's Inequality:}
+
 	The inequality (1.26) from the Xia Chen paper seems to only be important to show that $\rho$ is finite. We may be able to use Young's Weak inequality to do this, which is
 	\[
 	\left|	\int_{\R^d}\int_{\R^d}f(x)g(x-y)g(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{f}_p\Norm{g}_{q,w}\Norm{h}_r
 	\]
-	Where $p,q,r >1$ and $1/p + 1/q + 1/r =2$. I am following page 107 section 4.3 of Analysis by Lieb and Loss. The weak $L^q$ space is defined to be the set of functions such that 
+	Where $p,q,r >1$ and $1/p + 1/q + 1/r =2$. I am following page 107 section 4.3 of Analysis by Lieb and Loss. The weak $L^q$ space is defined to be the set of functions such that
 	\[
 		\sup_{\alpha >0} \alpha \left| \{ x: |f(x)| > \alpha \} \right|^{1/q} < \infty.
 	\]
-	This quantity is not a norm on the $L^q_w$ space though. But there is a norm on the space that it is equivalent to the above expression (I am unsure what equivalent means in this situation since this statement is not proven in the Lieb and Loss text) 
+	This quantity is not a norm on the $L^q_w$ space though. But there is a norm on the space that it is equivalent to the above expression (I am unsure what equivalent means in this situation since this statement is not proven in the Lieb and Loss text)
 	\[
 		\Norm{f}_{q,w} =  \sup_{A} |A|^{-1/{q'}} \int_A |f(x)| \ud x
 	\]
 	where $1/q + 1/q' = 1$ and $A$ is a measurable set of finite measure.
-	
-	It is also claimed in the Lieb and Loss text that 
+
+	It is also claimed in the Lieb and Loss text that
 	\[
-		\Norm{f}_{{d/\lambda},w} = \frac{d}{d-\lambda}\left[ |\mathbb{S}^{d-1}|/d \right]^{\lambda/d} \quad \text{when } f(x) = |x|^{-\lambda} 
+		\Norm{f}_{{d/\lambda},w} = \frac{d}{d-\lambda}\left[ |\mathbb{S}^{d-1}|/d \right]^{\lambda/d} \quad \text{when } f(x) = |x|^{-\lambda}
 	\]
 	If we use this but with $\lambda = d - \alpha$ and $q=d/ \lambda$ then we get that $1/p + 1/r =1 + \alpha / d$ and also
 	\[
 		\int_{\R^{2d}} \frac{f(x)g(x)}{|x-y|^{d-\lambda}} \ud x \ud y \le K  \frac{d}{\alpha}\left[ |\mathbb{S}^{d-1}|/d \right]^{(d-\alpha)/d}  \Norm{f}_p\Norm{g}_r.
 	\]
-	 This is another way to prove that $\rho$ from the Xia Chen paper is finite and this way avoids using the Sobelov-Hardy-Littlewood Theorem that I used above. Things  need some work here because we need $\Norm{f}_p$ and $\Norm{g}_r$ to be finite. In the Xia Chen paper you can see that these norms just reduced to $L^2$ norms because they have those functions $F$ and $G$ and when they reduce to $f$ and $g$ then the norms become $L^2$ norms. The same will happen in this case as well too. 
-	
+	 This is another way to prove that $\rho$ from the Xia Chen paper is finite and this way avoids using the Sobelov-Hardy-Littlewood Theorem that I used above. Things  need some work here because we need $\Norm{f}_p$ and $\Norm{g}_r$ to be finite. In the Xia Chen paper you can see that these norms just reduced to $L^2$ norms because they have those functions $F$ and $G$ and when they reduce to $f$ and $g$ then the norms become $L^2$ norms. The same will happen in this case as well too.
+
 	We can try to apply the weak Young's inequality to $\varphi(x) = \prod |x_i|^{1-\alpha_i}$. This would require us calculate $\Norm{\varphi}_{q,w}$ to show that it is in the weak $L^q_w$ space.
-	
+
 	\noindent \textbf{Is fractional noise in the weak $L^p$ space?}
-	
-	Let $\varphi(x) = \prod_{j = 1}^d|x_i|^{\alpha_i-1}$. We would like for $\varphi \in L^{d/(d-\alpha)}_w$ because then we would apply weak young's inequality with $q= d/(d-\alpha)$ and see that 
+
+	Let $\varphi(x) = \prod_{j = 1}^d|x_i|^{\alpha_i-1}$. We would like for $\varphi \in L^{d/(d-\alpha)}_w$ because then we would apply weak young's inequality with $q= d/(d-\alpha)$ and see that
 	\[
 		\int_{\R^{2d}} F(x)\varphi(x-y)G(y) \le \Norm{\varphi}_{d/(d-\alpha) , w} \Norm{F}_{p}  \Norm{G}_r
 	\]
-	where $1/p + 1/r =1 + \alpha / d$. Then we could follow the Xia Chen paper exactly to show $\rho$ is finite. 
-	
-	From the definition of the weak $L^p$ space on wiki, we need to show that for 
+	where $1/p + 1/r =1 + \alpha / d$. Then we could follow the Xia Chen paper exactly to show $\rho$ is finite.
+
+	From the definition of the weak $L^p$ space on wiki, we need to show that for
 	\[
 			K_\varphi(t) = \left| \{ x: \prod_{j = 1}^d|x_i|^{\alpha_i-1} > t \} \right|
 	\]
-	that there exists a $C$ such that 
+	that there exists a $C$ such that
 	\[
 		K_\varphi(t) \le \frac{C^p}{t^p}.
 	\]
