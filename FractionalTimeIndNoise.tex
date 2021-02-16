@@ -782,11 +782,68 @@ and the proof of this inequality relies on $(A.8)$ which says
 		\\& = (2 \pi)^d  \int_{\R^{dn}} \left( \int_{\R^{dn}}\frac{1}{n!}\sum_{\sigma \in \Sigma_n}  f_n(y_{\sigma(1),...,y_{\sigma(n)}}) K(x-y) \ud y \right)^2 \ud x
 		\\& = (2 \pi)^d  \int_{\R^{dn}} \left( \int_{\R^{dn}}\frac{1}{n!}\sum_{\sigma \in \Sigma_n}  \int_{[0,t]^n<} G(s_1,y_{\sigma(1)}) \cdots G(s_n-s_{n-1},y_{\sigma(n)}-y_{\sigma(n-1)}) \ud s  K(x-y) \ud y \right)^2 \ud x
 	\end{align*}
+and therefore we have 
+\begin{align}
+&\Norm{\tilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 \nonumber
+\\& = (2 \pi)^d  \int_{\R^{dn}} \left( \int_{\R^{dn}}\frac{1}{n!}\sum_{\sigma \in \Sigma_n}  \int_{[0,t]^n<} G(s_1,y_{\sigma(1)}) \cdots G(s_n-s_{n-1},y_{\sigma(n)}-y_{\sigma(n-1)}) \ud s  K(x-y) \ud y \right)^2 \ud x \label{rep}
+\end{align}
 This is pretty much (1.19) but if you look at (1.19) you can see that 
 \[
 K(x-y) = K(x_1-y_1)\cdots K(x_n-y_n)
 \]
 but why does this have to be true? 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Missing $(2 \pi)^{-d}$ constant and definition of Fourier transform]
+	There are a couple places where this constant may be missing. This is because when applying Plancherel's Theorem with 
+	\[
+		\mathcal{F}(f)(\xi) = \int_{\R^d} f(x) e^{-ix\xi}\ud x
+	\]
+	we have 
+	\[
+		\langle f,g \rangle = (2\pi)^{-d} \langle \mathcal{F}(f), \mathcal{F}(g) \rangle 
+	\]
+	and this $(2 \pi)^{-d}$ was ignored in this paper. If you see in \ref{rep}, there is a $(2 \pi)^d$ in the front. I also believe that there is some unnecessary work dealing with the  $\mathcal{M}$ representation of $\rho$. 
+	
+	\textbf{First, in the Xia Chen paper}, we have 
+	\[
+		\Lambda_{\alpha} = \sup_{f\in\mathcal{F}_2} \left\{ \langle  f^2 * f^2, \gamma \rangle^{1/2} + \mathcal{E}_2(f,f) \right\}
+	\]
+	where 
+	\[
+		\mathcal{E}_2(f,f) = (2\pi)^{-d} \int_{\R^d} |x|^2 \mathcal{F}(f)(x) \ud x
+	\]
+	and Xia Chen proves that 
+	\begin{align}
+		\rho = (2\pi)^{-d} \Lambda_{\alpha}^{(4-\alpha)/2} \label{xiarep}
+	\end{align}
+	\textbf{Now, in the wave paper}, we introduce the $\mathcal{M}$ functional
+	\[
+		\mathcal{M}(f,\theta) = \sup_{g \in \mathcal{F}_2} \left\{ \langle g^2*g^2,f\rangle^{1/2} - \frac{\theta}{2}\int_{\R^d} |\nabla g(x)|^2 \ud x \right\}
+	\]
+because 
+\[
+	\int_{\R^d} |\nabla g(x)|^2 \ud x = (2\pi)^{-d} \int_{\R^d} |x|^2 |\mathcal{F} g(x)|^2 \ud x
+\]
+Why don't we just use \ref{xiarep}? Or even just leave everything in terms of $\rho$? 
+
+\textbf{However, in the Xia Chen Paper} he uses 
+\[
+	\mathcal{F}(f)(\xi) = \int_{\R^d} f(x) e^{ix\xi} \ud x
+\]
+as the definition of the Fourier transform and so \ref{xiarep} is proven for that definition. In the wave paper, 
+\[
+		\mathcal{F}(f)(\xi) = \int_{\R^d} f(x) e^{-ix\xi) \ud x}
+\]
+is taken to be the definition. This means that \ref{xiarep} would need to be changed if we use this definition of the Fourier transform. Specifically, I think that all that needs to change is that we need to define 
+\[
+		\mathcal{E}_2(f,f) = (2\pi)^{-d} \int_{\R^d} |x|^2 \mathcal{F}(f)(-x) \ud x.
+\]
+But by a quick change of variables its easy to see that 
+\[
+ \int_{\R^d} |x|^2 \mathcal{F}(f)(-x) \ud x = \int_{\R^d} |x|^2 \mathcal{F}(f)(x) \ud x
+\]
+However, I think it would be more consistent  if we follow Xia Chen and use his definition of the Fourier Transform. 
 \end{NickQuestion}
 
 \section{Proof Sketches}
@@ -840,16 +897,16 @@ where $t_{n+1} = t$
 
 	\textbf{Proof:}
 	\begin{align*}
-	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
+	\Norm{\tilde{f_n}(\cdot,0,t)}_{H^{\otimes n}}^2 =  \int_{\R^{nd}} \mathcal{F}\tilde{f}_n(\cdot,0,t)^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
 	\end{align*}
 	where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$
 	\begin{align*}
-	& \int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,t)^2 \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y(t-t_n,\cdot)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y(t_2-t_1,\cdot)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\&= t^{2n(b+r-1)}\int_{\R^{nd}} \left( \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{b/a}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{b/a}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{b/a}(\xi_1+\cdots+ \xi_n))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{b/a}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-b/a}\vec{\xi})t^{-nd b / a}\ud \vec{\xi}
-	\\& = t^{2n(b+r-1)+2n - n b \alpha / a}\int_{\R^{nd}} \left( \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\xi_1+\cdots+ \xi_n)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
-	\\& = t^{2n(b+r-1)+2n - n b\alpha / a}\int_{\R^{nd}} \mathcal{F}f_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	& \int_{\R^{nd}} \mathcal{F}\tilde{f}_n(\cdot,0,t)^2 \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left( \frac{1}{n!} \sum_{\sigma \in \Sigma_n}\int_{[0,t]^n<} \overline{\mathcal{F}Y(t-t_n,\cdot)(\sum_{i=1}^n\xi_i)\cdots \mathcal{F}Y(t_2-t_1,\cdot)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(b+r-1)}\int_{\R^{nd}} \left(\frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n<} \overline{\mathcal{F}Y\left(1-\frac{t_n}{t},\cdot\right)(t^{b/a}(\sum_{i=1}^n\xi_i))\cdots \mathcal{F}Y\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{b/a}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left( \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(t^{b/a}(\sum_{i=1}^n\xi_i))\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(t^{b/a}\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left( \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\sum_{i=1}^n\xi_i)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(t^{-b/a}\vec{\xi})t^{-nd b / a}\ud \vec{\xi}
+	\\& = t^{2n(b+r-1)+2n - n b \alpha / a}\int_{\R^{nd}} \left( \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}Y\left(1-t_n,\cdot\right)(\sum_{i=1}^n\xi_i)\cdots \mathcal{F}Y\left(t_2-t_1,\cdot\right)(\xi_1)} \right)^2 \varphi(\vec{\xi})\ud \vec{\xi}
+	\\& = t^{2n(b+r-1)+2n - n b\alpha / a}\int_{\R^{nd}} \mathcal{F}\tilde{f}_n(\cdot,0,1)(\vec{\xi})^2 \varphi(\vec{\xi})\ud \vec{\xi}
 	\\&=  t^{[2(b+r-1)+2 - b \alpha / a]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
 	\\&= t^{[2(b+r) - b \alpha / a]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
 	\end{align*}
@@ -1019,9 +1076,10 @@ Some definitions for the following lemma which come from the Xia Chen paper.
  \mathcal{E}_a(f,f) = (2 \pi)^{-d}\int_{\R^d} |x|^a |\mathcal{F}(x)|^2 \ud x
 \]
 
-\[
-	\Lambda_{\alpha} = \sup_{f\in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x+y|^\alpha} \ud x \ud y \right)^{1/2} - \mathcal{E}_a(f,f) \right\}
-\]
+\begin{align*}
+	\Lambda_{\alpha} &= \sup_{f\in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x+y|^\alpha} \ud x \ud y \right)^{1/2} - \mathcal{E}_a(f,f) \right\}
+	\\&= \sup_{f\in \mathcal{F}_a} \left\{ \langle f^2*f^2, |\cdot|^{-\alpha} \rangle^{1/2} - \mathcal{E}_a(f,f) \right\}
+\end{align*}
 
 \[
 \rho = (2 \pi)^{-d} \Lambda_{\alpha}^{(2a-\alpha)/a}
@@ -1104,5 +1162,52 @@ where $c_{\alpha}$ is a constant depending on $\alpha$. Since $\frac{1}{c}C_n \t
 	\\ & \ge \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} 2^{[2(b + r ) -b \alpha / a]} \right) + \log(\rho)
 \end{align*}
 Thus \ref{2ineqa} is proven. \ref{2ineqb} is shown in the same way as in the wave paper. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Theorem 4.1 (p=2 case)]
+	\begin{align}
+		\lim_{t \to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber
+		\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
+	\end{align}
+	
+\textbf{Proof:} 
+\begin{align*}
+	\mathbb{E}(|u(t,x)|^2)  &= \sum_{n\ge 0} \theta^n(n!)\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \sum_{n \ge 0}\theta^n(n!)t^{(2(b+r)-b\alpha/a)n}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2
+	\\&= \sum_{n \ge 0}x_nR_nt^{(2(b+r)-b\alpha/a)n}
+\end{align*}
+where 
+\[
+R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad x_n=\frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}
+\]
+\ref{2ineqb} above says that 
+\[
+	\frac{1}{n}\log(R_n) \to  \log\left[\left( \frac{\nu}{2} \right)^{-\alpha/a}\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right]  \quad \text{as } n\to \infty.
+\]
+Now define $R$ to be 
+\[
+	R=\left( \frac{\nu}{2} \right)^{-\alpha/a}\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho.
+\]
+We want to find a $\beta$ and $A$ so that 
+\[
+	\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} x_nR^n\left(t^{(2(b+r)-b\alpha/a)}\right)^n = A
+\]
+By lemma A3 notice that 
+\[
+	\lim_{t\to \infty} \left[\frac{1}{(\theta R)t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} = 2(b+r) - (b\alpha/a) -1
+\]
+and by an easy algebraic manipulation 
+\begin{align*}
+	\lim_{t\to \infty} \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} & \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} 
+	\\&= [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
+\end{align*}
+hence we see that 
+\[
+	\beta = \frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
+\]
+Finally, lemma A2 says that 
+\begin{align*}
+	\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) 
+	\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
+\end{align*}
 \end{NickQuestion}
 \end{document}
