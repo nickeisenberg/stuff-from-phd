@@ -545,13 +545,8 @@ Hence,
 \textit{Possible Justification:}
 The integrals can be shown to be equal through a change of variables.
 \begin{align*}
-<<<<<<< HEAD
 \int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x 
 &= \int_{\R^d} (|h|^2*\cdots*|h|^2)(x) \frac{1}{|x|^\alpha} \ud x \\
-=======
-\int_{\R^d} [ |h|^2 ]^{*p}(x) \frac{1}{|x|^\alpha} \ud x
-&= \int_{\R^d} (h*\cdots*h)(x) \frac{1}{|x|^\alpha} \ud x \\
->>>>>>> e6b1d1442880f2a56719c2006e193c9da8da0727
 &= \int_{\R^d} \int_{\R^{d(p-1)}} \textcolor{magenta}{|h|^2}(x-y_1)\textcolor{magenta}{|h|^2}(y_1-y_2)\cdots \textcolor{magenta}{|h|^2}(y_{p-2}-y_{p-1})\textcolor{magenta}{|h|^2}(y_{p-1}) \prod_{j =1}^{p-1}\ud y_j \; \frac{1}{|x|^\alpha} \ud x
 \end{align*}
 then applying the substitution
@@ -853,6 +848,7 @@ But by a quick change of variables its easy to see that
 \]
 However, I think it would be more consistent  if we follow Xia Chen and use his definition of the Fourier Transform. 
 \end{NickQuestion}
+
 
 \section{Proof Sketches}
 
@@ -1218,4 +1214,116 @@ Finally, lemma A2 says that
 	\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
 \end{align*}
 \end{NickQuestion}
+
+\begin{NickQuestion}[Theorem 5.1 (Upper Bound)]
+	\begin{align}
+		\limsup_{n \to \infty}& \; t_p^{-\beta} \log \Norm{u(t,x)}_p 
+		\\& \le \left(\frac{1}{2}\right) \nonumber \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)	
+	\end{align}
+	where $\beta$ is defined in Theorem 4.1. 
+	
+	\textbf{proof:} Same as in wave paper. 
+\end{NickQuestion}
+Function needed for lower bound 
+\[
+W_n(t,\phi) := \int_{[0,t]^n<} 
+\int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}\mathcal{F}Y(s_k-s_{k-1},\cdot)(\xi_k + \cdots + \xi_n) \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \ud s
+\]
+
+\begin{NickQuestion}[Lemma 6.2]
+	\[
+		\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|} \mu(\ud \xi) \cdots \mu(\ud \xi_n)
+	\]
+	\textbf{proof:} Same proof as in wave paper. details in notebook
+\end{NickQuestion}
+
+\begin{NickQuestion}[Proposition 6.3]
+	For $f\in \mathcal{H}$, $t>0$, and $p,q>1$ with $p^{-1} + q^{-1}=1$, it holds that 
+	\[
+		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\} \left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f) \right|
+	\]
+	
+	\textbf{proof:} Same as wave paper. 
+\end{NickQuestion}
+
+In order to give a fractional version of Lemma 6.4 and Proposition 6.5, we need to derive the fractional version of the time scale distribution given at the top of page 26 of the wave paper. We start with a the general form 
+\[
+	f_t(x) = t^Vf(t^Wx)
+\]
+Note that for $\xi \in \mathcal{C}^d$
+\[
+	\mathcal{F}{f_t}(\xi) = t^{V-dW}\mathcal{F}f(t^{-W}\xi)
+\]
+We follow out the steps of Lemma 6.4 using the $f_t$ defined above and then end up at a series of two linear equations with $V$ and $W$ being the unknowns which allows us to find $W$ and $V$. First we calculate $\Norm{f_\tau}_\mathcal{H}^2$.
+
+\begin{align*}
+	\Norm{f_\tau}_H^2 &= {\tau}^{2(V-dW)} \int_{\R^d} | \mathcal{F}f(\tau^{-W}\xi)|^2 \phi(\xi) \ud \xi
+	\\& = \tau^{2V-dW} \int_{\R^d} |\mathcal{F}f(u)|^2 \tau^{-W(d-\alpha)} \varphi(u) \ud u
+	\\&= \tau^{2(V-dW)+W\alpha} \Norm{f}_\mathcal{H}^2
+\end{align*} 
+Lastly, we calculate $W_n(t,\mathcal{F}f_\tau)$ 
+\begin{align*}
+&	W_n (t,\mathcal{F}f_\tau) = {\tau}^{n(V-dW)}  \int_{[0,t]^n<} 
+	\int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(\tau^{-W}\xi_k) \prod_{k=1}\mathcal{F}Y(s_k-s_{k-1},\cdot)(\xi_k + \cdots + \xi_n) \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \ud s
+	\\&={\tau}^{n(V-W(d-\alpha))}  \int_{[0,t]^n<} 
+	\int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(u_k) \prod_{k=1}\mathcal{F}Y(s_k-s_{k-1},\cdot)(\tau^W(u_k + \cdots + u_n)) \varphi(\textbf{u}) \ud \textbf{u} \ud \textbf{s}
+	\\&= {\tau}^{n(V-W(d-\alpha))} \tau^{-n\frac{a}{b}W(b+r-1)}  \int_{[0,t]^n<} 
+	\int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(u_k) \prod_{k=1}\mathcal{F}Y(\tau^{\frac{aW}{b}}(s_k-s_{k-1}),\cdot)(u_k + \cdots + u_n) \varphi(\textbf{u}) \ud \textbf{u} \ud \textbf{s}
+	\\&= {\tau}^{n(V-W(d-\alpha))} \tau^{-n\frac{a}{b}W(b+r-1)} \tau^{-n\frac{aW}{b}} W_n(t\tau^{\frac{a}{b}W}, \mathcal{F}f)
+	\\& = \tau^{n\left[ V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) \right]} W_n(t\tau^{\frac{a}{b}W}, \mathcal{F}f)
+\end{align*}
+In order to ensure Lemma 6.4 and Proposition 6.5 works in the fractional case we need to choose $V$ and $W$ so that 
+\[
+\begin{cases}
+	V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) =0
+	\\ 2(V-dW)+W\alpha = \beta 
+\end{cases}
+\]
+Doing this ensures that 
+\[
+	\Norm{f_t}_{\mathcal{H}}^2 = t^\beta \Norm{f}_{\mathcal{H}}
+\]
+and 
+\[
+	W_n (t,\mathcal{F}f_\tau) = W_n (t\tau^{\beta -1},\mathcal{F}f)
+\]
+If we solve the above system of equations for $V$ and $W$ we see that 
+\[
+	\begin{cases}
+		V = \left(\frac{a}{b}(b+r)-\alpha +d\right)\frac{b}{a}(\beta -1)
+		\\ W= \frac{b}{a}(\beta -1)
+	\end{cases}
+\]
+and with all of this we have the following fractional version of Lemma 6.4.
+\begin{NickQuestion}[Lemma 6.4]
+	For 
+	\[
+			f_t(x) = t^{\left(\frac{a}{b}(b+r)-\alpha+d\right)\frac{b}{a}(\beta -1)} f\left(t^{\frac{b}{a}(\beta -1)}x\right)
+	\]
+	we have that 
+	\[
+		\Norm{f_\tau}_{\mathcal{H}}^2 = \tau^{\beta}\Norm{f}_{\mathcal{H}}^2
+	\]
+	and also 
+	\[
+		W_n(t,\mathcal{F}f_\tau) = W_n(t\tau^{\beta -1 },\mathcal{F}f)
+	\]
+\end{NickQuestion} 
+Note that the above Lemma does reduce down to the wave equation. IE when $a=b=2$ and $r=0$ and $\beta = (4-\alpha)/(3-\alpha)$ then the above reduces down to $f_t$ defined on the top of page 26 in the wave paper. 
+
+\begin{NickQuestion}[Proposition 6.5]
+	For $p,q > 1$ and $p^{-1}+q^{-1}=1$ we have that 
+	\[
+		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \right|
+	\]
+\textbf{proof:} We apply proposition 6.3 to $f_\tau$ with $\tau = (p-1)t$ and use Lemma 6.4 which  gives us 
+\[
+	\Norm{u(t,0)}_p \ge  \exp\left\{ -\frac{1}{2}(q-1)(p-1)^\beta t^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n(t([p-1]t)^{\beta -1}, \mathcal{F}f) \right|.
+\]
+which finishes the proof since 
+\[
+	(q-1)(p-1)^\beta t^\beta = (p-1)^{\beta -1} t^\beta = t_p^\beta
+\]
+\end{NickQuestion}
+
 \end{document}
