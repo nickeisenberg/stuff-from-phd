@@ -849,6 +849,30 @@ But by a quick change of variables its easy to see that
 However, I think it would be more consistent  if we follow Xia Chen and use his definition of the Fourier Transform. 
 \end{NickQuestion}
 
+\begin{NickQuestion}[(6.9) verification ]
+	For our definition of the Fourier we have that 
+	\begin{enumerate}
+		\item $\widehat{f*g} = \hat{f}\hat{g}$
+		\item $\widehat{fg} = (2 \pi)^{-d} \hat{f}\hat{g}$
+		\item $\langle f, g \rangle = (2\pi)^{-d}\langle \hat{f} , \hat{g} \rangle$ 
+	Verification of (6.2) for $d=2$. First we note that we are only now considering the Reisz Kernal, $\gamma$, which is an even function. Since $G$ is also even then $G*\gamma$ is even which means $\mathcal{F}(G*\gamma)$ is even. Also we are only considering $f$ to be non-negative and non-negative definite which implies that $\mathcal{F}{f}$ will be even as well. 
+	\begin{align*}
+		W_2(t,\mathcal{F}(f)) &= \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\mu(\ud \xi_2) \int_{\R^{d}} \mu(\ud \xi_1) \mathcal{F}{f}(\xi_1)\mathcal{F}{f}(\xi_2)\mathcal{F}{G(s_1,\cdot)}(\xi_1 + \xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2)		
+		\\&=  \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\mu(\ud \xi_2) \mathcal{F}{f}(\xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2) \int_{\R^{d}} \mu(\ud \xi_1) \mathcal{F}{f}(\xi_1)\mathcal{F}{G(s_1,\cdot)}(\xi_1 + \xi_2) 
+		\\& =  \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\mu(\ud \xi_2) \mathcal{F}{f}(\xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2) \int_{\R^{d}} \ud \xi_1 \mathcal{F}(f*\gamma)(\xi_1)\mathcal{F}{G(s_1,\cdot)}(\xi_1 + \xi_2) 
+		\\&= \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\mu(\ud \xi_2) \mathcal{F}{f}(\xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2) \int_{\R^{d}} \ud \xi_1 \mathcal{F}(f*\gamma)(\xi_1)\mathcal{F}{G(s_1,\cdot)}(\xi_1 + \xi_2) 
+		\\&=\int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\mu(\ud \xi_2) \mathcal{F}{f}(\xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2) \int_{\R^{d}} \ud \xi_1 \mathcal{F}(f*\gamma)(\xi_1)\mathcal{F}{G(s_1,\cdot)}(-\xi_1 + \xi_2) 
+		\\&= \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\mu(\ud \xi_2) \mathcal{F}{f}(\xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2) \left[\mathcal{F}(f*\gamma)*\mathcal{F}{G(s_1,\cdot)}\right](\xi_2)
+		\\& = (2\pi)^{-d} \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\ud \xi_2 \mathcal{F}(f*\gamma)(\xi_2) \mathcal{F}(G(s_2-s_1,\cdot)(\xi_2) \mathcal{F}\left[(f*\gamma)G(s_1,\cdot)\right](\xi_2)
+		\\&= (2\pi)^{-d} \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\ud \xi_2 \mathcal{F}\left[(f*\gamma)*G(s_2-s_1,\cdot)\right](\xi_2) \mathcal{F}\left[(f*\gamma)G(s_1,\cdot)\right](\xi_2)
+		\\& =   \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\ud x_2 \left[(f*\gamma)*G(s_2-s_1,\cdot)\right](x_2) \left[(f*\gamma)G(s_1,\cdot)\right](x_2)
+		\\& = \int_{[0,t]^2<}\ud \textbf{s} \int_{\R^d}\ud x_2 (f*\gamma)(x_2)G(s_1,x_2) \int_{\R^d} \ud x_1 (f*\gamma)(x_1)G(s_2-s_1,x_2-x_1)
+		\\& =  \int_{[0,t]^2<}\ud \textbf{s} \iint_{\R^{2d}} \ud x_2  \ud x_1 (f*\gamma)(x_1)G(s_2-s_1,x_2-x_1)(f*\gamma)(x_2)G(s_1,x_2)  
+		\\& =  \int_{[0,t]^2<}\ud \textbf{s} \iint_{\R^{2d}} \ud x_2  \ud x_1 (f*\gamma)(x_2)G(s_2-s_1,x_2-x_1)(f*\gamma)(x_1)G(s_1,x_1)  
+		\end{align*}
+		and the last line follows from a substitution $x'_1 = x_2$ and $x'_2=x_1$ and the fact that $G(t,\cdot)$ is even.  
+	\end{enumerate}
+\end{NickQuestion}
 
 \section{Proof Sketches}
 
