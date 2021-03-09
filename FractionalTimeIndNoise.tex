@@ -1256,7 +1256,7 @@ W_n(t,\phi) := \int_{[0,t]^n<}
 
 \begin{NickQuestion}[Lemma 6.2]
 	\[
-		\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|} \mu(\ud \xi) \cdots \mu(\ud \xi_n)
+		\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|^a} \mu(\ud \xi) \cdots \mu(\ud \xi_n)
 	\]
 	\textbf{proof:} Same proof as in wave paper. details in notebook
 \end{NickQuestion}
@@ -1350,4 +1350,84 @@ which finishes the proof since
 \]
 \end{NickQuestion}
 
+Some preparation for Theorem 6.6. Recall that 
+\[
+	W_n(t,\phi) := \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^{n} \phi(\xi_k) \prod_{k=1}^n \mathcal{F}Y(s_k - s_{k-1},\cdot)(\xi_k + \cdots + \xi_n) \mu(\ud \xi_1)\cdots \mu(\ud\xi_n )\ud \textbf{s}
+\] 
+and we now consider the space $\mathcal{H}_+ := \mathcal{H} \cap C_+(\R^d)$ where $C_+$ is the space of continuous nonnegative and nonnegative definite functions on $\R^d$. For any $f \in \mathcal{H}_+$ we can show that 
+\[
+	W_n(t,\mathcal{F}(f)) = \int_{[0,t]^n<} \int_{\R^{nd}} \prod_{k=1}^n(f*\gamma)(x_k) \prod_{k=1} Y(s_k - s_{k-1}, x_k-x_{k-1}) \ud \textbf{x} \ud \textbf{s} =: U_n(t,f)
+\]
+Under assumptions on the parameters, the greens function for the fractional equation is nonnegative hence under these conditions we get that $W_n(t,\mathcal{F}(f)) \ge 0$ for all the functions $f \in \mathcal{H}_+$. 
+
+Now we define 
+\[
+	W_n(t) := \sup_{f\in\mathcal{H}, \Norm{f}_{\mathcal{H}}=1} W_n(t,\mathcal{F}(f)) \quad \text{and} \quad U_n(t) :=  \sup_{f\in\mathcal{H_+}, \Norm{f}_{\mathcal{H}}=1}
+\] 
+and with this we see that 
+\[
+	W_n(t) \ge U_n(t) \ge 0	
+\]
+
+\begin{NickQuestion}[Rough sketch of Theorem 6.6]
+	Mimicking the steps in the wave paper we start by letting $\tau$ be an exponential random variable with mean $1$. With this,
+	\[
+		\mathbb{E}(U_u(\tau)) = \int_0^\infty e^{-t} U_n(t) \ud t \ge \sup_{f\in \mathcal{H_+}n \Norm{f}_\mathcal{H} =1} \int_0^\infty e^{-t} U_n(t,f) \ud t
+	\]
+For an $f \in \mathcal{H}_+$ and $\Norm{f}_{\mathcal{H}}= 1$ we have that $\mathcal{F}(f)$ is even and in addition, Lemma 6.2 gives us that 
+\[
+	\int_0^{\infty} e^{-t} U_n(t,f) \ud t = \int_0^\infty e^{-t} W_n(t,\mathcal{F}(f)) \ud t = \int_{\R^{dn}} \prod_{k=1}^n (\mathcal{F}f)(\xi_k) \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\xi_k+\cdots + \xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n)
+\]
+\textbf{I need to verify the details} of the claim that by the Xia Chen paper that we can say that 
+\begin{align*}
+\lim_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}(\mathcal{F}f)(\xi_k) \prod_{k=1}\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) = \log \rho(\mathcal{F}f)
+\end{align*}
+where 
+\[
+	\rho(g) = \sup_{\Norm{h}_{L_2}=1} \int_{\R^d}g(\xi)\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+|\xi+\eta|^a}\sqrt{1+|\eta|^a}}  \ud \eta\right] \mu(\ud \xi)
+\]
+and with this being said, we see that for any $f \in \mathcal{H}_+$ and $\Norm{f}_H$  
+\[
+	\liminf \frac{1}{n}\log \mathbb{E}(U_n(t)) \ge \log \rho(\mathcal{F}f)
+\]
+We now need to calculate $\sup_{f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1}.$ Consider a function $h\in L^2(\R^d)$. The function $h(\cdot)/\sqrt{1+|\cdot|^a} \in L^2(\R^d)$ so that $g(x) := (2\pi)^{d/2} \mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+|\cdot|^a}} \right)(x)$ is well defined. \textbf{I still need to verify the details that} under these conditions, $g \in W_{1,a}(\R^d)$ with $\Norm{g}_{W_{1,a}}=1$. Here is a sketch of the details
+
+	\begin{align*}
+		\Norm{g}_{W_{1,a}}^2 &= \Norm{g}^2_{L^2} + (2\pi)^{-d}\sum_{k=1}^d \int_{\R^d} \xi_k^a|\mathcal{F}f(\xi)|^2 \ud \xi
+		\\&= (2\pi)^{-d}\int_{\R^d}(1+|\xi|^a)|\mathcal{F}f(\xi)|^2 \ud \xi
+		\\&= \int_{\R^d} h(\xi)^2 \ud \xi =1
+	\end{align*}
+	where above we used the fact that $\Norm{g}_{L^2}^2 = (2\pi)^{-d}\Norm{\mathcal{F}g}_{L^2}^2$. 
+	
+	Now, for notation let $\tilde{h}(x) = h(-x)$. Note that  
+	\begin{align*}
+		 \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+|\xi+\eta|^a}\sqrt{1+|\eta|^a}}  \ud \eta&= (2\pi)^{-d}\int_{\R^d} \mathcal{F}g(\xi-\eta)\mathcal{F}g(-\eta) \ud \eta
+		\\& =(2\pi)^{-d} (\mathcal{F}g*\widetilde{\mathcal{F}g})(\xi) 
+	\end{align*}
+	Since $h(\cdot)$ is real value then $\widetilde{\mathcal{F}}(g) = \overline{\mathcal{F}\bar{g}}= \mathcal{F}\bar{g} $. Using this we see that $(\mathcal{F}g*\widetilde{\mathcal{F}g})(\xi) =\mathcal{F}\left[|g|^2\right](\xi) $ and with this we see that 
+	\begin{align*}
+		\rho(\mathcal{F}f) &= \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g*\tilde{\mathcal{F}}g)(\xi) \mu(\ud \xi) 
+		\\&= \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g|^2](\xi) \mu(\ud \xi) 
+		\\& = \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \int_{\R^d}(f*\gamma)(x)|g|^2(x) \ud x
+		\\&= \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \langle f, |g|^2 \rangle _{\mathcal{H}}.
+	\end{align*}
+	With this we see that 
+	\[
+		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \langle f, |g|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \langle |g|^2, |g|^2 \rangle^{1/2} _{\mathcal{H}}
+	\]
+	where the optimal $f$ is chosen to be $|g|^2/\Norm{|g|^2}_{\mathcal{H}}$. Therefore the supremum can be restricted to $\mathcal{H_+}$ which implies 
+	\[
+		\sup_{ f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) = \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \langle |g|^2, |g|^2 \rangle^{1/2} _{\mathcal{H}}
+	\]
+	and notice that 
+	\begin{align*}
+		(2\pi)^{-d} \langle |g|^2, |g|^2 \rangle^{1/2} _{\mathcal{H}} &= (2\pi)^{-d} \left( \int_{\R^d} \left|\mathcal{F}[|g|^2](\xi)\right|^2 \mu(\ud \xi) \right)^{1/2}
+		\\&= (2\pi)^{-d} \left( \int_{\R^d}\left| (\mathcal{F}g*\widetilde{\mathcal{F}}g)(\xi)\right|^2 \mu(\ud \xi) \right)^{1/2}
+		\\&=  \left(\int_{\R^d}\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+|\xi+\eta|^a}\sqrt{1+|\eta|^a}}  \ud \eta \right]^2 \mu(\ud \xi) \right)^{1/2}
+	\end{align*}
+	which finally leads us to the inequality 
+	\[
+		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log(\rho^{1/2}) 
+	\]
+\end{NickQuestion}
 \end{document}
