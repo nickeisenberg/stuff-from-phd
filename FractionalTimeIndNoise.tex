@@ -1011,12 +1011,14 @@ where $s_0 = y_{\sigma(0)} = 0$.
 	\mathcal{F}L_n(\xi_1,...,\xi_n) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}
 \end{align*}
 
+We the two representations for $T_n$
 \begin{align*}
-	T_n = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)
+	T_n = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi})  = \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )
 \end{align*}
 
+We have the two possible representations for $C_\mu'$. 
 \begin{align*}
-C_\mu ' = \int_{(\R^d)^n} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
+C_\mu ' = \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) = \left( \frac{\nu}{2} \right)^{-\alpha/a}\int_{(\R^d)} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
 \end{align*}
 \begin{NickQuestion}[Lemma 3.3, 3.4, and 3.5]
 	Same proof as in wave paper. Have all details in my notebook.
@@ -1030,16 +1032,20 @@ C_\mu ' = \int_{(\R^d)^n} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
 	\textbf{proof:}
 	By the same spherical substitution in the wave paper we see that
 	\[
-		C_\mu ' = \left(\int_{S^{d-1}}\varphi(\gamma) \ud \sigma(\gamma)\right) \left( \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho \right)
+		\int_{(\R^d)} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi) = \left(\int_{S^{d-1}}\varphi(\gamma) \ud \sigma(\gamma)\right) \left( \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho \right)
 	\]
 	The first integral is shown to be finite in the wave paper. The second integral is finite if
 	\begin{align}\label{alpha2}
 		2a - \alpha +1 > 1
 	\end{align}
 
-	Second inequality has the same proof as in the wave paper however I do not know why
+	The same arguments from the wave paper show that 
 	\begin{align*}
-		(n!)^2 \int_{(\R^d)^n} \prod_{k=1}^n \left( \frac{1}{1+ | \sum_{j=k}^n \xi_j|^2} \right)^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \le (n!)^2 \left[\sup_{\eta \in \R^d} \int_{(\R^d)^n} \prod_{k=1}^n \left( \frac{1}{1+ | \xi + \eta|^2} \right)^2  \mu(\ud \xi) \right]^n
+		T_n &\le n! \int_{(\R^d)^n} \sum_{\sigma \in \Sigma_n}\left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) 
+		\\ &= (n!)^2 \int_{(\R^d)^n} \left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) 
+		\\& \le (n!)^2 \left[ \sup_{\eta \in \R^d} \int_{(\R^d)^n}  \prod_{k=1}^n \left( \frac{1}{1+\frac{\nu}{2}\left| \xi + \eta \right|^a}\right)^2 \mu(\ud \xi) \right]^n
+		\\& = (n!)^2 \left[ \int_{(\R^d)^n}  \prod_{k=1}^n \left(\frac{1}{1+\frac{\nu}{2}\left| \xi \right|^a}\right)^2 \mu(\ud \xi) \right]^n
+		\\&= (n!)^2(C_\mu')^n
 	\end{align*}
 
 \end{NickQuestion}
@@ -1049,7 +1055,36 @@ C_\mu ' = \int_{(\R^d)^n} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
 		\int_0^\infty e^{-t} \Norm{\tilde{f_n}(\cdot,0,t)}_{ \mathcal{H}^{ \otimes n } }^n \ud t \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n \le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} (C_\mu')^n
 	\]
 
-\textbf{Proof:} Details in my notebook
+\textbf{Proof:} We first derive a scaling property for $\mathcal{F}\tilde{f}_n$ where $\tilde{f}_n$ is the kernel of the $n^{th}$ Weiner integral in the chaos expansion of the solution. Let $c>0$. 
+\begin{align*}
+	\mathcal{F}\tilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})
+\end{align*}
+so it suffices to just look at the $\mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})$ terms individually.
+\begin{align*}
+	\mathcal{F}f(\cdot,0,ct)(\xi_1,\cdots, \xi_n) &= \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}Y(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t}
+	\\&= \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}Y\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
+\end{align*}
+where we applied the substitution $t_i' = t_i/c$. Now by applying the scaling property of $\mathcal{F}Y$ we wee that 
+\begin{align*}
+	\int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}Y\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} &= \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}Y\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}  
+	\\&= c^{n(b+r)} \mathcal{F}f(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n)
+\end{align*} 
+Now by using this scaling property we see that 
+\begin{align*}
+	\int_0^\infty e^{-t} \Norm{ \tilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t &= \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\tilde{f_n}(\cdot,0,t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t 
+	\\&= \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\tilde{f_n}(\cdot,0,2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  2 \ud t 
+	\\& = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\tilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t 
+	\\& = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\tilde{f_n}(\cdot,0,t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t 
+	\\& = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\tilde{f_n}(\cdot,0,t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t
+	\\&=  \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
+\end{align*}
+and now we apply Lemma 3.5 to get 
+\begin{align*}
+	\frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t  & \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} \left(\int_0^\infty e^{-t}  H_n(t,\vec{x}) \ud t \right)^2 \ud \vec{x} 
+	\\&=   \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} | \mathcal{F}L_n(\vec{\xi}) |^2\ud \vec{\xi} 
+	\\&= \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  T_n
+\end{align*}
+and this proves the first inequality. An application of Lemma 3.6 gives is the second inequality. 
 \end{NickQuestion}
 
 \begin{NickQuestion}[Theorem 3.1]
@@ -1429,5 +1464,106 @@ We now need to calculate $\sup_{f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1}.$
 	\[
 		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log(\rho^{1/2}) 
 	\]
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 6.7]
+	We have that 
+	\[
+		W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1)
+	\]
+	and moreover 
+	\[
+		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1)
+	\]
+\textbf{proof:} Let $\phi = \mathcal{F}f$ and $c>0$
+\begin{align*}
+	W_n & (t,\phi(c^{-1}\cdot) = \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(c^{-1}\xi_k) \prod_{k=1}^n Y(s_k - s_{k-1},\cdot)(\xi_k + \cdots \xi_n) \varphi(\vec{\xi})\ud \vec{\xi} \ud \vec{s} 
+	\\&= c^{nd} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n Y(s_k - s_{k-1},\cdot)(c(\xi_k + \cdots \xi_n)) \varphi(c\vec{u})\ud \vec{u} \ud \vec{s} 
+	\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n Y\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \varphi(c\vec{u})\ud \vec{u} \ud \vec{s} 
+	\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n Y\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \varphi(c\vec{u})\ud \vec{u} \ud \vec{s} 
+	\\&= c^{-n\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(c^{\frac{a}{b}}t,\phi \right)
+\end{align*}
+Now we apply this with $c^{\frac{a}{b}} = \frac{1}{t}$ to get 
+\[
+		W_n\left(t,\phi(t^{\frac{a}{b}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
+\]
+Now note that 
+\[
+	\Norm{\phi(t^{\frac{a}{b}})}_{L^2(\mu)}^2 = t^{-\frac{\alpha b }{a}}\Norm{\phi}_{L^2()\mu)}^2
+\]
+and from this we deduce that 
+\[
+	\Norm{t^{\frac{\alpha b }{2 a}}\phi(t^{\frac{a}{b}})}_{L^2(\mu)}^2 =  \Norm{\phi}_{L^2(\mu)}^2 = \Norm{f}_{\mathcal{H}}^2
+\]
+and in addition 
+\[
+		W_n\left(t,t^{\frac{b \alpha}{2 a}}\phi(t^{\frac{a}{b}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \frac{\alpha}{2} +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
+\]
+and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\Norm{f}_\mathcal{H} =1$. 
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 6.8]
+	\[
+		\liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)  } U_n(1) \right] \ge \log\left[ \frac{\rho^{1/2}}{ \left(\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} } \right]
+	\]
+	
+\textbf{proof:} Let $\tau$ be an exponential random variable with mean $1$. By lemma 6.7, 
+\[
+	\mathbb{E}(U_n(\tau)) = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1) = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1)
+\]
+and by Theorem 6.6 we obtain 
+\begin{align}\label{lb1}
+	\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log(\rho^{1/2}).
+\end{align}
+Recall that 
+\[
+	\lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a)
+\]
+and with this we have that 
+\[
+	\liminf_{n\to \infty} \frac{1}{n} \log \left[ \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right] = \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right)
+\]
+and the result is proven after multiplying and dividing $(n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} $ on the inside of the log in \ref{lb1}
+\end{NickQuestion}
+
+\begin{NickQuestion}[Lemma 6.9] For any $k,\theta >0$, there exists a constant $c_1 = c_1(\alpha,\mathcal{M}, k, \theta) >0$ such that, by setting $n_t = [c_1 t]$, it holds that 
+	\begin{equation}\label{69ineq}
+		\liminf_{t \to \infty} \frac{1}{t} \log( k^{n_t} \theta^{n_t/2}U_{n_t}(t)) \ge \left( k \sqrt{\theta} \right)^{\frac{2a}{2ab-\alpha b + 2ar}} \left( \rho^{1/2} \right)^{\frac{2a}{2ab-\alpha b + 2ar}} 
+	\end{equation}
+
+\textbf{proof:} Let $\epsilon > 0$. Lemma 6.8 guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
+\[
+	(n!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} U_n(1) \ge \exp\left( n(\log(R)-\epsilon) \right) = R^n e^{-n\epsilon }
+\]
+where 
+\[
+	R = \frac{ \rho^{1/2} } { \left( \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) }}.
+\]
+Now fix a $c>0$ and let $n_t := [ct]$. Notice that $n_t \ge N_\epsilon$ for any $t>t_\epsilon := (N_\epsilon +1)/c$. 
+
+Let $t > t_\epsilon$. 
+\begin{align*}
+	k^{n_t}\theta^{n_t/2}U_{n_t}(t) = 	k^{n_t} \theta^{n_t/2} t^{\frac{a}{b} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } U_{n_t}(1) \ge \frac{ k^{n_t} \theta^{n_t/2} t^{\frac{a}{b} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n!)^{\frac{b}{a} \left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } R^{n_t}e^{-n_t \epsilon}
+\end{align*}
+Note that $[ct]/t \to c$ and $t \to \infty$ and this implies that $n_t/t \to c$ and $t \to \infty$. With this we can say 
+\[
+	\liminf_{t \to \infty} \frac{1}{t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right) = c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right)  =: I(n_t)
+\]
+Now,
+\begin{align*}
+	I(n_t) & \ge  c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( (kR\sqrt{\theta})^{n_t} \frac{ t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n_t!)^{\frac{b}{a}\left( a -\frac{\alpha}{2} + \frac{a}{b}r \right) }  }\right) - c\epsilon
+	\\&= c \log(k \sqrt{\theta}R) + c \liminf_{t \to \infty} \frac{1}{n_t} \log \left[  \left(\frac{t}{n_t}\right)^{\frac{b}{a}\left(a-\frac{\alpha}{2} + \frac{a}{b}r\right)n_t} \frac{ n_t^{\frac{b}{a}\left( a- \frac{\alpha}{2} + \frac{a}{b}r \right)n_t } } { (n_t!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) } }\right] - c \epsilon
+	\\&=  c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \liminf_{t \to \infty} \frac{1}{n_t}\log\left(\frac{n_t^{n_t}}{(n_t)!}\right) - c\epsilon
+	\\& =   c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)  - c\epsilon
+\end{align*}
+and letting $\epsilon$ tend to $0$ we wee that 
+\[
+	I(n_t) \ge c \left[ \log(k \sqrt{\theta}R) - \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right] =: h(c).
+\]
+We can easily find the maximal $c$ by solving $h'(c)=0$ and doing so we get $c=(k \sqrt{\theta}R)^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}$. After plugging in this value for $c$ and replacing $R$ we arrive at the following inequality 
+\[
+	I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}
+\]
+and simplifying exponents gives us \ref{69ineq}. 
 \end{NickQuestion}
 \end{document}
