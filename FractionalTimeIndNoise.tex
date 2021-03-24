@@ -1132,7 +1132,7 @@ and the last sum is finite when
 \end{NickQuestion}
 Some definitions for the following lemma which come from the Xia Chen paper.
 \[
-	\rho = \sup_{\Norm{f}_2 =1} \int_{\R^d}\left[ \int_{\R^d} \frac{f(x+y)(f(y))}{\sqrt{1+|x+y|^a}\sqrt{1+|y|^a}} \ud y \right] \ud x
+	\rho = \sup_{\Norm{f}_2 =1} \int_{\R^d}\left[ \int_{\R^d} \frac{f(x+y)(f(y))}{\sqrt{1+|x+y|^a}\sqrt{1+|y|^a}} \ud y \right]^2 \ud x
 \]
 
 \[
@@ -1147,6 +1147,23 @@ Some definitions for the following lemma which come from the Xia Chen paper.
 \[
 \rho = (2 \pi)^{-d} \Lambda_{\alpha}^{(2a-\alpha)/a}
 \]
+
+Linking the above definition to Le Chen notation from wave paper, we define
+\[
+	\mathcal{M}_a(\Theta f,\theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2} \mathcal{E}_a(g,g) \right\}
+\]
+and we can show that 
+\[
+		\mathcal{M}_a(\Theta f,\theta) = \Theta^{\frac{{a}}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}}	\mathcal{M}_a( f,1)
+\]
+and so 
+\[
+	\Lambda_{\alpha} = 	\mathcal{M}_a( f,2) = 2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a( f,1)
+\]
+which leads us to the following representation for $\rho$
+\begin{equation}\label{rhorep}
+	\rho = (2 \pi)^{-d} \left[ 2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a( f,1) \right]^{(2a-\alpha)/a} =  (2 \pi)^{-d} 2^{-\alpha/a}\mathcal{M}_a(f,1)^{(2a-\alpha)/a}
+\end{equation}
 \begin{NickQuestion}[Lemma 4.3]
 	
 	\begin{align}
@@ -1156,6 +1173,7 @@ Some definitions for the following lemma which come from the Xia Chen paper.
 	\begin{align}
 		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) =  \log\left[\left( \frac{\nu}{2} \right)^{-\alpha/a}\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log(\rho) \label{2ineqb}
 	\end{align}
+	Also, see the end of the proof for an alternate representation of \ref{2ineqa} with $\rho$ replaced with \ref{rhorep}. 
 \textbf{proof:} Denote $T_n'$ to be $T_n$ with $\nu=2$, in other words
 \[
 		T_n' = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n).
@@ -1224,7 +1242,11 @@ where $c_{\alpha}$ is a constant depending on $\alpha$. Since $\frac{1}{c}C_n \t
 	\liminf_{n\to \infty} \frac{1}{n} &\log \left( \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right) 	\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
 	\\ & \ge \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} 2^{[2(b + r ) -b \alpha / a]} \right) + \log(\rho)
 \end{align*}
-Thus \ref{2ineqa} is proven. \ref{2ineqb} is shown in the same way as in the wave paper. 
+Thus \ref{2ineqa} is proven. \ref{2ineqb} is shown in the same way as in the wave paper. If we replace $\rho$ with \ref{rhorep} then we get that 
+\begin{equation}\label{43lim}
+	\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) = \log\left((2\pi)^{-d}\left(\nu \right)^{-\alpha/a}2^{2(b+r)-\frac{b\alpha}{a}} \mathcal{M}_a^{(2a-\alpha)/a}\right) 
+\end{equation}
+Note that there is a typo in the rough draft where there the $(2\pi)^{-d}$ term is missing. 
 \end{NickQuestion}
 
 \begin{NickQuestion}[Theorem 4.1 (p=2 case)]
@@ -1267,11 +1289,40 @@ hence we see that
 \[
 	\beta = \frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
 \]
+or by removing the fractions in the denominator
+\[
+		\beta = \frac{2a(b+r)-b\alpha}{2a(b+r)-(b\alpha)-a} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{a}{2a(b+r)-b\alpha-a}}
+\] 
 Finally, lemma A2 says that 
+\begin{align}
+	\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber
+	\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right) \label{2pest}
+\end{align}
+
+\noindent \textbf{Inconsistencies with section 7 of momentindepen paper on githib:}
+
+In section 7, you have written that from the wave paper's proof of theorem 4.1 we replace $\beta$, $3-\alpha$ and $R$ with 
+\[
+\frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad 2(b+r)-(b\alpha/a)-1 \quad \text{and} \quad \nu^{-\alpha/a} \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \mathcal{M}_a^{(2a-\alpha)/a}
+\]
+respectively. This is what I came up with too but in the above proof I left $\rho$ in instead of replacing it with \ref{rhorep} like you did. However, I believe that (7.15) from section 7 in the momentindep paper is incorrect. In the wave paper notice how the numerator of the exponent of $\mathcal{M}$ in (2.10) happens to be the numerator of $\beta$ from the wave paper. This is just a coincidence and does not happen in the fraction equation which we can see from section 7. Because of this we cannot do the same simplifying and include the $\mathcal{M}$ term in the $(\cdot)^{\beta}$ term as is shown in (7.15). Below I will simplify \ref{2pest} by replacing $\rho$ with \ref{rhorep}. 
+
 \begin{align*}
-	\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) 
-	\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
+	\ref{2pest} &= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \left((2\pi)^{-d}2^{-\alpha/a}\mathcal{M}_a^{(2a-\alpha)/a} \right)^{\frac{a}{2a(b+r)-b\alpha-a}}
+		\\&\hspace{25em} \times \left(2(b+r)-\frac{b\alpha}{a}-1\right)
+	\\& = \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\nu\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \left((2\pi)^{-d}\right)^{\frac{a}{2a(b+r)-b\alpha-a}} \left(\mathcal{M}_a^{(2a-\alpha)/a} \right)^{\frac{a}{2a(b+r)-b\alpha-a}}
+		\\&\hspace{25em} \times \left(2(b+r)-\frac{b\alpha}{a}-1\right)
+	\\&= \left((2\pi)^{-d}\theta\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\nu\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \mathcal{M}_a^{\frac{2a-\alpha}{2a(b+r)-b\alpha-a}} 
+		\\&\hspace{25em} \times \left(2(b+r)-\frac{b\alpha}{a}-1\right)
+	\\&= \left((2\pi)^{-d}\theta\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\nu\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a \mathcal{M}_a^{\frac{2a-\alpha}{2a(b+r)-b\alpha}} }{2a(b+r)- b\alpha} \right)^\beta  
+		\\&\hspace{25em} \times \left(2(b+r)-\frac{b\alpha}{a}-1\right)
 \end{align*}
+and thus we see that 
+\begin{align}
+\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber
+\\&= \left((2\pi)^{-d}\theta\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\nu\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a \mathcal{M}_a^{\frac{2a-\alpha}{2a(b+r)-b\alpha}} }{2a(b+r)- b\alpha} \right)^\beta \left(2(b+r)-\frac{b\alpha}{a}-1\right) \label{2pest2}
+\end{align}
+and this indeed simplifies to the wave case when $a=b=2$ and $r=0$.  
 \end{NickQuestion}
 
 \begin{NickQuestion}[Theorem 5.1 (Upper Bound)]
