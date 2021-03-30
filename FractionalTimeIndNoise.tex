@@ -1638,4 +1638,34 @@ We can easily find the maximal $c$ by solving $h'(c)=0$ and doing so we get $c=(
 \]
 and simplifying exponents gives us \ref{69ineq}. 
 \end{NickQuestion}
+
+\begin{NickQuestion}[Theorem 6.1]
+	For $\nu=2$ it holds that 
+	\begin{align} \label{lbound}
+		\liminf_{n \to \infty} t_p^{-\beta} &\log \Norm{u(t,x)}_p 
+		\\ &\ge \left(\frac{1}{2}\right) \nonumber \theta^{\frac{a}{2a(b+r)-b\alpha-a}} \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)	
+	\end{align}
+	
+	\textbf{proof:} By proposition 6.5, for and $p,q >0$ with $p^{-1}+q^{-1} = 1$ we have that 
+	\[
+			\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \right|.
+	\]
+We now take the supremum over all $f \in \mathcal{H}_+$ with $\Norm{f}_{\mathcal{H}}=k >0 $. Recall that $W_n(t,\phi) = k^nW_n(t,\phi/k)$ for $\phi \in L^2(\mu)$ and nonnegativity of $W_n(t,\cdot)$ on $\mathcal{H}_+$. Let $c>0$. 
+\begin{align*}
+ \Norm{u(t,0)}_p &\ge 	\exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=k}\sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) 
+ \\&= \exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1}\sum_{n \ge 0} k^n \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) 
+ \\& \ge \exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f)
+\end{align*} 
+where $n_t = [ct_p^\beta]$. Now by choosing $c$ as in Lemma 6.9 we get that 
+\begin{align*}
+	\liminf_{n \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p &\ge 	\liminf_{n \to \infty} \left( \frac{-\frac{1}{2}t_p^\beta k^2}{t_p^\beta} + \frac{1}{t_p^\beta}\log \left[ \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f) \right]  \right)
+	\\& -\frac{1}{2}k^2 + (k\sqrt{\theta})^{ \frac{2a}{2ab-\alpha b +2ar} }(\rho^{1/2})^{\frac{2a}{2ab -\alpha b + 2ar}} =: h(k)
+\end{align*}
+By maximizing $h$ we see that $h$ is maximized at the point $k* = \left( \frac{2ab -\alpha b + 2ar}{2aB} \right)^{ \frac{2ab-\alpha b +2ar}{2a-2[2ab-\alpha b + 2ar]} }$ where $B=(\sqrt{\theta}\rho^{1/2})^{ \frac{2a}{2ab-\alpha b + 2ar} }$. Inserting $k*$ into $h$ gives us that 
+\[
+	h(k*) = B^{\beta}\left( \frac{2a}{2ab - \alpha b +2ar} \right)^\beta \left( \frac{2ab-\alpha b + 2ar -a }{2a} \right)
+\]
+and plugging in the value for $B$ yields \ref{lbound}.
+\end{NickQuestion}
+
 \end{document}
