@@ -874,6 +874,25 @@ However, I think it would be more consistent  if we follow Xia Chen and use his 
 	\end{enumerate}
 \end{NickQuestion}
 
+\begin{NickQuestion}[The issue with $\nu \not = 2$]
+I believe that for the fractional paper we may want to redefine $\rho$ in the following way 
+\begin{equation} \label{newrho}
+	\rho = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \ud x
+\end{equation}
+This way we can still use equation (6.15) from the wave paper for general $\nu$. There are two things we need to verify.
+\begin{enumerate}
+	\item \label{newrhlim} $\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n \right) \to \log(\rho)$ where $T_n$ is defined above.
+	\item (6.15) from the wave paper holds. 
+\end{enumerate}
+
+From reading the Xia Chen paper I think that the (6.15) equation will work but I have to still verify the details. I also need to verify \ref{newrhlim}. 
+
+Doing this may need us to keep all of our moments asymptotic in terms of $\rho$ and not $\mathcal{M}_a$ and if this is done correctly, all information about $\nu$ should be completely contained in $\rho$. In other words, $\nu$ should not appear anywhere other than in the definition of $\nu$.  
+
+The reason why I think this can work is that if we follow the steps starting right below equation (3.2) in the Xia Chen paper but define $Q(\lambda) = \left(  1+\frac{\nu}{2}|\lambda|^a \right) ^{-1}$ then it seems like everything still works and this would lead us to define $\rho$ like I did in \ref{newrho}. 
+
+I need to still verify everything here. 
+\end{NickQuestion}
 \section{Proof Sketches}
 
 \begin{NickQuestion}
