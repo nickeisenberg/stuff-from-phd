@@ -877,11 +877,11 @@ However, I think it would be more consistent  if we follow Xia Chen and use his 
 \begin{NickQuestion}[The issue with $\nu \not = 2$]
 I believe that for the fractional paper we may want to redefine $\rho$ in the following way 
 \begin{equation} \label{newrho}
-	\rho = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \ud x
+	\rho_{new} = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
 \end{equation}
 This way we can still use equation (6.15) from the wave paper for general $\nu$. There are two things we need to verify.
 \begin{enumerate}
-	\item \label{newrhlim} $\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n \right) \to \log(\rho)$ where $T_n$ is defined above.
+	\item \label{newrhlim} $\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n \right) \to \log(\rho_{new})$ where $T_n$ is defined below.
 	\item (6.15) from the wave paper holds. 
 \end{enumerate}
 
@@ -892,7 +892,48 @@ Doing this may need us to keep all of our moments asymptotic in terms of $\rho$ 
 The reason why I think this can work is that if we follow the steps starting right below equation (3.2) in the Xia Chen paper but define $Q(\lambda) = \left(  1+\frac{\nu}{2}|\lambda|^a \right) ^{-1}$ then it seems like everything still works and this would lead us to define $\rho$ like I did in \ref{newrho}. 
 
 I need to still verify everything here. 
+
+\noindent	\textbf{Regarding \ref{newrhlim}}. 
+
+Using fact that $\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n' \right) \to \log(\rho)$ where $T_n'$ is $T_n$ with $\nu =2$ and  also using the fact that $T_n = \left(\frac{\nu}{2}\right)^{-n\alpha/a}T_n'$ then we can see that 
+\[
+\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n \right) = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right]+\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n' \right) = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] + \log(\rho)
+\]
+which proves that 
+\[
+	\lim_{n \to \infty} \frac{1}{n} \log\left( \frac{1}{(n!)^2}T_n \right) = 
+	\log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \rho \right]
+\]
+so now we need to show that $\left( \frac{\nu}{2} \right)^{-\alpha/a} \rho  = \rho_{new}$. 
+
+\noindent\textbf{The following may give hope that $\left( \frac{\nu}{2} \right)^{-\alpha/a} \rho  = \rho_{new}$ is in fact true.}
+
+\begin{align*}
+	\rho_{new} &= \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+	\\& = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \left(\frac{\nu}{2}\right)^{(d-\alpha)/a}\varphi(x)\left(\frac{\nu}{2}\right)^{-d/a}\ud x
+	\\&= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x
+\end{align*}
+Now define $f^*(x) =\left(\frac{\nu}{2}\right)^{\frac{-d}{2a}} f\left( \left(\frac{\nu}{2}\right)^{-1/a} x \right)$. Then with this we see that 
+\begin{align*}
+	\rho_{new} &= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
+\end{align*}
+and note that 
+\[
+\int_{\R^d} f(x)^2 \ud x = \int_{\R^d} f^*(x)^2 \ud x
+\]
+and thus 
+\[
+	\left\{ f \in L^2(\R^d) : \Norm{f}_2 = 1 \right\} = 	\left\{ f \in L^2(\R^d) : \Norm{f^*}_2 = 1 \right\} 
+\]
+so we can say that 
+\begin{align*}
+ \sup_{\Norm{f}_2 =1} & \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a}  \ud y \right]^2 \varphi(x)\ud x
+ \\&  =  \sup_{\Norm{f^*}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a}  \ud y \right]^2 \varphi(x)\ud x
+ \\&=  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
+\end{align*}
+and this leads me to believe that $\left( \frac{\nu}{2} \right)^{-\alpha/a} \rho  = \rho_{new}$. 
 \end{NickQuestion}
+
 \section{Proof Sketches}
 
 \begin{NickQuestion}
