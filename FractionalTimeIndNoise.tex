@@ -932,6 +932,17 @@ so we can say that
  \\&=  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
 \end{align*}
 and this leads me to believe that $\left( \frac{\nu}{2} \right)^{-\alpha/a} \rho  = \rho_{new}$. 
+
+\noindent \textbf{Variational Representation: $\rho_{new} = (2\pi)^{-d}\nu^{-\alpha / a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}$} 
+
+\textbf{proof:} We have that 
+\begin{align*}
+	\rho_{new} &= \left( \frac{\nu}{2} \right)^{-\alpha/a} \rho
+	\\& =  \left( \frac{\nu}{2} \right)^{-\alpha/a} (2\pi)^{-d} \Lambda_{\alpha}^{\frac{2a-\alpha}{a}}
+	\\&= \left( \frac{\nu}{2} \right)^{-\alpha/a} (2\pi)^{-d} \left(2^{\frac{-\alpha}{2a-\alpha}}\mathcal{M}_a\right)^{\frac{2a-\alpha}{a}}
+	\\&= \nu^{-\alpha/a} (2\pi)^{-d} \mathcal{M}_a^{\frac{2a-\alpha}{a}}
+\end{align*}
+and the reduces to the wave equation when $\nu =2$ and $a=2$.
 \end{NickQuestion}
 
 \section{Proof Sketches}
@@ -1210,7 +1221,7 @@ The following representation for $\rho$ is Theorem 1.5 in the Xia Chen paper. It
 
 Linking the above to the Le Chen notation from wave paper, we define
 \[
-	\mathcal{M}_a(\Theta f,\theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2} \mathcal{E}_a(g,g) \right\}
+	\mathcal{M}_a(\Theta f,\theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, \Theta f \rangle^{1/2} - \frac{\theta}{2} \mathcal{E}_a(g,g) \right\}
 \]
 and we can show that 
 \[
@@ -1227,11 +1238,13 @@ which leads us to the following representation for $\rho$
 \begin{NickQuestion}[Lemma 4.3]
 	
 	\begin{align}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) = \log\left(\left( \frac{\nu}{2} \right)^{-\alpha/a}2^{2(b+r)-\frac{b\alpha}{a}}\right) + \log(\rho) \label{2ineqa}
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) &= \log\left(2^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\left[\left( \frac{\nu}{2} \right)^{-\alpha/a}\rho\right] \label{2ineqa}
+		\\&=\log\left(2^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\left[\rho_{new}\right] 
 	\end{align}
 	
 	\begin{align}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) =  \log\left[\left( \frac{\nu}{2} \right)^{-\alpha/a}\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log(\rho) \label{2ineqb}
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \tilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) &=  \log\left[\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log\left[\left( \frac{\nu}{2} \right)^{-\alpha/a}\rho\right] \label{2ineqb}
+		\\&=  \log\left[\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log\left[\rho_{new}\right] 
 	\end{align}
 	Also, see the end of the proof for an alternate representation of \ref{2ineqa} with $\rho$ replaced with \ref{rhorep}. 
 \textbf{proof:} Denote $T_n'$ to be $T_n$ with $\nu=2$, in other words
@@ -1313,6 +1326,8 @@ Note that there is a typo in the rough draft where there the $(2\pi)^{-d}$ term 
 	\begin{align}
 		\lim_{t \to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber
 		\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
+		\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \left(\left(\frac{\nu}{2}\right)^{-\alpha/a}\rho\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
+		\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\rho_{new})^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
 	\end{align}
 	
 \textbf{Proof:} 
@@ -1391,7 +1406,14 @@ and this indeed simplifies to the wave case when $a=b=2$ and $r=0$.
 		\\& \le \left(\frac{1}{2}\right) \nonumber \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)	
 		\\&= \left(\frac{1}{2}\right) \left((2\pi)^{-d}\theta\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\nu\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a \mathcal{M}_a^{\frac{2a-\alpha}{2a(b+r)-b\alpha}} }{2a(b+r)- b\alpha} \right)^\beta \left(2(b+r)-\frac{b\alpha}{a}-1\right) 
 	\end{align*}
-	where $\beta$ is defined in Theorem 4.1. 
+	where $\beta$ is defined in Theorem 4.1. \textbf{In terms of $\rho_{new}$ we have} 
+	
+		\begin{align*}
+	\limsup_{n \to \infty}& \; t_p^{-\beta} \log \Norm{u(t,x)}_p 
+	\\& \le \left(\frac{1}{2}\right) \nonumber \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left(\frac{\nu}{2}\right)^{\frac{-\alpha}{2a(b+r)-b\alpha -a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)	
+	\\& = \left(\frac{1}{2}\right) \nonumber \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \left(\left(\frac{\nu}{2}\right)^{-\alpha/a}\rho\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)	
+	\\&=  \left(\frac{1}{2}\right) \nonumber \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \left(\rho_{new}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)	
+	\end{align*}
 	
 	\textbf{proof:} We denote $u_{\lambda}$ for $\lambda >0$ to be the the solution of the fractional equation with $\theta$ replaced with $\lambda$ and $u=u_\theta$. Using theorem B1 from the wave paper we can say that for any $p \ge 2$ that 
 	\[
