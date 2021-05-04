@@ -217,10 +217,38 @@ with the convention that $I^0_t = \text{Td (the identity operator)}$.
  	\[
  		\left\{ Z_{a,b,\nu,d}(t,x),  Z^*_{a,b,\nu,d}(t,x),  Y_{a,b,r,\nu,d}(t,x) : t >0, x \in \R^d \right\}.
  	\]
-Since we are interested in the constant one initial condition (and 0 initial velocity when $b>1$), by Theorem 4.1 chen paper the corresponding solution to the homogeneous equation (i.e. the solution when there is no driving source) is equal to the constant one. Hence, by setting $G(t,x) =  Y_{a,b,r,\nu,d}(t,x)$, \ref{spdee} can be written as the following Skorohod integral equation:
+The actual definitions of each remember of the above triplet do not play a crucial role throughout this paper and for this reason we postpone further discussion about them to the appendix at then end of this paper. Since we are interested in the constant one initial condition (and 0 initial velocity when $b>1$), by Theorem 4.1 \cite{ChenHuNualartFraction} the corresponding solution to the homogeneous equation (i.e. the solution when there is no driving source) is equal to the constant one. Hence, by setting $G(t,x) =  Y_{a,b,r,\nu,d}(t,x)$, \ref{spdee} can be written as the following Skorohod integral equation:
 	\begin{equation}\label{spdeint}
 		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s.
 	\end{equation}
+
+Our goal is to develop exact moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BalanChenChen} where in that paper they focus exclusively on the stochastic wave equation. This paper acts as a generalization of that paper to the fraction stochastic equation. In fact, the techniques presented in this paper are quite general and can be applied to any SPDE that has a Green's function that satisfies a series of scaling properties which we present throughout this paper. Note that the fractional equation \ref{spdee} recovers the stochastic wave equation when $a=b=2$ and $r=0$ and in addition we recover the stochastic heat equation when $b=1$, $a=2$ and $r=0$. We need to make note about restrictions on the spatial dimension due to the fact that the fundamental solution to the wave equation only exists as a function for $d\le2$ and because of that reason we restrict ourselves to $d \le 2$. 
+
+In addition, we need to restrict ourselves to the Gaussian Noise with $\mu (\ud x) = \varphi(x) \ud x$ with $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ where $C_{d,\alpha} = \pi^{-d/2}2^{-\alpha}\frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}$ which corresponds to the Riesz kernal $\gamma(x) = |x|^{-\alpha}$. \textcolor{red}{we need to show fractional noise is in weak $L^2$ inorder to consider that. This already may be true but at the moment i am unsure. See nick question 1.8 in the github doc.}. The reason for the restriction is the need to apply the Hardy-Littlewood-Sobelov lemma to shop that $\rho$, defined below, is finite. This is shown in Lemma 1.6 in \cite{chenlarge}. 
+
+	\begin{remark} 
+Let $c>0$. The Risez kernal $\gamma(x) = |x|^{-\alpha}$ and its spectral density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ satisfy the scaling properties $\gamma(cx) = c^{-\alpha}\gamma(x)$ and $\varphi(cx) = c^{-(d-\alpha)}\varphi(x)$. In addition, $\gamma = K*K$ where $"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$ with $\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }$.
+	\end{remark}
+
+	\begin{remark}\label{spectralconjecture}
+It is conjectured that we may be able to apply the following results to more general noises with arbitrary $\gamma$ and $\mu$ such that 
+		\begin{enumerate}
+			\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
+			\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
+			\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution. 
+		\end{enumerate}
+	\end{remark}
+
+The issue with appling the results in this paper to the more general noises listed in \ref{spectralconjecture} is proving $\rho$, defined below is finite. We mention that an example of a noise that satisfies \ref{spectralconjecture} but differs from the Riesz kernal is the noise with $\gamma(x) = \prod_{i=1}^d|x_i|^{-\alpha_i}$ for some $\alpha_i \in (0,1)$. In this example, $\mu(\ud \xi) = \prod_{i=1}^d (C_{2,\alpha_i} |\xi_i|^{-(1-\alpha_i)}\ud \xi_i )$ and $ K(x) = \prod_{i=1}^d (\beta_{\alpha_1,1} |x_i|^{-(1+\alpha_i)/2} ) $. This function gamma satisfies the conditions in \ref{spectralconjecture} with $\alpha = \sum_{i=1}^d \alpha_i$. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2,1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1,\cdots,H_n$. The heat equation with this noise is studied in Hu \cite{HuFracBrown}
+
+Here is the main result of this paper.
+
+	\begin{theorem}
+It holds that 
+		\begin{equation} \label{momentasym}
+			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = \left(\frac{1}{2}\right)\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\end{equation}	
+	\end{theorem}
 
 \section{Some preliminaries.}
 \subsection{Malliavin Calculus}
@@ -1074,6 +1102,11 @@ $\hfill \qed$
 		\newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
 		% }}}
 
+		\bibitem{ChenHuNualartFraction}
+		Chen, L., Hu, Y. and Nualart D. (2019).
+		\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+		\newblock {\em Science Direct, Stochastic Processes and Their Applications.} \textbf{129}, 5073-5112
+		
 		\bibitem{Chen2007} Chen X.
 		\newblock{\it Parabolic Anderson model with rough or critical Gaussian noise.}
 		\newblock{(2019) Ann. Inst. Henri Poincare: Prob. Stat.} \textbf{55}, 941--976.
@@ -1084,11 +1117,6 @@ $\hfill \qed$
 		\newblock{\it Stochastic time-fractional diffusion equations on $\R^d$}
 		\newblock Stochastics 89 (1) (2007) 171-206
 
-		\bibitem{ChenHuNaulart2019} Chen L., Hu, Y. and Nualart D.
-		\newblock{\it Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$}.
-		\newblock Stochastic Processes and Their Applications 129 (2019) 5073-5112
-		\newblock El Sevier 2019
-
 		\bibitem{DalangEtc09Minicourse} Dalang, Robert, Davar Khoshnevisan, Carl
 		Mueller, David Nualart, and Yimin Xiao
 		\newblock {\it A minicourse on stochastic partial differential equations}.
@@ -1096,5 +1124,11 @@ $\hfill \qed$
 		Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics,
 		1962.
 		\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+		
+		\bibitem{HuFracBrown} Hu, Y.
+		 Hu, Y. (2001)
+		\newblock Heat equation with fractional white noise potential.
+		\newblock {\em Appl. Math. Optim.} \textbf{43}, 221-243.
+		
 \end{thebibliography}
 \end{document}
