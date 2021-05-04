@@ -224,22 +224,28 @@ The actual definitions of each remember of the above triplet do not play a cruci
 
 Our goal is to develop exact moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BalanChenChen} where in that paper they focus exclusively on the stochastic wave equation. This paper acts as a generalization of that paper to the fraction stochastic equation. In fact, the techniques presented in this paper are quite general and can be applied to any SPDE that has a Green's function that satisfies a series of scaling properties which we present throughout this paper. Note that the fractional equation \ref{spdee} recovers the stochastic wave equation when $a=b=2$ and $r=0$ and in addition we recover the stochastic heat equation when $b=1$, $a=2$ and $r=0$. We need to make note about restrictions on the spatial dimension due to the fact that the fundamental solution to the wave equation only exists as a function for $d\le2$ and because of that reason we restrict ourselves to $d \le 2$. 
 
-In addition, we need to restrict ourselves to the Gaussian Noise with $\mu (\ud x) = \varphi(x) \ud x$ with $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ where $C_{d,\alpha} = \pi^{-d/2}2^{-\alpha}\frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}$ which corresponds to the Riesz kernal $\gamma(x) = |x|^{-\alpha}$. \textcolor{red}{we need to show fractional noise is in weak $L^2$ inorder to consider that. This already may be true but at the moment i am unsure. See nick question 1.8 in the github doc.}. The reason for the restriction is the need to apply the Hardy-Littlewood-Sobelov lemma to shop that $\rho$, defined below, is finite. This is shown in Lemma 1.6 in \cite{chenlarge}. 
+In addition, we need to restrict ourselves to the Gaussian Noise with $\mu (\ud x) = \varphi(x) \ud x$ with $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ where $C_{d,\alpha} = \pi^{-d/2}2^{-\alpha}\frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}$ which corresponds to the Riesz kernal $\gamma(x) = |x|^{-\alpha}$. \textcolor{red}{we need to show fractional noise is in weak $L^2$ inorder to consider that. This already may be true but at the moment i am unsure. See nick question 1.8 in the github doc.}. The reason for the restriction is the need to apply the Hardy-Littlewood-Sobelov lemma to show that $\rho$, defined below, is finite. This is shown in Lemma 1.6 in \cite{chenlarge}. 
 
 	\begin{remark} 
 Let $c>0$. The Risez kernal $\gamma(x) = |x|^{-\alpha}$ and its spectral density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ satisfy the scaling properties $\gamma(cx) = c^{-\alpha}\gamma(x)$ and $\varphi(cx) = c^{-(d-\alpha)}\varphi(x)$. In addition, $\gamma = K*K$ where $"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$ with $\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }$.
 	\end{remark}
-
+\textcolor{red}{From this point to the red MARK needs to be carefully looked at!}
 	\begin{remark}\label{spectralconjecture}
-It is conjectured that we may be able to apply the following results to more general noises with arbitrary $\gamma$ and $\mu$ such that 
+We may actually apply the techniques in this paper to any such noise who's correlation function and spectral density, $\gamma$ and $\mu$, satisfy
 		\begin{enumerate}
 			\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
 			\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
 			\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution. 
 		\end{enumerate}
-	\end{remark}
+However, there is an issue with applying the results in this paper to the more general noises listed in \ref{spectralconjecture}. Proving $\rho$, defined below is finite is a challange. Through inspection of the proof of Lemma 1.6 \cite{chenlarge}, we note that it suffices to show that 
+\begin{equation}\label{sobelovtypeineq}
+\int_{\R^d}\int_{\R^d} \frac{F(\gamma)G(\lambda)}{ \varphi(\lambda - \gamma) } \ud \gamma \ud \lambda \le C\Norm{F}_r \Norm{G}_s
+\end{equation}
+holds for some pair $(r,s)$ where $F(x) = f(x)/(1+|x|^a)$ and $G$ is defined similarly with $f$ replaced by $g$ and both $f$ and $g$ are $L^2(\R^d)$ functions with norm $1$. 
 
-The issue with appling the results in this paper to the more general noises listed in \ref{spectralconjecture} is proving $\rho$, defined below is finite. We mention that an example of a noise that satisfies \ref{spectralconjecture} but differs from the Riesz kernal is the noise with $\gamma(x) = \prod_{i=1}^d|x_i|^{-\alpha_i}$ for some $\alpha_i \in (0,1)$. In this example, $\mu(\ud \xi) = \prod_{i=1}^d (C_{2,\alpha_i} |\xi_i|^{-(1-\alpha_i)}\ud \xi_i )$ and $ K(x) = \prod_{i=1}^d (\beta_{\alpha_1,1} |x_i|^{-(1+\alpha_i)/2} ) $. This function gamma satisfies the conditions in \ref{spectralconjecture} with $\alpha = \sum_{i=1}^d \alpha_i$. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2,1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1,\cdots,H_n$. The heat equation with this noise is studied in Hu \cite{HuFracBrown}
+We mention that an example of a noise that differs from the Riesz kernal but satisfies \ref{spectralconjecture} is the noise with $\gamma(x) = \prod_{i=1}^d|x_i|^{-\alpha_i}$ for some $\alpha_i \in (0,1)$. The problem with this noise is that we are unsure if \ref{sobelovtypeineq} holds. In this example, $\mu(\ud \xi) = \prod_{i=1}^d (C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}\ud \xi_i )$ and $ K(x) = \prod_{i=1}^d (\beta_{\alpha_1,1} |x_i|^{-(1+\alpha_i)/2} ) $ and $\alpha = \sum_{i=1}^d \alpha_i$. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2,1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1,\cdots,H_n$. The heat equation with this noise is studied in Hu \cite{HuFracBrown}
+	\end{remark}
+\textcolor{red}{MARK MARK MARK MARK MARK}
 
 Here is the main result of this paper.
 
@@ -253,6 +259,36 @@ It holds that
 \section{Some preliminaries.}
 \subsection{Malliavin Calculus}
 \textcolor{red}{Add Intro to Malliavin Calc Here}
+
+In general, we start with a non-negative and non-negative definite tempered measure $\Gamma$ with density $\gamma$ in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$, and 
+	\[
+		\int_{\R^d} \Gamma(\ud x) (\varphi * \tilde{\varphi})(x) \ge 0 \quad \text{for all $\varphi \in \mathscr{S}(\R^d)$}
+	\]
+where $\tilde{\varphi(x)} = \varphi(-x)$. In addition we require the existance of an $r>0$ such that 
+	\[
+		\int_{\R^d}\Gamma(\ud x) \frac{1}{ (1 + |x|^2 )^r} < \infty.
+	\]
+According to the Bochner-Schwarz theorem, there exists a non-negative measure $\mu$, often referred to as the spectral measure on $\R^d$ whose Fourier transform is $\Gamma$ in the sense that for any $\varphi \in \mathscr(\R^d)$ 
+	\[
+		\int_{\R^d}\Gamma(\ud x) \varphi(x) = \int_{\R^d} \mu(\ud t) \mathcal{F}\varphi (t) 
+	\]
+
+The functional defined on the space of test functions $\mathcal{D}(\R^d)$
+	\[
+		C(\varphi,\psi) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi)
+	\]
+is non-negative define and thus we may associate it as the covariance functional of a zero-mean Gaussian processes, $W:= \{ W(\varphi) : \varphi \in \mathcal{D}(\R^d) \}$. In other words, 
+	\[
+		\mathbb{E}(W(\varphi)W(\psi)) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \varphi, \psi \rangle_{\mathcal{H}}.
+	\]
+Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot \rangle_{\mathcal{H}}$ and thus we see $\varphi \to W(\varphi)$ is an isometry from the normed space $(\mathcal{D}(\R^d), \Norm{\cdot}_{\mathcal{H}})$ to $L^2(\Omega)$ where $\Norm{f}_{\mathcal{H}} = \langle f, f \rangle_{\mathcal{H}}$.
+
+We denote $\delta$ the Skorohod integral with respect to $W$ and we denote its domain $\text{Dom}\delta$. For any $u\in \text{Dom}\delta$, we write
+	\[
+		\delta(u) = \int_{\R^d} u(x) W(\delta x).
+	\] 
+Through construction of $\delta$, $\delta(u)$ is a random variable in $L^2(\Omega)$. For a deeper explanation, we direct the reader to Nualart \cite{nualartmalliavin}.
+
 \begin{definition}
 	A random field $u=\{u(t,x) : t \ge 0, x\in\R^d\}$ such that $\Norm{u(t,x)}_2 < \infty$ for all $t \ge 0$ and $ x \in \R^d$ is called a mild solution to the equation \ref{spdee} if the random field $\{G(t-s,x-y)u(s,y): s \in [0,t], y \in \R^d \}$ is Skorohod integrable for each $s\in [0,t]$ and $x\in \R^d$ fixed and satisfies the following integral equation:
 		\begin{equation}
@@ -1129,6 +1165,11 @@ $\hfill \qed$
 		 Hu, Y. (2001)
 		\newblock Heat equation with fractional white noise potential.
 		\newblock {\em Appl. Math. Optim.} \textbf{43}, 221-243.
+		
+		\bibitem{nualartmalliavin} 
+		Nualart D. and Nualart E. (2018)
+		\newblock Introduction to Malliavin Calculus.
+		\newblock Cambridge University Press. 
 		
 \end{thebibliography}
 \end{document}
