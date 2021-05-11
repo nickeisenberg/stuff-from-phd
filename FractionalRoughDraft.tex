@@ -231,7 +231,7 @@ Let $c>0$. The Risez kernal $\gamma(x) = |x|^{-\alpha}$ and its spectral density
 	\end{remark}
 \textcolor{red}{From this point to the red MARK needs to be carefully looked at!}
 	\begin{remark}\label{spectralconjecture}
-We may actually apply the techniques in this paper to any such noise who's correlation function and spectral density, $\gamma$ and $\mu$, satisfy
+We may actually apply the techniques in this paper to any such noise whose correlation function and spectral density, $\gamma$ and $\mu$, satisfy
 		\begin{enumerate}
 			\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
 			\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
@@ -243,14 +243,14 @@ However, there is an issue with applying the results in this paper to the more g
 \end{equation}
 holds for some pair $(r,s)$ where $F(x) = f(x)/(1+|x|^a)$ and $G$ is defined similarly with $f$ replaced by $g$ and both $f$ and $g$ are $L^2(\R^d)$ functions with norm $1$. 
 
-We mention that an example of a noise that differs from the Riesz kernal but satisfies \ref{spectralconjecture} is the noise with $\gamma(x) = \prod_{i=1}^d|x_i|^{-\alpha_i}$ for some $\alpha_i \in (0,1)$. The problem with this noise is that we are unsure if \ref{sobelovtypeineq} holds. In this example, $\mu(\ud \xi) = \prod_{i=1}^d (C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}\ud \xi_i )$ and $ K(x) = \prod_{i=1}^d (\beta_{\alpha_1,1} |x_i|^{-(1+\alpha_i)/2} ) $ and $\alpha = \sum_{i=1}^d \alpha_i$. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2,1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1,\cdots,H_n$. The heat equation with this noise is studied in Hu \cite{HuFracBrown}
+We mention that an example of a noise that differs from the Riesz kernal but satisfies Remark \ref{spectralconjecture} is the noise with $\gamma(x) = \prod_{i=1}^d|x_i|^{-\alpha_i}$ for some $\alpha_i \in (0,1)$. The problem with this noise is that we are unsure if \ref{sobelovtypeineq} holds. In this example, $\mu(\ud \xi) = \prod_{i=1}^d (C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}\ud \xi_i )$ and $ K(x) = \prod_{i=1}^d (\beta_{\alpha_1,1} |x_i|^{-(1+\alpha_i)/2} ) $ and $\alpha = \sum_{i=1}^d \alpha_i$. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2,1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1,\cdots,H_n$. The heat equation with this noise is studied in Hu \cite{HuFracBrown}
 	\end{remark}
 \textcolor{red}{MARK MARK MARK MARK MARK}
 
 Here is the main result of this paper.
 
 	\begin{theorem}
-It holds that 
+Equation \ref{spdee} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for any $p \ge 2$, $t>0$ and $x \in \R^d$. Moreover, we have the following moment asymptotics: 
 		\begin{equation} \label{momentasym}
 			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = \left(\frac{1}{2}\right)\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{equation}	
@@ -281,7 +281,7 @@ is non-negative define and thus we may associate it as the covariance functional
 	\[
 		\mathbb{E}(W(\varphi)W(\psi)) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \varphi, \psi \rangle_{\mathcal{H}}.
 	\]
-Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot \rangle_{\mathcal{H}}$ and thus we see $\varphi \to W(\varphi)$ is an isometry from the normed space $(\mathcal{D}(\R^d), \Norm{\cdot}_{\mathcal{H}})$ to $L^2(\Omega)$ where $\Norm{f}_{\mathcal{H}} = \langle f, f \rangle_{\mathcal{H}}$.
+Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot \rangle_{\mathcal{H}}$ and thus we see $\varphi \mapsto W(\varphi)$ is an isometry from the normed space $(\mathcal{D}(\R^d), \Norm{\cdot}_{\mathcal{H}})$ to $L^2(\Omega)$ where $\Norm{f}_{\mathcal{H}} = \langle f, f \rangle_{\mathcal{H}}$.
 
 We denote $\delta$ the Skorohod integral with respect to $W$ and we denote its domain $\text{Dom}\delta$. For any $u\in \text{Dom}\delta$, we write
 	\[
@@ -306,7 +306,7 @@ where
 f_n(x_1,...,x_k;x,t) &= \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n
 \\&= \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud t_1\cdots \ud t_n. \nonumber
 \end{align}
-For ease of notation, we write the above integrals as
+For ease of notation throughout this article, we write the above integrals as
 	\begin{align*}
 		f_n(x_1,...,x_n;x,t) &= \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t}
 		\\&= \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t}.
@@ -396,22 +396,26 @@ where $\nu$ and $a$ are from \ref{spdee}. In addition, $\mu(\ud \xi) = C_{d,\alp
 	\begin{equation} \label{rhowavedev}
 		\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log[\rho_{2,a}].
 	\end{equation}
-and in addition, X. Chen \cite{chenlarge} also shows the equality $\rho_{2,a} = \Lambda_{\alpha}^{2-(\alpha/a)}$ where
+and in addition, X. Chen \cite{chenlarge} also shows the equality 
+	\begin{equation}\label{oldrhovarrep}
+		\rho_{2,a} = \Lambda_{\alpha}^{2-(\alpha/a)}
+	\end{equation}
+ where
 	\begin{align}
-		\Lambda_{\alpha} &= \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^d}^2 \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^a} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\}
-		\\&= \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-a} \rangle - \mathcal{E}_a(g,g) \right\} \nonumber.
+		\Lambda_{\alpha} &= \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^a} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\}
+		\\&= \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-a} \rangle_{L^2(\R^d)} - \mathcal{E}_a(g,g) \right\} \nonumber.
 	\end{align}
 The following result shows the relationship between $\rho_{2,a}$ and $\rho$ and well as the generalization of \ref{rhowavedev} for $\rho.$
 
 	\begin{theorem}
-		For any $\nu >0 $ and $a \in (0,2]$, we have that
-			\begin{equation}\label{rhorelation}
-				\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a} \rho_{2,a}
-			\end{equation}
-		and in addition,
-			\begin{equation}\label{rhofracdev}
-					\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log[\rho].
-			\end{equation}
+For any $\nu >0 $ and $a \in (0,2]$, we have that
+		\begin{equation}\label{rhorelation}
+					\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a}  \Lambda_{\alpha}^{2-(\alpha/a)}.
+		\end{equation}
+In addition,
+		\begin{equation}\label{rhofracdev}
+				\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log[\rho].
+		\end{equation}
 	\end{theorem}
 \noindent \textbf{Proof:} Recall that we define $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
 	\begin{align*}
@@ -437,7 +441,7 @@ so we can say that
 		\\&= \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
 		\\&\left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}
 	\end{align*}
-and this proves \ref{rhorelation}.
+and \ref{rhorelation} is proven by applying \ref{oldrhovarrep}.
 
 To prove \ref{rhofracdev}, we first notice that by applying the substitution $\xi_{\sigma(j)}' = \left(\frac{\nu}{2}\right)^{1/a} \xi_{\sigma(j)}$ that
 	\begin{equation}
@@ -473,8 +477,8 @@ We need to build up some theory before we prove the above theorem. We first intr
 	\end{align*}
 with the convention that. $s_0 = y_{\sigma(0)} = 0$. Next we define,
 	\begin{align*}
-		H_n(t, \vec{x}) &= n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \tilde{f_n}(\vec{y};0,t) \ud \textbf{y}
-		\\&= \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud s
+		H_n(t, \vec{x}) &= n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \tilde{f_n}(\vec{y};0,t) \ud \vec{y}
+		\\&= \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}
 	\end{align*}
 where in the last line we used relation \ref{fperm0} for expressing  $\tilde{f_n}(\cdot;0,t)$. Next, similarly to $L_n$, we define $L(x)$ and can calculate $\mathcal{F}L(\xi)$ to be
 	\begin{equation} \label{LandFL}
@@ -495,15 +499,34 @@ and using this and \ref{LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
 						\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x} = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi})
 					\end{equation}
 	\end{lemma}
-\noindent\textbf{Proof:} \textcolor{red}{Same proof from wave paper. Copy proof there}
+\noindent\textbf{Proof:} 
+	\begin{align*}
+		 \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t &= \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \ud t
+		 \\&= \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L(\vec{y}) \ud \vec{y}.
+	\end{align*}
+Therefore,
+	\begin{align*}
+		\int_{\R^{dn}}\left[\int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^n \ud \vec{x} &= 	\int_{\R^{dn}} \left[  \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L(\vec{y}) \ud \vec{y} \right]^2 \ud \vec{x} 
+		\\&= \int_{\R^{dn}} |\mathcal{F}L_n(\vec{\xi})|^2 \prod_{k=1}^n\mu(\ud \xi_k) 
+	\end{align*}
+where the last line follows from Plancherel's theorem and the fact that $K*K =\gamma$. \textcolor{red}{consider adding the plancherel details}	
 
+$\hfill \qed$
 	\begin{lemma}\label{inteq1}
 		\textcolor{red}{Insert text about assumptions}
 					\begin{equation}
-						\Norm{\tilde{f_n}(\cdot;0,t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x}
+						\Norm{\tilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x}
 					\end{equation}
 	\end{lemma}
-\noindent\textbf{Proof:} \textcolor{red}{Same proof from wave paper. Copy proof later.}
+\noindent\textbf{Proof:} Writing $\gamma(y_k-y_k') = \int_{\R^d} K(y_k-x_k)K(y_k'-x_k) \ud x_k$, we see that 
+	\begin{align*}
+		\Norm{\tilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 &= \int_{(\R^d)^n} \int_{(\R^d)^n} \prod_{k=1}^n \gamma(y_k-y_k') \tilde{f}_n(\vec{y},0;t)\tilde{f}_n(\vec{y'},0;t) \ud \vec{y} \ud \vec{y'}
+		\\&= \int_{(\R^d)^n} \left[ \int_{(\R^d)^n} \prod_{k=1}^n K(y_k-x_k) \tilde{f}_n(\vec{y},0;t) \ud \vec{y} \right]^2 \ud (\vec{x})
+		\\&=  \int_{(\R^d)^n} \left[ \frac{1}{n!} H_n(t,\vec{x}) \right]^2 \ud \vec{x}
+	\end{align*}
+\textcolor{red}{maybe add the placherel theorem steps in the above equalities.}
+
+$\hfill \qed$
 
 If $f$ is a non-decreasing function on $[0,\infty)$, then the following reverse Cauchy-Schwarz inequality holds, which plays a key role in our developments.
 
@@ -529,7 +552,7 @@ By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ an
 	\end{equation}
 
 	\begin{lemma}
-		Under the assumption of Theorem \textcolor{red}{main theorem on the moment asymptotics that I need to put into the introduction}, we have that
+		Under the assumption of Theorem \ref{momentasym}, we have that
 			\begin{equation}
 				C_\mu = C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) < \infty \quad \text{and} \quad T_n \le (n!)^2(C_\mu)^2
 			\end{equation}
@@ -543,14 +566,14 @@ The first integral is shown to be finite in the wave paper. The second integral 
 	\begin{align}\label{alpha2}
 		2a - \alpha +1 > 1
 	\end{align}
-The same arguments from the wave paper show that
-	\begin{align*}
-		T_n &\le n! \int_{(\R^d)^n} \sum_{\sigma \in \Sigma_n}\left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)
-		\\ &= (n!)^2 \int_{(\R^d)^n} \left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)
-		\\& \le (n!)^2 \left[ \sup_{\eta \in \R^d} \int_{(\R^d)^n}  \prod_{k=1}^n \left( \frac{1}{1+\frac{\nu}{2}\left| \xi + \eta \right|^a}\right)^2 \mu(\ud \xi) \right]^n
-		\\& = (n!)^2 \left[ \int_{(\R^d)^n}  \prod_{k=1}^n \left(\frac{1}{1+\frac{\nu}{2}\left| \xi \right|^a}\right)^2 \mu(\ud \xi) \right]^n
-		\\&= (n!)^2(C_\mu)^n
-	\end{align*}
+\textcolor{red}{The same arguments from the wave paper show that}
+	\begin{align}
+		T_n &\le n! \int_{(\R^d)^n} \sum_{\sigma \in \Sigma_n}\left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \nonumber
+		\\ &= (n!)^2 \int_{(\R^d)^n} \left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \nonumber
+		\\& \le (n!)^2 \left[ \sup_{\eta \in \R^d} \int_{(\R^d)^n}  \prod_{k=1}^n \left( \frac{1}{1+\frac{\nu}{2}\left| \xi + \eta \right|^a}\right)^2 \mu(\ud \xi) \right]^n \nonumber
+		\\& = (n!)^2 \left[ \int_{(\R^d)^n}  \prod_{k=1}^n \left(\frac{1}{1+\frac{\nu}{2}\left| \xi \right|^a}\right)^2 \mu(\ud \xi) \right]^n \nonumber
+		\\&= (n!)^2(C_\mu)^n \label{lem62step}
+	\end{align}
 where the last line follows by Lemma 4.1 of Balan and Song \cite{BalanSong} or by Lemma 3.1 in \cite{Chen2007}.
 $\hfill \qed$
 
@@ -772,7 +795,7 @@ Finally, lemma A2 says that
 		\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
 	\end{align}
 
-\section{Upper Bound.} \textcolor{red}{insert intro to section}
+\section{Upper Bound.} In the section we use the result obtained in Theorem \ref{p=2} and the hypercontractivity property given by Theorem \textcolor{red}{appendix theorem} to prove the following theorem.
 
 \begin{theorem}
 	\begin{equation}
@@ -812,21 +835,59 @@ We will need to build up some theory before being able to prove the above theore
 	\end{equation}
 with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 
-	\begin{lemma}
-		\[
+	\begin{lemma} 
+If the measure $\mu$ satisfies the first relation in \textcolor{red}{add the label}, then $W_n(t,\phi)$ is well defined and for any $d \ge 1$, $t>0$ and $\phi \in L^2_{\mathbb{C}}(\mu)$. Moreover, 
+		\begin{equation}\label{lem62}
 			\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|^a} \mu(\ud \xi) \cdots \mu(\ud \xi_n)
-		\]
+		\end{equation}
 	\end{lemma}
 
-\noindent \textbf{Proof:} \textcolor{red}{same as wave paper. copy later.}
+\noindent \textbf{Proof:} By Fubini's theorem, the left hand side of \ref{lem62} is equal to
+	\begin{align*}
+		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n \mathcal{F}G(s_k-s_{k-1}, \cdot)(\xi_k + \cdots + \xi_n) \ud \vec{s} \ud t \mu(\ud \vec {\xi}),
+	\end{align*}
+which is equal to, by the change of variables $t-s_n = u$ and $s_k - s_{k-1} = u_k$ for $k=1,...,n$, 
+	\begin{align*}
+		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \left( \int_0^\infty e^{-u} \ud u \right) \prod_{k=1}^n \left( \int_0^\infty e^{-u_k} \mathcal{F}G(u_k,\cdot)(\vec{\xi}) \; \ud u_k \right) \prod_{k=1}^n \mu(\ud \xi_k).
+	\end{align*}
+Now recall that $\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t = 1/(1+\frac{\nu}{2}|\xi|^a)$. Then the above quantity is equal to 
+	\[
+		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+|\sum_{j=k}^n \xi_j|^2} \prod_{k=1}^n \mu(\ud \xi_k).
+	\]
+The result it follows from applying the Cauchy-Schwarz inequality. In addition, by using the same arguments that lead to \ref{lem62step}, we see the above quantity is finite. 
 
-	\begin{proposition}\label{Wnprop1} For $f\in \mathcal{H}$, $t>0$, and $p,q>1$ with $p^{-1} + q^{-1}=1$, it holds that
+$\hfill \qed$ 
+
+	\begin{proposition}\label{Wnprop1} 
+For $f\in \mathcal{H}$, $t>0$, and $p,q>1$ with $p^{-1} + q^{-1}=1$, it holds that
 		\[
 			\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\} \left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f) \right|
 		\]
+and as a consequence, the series $\left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f) \right|$ converges provided that $\Norm{u(t,0)}_p < \infty$, which is the case under Theorem \ref{thmsolve}.
 	\end{proposition}
 
-\noindent \textbf{Proof:} \textcolor{red}{same as wave paper. copy later.}
+\noindent \textbf{Proof:} Suppose $f \in \mathcal{H}$ and let 
+	\[
+		Z_f = \exp\left( W(f) - \frac{1}{2}\Norm{f}_\mathcal{H}^2 \right) = \sum_{n \ge 0} \frac{1}{n!} I_n(f^{\otimes n}).
+	\]
+If $f$ is a distribution, then $f^{\otimes n}$ is the distribution in $\mathcal{S}'(\R^{nd})$ whose Fourier transform is given by: $\mathcal{F}f^{\otimes n}(\vec{\xi}) = \prod_{k=1}^n \mathcal{F}f(\xi_k)$. If $f$ is a function, then $f^{\otimes n}$ is also a function and is defined by $f^{\otimes n}(\vec{x}) = \prod_{k=1}^n f(x_k)$. Now using Holder's inequality and  the fact that $W(f) \sim N(0,\Norm{f}_\mathcal{H}^2)$, we obtain:
+	\begin{equation}\label{Zfholder1}
+			|\mathbb{E}\left[ u(t,0)Z_f \right]| \le \Norm{u(t,0)}_p \Norm{Z_f}_q = \Norm{u(t,0)}_p  \exp\left\{ \frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\}.
+	\end{equation}
+Now by the orthogonality of the Wiener Chaos spaces,
+	\begin{equation}\label{Zfholder2}
+		|\mathbb{E}\left[ u(t,0)Z_f \right]| \le \sum_{n \ge 0} \theta^{n/2} \frac{1}{n!} \mathbb{E}[I_n(f_n(\cdot,0;t)) I_n(f^{\otimes n} )] =  \sum_{n \ge 0} \theta^{n/2} \langle \tilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } .
+	\end{equation}
+By using the definition of $\tilde{f}_n(\cdot,0;t)$, we see that 
+	\begin{align*}
+		 \langle \tilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } &= \int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(\xi_k) \overline{ \mathcal{F}\tilde{f}_n (\cdot, 0 ; t)(\vec{\xi} ) } \prod_{k=1}^n \mu(\ud \xi_k)
+		 \\&= \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1} \mu(\ud \xi_k) \prod_{k=1} \mathcal{F}f(\xi_k) \prod_{k=1} \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_{\sigma(k)} \right)
+		 \\&= \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1}^n \mu(\ud \xi_k) \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_k \right)
+		 \\&= W_n(t,\mathcal{F}f)
+	\end{align*}
+where $t_{n+1} = t$ and the last step is due to the change of variables $s_1 = t - t_n, \cdots, s_n = t - t_1$ and $\xi_1' = \xi_n, \cdots, \xi_n' = \xi_1$. The conclusion follows from the above centered equations and \ref{Zfholder1} and \ref{Zfholder2}.
+
+$\hfill \qed$
 
 Our next goal is to prove the following proposition, which is where the motivation of the definitions of $t_p$ and $\beta$ come from.
 
