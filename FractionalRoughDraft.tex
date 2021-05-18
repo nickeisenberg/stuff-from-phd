@@ -247,20 +247,29 @@ We mention that an example of a noise that differs from the Riesz kernal but sat
 	\end{remark}
 \textcolor{red}{MARK MARK MARK MARK MARK}
 
+We now introduce the operator 
+	\[
+		\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}
+	\]
+and define $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1)$. See Subsection \ref{largedevresults} of this paper for more details.
+ 
 Here is the main result of this paper.
 
-	\begin{theorem}
+	\begin{theorem}\label{mainresult}
 Equation \ref{spdee} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for any $p \ge 2$, $t>0$ and $x \in \R^d$. Moreover, we have the following moment asymptotics: 
 		\begin{equation} \label{momentasym}
-			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = \left(\frac{1}{2}\right)\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = \left(\frac{1}{2}\right)\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}})^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{equation}	
+where
+	\[
+		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \quad \text{and} \quad t_p^\beta := (p-1)^{\beta -1} t^\beta
+	\]
 	\end{theorem}
-
+The existence and uniqueness of a $L^p(\Omega)$ solution will be proven in Section \ref{solvability} and the moment asymptotic will be proven by combining Sections \ref{upperbound} and \ref{lowerbound}.
 \section{Some preliminaries.}
-\subsection{Malliavin Calculus}
-\textcolor{red}{Add Intro to Malliavin Calc Here}
 
-In general, we start with a non-negative and non-negative definite tempered measure $\Gamma$ with density $\gamma$ in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$, and 
+\subsection{Malliavin Calculus}
+To briefly summarize \cite{DalangEtc09Minicourse}, we start with a non-negative and non-negative definite tempered measure $\Gamma$ with density $\gamma$ in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$, and 
 	\[
 		\int_{\R^d} \Gamma(\ud x) (\varphi * \tilde{\varphi})(x) \ge 0 \quad \text{for all $\varphi \in \mathscr{S}(\R^d)$}
 	\]
@@ -387,12 +396,12 @@ The following result gives the existence and uniqueness of the solution. Its pro
 			\end{equation}
 	\end{theorem}
 
-\subsection{Some large deviation results.}
-We first  define
-	\begin{equation}\label{rhofrac}
-		\rho = \rho_{\nu,a} := \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d} \left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a} \sqrt{1+\frac{\nu}{2}|\eta|^a}} \ud \eta \right]^2 \mu(\ud \xi).
-	\end{equation}
-where $\nu$ and $a$ are from \ref{spdee}. In addition, $\mu(\ud \xi) = C_{d,\alpha}|\xi|^{-(d-\alpha)}$ which corresponds to the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$. In X. Chen \cite{chenlarge}, the case of $a \in (0,2]$ and $\nu = 2$ is discussed and there it is proven that
+\subsection{Some large deviation results.}\label{largedevresults} 
+First we define 
+	\[
+		\rho := \rho_{\nu,a} = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+	\]
+Recall that $\mu(\ud \xi) = C_{d,\alpha}|\xi|^{-(d-\alpha)} \ud \xi$ which corresponds to the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$. In X. Chen \cite{chenlarge}, the case of $a \in (0,2]$ and $\nu = 2$ is discussed and there it is proven that
 	\begin{equation} \label{rhowavedev}
 		\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log[\rho_{2,a}].
 	\end{equation}
@@ -402,12 +411,16 @@ and in addition, X. Chen \cite{chenlarge} also shows the equality
 	\end{equation}
  where
 	\begin{align}
-		\Lambda_{\alpha} &= \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^a} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\}
-		\\&= \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-a} \rangle_{L^2(\R^d)} - \mathcal{E}_a(g,g) \right\} \nonumber.
+		\Lambda_{\alpha} &= \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^\alpha} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\}
+		\\&= \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-\alpha} \rangle_{L^2(\R^d)} - \mathcal{E}_a(g,g) \right\} \nonumber.
 	\end{align}
+and 
+	\begin{align*}
+		\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi
+	\end{align*}
 The following result shows the relationship between $\rho_{2,a}$ and $\rho$ and well as the generalization of \ref{rhowavedev} for $\rho.$
 
-	\begin{theorem}
+	\begin{theorem}\label{rhovariationaltheorem}
 For any $\nu >0 $ and $a \in (0,2]$, we have that
 		\begin{equation}\label{rhorelation}
 					\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a}  \Lambda_{\alpha}^{2-(\alpha/a)}.
@@ -459,9 +472,24 @@ and because of both Theorem 1.5 \cite{chenlarge} and \ref{rhorelation} above,
 	\end{align*}
 $\hfill \qed$
 
-\textcolor{red}{I never mentioned $\mathcal{M}$. Since it is essentially the same thing as $\Lambda$ I may leave it out}
-
-\section{Solvability}
+We now want to make note of a slight generalization of $\Lambda_{\alpha}$. For this, we define 
+	\begin{equation}
+		\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}.
+	\end{equation}
+One notices that by making this generalization, we can apply Theorem \ref{mainresult} to the SPDE \ref{spdee} driven by an arbitrary Gaussian noise with correlation function $f$ as long as one can show that $\rho$ is finite. By slightly modifying the proof of Lemma 2.3 \cite{BalanChenChen}, one can show that 
+	\begin{equation}
+			\mathcal{M}_a(\Theta f , \theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \mathcal{M}_a( f , 1).
+	\end{equation}
+Finally we note that 
+	\begin{equation}
+		\Lambda_{\alpha} = \mathcal{M}_a(|\cdot|^{-\alpha},2) = 2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a(|\cdot|^{-\alpha},1) 
+	\end{equation}
+and by defining $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1) $ and by applying Theorem \ref{rhovariationaltheorem} we see that 
+	\begin{equation}\label{rhoMrepresentation}
+		\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a}    \left[2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a\right]^{2-(\alpha/a)} = \nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}
+	\end{equation}
+	
+\section{Solvability}\label{solvability}
 The goal for this section is to prove the following theorem:
 	\begin{theorem}\label{thmsolve}
 		The equation \ref{spdee} has a unique solution $\{u(t,x) : t>0, x\in \R^d\}$ and
@@ -795,7 +823,7 @@ Finally, lemma A2 says that
 		\\&= \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
 	\end{align}
 
-\section{Upper Bound.} In the section we use the result obtained in Theorem \ref{p=2} and the hypercontractivity property given by Theorem \textcolor{red}{appendix theorem} to prove the following theorem.
+\section{Upper Bound.}\label{upperbound} In the section we use the result obtained in Theorem \ref{p=2} and the hypercontractivity property given by Theorem \textcolor{red}{appendix theorem} to prove the following theorem.
 
 \begin{theorem}
 	\begin{equation}
@@ -820,7 +848,7 @@ and an application of Theorem \ref{p=2} proves the result.
 
 $\hfill \qed$
 
-\section{Lower Bound.} The goal of this section is to prove the following theorem.
+\section{Lower Bound.}\label{lowerbound} The goal of this section is to prove the following theorem.
 
 	\begin{theorem}\label{lbound}
 			\begin{equation}
@@ -992,7 +1020,7 @@ For an $f \in \mathcal{H}_+$ and $\Norm{f}_{\mathcal{H}}= 1$ we have that $\math
 	\[
 		\int_0^{\infty} e^{-t} U_n(t,f) \ud t = \int_0^\infty e^{-t} W_n(t,\mathcal{F}f) \ud t = \int_{\R^{dn}} \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\xi_k+\cdots + \xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n)
 	\]
-Modifying the ideas in the Xia Chen paper, we can say that
+Modifying the ideas in the proof of Theorem 1.2 \cite{chenlarge} gives us the following identity:
 	\begin{align*}
 		\lim_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) = \log[ \rho(\mathcal{F}f)]
 	\end{align*}
@@ -1008,7 +1036,7 @@ We now need to calculate
 	\[
 		\sup_{f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1} \rho(\mathcal{F}f)
 	\]
-Consider a function $h\in L^2(\R^d)$. The function $h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g(x) := (2\pi)^{d/2} \mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well defined. \textbf{I still need to verify the details that} under these conditions, $g \in W_{1,a}(\R^d)$ with $\Norm{g}_{W_{1,a}}=1$. Here is a sketch of the details
+Consider a function $h\in L^2(\R^d)$. The function $h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g(x) := (2\pi)^{d/2} \mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well defined. \textcolor{red}{I still need to verify the details that} under these conditions, $g \in W_{1,a}(\R^d)$ with $\Norm{g}_{W_{1,a}}=1$. Here is a sketch of the details. \textcolor{red}{we no longer need this part since we do not need g to be continuous, only need to to be non-negative and non-negative definite.}
 
 	\begin{align*}
 		\Norm{g}_{W_{1,a}}^2 &= \Norm{g}^2_{L^2} + (2\pi)^{-d}\sum_{k=1}^d \int_{\R^d} \xi_k^a|\mathcal{F}g(\xi)|^2 \ud \xi
@@ -1022,7 +1050,7 @@ Now, for notation let $\tilde{h}(x) = h(-x)$. Note that
 		\int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta&= (2\pi)^{-d}\int_{\R^d} \mathcal{F}g(\xi-\eta)\mathcal{F}g(-\eta) \ud \eta
 		\\& =(2\pi)^{-d} (\mathcal{F}g*\widetilde{\mathcal{F}g})(\xi)
 	\end{align*}
-Since $h(\cdot)$ is real value then $\widetilde{\mathcal{F}}(g) = \overline{\mathcal{F}\bar{g}}= \mathcal{F}\bar{g} $. Using this and the fact that  $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f)*\mathcal{F}(g)$, we see that $(2\pi)^{-d}(\mathcal{F}g*\widetilde{\mathcal{F}g})(\xi) =\mathcal{F}\left[|g|^2\right](\xi) $ and with this we see that
+Since $h(\cdot)$ is real valued then $\widetilde{\mathcal{F}}(g) = \overline{\mathcal{F}\bar{g}}= \mathcal{F}\bar{g} $. Using this and the fact that  $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f)*\mathcal{F}(g)$, we see that $(2\pi)^{-d}(\mathcal{F}g*\widetilde{\mathcal{F}g})(\xi) =\mathcal{F}\left[|g|^2\right](\xi) $ and with this we see that
 	\begin{align*}
 		\rho(\mathcal{F}f) &= \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g*\widetilde{\mathcal{F}g})(\xi) \mu(\ud \xi)
 		\\&= \sup_{\Norm{h}_{L^2}=1} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g|^2](\xi) \mu(\ud \xi)
@@ -1032,7 +1060,7 @@ With this we see that
 	\[
 		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1} \langle |g|^2, |g|^2 \rangle^{1/2} _{\mathcal{H}}
 	\]
-where the optimal $f$ is chosen to be $|g|^2/\Norm{|g|^2}_{\mathcal{H}}$. \textbf{Can the optimal f be chosen like this? This is true for $\ud x$ but is it true for $\mu(\ud x)$? I believe that it would be true for $\mu$ such that $\mu$ has a density which is radially symmetric about the origin. The Riesz kernal would then still be ok} Therefore the supremum can be restricted to $\mathcal{H_+}$ which implies
+where the optimal $f$ is chosen to be $|g|^2/\Norm{|g|^2}_{\mathcal{H}}$. \textcolor{red}{Can the optimal f be chosen like this? This is true for $\ud x$ but is it true for $\mu(\ud x)$? I believe that it would be true for $\mu$ such that $\mu$ has a density which is radially symmetric about the origin. The Riesz kernal would then still be ok} Therefore the supremum can be restricted to $\mathcal{H_+}$ which implies
 	\[
 		\sup_{ f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) = \sup_{\Norm{h}_{L^2}=1} \langle |g|^2, |g|^2 \rangle^{1/2} _{\mathcal{H}}
 	\]
@@ -1184,7 +1212,8 @@ and plugging in the value for $B$ yields \ref{lbound}.
 
 $\hfill \qed$
 
-
+\section{Appendix A}
+In this section we give a brief introduction to the 
 
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
