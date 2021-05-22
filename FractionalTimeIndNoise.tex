@@ -773,6 +773,95 @@ and the proof of this inequality relies on $(A.8)$ which says
 
 \end{NickQuestion}
 
+\begin{NickQuestion}[More about the fractional noise]
+The weak young's inequality says
+	\[
+		\left|	\int_{\R^d}\int_{\R^d}f(x)g(x-y)g(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{f}_p\Norm{g}_{q,w}\Norm{h}_r
+	\]
+	
+w here $p,q,r >1$ and $1/p + 1/q + 1/r =2$ and 
+	\[
+		\Norm{g}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x
+	\]
+where $A$ is a arbitrary Borel set of finite measure.
+
+\textbf{Weak $L^q$ norm for the Riesz Kernel}
+
+In Analysis - Lieb they state that for $f(x) = |x|^{-\lambda}$ that 
+	\[
+		\Norm{|\cdot|^{-\lambda}}_{\frac{d}{\lambda},w} = \frac{d}{d-\lambda}\left[ |\mathbb{S}^{d-1}|/d \right]^{\lambda/d} \quad \text{when } f(x) = |x|^{-\lambda}
+	\]
+and to prove this they do the following. Consider $B_R(0)$ the ball of radius $R$ centered at the origin. First, by using polor coordinates
+	\[
+		\int_{B_R(0)} \frac{1}{|x|^\lambda} \ud x = \int_{\mathbb{S}^{d-1}}\int_0^R r^{-\lambda}r^{d-1} \ud r \ud \sigma(y) = |\mathbb{S}^{d-1}| \frac{R^{d-\lambda}}{d-\lambda}
+	\]
+and then using the equality 
+	\[
+		|B_R(0)| = R^d|B_1(0)| = R^d \frac{|\mathbb{S}^{d-1}|}{d}.
+	\]
+Next note that since $q = d/\lambda$ then 
+\[
+	\frac{1}{q'} = 1 - \lambda / d = (d- \lambda)/d
+\]
+and so 
+	\[
+		|B_R(0)|^{-1/q'} = \frac{d^{1-(\lambda/d)}}{ R^{d-\lambda} |\mathbb{S}^{d-1}|^{\frac{d-\lambda}{d}} }
+	\]
+and thus 
+	\[
+		|B_R(0)|^{-1/q'} \int_{B_R(0)} |f(x)| \ud x = \frac{d^{1-(\lambda/d)}}{ R^{d-\lambda} |\mathbb{S}^{d-1}|^{\frac{d-\lambda}{d}} } \cdot |\mathbb{S}^{d-1}| \frac{R^{d-\lambda}}{d-\lambda} = \frac{d}{d-\lambda} \left( \frac{ |\mathbb{S}^{d-1}| }{d} \right)^{\lambda / d}
+	\]
+and since this is constant in $R$ then this means that 
+	\[
+		\sup_{R>0} |B_R(0)|^{-1/q'} \int_{B_R(0)} |x|^{-\lambda} \ud x = \frac{d}{d-\lambda} \left( \frac{ |\mathbb{S}^{d-1}| }{d} \right)^{\lambda / d}
+	\]
+However I am unsure why this implys that 
+	\[
+		\sup_{A} |A|^{-1/q'} \int_{A} |x|^{-\lambda} \ud x = \frac{d}{d-\lambda} \left( \frac{ |\mathbb{S}^{d-1}| }{d} \right)^{\lambda / d}.
+	\]
+Lieb is only taking the sup over all balls centered at the origin instead of over all Borel sets of finite measure. 
+
+\textbf{Possible Weak $L^q$ norm for the fractional Kernel}
+
+We can generalize the above to the kernel $f(x) = \prod_{j = 1}^d |x_j|^{-\lambda_j}$ where $\lambda_j \in (0,1)$. Above, Lieb said we can take the sup over all $B_R(0)$. In this example I am assuming we can take the sup over all $[-r,r] \times \cdots [-r,r] = R_r(0)$ which are the rectangles centered at the origin in $\R^d$. I do not know if this is allowed but if so then it works.	
+
+First note that $|R_r(0)| = r^d$ and that
+	\[
+		\int_{R_r(0)} \prod_{j = 1}^d |x_j|^{-\lambda_j} \ud x = 2^d \prod_{j = 1}^d \int_{0}^r x_j^{-\lambda_j} \ud x_j = \frac{2^d r ^{d-\sum_{j=1}^d \lambda_j}}{\prod_{j = 1}^d (1-\lambda_j)}.
+	\]
+we then choose 
+	\[
+		\frac{1}{q'} = \frac{d-\sum_{j=1}^d \lambda_j}{d}
+	\]
+which implies that 
+	\[
+		\frac{1}{q} = 1- \frac{1}{q'} = \frac{\sum_{j=1}^d \lambda_j}{d}
+	\]
+and finally we see that 
+	\[
+		|R_r(0)|^{-1/q'} \int_{R_r(0)} \prod_{j = 1}^d |x_j|^{-\lambda_j} \ud x = r^{-(d-\sum_{j=1}^d \lambda_j)} \cdot  \frac{2^d r ^{d-\sum_{j=1}^d \lambda_j}}{\prod_{j = 1}^d (1-\lambda_j)} =  \frac{2^d }{\prod_{j = 1}^d (1-\lambda_j)}
+	\]
+so the above quantity is independent of $r$ and therefore, 
+	\[
+		\sup_r |R_r(0)|^{-1/q'} \int_{R_r(0)} \prod_{j = 1}^d |x_j|^{-\lambda_j} \ud x =  \frac{2^d }{\prod_{j = 1}^d (1-\lambda_j)}.
+	\]
+What I need to verify is that if this implies that 
+	\begin{align}\label{frackernelyoung}
+		\sup_A |A|^{-1/q'} \int_{A} \prod_{j = 1}^d |x_j|^{-\lambda_j} \ud x =  \frac{2^d }{\prod_{j = 1}^d (1-\lambda_j)}.
+	\end{align}
+If it does, then we may use the fractional kernel in the paper. The required conditions on $p,\lambda$ and $r$ would be 
+	\begin{align*}
+	\implies &	\frac{1}{p} + \frac{1}{q} + \frac{1}{r} = 2
+	\\ \implies & \frac{1}{p} + \frac{ \sum_{j=1}^d \lambda_j }{d} + \frac{1}{r} = 2
+	\\ \implies & \frac{1}{p}  + \frac{1}{r} = 2 - \frac{ \sum_{j=1}^d \lambda_j }{d}
+	\end{align*}
+and similar to the Reisz Kernel case, if we set $ \lambda_j = 1- \lambda_j'$ then we get 
+	\[
+		\frac{1}{p}  + \frac{1}{r} = 1 + \frac{ \sum_{j=1}^d \lambda_j }{d}
+	\]
+and this is a generalization of the line right above equation (1.27) from the Xia Chen paper. 
+\end{NickQuestion}
+
 \begin{NickQuestion}[Representation (1.19) from the wave paper]
 	I have a question about (1.19), here are my steps trying to prove it but I am unsure why the last step is true. For notation, let $\xi = (\xi_1,...,\xi_n)$ and $\mu(\ud \xi) = \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)$. Also $x = (x_1,...,x_n)$
 	

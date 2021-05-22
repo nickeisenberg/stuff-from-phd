@@ -217,7 +217,7 @@ with the convention that $I^0_t = \text{Td (the identity operator)}$.
  	\[
  		\left\{ Z_{a,b,\nu,d}(t,x),  Z^*_{a,b,\nu,d}(t,x),  Y_{a,b,r,\nu,d}(t,x) : t >0, x \in \R^d \right\}.
  	\]
-The actual definitions of each remember of the above triplet do not play a crucial role throughout this paper and for this reason we postpone further discussion about them to the appendix at then end of this paper. Since we are interested in the constant one initial condition (and 0 initial velocity when $b>1$), by Theorem 4.1 \cite{ChenHuNualartFraction} the corresponding solution to the homogeneous equation (i.e. the solution when there is no driving source) is equal to the constant one. Hence, by setting $G(t,x) =  Y_{a,b,r,\nu,d}(t,x)$, \ref{spdee} can be written as the following Skorohod integral equation:
+Each member of the triplet is based on the Fox H-function which is much more technically complicated than the Green's function for either the heat or wave equation. The actual meanings of these are not to important in this setting so for that reason we direct the reader to \cite{ChenHuNualartFraction} for the definitions. Since we are interested in the constant one initial condition (and 0 initial velocity when $b>1$), by Theorem 4.1 \cite{ChenHuNualartFraction} the corresponding solution to the homogeneous equation (i.e. the solution when there is no driving source) is equal to the constant one. Hence, by setting $G(t,x) =  Y_{a,b,r,\nu,d}(t,x)$, \ref{spdee} can be written as the following Skorohod integral equation:
 	\begin{equation}\label{spdeint}
 		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s.
 	\end{equation}
@@ -255,6 +255,7 @@ and define $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1)$. See Subsection
  
 Here is the main result of this paper.
 
+\textcolor{red}{I dont know how to express the moment asymptotic in the best way. How to organize and combine all the like terms. Below is one way.}
 	\begin{theorem}\label{mainresult}
 Equation \ref{spdee} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for any $p \ge 2$, $t>0$ and $x \in \R^d$. Moreover, we have the following moment asymptotics: 
 		\begin{equation} \label{momentasym}
@@ -292,7 +293,7 @@ is non-negative define and thus we may associate it as the covariance functional
 	\]
 Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot \rangle_{\mathcal{H}}$ and thus we see $\varphi \mapsto W(\varphi)$ is an isometry from the normed space $(\mathcal{D}(\R^d), \Norm{\cdot}_{\mathcal{H}})$ to $L^2(\Omega)$ where $\Norm{f}_{\mathcal{H}} = \langle f, f \rangle_{\mathcal{H}}$.
 
-We denote $\delta$ the Skorohod integral with respect to $W$ and we denote its domain $\text{Dom}\delta$. For any $u\in \text{Dom}\delta$, we write
+We denote $\delta$ the Skorohod integral with respect to $W$ and we denote its domain $\text{Dom}(\delta)$. For any $u\in \text{Dom}(\delta)$, we write
 	\[
 		\delta(u) = \int_{\R^d} u(x) W(\delta x).
 	\] 
@@ -305,12 +306,11 @@ Through construction of $\delta$, $\delta(u)$ is a random variable in $L^2(\Omeg
 		\end{equation}
 \end{definition}
 
-\textcolor{red}{Link the gap from the def of mild solution to piccard scheme comment and fill in the details. }
 Through a Piccard Iteration Scheme we can see that the solution should be given by
 \begin{equation} \label{solwexp}
 u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t))
 \end{equation}
-where
+where $I_k : \mathcal{H}^{\otimes k}((\R^d)^k) \to \mathcal{H}_k$ is the $k^{th}$ order Skorohod integral and $\mathcal{H}_k$ is the $k^{th}$ Wiener chaos space. The kernels $f_k(\cdot,x,t) \in \mathcal{H}^{\otimes k}((\R^d)^k)$ are calculated through the Piccard iteration scheme to be
 \begin{align}\label{wker}
 f_n(x_1,...,x_k;x,t) &= \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n
 \\&= \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud t_1\cdots \ud t_n. \nonumber
@@ -320,7 +320,7 @@ For ease of notation throughout this article, we write the above integrals as
 		f_n(x_1,...,x_n;x,t) &= \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t}
 		\\&= \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t}.
 	\end{align*}
-We denote by $\tilde{f_n}(\cdot, x, t)$ to be the symmetrization of $f_n(\cdot,x,t)$ in the variables $x_1,\cdots,x_n$:
+where in general $\ud\vec{z} = \prod_{k=1}^d \ud z_k$ and the dimension will always be easily understood. We denote by $\tilde{f_n}(\cdot, x, t)$ to be the symmetrization of $f_n(\cdot,x,t)$ in the variables $x_1,\cdots,x_n$:
 	\begin{align}
 		\tilde{f_n}(\cdot; x, t) &= \frac{1}{n!} \sum_{\rho \in \Sigma_n} f_n(x_{\rho(1)},\cdots, x_{\rho(n)})
 		\\&= \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G(t-t_n,x-x_{\rho(n)})\cdots G(t_2-t_1,x_{\rho(2)}-x_{\rho(1)}) \ud \vec{t}
@@ -348,7 +348,7 @@ Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following result
 			\end{equation}
 	\end{theorem}
 \noindent\textbf{Proof:}
-The Fourier transform of $G$ is given in \cite{ChenHuHuHuang2007}. With this we can directly calculate
+The Fourier transform of $G$ is given in \cite{ChenHuNualartFraction}. With this we can directly calculate
 	\begin{align*}
 		   \mathcal{F}G(t, \cdot)(c\xi) & = t^{b + r -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^b |c\xi|^a\right)^k}{\Gamma\left(b k + (b + r)\right)} \\
 		& = t^{b + r -1} \sum_{k=0}^\infty \dfrac{\left(-2^{-1}\nu t^b c^a |\xi|^a\right)^k}{\Gamma\left(b k + (b + r)\right)}\\
@@ -385,8 +385,6 @@ Next, we recall the scaling property of $\varphi$ and apply the substitution $\x
 		\\&= t^{[2(b+r) - b \alpha / a]n}\Norm{\tilde{f_n}(\cdot,0,1)}_{H^{\otimes n}}^2
 	\end{align*}
 $\hfill \qed$
-
-\textcolor{red}{Explain briefly the following standard procedure}
 
 The following result gives the existence and uniqueness of the solution. Its proof follows by a standard procedure.
 	\begin{theorem}
