@@ -862,6 +862,85 @@ and similar to the Reisz Kernel case, if we set $ \lambda_j = 1- \lambda_j'$ the
 and this is a generalization of the line right above equation (1.27) from the Xia Chen paper. 
 \end{NickQuestion}
 
+\begin{NickQuestion}[Proof that the Fractional Noise may be applied.]
+Here I prove that we may consider a noise with correlation function given by 
+	\[
+		\gamma(x) = \prod_{j = 1}^d |x_j|^{-\alpha_j}.
+	\]
+The spectral density for this noise is given by 
+	\[
+		\varphi(x) = \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)}.
+	\]
+This noise satisfies all the scaling properties. The only issue is showing that $\rho$ for this noise is finite. This can be shown by proving Lemma 1.6 from the Xia Chen paper but by applying it to the fractional noise. The exact statement we prove is the following: 
+\\ \\
+\textbf{Lemma:} For any $f,g,h$ with $h\ge0$, we have the following:
+	\[
+		\left( \int_{\R^d} \left[ \int_{\R^d} \dfrac{|f(x+y)g(y)|}{\sqrt{h(x+y)}\sqrt{h(y)}} \ud y \right]^p \varphi(x) \ud x \right)^{1/p} \le C \Norm{f}_2 \Norm{g}_2 \Norm{h^{-1}}_{pd/\alpha}
+	\] 
+where $\alpha = \sum_{j=1}^d \alpha_j$ with $\alpha_j \in (0,1)$ and $\varphi(x) = \prod_{j =1}^d |x_j|^{-(1-\alpha_j)}$.
+\\ \\
+\textbf{proof:} By observing the proof of Lemma 1.6 from the Xia Chen paper, we notice that we only need to prove equation (1.27) which says 
+	\begin{equation}\label{fracrhofinite}
+		\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}.
+	\end{equation}
+where 
+	\[
+		F(x) = \frac{|f(x)|}{(h(x))^{p/2}} \quad \text{and} \quad G(x) = \frac{|g(x)|}{(h(x))^{p/2}} 
+	\]
+If we can do this then the result follows by copying the rest of the proof in the Xia Chen paper. To prove \ref{fracrhofinite}, we use the weak version of Young's inequality. Recall that weak Young's inequality says
+	\[
+		\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
+	\]
+where $p,q,r >1$ and $1/p + 1/q + 1/r =2$ and 
+	\[
+		\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x
+	\]
+where $A$ is a arbitrary Borel set of finite measure. So to prove \ref{fracrhofinite} we wish to be ably to apply this with
+	\[
+		p=r=2d/(d+\alpha) \quad \text{and} \quad q= d/\left(d-\sum_{j=1}^d\alpha_j \right) = d/(d-\alpha)
+	\]
+and, in addition, with 
+	\[  
+		a=F, \quad c=G \quad \text{and} \quad b=\varphi
+	\]
+Again, by following the steps of the proof from the Xia Chen paper, we note that it suffices to show that $\Norm{\varphi}_{q,w}$ is finite with $q = d/(d-\alpha)$. 
+
+Denote $R_r(0) := [-r,r] \times \cdots \times [-r,r]$ to be the cube centered at the origin in $\R^d$ with side length $2r$. With this we have that 
+	\[
+		\int_{R_r(0)} \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = 2^d \prod_{j = 1}^d \int_{0}^r x_j^{-(1-\alpha_j)} \ud x_j = \frac{2^d r ^{\sum_{j=1}^d \alpha_j}}{\prod_{j = 1}^d \alpha_j} = \frac{2^dr^\alpha}{\alpha}.
+	\]
+Note that 
+	\[
+		\frac{1}{q'} = 1 - \frac{1}{q} = 1 - \frac{d-\alpha}{d} = \frac{\alpha}{d}
+	\]
+and so 	
+	\[
+		|R_r(0)|^{-1/q'} = (2^dr^d)^{-\alpha/d} = \frac{1}{2^\alpha r^\alpha}.
+	\]
+Hence,
+	\[
+		|R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \frac{2^{d-\alpha}}{\alpha} 
+	\]
+and this is independent of $r$ so 
+	\[
+		\sup_{r > 0} |R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \frac{2^{d-\alpha}}{\alpha}.
+	\]
+However, by the symmetry of $\varphi$ we also have that 
+	\[
+		\sup_{r > 0} |R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \sup_{A} |A|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x
+	\]
+where $A$ denotes the Borel sets of finite measure. So finally we see that 
+	\[
+		\Norm{\varphi}_{\frac{d}{d-\alpha},w} = \frac{2^{d-\alpha}}{\alpha} < \infty
+	\]
+and by weak Young's inequality we have that 
+	\begin{align*}
+			\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x &\le K \Norm{\varphi}_{\frac{d}{d-\alpha},w} \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)} 
+			\\&= K \frac{2^{d-\alpha}}{\alpha} \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)} 
+	\end{align*}
+which completes the proof of the Lemma. 
+\end{NickQuestion}
+ 
 \begin{NickQuestion}[Representation (1.19) from the wave paper]
 	I have a question about (1.19), here are my steps trying to prove it but I am unsure why the last step is true. For notation, let $\xi = (\xi_1,...,\xi_n)$ and $\mu(\ud \xi) = \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)$. Also $x = (x_1,...,x_n)$
 	
