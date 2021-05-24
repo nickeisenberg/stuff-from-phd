@@ -907,7 +907,7 @@ Again, by following the steps of the proof from the Xia Chen paper, we note that
 
 Denote $R_r(0) := [-r,r] \times \cdots \times [-r,r]$ to be the cube centered at the origin in $\R^d$ with side length $2r$. With this we have that 
 	\[
-		\int_{R_r(0)} \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = 2^d \prod_{j = 1}^d \int_{0}^r x_j^{-(1-\alpha_j)} \ud x_j = \frac{2^d r ^{\sum_{j=1}^d \alpha_j}}{\prod_{j = 1}^d \alpha_j} = \frac{2^dr^\alpha}{\alpha}.
+		\int_{R_r(0)} \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = 2^d \prod_{j = 1}^d \int_{0}^r x_j^{-(1-\alpha_j)} \ud x_j = \frac{2^d r ^{\sum_{j=1}^d \alpha_j}}{\prod_{j = 1}^d \alpha_j} = \frac{2^dr^\alpha}{\prod_{j = 1}^d \alpha_j}.
 	\]
 Note that 
 	\[
@@ -919,11 +919,11 @@ and so
 	\]
 Hence,
 	\[
-		|R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \frac{2^{d-\alpha}}{\alpha} 
+		|R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \frac{2^{d-\alpha}}{\prod_{j = 1}^d \alpha_j} 
 	\]
 and this is independent of $r$ so 
 	\[
-		\sup_{r > 0} |R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \frac{2^{d-\alpha}}{\alpha}.
+		\sup_{r > 0} |R_r(0)|^{-1/q'} \int_{R_r(0)}  \prod_{j = 1}^d |x_j|^{-(1-\alpha_j)} \ud x = \frac{2^{d-\alpha}}{\prod_{j = 1}^d \alpha_j}.
 	\]
 However, by the symmetry of $\varphi$ we also have that 
 	\[
@@ -931,12 +931,12 @@ However, by the symmetry of $\varphi$ we also have that
 	\]
 where $A$ denotes the Borel sets of finite measure. So finally we see that 
 	\[
-		\Norm{\varphi}_{\frac{d}{d-\alpha},w} = \frac{2^{d-\alpha}}{\alpha} < \infty
+		\Norm{\varphi}_{\frac{d}{d-\alpha},w} = \frac{2^{d-\alpha}}{\prod_{j = 1}^d \alpha_j} < \infty
 	\]
 and by weak Young's inequality we have that 
 	\begin{align*}
 			\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x &\le K \Norm{\varphi}_{\frac{d}{d-\alpha},w} \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)} 
-			\\&= K \frac{2^{d-\alpha}}{\alpha} \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)} 
+			\\&= K \frac{2^{d-\alpha}}{\prod_{j = 1}^d \alpha_j} \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)} 
 	\end{align*}
 which completes the proof of the Lemma. 
 \end{NickQuestion}
