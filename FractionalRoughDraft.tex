@@ -224,12 +224,19 @@ Each member of the triplet is based on the Fox H-function which is much more tec
 
 Our goal is to develop exact moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BalanChenChen} where in that paper they focus exclusively on the stochastic wave equation. This paper acts as a generalization of that paper to the fraction stochastic equation. In fact, the techniques presented in this paper are quite general and can be applied to any SPDE that has a Green's function that satisfies a series of scaling properties which we present throughout this paper. Note that the fractional equation \ref{spdee} recovers the stochastic wave equation when $a=b=2$ and $r=0$ and in addition we recover the stochastic heat equation when $b=1$, $a=2$ and $r=0$. We need to make note about restrictions on the spatial dimension due to the fact that the fundamental solution to the wave equation only exists as a function for $d\le2$ and because of that reason we restrict ourselves to $d \le 2$. 
 
-In addition, we need to restrict ourselves to the Gaussian Noise with $\mu (\ud x) = \varphi(x) \ud x$ with $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ where $C_{d,\alpha} = \pi^{-d/2}2^{-\alpha}\frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}$ which corresponds to the Riesz kernal $\gamma(x) = |x|^{-\alpha}$. \textcolor{red}{we need to show fractional noise is in weak $L^2$ inorder to consider that. This already may be true but at the moment i am unsure. See nick question 1.8 in the github doc.}. The reason for the restriction is the need to apply the Hardy-Littlewood-Sobelov lemma to show that $\rho$, defined below, is finite. This is shown in Lemma 1.6 in \cite{chenlarge}. 
+Let $k \in \{1, \cdots , d\}$ and partition the $d$-coordinates of $x=(x_1, \cdots, x_n)$ into $k$ distinct groups of size $d_i$ for $i \in \{1, \cdots, k\}$. Note that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} , \cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. We consider a Gaussian Noise with correlation function  given by $\gamma(\xi) = \prod_{i=1}^k |\xi_{(i)}|^{-\alpha_i}$ where $\alpha_i \in (0, d_i)$ and we define $\alpha = \sum_{i=1}^k \alpha_i$. This correlation function corresponds with the spectral density given by $\mu (\ud \xi) = \varphi(\xi) \ud \xi$ with $\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d-\alpha)}$. The Constant $C$ can be calculated through the relation $\mathcal{F}\gamma = \varphi$. 
 
 	\begin{remark} 
-Let $c>0$. The Risez kernal $\gamma(x) = |x|^{-\alpha}$ and its spectral density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$ satisfy the scaling properties $\gamma(cx) = c^{-\alpha}\gamma(x)$ and $\varphi(cx) = c^{-(d-\alpha)}\varphi(x)$. In addition, $\gamma = K*K$ where $"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$ with $\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }$.
+When $k=1$ above then we recover the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ and its spectral density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. In addition, we may write $\gamma = K*K$ where $"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$. In this case we have 		
+		\begin{equation}\label{noiseconstant}
+			C_{d,\alpha} = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad    \text{and}	\quad	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }.
+		\end{equation}
 	\end{remark}
-\textcolor{red}{From this point to the red MARK needs to be carefully looked at!}
+
+	\begin{remark}
+When $k=d$ above then we recover the noise, $W$, with correlation function given by $\gamma(x) = \prod_{i=1}^d |x_i|^{-\alpha_i}$ where $\alpha_i \in (0,1)$. In this case, the spectral density is given by $\varphi(\xi) = \prod_{i=1} C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}$. We may also write $\gamma = K*K$ where $K(x)=\prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}$ where $C_{1,\alpha_i}$ and $ \beta_{\alpha_i,1}$ are given by \ref{noiseconstant}. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2 , 1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1, \cdots , H_d$. The heat equation with this noise was studied in \cite{HuFracBrown}.
+	\end{remark}
+
 	\begin{remark}\label{spectralconjecture}
 We may actually apply the techniques in this paper to any such noise whose correlation function and spectral density, $\gamma$ and $\mu$, satisfy
 		\begin{enumerate}
@@ -237,15 +244,11 @@ We may actually apply the techniques in this paper to any such noise whose corre
 			\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
 			\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution. 
 		\end{enumerate}
-However, there is an issue with applying the results in this paper to the more general noises listed in \ref{spectralconjecture}. Proving $\rho$, defined below is finite is a challange. Through inspection of the proof of Lemma 1.6 \cite{chenlarge}, we note that it suffices to show that 
-\begin{equation}\label{sobelovtypeineq}
-\int_{\R^d}\int_{\R^d} \frac{F(\gamma)G(\lambda)}{ \varphi(\lambda - \gamma) } \ud \gamma \ud \lambda \le C\Norm{F}_r \Norm{G}_s
-\end{equation}
-holds for some pair $(r,s)$ where $F(x) = f(x)/(1+|x|^a)$ and $G$ is defined similarly with $f$ replaced by $g$ and both $f$ and $g$ are $L^2(\R^d)$ functions with norm $1$. 
+However, there is an issue with applying the results in this paper to the more general noises satisfying \ref{spectralconjecture}. Proving $\rho$, defined below, is finite is a challange. In \cite{chenlarge}, $\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below we give a proof showing that $\rho$ is finite for the noise with $\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d-\alpha)}$, which was defined above. 
 
-We mention that an example of a noise that differs from the Riesz kernal but satisfies Remark \ref{spectralconjecture} is the noise with $\gamma(x) = \prod_{i=1}^d|x_i|^{-\alpha_i}$ for some $\alpha_i \in (0,1)$. The problem with this noise is that we are unsure if \ref{sobelovtypeineq} holds. In this example, $\mu(\ud \xi) = \prod_{i=1}^d (C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}\ud \xi_i )$ and $ K(x) = \prod_{i=1}^d (\beta_{\alpha_1,1} |x_i|^{-(1+\alpha_i)/2} ) $ and $\alpha = \sum_{i=1}^d \alpha_i$. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2,1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1,\cdots,H_n$. The heat equation with this noise is studied in Hu \cite{HuFracBrown}
+\textcolor{red}{Are there other noises satisfying \ref{spectralconjecture} other than the general fractional noise?}
 	\end{remark}
-\textcolor{red}{MARK MARK MARK MARK MARK}
+
 
 We now introduce the operator 
 	\[
@@ -468,6 +471,79 @@ and because of both Theorem 1.5 \cite{chenlarge} and \ref{rhorelation} above,
 	\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]  = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] + \log[\rho_{2,a}] = \log[\rho]
 	\end{align*}
+$\hfill \qed$
+
+Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting that this implies that $\rho$ is finite by \ref{rhovariationaltheorem}. We stated in the introduction that Chen, X. proved in \cite{chenlarge} that $\rho$ is finite for the case of the Riesz kernal. We mimic his proof but were he uses the Hardy-Littlewood-Sobelov theorem, we make use of the weak Young's inequality instead. 
+
+	\begin{lemma}
+For any $f,g,h$ with $h\ge0$, we have the following:
+\[
+\left( \int_{\R^d} \left[ \int_{\R^d} \dfrac{|f(x+y)g(y)|}{\sqrt{h(x+y)}\sqrt{h(y)}} \ud y \right]^p \varphi(x) \ud x \right)^{1/p} \le C \Norm{f}_2 \Norm{g}_2 \Norm{h^{-1}}_{pd/\alpha}
+\] 
+where $\alpha = \sum_{=1}^k \alpha_i$ with $k \in \{1, \cdots ,d\}$, $\alpha_i \in (0,d_i)$ and $\varphi(x) = \prod_{i =1}^k |x_{(i)}|^{-(d_i-\alpha_i)}$ where $x_{(i)} = (x_{i_1},\cdots , x_{i_{d_i}} )$ is the $i^{th}$ group of $x=(x_1, \cdots, x_d)$.
+	\end{lemma}
+\noindent \textbf{Proof:} By observing the proof of Lemma 1.6 \cite{chenlarge}, we notice that we only need to prove equation (1.27) which says 
+\begin{equation}\label{fracrhofinite}
+\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}.
+\end{equation}
+where 
+\[
+F(x) = \frac{|f(x)|}{(h(x))^{p/2}} \quad \text{and} \quad G(x) = \frac{|g(x)|}{(h(x))^{p/2}} 
+\]
+If we can do this then the result follows by copying the rest of Chen's proof. To prove \ref{fracrhofinite}, we use the weak version of Young's inequality. Recall that weak Young's inequality \cite{LiebAnalysis} says
+\[
+\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
+\]
+where $p,q,r >1$ and $1/p + 1/q + 1/r =2$ and 
+\[
+\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x
+\]
+where $A$ is an arbitrary Borel set of finite measure. So to prove \ref{fracrhofinite} we wish to be able to apply this with
+\[
+p=r=2d/(d+\alpha) \quad \text{and} \quad q= d/\left(d-\sum_{j=1}^d\alpha_j \right) = d/(d-\alpha)
+\]
+and, in addition, with 
+\[  
+a=F, \quad c=G \quad \text{and} \quad b=\varphi
+\]
+Again, by following the steps of the proof from the Xia Chen paper, we note that it suffices to show that $\Norm{\varphi}_{q,w}$ is finite with $q = d/(d-\alpha)$. Note that $1/q' = 1 - 1/q = \alpha/d.$
+
+First we define $A_R := A_1 \times \cdots \times A_k$ where $A_i \subset \R^{d_i}$ and $A_i = [-R,R]$ if $d_i = 1$ and $A_i = B_R(0)$ if $d_i > 1$ where $B_R(0)$ is the ball centered at the origin with radius $R$. With this we have that 
+\begin{equation}\label{int} \int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)} =
+\begin{cases} 
+2 \dfrac{R^{\alpha_i}}{\alpha_i} & , d_i =1
+\\ |\mathbb{S}^{d_i - 1}|\dfrac{R^{\alpha_i}}{\alpha_i} & , d_i >1
+\end{cases}
+\end{equation}
+where we used polar coordinated to calculate the integral when $d_i > 1$ and $|\mathbb{S}|^{d_i-1}$ is the surface area of the sphere in $\R^{d_i}$. Also, 
+\begin{equation}\label{leb} |A_i|  =
+\begin{cases}
+2 R& , d_i =1
+\\ |\mathbb{S}^{d_i - 1}|\dfrac{R^{d_i}}{d_i} & , d_i >1.
+\end{cases}
+\end{equation}
+Recall that $1/q' = \alpha/d$. Then by combining \ref{int} and \ref{leb} we see that 
+\begin{align*}
+|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x &= \left(\prod_{i =1}^k |A_i|\right)^{-1/q'} \prod_{i=1}^k \int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)}
+\\&= R^{-\alpha} \left( \prod_{i =1}^k\begin{cases}
+2 & , d_i =1
+\\ |\mathbb{S}^{d_i - 1}|\dfrac{1}{d_i} & , d_i >1.
+\end{cases} \right) \times R^\alpha 	\left(\prod_{i =1}^k \begin{cases} 
+2 \dfrac{R^{\alpha_i}}{\alpha_i} & , d_i =1
+\\ |\mathbb{S}^{d_i - 1}|\dfrac{R^{\alpha_i}}{\alpha_i} & , d_i >1
+\end{cases} \right)
+\\&= K
+\end{align*}
+where $K$ is a constant independent of $R$. Hence we that 
+\[
+\sup_{R>0} 	|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x = K.
+\]
+and by the symmetry of $\varphi$ we can in fact say that 
+\[
+\sup_{B} 	|B|^{-1/q'}	\int_{B} \varphi(x) \ud x = K
+\]
+where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(\R^d)$ with $q = d/(d-\alpha)$ which completes the proof.
+
 $\hfill \qed$
 
 We now want to make note of a slight generalization of $\Lambda_{\alpha}$. For this, we define 
@@ -1253,6 +1329,12 @@ In this section we give a brief introduction to the
 		 Hu, Y. (2001)
 		\newblock Heat equation with fractional white noise potential.
 		\newblock {\em Appl. Math. Optim.} \textbf{43}, 221-243.
+		
+		\bibitem{LiebAnalysis} % {{{ 2.
+		Lieb, E. and Loss, M. (2001).
+		\newblock Analysis
+		\newblock {\em Graduate Studies in Mathematics, AMB}.
+		% }}}
 		
 		\bibitem{nualartmalliavin} 
 		Nualart D. and Nualart E. (2018)
