@@ -862,7 +862,7 @@ and similar to the Reisz Kernel case, if we set $ \lambda_j = 1- \lambda_j'$ the
 and this is a generalization of the line right above equation (1.27) from the Xia Chen paper. 
 \end{NickQuestion}
 
-\begin{NickQuestion}[Proof that the Fractional Noise may be applied.]
+\begin{NickQuestion}\label{fracnoise}[Proof that the Fractional Noise may be applied.]
 Here I prove that we may consider a noise with correlation function given by 
 	\[
 		\gamma(x) = \prod_{j = 1}^d |x_j|^{-\alpha_j}.
@@ -940,6 +940,88 @@ and by weak Young's inequality we have that
 	\end{align*}
 which completes the proof of the Lemma. 
 \end{NickQuestion}
+ 
+ \begin{NickQuestion}[Proof of justification of generalized fractional noise]
+ 	
+ Here I generalize the result from \ref{fracnoise} to a more general Gaussian noise with correlation function 
+ 	\[
+ 		\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}
+ 	\]
+ where we partition $\{1,\cdots,d\}$ into $k$ groups of size $d_1, \cdots, d_k$ and $x_{(i)} = (x_{i_1},\cdots, x_{i_{d_i}})$. So $d = d_1 + \cdots + d_k$ and, in addition, $\alpha_i \in (0,d_i)$. We define $\alpha = \sum_{i=1}^k \alpha_i$.
+ 
+The spectral density or this noise is given by 
+	\[	
+		\varphi(x) = \prod_{i=1}^k |x_{(i)}|^{-(d_i-\alpha_i)}
+	\]
+\\ 
+\textbf{Lemma:} For any $f,g,h$ with $h\ge0$, we have the following:
+\[
+\left( \int_{\R^d} \left[ \int_{\R^d} \dfrac{|f(x+y)g(y)|}{\sqrt{h(x+y)}\sqrt{h(y)}} \ud y \right]^p \varphi(x) \ud x \right)^{1/p} \le C \Norm{f}_2 \Norm{g}_2 \Norm{h^{-1}}_{pd/\alpha}
+\] 
+where $\alpha = \sum_{=1}^k \alpha_i$ with $k \in \{1, \cdots ,d\}$, $\alpha_i \in (0,d_i)$ and $\varphi(x) = \prod_{i =1}^k |x_{(i)}|^{-(d_i-\alpha_i)}$ where $x_{(i)} = (x_{i_1},\cdots , x_{i_{d_i}} )$ is the $i^{th}$ group of $x=(x_1, \cdots, x_d)$.
+\\ \\
+\textbf{proof:} By observing the proof of Lemma 1.6 from the Xia Chen paper, we notice that we only need to prove equation (1.27) which says 
+\begin{equation}\label{fracrhofinite}
+\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}.
+\end{equation}
+where 
+\[
+F(x) = \frac{|f(x)|}{(h(x))^{p/2}} \quad \text{and} \quad G(x) = \frac{|g(x)|}{(h(x))^{p/2}} 
+\]
+If we can do this then the result follows by copying the rest of the proof in the Xia Chen paper. To prove \ref{fracrhofinite}, we use the weak version of Young's inequality. Recall that weak Young's inequality says
+\[
+\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
+\]
+where $p,q,r >1$ and $1/p + 1/q + 1/r =2$ and 
+\[
+\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x
+\]
+where $A$ is a arbitrary Borel set of finite measure. So to prove \ref{fracrhofinite} we wish to be able to apply this with
+\[
+p=r=2d/(d+\alpha) \quad \text{and} \quad q= d/\left(d-\sum_{j=1}^d\alpha_j \right) = d/(d-\alpha)
+\]
+and, in addition, with 
+\[  
+a=F, \quad c=G \quad \text{and} \quad b=\varphi
+\]
+Again, by following the steps of the proof from the Xia Chen paper, we note that it suffices to show that $\Norm{\varphi}_{q,w}$ is finite with $q = d/(d-\alpha)$. Note that $1/q' = 1 - 1/q = \alpha/d.$
+
+First we define $A_R := A_1 \times \cdots \times A_k$ where $A_i \subset \R^{d_i}$ and $A_i = [-R,R]$ if $d_i = 1$ and $A_i = B_R(0)$ if $d_i > 1$ where $B_R(0)$ is the ball centered at the origin with radius $R$. With this we have that 
+	\begin{equation}\label{int} \int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)} =
+		\begin{cases} 
+			2 \dfrac{R^{\alpha_i}}{\alpha_i} & , d_i =1
+			\\ |\mathbb{S}^{d_i - 1}|\dfrac{R^{\alpha_i}}{\alpha_i} & , d_i >1
+		\end{cases}
+	\end{equation}
+and also 
+	\begin{equation}\label{leb} |A_i|  =
+		\begin{cases}
+			2 R& , d_i =1
+			\\ |\mathbb{S}^{d_i - 1}|\dfrac{R^{d_i}}{d_i} & , d_i >1.
+		\end{cases}
+	\end{equation}
+Recall that $1/q' = \alpha/d$. Then by combining \ref{int} and \ref{leb} we see that 
+	\begin{align*}
+	|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x &= \left(\prod_{i =1}^k |A_i|\right)^{-1/q'} \prod_{i=1}^k \int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)}
+	\\&= R^{-\alpha} \left( \prod_{i =1}^k\begin{cases}
+	2 & , d_i =1
+	\\ |\mathbb{S}^{d_i - 1}|\dfrac{1}{d_i} & , d_i >1.
+	\end{cases} \right) \times R^\alpha 	\left(\prod_{i =1}^k \begin{cases} 
+	2 \dfrac{R^{\alpha_i}}{\alpha_i} & , d_i =1
+	\\ |\mathbb{S}^{d_i - 1}|\dfrac{R^{\alpha_i}}{\alpha_i} & , d_i >1
+	\end{cases} \right)
+	\\&= K
+	\end{align*}
+where $K$ is a constant independent of $R$. Hence we that 
+	\[
+		\sup_{R>0} 	|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x = K.
+	\]
+and by the symmetry of $varphi$ we can in fact say that 
+	\[
+		\sup_{B} 	|B|^{-1/q'}	\int_{B} \varphi(x) \ud x = K
+	\]
+where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(\R^d)$ with $q = d/(d-\alpha)$ which completes the proof.
+ \end{NickQuestion}
  
 \begin{NickQuestion}[Representation (1.19) from the wave paper]
 	I have a question about (1.19), here are my steps trying to prove it but I am unsure why the last step is true. For notation, let $\xi = (\xi_1,...,\xi_n)$ and $\mu(\ud \xi) = \mu(\ud \xi_1)\cdots \mu(\ud \xi_n)$. Also $x = (x_1,...,x_n)$
