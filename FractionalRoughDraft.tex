@@ -222,20 +222,26 @@ Each member of the triplet is based on the Fox H-function which is much more tec
 		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s.
 	\end{equation}
 
-Our goal is to develop exact moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BalanChenChen} where in that paper they focus exclusively on the stochastic wave equation. This paper acts as a generalization of that paper to the fraction stochastic equation. In fact, the techniques presented in this paper are quite general and can be applied to any SPDE that has a Green's function that satisfies a series of scaling properties which we present throughout this paper. Note that the fractional equation \ref{spdee} recovers the stochastic wave equation when $a=b=2$ and $r=0$ and in addition we recover the stochastic heat equation when $b=1$, $a=2$ and $r=0$. We need to make note about restrictions on the spatial dimension due to the fact that the fundamental solution to the wave equation only exists as a function for $d\le2$ and because of that reason we restrict ourselves to $d \le 2$. 
+We now need to make mention of the suitable choices for the noise $W$. Let $k \in \{1, \cdots , d\}$ and partition the $d$-coordinates of $x=(x_1, \cdots, x_n)$ into $k$ distinct groups of size $d_i$ for $i \in \{1, \cdots, k\}$. Note that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} , \cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. We consider a Gaussian Noise with correlation function  given by 
+	\begin{equation}\label{corfunction}
+		\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}
+	\end{equation}
+where $\alpha_i \in (0, d_i)$ and we define $\alpha = \sum_{i=1}^k \alpha_i$. This correlation function corresponds with the spectral density given by $\mu (\ud \xi) = \varphi(\xi) \ud \xi$ with 
+	\begin{equation}\label{specfunction}
+		\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d_i-\alpha_i)}.
+	\end{equation}
+The Constant $C$ can be calculated through the relation $\mathcal{F}\gamma = \varphi$. An important fact stated in \cite{BalanChenChen} is that there exists a non-negative function $K$ on $\R^d$ such that $\gamma = K*K$ where '$*$' denotes the spatial convolution.
 
-Let $k \in \{1, \cdots , d\}$ and partition the $d$-coordinates of $x=(x_1, \cdots, x_n)$ into $k$ distinct groups of size $d_i$ for $i \in \{1, \cdots, k\}$. Note that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} , \cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. We consider a Gaussian Noise with correlation function  given by $\gamma(\xi) = \prod_{i=1}^k |\xi_{(i)}|^{-\alpha_i}$ where $\alpha_i \in (0, d_i)$ and we define $\alpha = \sum_{i=1}^k \alpha_i$. This correlation function corresponds with the spectral density given by $\mu (\ud \xi) = \varphi(\xi) \ud \xi$ with $\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d-\alpha)}$. The Constant $C$ can be calculated through the relation $\mathcal{F}\gamma = \varphi$. 
-
-	\begin{remark} 
+	\begin{example} 
 When $k=1$ above then we recover the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ and its spectral density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. In addition, we may write $\gamma = K*K$ where $"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$. In this case we have 		
 		\begin{equation}\label{noiseconstant}
 			C_{d,\alpha} = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad    \text{and}	\quad	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }.
 		\end{equation}
-	\end{remark}
+	\end{example}
 
-	\begin{remark}
+	\begin{example}
 When $k=d$ above then we recover the noise, $W$, with correlation function given by $\gamma(x) = \prod_{i=1}^d |x_i|^{-\alpha_i}$ where $\alpha_i \in (0,1)$. In this case, the spectral density is given by $\varphi(\xi) = \prod_{i=1} C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}$. We may also write $\gamma = K*K$ where $K(x)=\prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}$ where $C_{1,\alpha_i}$ and $ \beta_{\alpha_i,1}$ are given by \ref{noiseconstant}. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2 , 1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1, \cdots , H_d$. The heat equation with this noise was studied in \cite{HuFracBrown}.
-	\end{remark}
+	\end{example}
 
 	\begin{remark}\label{spectralconjecture}
 We may actually apply the techniques in this paper to any such noise whose correlation function and spectral density, $\gamma$ and $\mu$, satisfy
@@ -244,23 +250,37 @@ We may actually apply the techniques in this paper to any such noise whose corre
 			\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
 			\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution. 
 		\end{enumerate}
-However, there is an issue with applying the results in this paper to the more general noises satisfying \ref{spectralconjecture}. Proving $\rho$, defined below, is finite is a challange. In \cite{chenlarge}, $\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below we give a proof showing that $\rho$ is finite for the noise with $\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d-\alpha)}$, which was defined above. 
+However, there is an issue with applying the results in this paper to the more general noises satisfying \ref{spectralconjecture}. Proving $\rho$, defined below, is finite is a challange. In \cite{chenlarge}, $\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below in Lemma \ref{rhofinite}, we give a proof showing that $\rho$ is finite for the noise with spectral density defined above in \ref{specfunction}.
 
 \textcolor{red}{Are there other noises satisfying \ref{spectralconjecture} other than the general fractional noise?}
 	\end{remark}
+
+Next, we need to make some assumption on the parameters $a,b,r$ of \ref{spdee} as well as the dimension $d$. Under theses assumptions, the Greens function $G$ will be non-negative and smooth which was shown in Theorem 4.6 \cite{ChenHuNualartFraction} and equation (4.5) \cite{ChenHuNualartFraction} respectively.
+	
+	\begin{assumption}\label{paramassumptions}
+The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
+		\begin{enumerate}
+			\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
+			\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
+			\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
+			\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
+		\end{enumerate}
+	\end{assumption}
 
 
 We now introduce the operator 
 	\[
 		\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}
 	\]
-and define $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1)$. See Subsection \ref{largedevresults} of this paper for more details.
- 
-Here is the main result of this paper.
+and define $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1)$. See Subsection \ref{largedevresults} of this paper for more details. Our goal is to develop exact moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BalanChenChen} where in that paper they focus exclusively on the stochastic wave equation. This paper acts as a generalization of that paper to the fraction stochastic equation. Here is the main result of this paper.
 
 \textcolor{red}{I dont know how to express the moment asymptotic in the best way. How to organize and combine all the like terms. Below is one way.}
 	\begin{theorem}\label{mainresult}
-Equation \ref{spdee} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for any $p \ge 2$, $t>0$ and $x \in \R^d$. Moreover, we have the following moment asymptotics: 
+Under Assumption \ref{paramassumptions}, equation \ref{spdee} driven by the noise with spectral density given in equation \ref{specfunction} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for any $p \ge 2$, $t>0$ and $x \in \R^d$ if 
+		\begin{equation}
+			\alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
+		\end{equation} 
+Moreover, we have the following moment asymptotic: 
 		\begin{equation} \label{momentasym}
 			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = \left(\frac{1}{2}\right)\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}})^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{equation}	
@@ -269,7 +289,7 @@ where
 		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \quad \text{and} \quad t_p^\beta := (p-1)^{\beta -1} t^\beta
 	\]
 	\end{theorem}
-The existence and uniqueness of a $L^p(\Omega)$ solution will be proven in Section \ref{solvability} and the moment asymptotic will be proven by combining Sections \ref{upperbound} and \ref{lowerbound}.
+The existence and uniqueness of a $L^p(\Omega)$ solution will be proven in Section \ref{solvability}. The upper bound and lower bound for \ref{momentasym} will be proven in Sections \ref{upperbound} and \ref{lowerbound} respectively.
 \section{Some preliminaries.}
 
 \subsection{Malliavin Calculus}
@@ -475,8 +495,8 @@ $\hfill \qed$
 
 Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting that this implies that $\rho$ is finite by \ref{rhovariationaltheorem}. We stated in the introduction that Chen, X. proved in \cite{chenlarge} that $\rho$ is finite for the case of the Riesz kernal. We mimic his proof but were he uses the Hardy-Littlewood-Sobelov theorem, we make use of the weak Young's inequality instead. 
 
-	\begin{lemma}
-For any $f,g,h$ with $h\ge0$, we have the following:
+	\begin{lemma}\label{rhofinite}
+For any $f,g,h$ with $h\ge0$ and for $\varphi$ given as in equation \ref{specfunction}, we have the following:
 \[
 \left( \int_{\R^d} \left[ \int_{\R^d} \dfrac{|f(x+y)g(y)|}{\sqrt{h(x+y)}\sqrt{h(y)}} \ud y \right]^p \varphi(x) \ud x \right)^{1/p} \le C \Norm{f}_2 \Norm{g}_2 \Norm{h^{-1}}_{pd/\alpha}
 \] 
@@ -546,7 +566,7 @@ where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(
 
 $\hfill \qed$
 
-We now want to make note of a slight generalization of $\Lambda_{\alpha}$. For this, we define 
+We finish this section by making a slight generalization of $\Lambda_{\alpha}$. For this, we define 
 	\begin{equation}
 		\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}.
 	\end{equation}
@@ -596,9 +616,9 @@ and using this and \ref{LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
 	\end{equation}
 
 	\begin{lemma}\label{Hneq1}
-		\textcolor{red}{Insert text about assumptions}
+Under the assumptions of Theorem \ref{mainresult}, we have that
 					\begin{equation}
-						\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x} = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi})
+						\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x} = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}).
 					\end{equation}
 	\end{lemma}
 \noindent\textbf{Proof:} 
@@ -615,9 +635,9 @@ where the last line follows from Plancherel's theorem and the fact that $K*K =\g
 
 $\hfill \qed$
 	\begin{lemma}\label{inteq1}
-		\textcolor{red}{Insert text about assumptions}
+Under the assumptions of Theorem \ref{mainresult}, we have that
 					\begin{equation}
-						\Norm{\tilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x}
+						\Norm{\tilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x}.
 					\end{equation}
 	\end{lemma}
 \noindent\textbf{Proof:} Writing $\gamma(y_k-y_k') = \int_{\R^d} K(y_k-x_k)K(y_k'-x_k) \ud x_k$, we see that 
@@ -655,7 +675,7 @@ By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ an
 
 	\begin{lemma}
 		Under the assumption of Theorem \ref{momentasym}, we have that
-			\begin{equation}
+			\begin{equation}\label{muassumption}
 				C_\mu = C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) < \infty \quad \text{and} \quad T_n \le (n!)^2(C_\mu)^2
 			\end{equation}
 	\end{lemma}
@@ -938,7 +958,7 @@ We will need to build up some theory before being able to prove the above theore
 with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 
 	\begin{lemma} 
-If the measure $\mu$ satisfies the first relation in \textcolor{red}{add the label}, then $W_n(t,\phi)$ is well defined and for any $d \ge 1$, $t>0$ and $\phi \in L^2_{\mathbb{C}}(\mu)$. Moreover, 
+If the measure $\mu$ satisfies the relation in \ref{muassumption}, then $W_n(t,\phi)$ is well defined and for any $d \ge 1$, $t>0$ and $\phi \in L^2_{\mathbb{C}}(\mu)$. Moreover, 
 		\begin{equation}\label{lem62}
 			\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|^a} \mu(\ud \xi) \cdots \mu(\ud \xi_n)
 		\end{equation}
