@@ -1149,7 +1149,9 @@ Consider a non-negative function $h\in L^2(\R^d)$. The function $h(\cdot)/\sqrt{
 		\\&= (2\pi)^{-d}\int_{\R^d}(1+|\xi|^a)|\mathcal{F}g(\xi)|^2 \ud \xi
 		\\&= \int_{\R^d} h(\xi)^2 \ud \xi =1
 	\end{align*}
-where above we used the fact that $\Norm{g}_{L^2}^2 = (2\pi)^{-d}\Norm{\mathcal{F}g}_{L^2}^2$. \textcolor{red}{I don't think we need the above.}
+where above we used the fact that $\Norm{g}_{L^2}^2 = (2\pi)^{-d}\Norm{\mathcal{F}g}_{L^2}^2$. 
+
+\textcolor{red}{We need from this point on.}
 
 Now, for notation let $\tilde{h}(x) = h(-x)$. Note that
 	\begin{align*}
@@ -1166,7 +1168,7 @@ With this we see that
 	\[
 		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g_h|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
 	\]
-where the optimal $f$ is chosen to be $|g_h|^2/\Norm{|g_h|^2}_{\mathcal{H}}$. \textcolor{red}{Can the optimal f be chosen like this? This is true for $\ud x$ but is it true for $\mu(\ud x)$? I believe that it would be true for $\mu$ such that $\mu$ has a density which is radially symmetric about the origin. The Riesz kernal would then still be ok} Now we want to show that 
+where the optimal $f$ is chosen to be $|g_h|^2/\Norm{|g_h|^2}_{\mathcal{H}}$. Now we want to show that 
 	\begin{equation}\label{GH+}
 		|g_h|^2 \in \mathcal{H}_+
 	\end{equation}
@@ -1206,12 +1208,11 @@ and moreover
 		\]
 	\end{lemma}
 \noindent \textbf{Proof:} Let $\phi = \mathcal{F}f$ and $c>0$
-\textcolor{red}{There may be a typo in this work, I think on the third line there should no longer be a $c$ inside $\varphi(c\xi)$. Ill check later.}
 	\begin{align*}
 		W_n & (t,\phi(c^{-1}\cdot) = \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(c^{-1}\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i
 		\\&= c^{nd} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(c(\xi_k + \cdots \xi_n)) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i
-		\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i
-		\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i
+		\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i
+		\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i
 		\\&= c^{-n\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(c^{\frac{a}{b}}t,\phi \right)
 	\end{align*}
 Now we apply this with $c^{\frac{a}{b}} = \frac{1}{t}$ to get
@@ -1326,9 +1327,6 @@ By maximizing $h$ we see that $h$ is maximized at the point $k^* = \left( \frac{
 and plugging in the value for $B$ yields \ref{lbound}.
 
 $\hfill \qed$
-
-\section{Appendix A}
-In this section we give a brief introduction to the 
 
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
