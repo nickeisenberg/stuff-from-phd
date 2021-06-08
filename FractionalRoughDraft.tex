@@ -562,13 +562,10 @@ and
 \end{equation}
  where
 \begin{align}
-	\Lambda_{\alpha} &= \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^\alpha} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\} \\
-									 &= \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-\alpha} \rangle_{L^2(\R^d)} - \mathcal{E}_a(g,g) \right\} \nonumber
+	\Lambda_{\alpha}   & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^\alpha} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\} \\
+                     & = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-\alpha} \rangle_{L^2(\R^d)} - \mathcal{E}_a(g,g) \right\} \nonumber \quad \text{and}        \\
+	\mathcal{E}_a(g,g) & := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi.
 \end{align}
-and
-\begin{align*}
-	\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi.
-\end{align*}
 The following result shows the relationship between $\rho_{2,a}$ and $\rho$ and well as the generalization of \eqref{E:rhowavedev} for $\rho.$
 
 \begin{lemma}
@@ -584,48 +581,50 @@ The following result shows the relationship between $\rho_{2,a}$ and $\rho$ and 
 	\end{equation}
 \end{lemma}
 \begin{proof}
-
-Recall that we define $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
+	Recall that we define $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
 	\begin{align*}
-		\rho &= \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
-		\\& = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \left(\frac{\nu}{2}\right)^{(d-\alpha)/a}\varphi(x)\left(\frac{\nu}{2}\right)^{-d/a}\ud x
-		\\&= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x
+		\rho & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)                                                                                                                                                                                  \\
+				 & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \left(\frac{\nu}{2}\right)^{(d-\alpha)/a}\varphi(x)\left(\frac{\nu}{2}\right)^{-d/a}\ud x \\
+				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x
 	\end{align*}
-Now define $f^*(x) =\left(\frac{\nu}{2}\right)^{\frac{-d}{2a}} f\left( \left(\frac{\nu}{2}\right)^{-1/a} x \right)$. Then with this we see that
+	Now define $f^*(x) =\left(\frac{\nu}{2}\right)^{\frac{-d}{2a}} f\left( \left(\frac{\nu}{2}\right)^{-1/a} x \right)$. Then with this we see that
 	\begin{align*}
 		\rho &= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
 	\end{align*}
-and note that
+	and note that
 	\begin{align*}
 		\int_{\R^d} f(x)^2 \ud x = \int_{\R^d} f^*(x)^2 \ud x
 	\end{align*}
-and thus
+	and thus
 	\begin{align*}
 		\left\{ f \in L^2(\R^d) : \Norm{f}_2 = 1 \right\} = 	\left\{ f \in L^2(\R^d) : \Norm{f^*}_2 = 1 \right\}
 	\end{align*}
-so we can say that
-\begin{align*}
-	\rho & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x     \\
-       & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
-       & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}
-\end{align*}
-and \eqref{E:rhoLam} is proven by applying \eqref{E:oldrhovarrep}.
+	so we can say that
+	\begin{align*}
+		\rho & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x     \\
+				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
+				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}
+	\end{align*}
+	and \eqref{E:rhoLam} is proven by applying \eqref{E:oldrhovarrep}.
 
-To prove \ref{E:LogRho}, we first notice that by applying the substitution $\xi_{\sigma(j)}' =
-\left(\frac{\nu}{2}\right)^{1/a} \xi_{\sigma(j)}$ that
-\begin{equation}
-		\int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi})  = \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )
-\end{equation}
-and now we can directly calculate
-\begin{align*}
-	\lim_{n \to \infty} \frac{1}{n} & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                            \\
-																	& = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
-																	& = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}   \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]
-\end{align*}
-and because of both Theorem 1.5 \cite{BCR09} and \eqref{E:rhoLam} above,
-\begin{align*}
-	\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]  = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] + \log[\rho_{2,a}] = \log[\rho]
-\end{align*}
+	To prove \eqref{E:LogRho}, we first notice that by applying the substitution $\xi_{\sigma(j)}' =
+	\left(\frac{\nu}{2}\right)^{1/a} \xi_{\sigma(j)}$ that
+	\begin{align*}
+      & \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}) \\
+		= & \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )
+	\end{align*}
+	and now we can directly calculate
+	\begin{align*}
+		\lim_{n \to \infty} \frac{1}{n} & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                            \\
+																		& = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
+																		& = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}   \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]
+	\end{align*}
+	and because of both Theorem 1.5 \cite{BCR09} and \eqref{E:rhoLam} above,
+	\begin{gather*}
+		\lim_{n \to \infty} \frac{1}{n} \log \left( \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right) \\
+		= \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} \right) + \log\left( \rho_{2,a} \right) = \log\left( \rho \right).
+	\end{gather*}
+	This completes the proof of Lemma \ref{L:rhovar}.
 \end{proof}
 
 Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting
@@ -643,78 +642,78 @@ weak Young's inequality instead.
 	where $\alpha = \sum_{=1}^k \alpha_i$ with $k \in \{1, \cdots ,d\}$, $\alpha_i \in (0,d_i)$ and $\varphi(x) = \prod_{i =1}^k |x_{(i)}|^{-(d_i-\alpha_i)}$ where $x_{(i)} = (x_{i_1},\cdots , x_{i_{d_i}} )$ is the $i^{th}$ group of $x=(x_1, \cdots, x_d)$.
 \end{lemma}
 \begin{proof}
-By observing the proof of Lemma 1.6 \cite{BCR09}, we notice that we only need to prove equation (1.27) which says
-\begin{equation}
-	\label{E:fracrhofinite}
-	\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}.
-\end{equation}
-where
-\begin{align*}
-	F(x) = \frac{|f(x)|}{(h(x))^{p/2}} \quad \text{and} \quad G(x) = \frac{|g(x)|}{(h(x))^{p/2}}
-\end{align*}
-If we can do this then the result follows by copying the rest of Chen's proof. To prove \eqref{E:fracrhofinite}, we use the weak version of Young's inequality. Recall that weak Young's inequality \cite{LiebLoss01} says
-\begin{align*}
-	\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
-\end{align*}
-where $p,q,r >1$ and $1/p + 1/q + 1/r =2$ and
-\begin{align*}
-	\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x
-\end{align*}
-where $A$ is an arbitrary Borel set of finite measure. So to prove \eqref{E:fracrhofinite} we wish to be able to apply this with
-\begin{align*}
-	p=r=2d/(d+\alpha) \quad \text{and} \quad q= d/\left(d-\sum_{j=1}^d\alpha_j \right) = d/(d-\alpha)
-\end{align*}
-and, in addition, with
-\begin{align*}
-	a=F, \quad c=G \quad \text{and} \quad b=\varphi
-\end{align*}
-Again, by following the steps of the proof from the Xia Chen paper, we note that it suffices to show
-that $\Norm{\varphi}_{q,w}$ is finite with $q = d/(d-\alpha)$. Note that $1/q' = 1 - 1/q =
-\alpha/d.$
+	By observing the proof of Lemma 1.6 \cite{BCR09}, we notice that we only need to prove equation (1.27) which says
+	\begin{equation}
+		\label{E:fracrhofinite}
+		\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}.
+	\end{equation}
+	where
+	\begin{align*}
+		F(x) = \frac{|f(x)|}{(h(x))^{p/2}} \quad \text{and} \quad G(x) = \frac{|g(x)|}{(h(x))^{p/2}}
+	\end{align*}
+	If we can do this then the result follows by copying the rest of Chen's proof. To prove \eqref{E:fracrhofinite}, we use the weak version of Young's inequality. Recall that weak Young's inequality \cite{LiebLoss01} says
+	\begin{align*}
+		\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
+	\end{align*}
+	where $p,q,r >1$ and $1/p + 1/q + 1/r =2$ and
+	\begin{align*}
+		\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x
+	\end{align*}
+	where $A$ is an arbitrary Borel set of finite measure. So to prove \eqref{E:fracrhofinite} we wish to be able to apply this with
+	\begin{align*}
+		p=r=2d/(d+\alpha) \quad \text{and} \quad q= d/\left(d-\sum_{j=1}^d\alpha_j \right) = d/(d-\alpha)
+	\end{align*}
+	and, in addition, with
+	\begin{align*}
+		a=F, \quad c=G \quad \text{and} \quad b=\varphi
+	\end{align*}
+	Again, by following the steps of the proof from the Xia Chen paper, we note that it suffices to show
+	that $\Norm{\varphi}_{q,w}$ is finite with $q = d/(d-\alpha)$. Note that $1/q' = 1 - 1/q =
+	\alpha/d.$
 
-First we define $A_R := A_1 \times \cdots \times A_k$ where $A_i \subset \R^{d_i}$ and $A_i =
-[-R,R]$ if $d_i = 1$ and $A_i = B_R(0)$ if $d_i > 1$ where $B_R(0)$ is the ball centered at the
-origin with radius $R$. With this we have that
-\begin{equation}
-	\label{E:int}
-	\int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)} =
-	\begin{cases}
-		2 \dfrac{R^{\alpha_i}}{\alpha_i}                     & , d_i =1 \\
-		|\mathbb{S}^{d_i - 1}|\dfrac{R^{\alpha_i}}{\alpha_i} & , d_i >1
-	\end{cases}
-\end{equation}
-where we used polar coordinated to calculate the integral when $d_i > 1$ and $|\mathbb{S}^{d_i-1}|$
-is the surface area of the sphere in $\R^{d_i}$. Also,
-\begin{equation}
-	\label{E:leb}
-	|A_i|  =
-	\begin{cases}
-		2 R                                        & , d_i =1 \\
-		|\mathbb{S}^{d_i - 1}|\dfrac{R^{d_i}}{d_i} & , d_i >1.
-	\end{cases}
-\end{equation}
-Recall that $1/q' = \alpha/d$. Then by combining \eqref{E:int} and \eqref{E:leb} we see that
-\begin{align*}
-|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x &= \left(\prod_{i =1}^k |A_i|\right)^{-1/q'} \prod_{i=1}^k \int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)} \\
-																					&= R^{-\alpha} \left( \prod_{i =1}^k\begin{cases}
-			2                            & , d_i =1 \\
-			|\mathbb{S}^{d_i - 1}| / d_i & , d_i >1.
-\end{cases} \right) \times R^\alpha 	\left(\prod_{i =1}^k \begin{cases}
-			2/\alpha_i                        & , d_i =1 \\
-			|\mathbb{S}^{d_i - 1}| / \alpha_i & , d_i >1
-\end{cases} \right) \\
-																					&= K
-\end{align*}
-where $K$ is a constant independent of $R$. Hence we that
-\begin{align*}
-	\sup_{R>0} 	|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x = K.
-\end{align*}
-and by the symmetry of $\varphi$ we can in fact say that
-\begin{align*}
-	\sup_{B} 	|B|^{-1/q'}	\int_{B} \varphi(x) \ud x = K
-\end{align*}
-where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(\R^d)$ with $q =
-d/(d-\alpha)$ which completes the proof of Lemma \ref{L:rhofinite}.
+	First we define $A_R := A_1 \times \cdots \times A_k$ where $A_i \subset \R^{d_i}$ and $A_i =
+	[-R,R]$ if $d_i = 1$ and $A_i = B_R(0)$ if $d_i > 1$ where $B_R(0)$ is the ball centered at the
+	origin with radius $R$. With this we have that
+	\begin{equation}
+		\label{E:int}
+		\int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)} =
+		\begin{cases}
+			2 \dfrac{R^{\alpha_i}}{\alpha_i}                     & , d_i =1 \\
+			|\mathbb{S}^{d_i - 1}|\dfrac{R^{\alpha_i}}{\alpha_i} & , d_i >1
+		\end{cases}
+	\end{equation}
+	where we used polar coordinated to calculate the integral when $d_i > 1$ and $|\mathbb{S}^{d_i-1}|$
+	is the surface area of the sphere in $\R^{d_i}$. Also,
+	\begin{equation}
+		\label{E:leb}
+		|A_i|  =
+		\begin{cases}
+			2 R                                        & , d_i =1 \\
+			|\mathbb{S}^{d_i - 1}|\dfrac{R^{d_i}}{d_i} & , d_i >1.
+		\end{cases}
+	\end{equation}
+	Recall that $1/q' = \alpha/d$. Then by combining \eqref{E:int} and \eqref{E:leb} we see that
+	\begin{align*}
+	|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x &= \left(\prod_{i =1}^k |A_i|\right)^{-1/q'} \prod_{i=1}^k \int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)} \\
+																						&= R^{-\alpha} \left( \prod_{i =1}^k\begin{cases}
+				2                            & , d_i =1 \\
+				|\mathbb{S}^{d_i - 1}| / d_i & , d_i >1.
+	\end{cases} \right) \times R^\alpha 	\left(\prod_{i =1}^k \begin{cases}
+				2/\alpha_i                        & , d_i =1 \\
+				|\mathbb{S}^{d_i - 1}| / \alpha_i & , d_i >1
+	\end{cases} \right) \\
+																						&= K
+	\end{align*}
+	where the constant $K$ does not depend on $R$. Hence we that
+	\begin{align*}
+		\sup_{R>0} 	|A_R|^{-1/q'}	\int_{A_R} \varphi(x) \ud x = K.
+	\end{align*}
+	and by the symmetry of $\varphi$ we can in fact say that
+	\begin{align*}
+		\sup_{B} 	|B|^{-1/q'}	\int_{B} \varphi(x) \ud x = K
+	\end{align*}
+	where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(\R^d)$ with $q =
+	d/(d-\alpha)$ which completes the proof of Lemma \ref{L:rhofinite}.
 \end{proof}
 
 We finish this section by making a slight generalization of $\Lambda_{\alpha}$. For this, we define
@@ -735,7 +734,9 @@ Finally we note that
 and by defining $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1) $ and by applying Theorem \ref{L:rhovar} we see that
 \begin{equation}
 	\label{E:rhoMrep}
-	\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a} \left[2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a\right]^{2-(\alpha/a)} = \nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}
+	\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a}
+	\left[2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a\right]^{2-(\alpha/a)} = \nu^{-\alpha/a}
+	\mathcal{M}_a^{\frac{2a-\alpha}{a}}.
 \end{equation}
 
 \section{Solvability}
@@ -760,7 +761,7 @@ with the convention that. $s_0 = y_{\sigma(0)} = 0$. Next we define,
 		H_n(t, \vec{x}) &= n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y}
 		\\&= \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}
 	\end{align*}
-where in the last line we used relation \ref{E:fperm0} for expressing  $\widetilde{f_n}(\cdot;0,t)$. Next, similarly to $L_n$, we define $L(x)$ and can calculate $\mathcal{F}L(\xi)$ to be
+where in the last line we used relation \eqref{E:fperm0} for expressing  $\widetilde{f_n}(\cdot;0,t)$. Next, similarly to $L_n$, we define $L(x)$ and can calculate $\mathcal{F}L(\xi)$ to be
 	\begin{equation} \label{E:LandFL}
 		L(x) = \int_0^\infty e^{-t}G(t,x) \ud t \quad \text{and} \quad \mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}G(t,\cdot)(\xi) \ud t = \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a}
 	\end{equation}
@@ -768,7 +769,7 @@ and through a change of variables, one sees that the Laplace transform of convol
 	\begin{equation}
 			L_n(\vec{y}) = \sum_{\sigma \in \Sigma_n} L(y_{\sigma(1)}) L(y_{\sigma(2)}-y_{\sigma(1)}) \cdots L(y_{\sigma(n)}-y_{\sigma(n-1)})
 	\end{equation}
-and using this and \ref{E:LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
+and using this and \eqref{E:LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
 	\begin{equation}\label{E:FLfn}
 		\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}
 	\end{equation}
@@ -781,9 +782,11 @@ and using this and \ref{E:LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
 	\end{equation}
 \end{lemma}
 \begin{proof}
+	Notice that
 	\begin{align*}
-		 \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t &= \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \ud t
-		 \\&= \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L(\vec{y}) \ud \vec{y}.
+      & \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t                                                                                                                                                                   \\
+      & = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \ud t \\
+      & = \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L(\vec{y}) \ud \vec{y}.
 	\end{align*}
 Therefore,
 	\begin{align*}
@@ -803,9 +806,10 @@ where the last line follows from Plancherel's theorem and the fact that $K*K =\g
 \begin{proof}
 Writing $\gamma(y_k-y_k') = \int_{\R^d} K(y_k-x_k)K(y_k'-x_k) \ud x_k$, we see that
 \begin{align*}
-	\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 & = \int_{(\R^d)^n} \int_{(\R^d)^n} \prod_{k=1}^n \gamma(y_k-y_k') \widetilde{f}_n(\vec{y},0;t)\widetilde{f}_n(\vec{y'},0;t) \ud \vec{y} \ud \vec{y'} \\
-																																& = \int_{(\R^d)^n} \left[ \int_{(\R^d)^n} \prod_{k=1}^n K(y_k-x_k) \widetilde{f}_n(\vec{y},0;t) \ud \vec{y} \right]^2 \ud (\vec{x})                  \\
-																																& =  \int_{(\R^d)^n} \left[ \frac{1}{n!} H_n(t,\vec{x}) \right]^2 \ud \vec{x}
+	\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2
+  & = \int_{(\R^d)^n} \int_{(\R^d)^n} \prod_{k=1}^n \gamma(y_k-y_k') \widetilde{f}_n(\vec{y},0;t)\widetilde{f}_n(\vec{y'},0;t) \ud \vec{y} \ud \vec{y'} \\
+  & = \int_{(\R^d)^n} \left[ \int_{(\R^d)^n} \prod_{k=1}^n K(y_k-x_k) \widetilde{f}_n(\vec{y},0;t) \ud \vec{y} \right]^2 \ud (\vec{x})                  \\
+  & =  \int_{(\R^d)^n} \left[ \frac{1}{n!} H_n(t,\vec{x}) \right]^2 \ud \vec{x}.
 \end{align*}
 \textcolor{red}{maybe add the placherel theorem steps in the above equalities.}
 \end{proof}
@@ -821,7 +825,7 @@ If $f$ is a non-decreasing function on $[0,\infty)$, then the following reverse 
 \end{lemma}
 \begin{proof}
 	Let $\tau$ and $\tau'$ be two independent random variables with exponential distribution of mean
-	1. Then $\tau \wedge \tau'$ has an exponential distribution with density $g(t)=2e^{-2t}$ and
+	one. Then $\tau \wedge \tau'$ has an exponential distribution with density $g(t)=2e^{-2t}$ and
 	\begin{align*}
 		\left( \int_0^\infty e^{-t}f(t) \ud t \right)^2 = \mathbb{E}[ f(\tau) ] \mathbb{E}[ f(\tau') ] =  \mathbb{E}[ f(\tau) f(\tau')] = 2 \int_0^\infty e^{-2t} f^2(t) \ud t
 	\end{align*}
@@ -853,7 +857,7 @@ The first integral is shown to be finite in \cite{BCC21}. The second integral is
 	\begin{align}\label{E:alpha2}
 		2a - \alpha +1 > 1
 	\end{align}
-which is already satisfied under the assumptions of Theorem \ref{T:main}. Hence the first relation in \ref{E:muassumption} is proven.
+which is already satisfied under the assumptions of Theorem \ref{T:main}. Hence the first relation in \eqref{E:muassumption} is proven.
 
 The second relation is proven the same was as in Lemma 3.6 \cite{BCC21}. Here is the proof.
 \begin{align}
@@ -910,7 +914,7 @@ The following lemma shows that $\widetilde{f}_n(\cdot,0;t) \in \mathcal{H}^{\oti
      & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               \\
      & =  \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
 	\end{align*}
-	and now we apply Lemmas \ref{L:inteq1} and \ref{L:intineq1} as well as Equation \ref{E:FLfn} to get
+	and now we apply Lemmas \ref{L:inteq1} and \ref{L:intineq1} as well as Equation \eqref{E:FLfn} to get
 	\begin{align*}
 		\frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
     & \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} \left(\int_0^\infty e^{-t}  H_n(t,\vec{x}) \ud t \right)^2 \ud \vec{x} \\
@@ -921,7 +925,7 @@ The following lemma shows that $\widetilde{f}_n(\cdot,0;t) \in \mathcal{H}^{\oti
 \end{proof}
 
 \begin{proof}[Proof of Theorem \ref{T:Solvable}]
-First recall \ref{E:Ffnscale}, which says
+First recall \eqref{E:Ffnscale}, which says
 	\begin{align*}
 		\mathcal{F}\widetilde{f_n}(\cdot,0,ct)(\xi_1,..., \xi_n) = c^{n(b+r)}\mathcal{F}\widetilde{f_n}(\cdot,0,t)(c^{b/a}\xi_1,...,c^{b/a}\xi_n).
 	\end{align*}
@@ -984,7 +988,7 @@ In order to prove this theorem, we first need to prove the following lemma.
 	\end{align}
 \end{lemma}
 \begin{proof}
-	Recall the definition of $T_n$ from above as well as \ref{E:LogRho} which says that
+	Recall the definition of $T_n$ from above as well as \eqref{E:LogRho} which says that
 	\begin{align*}
 			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{T_n}{(n!)^2} \right]  = \log[\rho].
 	\end{align*}
@@ -996,13 +1000,13 @@ In order to prove this theorem, we first need to prove the following lemma.
 	\begin{align*}
 		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n
 	\end{align*}
-	Combining this and \ref{E:LogRho} we see that
+	Combining this and \eqref{E:LogRho} we see that
 	\begin{align*}
 		\limsup_{n \to \infty} \frac{1}{n} & \log\left[ \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)  \right] \\
 																			 & \le \log\left( 2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right) + \lim_{n \to \infty} \frac{1}{n} \log\left( \frac{T_n}{(n!)^2} \right)                  \\
 																			 & = \log\left(  2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right)  + \log(\rho)
 	\end{align*}
-	which proves the upper bound for \ref{E:2ineq-a}.
+	which proves the upper bound for \eqref{E:2ineq-a}.
 
 	Now we prove the lower bound. Define for $t>0$ and $t'>0$
 	\begin{align*}
@@ -1039,7 +1043,7 @@ In order to prove this theorem, we first need to prove the following lemma.
 	\begin{align*}
 		\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n
 	\end{align*}
-	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. We now infer from \ref{E:2lowbd} that
+	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. We now infer from \eqref{E:2lowbd} that
 	\begin{align*}
 		c_{\alpha} \frac{2^{[2(b + r ) -b \alpha / a]n}}{C_n} \frac{1}{(n!)^2} T_n \le \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right) 	\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
 	\end{align*}
@@ -1048,7 +1052,7 @@ In order to prove this theorem, we first need to prove the following lemma.
 		\liminf_{n\to \infty} \frac{1}{n} & \log \left( \Gamma\left( [2(b + r ) -b \alpha / a]n +1 	\right) 	\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) \\
 																			& \ge \log\left(  2^{[2(b + r ) -b \alpha / a]} 	\right) + \log(\rho)
 	\end{align*}
-	Thus \ref{E:2ineq-a} is proven. Lastly, \ref{E:2ineq-b} follows from \ref{E:2ineq-a} and the fact that
+	Thus \eqref{E:2ineq-a} is proven. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the fact that
 	\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log\left[ \frac{\Gamma(an+1)}{(n!)^a} \right] = a\log(a).
 	\end{align*}
@@ -1066,7 +1070,7 @@ With the above lemma, we can now prove Theorem \ref{T:p=2}.
 	\begin{align*}
 		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad x_n=\frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}
 	\end{align*}
-	\ref{E:2ineq-b} above says that
+	\eqref{E:2ineq-b} above says that
 	\begin{align*}
 		\frac{1}{n}\log(R_n) \to  \log\left[ \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right]  \quad \text{as } n\to \infty.
 	\end{align*}
@@ -1156,7 +1160,7 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 
 \begin{lemma}
 	\label{L:LWn}
-	If the measure $\mu$ satisfies the relation in \ref{E:muassumption}, then $W_n(t,\phi)$ is well
+	If the measure $\mu$ satisfies the relation in \eqref{E:muassumption}, then $W_n(t,\phi)$ is well
 	defined and for any $d \ge 1$, $t>0$ and $\phi \in L^2_{\mathbb{C}}(\mu)$. Moreover,
 	\begin{equation}
 		\label{E:LWn}
@@ -1164,7 +1168,7 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	By Fubini's theorem, the left hand side of \ref{E:LWn} is equal to
+	By Fubini's theorem, the left hand side of \eqref{E:LWn} is equal to
 	\begin{align*}
 		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n \mathcal{F}G(s_k-s_{k-1}, \cdot)(\xi_k + \cdots + \xi_n) \ud \vec{s} \ud t \mu(\ud \vec {\xi}),
 	\end{align*}
@@ -1178,7 +1182,7 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+|\sum_{j=k}^n \xi_j|^2} \prod_{k=1}^n \mu(\ud \xi_k).
 	\end{align*}
 	The result it follows from applying the Cauchy-Schwarz inequality. In addition, by using the same
-	arguments that lead to \ref{E:lem62step}, we see the above quantity is finite.
+	arguments that lead to \eqref{E:lem62step}, we see the above quantity is finite.
 \end{proof}
 
 \begin{proposition}
@@ -1393,7 +1397,7 @@ which finally leads us to the equality
 	\begin{align*}
 		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log(\rho^{1/2}).
 	\end{align*}
-Hence, we finish the proof by proving \ref{E:GH+}. First note that from the above we see that
+Hence, we finish the proof by proving \eqref{E:GH+}. First note that from the above we see that
 	\begin{align*}
 		\int_{\R^d} | \mathcal{F}|g_h|^2(\xi) |^2 \mu(\ud \xi) \le \rho < \infty
 	\end{align*}
@@ -1463,7 +1467,7 @@ and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\
 		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right] = \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right)
 	\end{align*}
 	and the result is proven after multiplying and dividing $(n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2}
-	+\frac{a}{b}r \right)} $ on the inside of the log in \ref{E:lb1}
+	+\frac{a}{b}r \right)} $ on the inside of the log in \eqref{E:lb1}
 \end{proof}
 
 
@@ -1509,7 +1513,7 @@ We can easily find the maximal $c$ by solving $h'(c)=0$ and doing so we get $c=(
 	\begin{align*}
 		I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho_{new}^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}
 	\end{align*}
-and simplifying exponents gives us \ref{E:69ineq}.
+and simplifying exponents gives us \eqref{E:69ineq}.
 \end{proof}
 
 
@@ -1573,28 +1577,28 @@ We now can prove Theorem \ref{T:lbound}.
 	\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
 	\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
 	% }}}
-	\bibitem{Chen19AIHP}% {{{ 6.
+	\bibitem{Chen19AIHP}% {{{ 7.
 	Chen X. (2019).
 	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
 	% }}}
-	\bibitem{Minicourse09}% {{{ 7.
+	\bibitem{Minicourse09}% {{{ 8.
 	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
 	\newblock {\it A minicourse on stochastic partial differential equations}.
 	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
 	% }}}
-	\bibitem{Hu01Heat}% {{{ 8.
+	\bibitem{Hu01Heat}% {{{ 9.
 	Hu, Y. (2001).
 	\newblock Heat equations with fractional white noise potentials.
 	\newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
 	% }}}
-	\bibitem{LiebLoss01} % {{{ 9.
+	\bibitem{LiebLoss01} % {{{ 10.
 	Lieb, E. and Loss, M. (2001).
 	\newblock {\em Analysis}. Second edition.
 	\newblock Graduate Studies in Mathematics, 14.
 	\newblock American Mathematical Society, Providence, RI.
 	% }}}
-	\bibitem{Nualart18Book}% {{{ 10.
+	\bibitem{Nualart18Book}% {{{ 11.
 	Nualart D. and Nualart E. (2018).
 	\newblock {\em Introduction to Malliavin Calculus}.
 	\newblock Cambridge University Press.
