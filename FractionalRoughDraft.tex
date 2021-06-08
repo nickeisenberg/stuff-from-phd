@@ -191,8 +191,8 @@ In this paper we study the following fractional stochastic equation:
 	\label{E:SPDE}
 	\begin{cases}
 		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$ , $t>0$} \\
-		u(0,\cdot) = 1                                                                                                               & b \in (0,1]                \\
-		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                              & b \in (1,2)
+		u(0,\cdot) = 1                                                                                                          & b \in (0,1]                \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                         & b \in (1,2)
 	\end{cases}
 \end{equation}
 where $a \in (0,2)$, $b \in (0,2)$, $r\ge 0$, $\nu > 0$ and $\theta>0$. Here the noise $W =
@@ -221,95 +221,184 @@ where $m$ is an integer, and $I^r_t$ refers to the {\it Riemann-Liouville fracti
 \begin{align*}
 	I^r_tf(t) := \frac{1}{\Gamma(r)} \int_0^t (t-s)^{r-1}f(s)\ud s, \quad \text{for } t>0,
 \end{align*}
-with the convention that $I^0_t = \text{Id}$ (the identity operator). The fundamental solutions to
-\eqref{E:SPDE} consist of a triplet:
+with the convention that when $r=0$, $I^0_t = \text{Id}$ reduces to the identity operator. The
+fundamental solutions to \eqref{E:SPDE} consist of a triplet:
 \begin{align*}
-	\left\{ Z_{a,b,\nu,d}(t,x),  Z^*_{a,b,\nu,d}(t,x),  Y_{a,b,r,\nu,d}(t,x) : t >0, x \in \R^d \right\}.
+	\left\{ Z_{a,b,r,\nu,d}(t,x),\:  Z^*_{a,b,r,\nu,d}(t,x), \: Y_{a,b,r,\nu,d}(t,x) : t >0, x \in \R^d \right\}.
 \end{align*}
 Each member of the triplet can be expressed explicitly in terms of the {\it Fox H-function} which is
-much more technically complicated than the Green's function for either the heat or wave equation.
-The actual meanings of these are not to important in this setting so for that reason we direct the
-reader to \cite{CHN19} for the definitions. Since we are interested in the constant one initial
-condition (and 0 initial velocity when $b>1$), by Theorem 4.1 \cite{CHN19} the corresponding
-solution to the homogeneous equation (i.e. the solution when there is no driving source) is equal to
-the constant one. Hence, by setting $G(t,x) = Y_{a,b,r,\nu,d}(t,x)$, \eqref{E:SPDE} can be written
-as the following Skorohod integral equation:
-\begin{equation}\label{spdeint}
-	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s.
+much more complicated than the fundamental function for either the heat or wave equation; See
+Theorem 4.1 of \cite{CHN19}. Since we are interested in the constant one initial condition (and zero
+initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the corresponding solution to
+the homogeneous equation (i.e. the solution when there is no driving source) is equal to the
+constant one. Hence, by setting $G(t,x) := Y_{a,b,r,\nu,d}(t,x)$, \eqref{E:SPDE} can be written as
+the following integral equation:
+\begin{equation}
+	\label{E:spdeint}
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
 \end{equation}
+where the stochastic integral is in the {\it Skorohod} sense; see Definition \ref{D:Sol} below.
 
-We now need to make mention of the suitable choices for the noise $W$. Let $k \in \{1, \cdots , d\}$ and partition the $d$-coordinates of $x=(x_1, \cdots, x_n)$ into $k$ distinct groups of size $d_i$ for $i \in \{1, \cdots, k\}$. Note that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} , \cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. We consider a Gaussian Noise with correlation function  given by
-	\begin{equation}\label{corfunction}
-		\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}
-	\end{equation}
-where $\alpha_i \in (0, d_i)$ and we define $\alpha = \sum_{i=1}^k \alpha_i$. This correlation function corresponds with the spectral density given by $\mu (\ud \xi) = \varphi(\xi) \ud \xi$ with
-	\begin{equation}\label{specfunction}
-		\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d_i-\alpha_i)}.
-	\end{equation}
-The Constant $C$ can be calculated through the relation $\mathcal{F}\gamma = \varphi$. An important fact stated in \cite{BCC21} is that there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where '$*$' denotes the spatial convolution.
+We now need to make mention of the suitable choices for the noise $W$. Let $k \in \{1, \cdots , d\}$
+and partition the $d$-coordinates of $x=(x_1, \cdots, x_n)$ into $k$ distinct groups of size $d_i$
+for $i \in \{1, \cdots, k\}$. Note that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} ,
+\cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. We consider a Gaussian Noise
+with correlation function  given by
+\begin{equation}
+	\label{E:corfunction}
+	\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}
+\end{equation}
+where $\alpha_i \in (0, d_i)$ and we define $\alpha = \sum_{i=1}^k \alpha_i$. This correlation
+function corresponds with the spectral density given by $\mu (\ud \xi) = \varphi(\xi) \ud \xi$ with
+\begin{equation}
+	\label{E:specfunction}
+	\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d_i-\alpha_i)}.
+\end{equation}
+The constant $C$ can be calculated through the relation $\mathcal{F}\gamma = \varphi$. An important
+fact stated in \cite{BCC21} is that there exists a nonnegative function $K$ on $\R^d$ such that
+$\gamma = K*K$ where '$*$' denotes the spatial convolution.
 
-	\begin{example}
-When $k=1$ above then we recover the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ and its spectral density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. In addition, we may write $\gamma = K*K$ where $"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$. In this case we have
-		\begin{equation}\label{noiseconstant}
-			C_{d,\alpha} = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad    \text{and}	\quad	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }.
-		\end{equation}
-	\end{example}
+\begin{example}
+When $k=1$ above then we recover the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ and its spectral
+density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. In addition, we may write $\gamma = K*K$ where
+$"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$. In this case we have
+\begin{equation}
+	\label{E:noiseconstant}
+	C_{d,\alpha} = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad \text{and}\quad
+	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }.
+\end{equation}
+\end{example}
 
-	\begin{example}
-When $k=d$ above then we recover the noise, $W$, with correlation function given by $\gamma(x) = \prod_{i=1}^d |x_i|^{-\alpha_i}$ where $\alpha_i \in (0,1)$. In this case, the spectral density is given by $\varphi(\xi) = \prod_{i=1} C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)}$. We may also write $\gamma = K*K$ where $K(x)=\prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}$ where $C_{1,\alpha_i}$ and $ \beta_{\alpha_i,1}$ are given by \ref{noiseconstant}. If we consider the parameterization $\alpha_i = 2-2H_i$ with $H_i \in (1/2 , 1)$, then the corresponding noise is the fractional Brownian sheet with indicies $H_1, \cdots , H_d$. The heat equation with this noise was studied in \cite{Hu01Heat}.
-	\end{example}
-
-	\begin{remark}\label{spectralconjecture}
-We may actually apply the techniques in this paper to any such noise whose correlation function and spectral density, $\gamma$ and $\mu$, satisfy
-		\begin{enumerate}
-			\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
-			\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
-			\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution.
-		\end{enumerate}
-However, there is an issue with applying the results in this paper to the more general noises satisfying \ref{spectralconjecture}. Proving $\rho$, defined below, is finite is a challange. In \cite{BCR09}, $\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below in Lemma \ref{rhofinite}, we give a proof showing that $\rho$ is finite for the noise with spectral density defined above in \ref{specfunction}.
-
-\textcolor{red}{Are there other noises satisfying \ref{spectralconjecture} other than the general fractional noise?}
-	\end{remark}
-
-Next, we need to make some assumption on the parameters $a,b,r$ of \eqref{E:SPDE} as well as the dimension $d$. Under theses assumptions, the Greens function $G$ will be nonnegative and smooth which was shown in Theorem 4.6 \cite{CHN19} and equation (4.5) \cite{CHN19} respectively.
-
-	\begin{assumption}\label{paramassumptions}
-The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
-		\begin{enumerate}
-			\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
-			\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
-			\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
-			\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
-		\end{enumerate}
-	\end{assumption}
-
-
-We now introduce the operator
+\begin{example}
+	When $k=d$ above then we recover the {\it fractional noise}. In this case, the  correlation
+	function and the spectral measure are equal to
 	\begin{align*}
-		\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}
+		\gamma(x) = \prod_{i=1}^d |x_i|^{-\alpha_i}\quad\text{and}\quad
+		\varphi(\xi) = \prod_{i=1} C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)},
 	\end{align*}
-and define $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1)$. See Subsection \ref{largedevresults} of this paper for more details. Our goal is to develop exact moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BCC21} where in that paper they focus exclusively on the stochastic wave equation. This paper acts as a generalization of that paper to the fraction stochastic equation. Here is the main result of this paper.
+	respectively, where $\alpha_i \in (0,1)$. In this case, We may also write $\gamma = K*K$ where
+	$K(x)=\prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}$ where $C_{1,\alpha_i}$ and $
+	\beta_{\alpha_i,1}$ are given by \eqref{E:noiseconstant}. If we consider the parameterization
+	$\alpha_i = 2-2H_i$ with $H_i \in (1/2 , 1)$, then the corresponding noise is the fractional
+	Brownian sheet with indices $H_1, \cdots , H_d$. The stochastic heat equation with such noise was
+	studied in Hu \cite{Hu01Heat}.
+\end{example}
 
-	\begin{theorem}\label{mainresult}
-Under Assumption \ref{paramassumptions}, equation \eqref{E:SPDE} driven by the noise with spectral density given in equation \ref{specfunction} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for any $p \ge 2$, $t>0$ and $x \in \R^d$ if
-		\begin{equation}
-			\alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
-		\end{equation}
-Moreover, we have the following moment asymptotic:
-		\begin{equation} \label{momentasym}
-			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = \left(\frac{1}{2}\right)\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}})^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-		\end{equation}
-\textcolor{red}{I dont know the best way to organize and combine the like terms for the moment asymptotic \ref{momentasym}. Above is one way.}
+\begin{remark}
+	\label{spectralconjecture}
+	We may actually apply the techniques in this paper to any such noise whose correlation function and
+	spectral density, $\gamma$ and $\mu$, satisfy
+	\begin{enumerate}
+		\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
+		\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
+		\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution.
+	\end{enumerate}
+	However, there is an issue with applying the results in this paper to the more general noises satisfying \ref{spectralconjecture}. Proving $\rho$, defined below, is finite is a challange. In \cite{BCR09}, $\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below in Lemma \ref{rhofinite}, we give a proof showing that $\rho$ is finite for the noise with spectral density defined above in \eqref{E:specfunction}.
 
-where
+	\textcolor{red}{Are there other noises satisfying \ref{spectralconjecture} other than the general fractional noise?}
+\end{remark}
+
+Next, we need to make some assumption on the parameters $a,b,r$ of \eqref{E:SPDE} as well as the
+dimension $d$. Under theses assumptions, the Greens function $G$ will be nonnegative and smooth
+which was shown in Theorem 4.6 \cite{CHN19} and equation (4.5) \cite{CHN19} respectively.
+
+\begin{assumption}
+	\label{A:param}
+	The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
+	\begin{enumerate}
+		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
+		\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
+		\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
+		\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
+	\end{enumerate}
+\end{assumption}
+
+
+We now introduce the following variational constant, which plays an important role in this paper:
+\begin{align*}
+	\mathcal{M}_a(\Theta f, \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f
+	\rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}.
+\end{align*}
+Set $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1)$. See Subsection \ref{largedevresults} of
+this paper for more details. Our goal is to develop exact moment asymptotics to the solution
+$u(t,x)$. We follow the techniques laid out in \cite{BCC21} where the stochastic wave equation,
+namely, $a=b=\nu=2$ and $r=0$, has been exclusively studied. This paper acts as a generalization of
+that paper to the fraction stochastic equation. Here is the main result of this paper.
+
+\begin{theorem}
+	\label{mainresult}
+	Under Assumption \ref{A:param}, equation \eqref{E:SPDE} driven by the noise with spectral
+	density given in equation \eqref{E:specfunction} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
+	all $p \ge 2$, $t>0$, and $x \in \R^d$ provided that
+	\begin{equation}
+		\alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
+	\end{equation}
+	Moreover, we have the following exact moment asymptotic:
+	\begin{equation}
+		\label{E:momentasym}
+		\begin{aligned}
+			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta\\
+																																& \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+		\end{aligned}
+	\end{equation}
+	where
 	\begin{align*}
-		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \quad \text{and} \quad t_p^\beta := (p-1)^{\beta -1} t^\beta
+		\beta     := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
+		t_p^\beta := (p-1)^{\beta -1} t^\beta.
 	\end{align*}
-	\end{theorem}
-The existence and uniqueness of a $L^p(\Omega)$ solution will be proven in Section \ref{solvability}. The upper bound and lower bound for \ref{momentasym} will be proven in Sections \ref{upperbound} and \ref{lowerbound} respectively.
-\section{Some preliminaries.}
+	In particular, for any $p\ge 2$ and $t>0$ fixed, we have
+	\begin{align}
+		\label{E:momentasym-t}
+		\begin{aligned}
+			\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) = & p (p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a}-1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                                                                      & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+		\end{aligned}
+	\end{align}
+	and
+	\begin{align}
+		\label{E:momentasym-p}
+		\begin{aligned}
+			\lim_{p \to \infty} p^{-\beta} \log \E\left(|u(t,x)|^p\right) = & t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                                                                      & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+		\end{aligned}
+	\end{align}
+	respectively.
+\end{theorem}
+
+\begin{remark}
+	(1) By setting
+	\begin{align*}
+		a = b = \nu = 2 \quad \text{and} \quad r = 0,
+	\end{align*}
+	we have that $t_p = (p-1)^{1/(4-\alpha)} t$, and results in \eqref{E:momentasym},
+	\eqref{E:momentasym-t}, and \eqref{E:momentasym-p} recover the corresponding results for the
+	stochastic wave equation, namely,  (1.9), (1.10), and (1.11) of \cite{BCC21}, respectively.
+
+	\noindent (2) As for the stochastic heat equation case, we are not aware of the exact asymptotics
+	results for SHE with time-independent noise case. However, as explained in Remark 1.9 of
+	\cite{BCC21}, one may apply Chen's asymptotic results in \cite{Chen17AIHP} for SHE with
+	time-dependent noise, by setting $H_0=1$, to obtain the corresponding time-independent results.
+	In particular, by setting
+	\begin{align*}
+		a = b = 2,\quad \nu = 1 \quad \text{and} \quad r = 0,
+	\end{align*}
+	we have that $t_p=(p-1)^{2/(4-\alpha)}t$, and results in \eqref{E:momentasym} and
+	\eqref{E:momentasym-t} recover the corresponding results for the stochastic heat equation, namely,
+	(1.16) and (1.17) of \cite{BCC21}, respectively.
+\end{remark}
+
+\bigskip In the following, we first give some preliminaries in Section \ref{S:Pre} including the
+Malliavin calculus, the notation of the solution, and some variational constants.  The existence and
+uniqueness of a $L^p(\Omega)$ solution will be proven in Section \ref{solvability}. The upper bound
+and lower bound for \eqref{E:momentasym} will be proven in Sections \ref{upperbound} and
+\ref{lowerbound}, respectively.
+
+\section{Some preliminaries}
+\label{S:Pre}
 
 \subsection{Malliavin Calculus}
+\label{SS:Malliavin}
+
 To briefly summarize \cite{Minicourse09}, we start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$ in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$, and
 	\begin{align*}
 		\int_{\R^d} \Gamma(\ud x) (\varphi * \tilde{\varphi})(x) \ge 0 \quad \text{for all $\varphi \in \mathscr{S}(\R^d)$}
@@ -340,10 +429,14 @@ We denote $\delta$ the Skorohod integral with respect to $W$ and we denote its d
 Through construction of $\delta$, $\delta(u)$ is a random variable in $L^2(\Omega)$. For a deeper explanation, we direct the reader to Nualart \cite{Nualart18Book}.
 
 \begin{definition}
-	A random field $u=\{u(t,x) : t \ge 0, x\in\R^d\}$ such that $\Norm{u(t,x)}_2 < \infty$ for all $t \ge 0$ and $ x \in \R^d$ is called a mild solution to the equation \eqref{E:SPDE} if the random field $\{G(t-s,x-y)u(s,y): s \in [0,t], y \in \R^d \}$ is Skorohod integrable for each $s\in [0,t]$ and $x\in \R^d$ fixed and satisfies the following integral equation:
-		\begin{equation}
-		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s
-		\end{equation}
+	\label{D:Sol}
+	A random field $u=\{u(t,x) : t \ge 0, x\in\R^d\}$ such that $\Norm{u(t,x)}_2 < \infty$ for all $t
+	\ge 0$ and $ x \in \R^d$ is called {\it a mild solution} to the equation \eqref{E:SPDE} if the random
+	field $\{G(t-s,x-y)u(s,y): s \in [0,t], y \in \R^d \}$ is Skorohod integrable for each $s\in
+	[0,t]$ and $x\in \R^d$ fixed and satisfies the following integral equation:
+	\begin{equation}
+		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s.
+	\end{equation}
 \end{definition}
 
 Through a Piccard Iteration Scheme we can see that the solution should be given by
@@ -513,7 +606,7 @@ $\hfill \qed$
 Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting that this implies that $\rho$ is finite by \ref{rhovariationaltheorem}. We stated in the introduction that Chen, X. proved in \cite{BCR09} that $\rho$ is finite for the case of the Riesz kernal. We mimic his proof but were he uses the Hardy-Littlewood-Sobelov theorem, we make use of the weak Young's inequality instead.
 
 	\begin{lemma}\label{rhofinite}
-For any $f,g,h$ with $h\ge0$ and for $\varphi$ given as in equation \ref{specfunction}, we have the following:
+For any $f,g,h$ with $h\ge0$ and for $\varphi$ given as in equation \eqref{E:specfunction}, we have the following:
 \begin{align*}
 \left( \int_{\R^d} \left[ \int_{\R^d} \dfrac{|f(x+y)g(y)|}{\sqrt{h(x+y)}\sqrt{h(y)}} \ud y \right]^p \varphi(x) \ud x \right)^{1/p} \le C \Norm{f}_2 \Norm{g}_2 \Norm{h^{-1}}_{pd/\alpha}
 \end{align*}
@@ -691,7 +784,7 @@ By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ an
 	\end{equation}
 
 	\begin{lemma}
-		Under the assumption of Theorem \ref{momentasym}, we have that
+		Under the assumption of Theorem \eqref{E:momentasym}, we have that
 			\begin{equation}\label{muassumption}
 				C_\mu = C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) < \infty \quad \text{and} \quad T_n \le (n!)^2(C_\mu)^2
 			\end{equation}
@@ -1113,9 +1206,9 @@ then by Plancherel's theorem
 	\begin{align*}
 			W_n(t,\mathcal{F}f) = \int_{[0,t]^n<} \int_{\R^{nd}} \prod_{k=1}^n(f*\gamma)(x_k) \prod_{k=1} G(s_k - s_{k-1}, x_k-x_{k-1}) \ud \vec{x} \ud \vec{s} =: U_n(t,f)
 	\end{align*}
-with $s_0=0$ and $x_0=0$. Under Assumption \ref{paramassumptions}, the Green's function for the fractional equation is nonnegative and hence under these conditions we get that $W_n(t,\mathcal{F}(f)) \ge 0$ for all the functions $f \in \mathcal{H}_+$. Hence we have that
+with $s_0=0$ and $x_0=0$. Under Assumption \ref{A:param}, the Green's function for the fractional equation is nonnegative and hence under these conditions we get that $W_n(t,\mathcal{F}(f)) \ge 0$ for all the functions $f \in \mathcal{H}_+$. Hence we have that
 	\begin{align*}
-		0 \le W_n(t, \mathcal{F}f) = U_n(t,f) < \infty \quad \text{for all } f \in \mathcal{H}_+ \text{ and for any of the four options in Aummption \ref{paramassumptions}.}
+		0 \le W_n(t, \mathcal{F}f) = U_n(t,f) < \infty \quad \text{for all } f \in \mathcal{H}_+ \text{ and for any of the four options in Aummption \ref{A:param}.}
 	\end{align*}
 where the finiteness comes from Proposition \ref{Wnprop2}.
 
@@ -1349,7 +1442,7 @@ $\hfill \qed$
 	\bibitem{BCC21} % {{{ 1.
 	Balan, R. M., Chen, L., and Chen, X. (2021).
 	\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
-	\newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat. }, to appear.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
 	% }}}
 	\bibitem{BS17} % {{{ 2.
 	Balan, R. M. and Song, J. (2017).
@@ -1359,7 +1452,7 @@ $\hfill \qed$
 	\bibitem{BCR09}% {{{ 3.
 	Bass, R., Chen, X., and Rosen, M. (2009).
 	\newblock Large deviations for Riesz potentials of additive processes.
-	\newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat. } \textbf{45}, 626--666.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
 	% }}}
 	\bibitem{CHHH17}% {{{ 4.
 	Chen, L., Hu, Y., Hu, G., and Huang, J. (2017).
@@ -1371,10 +1464,15 @@ $\hfill \qed$
 	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
 	% }}}
+	\bibitem{Chen17AIHP} % {{{ 6.
+	Chen, X. (2017).
+	\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
+	\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
+	% }}}
 	\bibitem{Chen19AIHP}% {{{ 6.
 	Chen X. (2019).
 	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
-	\newblock {\em  Ann. Inst. Henri Poincaré Probab. Stat.} \textbf{55}, 941--976.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
 	% }}}
 	\bibitem{Minicourse09}% {{{ 7.
 	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
