@@ -320,21 +320,26 @@ We now introduce the following variational constant, which plays an important ro
 	\rangle^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
 	\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1);
 \end{align*}
-see Section \ref{SS:LD} for more notation and details. Our goal is to develop exact
-moment asymptotics to the solution $u(t,x)$. We follow the techniques laid out in \cite{BCC21} where
-the stochastic wave equation, namely, $a=b=\nu=2$ and $r=0$, has been exclusively studied. This
-paper acts as a generalization of that paper to the fraction stochastic equation. Here is the main
-result of this paper.
+see Section \ref{SS:LD} for more notation and details. Our goal is to develop exact moment
+asymptotics to the solution $u(t,x)$ so that it can interpolate the known results for both
+stochastic heat and wave equations; see Remark \ref{R:Inter} below. We follow the techniques
+laid out in \cite{BCC21} where the stochastic wave equation, namely, $a=b=\nu=2$ and $r=0$, has been
+exclusively studied. This paper acts as a generalization of that paper to the fraction stochastic
+equation. Here is the main result of this paper.
 
 \begin{theorem}
-	\label{T:main}
+	\label{T:solvable}
 	Under Assumption \ref{A:param}, equation \eqref{E:SPDE} driven by the noise with spectral
 	density given in equation \eqref{E:specfunction} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
 	all $p \ge 2$, $t>0$, and $x \in \R^d$ provided that
 	\begin{equation}
 		\alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
 	\end{equation}
-	Moreover, we have the following exact moment asymptotic:
+\end{theorem}
+
+\begin{theorem}
+	\label{T:asym}
+	Under the setting of Theorem \ref{T:solvable}, we have the following moment asymptotics:
 	\begin{equation}
 		\label{E:momentasym}
 		\begin{aligned}
@@ -365,8 +370,13 @@ result of this paper.
 	\end{align}
 	respectively.
 \end{theorem}
-
+\begin{proof}
+	The	asymptotics in \eqref{E:momentasym-t} and \eqref{E:momentasym-p} are immediate consequences of
+	\eqref{E:momentasym}. The matching upper and lower bounds for the limit in \eqref{E:momentasym}
+	are proved in Theorems \ref{T:ubound} and \ref{T:lbound} below, respectively.
+\end{proof}
 \begin{remark}
+	\label{R:Inter}
 	(1) By setting
 	\begin{align*}
 		a = b = \nu = 2 \quad \text{and} \quad r = 0,
@@ -391,11 +401,10 @@ result of this paper.
 \bigskip
 
 In the following, we first give some preliminaries in Section \ref{S:Pre} including the Malliavin
-calculus, the notation of the solution, and some variational constants. The existence and uniqueness
-of a $L^p(\Omega)$ solution is proven in Section \ref{S:solvable}. The exact asymptotic for the case
-$p=2$ is obtained in Section \ref{S:p=2}. The upper bound and lower bound for \eqref{E:momentasym}
-for general $p\ge 2$ are established in Sections \ref{S:upperbound} and \ref{S:lowerbound},
-respectively.
+calculus, the definition of the solution, and some variational constants. The existence and
+uniqueness of a $L^p(\Omega)$ solution --- Theorem \ref{T:solvable} --- is proven in Section
+\ref{S:solvable}. The upper bound and lower bound for \eqref{E:momentasym} are established in
+Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.
 
 \section{Some preliminaries}
 \label{S:Pre}
@@ -537,7 +546,7 @@ solution can be written as the Weiner chaos expansion as in \eqref{E:solwexp}.
 	given by
 	\begin{equation}
 		\label{E:2mom}
-		\mathbb{E}\left(u(t,x)2\right) = \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
+		\mathbb{E}\left(u(t,x)^2\right) = \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
 	\end{equation}
 \end{theorem}
 
@@ -713,14 +722,14 @@ weak Young's inequality instead.
 		\sup_{B} 	|B|^{-1/q'}	\int_{B} \varphi(x) \ud x = K
 	\end{align*}
 	where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(\R^d)$ with $q =
-	d/(d-\alpha)$ which completes the proof of Lemma \ref{L:rhofinite}.
+	d/(d-\alpha)$. This completes the proof of Lemma \ref{L:rhofinite}.
 \end{proof}
 
 We finish this section by making a slight generalization of $\Lambda_{\alpha}$. For this, we define
 \begin{equation}
 	\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}.
 \end{equation}
-One notices that by making this generalization, we can apply Theorem \ref{T:main} to the SPDE
+One notices that by making this generalization, we can apply Theorem \ref{T:solvable} to the SPDE
 \eqref{E:SPDE} driven by an arbitrary Gaussian noise with correlation function $f$ as long as one
 can show that $\rho$ is finite. By slightly modifying the proof of Lemma 2.3 \cite{BCC21}, one can
 show that
@@ -739,44 +748,45 @@ and by defining $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1) $ and by ap
 	\mathcal{M}_a^{\frac{2a-\alpha}{a}}.
 \end{equation}
 
-\section{Solvability}
+\section{Existence and uniqueness of the solution}
 \label{S:solvable}
 
-The goal for this section is to prove the following theorem:
-\begin{theorem}
-	\label{T:Solvable}
-	The equation \eqref{E:SPDE} has a unique solution $\{u(t,x) : t>0, x\in \R^d\}$ and
-	\begin{equation}
-		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) < \infty \quad \text{for all $p \ge 2, T>0$}.
-	\end{equation}
-\end{theorem}
-
-We need to build up some theory before we prove the above theorem. We first introduce some notation that will be used throughout the remainder of his paper. We start by defining $L_n(\vec{y})$ to be the Laplace transform of $\widetilde{f_n}(\vec{y},0,\cdot)$ evaluated at $1$:
-	\begin{align*}
-		L_n(\vec{y}) &= n! \int_0^\infty e^{-t}\widetilde{f_n}(\vec{y};0,t) \ud t
-		\\&= \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n<} \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{s} \ud t
-	\end{align*}
+The goal for this section is to prove Theorem \ref{T:solvable}.
+% \begin{theorem}
+% 	\label{T:solvable}
+% 	The equation \eqref{E:SPDE} has a unique solution $\{u(t,x) : t>0, x\in \R^d\}$ and
+% 	\begin{equation}
+% 		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) < \infty \quad \text{for all $p \ge 2, T>0$}.
+% 	\end{equation}
+% \end{theorem}
+We first introduce some notation that will be used throughout the remainder of this paper. We start by defining $L_n(\vec{y})$ to be the Laplace transform of $\widetilde{f_n}(\vec{y},0,\cdot)$ evaluated at $1$:
+\begin{align*}
+	L_n(\vec{y}) & = n! \int_0^\infty e^{-t}\widetilde{f_n}(\vec{y};0,t) \ud t \\
+							 & = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n<} \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{s} \ud t
+\end{align*}
 with the convention that. $s_0 = y_{\sigma(0)} = 0$. Next we define,
-	\begin{align*}
-		H_n(t, \vec{x}) &= n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y}
-		\\&= \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}
-	\end{align*}
+\begin{align*}
+	H_n(t, \vec{x}) & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y} \\
+									& = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}
+\end{align*}
 where in the last line we used relation \eqref{E:fperm0} for expressing  $\widetilde{f_n}(\cdot;0,t)$. Next, similarly to $L_n$, we define $L(x)$ and can calculate $\mathcal{F}L(\xi)$ to be
-	\begin{equation} \label{E:LandFL}
-		L(x) = \int_0^\infty e^{-t}G(t,x) \ud t \quad \text{and} \quad \mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}G(t,\cdot)(\xi) \ud t = \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a}
-	\end{equation}
+\begin{equation}
+	\label{E:LandFL}
+	L(x) = \int_0^\infty e^{-t}G(t,x) \ud t \quad \text{and} \quad \mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}G(t,\cdot)(\xi) \ud t = \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a}
+\end{equation}
 and through a change of variables, one sees that the Laplace transform of convolution in the time variable become a product:
-	\begin{equation}
-			L_n(\vec{y}) = \sum_{\sigma \in \Sigma_n} L(y_{\sigma(1)}) L(y_{\sigma(2)}-y_{\sigma(1)}) \cdots L(y_{\sigma(n)}-y_{\sigma(n-1)})
-	\end{equation}
+\begin{equation}
+		L_n(\vec{y}) = \sum_{\sigma \in \Sigma_n} L(y_{\sigma(1)}) L(y_{\sigma(2)}-y_{\sigma(1)}) \cdots L(y_{\sigma(n)}-y_{\sigma(n-1)})
+\end{equation}
 and using this and \eqref{E:LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
-	\begin{equation}\label{E:FLfn}
-		\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}
-	\end{equation}
+\begin{equation}
+	\label{E:FLfn}
+	\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}.
+\end{equation}
 
 \begin{lemma}
 	\label{L:Hneq1}
-	Under the assumptions of Theorem \ref{T:main}, we have that
+	Under the assumptions of Theorem \ref{T:solvable}, we have that
 	\begin{equation}
 		\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x} = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}).
 	\end{equation}
@@ -798,7 +808,7 @@ where the last line follows from Plancherel's theorem and the fact that $K*K =\g
 
 \begin{lemma}
 	\label{L:inteq1}
-	Under the assumptions of Theorem \ref{T:main}, we have that
+	Under the assumptions of Theorem \ref{T:solvable}, we have that
 	\begin{equation}
 		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x}.
 	\end{equation}
@@ -827,12 +837,15 @@ If $f$ is a non-decreasing function on $[0,\infty)$, then the following reverse 
 	Let $\tau$ and $\tau'$ be two independent random variables with exponential distribution of mean
 	one. Then $\tau \wedge \tau'$ has an exponential distribution with density $g(t)=2e^{-2t}$ and
 	\begin{align*}
-		\left( \int_0^\infty e^{-t}f(t) \ud t \right)^2 = \mathbb{E}[ f(\tau) ] \mathbb{E}[ f(\tau') ] =  \mathbb{E}[ f(\tau) f(\tau')] = 2 \int_0^\infty e^{-2t} f^2(t) \ud t
+		\left( \int_0^\infty e^{-t}f(t) \ud t \right)^2 = \mathbb{E}[ f(\tau) ] \mathbb{E}[ f(\tau') ]
+                                                    = \mathbb{E}[ f(\tau) f(\tau')]
+                                                    = 2 \int_0^\infty e^{-2t} f^2(t) \ud t.
 	\end{align*}
 \end{proof}
 
 Denote
 \begin{equation}
+	\label{E:Tn}
 	T_n = T_n(\nu,a) := \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}).
 \end{equation}
 By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ and the scaling
@@ -842,6 +855,7 @@ property for $\varphi$, we may rewrite $T_n$ as
 \end{equation}
 
 \begin{lemma}
+	\label{L:muassumption}
 	Under the assumption of Theorem \eqref{E:momentasym}, we have that
 	\begin{equation}
 		\label{E:muassumption}
@@ -857,7 +871,7 @@ The first integral is shown to be finite in \cite{BCC21}. The second integral is
 	\begin{align}\label{E:alpha2}
 		2a - \alpha +1 > 1
 	\end{align}
-which is already satisfied under the assumptions of Theorem \ref{T:main}. Hence the first relation in \eqref{E:muassumption} is proven.
+which is already satisfied under the assumptions of Theorem \ref{T:solvable}. Hence the first relation in \eqref{E:muassumption} is proven.
 
 The second relation is proven the same was as in Lemma 3.6 \cite{BCC21}. Here is the proof.
 \begin{align}
@@ -875,10 +889,13 @@ where the last line follows by Lemma 4.1 of Balan and Song \cite{BS17} or by Lem
 The following lemma shows that $\widetilde{f}_n(\cdot,0;t) \in \mathcal{H}^{\otimes n}$ for any $t>0$.
 \begin{lemma}
 	\label{L:LNfnineq}
-	Under the assumptions of Theorem \ref{T:main} and for any $t>0$.
-	\begin{align*}
-		\int_0^\infty e^{-t} \Norm{\widetilde{f_n}(\cdot,0;t)}_{ \mathcal{H}^{ \otimes n } }^n \ud t \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n \le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} (C_\mu')^n
-	\end{align*}
+	Under the assumptions of Theorem \ref{T:solvable} and for any $t>0$.
+	\begin{align}
+		\label{E:LNfnineq}
+		\int_0^\infty e^{-t} \Norm{\widetilde{f_n}(\cdot,0;t)}_{ \mathcal{H}^{ \otimes n } }^n \ud t
+		\le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n
+		\le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} (C_\mu')^n.
+	\end{align}
 \end{lemma}
 
 \begin{proof}
@@ -889,16 +906,17 @@ The following lemma shows that $\widetilde{f}_n(\cdot,0;t) \in \mathcal{H}^{\oti
 		\label{E:Ffnscale}
 		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
 	\end{equation}
-	Let $c>0$.
+	Let $c>0$. Notice that
 	\begin{align*}
-		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f_n(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})
+		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f_n(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}).
 	\end{align*}
-	so it suffices to just look at the $\mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})$ terms individually.
+	So it suffices to just look at the $\mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})$ terms individually.
 	\begin{align*}
 		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n) & = \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t} \\
 																										& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
 	\end{align*}
-	where we applied the substitution $t_i' = t_i/c$ by applying the scaling property of $\mathcal{F}G$ we wee that
+	where we applied the substitution $t_i' = t_i/c$ by applying the scaling property of
+	$\mathcal{F}G$ we wee that
 	\begin{align*}
 		\int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
 		& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} \\
@@ -914,91 +932,102 @@ The following lemma shows that $\widetilde{f}_n(\cdot,0;t) \in \mathcal{H}^{\oti
      & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               \\
      & =  \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
 	\end{align*}
-	and now we apply Lemmas \ref{L:inteq1} and \ref{L:intineq1} as well as Equation \eqref{E:FLfn} to get
+	and now we apply Lemmas \ref{L:inteq1} and \ref{L:intineq1} as well as \eqref{E:FLfn} to get
 	\begin{align*}
 		\frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
     & \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} \left(\int_0^\infty e^{-t}  H_n(t,\vec{x}) \ud t \right)^2 \ud \vec{x} \\
     & =   \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} | \mathcal{F}L_n(\vec{\xi}) |^2\ud \vec{\xi}                           \\
-    & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  T_n
+    & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  T_n,
 	\end{align*}
-	and this proves the first inequality. An application of Lemma 3.6 gives is the second inequality.
+	which proves the first inequality in \eqref{E:LNfnineq}. An application of Lemma
+	\ref{L:muassumption} gives the second inequality in \eqref{E:LNfnineq}.
 \end{proof}
 
-\begin{proof}[Proof of Theorem \ref{T:Solvable}]
-First recall \eqref{E:Ffnscale}, which says
+\begin{proof}[Proof of Theorem \ref{T:solvable}]
+	First recall \eqref{E:Ffnscale}, which says
 	\begin{align*}
 		\mathcal{F}\widetilde{f_n}(\cdot,0,ct)(\xi_1,..., \xi_n) = c^{n(b+r)}\mathcal{F}\widetilde{f_n}(\cdot,0,t)(c^{b/a}\xi_1,...,c^{b/a}\xi_n).
 	\end{align*}
-
-In order to prove the theorem we need to show that $\sum_{n \ge 0} \theta^n n! \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 < \infty.$ From the scaling property \eqref{E:normscale} we see that
+	In order to prove the theorem we need to show that $\sum_{n \ge 0} \theta^n n! \Norm{
+	\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 < \infty.$ From the scaling property
+	\eqref{E:normscale} we see that
 	\begin{align*}
-		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t & = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \int_0^\infty e^{-t} t^{ \left[ 2(b+r)-\frac{b \alpha}{a} \right] n } \ud t
-		\\&= \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
+		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t
+    & = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \int_0^\infty e^{-t} t^{ \left[ 2(b+r)-\frac{b \alpha}{a} \right] n } \ud t \\
+    & = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
 	\end{align*}
-as long as we have
-	\begin{equation} \label{E:alpha3}
-		2(b+r)-\frac{b\alpha}{a} >0
+	as long as we have
+	\begin{equation}
+		\label{E:alpha3}
+		2(b+r)-\frac{b\alpha}{a} >0.
 	\end{equation}
-By using Lemma \ref{L:LNfnineq} we can deduce that
+	By using Lemma \ref{L:LNfnineq} we can deduce that
 	\begin{align*}
 		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
     & = \dfrac{ \int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } \\
     & \le \dfrac{ 2^{n \left[ 2(b+r)- \frac{b \alpha}{a} \right]} }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } T_n                                        \\
-    & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }
+    & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{\Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }.
 	\end{align*}
-
-By the same reasoning as in the proof in the wave paper (details in my notebook) we can say that there exists a constant depending on $\alpha$, $k_\alpha$, such that
+	Hence, there exists a constant $k_\alpha$ depending on $\alpha$ such that
 	\begin{align*}
-		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \le k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a } }
+		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \le k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a } }.
 	\end{align*}
-
-Therefore,
+	Therefore,
 	\begin{align*}
-		\sum_{n \ge 0} \theta^n n! \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 & \le \sum_{n \ge 0} \theta^n n!  k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a } }
-		\\& =  \sum_{n \ge 0} \theta^n   k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a } }
+		\sum_{n \ge 0} \theta^n n! \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
+		\le  \sum_{n \ge 0} \theta^n   k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
 	\end{align*}
-and the last sum is finite when
+	where the sum is finite provided that
 	\begin{equation}\label{E:alpha4}
-		2(b+r) - 1 - b\alpha/a > 0
+		2(b+r) - 1 - b\alpha/a > 0.
 	\end{equation}
+	This completes the proof of Theorem \ref{T:solvable}.
 \end{proof}
 
+\section{Upper bound of the asymptotics}
+\label{S:upperbd}
 
-\section{The case $p=2$}
-\label{S:p=2}
+In this section we use the result obtained in Theorem \ref{L:p=2} and the hypercontractivity
+property given by Theorem B.1 in \cite{BCC21} to prove the following theorem.
 
-In this section, we will prove the following result.
 \begin{theorem}
-	\label{T:p=2}
-	Under the assumptions of Theorem \ref{T:main}, we have that
-	\begin{equation}
-	\lim_{t \to \infty}  \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber = \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-	\end{equation}
+	\label{T:ubound}
+	Under the assumptions of Theorem \ref{T:solvable}
+	\begin{equation*}
+		\limsup_{n \to \infty} \; t_p^{-\beta} \log \Norm{u(t,x)}_p  \le \left(\frac{1}{2}\right)  \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+	\end{equation*}
 \end{theorem}
 
-In order to prove this theorem, we first need to prove the following lemma.
+In order to prove this theorem, we need to first prove the case when $p=2$ (Lemma \ref{L:p=2} below)
+and then use the hypercontractivity to establish the general case.
 
 \begin{lemma}
+	\label{L:2ineq}
+	Under the assumptions of Theorem \ref{T:solvable}, we have that
 	\begin{align}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right) &= \log\left(2^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\left[\rho\right] \label{E:2ineq-a}
+		\label{E:2ineq-a}
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
+		&= \log\left(2^{2(b+r)-\frac{b\alpha}{a}}\rho\right)
 	\end{align}
-
+	and
 	\begin{align}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) &=  \log\left[\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right] + \log\left[\rho\right] \label{E:2ineq-b}
+		\label{E:2ineq-b}
+		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
+		&=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
 \end{lemma}
 \begin{proof}
 	Recall the definition of $T_n$ from above as well as \eqref{E:LogRho} which says that
 	\begin{align*}
-			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{T_n}{(n!)^2} \right]  = \log[\rho].
+			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{T_n}{(n!)^2} \right]  = \log\rho.
 	\end{align*}
-	We already showed in the proof of Theorem \ref{T:Solvable} above that
+	We already showed in the proof of Theorem \ref{T:solvable} above that
 	\begin{align*}
 		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
 	\end{align*}
 	and then Lemma \ref{L:LNfnineq} above shows that
 	\begin{align*}
-		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n
+		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n.
 	\end{align*}
 	Combining this and \eqref{E:LogRho} we see that
 	\begin{align*}
@@ -1006,7 +1035,7 @@ In order to prove this theorem, we first need to prove the following lemma.
 																			 & \le \log\left( 2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right) + \lim_{n \to \infty} \frac{1}{n} \log\left( \frac{T_n}{(n!)^2} \right)                  \\
 																			 & = \log\left(  2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right)  + \log(\rho)
 	\end{align*}
-	which proves the upper bound for \eqref{E:2ineq-a}.
+	which proves the upper bound for \eqref{E:2ineq-a}.  \bigskip
 
 	Now we prove the lower bound. Define for $t>0$ and $t'>0$
 	\begin{align*}
@@ -1023,7 +1052,7 @@ In order to prove this theorem, we first need to prove the following lemma.
 	Let $\tau$ and $\widetilde{\tau}$ be independent exponential random variables with mean 1. By lemma \ref{L:Hneq1},
 	\begin{align*}
 		\mathbb{E}[J_n(\tau, \tau')] & = \int_0^\infty \int_0^\infty e^{-t}e^{-\widetilde{t}}J_n(t,\widetilde{t}) \ud t \ud \widetilde{t} = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x \\
-																 & = \int_{\R^{nd}} |\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) = T_n
+																 & = \int_{\R^{nd}} |\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) =: T_n.
 	\end{align*}
 	In addition,
 	\begin{align*}
@@ -1033,11 +1062,12 @@ In order to prove this theorem, we first need to prove the following lemma.
 	\begin{align*}
 		T_n & = \mathbb{E}[J_n(\tau,\widetilde{\tau})] \le \mathbb{E}\left[  {\tau}^{[2(b + r ) -b \alpha / a]n/2} \right] \mathbb{E}\left[  {\widetilde{\tau}}^{[2(b + r ) -b \alpha / a]n/2} \right]J_n(1,1) \\
 				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 J_n(1,1)                                                                                                                           \\
-				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2
+				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{\widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2,
 	\end{align*}
 	where the last line follows from Lemma \ref{L:inteq1}. Thus so far we have shown
 	\begin{align}
-		\frac{T_n}{(n!)^2} = \frac{\left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'}{(n!)^2}\le	\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 \label{E:2lowbd}
+		\label{E:2lowbd}
+		\frac{T_n}{(n!)^2} = \frac{\left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'}{(n!)^2}\le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
 	\end{align}
 	Now, another application of Stirling's formula shows that
 	\begin{align*}
@@ -1056,23 +1086,31 @@ In order to prove this theorem, we first need to prove the following lemma.
 	\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log\left[ \frac{\Gamma(an+1)}{(n!)^a} \right] = a\log(a).
 	\end{align*}
+	This completes the proof of Lemma \ref{L:2ineq}.
 \end{proof}
 
 
-With the above lemma, we can now prove Theorem \ref{T:p=2}.
-\begin{proof}[Proof of Theorem \ref{T:p=2}]
+\begin{lemma}
+	\label{L:p=2}
+	Under the assumptions of Theorem \ref{T:solvable}, we have that
+	\begin{equation}
+	\lim_{t \to \infty}  \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber = \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+	\end{equation}
+\end{lemma}
+\begin{proof}
 	Assuming that there is an $L^2(\Omega)$ solution $u(t,x)$ and then applying the scaling property \eqref{E:normscale} gives us
 	\begin{align*}
-		\mathbb{E}(|u(t,x)|^2)  &= \sum_{n\ge 0} 	\theta^n(n!)\Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \sum_{n \ge 0}\theta^n(n!)t^{(2(b+r)-b\alpha/a)n}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2
-		\\&= \sum_{n \ge 0}x_nR_nt^{(2(b+r)-b\alpha/a)n}
+		\mathbb{E}(|u(t,x)|^2) & = \sum_{n\ge 0} 	\theta^n(n!)\Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \sum_{n \ge 0}\theta^n(n!)t^{(2(b+r)-b\alpha/a)n}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \\
+                           & = \sum_{n \ge 0}x_nR_nt^{(2(b+r)-b\alpha/a)n}
 	\end{align*}
 	where
 	\begin{align*}
-		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad x_n=\frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}
+		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad
+		x_n = \frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}.
 	\end{align*}
-	\eqref{E:2ineq-b} above says that
+	Notice that \eqref{E:2ineq-b} above says that
 	\begin{align*}
-		\frac{1}{n}\log(R_n) \to  \log\left[ \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right]  \quad \text{as } n\to \infty.
+		\frac{1}{n}\log(R_n) \to  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right )  \quad \text{as } n\to \infty.
 	\end{align*}
 	Now define $R$ to be
 	\begin{align*}
@@ -1082,45 +1120,38 @@ With the above lemma, we can now prove Theorem \ref{T:p=2}.
 	\begin{align*}
 		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} x_nR^n\left(t^{(2(b+r)-b\alpha/a)}\right)^n = A
 	\end{align*}
-	By lemma A3 notice that
+	By Lemma A.3 of \cite{BCC21},
 	\begin{align*}
 		\lim_{t\to \infty} \left[\frac{1}{(\theta R)t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} = 2(b+r) - (b\alpha/a) -1
 	\end{align*}
 	and by an easy algebraic manipulation
 	\begin{align*}
-		\lim_{t\to \infty} \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
-		& \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} \\
-		& = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
+		\lim_{t\to \infty} & \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} \\
+                       & = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}.
 	\end{align*}
-	hence we see that
+	Hence,
+	% \begin{align*}
+	% 	\beta = \frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
+	% \end{align*}
+	% or by removing the fractions in the denominator
 	\begin{align*}
-		\beta = \frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
+		\beta = \frac{2a(b+r)-b\alpha}{2a(b+r)-(b\alpha)-a} \quad \text{and} \quad
+		  A   = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{a}{2a(b+r)-b\alpha-a}}.
 	\end{align*}
-	or by removing the fractions in the denominator
+	Finally, an application of Lemma A.2 of \cite{BCC21} shows that
 	\begin{align*}
-		\beta = \frac{2a(b+r)-b\alpha}{2a(b+r)-(b\alpha)-a} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{a}{2a(b+r)-b\alpha-a}}
+		\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \\
+                       & = \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
 	\end{align*}
-	Finally, lemma A2 says that
-	\begin{align}
-		\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber \\
-											 & = \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right)
-	\end{align}
+	which completes the proof of Theorem \ref{L:p=2}.
 \end{proof}
 
-\section{Upper Bound}
-\label{S:upperbound}
+Now we are ready to prove Theorem \ref{T:ubound}.
 
-In this section we use the result obtained in Theorem \ref{T:p=2} and the hypercontractivity
-property given by Theorem B.1 in \cite{BCC21} to prove the following theorem.
-
-\begin{theorem}
-	Under the assumptions of Theorem \ref{T:main}
-	\begin{equation}
-		\limsup_{n \to \infty} \; t_p^{-\beta} \log \Norm{u(t,x)}_p  \le \left(\frac{1}{2}\right)  \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-	\end{equation}
-\end{theorem}
-\begin{proof}
-	We denote $u_{\lambda}$ for $\lambda >0$ to be the the solution of the fractional equation with $\theta$ replaced with $\lambda$ and $u=u_\theta$. Using theorem B1 from the wave paper we can say that for any $p \ge 2$ that
+\begin{proof}[Proof of Theorem \ref{T:ubound}]
+	We denote $u_{\lambda}$ for $\lambda >0$ to be the solution of the fractional equation with
+	$\theta$ replaced with $\lambda$ and $u=u_\theta$. Using theorem B.1 of \cite{BCC21}, we see that
+	for all $p \ge 2$,
 	\begin{align*}
 		\Norm{u(t,0)}_p \le \Norm{u_{(p-1)\theta}(t,0)}_2
 	\end{align*}
@@ -1128,24 +1159,24 @@ property given by Theorem B.1 in \cite{BCC21} to prove the following theorem.
 	\begin{align*}
 		\Norm{u_{(p-1)\theta}(t,0)}_2^2 &= \sum_{n \ge 0}(n!)^n\theta^n(p-1)^n \Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 \\
 																		&= \sum_{n \ge 0}(n!)^n\theta^n \Norm{\widetilde{f}_n\left(\cdot,0,t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}\right)}_{\mathcal{H}^{\otimes n}}^2 \\
-																		&= \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2^2
+																		&= \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2^2.
 	\end{align*}
-	and from this we can see that
+	Hence,
 	\begin{align*}
 		\Norm{u(t,0)}_p \le \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2 =: \Norm{u(t_p,0)}_2
 	\end{align*}
-	and an application of Theorem \ref{T:p=2} proves the result.
+	and an application of Lemma \ref{L:p=2} proves Theorem \ref{T:ubound}.
 \end{proof}
 
 
-\section{Lower Bound}
-\label{S:lowerbound}
+\section{Lower bound of the asymptotics}
+\label{S:lowerbd}
 
 The goal of this section is to prove the following theorem.
 
 \begin{theorem}
 	\label{T:lbound}
-	Under the assumptions of Theorem \ref{T:main}
+	Under the assumptions of Theorem \ref{T:solvable}
 	\begin{equation*}
 		\liminf_{n \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \ge \left(\frac{1}{2}\right) \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta 		(\theta \rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 	\end{equation*}
@@ -1164,7 +1195,7 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	defined and for any $d \ge 1$, $t>0$ and $\phi \in L^2_{\mathbb{C}}(\mu)$. Moreover,
 	\begin{equation}
 		\label{E:LWn}
-		\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|^a} \mu(\ud \xi) \cdots \mu(\ud \xi_n)
+		\int_0^\infty e^{-t}W_n(t,\phi) \ud t = \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}|\xi_k + \cdots + \xi_n|^a} \mu(\ud \xi) \cdots \mu(\ud \xi_n).
 	\end{equation}
 \end{lemma}
 \begin{proof}
@@ -1193,33 +1224,37 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	\end{align*}
 	and as a consequence, the series $\left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f) \right|$
 	converges provided that $\Norm{u(t,0)}_p < \infty$, which is the case under Theorem
-	\ref{T:Solvable}.
+	\ref{T:solvable}.
 \end{proposition}
 \begin{proof}
-Suppose $f \in \mathcal{H}$ and let
+	Suppose $f \in \mathcal{H}$ and let
 	\begin{align*}
 		Z_f = \exp\left( W(f) - \frac{1}{2}\Norm{f}_\mathcal{H}^2 \right) = \sum_{n \ge 0} \frac{1}{n!} I_n(f^{\otimes n}).
 	\end{align*}
-If $f$ is a distribution, then $f^{\otimes n}$ is the distribution in $\mathcal{S}'(\R^{nd})$ whose Fourier transform is given by: $\mathcal{F}f^{\otimes n}(\vec{\xi}) = \prod_{k=1}^n \mathcal{F}f(\xi_k)$. If $f$ is a function, then $f^{\otimes n}$ is also a function and is defined by $f^{\otimes n}(\vec{x}) = \prod_{k=1}^n f(x_k)$. Now using Holder's inequality and  the fact that $W(f) \sim N(0,\Norm{f}_\mathcal{H}^2)$, we obtain:
-\begin{equation}
+	If $f$ is a distribution, then $f^{\otimes n}$ is the distribution in $\mathcal{S}'(\R^{nd})$
+	whose Fourier transform is given by: $\mathcal{F}f^{\otimes n}(\vec{\xi}) = \prod_{k=1}^n
+	\mathcal{F}f(\xi_k)$. If $f$ is a function, then $f^{\otimes n}$ is also a function and is defined
+	by $f^{\otimes n}(\vec{x}) = \prod_{k=1}^n f(x_k)$. Now using Holder's inequality and  the fact
+	that $W(f) \sim N(0,\Norm{f}_\mathcal{H}^2)$, we obtain:
+	\begin{equation}
 	\label{E:Zfholder1}
 	|\mathbb{E}\left[ u(t,0)Z_f \right]| \le \Norm{u(t,0)}_p \Norm{Z_f}_q = \Norm{u(t,0)}_p  \exp\left\{ \frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\}.
-\end{equation}
-Now by the orthogonality of the Wiener Chaos spaces,
-\begin{equation}
+	\end{equation}
+	Now by the orthogonality of the Wiener Chaos spaces,
+	\begin{equation}
 	\label{E:Zfholder2}
 	|\mathbb{E}\left[ u(t,0)Z_f \right]| \le \sum_{n \ge 0} \theta^{n/2} \frac{1}{n!} \mathbb{E}[I_n(f_n(\cdot,0;t)) I_n(f^{\otimes n} )] =  \sum_{n \ge 0} \theta^{n/2} \langle \widetilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } .
-\end{equation}
-By using the definition of $\widetilde{f}_n(\cdot,0;t)$, we see that
-\begin{align*}
+	\end{equation}
+	By using the definition of $\widetilde{f}_n(\cdot,0;t)$, we see that
+	\begin{align*}
 	 \langle \widetilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } & = \int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(\xi_k) \overline{ \mathcal{F}\widetilde{f}_n (\cdot, 0 ; t)(\vec{\xi} ) } \prod_{k=1}^n \mu(\ud \xi_k)                                                                                        \\
-                                                                                        & = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1} \mu(\ud \xi_k) \prod_{k=1} \mathcal{F}f(\xi_k) \prod_{k=1} \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_{\sigma(k)} \right) \\
-                                                                                        & = \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1}^n \mu(\ud \xi_k) \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_k \right)                                             \\
-                                                                                        & = W_n(t,\mathcal{F}f)
-\end{align*}
-where $t_{n+1} = t$ and the last step is due to the change of variables $s_1 = t - t_n, \cdots, s_n
-= t - t_1$ and $\xi_1' = \xi_n, \cdots, \xi_n' = \xi_1$. The conclusion follows from the above
-centered equations and \eqref{E:Zfholder1} and \eqref{E:Zfholder2}.
+																																												& = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1} \mu(\ud \xi_k) \prod_{k=1} \mathcal{F}f(\xi_k) \prod_{k=1} \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_{\sigma(k)} \right) \\
+																																												& = \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1}^n \mu(\ud \xi_k) \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_k \right)                                             \\
+																																												& = W_n(t,\mathcal{F}f)
+	\end{align*}
+	where $t_{n+1} = t$ and the last step is due to the change of variables $s_1 = t - t_n, \cdots,
+	s_n = t - t_1$ and $\xi_1' = \xi_n, \cdots, \xi_n' = \xi_1$. The conclusion follows from the above
+	centered equations and \eqref{E:Zfholder1} and \eqref{E:Zfholder2}.
 \end{proof}
 
 
@@ -1234,10 +1269,12 @@ Our next goal is to prove the following proposition, which is where the motivati
 \end{proposition}
 \begin{proof}
 	The above inequality motivates us to find a function $f_{\tau}(x)$ and some $\tau$ such that
-	\begin{enumerate}
-		\item \begin{align*}(q-1)\Norm{f_{\tau}}_{\mathcal{H}}^2 = (p-1)^{-1}\Norm{f_{\tau}}_{\mathcal{H}}^2 = t_p^\beta \Norm{f}_{\mathcal{H}}^2\end{align*}
-		\item  \begin{align*}W_n(t, \mathcal{F}f_\tau) = W_n(t_p^\beta, \mathcal{F}f)\end{align*}
-	\end{enumerate}
+	\begin{align*}
+		(q-1)\Norm{f_{\tau}}_{\mathcal{H}}^2 = (p-1)^{-1}\Norm{f_{\tau}}_{\mathcal{H}}^2 = t_p^\beta
+		\quad \text{and} \quad
+		W_n(t, \mathcal{F}f_\tau) = W_n(t_p^\beta, \mathcal{F}f)
+	\Norm{f}_{\mathcal{H}}^2,
+	\end{align*}
 	since then we could just apply Proposition \ref{P:Wnprop1} to the function $f_\tau$. Note above
 	that we have not yet defined $\beta$ or $t_p$. We guess $f_\tau$ takes the form $f_\tau(x) =
 	\tau^Vf(\tau^Wx)$. We now mention, through direct calculation one can show that
@@ -1407,41 +1444,39 @@ and so $|g_h|^2 \in \mathcal{H}$. Lastly, since $\mathcal{F}|g_h|^2(\xi)$ is non
 We now give scaling properties for $W_n$ and $U_n$.
 
 \begin{lemma}
+	\label{L:WU}
 	We have that
 	\begin{align*}
-		W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1)
-	\end{align*}
-	and moreover
-	\begin{align*}
-		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1)
+		W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
+		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1).
 	\end{align*}
 \end{lemma}
 \begin{proof}
-Let $\phi = \mathcal{F}f$ and $c>0$
+	Let $\phi = \mathcal{F}f$ and $c>0$
 	\begin{align*}
-		W_n & (t,\phi(c^{-1}\cdot) = \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(c^{-1}\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i
-		\\&= c^{nd} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(c(\xi_k + \cdots \xi_n)) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i
-		\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i
-		\\&= c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i
-		\\&= c^{-n\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(c^{\frac{a}{b}}t,\phi \right)
+		W_n & (t,\phi(c^{-1}\cdot) = \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(c^{-1}\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i                                                                            \\
+				& = c^{nd} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(c(\xi_k + \cdots \xi_n)) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i                                                                                            \\
+				& = c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i                            \\
+				& = c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i \\
+				& = c^{-n\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(c^{\frac{a}{b}}t,\phi \right)
 	\end{align*}
-Now we apply this with $c^{\frac{a}{b}} = \frac{1}{t}$ to get
+	Now we apply this with $c^{\frac{a}{b}} = \frac{1}{t}$ to get
 	\begin{align*}
 		W_n\left(t,\phi(t^{\frac{b}{a}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
 	\end{align*}
-Now note that
+	Now note that
 	\begin{align*}
 		\Norm{\phi(t^{\frac{b}{a}} \cdot )}_{L^2(\mu)}^2 = t^{-\frac{\alpha b }{a}}\Norm{\phi}_{L^2(\mu)}^2
 	\end{align*}
-and from this we deduce that
+	and from this we deduce that
 	\begin{align*}
 		\Norm{t^{\frac{\alpha b }{2 a}}\phi(t^{\frac{b}{a}} \cdot )}_{L^2(\mu)}^2 =  \Norm{\phi}_{L^2(\mu)}^2 = \Norm{f}_{\mathcal{H}}^2
 	\end{align*}
-and in addition
+	and in addition
 	\begin{align*}
 		W_n\left(t,t^{\frac{b \alpha}{2 a}}\phi(t^{\frac{a}{b}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \frac{\alpha}{2} +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
 	\end{align*}
-and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\Norm{f}_\mathcal{H} =1$.
+	and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\Norm{f}_\mathcal{H} =1$.
 \end{proof}
 
 \begin{lemma}
@@ -1450,11 +1485,12 @@ and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\
 	\end{align*}
 \end{lemma}
 \begin{proof}
-	Let $\tau$ be an exponential random variable with mean $1$. By lemma 6.7,
+	Let $\tau$ be an exponential random variable with mean $1$. By \textcolor{magenta}{Lemma 6.7
+	(Lemma \ref{L:WU})},
 	\begin{align*}
 		\mathbb{E}(U_n(\tau)) = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1) = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1)
 	\end{align*}
-	and by Theorem 6.6 we obtain
+	and by \textcolor{magenta}{Theorem 6.6} we obtain
 	\begin{align}\label{E:lb1}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log(\rho^{1/2}).
 	\end{align}
@@ -1476,48 +1512,49 @@ and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\
 	For any $k,\theta >0$, there exists a constant $c_1 = c_1(\alpha,\mathcal{M}, k, \theta) >0$ such
 	that, by setting $n_t = [c_1 t]$, it holds that
 	\begin{equation}\label{E:69ineq}
-		\liminf_{t \to \infty} \frac{1}{t} \log( k^{n_t} \theta^{n_t/2}U_{n_t}(t)) \ge \left( k \sqrt{\theta} \right)^{\frac{2a}{2ab-\alpha b + 2ar}} \left( \rho^{1/2} \right)^{\frac{2a}{2ab-\alpha b + 2ar}}
+		\liminf_{t \to \infty} \frac{1}{t} \log( k^{n_t} \theta^{n_t/2}U_{n_t}(t)) \ge
+		\left( k \sqrt{\theta} \right)^{\frac{2a}{2ab-\alpha b + 2ar}} \left( \rho^{1/2} \right)^{\frac{2a}{2ab-\alpha b + 2ar}}.
 	\end{equation}
 \end{lemma}
 \begin{proof}
-Let $\epsilon > 0$. Lemma 6.8 guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
+	Let $\epsilon > 0$. \textcolor{magenta}{Lemma 6.8} guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
 	\begin{align*}
 		(n!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} U_n(1) \ge \exp\left( n(\log(R)-\epsilon) \right) = R^n e^{-n\epsilon }
 	\end{align*}
-where
+	where
 	\begin{align*}
 		R = \frac{ \rho^{1/2} } { \left( \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) }}.
 	\end{align*}
-Now fix a $c>0$ and let $n_t := [ct]$. Notice that $n_t \ge N_\epsilon$ for any $t>t_\epsilon := (N_\epsilon +1)/c$.
+	Now fix a $c>0$ and let $n_t := [ct]$. Notice that $n_t \ge N_\epsilon$ for any $t>t_\epsilon := (N_\epsilon +1)/c$.
 
-Let $t > t_\epsilon$.
+	Let $t > t_\epsilon$.
 	\begin{align*}
 		k^{n_t}\theta^{n_t/2}U_{n_t}(t) = 	k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } U_{n_t}(1) \ge \frac{ k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n!)^{\frac{b}{a} \left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } R^{n_t}e^{-n_t \epsilon}
 	\end{align*}
-Notice that $[ct]/t \to c$ as $t \to \infty$ which means that $n_t/t \to c$ as $t \to \infty$. With this we can say
+	Notice that $[ct]/t \to c$ as $t \to \infty$ which means that $n_t/t \to c$ as $t \to \infty$. With this we can say
 	\begin{align*}
 		\liminf_{t \to \infty} \frac{1}{t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right) = c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right)  =: I(n_t)
 	\end{align*}
-Now,
+	Now,
 	\begin{align*}
-		I(n_t) & \ge  c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( (kR\sqrt{\theta})^{n_t} \frac{ t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n_t!)^{\frac{b}{a}\left( a -\frac{\alpha}{2} + \frac{a}{b}r \right) }  }\right) - c\epsilon
-		\\&= c \log(k \sqrt{\theta}R) + c \liminf_{t \to \infty} \frac{1}{n_t} \log \left[  \left(\frac{t}{n_t}\right)^{\frac{b}{a}\left(a-\frac{\alpha}{2} + \frac{a}{b}r\right)n_t} \frac{ n_t^{\frac{b}{a}\left( a- \frac{\alpha}{2} + \frac{a}{b}r \right)n_t } } { (n_t!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) } }\right] - c \epsilon
-		\\&=  c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \liminf_{t \to \infty} \frac{1}{n_t}\log\left(\frac{n_t^{n_t}}{(n_t)!}\right) - c\epsilon
-		\\& =   c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)  - c\epsilon
+		I(n_t) & \ge c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( (kR\sqrt{\theta})^{n_t} \frac{ t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n_t!)^{\frac{b}{a}\left( a -\frac{\alpha}{2} + \frac{a}{b}r \right) }  }\right) - c\epsilon                                                                                                  \\
+           & = c \log(k \sqrt{\theta}R) + c \liminf_{t \to \infty} \frac{1}{n_t} \log \left[  \left(\frac{t}{n_t}\right)^{\frac{b}{a}\left(a-\frac{\alpha}{2} + \frac{a}{b}r\right)n_t} \frac{ n_t^{\frac{b}{a}\left( a- \frac{\alpha}{2} + \frac{a}{b}r \right)n_t } } { (n_t!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) } }\right] - c \epsilon \\
+           & = c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \liminf_{t \to \infty} \frac{1}{n_t}\log\left(\frac{n_t^{n_t}}{(n_t)!}\right) - c\epsilon                                                                                             \\
+           & = c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)  - c\epsilon
 	\end{align*}
-and letting $\epsilon$ tend to $0$ we wee that
+	and letting $\epsilon$ tend to $0$ we wee that
 	\begin{align*}
 		I(n_t) \ge c \left[ \log(k \sqrt{\theta}R) - \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right] =: h(c).
 	\end{align*}
-We can easily find the maximal $c$ by solving $h'(c)=0$ and doing so we get $c=(k \sqrt{\theta}R)^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}$. After plugging in this value for $c$ and replacing $R$ we arrive at the following inequality
+	We can easily find the maximal $c$ by solving $h'(c)=0$ and doing so we get $c=(k \sqrt{\theta}R)^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}$. After plugging in this value for $c$ and replacing $R$ we arrive at the following inequality
 	\begin{align*}
 		I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho_{new}^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}
 	\end{align*}
-and simplifying exponents gives us \eqref{E:69ineq}.
+	and simplifying exponents gives us \eqref{E:69ineq}.
 \end{proof}
 
 
-We now can prove Theorem \ref{T:lbound}.
+We are now ready to prove Theorem \ref{T:lbound}.
 
 \begin{proof}[Proof of Theorem \ref{T:lbound}]
 	By proposition \ref{P:Wnprop2}, for and $p,q >0$ with $p^{-1}+q^{-1} = 1$ we have that
@@ -1533,12 +1570,13 @@ We now can prove Theorem \ref{T:lbound}.
 	where $n_t = [ct_p^\beta]$. Now by choosing $c$ as in Lemma \ref{L:logUnlb} we get that
 	\begin{align*}
 		\liminf_{n \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p & \ge 	\liminf_{n \to \infty} \left( \frac{-\frac{1}{2}t_p^\beta k^2}{t_p^\beta} + \frac{1}{t_p^\beta}\log \left[ \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f) \right]  \right) \\
-                                                             & -\frac{1}{2}k^2 + (k\sqrt{\theta})^{ \frac{2a}{2ab-\alpha b +2ar} }(\rho^{1/2})^{\frac{2a}{2ab -\alpha b + 2ar}} =: h(k)
+                                                             & = -\frac{1}{2}k^2 + k^{ \frac{2a}{2ab-\alpha b +2ar} }(\rho \theta)^{\frac{a}{2ab -\alpha b + 2ar}} =: h(k).
 	\end{align*}
-	By maximizing $h$ we see that $h$ is maximized at the point $k^* = \left( \frac{2ab -\alpha b +
-	2ar}{2aB} \right)^{ \frac{2ab-\alpha b +2ar}{2a-2[2ab-\alpha b + 2ar]} }$ where
-	$B=(\sqrt{\theta}\rho^{1/2})^{ \frac{2a}{2ab-\alpha b + 2ar} }$. Inserting $k*$ into $h$ gives us
-	that
+	By maximizing $h$ for $k>0$, we see that $h$ is maximized at the point
+	\begin{align*}
+		k^* = \left( \frac{2ab -\alpha b + 2ar}{2aB} \right)^{ \frac{2ab-\alpha b +2ar}{2a-2[2ab-\alpha b + 2ar]}} \quad \text{with $B=(\theta\rho)^{ \frac{a}{2ab-\alpha b + 2ar} }$}.
+	\end{align*}
+	Inserting $k^*$ into $h$ gives us that
 	\begin{align*}
 		h(k^*) = B^{\beta}\left( \frac{2a}{2ab - \alpha b +2ar} \right)^\beta \left( \frac{2ab-\alpha b + 2ar -a }{2a} \right)
 	\end{align*}
