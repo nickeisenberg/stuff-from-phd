@@ -156,7 +156,7 @@
 \DeclareMathOperator{\vv}{\varsigma}
 % }}}
 
-\begin{remark}
+\begin{document}
 
 \title{Fractional SPDE with Time-independent Noise:\\
 Solvability and Exact Asymptotics\footnote{Department of Mathematics and
@@ -1177,21 +1177,23 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	By Fubini's theorem, the left hand side of \eqref{E:LWn} is equal to
-	\begin{align*}
-		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n \mathcal{F}G(s_k-s_{k-1}, \cdot)(\xi_k + \cdots + \xi_n) \ud \vec{s} \ud t \mu(\ud \vec {\xi}),
-	\end{align*}
-	which is equal to, by the change of variables $t-s_n = u$ and $s_k - s_{k-1} = u_k$ for $k=1,...,n$,
-	\begin{align*}
-		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \left( \int_0^\infty e^{-u} \ud u \right) \prod_{k=1}^n \left( \int_0^\infty e^{-u_k} \mathcal{F}G(u_k,\cdot)(\vec{\xi}) \; \ud u_k \right) \prod_{k=1}^n \mu(\ud \xi_k).
-	\end{align*}
-	Now recall that $\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t =
-	1/(1+\frac{\nu}{2}|\xi|^a)$. Then the above quantity is equal to
-	\begin{align*}
-		 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+|\sum_{j=k}^n \xi_j|^2} \prod_{k=1}^n \mu(\ud \xi_k).
-	\end{align*}
-	The result it follows from applying the Cauchy-Schwarz inequality. In addition, by using the same
-	arguments that lead to \eqref{E:lem62step}, we see the above quantity is finite.
+	The proof follows the exact arguments as those in the proof of Lemma 6.2 of \cite{BCC21} except
+	that one needs to use the following Laplace transform:
+	% By Fubini's theorem, the left hand side of \eqref{E:LWn} is equal to
+	% \begin{align*}
+	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n \mathcal{F}G(s_k-s_{k-1}, \cdot)(\xi_k + \cdots + \xi_n) \ud \vec{s} \ud t \mu(\ud \vec {\xi}),
+	% \end{align*}
+	% which is equal to, by the change of variables $t-s_n = u$ and $s_k - s_{k-1} = u_k$ for $k=1,...,n$,
+	% \begin{align*}
+	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \left( \int_0^\infty e^{-u} \ud u \right) \prod_{k=1}^n \left( \int_0^\infty e^{-u_k} \mathcal{F}G(u_k,\cdot)(\vec{\xi}) \; \ud u_k \right) \prod_{k=1}^n \mu(\ud \xi_k).
+	% \end{align*}
+	% Now recall that $\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t =
+	% 1/(1+\frac{\nu}{2}|\xi|^a)$. Then the above quantity is equal to
+	% \begin{align*}
+	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+|\sum_{j=k}^n \xi_j|^2} \prod_{k=1}^n \mu(\ud \xi_k).
+	% \end{align*}
+	% The result it follows from applying the Cauchy-Schwarz inequality. In addition, by using the same
+	% arguments that lead to \eqref{E:lem62step}, we see the above quantity is finite.
 \end{proof}
 
 \begin{proposition}
@@ -1669,4 +1671,4 @@ We are now ready to prove Theorem \ref{T:lbound}.
 	\newblock Cambridge University Press.
 	% }}}
 \end{thebibliography}
-\end{remark}
+\end{document}
