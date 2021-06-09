@@ -156,7 +156,7 @@
 \DeclareMathOperator{\vv}{\varsigma}
 % }}}
 
-\begin{document}
+\begin{remark}
 
 \title{Fractional SPDE with Time-independent Noise:\\
 Solvability and Exact Asymptotics\footnote{Department of Mathematics and
@@ -238,65 +238,81 @@ the following integral equation:
 	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
 \end{equation}
 where the stochastic integral is in the {\it Skorohod} sense; see Definition \ref{D:Sol} below.
+\bigskip
 
-We now need to make mention of the suitable choices for the noise $W$. Let $k \in \{1, \cdots , d\}$
-and partition the $d$-coordinates of $x=(x_1, \cdots, x_n)$ into $k$ distinct groups of size $d_i$
-for $i \in \{1, \cdots, k\}$. Note that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} ,
-\cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. We consider a Gaussian Noise
-with correlation function  given by
-\begin{equation}
-	\label{E:corfunction}
-	\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}
-\end{equation}
-where $\alpha_i \in (0, d_i)$ and we define $\alpha = \sum_{i=1}^k \alpha_i$. This correlation
-function corresponds with the spectral density given by $\mu (\ud \xi) = \varphi(\xi) \ud \xi$ with
+Regarding the noise, we aim to cover the Riesz kernel case, the fractional noise and a mixture of
+them, which is stated in the following assumption:
+\begin{assumption}
+	\label{A:Noise}
+	Let $k \in \{1, \cdots , d\}$ and partition the $d$-coordinates of $x=(x_1, \cdots, x_d)$ into $k$
+	distinct groups of size $d_i$ so that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} ,
+	\cdots , x_{i_{d_i}})$ to be the coordinates in the $i^{th}$ partition. Assume that the
+	correlation function of the Gaussian noise is given by
+	\begin{equation}
+		\label{E:corfunction}
+		\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}
+	\end{equation}
+	where $\alpha_i \in (0, d_i)$. Define $\alpha := \sum_{i=1}^k \alpha_i$.
+\end{assumption}
+
+The spectral density corresponding to \eqref{E:corfunction} is  given by $\mu (\ud \xi) =
+\varphi(\xi) \ud \xi$ with
 \begin{equation}
 	\label{E:specfunction}
-	\varphi(\xi) = C\prod_{i=1}^k|\xi_{(i)}|^{-(d_i-\alpha_i)}.
+	\varphi(\xi) = \prod_{i=1}^k C_{\alpha_i,d_i} |\xi_{(i)}|^{-(d_i-\alpha_i)}.
 \end{equation}
-The constant $C$ can be calculated through the relation $\mathcal{F}\gamma = \varphi$. An important
-fact stated in \cite{BCC21} is that there exists a nonnegative function $K$ on $\R^d$ such that
-$\gamma = K*K$ where '$*$' denotes the spatial convolution.
-
-\begin{example}
-When $k=1$ above then we recover the Riesz kernel $\gamma(x) = |x|^{-\alpha}$ and its spectral
-density $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. In addition, we may write $\gamma = K*K$ where
-$"*"$ denotes the convolution and $K(x) = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}$. In this case we have
+Moreover, one can find a nonnegative and nonnegative definite $K$ such that $\gamma = K*K$ where
+`$*$' denotes the spatial convolution. Indeed, one can choose
+\begin{align}
+	\label{E:K}
+	K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} |x_i|^{-(d_i-\alpha_i)}.
+\end{align}
+The two constants in both \eqref{E:specfunction} and \eqref{E:K} are defined as
 \begin{equation}
 	\label{E:noiseconstant}
-	C_{d,\alpha} = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad \text{and}\quad
-	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} }.
+	C_{\alpha,d}     = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad \text{and}\quad
+	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}}.
 \end{equation}
+
+\begin{example}
+	The case $k=1$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers the Riesz kernel case. In this case,
+	\begin{align*}
+		\gamma(x)  = |x|^{-\alpha}, \quad
+		\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)} \quad \text{and} \quad
+		K(x)       = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}.
+	\end{align*}
 \end{example}
 
 \begin{example}
-	When $k=d$ above then we recover the {\it fractional noise}. In this case, the  correlation
-	function and the spectral measure are equal to
+	The case when $k=d$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers the {\it
+	time-independent fractional noise}.  In this case,
 	\begin{align*}
-		\gamma(x) = \prod_{i=1}^d |x_i|^{-\alpha_i}\quad\text{and}\quad
-		\varphi(\xi) = \prod_{i=1} C_{1,\alpha_i} |\xi_i|^{-(1-\alpha_i)},
+		\gamma(x)    = \prod_{i=1}^d |x_i|^{-\alpha_i}, \quad
+		\varphi(\xi) = \prod_{i=1}^d C_{\alpha_i,1} |\xi_i|^{-(1-\alpha_i)}\quad\text{and}\quad
+		K(x)         = \prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}.
 	\end{align*}
-	respectively, where $\alpha_i \in (0,1)$. In this case, We may also write $\gamma = K*K$ where
-	$K(x)=\prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}$ where $C_{1,\alpha_i}$ and $
-	\beta_{\alpha_i,1}$ are given by \eqref{E:noiseconstant}. If we consider the parameterization
-	$\alpha_i = 2-2H_i$ with $H_i \in (1/2 , 1)$, then the corresponding noise is the fractional
-	Brownian sheet with indices $H_1, \cdots , H_d$. The stochastic heat equation with such noise was
-	studied in Hu \cite{Hu01Heat}.
+	The stochastic heat equation with such noise was earlier studied by Hu \cite{Hu01Heat}.
 \end{example}
 
-\begin{remark}
-	\label{spectralconjecture}
-	We may actually apply the techniques in this paper to any such noise whose correlation function and
-	spectral density, $\gamma$ and $\mu$, satisfy
-	\begin{enumerate}
-		\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
-		\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
-		\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution.
-	\end{enumerate}
-	However, there is an issue with applying the results in this paper to the more general noises satisfying \ref{spectralconjecture}. Proving $\rho$, defined below, is finite is a challange. In \cite{BCR09}, $\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below in Lemma \ref{L:rhofinite}, we give a proof showing that $\rho$ is finite for the noise with spectral density defined above in \eqref{E:specfunction}.
-
-	\textcolor{red}{Are there other noises satisfying \ref{spectralconjecture} other than the general fractional noise?}
-\end{remark}
+% To facilitate the statement of our results, all the above examples can be put under the following
+% assumption. It is interesting to see whether this assumption could actually cover more examples than
+% those stated above.
+%
+% \begin{remark}
+% 	\label{R:spec}
+% 	We may actually apply the techniques in this paper to any such noise whose correlation function and
+% 	spectral density, $\gamma$ and $\mu$, satisfy
+% 	\begin{enumerate}
+% 		\item both $\mu$ and $\gamma$ are absolutely continuous with respect to Lebesgue measure
+% 		\item for some $\alpha \in (0,d)$, $\gamma$ satisfies that for all $c>0$ and $x\in \R^d$ that $\gamma(cx) = c^{-\alpha}\gamma(x)$
+% 		\item there exists a nonnegative function $K$ on $\R^d$ such that $\gamma = K*K$ where $"*"$ refers to the spatial convolution.
+% 	\end{enumerate}
+% 	However, there is an issue with applying the results in this paper to the more general noises
+% 	satisfying \ref{R:spec}. Proving $\rho$, defined below, is finite is a challenge. In \cite{BCR09},
+% 	$\rho$ is proven to be finite in the case where $\varphi$ is the Riesz kernel. Below in Lemma
+% 	\ref{L:rhofinite}, we give a proof showing that $\rho$ is finite for the noise with spectral
+% 	density defined above in \eqref{E:specfunction}.
+% \end{remark}
 
 Next, we need to make some assumption on the parameters $a,b,r$ of \eqref{E:SPDE} as well as the
 dimension $d$. Under theses assumptions, the fundamental function $G$ will be nonnegative and smooth
@@ -377,7 +393,10 @@ equation. Here is the main result of this paper.
 \end{proof}
 \begin{remark}
 	\label{R:Inter}
-	(1) By setting
+	The asymptotics in \eqref{E:momentasym} interpolates the corresponding results for the stochastic
+	wave and heat equations:
+
+	\noindent (1) By setting
 	\begin{align*}
 		a = b = \nu = 2 \quad \text{and} \quad r = 0,
 	\end{align*}
@@ -404,7 +423,8 @@ In the following, we first give some preliminaries in Section \ref{S:Pre} includ
 calculus, the definition of the solution, and some variational constants. The existence and
 uniqueness of a $L^p(\Omega)$ solution --- Theorem \ref{T:solvable} --- is proven in Section
 \ref{S:solvable}. The upper bound and lower bound for \eqref{E:momentasym} are established in
-Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.
+Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.  Finally, in the appendix --- Section
+\ref{S:Appendix}, we list a few proofs of the results in the paper.
 
 \section{Some preliminaries}
 \label{S:Pre}
@@ -557,7 +577,7 @@ Let us first define
 \begin{align*}
 	\rho := \rho_{\nu,a} = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x).
 \end{align*}
-Recall that when $\mu(\ud \xi) = C_{d,\alpha}|\xi|^{-(d-\alpha)} \ud \xi$ which corresponds to the
+Recall that when $\mu(\ud \xi) = C_{\alpha,d}|\xi|^{-(d-\alpha)} \ud \xi$ which corresponds to the
 Riesz kernel $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$, Bass, Chen and Rosen
 \cite{BCR09} established that when $a \in (0,2]$ and $\nu = 2$,
 \begin{equation}
@@ -579,62 +599,20 @@ The following result shows the relationship between $\rho_{2,a}$ and $\rho$ and 
 
 \begin{lemma}
 	\label{L:rhovar}
-	For any $\nu >0 $ and $a \in (0,2]$, we have that
+	For the Riesz kernel case, i.e., when $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$, it
+	holds that
 	\begin{equation}
 	\label{E:rhoLam}
-	\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a}  \Lambda_{\alpha}^{2-(\alpha/a)}.
+		\rho_{\nu, a} = \left(\frac{\nu}{2}\right)^{-\alpha/a}  \Lambda_{\alpha}^{2-(\alpha/a)}, \quad
+		\text{for any $\nu >0 $ and $a \in (0,2]$}.
 	\end{equation}
 	In addition,
 	\begin{equation}\label{E:LogRho}
-			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log\left( \rho \right).
+			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log\left( \rho_{\nu, a} \right).
 	\end{equation}
 \end{lemma}
-\begin{proof}
-	Recall that we define $\varphi(x) = C_{d,\alpha}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
-	\begin{align*}
-		\rho & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)                                                                                                                                                                                  \\
-				 & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \left(\frac{\nu}{2}\right)^{(d-\alpha)/a}\varphi(x)\left(\frac{\nu}{2}\right)^{-d/a}\ud x \\
-				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x
-	\end{align*}
-	Now define $f^*(x) =\left(\frac{\nu}{2}\right)^{\frac{-d}{2a}} f\left( \left(\frac{\nu}{2}\right)^{-1/a} x \right)$. Then with this we see that
-	\begin{align*}
-		\rho &= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
-	\end{align*}
-	and note that
-	\begin{align*}
-		\int_{\R^d} f(x)^2 \ud x = \int_{\R^d} f^*(x)^2 \ud x
-	\end{align*}
-	and thus
-	\begin{align*}
-		\left\{ f \in L^2(\R^d) : \Norm{f}_2 = 1 \right\} = 	\left\{ f \in L^2(\R^d) : \Norm{f^*}_2 = 1 \right\}
-	\end{align*}
-	so we can say that
-	\begin{align*}
-		\rho & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x     \\
-				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
-				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}
-	\end{align*}
-	and \eqref{E:rhoLam} is proven by applying \eqref{E:oldrhovarrep}.
-
-	To prove \eqref{E:LogRho}, we first notice that by applying the substitution $\xi_{\sigma(j)}' =
-	\left(\frac{\nu}{2}\right)^{1/a} \xi_{\sigma(j)}$ that
-	\begin{align*}
-      & \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}) \\
-		= & \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )
-	\end{align*}
-	and now we can directly calculate
-	\begin{align*}
-		\lim_{n \to \infty} \frac{1}{n} & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                            \\
-																		& = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
-																		& = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}   \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]
-	\end{align*}
-	and because of both Theorem 1.5 \cite{BCR09} and \eqref{E:rhoLam} above,
-	\begin{gather*}
-		\lim_{n \to \infty} \frac{1}{n} \log \left( \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right) \\
-		= \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} \right) + \log\left( \rho_{2,a} \right) = \log\left( \rho \right).
-	\end{gather*}
-	This completes the proof of Lemma \ref{L:rhovar}.
-\end{proof}
+This lemma can be proved in the standard scaling arguments together with \eqref{E:oldrhovarrep}. For
+completeness, the proof is presented in the Appendix of the paper.  \bigskip
 
 Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting
 that this implies that $\rho$ is finite by \ref{L:rhovar}. We stated in the introduction
@@ -1583,6 +1561,55 @@ We are now ready to prove Theorem \ref{T:lbound}.
 	and plugging in the value for $B$ proves Theorem \ref{T:lbound}.
 \end{proof}
 
+\section{Appendix}
+\label{S:Appendix}
+\begin{proof}[Proof of Lemma \ref{L:rhovar}]
+	Recall that we define $\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
+	\begin{align*}
+		\rho & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)                                                                                                                                                                                  \\
+				 & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \left(\frac{\nu}{2}\right)^{(d-\alpha)/a}\varphi(x)\left(\frac{\nu}{2}\right)^{-d/a}\ud x \\
+				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x
+	\end{align*}
+	Now define $f^*(x) =\left(\frac{\nu}{2}\right)^{\frac{-d}{2a}} f\left( \left(\frac{\nu}{2}\right)^{-1/a} x \right)$. Then with this we see that
+	\begin{align*}
+		\rho &= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
+	\end{align*}
+	and note that
+	\begin{align*}
+		\int_{\R^d} f(x)^2 \ud x = \int_{\R^d} f^*(x)^2 \ud x
+	\end{align*}
+	and thus
+	\begin{align*}
+		\left\{ f \in L^2(\R^d) : \Norm{f}_2 = 1 \right\} = 	\left\{ f \in L^2(\R^d) : \Norm{f^*}_2 = 1 \right\}
+	\end{align*}
+	so we can say that
+	\begin{align*}
+		\rho & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x     \\
+				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
+				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}
+	\end{align*}
+	and \eqref{E:rhoLam} is proven by applying \eqref{E:oldrhovarrep}.
+
+	To prove \eqref{E:LogRho}, we first notice that by applying the substitution $\xi_{\sigma(j)}' =
+	\left(\frac{\nu}{2}\right)^{1/a} \xi_{\sigma(j)}$ that
+	\begin{align*}
+      & \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}) \\
+		= & \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )
+	\end{align*}
+	and now we can directly calculate
+	\begin{align*}
+		\lim_{n \to \infty} \frac{1}{n} & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                            \\
+																		& = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
+																		& = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}   \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]
+	\end{align*}
+	and because of both Theorem 1.5 \cite{BCR09} and \eqref{E:rhoLam} above,
+	\begin{gather*}
+		\lim_{n \to \infty} \frac{1}{n} \log \left( \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right) \\
+		= \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} \right) + \log\left( \rho_{2,a} \right)
+		= \log\left( \rho_{\nu, a} \right).
+	\end{gather*}
+	This completes the proof of Lemma \ref{L:rhovar}.
+\end{proof}
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	\bibitem{BCC21} % {{{ 1.
@@ -1642,4 +1669,4 @@ We are now ready to prove Theorem \ref{T:lbound}.
 	\newblock Cambridge University Press.
 	% }}}
 \end{thebibliography}
-\end{document}
+\end{remark}
