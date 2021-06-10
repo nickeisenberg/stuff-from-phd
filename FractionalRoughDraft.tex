@@ -319,7 +319,7 @@ dimension $d$. Under theses assumptions, the fundamental function $G$ will be no
 for $x\ne 0$; see Theorems 4.1 and 4.6 of \cite{CHHH17}.
 
 \begin{assumption}
-	\label{A:param}
+	\label{A:Nonnegative}
 	The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
 	\begin{enumerate}
 		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
@@ -329,6 +329,34 @@ for $x\ne 0$; see Theorems 4.1 and 4.6 of \cite{CHHH17}.
 	\end{enumerate}
 \end{assumption}
 
+\begin{figure}[htpb]
+	\centering
+	\begin{tikzpicture}[scale=2.2]
+		\draw [->] (-0.3,0) -- (2.3,0) node [right] {$a$};
+		\draw [->] (0,-0.3) -- (0,2.2) node [above] {$b$};
+		\draw [densely dashed,gray] (1,0) -- (1,2) (2,0) -- (2,2) (-0.4,1) -- (2.5,1) (0,2) -- (2,2);
+		\draw (1,0.05) -- (1,-0.05) node [below] {$1$};
+		\draw (2,0.05) -- (2,-0.05) node [below] {$2$};
+		\draw (0.05,1) -- (-0.05,1) node [left] {$1$};
+		\draw (0.05,2) -- (-0.05,2) node [left] {$2$};
+		\filldraw [fill=red!30, opacity=0.5] (0,0) rectangle (2,1);
+		\filldraw [fill=blue!30, opacity=0.5] (1,1) -- (2,1) -- (2,2);
+		\draw [thick] (1.03,1.03) -- (1.97,1.97);
+		\draw [thick] ([shift=(0:0.05)]1,1) arc (0:90:0.05);
+		\draw [thick] ([shift=(180:0.05)]2,2) arc (180:270:0.05);
+		\node at (2.3,1.5) [rotate=90, anchor=center] {$1\le d\le 3$};
+		\node at (2.3,0.45)[rotate=90, anchor=center] {$d\ge 1$};
+		\draw [thick] (0.03,1) -- (2,1);
+		\draw [thick] ([shift=(-90:0.05)]0,1) arc (-90:90:0.05);
+		\node at (1.73,1.35) [rotate=45, anchor=center] {$r\ge 0$};
+		\node at (1,0.45) {$r\ge 0$};
+		\node at (1,0.9) {$r=0$ or $r>1$};
+		\node at (1.5,1.55) [rotate=45,anchor=south] {$r>\frac{d+3}{2}-b$};
+	\end{tikzpicture}
+	\caption{Illustration of the sufficient conditions (Assumption \ref{A:Nonnegative}) for
+	$G(t,\cdot)$ to be nonnegative.}
+	\label{F:Nonnegative}
+\end{figure}
 
 We now introduce the following variational constant, which plays an important role in this paper:
 \begin{align*}
@@ -345,10 +373,11 @@ equation. Here is the main result of this paper.
 
 \begin{theorem}
 	\label{T:solvable}
-	Under Assumption \ref{A:param}, equation \eqref{E:SPDE} driven by the noise with spectral
+	Under Assumption \ref{A:Nonnegative}, equation \eqref{E:SPDE} driven by the noise with spectral
 	density given in equation \eqref{E:specfunction} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
 	all $p \ge 2$, $t>0$, and $x \in \R^d$ provided that
 	\begin{equation}
+		\label{E:alpha}
 		\alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
 	\end{equation}
 \end{theorem}
@@ -1246,8 +1275,9 @@ proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat here.
 	% centered equations and \eqref{E:Zfholder1} and \eqref{E:Zfholder2}.
 % \end{proof}
 
-Our next goal is to prove the following proposition, which is where the motivation of the
-definitions of $t_p$ and $\beta$ come from.
+Now we are going to apply a scaling argument to \eqref{E:Wnprop1} in order to put $t$ and $p$
+together, from which we can determine the constants $t_p$ and  $\beta$ defined in
+\eqref{E:beta&tp}.
 
 \begin{proposition}
 	\label{P:Wnprop2}
@@ -1319,9 +1349,9 @@ then by Plancherel's theorem
 \begin{align*}
 		W_n(t,\mathcal{F}f) = \int_{[0,t]^n<} \int_{\R^{nd}} \prod_{k=1}^n(f*\gamma)(x_k) \prod_{k=1} G(s_k - s_{k-1}, x_k-x_{k-1}) \ud \vec{x} \ud \vec{s} =: U_n(t,f)
 \end{align*}
-with $s_0=0$ and $x_0=0$. Under Assumption \ref{A:param}, the Green's function for the fractional equation is nonnegative and hence under these conditions we get that $W_n(t,\mathcal{F}(f)) \ge 0$ for all the functions $f \in \mathcal{H}_+$. Hence we have that
+with $s_0=0$ and $x_0=0$. Under Assumption \ref{A:Nonnegative}, the Green's function for the fractional equation is nonnegative and hence under these conditions we get that $W_n(t,\mathcal{F}(f)) \ge 0$ for all the functions $f \in \mathcal{H}_+$. Hence we have that
 \begin{align*}
-	0 \le W_n(t, \mathcal{F}f) = U_n(t,f) < \infty \quad \text{for all } f \in \mathcal{H}_+ \text{ and for any of the four options in Aummption \ref{A:param}.}
+	0 \le W_n(t, \mathcal{F}f) = U_n(t,f) < \infty \quad \text{for all } f \in \mathcal{H}_+ \text{ and for any of the four options in Assumption \ref{A:Nonnegative}.}
 \end{align*}
 where the finiteness comes from Proposition \ref{P:Wnprop2}.
 
@@ -1334,152 +1364,176 @@ and with this we see that
 	W_n(t) \ge U_n(t) \ge 0
 \end{align*}
 
-\begin{theorem}
-	If $\tau$ is an exponential random variable with mean $1$, then
+\begin{proposition}
+	\label{P:LogU}
+	If $\tau$ is an exponential random variable with mean one, then
 	\begin{align*}
-		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log(\rho^{1/2})
+		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log(\rho^{1/2}).
 	\end{align*}
-\end{theorem}
+\end{proposition}
 \begin{proof}
-We start by letting $\tau$ be an exponential random variable with mean $1$. With this,
+	We start by letting $\tau$ be an exponential random variable with mean one. With this,
 	\begin{align*}
 		\mathbb{E}(U_u(\tau)) = \int_0^\infty e^{-t} U_n(t) \ud t \ge \sup_{f\in \mathcal{H_+}n \Norm{f}_\mathcal{H} =1} \int_0^\infty e^{-t} U_n(t,f) \ud t
 	\end{align*}
-For an $f \in \mathcal{H}_+$ and $\Norm{f}_{\mathcal{H}}= 1$ we have that $\mathcal{F}f$ is nonnegative and nonnegative definite which further implies that $\mathcal{F}f$ is even. In addition, Lemma \ref{L:LWn} gives us that
+	For an $f \in \mathcal{H}_+$ and $\Norm{f}_{\mathcal{H}}= 1$ we have that $\mathcal{F}f$ is nonnegative and nonnegative definite which further implies that $\mathcal{F}f$ is even. In addition, Lemma \ref{L:LWn} gives us that
 	\begin{align*}
 		\int_0^{\infty} e^{-t} U_n(t,f) \ud t = \int_0^\infty e^{-t} W_n(t,\mathcal{F}f) \ud t = \int_{\R^{dn}} \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\xi_k+\cdots + \xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n)
 	\end{align*}
-Modifying the ideas in the proof of Theorem 1.2 \cite{BCR09} gives us the following identity:
+	Modifying the ideas in the proof of Theorem 1.2 \cite{BCR09} gives us the following identity:
 	\begin{align*}
 		\lim_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) = \log[ \rho(\mathcal{F}f)]
 	\end{align*}
-where $\rho(\cdot)$ is defined on the space of nonnegative and nonnegative definite functions and is given by
+	where $\rho(\cdot)$ is defined on the space of nonnegative and nonnegative definite functions and is given by
 	\begin{align*}
 		\rho(g) := \sup_{\Norm{h}_{L_2}=1} \int_{\R^d}g(\xi)\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta\right] \mu(\ud \xi).
 	\end{align*}
-Note that since $g$ is nonnegative and since $\mu$ has a nonnegative density $\varphi$ then we may assume $h$ is also nonnegative for the remainder of this proof. With this being said, we see that for any $f \in \mathcal{H}_+$ and $\Norm{f}_H =1$
+	Note that since $g$ is nonnegative and since $\mu$ has a nonnegative density $\varphi$ then we may assume $h$ is also nonnegative for the remainder of this proof. With this being said, we see that for any $f \in \mathcal{H}_+$ and $\Norm{f}_H =1$
 	\begin{align*}
 		\liminf_{n \to \infty} \frac{1}{n}\log \mathbb{E}(U_n(t)) \ge \log \rho(\mathcal{F}f)
 	\end{align*}
-We now need to calculate
+	We now need to calculate
 	\begin{align*}
 		\sup_{f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1} \rho(\mathcal{F}f)
 	\end{align*}
-Consider a nonnegative function $h\in L^2(\R^d)$. The function $h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g_h(x) := (2\pi)^{d/2} \mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well defined. \textcolor{red}{I still need to verify the details that} under these conditions, $g \in W_{1,a}(\R^d)$ with $\Norm{g}_{W_{1,a}}=1$. Here is a sketch of the details. \textcolor{red}{we no longer need this part since we do not need g to be continuous, only need to to be nonnegative and nonnegative definite.}
+	Consider a nonnegative function $h\in L^2(\R^d)$. The function $h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g_h(x) := (2\pi)^{d/2} \mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well defined. \textcolor{red}{I still need to verify the details that} under these conditions, $g \in W_{1,a}(\R^d)$ with $\Norm{g}_{W_{1,a}}=1$. Here is a sketch of the details. \textcolor{red}{we no longer need this part since we do not need g to be continuous, only need to to be nonnegative and nonnegative definite.}
 
 	\begin{align*}
-		\Norm{g}_{W_{1,a}}^2 &= \Norm{g}^2_{L^2} + (2\pi)^{-d}\sum_{k=1}^d \int_{\R^d} \xi_k^a|\mathcal{F}g(\xi)|^2 \ud \xi
-		\\&= (2\pi)^{-d}\int_{\R^d}(1+|\xi|^a)|\mathcal{F}g(\xi)|^2 \ud \xi
-		\\&= \int_{\R^d} h(\xi)^2 \ud \xi =1
+		\Norm{g}_{W_{1,a}}^2 & = \Norm{g}^2_{L^2} + (2\pi)^{-d}\sum_{k=1}^d \int_{\R^d} \xi_k^a|\mathcal{F}g(\xi)|^2 \ud \xi \\
+												 & = (2\pi)^{-d}\int_{\R^d}(1+|\xi|^a)|\mathcal{F}g(\xi)|^2 \ud \xi                              \\
+												 & = \int_{\R^d} h(\xi)^2 \ud \xi =1
 	\end{align*}
-where above we used the fact that $\Norm{g}_{L^2}^2 = (2\pi)^{-d}\Norm{\mathcal{F}g}_{L^2}^2$.
+	where above we used the fact that $\Norm{g}_{L^2}^2 = (2\pi)^{-d}\Norm{\mathcal{F}g}_{L^2}^2$.
 
-\textcolor{red}{We need from this point on.}
+	\textcolor{red}{We need from this point on.}
 
-Now, for notation let $\widetilde{h}(x) = h(-x)$. Note that
+	Now, for notation let $\widetilde{h}(x) = h(-x)$. Note that
 	\begin{align*}
 		\int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta&= (2\pi)^{-d}\int_{\R^d} \mathcal{F}g_h(\xi-\eta)\mathcal{F}g_h(-\eta) \ud \eta
 		\\& =(2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi)
 	\end{align*}
-Since $h(\cdot)$ is real valued then $\widetilde{\mathcal{F}g_h} = \overline{\mathcal{F}\bar{g_h}}= \mathcal{F}\bar{g_h} $. Using this and the fact that  $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f)*\mathcal{F}(g)$, we see that $(2\pi)^{-d}(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) =\mathcal{F}\left[|g_h|^2\right](\xi) $ and with this we see that
+	Since $h(\cdot)$ is real valued then $\widetilde{\mathcal{F}g_h} = \overline{\mathcal{F}\bar{g_h}}= \mathcal{F}\bar{g_h} $. Using this and the fact that  $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f)*\mathcal{F}(g)$, we see that $(2\pi)^{-d}(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) =\mathcal{F}\left[|g_h|^2\right](\xi) $ and with this we see that
 	\begin{align*}
-		\rho(\mathcal{F}f) &= \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) \mu(\ud \xi)
-		\\&= \sup_{\Norm{h}_{L^2}=1} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g_h|^2](\xi) \mu(\ud \xi)
-		\\&= \sup_{\Norm{h}_{L^2}=1}\langle f, |g_h|^2 \rangle _{\mathcal{H}}.
+		\rho(\mathcal{F}f) & = \sup_{\Norm{h}_{L^2}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) \mu(\ud \xi) \\
+                       & = \sup_{\Norm{h}_{L^2}=1} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g_h|^2](\xi) \mu(\ud \xi)                                   \\
+                       & = \sup_{\Norm{h}_{L^2}=1}\langle f, |g_h|^2 \rangle _{\mathcal{H}}.
 	\end{align*}
-With this we see that
+	With this we see that
 	\begin{align*}
 		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g_h|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
 	\end{align*}
-where the optimal $f$ is chosen to be $|g_h|^2/\Norm{|g_h|^2}_{\mathcal{H}}$. Now we want to show that
+	where the optimal $f$ is chosen to be $|g_h|^2/\Norm{|g_h|^2}_{\mathcal{H}}$. Now we want to show that
 	\begin{equation}\label{E:GH+}
 		|g_h|^2 \in \mathcal{H}_+
 	\end{equation}
-which would imply that the supremum can be restricted to $\mathcal{H_+}$. If this were the case then we would have that
+	which would imply that the supremum can be restricted to $\mathcal{H_+}$. If this were the case then we would have that
 	\begin{align*}
 		\sup_{ f \in \mathcal{H}_+, \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
 	\end{align*}
-and notice that
+	and notice that
 	\begin{align*}
-		\langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}} &= \left( \int_{\R^d} \left|\mathcal{F}[|g_h|^2](\xi)\right|^2 \mu(\ud \xi) \right)^{1/2}
-		\\&= (2\pi)^{-d} \left( \int_{\R^d}\left| (\mathcal{F}g_h*\widetilde{\mathcal{F}}g_h)(\xi)\right|^2 \mu(\ud \xi) \right)^{1/2}
-		\\&=  \left(\int_{\R^d}\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta \right]^2 \mu(\ud \xi) \right)^{1/2}
-		\\& = \rho^{1/2}
+		\langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
+		& = \left( \int_{\R^d} \left|\mathcal{F}[|g_h|^2](\xi)\right|^2 \mu(\ud \xi) \right)^{1/2}                                                                                            \\
+		& = (2\pi)^{-d} \left( \int_{\R^d}\left| (\mathcal{F}g_h*\widetilde{\mathcal{F}}g_h)(\xi)\right|^2 \mu(\ud \xi) \right)^{1/2}                                                         \\
+		& =  \left(\int_{\R^d}\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta \right]^2 \mu(\ud \xi) \right)^{1/2} \\
+		& = \rho^{1/2}
 	\end{align*}
-which finally leads us to the equality
+	which finally leads us to the equality
 	\begin{align*}
 		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log(\rho^{1/2}).
 	\end{align*}
-Hence, we finish the proof by proving \eqref{E:GH+}. First note that from the above we see that
+	Hence, we finish the proof by proving \eqref{E:GH+}. First note that from the above we see that
 	\begin{align*}
 		\int_{\R^d} | \mathcal{F}|g_h|^2(\xi) |^2 \mu(\ud \xi) \le \rho < \infty
 	\end{align*}
-and so $|g_h|^2 \in \mathcal{H}$. Lastly, since $\mathcal{F}|g_h|^2(\xi)$ is nonnegative for $\xi \in \R^d$ and for nonnegative $h\in L^2(\R^d)$ then $\nu(\ud \xi) = \mathcal{F}|g_h|^2(\xi) \ud \xi$ is a nonnegative tempered measure. The Bochner-Schwarz theorem then implies that $|g_h|^2$ is nonnegative and nonnegative definite. This shows that $|g_h|^2 \in \mathcal{H}_+$.
+	and so $|g_h|^2 \in \mathcal{H}$. Lastly, since $\mathcal{F}|g_h|^2(\xi)$ is nonnegative for $\xi
+	\in \R^d$ and for nonnegative $h\in L^2(\R^d)$ then $\nu(\ud \xi) = \mathcal{F}|g_h|^2(\xi) \ud
+	\xi$ is a nonnegative tempered measure. The Bochner-Schwarz theorem then implies that $|g_h|^2$ is
+	nonnegative and nonnegative definite. This shows that $|g_h|^2 \in \mathcal{H}_+$.  This completes
+	the proof of Proposition \ref{P:LogU}.
 \end{proof}
 
-We now give scaling properties for $W_n$ and $U_n$.
+% We now give the scaling properties for $W_n$ and $U_n$, the proof of which are elementary and we
+% leave the details for the interested readers.
+%
+% \begin{lemma}
+% 	\label{L:WU}
+% 	For all $t>0$, it holds that
+% 	\begin{align*}
+% 		W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
+% 		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1).
+% 	\end{align*}
+% \end{lemma}
+% \begin{proof}
+% 	Let $\phi = \mathcal{F}f$ and $c>0$
+% 	\begin{align*}
+% 		W_n & (t,\phi(c^{-1}\cdot) = \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(c^{-1}\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i                                                                            \\
+% 				& = c^{nd} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(c(\xi_k + \cdots \xi_n)) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i                                                                                            \\
+% 				& = c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i                            \\
+% 				& = c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i \\
+% 				& = c^{-n\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(c^{\frac{a}{b}}t,\phi \right)
+% 	\end{align*}
+% 	Now we apply this with $c^{\frac{a}{b}} = \frac{1}{t}$ to get
+% 	\begin{align*}
+% 		W_n\left(t,\phi(t^{\frac{b}{a}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
+% 	\end{align*}
+% 	Now note that
+% 	\begin{align*}
+% 		\Norm{\phi(t^{\frac{b}{a}} \cdot )}_{L^2(\mu)}^2 = t^{-\frac{\alpha b }{a}}\Norm{\phi}_{L^2(\mu)}^2
+% 	\end{align*}
+% 	and from this we deduce that
+% 	\begin{align*}
+% 		\Norm{t^{\frac{\alpha b }{2 a}}\phi(t^{\frac{b}{a}} \cdot )}_{L^2(\mu)}^2 =  \Norm{\phi}_{L^2(\mu)}^2 = \Norm{f}_{\mathcal{H}}^2
+% 	\end{align*}
+% 	and in addition
+% 	\begin{align*}
+% 		W_n\left(t,t^{\frac{b \alpha}{2 a}}\phi(t^{\frac{a}{b}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \frac{\alpha}{2} +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
+% 	\end{align*}
+% 	and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\Norm{f}_\mathcal{H} =1$.
+% \end{proof}
 
 \begin{lemma}
-	\label{L:WU}
-	We have that
-	\begin{align*}
+	\label{L:LogU}
+	It holds that
+	\begin{align}
+		\label{E:LogU}
+		\liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)  } U_n(1) \right]
+		\ge \log\left( \frac{\rho^{1/2}}{ \left(\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} }\right).
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Notice that by some elementary scaling arguments, we have that for all $t>0$,
+	\begin{align}
+		\label{E:WU}
 		W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
 		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1).
-	\end{align*}
-\end{lemma}
-\begin{proof}
-	Let $\phi = \mathcal{F}f$ and $c>0$
+	\end{align}
+	Let $\tau$ be an exponential random variable with mean one. By \eqref{E:WU},
 	\begin{align*}
-		W_n & (t,\phi(c^{-1}\cdot) = \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(c^{-1}\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i                                                                            \\
-				& = c^{nd} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G(s_k - s_{k-1},\cdot)(c(\xi_k + \cdots \xi_n)) \prod_{i=1}^n \varphi(c\xi_i)\ud \xi_i\ud s_i                                                                                            \\
-				& = c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} \int_{[0,t]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(c^{\frac{b}{a}}(s_k - s_{k-1}),\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i                            \\
-				& = c^{nd}c^{-n(d-\alpha)}c^{-n\frac{a}{b}(b+r-1)} c^{-n\frac{a}{b}} \int_{\left[0,c^{\frac{a}{b}}t\right]^n_<}\int_{\R^{nd}} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n G\left(s_k - s_{k-1},\cdot\right)(\xi_k + \cdots \xi_n) \prod_{i=1}^n \varphi(\xi_i)\ud \xi_i\ud s_i \\
-				& = c^{-n\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(c^{\frac{a}{b}}t,\phi \right)
+		\mathbb{E}\left[ U_n(\tau) \right] = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1)
+                                       = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1).
 	\end{align*}
-	Now we apply this with $c^{\frac{a}{b}} = \frac{1}{t}$ to get
-	\begin{align*}
-		W_n\left(t,\phi(t^{\frac{b}{a}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \alpha +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
-	\end{align*}
-	Now note that
-	\begin{align*}
-		\Norm{\phi(t^{\frac{b}{a}} \cdot )}_{L^2(\mu)}^2 = t^{-\frac{\alpha b }{a}}\Norm{\phi}_{L^2(\mu)}^2
-	\end{align*}
-	and from this we deduce that
-	\begin{align*}
-		\Norm{t^{\frac{\alpha b }{2 a}}\phi(t^{\frac{b}{a}} \cdot )}_{L^2(\mu)}^2 =  \Norm{\phi}_{L^2(\mu)}^2 = \Norm{f}_{\mathcal{H}}^2
-	\end{align*}
-	and in addition
-	\begin{align*}
-		W_n\left(t,t^{\frac{b \alpha}{2 a}}\phi(t^{\frac{a}{b}}\cdot) \right)= t^{n\frac{b}{a}\left( a- \frac{\alpha}{2} +\frac{a}{b}r \right)} W_n\left(1,\phi \right)
-	\end{align*}
-	and the result follows after taking the sup over all $f \in \mathcal{H}$ with $\Norm{f}_\mathcal{H} =1$.
-\end{proof}
-
-\begin{lemma}
-	\begin{align*}
-		\liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)  } U_n(1) \right] \ge \log\left[ \frac{\rho^{1/2}}{ \left(\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} } \right]
-	\end{align*}
-\end{lemma}
-\begin{proof}
-	Let $\tau$ be an exponential random variable with mean $1$. By \textcolor{magenta}{Lemma 6.7
-	(Lemma \ref{L:WU})},
-	\begin{align*}
-		\mathbb{E}(U_n(\tau)) = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1) = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1)
-	\end{align*}
-	and by \textcolor{magenta}{Theorem 6.6} we obtain
+	Then an application of Proposition \ref{P:LogU} shows that
 	\begin{align}\label{E:lb1}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log(\rho^{1/2}).
 	\end{align}
-	Recall that
+	As a direct consequence of Stirling's formula, we have that
 	\begin{align*}
-		\lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a)
+		\lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a), \quad
+		\text{for all $a>0$,}
 	\end{align*}
-	and with this we have that
+	with which one immediately sees that
 	\begin{align*}
-		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right] = \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right)
+		\liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
+		= \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
 	\end{align*}
-	and the result is proven after multiplying and dividing $(n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2}
-	+\frac{a}{b}r \right)} $ on the inside of the log in \eqref{E:lb1}
+	where the condition
+	\begin{align*}
+		\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) >0
+	\end{align*}
+	is guaranteed by \eqref{E:alpha4} (or \eqref{E:alpha}). Finally, \eqref{E:LogU} is proven after
+	multiplying and dividing $(n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} $ on
+	the inside of the log in \eqref{E:lb1}.
 \end{proof}
 
 
@@ -1493,7 +1547,7 @@ We now give scaling properties for $W_n$ and $U_n$.
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	Let $\epsilon > 0$. \textcolor{magenta}{Lemma 6.8} guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
+	Let $\epsilon > 0$. Lemma \ref{L:LogU} guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
 	\begin{align*}
 		(n!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} U_n(1) \ge \exp\left( n(\log(R)-\epsilon) \right) = R^n e^{-n\epsilon }
 	\end{align*}
@@ -1522,11 +1576,15 @@ We now give scaling properties for $W_n$ and $U_n$.
 	\begin{align*}
 		I(n_t) \ge c \left[ \log(k \sqrt{\theta}R) - \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right] =: h(c).
 	\end{align*}
-	We can easily find the maximal $c$ by solving $h'(c)=0$ and doing so we get $c=(k \sqrt{\theta}R)^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}$. After plugging in this value for $c$ and replacing $R$ we arrive at the following inequality
+	In order to maximize $h(c)$, notice that
 	\begin{align*}
-		I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho_{new}^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}
+		h'(c) = 0 \quad \Longleftrightarrow  \quad  c^*=(k \sqrt{\theta}R)^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}}.
 	\end{align*}
-	and simplifying exponents gives us \eqref{E:69ineq}.
+	After plugging $c^*$ and replacing $R$ we arrive at the following inequality
+	\begin{align*}
+		I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}},
+	\end{align*}
+	which proves \eqref{E:69ineq} after some simplification.
 \end{proof}
 
 
