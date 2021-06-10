@@ -364,10 +364,11 @@ equation. Here is the main result of this paper.
 		\end{aligned}
 	\end{equation}
 	where
-	\begin{align*}
+	\begin{align}
+		\label{E:beta&tp}
 		\beta     := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
 		t_p^\beta := (p-1)^{\beta -1} t^\beta.
-	\end{align*}
+	\end{align}
 	In particular, for any $p\ge 2$ and $t>0$ fixed, we have
 	\begin{align}
 		\label{E:momentasym-t}
@@ -1179,6 +1180,10 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 \begin{proof}
 	The proof follows the exact arguments as those in the proof of Lemma 6.2 of \cite{BCC21} except
 	that one needs to use the following Laplace transform:
+	\begin{align*}
+		\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t =\frac{1}{1+\frac{\nu}{2}|\xi|^a},
+	\end{align*}
+	which is due to ...
 	% By Fubini's theorem, the left hand side of \eqref{E:LWn} is equal to
 	% \begin{align*}
 	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n \mathcal{F}G(s_k-s_{k-1}, \cdot)(\xi_k + \cdots + \xi_n) \ud \vec{s} \ud t \mu(\ud \vec {\xi}),
@@ -1187,8 +1192,7 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	% \begin{align*}
 	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \left( \int_0^\infty e^{-u} \ud u \right) \prod_{k=1}^n \left( \int_0^\infty e^{-u_k} \mathcal{F}G(u_k,\cdot)(\vec{\xi}) \; \ud u_k \right) \prod_{k=1}^n \mu(\ud \xi_k).
 	% \end{align*}
-	% Now recall that $\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t =
-	% 1/(1+\frac{\nu}{2}|\xi|^a)$. Then the above quantity is equal to
+	% Now recall that $\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t = 1/(1+\frac{\nu}{2}|\xi|^a)$. Then the above quantity is equal to
 	% \begin{align*}
 	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}^n \frac{1}{1+|\sum_{j=k}^n \xi_j|^2} \prod_{k=1}^n \mu(\ud \xi_k).
 	% \end{align*}
@@ -1196,123 +1200,115 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	% arguments that lead to \eqref{E:lem62step}, we see the above quantity is finite.
 \end{proof}
 
+The next Proposition is a restatement of Proposition 6.3 of \cite{BCC21}. The proof follows the same
+proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat here.
 \begin{proposition}
 	\label{P:Wnprop1}
 	For $f\in \mathcal{H}$, $t>0$, and $p,q>1$ with $p^{-1} + q^{-1}=1$, it holds that
-	\begin{align*}
+	\begin{align}
+		\label{E:Wnprop1}
 		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\} \left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f) \right|
-	\end{align*}
+	\end{align}
 	and as a consequence, the series $\left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f) \right|$
 	converges provided that $\Norm{u(t,0)}_p < \infty$, which is the case under Theorem
 	\ref{T:solvable}.
 \end{proposition}
-\begin{proof}
-	Suppose $f \in \mathcal{H}$ and let
-	\begin{align*}
-		Z_f = \exp\left( W(f) - \frac{1}{2}\Norm{f}_\mathcal{H}^2 \right) = \sum_{n \ge 0} \frac{1}{n!} I_n(f^{\otimes n}).
-	\end{align*}
-	If $f$ is a distribution, then $f^{\otimes n}$ is the distribution in $\mathcal{S}'(\R^{nd})$
-	whose Fourier transform is given by: $\mathcal{F}f^{\otimes n}(\vec{\xi}) = \prod_{k=1}^n
-	\mathcal{F}f(\xi_k)$. If $f$ is a function, then $f^{\otimes n}$ is also a function and is defined
-	by $f^{\otimes n}(\vec{x}) = \prod_{k=1}^n f(x_k)$. Now using Holder's inequality and  the fact
-	that $W(f) \sim N(0,\Norm{f}_\mathcal{H}^2)$, we obtain:
-	\begin{equation}
-	\label{E:Zfholder1}
-	|\mathbb{E}\left[ u(t,0)Z_f \right]| \le \Norm{u(t,0)}_p \Norm{Z_f}_q = \Norm{u(t,0)}_p  \exp\left\{ \frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\}.
-	\end{equation}
-	Now by the orthogonality of the Wiener Chaos spaces,
-	\begin{equation}
-	\label{E:Zfholder2}
-	|\mathbb{E}\left[ u(t,0)Z_f \right]| \le \sum_{n \ge 0} \theta^{n/2} \frac{1}{n!} \mathbb{E}[I_n(f_n(\cdot,0;t)) I_n(f^{\otimes n} )] =  \sum_{n \ge 0} \theta^{n/2} \langle \widetilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } .
-	\end{equation}
-	By using the definition of $\widetilde{f}_n(\cdot,0;t)$, we see that
-	\begin{align*}
-	 \langle \widetilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } & = \int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(\xi_k) \overline{ \mathcal{F}\widetilde{f}_n (\cdot, 0 ; t)(\vec{\xi} ) } \prod_{k=1}^n \mu(\ud \xi_k)                                                                                        \\
-																																												& = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1} \mu(\ud \xi_k) \prod_{k=1} \mathcal{F}f(\xi_k) \prod_{k=1} \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_{\sigma(k)} \right) \\
-																																												& = \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1}^n \mu(\ud \xi_k) \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_k \right)                                             \\
-																																												& = W_n(t,\mathcal{F}f)
-	\end{align*}
-	where $t_{n+1} = t$ and the last step is due to the change of variables $s_1 = t - t_n, \cdots,
-	s_n = t - t_1$ and $\xi_1' = \xi_n, \cdots, \xi_n' = \xi_1$. The conclusion follows from the above
-	centered equations and \eqref{E:Zfholder1} and \eqref{E:Zfholder2}.
-\end{proof}
+% \begin{proof}
+% 	The current proof follows the same proof of Proposition 6.3 of \cite{BCC21}. We will not repeat
+% 	here.
+	% Suppose $f \in \mathcal{H}$ and let
+	% \begin{align*}
+	% 	Z_f = \exp\left( W(f) - \frac{1}{2}\Norm{f}_\mathcal{H}^2 \right) = \sum_{n \ge 0} \frac{1}{n!} I_n(f^{\otimes n}).
+	% \end{align*}
+	% If $f$ is a distribution, then $f^{\otimes n}$ is the distribution in $\mathcal{S}'(\R^{nd})$
+	% whose Fourier transform is given by: $\mathcal{F}f^{\otimes n}(\vec{\xi}) = \prod_{k=1}^n
+	% \mathcal{F}f(\xi_k)$. If $f$ is a function, then $f^{\otimes n}$ is also a function and is defined
+	% by $f^{\otimes n}(\vec{x}) = \prod_{k=1}^n f(x_k)$. Now using Holder's inequality and  the fact
+	% that $W(f) \sim N(0,\Norm{f}_\mathcal{H}^2)$, we obtain:
+	% \begin{equation}
+	% \label{E:Zfholder1}
+	% |\mathbb{E}\left[ u(t,0)Z_f \right]| \le \Norm{u(t,0)}_p \Norm{Z_f}_q = \Norm{u(t,0)}_p  \exp\left\{ \frac{1}{2}(q-1)\Norm{f}_{\mathcal{H}}^2 \right\}.
+	% \end{equation}
+	% Now by the orthogonality of the Wiener Chaos spaces,
+	% \begin{equation}
+	% \label{E:Zfholder2}
+	% |\mathbb{E}\left[ u(t,0)Z_f \right]| \le \sum_{n \ge 0} \theta^{n/2} \frac{1}{n!} \mathbb{E}[I_n(f_n(\cdot,0;t)) I_n(f^{\otimes n} )] =  \sum_{n \ge 0} \theta^{n/2} \langle \widetilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } .
+	% \end{equation}
+	% By using the definition of $\widetilde{f}_n(\cdot,0;t)$, we see that
+	% \begin{align*}
+	%  \langle \widetilde{f}_n(\cdot,0;t), f^{\otimes n} \rangle_{\mathcal{H}^{\otimes n} } & = \int_{(\R^d)^n} \prod_{k=1}^n \mathcal{F}f(\xi_k) \overline{ \mathcal{F}\widetilde{f}_n (\cdot, 0 ; t)(\vec{\xi} ) } \prod_{k=1}^n \mu(\ud \xi_k)                                                                                        \\
+	% 																																											& = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1} \mu(\ud \xi_k) \prod_{k=1} \mathcal{F}f(\xi_k) \prod_{k=1} \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_{\sigma(k)} \right) \\
+	% 																																											& = \int_{[0,t]^n_<} \ud \vec{t} \int_{(\R^{d})^n} \prod_{k=1}^n \mu(\ud \xi_k) \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \mathcal{F}G(t_{k+1}-t_k,\cdot)\left( \sum_{k=1}^n \xi_k \right)                                             \\
+	% 																																											& = W_n(t,\mathcal{F}f)
+	% \end{align*}
+	% where $t_{n+1} = t$ and the last step is due to the change of variables $s_1 = t - t_n, \cdots,
+	% s_n = t - t_1$ and $\xi_1' = \xi_n, \cdots, \xi_n' = \xi_1$. The conclusion follows from the above
+	% centered equations and \eqref{E:Zfholder1} and \eqref{E:Zfholder2}.
+% \end{proof}
 
-
-Our next goal is to prove the following proposition, which is where the motivation of the definitions of $t_p$ and $\beta$ come from.
+Our next goal is to prove the following proposition, which is where the motivation of the
+definitions of $t_p$ and $\beta$ come from.
 
 \begin{proposition}
 	\label{P:Wnprop2}
 	For $p,q > 1$ and $p^{-1}+q^{-1}=1$ we have that
-	\begin{align*}
-		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \right|
-	\end{align*}
+	\begin{align}
+		\label{E:Wnprop2}
+		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n\left(t_p^\beta, \mathcal{F}f\right) \right|,
+	\end{align}
+	where the constants $\beta$ and $t_p$ are defined in \eqref{E:beta&tp}.
 \end{proposition}
 \begin{proof}
-	The above inequality motivates us to find a function $f_{\tau}(x)$ and some $\tau$ such that
+	From Proposition \ref{P:Wnprop1}, we see that for any $f\in \mathcal{H}$, the inequality
+	\eqref{E:Wnprop1} holds. For some constants $V,W>0$, which will be determined in this proof, let
+	$f_\tau(x):=\tau^V f(\tau^W x)$ be a scaled version of $f$. It is clear that $f_\tau\in
+	\mathcal{H}$. By some elementary scaling arguments (see the proof of the Lemma 6.4 of
+	\cite{BCC21}), one can show that
+	\begin{gather}
+		\Norm{f_\tau}_{\mathcal{H}}^2        = \tau^{2(V-dW)+W\alpha} \Norm{f}_\mathcal{H}^2 \quad \text{and}\\
+		W_n \left(t,\mathcal{F}f_\tau\right) = \tau^{n\left[ V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) \right]}W_n\left(t\tau^{\frac{a}{b}W}, \mathcal{F}f\right).
+	\end{gather}
+	Hence, an application of Proposition \ref{P:Wnprop1} to $f_\tau$ shows that
 	\begin{align*}
-		(q-1)\Norm{f_{\tau}}_{\mathcal{H}}^2 = (p-1)^{-1}\Norm{f_{\tau}}_{\mathcal{H}}^2 = t_p^\beta
-		\quad \text{and} \quad
-		W_n(t, \mathcal{F}f_\tau) = W_n(t_p^\beta, \mathcal{F}f)
-	\Norm{f}_{\mathcal{H}}^2,
+    & \Norm{u(t,0)}_p  \ge \exp\left\{ -\frac{1}{2}(q-1)\Norm{f_\tau}_{\mathcal{H}}^2 \right\} \left| \sum_{n \ge 0} \theta^{n/2} W_n(t,\mathcal{F}f_\tau) \right| \\
+    & =\exp\left\{ -\frac{1}{2}(q-1)\tau^{2(V-dW)+W\alpha} \Norm{f}_\mathcal{H}^2 \right\} \left| \sum_{n \ge 0} \theta^{n/2} \tau^{n\left[ V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) \right]}W_n\left(t\tau^{\frac{a}{b}W}, \mathcal{F}f\right) \right|.
 	\end{align*}
-	since then we could just apply Proposition \ref{P:Wnprop1} to the function $f_\tau$. Note above
-	that we have not yet defined $\beta$ or $t_p$. We guess $f_\tau$ takes the form $f_\tau(x) =
-	\tau^Vf(\tau^Wx)$. We now mention, through direct calculation one can show that
-	$\Norm{f_\tau}_\mathcal{H}^2$ and $W_n(t,\mathcal{F}f_\tau)$ can be calculated as follows:
-	\begin{equation}
-		\Norm{f_\tau}_{\mathcal{H}}^2 = \tau^{2(V-dW)+W\alpha} \Norm{f}_\mathcal{H}^2
-	\end{equation}
-	and
-	\begin{equation}
-		W_n (t,\mathcal{F}f_\tau) =	\tau^{n\left[ V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) \right]}W_n(t\tau^{\frac{a}{b}W}, \mathcal{F}f).
-	\end{equation}
-	This means we must have
+  Comparing the above lower bound with that of \eqref{E:Wnprop2}, we obtain the following two
+	relations with three unknowns $W$, $V$ and $\tau$:
+	\begin{gather}
+		\label{E:VW-1}
+		V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) = 0, \\
+		(p-1)^{-1}\tau^{2(V-dW)+W\alpha}               = t\tau^{\frac{a}{b}W}.
+		\label{E:VW-2}
+	\end{gather}
+	Since \eqref{E:VW-2} should hold for all $t>0$ and $p\ge 2$, one can choose $\tau = (p-1)t$ to
+	reduce the relation \eqref{E:VW-2} to
 	\begin{align*}
-		\begin{cases}
-			V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) &= 0
-			\\ (p-1)^{-1}\tau^{2(V-dW)+W\alpha} &= t\tau^{\frac{a}{b}W}
-		\end{cases}.
+		\tau^{2(V-dW)+W\alpha} = \tau^{\frac{a}{b}W+1},
+			% (p-1)^{2(V-dW)+W\alpha-1}t^{2(V-dW)+W\alpha} &= (p-1)^{\frac{a}{b}W}t^{\frac{a}{b}W+1}.
 	\end{align*}
-	We need to now choose an appropriate $\tau$ and we choose $\tau = (p-1)t$ and so the above system
-	of equations becomes
-	\begin{align*}
-		\begin{cases}
-			V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) &= 0
-			\\ (p-1)^{2(V-dW)+W\alpha-1}t^{2(V-dW)+W\alpha} &= (p-1)^{\frac{a}{b}W}t^{\frac{a}{b}W+1}
-		\end{cases}.
-	\end{align*}
-	Equating the exponents of either the $(p-1)$ term or the $t$ term both lead to the following
-	equation
+	which then gives the following equation
+	% Equating either the exponents of the term $(p-1)$ or that of $t$ leads to
 	\begin{equation}
-		2(V-dW)+W\alpha-1 - \frac{a}{b}W = 0
+		\label{E:VW-3}
+		2(V-dW)+W\alpha= 1 + \frac{a}{b}W .
 	\end{equation}
-	and so now we have two linear equations in $W$ and $V$ that we can solve, namely
+	Now solve the linear equations \eqref{E:VW-1} and \eqref{E:VW-3} for $W$ and $V$ to see that
 	\begin{align*}
 		\begin{cases}
-			V-W\left( (d-\alpha)+ \frac{a}{b}(b+r) \right) &= 0
-			\\2(V-dW)+W\alpha-1 - \frac{a}{b}W &= 0
-		\end{cases}.
+			W = \displaystyle \dfrac{b}{a}\left( \beta -1 \right), \bigskip \\
+			V = \displaystyle \left(\frac{a}{b}(b+r)-\alpha +d\right)\frac{b}{a}(\beta -1),
+		\end{cases}
+		\qquad
+		\text{with }\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 }.
 	\end{align*}
-	Now if we define
-	\begin{equation}
-		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 }
-	\end{equation}
-	then solving the system gives us
-	\begin{align*}
-		\begin{cases}
-			W = \dfrac{b}{a}\left( \beta -1 \right)
-			\\V = \left(\frac{a}{b}(b+r)-\alpha +d\right)\frac{b}{a}(\beta -1)
-		\end{cases}.
-	\end{align*}
-	Lastly if we define
-	\begin{equation}
-		t_p^\beta := (q-1)(p-1)^\beta t^\beta = (p-1)^{\beta -1} t^\beta
-	\end{equation}
-	then Proposition \ref{P:Wnprop2} is proven by applying Proposition \ref{P:Wnprop1} to the function
+	Therefore, the scaling $f_\tau$ and $t_p^\beta$ should be
 	\begin{align*}
 		f_\tau(x) = \tau^{\left(\frac{a}{b}(b+r)-\alpha+d\right)\frac{b}{a}(\beta -1)} f\left(\tau^{\frac{b}{a}(\beta -1)}x\right)
+		\quad \text{and} \quad
+		t_p^\beta := t\tau^{\frac{a}{b}W} = (p-1)^{\beta -1} t^\beta,
 	\end{align*}
-	with $\tau=(p-1)t$.
+	respectively. This completes the proof of Proposition \ref{P:Wnprop2}.
 \end{proof}
 
 To remove the absolute value sign in Proposition \ref{P:Wnprop2}, we want to identify all the $f \in \mathcal H$ for which $W_n(t,\mathcal{F}f)$ is nonnegative. In fact, if we consider the space
