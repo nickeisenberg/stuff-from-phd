@@ -179,9 +179,9 @@ Statistics, Auburn University, Auburn, Alabama.}}
 \vspace{1mm}
 
 \noindent {\em Keywords:}
-Stochastic partial differential equations; Caputo derivatives;
-Riemann-Liouville fractional integral; the Fox H-function; Malliavin
-calculus; Lyapunov exponents; Exact moment asymptotics; Moment blowup.
+Stochastic partial differential equations; {\it Caputo} derivatives; {\it Riemann-Liouville} fractional
+integral; fractional Laplacian; {\it Malliavin} calculus; {\it Skorohod} integral; exact moment
+asymptotics; time-independent Gaussian noise.
 
 \tableofcontents
 % \pagebreak
@@ -285,7 +285,7 @@ the equation \eqref{E:SPDE} as stated in the following theorem.
 	Under Assumption \ref{A:Noise}, if
 	\begin{equation}
 		\label{E:alpha}
-		\alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right),
+		0< \alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right),
 	\end{equation}
 	then \eqref{E:SPDE} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for all $p \ge 2$, $t>0$, and $x
 	\in \R^d$.
@@ -828,243 +828,187 @@ and by defining $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1) $ and by ap
 	\mathcal{M}_a^{\frac{2a-\alpha}{a}}.
 \end{equation}
 
+% \section{Existence and uniqueness of the solution --- the proof of Theorem \ref{T:solvable}}
 \section{Existence and uniqueness of the solution}
 \label{S:solvable}
 
-The goal for this section is to prove Theorem \ref{T:solvable}.
-% \begin{theorem}
-% 	\label{T:solvable}
-% 	The equation \eqref{E:SPDE} has a unique solution $\{u(t,x) : t>0, x\in \R^d\}$ and
-% 	\begin{equation}
-% 		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) < \infty \quad \text{for all $p \ge 2, T>0$}.
-% 	\end{equation}
-% \end{theorem}
-We first introduce some notation that will be used throughout the remainder of this paper. We start by defining $L_n(\vec{y})$ to be the Laplace transform of $\widetilde{f_n}(\vec{y},0,\cdot)$ evaluated at $1$:
-\begin{align*}
-	L_n(\vec{y}) & = n! \int_0^\infty e^{-t}\widetilde{f_n}(\vec{y};0,t) \ud t \\
-							 & = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n<} \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{s} \ud t
-\end{align*}
-with the convention that. $s_0 = y_{\sigma(0)} = 0$. Next we define,
-\begin{align*}
-	H_n(t, \vec{x}) & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y} \\
-									& = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}
-\end{align*}
-where in the last line we used relation \eqref{E:fperm0} for expressing  $\widetilde{f_n}(\cdot;0,t)$. Next, similarly to $L_n$, we define $L(x)$ and can calculate $\mathcal{F}L(\xi)$ to be
-\begin{equation}
-	\label{E:LandFL}
-	L(x) = \int_0^\infty e^{-t}G(t,x) \ud t \quad \text{and} \quad \mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}G(t,\cdot)(\xi) \ud t = \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a}
-\end{equation}
-and through a change of variables, one sees that the Laplace transform of convolution in the time variable become a product:
-\begin{equation}
-		L_n(\vec{y}) = \sum_{\sigma \in \Sigma_n} L(y_{\sigma(1)}) L(y_{\sigma(2)}-y_{\sigma(1)}) \cdots L(y_{\sigma(n)}-y_{\sigma(n-1)})
-\end{equation}
-and using this and \eqref{E:LandFL}, we can calculate $\mathcal{F}L_n(\vec{\xi})$:
-\begin{equation}
-	\label{E:FLfn}
-	\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}.
-\end{equation}
+In this section, we will prove Theorem \ref{T:solvable}. The proof will need the following lemma:
 
-\begin{lemma}
-	\label{L:Hneq1}
-	Under the assumptions of Theorem \ref{T:solvable}, we have that
+\begin{lemma}[Lemma 3.5 of \cite{BCC21}]
+	\label{L:doubleExp}
+	If $H:[0,\infty) \to [0,\infty)$ is a non-decreasing function, then
 	\begin{equation}
-		\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x} = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}).
+		\label{E:doubleExp}
+		2\int_0^\infty e^{-2t}H^2(t) \ud t \le \left( \int_0^\infty e^{-t} H(t) \ud t \right)^2.
 	\end{equation}
 \end{lemma}
-\begin{proof}
-	Notice that
-	\begin{align*}
-      & \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t                                                                                                                                                                   \\
-      & = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \ud t \\
-      & = \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L(\vec{y}) \ud \vec{y}.
-	\end{align*}
-Therefore,
-	\begin{align*}
-		\int_{\R^{dn}}\left[\int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^n \ud \vec{x} &= 	\int_{\R^{dn}} \left[  \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L(\vec{y}) \ud \vec{y} \right]^2 \ud \vec{x}
-		\\&= \int_{\R^{dn}} |\mathcal{F}L_n(\vec{\xi})|^2 \prod_{k=1}^n\mu(\ud \xi_k)
-	\end{align*}
-where the last line follows from Plancherel's theorem and the fact that $K*K =\gamma$. \textcolor{red}{consider adding the plancherel details}
-\end{proof}
 
-\begin{lemma}
-	\label{L:inteq1}
-	Under the assumptions of Theorem \ref{T:solvable}, we have that
+The proof follows the same strategy as \cite[Section 3]{BCC21} with minor changes such as
+\begin{align}
+	\label{E:Changes}
+	\frac{1}{1+|\xi|^2} \qquad \text{replaced by} \qquad \frac{1}{1+\frac{\nu}{2}|\xi|^a}.
+\end{align}
+Nevertheless, for completeness, here we streamline and reorganize this proof as follows.
+
+\begin{proof}[Proof of Theorem \ref{T:solvable}]
+	We first introduce some notation. Let $L(x)$ be the Laplace transform of $G(\cdot,x)$ evaluated at
+	one and calculate its Fourier transform $\mathcal{F}L(\xi)$ as follows:
 	\begin{equation}
-		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x}.
+		\label{E:LandFL}
+		L(x)              = \int_0^\infty e^{-t}G(t,x) \ud t \quad \text{and} \quad
+		\mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}G(t,\cdot)(\xi) \ud t
+											= \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a};
 	\end{equation}
-\end{lemma}
-\begin{proof}
-Writing $\gamma(y_k-y_k') = \int_{\R^d} K(y_k-x_k)K(y_k'-x_k) \ud x_k$, we see that
-\begin{align*}
-	\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2
-  & = \int_{(\R^d)^n} \int_{(\R^d)^n} \prod_{k=1}^n \gamma(y_k-y_k') \widetilde{f}_n(\vec{y},0;t)\widetilde{f}_n(\vec{y'},0;t) \ud \vec{y} \ud \vec{y'} \\
-  & = \int_{(\R^d)^n} \left[ \int_{(\R^d)^n} \prod_{k=1}^n K(y_k-x_k) \widetilde{f}_n(\vec{y},0;t) \ud \vec{y} \right]^2 \ud (\vec{x})                  \\
-  & =  \int_{(\R^d)^n} \left[ \frac{1}{n!} H_n(t,\vec{x}) \right]^2 \ud \vec{x}.
-\end{align*}
-\textcolor{red}{maybe add the placherel theorem steps in the above equalities.}
-\end{proof}
-
-If $f$ is a non-decreasing function on $[0,\infty)$, then the following reverse Cauchy-Schwarz inequality holds, which plays a key role in our developments.
-
-\begin{lemma}
-	\label{L:intineq1}
-	If $f:[0,\infty) \to [0,\infty)$ is a non-decreasing function, then
-		\begin{equation}
-			2\int_0^\infty e^{-2t}f^2(t) \ud t \le \left( \int_0^\infty e^{-t} f(t) \ud t \right)^2.
-		\end{equation}
-\end{lemma}
-\begin{proof}
-	Let $\tau$ and $\tau'$ be two independent random variables with exponential distribution of mean
-	one. Then $\tau \wedge \tau'$ has an exponential distribution with density $g(t)=2e^{-2t}$ and
+	see the proof of Theorem 4.1 of \cite{CHN19} for the last equality.  Similarly, let $L_n(\vec{y})$
+	to be the Laplace transform of $\widetilde{f_n}(\vec{y},0,\cdot)$ evaluated at one, namely,
 	\begin{align*}
-		\left( \int_0^\infty e^{-t}f(t) \ud t \right)^2 = \mathbb{E}[ f(\tau) ] \mathbb{E}[ f(\tau') ]
-                                                    = \mathbb{E}[ f(\tau) f(\tau')]
-                                                    = 2 \int_0^\infty e^{-2t} f^2(t) \ud t.
+		L_n(\vec{y}) & := n! \int_0^\infty e^{-t}\widetilde{f_n}(\vec{y};0,t) \ud t \\
+								 & = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n<} \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{s} \ud t
 	\end{align*}
-\end{proof}
+	with the convention that $s_0 = 0$ and $y_{\sigma(0)} = 0$.  By the relation of convolution and the
+	Laplace transform (or through a change of variables), we see that
+	\begin{equation}
+			L_n(\vec{y}) = \sum_{\sigma \in \Sigma_n} L\left(y_{\sigma(1)}\right) L\left(y_{\sigma(2)}-y_{\sigma(1)}\right) \cdots L\left(y_{\sigma(n)}-y_{\sigma(n-1)}\right).
+	\end{equation}
+	Hence, from \eqref{E:LandFL},
+	\begin{equation}
+		\label{E:FLfn}
+		\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}.
+	\end{equation}
+	Moreover, define
+	\begin{align*}
+		H_n(t, \vec{x}) & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y} \\
+										& = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}.
+	\end{align*}
+	Under the nonnegativity assumption  --- Assumption \ref{A:Nonnegative}, we see that for any $\vec{x}
+	\in\R^{nd}$ fixed, the function $t\to H_n\left(t,\vec{x} \right)$ is a non-decreasing function for
+	$t\ge 0$. For this function, we are about to apply Lemma \ref{L:doubleExp}.
 
-Denote
-\begin{equation}
-	\label{E:Tn}
-	T_n = T_n(\nu,a) := \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}).
-\end{equation}
-By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ and the scaling
-property for $\varphi$, we may rewrite $T_n$ as
-\begin{equation}
-	T_n = \left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n(2,a)
-\end{equation}
 
-\begin{lemma}
-	\label{L:muassumption}
-	Under the assumption of Theorem \eqref{E:momentasym}, we have that
+	{\bigskip\bf\noindent Step 1.~} We first compute the corresponding part to the right-hand side of
+	\eqref{E:doubleExp}. By Fubini's theorem,
+	\begin{align*}
+			& \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t                                                                                                                                                                   \\
+			& = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \ud t \\
+			& = \int_{\R^{dn}} \prod_{k=1}^n K(x_k-y_k) L_n\left(\vec{y}\right) \ud \vec{y}.
+	\end{align*}
+	Then an application of the Plancherel's theorem and the fact that $K*K=\gamma$ shows that
+	\begin{equation}
+		\label{E:Hneq1}
+		\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x}
+		= \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi});
+	\end{equation}
+	one may check the proof of Lemma 3.3 of \cite{BCC21} for more details.
+
+	{\bigskip\bf\noindent Step 2.~} Now we compute the corresponding part to the left-hand side of
+	\eqref{E:doubleExp}.  First, using the fact that $K*K=\gamma$, we see that
+	\begin{equation}
+		\label{E:inteq1}
+		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x};
+	\end{equation}
+	one may check the proof of Lemma 3.4 of \cite{BCC21} for more details.
+	By the scaling property for $\mathcal{F}\widetilde{f}_n$:
+	\begin{equation}
+		\label{E:Ffnscale}
+		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n),
+	\end{equation}
+	one can show that
+	\begin{align}
+		\label{E:fHn}
+		\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
+		 & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x} \ud t;
+	\end{align}
+	see Appendix for the proof.
+
+	{\bigskip\bf\noindent Step 3.~} Now we can apply the Fubini theorem and Lemma \ref{L:doubleExp} to
+	the function $t\to H_n(t,\vec{x})$ to see that
+	\begin{align}
+		\label{E:doubleH}
+		\int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x} \ud t
+		\le \int_{\R^{nd}} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t\right ]^2 \ud \vec{x}.
+	\end{align}
+	Therefore, combining \eqref{E:Hneq1}, \eqref{E:inteq1}, and \eqref{E:doubleH} shows that
+	\begin{align}
+		\label{E:fTn}
+		\begin{aligned}
+			\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
+			& \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2} \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}) \\
+			& =: \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2} T_n(\nu,a),
+		\end{aligned}
+	\end{align}
+	where
+	\begin{equation}
+		\label{E:Tn}
+		T_n(\nu,a) = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}).
+	\end{equation}
+	% \begin{remark} By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ and
+	% the scaling property for $\varphi$, we may rewrite $T_n$ as \begin{equation} T_n(\nu,a) = \left(
+	% \frac{\nu}{2} \right)^{-n\alpha/a} T_n(2,a).  \end{equation} \end{remark}
+	By the same arguments as those of Lemma 3.6 of \cite{BCC21} with the replacement
+	\eqref{E:Changes}, we see that
 	\begin{equation}
 		\label{E:muassumption}
-		C_\mu = C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) < \infty \quad \text{and} \quad T_n \le (n!)^2(C_\mu)^2
+		T_n(\nu, a) \le (n!)^2 C_\mu^n(\nu, a) \qquad \text{with} \quad
+		C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi)
+		< \infty.
 	\end{equation}
-\end{lemma}
-\begin{proof}
-As in the proof of Lemma 3.6 \cite{BCC21}, we apply a spherical substitution and get that
-	\begin{align*}
-		\int_{(\R^d)} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi) = \left(\int_{S^{d-1}}\varphi(\gamma) \ud \sigma(\gamma)\right) \left( \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho \right).
-	\end{align*}
-The first integral is shown to be finite in \cite{BCC21}. The second integral is finite if
-	\begin{align}\label{E:alpha2}
-		2a - \alpha +1 > 1
+	Here, the finiteness of $C_\mu(\nu,a)$ entails one part of the conditions in \eqref{E:alpha}:
+	\begin{align}
+		\label{E:alpha2}
+		\int_{(\R^d)} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
+		= C \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho<\infty
+		\quad \Longleftrightarrow \quad
+		2a - \alpha +1 > 1.
 	\end{align}
-which is already satisfied under the assumptions of Theorem \ref{T:solvable}. Hence the first relation in \eqref{E:muassumption} is proven.
-
-The second relation is proven the same was as in Lemma 3.6 \cite{BCC21}. Here is the proof.
-\begin{align}
-	T_n & \le n! \int_{(\R^d)^n} \sum_{\sigma \in \Sigma_n}\left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \nonumber \\
-      & = (n!)^2 \int_{(\R^d)^n} \left[ \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}\right]^2 \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \nonumber                                   \\
-      & \le (n!)^2 \left[ \sup_{\eta \in \R^d} \int_{(\R^d)^n}  \prod_{k=1}^n \left( \frac{1}{1+\frac{\nu}{2}\left| \xi + \eta \right|^a}\right)^2 \mu(\ud \xi) \right]^n \nonumber                        \\
-      & = (n!)^2 \left[ \int_{(\R^d)^n}  \prod_{k=1}^n \left(\frac{1}{1+\frac{\nu}{2}\left| \xi \right|^a}\right)^2 \mu(\ud \xi) \right]^n \nonumber                                                       \\
-      & = (n!)^2(C_\mu)^n \label{E:lem62step}
-\end{align}
-where the last line follows by Lemma 4.1 of Balan and Song \cite{BS17} or by Lemma 3.1 in
-\cite{Chen19AIHP}.
-\end{proof}
-
-
-The following lemma shows that $\widetilde{f}_n(\cdot,0;t) \in \mathcal{H}^{\otimes n}$ for any $t>0$.
-\begin{lemma}
-	\label{L:LNfnineq}
-	Under the assumptions of Theorem \ref{T:solvable} and for any $t>0$.
+	Combining \eqref{E:fTn} and \eqref{E:muassumption} gives that
 	\begin{align}
 		\label{E:LNfnineq}
 		\int_0^\infty e^{-t} \Norm{\widetilde{f_n}(\cdot,0;t)}_{ \mathcal{H}^{ \otimes n } }^n \ud t
-		\le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n
-		\le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} (C_\mu')^n.
+		\le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} C_\mu^n(\nu,a).
 	\end{align}
-\end{lemma}
 
-\begin{proof}
-	We first derive the following scaling property for $\mathcal{F}\widetilde{f}_n$ where
-	$\widetilde{f}_n$ is the kernel of the $n^{th}$ Weiner integral in the chaos expansion of the
-	solution \eqref{E:solwexp}:
-	\begin{equation}
-		\label{E:Ffnscale}
-		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
-	\end{equation}
-	Let $c>0$. Notice that
-	\begin{align*}
-		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f_n(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}).
-	\end{align*}
-	So it suffices to just look at the $\mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})$ terms individually.
-	\begin{align*}
-		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n) & = \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t} \\
-																										& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
-	\end{align*}
-	where we applied the substitution $t_i' = t_i/c$ by applying the scaling property of
-	$\mathcal{F}G$ we wee that
-	\begin{align*}
-		\int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
-		& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} \\
-		& = c^{n(b+r)} \mathcal{F}f_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
-	\end{align*}
-	Now by using this scaling property we see that
-	\begin{align*}
-		\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-     & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t                                                             \\
-     & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  2 \ud t                                                         \\
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                                 \\
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t \\
-     & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               \\
-     & =  \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
-	\end{align*}
-	and now we apply Lemmas \ref{L:inteq1} and \ref{L:intineq1} as well as \eqref{E:FLfn} to get
-	\begin{align*}
-		\frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t
-    & \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} \left(\int_0^\infty e^{-t}  H_n(t,\vec{x}) \ud t \right)^2 \ud \vec{x} \\
-    & =   \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_{\R^{nd}} | \mathcal{F}L_n(\vec{\xi}) |^2\ud \vec{\xi}                           \\
-    & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  T_n,
-	\end{align*}
-	which proves the first inequality in \eqref{E:LNfnineq}. An application of Lemma
-	\ref{L:muassumption} gives the second inequality in \eqref{E:LNfnineq}.
-\end{proof}
-
-\begin{proof}[Proof of Theorem \ref{T:solvable}]
-	First recall \eqref{E:Ffnscale}, which says
-	\begin{align*}
-		\mathcal{F}\widetilde{f_n}(\cdot,0,ct)(\xi_1,..., \xi_n) = c^{n(b+r)}\mathcal{F}\widetilde{f_n}(\cdot,0,t)(c^{b/a}\xi_1,...,c^{b/a}\xi_n).
-	\end{align*}
-	In order to prove the theorem we need to show that $\sum_{n \ge 0} \theta^n n! \Norm{
-	\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 < \infty.$ From the scaling property
-	\eqref{E:normscale} we see that
-	\begin{align*}
-		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t
+	{\bigskip\bf\noindent Step 4.~}
+	% First recall \eqref{E:Ffnscale}, which says \begin{align*}
+	% \mathcal{F}\widetilde{f_n}(\cdot,0,ct)(\xi_1,..., \xi_n) =
+	% c^{n(b+r)}\mathcal{F}\widetilde{f_n}(\cdot,0,t)(c^{b/a}\xi_1,...,c^{b/a}\xi_n).  \end{align*} In
+	% order to prove the theorem we need to show that $\sum_{n \ge 0} \theta^n n! \Norm{
+	% \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 < \infty$.
+	From the scaling property \eqref{E:normscale} we see that
+	\begin{align}
+		\nonumber
+		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}\left(\cdot,0,t\right) }_{ \mathcal{H}^{\otimes n} }^2 \ud t
     & = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \int_0^\infty e^{-t} t^{ \left[ 2(b+r)-\frac{b \alpha}{a} \right] n } \ud t \\
-    & = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
-	\end{align*}
-	as long as we have
+    & = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right),
+		\label{E:fnOne}
+	\end{align}
+	which entails another part of the conditions in \eqref{E:alpha}:
 	\begin{equation}
 		\label{E:alpha3}
 		2(b+r)-\frac{b\alpha}{a} >0.
 	\end{equation}
-	By using Lemma \ref{L:LNfnineq} we can deduce that
+	From \eqref{E:LNfnineq} and \eqref{E:fnOne}, we deduce that
 	\begin{align*}
 		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
-    & = \dfrac{ \int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } \\
-    & \le \dfrac{ 2^{n \left[ 2(b+r)- \frac{b \alpha}{a} \right]} }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } T_n                                        \\
-    & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{\Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }.
+    & = \dfrac{1}{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }  \int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t \\
+		% & \le \dfrac{ 2^{n \left[ 2(b+r)- \frac{b \alpha}{a} \right]} }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } T_n                                        \\
+    & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{\Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }
+		\le C \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu,a) \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a }},
 	\end{align*}
-	Hence, there exists a constant $k_\alpha$ depending on $\alpha$ such that
-	\begin{align*}
-		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \le k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a } }.
-	\end{align*}
-	Therefore,
+	where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$.  Therefore,
 	\begin{align*}
 		\sum_{n \ge 0} \theta^n n! \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
-		\le  \sum_{n \ge 0} \theta^n   k_{\alpha} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu' \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
+		\le  C \sum_{n \ge 0} \theta^n   \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
 	\end{align*}
-	where the sum is finite provided that
-	\begin{equation}\label{E:alpha4}
+	which is finite provided that (see \eqref{E:alpha})
+	\begin{equation}
+		\label{E:alpha4}
 		2(b+r) - 1 - b\alpha/a > 0.
 	\end{equation}
 	This completes the proof of Theorem \ref{T:solvable}.
 \end{proof}
 
-\section{Upper bound of the asymptotics --- the proof of \eqref{E:momentasym-upper}}
+% \section{Upper bound of the asymptotics --- the proof of \texorpdfstring{\eqref{E:momentasym-upper}}{plain_text}}
+\section{Upper bound of the asymptotics}
 \label{S:upperbd}
 
 In this section, we will prove \eqref{E:momentasym-upper} by first establishing the corresponding
@@ -1111,7 +1055,7 @@ Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
 	\begin{align*}
 		J_n(t,t') = \int_{\R^{nd}} H_n(t,x)H_n(t',x) \ud x
 	\end{align*}
-	and recall Lemma \ref{L:inteq1} which says
+	and recall \eqref{E:inteq1} which says
 	\begin{align*}
 		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2} \int_{(\R^{d})^n} H_n(t,\vec{x})^2\ud \vec{x} = \frac{1}{(n!)^2} J_n(t,t).
 	\end{align*}
@@ -1119,7 +1063,7 @@ Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
 	\begin{align*}
 		J_n(t,t) =  t^{[2(b + r ) -b \alpha / a]n} J_n(1,1).
 	\end{align*}
-	Let $\tau$ and $\widetilde{\tau}$ be independent exponential random variables with mean 1. By lemma \ref{L:Hneq1},
+	Let $\tau$ and $\widetilde{\tau}$ be independent exponential random variables with mean 1. By \eqref{E:Hneq1},
 	\begin{align*}
 		\mathbb{E}[J_n(\tau, \tau')] & = \int_0^\infty \int_0^\infty e^{-t}e^{-\widetilde{t}}J_n(t,\widetilde{t}) \ud t \ud \widetilde{t} = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x \\
 																 & = \int_{\R^{nd}} |\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) =: T_n.
@@ -1134,7 +1078,7 @@ Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
 				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 J_n(1,1)                                                                                                                           \\
 				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{\widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2,
 	\end{align*}
-	where the last line follows from Lemma \ref{L:inteq1}. Thus so far we have shown
+	where the last line follows from \eqref{E:inteq1}. Thus so far we have shown
 	\begin{align}
 		\label{E:2lowbd}
 		\frac{T_n}{(n!)^2} = \frac{\left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'}{(n!)^2}\le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
@@ -1239,7 +1183,8 @@ Now we are ready to prove \eqref{E:momentasym-upper}.
 \end{proof}
 
 
-\section{Lower bound of the asymptotics --- the proof of \eqref{E:momentasym-lower}}
+% \section{Lower bound of the asymptotics --- the proof of \eqref{E:momentasym-lower}}
+\section{Lower bound of the asymptotics}
 \label{S:lowerbd}
 
 % The goal of this section is to prove the following theorem.
@@ -1273,7 +1218,7 @@ with $s_0=0$. We now give conditions for when $W_n$ is well defined.
 	\begin{align*}
 		\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t =\frac{1}{1+\frac{\nu}{2}|\xi|^a};
 	\end{align*}
-	see the proof of Theorem 4.1 of \cite{CHN19} for more details. 
+	see the second equation in \eqref{E:LandFL}.
 	% By Fubini's theorem, the left hand side of \eqref{E:LWn} is equal to
 	% \begin{align*}
 	% 	 \int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n \mathcal{F}G(s_k-s_{k-1}, \cdot)(\xi_k + \cdots + \xi_n) \ud \vec{s} \ud t \mu(\ud \vec {\xi}),
@@ -1680,6 +1625,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 
 \section{Appendix}
 \label{S:Appendix}
+
 \begin{proof}[Proof of Lemma \ref{L:rhovar}]
 	Recall that we define $\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
 	\begin{align*}
@@ -1727,6 +1673,46 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\end{gather*}
 	This completes the proof of Lemma \ref{L:rhovar}.
 \end{proof}
+
+\begin{proof}[Proof of \eqref{E:fHn}]
+	% We first derive the following scaling property for $\mathcal{F}\widetilde{f}_n$ where
+	% $\widetilde{f}_n$ is the kernel of the $n^{th}$ Weiner integral in the chaos expansion of the
+	% solution \eqref{E:solwexp}:
+	% \begin{equation*}
+	% 	% \label{E:Ffnscale}
+	% 	\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
+	% \end{equation*}
+	Because
+	\begin{align*}
+		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f_n(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}),
+	\end{align*}
+	by the linearity, it suffices to just look at the
+	$\mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})$ terms individually. For any
+	$c>0$, by \eqref{E:Ffnscale}, we have that
+	\begin{align*}
+		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n) & = \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t} \\
+																										& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
+	\end{align*}
+	where we applied the substitution $t_i' = t_i/c$. By the scaling property of $\mathcal{F}G$ we
+	see that
+	\begin{align*}
+		\int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
+		& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} \\
+		& = c^{n(b+r)} \mathcal{F}f_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
+	\end{align*}
+	Now by the above scaling property, we can obtain \eqref{E:fHn} as follows:
+	\begin{align*}
+		\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
+     & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t                                                             \\
+     & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  2 \ud t                                                         \\
+     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                                 \\
+     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t \\
+     & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               \\
+     & =  \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t.
+	\end{align*}
+	proves \eqref{E:fHn}.
+\end{proof}
+
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	\bibitem{BCC21} % {{{ 1.
