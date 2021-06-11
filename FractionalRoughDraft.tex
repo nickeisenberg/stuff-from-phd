@@ -186,7 +186,7 @@ asymptotics; time-independent Gaussian noise.
 \tableofcontents
 % \pagebreak
 \section{Introduction}
-In this paper we study the following fractional stochastic equation:
+In this paper we study the following fractional {\it stochastic partial differential equation} (SPDE):
 \begin{equation}
 	\label{E:SPDE}
 	\begin{cases}
@@ -237,9 +237,16 @@ the following integral equation:
 	\label{E:spdeint}
 	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
 \end{equation}
-where the stochastic integral is in the {\it Skorohod} sense; see Definition \ref{D:Sol} below.
-In the following, the fundamental solution will exclusively refer to $G(t,x)$, which is indeed a
-smooth function for $x\ne 0$ and sometimes nonnegative (see Remark \ref{R:Nonnegative} below).
+where the stochastic integral is in the {\it Skorohod} sense; see Definition \ref{D:Sol} below.  In
+the following, the fundamental solution will exclusively refer to $G(t,x)$, which is indeed a smooth
+function for $x\ne 0$. Our results rely on the following assumption for the nonnegativity of
+$G(t,x)$, which is a nontrivial fact; see Remark \ref{R:Nonnegative} for sufficient conditions.
+
+\begin{assumption}[Nonnegativity]
+	\label{A:Nonnegative}
+	Assume that the fundamental solution $G(t,x)$ is nonnegative for all $t>0$ and $x\in\R^d$.
+	% The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
+\end{assumption}
 \bigskip
 
 Regarding the noise, we formulate the following assumption in order to cover the Riesz kernel case,
@@ -277,19 +284,40 @@ the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
 strategy laid out by Balan {\it et al} ({\it ibid.}).
 
-Now let us state our main results of the paper. The first main result is about the well-posedness of
-the equation \eqref{E:SPDE} as stated in the following theorem.
+Now let us state our main results of the paper. The first main result deals with the well-posedness
+of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem:
 
-\begin{theorem}
+\begin{theorem}[Solvability]
 	\label{T:solvable}
-	Under Assumption \ref{A:Noise}, if
+	Assume that both Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold.\\
+	(1) \eqref{E:SPDE} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for all $p \ge 2$, $t>0$, and $x
+	\in \R^d$ provided that
 	\begin{equation}
 		\label{E:alpha}
-		0< \alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right),
+		0< \alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
 	\end{equation}
-	then \eqref{E:SPDE} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for all $p \ge 2$, $t>0$, and $x
-	\in \R^d$.
+
+	\noindent (2) Otherwise, if
+	\begin{align}
+		\label{E:critical}
+		r\in \left[0,1/2\right] \qquad \text{and} \qquad
+		0<\alpha = \frac{a}{b}[2(b+r)-1] \le d,
+	\end{align}
+	then we have the following two cases:
+	\begin{enumerate}
+		\item[(2-i)] For any $p\ge 2$,\eqref{E:SPDE} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
+			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
+			\begin{align}
+				\label{E:Tp}
+				T_p :=\frac{1}{2\: C_\mu\left(\nu,a\right)} \left[\theta\: (p-1)\right]^{ \frac{b\alpha}{a} - 2(b+r)}
+				\quad \text{with} \quad
+				C_\mu(\nu,a) := \int_{(\R^d)} \frac{\mu(\ud \xi)}{\left(1+\frac{\nu}{2}|\xi|^a\right)^2}\:.
+			\end{align}
+		\item[(2-ii)] For any $t>T_2$, the series \eqref{E:2mom} below diverges, that is, the
+			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exit whenever $t>T_2$.
+	\end{enumerate}
 \end{theorem}
+
 % To facilitate the statement of our results, all the above examples can be put under the following
 % assumption. It is interesting to see whether this assumption could actually cover more examples than
 % those stated above.
@@ -314,34 +342,23 @@ the equation \eqref{E:SPDE} as stated in the following theorem.
 % dimension $d$. Under theses assumptions, the fundamental function $G$ will be nonnegative and smooth
 % for $x\ne 0$; see Theorems 4.1 and 4.6 of \cite{CHHH17}.
 
-
-
 The second main result of the paper is about the moment asymptotics. We need to introduce the
 following variational constants:
 \begin{align*}
 	\mathcal{M}_a\left(\Theta f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
 	\mathcal{M}_a                              := \mathcal{M}_a\left(|\cdot|^{-\alpha},1\right);
 \end{align*}
-see Section \ref{SS:LD} for more notation and details. For the lower bound of the asymptotics, due
-to some technical reasons (see Section \ref{S:lowerbd}), we need to introduce one additional
-assumption on the fundamental solution:
-
-\begin{assumption}[Nonnegativity]
-	\label{A:Nonnegative}
-	Assume that the fundamental solution $G(t,\cdot)$ is nonnegative.
-	% The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
-\end{assumption}
-
-Now we are ready to state the second main result as follows:
+see Section \ref{SS:LD} for more notation and details. Now we are ready to state the second main
+result as follows:
 
 \begin{theorem}
 	\label{T:asym}
-	Under Assumption \ref{A:Noise}, if condition \eqref{E:alpha} holds, then we have that
+	Under Assumptions \ref{A:Nonnegative} and \ref{A:Noise}, if condition \eqref{E:alpha} holds, then we have that
 	\begin{equation}
-		\label{E:momentasym-upper}
+		\label{E:momentasym}
 		\begin{aligned}
-			\limsup_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \le & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-                                                                     & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                                                                & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
 		\end{aligned}
 	\end{equation}
 	where
@@ -350,44 +367,29 @@ Now we are ready to state the second main result as follows:
 		\beta     := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
 		t_p^\beta := (p-1)^{\beta -1} t^\beta.
 	\end{align}
-	Moreover, if in addition Assumption \ref{A:Nonnegative} holds, then
-	\begin{equation}
-		\label{E:momentasym-lower}
-		\begin{aligned}
-			\liminf_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \ge & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-                                                                     & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
-		\end{aligned}
-	\end{equation}
-	and as a consequence,
-	\begin{equation}
-		\label{E:momentasym}
-		\begin{aligned}
-			\lim_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p = & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta\\
-																																& \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-		\end{aligned}
-	\end{equation}
 \end{theorem}
 \begin{proof}
-	The matching upper and lower bounds in \eqref{E:momentasym-upper} and \eqref{E:momentasym-lower}
-	are proved at the end of Sections \ref{S:upperbd} and \ref{S:lowerbd} below, respectively.
-	\eqref{E:momentasym} is a direct consequence of  \eqref{E:momentasym-upper} and
-	\eqref{E:momentasym-lower}.
+	We prove the matching upper bound \eqref{E:momentasym-upper} and the lower bound
+	\eqref{E:momentasym-lower} of \eqref{E:momentasym} at the end of Sections \ref{S:upperbd} and
+	\ref{S:lowerbd} below, respectively, which together prove \eqref{E:momentasym}.
 \end{proof}
 
 As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ to infinity as follows:
 
 \begin{corollary}
 	\label{C:Lim}
-	Under both Assumptions \ref{A:Noise} and \ref{A:Nonnegative}, if condition \eqref{E:alpha} holds,
-	then for any $p\ge 2$ and $t>0$ fixed, we have the following large time asymptotics
+	Under both Assumptions \ref{A:Nonnegative} and \ref{A:Noise}, if condition \eqref{E:alpha} holds,
+	then
+	\begin{itemize}
+		\item[(1)] For all $p\ge 2$ fixed, it holds that
 	\begin{align}
 		\label{E:momentasym-t}
 		\begin{aligned}
 			\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) = & p (p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a}-1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-                                                                      & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+                                                                      & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right);
 		\end{aligned}
 	\end{align}
-	and the following large moment asymptotics:
+	\item[(2)] For all $t>0$ fixed, it holds that
 	\begin{align}
 		\label{E:momentasym-p}
 		\begin{aligned}
@@ -395,6 +397,7 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
                                                                       & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{aligned}
 	\end{align}
+	\end{itemize}
 \end{corollary}
 
 Before the end of this Introduction, let us make a few remarks:
@@ -614,47 +617,23 @@ Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following result
 
 \begin{lemma}
 	\label{L:Scale}
-	For any $c>0$ and $t>0$, the two following scaling properties hold:
-	\begin{equation}
+	For any $c>0$ and $t>0$, the following scaling properties hold:
+	\begin{gather}
 		\label{E:greenscale}
 		\mathcal{F}G(t,\cdot)(c\xi) = c^{-\frac{a}{b}(b+r -1)}\mathcal{F}G\left(c^{\frac{a}{b}}t,\cdot\right)( \xi)  \quad \text{and} \quad
-		\mathcal{F}G(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}G(t,\cdot)(c^{b/a} \xi),
-	\end{equation}
-	and
-	\begin{equation}
+		\mathcal{F}G(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}G(t,\cdot)(c^{b/a} \xi),\\
+		\label{E:Ffnscale}
+		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n), \\
 		\label{E:normscale}
 		\Norm{\widetilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{[2(b + r ) -b \alpha / a]n} \Norm{\widetilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
-	\end{equation}
+	\end{gather}
 \end{lemma}
 \begin{proof}
-The scaling properties in \eqref{E:greenscale} is a direct consequence of the explicit expression of
-$\mathcal{F}G(t,\cdot)(\xi)$ as in (4.8) of \cite{CHN19}. Property \eqref{E:normscale} is a direct
-consequence of \eqref{E:greenscale} and the scaling property of the spectral measure $\mu$. We leave
-the details for the interested readers.
-% As for \eqref{E:normscale}, first recall that
-% \begin{align*}
-% 	\Norm{\widetilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 =  \int_{\R^{nd}} |\mathcal{F}\widetilde{f}_n(\cdot,0,t)|^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi}
-% \end{align*}
-% where $\varphi(\vec{\xi}) = \varphi(\xi_1)\cdots\varphi(\xi_n)$. We start by applying this definition of $\widetilde{f_n}$, \eqref{E:fweker} and the scaling property \eqref{E:normscale} to see
-% \begin{align*}
-% 	&  \int_{\R^{nd}} |\mathcal{F}\widetilde{f}_n(\cdot,0,t)|^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi} =  \int_{\R^{nd}} \left| \frac{1}{n!} \sum_{\sigma \in \Sigma_n}\int_{[0,t]^n<} \overline{\mathcal{F}G(t-t_n,\cdot)(\sum_{i=1}^n\xi_i)\cdots \mathcal{F}G(t_2-t_1,\cdot)(\xi_1)} \right|^2 \varphi(\vec{\xi})\ud \vec{\xi}
-% 	\\&= t^{2n(b+r-1)}\int_{\R^{nd}} \left|\frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n<} \overline{\mathcal{F}G\left(1-\frac{t_n}{t},\cdot\right)(t^{b/a}(\sum_{i=1}^n\xi_i))\cdots \mathcal{F}G\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{b/a}\xi_1)} \right|^2 \varphi(\vec{\xi})\ud \vec{\xi}.
-% \end{align*}
-% Now we apply the substitution $t_k' = t_k'/t$ which gives us
-% \begin{align*}
-% 	&t^{2n(b+r-1)}\int_{\R^{nd}} \left|\frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n<} \overline{\mathcal{F}G\left(1-\frac{t_n}{t},\cdot\right)(t^{b/a}(\sum_{i=1}^n\xi_i))\cdots \mathcal{F}G\left(\frac{t_2}{t}-\frac{t_1}{t},\cdot\right)(t^{b/a}\xi_1)} \right|^2 \varphi(\vec{\xi})\ud \vec{\xi}.
-% 	\\& = t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left| \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}G\left(1-t_n,\cdot\right)(t^{b/a}(\sum_{i=1}^n\xi_i))\cdots \mathcal{F}G\left(t_2-t_1,\cdot\right)(t^{b/a}\xi_1)} \right|^2 \varphi(\vec{\xi})\ud \vec{\xi}.
-% \end{align*}
-% Next, we recall the scaling property of $\varphi$ and apply the substitution $\xi_k' = t^{b/a}\xi_k$ which yields
-% \begin{align*}
-% 	& t^{2n(b+r-1)+2n} \int_{\R^{nd}}  \left| \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}G\left(1-t_n,\cdot\right)(t^{b/a}(\sum_{i=1}^n\xi_i))\cdots \mathcal{F}G\left(t_2-t_1,\cdot\right)(t^{b/a}\xi_1)} \right|^2 \varphi(\vec{\xi})\ud \vec{\xi}
-% 	\\&= t^{2n(b+r-1)+2n}\int_{\R^{nd}} \left| \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}G\left(1-t_n,\cdot\right)(\sum_{i=1}^n\xi_i)\cdots \mathcal{F}G\left(t_2-t_1,\cdot\right)(\xi_1)} \right|^2 \varphi(t^{-b/a}\vec{\xi})t^{-nd b / a}\ud \vec{\xi}
-% \end{align*}
-% \begin{align*}
-% 	& = t^{2n(b+r-1)+2n - n b \alpha / a}\int_{\R^{nd}} \left| \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \int_{[0,1]^n<} \overline{\mathcal{F}G\left(1-t_n,\cdot\right)(\sum_{i=1}^n\xi_i)\cdots \mathcal{F}G\left(t_2-t_1,\cdot\right)(\xi_1)} \right|^2 \varphi(\vec{\xi})\ud \vec{\xi} \\
-% 	& = t^{2n(b+r-1)+2n - n b\alpha / a}\int_{\R^{nd}} |\mathcal{F}\widetilde{f}_n(\cdot,0,1)|^2(\vec{\xi}) \varphi(\vec{\xi})\ud \vec{\xi} \\
-% 	&=  t^{[2(b+r-1)+2 - b \alpha / a]n}\Norm{\widetilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \\&= t^{[2(b+r) - b \alpha / a]n}\Norm{\widetilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2
-% \end{align*}
+	The scaling properties in \eqref{E:greenscale} is a direct consequence of the explicit expression
+	of $\mathcal{F}G(t,\cdot)(\xi)$ as in (4.8) of \cite{CHN19}.  Property \eqref{E:Ffnscale} is an
+	easy exercise of change of variables.  Property \eqref{E:normscale} is a direct consequence of
+	\eqref{E:greenscale}, \eqref{E:Ffnscale}, and the scaling property of the spectral measure $\mu$.
+	We leave the details for the interested readers.
 \end{proof}
 
 Recall the following standard result about the existence and uniqueness of the solution when the
@@ -906,13 +885,8 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 		\label{E:inteq1}
 		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x};
 	\end{equation}
-	one may check the proof of Lemma 3.4 of \cite{BCC21} for more details.
-	By the scaling property for $\mathcal{F}\widetilde{f}_n$:
-	\begin{equation}
-		\label{E:Ffnscale}
-		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n),
-	\end{equation}
-	one can show that
+	one may check the proof of Lemma 3.4 of \cite{BCC21} for more details.  By the scaling property
+	for $\mathcal{F}\widetilde{f}_n$ in \eqref{E:Ffnscale}, one can show that
 	\begin{align}
 		\label{E:fHn}
 		\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
@@ -948,7 +922,8 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\eqref{E:Changes}, we see that
 	\begin{equation}
 		\label{E:muassumption}
-		T_n(\nu, a) \le (n!)^2 C_\mu^n(\nu, a) \qquad \text{with} \quad
+		T_n(\nu, a) \le (n!)^2 C_\mu^n(\nu, a)
+		\qquad \text{with} \quad
 		C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi)
 		< \infty.
 	\end{equation}
@@ -968,11 +943,6 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\end{align}
 
 	{\bigskip\bf\noindent Step 4.~}
-	% First recall \eqref{E:Ffnscale}, which says \begin{align*}
-	% \mathcal{F}\widetilde{f_n}(\cdot,0,ct)(\xi_1,..., \xi_n) =
-	% c^{n(b+r)}\mathcal{F}\widetilde{f_n}(\cdot,0,t)(c^{b/a}\xi_1,...,c^{b/a}\xi_n).  \end{align*} In
-	% order to prove the theorem we need to show that $\sum_{n \ge 0} \theta^n n! \Norm{
-	% \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 < \infty$.
 	From the scaling property \eqref{E:normscale} we see that
 	\begin{align}
 		\nonumber
@@ -994,30 +964,84 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{\Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }
 		\le C \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu,a) \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a }},
 	\end{align*}
-	where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$.  Therefore,
-	\begin{align*}
-		\sum_{n \ge 0} \theta^n n! \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
-		\le  C \sum_{n \ge 0} \theta^n   \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
-	\end{align*}
+	where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$.  Therefore, by
+	\eqref{E:2mom}, \eqref{E:normscale}, and the above inequality,
+	\begin{align}
+		\nonumber
+		\Norm{u(t,x)}_2^2 & = \sum_{n \ge 0} \theta^n n! \: t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \\
+                      & \le  C \sum_{n \ge 0} \theta^n  t^{[2(b + r ) -b \alpha / a]n} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
+		\label{E:2nomBd}
+	\end{align}
 	which is finite provided that (see \eqref{E:alpha})
 	\begin{equation}
 		\label{E:alpha4}
 		2(b+r) - 1 - b\alpha/a > 0.
 	\end{equation}
-	This completes the proof of Theorem \ref{T:solvable}.
+	Finally, an application of the Minkowski inequality and the hypercontractivity (see \cite[Theorem
+	B.1]{BCC21}) shows that for all $p\ge 2$,
+	\begin{align}
+		\nonumber
+		\Norm{u(t,x)}_p & \le \sum_{n\ge 0} \theta^{n/2} (p-1)^{n/2} \sqrt{n!} \Norm{\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} } \\
+                    & \le  \sqrt{C} \sum_{n \ge 0} \theta^{n/2} (p-1)^{n/2}  t^{[2(b + r ) -b \alpha /a]n/2} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^{n/2} }{ (n!)^{\frac{1}{2}\left[ 2(b+r) - 1 - b\alpha/a \right]}}.
+		\label{E:pmomBd}
+	\end{align}
+	Therefore, under condition \eqref{E:alpha}, \eqref{E:SPDE} has an unique $L^p(\Omega)$-solution
+	$u(t,x)$ for all $p\ge 2$,  $t>0$ and $x\in\R^d$.  This proves part (1) of Theorem
+	\ref{T:solvable}.
+
+	{\bigskip\bf\noindent Step 5.~} In this step, we will prove part (2-i) of Theorem
+	\ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
+	vanishes, namely,
+	\begin{align*}
+		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
+	\end{align*}
+	Among the three inequalities in \eqref{E:alpha}, we also need to make sure that the minimum is
+	achieved by $\frac{a}{b}\left[2(b+r)-1\right]$, for which, we need to additionally require
+	$\frac{a}{b}\left[2(b+r)-1\right]\le d$ and
+	\begin{align*}
+		\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
+	\end{align*}
+	Putting these conditions together gives the conditions stated in \eqref{E:critical}. Under
+	condition \eqref{E:critical}, write the right-hand side of \eqref{E:pmomBd} as $\sum_{n\ge
+	0}R^{n/2}$ with
+	\begin{align*}
+		R = \theta (p-1) \left[ 2tC_\mu(\nu,a) \right]^{[2(b + r ) -b \alpha /a]}.
+	\end{align*}
+	Therefore, by solving
+	\begin{align*}
+		0<R<1 \quad \Longleftrightarrow \quad
+		t< T_p,
+	\end{align*}
+	one finds the expression for $T_p$ as in \eqref{E:Tp}. Finally, under the above condition, the
+	$L^p(\Omega)$-solution $u(t,x)$ exists for all $x\in\R^d$. This proves part (2-i) of Theorem
+	\ref{T:solvable}.
+
+	{\bigskip\bf\noindent Step 6.~} Finally, the content of part (2-ii) of Theorem \ref{T:solvable} is
+	proved in part (ii) of Lemma \ref{L:2ineq} below. With this, we complete the whole proof of
+	Theorem \ref{T:solvable}.
 \end{proof}
 
 % \section{Upper bound of the asymptotics --- the proof of \texorpdfstring{\eqref{E:momentasym-upper}}{plain_text}}
 \section{Upper bound of the asymptotics}
 \label{S:upperbd}
 
-In this section, we will prove \eqref{E:momentasym-upper} by first establishing the corresponding
-result for $p=2$ in Lemma \ref{L:p=2} and then applying the hypercontractivity property given by
-Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
+In this section, we will the upper bound of \eqref{E:momentasym}, namely,
+\begin{equation}
+	\label{E:momentasym-upper}
+	\begin{aligned}
+		\limsup_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \le & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+																																	 & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+	\end{aligned}
+\end{equation}
+
+We will first establish the corresponding result for $p=2$ in Lemma \ref{L:p=2} and then apply the
+hypercontractivity property given by Theorem B.1 in \cite{BCC21} to obtain the general case for
+$p\ge 2$.
 
 \begin{lemma}
 	\label{L:2ineq}
-	Under the assumptions of Theorem \ref{T:solvable}, we have that
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold.\\
+	(i) Under condition \eqref{E:alpha},
 	\begin{align}
 		\label{E:2ineq-a}
 		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
@@ -1029,9 +1053,19 @@ Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
 		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
 		&=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
+	(ii) Under condition \eqref{E:critical}, let $T_2$ be defined as in \eqref{E:Tp}. For all
+	$x\in\R^d$ and $\theta>0$, it holds that
+	\begin{align*}
+		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
+		\quad
+		\begin{cases}
+			\quad <\infty & \text{if $t<T_2$}, \bigskip\\
+			\quad =\infty & \text{if $t>T_2$}.
+		\end{cases}
+	\end{align*}
 \end{lemma}
 \begin{proof}
-	Recall the definition of $T_n$ from above as well as \eqref{E:LogRho} which says that
+	{\it (i)~} Recall the definition of $T_n$ from above as well as \eqref{E:LogRho} which says that
 	\begin{align*}
 			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{T_n}{(n!)^2} \right]  = \log\rho.
 	\end{align*}
@@ -1039,7 +1073,7 @@ Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
 	\begin{align*}
 		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
 	\end{align*}
-	and then Lemma \ref{L:LNfnineq} above shows that
+	and then \eqref{E:LNfnineq} above shows that
 	\begin{align*}
 		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n.
 	\end{align*}
@@ -1100,7 +1134,10 @@ Theorem B.1 in \cite{BCC21} to obtain the general case for $p\ge 2$.
 	\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log\left[ \frac{\Gamma(an+1)}{(n!)^a} \right] = a\log(a).
 	\end{align*}
-	This completes the proof of Lemma \ref{L:2ineq}.
+	This proves part (i) of Lemma \ref{L:2ineq}.
+
+
+	{\bigskip\noindent\it (ii)~} ... \textcolor{magenta}{Nick, please fill the details here}....
 \end{proof}
 
 
@@ -1195,8 +1232,16 @@ Now we are ready to prove \eqref{E:momentasym-upper}.
 % \rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).  \end{equation*}
 % \end{theorem}
 
-In this section, we will prove \eqref{E:momentasym-lower}. We start by defining the function
-$W_n(t,\phi)$ on $(0,\infty) \times L_{\mathbb{C}}^2(\mu)$ by
+In this section, we will prove the lower bound of \eqref{E:momentasym}, namely,
+\begin{equation}
+	\label{E:momentasym-lower}
+	\begin{aligned}
+		\liminf_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \ge & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+																																	 & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+	\end{aligned}
+\end{equation}
+
+We start by defining the function $W_n(t,\phi)$ on $(0,\infty) \times L_{\mathbb{C}}^2(\mu)$ by
 \begin{equation}
 	W_n(t,\phi) := \int_{[0,t]^n<}
 	\int_{(\R^d)^n} \prod_{k=1}^n \phi(\xi_k) \prod_{k=1}\mathcal{F}G(s_k-s_{k-1},\cdot)(\xi_k + \cdots + \xi_n) \mu(\ud \xi_1)\cdots \mu(\ud \xi_n) \ud s.
