@@ -309,9 +309,7 @@ of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following the
 			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
 			\begin{align}
 				\label{E:Tp}
-				T_p :=\frac{1}{2\: C_\mu\left(\nu,a\right)} \left[\theta\: (p-1)\right]^{ \frac{b\alpha}{a} - 2(b+r)}
-				\quad \text{with} \quad
-				C_\mu(\nu,a) := \int_{(\R^d)} \frac{\mu(\ud \xi)}{\left(1+\frac{\nu}{2}|\xi|^a\right)^2}\:.
+				T_p := ... \text{\textcolor{magenta}{update here}} ....
 			\end{align}
 		\item[(2-ii)] For any $t>T_2$, the series \eqref{E:2mom} below diverges, that is, the
 			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exit whenever $t>T_2$.
@@ -989,7 +987,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	$u(t,x)$ for all $p\ge 2$,  $t>0$ and $x\in\R^d$.  This proves part (1) of Theorem
 	\ref{T:solvable}.
 
-	{\bigskip\bf\noindent Step 5.~} In this step, we will prove part (2-i) of Theorem
+	{\bigskip\bf\noindent Step 5.~} In this step, we will prove part (2) of Theorem
 	\ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
 	vanishes, namely,
 	\begin{align*}
@@ -1001,24 +999,22 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\begin{align*}
 		\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
 	\end{align*}
-	Putting these conditions together gives the conditions stated in \eqref{E:critical}. Under
-	condition \eqref{E:critical}, write the right-hand side of \eqref{E:pmomBd} as $\sum_{n\ge
-	0}R^{n/2}$ with
-	\begin{align*}
-		R = \theta (p-1) \left[ 2tC_\mu(\nu,a) \right]^{[2(b + r ) -b \alpha /a]}.
-	\end{align*}
-	Therefore, by solving
-	\begin{align*}
-		0<R<1 \quad \Longleftrightarrow \quad
-		t< T_p,
-	\end{align*}
-	one finds the expression for $T_p$ as in \eqref{E:Tp}. Finally, under the above condition, the
-	$L^p(\Omega)$-solution $u(t,x)$ exists for all $x\in\R^d$. This proves part (2-i) of Theorem
-	\ref{T:solvable}.
+	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
 
-	{\bigskip\bf\noindent Step 6.~} Finally, the content of part (2-ii) of Theorem \ref{T:solvable} is
-	proved in part (ii) of Lemma \ref{L:2ineq} below. With this, we complete the whole proof of
-	Theorem \ref{T:solvable}.
+	Now assume condition \eqref{E:critical} holds. Notice that when $p=2$, both parts (2-i) and (2-ii)
+	are proved in part (ii) of Lemma \ref{L:2ineq} below. Hence, it remains to show part (2-i) for the case
+	when $p>2$. Indeed, by the hypercontractivity property, the upper bound for the case of $p$ norm
+	with $p>2$ can be reduced to that of the second norm. More precisely, \eqref{E:pMom2} and part
+	(ii) of Lemma \ref{L:2ineq} below together imply that
+	\begin{align*}
+		t_p = (p-1)^{\frac{1}{2(b+r)-b\alpha/a}} t < T_2 \quad \Longrightarrow \quad \Norm{u(t,x)}_p<\infty,
+	\end{align*}
+	from which one can identify the critical time
+	\begin{align*}
+		T_p:= (p-1)^{-\frac{1}{2(b+r)-b\alpha/a}}T_2 = (p-1)^{-\frac{1}{2(b+r)-b\alpha/a}} (2\rho\theta)^{-1} = ... \\
+		\text{\textcolor{magenta}{... write in terms of $\mathcal{M}$ instead of $\rho$ as in \cite{BCC21}}}
+	\end{align*}
+	With this, we complete the whole proof of Theorem \ref{T:solvable}.
 \end{proof}
 
 % \section{Upper bound of the asymptotics --- the proof of \texorpdfstring{\eqref{E:momentasym-upper}}{plain_text}}
@@ -1044,14 +1040,11 @@ $p\ge 2$.
 	(i) Under condition \eqref{E:alpha},
 	\begin{align}
 		\label{E:2ineq-a}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
-		&= \log\left(2^{2(b+r)-\frac{b\alpha}{a}}\rho\right)
-	\end{align}
-	and
-	\begin{align}
+		&\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
+		= \log\left(2^{2(b+r)-\frac{b\alpha}{a}}\rho\right) \quad \text{and}\\
 		\label{E:2ineq-b}
-		\lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
-		&=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
+		& \lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
+		=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
 	(ii) Under condition \eqref{E:critical}, let $T_2$ be defined as in \eqref{E:Tp}. For all
 	$x\in\R^d$ and $\theta>0$, it holds that
@@ -1137,28 +1130,24 @@ $p\ge 2$.
 	This proves part (i) of Lemma \ref{L:2ineq}.
 
 
-	{\bigskip\noindent\it (ii)~} By applying $\alpha = \frac{a}{b}\left[ 2(b+r) - 1 \right]$ and the scaling property \eqref{E:normscale} to the series $\sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2$, we see that
-	
+	{\bigskip\noindent\it (ii)~} By applying $\alpha = \frac{a}{b}\left[ 2(b+r) - 1 \right]$ and the
+	scaling property \eqref{E:normscale} to the series in \eqref{E:2mom}, we see that
+	\begin{align}
+		\label{E:SerieCr-2}
+		\sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2
+    &= \sum_{n \ge 0} \theta^n n! t^{n } \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2
+     = : \sum_{n \ge 0} (\theta t)^n R_n,
+	\end{align}
+	where $R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2$.  The limit in
+	\eqref{E:2ineq-b} implies that
 	\begin{align*}
-		\sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2 &= \sum_{n \ge 0} \theta^n n! t^{n } \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2 =: \sum_{n \ge 0} (\theta t)^n R_n
+		\lim_{n \to \infty} |R_n|^{-1/n} = (2\rho)^{-1}.
 	\end{align*}
-	where
-		\[
-			R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2.
-		\]
-	By the Cauchy-Hadamard theorem, this series diverges for 
-		\[
-			\theta t > \limsup_{n \to \infty} |R_n|^{-1/n} =: R.
-		\]
-	However, by equation \eqref{E:2ineq-b}, we see that 
-		\[
-			\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right).
-		\]
-	Hence 
-		\[
-			\limsup_{n \to \infty} |R_n|^{-1/n} = (2\rho)^{-1}
-		\]
-	and so the series diverges for $t > \dfrac{1}{2\rho\theta} = T_2$ and in fact the Cauchy-Hadamard theorem says that $T_2$ is the precise cut off time for divergence of the series $\sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2$. 
+	Hence, By the Cauchy-Hadamard theorem, the radius of convergence for this series
+	\eqref{E:SerieCr-2} is equal to $R:= (2\rho)^{-1}$, namely,  the series in \eqref{E:SerieCr-2}
+	diverges (resp. converges) when $\theta t< R$ (resp. $\theta t < R$).  Therefore, the critical
+	time $T_2 = R/\theta = (2\rho\theta)^{-1}$. This completes the proof of part (ii) of Lemma
+	\ref{L:2ineq}.
 \end{proof}
 
 \begin{lemma}
@@ -1233,10 +1222,12 @@ Now we are ready to prove \eqref{E:momentasym-upper}.
 																		&= \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2^2.
 	\end{align*}
 	Hence,
-	\begin{align*}
-		\Norm{u(t,0)}_p \le \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2 =: \Norm{u(t_p,0)}_2
-	\end{align*}
-	and an application of Lemma \ref{L:p=2} proves \eqref{E:momentasym-upper}.
+	\begin{align}
+		\label{E:pMom2}
+		\Norm{u(t,0)}_p \le \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2 =: \Norm{u(t_p,0)}_2,
+	\end{align}
+	where $t_p$ is defined in \eqref{E:beta&tp}. Finally, an application of Lemma \ref{L:p=2} proves
+	\eqref{E:momentasym-upper}.
 \end{proof}
 
 
