@@ -999,7 +999,8 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	$u(t,x)$ for all $p\ge 2$,  $t>0$ and $x\in\R^d$.  This proves part (1) of Theorem
 	\ref{T:solvable}.
 
-	{\bigskip\bf\noindent Step 5.~} Part (2) of Theorem \ref{T:solvable} will be proved in Lemma \ref{L:2ineq} below.
+	{\bigskip\bf\noindent Step 5.~} The proof of part (2) of Theorem \ref{T:solvable} will be
+	postponed to part (ii) of Lemma \ref{L:p=2} below.
 \end{proof}
 
 % \section{Upper bound of the asymptotics --- the proof of \texorpdfstring{\eqref{E:momentasym-upper}}{plain_text}}
@@ -1021,8 +1022,7 @@ $p\ge 2$.
 
 \begin{lemma}
 	\label{L:2ineq}
-	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold.\\
-	(i) Under condition \eqref{E:alpha},
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Under condition \eqref{E:alpha},
 	\begin{align}
 		\label{E:2ineq-a}
 		&\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
@@ -1031,25 +1031,11 @@ $p\ge 2$.
 		& \lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
 		=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
-	(ii) Under condition \eqref{E:critical}, for all $x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds
-	that
-	\begin{equation}\label{E:pnormconverge}
-		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p,
-	\end{equation}
-	where $T_p$ be defined as in \eqref{E:Tp}. Moreover,
-	\begin{align}\label{E:2normcutoff}
-		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
-		\quad
-		\begin{cases}
-			\quad <\infty & \text{if $t<T_2$}, \bigskip\\
-			\quad =\infty & \text{if $t>T_2$}.
-		\end{cases}
-	\end{align}
 \end{lemma}
 \begin{proof}
-	{\it (i)~} The proof of part (i) follows the same arguments as those of \cite[Lemma 4.3]{BCC21}.
-	Nevertheless, we sketch the proof here for completeness. Recall the definition of $T_n(\nu,a)$
-	defined in \eqref{E:Tn}. From \eqref{E:LogRho}, we see that
+	The proof follows the same arguments as those of \cite[Lemma 4.3]{BCC21}. Nevertheless, we sketch
+	the proof here for completeness. Recall the definition of $T_n(\nu,a)$ defined in \eqref{E:Tn}.
+	From \eqref{E:LogRho}, we see that
 	\begin{align}
 		\label{E:LimTn}
 		% \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
@@ -1115,11 +1101,89 @@ $p\ge 2$.
 	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. Then an application of
 	\eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
 	\eqref{E:2ineq-a}. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the limit
-	\eqref{E:Stirling}. This proves part (i) of Lemma \ref{L:2ineq}.
+	\eqref{E:Stirling}. This proves Lemma \ref{L:2ineq}.
+\end{proof}
+
+\begin{lemma}
+	\label{L:p=2}
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise}.\\
+	(i) Under condition \eqref{E:alpha}, we have that
+	\begin{equation}
+	\lim_{t \to \infty}  \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber = \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+	\end{equation}
+	(ii) Under condition \eqref{E:critical}, for all $x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds
+	that
+	\begin{equation}\label{E:pnormconverge}
+		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p,
+	\end{equation}
+	where $T_p$ be defined as in \eqref{E:Tp}. Moreover,
+	\begin{align}\label{E:2normcutoff}
+		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
+		\quad
+		\begin{cases}
+			\quad <\infty & \text{if $t<T_2$}, \bigskip\\
+			\quad =\infty & \text{if $t>T_2$}.
+		\end{cases}
+	\end{align}
+\end{lemma}
+\begin{proof}
+	{\it (i)~} By part (1) of Theorem \ref{T:solvable}, there is an $L^2(\Omega)$ solution $u(t,x)$.
+	By the scaling property \eqref{E:normscale},
+	\begin{align*}
+		\mathbb{E}(|u(t,x)|^2) & = \sum_{n\ge 0} 	\theta^n(n!)\Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \sum_{n \ge 0}\theta^n(n!)t^{(2(b+r)-b\alpha/a)n}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \\
+                           & = \sum_{n \ge 0} z_n R_nt^{(2(b+r)-b\alpha/a)n}
+	\end{align*}
+	where
+	\begin{align*}
+		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad
+		z_n = \frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}.
+	\end{align*}
+	Notice that \eqref{E:2ineq-b} above says that
+	\begin{align*}
+		\frac{1}{n}\log(R_n) \to  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right )  \quad \text{as } n\to \infty.
+	\end{align*}
+	Now define $R$ to be
+	\begin{align*}
+		R=\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}} \rho.
+	\end{align*}
+	We want to find a $\beta$ and $A$ so that
+	\begin{align*}
+		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R_n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
+	\end{align*}
+	Indeed, by the following limit (see \cite[Lemma A.3]{BCC21})
+	\begin{align*}
+		\lim_{t\to\infty} t^{-1/\gamma}\log\sum_{n\ge 0} (n!)^{-\gamma} t^n = \gamma, \qquad \text{for all $\gamma>0$,}
+	\end{align*}
+	we see that
+	\begin{align*}
+		\lim_{t\to \infty} \left[\frac{1}{(\theta
+		R)t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} = 2(b+r) - (b\alpha/a) -1,
+	\end{align*}
+	which, by an easy algebraic manipulation, is equivalent to
+	\begin{align*}
+		\lim_{t\to \infty} & \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} \\
+                       & = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}.
+	\end{align*}
+	Hence,
+	% \begin{align*}
+	% 	\beta = \frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
+	% \end{align*}
+	% or by removing the fractions in the denominator
+	\begin{align*}
+		\beta = \frac{2a(b+r)-b\alpha}{2a(b+r)-(b\alpha)-a} \quad \text{and} \quad
+		  A   = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{a}{2a(b+r)-b\alpha-a}}.
+	\end{align*}
+	Finally, an application of \cite[Lemma A.2]{BCC21} shows that
+	\begin{align*}
+		\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \\
+                       & = \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+	\end{align*}
+	which proves part (i) of Lemma \ref{L:p=2}.
 
 
-	{\bigskip\noindent\it (ii)~} Here we will prove part (2) of Theorem \ref{T:solvable}. The critical
-	case happens when the exponent of $n!$ in \eqref{E:pmomBd} vanishes, namely,
+	{\bigskip\noindent\it (ii)~} Note that part (ii) is equivalent to the statement of part (2) of
+	Theorem \ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
+	vanishes, namely,
 	\begin{align*}
 		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
 	\end{align*}
@@ -1131,11 +1195,13 @@ $p\ge 2$.
 	\end{align*}
 	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
 
-	We start by proving \eqref{E:pnormconverge}. By the hyperactivity property (see \cite[Lemma
-	B.1]{BCC21}), we have that
-	\begin{align*}
+	We start by proving \eqref{E:pnormconverge}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
+	the SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
+	hyperactivity property (see \cite[Lemma B.1]{BCC21}), we have that
+	\begin{align}
+		\label{E:HyContr}
 		\Norm{u(t,x)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2, 	\quad \text{for all $p\ge 2$, $t>0$ and $x\in\R^d.$}
-	\end{align*}
+	\end{align}
 	Now by recalling Theorem \ref{T:2momseries} and by applying $\alpha = \frac{a}{b}\left[ 2(b+r)
 	- 1 \right]$ and the scaling property \eqref{E:normscale}, we see that
 	\begin{align*}
@@ -1152,83 +1218,23 @@ $p\ge 2$.
 	Therefore, $\limsup_{n \to \infty} |R_n|^{-1/n} = (2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}
 	)^{-1}$ and $\Norm{u(t,x)}_p$ converges for
 	\begin{align*}
-		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p.
+		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p; \qquad \text{see \eqref{E:Tp}.}
 	\end{align*}
 
 	To show \eqref{E:2normcutoff}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
 	\begin{align*}
 		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
 	\end{align*}
-	is precisely $T_2$. This completes the proof of Lemma \ref{L:2ineq}.
-\end{proof}
-
-\begin{lemma}
-	\label{L:p=2}
-	Under the assumptions of Theorem \ref{T:solvable}, we have that
-	\begin{equation}
-	\lim_{t \to \infty}  \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber = \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-	\end{equation}
-\end{lemma}
-\begin{proof}
-	Assuming that there is an $L^2(\Omega)$ solution $u(t,x)$ and then applying the scaling property \eqref{E:normscale} gives us
-	\begin{align*}
-		\mathbb{E}(|u(t,x)|^2) & = \sum_{n\ge 0} 	\theta^n(n!)\Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \sum_{n \ge 0}\theta^n(n!)t^{(2(b+r)-b\alpha/a)n}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \\
-                           & = \sum_{n \ge 0}x_nR_nt^{(2(b+r)-b\alpha/a)n}
-	\end{align*}
-	where
-	\begin{align*}
-		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad
-		x_n = \frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}.
-	\end{align*}
-	Notice that \eqref{E:2ineq-b} above says that
-	\begin{align*}
-		\frac{1}{n}\log(R_n) \to  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right )  \quad \text{as } n\to \infty.
-	\end{align*}
-	Now define $R$ to be
-	\begin{align*}
-		R=\left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho.
-	\end{align*}
-	We want to find a $\beta$ and $A$ so that
-	\begin{align*}
-		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} x_nR^n\left(t^{(2(b+r)-b\alpha/a)}\right)^n = A
-	\end{align*}
-	By Lemma A.3 of \cite{BCC21},
-	\begin{align*}
-		\lim_{t\to \infty} \left[\frac{1}{(\theta R)t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} = 2(b+r) - (b\alpha/a) -1
-	\end{align*}
-	and by an easy algebraic manipulation
-	\begin{align*}
-		\lim_{t\to \infty} & \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} \\
-                       & = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}.
-	\end{align*}
-	Hence,
-	% \begin{align*}
-	% 	\beta = \frac{2(b+r)-b\alpha/a}{2(b+r)-(b\alpha/a)-1} \quad \text{and} \quad A=[2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}
-	% \end{align*}
-	% or by removing the fractions in the denominator
-	\begin{align*}
-		\beta = \frac{2a(b+r)-b\alpha}{2a(b+r)-(b\alpha)-a} \quad \text{and} \quad
-		  A   = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{a}{2a(b+r)-b\alpha-a}}.
-	\end{align*}
-	Finally, an application of Lemma A.2 of \cite{BCC21} shows that
-	\begin{align*}
-		\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \\
-                       & = \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
-	\end{align*}
-	which completes the proof of Theorem \ref{L:p=2}.
+	is precisely $T_2$. This completes the proof of Lemma \ref{L:p=2}.
 \end{proof}
 
 Now we are ready to prove \eqref{E:momentasym-upper}.
 
 \begin{proof}[Proof of \eqref{E:momentasym-upper}]
-	We denote $u_{\lambda}$ for $\lambda >0$ to be the solution of the fractional equation with
-	$\theta$ replaced with $\lambda$ and $u=u_\theta$. Using theorem B.1 of \cite{BCC21}, we see that
-	for all $p \ge 2$,
+	By the hypercontractivity \eqref{E:HyContr} and the scaling property \eqref{E:normscale}, we see
+	that for all $p \ge 2$,
 	\begin{align*}
-		\Norm{u(t,0)}_p \le \Norm{u_{(p-1)\theta}(t,0)}_2
-	\end{align*}
-	and by the scaling property
-	\begin{align*}
+		\Norm{u(t,0)}_p^2  \le
 		\Norm{u_{(p-1)\theta}(t,0)}_2^2 &= \sum_{n \ge 0}(n!)^n\theta^n(p-1)^n \Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 \\
 																		&= \sum_{n \ge 0}(n!)^n\theta^n \Norm{\widetilde{f}_n\left(\cdot,0,t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}\right)}_{\mathcal{H}^{\otimes n}}^2 \\
 																		&= \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2^2.
