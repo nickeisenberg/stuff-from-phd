@@ -278,7 +278,7 @@ more general class of SPDEs, we confirm this conjecture on the asymptotics for S
 results interpolate the asymptotics for both SWE and SHE; see Remark \ref{R:Inter} below.
 
 The moment asymptotics obtained by X. Chen, such as those in \cite{Chen17AIHP,Chen19AIHP}, rely
-heavily on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
+crucially on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
 1$, especially for the case when $b\in(1,2)$, we are not aware of any such Feynman-Kac formula for
 the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this difficulty has been
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
@@ -309,7 +309,7 @@ of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following the
 			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
 			\begin{align}
 				\label{E:Tp}
-				T_p := \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } 
+				T_p := \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} }
 			\end{align}
 		\item[(2-ii)] For any $t>T_2$, the series \eqref{E:2mom} below diverges, that is, the
 			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exit whenever $t>T_2$.
@@ -414,12 +414,9 @@ Before the end of this Introduction, let us make a few remarks:
 	\end{equation}
 	Moreover, one can find a nonnegative and nonnegative definite $K$ such that $\gamma = K*K$ where
 	`$*$' denotes the spatial convolution. Indeed, one can choose
-	
-	\textcolor{red}{Is there a factor of 1/2 missing from th exponent of $K$? See how the Reisz case and less general fractional noise all have 1/2 in the exponent of $K$.}
-	
 	\begin{align}
 		\label{E:K}
-		K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} |x_i|^{-(d_i-\alpha_i)}.
+		K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} |x_i|^{-(d_i+\alpha_i)/2}.
 	\end{align}
 	The two constants in both \eqref{E:specfunction} and \eqref{E:K} are defined as
 	\begin{equation}
@@ -1129,9 +1126,9 @@ $p\ge 2$.
 	\begin{align*}
 	\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
 	\end{align*}
-	Putting these conditions together gives the conditions stated in \eqref{E:critical}. 
-	
-	We start by proving \eqref{E:pnormconverge}. By the hyperactivity property we have that 
+	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
+
+	We start by proving \eqref{E:pnormconverge}. By the hyperactivity property we have that
 	\[
 	\Norm{u(t,0)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2.
 	\]
@@ -1141,24 +1138,24 @@ $p\ge 2$.
 	\\& = \sum_{n \ge 0} \left[t\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2
 	\\& =: \sum_{n \ge 0} \left[t\theta(p-1)\right]^n R_n
 	\end{align*}
-	where above we define 
+	where above we define
 	\[
 	R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2.
 	\]
-	By the Cauchy-Hadamard theorem, this series converges for 
+	By the Cauchy-Hadamard theorem, this series converges for
 	\[
 	\theta t (p-1) < \limsup_{n \to \infty} |R_n|^{-1/n} =: R.
 	\]
-	However, by equation \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that 
+	However, by equation \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that
 	\[
 	\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right) =  \log\left( 2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} \right).
 	\]
-	Hence 
+	Hence
 	\[
 	\limsup_{n \to \infty} |R_n|^{-1/n} = (2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} )^{-1}
 	\]
-	and so $\Norm{u(t,x)}_p$ converges for $t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p$. 
-	
+	and so $\Norm{u(t,x)}_p$ converges for $t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p$.
+
 	To show \eqref{E:2normcutoff}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
 		\[
 			\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
