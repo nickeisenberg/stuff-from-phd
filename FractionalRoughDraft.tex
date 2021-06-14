@@ -836,7 +836,7 @@ In this section, we will prove Theorem \ref{T:solvable}. The proof will need the
 	\end{equation}
 \end{lemma}
 
-The proof follows the same strategy as \cite[Section 3]{BCC21} with minor changes such as
+The proof of Theorem \ref{T:solvable} follows the same strategy as \cite[Section 3]{BCC21} with minor changes such as
 \begin{align}
 	\label{E:Changes}
 	\frac{1}{1+|\xi|^2} \qquad \text{replaced by} \qquad \frac{1}{1+\frac{\nu}{2}|\xi|^a}.
@@ -1598,39 +1598,36 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	\begin{align}
 		\label{E:LogU}
 		\liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)  } U_n(1) \right]
-		\ge \log\left( \frac{\rho^{1/2}}{ \left(\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} }\right).
+		\ge \log\left( \frac{\rho_{\nu,a}^{1/2}}{ \left(\frac{b}{a}[ a-\frac{\alpha}{2} + \frac{a}{b}r ]\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} }\right).
 	\end{align}
 \end{lemma}
 \begin{proof}
+	Let $\tau$ be an exponential random variable with mean one.
 	Notice that by some elementary scaling arguments, we have that for all $t>0$,
 	\begin{align}
 		\label{E:WU}
 		W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
-		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1).
+		U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1),
 	\end{align}
-	Let $\tau$ be an exponential random variable with mean one. By \eqref{E:WU},
+	which then imply that
 	\begin{align*}
 		\mathbb{E}\left[ U_n(\tau) \right] = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1)
                                        = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1).
 	\end{align*}
-	Then an application of Proposition \ref{P:LogU} shows that
+	Then by Proposition \ref{P:LogU},
 	\begin{align}\label{E:lb1}
-		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log(\rho^{1/2}).
+		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log\left(\rho_{\nu, a}^{1/2}\right).
 	\end{align}
-	An application of the limit \eqref{E:Stirling} immediately shows that
+	Therefore, \eqref{E:LogU} is proved by noticing that, thanks to \eqref{E:Stirling},
 	\begin{align*}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
 		= \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
 	\end{align*}
-	where the condition
-	\begin{align*}
-		\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) >0
-	\end{align*}
-	is guaranteed by \eqref{E:alpha4} (or \eqref{E:alpha}). Finally, \eqref{E:LogU} is proven after
-	multiplying and dividing $(n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} $ on
-	the inside of the log in \eqref{E:lb1}.
+	where the condition $\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) >0$ is guaranteed
+	by \eqref{E:alpha4} (or \eqref{E:alpha}).
 \end{proof}
 
+We need one last lemma before the proof of the lower bound:
 
 \begin{lemma}
 	\label{L:logUnlb}
@@ -1638,36 +1635,42 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	that, by setting $n_t = [c_1 t]$, it holds that
 	\begin{equation}\label{E:69ineq}
 		\liminf_{t \to \infty} \frac{1}{t} \log( k^{n_t} \theta^{n_t/2}U_{n_t}(t)) \ge
-		\left( k \sqrt{\theta} \right)^{\frac{2a}{2ab-\alpha b + 2ar}} \left( \rho^{1/2} \right)^{\frac{2a}{2ab-\alpha b + 2ar}}.
+		\left( k \sqrt{\theta} \right)^{\frac{2a}{2ab-\alpha b + 2ar}} \left( \rho_{\nu,a}^{1/2} \right)^{\frac{2a}{2ab-\alpha b + 2ar}}.
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	Let $\epsilon > 0$. Lemma \ref{L:LogU} guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
-	\begin{align*}
+	Fix an arbitrary $\epsilon > 0$. Lemma \ref{L:LogU} guarantees the existence of an $N_\epsilon >0$ so for all $n>N_\epsilon$
+	\begin{align}
+		\label{E:LogUnlb-1}
 		(n!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} U_n(1) \ge \exp\left( n(\log(R)-\epsilon) \right) = R^n e^{-n\epsilon }
-	\end{align*}
+	\end{align}
 	where
 	\begin{align*}
-		R = \frac{ \rho^{1/2} } { \left( \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) }}.
+		R = \rho_{\nu,a}^{1/2}  \left( \frac{b}{a}\left[ a - \frac{\alpha}{2} + \frac{a}{b}r \right ] \right)^{- \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) }.
 	\end{align*}
-	Now fix a $c>0$ and let $n_t := [ct]$. Notice that $n_t \ge N_\epsilon$ for any $t>t_\epsilon := (N_\epsilon +1)/c$.
-
-	Let $t > t_\epsilon$.
+	Now fix a $c>0$ and let $n_t := [ct]$. Notice that $n_t \ge N_\epsilon$ for any $t>t_\epsilon :=
+	(N_\epsilon +1)/c$.  For $t > t_\epsilon$, from \eqref{E:LogUnlb-1}, we have
+	\begin{align}
+		\label{E:69ineq2}
+		k^{n_t}\theta^{n_t/2}U_{n_t}(t)
+		= 	k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } U_{n_t}(1)
+		\ge \frac{ k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n!)^{\frac{b}{a} \left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } R^{n_t}e^{-n_t \epsilon}.
+	\end{align}
+	Notice that $[ct]/t \to c$ as $t \to \infty$ which means that $n_t/t \to c$ as $t \to \infty$.
+	With this we can say
 	\begin{align*}
-		k^{n_t}\theta^{n_t/2}U_{n_t}(t) = 	k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } U_{n_t}(1) \ge \frac{ k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n!)^{\frac{b}{a} \left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } R^{n_t}e^{-n_t \epsilon}
+		\liminf_{t \to \infty} \frac{1}{t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right)
+    = c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right)
+    = : I(n_t).
 	\end{align*}
-	Notice that $[ct]/t \to c$ as $t \to \infty$ which means that $n_t/t \to c$ as $t \to \infty$. With this we can say
-	\begin{align*}
-		\liminf_{t \to \infty} \frac{1}{t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right) = c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( k^{n_t} \theta^{n_t/2} U_{n_t}(t) \right)  =: I(n_t)
-	\end{align*}
-	Now,
+	Now, by \eqref{E:69ineq2}, we have that
 	\begin{align*}
 		I(n_t) & \ge c \liminf_{t\to \infty} \frac{1}{n_t} \log \left( (kR\sqrt{\theta})^{n_t} \frac{ t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n_t!)^{\frac{b}{a}\left( a -\frac{\alpha}{2} + \frac{a}{b}r \right) }  }\right) - c\epsilon                                                                                                  \\
            & = c \log(k \sqrt{\theta}R) + c \liminf_{t \to \infty} \frac{1}{n_t} \log \left[  \left(\frac{t}{n_t}\right)^{\frac{b}{a}\left(a-\frac{\alpha}{2} + \frac{a}{b}r\right)n_t} \frac{ n_t^{\frac{b}{a}\left( a- \frac{\alpha}{2} + \frac{a}{b}r \right)n_t } } { (n_t!)^{\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) } }\right] - c \epsilon \\
            & = c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \liminf_{t \to \infty} \frac{1}{n_t}\log\left(\frac{n_t^{n_t}}{(n_t)!}\right) - c\epsilon                                                                                             \\
            & = c \log(k \sqrt{\theta}R) - c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + c\frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)  - c\epsilon
 	\end{align*}
-	and letting $\epsilon$ tend to $0$ we wee that
+	and letting $\epsilon$ tend to $0$ we see that
 	\begin{align*}
 		I(n_t) \ge c \left[ \log(k \sqrt{\theta}R) - \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \log(c) + \frac{b}{a}\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right) \right] =: h(c).
 	\end{align*}
@@ -1677,7 +1680,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	\end{align*}
 	After plugging $c^*$ and replacing $R$ we arrive at the following inequality
 	\begin{align*}
-		I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}},
+		I(n_t) \ge (k\sqrt{\theta})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)} }(\rho_{\nu,a}^{1/2})^{\frac{a}{b\left( a - \frac{\alpha}{2} + \frac{a}{b}r \right)}},
 	\end{align*}
 	which proves \eqref{E:69ineq} after some simplification.
 \end{proof}
