@@ -309,7 +309,7 @@ of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following the
 			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
 			\begin{align}
 				\label{E:Tp}
-				T_p := \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} }
+				T_p := \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}}.
 			\end{align}
 		\item[(2-ii)] For any $t>T_2$, the series \eqref{E:2mom} below diverges, that is, the
 			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exit whenever $t>T_2$.
@@ -365,8 +365,8 @@ result as follows:
 	where
 	\begin{align}
 		\label{E:beta&tp}
-		\beta     := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
-		t_p^\beta := (p-1)^{\beta -1} t^\beta.
+		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
+		t_p   := (p-1)^{1-1/\beta} \: t.
 	\end{align}
 \end{theorem}
 \begin{proof}
@@ -812,6 +812,14 @@ and by defining $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1) $ and by ap
 	\mathcal{M}_a^{\frac{2a-\alpha}{a}}.
 \end{equation}
 
+Finally, we will need the following limit
+\begin{align}
+	\label{E:Stirling}
+	\lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a), \quad
+	\text{for all $a>0$,}
+\end{align}
+which is a direct consequence of Stirling's formula.
+
 % \section{Existence and uniqueness of the solution --- the proof of Theorem \ref{T:solvable}}
 \section{Existence and uniqueness of the solution}
 \label{S:solvable}
@@ -920,9 +928,6 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 		\label{E:Tn}
 		T_n(\nu,a) = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}).
 	\end{equation}
-	% \begin{remark} By applying the substitution $\xi_k' = \left(\frac{\nu}{2}\right)^{1/a}\xi_k$ and
-	% the scaling property for $\varphi$, we may rewrite $T_n$ as \begin{equation} T_n(\nu,a) = \left(
-	% \frac{\nu}{2} \right)^{-n\alpha/a} T_n(2,a).  \end{equation} \end{remark}
 	By the same arguments as those of Lemma 3.6 of \cite{BCC21} with the replacement
 	\eqref{E:Changes}, we see that
 	\begin{equation}
@@ -1026,12 +1031,12 @@ $p\ge 2$.
 		& \lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
 		=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
-	(ii) Under condition \eqref{E:critical}, let $T_p$ be defined as in \eqref{E:Tp}. For all
-	$x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds that
+	(ii) Under condition \eqref{E:critical}, for all $x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds
+	that
 	\begin{equation}\label{E:pnormconverge}
-		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p
+		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p,
 	\end{equation}
-	and in addition,
+	where $T_p$ be defined as in \eqref{E:Tp}. Moreover,
 	\begin{align}\label{E:2normcutoff}
 		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
 		\quad
@@ -1042,125 +1047,119 @@ $p\ge 2$.
 	\end{align}
 \end{lemma}
 \begin{proof}
-	{\it (i)~} Recall the definition of $T_n$ from above as well as \eqref{E:LogRho} which says that
+	{\it (i)~} The proof of part (i) follows the same arguments as those of \cite[Lemma 4.3]{BCC21}.
+	Nevertheless, we sketch the proof here for completeness. Recall the definition of $T_n(\nu,a)$
+	defined in \eqref{E:Tn}. From \eqref{E:LogRho}, we see that
+	\begin{align}
+		\label{E:LimTn}
+		% \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+		\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{T_n(\nu,a)}{(n!)^2} \right]
+		= \log\left(\rho_{\nu,a}\right).
+	\end{align}
+	As a consequence of \eqref{E:fTn} and \eqref{E:fnOne} in the proof of Theorem \ref{T:solvable}, we
+	see that
+	% \begin{align*}
+	% 	\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
+	% \end{align*}
+	% and then \eqref{E:LNfnineq} above shows that
 	\begin{align*}
-			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{T_n}{(n!)^2} \right]  = \log\rho.
-	\end{align*}
-	We already showed in the proof of Theorem \ref{T:solvable} above that
-	\begin{align*}
-		\int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t = \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)
-	\end{align*}
-	and then \eqref{E:LNfnineq} above shows that
-	\begin{align*}
-		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n.
+		\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \le \dfrac{2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]}}{(n!)^2} T_n(\nu,a).
 	\end{align*}
 	Combining this and \eqref{E:LogRho} we see that
 	\begin{align*}
 		\limsup_{n \to \infty} \frac{1}{n} & \log\left[ \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right)  \right] \\
-																			 & \le \log\left( 2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right) + \lim_{n \to \infty} \frac{1}{n} \log\left( \frac{T_n}{(n!)^2} \right)                  \\
-																			 & = \log\left(  2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right)  + \log(\rho)
+                                       & \le \log\left( 2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right) + \lim_{n \to \infty} \frac{1}{n} \log\left( \frac{T_n(\nu,a)}{(n!)^2} \right)           \\
+                                       & = \log\left(  2^{\left[2(b+r)-\frac{b\alpha}{a}\right]} \right)  + \log(\rho_{\nu,a}),
 	\end{align*}
 	which proves the upper bound for \eqref{E:2ineq-a}.  \bigskip
 
-	Now we prove the lower bound. Define for $t>0$ and $t'>0$
+	Now we prove the lower bound for \eqref{E:2ineq-a}. Let $\tau$ and $\widetilde{\tau}$ be
+	independent exponential random variables with mean one. In the following, we will compute
+	$\mathbb{E}[J_n(\tau,\widetilde{\tau})]$ in two ways, where
 	\begin{align*}
-		J_n(t,t') = \int_{\R^{nd}} H_n(t,x)H_n(t',x) \ud x
+		J_n(t,t') := \int_{\R^{nd}} H_n(t,x)H_n(t',x) \ud x, \qquad t,t'>0.
 	\end{align*}
-	and recall \eqref{E:inteq1} which says
+	Notice that using the above notation, \eqref{E:inteq1} can be rewritten as
 	\begin{align*}
 		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2} \int_{(\R^{d})^n} H_n(t,\vec{x})^2\ud \vec{x} = \frac{1}{(n!)^2} J_n(t,t).
 	\end{align*}
-	Thus $J_n(t,t)$ satisfies the scaling property
+	On the one hand, the Cauchy-Schwartz inequality implies that
 	\begin{align*}
-		J_n(t,t) =  t^{[2(b + r ) -b \alpha / a]n} J_n(1,1).
+		J_n(t,t') \le J_n(t,t)^{1/2}J_n(t',t')^{1/2} =  t^{[2(b + r ) -b \alpha / a]n/2} ( t' )^{[2(b + r ) -b \alpha / a]n/2} J_n(1,1).
 	\end{align*}
-	Let $\tau$ and $\widetilde{\tau}$ be independent exponential random variables with mean 1. By \eqref{E:Hneq1},
+	where we have used the scaling property of $J_n(t,t)$ inherited from that of
+	$\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}$ as in \eqref{E:normscale}.
+	Hence,
 	\begin{align*}
-		\mathbb{E}[J_n(\tau, \tau')] & = \int_0^\infty \int_0^\infty e^{-t}e^{-\widetilde{t}}J_n(t,\widetilde{t}) \ud t \ud \widetilde{t} = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x \\
-																 & = \int_{\R^{nd}} |\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) =: T_n.
+		\mathbb{E}[J_n(\tau,\widetilde{\tau})] & \le \mathbb{E}\left[  {\tau}^{[2(b + r ) -b \alpha / a]n/2} \right] \mathbb{E}\left[  {\widetilde{\tau}}^{[2(b + r ) -b \alpha / a]n/2} \right]J_n(1,1) \\
+                                           % & = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 J_n(1,1)                                                                                  \\
+                                           & = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{\widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2.
 	\end{align*}
-	In addition,
+	On the other hand, by \eqref{E:Hneq1} and \eqref{E:Tn}, we see that
 	\begin{align*}
-		J_n(t,t') \le J_n(t,t)^{1/2}J_n(t',t')^{1/2} =  t^{[2(b + r ) -b \alpha / a]n/2} {t'}^{[2(b + r ) -b \alpha / a]n/2} J_n(1,1).
+		\mathbb{E}[J_n(\tau,\widetilde{\tau})] & = \int_0^\infty \int_0^\infty e^{-t}e^{-\widetilde{t}}J_n(t,\widetilde{t}) \ud t \ud \widetilde{t}
+                                             = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x
+                                             = T_n\left(\nu,a\right).
+                                           % & = \int_{\R^{nd}} |\mathcal{F}L_n(\xi_1,...,\xi_n)|^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n).
 	\end{align*}
-	Combining all of this gives us
-	\begin{align*}
-		T_n & = \mathbb{E}[J_n(\tau,\widetilde{\tau})] \le \mathbb{E}\left[  {\tau}^{[2(b + r ) -b \alpha / a]n/2} \right] \mathbb{E}\left[  {\widetilde{\tau}}^{[2(b + r ) -b \alpha / a]n/2} \right]J_n(1,1) \\
-				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 J_n(1,1)                                                                                                                           \\
-				& = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{\widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2,
-	\end{align*}
-	where the last line follows from \eqref{E:inteq1}. Thus so far we have shown
+	Therefore,
 	\begin{align}
 		\label{E:2lowbd}
-		\frac{T_n}{(n!)^2} = \frac{\left( \frac{\nu}{2} \right)^{-n\alpha/a} T_n'}{(n!)^2}\le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
+		\frac{T_n(\nu,a)}{(n!)^2} \le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
 	\end{align}
-	Now, another application of Stirling's formula shows that
-	\begin{align*}
-		\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n
-	\end{align*}
-	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. We now infer from \eqref{E:2lowbd} that
-	\begin{align*}
-		c_{\alpha} \frac{2^{[2(b + r ) -b \alpha / a]n}}{C_n} \frac{1}{(n!)^2} T_n \le \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right) 	\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
-	\end{align*}
-	where $c_{\alpha}$ is a constant depending on $\alpha$. Since $\frac{1}{n}\log(C_n) \to 0$ as $n \to \infty$, we obtain the lower bound
-	\begin{align*}
-		\liminf_{n\to \infty} \frac{1}{n} & \log \left( \Gamma\left( [2(b + r ) -b \alpha / a]n +1 	\right) 	\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right) \\
-																			& \ge \log\left(  2^{[2(b + r ) -b \alpha / a]} 	\right) + \log(\rho)
-	\end{align*}
-	Thus \eqref{E:2ineq-a} is proven. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the fact that
-	\begin{align*}
-		\lim_{n \to \infty} \frac{1}{n} \log\left[ \frac{\Gamma(an+1)}{(n!)^a} \right] = a\log(a).
-	\end{align*}
-	This proves part (i) of Lemma \ref{L:2ineq}.
+	Now, an application of Stirling's formula shows that, as $n\to \infty$,
+	\begin{align}
+		\label{E:GammaSq}
+		\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n,
+	\end{align}
+	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. Then an application of
+	\eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
+	\eqref{E:2ineq-a}. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the limit
+	\eqref{E:Stirling}. This proves part (i) of Lemma \ref{L:2ineq}.
 
 
-	{\bigskip\noindent\it (ii)~} Here we will prove part (2) of Theorem
-	\ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
-	vanishes, namely,
+	{\bigskip\noindent\it (ii)~} Here we will prove part (2) of Theorem \ref{T:solvable}. The critical
+	case happens when the exponent of $n!$ in \eqref{E:pmomBd} vanishes, namely,
 	\begin{align*}
-	\alpha = \frac{a}{b}\left[2(b+r)-1\right].
+		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
 	\end{align*}
 	Among the three inequalities in \eqref{E:alpha}, we also need to make sure that the minimum is
 	achieved by $\frac{a}{b}\left[2(b+r)-1\right]$, for which, we need to additionally require
 	$\frac{a}{b}\left[2(b+r)-1\right]\le d$ and
 	\begin{align*}
-	\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
+		\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
 	\end{align*}
 	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
 
-	We start by proving \eqref{E:pnormconverge}. By the hyperactivity property we have that
-	\[
-	\Norm{u(t,0)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2.
-	\]
-	Now by recalling Theorem \ref{T:2momseries} and by applying $\alpha = \frac{a}{b}\left[ 2(b+r) - 1 \right]$ and the scaling property \eqref{E:normscale}  we see that
+	We start by proving \eqref{E:pnormconverge}. By the hyperactivity property (see \cite[Lemma
+	B.1]{BCC21}), we have that
 	\begin{align*}
-	\Norm{u_{(p-1)\theta}(t,x)}_2^2 &=	\sum_{n \ge 0} \left[\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2
-	\\& = \sum_{n \ge 0} \left[t\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2
-	\\& =: \sum_{n \ge 0} \left[t\theta(p-1)\right]^n R_n
+		\Norm{u(t,x)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2, 	\quad \text{for all $p\ge 2$, $t>0$ and $x\in\R^d.$}
 	\end{align*}
-	where above we define
-	\[
-	R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2.
-	\]
-	By the Cauchy-Hadamard theorem, this series converges for
-	\[
-	\theta t (p-1) < \limsup_{n \to \infty} |R_n|^{-1/n} =: R.
-	\]
-	However, by equation \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that
-	\[
-	\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right) =  \log\left( 2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} \right).
-	\]
-	Hence
-	\[
-	\limsup_{n \to \infty} |R_n|^{-1/n} = (2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} )^{-1}
-	\]
-	and so $\Norm{u(t,x)}_p$ converges for $t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p$.
+	Now by recalling Theorem \ref{T:2momseries} and by applying $\alpha = \frac{a}{b}\left[ 2(b+r)
+	- 1 \right]$ and the scaling property \eqref{E:normscale}, we see that
+	\begin{align*}
+	\Norm{u_{(p-1)\theta}(t,x)}_2^2 & =	\sum_{n \ge 0} \left[\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2  \\
+                                  & = \sum_{n \ge 0} \left[t\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2 \\
+                                  & =: \sum_{n \ge 0} \left[t\theta(p-1)\right]^n R_n,
+	\end{align*}
+	with $R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2$. By the
+	Cauchy-Hadamard theorem, this series converges for $\theta t (p-1) < \limsup_{n \to \infty}
+	|R_n|^{-1/n}$. However, by \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that
+	\begin{align*}
+		\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right) =  \log\left( 2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} \right).
+	\end{align*}
+	Therefore, $\limsup_{n \to \infty} |R_n|^{-1/n} = (2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}
+	)^{-1}$ and $\Norm{u(t,x)}_p$ converges for
+	\begin{align*}
+		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p.
+	\end{align*}
 
 	To show \eqref{E:2normcutoff}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
-		\[
-			\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
-		\]
-	is precisely $T_2$. This completes the proof of the lemma.
+	\begin{align*}
+		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
+	\end{align*}
+	is precisely $T_2$. This completes the proof of Lemma \ref{L:2ineq}.
 \end{proof}
 
 \begin{lemma}
@@ -1592,12 +1591,7 @@ and with this we see that
 	\begin{align}\label{E:lb1}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log(\rho^{1/2}).
 	\end{align}
-	As a direct consequence of Stirling's formula, we have that
-	\begin{align*}
-		\lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a), \quad
-		\text{for all $a>0$,}
-	\end{align*}
-	with which one immediately sees that
+	An application of the limit \eqref{E:Stirling} immediately shows that
 	\begin{align*}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
 		= \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
