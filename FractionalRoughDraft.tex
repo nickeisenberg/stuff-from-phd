@@ -993,7 +993,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\ref{T:solvable}.
 
 	{\bigskip\bf\noindent Step 5.~} The proof of part (2) of Theorem \ref{T:solvable} will be
-	postponed to part (ii) of Lemma \ref{L:p=2} below.
+	postponed to part (ii) of Lemma \ref{L:2ineq} below.
 \end{proof}
 
 % \section{Upper bound of the asymptotics --- the proof of \texorpdfstring{\eqref{E:momentasym-upper}}{plain_text}}
@@ -1022,7 +1022,8 @@ which is a direct consequence of Stirling's formula.
 
 \begin{lemma}
 	\label{L:2ineq}
-	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Under condition \eqref{E:alpha},
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. \\
+	(i) Under condition \eqref{E:alpha},
 	\begin{align}
 		\label{E:2ineq-a}
 		&\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
@@ -1031,11 +1032,25 @@ which is a direct consequence of Stirling's formula.
 		& \lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
 		=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
+	(ii) Under condition \eqref{E:critical}, for all $x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds
+	that
+	\begin{equation}\label{E:pnormconverge}
+		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p,
+	\end{equation}
+	where $T_p$ be defined as in \eqref{E:Tp}. Moreover,
+	\begin{align}\label{E:2normcutoff}
+		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
+		\quad
+		\begin{cases}
+			\quad <\infty & \text{if $t<T_2$}, \bigskip\\
+			\quad =\infty & \text{if $t>T_2$}.
+		\end{cases}
+	\end{align}
 \end{lemma}
 \begin{proof}
-	The proof follows the same arguments as those of \cite[Lemma 4.3]{BCC21}. Nevertheless, we sketch
-	the proof here for completeness. Recall the definition of $T_n(\nu,a)$ defined in \eqref{E:Tn}.
-	From \eqref{E:LogRho}, we see that
+	{\it (i)~} The proof of part (i) follows the same arguments as those of \cite[Lemma 4.3]{BCC21}.
+	Nevertheless, we sketch the proof here for completeness. Recall the definition of $T_n(\nu,a)$
+	defined in \eqref{E:Tn}.  From \eqref{E:LogRho}, we see that
 	\begin{align}
 		\label{E:LimTn}
 		% \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
@@ -1101,34 +1116,67 @@ which is a direct consequence of Stirling's formula.
 	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. Then an application of
 	\eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
 	\eqref{E:2ineq-a}. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the limit
-	\eqref{E:Stirling}. This proves Lemma \ref{L:2ineq}.
+	\eqref{E:Stirling}. This proves part (i) of Lemma \ref{L:2ineq}.
+
+
+	{\bigskip\noindent\it (ii)~} Note that part (ii) is equivalent to the statement of part (2) of
+	Theorem \ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
+	vanishes, namely,
+	\begin{align*}
+		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
+	\end{align*}
+	Among the three inequalities in \eqref{E:alpha}, we also need to make sure that the minimum is
+	achieved by $\frac{a}{b}\left[2(b+r)-1\right]$, for which, we need to additionally require
+	$\frac{a}{b}\left[2(b+r)-1\right]\le d$ and
+	\begin{align*}
+		\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
+	\end{align*}
+	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
+
+	We start by proving \eqref{E:pnormconverge}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
+	the SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
+	hyperactivity property (see \cite[Lemma B.1]{BCC21}), we have that
+	\begin{align}
+		\label{E:HyContr}
+		\Norm{u(t,x)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2, 	\quad \text{for all $p\ge 2$, $t>0$ and $x\in\R^d.$}
+	\end{align}
+	Now by recalling Theorem \ref{T:2momseries} and by applying $\alpha = \frac{a}{b}\left[ 2(b+r)
+	- 1 \right]$ and the scaling property \eqref{E:normscale}, we see that
+	\begin{align*}
+	\Norm{u_{(p-1)\theta}(t,x)}_2^2 & =	\sum_{n \ge 0} \left[\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2  \\
+                                  & = \sum_{n \ge 0} \left[t\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2 \\
+                                  & =: \sum_{n \ge 0} \left[t\theta(p-1)\right]^n R_n,
+	\end{align*}
+	with $R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2$. By the
+	Cauchy-Hadamard theorem, this series converges for $\theta t (p-1) < \limsup_{n \to \infty}
+	|R_n|^{-1/n}$. However, by \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that
+	\begin{align*}
+		\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right) =  \log\left( 2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} \right).
+	\end{align*}
+	Therefore, $\limsup_{n \to \infty} |R_n|^{-1/n} = (2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}
+	)^{-1}$ and $\Norm{u(t,x)}_p$ converges for
+	\begin{align*}
+		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p; \qquad \text{see \eqref{E:Tp}.}
+	\end{align*}
+
+	To show \eqref{E:2normcutoff}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
+	\begin{align*}
+		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
+	\end{align*}
+	is precisely $T_2$. This completes the proof of Lemma \ref{L:2ineq}.
 \end{proof}
 
 \begin{lemma}
 	\label{L:p=2}
-	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise}.\\
-	(i) Under condition \eqref{E:alpha}, we have that
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Under condition \eqref{E:alpha}, we
+	have that
 	\begin{equation}
 	\lim_{t \to \infty}  \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber = \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 	\end{equation}
-	(ii) Under condition \eqref{E:critical}, for all $x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds
-	that
-	\begin{equation}\label{E:pnormconverge}
-		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p,
-	\end{equation}
-	where $T_p$ be defined as in \eqref{E:Tp}. Moreover,
-	\begin{align}\label{E:2normcutoff}
-		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
-		\quad
-		\begin{cases}
-			\quad <\infty & \text{if $t<T_2$}, \bigskip\\
-			\quad =\infty & \text{if $t>T_2$}.
-		\end{cases}
-	\end{align}
 \end{lemma}
 \begin{proof}
-	{\it (i)~} By part (1) of Theorem \ref{T:solvable}, there is an $L^2(\Omega)$ solution $u(t,x)$.
-	By the scaling property \eqref{E:normscale},
+	By part (1) of Theorem \ref{T:solvable}, there is an $L^2(\Omega)$ solution $u(t,x)$.  By the
+	scaling property \eqref{E:normscale},
 	\begin{align*}
 		\mathbb{E}(|u(t,x)|^2) & = \sum_{n\ge 0} 	\theta^n(n!)\Norm{\widetilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = \sum_{n \ge 0}\theta^n(n!)t^{(2(b+r)-b\alpha/a)n}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \\
                            & = \sum_{n \ge 0} z_n R_nt^{(2(b+r)-b\alpha/a)n}
@@ -1178,54 +1226,7 @@ which is a direct consequence of Stirling's formula.
 		\lim_{t\to \infty} & \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \\
                        & = \theta^{\frac{a}{2a(b+r)-b\alpha-a}}\left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta \rho^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
 	\end{align*}
-	which proves part (i) of Lemma \ref{L:p=2}.
-
-
-	{\bigskip\noindent\it (ii)~} Note that part (ii) is equivalent to the statement of part (2) of
-	Theorem \ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
-	vanishes, namely,
-	\begin{align*}
-		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
-	\end{align*}
-	Among the three inequalities in \eqref{E:alpha}, we also need to make sure that the minimum is
-	achieved by $\frac{a}{b}\left[2(b+r)-1\right]$, for which, we need to additionally require
-	$\frac{a}{b}\left[2(b+r)-1\right]\le d$ and
-	\begin{align*}
-		\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
-	\end{align*}
-	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
-
-	We start by proving \eqref{E:pnormconverge}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
-	the SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
-	hyperactivity property (see \cite[Lemma B.1]{BCC21}), we have that
-	\begin{align}
-		\label{E:HyContr}
-		\Norm{u(t,x)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2, 	\quad \text{for all $p\ge 2$, $t>0$ and $x\in\R^d.$}
-	\end{align}
-	Now by recalling Theorem \ref{T:2momseries} and by applying $\alpha = \frac{a}{b}\left[ 2(b+r)
-	- 1 \right]$ and the scaling property \eqref{E:normscale}, we see that
-	\begin{align*}
-	\Norm{u_{(p-1)\theta}(t,x)}_2^2 & =	\sum_{n \ge 0} \left[\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2  \\
-                                  & = \sum_{n \ge 0} \left[t\theta(p-1)\right]^n n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2 \\
-                                  & =: \sum_{n \ge 0} \left[t\theta(p-1)\right]^n R_n,
-	\end{align*}
-	with $R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2$. By the
-	Cauchy-Hadamard theorem, this series converges for $\theta t (p-1) < \limsup_{n \to \infty}
-	|R_n|^{-1/n}$. However, by \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that
-	\begin{align*}
-		\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right) =  \log\left( 2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} \right).
-	\end{align*}
-	Therefore, $\limsup_{n \to \infty} |R_n|^{-1/n} = (2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}
-	)^{-1}$ and $\Norm{u(t,x)}_p$ converges for
-	\begin{align*}
-		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p; \qquad \text{see \eqref{E:Tp}.}
-	\end{align*}
-
-	To show \eqref{E:2normcutoff}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
-	\begin{align*}
-		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
-	\end{align*}
-	is precisely $T_2$. This completes the proof of Lemma \ref{L:p=2}.
+	which proves Lemma \ref{L:p=2}.
 \end{proof}
 
 Now we are ready to prove \eqref{E:momentasym-upper}.
