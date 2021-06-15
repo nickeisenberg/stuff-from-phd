@@ -247,7 +247,6 @@ $G(t,x)$, which is a nontrivial fact; see Remark \ref{R:Nonnegative} for suffici
 	Assume that the fundamental solution $G(t,x)$ is nonnegative for all $t>0$ and $x\in\R^d$.
 	% The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
 \end{assumption}
-\bigskip
 
 Regarding the noise, we formulate the following assumption in order to cover the Riesz kernel case,
 the fractional noise and a mixture of them:
@@ -283,6 +282,16 @@ crucially on the Feynman-Kac representation of the moments of the solution. Howe
 the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this difficulty has been
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
 strategy laid out by Balan {\it et al} ({\it ibid.}).
+
+We need to introduce the following variational constants:
+
+\textcolor{red}{The following $\mathcal{M}_a$ is for the Reisz kernal and needs to be changed for the fractional kernal. We need to define $\mathcal{M}_a := \mathcal{M}_a(\gamma,1)$ where $\gamma$ is the fractional kernal defined in \eqref{E:corfunction}.}
+
+\begin{align*}
+	\mathcal{M}_a\left(\Theta f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
+	\mathcal{M}_a                              := \mathcal{M}_a\left(|\cdot|^{-\alpha},1\right);
+\end{align*}
+see Section \ref{SS:LD} for more notation and details.
 
 Now let us state our main results of the paper. The first main result deals with the well-posedness
 of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem:
@@ -340,17 +349,8 @@ of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following the
 % dimension $d$. Under theses assumptions, the fundamental function $G$ will be nonnegative and smooth
 % for $x\ne 0$; see Theorems 4.1 and 4.6 of \cite{CHHH17}.
 
-The second main result of the paper is about the moment asymptotics. We need to introduce the
-following variational constants:
+The second main result of the paper is about the moment asymptotics.
 
-\textcolor{red}{The follwoing $\mathcal{M}_a$ is for the Reisz kernal and needs to be changed for the fractional kernal. We need to define $\mathcal{M}_a := \mathcal{M}_a(\gamma,1)$ where $\gamma$ is the fractional kernal defined in \eqref{E:corfunction}.}
-
-\begin{align*}
-	\mathcal{M}_a\left(\Theta f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
-	\mathcal{M}_a                              := \mathcal{M}_a\left(|\cdot|^{-\alpha},1\right);
-\end{align*}
-see Section \ref{SS:LD} for more notation and details. Now we are ready to state the second main
-result as follows:
 
 \begin{theorem}
 	\label{T:asym}
@@ -654,58 +654,102 @@ solution can be written as the Weiner chaos expansion as in \eqref{E:solwexp}.
 
 \subsection{Some large deviation results}
 \label{SS:LD}
-
-Let us first define
-\begin{align}
+Recall that the correlation function $\gamma$ satisfies Assumption \ref{A:Noise} and the
+corresponding spectral measure is $\mu$; see Remark \ref{R:Noise}. Define
+\begin{gather}
 	\label{E:rho}
-	\rho := \rho_{\nu,a} = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x).
-\end{align}
-Recall that when $\mu(\ud \xi) = C_{\alpha,d}|\xi|^{-(d-\alpha)} \ud \xi$ which corresponds to the
-Riesz kernel $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$, Bass, Chen and Rosen
-\cite{BCR09} established that when $a \in (0,2]$ and $\nu = 2$,
-\begin{equation}
-	\label{E:rhowavedev}
-	\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log\left( \rho_{2,a} \right),
-\end{equation}
+	\rho_{\nu,a}(\gamma) = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+\end{gather}
 and
+\begin{gather}
+	\label{E:Lambda}
+	\begin{aligned}
+		\mathcal{M}_{\alpha}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
+                                        & = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, \gamma \rangle_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},                           \\
+	\end{aligned}
+\end{gather}
+where
+\begin{gather}
+	\label{E:Egg}
+	\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi,\quad \text{and} \\
+	\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
+	\label{E:Fa}
+\end{gather}
+We use the convention that $\mathcal{M}_a(\gamma):=\mathcal{M}_a(\gamma,1)$.  By slightly modifying
+the proof of \cite[Lemma 2.3]{BCC21}, one can show that
+\begin{equation}
+	\label{E:ScaleM}
+	\mathcal{M}_a(\Theta \gamma , \theta) =
+	\Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \mathcal{M}_a( \gamma , 1),
+	\qquad \text{for all $\theta$ and $\Theta>0 $.}
+\end{equation}
 
-\textcolor{red}{add a footnote about the typo of theorem 1.5 from xia chen paper}
-
-
+For the Riesz kernel
+case (see Remark \ref{R:NoiseEg}), Bass, Chen and Rosen \cite{BCR09} established that when $a \in
+(0,2]$ and $\nu = 2$,
+\begin{equation}
+	\label{E:oldlim}
+	\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+	= \log\left( \rho_{2,a}\left(|\cdot|^{-\alpha}\right) \right),
+\end{equation}
+and \footnote{In Theorem 1.5 or eq. (1.20) of Bass {\it et al} \cite{BCR09}, the factor
+$(2\pi)^{-d}$ should not present.}
 \begin{equation}
 	\label{E:oldrhovarrep}
-	\rho_{2,a} = \Lambda_{\alpha}^{2-(\alpha/a)}
+	\rho_{2,a} \left(|\cdot|^{-\alpha}\right) = \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right).
 \end{equation}
- where
-\begin{align}
-	\Lambda_{\alpha}   & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \int_{\R^{2d}} \frac{g^2(x_1)g^2(x_2)}{|x_1+x_2|^\alpha} \ud \vec{x} \right)^{1/2} - \mathcal{E}_a(g,g) \right\} \\
-                     & = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, |\cdot|^{-\alpha} \rangle_{L^2(\R^d)} - \mathcal{E}_a(g,g) \right\} \nonumber \quad \text{and}        \\
-	\mathcal{E}_a(g,g) & := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi.
-\end{align}
-The following result shows the relationship between $\rho_{2,a}$ and $\rho$ and well as the generalization of \eqref{E:rhowavedev} for $\rho.$
+We first apply some scaling arguments to accommodate the parameter $\nu$ in both \eqref{E:oldlim}
+and \eqref{E:oldrhovarrep},
+the proof of which can be found in Appendix:
 
-\begin{lemma}
+\begin{lemma}[The Riesz kernel case]
 	\label{L:rhovar}
-	For the Riesz kernel case, i.e., when $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$, it
-	holds that
+	If $\gamma(x) = |x|^{-\alpha}$ for some $\alpha \in (0,d)$, then for any $\nu >0 $ and $a \in
+	(0,2]$,
 	\begin{equation}
 	\label{E:rhoLam}
-		\rho_{\nu, a} = \left(\frac{\nu}{2}\right)^{-\alpha/a}  \Lambda_{\alpha}^{2-(\alpha/a)}, \quad
-		\text{for any $\nu >0 $ and $a \in (0,2]$}.
+		\rho_{\nu, a}\left(|\cdot|^{-\alpha}\right) = \left(\frac{\nu}{2}\right)^{-\alpha/a} \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right)
+		= \nu^{-\alpha / a}\mathcal{M}_a^{2-(\alpha / a)}(|\cdot|^{-\alpha}),
 	\end{equation}
-	In addition,
-	\begin{equation}\label{E:LogRho}
-			\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] = \log\left( \rho_{\nu, a} \right).
+	and
+	\begin{equation}
+		\label{E:LogRhoRiez}
+		\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] 
+		= \log\left( \rho_{\nu, a}\left(|\cdot|^{-\alpha}\right) \right).
 	\end{equation}
 \end{lemma}
-This lemma can be proved in the standard scaling arguments together with \eqref{E:oldrhovarrep}. For
-completeness, the proof is presented in the Appendix of the paper.  \bigskip
 
-Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting
-that this implies that $\rho$ is finite by Lemma \ref{L:rhovar}. We stated in the introduction
-that Bass, Chen and Rosen proved in \cite{BCR09} that $\rho$ is finite for the case of the Riesz
-kernel. We mimic his proof but were he uses the Hardy-Littlewood-Sobolev theorem, we make use of the
-weak Young's inequality instead.
+More generally we have the following:
+
+\begin{theorem}
+	\label{T:Variation}
+	For the correlation function $\gamma$	that satisfies Assumption \ref{A:Noise}, both
+	\eqref{E:rhoLam} and \eqref{E:LogRhoRiez} hold with $|\cdot|^{-\alpha}$ and $\mu$ replaced by $\gamma$
+	and  $\mu$ as in \eqref{E:specfunction}, respectively. More precisely, it holds that
+	\begin{equation}
+		\label{E:rhoMrep}
+		\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma),
+	\end{equation}
+	and
+	\begin{equation}
+		\label{E:LogRho}
+		\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] 
+		= \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
+	\end{equation}
+\end{theorem}
+
+% Next we show that $\rho$ is finite. We do this by showing $\rho_{2,a}$ is finite and then noting
+% that this implies that $\rho$ is finite by Lemma \ref{L:rhovar}. We stated in the introduction
+% that Bass, Chen and Rosen proved in \cite{BCR09} that $\rho$ is finite for the case of the Riesz
+% kernel. We mimic his proof but were he uses the Hardy-Littlewood-Sobolev theorem, we make use of the
+% weak Young's inequality instead.
+
+In order to establish this theorem, by checking the corresponding proof in Bass {\it et al}
+\cite{BCR09}, one needs to prove the corresponding inequality --- (1.27) on p. 630 ({\it ibid.}),
+which was a consequence of Sobolev's inequality. For the more general noise studied in this paper,
+we can no longer apply this inequality. Instead, we prove the following lemma using the weak Young's
+inequality.
+
 
 \begin{lemma}
 	\label{L:rhofinite}
@@ -789,29 +833,6 @@ weak Young's inequality instead.
 	where $B$ denotes the Borel sets of finite measure. Hence, $\varphi \in L_{q,w}(\R^d)$ with $q =
 	d/(d-\alpha)$. This completes the proof of Lemma \ref{L:rhofinite}.
 \end{proof}
-
-We finish this section by making a slight generalization of $\Lambda_{\alpha}$. For this, we define
-\begin{equation}
-	\mathcal{M}_a(\Theta f , \theta) = \sup_{g \in \mathcal{F}_a} \left\{ \langle g^2 * g^2, f \rangle^{1/2} - \frac{\theta}{2}\mathcal{E}_a(g,g) \right\}.
-\end{equation}
-One notices that by making this generalization, we can apply Theorem \ref{T:solvable} to the SPDE
-\eqref{E:SPDE} driven by an arbitrary Gaussian noise with correlation function $f$ as long as one
-can show that $\rho$ is finite. By slightly modifying the proof of Lemma 2.3 \cite{BCC21}, one can
-show that
-\begin{equation}
-		\mathcal{M}_a(\Theta f , \theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \mathcal{M}_a( f , 1).
-\end{equation}
-Finally we note that
-\begin{equation}
-	\Lambda_{\alpha} = \mathcal{M}_a(|\cdot|^{-\alpha},2) = 2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a(|\cdot|^{-\alpha},1)
-\end{equation}
-and by defining $\mathcal{M}_a := \mathcal{M}_a(|\cdot|^{-\alpha},1) $ and by applying Theorem \ref{L:rhovar} we see that
-\begin{equation}
-	\label{E:rhoMrep}
-	\rho = \left(\frac{\nu}{2}\right)^{-\alpha/a}
-	\left[2^{-\frac{\alpha}{2a-\alpha}}\mathcal{M}_a\right]^{2-(\alpha/a)} = \nu^{-\alpha/a}
-	\mathcal{M}_a^{\frac{2a-\alpha}{a}}.
-\end{equation}
 
 % \section{Existence and uniqueness of the solution --- the proof of Theorem \ref{T:solvable}}
 \section{Existence and uniqueness of the solution}
@@ -1012,7 +1033,7 @@ In this section, we will establish the upper bound of \eqref{E:momentasym} (unde
 
 We will first establish the corresponding result for $p=2$ in Lemma \ref{L:p=2} and then apply the
 hypercontractivity property given by Theorem B.1 in \cite{BCC21} to obtain the general case for
-$p\ge 2$. To prove the next lemma, we will need the following equality 
+$p\ge 2$. To prove the next lemma, we will need the following equality
 	\begin{align}
 		\label{E:Stirling}
 		\lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a), \quad
