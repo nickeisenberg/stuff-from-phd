@@ -651,7 +651,7 @@ solution can be written as the Weiner chaos expansion as in \eqref{E:solwexp}.
 	\end{equation}
 \end{theorem}
 
-\subsection{Variational constants}
+\subsection{Some asymptotics and variational constants}
 \label{SS:Variation}
 
 Recall that the correlation function $\gamma$ satisfies Assumption \ref{A:Noise} and the
@@ -748,8 +748,29 @@ More generally we have the following:
 	\cite{BCR09}, which is exclusively for the Riesz kernel. One simplification is that we only need
 	to handle the case $p=2$ thanks to the hypercontractivity property. For our slight extension to
 	the noise given in Assumption \ref{A:Noise}, there is no need to repeat their paper. Instead we
-	will only point out the differences and necessary changes. The theorem is proved by showing the
-	following claims: for $\gamma$ given in Assumption  \ref{A:Noise},
+	will only point out the differences and necessary changes. For your convenience, the
+	correspondence of parameters between Bass {\it et al} \cite{BCR09} and the current paper is listed
+	in the following Table \ref{Tb:Notation}.
+
+\begin{table}[htpb]
+	\centering
+	\caption{Notation correspondence.}
+	\label{Tb:Notation}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{c}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+	\hline
+                                & \multicolumn{2}{c|}{Laplace} & \multicolumn{3}{c|}{Noise} & Moment   & Variational Const.  \\ \hline
+	Bass {\it et al} \cite{BCR09} & $\beta$                      & $2$                        & $\sigma$ & $|\cdot|^{-\sigma}$  & $\varphi_{d-\sigma}$ & $p$ & $\Lambda_\sigma$                                \\
+	Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma$             & $\varphi$            & $2$ & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
+\end{tabular}
+	\end{tabular}
+\end{table}
+
+
+	Theorem  \ref{T:Variation} is proved by showing the following claims: for $\gamma$ given in
+	Assumption  \ref{A:Noise},
 	\begin{enumerate}[(i)]
 		\item $\rho_{\nu,a}(\gamma)<\infty$;
 		\item $\liminf_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] \ge \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
