@@ -281,17 +281,15 @@ crucially on the Feynman-Kac representation of the moments of the solution. Howe
 1$, especially for the case when $b\in(1,2)$, we are not aware of any such Feynman-Kac formula for
 the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this difficulty has been
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
-strategy laid out by Balan {\it et al} ({\it ibid.}).
+strategy laid out by Balan {\it et al} ({\it ibid.}). \bigskip
 
-We need to introduce the following variational constants:
-
-\textcolor{red}{The following $\mathcal{M}_a$ is for the Reisz kernal and needs to be changed for the fractional kernal. We need to define $\mathcal{M}_a := \mathcal{M}_a(\gamma,1)$ where $\gamma$ is the fractional kernal defined in \eqref{E:corfunction}.}
-
+We need to introduce the following variational constants (see Section \ref{SS:Variation} for more details):
 \begin{align*}
-	\mathcal{M}_a\left(\Theta f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
-	\mathcal{M}_a                              := \mathcal{M}_a\left(|\cdot|^{-\alpha},1\right);
+	\mathcal{M}_a\left(f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
+	\mathcal{M}_a(f)                              := \mathcal{M}_a\left(f,1\right).
 \end{align*}
-see Section \ref{SS:Variation} for more notation and details.
+For $\gamma$ defined in \eqref{E:corfunction}, we use the convention that $\mathcal{M}_a:=
+\mathcal{M}_a(\gamma,1)$. \bigskip
 
 Now let us state our main results of the paper. The first main result deals with the well-posedness
 of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem:
@@ -417,7 +415,7 @@ Before the end of this Introduction, let us make a few remarks:
 	`$*$' denotes the spatial convolution. Indeed, one can choose
 	\begin{align}
 		\label{E:K}
-		K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} |x_i|^{-(d_i+\alpha_i)/2}.
+		K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} \left|x_{(i)}\right|^{-(d_i+\alpha_i)/2}.
 	\end{align}
 	The two constants in both \eqref{E:specfunction} and \eqref{E:K} are defined as
 	\begin{equation}
@@ -730,7 +728,7 @@ More generally we have the following:
 	and  $\mu$ as in \eqref{E:specfunction}, respectively. More precisely, it holds that
 	\begin{equation}
 		\label{E:rhoMrep}
-		\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma),
+		\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty,
 	\end{equation}
 	and
 	\begin{equation}
@@ -745,7 +743,68 @@ More generally we have the following:
 % that Bass, Chen and Rosen proved in \cite{BCR09} that $\rho$ is finite for the case of the Riesz
 % kernel. We mimic his proof but were he uses the Hardy-Littlewood-Sobolev theorem, we make use of the
 % weak Young's inequality instead.
+\begin{proof}[Sketch of the proof of Theorem \ref{T:Variation}]
+	The proof of this theorem follows essentially the identical proof as Bass {\it et al}
+	\cite{BCR09}, which is exclusively for the Riesz kernel. One simplification is that we only need
+	to handle the case $p=2$ thanks to the hypercontractivity property. For our slight extension to
+	the noise given in Assumption \ref{A:Noise}, there is no need to repeat their paper. Instead we
+	will only point out the differences and necessary changes. The theorem is proved by showing the
+	following claims: for $\gamma$ given in Assumption  \ref{A:Noise},
+	\begin{enumerate}[(i)]
+		\item $\rho_{\nu,a}(\gamma)<\infty$;
+		\item $\liminf_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] \ge \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
+		\item $\limsup_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] \le \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
+		\item $\mathcal{M}_{a}(\gamma)<\infty$;
+		\item $\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)$.
+	\end{enumerate}
 
+	Part (i) which corresponds to Lemma 1.6 ({\it ibid.}) is established by Lemma \ref{L:rhofinite}
+	below.
+
+	Following exactly the same arguments as those in Section 3 ({\it ibid.}) with $\varphi_{d-\sigma}$
+	({\it ibid.}) replaced by our $\varphi$ as in \eqref{E:specfunction}, one can prove part (ii) for
+	$\nu=2$. Then an application of the scaling property as the proof of Lemma \ref{L:rhovar} shows
+	the general case $\nu >0$.
+
+	The proof of the upper bound, namely part (iii), is more challenging. This part corresponds to
+	Sections 5 and 6 ({\it ibid.}). By examining these two sections carefully, we need to make some
+	changes in Section 5 ({\it ibid.}) and the arguments in Section 6 ({\it ibid.}) follows unchanged.
+	For Section 5 ({\it ibid.}), we need to use the following decomposition of $\varphi$ as opposed to (5.4)
+	({\it ibid.}):
+	\begin{align*}
+		\varphi(\xi) = \prod_{i=1}^k C_{\alpha_i,d_i} |\xi_{(i)}|^{-(d_i-\alpha_i)}
+		= \prod_{i=1}^k C_{\alpha_i,d_i} (\mathcal{P}_i*\mathcal{P}_i) \left(\xi_{(i)}\right),
+	\end{align*}
+	with
+	\begin{align*}
+		\mathcal{P}_i\left(\xi_{(i)}\right)=\beta_{d_i-\alpha_i,d_i}\left|\xi_{(i)}\right|^{-(d_i-\alpha_i / 2)};
+	\end{align*}
+	see \eqref{E:noiseconstant} for the constants. Or equivalently,
+	\begin{align*}
+		\varphi(\xi)      = \left(\mathcal{P} * \mathcal{P}\right)(\xi) \quad \text{with} \quad
+		\mathcal{P}(\xi) := \prod_{i=1 }^{k} \sqrt{C_{\alpha_i,d_i}}\: \beta_{d_i-\alpha_i,d_i} \left|\xi_{(i)}\right|^{-(d_i-\alpha_i / 2)}.
+	\end{align*}
+	Now (5.5) ({\it ibid.}) should be written as
+	\begin{align*}
+		\mathcal{P}_{\beta,\epsilon}(\xi) = \hat{h}(\epsilon \xi) \prod_{i=1 }^{k} \frac{\sqrt{C_{\alpha_i,d_i}}\: \beta_{d_i-\alpha_i,d_i} }{\beta+\left|\xi_{(i)}\right|^{-(d_i-\alpha_i / 2)}},
+		\quad \text{for all $\beta,\epsilon \ge 0$,}
+	\end{align*}
+	where $h(\cdot)$ is defined in (5.2) ({\it ibid.}).  So $\mathcal{P}(\xi) =
+	\mathcal{P}_{0,0}(\xi)$ and
+	\begin{align*}
+		\left(\mathcal{P}_{\beta,\epsilon}*\mathcal{P}_{\beta,\epsilon}\right)(\xi) \le
+		\left(\mathcal{P}_{\beta,0}*\mathcal{P}_{\beta,0}\right)(\xi) \le
+		\left(\mathcal{P}_{0,0}*\mathcal{P}_{0,0}\right)(\xi) = \varphi(\xi);
+	\end{align*}
+	see (5.6) ({\it ibid.}). With these changes, one can update accordingly the proof of Lemma 5.1
+	({\it ibid.}) without any difficulty. Then the rest part of Section 5 ({\it ibid.}) follows
+	unchanged. In this way, we establish part (iii) for $\nu=2$. Finally, a scaling argument as in
+	part (ii) proves part (iii) for all $\nu>0$.
+
+	Parts (iv) and (v) correspond to Section 7 ({\it ibid.}). In particular, part (iv) corresponds to
+	Lemma 7.1 ({\it ibid.}). \textcolor{magenta}{Let's complete this part...}
+
+\end{proof}
 In order to establish this theorem, by checking the corresponding proof in Bass {\it et al}
 \cite{BCR09}, one needs to prove the corresponding Lemma 1.6 on p. 629 ({\it ibid.}) for more
 general noise. Indeed, the proof of Lemma 1.6 ({\it ibid.}) relies on inequality (1.27) on p.  630
@@ -755,16 +814,16 @@ the weak Young's inequality as a generalization of Lemma 1.6 ({\it ibid.}).
 
 \noindent \textcolor{red}{Remarks about the Riesz kernel and fractional kernel.}
 
-In order to establish the above theorem, we note that it suffices to show that \eqref{E:oldlim} and \eqref{E:oldrhovarrep} remain true for the noise given in Assumption \ref{A:Noise}. This is because Lemma \ref{L:rhovar} remains the same line for line when the Riesz kernel is replaced by \eqref{E:corfunction}. However, due to the generality of the proofs of the corresponding results from Bass {\it et al} \cite{BCR09}, almost nothing needs to change in order to apply the their proofs to the correlation function \eqref{E:corfunction}. 
+In order to establish the above theorem, we note that it suffices to show that \eqref{E:oldlim} and \eqref{E:oldrhovarrep} remain true for the noise given in Assumption \ref{A:Noise}. This is because Lemma \ref{L:rhovar} remains the same line for line when the Riesz kernel is replaced by \eqref{E:corfunction}. However, due to the generality of the proofs of the corresponding results from Bass {\it et al} \cite{BCR09}, almost nothing needs to change in order to apply the their proofs to the correlation function \eqref{E:corfunction}.
 
 To verify \eqref{E:oldlim}, one needs to verify that Theorem 1.5 \cite{BCR09} holds when considering the more general correlation function \eqref{E:corfunction}. However, the only key change is to the proof of Lemma 7.1 ({\it ibid.}). Its easy to see that equation (7.1) ({\it ibid.}) is precisely \eqref{E:fracrhofinite} below with $F=G$ and with $\alpha$ from \eqref{E:corfunction} replaced with $d-\alpha$. The rest follows line for line with the only changes being \eqref{E:corfunction} replaces the Riesz kernal and the spectral density given in \eqref{E:specfunction} replaces $\varphi_{d-\sigma}$. (Note that $\sigma$ in Bass {\it et al} \cite{BCR09} is $\alpha$ in this paper.)
 
 To verify \eqref{E:oldrhovarrep}, one needs to verify that both Lemma 2.2 and Theorem 2.3 \cite{BCR09} remain true when replacing the Riesz kernal with the correlation function \eqref{E:corfunction}. This lemma and theorem is proven in sections 3, 4 and 5 ({\it ibid.}) and the proof is quite lengthy, however one may keep the same proof line for line and just replace the Riesz kernal with \eqref{E:corfunction} and $\varphi_{d-\sigma}$ with the spectral density given in \eqref{E:specfunction}. This is because the only key features that are needed are that
 	\begin{enumerate}
-		\item $\mathcal{F}\varphi = \gamma$ 
+		\item $\mathcal{F}\varphi = \gamma$
 		\item There exists function $K$ such that $\varphi = K*K$
 	\end{enumerate}
-where $\varphi$, $\gamma$ and $K$ are from Remark \ref{R:Noise}. 
+where $\varphi$, $\gamma$ and $K$ are from Remark \ref{R:Noise}.
 
 We now show $\rho_{\nu,a}(\gamma) < \infty$. In order to establish this result, by checking the corresponding proof in Bass {\it et al} \cite{BCR09}, one needs to prove the corresponding Lemma 1.6 on p. 629 ({\it ibid.}) where we replace $\varphi_{d-\sigma}$ with $\varphi$ given in equation \eqref{E:specfunction}. Indeed, the proof of Lemma 1.6 ({\it ibid.}) relies on inequality (1.27) on p.  630 ({\it ibid.}), which was a consequence of Sobolev's inequality. For the more general noises studied in this paper, we can no longer apply this inequality. Instead, we prove the following lemma using the weak Young's inequality as a generalization of Lemma 1.6 ({\it ibid.}).
 
