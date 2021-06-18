@@ -179,9 +179,9 @@ Statistics, Auburn University, Auburn, Alabama.}}
 \vspace{1mm}
 
 \noindent {\em Keywords:}
-Stochastic partial differential equations; {\it Caputo} derivatives; {\it Riemann-Liouville} fractional
-integral; fractional Laplacian; {\it Malliavin} calculus; {\it Skorohod} integral; exact moment
-asymptotics; time-independent Gaussian noise.
+Stochastic partial differential equations; {\it Caputo} derivatives; {\it Riemann-Liouville}
+fractional integral; fractional Laplacian; {\it Malliavin} calculus; {\it Skorohod} integral; exact
+moment asymptotics; time-independent Gaussian noise.
 
 \tableofcontents
 % \pagebreak
@@ -319,7 +319,7 @@ of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following the
 			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
 			\begin{align}
 				\label{E:Tp}
-				T_p := \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}}.
+				T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}.
 			\end{align}
 		\item[(2-ii)] For any $t>T_2$, the series \eqref{E:2mom} below diverges, that is, the
 			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exist whenever $t>T_2$.
@@ -452,7 +452,8 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 	The asymptotics in \eqref{E:momentasym} interpolates the corresponding results for the stochastic
 	wave and heat equations:
 
-	\noindent (1 - SWE) By setting
+	\noindent (1 - SWE) Even though our results requires $b$ to be strictly less than $2$, but by
+	formally setting
 	\begin{align*}
 		a = b = \nu = 2 \quad \text{and} \quad r = 0,
 	\end{align*}
@@ -466,12 +467,12 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 	stochastic wave equation, namely,  (1.9), (1.10), and (1.11) of \cite{BCC21}, respectively.
 
 	\noindent (2 - SHE) As for the stochastic heat equation case, we are not aware of the exact asymptotics
-	results for SHE with time-independent noise case. However, as explained in Remark 1.9 of
-	\cite{BCC21}, one may apply Chen's asymptotic results in \cite{Chen17AIHP} for SHE with
-	time-dependent noise, by formally setting $H_0=1$, to obtain the corresponding time-independent
-	results.  In particular, by setting
+	results for SHE with time-independent noise. However, as explained in Remark 1.9 of \cite{BCC21},
+	one may apply Chen's asymptotic results in \cite{Chen17AIHP} for SHE with time-dependent noise, by
+	formally setting $H_0=1$, to obtain the corresponding time-independent results.  In particular, by
+	setting
 	\begin{align*}
-		a = b = 2,\quad \nu = 1 \quad \text{and} \quad r = 0,
+		a = 2,\quad b= \nu = 1 \quad \text{and} \quad r = 0,
 	\end{align*}
 	we have that
 	\begin{align*}
@@ -479,15 +480,45 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 		t_p=(p-1)^{2/(4-\alpha)}t,
 	\end{align*}
 	and results in \eqref{E:momentasym} and
-	\eqref{E:momentasym-t} recover the corresponding results for the stochastic heat equation, namely,
+	\eqref{E:momentasym-t} recover the corresponding conjectured results for SHE, namely,
 	(1.16) and (1.17) of \cite{BCC21}, respectively.
 \end{example}
 
+\begin{remark}[Critical dimensions]
+	\label{R:CritcalSHE}
+	(1 - SWE) By formally setting $a=b=2$ and $r=0$ in \eqref{E:critical}, we obtain that $\alpha=3\le
+	d$, which recovers the critical dimension --- $d=3$ --- and the critical condition: $\alpha =3
+	=d$, which implies the noise $\W$ is the spatial white noise. This recovers corresponding results
+	in \cite{BCC21}. Moreover, one can check easily that the expression for the critical time $T_p$ in
+	\eqref{E:Tp} in this case becomes
+	\begin{align*}
+		T_p:=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},
+	\end{align*}
+	which recovers that for SWE when $\nu=2$; see (1.12) ({\it ibid.}). \bigskip
+
+	\noindent (2 - SHE)	By setting
+	\begin{align*}
+		a=2 \quad b=1 \quad \text{and} \quad r=0 \quad \text{in \eqref{E:critical}},
+	\end{align*}
+	we see that
+	\begin{align*}
+		\alpha = 4 \le d.
+	\end{align*}
+	Hence, the critical dimension for SHE is $d=4$ and the critical condition is $\alpha=d=4$, which
+	implies, as in the case of SWE, the corresponding noise $\W$ the 4-dimensional spatial white
+	noise. The critical times $T_p$ in this case become
+	\begin{align*}
+		T_p := \dfrac{\nu^{2}}{2 \theta (p-1)}, \qquad p\ge 2,
+	\end{align*}
+	which, rather surprisingly, do not depend on the variational constant $\mathcal{M}_2(\delta_0)$.
+\end{remark}
+
 \begin{remark}[Nonnegativity]
 	\label{R:Nonnegative}
-	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to Theorem 4.6
-	of \cite{CHN19}, we have the following four groups of sufficient conditions, under either group of
-	which $G(t,\cdot)$ is nonnegative (see Fig.  \ref{F:Nonnegative} for an illustration):
+	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to \cite[Theorem
+	4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$), we have the following
+	four groups of sufficient conditions, under either group of which $G(t,\cdot)$ is nonnegative (see
+	Fig.  \ref{F:Nonnegative} for an illustration):
 	\begin{enumerate}
 		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
 		\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
@@ -529,12 +560,13 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 
 \bigskip
 
-In the following, we first give some preliminaries in Section \ref{S:Pre} including the Malliavin
-calculus, the definition of the solution, and some variational constants. The existence and
-uniqueness of a $L^p(\Omega)$ solution --- Theorem \ref{T:solvable} --- is proven in Section
-\ref{S:solvable}. The upper bound and lower bound for \eqref{E:momentasym} are established in
-Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.  Finally, in the appendix --- Section
-\ref{S:Appendix}, we list a few proofs of the results in the paper.
+In the following, we first give some preliminaries in Section \ref{S:Pre} including the {\it
+Skorohod} integral, definition of the mild solution, and some asymptotics with corresponding
+variational constants. The existence and uniqueness of an $L^p(\Omega)$-solution --- Theorem
+\ref{T:solvable} --- is proven in Section \ref{S:solvable}. The upper bound and lower bound for
+\eqref{E:momentasym} are established in Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.
+Finally, in the appendix --- Section \ref{S:Appendix}, we list a few proofs of the results in the
+paper.
 
 \section{Some preliminaries}
 \label{S:Pre}
@@ -580,9 +612,9 @@ $\text{Dom}(\delta)$. $u$ is called {\it Skorohod integrable} if $u\in \text{Dom
 case we write $\delta(u) = \int_{\R^d} u(x) W(\delta x)$ and by isometry,
 $\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
 
-\begin{definition}[Mild solution]
+\begin{definition}
 	\label{D:Sol}
-	For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
+	(1) For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
 	called {\it a mild solution} to the equation \eqref{E:SPDE} if for all $x\in\R^d$ and $s,t$ fixed
 	with $0<s\le t <T$, $y\to G(t-s,x-y)u(s,y)$ is Skorohod integrable and the following integral
 	equation holds
@@ -590,13 +622,30 @@ $\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
 		\label{E:IntEq}
 		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s.
 	\end{equation}
-	Moreover, for $p\ge 1$, we call it an {\it $L^p(\Omega)$-solution} if $\Norm{u(t,x)}_p < \infty$
-	for all $t \in (0,T)$ and $x \in \R^d$.
+
+	\noindent (2) Let $u(t,x)$ be a mild solution to \eqref{E:SPDE} (or \eqref{E:IntEq}) and fix $p\ge
+	1$. We call $u(t,x)$ a {\it global $L^p(\Omega)$-solution}, or simply an {\it
+	$L^p(\Omega)$-solution} if
+	\begin{align}
+		\label{E:Lp}
+		\Norm{u(t,x)}_p < \infty \qquad \text{for all $t>0$ and $x \in \R^d$;}
+	\end{align}
+	Otherwise, if \eqref{E:Lp} holds only for $t\in(0,T)$ with some finite $T>0$, we call $u(t,x)$
+	a {\it local $L^p(\Omega)$-solution}.
+
 \end{definition}
 
 Note that through construction of the Skorohod integral $\delta$, a mild solution is necessarily to
 be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \cite[Chapter
 3]{Nualart18Book}.  \bigskip
+
+\begin{definition}
+	\label{D:CriDim}
+	The {\it critical dimension} for \eqref{E:SPDE}, denoted as $d_c$, refers to the dimension at
+	which one can find a viable condition on $\alpha$ --- the so-called {\it critical condition}, such
+	that under that this critical condition on $\alpha$, there exits a local, but not global,
+	$L^2(\Omega)$-solution to \eqref{E:SPDE} (or \eqref{E:IntEq}).
+\end{definition}
 
 Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
 {\it Weiner chaos expansion}:
@@ -636,11 +685,11 @@ By setting $t_{n+1}=t$, the Fourier transform of the kernels, $f_n$, is given by
 \end{align}
 
 Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following scaling properties for both $\mathcal{F}G(t,\cdot)(\xi)$ and
-$\Norm{\widetilde{f_n}(\cdot,t,x)}_{\mathcal{H}^{\otimes n}}$ are very important.
+$\Norm{\widetilde{f_n}(\cdot,t,x)}_{\mathcal{H}^{\otimes n}}$ play an important role in the paper.
 
 \begin{lemma}
 	\label{L:Scale}
-	For any $c>0$ and $t>0$, the following scaling properties hold:
+	For any $c,t>0$, $n\ge 1$,  $\xi,\xi_1,\cdots,\xi_n\in\R^d$, the following scaling properties hold:
 	\begin{gather}
 		\label{E:greenscale}
 		\mathcal{F}G(t,\cdot)(c\xi) = c^{-\frac{a}{b}(b+r -1)}\mathcal{F}G\left(c^{\frac{a}{b}}t,\cdot\right)( \xi)  \quad \text{and} \quad
@@ -890,7 +939,7 @@ weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalizati
 	where
 	\begin{align*}
 		F(x) = \frac{|f(x)|}{(h(x))^{p/2}} \qquad \text{and} \qquad
-		G(x) = \frac{|g(x)|}{(h(x))^{p/2}},
+		G(x) = \frac{|g(x)|}{(h(x))^{p/2}}.
 	\end{align*}
 	Note that when $\varphi(x)=C |x|^{-(d-\alpha)}$, \eqref{E:fracrhofinite} is nothing but (1.27)
 	({\it ibid.}). Here we need to handle more general $\varphi$ as given in \eqref{E:specfunction}.
@@ -1131,7 +1180,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 		2(b+r) - 1 - b\alpha/a > 0.
 	\end{equation}
 	Finally, an application of the Minkowski inequality and the hypercontractivity (see \cite[Theorem
-	B.1]{BCC21}) shows that for all $p\ge 2$,
+	B.1]{BCC21} or \cite{Le16} for the case of SHE) shows that for all $p\ge 2$,
 	\begin{align}
 		\nonumber
 		\Norm{u(t,x)}_p & \le \sum_{n\ge 0} \theta^{n/2} (p-1)^{n/2} \sqrt{n!} \Norm{\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} } \\
@@ -1939,45 +1988,50 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
 	% }}}
-	\bibitem{BS17} % {{{ 2.
-	Balan, R. M. and Song, J. (2017).
-	\newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
-	\newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
-	% }}}
-	\bibitem{BCR09}% {{{ 3.
+	% \bibitem{BS17} % {{{ 2. -- removed.
+	% Balan, R. M. and Song, J. (2017).
+	% \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
+	% \newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
+	% % }}}
+	\bibitem{BCR09}% {{{ 2.
 	Bass, R., Chen, X., and Rosen, M. (2009).
 	\newblock Large deviations for Riesz potentials of additive processes.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
 	% }}}
-	\bibitem{CHHH17}% {{{ 4.
+	\bibitem{CHHH17}% {{{ 3.
 	Chen, L., Hu, Y., Hu, G., and Huang, J. (2017).
 	\newblock Stochastic time-fractional diffusion equations on $\R^d$.
 	\newblock {\em Stochastics} \textbf{89} (1) 171--206.
 	% }}}
-	\bibitem{CHN19}% {{{ 5.
+	\bibitem{CHN19}% {{{ 4.
 	Chen, L., Hu, Y., and Nualart, D. (2019).
 	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
 	% }}}
-	\bibitem{Chen17AIHP} % {{{ 6.
+	\bibitem{Chen17AIHP} % {{{ 5.
 	Chen, X. (2017).
 	\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
 	\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
 	% }}}
-	\bibitem{Chen19AIHP}% {{{ 7.
+	\bibitem{Chen19AIHP}% {{{ 6.
 	Chen X. (2019).
 	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
 	% }}}
-	\bibitem{Minicourse09}% {{{ 8.
+	\bibitem{Minicourse09}% {{{ 7.
 	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
 	\newblock {\it A minicourse on stochastic partial differential equations}.
 	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
 	% }}}
-	\bibitem{Hu01Heat}% {{{ 9.
+	\bibitem{Hu01Heat}% {{{ 8.
 	Hu, Y. (2001).
 	\newblock Heat equations with fractional white noise potentials.
 	\newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
+	% }}}
+	\bibitem{Le16} % {{{ 9.
+	L\^e, K. (2016).
+	\newblock A remark on a result of Xia Chen.
+	\newblock {\em Stat. Probab. Letters} {\bf 118}, 124--126.
 	% }}}
 	\bibitem{LiebLoss01} % {{{ 10.
 	Lieb, E. and Loss, M. (2001).
