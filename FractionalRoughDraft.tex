@@ -683,7 +683,7 @@ Recall that the correlation function $\gamma$ satisfies Assumption \ref{A:Noise}
 corresponding spectral measure is $\mu$; see Remark \ref{R:Noise}. Define
 \begin{gather}
 	\label{E:rho}
-	\rho_{\nu,a}(\gamma) = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+	\rho_{\nu,a}(\gamma) = \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
 \end{gather}
 and
 \begin{gather}
@@ -696,12 +696,12 @@ and
 where
 \begin{gather}
 	\label{E:Egg}
-	\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi,\quad \text{and} \\
+	\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
 	\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
 	\label{E:Fa}
 \end{gather}
-We use the convention that $\mathcal{M}_a(\gamma):=\mathcal{M}_a(\gamma,1)$.  By slightly modifying
-the proof of \cite[Lemma 2.3]{BCC21}, one can show that
+We use the convention that $\mathcal{M}_a(\gamma):=\mathcal{M}_a(\gamma,1)$.  By a similar argument
+as the proof of \cite[Lemma 2.3]{BCC21}, one can show that
 \begin{equation}
 	\label{E:ScaleM}
 	\mathcal{M}_a(\Theta \gamma , \theta) =
@@ -743,7 +743,7 @@ the proof of which can be found in Appendix:
 	\end{equation}
 \end{lemma}
 
-More generally we have the following:
+More generally we have the following theorem:
 
 \begin{theorem}
 	\label{T:Variation}
@@ -785,9 +785,9 @@ More generally we have the following:
 	\renewcommand{\arraystretch}{1.2}
 	\begin{tabular}{|c|c|c|c|c|c|c|c|}
 		\hline
-																	& \multicolumn{2}{c|}{Laplace} & \multicolumn{3}{c|}{Noise} & Moment   & Variational Const.  \\ \hline
+                                  & \multicolumn{2}{c|}{Laplace} & \multicolumn{3}{c|}{Noise} & Moment   & Variational Const.  \\ \hline
 		Bass {\it et al} \cite{BCR09} & $\beta$                      & $2$                        & $\sigma$ & $|\cdot|^{-\sigma}$  & $\varphi_{d-\sigma}$ & $p$ & $\Lambda_\sigma$                                \\
-		Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma$             & $\varphi$            & $2$ & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
+		Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma(\cdot)$      & $\varphi$            & $2$ & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
 	\end{tabular}
 		\end{tabular}
 	\end{table}
@@ -863,10 +863,12 @@ More generally we have the following:
 	\ref{T:Variation}.
 \end{proof}
 
-The proof of Lemma 1.6 ({\it ibid.}) relies on inequality (1.27) on p.  630
-({\it ibid.}), which was a consequence of Sobolev's inequality. For the more general noises studied
-in this paper, we can no longer apply this inequality. Instead, we prove the following lemma using
-the weak Young's inequality as a generalization of Lemma 1.6 ({\it ibid.}).
+Note that the proof of \cite[Lemma 1.6]{BCR09} relies on inequality (1.27) on p.  630 ({\it ibid.}),
+which was a consequence of {\it Sobolev's inequality}. For the more general noises studied in this
+paper, we can no longer apply this inequality. Instead, we prove the following lemma using the {\it
+weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalization of Lemma 1.6
+({\it ibid.}).  Even though we only need the case $p=2$, the following lemma is proved for all $p\ge
+2$.
 
 \begin{lemma}
 	\label{L:rhofinite}
@@ -878,8 +880,6 @@ the weak Young's inequality as a generalization of Lemma 1.6 ({\it ibid.}).
 	\end{align*}
 	% where $\alpha = \sum_{=1}^k \alpha_i$ with $k \in \{1, \cdots ,d\}$, $\alpha_i \in (0,d_i)$ and $\varphi(x) = \prod_{i =1}^k |x_{(i)}|^{-(d_i-\alpha_i)}$ where $x_{(i)} = (x_{i_1},\cdots , x_{i_{d_i}} )$ is the $i^{th}$ group of $x=(x_1, \cdots, x_d)$.
 \end{lemma}
-Note that we only need the case $p=2$. Nevertheless, in this lemma we prove a general case for all
-$p\ge 2$.
 \begin{proof}
 	By observing the proof of Lemma 1.6 of \cite{BCR09}, we only need to prove that
 	\begin{equation}
@@ -920,16 +920,16 @@ $p\ge 2$.
 	By the proof of \cite[Lemma 1.6]{BCC21}, it suffices to prove that $\Norm{\varphi}_{q,w}$ is
 	finite with $q = d/(d-\alpha)$ and $1/q' = 1 - 1/q = \alpha/d$.  \bigskip
 
-	Recall that according to Assumption \ref{A:Noise}, the $d$ coordinates have been partitioned into
-	$k$ groups.  Define $A_R := A_1 \times \cdots \times A_k$ where $A_i = B_{R,d_i}(0)$ is the ball
-	in $\R^{d_i}$ centered at the origin with radius $R$.  With this we have that
+	Recall that according to Assumption \ref{A:Noise}, the $d$ coordinates are partitioned into $k$
+	groups.  Define $A_R := A_1 \times \cdots \times A_k$ where $A_i = B_{R,d_i}(0)$ is the ball in
+	$\R^{d_i}$ centered at the origin with radius $R$.  With this we have that
 	\begin{equation}
 		\label{E:int}
 		\int_{A_i} |x_{(i)}|^{-(d_i-\alpha_i)} \ud x_{(i)}
 		= |\mathbb{S}^{d_i - 1}|\: \dfrac{R^{\alpha_i}}{\alpha_i},
 	\end{equation}
 	where we have used polar coordinated to calculate the integral and
-	$\left|\mathbb{S}^{d_i-1}\right| = (2\pi^{d_i / 2})/(\Gamma(d_i / 2))$ is the surface area of the
+	$\left|\mathbb{S}^{d_i-1}\right| = 2\pi^{d_i / 2}/\Gamma(d_i/2)$ is the surface area of the unit
 	sphere in $\R^{d_i}$ (clearly, when $d_i=1$,  $|S^0|=2$). Moreover, by the formula for the volume
 	of balls in $\R^{d_i}$, we see that
 	\begin{equation}
@@ -1868,51 +1868,32 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 \label{S:Appendix}
 
 \begin{proof}[Proof of Lemma \ref{L:rhovar}]
-	Recall that we define $\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)}$. We begin by applying the substitution $x' = \left(\frac{\nu}{2}\right)^{1/a}$ to $\rho$:
+	In this proof, $\mu(\ud x) = \varphi(x)\ud x = C_{\alpha,d}|x|^{-(d-\alpha)}\ud x$. By change of
+	variables $x' = \left(\nu/2\right)^{1/a} x$ and $y' = \left(\nu/2\right)^{1/a} y$, we see that
 	\begin{align*}
-		\rho & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)                                                                                                                                                                                  \\
-				 & = \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \left(\frac{\nu}{2}\right)^{(d-\alpha)/a}\varphi(x)\left(\frac{\nu}{2}\right)^{-d/a}\ud x \\
-				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x
+		\rho_{\nu,a} & \left(|\cdot|^{-\alpha}\right) = \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x) \\
+                 & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x.
 	\end{align*}
-	Now define $f^*(x) =\left(\frac{\nu}{2}\right)^{\frac{-d}{2a}} f\left( \left(\frac{\nu}{2}\right)^{-1/a} x \right)$. Then with this we see that
+	By setting $f^*(x) =\left(\nu/2\right)^{-d/(2a)} f\left( \left(\nu/2\right)^{-1/a} x \right)$, we see that
 	\begin{align*}
-		\rho &= \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x
+	\rho_{\nu,a} \left(|\cdot|^{-\alpha}\right) & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
+                                        & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x       \\
+                                        & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}\left(|\cdot|^{-\alpha}\right),
 	\end{align*}
-	and note that
-	\begin{align*}
-		\int_{\R^d} f(x)^2 \ud x = \int_{\R^d} f^*(x)^2 \ud x
-	\end{align*}
-	and thus
-	\begin{align*}
-		\left\{ f \in L^2(\R^d) : \Norm{f}_2 = 1 \right\} = 	\left\{ f \in L^2(\R^d) : \Norm{f^*}_2 = 1 \right\}
-	\end{align*}
-	so we can say that
-	\begin{align*}
-		\rho & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_2 =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x     \\
-				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
-				 & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}
-	\end{align*}
-	and \eqref{E:rhoLam} is proven by applying \eqref{E:oldrhovarrep}.
+	where the second equality is due to the fact that $\int_{\R^d} f(x)^2 \ud x = \int_{\R^d} f^*(x)^2
+	\ud x$.  Then an application of \eqref{E:oldrhovarrep} proves \eqref{E:rhoLam}.
 
-	To prove \eqref{E:LogRho}, we first notice that by applying the substitution $\xi_{\sigma(j)}' =
-	\left(\frac{\nu}{2}\right)^{1/a} \xi_{\sigma(j)}$ that
+	Similarly, for \eqref{E:LogRho}, by change of variables $\xi_{\sigma(j)}' =
+	\left(\nu/2\right)^{1/a} \xi_{\sigma(j)}$, we see that
 	\begin{align*}
-      & \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}) \\
-		= & \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )
+		\lim_{n \to \infty} \frac{1}{n} & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                                               \\
+                                    & = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]                    \\
+                                    & = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
+                                    & = \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} \right) + \log\left( \rho_{2,a} \left(|\cdot|^{-\alpha}\right) \right)
+																		= \log\left( \rho_{\nu, a} \left(|\cdot|^{-\alpha}\right)\right),
 	\end{align*}
-	and now we can directly calculate
-	\begin{align*}
-		\lim_{n \to \infty} \frac{1}{n} & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                            \\
-																		& = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
-																		& = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}   \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]
-	\end{align*}
-	and because of both Theorem 1.5 \cite{BCR09} and \eqref{E:rhoLam} above,
-	\begin{gather*}
-		\lim_{n \to \infty} \frac{1}{n} \log \left( \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right) \\
-		= \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} \right) + \log\left( \rho_{2,a} \right)
-		= \log\left( \rho_{\nu, a} \right).
-	\end{gather*}
-	This completes the proof of Lemma \ref{L:rhovar}.
+	where we have applied \eqref{E:oldlim} and \eqref{E:rhoLam}. This completes the proof of Lemma
+	\ref{L:rhovar}.
 \end{proof}
 
 \begin{proof}[Proof of \eqref{E:fHn}]
