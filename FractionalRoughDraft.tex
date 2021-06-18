@@ -1904,35 +1904,32 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	% 	% \label{E:Ffnscale}
 	% 	\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)} \mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
 	% \end{equation*}
-	Because
+	% For an arbitrary $c>0$. Because
+	% \begin{align*}
+	% 	\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f_n(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}),
+	% \end{align*}
+	% by the linearity, it suffices to just look at the
+	% $\mathcal{F}f_n(\cdot,0,ct)\left(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}\right)$ terms individually.
+	Starting from \eqref{E:fweker}, by change of variables $t_i' = t_i/c$ and the scaling property in
+	\eqref{E:Ffnscale}, we have that
 	\begin{align*}
-		\mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \mathcal{F}f_n(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}),
+		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n)
+    & = \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t}                                 \\
+    & = \int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}               \\
+    & = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} \\
+    & = c^{n(b+r)} \mathcal{F}f_n\left(\cdot,0,t\right)\left(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n\right),
 	\end{align*}
-	by the linearity, it suffices to just look at the
-	$\mathcal{F}f(\cdot,0,ct)(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)})$ terms individually. For any
-	$c>0$, by \eqref{E:Ffnscale}, we have that
-	\begin{align*}
-		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n) & = \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t} \\
-																										& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
-	\end{align*}
-	where we applied the substitution $t_i' = t_i/c$. By the scaling property of $\mathcal{F}G$ we
-	see that
-	\begin{align*}
-		\int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
-		& = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} \\
-		& = c^{n(b+r)} \mathcal{F}f_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n).
-	\end{align*}
-	Now by the above scaling property, we can obtain \eqref{E:fHn} as follows:
+	from which we see that
 	\begin{align*}
 		\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
      & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t                                                             \\
-     & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  2 \ud t                                                         \\
+     & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}) \: 2\: \ud t                                                     \\
      & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                                 \\
      & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t \\
      & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               \\
-     & =  \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t.
+     & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
 	\end{align*}
-	proves \eqref{E:fHn}.
+	where we have applied \eqref{E:greenscale} in the fourth equality. This proves \eqref{E:fHn}.
 \end{proof}
 
 \addcontentsline{toc}{section}{Bibliography}
