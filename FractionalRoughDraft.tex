@@ -54,8 +54,8 @@
 % -------------------------------------------------
 % check references
 % -------------------------------------------------
-% \usepackage{refcheck}
-\usepackage[notref,notcite]{showkeys}
+\usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
 
@@ -274,7 +274,7 @@ conjectured in Remark 1.9 of Balan {\it et al} \cite{BCC21} by {\it formally} se
 Chen \cite{Chen17AIHP}. Note that in X. Chen ({\it ibid.}), $H_0$ is strictly in between the open
 interval $(1/2,1)$. The case $ H_0=1$ requires a separate treatment. In this paper, by working on a
 more general class of SPDEs, we confirm this conjecture on the asymptotics for SHE. Moreover, our
-results interpolate the asymptotics for both SWE and SHE; see Remark \ref{R:Inter} below.
+results interpolate the asymptotics for both SWE and SHE; see Example \ref{Eg:Inter} below.
 
 The moment asymptotics obtained by X. Chen, such as those in \cite{Chen17AIHP,Chen19AIHP}, rely
 crucially on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
@@ -283,13 +283,16 @@ the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
 strategy laid out by Balan {\it et al} ({\it ibid.}). \bigskip
 
-We need to introduce the following variational constants (see Section \ref{SS:Variation} for more details):
+We need to introduce the following variational constant (see Section \ref{SS:Variation} for more details):
 \begin{align*}
-	\mathcal{M}_a\left(f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \quad \text{and} \quad
-	\mathcal{M}_a(f)                              := \mathcal{M}_a\left(f,1\right).
+	\mathcal{M}_a\left(f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
 \end{align*}
-For $\gamma$ defined in \eqref{E:corfunction}, we use the convention that $\mathcal{M}_a:=
-\mathcal{M}_a(\gamma,1)$. \bigskip
+and we use the following convention:
+\begin{align*}
+	\mathcal{M}_a(f) := \mathcal{M}_a\left(f,1\right) \quad \text{and} \quad
+	\mathcal{M}_a    := \mathcal{M}_a(\gamma),
+\end{align*}
+where $\gamma$ is defined in \eqref{E:corfunction}. \bigskip
 
 Now let us state our main results of the paper. The first main result deals with the well-posedness
 of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem:
@@ -319,7 +322,7 @@ of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following the
 				T_p := \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a}}.
 			\end{align}
 		\item[(2-ii)] For any $t>T_2$, the series \eqref{E:2mom} below diverges, that is, the
-			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exit whenever $t>T_2$.
+			$L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:SPDE} does not exist whenever $t>T_2$.
 	\end{enumerate}
 \end{theorem}
 
@@ -363,7 +366,7 @@ denote the $L^p(\Omega)$ moments.
 	\end{equation}
 	where
 	\begin{align}
-		\label{E:beta&tp}
+		\label{E:beta-tp}
 		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
 		t_p   := (p-1)^{1-1/\beta} \: t.
 	\end{align}
@@ -400,12 +403,12 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 	\end{itemize}
 \end{corollary}
 
-Before the end of this Introduction, let us make a few remarks:
+Before the end of this Introduction, let us make a few remarks and give some examples:
 
 
-\begin{remark}
+\begin{remark}[Spectral density and decomposition]
 	\label{R:Noise}
-	Note that the spectral density corresponding to \eqref{E:corfunction} is  given by
+	The spectral density corresponding to \eqref{E:corfunction} is $\mathcal{F}\gamma$, which is given by
 	\begin{equation}
 		\label{E:specfunction}
 		\mu (\ud \xi) = \varphi(\xi) \ud \xi \quad \text{with} \quad
@@ -425,8 +428,8 @@ Before the end of this Introduction, let us make a few remarks:
 	\end{equation}
 \end{remark}
 
-\begin{remark}
-	\label{R:NoiseEg}
+\begin{example}[Noises]
+	\label{Eg:NoiseEg}
 	We have the following special cases: (1) The case $k=1$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers the Riesz kernel
 	case. In this case,
 	\begin{align*}
@@ -442,13 +445,14 @@ Before the end of this Introduction, let us make a few remarks:
 		\varphi(\xi) = \prod_{i=1}^d C_{\alpha_i,1} |\xi_i|^{-(1-\alpha_i)}\quad\text{and}\quad
 		K(x)         = \prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}.
 	\end{align*}
-\end{remark}
-\begin{remark}
-	\label{R:Inter}
+\end{example}
+
+\begin{example}[Asymptotics for SHE and SWE]
+	\label{Eg:Inter}
 	The asymptotics in \eqref{E:momentasym} interpolates the corresponding results for the stochastic
 	wave and heat equations:
 
-	\noindent (1) By setting
+	\noindent (1 - SWE) By setting
 	\begin{align*}
 		a = b = \nu = 2 \quad \text{and} \quad r = 0,
 	\end{align*}
@@ -461,7 +465,7 @@ Before the end of this Introduction, let us make a few remarks:
 	\eqref{E:momentasym-t}, and \eqref{E:momentasym-p} recover the corresponding results for the
 	stochastic wave equation, namely,  (1.9), (1.10), and (1.11) of \cite{BCC21}, respectively.
 
-	\noindent (2) As for the stochastic heat equation case, we are not aware of the exact asymptotics
+	\noindent (2 - SHE) As for the stochastic heat equation case, we are not aware of the exact asymptotics
 	results for SHE with time-independent noise case. However, as explained in Remark 1.9 of
 	\cite{BCC21}, one may apply Chen's asymptotic results in \cite{Chen17AIHP} for SHE with
 	time-dependent noise, by formally setting $H_0=1$, to obtain the corresponding time-independent
@@ -477,8 +481,9 @@ Before the end of this Introduction, let us make a few remarks:
 	and results in \eqref{E:momentasym} and
 	\eqref{E:momentasym-t} recover the corresponding results for the stochastic heat equation, namely,
 	(1.16) and (1.17) of \cite{BCC21}, respectively.
-\end{remark}
-\begin{remark}
+\end{example}
+
+\begin{remark}[Nonnegativity]
 	\label{R:Nonnegative}
 	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to Theorem 4.6
 	of \cite{CHN19}, we have the following four groups of sufficient conditions, under either group of
@@ -534,86 +539,104 @@ Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.  Finally, in the app
 \section{Some preliminaries}
 \label{S:Pre}
 
-\subsection{Malliavin Calculus}
+\subsection{Skorohod integral and mild solution}
 \label{SS:Malliavin}
 
-To briefly summarize \cite{Minicourse09}, we start with a nonnegative and nonnegative definite
-tempered measure $\Gamma$ with density $\gamma$ in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$,
-and
+We start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$
+in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$ and
 \begin{align*}
 	\int_{\R^d} \Gamma(\ud x) (\varphi * \widetilde{\varphi})(x) \ge 0 \quad \text{for all $\varphi \in \mathscr{S}(\R^d)$}
 \end{align*}
-where $\widetilde{\varphi}(x) = \varphi(-x)$. In addition we require the existence of an $r>0$ such that
+where $\widetilde{\varphi}(x): = \varphi(-x)$.
+% In addition we require the existence of an $r>0$ such that \begin{align*} \int_{\R^d}\Gamma(\ud x)
+% \frac{1}{ (1 + |x|^2 )^r} < \infty.  \end{align*}
+According to the Bochner theorem, there exists a nonnegative and nonnegative definite measure $\mu$,
+often referred as the {\it spectral measure} on $\R^d$ whose Fourier transform (in the weak sense)
+is $\Gamma$, namely, that for any $\varphi \in \mathcal{D}(\R^d)$ (the space of test functions),
 \begin{align*}
-	\int_{\R^d}\Gamma(\ud x) \frac{1}{ (1 + |x|^2 )^r} < \infty.
+	\int_{\R^d}\Gamma(\ud x) \varphi(x) = \int_{\R^d} \mu(\ud \xi) \mathcal{F}\varphi (\xi).
 \end{align*}
-According to the Bochner theorem, there exists a nonnegative measure $\mu$, often referred to as the
-spectral measure on $\R^d$ whose Fourier transform is $\Gamma$ in the sense that for any $\varphi
-\in \mathscr(\R^d)$
-\begin{align*}
-	\int_{\R^d}\Gamma(\ud x) \varphi(x) = \int_{\R^d} \mu(\ud t) \mathcal{F}\varphi (t)
-\end{align*}
-
-The functional defined on the space of test functions $\mathcal{D}(\R^d)$
-\begin{align*}
-	C(\varphi,\psi) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi)
-\end{align*}
-is nonnegative define and thus we may associate it as the covariance functional of a zero-mean Gaussian processes, $W:= \{ W(\varphi) : \varphi \in \mathcal{D}(\R^d) \}$. In other words,
+Since $\mu$ is the nonnegative definite, the following functional
+\begin{align}
+	\label{E:Cov}
+	C(\varphi,\psi) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi),
+	\qquad \text{for all $\varphi,\psi\in\mathcal{D}(\R^d)$}
+\end{align}
+is nonnegative and thus one can associate it with a zero-mean Gaussian processes, $W:= \left\{
+W(\varphi) : \varphi \in \mathcal{D}(\R^d) \right\}$ so that the covariance functional of $W$ is
+given by \eqref{E:Cov}, namely,
 \begin{align*}
 	\mathbb{E}(W(\varphi)W(\psi)) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \varphi, \psi \rangle_{\mathcal{H}}.
 \end{align*}
-Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot \rangle_{\mathcal{H}}$ and thus we see $\varphi \mapsto W(\varphi)$ is an isometry from the normed space $(\mathcal{D}(\R^d), \Norm{\cdot}_{\mathcal{H}})$ to $L^2(\Omega)$ where $\Norm{f}_{\mathcal{H}} = \langle f, f \rangle_{\mathcal{H}}$.
+Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot
+\rangle_{\mathcal{H}}$ and thus we see $\varphi \mapsto W(\varphi)$ is an isometry from
+$\mathcal{D}(\R^d)$ to $L^2(\Omega)$, that is, $\E\left(W(\psi)^2\right)	=
+\Norm{\psi}_{\mathcal{H}}^2$ for $\psi\in \mathcal{D}(\R^d)$. One can extend this isometry from
+$\mathcal{D}(\R^d)$ to $\mathcal{H}$. We refer the interested readers to \cite{Minicourse09} and
+references therein.  \bigskip
 
-We denote $\delta$ the Skorohod integral with respect to $W$ and we denote its domain $\text{Dom}(\delta)$. For any $u\in \text{Dom}(\delta)$, we write
-\begin{align*}
-	\delta(u) = \int_{\R^d} u(x) W(\delta x).
-\end{align*}
-Through construction of $\delta$, $\delta(u)$ is a random variable in $L^2(\Omega)$. For a deeper explanation, we direct the reader to Nualart \cite{Nualart18Book}.
+We denote $\delta$ the {\it Skorohod integral} with respect to $W$ and denote its domain by
+$\text{Dom}(\delta)$. $u$ is called {\it Skorohod integrable} if $u\in \text{Dom}(\delta)$, in which
+case we write $\delta(u) = \int_{\R^d} u(x) W(\delta x)$ and by isometry,
+$\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
 
-\begin{definition}
+\begin{definition}[Mild solution]
 	\label{D:Sol}
-	A random field $u=\{u(t,x) : t \ge 0, x\in\R^d\}$ such that $\Norm{u(t,x)}_2 < \infty$ for all $t
-	\ge 0$ and $ x \in \R^d$ is called {\it a mild solution} to the equation \eqref{E:SPDE} if the random
-	field $\{G(t-s,x-y)u(s,y): s \in [0,t], y \in \R^d \}$ is Skorohod integrable for each $s\in
-	[0,t]$ and $x\in \R^d$ fixed and satisfies the following integral equation:
+	For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
+	called {\it a mild solution} to the equation \eqref{E:SPDE} if for all $x\in\R^d$ and $s,t$ fixed
+	with $0<s\le t <T$, $y\to G(t-s,x-y)u(s,y)$ is Skorohod integrable and the following integral
+	equation holds
 	\begin{equation}
+		\label{E:IntEq}
 		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s.
 	\end{equation}
+	Moreover, for $p\ge 1$, we call it an {\it $L^p(\Omega)$-solution} if $\Norm{u(t,x)}_p < \infty$
+	for all $t \in (0,T)$ and $x \in \R^d$.
 \end{definition}
 
-Through the standard Picard iteration scheme, the solution can be expressed by
+Note that through construction of the Skorohod integral $\delta$, a mild solution is necessarily to
+be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \cite[Chapter
+3]{Nualart18Book}.  \bigskip
+
+Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
+{\it Weiner chaos expansion}:
 \begin{equation}
 	\label{E:solwexp}
-	u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t))
+	u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
 \end{equation}
-where $I_k : \mathcal{H}^{\otimes k}((\R^d)^k) \to \mathcal{H}_k$ is the $k^{th}$ order Skorohod integral and $\mathcal{H}_k$ is the $k^{th}$ Wiener chaos space. The kernels $f_k(\cdot,x,t) \in \mathcal{H}^{\otimes k}((\R^d)^k)$ are calculated through the Piccard iteration scheme to be
-\begin{align}
-	\label{E:wker}
+where $I_k : \mathcal{H}^{\otimes k}\left((\R^d)^k\right) \to \mathcal{H}_k$ is the $k^{th}$ order
+Skorohod integral and $\mathcal{H}_k$ is the $k^{th}$ Wiener chaos space and the kernels
+$f_k(\cdot,x,t)$, obtained through the iteration, are equal to
+\begin{align*}
+	% \label{E:wker}
 	f_n(x_1,...,x_k;x,t) & = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n \\
                        & = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud t_1\cdots \ud t_n. \nonumber
-\end{align}
-For ease of notation throughout this article, we write the above integrals as
-\begin{align*}
-	f_n(x_1,...,x_n;x,t) &= \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t} \\
-											 &= \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t}.
 \end{align*}
-where in general $\ud\vec{z} = \prod_{k=1}^d \ud z_k$ and the dimension will always be easily understood. We denote by $\widetilde{f_n}(\cdot, x, t)$ to be the symmetrization of $f_n(\cdot,x,t)$ in the variables $x_1,\cdots,x_n$:
-	\begin{align}
+For ease of notation, throughout this article, we write the above integrals as
+\begin{align*}
+	f_n(x_1,...,x_n;x,t) & = \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t} \\
+                       & = \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t},
+\end{align*}
+where $[0,t]_<^n:=\{(t_1,\cdots,t_n)\in [0,t]^n:\: t_1<\cdots < t_n\}$. As usual, we use
+$\widetilde{f_n}(\cdot, x, t)$ to denote the symmetrization of $f_n(\cdot,x,t)$:
+	\begin{align*}
 		\widetilde{f_n}(\cdot; x, t) &= \frac{1}{n!} \sum_{\rho \in \Sigma_n} f_n\left(x_{\rho(1)},\cdots, x_{\rho(n)}\right) \\
-																 &= \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G\left(t-t_n,x-x_{\rho(n)}\right)\cdots G\left(t_2-t_1,x_{\rho(2)}-x_{\rho(1)}\right) \ud \vec{t}
-	\end{align}
-where $\Sigma_n$ is the set of all permutations of $\{1,\cdots,n\} $. In particular, for $x=0$ we have
-\begin{align}
-	\label{E:fperm0}
-	\widetilde{f_n}(\cdot; 0, t) = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G(t_1,x_{\rho(1)})\cdots G(t_n-t_{n-1},x_{\rho(n)}-x_{\rho(n-1)}) \ud \vec{t}.
-\end{align}
+																 &= \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G\left(t-t_n,x-x_{\rho(n)}\right)\cdots G\left(t_2-t_1,x_{\rho(2)}-x_{\rho(1)}\right) \ud \vec{t},
+	\end{align*}
+where $\Sigma_n$ is the set of all permutations of $\{1,\cdots,n\} $.
+% In particular, for $x=0$ we have
+% \begin{align}
+% 	\label{E:fperm0}
+% 	\widetilde{f_n}(\cdot; 0, t) = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G(t_1,x_{\rho(1)})\cdots G(t_n-t_{n-1},x_{\rho(n)}-x_{\rho(n-1)}) \ud \vec{t}.
+% \end{align}
 By setting $t_{n+1}=t$, the Fourier transform of the kernels, $f_n$, is given by
 \begin{align}
 	\label{E:fweker}
-	\mathcal{F}f_n(\cdot;x,t)(\xi_1,...,\xi_n) = e^{-i \left(\sum_{j=1}^n \xi_j \right) \cdot x} \int_{[0,t]^n <} \prod_{k=1}^n \overline{\mathcal{F}G(t_{t_k+1}-t_k,\cdot)\left(\sum_{j=1}^k \xi_j\right) } 	\ud \textbf{t}.
+	\mathcal{F}f_n(\cdot;x,t)(\xi_1,...,\xi_n) = e^{-i \left(\sum_{j=1}^n \xi_j \right) \cdot x} \int_{[0,t]^n_<} \prod_{k=1}^n \overline{\mathcal{F}G(t_{k+1}-t_k,\cdot)\left(\sum_{j=1}^k \xi_j\right) } 	\ud \vec{t}.
 \end{align}
 
-Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following result shows an important scaling property that both $\mathcal{F}G(t,\cdot)(\xi)$ and $\Norm{\widetilde{f_n}(\cdot,t,x)}_{\mathcal{H}^{\otimes n}}$ have.
+Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following scaling properties for both $\mathcal{F}G(t,\cdot)(\xi)$ and
+$\Norm{\widetilde{f_n}(\cdot,t,x)}_{\mathcal{H}^{\otimes n}}$ are very important.
 
 \begin{lemma}
 	\label{L:Scale}
@@ -629,22 +652,24 @@ Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following result
 	\end{gather}
 \end{lemma}
 \begin{proof}
-	The scaling properties in \eqref{E:greenscale} is a direct consequence of the explicit expression
-	of $\mathcal{F}G(t,\cdot)(\xi)$ as in (4.8) of \cite{CHN19}.  Property \eqref{E:Ffnscale} is an
-	easy exercise of change of variables.  Property \eqref{E:normscale} is a direct consequence of
+	The scaling properties in \eqref{E:greenscale} are direct consequences of the explicit expression
+	of $\mathcal{F}G(t,\cdot)(\xi)$ as in \cite[(4.8)]{CHN19}. Property \eqref{E:Ffnscale} is an easy
+	exercise of change of variables on \eqref{E:fweker}. Property \eqref{E:normscale} is a direct consequence of
 	\eqref{E:greenscale}, \eqref{E:Ffnscale}, and the scaling property of the spectral measure $\mu$.
 	We leave the details for the interested readers.
 \end{proof}
 
-Recall the following standard result about the existence and uniqueness of the solution when the
-solution can be written as the Weiner chaos expansion as in \eqref{E:solwexp}.
+Finally, let us recall the following standard result about the existence and uniqueness of the
+solution to \eqref{E:SPDE} (or \eqref{E:IntEq}) when it can be written as the Weiner chaos expansion
+\eqref{E:solwexp}.
+
 \begin{theorem}\label{T:2momseries}
 	Fix any $T \in (0,\infty]$. Suppose that $f_n(\cdot,x,t) \in \mathcal{H}^{\otimes n}$ for any $t
-	\in (0,T)$, $x \in R^d$ and $n \ge 1$. Then equation \eqref{E:SPDE} has a unique $L^2(\Omega)$
-	solution on $(0,T) \times \R^d$ if and only if the series \eqref{E:solwexp} converges in
-	$L^2(\Omega)$ for any $(t,x) \in (0,T) \times \R^d$, which is equivalent to the convergence of the
-	series \eqref{E:2mom}. In this case, the solution is given by \eqref{E:solwexp} with the second moment
-	given by
+	\in (0,T)$, $x \in R^d$ and $n \ge 1$. Then \eqref{E:SPDE} (or \eqref{E:IntEq}) has a unique
+	$L^2(\Omega)$-solution on $(0,T) \times \R^d$ if and only if the series \eqref{E:solwexp}
+	converges in $L^2(\Omega)$ for any $(t,x) \in (0,T) \times \R^d$, which is equivalent to the
+	convergence of the series \eqref{E:2mom}. In this case, the solution is given by \eqref{E:solwexp}
+	with the second moment given by
 	\begin{equation}
 		\label{E:2mom}
 		\mathbb{E}\left(u(t,x)^2\right) = \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
@@ -684,9 +709,8 @@ the proof of \cite[Lemma 2.3]{BCC21}, one can show that
 	\qquad \text{for all $\theta$ and $\Theta>0 $.}
 \end{equation}
 
-For the Riesz kernel
-case (see Remark \ref{R:NoiseEg}), Bass, Chen and Rosen \cite{BCR09} established that when $a \in
-(0,2]$ and $\nu = 2$,
+For the Riesz kernel case (see Example \ref{Eg:NoiseEg}), Bass, Chen and Rosen \cite{BCR09}
+established that when $a \in (0,2]$ and $\nu = 2$,
 \begin{equation}
 	\label{E:oldlim}
 	\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
@@ -827,7 +851,7 @@ More generally we have the following:
 	\eqref{E:fracrhofinite} with $\varphi(x-y)$ replaced by  $\gamma(x-y)$, we see that
 	\begin{align*}
 		% \label{E:(7.1)}
-	\int_{(\R^d)^2} g^2(x)g^2(-y) \gamma(x-y) \ud x \ud y 	\le C \Norm{\tilde{g}^2}_{L^{2d/(2d-\alpha)}(\R^d)} \Norm{g^2}_{L^{2d/(2d-\alpha)}(\R^d)} =  C \Norm{g}_{L^{4d/(2d-\alpha)}(\R^d)}^4, 
+	\int_{(\R^d)^2} g^2(x)g^2(-y) \gamma(x-y) \ud x \ud y 	\le C \Norm{\tilde{g}^2}_{L^{2d/(2d-\alpha)}(\R^d)} \Norm{g^2}_{L^{2d/(2d-\alpha)}(\R^d)} =  C \Norm{g}_{L^{4d/(2d-\alpha)}(\R^d)}^4,
 	\end{align*}
 	where $\tilde{g}^2(x) = g(-x)$. Thus equation (7.1)  ({\it ibid.}) can be applied in our setting . The rest of the proof of Lemma 7.1 ({\it
 	ibid.}) remains unchanged.
@@ -1371,7 +1395,7 @@ Now we are ready to prove \eqref{E:momentasym-upper}.
 		\label{E:pMom2}
 		\Norm{u(t,0)}_p \le \Norm{u\left(t(p-1)^{\frac{1}{2(b+r)-b\alpha/a}}, 0\right)}_2 =: \Norm{u(t_p,0)}_2,
 	\end{align}
-	where $t_p$ is defined in \eqref{E:beta&tp}. Finally, an application of Lemma \ref{L:p=2} proves
+	where $t_p$ is defined in \eqref{E:beta-tp}. Finally, an application of Lemma \ref{L:p=2} proves
 	\eqref{E:momentasym-upper}.
 \end{proof}
 
@@ -1486,7 +1510,7 @@ proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat here.
 
 Now we are going to apply a scaling argument to \eqref{E:Wnprop1} in order to put $t$ and $p$
 together, from which we can determine the constants $t_p$ and  $\beta$ defined in
-\eqref{E:beta&tp}.
+\eqref{E:beta-tp}.
 
 \begin{proposition}
 	\label{P:Wnprop2}
@@ -1495,7 +1519,7 @@ together, from which we can determine the constants $t_p$ and  $\beta$ defined i
 		\label{E:Wnprop2}
 		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n\left(t_p^\beta, \mathcal{F}f\right) \right|,
 	\end{align}
-	where the constants $\beta$ and $t_p$ are defined in \eqref{E:beta&tp}.
+	where the constants $\beta$ and $t_p$ are defined in \eqref{E:beta-tp}.
 \end{proposition}
 \begin{proof}
 	From Proposition \ref{P:Wnprop1}, we see that for any $f\in \mathcal{H}$, the inequality
