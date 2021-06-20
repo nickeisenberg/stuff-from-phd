@@ -484,34 +484,174 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 	(1.16) and (1.17) of \cite{BCC21}, respectively.
 \end{example}
 
-\begin{remark}[Critical dimensions]
+\begin{remark}[Local $L^p(\Omega)$ solutions]
 	\label{R:CritcalSHE}
-	(1 - SWE) By formally setting $a=b=2$ and $r=0$ in \eqref{E:critical}, we obtain that $\alpha=3\le
-	d$, which recovers the critical dimension --- $d=3$ --- and the critical condition: $\alpha =3
-	=d$, which implies the noise $\W$ is the spatial white noise. This recovers corresponding results
-	in \cite{BCC21}. Moreover, one can check easily that the expression for the critical time $T_p$ in
-	\eqref{E:Tp} in this case becomes
+	(1 - SWE) By setting $a=2$ and formally setting $b=2$ in \eqref{E:critical}, we obtain
+	the following condition for SWE under which there only exits a local solution:
+	\begin{align}
+		\label{E:CrSWE}
+		\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
+	\end{align}
+	First of all, results in Balan {\it et al} \cite{BCC21} require $d\le 3$. On the other hand,
+	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
+	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
+	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
 	\begin{align*}
-		T_p:=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},
+		\alpha=3=d \quad \text{and} \quad r=0,
 	\end{align*}
-	which recovers that for SWE when $\nu=2$; see (1.12) ({\it ibid.}). \bigskip
+	which says that
+	at dimension $d=3$, when the noise $\W$ is white noise, there exits only a local $L^p(\Omega)$
+	solution for all $p\ge 2$. Moreover, one can check easily that the expression for the critical
+	time $T_p$ in \eqref{E:Tp} in this case reduces to
+	\begin{align*}
+		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},  \quad p\ge 2,
+	\end{align*}
+	which is identical to (1.12) ({\it ibid.}) when setting $\nu=2$. \bigskip
 
-	\noindent (2 - SHE)	By setting
-	\begin{align*}
-		a=2 \quad b=1 \quad \text{and} \quad r=0 \quad \text{in \eqref{E:critical}},
-	\end{align*}
-	we see that
-	\begin{align*}
-		\alpha = 4 \le d.
-	\end{align*}
-	Hence, the critical dimension for SHE is $d=4$ and the critical condition is $\alpha=d=4$, which
-	implies, as in the case of SWE, the corresponding noise $\W$ the 4-dimensional spatial white
-	noise. The critical times $T_p$ in this case become
-	\begin{align*}
-		T_p := \dfrac{\nu^{2}}{2 \theta (p-1)}, \qquad p\ge 2,
-	\end{align*}
-	which, rather surprisingly, do not depend on the variational constant $\mathcal{M}_2(\delta_0)$.
+	\noindent (2 - SHE)	Now let us see what happens for SHE. By setting $a=2$ and $b=1$ in
+	\eqref{E:critical}, we obtain the following condition for SHE under which there only exits a local
+	solution:
+	\begin{align}
+		\label{E:CrSHE}
+		\alpha = 2 + 4r \le d \quad \text{and} \quad r\in [0, 1/2].
+	\end{align}
+	Since at $b\le 1$, the sufficient conditions in Remark \ref{R:Nonnegative} guarantee the
+	nonnegativity of the fundamental solution for all $d\ge 1$. Hence, the picture is more complicated
+	in this case since we need to check all possible dimensions $d\ge 1$. We illustrate possible cases
+	in Figure \ref{F:SHE}. In particular, let us explain a few cases:
+	\begin{enumerate}[(a)]
+		\item when $r=0$, conditions in \eqref{E:CrSHE} become $\alpha=2\le d$. Moreover, when $d=2$, this says that
+			the $2$-dimensional SHE driven by white noise has only an local $L^p(\Omega)$ solution. In
+			this case, the critical times $T_p$ become
+			\begin{align}
+				\label{E:Tp-SHE2}
+				T_p := \dfrac{\nu}{2\theta (p-1) \mathcal{M}_2(\delta_0)}, \qquad p\ge 2.
+			\end{align}
+		\item When $r=0$ and $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$
+			solution. Local solutions exist only when $\alpha=2$.
+		\item Similarly, the cases for other nonzero values of $r$ are illustrated in Figure
+			\ref{F:SHE}.
+	\end{enumerate}
+	In both cases (b) and (c), the critical time $T_p$ takes the same expression as \eqref{E:Tp-SHE2}
+	but one needs to replace $\delta_0$ by $\gamma$.
 \end{remark}
+
+\begin{figure}[htpb]
+	\centering
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\draw (2,2) circle (0.11);
+		\draw (2,3) circle (0.11);
+		\draw (2,4) circle (0.11);
+		\draw (2,5) circle (0.11);
+		\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
+	\end{tikzpicture}
+	\qquad \qquad
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (2.5,0) -- (2.5,5.5) node [above] {$r=1/8$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.4,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(2.4,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(2.4,0.05);
+		% \draw (2.5,2) circle (0.11);
+		\draw (2.5,3) circle (0.11);
+		\draw (2.5,4) circle (0.11);
+		\draw (2.5,5) circle (0.11);
+		\draw (2.5, 3) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (2.5, 4) + (0.1, -0.05) rectangle +(1.5,0.05);
+		\draw (2.5, 5) + (0.1, -0.05) rectangle +(2.5,0.05);
+	\end{tikzpicture}
+	\bigskip \bigskip
+
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (3,0) -- (3,5.5) node [above] {$r=1/4$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(2.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(2.9,0.05);
+		% \draw (2,2) circle (0.11);
+		\draw (3,3) circle (0.11);
+		\draw (3,4) circle (0.11);
+		\draw (3,5) circle (0.11);
+		% \draw (3, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (3, 4) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (3, 5) + (0.1, -0.05) rectangle +(2,0.05);
+	\end{tikzpicture}
+	\qquad \qquad
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (4,0) -- (4,5.5) node [above] {$r=1/2$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(3,0.05);%\filldraw (3,3) circle (0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(3.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(3.9,0.05);
+		% \draw (2,2) circle (0.11);
+		% \draw (2,3) circle (0.11);
+		\draw (4,4) circle (0.11);
+		\draw (4,5) circle (0.11);
+		% \draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		% \draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (4, 5) + (0.1, -0.05) rectangle +(1,0.05);
+	\end{tikzpicture}
+	\bigskip \bigskip
+
+
+	% Legendary below
+	\begin{tikzpicture}[scale=0.9]
+		\draw (-0.4,-1.5) rectangle +(6,3);
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05) node [right] {Global $L^p(\Omega)$-solution};
+		\draw (0.5,0) circle (0.1); \node at (3,0) {Local $L^p(\Omega)$-solution};
+		\draw (0, -1) + (0.1, -0.05) rectangle +(1,0.05) node [right] {No $L^2(\Omega)$-solution};
+		\draw (6.5, 0) + (-0.15,-0.15) rectangle +(0.15,0.15); \node at (8,0) {White noise};
+	\end{tikzpicture}
+	\caption{Stochastic heat equation ($a=2$ and $b=1$) with $r=0,1/8,1/4, 1/2$ and $p\ge 2$.}
+	\label{F:SHE}
+\end{figure}
 
 \begin{remark}[Nonnegativity]
 	\label{R:Nonnegative}
@@ -612,12 +752,12 @@ $\text{Dom}(\delta)$. $u$ is called {\it Skorohod integrable} if $u\in \text{Dom
 case we write $\delta(u) = \int_{\R^d} u(x) W(\delta x)$ and by isometry,
 $\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
 
-\begin{definition}
+\begin{definition}[Mild, local and global solutions]
 	\label{D:Sol}
 	(1) For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
 	called {\it a mild solution} to the equation \eqref{E:SPDE} if for all $x\in\R^d$ and $s,t$ fixed
-	with $0<s\le t <T$, $y\to G(t-s,x-y)u(s,y)$ is Skorohod integrable and the following integral
-	equation holds
+	with $0<s\le t <T$, $y\to G(t-s,x-y)u(s,y)$ is Skorohod integrable and the following stochastic
+	integral equation holds almost surely
 	\begin{equation}
 		\label{E:IntEq}
 		u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s.
@@ -628,24 +768,25 @@ $\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
 	$L^p(\Omega)$-solution} if
 	\begin{align}
 		\label{E:Lp}
-		\Norm{u(t,x)}_p < \infty \qquad \text{for all $t>0$ and $x \in \R^d$;}
+		\Norm{u(t,x)}_p < \infty \qquad \text{for all $t>0$ and $x \in \R^d$.}
 	\end{align}
-	Otherwise, if \eqref{E:Lp} holds only for $t\in(0,T)$ with some finite $T>0$, we call $u(t,x)$
-	a {\it local $L^p(\Omega)$-solution}.
 
+	\noindent (3) If there exist $0<T_1\le T_2<\infty$ such that $\Norm{u(t,x)}_p$ is finite for all
+	$t\in(0,T_1)$ and $x\in\R^d$, but $\Norm{u(t,x)}_p$ does not exist whenever $t>T_2$, the mild
+	solution $u(t,x)$ in this case is called a {\it local $L^p(\Omega)$-solution}.
 \end{definition}
 
 Note that through construction of the Skorohod integral $\delta$, a mild solution is necessarily to
 be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \cite[Chapter
 3]{Nualart18Book}.  \bigskip
 
-\begin{definition}
-	\label{D:CriDim}
-	The {\it critical dimension} for \eqref{E:SPDE}, denoted as $d_c$, refers to the dimension at
-	which one can find a viable condition on $\alpha$ --- the so-called {\it critical condition}, such
-	that under that this critical condition on $\alpha$, there exits a local, but not global,
-	$L^2(\Omega)$-solution to \eqref{E:SPDE} (or \eqref{E:IntEq}).
-\end{definition}
+% \begin{definition}
+% 	\label{D:CriDim}
+% 	The {\it critical dimension} for \eqref{E:SPDE}, denoted as $d_c$, refers to the dimension at
+% 	which one can find a viable condition on $\alpha$ --- the so-called {\it critical condition}, such
+% 	that under that this critical condition on $\alpha$, there exits a local, but not global,
+% 	$L^2(\Omega)$-solution to \eqref{E:SPDE} (or \eqref{E:IntEq}).
+% \end{definition}
 
 Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
 {\it Weiner chaos expansion}:
