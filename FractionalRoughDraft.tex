@@ -283,7 +283,10 @@ the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
 strategy laid out by Balan {\it et al} ({\it ibid.}). \bigskip
 
-We need to introduce the following variational constant (see Section \ref{SS:Variation} for more details):
+Now let us state the main results of this paper. The first main result deals with the well-posedness
+of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem. For this, we
+need to introduce the following variational constant (see Section \ref{SS:Variation} for more
+details):
 \begin{align*}
 	\mathcal{M}_a\left(f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
 \end{align*}
@@ -292,10 +295,7 @@ and we use the following convention:
 	\mathcal{M}_a(f) := \mathcal{M}_a\left(f,1\right) \quad \text{and} \quad
 	\mathcal{M}_a    := \mathcal{M}_a(\gamma),
 \end{align*}
-where $\gamma$ is defined in \eqref{E:corfunction}. \bigskip
-
-Now let us state our main results of the paper. The first main result deals with the well-posedness
-of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem:
+where $\gamma$ is defined in \eqref{E:corfunction}.
 
 \begin{theorem}[Solvability]
 	\label{T:solvable}
@@ -403,7 +403,13 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 	\end{itemize}
 \end{corollary}
 
-Before the end of this Introduction, let us make a few remarks and give some examples:
+\bigskip
+
+
+
+Before the end of this Introduction, let us make a few remarks and give some examples regarding our
+assumptions and results. More discussions on the solvability --- Theorem \ref{T:solvable} --- will
+be presented in Section \ref{S:SolvEx}.
 
 
 \begin{remark}[Spectral density and decomposition]
@@ -484,181 +490,12 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 	(1.16) and (1.17) of \cite{BCC21}, respectively.
 \end{example}
 
-\begin{remark}[Local $L^p(\Omega)$ solutions]
-	\label{R:CritcalSHE}
-	(1 - SWE) By setting $a=2$ and formally setting $b=2$ in \eqref{E:critical}, we obtain
-	the following condition for SWE under which there only exits a local solution:
-	\begin{align}
-		\label{E:CrSWE}
-		\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
-	\end{align}
-	First of all, results in Balan {\it et al} \cite{BCC21} require $d\le 3$. On the other hand,
-	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
-	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
-	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
-	\begin{align*}
-		\alpha=3=d \quad \text{and} \quad r=0,
-	\end{align*}
-	which says that
-	at dimension $d=3$, when the noise $\W$ is white noise, there exits only a local $L^p(\Omega)$
-	solution for all $p\ge 2$. Moreover, one can check easily that the expression for the critical
-	time $T_p$ in \eqref{E:Tp} in this case reduces to
-	\begin{align*}
-		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},  \quad p\ge 2,
-	\end{align*}
-	which is identical to (1.12) ({\it ibid.}) when setting $\nu=2$. \bigskip
-
-	\noindent (2 - SHE)	Now let us see what happens for SHE. By setting $a=2$ and $b=1$ in
-	\eqref{E:critical}, we obtain the following condition for SHE under which there only exits a local
-	solution:
-	\begin{align}
-		\label{E:CrSHE}
-		\alpha = 2 + 4r \le d \quad \text{and} \quad r\in [0, 1/2].
-	\end{align}
-	Since at $b\le 1$, the sufficient conditions in Remark \ref{R:Nonnegative} guarantee the
-	nonnegativity of the fundamental solution for all $d\ge 1$. Hence, the picture is more complicated
-	in this case since we need to check all possible dimensions $d\ge 1$. We illustrate possible cases
-	in Figure \ref{F:SHE}. In particular, let us explain a few cases:
-	\begin{enumerate}[(a)]
-		\item when $r=0$, conditions in \eqref{E:CrSHE} become $\alpha=2\le d$. Moreover, when $d=2$, this says that
-			the $2$-dimensional SHE driven by white noise has only an local $L^p(\Omega)$ solution. In
-			this case, the critical times $T_p$ become
-			\begin{align}
-				\label{E:Tp-SHE2}
-				T_p := \dfrac{\nu}{2\theta (p-1) \mathcal{M}_2(\delta_0)}, \qquad p\ge 2.
-			\end{align}
-		\item When $r=0$ and $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$
-			solution. Local solutions exist only when $\alpha=2$.
-		\item Similarly, the cases for other nonzero values of $r$ are illustrated in Figure
-			\ref{F:SHE}.
-	\end{enumerate}
-	In both cases (b) and (c), the critical time $T_p$ takes the same expression as \eqref{E:Tp-SHE2}
-	but one needs to replace $\delta_0$ by $\gamma$.
-\end{remark}
-
-\begin{figure}[htpb]
-	\centering
-	\begin{tikzpicture}[scale=0.9]
-		\draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
-		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
-		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
-		\foreach \x in {1,...,5}{
-			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
-			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
-			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
-			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
-			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
-		}
-		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
-		\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.9,0.05);
-		\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.9,0.05);
-		\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.9,0.05);
-		\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.9,0.05);
-		\draw (2,2) circle (0.11);
-		\draw (2,3) circle (0.11);
-		\draw (2,4) circle (0.11);
-		\draw (2,5) circle (0.11);
-		\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
-		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
-		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
-	\end{tikzpicture}
-	\qquad \qquad
-	\begin{tikzpicture}[scale=0.9]
-		\draw [thick,dashed] (2.5,0) -- (2.5,5.5) node [above] {$r=1/8$};
-		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
-		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
-		\foreach \x in {1,...,5}{
-			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
-			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
-			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
-			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
-			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
-		}
-		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
-		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
-		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.4,0.05);
-		\filldraw (0, 4) + (0.1, -0.05) rectangle +(2.4,0.05);
-		\filldraw (0, 5) + (0.1, -0.05) rectangle +(2.4,0.05);
-		% \draw (2.5,2) circle (0.11);
-		\draw (2.5,3) circle (0.11);
-		\draw (2.5,4) circle (0.11);
-		\draw (2.5,5) circle (0.11);
-		\draw (2.5, 3) + (0.1, -0.05) rectangle +(0.5,0.05);
-		\draw (2.5, 4) + (0.1, -0.05) rectangle +(1.5,0.05);
-		\draw (2.5, 5) + (0.1, -0.05) rectangle +(2.5,0.05);
-	\end{tikzpicture}
-	\bigskip \bigskip
-
-	\begin{tikzpicture}[scale=0.9]
-		\draw [thick,dashed] (3,0) -- (3,5.5) node [above] {$r=1/4$};
-		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
-		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
-		\foreach \x in {1,...,5}{
-			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
-			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
-			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
-			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
-			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
-		}
-		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
-		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
-		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.9,0.05);
-		\filldraw (0, 4) + (0.1, -0.05) rectangle +(2.9,0.05);
-		\filldraw (0, 5) + (0.1, -0.05) rectangle +(2.9,0.05);
-		% \draw (2,2) circle (0.11);
-		\draw (3,3) circle (0.11);
-		\draw (3,4) circle (0.11);
-		\draw (3,5) circle (0.11);
-		% \draw (3, 3) + (0.1, -0.05) rectangle +(1,0.05);
-		\draw (3, 4) + (0.1, -0.05) rectangle +(1,0.05);
-		\draw (3, 5) + (0.1, -0.05) rectangle +(2,0.05);
-	\end{tikzpicture}
-	\qquad \qquad
-	\begin{tikzpicture}[scale=0.9]
-		\draw [thick,dashed] (4,0) -- (4,5.5) node [above] {$r=1/2$};
-		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
-		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
-		\foreach \x in {1,...,5}{
-			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
-			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
-			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
-			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
-			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
-		}
-		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
-		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
-		\filldraw (0, 3) + (0.1, -0.05) rectangle +(3,0.05);%\filldraw (3,3) circle (0.05);
-		\filldraw (0, 4) + (0.1, -0.05) rectangle +(3.9,0.05);
-		\filldraw (0, 5) + (0.1, -0.05) rectangle +(3.9,0.05);
-		% \draw (2,2) circle (0.11);
-		% \draw (2,3) circle (0.11);
-		\draw (4,4) circle (0.11);
-		\draw (4,5) circle (0.11);
-		% \draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
-		% \draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
-		\draw (4, 5) + (0.1, -0.05) rectangle +(1,0.05);
-	\end{tikzpicture}
-	\bigskip \bigskip
-
-
-	% Legendary below
-	\begin{tikzpicture}[scale=0.9]
-		\draw (-0.4,-1.5) rectangle +(6,3);
-		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05) node [right] {Global $L^p(\Omega)$-solution};
-		\draw (0.5,0) circle (0.1); \node at (3,0) {Local $L^p(\Omega)$-solution};
-		\draw (0, -1) + (0.1, -0.05) rectangle +(1,0.05) node [right] {No $L^2(\Omega)$-solution};
-		\draw (6.5, 0) + (-0.15,-0.15) rectangle +(0.15,0.15); \node at (8,0) {White noise};
-	\end{tikzpicture}
-	\caption{Stochastic heat equation ($a=2$ and $b=1$) with $r=0,1/8,1/4, 1/2$ and $p\ge 2$.}
-	\label{F:SHE}
-\end{figure}
-
 \begin{remark}[Nonnegativity]
 	\label{R:Nonnegative}
 	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to \cite[Theorem
 	4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$), we have the following
 	four groups of sufficient conditions, under either group of which $G(t,\cdot)$ is nonnegative (see
-	Fig.  \ref{F:Nonnegative} for an illustration):
+	Figure \ref{F:Nonnegative} for an illustration):
 	\begin{enumerate}
 		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
 		\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
@@ -698,15 +535,369 @@ Before the end of this Introduction, let us make a few remarks and give some exa
 
 
 
-\bigskip
+In the following, we first give some examples regarding the solvability stated in Theorem
+\ref{T:solvable} in Section \ref{S:SolvEx}. Then in Section \ref{S:Pre}, we present some
+preliminaries of the paper, including the {\it Skorohod} integral, definition of the mild solution,
+and some asymptotics with corresponding variational constants. The existence and uniqueness of an
+$L^p(\Omega)$-solution --- Theorem \ref{T:solvable} --- is proven in Section \ref{S:solvable}. The
+upper bound and lower bounds for \eqref{E:momentasym} are established in Sections \ref{S:upperbd} and
+\ref{S:lowerbd}, respectively.  Finally, in the appendix --- Section \ref{S:Appendix}, we list a few
+proofs of results that are used in the paper.
 
-In the following, we first give some preliminaries in Section \ref{S:Pre} including the {\it
-Skorohod} integral, definition of the mild solution, and some asymptotics with corresponding
-variational constants. The existence and uniqueness of an $L^p(\Omega)$-solution --- Theorem
-\ref{T:solvable} --- is proven in Section \ref{S:solvable}. The upper bound and lower bound for
-\eqref{E:momentasym} are established in Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.
-Finally, in the appendix --- Section \ref{S:Appendix}, we list a few proofs of the results in the
-paper.
+\section{Examples on solvability}
+\label{S:SolvEx}
+
+In this section, we list some concrete examples regarding the solvability --- Theorem
+\ref{T:solvable}.
+
+\begin{example}[SHE]
+	\label{Eg:CriSHE}
+	By setting $a=2$, $b=1$ and $r=0$ in \eqref{E:critical}, we obtain the following condition for SHE
+	under which there only exits a local solution:
+	\begin{align}
+		\label{E:CrSHE}
+		\alpha = 2 \le d .
+	\end{align}
+	Clearly, the fundamental solutions in this case are nonnegative for all $d\ge 1$.  Hence, the
+	picture is slightly more complicated since we need to check all possible dimensions $d\ge 1$.  We
+	illustrate possible cases in Figure \ref{F:SHE}. In particular, let us explain a few cases:
+	\begin{enumerate}[(a)]
+		\item When $d=2$, condition \eqref{E:CrSHE} says that the $2$-dimensional SHE driven by white
+			noise has only a local $L^p(\Omega)$ solution. In this case, the critical time $T_p$ becomes
+			\begin{align}
+				\label{E:Tp-SHE2}
+				T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_2(\delta_0)}, \qquad p\ge 2.
+			\end{align}
+		\item When $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$
+			solution. Local solutions exist only when $\alpha=2$ and the noise is not white. The critical
+			time $T_p$ takes the same expression as \eqref{E:Tp-SHE2} but one needs to replace $\delta_0$
+			by $\gamma$.
+		% \item Similarly, the cases for other nonzero values of $r$ are illustrated in Figure
+			% \ref{F:SHE}.
+	\end{enumerate}
+\end{example}
+
+\begin{figure}[htpb]% {{{ F:SHE
+	\centering
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\draw (2,2) circle (0.11);
+		\draw (2,3) circle (0.11);
+		\draw (2,4) circle (0.11);
+		\draw (2,5) circle (0.11);
+		\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
+	\end{tikzpicture}
+	\hspace{2em}
+	\begin{tikzpicture}[scale=0.9]
+		\def\x{3}
+		\draw (-0.4,-1.5+\x) rectangle +(6,3);
+		\filldraw (0, 1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {Global $L^p(\Omega)$-solution};
+		\draw (0.5,0+\x) circle (0.1); \node at (3,0+\x) {Local $L^p(\Omega)$-solution};
+		\draw (0, -1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {No $L^2(\Omega)$-solution};
+		\draw (0.5, 1) + (-0.15,-0.15) rectangle +(0.15,0.15); \node at (2.5,1) {White noise};
+		\draw[white] (0,-1.5) circle (0.01);
+	\end{tikzpicture}
+
+	\caption{Solvability for the stochastic heat equation (i.e., $a=2$, $b=1$ and $r=0$) with $p\ge 2$.}
+	\label{F:SHE}
+\end{figure}% }}}
+
+\begin{figure}[htb]% {{{ F:SWE
+	\centering
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (3,0) -- (3,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.9,0.05);%\filldraw (3,3) circle (0.05);
+		% \filldraw (0, 4) + (0.1, -0.05) rectangle +(2.9,0.05);
+		% \filldraw (0, 5) + (0.1, -0.05) rectangle +(2.9,0.05);
+		% \draw (2,2) circle (0.11);
+		\draw (3,3) circle (0.11);
+		% \draw (3,4) circle (0.11);
+		% \draw (3,5) circle (0.11);
+		% \draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		% \draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw[dashed] (0, 5) + (0.1, -0.05) rectangle +(5,0.05);
+		\draw[dashed] (0, 4) + (0.1, -0.05) rectangle +(4,0.05);
+	\end{tikzpicture}
+	\hspace{2em}
+	\begin{tikzpicture}[scale=0.9]
+		\def\x{3.2}
+		% \draw (-0.4,-1.5+\x) rectangle +(6,3);
+		\draw[dashed] (0, 1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {Unknown};
+		% \draw (0.5,0+\x) circle (0.1); \node at (3,0+\x) {Local $L^p(\Omega)$-solution};
+		% \draw (0, -1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {No $L^2(\Omega)$-solution};
+		% \draw (0.5, 1) + (-0.15,-0.15) rectangle +(0.15,0.15); \node at (2.5,1) {White noise};
+		\draw[white] (0,-1.5) circle (0.01);
+	\end{tikzpicture}
+
+	\caption{Solvability for the stochastic wave equation (i.e., $a=b=2$ and $r=0$) with $p\ge 2$. See
+	Figure \ref{F:SHE} for more legends.}
+	\label{F:SWE}
+\end{figure}% }}}
+
+\begin{example}[SWE]
+	\label{Eg:CriSWE}
+	By setting $a=2$ and formally setting $b=2$ in \eqref{E:critical}, we obtain the following
+	condition for the stochastic wave equation under which there only exits a local solution:
+	\begin{align}
+		\label{E:CrSWE}
+		\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
+	\end{align}
+	First of all, results in Balan {\it et al} \cite{BCC21} require $d\le 3$. On the other hand,
+	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
+	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
+	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
+	\begin{align*}
+		\alpha=3=d \quad \text{and} \quad r=0,
+	\end{align*}
+	which says that at dimension $d=3$, when the noise $\W$ is white noise, there exits only a local
+	$L^p(\Omega)$ solution for all $p\ge 2$. See Figure \ref{F:SWE} for an illustration. Moreover, one
+	can check easily that the expression for the critical time $T_p$ in \eqref{E:Tp} in this case
+	reduces to
+	\begin{align}
+		\label{E:TpCrSWE}
+		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},  \quad p\ge 2,
+	\end{align}
+	which is identical to (1.12) ({\it ibid.}) when setting $\nu=2$. \bigskip
+\end{example}
+
+\begin{example}[Fractional SHE with $r=1-b$]
+	\label{Eg:FracSHE}
+	For the fractional stochastic heat equation, i.e., the case when $b<1$ and $a\le 2$, many known
+	works focus on the case when $r=1-b$; see, e,g., \cite{Chen17Tran,MijenaNane15SPA}. To facilitate
+	the discussions here, we will only focus on the case when $a=2$. In particular, by setting $r=1-b$
+	and $a=2$, conditions in \eqref{E:critical} become
+	\begin{align}
+		\label{E:CrFrSHE}
+		\alpha =\frac{2}{b} \le d \quad  \text{and} \quad b\in [1/2,1].
+	\end{align}
+	When $b=1$, we have $r=0$ and the fundamental solutions are the standard heat kernel. Hence,
+	Assumption \ref{A:Nonnegative} is satisfied for all $d\ge 1$. On the other hand, when $b<1$,
+	sufficient conditions in Remark \ref{R:Nonnegative} guarantees Assumption \ref{A:Nonnegative} for
+	all $d\ge 1$. The solvability for this case is illustrated in Figure \ref{F:FracSHE} and the
+	critical time $T_p$ is equal to
+	\begin{align}
+		\label{E:TpFracSHE}
+		T_p = \dfrac{\nu^{\alpha/2}}{2 \theta (p-1) \mathcal{M}_2^{2-\alpha/2}}.
+	\end{align}
+\end{example}
+
+\begin{figure}[htpb]% {{{ F:FracSHE
+	\centering
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
+		\draw [thick,dashed] (2,0) -- (2,6) node [above] {$b=1$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\draw (2,2) circle (0.11);
+		\draw (2,3) circle (0.11);
+		\draw (2,4) circle (0.11);
+		\draw (2,5) circle (0.11);
+		\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
+	\end{tikzpicture}
+	\qquad \qquad
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (2.5,0) -- (2.5,6) node [above] {$b=4/5$};
+		\draw [thick,dashed] (2.5,0) -- (2.5,5.5) node [above] {$r=1/5$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.4,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(2.4,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(2.4,0.05);
+		% \draw (2.5,2) circle (0.11);
+		\draw (2.5,3) circle (0.11);
+		\draw (2.5,4) circle (0.11);
+		\draw (2.5,5) circle (0.11);
+		\draw (2.5, 3) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (2.5, 4) + (0.1, -0.05) rectangle +(1.5,0.05);
+		\draw (2.5, 5) + (0.1, -0.05) rectangle +(2.5,0.05);
+	\end{tikzpicture}
+	\bigskip
+
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (3,0) -- (3,6) node [above] {$b=2/3$};
+		\draw [thick,dashed] (3,0) -- (3,5.5) node [above] {$r=1/3$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(2.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(2.9,0.05);
+		% \draw (2,2) circle (0.11);
+		\draw (3,3) circle (0.11);
+		\draw (3,4) circle (0.11);
+		\draw (3,5) circle (0.11);
+		% \draw (3, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (3, 4) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (3, 5) + (0.1, -0.05) rectangle +(2,0.05);
+	\end{tikzpicture}
+	\qquad \qquad
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (4,0) -- (4,6) node [above] {$b=1/2$};
+		\draw [thick,dashed] (4,0) -- (4,5.5) node [above] {$r=1/2$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(3,0.05);%\filldraw (3,3) circle (0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(3.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(3.9,0.05);
+		% \draw (2,2) circle (0.11);
+		% \draw (2,3) circle (0.11);
+		\draw (4,4) circle (0.11);
+		\draw (4,5) circle (0.11);
+		% \draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		% \draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (4, 5) + (0.1, -0.05) rectangle +(1,0.05);
+	\end{tikzpicture}
+
+	\caption{Solvability for the fractional stochastic heat equation in case of $a=2$, $b\le 1$ and
+	$r=1-b$. See Figure \ref{F:SHE} for the legends.}
+	\label{F:FracSHE}
+\end{figure}% }}}
+
+
+\begin{example}[Fractional SHE with $r=0$]
+	\label{Eg:FracSHE0}
+	In this final example, we study the special case of the fractional stochastic heat equation when
+	$b<1$, $a\le 2$ and $r=0$. The choice of $r=0$ has been used in, e.g., \cite{CHHH17}.  As in
+	Example \ref{Eg:FracSHE}, we will only consider the case $a=2$. Now by setting $r=0$ and $a=2$ and
+	restricting $b\le 1$, conditions in \eqref{E:critical} become
+	\begin{align}
+		\label{E:CrFrSHE}
+		\alpha =4- \frac{2}{b} \le d \quad  \text{and} \quad b\in (0,1].
+	\end{align}
+	As in Example \ref{Eg:FracSHE}, Assumption \ref{A:Nonnegative} is satisfied for all $d\ge 1$.  The
+	solvability for this case is illustrated in Figure \ref{F:FracSHE0} with $T_p$ given in
+	\eqref{E:TpFracSHE}.
+\end{example}
+
+\begin{figure}[htpb]% {{{ F:FracSHE
+	\centering
+	\begin{tikzpicture}[scale=0.9]
+		% \draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
+		\draw [thick,dashed] (2,0) -- (2,6) node [above] {$b=1$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.9,0.05);
+		\draw (2,2) circle (0.11);
+		\draw (2,3) circle (0.11);
+		\draw (2,4) circle (0.11);
+		\draw (2,5) circle (0.11);
+		\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
+	\end{tikzpicture}
+	\qquad \qquad
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (0.5,0) -- (0.5,6) node [above] {$b=4/7$};
+		% \draw [thick,dashed] (0.5,0) -- (0.5,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(0.4,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(0.4,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(0.4,0.05);
+		% \draw (2.5,2) circle (0.11);
+		\draw (0.5,1) circle (0.11);
+		\draw (0.5,2) circle (0.11);
+		\draw (0.5,3) circle (0.11);
+		\draw (0.5,4) circle (0.11);
+		\draw (0.5,5) circle (0.11);
+		\draw (0.5, 1) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (0.5, 2) + (0.1, -0.05) rectangle +(1.5,0.05);
+		\draw (0.5, 3) + (0.1, -0.05) rectangle +(2.5,0.05);
+		\draw (0.5, 4) + (0.1, -0.05) rectangle +(3.5,0.05);
+		\draw (0.5, 5) + (0.1, -0.05) rectangle +(4.5,0.05);
+	\end{tikzpicture}
+
+	\caption{Solvability for the fractional stochastic heat equation in case of $a=2$, $b\le 1$ and
+	$r=0$. See Figure \ref{F:SHE} for the legends.}
+	\label{F:FracSHE0}
+\end{figure}% }}}
 
 \section{Some preliminaries}
 \label{S:Pre}
@@ -2139,48 +2330,58 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\newblock Large deviations for Riesz potentials of additive processes.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
 	% }}}
-	\bibitem{CHHH17}% {{{ 3.
+	\bibitem{Chen17Tran}% {{{ 3.
+	Chen, L. (2017).
+	\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+	\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+	% }}}
+	\bibitem{CHHH17}% {{{ 4.
 	Chen, L., Hu, Y., Hu, G., and Huang, J. (2017).
 	\newblock Stochastic time-fractional diffusion equations on $\R^d$.
 	\newblock {\em Stochastics} \textbf{89} (1) 171--206.
 	% }}}
-	\bibitem{CHN19}% {{{ 4.
+	\bibitem{CHN19}% {{{ 5.
 	Chen, L., Hu, Y., and Nualart, D. (2019).
 	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
 	% }}}
-	\bibitem{Chen17AIHP} % {{{ 5.
+	\bibitem{Chen17AIHP} % {{{ 6.
 	Chen, X. (2017).
 	\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
 	\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
 	% }}}
-	\bibitem{Chen19AIHP}% {{{ 6.
+	\bibitem{Chen19AIHP}% {{{ 7.
 	Chen X. (2019).
 	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
 	% }}}
-	\bibitem{Minicourse09}% {{{ 7.
+	\bibitem{Minicourse09}% {{{ 8.
 	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
 	\newblock {\it A minicourse on stochastic partial differential equations}.
 	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
 	% }}}
-	\bibitem{Hu01Heat}% {{{ 8.
+	\bibitem{Hu01Heat}% {{{ 9.
 	Hu, Y. (2001).
 	\newblock Heat equations with fractional white noise potentials.
 	\newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
 	% }}}
-	\bibitem{Le16} % {{{ 9.
+	\bibitem{Le16} % {{{ 10.
 	L\^e, K. (2016).
 	\newblock A remark on a result of Xia Chen.
 	\newblock {\em Stat. Probab. Letters} {\bf 118}, 124--126.
 	% }}}
-	\bibitem{LiebLoss01} % {{{ 10.
+	\bibitem{LiebLoss01} % {{{ 11.
 	Lieb, E. and Loss, M. (2001).
 	\newblock {\em Analysis}. Second edition.
 	\newblock Graduate Studies in Mathematics, 14.
 	\newblock American Mathematical Society, Providence, RI.
 	% }}}
-	\bibitem{Nualart18Book}% {{{ 11.
+	\bibitem{MijenaNane15SPA}% {{{ 12.
+	Mijena, J. B. and Nane, E. (2015).
+	\newblock Space-time fractional stochastic partial differential equations.
+	\newblock {\it Stochastic Process. Appl.} \textbf{125} no. 9, 3301--3326.
+	% }}}
+	\bibitem{Nualart18Book}% {{{ 13.
 	Nualart D. and Nualart E. (2018).
 	\newblock {\em Introduction to Malliavin Calculus}.
 	\newblock Cambridge University Press.
