@@ -54,7 +54,7 @@
 % -------------------------------------------------
 % check references
 % -------------------------------------------------
-\usepackage{refcheck}
+% \usepackage{refcheck}
 % \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
@@ -161,10 +161,9 @@
 \title{Fractional SPDE with Time-independent Noise:\\
 Solvability and Exact Asymptotics\footnote{Department of Mathematics and
 Statistics, Auburn University, Auburn, Alabama.}}
-\author{Le Chen\footnote{Email: \url{lzc0090@auburn.edu}}~
+\author{Le Chen\footnote{Emails: \url{lzc0090@auburn.edu};~\url{chenle02@gmail.com}.}~
 	and
-	Nick Eisenberg\footnote{Corresponding author. Email:
-\url{...@auburn.edu}}}
+Nick Eisenberg\footnote{Corresponding author. Emails: \url{...@auburn.edu};~\url{eisenn1@unlv.nevada.edu}.}}
 \date{\today}
 
 \maketitle
@@ -172,13 +171,13 @@ Statistics, Auburn University, Auburn, Alabama.}}
 \begin{abstract}
 	\noindent In this article, we study a class of stochastic partial differential equations with
 	fractional operators subject to some time-independent multiplicative Gaussian noise. We derive
-	sharp conditions, under which global $L^p(\Omega)$-solutions exit. In this case, the exact moment
-	asymptotics are obtained following the strategy in a recent work by Balan {\it et al}
-	\cite{BCC21}. In the case when there exits only a local solution, we give the precise
+	sharp conditions, under which a global $L^p(\Omega)$-solution exits. In this case, exact moment
+	asymptotics are obtained following the same strategy in a recent work by Balan {\it et al}
+	\cite{BCC21}. In the case when there exits only a local solution, we determine the precise
 	deterministic time $T_2$, before which the unique $L^2(\Omega)$-solution exits, but after which
 	the series corresponding to the $L^2(\Omega)$-moment of the solution blows up. The results in this
 	paper can be applied to the standard stochastic heat equation with the same noise, while the
-	corresponding results for the stochastic wave equation were obtained in \cite{BCC21}. Moreover, by
+	corresponding results for the stochastic wave equation were obtained recently in \cite{BCC21}.  By
 	properly choosing the parameters, results in this paper interpolate those for both stochastic heat
 	and wave equations.
 \end{abstract}
@@ -193,7 +192,7 @@ Statistics, Auburn University, Auburn, Alabama.}}
 \noindent {\em Keywords:}
 Stochastic partial differential equations; {\it Caputo} derivatives; {\it Riemann-Liouville}
 fractional integral; fractional Laplacian; {\it Malliavin} calculus; {\it Skorohod} integral; exact
-moment asymptotics; time-independent Gaussian noise.
+moment asymptotics; time-independent Gaussian noise; white noise.
 
 \tableofcontents
 % \pagebreak
@@ -281,12 +280,12 @@ exclusively for the {\it stochastic wave equation} (SWE), namely, the case when 
 $r=0$, has been studied, where both the well-posedness and the exact moment asymptotics have been
 obtained.  The corresponding {\it stochastic heat equation} (SHE), namely, the case when $a=2$,
 $b=\nu=1$ and $r=0$, has been earlier studied by Hu \cite{Hu01Heat}, but only for the well-posedness
-and exclusively for the fractional noise.  The corresponding moment asymptotics have been
-conjectured in Remark 1.9 of Balan {\it et al} \cite{BCC21} by {\it formally} setting $H_0=1$ in X.
-Chen \cite{Chen17AIHP}. Note that in X. Chen ({\it ibid.}), $H_0$ is strictly in between the open
-interval $(1/2,1)$. The case $ H_0=1$ requires a separate treatment. In this paper, by working on a
-more general class of SPDEs, we confirm this conjecture on the asymptotics for SHE. Moreover, our
-results interpolate the asymptotics for both SWE and SHE; see Example \ref{Eg:Inter} below.
+and exclusively for the fractional noise.  The corresponding moment asymptotics have been obtained
+by X. Chen \cite{Chen17AIHP} as a special case by setting $\alpha_0=0$. One may check Remark 1.9 of
+Balan {\it et al} \cite{BCC21} for the explicit expressions in terms of notation of the current
+paper. In this paper, by working on a more general class of SPDEs, we interpolate the asymptotics for
+both SWE and SHE; see Section \ref{SS:EgAsym} below. Moreover, we give the conditions under which
+there exists only a local solution; see Definition \ref{D:Sol} below.
 
 The moment asymptotics obtained by X. Chen, such as those in \cite{Chen17AIHP,Chen19AIHP}, rely
 crucially on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
@@ -420,9 +419,7 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 
 
 Before the end of this Introduction, let us make a few remarks and give some examples regarding our
-assumptions and results. More discussions on the solvability --- Theorem \ref{T:solvable} --- will
-be presented in Section \ref{S:SolvEx}.
-
+assumptions \ref{A:Nonnegative} and \ref{A:Noise}.
 
 \begin{remark}[Spectral density and decomposition]
 	\label{R:Noise}
@@ -465,42 +462,7 @@ be presented in Section \ref{S:SolvEx}.
 	\end{align*}
 \end{example}
 
-\begin{example}[Asymptotics for SHE and SWE]
-	\label{Eg:Inter}
-	The asymptotics in \eqref{E:momentasym} interpolates the corresponding results for the stochastic
-	wave and heat equations:
 
-	\noindent (1 - SWE) Even though our results requires $b$ to be strictly less than $2$, but by
-	formally setting
-	\begin{align*}
-		a = b = \nu = 2 \quad \text{and} \quad r = 0,
-	\end{align*}
-	we have that
-	\begin{align*}
-		\beta = \frac{4-\alpha}{3-\alpha} \quad \text{and} \quad
-		t_p   = (p-1)^{1/(4-\alpha)} t,
-	\end{align*}
-	and results in \eqref{E:momentasym},
-	\eqref{E:momentasym-t}, and \eqref{E:momentasym-p} recover the corresponding results for the
-	stochastic wave equation, namely,  (1.9), (1.10), and (1.11) of \cite{BCC21}, respectively.
-
-	\noindent (2 - SHE) As for the stochastic heat equation case, we are not aware of the exact asymptotics
-	results for SHE with time-independent noise. However, as explained in Remark 1.9 of \cite{BCC21},
-	one may apply Chen's asymptotic results in \cite{Chen17AIHP} for SHE with time-dependent noise, by
-	formally setting $H_0=1$, to obtain the corresponding time-independent results.  In particular, by
-	setting
-	\begin{align*}
-		a = 2,\quad b= \nu = 1 \quad \text{and} \quad r = 0,
-	\end{align*}
-	we have that
-	\begin{align*}
-		\beta = \frac{4-\alpha}{2-\alpha} \quad \text{and} \quad
-		t_p=(p-1)^{2/(4-\alpha)}t,
-	\end{align*}
-	and results in \eqref{E:momentasym} and
-	\eqref{E:momentasym-t} recover the corresponding conjectured results for SHE, namely,
-	(1.16) and (1.17) of \cite{BCC21}, respectively.
-\end{example}
 
 \begin{remark}[Nonnegativity]
 	\label{R:Nonnegative}
@@ -547,20 +509,29 @@ be presented in Section \ref{S:SolvEx}.
 
 
 
-In the following, we first give some examples regarding the solvability stated in Theorem
-\ref{T:solvable} in Section \ref{S:SolvEx}. Then in Section \ref{S:Pre}, we present some
-preliminaries of the paper, including the {\it Skorohod} integral, definition of the mild solution,
-and some asymptotics with corresponding variational constants. The existence and uniqueness of an
-$L^p(\Omega)$-solution --- Theorem \ref{T:solvable} --- is proven in Section \ref{S:solvable}. The
-upper bound and lower bounds for \eqref{E:momentasym} are established in Sections \ref{S:upperbd} and
-\ref{S:lowerbd}, respectively.  Finally, in the appendix --- Section \ref{S:Appendix}, we list a few
-proofs of results that are used in the paper.
+In the following, we first give some examples and make some discussions in Section \ref{S:SolvEx}.
+Then in Section \ref{S:Pre}, we present some preliminaries of the paper, including the {\it
+Skorohod} integral, definition of the mild solution, and some asymptotics with corresponding
+variational constants. The existence and uniqueness of an $L^p(\Omega)$-solution --- Theorem
+\ref{T:solvable} --- is proven in Section \ref{S:solvable}. The upper bound and lower bounds for
+\eqref{E:momentasym} are established in Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.
+Finally, in the appendix --- Section \ref{S:Appendix}, we list a few proofs of results that are used
+in the paper.
 
-\section{Examples on solvability}
+\section{Examples on solvability and asymptotics}
 \label{S:SolvEx}
 
-In this section, we list some concrete examples regarding the solvability --- Theorem
-\ref{T:solvable}.
+In this section, we will give various examples to our main results. We will need the following
+relation:
+\begin{align}
+	\label{E:Mdelta1d}
+	\mathcal{M}_2(\delta_0)= (3/4)(1/6)^{1/3} \qquad \text{when $d=1$,}
+\end{align}
+which is a consequence of Lemma 7.2 of Chen and Li \cite{ChenLi04} with $p=2$.
+
+\subsection{Examples on solvability}
+
+In this part, we list some concrete examples regarding the solvability --- Theorem \ref{T:solvable}.
 
 \begin{example}[SHE]
 	\label{Eg:CriSHE}
@@ -580,14 +551,32 @@ In this section, we list some concrete examples regarding the solvability --- Th
 				\label{E:Tp-SHE2}
 				T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_2(\delta_0)}, \qquad p\ge 2.
 			\end{align}
-		\item When $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$
-			solution. Local solutions exist only when $\alpha=2$ and the noise is not white. The critical
-			time $T_p$ takes the same expression as \eqref{E:Tp-SHE2} but one needs to replace $\delta_0$
-			by $\gamma$.
-		% \item Similarly, the cases for other nonzero values of $r$ are illustrated in Figure
-			% \ref{F:SHE}.
+			Note that in part 2) of Theorem 4.1 of Hu \cite{Hu02Chaos}, some lower and upper bounds for $
+			T_2$ were obtained. More precisely, by setting additionally that $\theta=1$ and $\nu=1$, Hu
+			({\it ibid.}) proved that when  $t<2$, an  $L^2(\Omega)$ solution exists but when $t>2\pi$,
+			the second moment of the solution blows up. It is an interesting exercise to show that
+			\begin{align*}
+				2\le T_2 = \frac{1}{2 \mathcal{M}_2(\delta_0)} \le 2\pi, \qquad \text{where $d=2$.}
+			\end{align*}
+		\item When $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$-solution. Local
+			solutions exist only when $\alpha=2$ and the noise is not white. The critical time $T_p$ takes
+			the same expression as \eqref{E:Tp-SHE2} but one needs to replace $\delta_0$ by $\gamma$.
 	\end{enumerate}
 \end{example}
+
+\begin{remark}
+	\label{R:Hairer}
+	Note that we use the Skorohod integral to interpret the multiplication of the solution with the
+	noise in \eqref{E:SPDE}. Multiplication interpreted in this way is traditionally called the {\it
+	Wick product} which is consistent to the {\it It\^o} or {\it Walsh} integral (see, e.g.,
+	\cite{Minicourse09}) when the noise is white in time. One can also interpret this product as the
+	usual product. In order to handle the singularities caused by this multiplication, one needs to
+	carry out certain renormalization processes. In fact, for the standard SHE with white noise in
+	$\R^d$ (i.e., $a=2$, $b=1$, $\alpha=d$ and $r=0$), Hairer and Labb\'e constructed the pathwise
+	solution using the regularity structure for both cases $d=2,3$ in \cite{HairerLabbe15SHE2} and
+	\cite{HairerLabbe18SHE3}, respectively. The relation between these two types of solution is left
+	for the future work.
+\end{remark}
 
 \begin{figure}[htpb]% {{{ F:SHE
 	\centering
@@ -629,6 +618,33 @@ In this section, we list some concrete examples regarding the solvability --- Th
 	\caption{Solvability for the stochastic heat equation (i.e., $a=2$, $b=1$ and $r=0$) with $p\ge 2$.}
 	\label{F:SHE}
 \end{figure}% }}}
+
+
+\begin{example}[SWE]
+	\label{Eg:CriSWE}
+	By setting $a=2$ and formally setting $b=2$ in \eqref{E:critical}, we obtain the following
+	condition for the stochastic wave equation under which there only exits a local solution:
+	\begin{align}
+		\label{E:CrSWE}
+		\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
+	\end{align}
+	First of all, results in Balan {\it et al} \cite{BCC21} require $d\le 3$. On the other hand,
+	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
+	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
+	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
+	\begin{align*}
+		\alpha=3=d \quad \text{and} \quad r=0,
+	\end{align*}
+	which says that at dimension $d=3$, when the noise $\W$ is white noise, there exits only a local
+	$L^p(\Omega)$ solution for all $p\ge 2$. See Figure \ref{F:SWE} for an illustration. Moreover, one
+	can check easily that the expression for the critical time $T_p$ in \eqref{E:Tp} in this case
+	reduces to
+	\begin{align}
+		\label{E:TpCrSWE}
+		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},  \quad p\ge 2,
+	\end{align}
+	which is identical to (1.12) ({\it ibid.}) when setting $\nu=2$. \bigskip
+\end{example}
 
 \begin{figure}[htb]% {{{ F:SWE
 	\centering
@@ -672,32 +688,6 @@ In this section, we list some concrete examples regarding the solvability --- Th
 	\ref{F:SHE} for more legends.}
 	\label{F:SWE}
 \end{figure}% }}}
-
-\begin{example}[SWE]
-	\label{Eg:CriSWE}
-	By setting $a=2$ and formally setting $b=2$ in \eqref{E:critical}, we obtain the following
-	condition for the stochastic wave equation under which there only exits a local solution:
-	\begin{align}
-		\label{E:CrSWE}
-		\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
-	\end{align}
-	First of all, results in Balan {\it et al} \cite{BCC21} require $d\le 3$. On the other hand,
-	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
-	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
-	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
-	\begin{align*}
-		\alpha=3=d \quad \text{and} \quad r=0,
-	\end{align*}
-	which says that at dimension $d=3$, when the noise $\W$ is white noise, there exits only a local
-	$L^p(\Omega)$ solution for all $p\ge 2$. See Figure \ref{F:SWE} for an illustration. Moreover, one
-	can check easily that the expression for the critical time $T_p$ in \eqref{E:Tp} in this case
-	reduces to
-	\begin{align}
-		\label{E:TpCrSWE}
-		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},  \quad p\ge 2,
-	\end{align}
-	which is identical to (1.12) ({\it ibid.}) when setting $\nu=2$. \bigskip
-\end{example}
 
 \begin{example}[Fractional SHE with $r=1-b$]
 	\label{Eg:FracSHE}
@@ -832,7 +822,6 @@ In this section, we list some concrete examples regarding the solvability --- Th
 	\label{F:FracSHE}
 \end{figure}% }}}
 
-
 \begin{example}[Fractional SHE with $r=0$]
 	\label{Eg:FracSHE0}
 	In this final example, we study the special case of the fractional stochastic heat equation when
@@ -845,8 +834,17 @@ In this section, we list some concrete examples regarding the solvability --- Th
 	\end{align}
 	As in Example \ref{Eg:FracSHE}, Assumption \ref{A:Nonnegative} is satisfied for all $d\ge 1$.  The
 	solvability for this case is illustrated in Figure \ref{F:FracSHE0} with $T_p$ given in
-	\eqref{E:TpFracSHE}.
+	\eqref{E:TpFracSHE}. In particular, for the example in the second figure in Figure
+	\ref{F:FracSHE0}, namely, when $b=2/3$ and $\alpha=d=1$, the white noise driven SHE has a local
+	solution with
+	\begin{align}
+		T_p= \frac{2^{5/2}\sqrt{\nu}}{3(p-1)\theta}, \qquad \text{for all $p\ge 2$,}
+	\end{align}
+	where we have applied \eqref{E:TpFracSHE} and the relation \eqref{E:Mdelta1d}.
 \end{example}
+
+More examples regarding the solvability can be studied in a similar way, which are left to the
+interested readers.
 
 \begin{figure}[htpb]% {{{ F:FracSHE
 	\centering
@@ -874,6 +872,37 @@ In this section, we list some concrete examples regarding the solvability --- Th
 		\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
 		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
 		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
+	\end{tikzpicture}
+
+	\bigskip
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (1,0) -- (1,6) node [above] {$b=2/3$};
+		% \draw [thick,dashed] (0.5,0) -- (0.5,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(0.9,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(0.9,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(0.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(0.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(0.9,0.05);
+		% \draw (2.5,2) circle (0.11);
+		\draw (1,1) circle (0.11);
+		\draw (1,2) circle (0.11);
+		\draw (1,3) circle (0.11);
+		\draw (1,4) circle (0.11);
+		\draw (1,5) circle (0.11);
+		% \draw (1, 1) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (1, 2) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (1, 3) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (1, 4) + (0.1, -0.05) rectangle +(3,0.05);
+		\draw (1, 5) + (0.1, -0.05) rectangle +(4,0.05);
 	\end{tikzpicture}
 	\qquad \qquad
 	\begin{tikzpicture}[scale=0.9]
@@ -905,18 +934,86 @@ In this section, we list some concrete examples regarding the solvability --- Th
 		\draw (0.5, 4) + (0.1, -0.05) rectangle +(3.5,0.05);
 		\draw (0.5, 5) + (0.1, -0.05) rectangle +(4.5,0.05);
 	\end{tikzpicture}
-
 	\caption{Solvability for the fractional stochastic heat equation in case of $a=2$, $b\le 1$ and
 	$r=0$. See Figure \ref{F:SHE} for the legends.}
 	\label{F:FracSHE0}
 \end{figure}% }}}
 
-More examples can be studied, which are left to the interested readers.
+\subsection{Examples on asymptotics}
+\label{SS:EgAsym}
+
+In this part, we list several examples for the asymptotics when global solutions exist. In
+particular, we will show that the asymptotics in \eqref{E:momentasym} interpolates the corresponding
+results for both stochastic wave and heat equations.
+
+
+\begin{example}[Asymptotics for SWE]
+	\label{Eg:AsymSWE}
+	Even though our results requires $b$ to be strictly less than $2$, but by
+	formally setting
+	\begin{align*}
+		a = b = \nu = 2 \quad \text{and} \quad r = 0,
+	\end{align*}
+	we have that
+	\begin{align*}
+		\beta = \frac{4-\alpha}{3-\alpha} \quad \text{and} \quad
+		t_p   = (p-1)^{1/(4-\alpha)} t,
+	\end{align*}
+	and results in \eqref{E:momentasym}, \eqref{E:momentasym-t}, and \eqref{E:momentasym-p} recover
+	the corresponding results for the stochastic wave equation, namely,  (1.9), (1.10), and (1.11) of
+	\cite{BCC21}, respectively.  Due to the importance of white noise and for the future references,
+	here we list below two special cases regarding white noise:
+	\begin{enumerate}
+		\item The SWE with white noise in $\R$: By further setting $d=\alpha=1$, we see that
+		\begin{align}
+			\label{E:AsymSWE-1d}
+				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
+				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^{3/2}} & =  \frac{p(p-1)^{1/2}\sqrt{\theta}}{3 (2\nu)^{1/4}}
+				\quad \text{and} \quad
+				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^{3/2}} & =\frac{t^{3/2}\sqrt{\theta}}{3 (2\nu)^{1/4}},
+		\end{align}
+		where we have applied \eqref{E:Mdelta1d}.
+		\item The SWE with white noise in $\R^2$: Similarly, by setting $d=\alpha=2$, we see that
+		\begin{align}
+			\label{E:AsymSWE-2d}
+				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
+				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^2} & = \frac{p(p-1)\theta\mathcal{M}_2(\delta_0)}{2\nu}
+				\quad \text{and} \quad
+				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^2} & = \frac{t^2\theta\mathcal{M}_2(\delta_0)}{2\nu}.
+		\end{align}
+	\end{enumerate}
+\end{example}
+
+\begin{example}[Asymptotics for SHE]
+	\label{Eg:AsymSHE}
+	As for the stochastic heat equation case, by setting
+	\begin{align*}
+		a = 2,\quad b= \nu = 1 \quad \text{and} \quad r = 0,
+	\end{align*}
+	we have that
+	\begin{align*}
+		\beta = \frac{4-\alpha}{2-\alpha} \quad \text{and} \quad
+		t_p=(p-1)^{2/(4-\alpha)}t,
+	\end{align*}
+	and results in \eqref{E:momentasym} and \eqref{E:momentasym-t} recover the corresponding
+	conjectured results for SHE, namely, (1.16) and (1.17) of Balan {\it et al} \cite{BCC21},
+	respectively, which are equivalent to Theorem 1.1 and 1.2 of X. Chen \cite{Chen17AIHP} when
+	setting $\alpha_0=0$ and using \cite[Lemma A.2]{ChenHuSongXing15AIHP} to rewrite the constant
+	$\mathcal{E}$ in \cite{Chen17AIHP} in terms of $\mathcal{M}_a$. Due to the importance of the white
+	noise case, we list the corresponding asymptotics here. When $\alpha=d=1$,
+	\begin{align}
+		\label{E:AsymSHE1d}
+		\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^3} = \frac{p(p-1)^2\theta^2}{24\nu}
+		\quad \text{and} \quad
+		\lim_{p \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{p^3} = \frac{t^3\theta^2}{24\nu},
+	\end{align}
+	where we have applied \eqref{E:Mdelta1d}. Note that some upper and lower bounds for the first
+	limit in \eqref{E:AsymSHE1d} in case of $p=2$ were earlier obtained by Hu \cite[part 1) of
+	Theorem 4.1]{Hu02Chaos}.
+\end{example}
 
 \section{Some preliminaries}
-\label{S:Pre}
-
-\subsection{Skorohod integral and mild solution}
+\label{S:Pre} \subsection{Skorohod integral and mild solution}
 \label{SS:Malliavin}
 
 We start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$
@@ -2369,43 +2466,58 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
 	% }}}
-	\bibitem{HairerLabbe15SHE2}% {{{ 8.
-	Hairer, M. and Labb\'e, C. (2015).
-	\newblock A simple construction of the continuum parabolic Anderson model on $\R^2$.
-	\newblock {\em Electron. Commun. Probab.} \textbf{20}, no. 43, 11 pp.
+	\bibitem{ChenHuSongXing15AIHP} % {{{ 8.
+	Chen, X., Hu, Y.Z., Song, J., and Xing, F. (2015).
+	\newblock Exponential asymptotics for time-space Hamiltonians.
+	\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.} {\bf 51}, no. 4, 1529–-1561.
 	% }}}
-	\bibitem{HairerLabbe15SHE2}% {{{ 9.
-	Hairer, M. and Labb\'e, C. (2018).
-	\newblock Multiplicative stochastic heat equations on the whole space.
-	\newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
+	\bibitem{ChenLi04} % {{{ 9.
+	Chen, X. and Li, W. (2004).
+	\newblock Large and moderate deviations for intersection local times.
+	\newblock {\em Probab. Theory Related Fields} {\bf 128} 213--254.
 	% }}}
  	\bibitem{Minicourse09}% {{{ 10.
 	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
 	\newblock {\it A minicourse on stochastic partial differential equations}.
 	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
 	% }}}
-	\bibitem{Hu01Heat}% {{{ 11.
+	\bibitem{HairerLabbe15SHE2}% {{{ 11.
+	Hairer, M. and Labb\'e, C. (2015).
+	\newblock A simple construction of the continuum parabolic Anderson model on $\R^2$.
+	\newblock {\em Electron. Commun. Probab.} \textbf{20}, no. 43, 11 pp.
+	% }}}
+	\bibitem{HairerLabbe18SHE3}% {{{ 12.
+	Hairer, M. and Labb\'e, C. (2018).
+	\newblock Multiplicative stochastic heat equations on the whole space.
+	\newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
+	% }}}
+	\bibitem{Hu01Heat}% {{{ 13.
 	Hu, Y. (2001).
 	\newblock Heat equations with fractional white noise potentials.
 	\newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
 	% }}}
-	\bibitem{Le16} % {{{ 12.
+	\bibitem{Hu02Chaos}% {{{ 14.
+	Hu, Y. (2002).
+	\newblock Chaos expansion of heat equations with white noise potentials.
+	\newblock {\em Potential Anal. } \textbf{16}, no. 1, 45--66.
+	% }}}
+	\bibitem{Le16} % {{{ 15.
 	L\^e, K. (2016).
 	\newblock A remark on a result of Xia Chen.
 	\newblock {\em Stat. Probab. Letters} {\bf 118}, 124--126.
 	% }}}
-	\bibitem{LiebLoss01} % {{{ 13.
+	\bibitem{LiebLoss01} % {{{ 16.
 	Lieb, E. and Loss, M. (2001).
 	\newblock {\em Analysis}. Second edition.
 	\newblock Graduate Studies in Mathematics, 14.
 	\newblock American Mathematical Society, Providence, RI.
 	% }}}
-	\bibitem{MijenaNane15SPA}% {{{ 14.
+	\bibitem{MijenaNane15SPA}% {{{ 17.
 	Mijena, J. B. and Nane, E. (2015).
 	\newblock Space-time fractional stochastic partial differential equations.
 	\newblock {\it Stochastic Process. Appl.} \textbf{125} no. 9, 3301--3326.
 	% }}}
-	\bibitem{Nualart18Book}% {{{ 15.
+	\bibitem{Nualart18Book}% {{{ 18.
 	Nualart D. and Nualart E. (2018).
 	\newblock {\em Introduction to Malliavin Calculus}.
 	\newblock Cambridge University Press.
