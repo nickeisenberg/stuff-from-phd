@@ -521,10 +521,17 @@ in the paper.
 \section{Examples on solvability and asymptotics}
 \label{S:SolvEx}
 
+In this section, we will give various examples to our main results. We will need the following
+relation:
+\begin{align}
+	\label{E:Mdelta1d}
+	\mathcal{M}_2(\delta_0)= (3/4)(1/6)^{1/3} \qquad \text{when $d=1$,}
+\end{align}
+which is a consequence of Lemma 7.2 of Chen and Li \cite{ChenLi04} with $p=2$.
+
 \subsection{Examples on solvability}
 
-In this section, we list some concrete examples regarding the solvability --- Theorem
-\ref{T:solvable}.
+In this part, we list some concrete examples regarding the solvability --- Theorem \ref{T:solvable}.
 
 \begin{example}[SHE]
 	\label{Eg:CriSHE}
@@ -827,7 +834,13 @@ In this section, we list some concrete examples regarding the solvability --- Th
 	\end{align}
 	As in Example \ref{Eg:FracSHE}, Assumption \ref{A:Nonnegative} is satisfied for all $d\ge 1$.  The
 	solvability for this case is illustrated in Figure \ref{F:FracSHE0} with $T_p$ given in
-	\eqref{E:TpFracSHE}.
+	\eqref{E:TpFracSHE}. In particular, for the example in the second figure in Figure
+	\ref{F:FracSHE0}, namely, when $b=2/3$ and $\alpha=d=1$, the white noise driven SHE has a local
+	solution with
+	\begin{align}
+		T_p= \frac{2^{5/2}\sqrt{\nu}}{3(p-1)\theta}, \qquad \text{for all $p\ge 2$,}
+	\end{align}
+	where we have applied \eqref{E:TpFracSHE} and the relation \eqref{E:Mdelta1d}.
 \end{example}
 
 More examples regarding the solvability can be studied in a similar way, which are left to the
@@ -860,6 +873,37 @@ interested readers.
 		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
 		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
 	\end{tikzpicture}
+
+	\bigskip
+	\begin{tikzpicture}[scale=0.9]
+		\draw [thick,dashed] (1,0) -- (1,6) node [above] {$b=2/3$};
+		% \draw [thick,dashed] (0.5,0) -- (0.5,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(0.9,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(0.9,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(0.9,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(0.9,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(0.9,0.05);
+		% \draw (2.5,2) circle (0.11);
+		\draw (1,1) circle (0.11);
+		\draw (1,2) circle (0.11);
+		\draw (1,3) circle (0.11);
+		\draw (1,4) circle (0.11);
+		\draw (1,5) circle (0.11);
+		% \draw (1, 1) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (1, 2) + (0.1, -0.05) rectangle +(1,0.05);
+		\draw (1, 3) + (0.1, -0.05) rectangle +(2,0.05);
+		\draw (1, 4) + (0.1, -0.05) rectangle +(3,0.05);
+		\draw (1, 5) + (0.1, -0.05) rectangle +(4,0.05);
+	\end{tikzpicture}
 	\qquad \qquad
 	\begin{tikzpicture}[scale=0.9]
 		\draw [thick,dashed] (0.5,0) -- (0.5,6) node [above] {$b=4/7$};
@@ -890,24 +934,17 @@ interested readers.
 		\draw (0.5, 4) + (0.1, -0.05) rectangle +(3.5,0.05);
 		\draw (0.5, 5) + (0.1, -0.05) rectangle +(4.5,0.05);
 	\end{tikzpicture}
-
 	\caption{Solvability for the fractional stochastic heat equation in case of $a=2$, $b\le 1$ and
 	$r=0$. See Figure \ref{F:SHE} for the legends.}
 	\label{F:FracSHE0}
 \end{figure}% }}}
-
 
 \subsection{Examples on asymptotics}
 \label{SS:EgAsym}
 
 In this part, we list several examples for the asymptotics when global solutions exist. In
 particular, we will show that the asymptotics in \eqref{E:momentasym} interpolates the corresponding
-results for both stochastic wave and heat equations. We will need the following relation:
-\begin{align}
-	\label{E:Mdelta1d}
-	\mathcal{M}_2(\delta_0)= (3/4)(1/6)^{1/3} \qquad \text{when $d=1$,}
-\end{align}
-which is a consequence of Lemma 7.2 of Chen and Li \cite{ChenLi04} with $p=2$.
+results for both stochastic wave and heat equations.
 
 
 \begin{example}[Asymptotics for SWE]
