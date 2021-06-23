@@ -54,7 +54,7 @@
 % -------------------------------------------------
 % check references
 % -------------------------------------------------
-\usepackage{refcheck}
+% \usepackage{refcheck}
 % \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
@@ -251,20 +251,19 @@ the following integral equation:
 where the stochastic integral is in the {\it Skorohod} sense; see Definition \ref{D:Sol} below.  In
 the following, the fundamental solution will exclusively refer to $G(t,x)$, which is indeed a smooth
 function for $x\ne 0$. Our results rely on the following assumption for the nonnegativity of
-$G(t,x)$, which is a nontrivial fact; see Remark \ref{R:Nonnegative} for sufficient conditions.
+$G(t,x)$:
 
 \begin{assumption}[Nonnegativity]
 	\label{A:Nonnegative}
 	Assume that the fundamental solution $G(t,x)$ is nonnegative for all $t>0$ and $x\in\R^d$.
-	% The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
 \end{assumption}
 
-\begin{remark}[Nonnegativity]
+\begin{remark}
 	\label{R:Nonnegative}
-	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to \cite[Theorem
-	4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$), we have the following
-	four groups of sufficient conditions, under either group of which $G(t,\cdot)$ is nonnegative (see
-	Figure \ref{F:Nonnegative} for an illustration):
+	% Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative},
+	Thanks to \cite[Theorem 4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$),
+	we have the following four groups of sufficient conditions, under either group of which
+	$G(t,\cdot)$ is nonnegative (see Figure \ref{F:Nonnegative} for an illustration):
 	\begin{enumerate}
 		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
 		\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
@@ -319,14 +318,15 @@ the fractional noise and a mixture of them:
 
 \begin{remark}[Spectral density and decomposition]
 	\label{R:Noise}
-	The spectral density corresponding to \eqref{E:corfunction} is $\mathcal{F}\gamma$, which is given by
+	Recall that the {\it spectral density} of $\gamma$ in \eqref{E:corfunction}, which is
+	$\mathcal{F}\gamma$ by definition, takes the following form:
 	\begin{equation}
 	\label{E:specfunction}
 	\mu (\ud \xi) = \varphi(\xi) \ud \xi \quad \text{with} \quad
 	\varphi(\xi) = \prod_{i=1}^k C_{\alpha_i,d_i} |\xi_{(i)}|^{-(d_i-\alpha_i)}.
 	\end{equation}
-	Moreover, one can find a nonnegative and nonnegative definite $K$ such that $\gamma = K*K$ where
-	`$*$' denotes the spatial convolution. Indeed, one can choose
+	Moreover, in the derivations below, we need to find a nonnegative and nonnegative definite $K$
+	such that $\gamma = K*K$ where `$*$' denotes the spatial convolution. Indeed, one can choose
 	\begin{align}
 	\label{E:K}
 	K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} \left|x_{(i)}\right|^{-(d_i+\alpha_i)/2}.
@@ -341,16 +341,16 @@ the fractional noise and a mixture of them:
 
 \begin{example}[Noises]
 	\label{Eg:NoiseEg}
-	We have the following special cases: (1) The case $k=1$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers the Riesz kernel
-	case. In this case,
+	We have the following special cases: (1) Setting $k=1$ in \eqref{E:corfunction} and
+	\eqref{E:specfunction} recovers the Riesz kernel case. In this case,
 	\begin{equation}\label{E:riesznoise}
 	\gamma(x)  = |x|^{-\alpha}, \quad
 	\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)} \quad \text{and} \quad
 	K(x)       = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}.
 	\end{equation}
-	\noindent (2) The case when $k=d$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers
-	the time-independent fractional noise. The corresponding SHE with such noise was earlier studied
-	by Hu \cite{Hu01Heat}. For this noise, we have that
+	\noindent (2) Setting $k=d$ in \eqref{E:corfunction} and \eqref{E:specfunction} recovers the
+	time-independent fractional noise. The corresponding SHE with such noise was earlier studied by Hu
+	\cite{Hu01Heat}. For this noise, we have that
 	\begin{equation}\label{E:fracnoise}
 	\gamma(x)    = \prod_{i=1}^d |x_i|^{-\alpha_i}, \quad
 	\varphi(\xi) = \prod_{i=1}^d C_{\alpha_i,1} |\xi_i|^{-(1-\alpha_i)}\quad\text{and}\quad
@@ -491,8 +491,8 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 	\begin{align}
 		\label{E:momentasym-p}
 		\begin{aligned}
-			\lim_{p \to \infty} (p)^{-\beta} \log \E\left(|u(t,x)|^p\right) = & t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-                                                                      & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+			\lim_{p \to \infty} p^{-\beta} \log \E\left(|u(t,x)|^p\right) = & t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                                                                        & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{aligned}
 	\end{align}
 	\end{itemize}
@@ -500,14 +500,15 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 
 \bigskip
 
-In the following, we first give some examples and make some discussions in Section \ref{S:SolvEx}.
-Then in Section \ref{S:Pre}, we present some preliminaries of the paper, including the {\it
-Skorohod} integral, definition of the mild solution, and some asymptotics with corresponding
-variational constants. The existence and uniqueness of an $L^p(\Omega)$-solution --- Theorem
-\ref{T:solvable} --- is proven in Section \ref{S:solvable}. The upper bound and lower bounds for
-\eqref{E:momentasym} are established in Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively.
-Finally, in the appendix --- Section \ref{S:Appendix}, we list a few proofs of results that are used
-in the paper.
+In the following, we first give some concrete examples in Section \ref{S:SolvEx}, where one can find
+many explicit formulas for either moment asymptotics in case of global solutions or the expressions
+for the critical time $T_p$ in case of local solutions. Then in Section \ref{S:Pre}, we present some
+preliminaries of the paper, including the {\it Skorohod} integral, definition of the mild solution,
+and some asymptotics with corresponding variational constants. The existence and uniqueness of an
+$L^p(\Omega)$-solution --- Theorem \ref{T:solvable} --- is proven in Section \ref{S:solvable}. The
+upper bound and lower bounds for \eqref{E:momentasym} are established in Sections \ref{S:upperbd}
+and \ref{S:lowerbd}, respectively.  Finally, in the appendix --- Section \ref{S:Appendix}, we list a
+few proofs of results that are used in the paper.
 
 \section{Examples on solvability and asymptotics}
 \label{S:SolvEx}
@@ -675,8 +676,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\end{tikzpicture}
 
 	\caption{Solvability for the stochastic wave equation (i.e., $a=b=2$ and $r=0$). See Figure
-	\ref{F:SHE} for an additional legend.}
-
+	\ref{F:SHE} for additional legends.}
 	\label{F:SWE}
 \end{figure}% }}}
 
@@ -967,7 +967,7 @@ interested readers.
 		\filldraw (0, 5) + (0.1, -0.05) rectangle +(0.9,0.05);
 		% \draw (2.5,2) circle (0.11);
 		\draw (1,1) circle (0.11);
-git 		\draw (1,2) circle (0.11);
+		\draw (1,2) circle (0.11);
 		\draw (1,3) circle (0.11);
 		\draw (1,4) circle (0.11);
 		\draw (1,5) circle (0.11);
