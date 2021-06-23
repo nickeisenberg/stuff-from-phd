@@ -259,6 +259,49 @@ $G(t,x)$, which is a nontrivial fact; see Remark \ref{R:Nonnegative} for suffici
 	% The parameters $a,b,r$ and the dimension $d$ must satisfy one of the following conditions:
 \end{assumption}
 
+\begin{remark}[Nonnegativity]
+	\label{R:Nonnegative}
+	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to \cite[Theorem
+	4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$), we have the following
+	four groups of sufficient conditions, under either group of which $G(t,\cdot)$ is nonnegative (see
+	Figure \ref{F:Nonnegative} for an illustration):
+	\begin{enumerate}
+		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
+		\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
+		\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
+		\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
+	\end{enumerate}
+\end{remark}
+
+\begin{figure}[htpb]
+	\centering
+	\begin{tikzpicture}[scale=2.2]
+	\draw [->] (-0.3,0) -- (2.3,0) node [right] {$a$};
+	\draw [->] (0,-0.3) -- (0,2.2) node [above] {$b$};
+	\draw [densely dashed,gray] (1,0) -- (1,2) (2,0) -- (2,2) (-0.4,1) -- (2.5,1) (0,2) -- (2,2);
+	\draw (1,0.05) -- (1,-0.05) node [below] {$1$};
+	\draw (2,0.05) -- (2,-0.05) node [below] {$2$};
+	\draw (0.05,1) -- (-0.05,1) node [left] {$1$};
+	\draw (0.05,2) -- (-0.05,2) node [left] {$2$};
+	\filldraw [fill=red!30, opacity=0.5] (0,0) rectangle (2,1);
+	\filldraw [fill=blue!30, opacity=0.5] (1,1) -- (2,1) -- (2,2);
+	\draw [thick] (1.03,1.03) -- (1.97,1.97);
+	\draw [thick] ([shift=(0:0.05)]1,1) arc (0:90:0.05);
+	\draw [thick] ([shift=(180:0.05)]2,2) arc (180:270:0.05);
+	\node at (2.3,1.5) [rotate=90, anchor=center] {$1\le d\le 3$};
+	\node at (2.3,0.45)[rotate=90, anchor=center] {$d\ge 1$};
+	\draw [thick] (0.03,1) -- (2,1);
+	\draw [thick] ([shift=(-90:0.05)]0,1) arc (-90:90:0.05);
+	\node at (1.73,1.35) [rotate=45, anchor=center] {$r\ge 0$};
+	\node at (1,0.45) {$r\ge 0$};
+	\node at (1,0.9) {$r=0$ or $r>1$};
+	\node at (1.5,1.55) [rotate=45,anchor=south] {$r>\frac{d+3}{2}-b$};
+	\end{tikzpicture}
+	\caption{Illustration of the sufficient conditions (Remark \ref{R:Nonnegative}) for
+		$G(t,\cdot)$ to be nonnegative.}
+	\label{F:Nonnegative}
+\end{figure}
+
 Regarding the noise, we formulate the following assumption in order to cover the Riesz kernel case,
 the fractional noise and a mixture of them:
 \begin{assumption}[Noise]
@@ -273,6 +316,47 @@ the fractional noise and a mixture of them:
 	\end{equation}
 	Define $\alpha := \sum_{i=1}^k \alpha_i$.
 \end{assumption}
+
+\begin{remark}[Spectral density and decomposition]
+	\label{R:Noise}
+	The spectral density corresponding to \eqref{E:corfunction} is $\mathcal{F}\gamma$, which is given by
+	\begin{equation}
+	\label{E:specfunction}
+	\mu (\ud \xi) = \varphi(\xi) \ud \xi \quad \text{with} \quad
+	\varphi(\xi) = \prod_{i=1}^k C_{\alpha_i,d_i} |\xi_{(i)}|^{-(d_i-\alpha_i)}.
+	\end{equation}
+	Moreover, one can find a nonnegative and nonnegative definite $K$ such that $\gamma = K*K$ where
+	`$*$' denotes the spatial convolution. Indeed, one can choose
+	\begin{align}
+	\label{E:K}
+	K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} \left|x_{(i)}\right|^{-(d_i+\alpha_i)/2}.
+	\end{align}
+	The two constants in both \eqref{E:specfunction} and \eqref{E:K} are defined as
+	\begin{equation}
+	\label{E:noiseconstant}
+	C_{\alpha,d}     = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad \text{and}\quad
+	\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}}.
+	\end{equation}
+\end{remark}
+
+\begin{example}[Noises]
+	\label{Eg:NoiseEg}
+	We have the following special cases: (1) The case $k=1$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers the Riesz kernel
+	case. In this case,
+	\begin{equation}\label{E:riesznoise}
+	\gamma(x)  = |x|^{-\alpha}, \quad
+	\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)} \quad \text{and} \quad
+	K(x)       = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}.
+	\end{equation}
+	\noindent (2) The case when $k=d$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers
+	the time-independent fractional noise. The corresponding SHE with such noise was earlier studied
+	by Hu \cite{Hu01Heat}. For this noise, we have that
+	\begin{equation}\label{E:fracnoise}
+	\gamma(x)    = \prod_{i=1}^d |x_i|^{-\alpha_i}, \quad
+	\varphi(\xi) = \prod_{i=1}^d C_{\alpha_i,1} |\xi_i|^{-(1-\alpha_i)}\quad\text{and}\quad
+	K(x)         = \prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}.
+	\end{equation}
+\end{example}
 \bigskip
 
 In a recent work by Balan {\it et al} \cite{BCC21}, the same equation as \eqref{E:SPDE}, but
@@ -280,7 +364,7 @@ exclusively for the {\it stochastic wave equation} (SWE), namely, the case when 
 $r=0$, has been studied, where both the well-posedness and the exact moment asymptotics have been
 obtained.  The corresponding {\it stochastic heat equation} (SHE), namely, the case when $a=2$,
 $b=\nu=1$ and $r=0$, has been earlier studied by Hu \cite{Hu01Heat}, but only for the well-posedness
-and exclusively for the fractional noise.  The corresponding moment asymptotics have been obtained
+and exclusively for the fractional noise \eqref{E:fracnoise}.  The corresponding moment asymptotics have been obtained
 by X. Chen \cite{Chen17AIHP} as a special case by setting $\alpha_0=0$. One may check Remark 1.9 of
 Balan {\it et al} \cite{BCC21} for the explicit expressions in terms of notation of the current
 paper. In this paper, by working on a more general class of SPDEs, we interpolate the asymptotics for
@@ -399,7 +483,7 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 	\begin{align}
 		\label{E:momentasym-t}
 		\begin{aligned}
-			\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) = & p (p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a}-1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+			\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) = &  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a}-1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
                                                                       & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right);
 		\end{aligned}
 	\end{align}
@@ -407,7 +491,7 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 	\begin{align}
 		\label{E:momentasym-p}
 		\begin{aligned}
-			\lim_{p \to \infty} p^{-\beta} \log \E\left(|u(t,x)|^p\right) = & t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+			\lim_{p \to \infty} (p-1)^{-\beta} \log \E\left(|u(t,x)|^p\right) = & t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
                                                                       & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{aligned}
 	\end{align}
@@ -415,99 +499,6 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 \end{corollary}
 
 \bigskip
-
-
-
-Before the end of this Introduction, let us make a few remarks and give some examples regarding our
-assumptions \ref{A:Nonnegative} and \ref{A:Noise}.
-
-\begin{remark}[Spectral density and decomposition]
-	\label{R:Noise}
-	The spectral density corresponding to \eqref{E:corfunction} is $\mathcal{F}\gamma$, which is given by
-	\begin{equation}
-		\label{E:specfunction}
-		\mu (\ud \xi) = \varphi(\xi) \ud \xi \quad \text{with} \quad
-		\varphi(\xi) = \prod_{i=1}^k C_{\alpha_i,d_i} |\xi_{(i)}|^{-(d_i-\alpha_i)}.
-	\end{equation}
-	Moreover, one can find a nonnegative and nonnegative definite $K$ such that $\gamma = K*K$ where
-	`$*$' denotes the spatial convolution. Indeed, one can choose
-	\begin{align}
-		\label{E:K}
-		K(x) =\prod_{i=1}^k \beta_{\alpha_i,d_i} \left|x_{(i)}\right|^{-(d_i+\alpha_i)/2}.
-	\end{align}
-	The two constants in both \eqref{E:specfunction} and \eqref{E:K} are defined as
-	\begin{equation}
-		\label{E:noiseconstant}
-		C_{\alpha,d}     = \pi^{-d/2}2^{-\alpha} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)} \quad \text{and}\quad
-		\beta_{\alpha,d} = \pi^{-d/4}\frac{\Gamma((d+\alpha)/4)}{\Gamma((d-\alpha)/4)}\sqrt{ \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}}.
-	\end{equation}
-\end{remark}
-
-\begin{example}[Noises]
-	\label{Eg:NoiseEg}
-	We have the following special cases: (1) The case $k=1$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers the Riesz kernel
-	case. In this case,
-	\begin{align*}
-		\gamma(x)  = |x|^{-\alpha}, \quad
-		\varphi(x) = C_{\alpha,d}|x|^{-(d-\alpha)} \quad \text{and} \quad
-		K(x)       = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}.
-	\end{align*}
-	\noindent (2) The case when $k=d$ in \eqref{E:corfunction} (or \eqref{E:specfunction}) recovers
-	the time-independent fractional noise. The corresponding SHE with such noise was earlier studied
-	by Hu \cite{Hu01Heat}. For this noise, we have that
-	\begin{align*}
-		\gamma(x)    = \prod_{i=1}^d |x_i|^{-\alpha_i}, \quad
-		\varphi(\xi) = \prod_{i=1}^d C_{\alpha_i,1} |\xi_i|^{-(1-\alpha_i)}\quad\text{and}\quad
-		K(x)         = \prod_{i=1}^d \beta_{\alpha_i,1}|x_i|^{-(1+\alpha_i)/2}.
-	\end{align*}
-\end{example}
-
-
-
-\begin{remark}[Nonnegativity]
-	\label{R:Nonnegative}
-	Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative}, thanks to \cite[Theorem
-	4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$), we have the following
-	four groups of sufficient conditions, under either group of which $G(t,\cdot)$ is nonnegative (see
-	Figure \ref{F:Nonnegative} for an illustration):
-	\begin{enumerate}
-		\item $d \ge 1$, $b\in(0,1)$, $a\in(0,2]$, $r\ge0$;
-		\item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
-		\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
-		\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
-	\end{enumerate}
-\end{remark}
-
-\begin{figure}[htpb]
-	\centering
-	\begin{tikzpicture}[scale=2.2]
-		\draw [->] (-0.3,0) -- (2.3,0) node [right] {$a$};
-		\draw [->] (0,-0.3) -- (0,2.2) node [above] {$b$};
-		\draw [densely dashed,gray] (1,0) -- (1,2) (2,0) -- (2,2) (-0.4,1) -- (2.5,1) (0,2) -- (2,2);
-		\draw (1,0.05) -- (1,-0.05) node [below] {$1$};
-		\draw (2,0.05) -- (2,-0.05) node [below] {$2$};
-		\draw (0.05,1) -- (-0.05,1) node [left] {$1$};
-		\draw (0.05,2) -- (-0.05,2) node [left] {$2$};
-		\filldraw [fill=red!30, opacity=0.5] (0,0) rectangle (2,1);
-		\filldraw [fill=blue!30, opacity=0.5] (1,1) -- (2,1) -- (2,2);
-		\draw [thick] (1.03,1.03) -- (1.97,1.97);
-		\draw [thick] ([shift=(0:0.05)]1,1) arc (0:90:0.05);
-		\draw [thick] ([shift=(180:0.05)]2,2) arc (180:270:0.05);
-		\node at (2.3,1.5) [rotate=90, anchor=center] {$1\le d\le 3$};
-		\node at (2.3,0.45)[rotate=90, anchor=center] {$d\ge 1$};
-		\draw [thick] (0.03,1) -- (2,1);
-		\draw [thick] ([shift=(-90:0.05)]0,1) arc (-90:90:0.05);
-		\node at (1.73,1.35) [rotate=45, anchor=center] {$r\ge 0$};
-		\node at (1,0.45) {$r\ge 0$};
-		\node at (1,0.9) {$r=0$ or $r>1$};
-		\node at (1.5,1.55) [rotate=45,anchor=south] {$r>\frac{d+3}{2}-b$};
-	\end{tikzpicture}
-	\caption{Illustration of the sufficient conditions (Remark \ref{R:Nonnegative}) for
-	$G(t,\cdot)$ to be nonnegative.}
-	\label{F:Nonnegative}
-\end{figure}
-
-
 
 In the following, we first give some examples and make some discussions in Section \ref{S:SolvEx}.
 Then in Section \ref{S:Pre}, we present some preliminaries of the paper, including the {\it
@@ -635,7 +626,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\begin{align*}
 		\alpha=3=d \quad \text{and} \quad r=0,
 	\end{align*}
-	which says that at dimension $d=3$, when the noise $\W$ is white noise, there exits only a local
+	which says that at dimension $d=3$, when $\W$ is a white noise, there exits only a local
 	$L^p(\Omega)$ solution for all $p\ge 2$. See Figure \ref{F:SWE} for an illustration. Moreover, one
 	can check easily that the expression for the critical time $T_p$ in \eqref{E:Tp} in this case
 	reduces to
@@ -685,7 +676,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\end{tikzpicture}
 
 	\caption{Solvability for the stochastic wave equation (i.e., $a=b=2$ and $r=0$). See Figure
-	\ref{F:SHE} for more legends.}
+	\ref{F:SHE} for an additional legend.}
 	\label{F:SWE}
 \end{figure}% }}}
 
@@ -970,7 +961,7 @@ results for both stochastic wave and heat equations.
 				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
 				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^{3/2}} & =  \frac{p(p-1)^{1/2}\sqrt{\theta}}{3 (2\nu)^{1/4}}
 				\quad \text{and} \quad
-				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^{3/2}} & =\frac{t^{3/2}\sqrt{\theta}}{3 (2\nu)^{1/4}},
+				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{(p-1)^{3/2}} & =\frac{t^{3/2}\sqrt{\theta}}{3 (2\nu)^{1/4}},
 		\end{align}
 		where we have applied \eqref{E:Mdelta1d}.
 		\item The SWE with white noise in $\R^2$: Similarly, by setting $d=\alpha=2$, we see that
@@ -979,7 +970,7 @@ results for both stochastic wave and heat equations.
 				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
 				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^2} & = \frac{p(p-1)\theta\mathcal{M}_2(\delta_0)}{2\nu}
 				\quad \text{and} \quad
-				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^2} & = \frac{t^2\theta\mathcal{M}_2(\delta_0)}{2\nu}.
+				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{(p-1)^2} & = \frac{t^2\theta\mathcal{M}_2(\delta_0)}{2\nu}.
 		\end{align}
 	\end{enumerate}
 \end{example}
@@ -1791,7 +1782,7 @@ which is a direct consequence of Stirling's formula.
 	\end{align*}
 	with $R_n = n! \Norm{\tilde{f}_n(\cdot,0;1)}_{ \mathcal{H}^{\otimes n }}^2$. By the
 	Cauchy-Hadamard theorem, this series converges for $\theta t (p-1) < \limsup_{n \to \infty}
-	|R_n|^{-1/n}$. However, by \eqref{E:2ineq-b} and Lemma \ref{L:rhovar}, we see that
+	|R_n|^{-1/n}$. However, by \eqref{E:2ineq-b} and Theorem \ref{T:Variation}, we see that
 	\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log(|R_n|) = \log\left( 2 \rho \right) =  \log\left( 2 \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} \right).
 	\end{align*}
