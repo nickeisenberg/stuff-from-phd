@@ -382,15 +382,13 @@ Now let us state the main results of this paper. The first main result deals wit
 of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem. For this, we
 need to introduce the following variational constant (see Section \ref{SS:Variation} for more
 details):
-\begin{align*}
-	\mathcal{M}_a\left(f, \theta\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
-\end{align*}
-and we use the following convention:
-\begin{align*}
-	\mathcal{M}_a(f) := \mathcal{M}_a\left(f,1\right) \quad \text{and} \quad
-	\mathcal{M}_a    := \mathcal{M}_a(\gamma),
-\end{align*}
-where $\gamma$ is defined in \eqref{E:corfunction}.
+\begin{align}
+	\label{E:M1}
+	\mathcal{M}_{a,d}\left(f\right) := \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, f \right\rangle^{1/2}_{L^2(\R^d)} - \frac{1}{2}\: \mathcal{E}_a(g,g) \right\}.
+\end{align}
+We use the convention that $\mathcal{M}_{a}\left(f\right) := \mathcal{M}_{a,d}\left(f\right)$ when
+the dimension is clear from the context, and $\mathcal{M}_{a}:=\mathcal{M}_{a}(\gamma)$, where
+$\gamma$ is defined in \eqref{E:corfunction}.
 
 \begin{theorem}[Solvability]
 	\label{T:solvable}
@@ -517,9 +515,9 @@ few proofs of results that are used in the paper.
 In this section, we will give various examples to our main results. When $a=2$ and $d=1$ we have the following useful relation:
 \begin{align}
 	\label{E:Mdelta1d}
-	\mathcal{M}_2(\delta_0)= (3/4)(1/6)^{1/3} ,
+	\mathcal{M}_{2,1}(\delta_0)= (3/4)(1/6)^{1/3},
 \end{align}
-which is a consequence of Lemma 7.2 of Chen and Li \cite{ChenLi04} with $p=2$.
+which is a consequence of Chen and Li \cite[Lemma 7.2]{ChenLi04} with $p=2$.
 
 \subsection{Examples on solvability}
 
@@ -541,14 +539,14 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 			noise has only a local $L^p(\Omega)$ solution. In this case, the critical time $T_p$ becomes
 			\begin{align}
 				\label{E:Tp-SHE2}
-				T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_2(\delta_0)}, \qquad p\ge 2.
+				T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_{2,2}(\delta_0)}, \qquad p\ge 2.
 			\end{align}
 			Note that in part 2) of Theorem 4.1 of Hu \cite{Hu02Chaos}, some lower and upper bounds for $
 			T_2$ were obtained. More precisely, by setting additionally that $\theta=1$ and $\nu=1$, Hu
 			({\it ibid.}) proved that when  $t<2$, an  $L^2(\Omega)$ solution exists but when $t>2\pi$,
 			the second moment of the solution blows up. It is an interesting exercise to show that
 			\begin{align*}
-				2\le T_2 = \frac{1}{2 \mathcal{M}_2(\delta_0)} \le 2\pi, \qquad \text{where $d=2$.}
+				2\le T_2 = \frac{1}{2 \mathcal{M}_{2,2}(\delta_0)} \le 2\pi, \qquad \text{where $d=2$.}
 			\end{align*}
 		\item When $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$-solution. Local
 			solutions exist only when $\alpha=2$ and the noise is not white. The critical time $T_p$ takes
@@ -632,7 +630,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	reduces to
 	\begin{align}
 		\label{E:TpCrSWE}
-		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_2(\delta_0)}},  \quad p\ge 2,
+		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_{2,3}(\delta_0)}},  \quad p\ge 2,
 	\end{align}
 	which is identical to (1.12) ({\it ibid.}) when setting $\nu=2$. \bigskip
 \end{example}% }}}
@@ -702,7 +700,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	when $b\in[1/2,1]$) is equal to
 	\begin{align}
 		\label{E:TpFracSHE}
-		T_p = \dfrac{\nu^{\alpha/2}}{2 \theta (p-1) \mathcal{M}_2^{2-\alpha/2}}.
+		T_p = \dfrac{\nu^{\alpha/2}}{2 \theta (p-1) \mathcal{M}_{2,d}^{2-\alpha/2}}.
 	\end{align}
 \end{example}% }}}
 
@@ -1028,7 +1026,7 @@ interested readers.
 	\begin{align}
 		\label{E:StableSHE-Tp}
 		% T_p = \frac{2^{4/3}\nu}{3^{2/3}\theta (p-1)}, \qquad \text{for $p\ge 2$}.
-		T_p = \frac{\nu}{2\theta (p-1)\mathcal{M}_a(\delta_0)}, \qquad \text{for $p\ge 2$}.
+		T_p = \frac{\nu}{2\theta (p-1)\mathcal{M}_{2,2}(\delta_0)}, \qquad \text{for $p\ge 2$}.
 	\end{align}
 \end{example}% }}}
 
@@ -1186,9 +1184,9 @@ results for both stochastic wave and heat equations.
 		\begin{align}
 			\label{E:AsymSWE-2d}
 				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
-				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^2} & = \frac{p(p-1)\theta\mathcal{M}_2(\delta_0)}{2\nu}
+				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^2} & = \frac{p(p-1)\theta\mathcal{M}_{2,2}(\delta_0)}{2\nu}
 				\quad \text{and} \quad
-				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^2} & = \frac{t^2\theta\mathcal{M}_2(\delta_0)}{2\nu}.
+				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^2} & = \frac{t^2\theta\mathcal{M}_{2,2}(\delta_0)}{2\nu}.
 		\end{align}
 	\end{enumerate}
 \end{example}% }}}
@@ -1232,14 +1230,14 @@ results for both stochastic wave and heat equations.
 	\begin{align}
 		\label{E:AsymStable-t}
 		\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^{\frac{2a-1}{a-1} }} =
-		p (p-1)^{\frac{a}{a-1}}\left( \frac{1}{2} \right)\left( \frac{2a}{2a-1} \right)^{\frac{2a-1}{a-1}} \left[ \theta \nu^{-1/a} \mathcal{M}_a(\delta_0)^{\frac{2a-1}{a}} \right]^{ \frac{a}{2a-3} } \frac{3a-1}{a}
+		p (p-1)^{\frac{a}{a-1}}\left( \frac{1}{2} \right)\left( \frac{2a}{2a-1} \right)^{\frac{2a-1}{a-1}} \left[ \theta \nu^{-1/a} \mathcal{M}_{a,1}(\delta_0)^{\frac{2a-1}{a}} \right]^{ \frac{a}{2a-3} } \frac{3a-1}{a}
 	\end{align}
 	and
 	\begin{align}
 		\label{E:AsymStable-p}
 		\lim_{p \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{p^{\frac{2a-1}{a-1} }} =
 		t^{\frac{2a-1}{a-1}}
-		\left( \frac{1}{2} \right)\left( \frac{2a}{2a-1} \right)^{\frac{2a-1}{a-1}} \left[ \theta \nu^{-1/a} \mathcal{M}_a(\delta_0)^{\frac{2a-1}{a}} \right]^{ \frac{a}{2a-3} } \frac{3a-1}{a}
+		\left( \frac{1}{2} \right)\left( \frac{2a}{2a-1} \right)^{\frac{2a-1}{a-1}} \left[ \theta \nu^{-1/a} \mathcal{M}_{a,1}(\delta_0)^{\frac{2a-1}{a}} \right]^{ \frac{a}{2a-3} } \frac{3a-1}{a}.
 	\end{align}
 \end{example}% }}}
 
@@ -1463,8 +1461,8 @@ and
 \begin{gather}
 	\label{E:Lambda}
 	\begin{aligned}
-		\mathcal{M}_{\alpha}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
-                                        & = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
+		\mathcal{M}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
+                                     & = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
 	\end{aligned}
 \end{gather}
 where
@@ -1474,8 +1472,9 @@ where
 	\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
 	\label{E:Fa}
 \end{gather}
-We use the convention that $\mathcal{M}_a(\gamma):=\mathcal{M}_a(\gamma,1)$.  By a similar argument
-as the proof of \cite[Lemma 2.3]{BCC21}, one can show that
+We often omit the dimension $d$ in  $ \mathcal{M}_{a,d}$ when it is clear from context.  We use the
+convention that $\mathcal{M}_a(f):=\mathcal{M}_a(f,1)$ to be consistent with notation \eqref{E:M1}.
+By a similar argument as the proof of \cite[Lemma 2.3]{BCC21}, one can show that
 \begin{equation}
 	\label{E:ScaleM}
 	\mathcal{M}_a(\Theta \gamma , \theta) =
