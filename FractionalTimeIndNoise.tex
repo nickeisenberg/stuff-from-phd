@@ -1199,6 +1199,104 @@ where we used polar coordinated to calculate the integral when $d_i > 1$ and $|\
 		and the reduces to the wave equation when $\nu =2$ and $a=2$.
 	\end{NickQuestion}
 	
+	\begin{NickQuestion}[comparing our Corrolary 1.8 to \cite{CHSS18} Theorem 1.1]
+		
+Notation and variables vary from paper to paper so I will restate all the necessary equations we need. Lets assume that 
+	\[
+		\hat{f}(\xi) = \int_{\R^d} e^{-i x \xi}f(x) \ud x.
+	\]
+First we have Theorem 1.1 and the notation from \cite{CHSS18}. Here we have 
+
+	\begin{tabular}{c}
+		\renewcommand{\arraystretch}{1.2}
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			& \multicolumn{2}{c|}{Laplace} & \multicolumn{2}{c|}{Noise}    & Variational Const.  \\ \hline
+			\cite{CHSS18}  & $\alpha$                      & $2$                        & $\beta$ & $\gamma(\cdot)=|\cdot|^{-\beta}$    & $\textbf{M}$                                \\
+			Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma(\cdot)$                  & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
+		\end{tabular}
+	\end{tabular}
+
+
+	\begin{theorem}
+		\begin{align*}
+			\lim_{t \to \infty} t^{-\frac{2\alpha - \beta - \alpha \beta_0}{\alpha - \beta}} \log \Norm{u^{\rho}(t,x)}_p = (p-\rho)^{\frac{\alpha}{\alpha=\beta}}\textbf{M}(\alpha,\beta_0,d,\gamma)
+		\end{align*}
+	\end{theorem}
+and in this theorem
+		\begin{align*}
+			\textbf{M} & (\alpha, \beta_0, d, \gamma) 
+			\\& = \sup_{g} \left\{ \frac{1}{2} \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\beta_0}} g^2(s,x)g^2(r,y) \ud x \ud y \ud r \ud s - (2\pi)^{-d}\int_0^1 \int_{\R^d} |\xi|^\alpha |\hat{g}(s,\xi)|^2 \ud \xi \ud s  \right\}.
+		\end{align*}
+and also it is stated that we have the following scaling property
+	\[
+		\textbf{M} (\alpha, \beta_0, d, \theta\gamma) = \theta^{\frac{\alpha}{\alpha - \beta}}\textbf{M}  (\alpha, \beta_0, d, \gamma)
+	\]
+Now we need some results from \cite{15AIHP}. Here we have that 
+
+	\begin{tabular}{c}
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		& \multicolumn{2}{c|}{Laplace} & \multicolumn{2}{c|}{Noise}    & Variational Const.  \\ \hline
+		\cite{CHSS18}  & 2                      & $2$                        & $\alpha$ & $\gamma(\cdot)=|\cdot|^{-\alpha}$    & $\mathcal{E}$                                \\
+		Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma(\cdot)$                  & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
+	\end{tabular}
+\end{tabular}
+
+	\begin{lemma}
+		\begin{align*}
+			\mathcal{E}(\alpha_0,d,\gamma) &= \frac{2-\alpha}{2}2^{\alpha/(2-\alpha)}\left( \frac{4-\alpha}{4} \right)^{-\frac{4-\alpha}{2-\alpha}}M(\alpha_0,d,\gamma)^{\frac{4-\alpha}{2-\alpha}}
+		\end{align*}
+	\end{lemma}
+and in this lemma we have 
+		\begin{align*}
+			\mathcal{E}(\alpha_0,d,\gamma) &= \sup_{g} \left\{ \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}  g^2(s,x)g^2(r,y) \ud x \ud y \ud r \ud s - \frac{1}{2} \int_0^1 \int_{\R^d} |\nabla_x g(s,x)|^2 \ud x \ud s \right\}
+		\\& = \sup_{g} \left\{ \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}  g^2(s,x)g^2(r,y) \ud x \ud y \ud r \ud s - \frac{(2\pi)^{-d}}{2} \int_0^1 \int_{\R^d} |\xi|^\alpha|\hat{g}(s,\xi)|^2 \ud \xi \ud s \right\}
+		\end{align*}
+and 
+		\begin{align*}
+			M(\alpha_0,d,\gamma) &= \sup_{g} \left\{ \left( \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}} g^2(s,x) g^2(r,y) \ud x \ud y \ud r \ud s  \right)^{1/2} - \frac{1}{2} \int_0^1 \int_{\R^d} | \nabla_x |g(s,x)|^2 \ud x \ud s \right\}
+			\\& = \sup_{g} \left\{ \left( \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}} g^2(s,x) g^2(r,y) \ud x \ud y \ud r \ud s  \right)^{1/2} - \frac{(2\pi)^{-d}}{2} \int_0^1 \int_{\R^d} | \hat{g}(s,\xi)|^2 \ud \xi \ud s \right\}
+		\end{align*}
+		
+We know want to relate this to $\mathcal{M}_a$ from our paper.  From this point on we will use the notation from our paper, ie, the Laplace exponent will be $a$ and the Riesz exponent will be $\alpha$. Note that the above Lemma is only for $a=2$ so lets just focus on that for now. Also we want to consider the time independent case so we need $\alpha_0=\beta_0=0$. Lastly, in our paper we set $\theta=1$ and $\nu = 2$. We have that 
+
+	\[
+		M(0,d,\gamma) = \mathcal{M}_{2,d}(\gamma,1) 
+	\]
+and so this implies that 
+\[
+\mathcal{E}(0,d,\gamma) = \frac{2-\alpha}{2}2^{\alpha/(2-\alpha)}\left( \frac{4-\alpha}{4} \right)^{-\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}.
+\]
+In addition we have 
+	\[
+		\frac{1}{2}\textbf{M}(2,0,d,4\gamma) = \mathcal{E}(0,d,\gamma)
+	\]
+and by the scaling property we have 
+	\[
+			\frac{1}{2}\textbf{M}(2,0,d,4\gamma) = \frac{1}{2}(4)^{\frac{2}{2-\alpha}}\textbf{M}(2,0,d,\gamma) = 2^{\frac{\alpha}{2-\alpha}}\textbf{M}(2,0,d,\gamma).
+	\]
+Now we can say that 
+	\[
+		2^{\frac{\alpha}{2-\alpha}}\textbf{M}(2,0,d,\gamma) = \frac{2-\alpha}{2}2^{\alpha/(2-\alpha)}\left( \frac{4-\alpha}{4} \right)^{-\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+	\]
+and finally 
+	\begin{align*}
+		\textbf{M}(2,0,d,\gamma) &=2^{\frac{-\alpha}{2-\alpha}} \frac{2-\alpha}{2}2^{\alpha/(2-\alpha)}\left( \frac{4-\alpha}{4} \right)^{-\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+		\\&= (2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{6-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+	\end{align*}
+and so by the above theorem we should have 
+	\[
+		\lim_{t\to \infty} t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p = p(p-1)^{\frac{2}{2-\alpha}}(2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{6-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+	\]
+however by our corollary 1.8, we should have that 
+	\[
+			\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{4-\alpha}} (2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{a,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+	\] 
+and unfortunately these two do not match. 
+	\end{NickQuestion}
+	
 	\section{Proof Sketches}
 	
 	\begin{NickQuestion}
@@ -2025,5 +2123,127 @@ where we used polar coordinated to calculate the integral when $d_i > 1$ and $|\
 		\]
 		and plugging in the value for $B$ yields \ref{lbound}. 
 	\end{NickQuestion}
+
+\addcontentsline{toc}{section}{Bibliography}
+\begin{thebibliography}{999}
+	\bibitem{BCC21} % {{{ 1.
+	Balan, R. M., Chen, L., and Chen, X. (2021).
+	\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
+	% }}}
+	% \bibitem{BS17} % {{{ 2. -- removed.
+	% Balan, R. M. and Song, J. (2017).
+	% \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
+	% \newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
+	% % }}}
+	\bibitem{15AIHP}% {{{ 2.
+	Chen, X., Hu, Y., Song, J. and Xing, F. (2015).
+	\newblock Exponential asymptotics for time-space Hamiltonians
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{51}, 1529 -- 1561.
+	% }}}
+	
+	\bibitem{CHSS18}% {{{ 2.
+	Chen, X., Hu, Y., Song, J. and Song, X. (2018).
+	\newblock Temporal asymptotics for fractional parabolic Anderson model
+	\newblock {\em  Electronic Journal of Probability } \textbf{23}, 1-39.
+	% }}}
+	
+	\bibitem{BCR09}% {{{ 2.
+	Bass, R., Chen, X., and Rosen, M. (2009).
+	\newblock Large deviations for Riesz potentials of additive processes.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
+	% }}}
+	\bibitem{Chen17Tran}% {{{ 3.
+	Chen, L. (2017).
+	\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+	\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+	% }}}
+	\bibitem{CHHH17}% {{{ 4.
+	Chen, L., Hu, Y., Hu, G., and Huang, J. (2017).
+	\newblock Stochastic time-fractional diffusion equations on $\R^d$.
+	\newblock {\em Stochastics} \textbf{89} (1) 171--206.
+	% }}}
+	\bibitem{CHN19}% {{{ 5.
+	Chen, L., Hu, Y., and Nualart, D. (2019).
+	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+	% }}}
+	\bibitem{Chen17AIHP} % {{{ 6.
+	Chen, X. (2017).
+	\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
+	\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
+	% }}}
+	\bibitem{Chen19AIHP}% {{{ 7.
+	Chen X. (2019).
+	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
+	% }}}
+	\bibitem{CDOT20} % {{{ 8.
+	Chen, X., Deya, A., Ouyang, C. and Tindel, S. (2020).
+	\newblock Moment estimates for some renormalized parabolic Anderson models.
+	\newblock {\em Ann. Probab.}, to appear 2021.
+	% }}}
+	\bibitem{CHSS18} % {{{ 9.
+	Chen, X., Hu, Y.Z., Song, J., and Song, X. (2018).
+	\newblock Temporal asymptotics for fractional parabolic Anderson model.
+	\newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
+	% }}}
+	\bibitem{ChenHuSongXing15AIHP} % {{{ 10.
+	Chen, X., Hu, Y.Z., Song, J., and Xing, F. (2015).
+	\newblock Exponential asymptotics for time-space Hamiltonians.
+	\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.} {\bf 51}, no. 4, 1529–-1561.
+	% }}}
+	\bibitem{ChenLi04} % {{{ 11.
+	Chen, X. and Li, W. (2004).
+	\newblock Large and moderate deviations for intersection local times.
+	\newblock {\em Probab. Theory Related Fields} {\bf 128} 213--254.
+	% }}}
+	\bibitem{Minicourse09}% {{{ 12.
+	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
+	\newblock {\it A minicourse on stochastic partial differential equations}.
+	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+	% }}}
+	\bibitem{HairerLabbe15SHE2}% {{{ 13.
+	Hairer, M. and Labb\'e, C. (2015).
+	\newblock A simple construction of the continuum parabolic Anderson model on $\R^2$.
+	\newblock {\em Electron. Commun. Probab.} \textbf{20}, no. 43, 11 pp.
+	% }}}
+	\bibitem{HairerLabbe18SHE3}% {{{ 14.
+	Hairer, M. and Labb\'e, C. (2018).
+	\newblock Multiplicative stochastic heat equations on the whole space.
+	\newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
+	% }}}
+	\bibitem{Hu01Heat}% {{{ 15.
+	Hu, Y. (2001).
+	\newblock Heat equations with fractional white noise potentials.
+	\newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
+	% }}}
+	\bibitem{Hu02Chaos}% {{{ 16.
+	Hu, Y. (2002).
+	\newblock Chaos expansion of heat equations with white noise potentials.
+	\newblock {\em Potential Anal. } \textbf{16}, no. 1, 45--66.
+	% }}}
+	\bibitem{Le16} % {{{ 17.
+	L\^e, K. (2016).
+	\newblock A remark on a result of Xia Chen.
+	\newblock {\em Stat. Probab. Letters} {\bf 118}, 124--126.
+	% }}}
+	\bibitem{LiebLoss01} % {{{ 18.
+	Lieb, E. and Loss, M. (2001).
+	\newblock {\em Analysis}. Second edition.
+	\newblock Graduate Studies in Mathematics, 14.
+	\newblock American Mathematical Society, Providence, RI.
+	% }}}
+	\bibitem{MijenaNane15SPA}% {{{ 19.
+	Mijena, J. B. and Nane, E. (2015).
+	\newblock Space-time fractional stochastic partial differential equations.
+	\newblock {\it Stochastic Process. Appl.} \textbf{125} no. 9, 3301--3326.
+	% }}}
+	\bibitem{Nualart18Book}% {{{ 20.
+	Nualart D. and Nualart E. (2018).
+	\newblock {\em Introduction to Malliavin Calculus}.
+	\newblock Cambridge University Press.
+	% }}}
+\end{thebibliography}
 	
 \end{document}
