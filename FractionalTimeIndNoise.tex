@@ -1209,18 +1209,18 @@ First we have Theorem 1.1 and the notation from \cite{CHSS18}. Here we have
 
 	\begin{tabular}{c}
 		\renewcommand{\arraystretch}{1.2}
-		\begin{tabular}{|c|c|c|c|c|c|}
+		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
-			& \multicolumn{2}{c|}{Laplace} & \multicolumn{2}{c|}{Noise}    & Variational Const.  \\ \hline
-			\cite{CHSS18}  & $\alpha$                      & $2$                        & $\beta$ & $\gamma(\cdot)=|\cdot|^{-\beta}$    & $\textbf{M}$                                \\
-			Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma(\cdot)$                  & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
+			& \multicolumn{2}{c|}{Laplace} & \multicolumn{3}{c|}{Noise}    & Variational Const.  \\ \hline
+			\cite{CHSS18}  & $\alpha$                      & $2$                        &  $\beta_0$ (time) & $\beta$ (space) & $\gamma(\cdot)=|\cdot|^{-\beta}$    & $\textbf{M}$                                \\
+			Current paper                 & $a$                          & $\nu$           &      0     & $\alpha$ & $\gamma(\cdot)$                  & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
 		\end{tabular}
 	\end{tabular}
 
 
 	\begin{theorem}
 		\begin{align*}
-			\lim_{t \to \infty} t^{-\frac{2\alpha - \beta - \alpha \beta_0}{\alpha - \beta}} \log \Norm{u^{\rho}(t,x)}_p = (p-\rho)^{\frac{\alpha}{\alpha=\beta}}\textbf{M}(\alpha,\beta_0,d,\gamma)
+			\lim_{t \to \infty} t^{-\frac{2\alpha - \beta - \alpha \beta_0}{\alpha - \beta}} \log \Norm{u^{\rho}(t,x)}_p = (p-\rho)^{\frac{\alpha}{\alpha-\beta}}\textbf{M}(\alpha,\beta_0,d,\gamma)
 		\end{align*}
 	\end{theorem}
 and in this theorem
@@ -1236,15 +1236,16 @@ Now we need some results from \cite{15AIHP}. Here we have that
 
 	\begin{tabular}{c}
 	\renewcommand{\arraystretch}{1.2}
-	\begin{tabular}{|c|c|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
 		\hline
-		& \multicolumn{2}{c|}{Laplace} & \multicolumn{2}{c|}{Noise}    & Variational Const.  \\ \hline
-		\cite{15AIHP}  & 2                      & $2$                        & $\alpha$ & $\gamma(\cdot)=|\cdot|^{-\alpha}$    & $\mathcal{E}$                                \\
-		Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma(\cdot)$                  & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
+		& \multicolumn{2}{c|}{Laplace} & \multicolumn{3}{c|}{Noise}    & Variational Const.  \\ \hline
+		\cite{15AIHP}  & 2                      & $2$                        &  $\alpha_0$ (time) & $\alpha$ (space) & $\gamma(\cdot)=|\cdot|^{-\alpha}$    & $\mathcal{E}$                                \\
+		Current paper                 & $a$                          & $\nu$           &0&            $\alpha$ & $\gamma(\cdot)$                  & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
 	\end{tabular}
 \end{tabular}
 
 	\begin{lemma}
+Lemma A.2 \cite{15AIHP}
 		\begin{align*}
 			\mathcal{E}(\alpha_0,d,\gamma) &= \frac{2-\alpha}{2}2^{\alpha/(2-\alpha)}\left( \frac{4-\alpha}{4} \right)^{-\frac{4-\alpha}{2-\alpha}}M(\alpha_0,d,\gamma)^{\frac{4-\alpha}{2-\alpha}}
 		\end{align*}
@@ -1252,12 +1253,12 @@ Now we need some results from \cite{15AIHP}. Here we have that
 and in this lemma we have 
 		\begin{align*}
 			\mathcal{E}(\alpha_0,d,\gamma) &= \sup_{g} \left\{ \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}  g^2(s,x)g^2(r,y) \ud x \ud y \ud r \ud s - \frac{1}{2} \int_0^1 \int_{\R^d} |\nabla_x g(s,x)|^2 \ud x \ud s \right\}
-		\\& = \sup_{g} \left\{ \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}  g^2(s,x)g^2(r,y) \ud x \ud y \ud r \ud s - \frac{(2\pi)^{-d}}{2} \int_0^1 \int_{\R^d} |\xi|^\alpha|\hat{g}(s,\xi)|^2 \ud \xi \ud s \right\}
+		\\& = \sup_{g} \left\{ \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}  g^2(s,x)g^2(r,y) \ud x \ud y \ud r \ud s - \frac{(2\pi)^{-d}}{2} \int_0^1 \int_{\R^d} |\xi|^2|\hat{g}(s,\xi)|^2 \ud \xi \ud s \right\}
 		\end{align*}
 and 
 		\begin{align*}
 			M(\alpha_0,d,\gamma) &= \sup_{g} \left\{ \left( \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}} g^2(s,x) g^2(r,y) \ud x \ud y \ud r \ud s  \right)^{1/2} - \frac{1}{2} \int_0^1 \int_{\R^d} | \nabla_x |g(s,x)|^2 \ud x \ud s \right\}
-			\\& = \sup_{g} \left\{ \left( \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}} g^2(s,x) g^2(r,y) \ud x \ud y \ud r \ud s  \right)^{1/2} - \frac{(2\pi)^{-d}}{2} \int_0^1 \int_{\R^d} | \hat{g}(s,\xi)|^2 \ud \xi \ud s \right\}
+			\\& = \sup_{g} \left\{ \left( \int_0^1 \int_0^1 \int_{\R^{2d}} \frac{\gamma(x-y)}{|r-s|^{\alpha_0}} g^2(s,x) g^2(r,y) \ud x \ud y \ud r \ud s  \right)^{1/2} - \frac{(2\pi)^{-d}}{2} \int_0^1 \int_{\R^d} | \xi|^2  |\hat{g}(s,\xi)|^2 \ud \xi \ud s \right\}
 		\end{align*}
 		
 We know want to relate this to $\mathcal{M}_a$ from our paper.  From this point on we will use the notation from our paper, ie, the Laplace exponent will be $a$ and the Riesz exponent will be $\alpha$. Note that the above Lemma is only for $a=2$ so lets just focus on that for now. Also we want to consider the time independent case so we need $\alpha_0=\beta_0=0$. Lastly, in our paper we set $\theta=1$ and $\nu = 2$. We have that 
@@ -1290,11 +1291,11 @@ and so by the above theorem we should have
 	\[
 		\lim_{t\to \infty} t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p = p(p-1)^{\frac{2}{2-\alpha}}(2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
 	\]
-however by our corollary 1.8, we should have that 
+and by our corollary 1.8, we have that 
 	\[
-			\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{4-\alpha}} (2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{a,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+			\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{2-\alpha}} (2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{2,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
 	\] 
-and unfortunately these two do not match. 
+so the two results match. 
 	\end{NickQuestion}
 	
 	\section{Proof Sketches}
