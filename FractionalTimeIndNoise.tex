@@ -1298,21 +1298,163 @@ and by our corollary 1.8, we have that
 	\] 
 so the two results match. 
 	\end{NickQuestion}
-	
-=======
-however by our corollary 1.8, we should have that
+
+\begin{NickQuestion}[Lemma A.3 from \cite{ChenAOP12}]
+In order to prove Lemma A.2 \cite{15AIHP}, we need to prove a version of Lemma A.1 \textit{ibid.} for general $"a"$ and according to \cite{15AIHP}, we need to prove Lemma 5.7 \cite{ChenAOP14}. However this lemma does not exist in that paper and what I believe Xia Chen means is (A.17) from \cite{ChenAOP14}. This lemma says that for $0 \le p \le \min{2,d}$, there exists a $C>0$ such that
+	\begin{equation}\label{RieszIneq1}
+		\int_{\R^d} \frac{f^2(x)}{|x|^p} \ud x \le C \Norm{f}_2^{2-p}\Norm{\nabla f}_2^p \quad f \in W^{1,2}(\R^d).
+	\end{equation}
+However, I believe that we only really care about functions $f \in \mathcal{A}_d$ where
 	\[
-			\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{4-\alpha}} (2-\alpha)(4-\alpha)^{-\frac{4-\alpha}{2-\alpha}}2^{\frac{4-\alpha}{2-\alpha}}\mathcal{M}_{a,d}(\gamma,1)^{\frac{4-\alpha}{2-\alpha}}
+		\mathcal{A}_d = \left\{ g(s,x) \in W^{1,2}(\R^d) : \int_{\R^d} g(s,x)^2 \ud x = 1 \; \forall s \in [0,1], \text{ and } \int_0^1 \int_{\R^d} \left| \nabla_x g(s,x) \right|^2 \ud x \ud s < \infty \right\}.
 	\]
-and unfortunately these two do not match.
+The proof of this is not given in \cite{ChenAOP14} and it claims that it is proven in Lemma 7.2 of \cite{ChenAOP12} which again does not exist and I believe that Xia Chen means Lemma (A.3) \cite{ChenAOP12}. However this lemma only says that \eqref{RieszIneq1} is true only for $d/2 \le p \le \min{2,d}$ so there is a little discrepancy here. 
 
-\textcolor{magenta}{By Theorem 1.1 of \cite{Chen17AIHP}, the power of $(p-1)$ should be
-$\frac{2}{2-\alpha}$. We also have the same power, which should be $\beta -1$ in our notation.
-Please check. They do coincide.}
-
+In the first line of the proof in \cite{ChenAOP12}, it says consider $f\in W^{1,2}(\R^d)$ with $\Norm{f}_2=1$ and let 
+	\[
+		\int_{\R^d} \frac{f^2(x)}{|x|^p} \ud x = C_f \Norm{\nabla f}_2^p.
+	\] 
+How do we know the integral on the left hand side is finite? I believe it is because we know that 
+	\[
+		M(\lambda) = \sup_{\Norm{g}_{L^2(\R^d)}=1} \left\{ \lambda \int_{\R^d} \frac{g^2(x)}{|x|^p} \ud x - \frac{1}{2} \int_{\R^d} |\nabla g(x)|^2 \ud x  \right\} < \infty .
+	\]
+This is stated in equation (A.2) \cite{ChenAOP12}. Now if you continue following the proof in \cite{ChenAOP12}, they show that 
+	\[
+		M(1) \ge \frac{2-p}{2}C_f^{2/(2-p)}p^{p/(2-p)}
+	\]
+which I believe shows that 
+	\[
+		\sup_{f\in W^{1,2}(\R^d), \Norm{f}_2=1} C_f =: C < \infty
+	\]
+which in return implies that 
+	\[
+		\int_{\R^d} \frac{f^2(x)}{|x|^p} \ud x \le C \Norm{\nabla f}_2^p
+	\]
+which shows that \eqref{RieszIneq1} is true for $f$ such that $\Norm{f}_2 = 1$. To show this is true for general $f\in W^{1,2}(\R^d)$, take an arbitrary $f \in W^{1,2}(\R^d)$ then $h:=f/\Norm{f}_2$ satisfies $\Norm{h}_2=1$ and so \eqref{RieszIneq1} implies that 
+	\[
+		\int_{\R^d} \frac{h^2(x)}{|x|^p} \ud x \le C \Norm{\nabla h}_2^p
+	\]
+which in return implies that 
+	\[
+		\frac{1}{\Norm{f}_2^2}\int_{\R^d} \frac{f^2(x)}{|x|^p} \ud x \le C\Norm{f}_2^{-p} \Norm{\nabla f}_2^p
+	\]
+which gives \eqref{RieszIneq1}. 
 \end{NickQuestion}
 
->>>>>>> 0fc7e2767e88aeee53e2583b7ec68f62b5541ffb
+\begin{NickQuestion}[Concern about $\int_{\R^d} |\nabla f(x)|^2 \ud x = \int_{\R^d} |x|^2|\mathcal{F}f(x)|^2 \ud x$]
+
+Just for simplicity lets suppose that $d=1$, so we want to show that 
+	\[
+		\int_{\R^d} |g'(x)|^2 \ud x = \int_{\R^d} |x|^2 |\mathcal{F}f(x)|^2 \ud x.
+	\]
+By Placherel's Theorem, the left hand side becomes
+	\[
+		\int_{\R^d} |g'(x)|^2 \ud x  = (2\pi)^{-d} \int_{\R^d} |\mathcal{F}(f')(x)|^2 \ud x.
+	\]
+Now we want to be able to say that 
+	\begin{equation}\label{Ff'}
+		|\mathcal{F}{f'}(x)| = |x| |\mathcal{F}f(x)|
+	\end{equation}
+but according to \href{https://en.wikipedia.org/wiki/Fourier_transform#Differentiation}{wikipedia}, this is only true if $f$ is absolutely continuous. It can also be shown to be true if $\lim_{|x|\to \infty} f(x) = 0$. However I am unsure if either of these are true. The second situation is not the case here because all we are assuming is that $f \in W^{1,2}(\R^d)$ which does not imply that $\lim_{|x|\to \infty} f(x) = 0$. 
+
+As far as absolute continuity, I can only find that functions $f \in W^{1,p}(0,1)$ are absolutely continuous. As far as function $f \in W^{1,p}(\R^d)$ I have only been able to find that $f(x')=g_C(x')$ almost surely and $g_C$ is absolutely continuous and $x' \in C$ where $C$ is any curve in $\R^d$. This result is found \href{https://math.stackexchange.com/questions/908175/is-a-sobolev-function-absolutely-continuous-with-respect-to-a-e-segment-of-line}{here.} However I am unsure if this is good enough to say \eqref{Ff'}
+\end{NickQuestion}
+
+\begin{NickQuestion}[Generalizing Lemma (A.3) \cite{CHENAOP12}]
+Take $f \in \mathcal{F}_a$, ie, $\Norm{f}_2 =1$ and $\mathcal{E}(f,f) < \infty$. Choose $C_f$ such that 
+	\[
+		\int_{\R^d} \frac{f^2(x)}{|x|^{\alpha}} \ud x = C_f \left( \int_{\R^d} |x|^a |\mathcal{F}f(x)|^2 \ud x\right)^{\alpha/2} =: C_f I_a(f)^\alpha.
+	\]
+Let $t >0$ and define 
+	\[
+		g(x) = t^{d/2}f(tx).
+	\] 
+Then $\Norm{g}_2 =1$ and in addition $I_a(g) = t^{a/2}I_a(f)$. With this we see that 
+	\[
+		\int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x = t^\alpha \int_{\R^d} \frac{f^2(x)}{|x|^{\alpha}} \ud x = t^\alpha C_f I_a(f)^\alpha = C_ft^{(2-a)\alpha/2}I_a(g)^\alpha
+	\]
+Define 
+	\[
+		M(\lambda) := \sup_{\Norm{h}_{L^2(\R^d)}=1} \left\{ \lambda \int_{\R^d} \frac{h^2(x)}{|x|^\alpha} \ud x - \frac{1}{(2\pi)^d} \int_{\R^d} |x|^a |\mathcal{F} h(x)|^2 \ud x  \right\}. 
+	\]
+It can be shown that 
+	\[
+		M(\lambda) = \lambda^{2/(2-p)}M(1).
+	\]
+We now see that 
+	\begin{align*}
+		M(1) &\ge C_ft^{(2-a)\alpha/2}I_a(g)^\alpha - \frac{1}{(2\pi)^2}I_a(g)^2
+		\\& = C_f t^\alpha I_a(f)^\alpha - \frac{1}{(2\pi)^d}t^aI_a(f)^2
+		\\& = C_f \underbrace{(t I_a(f))^\alpha} - \frac{1}{(2\pi)^d}\underbrace{(t^{a/2}I_a(f))^2}
+	\end{align*}
+This is an issue because we need the items inside the parenthesis of the underlines terms to be the same in order to continue with the proof. 
+
+ $\;$
+
+\noindent\textbf{Issue with $ a \not = 2$ case with Lemma A.2 \cite{15AIHP}}
+
+To try and fix the above issue we can try to search of a different function $g$. We can guess that $g$ takes the form 
+	\[
+		g(x) = t^pf(t^qx).
+	\]
+Forsure sure we need that 
+	\[
+		\Norm{g}_2 = 1 
+	\]	
+and this implies that 
+	\begin{align}
+	2p  =dq. \label{condition1}
+	\end{align}
+Next we want to calculate both 
+	\[
+		\int_{\R^d} \frac{g^2(x)}{x^\alpha} \ud x \quad \text{and} \quad I_a(g).
+	\]
+We can show the following: 
+	\begin{enumerate}
+		\item
+			\[
+				\left(\int_{\R^d} |x|^a |\mathcal{F}g(x)|^2 \ud x\right)^{1/2} = t^{p+\left(\frac{a-d}{2}\right)q}\left( \int_{\R^d} |x|^a |\mathcal{F}f(x)|^2 \ud x \right)^{1/2}
+			\]
+		\item	
+			\[
+				\int_{\R^d} \frac{g^2(x)}{x^\alpha} \ud x = t^{2p + (\alpha-d)q} \int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x
+			\]
+		\item 
+			\begin{align}
+				\int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x &= t^{2p + (\alpha -d)q - \alpha p - \left(\frac{a-d}{2}\right)\alpha q} C_f \left( \int_{\R^d} |x|^a |\mathcal{F}f(x)|^2 \ud x \right)^{\alpha/2} \nonumber
+				\\&= t^{\left(\frac{2\alpha - a\alpha}{2}\right)q} C_f \left( \int_{\R^d} |x|^a |\mathcal{F}f(x)|^2 \ud x \right)^{\alpha/2} \label{condition4}
+			\end{align}
+	\end{enumerate}
+where in \eqref{condition4}, we used \eqref{condition1}.
+
+Note that when $a=2$ and when $p=d/2$ and $q=1$ then everything reduces back to what is presented in the proof of Lemma A.3 \cite{ChenAOP12}. 
+
+Our goal is to reproduce the third centered equation from the proof lemma A.3 \cite{ChenAOP12} which says that 
+	\begin{equation}\label{step1}
+		M(1) \ge C_f t^\alpha I_a(f)^\alpha - \frac{1}{2} t^2 I_a(f)^2
+	\end{equation}
+which is for the case when $a=2$ and $p=d/2$ and $q=1$. 
+
+In the general case, we get that 
+	\begin{align}
+	M(1) &\ge \int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x - \frac{(2\pi)^{-d}}{2} \int_{\R^d} |x|^a |\mathcal{F}g(x)|^2 \ud x
+	\\& t^{\left(\left[\frac{2-d}{2}\right]q + p\right) \alpha} C_f I_a(f)^\alpha - \dfrac{(2\pi)^{-d}}{2} t^{ \left( \left[ \frac{a-d}{2}\right]q + p \right)2 } I_a(f)^2. \label{step2}
+	\end{align}
+Note that again if we restrict ourselves to the case of $a=2$ and $p=d/2$ and $q=1$ then we recover the equations from Lemma A.3 \cite{ChenAOP12}. 
+
+Note that by \eqref{step1}, that if we inspect \eqref{step2} then we would want for 
+	\[
+		\left(\left[\frac{2-d}{2}\right]q + p\right) = \left( \left[ \frac{a-d}{2}\right]q + p \right)
+	\]
+however this can only happen in two cases.
+	\begin{enumerate}
+		\item $a=2$ 
+		\item $a\not= 2$ and $q=0$ .
+	\end{enumerate}
+So it seem that proof technique of Lemma A.2 \cite{15AIHP} may work for the $a=2$ case. 
+\end{NickQuestion}
+
+
 	\section{Proof Sketches}
 
 	\begin{NickQuestion}
@@ -2193,6 +2335,16 @@ Please check. They do coincide.}
 	Chen X. (2019).
 	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
 	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
+	% }}}
+	\bibitem{ChenAOP12} % {{{ 8.
+	Chen, X. (2012).
+	\newblock QUENCHED ASYMPTOTICS FOR BROWNIAN MOTION OFRENORMALIZED POISSON POTENTIAL AND FOR THERELATED PARABOLIC ANDERSON MODELS
+	\newblock {\em Ann. Probab. }, \textbf{40} no.4 1436-1482.
+		% }}}
+	\bibitem{ChenAOP14} % {{{ 8.
+	Chen, X. (2012).
+	\newblock QUENCHED ASYMPTOTICS FOR BROWNIAN MOTION INGENERALIZED GAUSSIAN POTENTIAL
+	\newblock {\em Ann. Probab. }, \textbf{42} no.2 576-662.
 	% }}}
 	\bibitem{CDOT20} % {{{ 8.
 	Chen, X., Deya, A., Ouyang, C. and Tindel, S. (2020).
