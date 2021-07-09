@@ -1210,7 +1210,7 @@ results for both stochastic wave and heat equations.
 	and results in \eqref{E:momentasym} and \eqref{E:momentasym-t} recover the corresponding
 	conjectured results for SHE, namely, (1.16) and (1.17) of Balan {\it et al} \cite{BCC21},
 	respectively, which are equivalent to Theorem 1.1 and 1.2 of X. Chen \cite{Chen17AIHP} when
-	setting $\alpha_0=0$ and using \cite[Lemma A.2]{ChenHuSongXing15AIHP} to rewrite the constant
+	setting $\alpha_0=0$ and using \cite[Lemma A.2]{CHSX15AIHP} to rewrite the constant
 	$\mathcal{E}$ in \cite{Chen17AIHP} in terms of $\mathcal{M}_a$. Due to the importance of the white
 	noise case, we list the corresponding asymptotics here. When $\alpha=d=1$,
 	\begin{align}
@@ -1642,10 +1642,13 @@ More generally we have the following theorem:
 	Parts (iv) and (v) correspond to Section 7 ({\it ibid.}). In particular, part (iv) corresponds to
 	Lemma 7.1 ({\it ibid.}). Note that we only need to study the case $p=2$. By
 	\eqref{E:fracrhofinite} with $\varphi(x-y)$ replaced by  $\gamma(x-y)$, we see that
-	\begin{align*}
-		% \label{E:(7.1)}
-	\int_{(\R^d)^2} g^2(x)g^2(-y) \gamma(x-y) \ud x \ud y 	\le C \Norm{\tilde{g}^2}_{L^{2d/(2d-\alpha)}(\R^d)} \Norm{g^2}_{L^{2d/(2d-\alpha)}(\R^d)} =  C \Norm{g}_{L^{4d/(2d-\alpha)}(\R^d)}^4,
-	\end{align*}
+	\begin{align}
+		\label{E:(7.1)}
+		\begin{aligned}
+			\int_{(\R^d)^2} g^2(x)g^2(-y) \gamma(x-y) \ud x \ud y & \le  C \Norm{\tilde{g}^2}_{L^{2d/(2d-\alpha)}(\R^d)} \Norm{g^2}_{L^{2d/(2d-\alpha)}(\R^d)} \\
+																														& =    C \Norm{g}_{L^{4d/(2d-\alpha)}(\R^d)}^4,
+		\end{aligned}
+	\end{align}
 	where $\tilde{g}^2(x) = g(-x)$. Thus equation (7.1)  ({\it ibid.}) can be applied in our setting . The rest of the proof of Lemma 7.1 ({\it
 	ibid.}) remains unchanged.
 
@@ -1755,6 +1758,39 @@ weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalizati
 	\end{align*}
 	which is consistent with the norm we find in \eqref{E:WeakNorm} up to a constant $C_{\alpha,d}$.
 \end{remark}
+
+In order to compare our results with known results, let us introduce another commonly used
+variational constant
+\begin{align}
+	\label{E:VarConstE}
+	\begin{aligned}
+		\mathcal{E}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
+                                     & = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\}.
+	\end{aligned}
+\end{align}
+The relation between $\mathcal{E}_{a,d}(\gamma,\theta)$ and $\mathcal{M}_{a,d}(\gamma,\theta)$ can
+be established in a similar way as Lemma A.2 of \cite{CHSX15AIHP}.
+\begin{lemma}
+	\label{L:EvsM}
+	Under Assumption \ref{A:Noise}, it holds that
+	\begin{align}
+		\label{E:EvsM}
+		\mathcal{E}_{a,d}(\gamma,\theta) = ... \mathcal{M}_{a,d}(\gamma,\theta).
+	\end{align}
+\end{lemma}
+\begin{proof}
+	We first claim that for $g\in \mathcal{F}_a$,
+	\begin{align}
+		\label{E:FracSoblev}
+	  \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \le C \mathcal{E}_a^2(g,g).
+	\end{align}
+	(Follow the proof of Lemma 7.1 and use our estimate \eqref{E:(7.1)} to show this.)
+
+	Let $\kappa$ be the best constant in the inequality \eqref{E:FracSoblev}. Follow the arguments in
+	the proof of Lemma A.2 of \cite{CHSX15AIHP} to write both $\mathcal{M}_{a,d}(\gamma,\theta)$ and
+	$\mathcal{E}_{a,d}(\gamma,\theta)$ in terms of $\kappa$, from which one deduces the relation
+	\eqref{E:EvsM}. Could you please feel in the details?
+\end{proof}
 
 % \section{Existence and uniqueness of the solution --- the proof of Theorem \ref{T:solvable}}
 \section{Existence and uniqueness of the solution}
@@ -2777,7 +2813,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\newblock Temporal asymptotics for fractional parabolic Anderson model.
 	\newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
 	% }}}
-	\bibitem{ChenHuSongXing15AIHP} % {{{ 10.
+	\bibitem{CHSX15AIHP} % {{{ 10.
 	Chen, X., Hu, Y.Z., Song, J., and Xing, F. (2015).
 	\newblock Exponential asymptotics for time-space Hamiltonians.
 	\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.} {\bf 51}, no. 4, 1529–-1561.
