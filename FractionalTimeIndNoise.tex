@@ -1486,7 +1486,51 @@ however this can only happen in two cases.
 		\item $a\not= 2$ and $q=0$ .
 	\end{enumerate}
 So it seem that proof technique of Lemma A.2 \cite{15AIHP} may work for the $a=2$ case.
+\vspace{.1in}
+
+\noindent\textbf{Generalization to for arbitrary $a$ and Riesz Kernal:}
+
+Consider any $f \in \mathcal{F}_a$. We have $\Norm{f}_2 = $ and $\mathcal{E}_a < \infty$. Next we choose $C_f$ such that 
+	\[
+		\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x = C_f  \mathcal{E}_a(f,f)^{\alpha / a}.
+	\]
+We now take 
+	\[
+		g(x) = t^{d/2} f(tx).
+	\]
+Its easy to see that $\Norm{g}_2 = 1$. In addition, through a direct calculation one can show that 
+	\[
+		\mathcal{E}_a(g,g) = t^a\mathcal{E}_a(f,f) \quad \text{and} \quad \int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x = t^\alpha \int_{\R^d} \frac{f^2}{|x|^\alpha} \ud x.
+	\]
+From this we can deduce that 
+	\[
+		\int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x = C_f \mathcal{E}_a(g,g)^{\alpha/a}.
+	\]
+Next we note that 
+	\begin{align*}
+		M(1) &\ge \int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x - \frac{1}{2}\mathcal{E}_a(g,g)
+		\\& = t^\alpha \int_{\R^d} \frac{f^2}{|x|^\alpha} \ud x - \frac{1}{2}t^a \mathcal{E}_a(f,f)
+		\\& = C_f t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}t^a \mathcal{E}_a(f,f)
+		\\&= C_f \left(t\mathcal{E}_a(f,f)^{1/a}\right)^\alpha - \frac{1}{2} \left( t \mathcal{E}_a(f,f)^{1/a}\right)^a.
+	\end{align*}
+Since $t>0$, then $ t\mathcal{E}_a(f,f)^{1/a}$ runs through all of $\R$ and thus we have that 
+	\[
+		M(1) \ge \sup_{x>0} \left\{ C_fx^\alpha - \frac{1}{2}x^a \right\} = \frac{a-\alpha}{a}C_f^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}.
+	\]
+Note that this reduces to the equation present in the proof of Lemma A.3 \cite{ChenAOP12} when $a=2$. By taking the $\sup$ over all $f\in \mathcal{F}_a$ we see that 
+	\[
+		\infty > M(1) \ge \frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}
+	\]
+where
+	\[
+		\sup_{f\in \mathcal{F}_a} C_f = \sigma(d,\alpha)
+	\]
+and finally we conclude that for any $f\in \mathcal{F}_a$
+	\[
+		\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
+	\]
 \end{NickQuestion}
+
 \begin{remark}
 	Can you first download the paper \cite{ChenAOP12} and name it `ChenAOP12.pdf' and place it under
 	the directory refs? I am not aware of this paper.
