@@ -1529,6 +1529,63 @@ and finally we conclude that for any $f\in \mathcal{F}_a$
 	\[
 		\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
+For arbitrary $f$ we apply the above to $f/\Norm{f}_2$ and see that 
+	\begin{align*}
+		\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \Norm{f}_2^{2-(2\alpha/a)} \mathcal{E}_a(f,f)^{\alpha/a}
+	\end{align*}
+which again reduces to the result in \cite{ChenAOP12} when $a=2$. 
+\vspace{.1in}
+
+\noindent \textbf{Equation (A.5) from \cite{ChenAOP12}:}
+
+Above we showed that 
+	\[
+		M(1) \ge \frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}.
+	\]
+However for any $g \in \mathcal{F}_a$ we have that 
+	\begin{align*}
+		\int_{\R^d} \frac{g^2(x)}{|x|^\alpha} \ud x - \frac{1}{2}\mathcal{E}_a(g,g) & \le \sigma \mathcal{E}_g(g,g)^{\alpha/a} - \frac{1}{2}(\mathcal{E}_a)^{1/a}
+		\\& \le \sup_{x>0} \left\{ \sigma(d,\alpha) x^\alpha - \frac{1}{2}x^a \right\}
+		\\&= \frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}
+	\end{align*}
+and thus we see that 
+	\[
+		M(1) = \frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}.
+	\]
+This reduces to (A.5) \cite{ChenAOP12} for $a=2$.
+
+\vspace{.1in}
+
+\noindent \textbf{Lemma A.1 \cite{15AIHP}:}
+Recall the translation property of the Fourier transform 
+	\[
+		|\mathcal{F}f(x)|  = |\mathcal{F}f(x-y)|.
+	\]
+Therefore we may say that 
+	\[
+		\int_{\R^d} \frac{f^2(x)}{|x-y|^\alpha} \ud x \le \sigma(d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
+	\]
+for and $y\in \R^d$, and in return,
+	\[
+		\sup_{y\in \R^d} \int_{\R^d} \frac{f^2(x)}{|x-y|^\alpha} \le \sigma(d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
+	\]
+Next, notice that 
+	\begin{align*}
+		\int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x-y|^\alpha} \ud x \ud y &= \int_{\R^d} \ud x f^2(x) \int_{\R^d} \ud y \frac{f^(y)}{|x-y|^\alpha}
+		\\& \le \sigma(d,\alpha) \Norm{f}_2^{4-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
+	\end{align*}
+Now for two function $f$ and $g$ and using the property that $\gamma(x) = |x|^{-\alpha} = C(\gamma) (K*K)(x)$, we can copy the step from the proof of Lemma A.1 \cite{ChenAOP14} to see that 
+	\begin{align*}
+		\int_{\R^{2d}} & \gamma(x-y)f^2(x)g^2(y) \ud x \ud y = C(\gamma) \int_{\R^d}\left[ \int_{\R^d}K(z-x)f^2(x) \ud x \right]\left[ \int_{\R^d}K(z-y)g^2(y) \ud y \right]\ud z
+		\\&\le C(\gamma) \left\{\int_{\R^d}\left[ \int_{\R^d}K(z-x)f^2(x) \ud x \right]^2 \ud z \right\}^{1/2}\left\{\left[ \int_{\R^d}K(z-y)g^2(y) \ud y \right]^2\ud z\right\}^{1/2}
+		\\&= \left\{ \int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \right\}^{1/2} \left\{ \int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \right\}^{1/2}
+		\\&\le \sigma(d,\alpha) \Norm{f}_2^{2-(\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/(2a)} \Norm{g}_2^{2-(1\alpha/a)}\mathcal{E}_a(g,g)^{\alpha/(2a)}
+	\end{align*}
+and when $f \in \mathcal{F}_a$ we see that this reduces to 
+	\begin{equation}\label{E:sobineq1}
+			\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}
+	\end{equation}
+and this gives equation (A.1) \cite{15AIHP} for the time independent case. 
 \end{NickQuestion}
 
 \begin{remark}
@@ -1536,6 +1593,65 @@ and finally we conclude that for any $f\in \mathcal{F}_a$
 	the directory refs? I am not aware of this paper.
 \end{remark}
 
+\begin{NickQuestion}[Lemma A.2 \cite{15AIHP} for the time independent case and general $a$.]
+	
+We define 
+	\begin{align}
+		\label{E:VarConstE}
+			E_{a,d}(\gamma,\theta) := \sup_{g \in \mathcal{F}_a} \left\{ \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x-y)\ud x\ud y - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} 
+	\end{align}
+and recall that 
+	\[
+		\mathcal{M}_{a,d}(\gamma,\theta) = \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x-y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\}.
+	\]
+We have that 
+	\begin{align}
+		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
+		\\& \le \sup_{x>0} \left\{ \sigma(d,\alpha) x^\alpha - \frac{1}{2}x^a \right\} \nonumber
+		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)} \label{E:Eupperbound}
+	\end{align}
+and similarly 
+	\begin{align}
+		\mathcal{M}_{a,d}(\gamma,1) & \le \sup_{x > 0} \left\{ \sigma(d,\alpha)^{1/2} x^{\alpha/2} - \frac{1}{2} x^{a} \right\} \nonumber
+		\\&= \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}. \label{E:Mupperbound}
+	\end{align}
+Now choose $0 < \epsilon < \sigma(d,\alpha)$ and let $f\in \mathcal{F}_a$ be such that
+	\[
+		\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \ge (\sigma(d,\alpha)-\epsilon) \mathcal{E}_a(f,f)^{\alpha/a}.
+	\]
+Now define 
+	\[
+		g(x) = t^{d/2}f(tx).
+	\]
+Notice that 
+	\begin{align*}
+			E_{a,d}(\gamma,1) &\ge \int_{\R^{2d}} g^2(x)g^2(y) \gamma(x-y)\ud x\ud y - \frac{1}{2}\: \mathcal{E}_a(g,g)
+			\\&= t^\alpha \int_{\R^{2d}} \gamma(x-y) f^2(x)f^2(y) - \frac{1}{2} t^a \mathcal{E}_a(f,f)
+			\\& \ge (\sigma(d,\alpha)-\epsilon) t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2} t^a \mathcal{E}_a(f,f)
+	\end{align*}
+and this is true for all $t>0$ so we can say that 
+	\begin{align*}
+			E_{a,d}(\gamma,1) &\ge \sup_{x>0} \left\{ (\sigma(d,\alpha)-\epsilon) x^\alpha - \frac{1}{2} x^a \right\} \nonumber
+			\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-2)}. 
+	\end{align*}
+and be letting $\epsilon \to 0$ gives us 
+	\begin{equation}\label{E:Elowerbound}
+		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}. 
+	\end{equation}
+and if we combine this with \eqref{E:Eupperbound} then we see that 
+	\begin{equation}\label{E:Eequality}
+			E_{a,d}(\gamma,1) = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}.
+	\end{equation}
+Similarly we show that 
+	\begin{equation}\label{E:Meqquality}
+			\mathcal{M}_{a,d}(\gamma,1) = \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}.
+	\end{equation}
+Lastly, by combining \eqref{E:Eequality} and \eqref{E:Meqquality}, we see that 
+	\begin{equation} \label{E:EandMrelation}
+		E_{a,d}(\gamma,1) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)}\mathcal{M}_{a,d}(\gamma,1)^{(2a-\alpha)/(a-2)} .
+	\end{equation}
+Equations \eqref{E:Meqquality}, \eqref{E:Eequality} and \eqref{E:EandMrelation} recover equations (A.2), (A.3) and (A.4) \cite{15AIHP} respectively when $a=2$. 
+\end{NickQuestion}
 	\section{Proof Sketches}
 
 	\begin{NickQuestion}
