@@ -1768,9 +1768,9 @@ variational constant
                                      & = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\}.
 	\end{aligned}
 \end{align}
-By using the same techniques used to derive \eqref{E:ScaleM}, one can show that for any $\theta>0$ that 
+By using the same techniques used to derive \eqref{E:ScaleM}, one can show that for any $\Theta >0$ and $\theta>0$ that 
 	\begin{equation}\label{E:ScaleE}
-			E_{a,d}(\gamma,\theta) =\left(\frac{1}{\theta} \right)^{1/(a-\alpha)} E_{a,d}(\gamma,1).
+			E_{a,d}(\Theta\gamma,\theta) =\Theta^{\frac{a}{a-\alpha}} \theta^{-\frac{\alpha}{a-\alpha}}  E_{a,d}(\gamma,1).
 	\end{equation}
 The relation between $\mathcal{E}_{a,d}(\gamma,\theta)$ and $\mathcal{M}_{a,d}(\gamma,\theta)$ can
 be established in a similar way as Lemma A.2 of \cite{CHSX15AIHP}.
@@ -1778,13 +1778,13 @@ be established in a similar way as Lemma A.2 of \cite{CHSX15AIHP}.
 	\label{L:EvsM}
 	Under Assumption \ref{A:Noise}, the following three expressions hold:
 		\begin{equation}\label{E:Erelation}
-			E_{a,d}(\gamma,\theta) =\theta^{1/(a-\alpha)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)},
+			E_{a,d}(\Theta\gamma,\theta) =\Theta^{\frac{a}{a-\alpha}} \theta^{-\frac{\alpha}{a-\alpha}}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)},
 		\end{equation}
 		\begin{equation}\label{E:Mrelation}
-			\mathcal{M}_{a,d}(\gamma,\theta) = \theta^{\alpha/(2a-\alpha)}\left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)},
+			\mathcal{M}_{a,d}(\Theta\gamma,\theta) =	\Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)},
 		\end{equation}
 		\begin{equation}	\label{E:EvsM}
-				E_{a,d}(\gamma,\theta) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)} \theta^{(\alpha-1)/(a-\alpha)}\mathcal{M}_{a,d}(\gamma,\theta).
+				E_{a,d}(\Theta\gamma,\theta) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)} \mathcal{M}_{a,d}(\Theta\gamma,\theta)^{\frac{2a-\alpha}{a-\alpha}}.
 		\end{equation}
 
 \end{lemma}
@@ -1891,13 +1891,13 @@ We note that this reduces to equation (A.1) \cite{15AIHP} for the time independe
 	\end{proof}
 
 	\begin{proof}[Proof of Lemma \ref{L:EvsM}:]
-We only prove the case of $\theta=1$, the general case can be proven by applying the scaling properties \eqref{E:ScaleM} and \eqref{E:ScaleE}. 
+We only prove the case of $\Theta=\theta=1$, the general case can be proven by applying the scaling properties \eqref{E:ScaleM} and \eqref{E:ScaleE}. 
 
 We have that 
 	\begin{align}
 		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
 		\\& \le \sup_{x>0} \left\{ \sigma(d,\alpha) x^\alpha - \frac{1}{2}x^a \right\} \nonumber
-		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)} \label{E:Eupperbound}
+		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)} \label{E:Eupperbound}
 	\end{align}
 and similarly 
 	\begin{align}
@@ -1921,15 +1921,15 @@ Notice that
 and this is true for all $t>0$ so we can say that 
 	\begin{align*}
 		E_{a,d}(\gamma,1) &\ge \sup_{x>0} \left\{ (\sigma(d,\alpha)-\epsilon) x^\alpha - \frac{1}{2} x^a \right\} \nonumber
-\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-2)}. 
+\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-\alpha)}. 
 	\end{align*}
 and be letting $\epsilon \to 0$ gives us 
 	\begin{equation}\label{E:Elowerbound}
-		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}. 
+		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}. 
 	\end{equation}
 and if we combine this with \eqref{E:Eupperbound} then we see that 
 	\begin{equation}\label{E:Eequality1}
-		E_{a,d}(\gamma,1) = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}.
+		E_{a,d}(\gamma,1) = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}.
 	\end{equation}
 Similarly we show that 
 	\begin{equation}\label{E:Meqquality1}
