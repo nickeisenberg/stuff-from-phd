@@ -1226,24 +1226,53 @@ results for both stochastic wave and heat equations.
 
 \begin{example}[Asymptotics for SHE with fractional Laplace and white noise]% {{{
 	\label{Eg:AsymStable}
-	In this example, we restrict us to the case when $b=1$, $a\in (1,2]$, $\alpha=d=1$, and $r=0$.
-	This is the 1-dimensional SHE with fractional Laplace driven by white noise. In this case,
+	In this example we restrict ourselves to the case when $b=1$, $a\in (0,2]$, $\alpha < d$, and $r=0$, which is the 1-dimensional SHE with fractional Laplace. With this set up we have
 	\begin{align*}
-		\beta = \frac{2a-1}{a-1} \qquad \text{and} \qquad t_p = (p-1)^{\frac{a}{2a-1}} t,
+	\beta = \frac{2a-\alpha}{a-\alpha} \qquad \text{and} \qquad t_p = (p-1)^{\frac{a}{2a-\alpha}} t,
 	\end{align*}
-	and by \eqref{E:Mdelta1d} and Corollary \ref{C:Lim},
+and by Corollary \ref{C:Lim},
 	\begin{align}
 		\label{E:AsymStable-t}
-		\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^{\frac{2a-1}{a-1} }} =
-		p (p-1)^{\frac{a}{a-1}}\left( \frac{1}{2} \right)\left( \frac{2a}{2a-1} \right)^{\frac{2a-1}{a-1}} \left[ \theta \nu^{-1/a} \mathcal{M}_{a,1}(\delta_0)^{\frac{2a-1}{a}} \right]^{ \frac{a}{a-1} } \frac{a-1}{a}
+		\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^{\frac{2a-\alpha}{a-\alpha} }} =
+		p (p-1)^{\frac{a}{a-\alpha}} \left( \frac{1}{2} \right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}} \left[ \theta \nu^{-\alpha/a} \mathcal{M}_{a,d}^{\frac{2a-\alpha}{a}} \right]^{ \frac{a}{a-\alpha} } \left(\frac{a-\alpha}{a}\right)
 	\end{align}
 	and
 	\begin{align}
 		\label{E:AsymStable-p}
-		\lim_{p \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{p^{\frac{2a-1}{a-1} }} =
-		t^{\frac{2a-1}{a-1}}
-		\left( \frac{1}{2} \right)\left( \frac{2a}{2a-1} \right)^{\frac{2a-1}{a-1}} \left[ \theta \nu^{-1/a} \mathcal{M}_{a,1}(\delta_0)^{\frac{2a-1}{a}} \right]^{ \frac{a}{a-1} } \frac{a-1}{a}.
+		\lim_{p \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{p^{\frac{2a-\alpha}{a-\alpha} }} =
+		t^{\frac{2a-\alpha}{a-\alpha}}
+		\left( \frac{1}{2} \right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}} \left[ \theta \nu^{-\alpha/a} \mathcal{M}_{a,d}^{\frac{2a-\alpha}{a}} \right]^{ \frac{a}{a-\alpha} } \left(\frac{a-\alpha}{a}\right).
 	\end{align}
+	
+We mention that this setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the covariance function is given by 
+\[
+\mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x)
+\]
+and $\gamma(x)$ is defined to be either of the following:
+\[ \gamma(x) := 
+\begin{cases}
+|x|^{-\alpha} & \text{where } \alpha \in (0,d) \text{ or}
+\\ \prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
+\end{cases}
+\]
+In addition, the variational constant is given by 
+	\begin{align*}
+		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s  
+		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
+	\end{align*}
+with
+	\[
+		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}
+	\]
+and there they proved the following:
+	\begin{theorem}
+Let $\alpha < d$ and let $p \ge 2$. Then
+		\[
+			\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma).
+		\]
+	\end{theorem}
+
+We mention that setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover the above theorem. 
 \end{example}% }}}
 
 \begin{example}[Asymptotics for SPDEs with $r=\Ceil{b}-b$ and white noise]% {{{
