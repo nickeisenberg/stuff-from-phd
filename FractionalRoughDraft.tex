@@ -1243,36 +1243,33 @@ and by Corollary \ref{C:Lim},
 		t^{\frac{2a-\alpha}{a-\alpha}}
 		\left( \frac{1}{2} \right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}} \left[ \theta \nu^{-\alpha/a} \mathcal{M}_{a,d}^{\frac{2a-\alpha}{a}} \right]^{ \frac{a}{a-\alpha} } \left(\frac{a-\alpha}{a}\right).
 	\end{align}
-	
-We mention that this setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the covariance function is given by 
+This setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the covariance function is given by
 \[
 \mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x)
 \]
 and $\gamma(x)$ is defined to be either of the following:
-\[ \gamma(x) := 
+\[ \gamma(x) :=
 \begin{cases}
 |x|^{-\alpha} & \text{where } \alpha \in (0,d) \text{ or}
 \\ \prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
 \end{cases}
 \]
-In addition, the variational constant is given by 
+They proved that for $\alpha < d$ and let $p \ge 2$,
+\[
+	\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma),
+\]
+where the variational constant is given by
 	\begin{align*}
-		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s  
+		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
 		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
 	\end{align*}
+	\textcolor{magenta}{(There should not be the factor $(2\pi)^{-d}$, please double check!)}
 with
 	\[
-		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}
+		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
 	\]
-and there they proved the following:
-	\begin{theorem}
-Let $\alpha < d$ and let $p \ge 2$. Then
-		\[
-			\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma).
-		\]
-	\end{theorem}
-
-We mention that setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover the above theorem. 
+By setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover the above theorem.
+\textcolor{magenta}{Please give the explicit relation between $\mathcal{M}_{a,d}(\gamma)$ and $\mathbf{M}(a,0,d,\gamma)$.}
 \end{example}% }}}
 
 \begin{example}[Asymptotics for SPDEs with $r=\Ceil{b}-b$ and white noise]% {{{
@@ -1797,7 +1794,7 @@ variational constant
                                      & = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\}.
 	\end{aligned}
 \end{align}
-By using the same techniques used to derive \eqref{E:ScaleM}, one can show that for any $\Theta >0$ and $\theta>0$ that 
+By using the same techniques used to derive \eqref{E:ScaleM}, one can show that for any $\Theta >0$ and $\theta>0$ that
 	\begin{equation}\label{E:ScaleE}
 			E_{a,d}(\Theta\gamma,\theta) =\Theta^{\frac{a}{a-\alpha}} \theta^{-\frac{\alpha}{a-\alpha}}  E_{a,d}(\gamma,1).
 	\end{equation}
@@ -1831,37 +1828,37 @@ where $\sigma(d,\alpha)$ is a constant that will be defined below.
 	\begin{proof}
 The proof of this result follows the scheme laid out in the proof of Lemma A.3 \cite{ChenAOP12}. By the same techniques presented in Lemma \ref{T:Variation}, one can show the following quantity is finite:
 	\begin{align*}
-		\Lambda &:= \sup_{f\in\mathcal{F}_a}  \left\{  \int_{\R^d} g^2(x)\gamma(x) \ud x - \frac{(2\pi)^{-d}}{2} \int_{\R^d} |x|^a|\mathcal{F} g(x)|^2 \ud x  \right\} 
+		\Lambda &:= \sup_{f\in\mathcal{F}_a}  \left\{  \int_{\R^d} g^2(x)\gamma(x) \ud x - \frac{(2\pi)^{-d}}{2} \int_{\R^d} |x|^a|\mathcal{F} g(x)|^2 \ud x  \right\}
 		\\& =    \sup_{f\in\mathcal{F}_a}  \left\{  \int_{\R^d} g^2(x)\gamma(x) \ud x - \frac{1}{2} \mathcal{E}_a(f,f)\right\} < \infty.
 	\end{align*}
-Now consider any $f \in \mathcal{F}_a$. We have $\Norm{f}_2 = 1$ and $\mathcal{E}_a < \infty$. Next we choose $C_f$ such that 
+Now consider any $f \in \mathcal{F}_a$. We have $\Norm{f}_2 = 1$ and $\mathcal{E}_a < \infty$. Next we choose $C_f$ such that
 	\[
 		\int_{\R^d} f^2(x)\gamma(x)\ud x = C_f  \mathcal{E}_a(f,f)^{\alpha / a}.
 	\]
-We now take 
+We now take
 	\[
 		g(x) = t^{d/2} f(tx).
 	\]
-Its easy to see that $\Norm{g}_2 = 1$. In addition, through a direct calculation one can show that 
+Its easy to see that $\Norm{g}_2 = 1$. In addition, through a direct calculation one can show that
 	\[
 		\mathcal{E}_a(g,g) = t^a\mathcal{E}_a(f,f) \quad \text{and} \quad \int_{\R^d} g^2(x)\gamma(x) \ud x = t^\alpha \int_{\R^d} f^2(x)\gamma(x)\ud x.
 	\]
-From this we can deduce that 
+From this we can deduce that
 	\[
 		\int_{\R^d} g^2(x)\gamma(x)\ud x = C_f \mathcal{E}_a(g,g)^{\alpha/a}.
 	\]
-Next we note that 
+Next we note that
 	\begin{align*}
 		\Lambda &\ge \int_{\R^d} g^2(x)\gamma(x)\ud x - \frac{1}{2}\mathcal{E}_a(g,g)
 		\\& = t^\alpha \int_{\R^d} f^2(x)\gamma(x) \ud x - \frac{1}{2}t^a \mathcal{E}_a(f,f)
 		\\& = C_f t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}t^a \mathcal{E}_a(f,f)
 		\\&= C_f \left(t\mathcal{E}_a(f,f)^{1/a}\right)^\alpha - \frac{1}{2} \left( t \mathcal{E}_a(f,f)^{1/a}\right)^a.
 	\end{align*}
-Since $t>0$, then $ t\mathcal{E}_a(f,f)^{1/a}$ runs through all of $\R$ and thus we have that 
+Since $t>0$, then $ t\mathcal{E}_a(f,f)^{1/a}$ runs through all of $\R$ and thus we have that
 	\[
 		\Lambda \ge \sup_{x>0} \left\{ C_fx^\alpha - \frac{1}{2}x^a \right\} = \frac{a-\alpha}{a}C_f^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}.
 	\]
-Note that this reduces to the equation present in the proof of Lemma A.3 \cite{ChenAOP12} when $a=2$. By taking the $\sup$ over all $f\in \mathcal{F}_a$ we see that 
+Note that this reduces to the equation present in the proof of Lemma A.3 \cite{ChenAOP12} when $a=2$. By taking the $\sup$ over all $f\in \mathcal{F}_a$ we see that
 	\[
 		\infty > \Lambda \ge \frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}
 	\]
@@ -1873,7 +1870,7 @@ and finally we conclude that for any $f\in \mathcal{F}_a$
 	\begin{equation}\label{E:SobIneqNorm1}
 		\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\end{equation}
-For arbitrary $f\in L^2(\R^2)$ with $\mathcal{E}_a(f,f) < \infty$ we apply the \eqref{E:SobIneqNorm1} to $f/\Norm{f}_2$ and see that 
+For arbitrary $f\in L^2(\R^2)$ with $\mathcal{E}_a(f,f) < \infty$ we apply the \eqref{E:SobIneqNorm1} to $f/\Norm{f}_2$ and see that
 	\begin{align*}
 		\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \Norm{f}_2^{2-(2\alpha/a)} \mathcal{E}_a(f,f)^{\alpha/a}
 	\end{align*}
@@ -1888,7 +1885,7 @@ For any $f \in \mathcal{F}_a$ we have
 	\end{lemma}
 
 	\begin{proof}
-Suppose that $f \in L^2(\R^d)$ and suppose that $\mathcal{E}_a(f,f) < \infty$ and let $y\in \R^d$ be arbitrary. Recall the translation property of the Fourier transform 
+Suppose that $f \in L^2(\R^d)$ and suppose that $\mathcal{E}_a(f,f) < \infty$ and let $y\in \R^d$ be arbitrary. Recall the translation property of the Fourier transform
 	\[
 		|\mathcal{F}f(x)|  = |\mathcal{F}f(x-y)|.
 	\]
@@ -1900,7 +1897,7 @@ and in return,
 	\[
 		\sup_{y\in \R^d} \int_{\R^d} \frac{f^2(x)}{|x-y|^\alpha} \le \sigma(d,\alpha) 		\Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
-Next, notice that 
+Next, notice that
 	\begin{align*}
 		\int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x-y|^\alpha} \ud x \ud y &= \int_{\R^d} \ud x f^2(x) \int_{\R^d} \ud y \frac{f^(y)}{|x-y|^\alpha}
 		\\& \le \sigma(d,\alpha) \Norm{f}_2^{4-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
@@ -1912,23 +1909,23 @@ Now for two functions $f$ and $g$ and  by using the property that $\gamma(x) = C
 		\\&= \left\{ \int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \right\}^{1/2} \left\{ \int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \right\}^{1/2}
 		\\&\le \sigma(d,\alpha) \Norm{f}_2^{2-(\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/(2a)} \Norm{g}_2^{2-(1\alpha/a)}\mathcal{E}_a(g,g)^{\alpha/(2a)}
 	\end{align*}
-and when $f \in \mathcal{F}_a$ we see that this reduces to 
+and when $f \in \mathcal{F}_a$ we see that this reduces to
 	\[
 		\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
-We note that this reduces to equation (A.1) \cite{15AIHP} for the time independent case when $a=2$. 
+We note that this reduces to equation (A.1) \cite{15AIHP} for the time independent case when $a=2$.
 	\end{proof}
 
 	\begin{proof}[Proof of Lemma \ref{L:EvsM}:]
-We only prove the case of $\Theta=\theta=1$, the general case can be proven by applying the scaling properties \eqref{E:ScaleM} and \eqref{E:ScaleE}. 
+We only prove the case of $\Theta=\theta=1$, the general case can be proven by applying the scaling properties \eqref{E:ScaleM} and \eqref{E:ScaleE}.
 
-We have that 
+We have that
 	\begin{align}
 		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
 		\\& \le \sup_{x>0} \left\{ \sigma(d,\alpha) x^\alpha - \frac{1}{2}x^a \right\} \nonumber
 		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)} \label{E:Eupperbound}
 	\end{align}
-and similarly 
+and similarly
 	\begin{align}
 		\mathcal{M}_{a,d}(\gamma,1) & \le \sup_{x > 0} \left\{ \sigma(d,\alpha)^{1/2} x^{\alpha/2} - \frac{1}{2} x^{a} \right\} \nonumber
 		\\&= \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}. \label{E:Mupperbound}
@@ -1937,38 +1934,38 @@ Now choose $0 < \epsilon < \sigma(d,\alpha)$ and let $f\in \mathcal{F}_a$ be suc
 	\[
 		\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \ge (\sigma(d,\alpha)-\epsilon) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
-Now define 
+Now define
 	\[
 		g(x) = t^{d/2}f(tx).
 	\]
-Notice that 
+Notice that
 	\begin{align*}
 		E_{a,d}(\gamma,1) &\ge \int_{\R^{2d}} g^2(x)g^2(y) \gamma(x-y)\ud x\ud y - \frac{1}{2}\: \mathcal{E}_a(g,g)
 		\\&= t^\alpha \int_{\R^{2d}} \gamma(x-y) f^2(x)f^2(y) - 		\frac{1}{2} t^a \mathcal{E}_a(f,f)
 		\\& \ge (\sigma(d,\alpha)-\epsilon) t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2} t^a \mathcal{E}_a(f,f)
 	\end{align*}
-and this is true for all $t>0$ so we can say that 
+and this is true for all $t>0$ so we can say that
 	\begin{align*}
 		E_{a,d}(\gamma,1) &\ge \sup_{x>0} \left\{ (\sigma(d,\alpha)-\epsilon) x^\alpha - \frac{1}{2} x^a \right\} \nonumber
-\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-\alpha)}. 
+\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-\alpha)}.
 	\end{align*}
-and be letting $\epsilon \to 0$ gives us 
+and be letting $\epsilon \to 0$ gives us
 	\begin{equation}\label{E:Elowerbound}
-		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}. 
+		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}.
 	\end{equation}
-and if we combine this with \eqref{E:Eupperbound} then we see that 
+and if we combine this with \eqref{E:Eupperbound} then we see that
 	\begin{equation}\label{E:Eequality1}
 		E_{a,d}(\gamma,1) = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}.
 	\end{equation}
-Similarly we show that 
+Similarly we show that
 	\begin{equation}\label{E:Meqquality1}
 		\mathcal{M}_{a,d}(\gamma,1) = \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}.
 	\end{equation}
-Lastly, by combining \eqref{E:Eequality1} and \eqref{E:Meqquality1}, we see that 
+Lastly, by combining \eqref{E:Eequality1} and \eqref{E:Meqquality1}, we see that
 	\begin{equation} \label{E:EandMrelation1}
 		E_{a,d}(\gamma,1) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)}\mathcal{M}_{a,d}(\gamma,1)^{(2a-\alpha)/(a-2)} .
 	\end{equation}
-Equations \eqref{E:Meqquality1}, \eqref{E:Eequality1} and \eqref{E:EandMrelation1} recover equations (A.2), (A.3) and (A.4) \cite{15AIHP} respectively when $a=2$. 
+Equations \eqref{E:Meqquality1}, \eqref{E:Eequality1} and \eqref{E:EandMrelation1} recover equations (A.2), (A.3) and (A.4) \cite{15AIHP} respectively when $a=2$.
 	\end{proof}
 % \section{Existence and uniqueness of the solution --- the proof of Theorem \ref{T:solvable}}
 \section{Existence and uniqueness of the solution}
