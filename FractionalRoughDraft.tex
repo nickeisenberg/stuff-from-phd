@@ -1224,7 +1224,7 @@ results for both stochastic wave and heat equations.
 	Theorem 4.1]{Hu02Chaos}.
 \end{example}% }}}
 
-\begin{example}[Asymptotics for SHE with fractional Laplace and white noise]% {{{
+\begin{example}[Asymptotics for SHE with fractional Laplace]% {{{
 	\label{Eg:AsymStable}
 	In this example we restrict ourselves to the case when $b=1$, $a\in (0,2]$, $\alpha < d$, and $r=0$, which is the 1-dimensional SHE with fractional Laplace. With this set up we have
 	\begin{align*}
@@ -1245,15 +1245,16 @@ and by Corollary \ref{C:Lim},
 	\end{align}
 This setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the covariance function is given by
 \[
-\mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x)
+\mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x-y)
 \]
 and $\gamma(x)$ is defined to be either of the following:
-\[ \gamma(x) :=
-\begin{cases}
-|x|^{-\alpha} & \text{where } \alpha \in (0,d) \text{ or}
-\\ \prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
-\end{cases}
-\]
+\begin{align}
+	\label{E:gammaHu}
+	\gamma(x) := \begin{cases}
+								|x|^{-\alpha}                  & \text{where } \alpha \in (0,d)\: \text{ or} \\
+								\prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
+								\end{cases}
+\end{align}
 They proved that for $\alpha < d$ and let $p \ge 2$,
 \[
 	\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma),
@@ -1270,6 +1271,13 @@ with
 	\]
 By setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover the above theorem.
 \textcolor{magenta}{Please give the explicit relation between $\mathcal{M}_{a,d}(\gamma)$ and $\mathbf{M}(a,0,d,\gamma)$.}
+Finally, we note that condition \eqref{E:gammaHu} can be relaxed to allow white noise in one
+dimensional case, namely, $\alpha=d=1$. In this case, one simply replace $\alpha$ and $d$ in both
+\eqref{E:AsymStable-t} and \eqref{E:AsymFracSHE-p} by $1$ and replace $\mathcal{M}_{a,d}$ by
+$\mathcal{M}_{a ,1}(\delta_0)$.
+
+\textcolor{magenta}{Can you obtain the explicit formula for $\mathcal{M}{a,1}(\delta_0)$, by
+mimicking the proof for the case $a=2$ in  \cite[Lemma 7.2]{ChenLi04}?}
 \end{example}% }}}
 
 \begin{example}[Asymptotics for SPDEs with $r=\Ceil{b}-b$ and white noise]% {{{
