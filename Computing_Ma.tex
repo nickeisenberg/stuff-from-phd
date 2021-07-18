@@ -1,0 +1,188 @@
+\documentclass[a4paper,12pt]{article} % {{{ Head
+
+% -------------------------------------------------
+%
+% | |    ___   / ___| |__   ___ _ __
+% | |   / _ \ | |   | '_ \ / _ \ '_ \
+% | |__|  __/ | |___| | | |  __/ | | |
+% |_____\___|  \____|_| |_|\___|_| |_|
+%
+%  Created on Sat 17 Jul 2021 03:50:06 PM EDT
+%
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+\usepackage[margin=1in]{geometry}
+% \setlength{\topmargin}{-0.25in}
+
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+\usepackage{graphicx,url,subfig}
+% \RequirePackage[OT1]{fontenc}
+% \usepackage{etex}
+\RequirePackage{amsthm,amsmath,amssymb,amscd,mathrsfs}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\RequirePackage[numbers]{natbib}
+% \usepackage{luacode}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\usepackage{xcolor}
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Norm}[1]{\left|\left|  #1   \right|\right|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand*{\one}{{ {\rm 1\mkern-1.5mu}\!{\rm I} }}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
+\DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+\newcommand{\Dxa}{{}_x D_\delta^a}
+\newcommand{\Dtb}{{}_t D_*^\beta}
+\newcommand{\lMr}[3]{\:{}_{#1} #2_{#3}}
+\newcommand{\tlMr}[4]{\:{}^{\hspace{0.2em}#1}_{#2} \hspace{-0.1em}#3_{#4}}
+% }}}
+
+% -------------------------------------------------
+% Title, authors and date go here.
+% -------------------------------------------------
+\begin{document}
+
+% -------------------------------------------------
+% Document begins here
+% -------------------------------------------------
+
+Here let's mimic the proof of \cite[Lemma 7.2]{ChenLi04}.
+\bigskip
+
+By Lagrange multiplier, we see that
+\begin{multline*}
+	2\left(\int_\R |f(x)|^{2p}\ud x\right)^{-(p-1)/p} \int_\R f^{2p-1}(x)g(x)\ud x
+	- \frac{1}{2\pi} \int_{\R} |\xi|^a \mathcal{F} g(\xi) \overline{\mathcal{F} f(\xi)} \ud \xi \\
+	= \frac{\lambda}{\pi}\int_\R \overline{\mathcal{F}f(\xi)} \mathcal{F}g(\xi) \ud \xi.
+\end{multline*}
+We can remove the conjugate sign in the above equality because $f$ is an even function.
+By Plancherel theorem, we see that
+\begin{multline*}
+	\left(\int_\R |f(x)|^{2p}\ud x\right)^{-(p-1)/p} \int_\R \mathcal{F}[f^{2p-1}](\xi)
+	\mathcal{F}g(\xi)\ud \xi -
+	\frac{1}{2}\int_{\R} |\xi|^a \mathcal{F} g(\xi) \mathcal{F} f(\xi) \ud \xi \\
+	= \lambda\int_\R \mathcal{F}f(\xi) \mathcal{F}g(\xi) \ud \xi.
+\end{multline*}
+By writing the above equality in the following way:
+\begin{multline*}
+	\left(\int_\R |f(x)|^{2p}\ud x\right)^{-(p-1)/p} \int_\R
+	\frac{\mathcal{F}[f^{2p-1}](\xi)}{|\xi|^{a/2}}
+	\mathcal{F}g(\xi)|\xi|^{a/2}\ud \xi -
+	\frac{1}{2}\int_{\R} \mathcal{F} f(\xi) |\xi|^{a/2} \mathcal{F} g(\xi) |\xi|^{a/2} \ud \xi \\
+	= \lambda\int_\R \frac{\mathcal{F}f(\xi)}{|\xi|^{a/2}} \mathcal{F}g(\xi) |\xi|^{a/2} \ud \xi,
+\end{multline*}
+we see that for all $\xi\in\R$,
+\begin{align*}
+	\left(\int_\R |f(x)|^{2p}\ud x\right)^{-(p-1)/p} \frac{\mathcal{F}[f^{2p-1}](\xi)}{|\xi|^{a/2}}
+	- \frac{1}{2}\mathcal{F} f(\xi) |\xi|^{a/2}
+	= \lambda \frac{\mathcal{F}f(\xi)}{|\xi|^{a/2}}.
+\end{align*}
+Multiply $|\xi|^{a/2}$ on both sides to see that
+\begin{align}
+	\label{E:(7.9)} \tag{7.9}
+	\left(\int_\R |f(x)|^{2p}\ud x\right)^{-(p-1)/p} \mathcal{F}[f^{2p-1}](\xi)
+	- \frac{1}{2}\mathcal{F} f(\xi) |\xi|^{a}
+	= \lambda \mathcal{F}f(\xi).
+\end{align}
+Now multiply $(2\pi)^{-1}\mathcal{F}f(\xi)$ on both sides of \eqref{E:(7.9)} and integrate to see that
+\begin{align*}
+	\left(\int_\R |f(x)|^{2p}\ud x\right)^{1/p}
+	-\frac{1}{4\pi}\int_\R |\xi|^a |\mathcal{F}f(\xi)|^2\ud \xi
+	= \lambda,
+\end{align*}
+where we have used the fact that $\Norm{f}_{L^2(\R)}=1$.
+
+Now multiply $(2\pi)^{-1}\mathcal{F}f(\xi)|\xi|^{a/2}$ on both sides of \eqref{E:(7.9)} and
+integrate to see that... \textcolor{magenta}{The difficulties come from here. I cannot find the
+counter part of the integration by parts for fractional derivatives.}
+
+
+% {{{ References
+% -------------------------------------------------
+% References go here.
+% -------------------------------------------------
+\begin{thebibliography}{999}
+
+	\bibitem{ChenLi04} % {{{ 11.
+	Chen, X. and Li, W. (2004).
+	\newblock Large and moderate deviations for intersection local times.
+	\newblock {\em Probab. Theory Related Fields} {\bf 128} 213--254.
+	% }}}
+
+\end{thebibliography} % }}}
+
+\end{document}
+
