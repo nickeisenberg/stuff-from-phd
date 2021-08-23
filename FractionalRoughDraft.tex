@@ -174,7 +174,7 @@ Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gma
 	sharp conditions, under which a global $L^p(\Omega)$-solution exits. In this case, exact moment
 	asymptotics are obtained following the same strategy in a recent work by Balan {\it et al}
 	\cite{BCC21}. In the case when there exits only a local solution, we determine the precise
-	deterministic time $T_2$, before which the unique $L^2(\Omega)$-solution exits, but after which
+	deterministic time, $T_2$, before which the unique $L^2(\Omega)$-solution exits, but after which
 	the series corresponding to the $L^2(\Omega)$-moment of the solution blows up. The results in this
 	paper can be applied to the standard stochastic heat equation with the same noise, while the
 	corresponding results for the stochastic wave equation were obtained recently in \cite{BCC21}.  By
@@ -207,17 +207,17 @@ In this paper we study the following fractional {\it stochastic partial differen
 	\end{cases}
 \end{equation}
 where $a \in (0,2)$, $b \in (0,2)$, $r\ge 0$, $\nu > 0$ and $\theta>0$. Here the noise $W =
-\left\{ W(\varphi) : \varphi \in \mathcal{D}(\R^d)  \right\}$ is a centered and time-independent
+\left\{ W(\phi) : \phi \in \mathcal{D}(\R^d)  \right\}$ is a centered and time-independent
 Gaussian process, defined on a complete probability space $(\Omega, \mathcal{F}, P)$, with mean zero
 and covariance
 \begin{align*}
-		\mathbb{E}\left[ W(\varphi) W(\psi) \right] = \int_{\R^d} \mathcal{F}\varphi(\xi)\overline{\mathcal{F}\psi(\xi)} \mu(\ud \xi) =: \langle \varphi, \psi \rangle_{\mathcal{H}},
+		\mathbb{E}\left[ W(\phi) W(\psi) \right] = \int_{\R^d} \mathcal{F}\phi(\xi)\overline{\mathcal{F}\psi(\xi)} \mu(\ud \xi) =: \langle \phi, \psi \rangle_{\mathcal{H}},
 \end{align*}
 where $\mu$ refers to the {\it spectral measure}, which is assumed to be a nonnegative and
-nonnegative definite tempered measure on $\R^d$. Let $\gamma$ be the Fourier transform of $\mu$,
+nonnegative definite tempered measure on $\R^d$. Let $\gamma$ be the Fourier transform of $\mu$ (see Subsection \ref{SS:Malliavin}),
 which is also a nonnegative and nonnegative measure on $\R^d$ thanks to Bochner's theorem.
-Throughout of the paper, we use $\mathcal{F}\varphi(\xi) = \int_{\R^d} \exp(-ix \xi) \varphi(x) \ud
-x$ to denote the Fourier transform of a test function $\varphi$.
+Throughout the paper, we use $\mathcal{F}\phi(\xi) = \int_{\R^d} \exp(-ix \xi) \phi(x) \ud
+x$ to denote the Fourier transform of a test function $\phi$.
 
 In \eqref{E:SPDE}, $(-\Delta)^{a/2}$ refers to the {\it fractional Laplacian} of order $a$,
 $\partial^b_t$ denotes the {\it Caputo fractional differential operator}
@@ -323,8 +323,8 @@ the fractional noise and a mixture of them:
 
 \begin{remark}[Spectral density and decomposition]
 	\label{R:Noise}
-	Recall that the {\it spectral density} of $\gamma$ in \eqref{E:corfunction}, which is
-	$\mathcal{F}\gamma$ by definition, takes the following form:
+	Recall that the {\it spectral density} of $\mu$ from \eqref{E:corfunction}, which by definition is
+	$\mathcal{F}\gamma$, takes the following form:
 	\begin{equation}
 	\label{E:specfunction}
 	\mu (\ud \xi) = \varphi(\xi) \ud \xi \quad \text{with} \quad
@@ -539,7 +539,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	illustrate possible cases in Figure \ref{F:SHE}. In particular, let us explain a few cases:
 	\begin{enumerate}[(a)]
 		\item When $d=2$, condition \eqref{E:CrSHE} says that the $2$-dimensional SHE driven by white
-			noise has only a local $L^p(\Omega)$ solution. In this case, the critical time $T_p$ becomes
+			noise has only a local $L^p(\Omega)$ solution. By applying \eqref{E:Tp} to this case, the critical time $T_p$ becomes
 			\begin{align}
 				\label{E:Tp-SHE2}
 				T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_{2,2}(\delta_0)}, \qquad p\ge 2.
@@ -870,7 +870,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\end{tikzpicture}
 
 	\caption{Solvability for the fractional SPDEs in case of $a=2$ and $r=\Ceil{b}-b$. See Figures
-	\ref{F:SHE} and \ref{F:SWE} for the legends.}
+	\ref{F:SHE} and \ref{F:SWE} for the legend.}
 	\label{F:FracSHE}
 \end{figure}% }}}
 
@@ -1264,7 +1264,6 @@ where the variational constant is given by
 		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
 		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
 	\end{align*}
-	\textcolor{magenta}{(There should not be the factor $(2\pi)^{-d}$, please double check!)}
 with
 	\[
 		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
@@ -1280,8 +1279,6 @@ dimensional case, namely, $\alpha=d=1$. In this case, one simply replace $\alpha
 \eqref{E:AsymStable-t} and \eqref{E:AsymFracSHE-p} by $1$ and replace $\mathcal{M}_{a,d}$ by
 $\mathcal{M}_{a ,1}(\delta_0)$.
 
-\textcolor{magenta}{Can you obtain the explicit formula for $\mathcal{M}{a,1}(\delta_0)$, by
-mimicking the proof for the case $a=2$ in  \cite[Lemma 7.2]{ChenLi04}?}
 \end{example}% }}}
 
 \begin{example}[Asymptotics for SPDEs with $r=\Ceil{b}-b$ and white noise]% {{{
@@ -1313,7 +1310,7 @@ mimicking the proof for the case $a=2$ in  \cite[Lemma 7.2]{ChenLi04}?}
 \begin{example}[Asymptotics for SPDEs with $r=0$ and white noise]% {{{
 	\label{Eg:AymsFracSHE0}
 	From Example \ref{Eg:AymsFracSHE0}, we see that when $a=2$, $r=0$, $d=\alpha=1$ (white noise), the
-	global solution exists when  $b>2/3$. In this case, i.e.,
+	global solution exists when  $b>2/3$. In this case, 
 	\begin{align*}
 		a=2 \qquad r=0 \qquad d=\alpha=1 \qquad \text{and} \qquad b\in \left(2/3,2\right),
 	\end{align*}
@@ -1342,33 +1339,33 @@ mimicking the proof for the case $a=2$ in  \cite[Lemma 7.2]{ChenLi04}?}
 We start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$
 in the sense that $\Gamma(\ud x) = \gamma(x) \ud x$ and
 \begin{align*}
-	\int_{\R^d} \Gamma(\ud x) (\varphi * \widetilde{\varphi})(x) \ge 0 \quad \text{for all $\varphi \in \mathscr{S}(\R^d)$}
+	\int_{\R^d} \Gamma(\ud x) (\phi * \widetilde{\phi})(x) \ge 0 \quad \text{for all $\phi \in \mathscr{S}(\R^d)$}
 \end{align*}
-where $\widetilde{\varphi}(x): = \varphi(-x)$.
+where $\widetilde{\phi}(x): = \phi(-x)$.
 % In addition we require the existence of an $r>0$ such that \begin{align*} \int_{\R^d}\Gamma(\ud x)
 % \frac{1}{ (1 + |x|^2 )^r} < \infty.  \end{align*}
 According to the Bochner theorem, there exists a nonnegative and nonnegative definite measure $\mu$,
 often referred as the {\it spectral measure} on $\R^d$ whose Fourier transform (in the weak sense)
-is $\Gamma$, namely, that for any $\varphi \in \mathcal{D}(\R^d)$ (the space of test functions),
+is $\Gamma$, namely, that for any $\phi \in \mathcal{D}(\R^d)$ (the space of test functions),
 \begin{align*}
-	\int_{\R^d}\Gamma(\ud x) \varphi(x) = \int_{\R^d} \mu(\ud \xi) \mathcal{F}\varphi (\xi).
+	\int_{\R^d}\Gamma(\ud x) \phi(x) = \int_{\R^d} \mu(\ud \xi) \mathcal{F}\phi (\xi).
 \end{align*}
-Since $\mu$ is the nonnegative definite, the following functional
+Since $\mu$ is nonnegative definite, the following functional
 \begin{align}
 	\label{E:Cov}
-	C(\varphi,\psi) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi),
-	\qquad \text{for all $\varphi,\psi\in\mathcal{D}(\R^d)$}
+	C(\phi,\psi) = \int_{\R} \mathcal{F}\phi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi),
+	\qquad \text{for all $\phi,\psi\in\mathcal{D}(\R^d)$}
 \end{align}
 is nonnegative and thus one can associate it with a zero-mean Gaussian processes, $W:= \left\{
-W(\varphi) : \varphi \in \mathcal{D}(\R^d) \right\}$ so that the covariance functional of $W$ is
-given by \eqref{E:Cov}, namely,
+W(\phi) : \phi \in \mathcal{D}(\R^d) \right\}$, with the covariance functional of $W$
+given by \eqref{E:Cov}. In other words,
 \begin{align*}
-	\mathbb{E}(W(\varphi)W(\psi)) = \int_{\R} \mathcal{F}\varphi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \varphi, \psi \rangle_{\mathcal{H}}.
+	\mathbb{E}(W(\phi)W(\psi)) = \int_{\R} \mathcal{F}\phi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \phi, \psi \rangle_{\mathcal{H}}.
 \end{align*}
 Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot
-\rangle_{\mathcal{H}}$ and thus we see $\varphi \mapsto W(\varphi)$ is an isometry from
-$\mathcal{D}(\R^d)$ to $L^2(\Omega)$, that is, $\E\left(W(\psi)^2\right)	=
-\Norm{\psi}_{\mathcal{H}}^2$ for $\psi\in \mathcal{D}(\R^d)$. One can extend this isometry from
+\rangle_{\mathcal{H}}$ and thus we see $\phi \mapsto W(\phi)$ is an isometry from
+$\mathcal{D}(\R^d)$ to $L^2(\Omega)$, that is, $\E\left(W(\phi)^2\right)	=
+\Norm{\phi}_{\mathcal{H}}^2$ for $\phi\in \mathcal{D}(\R^d)$. One can extend this isometry from
 $\mathcal{D}(\R^d)$ to $\mathcal{H}$. We refer the interested readers to \cite{Minicourse09} and
 references therein.  \bigskip
 
@@ -1427,7 +1424,7 @@ $f_k(\cdot,x,t)$, obtained through the iteration, are equal to
 	f_n(x_1,...,x_k;x,t) & = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n \\
                        & = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud t_1\cdots \ud t_n. \nonumber
 \end{align*}
-For ease of notation, throughout this article, we write the above integrals as
+For ease of notation, throughout this article, we may write the above integrals as
 \begin{align*}
 	f_n(x_1,...,x_n;x,t) & = \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t} \\
                        & = \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t},
@@ -1494,7 +1491,7 @@ solution to \eqref{E:SPDE} (or \eqref{E:IntEq}) when it can be written as the We
 \subsection{Some asymptotics and variational constants}
 \label{SS:Variation}
 
-Recall that the correlation function $\gamma$ satisfies Assumption \ref{A:Noise} and the
+Recall that the correlation function $\gamma$ satisfies Assumption \ref{A:Noise} and that the
 corresponding spectral measure is $\mu$; see Remark \ref{R:Noise}. Define
 \begin{gather}
 	\label{E:rho}
@@ -1644,7 +1641,7 @@ More generally we have the following theorem:
 
 	The proof of the upper bound, namely part (iii), is more challenging. This part corresponds to
 	Sections 5 and 6 ({\it ibid.}). By examining these two sections carefully, we need to make some
-	changes in Section 5 ({\it ibid.}) and the arguments in Section 6 ({\it ibid.}) follows unchanged.
+	changes in Section 5 ({\it ibid.}), where as the arguments in Section 6 ({\it ibid.}) follow unchanged.
 	For Section 5 ({\it ibid.}), we need to use the following decomposition of $\varphi$ as opposed to (5.4)
 	({\it ibid.}):
 	\begin{align*}
@@ -1673,7 +1670,7 @@ More generally we have the following theorem:
 		\left(\mathcal{P}_{0,0}*\mathcal{P}_{0,0}\right)(\xi) = \varphi(\xi);
 	\end{align*}
 	see (5.6) ({\it ibid.}). With these changes, one can update accordingly the proof of Lemma 5.1
-	({\it ibid.}) without any difficulty. Then the rest part of Section 5 ({\it ibid.}) follows
+	({\it ibid.}) without any difficulty. Then the rest of Section 5 ({\it ibid.}) follows
 	unchanged. In this way, we establish part (iii) for $\nu=2$. Finally, a scaling argument as in
 	part (ii) proves part (iii) for all $\nu>0$.
 
@@ -1690,7 +1687,7 @@ More generally we have the following theorem:
 	where $\tilde{g}^2(x) = g(-x)$. Thus equation (7.1)  ({\it ibid.}) can be applied in our setting . The rest of the proof of Lemma 7.1 ({\it
 	ibid.}) remains unchanged.
 
-	It remains to update the proof of Theorem 1.5 on Section 7 ({\it ibid.}). For this, one needs only
+	It remains to update the proof of Theorem 1.5 in Section 7 ({\it ibid.}). For this, one needs only
 	to update the four appearances of $1/(|\cdot|^\sigma)$ in (7.15), (7.22) and (7.23) ({\it ibid.}) to
 	$\gamma(\cdot)$. Note that the factor $(2\pi)^{-d(p+1)}$ in the first equation  of (7.22) ({\it
 	ibid.}) should be $(2\pi)^{-dp}$. With this, we complete the sketch proof of Theorem
@@ -1701,7 +1698,7 @@ Note that the proof of \cite[Lemma 1.6]{BCR09} relies on inequality (1.27) on p.
 which was a consequence of {\it Sobolev's inequality}. For the more general noises studied in this
 paper, we can no longer apply this inequality. Instead, we prove the following lemma using the {\it
 weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalization of Lemma 1.6
-({\it ibid.}).  Even though we only need the case $p=2$, the following lemma is proved for all $p\ge
+({\it ibid.}).  Even though we only need the case $p=2$, the following lemma is proven for all $p\ge
 2$.
 
 \begin{lemma}
@@ -2066,7 +2063,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\end{align}
 	see Appendix for the proof.
 
-	{\bigskip\bf\noindent Step 3.~} Now we can apply the Fubini theorem and Lemma \ref{L:doubleExp} to
+	{\bigskip\bf\noindent Step 3.~} Now we can apply Fubini's theorem and Lemma \ref{L:doubleExp} to
 	the function $t\to H_n(t,\vec{x})$ to see that
 	\begin{align}
 		\label{E:doubleH}
@@ -2166,17 +2163,17 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 \section{Upper bound of the asymptotics}
 \label{S:upperbd}
 
-In this section, we will establish the upper bound of \eqref{E:momentasym} (under Assumptions
+In this section, we will give the proof of part 2 of Theorem \ref{T:solvable} and establish the upper bound of \eqref{E:momentasym} (under Assumptions
 \ref{A:Nonnegative} and \ref{A:Noise}, and condition \eqref{E:alpha}),  namely,
 \begin{equation}
 	\label{E:momentasym-upper}
-	\begin{aligned}
+	\begin{aligned} 
 		\limsup_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \le & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
                                                                    & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 	\end{aligned}
 \end{equation}
 
-We will first establish the corresponding result for $p=2$ in Lemma \ref{L:p=2} and then apply the
+As for the upper bound, we will first establish the corresponding result for $p=2$ in Lemma \ref{L:p=2} and then apply the
 hypercontractivity property given by Theorem B.1 in \cite{BCC21} to obtain the general case for
 $p\ge 2$. To prove the next lemma, we will need the following equality
 	\begin{align}
@@ -2189,7 +2186,7 @@ which is a direct consequence of Stirling's formula.
 \begin{lemma}
 	\label{L:2ineq}
 	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. \\
-	(i) Under condition \eqref{E:alpha},
+	Under condition \eqref{E:alpha},
 	\begin{align}
 		\label{E:2ineq-a}
 		&\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
@@ -2198,23 +2195,10 @@ which is a direct consequence of Stirling's formula.
 		& \lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
 		=  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
 	\end{align}
-	(ii) Under condition \eqref{E:critical}, for all $x\in\R^d$, $p \ge 2$ and $\theta>0$, it holds
-	that
-	\begin{equation}\label{E:pnormconverge}
-		\Norm{u(t,x)}_p < \infty \quad \text{whenever } t < T_p,
-	\end{equation}
-	where $T_p$ be defined as in \eqref{E:Tp}. Moreover,
-	\begin{align}\label{E:2normcutoff}
-		\sum_{n\ge 0}	 \theta^n n!\: \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2
-		\quad
-		\begin{cases}
-			\quad <\infty & \text{if $t<T_2$}, \bigskip\\
-			\quad =\infty & \text{if $t>T_2$}.
-		\end{cases}
-	\end{align}
+
 \end{lemma}
 \begin{proof}
-	{\it (i)~} The proof of part (i) follows the same arguments as those of \cite[Lemma 4.3]{BCC21}.
+	The proof follows the same arguments as those of \cite[Lemma 4.3]{BCC21}.
 	Nevertheless, we sketch the proof here for completeness. Recall the definition of $T_n(\nu,a)$
 	defined in \eqref{E:Tn}.  From \eqref{E:LogRho}, we see that
 	\begin{align}
@@ -2282,11 +2266,11 @@ which is a direct consequence of Stirling's formula.
 	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. Then an application of
 	\eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
 	\eqref{E:2ineq-a}. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the limit
-	\eqref{E:Stirling}. This proves part (i) of Lemma \ref{L:2ineq}.
+	\eqref{E:Stirling}. This proves Lemma \ref{L:2ineq}.
+		\end{proof}
 
 
-	{\bigskip\noindent\it (ii)~} Note that part (ii) is equivalent to the statement of part (2) of
-	Theorem \ref{T:solvable}. The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
+\begin{proof}[Proof of 2-i and 2-ii Theorem \ref{T:solvable} ] The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
 	vanishes, namely,
 	\begin{align*}
 		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
@@ -2299,7 +2283,7 @@ which is a direct consequence of Stirling's formula.
 	\end{align*}
 	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
 
-	We start by proving \eqref{E:pnormconverge}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
+	We start by proving \textit{2-i}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
 	the SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
 	hyperactivity property (see \cite[Lemma B.1]{BCC21}), we have that
 	\begin{align}
@@ -2325,7 +2309,7 @@ which is a direct consequence of Stirling's formula.
 		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p; \qquad \text{see \eqref{E:Tp}.}
 	\end{align*}
 
-	To show \eqref{E:2normcutoff}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
+	To show \textit{2-ii}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
 	\begin{align*}
 		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
 	\end{align*}
@@ -2478,7 +2462,7 @@ with $s_0=0$. We now give conditions under which $W_n$ is well defined.
 	% arguments that lead to \eqref{E:lem62step}, we see the above quantity is finite.
 \end{proof}
 
-The next Proposition is a restatement of Proposition 6.3 of \cite{BCC21}. The proof follows the same
+The next proposition is a restatement of Proposition 6.3 of \cite{BCC21}. The proof follows the same
 proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat here.
 \begin{proposition}
 	\label{P:Wnprop1}
@@ -2530,7 +2514,7 @@ together, from which we can determine the constants $t_p$ and  $\beta$ defined i
 
 \begin{proposition}
 	\label{P:Wnprop2}
-	For $p,q > 1$ and $p^{-1}+q^{-1}=1$ we have that
+	For $p,q > 1$, $p^{-1}+q^{-1}=1$ and for any $f \in \mathcal{H}$,
 	\begin{align}
 		\label{E:Wnprop2}
 		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n\left(t_p^\beta, \mathcal{F}f\right) \right|,
@@ -2693,13 +2677,13 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	Then notice that
 	\begin{align}
 		\label{E:gsq}
-		\mathcal{F}( |g_h|^2 )(\xi) = (2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}}g_h)(\xi)
+		\mathcal{F}( |g_h|^2 )(\xi) = (2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi)
                                 = \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}} \ud \eta.
 	\end{align}
 	Hence, from \eqref{E:rho} and \eqref{E:gsq}, we see that
 	\begin{align*}
-		\left\langle |g_h|^2, |g_h|^2 \right\rangle_{\mathcal{H}}
-    = \int_{\R^d} \left|\mathcal{F}( |g_h|^2 )(\xi)\right|^2 \mu(\ud \xi)
+		\sup_{ \Norm{h}_{L^2}=1 }\left\langle |g_h|^2, |g_h|^2 \right\rangle_{\mathcal{H}}
+    =\sup_{ \Norm{h}_{L^2}=1 } \int_{\R^d} \left|\mathcal{F}( |g_h|^2 )(\xi)\right|^2 \mu(\ud \xi)
 		= \rho_{\nu,a}
 	\end{align*}
 	which then leads us to the lower bound:
@@ -2884,7 +2868,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 \label{S:Appendix}
 
 \begin{proof}[Proof of Lemma \ref{L:rhovar}]
-	In this proof, $\mu(\ud x) = \varphi(x)\ud x = C_{\alpha,d}|x|^{-(d-\alpha)}\ud x$. By change of
+	In this proof, $\mu(\ud x) = \varphi(x)\ud x = C_{\alpha,d}|x|^{-(d-\alpha)}\ud x$. By the change of
 	variables $x' = \left(\nu/2\right)^{1/a} x$ and $y' = \left(\nu/2\right)^{1/a} y$, we see that
 	\begin{align*}
 		\rho_{\nu,a} & \left(|\cdot|^{-\alpha}\right) = \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x) \\
@@ -2926,7 +2910,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	% \end{align*}
 	% by the linearity, it suffices to just look at the
 	% $\mathcal{F}f_n(\cdot,0,ct)\left(\xi_{\sigma(1)},\cdots, \xi_{\sigma(n)}\right)$ terms individually.
-	Starting from \eqref{E:fweker}, by change of variables $t_i' = t_i/c$ and the scaling property in
+	Starting from \eqref{E:fweker}, by the change of variables $t_i' = t_i/c$ and the scaling property in
 	\eqref{E:Ffnscale}, we have that
 	\begin{align*}
 		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n)
