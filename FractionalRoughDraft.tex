@@ -161,7 +161,7 @@
 \title{Fractional SPDE with Time-independent Noise:\\
 Solvability and Exact Asymptotics\footnote{Department of Mathematics and
 Statistics, Auburn University, Auburn, Alabama.}}
-\author{Le Chen\footnote{Emails: \url{lzc0090@auburn.edu};~\url{chenle02@gmail.com}.}~
+\author{Le Chen\footnote{Email: \url{le.chen@auburn.edu}.}~
 	and
 Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gmail.com}.}}
 \date{\today}
@@ -171,15 +171,13 @@ Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gma
 \begin{abstract}
 	\noindent In this article, we study a class of stochastic partial differential equations with
 	fractional operators subject to some time-independent multiplicative Gaussian noise. We derive
-	sharp conditions, under which a global $L^p(\Omega)$-solution exits. In this case, exact moment
-	asymptotics are obtained following the same strategy in a recent work by Balan {\it et al}
-	\cite{BCC21}. In the case when there exits only a local solution, we determine the precise
-	deterministic time, $T_2$, before which the unique $L^2(\Omega)$-solution exits, but after which
-	the series corresponding to the $L^2(\Omega)$-moment of the solution blows up. The results in this
-	paper can be applied to the standard stochastic heat equation with the same noise, while the
-	corresponding results for the stochastic wave equation were obtained recently in \cite{BCC21}.  By
+	sharp conditions, under which a unique global $L^p(\Omega)$-solution exits for all $p\ge 2$. In
+	this case, exact moment asymptotics are obtained following the same strategy in a recent work by
+	Balan {\it et al} \cite{BCC21}. In the case when there exits only a local solution, we determine
+	the precise deterministic time, $T_2$, before which a unique $L^2(\Omega)$-solution exits, but
+	after which the series corresponding to the $L^2(\Omega)$ moment of the solution blows up. By
 	properly choosing the parameters, results in this paper interpolate those for both stochastic heat
-	and wave equations.
+	and wave (\cite{BCC21}) equations.
 \end{abstract}
 
 \noindent {\em MSC 2010:} Primary 60H15; Secondary 60H07, 37H15
@@ -192,18 +190,19 @@ Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gma
 \noindent {\em Keywords:}
 Stochastic partial differential equations; {\it Caputo} derivatives; {\it Riemann-Liouville}
 fractional integral; fractional Laplacian; {\it Malliavin} calculus; {\it Skorohod} integral; exact
-moment asymptotics; time-independent Gaussian noise; white noise.
+moment asymptotics; time-independent Gaussian noise; white noise; global and local solutions.
 
 \tableofcontents
 % \pagebreak
 \section{Introduction}
-In this paper we study the following fractional {\it stochastic partial differential equation} (SPDE):
+In this paper we study the following {\it stochastic partial differential equation} (SPDE) with
+fractional differential operators:
 \begin{equation}
 	\label{E:SPDE}
 	\begin{cases}
-		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
-		u(0,\cdot) = 1                                                                                                             & b \in (0,1]               \\
-		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2)
+		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
+		u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
 	\end{cases}
 \end{equation}
 where $a \in (0,2)$, $b \in (0,2)$, $r\ge 0$, $\nu > 0$ and $\theta>0$. Here the noise $W =
@@ -214,7 +213,7 @@ and covariance
 		\mathbb{E}\left[ W(\phi) W(\psi) \right] = \int_{\R^d} \mathcal{F}\phi(\xi)\overline{\mathcal{F}\psi(\xi)} \mu(\ud \xi) =: \langle \phi, \psi \rangle_{\mathcal{H}},
 \end{align*}
 where $\mu$ refers to the {\it spectral measure}, which is assumed to be a nonnegative and
-nonnegative definite tempered measure on $\R^d$. Let $\gamma$ be the Fourier transform of $\mu$ (see Subsection \ref{SS:Malliavin}),
+nonnegative definite tempered measure on $\R^d$. Let $\gamma$ be the Fourier transform of $\mu$ (see Section \ref{SS:Malliavin}),
 which is also a nonnegative and nonnegative measure on $\R^d$ thanks to Bochner's theorem.
 Throughout the paper, we use $\mathcal{F}\phi(\xi) = \int_{\R^d} \exp(-ix \xi) \phi(x) \ud
 x$ to denote the Fourier transform of a test function $\phi$.
@@ -243,7 +242,7 @@ Theorem 4.1 of \cite{CHN19}. Since we are interested in the constant one initial
 initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the corresponding solution to
 the homogeneous equation (i.e. the solution when there is no driving source) is equal to the
 constant one. Hence, by setting $G(t,x) := Y_{a,b,r,\nu,d}(t,x)$, \eqref{E:SPDE} can be written as
-the following integral equation:
+the following stochastic integral equation:
 \begin{equation}
 	\label{E:spdeint}
 	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
@@ -261,14 +260,14 @@ $G(t,x)$:
 \begin{remark}
 	\label{R:Nonnegative}
 	% Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative},
-	Thanks to \cite[Theorem 4.6]{CHN19} (see also \cite[Theorem 3.1]{CHHH17} for the case when $r=0$),
+	Thanks to Theorem 4.6 of \cite{CHN19} (see also Theorem 3.1 of \cite{CHHH17} for the case when $r=0$),
 	we have the following four groups of sufficient conditions \footnote{Note that when $d\ge 1$,
 		$b=1$ and $a\in (0,2]$, part (1) of \cite[Theorem 4.6]{CHN19} says that the fundamental solution
 		$Y$, which is the fundamental solution $G$ in this paper, is nonnegative provided $r=0$ or
 	$r>1$. Indeed, because in this case $Z$ is always nonnegative, for $r>0$, $Y$ as a fractional
-integral of $Z$ (see (4.5), {\it ibid.}),  $Y$, or our $G$, should also be nonnegative We thank
-Guannan Hu who pointed out to us this observation.}, under either group of which $G(t,\cdot)$ is
-nonnegative (see Figure \ref{F:Nonnegative} for an illustration) :
+	integral of $Z$ (see (4.5), {\it ibid.}),  $Y$, or our $G$, should also be nonnegative. We thank
+	Guannan Hu who pointed out to us this observation.}, under either group of which $G(t,\cdot)$ is
+	nonnegative (see Figure \ref{F:Nonnegative} for an illustration) :
 	\begin{enumerate}
 		\item $d \ge 1$, $b\in(0,1]$, $a\in(0,2]$, $r\ge0$;
 		% \item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
@@ -323,7 +322,7 @@ the fractional noise and a mixture of them:
 
 \begin{remark}[Spectral density and decomposition]
 	\label{R:Noise}
-	Recall that the {\it spectral density} of $\mu$ from \eqref{E:corfunction}, which by definition is
+	Recall that the {\it spectral density} of $\gamma$ from \eqref{E:corfunction}, which by definition is
 	$\mathcal{F}\gamma$, takes the following form:
 	\begin{equation}
 	\label{E:specfunction}
@@ -369,19 +368,21 @@ exclusively for the {\it stochastic wave equation} (SWE), namely, the case when 
 $r=0$, has been studied, where both the well-posedness and the exact moment asymptotics have been
 obtained.  The corresponding {\it stochastic heat equation} (SHE), namely, the case when $a=2$,
 $b=\nu=1$ and $r=0$, has been earlier studied by Hu \cite{Hu01Heat}, but only for the well-posedness
-and exclusively for the fractional noise \eqref{E:fracnoise}.  The corresponding moment asymptotics have been obtained
-by X. Chen \cite{Chen17AIHP} as a special case by setting $\alpha_0=0$. One may check Remark 1.9 of
-Balan {\it et al} \cite{BCC21} for the explicit expressions in terms of notation of the current
-paper. In this paper, by working on a more general class of SPDEs, we interpolate the asymptotics for
-both SWE and SHE; see Section \ref{SS:EgAsym} below. Moreover, we give the conditions under which
-there exists only a local solution; see Definition \ref{D:Sol} below.
+and exclusively for the fractional noise \eqref{E:fracnoise}.  The corresponding moment asymptotics
+have been obtained by X. Chen \cite{Chen17AIHP} as a special case by setting $\alpha_0=0$. One may
+check Remark 1.9 of Balan {\it et al} \cite{BCC21} for the explicit expressions in terms of notation
+of the current paper. In this paper, by working on a more general class of SPDEs, we are able to
+interpolate the asymptotics for both SWE and SHE; see Section \ref{SS:EgAsym} below for more
+details. Moreover, we give the sharp conditions under which there exists only a local $L^2(\Omega)$
+solution.
 
 The moment asymptotics obtained by X. Chen, such as those in \cite{Chen17AIHP,Chen19AIHP}, rely
 crucially on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
 1$, especially for the case when $b\in(1,2)$, we are not aware of any such Feynman-Kac formula for
 the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this difficulty has been
 overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
-strategy laid out by Balan {\it et al} ({\it ibid.}). \bigskip
+strategy laid out by Balan {\it et al} ({\it ibid.}). The challenge comes from the much more
+involved parametric form of the fundamental solution.  \bigskip
 
 Now let us state the main results of this paper. The first main result deals with the well-posedness
 of the SPDE \eqref{E:SPDE} (or \eqref{E:spdeint}) as stated in the following theorem. For this, we
@@ -504,15 +505,15 @@ As a direct consequence of \eqref{E:momentasym}, one can send either $t$ or $p$ 
 
 \bigskip
 
-In the following, we first give some concrete examples in Section \ref{S:SolvEx}, where one can find
-many explicit formulas for either moment asymptotics in case of global solutions or the expressions
-for the critical time $T_p$ in case of local solutions. Then in Section \ref{S:Pre}, we present some
-preliminaries of the paper, including the {\it Skorohod} integral, definition of the mild solution,
-and some asymptotics with corresponding variational constants. The existence and uniqueness of an
-$L^p(\Omega)$-solution --- Theorem \ref{T:solvable} --- is proven in Section \ref{S:solvable}. The
-upper bound and lower bounds for \eqref{E:momentasym} are established in Sections \ref{S:upperbd}
-and \ref{S:lowerbd}, respectively.  Finally, in the appendix --- Section \ref{S:Appendix}, we list a
-few proofs of results that are used in the paper.
+The paper is organized as follows. In Section \ref{S:SolvEx}, we first give some concrete examples,
+where one can find many explicit formulas for either moment asymptotics in the case of global
+solutions or the expressions for the critical time $T_p$ in the case of local solutions. Then in
+Section \ref{S:Pre}, we present some preliminaries of the paper, including the {\it Skorohod}
+integral, definition of the mild solution, and some asymptotics with corresponding variational
+constants. We prove part (1) and part (2) of Theorem \ref{T:solvable} in Sections \ref{S:solvable}
+and \ref{S:upperbd}, respectively.  The upper bound and lower bounds for \eqref{E:momentasym} are
+established in Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively. Finally, in the appendix
+--- Section \ref{S:Appendix}, we list a few proofs of results that are used in the paper.
 
 \section{Examples on solvability and asymptotics}
 \label{S:SolvEx}
@@ -679,7 +680,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\end{tikzpicture}
 
 	\caption{Solvability for the stochastic wave equation (i.e., $a=b=2$ and $r=0$). See Figure
-	\ref{F:SHE} for additional legends.}
+	\ref{F:SHE} for an additional legend.}
 	\label{F:SWE}
 \end{figure}% }}}
 
@@ -696,7 +697,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 			\displaystyle \alpha =\frac{6}{b} \le d \quad  \text{and} \quad b\in [3/2,2).
 		\end{cases}
 	\end{align}
-	When $b=1$, we have $r=0$ and the fundamental solutions are the standard heat kernel. Hence,
+	When $b=1$, we have $r=0$ and the fundamental solution is the standard heat kernel. Hence,
 	Assumption \ref{A:Nonnegative} is satisfied for all $d\ge 1$. When $b<1$, sufficient conditions in
 	Remark \ref{R:Nonnegative} guarantees Assumption \ref{A:Nonnegative} for all $d\ge 1$. However,
 	when $b>1$ and  $a=2$, from Remark  \ref{R:Nonnegative} we see that the fundamental solution is
@@ -1010,7 +1011,7 @@ interested readers.
 		\draw (0.5, 4) + (0.1, -0.05) rectangle +(3.5,0.05);
 		\draw (0.5, 5) + (0.1, -0.05) rectangle +(4.5,0.05);
 	\end{tikzpicture}
-	\caption{Solvability for the fractional SPDEs in case of $a=2$ and $r=0$. See Figures \ref{F:SHE} and \ref{F:SWE} for the legends.}
+	\caption{Solvability for the fractional SPDEs in case of $a=2$ and $r=0$. See Figures \ref{F:SHE} and \ref{F:SWE} for the legend.}
 	\label{F:FracSHE0}
 \end{figure}% }}}
 
@@ -1148,7 +1149,7 @@ interested readers.
 		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
 	\end{tikzpicture}
 	\caption{Solvability for the stochastic heat equation with fractional Laplace, i.e, the case when
-		$b=1$ and $r=0$. See Figures \ref{F:SHE} and \ref{F:SWE} for the legends.}
+		$b=1$ and $r=0$. See Figures \ref{F:SHE} and \ref{F:SWE} for the legend.}
 	\label{F:Stable}
 \end{figure}% }}}
 
@@ -1174,26 +1175,26 @@ results for both stochastic wave and heat equations.
 	and results in \eqref{E:momentasym}, \eqref{E:momentasym-t}, and \eqref{E:momentasym-p} recover
 	the corresponding results for the stochastic wave equation, namely,  (1.9), (1.10), and (1.11) of
 	\cite{BCC21}, respectively.  Due to the importance of white noise and for the future references,
-	here we list below two special cases regarding white noise:
-	\begin{enumerate}
-		\item The SWE with white noise in $\R$: By further setting $d=\alpha=1$, we see that
-		\begin{align}
-			\label{E:AsymSWE-1d}
-				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
-				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^{3/2}} & =  \frac{p(p-1)^{1/2}\sqrt{\theta}}{3 (2\nu)^{1/4}}
-				\quad \text{and} \quad
-				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^{3/2}} & =\frac{t^{3/2}\sqrt{\theta}}{3 (2\nu)^{1/4}},
-		\end{align}
-		where we have applied \eqref{E:Mdelta1d}.
-		\item The SWE with white noise in $\R^2$: Similarly, by setting $d=\alpha=2$, we see that
-		\begin{align}
-			\label{E:AsymSWE-2d}
-				% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
-				\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^2} & = \frac{p(p-1)\theta\mathcal{M}_{2,2}(\delta_0)}{2\nu}
-				\quad \text{and} \quad
-				\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^2} & = \frac{t^2\theta\mathcal{M}_{2,2}(\delta_0)}{2\nu}.
-		\end{align}
-	\end{enumerate}
+	here we list two special cases regarding white noise:\\
+
+	\noindent(1) The SWE with white noise in $\R$: By further setting $d=\alpha=1$, we see that
+	\begin{align}
+		\label{E:AsymSWE-1d}
+			% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
+			\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^{3/2}} =  \frac{p(p-1)^{1/2}\sqrt{\theta}}{3 (2\nu)^{1/4}}
+			\quad \text{and} \quad
+			\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^{3/2}} = \frac{t^{3/2}\sqrt{\theta}}{3 (2\nu)^{1/4}},
+	\end{align}
+	where we have applied \eqref{E:Mdelta1d}.\\
+
+	\noindent(2) The SWE with white noise in $\R^2$: Similarly, by setting $d=\alpha=2$, we see that
+	\begin{align}
+		\label{E:AsymSWE-2d}
+			% =p(p-1)^{1/2}\frac{2^{3/2}\sqrt{\theta} \mathcal{M}_2^{3/4}(\delta_0)}{ 2^{3/2}\nu^{1/4}}
+			\lim_{t \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{t^2} = \frac{p(p-1)\theta\mathcal{M}_{2,2}(\delta_0)}{2\nu}
+			\quad \text{and} \quad
+			\lim_{p \to \infty} \frac{\log \E\left[|u(t,x)|^p\right]}{p^2} = \frac{t^2\theta\mathcal{M}_{2,2}(\delta_0)}{2\nu}.
+	\end{align}
 \end{example}% }}}
 
 \begin{example}[Asymptotics for SHE]% {{{
@@ -1230,7 +1231,7 @@ results for both stochastic wave and heat equations.
 	\begin{align*}
 	\beta = \frac{2a-\alpha}{a-\alpha} \qquad \text{and} \qquad t_p = (p-1)^{\frac{a}{2a-\alpha}} t,
 	\end{align*}
-and by Corollary \ref{C:Lim},
+	and by Corollary \ref{C:Lim},
 	\begin{align}
 		\label{E:AsymStable-t}
 		\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^{\frac{2a-\alpha}{a-\alpha} }} =
@@ -1243,18 +1244,18 @@ and by Corollary \ref{C:Lim},
 		t^{\frac{2a-\alpha}{a-\alpha}}
 		\left( \frac{1}{2} \right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}} \left[ \theta \nu^{-\alpha/a} \mathcal{M}_{a,d}^{\frac{2a-\alpha}{a}} \right]^{ \frac{a}{a-\alpha} } \left(\frac{a-\alpha}{a}\right).
 	\end{align}
-This setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the covariance function is given by
-\[
-\mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x-y)
-\]
-and $\gamma(x)$ is defined to be either of the following:
-\begin{align}
-	\label{E:gammaHu}
-	\gamma(x) := \begin{cases}
-								|x|^{-\alpha}                  & \text{where } \alpha \in (0,d)\: \text{ or} \\
-								\prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
-								\end{cases}
-\end{align}
+	this setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the covariance function is given by
+	\[
+		\mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x-y)
+	\]
+	and $\gamma(x)$ is defined to be either of the following:
+	\begin{align}
+		\label{E:gammaHu}
+		\gamma(x) := \begin{cases}
+									|x|^{-\alpha}                  & \text{where } \alpha \in (0,d)\: \text{ or} \\
+									\prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
+									\end{cases}
+	\end{align}
 They proved that for $\alpha < d$ and let $p \ge 2$,
 \begin{equation}\label{E:AsymVar}
 	\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma),
@@ -1264,7 +1265,7 @@ where the variational constant is given by
 		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
 		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
 	\end{align*}
-with
+	with\footnote{Note that the Fourier transform is defined differently in \cite{CHSS18}.}
 	\[
 		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
 	\]
@@ -1275,8 +1276,8 @@ By setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independe
 	\end{align}
 and by rewriting \eqref{E:AsymVar} with \eqref{E:MbfAndMmathcalRelation} yields \eqref{E:AsymStable-t}.
 Finally, we note that condition \eqref{E:gammaHu} can be relaxed to allow white noise in one
-dimensional case, namely, $\alpha=d=1$. In this case, one simply replace $\alpha$ and $d$ in both
-\eqref{E:AsymStable-t} and \eqref{E:AsymFracSHE-p} by $1$ and replace $\mathcal{M}_{a,d}$ by
+dimensional case, namely, $\alpha=d=1$. In this case, one can simply replace $\alpha$ and $d$ in both
+\eqref{E:AsymStable-t} and \eqref{E:AsymFracSHE-p} by $1$ and in addition replace $\mathcal{M}_{a,d}$ by
 $\mathcal{M}_{a ,1}(\delta_0)$.
 
 \end{example}% }}}
@@ -1310,11 +1311,7 @@ $\mathcal{M}_{a ,1}(\delta_0)$.
 \begin{example}[Asymptotics for SPDEs with $r=0$ and white noise]% {{{
 	\label{Eg:AymsFracSHE0}
 	From Example \ref{Eg:AymsFracSHE0}, we see that when $a=2$, $r=0$, $d=\alpha=1$ (white noise), the
-	global solution exists when  $b>2/3$. In this case, 
-	\begin{align*}
-		a=2 \qquad r=0 \qquad d=\alpha=1 \qquad \text{and} \qquad b\in \left(2/3,2\right),
-	\end{align*}
-	we have that
+	global solution exists when  $b\in (2 /3, 2)$. In this case, we have that
 	\begin{align*}
 		\beta = \frac{3b}{3b-2} \qquad \text{and} \qquad
 		t_p   = (p-1)^{2 / (3b)}\: t,
@@ -1323,7 +1320,7 @@ $\mathcal{M}_{a ,1}(\delta_0)$.
 	\begin{gather}
 		\label{E:AsymFracSHE-t}
 			\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^{3b/(3b-2)}} =
-			p (p-1)^{\frac{2}{3b}} \left(b-\frac{2}{3}\right) b^{-\frac{3 b}{3 b-2}} \left(\frac{\theta^2}{8\nu}\right)^{\frac{1}{3 b-2}},
+			p (p-1)^{\frac{2}{3b}} \left(b-\frac{2}{3}\right) b^{-\frac{3 b}{3 b-2}} \left(\frac{\theta^2}{8\nu}\right)^{\frac{1}{3 b-2}}
 			\quad \text{and}\\
 		\label{E:AsymFracSHE-p}
 		\lim_{p \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{p^{3b/(3b-2)}} =
@@ -1356,11 +1353,11 @@ Since $\mu$ is nonnegative definite, the following functional
 	C(\phi,\psi) = \int_{\R} \mathcal{F}\phi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi),
 	\qquad \text{for all $\phi,\psi\in\mathcal{D}(\R^d)$}
 \end{align}
-is nonnegative and thus one can associate it with a zero-mean Gaussian processes, $W:= \left\{
+is nonnegative-definite and thus one can associate it with a zero-mean Gaussian processes, $W:= \left\{
 W(\phi) : \phi \in \mathcal{D}(\R^d) \right\}$, with the covariance functional of $W$
 given by \eqref{E:Cov}. In other words,
 \begin{align*}
-	\mathbb{E}(W(\phi)W(\psi)) = \int_{\R} \mathcal{F}\phi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \phi, \psi \rangle_{\mathcal{H}}.
+	\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_{\R} \mathcal{F}\phi(\xi) \overline{ \mathcal{F}\psi(\xi) } \mu(\ud \xi) =: \langle \phi, \psi \rangle_{\mathcal{H}}.
 \end{align*}
 Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\langle \cdot, \cdot
 \rangle_{\mathcal{H}}$ and thus we see $\phi \mapsto W(\phi)$ is an isometry from
@@ -1530,7 +1527,7 @@ established that when $a \in (0,2]$ and $\nu = 2$,
 	= \log\left( \rho_{2,a}\left(|\cdot|^{-\alpha}\right) \right),
 \end{equation}
 and \footnote{In Theorem 1.5 or eq. (1.20) of Bass {\it et al} \cite{BCR09}, the factor
-$(2\pi)^{-d}$ should not present.}
+$(2\pi)^{-d}$ should not be present.}
 \begin{equation}
 	\label{E:oldrhovarrep}
 	\rho_{2,a} \left(|\cdot|^{-\alpha}\right) = \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right).
@@ -1621,7 +1618,7 @@ More generally we have the following theorem:
 	\end{table}
 
 
-	Theorem  \ref{T:Variation} is proved by showing the following claims: for $\gamma$ given in
+	Theorem  \ref{T:Variation} is proven by showing the following claims: for $\gamma$ given in
 	Assumption  \ref{A:Noise},
 	\begin{enumerate}[(i)]
 		\item $\rho_{\nu,a}(\gamma)<\infty$;
@@ -2167,7 +2164,7 @@ In this section, we will give the proof of part 2 of Theorem \ref{T:solvable} an
 \ref{A:Nonnegative} and \ref{A:Noise}, and condition \eqref{E:alpha}),  namely,
 \begin{equation}
 	\label{E:momentasym-upper}
-	\begin{aligned} 
+	\begin{aligned}
 		\limsup_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p \le & \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
                                                                    & \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 	\end{aligned}
@@ -2267,10 +2264,12 @@ which is a direct consequence of Stirling's formula.
 	\eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
 	\eqref{E:2ineq-a}. Lastly, \eqref{E:2ineq-b} follows from \eqref{E:2ineq-a} and the limit
 	\eqref{E:Stirling}. This proves Lemma \ref{L:2ineq}.
-		\end{proof}
+	\end{proof}
 
 
-\begin{proof}[Proof of 2-i and 2-ii Theorem \ref{T:solvable} ] The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
+	Now are are ready to prove part (2) of Theorem \ref{T:solvable}.
+
+	\begin{proof}[Proof of part (2) of Theorem \ref{T:solvable} ] The critical case happens when the exponent of $n!$ in \eqref{E:pmomBd}
 	vanishes, namely,
 	\begin{align*}
 		\alpha = \frac{a}{b}\left[2(b+r)-1\right].
@@ -2283,7 +2282,7 @@ which is a direct consequence of Stirling's formula.
 	\end{align*}
 	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
 
-	We start by proving \textit{2-i}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
+	We start by proving part \textit{(2-i)}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
 	the SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
 	hyperactivity property (see \cite[Lemma B.1]{BCC21}), we have that
 	\begin{align}
@@ -2309,7 +2308,7 @@ which is a direct consequence of Stirling's formula.
 		t  < \dfrac{1}{2 \theta (p-1) \nu^{-\alpha/a} \mathcal{M}_a^{(2a-\alpha)/a} } =: T_p; \qquad \text{see \eqref{E:Tp}.}
 	\end{align*}
 
-	To show \textit{2-ii}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
+	To show part \textit{(2-ii)}, we use the Cauchy-Hadamard theorem and the same techniques above to see that the radius of convergence of the series
 	\begin{align*}
 		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
 	\end{align*}
@@ -2348,7 +2347,7 @@ which is a direct consequence of Stirling's formula.
 	\begin{align*}
 		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R_n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
 	\end{align*}
-	Indeed, by the following limit (see \cite[Lemma A.3]{BCC21})
+	Indeed, by the following limit (see \cite[Lemma A.3]{BCC21}),
 	\begin{align*}
 		\lim_{t\to\infty} t^{-1/\gamma}\log\sum_{n\ge 0} (n!)^{-\gamma} t^n = \gamma, \qquad \text{for all $\gamma>0$,}
 	\end{align*}
@@ -2682,8 +2681,8 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	\end{align}
 	Hence, from \eqref{E:rho} and \eqref{E:gsq}, we see that
 	\begin{align*}
-		\sup_{ \Norm{h}_{L^2}=1 }\left\langle |g_h|^2, |g_h|^2 \right\rangle_{\mathcal{H}}
-    =\sup_{ \Norm{h}_{L^2}=1 } \int_{\R^d} \left|\mathcal{F}( |g_h|^2 )(\xi)\right|^2 \mu(\ud \xi)
+		\sup_{ \Norm{h}_{L^2(\R^d)}=1 }\left\langle |g_h|^2, |g_h|^2 \right\rangle_{\mathcal{H}}
+		=\sup_{ \Norm{h}_{L^2(\R^d)}=1 } \int_{\R^d} \left|\mathcal{F}( |g_h|^2 )(\xi)\right|^2 \mu(\ud \xi)
 		= \rho_{\nu,a}
 	\end{align*}
 	which then leads us to the lower bound:
@@ -2767,7 +2766,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	\begin{align}\label{E:lb1}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log\left(\rho_{\nu, a}^{1/2}\right).
 	\end{align}
-	Therefore, \eqref{E:LogU} is proved by noticing that, thanks to \eqref{E:Stirling},
+	Therefore, \eqref{E:LogU} is proven by noticing that, thanks to \eqref{E:Stirling},
 	\begin{align*}
 		\liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
 		= \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
@@ -2842,7 +2841,8 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\begin{align*}
 		\Norm{u(t,0)}_p \ge \exp\left\{ -\frac{1}{2} t_p^\beta \Norm{f}_{\mathcal{H}}^2 \right\}\left| \sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \right|.
 	\end{align*}
-	We now take the supremum over all $f \in \mathcal{H}_+$ with $\Norm{f}_{\mathcal{H}}=k >0 $. Recall that $W_n(t,\phi) = k^nW_n(t,\phi/k)$ for $\phi \in L^2(\mu)$ and non-negativity of $W_n(t,\cdot)$ on $\mathcal{H}_+$. Let $c>0$.
+	We now take the supremum over all $f \in \mathcal{H}_+$ with $\Norm{f}_{\mathcal{H}}=k >0 $.
+	Recall that $W_n(t,\phi) = k^nW_n(t,\phi/k)$ for $\phi \in L^2(\mu)$ and the non-negativity of $W_n(t,\cdot)$ on $\mathcal{H}_+$. Let $c>0$.
 	\begin{align*}
 		\Norm{u(t,0)}_p & \ge 	\exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=k}\sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \\
                     & = \exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1}\sum_{n \ge 0} k^n \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \\
@@ -2937,7 +2937,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\bibitem{BCC21} % {{{ 1.
 	Balan, R. M., Chen, L., and Chen, X. (2021).
 	\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
-	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear, 2021.
 	% }}}
 	% \bibitem{BS17} % {{{ 2. -- removed.
 	% Balan, R. M. and Song, J. (2017).
