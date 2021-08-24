@@ -1255,11 +1255,11 @@ results for both stochastic wave and heat equations.
 									\prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
 									\end{cases}
 	\end{align}
-They proved that for $\alpha < d$ and let $p \ge 2$,
-\begin{equation}\label{E:AsymVar}
-	\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma),
-\end{equation}
-where the variational constant is given by
+	They proved that for $\alpha < d$ and let $p \ge 2$,
+	\begin{equation}\label{E:AsymVar}
+		\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma),
+	\end{equation}
+	where the variational constant is given by
 	\begin{align*}
 		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
 		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
@@ -1268,17 +1268,16 @@ where the variational constant is given by
 	\[
 		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
 	\]
-By setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover \eqref{E:AsymVar}. Indeed, by observing \eqref{E:VarConstE} and \eqref{E:EvsM}, we see that
+	By setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover \eqref{E:AsymVar}. Indeed, by observing \eqref{E:VarConstE} and \eqref{E:EvsM}, we see that
 	\begin{align}
-		\textbf{M}(a,\alpha_0,d,\gamma)  &= E_{a,d}\left(\frac{1}{2}\gamma,2\right) \nonumber
-		\\&= 2^{\frac{-a}{a-\alpha}}\left(\frac{a-\alpha}{a}\right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}}\mathcal{M}_{a,d}\left(\gamma,1\right)^{\frac{2a-\alpha}{a-\alpha}} \label{E:MbfAndMmathcalRelation}
+		\textbf{M}(a,\alpha_0,d,\gamma) & = \mathbf{E}_{a,d}\left(\frac{1}{2}\gamma,2\right) \nonumber \\
+                                    & = 2^{\frac{-a}{a-\alpha}}\left(\frac{a-\alpha}{a}\right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}}\mathcal{M}_{a,d}\left(\gamma,1\right)^{\frac{2a-\alpha}{a-\alpha}} \label{E:MbfAndMmathcalRelation}
 	\end{align}
-and by rewriting \eqref{E:AsymVar} with \eqref{E:MbfAndMmathcalRelation} yields \eqref{E:AsymStable-t}.
-Finally, we note that condition \eqref{E:gammaHu} can be relaxed to allow white noise in one
-dimensional case, namely, $\alpha=d=1$. In this case, one can simply replace $\alpha$ and $d$ in both
-\eqref{E:AsymStable-t} and \eqref{E:AsymFracSHE-p} by $1$ and in addition replace $\mathcal{M}_{a,d}$ by
-$\mathcal{M}_{a ,1}(\delta_0)$.
-
+	and by rewriting \eqref{E:AsymVar} with \eqref{E:MbfAndMmathcalRelation} yields \eqref{E:AsymStable-t}.
+	Finally, we note that condition \eqref{E:gammaHu} can be relaxed to allow white noise in one
+	dimensional case, namely, $\alpha=d=1$. In this case, one can simply replace $\alpha$ and $d$ in both
+	\eqref{E:AsymStable-t} and \eqref{E:AsymFracSHE-p} by $1$ and in addition replace $\mathcal{M}_{a,d}$ by
+	$\mathcal{M}_{a ,1}(\delta_0)$.
 \end{example}% }}}
 
 \begin{example}[Asymptotics for SPDEs with $r=\Ceil{b}-b$ and white noise]% {{{
@@ -1820,7 +1819,7 @@ lemma:
 	\end{gather}
 \end{lemma}
 
-We need to prove two Lemmas in order to prove Lemma \ref{L:EvsM}.
+We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 
 \begin{lemma}
 	For any $f \in L^2(\R^d)$ with $\mathcal{E}_a(f,f) < \infty$, it holds that
