@@ -213,7 +213,7 @@ such that
  \begin{align*}
 	 J(\psi,\phi) = \int_0^\infty \ud s \int_{\R^d} \ud x \int_{\R^d} \ud y \: \psi(s,x)f(x-y)\varphi(s,y).
  \end{align*}
-$f$ is often referred to as the correlation function of the Gaussian Noise and its Fourier transform
+$f$ is often referred to as the \textit{spatial correlation} function of the Gaussian Noise and its Fourier transform
 \begin{align*}
 	\hat{f}(\xi)=\mathcal Ff(\xi) = \int_{\R^d}\exp(-i\xi\cdot x)f(x) \: \ud x
 \end{align*}
@@ -249,7 +249,7 @@ the stochastic integral
 	\int_0^\infty \int_{\R^d} X(s,y)\: W(\ud s, \ud y)
 \end{align*}
 is well defined in the sense of Walsh. Throughout this paper $\Vert \cdot \Vert_p$ will denote the standard
-$L^p(\Omega)$ norm, $\E\big[|\cdot|^p\big]^{\frac{1}{p}}$.
+$L^p(\Omega)$ norm, $\left(\E|\cdot|^p\right)^{\frac{1}{p}}$.
 
 \subsection{Existence and uniqueness of the mild solution}
 
@@ -257,7 +257,7 @@ With all this said, we define the mild solution to \eqref{E:gspde} as
 \begin{equation}
 	u(t,x)=\int_{\R^d}G(t,x-y)\mu(\ud y) + \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y) \label{E:gmsol}
 \end{equation}
-where the second integral above is a Walsh integral and
+where the and integral above is a Walsh integral and
 \[
 	 G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\dfrac{|x|^2}{2t} \right).
 \]
@@ -396,11 +396,29 @@ a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \eqref{A:ic
 \end{lemma}
 
 \begin{proof}
+		\textcolor{red}
+	{
+		I remember discussing this awhile back. Is the following correct? 
+		\\
+		Since $\rho$ is admissible, then for any $T>0$, we have a constant $C_T$ such that 
+		\[
+		(2 \pi t )^{-d/2} \int_{\R^d} \exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y) \ud y \le C(T) \rho(x) \quad \forall t \in [0,T].
+		\]
+		Then for a given $a>0$, let $T=2a$, $x=0$ and $t=1/(2a)$. Then because $\rho$ is continuous, we see that 
+		\[
+		\int_{\R^d} \exp\left(-a|y|^2\right)\rho(y) \ud y \le C(2a) \rho(0) < \infty.
+		\]
+		This is condition \eqref{A:icon}.
+		\\
+		This seems more clear then the following proof I gave awhile back.
+	}
+
 	It can be shown that $\rho$ being an admissible implies that for some $C_a>0$,
 	\begin{align}
 		\label{E:RhoDom}
 		\exp\left(-a|x|^2\right)\le C_a\: \rho(x),\qquad \text{for all $x\in\R^d$.}
 	\end{align}
+	
 	Then by the Cauchy-Schwatz inequality,
 	\begin{align*}
 		\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|\ud x
@@ -498,6 +516,9 @@ thus completing the proof of the claim.}
 	is satisfied whenever $\mu=\varphi \in L^2_\rho$ is bounded and, as we will also see below, is also satisfied when $\mu = \delta_0$ where $\delta_0$ is the Dirac delta measure.
 \end{remark}
 
+
+\textcolor{red}{The following needs to be investigated more. I do not believe I mentioned in the proof of the main result where this is needed to be used. See the Tessitore paper to see where they used it.}
+
 We finish off this section with a proposition on the functions $G(t,x)$ which will be used later in the proof of Lemma \ref{L:Main}. The proof of this result can be found in \cite{TessitoreZabczyk98M} \\
 
 \begin{proposition}
@@ -511,7 +532,10 @@ We finish off this section with a proposition on the functions $G(t,x)$ which wi
 
 \section{Main Results}
 \subsection{Invariant measures}
-Let $(E, \mathscr E)$ denote an arbitrary measure space and $\mathcal M_1(E)$ be the set of all probability measure on $(E, \mathscr E)$. Let $P_t(x,A)$, $t\ge0$, $x\in E$, $A \in \mathscr E$ be a Markovian Transition function as in \cite{DZ96}. Associated with each Markovian transition function is a semigroup of linear operators, $P_t$ defined on the set of bounded measurable functions on $E$, $\mathcal B_b(E)$ defined by
+Let $(E, \mathscr E)$ denote an arbitrary measure space and $\mathcal M_1(E)$ be the set of all probability measures on $(E, \mathscr E)$. Let $P_t(x,A)$, $t\ge0$, $x\in E$, $A \in \mathscr E$ be a Markovian Transition function as in \cite{DZ96}. Associated with each Markovian transition function is a semigroup of linear operators, $P_t$ defined on the set of bounded measurable functions on $E$, $\mathcal B_b(E)$ defined by
+
+\textcolor{red}{What is the range of the function $\varphi$ ? eg. is it real valued?}
+
 \begin{align*}
 	P_t \varphi (x) = \int_E P_t(x,\ud y)\varphi(y).
 \end{align*}
