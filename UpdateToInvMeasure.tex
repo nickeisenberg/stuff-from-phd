@@ -450,40 +450,69 @@ We will show that the solution, denoted as $u^\varphi(t,x)$, is an object in $L^
 denote the solution to \eqref{E:spde} as $u(t,x)$ or simply as $u$ when there is no confusion. First we state and prove
 a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \eqref{A:icon}.
 
+\begin{lemma}\label{L:RhoDom} Let $\rho$ be an admissible weight. Then we have the following inequality:
+	\begin{align}
+	\label{E:RhoDom}
+	\exp\left(-a|x|^2\right)\le K_a\: \rho(x),\qquad \text{for all $x\in\R^d$.}
+	\end{align}
+\end{lemma}
+
+\begin{proof}
+The admissible weight property \eqref{E:aw} tells us that 
+	\begin{equation} \label{E:awbd1}
+		\lim_{|x| \to \infty}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le 		C_{\rho}(T) ,\quad \forall t \in [0,T].
+	\end{equation}
+We note that in order to prove \eqref{E:RhoDom}, it suffices to show that there exists some $K'_a \in \mathbb{N}$ such that
+	\begin{equation} \label{E:awbd2}
+	\lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le K'_a.
+	\end{equation}
+	Indeed, this would imply that there would exist an $R_\epsilon$ such that 
+	\[
+	\exp\left(-a|x|^2\right) \le (K'_a+\epsilon)\rho(x) \quad |x|>R_\epsilon
+	\] 
+	and by the positivity and continuity of both $	\exp\left(-a|x|^2\right)$ and $\rho(x)$, we know that there exists some positive constant $K'(a,\epsilon)$ such that 
+	\[
+	\exp\left(-a|x|^2\right) \le K'(a,\epsilon)\rho(x) \quad |x|\le R_\epsilon
+	\]
+	and by then setting $K_a := K(a,\epsilon) = \max\{K'(a,\epsilon),(K_a'+\epsilon)\}$ then
+	\[
+	\exp\left(-a|x|^2\right) \le K_a\rho(x) \quad x \in \R^d
+	\]
+	which is precisely \eqref{E:RhoDom}. 
+	
+	In order to show \eqref{E:awbd2}, it suffices to show that 
+	\begin{equation} \label{E:awbd3}
+	\lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\exp\left(-a|x|^2\right)} = \infty
+	\end{equation}
+	because this would mean that $\exp\left(-a|x|^2\right)$ is much smaller than $\left(G(t,\cdot)*\rho(\cdot)\right)(x)$ for all large $|x|$ and since \eqref{E:awbd1} is true then this would mean that \eqref{E:awbd2} would be true as well by squeeze theorem,
+	\[
+	0 \le \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le  \lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le C_{\rho}(T)
+	\]
+	
+	\textcolor{blue}{The following is incorrect because $\rho$ does not need to be bounded. Continuity and integrability do not imply boundedness on the whole space.}
+	
+	We prove \eqref{E:awbd3} as follows: first recall $|\rho(x)| < M$ for some $M \in \mathbb N$. Then, 
+	\begin{align*}
+	0 \le	\dfrac{\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)\ud y}{\exp\left(-a|x|^2\right)} &\le \dfrac{M\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right) \ud y}{\exp\left(-a|x|^2\right)} 
+	\\&  = \dfrac{M*\sqrt{2 \pi t}}{\exp\left(-a|x|^2\right)} 
+	\\& \to \infty \quad \text{as } |x|\to \infty
+	\end{align*}
+	
+	Thus \eqref{E:awbd3} is proved which means that \eqref{E:awbd2} is also true. 
+
+\end{proof}
+
 \begin{lemma}
 	\label{L:phi}
 	Suppose that $\varphi \in L^2_\rho(\R^d)$. Then $\varphi$ satisfies \eqref{A:icon}.
 \end{lemma}
 
 \begin{proof}
-	\textcolor{red}
-	{
-		I remember discussing this awhile back. Is the following correct? 
-		\\
-		Since $\rho$ is admissible, then for any $T>0$, we have a constant $C_T$ such that 
-		\[
-		(2 \pi t )^{-d/2} \int_{\R^d} \exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y) \ud y \le C(T) \rho(x) \quad \forall t \in [0,T].
-		\]
-		Then for a given $a>0$, let $T=2a$, $x=0$ and $t=1/(2a)$. Then because $\rho$ is continuous, we see that 
-		\[
-		\int_{\R^d} \exp\left(-a|y|^2\right)\rho(y) \ud y \le C(2a) \rho(0) < \infty.
-		\]
-		This is condition \eqref{A:icon}.
-		\\
-		This seems more clear then the following proof I gave awhile back.
-	}
-	
-	It can be shown that $\rho$ being an admissible implies that for some $C_a>0$,
-	\begin{align}
-	\label{E:RhoDom}
-	\exp\left(-a|x|^2\right)\le C_a\: \rho(x),\qquad \text{for all $x\in\R^d$.}
-	\end{align}
-	
-	Then by the Cauchy-Schwatz inequality,
+By Lemma \ref{E:RhoDom} and the Cauchy-Schwatz inequality, there exists a constant $K$ such that
 	\begin{align*}
 	\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|\ud x
-	&\le C'_a \left(\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|^2\ud x\right)^{1/2}
-	\le C'_a C_a^{1/2} \Norm{\varphi}_\rho<\infty.
+	&\le K\left(\int_{\R^d} \e^{-a|x|^2} |\varphi(x)|^2\ud x\right)^{1/2}
+	\le K \Norm{\varphi}_\rho<\infty.
 	\end{align*}
 \end{proof}
 
