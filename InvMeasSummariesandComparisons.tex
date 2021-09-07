@@ -145,7 +145,8 @@ Our first main result handles the case of the existence of an invariant measure 
 Before we state the result, we need to make an additional assumption on the spectral measure.
 
 \begin{assumptions}
-	\item \begin{equation}
+	\textcolor{magenta}{For some $\alpha\in \left(0,1/2\right)$, it holds that}
+	\begin{equation}
 	\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) < \infty \label{A:fcon}
 	\end{equation}
 \end{assumptions}
@@ -168,6 +169,10 @@ We now state our last assumption which will be required for the proof of one of 
 	\sup_{x\in \R^d}	\big(G(t,\cdot)*|\mu|)(x) \big) < K(t), \quad \forall t>0 \text{ and } K(t)\in \mathbb N \label{A:newgicon}
 	\end{equation}
 \end{assumptions}
+
+\textcolor{magenta}{This assumption is conveinent but not ideal. If $\rho(x)=e^{-|x|}$, we wish to include initial
+condition such as  $u(0,x)=e^{+\sqrt{|x|}}$. I recall vaguely that we have discussion on this and we
+met some issues but I forgot what it is.}
 
 \begin{remark}
 	It is easy to see that Assumption \eqref{A:newgicon} is satisfied whenever $\mu=\varphi \in L^2_\rho(\R^d)$ is bounded and also when $\mu = \delta_0$ where $\delta_0$ is the Dirac delta measure.
@@ -202,6 +207,11 @@ The following Theorem proves the existence of an invariant measure for measure v
 	invariant for $\{\mathscr L (u^\mu(t,\cdot))\}_{t>l}$ where $u$ is the solution to \eqref{E:gspde} with
 	initial measure $\mu$.
 \end{theorem}
+
+\textcolor{magenta}{Why do you need to introduce this extra variable $l$? One could simply say  $t>0$ in the statement.
+We can list this theorem as the main therorem and Theorem \ref{T:Main} only as an intermediate step
+in the proof.}
+
 
 \section{Summaries of previous papers.}
 
