@@ -114,16 +114,9 @@ u(0,\cdot) = \mu(\cdot)  &
 \end{equation}
 where $b(x,u)$ is assumed to be a globally Lipschitz continuous function in $u$ with Lipschitz constant independent of $x$.
 In particular, the linear case  $b(x,u) = \lambda u$ is referred to as the \textit{parabolic Anderson model} \cite{CarMol94}.
-In this equation, $\dot{W}(t,s)$ refers to a centered Gaussian noise that is white in time and homogeneously correlated in space.
-The initial measure, $\mu$, is a deterministic and locally finite (regular) Borel measure.
-In particular, we investigate the conditions required to guarantee the existence of invariant measures
-for the solution to \eqref{E:gspde} for a more broad range of initial measures which include the Dirac delta
-distribution $\delta_0$ as well some weighted $L^2$ functions.
+In this equation, $\dot{W}(t,s)$ refers to a centered Gaussian noise that is white in time and homogeneously correlated in space. The initial measure $\mu \in \mathcal{M}_B$ where $\mathcal{M}_B$ is the space of deterministic and locally finite (regular) Borel measures which satisfy \eqref{A:icon} below. In particular, we investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{E:gspde} for a more broad range of initial measures which include the Dirac delta distribution $\delta_0$ as well some weighted $L^2$ functions.
 
-The question of the existence of invariant measures in unbounded domains with dimension $d \ge 3$ has been handled in
-few papers such as \cite{TessitoreZabczyk98M, AM03, MSY15, MSY16}. One thing to note is that the just mentioned papers
-use the theory of the stochastic integral laid out by Da Prato and Jabczyk in \cite{DZ92} while in this paper we use the
-theory developed by Walsh in \cite{Walsh}. The former develops a theory of integration with respect to
+The question of the existence of invariant measures in unbounded domains with dimension $d \ge 3$ has been handled in few papers such as \cite{TessitoreZabczyk98M, AM03, MSY15, MSY16}. One thing to note is that the just mentioned papers use the theory of the stochastic integral laid out by Da Prato and Jabczyk in \cite{DZ92} while in this paper we use the theory developed by Walsh in \cite{Walsh}. The former develops a theory of integration with respect to
 Hilbert-space-valued processes while the later emphasizes integration with respect to worthy martingale measures. Both
 theories have their advantages and disadvantages but have been proven to be more or less equivalent in \cite{DalQuer}.
 
@@ -396,26 +389,33 @@ Let $(E, \mathscr E)$ denote an arbitrary measure space and $\mathcal M_1(E)$ be
 \begin{align*}
 P_t \varphi (x) = \int_E P_t(x,\ud y)\varphi(y).
 \end{align*}
-Lastly we say that the above semigroup of linear operators satisfies the Feller Property if for each continuous and bounded function $\varphi$ on $E$ we have that $P_t\varphi (x)$ is also a bounded and continuous function on $E$.
+Lastly we say that the above semigroup of linear operators satisfies the Feller Property if for each continuous and bounded function $\varphi$ on $E$ we have that $P_t\varphi (x)$ is also a bounded and continuous function on $E$. Now consider, for any $\mu(\cdot) \in \mathcal{M}_H$, the laws of the solution $u(t,x)$ of \eqref{E:gspde} 
+\begin{align*}
+\mathscr L (u^\mu(t,\cdot))(A) = P\{\omega \in \Omega : u^\mu(t,\cdot) \in A \quad A \in \mathscr B(L^2_\rho(\R^d))\}
+\end{align*} and define $P_t(\mu,A) := \mathscr L (u^\mu(t,\cdot))(A)$. The following two definitions will define what it means for a measure to be invariant for an SPDE. 
 
-Recall that a measure $\eta \in \mathcal M_1(E)$ is invariant for $P_t$ if
+\begin{definition}
+A measure $\eta \in \mathcal M_1(E)$ is \textit{invariant} for $P_t$ if
 \begin{align*}
-\eta(A)=\int_E P_t(x,A)\eta(dx) \quad \text{for each $t\ge 0$}.
+\eta(A)=\int_E P_t(x,A)\eta(dx) \quad \text{for each $t\ge 0$ and $A \in \mathcal{E}$}.
 \end{align*}
-Following \cite{DZ96}, we define Markovian transition functions $P_t(\varphi,A) := \mathscr L (u^\varphi(t,\cdot))(A)$ for $\varphi \in L^2_{\rho}(\R^d)$, $t \ge 0$ and $A \in \mathscr B (L^2_{\rho}(\R^d))$ where $\mathscr B (L^2_\rho(\R^d))$ are the Borel subsets of the space $L^2_\rho(\R^d)$ and $\mathscr L (u^\varphi(t,\cdot))(A)$ denotes the laws of the solution of \eqref{E:spde}
-\begin{align*}
-\mathscr L (u^\varphi(t,\cdot))(A) = P\{\omega \in \Omega : u^\varphi(t,\cdot) \in A \quad A \in \mathscr B(L^2_\rho(\R^d))\}
-\end{align*}
-which define a probability measure on $\mathscr B(L^2_\rho(\R^d))$. As mentioned in the introduction, we said our first goal was to establish the Feller property. However, this has been established in \cite{DZ96} and in fact they verfy this for a larger class of SPDEs. The second step was to show the solution is bounded in probability which means
+\end{definition}
+
+\begin{definition}
+	A measure $\eta$ is \textit{invariant for the SPDE \eqref{E:gspde}} if $\eta$ is invariant for $P_t(\mu,A) := \mathscr L (u^\mu(t,\cdot))(A)$.
+\end{definition}
+
+\begin{remark}
+	Lemma \ref{L:phi} below shows that $L^2_{\rho}(\R^d) \subset \mathcal{M}_B$. 
+\end{remark}
+
+As mentioned in the introduction, we said our first goal was to establish the Feller property. However, this has been established in \cite{DZ96} and in fact they verfy this for a larger class of SPDEs. The second step was to show the solution is bounded in probability which means
 \begin{align*}
 \forall \epsilon >0, \; \exists R>0: \; \forall t>0, \; P[|u^\varphi(t,\cdot)|_\rho \ge R] <  \epsilon .
 \end{align*}
 We verify this property and deduce the existence of an invariant measure for $L^2_\rho$ initial conditions in Theorem
-\ref{T:Main} and then generalize the result for measure valued initial conditions, and in particular, the Dirac delta
-measure $\delta_0$ in Theorem \ref{T:Main2}.
-
-
-For the case when the initial condition is a measure, as in \eqref{E:gspde} the laws are defined for $t>0$ where $t$ needs to be strictly greater than $0$. This is indeed true by Lemma \ref{L:Moments}  below which states that under certain assumptions, the solution $u(t,\cdot)$ of \eqref{E:gspde} is almost surely in $L^2_{\rho}$ for every $t>0$.
+\ref{T:Main} and then generalize the result in Theorem \ref{T:Main2} for measure valued initial conditions, and in particular, the Dirac delta
+measure $\delta_0$.
 
 \subsection{The weighted space $L^2_\rho(\R^d)$}\label{S:weightedspace}
 
@@ -488,8 +488,6 @@ We note that in order to prove \eqref{E:RhoDom}, it suffices to show that there 
 	\[
 	0 \le \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le  \lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le C_{\rho}(T)
 	\]
-	
-	\textcolor{blue}{The following is incorrect because $\rho$ does not need to be bounded. Continuity and integrability do not imply boundedness on the whole space. If the limit in \eqref{E:awbd3} in positive then the result will work. I am unsure if the limit even need to exist though, can the numerator in \eqref{E:awbd3} have an infinite number of growing spikes?}
 	
 	We prove \eqref{E:awbd3} as follows: first recall $|\rho(x)| < M$ for some $M \in \mathbb N$. Then, 
 	\begin{align*}
@@ -595,20 +593,6 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 		\end{align*}
 		thus completing the proof of the claim.}
 \end{proof}
-
-
-\textcolor{red}{The following needs to be investigated more. It is used in the first couple lines of Step 1 in the proof of theorem 3.1 in their paper. Its used to prove that \eqref{E:fop} is compact. This is only stated but not proven in the Tessitore paper}
-
-We finish off this section with a proposition on the functions $G(t,x)$ which will be used later in the proof of Lemma \ref{L:Main}. The proof of this result can be found in \cite{TessitoreZabczyk98M} \\
-
-\begin{proposition}
-	\label{P:weight}
-	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$. Moreover, if $\hat\rho$ is another admissible weight such that
-	\begin{align*}
-	\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty
-	\end{align*}
-	then for any $t<0$, the operators defined above are compact from $L^2_{\hat\rho}(\R^d)$ to $L^2_\rho(\R^d)$.
-\end{proposition}
 
 \section{Proof of Theorems \ref{T:Main} and \ref{T:Main2}}
 
@@ -732,16 +716,27 @@ We now can prove Theorem \ref{T:Main2}.
 \end{proof}
 
 \section{Proof of Lemma \ref{L:Main}}
-We first define two operators. Let $q>2$ and $t_0>0$ be arbitrary and $\alpha \in (q^{-1},2^{-1})$. Define the operator $F_\alpha^{t_0}$ as follows
+We start off  with a proposition whose proof is given in Proposition 2.1 \cite{TessitoreZabczyk98M} 
+
+\begin{proposition}
+	\label{P:weight}
+	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$. Moreover, if $\hat\rho$ is another admissible weight such that
+	\begin{align*}
+	\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty
+	\end{align*}
+	then for any $t<0$, the operators defined above are compact from $L^2_{\hat\rho}(\R^d)$ to $L^2_\rho(\R^d)$.
+\end{proposition}
+
+We now define two operators. Let $q>2$ and $t_0>0$ be arbitrary and $\alpha \in (q^{-1},2^{-1})$. Define the operator $F_\alpha^{t_0}$ as follows
 \begin{equation}
 \label{E:fop}
 \left(F_{\alpha}^{t_0} f\right)(x) := \int_0^{t_0} ds \int_{\R^d} dy \: (t_0-s)^{\alpha-1}G(t_0-s,x-y)f(s,y) .
 \end{equation}
-It is shown in \cite{TessitoreZabczyk98M} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to
+It is shown in the proof of Theorem 3.1 \cite{TessitoreZabczyk98M} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to
 $L^2_\rho$ where $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ is the space of functions that map $s \mapsto f(s,\cdot)$ and
-$f(s,\cdot) \in L^2_{\hat\rho}$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\hat\rho}^q \: \ud s < \infty$.
+$f(s,\cdot) \in L^2_{\hat\rho}(\R^d)$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\hat\rho}^q \: \ud s < \infty$.
 
-Next we define for $\varphi \in L^2_{\rho}$ the operators $Y^\varphi(s,y)$, or simply as $Y(s,y)$ when there is no
+Next we define for $\varphi \in L^2_{\rho}(\R^d)$ the operators $Y^\varphi(s,y)$, or simply as $Y(s,y)$ when there is no
 confusion, as follows
 \begin{equation}
 \label{E:yop}
@@ -766,8 +761,8 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\end{align*}
 	and because of this, we look to find an appropriate upper bound for $\Norm{Y(s,y)}^2_q$ which for now we denote as
 	$M(s,y)$. Then we integrate this bound $$ \int_{\R^d}M(s,y)\rho(y)\:\ud y$$ which gives us a bound for $\big|
-	\Norm{Y(s,y)}_q\big|_\rho$. To do this, we start by applying the Burkholder-Davis-Gundy Inequality from
-	\cite{DalangEtc09Minicourse} as well as Minkowski's Integral Inequality to see that
+	\Norm{Y(s,y)}_q\big|_\rho$. To do this, we start by applying the Burkholder-Davis-Gundy inequality, Theorem 5.27
+	\cite{DalangEtc09Minicourse}, as well as Minkowski's integral inequality to see that
 	\begin{align*}
 	\Norm{Y(s,y)}_q^2 \le & C_q \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)
 	\Norm{b(u(r,z_1))}_q f(z_1-z_2)\\
@@ -778,19 +773,17 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\begin{align*}
 	\Norm{b(u(r,z_i))}_q
 	& \le k(1+\Norm{u(r,z_i)}_q)
-	\\ & \le k_1\bigg(1+(1+J_0(r,z_i))\bigg) \quad \text{by \eqref{E:mb0}}
-	\\ & \le k_2(1+J_0(r,z_i)).
+	\\ & \le k\bigg(1+(1+J_0(r,z_i))\bigg) \quad \text{by \eqref{E:mb0}}
+	\\ & \le k(1+J_0(r,z_i)).
 	\end{align*}
-	Now applying this to the inequality for $\Norm{Y(s,y)}_q^2$ above we get that
+	Now applying this above  to the inequality for $\Norm{Y(s,y)}_q^2$ we get that
 	
 	\begin{align*}
-	&\Norm{Y(s,y)}_q^2\\
-	&\le k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)  (1+J_0(r,z_1)) f(z_1-z_2)\\
-	&\hspace{13.5em} \times  G(s-r,y-z_2) (1+J_0(r,z_2))
-	\\ &=  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
-	\\ &\hspace{1.5em}+  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)
-	\\ &\hspace{1.5em}+  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2)
-	\\ &\hspace{1.5em}+  k_3 \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)J_0(r,z_2)\\
+	\Norm{Y(s,y)}_q^2 &\le k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 f(z_1-z_2) \prod_{i=1}^2  G(s-r,y-z_i)  (1+J_0(r,z_i))
+	\\ &=  k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
+	\\ &\hspace{1.5em}+  k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)
+	\\ &\hspace{1.5em}+  k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_2)
+	\\ &\hspace{1.5em}+  k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)J_0(r,z_2)\\
 	&=: I_1 +I_2+I_3+I_4.
 	\end{align*}
 	
