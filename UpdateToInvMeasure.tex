@@ -435,44 +435,46 @@ Several examples of admissible weights are (see Example in Section 2 of \cite{Te
 \begin{equation}
 	\label{E:admRho}
 	\begin{aligned}
-		\rho(x) & = \exp(-a|x|), \quad a>0 \quad \text{and} \\
-		\rho(x) & = (1+|x|^a)^{-1}, \quad a>d.
+		\rho(x) & = \exp(-a|x|), \quad               &  & a>0 \quad \text{and} \\
+		\rho(x) & = \left(1+|x|^a\right)^{-1}, \quad &  & a>d.
 	\end{aligned}
 \end{equation}
 
 \begin{remark}
 	\label{R:admRho}
 	Certainly, the smaller weight function $\rho(\cdot)$, the larger the space $L_\rho^2(\R^d)$ is.
-	For example, one may choose $\rho$ to be a nonnegative function with compact support, or to be
-	$G(1,\cdot)$. In both cases, $\rho$ is smaller than those in \eqref{E:admRho} (up to a
-	constant). However, one can easily check that the admissible condition in \eqref{E:aw} exclude these
-	two cases.
+	For example, one may choose $\rho$ to be either a nonnegative function with compact support or the
+	heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than those in \eqref{E:admRho}
+	(up to a constant). However, one can easily check that the admissible condition in \eqref{E:aw}
+	exclude these two cases. It may be much less obvious that the following function
+	\begin{equation*}
+		\rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d
+	\end{equation*}
+	with $a>0$ and $b\in (1,2)$ is not admissible \textcolor{magenta}{(Nick, can you prove this fact
+	in appendix)}. In any case, we will focus on admissible weight functions as given in \eqref{E:admRho}.
 \end{remark}
 
-As pointed out in Remark \ref{R:admRho}, the admissible weight $\rho$ cannot be the heat kernel
-itself. But one can make it as close as possible. This fact is proved in the next lemma:
-
-\begin{lemma}
-	\label{L:admRho}
-	For any $a>0$ and $b\in (0,2)$, the following weight function	 is admissible:
-	\begin{equation*}
-		\rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d.
-	\end{equation*}
-\end{lemma}
-\begin{proof}
-	It suffices to prove that
-	\begin{equation*}
-		g(x):=\int_{\R^d} G(t,x-y) \exp\left(-a |y|^b + a |x|^b\right) \ud y
-	\end{equation*}
-	is uniformly bounded in $x$ with $t>0$ fixed. Notice that $g(x)$ is a smooth function. By the
-	dominated convergence, one sees that
-	\begin{equation*}
-		\lim_{|x|\to \infty} g(x) = \int_{\R^d}\lim_{|x|\to \infty} G(t,x-y) \exp\left(-a |y|^b + a |x|^b\right)
-		\ud y = 0.
-	\end{equation*}
-	Therefore, $g(x)$ is a continuous function in  $\R^d\cup \{\infty\}$, which implies that
-	$\sup_{x\in \R^d} g(x) <\infty$.
-\end{proof}
+% As pointed out in Remark \ref{R:admRho}, the admissible weight $\rho$ cannot be the heat kernel
+% itself. But one can make it as close as possible. This fact is proved in the next lemma:
+%
+% \begin{lemma}
+% 	\label{L:admRho}
+% 	For any the following weight function	 is admissible:
+% \end{lemma}
+% \begin{proof}
+% 	It suffices to prove that
+% 	\begin{equation*}
+% 		g(x):=\int_{\R^d} G(t,x-y) \exp\left(-a |y|^b + a |x|^b\right) \ud y
+% 	\end{equation*}
+% 	is uniformly bounded in $x$ with $t>0$ fixed. Notice that $g(x)$ is a smooth function. By the
+% 	dominated convergence, one sees that
+% 	\begin{equation*}
+% 		\lim_{|x|\to \infty} g(x) = \int_{\R^d}\lim_{|x|\to \infty} G(t,x-y) \exp\left(-a |y|^b + a |x|^b\right)
+% 		\ud y = 0.
+% 	\end{equation*}
+% 	Therefore, $g(x)$ is a continuous function in  $\R^d\cup \{\infty\}$, which implies that
+% 	$\sup_{x\in \R^d} g(x) <\infty$.
+% \end{proof}
 
 For the remainder of this section, we focus ourselves on \eqref{E:gspde} with initial condition $\varphi \in L^2_\rho(\R^d)$,
 namely the following stochastic heat equation.
