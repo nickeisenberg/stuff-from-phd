@@ -72,8 +72,9 @@
 \newcommand{\rhoNorm}[1]{\left|  #1   \right|}
 \newcommand{\ud}{\ensuremath{ \mathrm{d} }}
 
+% }}}
 
-\title{Invariant measures for the stochastic heat equation on $\R^d$}
+\title{Invariant measures for the stochastic heat equation on $\R^d$ without drift term}
 \author{Le Chen\\Auburn University\\\texttt{le.chen@auburn.edu}\\
 	\and
 		Nicholas Eisenberg\\Auburn University\\\texttt{nze0019@auburn.edu}
@@ -83,8 +84,8 @@
 
 \begin{document}
 \maketitle
-	
-	
+
+
 \begin{abstract}
 	This paper deals with the long term behavior of the solution to the nonlinear stochastic heat equation
 	$\partial u /\partial t - \frac{1}{2}\Delta u= b(u)\dot{W}$ for a Lipschitz continuous diffusion coefficient
@@ -247,7 +248,7 @@ With this assumption now stated, we now state our first main result, Theorem \re
 	Then for any $t_0 >0$ there exists an invariant measure for the laws of the solution of the SPDE \eqref{E:gspde}, $\{\mathscr L (u^{\hat\varphi}(t,\cdot))\}_{t \ge t_0}$,  in $L^2_\rho(\R^d)$ for any $L^2_{\rho}(\R^d)$ initial condition.
 \end{theorem}
 
-We now state our last assumption which will be required for the proof of one of our last main result, Theorem \eqref{T:Main2}. 
+We now state our last assumption which will be required for the proof of one of our last main result, Theorem \eqref{T:Main2}.
 
 \begin{assumptions} $\;$
 	\begin{equation}
@@ -389,10 +390,10 @@ Let $(E, \mathscr E)$ denote an arbitrary measure space and $\mathcal M_1(E)$ be
 \begin{align*}
 P_t \varphi (x) = \int_E P_t(x,\ud y)\varphi(y).
 \end{align*}
-Lastly we say that the above semigroup of linear operators satisfies the Feller Property if for each continuous and bounded function $\varphi$ on $E$ we have that $P_t\varphi (x)$ is also a bounded and continuous function on $E$. Now consider, for any $\mu(\cdot) \in \mathcal{M}_H$, the laws of the solution $u(t,x)$ of \eqref{E:gspde} 
+Lastly we say that the above semigroup of linear operators satisfies the Feller Property if for each continuous and bounded function $\varphi$ on $E$ we have that $P_t\varphi (x)$ is also a bounded and continuous function on $E$. Now consider, for any $\mu(\cdot) \in \mathcal{M}_H$, the laws of the solution $u(t,x)$ of \eqref{E:gspde}
 \begin{align*}
 \mathscr L (u^\mu(t,\cdot))(A) = P\{\omega \in \Omega : u^\mu(t,\cdot) \in A \quad A \in \mathscr B(L^2_\rho(\R^d))\}
-\end{align*} and define $P_t(\mu,A) := \mathscr L (u^\mu(t,\cdot))(A)$. The following two definitions will define what it means for a measure to be invariant for an SPDE. 
+\end{align*} and define $P_t(\mu,A) := \mathscr L (u^\mu(t,\cdot))(A)$. The following two definitions will define what it means for a measure to be invariant for an SPDE.
 
 \begin{definition}
 A measure $\eta \in \mathcal M_1(E)$ is \textit{invariant} for $P_t$ if
@@ -406,7 +407,7 @@ A measure $\eta \in \mathcal M_1(E)$ is \textit{invariant} for $P_t$ if
 \end{definition}
 
 \begin{remark}
-	Lemma \ref{L:phi} below shows that $L^2_{\rho}(\R^d) \subset \mathcal{M}_B$. 
+	Lemma \ref{L:phi} below shows that $L^2_{\rho}(\R^d) \subset \mathcal{M}_B$.
 \end{remark}
 
 As mentioned in the introduction, we said our first goal was to establish the Feller property. However, this has been established in \cite{DZ96} and in fact they verfy this for a larger class of SPDEs. The second step was to show the solution is bounded in probability which means
@@ -458,7 +459,7 @@ a simple lemma showing that $\varphi \in L^2_\rho$ implies condition \eqref{A:ic
 \end{lemma}
 
 \begin{proof}
-The admissible weight property \eqref{E:aw} tells us that 
+The admissible weight property \eqref{E:aw} tells us that
 	\begin{equation} \label{E:awbd1}
 		\lim_{|x| \to \infty}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le 		C_{\rho}(T) ,\quad \forall t \in [0,T].
 	\end{equation}
@@ -466,11 +467,11 @@ We note that in order to prove \eqref{E:RhoDom}, it suffices to show that there 
 	\begin{equation} \label{E:awbd2}
 	\lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le K'_a.
 	\end{equation}
-	Indeed, this would imply that there would exist an $R_\epsilon$ such that 
+	Indeed, this would imply that there would exist an $R_\epsilon$ such that
 	\[
 	\exp\left(-a|x|^2\right) \le (K'_a+\epsilon)\rho(x) \quad |x|>R_\epsilon
-	\] 
-	and by the positivity and continuity of both $	\exp\left(-a|x|^2\right)$ and $\rho(x)$, we know that there exists some positive constant $K'(a,\epsilon)$ such that 
+	\]
+	and by the positivity and continuity of both $	\exp\left(-a|x|^2\right)$ and $\rho(x)$, we know that there exists some positive constant $K'(a,\epsilon)$ such that
 	\[
 	\exp\left(-a|x|^2\right) \le K'(a,\epsilon)\rho(x) \quad |x|\le R_\epsilon
 	\]
@@ -478,9 +479,9 @@ We note that in order to prove \eqref{E:RhoDom}, it suffices to show that there 
 	\[
 	\exp\left(-a|x|^2\right) \le K_a\rho(x) \quad x \in \R^d
 	\]
-	which is precisely \eqref{E:RhoDom}. 
-	
-	In order to show \eqref{E:awbd2}, it suffices to show that 
+	which is precisely \eqref{E:RhoDom}.
+
+	In order to show \eqref{E:awbd2}, it suffices to show that
 	\begin{equation} \label{E:awbd3}
 	\lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\exp\left(-a|x|^2\right)} = \infty
 	\end{equation}
@@ -488,15 +489,15 @@ We note that in order to prove \eqref{E:RhoDom}, it suffices to show that there 
 	\[
 	0 \le \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le  \lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le C_{\rho}(T)
 	\]
-	
-	We prove \eqref{E:awbd3} as follows: first recall $|\rho(x)| < M$ for some $M \in \mathbb N$. Then, 
+
+	We prove \eqref{E:awbd3} as follows: first recall $|\rho(x)| < M$ for some $M \in \mathbb N$. Then,
 	\begin{align*}
-	0 \le	\dfrac{\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)\ud y}{\exp\left(-a|x|^2\right)} &\le \dfrac{M\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right) \ud y}{\exp\left(-a|x|^2\right)} 
-	\\&  = \dfrac{M*\sqrt{2 \pi t}}{\exp\left(-a|x|^2\right)} 
+	0 \le	\dfrac{\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)\ud y}{\exp\left(-a|x|^2\right)} &\le \dfrac{M\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right) \ud y}{\exp\left(-a|x|^2\right)}
+	\\&  = \dfrac{M*\sqrt{2 \pi t}}{\exp\left(-a|x|^2\right)}
 	\\& \to \infty \quad \text{as } |x|\to \infty
 	\end{align*}
-	
-	Thus \eqref{E:awbd3} is proved which means that \eqref{E:awbd2} is also true. 
+
+	Thus \eqref{E:awbd3} is proved which means that \eqref{E:awbd2} is also true.
 
 \end{proof}
 
@@ -551,7 +552,7 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 	\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}(\rho*G(t,\cdot))(y)|\varphi(y)|^2\ud y \right].
 	\end{align*}
 	Then an application of the admissible weight property \eqref{E:aw} proves \eqref{E:uNormRho}.
-	
+
 	% 	Lemma \ref{L:phi} along with Assumption \ref{A:General} guarantee the existence and uniqueness of the  solution which is show in \cite{CH16Comparison}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant.
 	% \begin{align*}
 	% \E\left(| u(t,\cdot)|_\rho^2\right) &= \E \int_{\R^d}\vert u(t,x) \vert^2 \rho(x)dx
@@ -567,12 +568,12 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 	% \\ \E\left(| u(t,\cdot)|_\rho^2\right)&\le C_4 C(t_0)\left(1+\int_{\R^d}\rho(y)|\varphi(y)|^2dy\right)
 	% \\  &< K\cdot C(t_0).
 	% \end{align*}
-	
+
 	Hence,
 	\[
 	\sup_{0 \le t \le t_0}\E |u(t,\cdot)|_\rho^2 < \infty.
 	\]
-	
+
 	\textcolor{blue}{Now consider $t\ge t_0>0$ and further assume that $\Upsilon(0) < \infty$ and that $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x) \le K(t)$ for any $t>0$. Now starting with \eqref{mstep}, we see that
 		\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right)
@@ -613,7 +614,7 @@ the proof of Theorem \ref{T:Main} For that reason we postpone proving it until l
 We may now complete the proof of Theorem \ref{T:Main}, but first we must recall two definitions.
 
 \begin{definition}[Bonded in Probability]\label{D:bdinprob}
-	The process $u^{\varphi}(t,x)$ is said to be \textit{bounded in probability} in $L^2_{\rho}(\R^d)$ if 
+	The process $u^{\varphi}(t,x)$ is said to be \textit{bounded in probability} in $L^2_{\rho}(\R^d)$ if
  	\begin{align}
 	 	\forall \epsilon >0, \; \exists R>0: \; \forall t>0, \; \mathbb{P}\{ |u^{\varphi}(t,\cdot)|_{\rho} \ge R \} < \epsilon.
  	\end{align}
@@ -622,11 +623,11 @@ We may now complete the proof of Theorem \ref{T:Main}, but first we must recall 
 \begin{definition}[Tightness of a family of measures] \label{D:tight}
 	Consider the Hausdorff space $(X,T)$ and suppose that the sigma algebra $\Sigma$ contains $T$. Let $M$ be a collection of probability measures defined on $\Sigma$. The collection $M$ is said to be \textit{tight} if for any $\epsilon>0$, there exists a compact set $K_{\epsilon} \subset X$ such that for any measure $m\in M$, $m(K_{\epsilon}) > 1 - \epsilon.$
 \end{definition}
- 
+
  \begin{proof}[Proof of Theorem \ref{T:Main}]
  	First recall that by Theorem \ref{T:Moment}
  		\begin{equation} \label{E:bipc}
- 			\sup_{t \ge 0} \E |u^{\hat{\varphi}}(t,\cdot)|_\rho^2 < \infty. 
+ 			\sup_{t \ge 0} \E |u^{\hat{\varphi}}(t,\cdot)|_\rho^2 < \infty.
  		 \end{equation}
  	In fact, this shows that $u^{\hat{\varphi}}(t,\cdot)$ is bonded in probability in $L^2_{\rho}(\R^d)$. To see this, let $\sup_{t\ge 0} \E |u(t,\cdot)|_\rho^2 = B$ and let $\lambda >0$.
  	Then by applying Chebyshev's inequality we may choose $C>0$ large enough so that
@@ -634,7 +635,7 @@ We may now complete the proof of Theorem \ref{T:Main}, but first we must recall 
  	\mathbb{P}[|u(t,\cdot)|_\rho \ge C] \le C^{-2}\E |u(t,\cdot)|_\rho^2 \le C^{-2}B < \lambda.
  	\end{align*}
  	Hence $u(t,\cdot)$ is bounded in probability in $L^2_{\rho}$.
- 	
+
  	Now let $\epsilon \in (0,1)$. Since $u^{\hat\varphi}(t,x)$ is bounded in probability, we can choose $R>0$ such that for any $t \ge t_0$,
  		\[
  			\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} \ge R\} < \epsilon.
@@ -643,11 +644,11 @@ We may now complete the proof of Theorem \ref{T:Main}, but first we must recall 
  	\begin{align*}
  	\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>t_0$} .
  	\end{align*}
- 	In return, this implies that the family of laws $\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge t_0$ is tight in $L^2_{\rho}$. Indeed, if we multiply both sides of \eqref{E:cpt} by $-1$ and then add $1$ to both sides we see that 
+ 	In return, this implies that the family of laws $\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge t_0$ is tight in $L^2_{\rho}$. Indeed, if we multiply both sides of \eqref{E:cpt} by $-1$ and then add $1$ to both sides we see that
  		\begin{align*}
- 			\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \not\in \mathscr K \} &\le \mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} \ge R\} + \epsilon \mathbb{P}\{ |u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} < R \} 
+ 			\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \not\in \mathscr K \} &\le \mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} \ge R\} + \epsilon \mathbb{P}\{ |u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} < R \}
  			\\& \le 2 \epsilon.
- 		\end{align*} 
+ 		\end{align*}
  	Therefore, the family of probability measures
  	\begin{equation}
  	\label{E:intlaw}
@@ -716,7 +717,7 @@ We now can prove Theorem \ref{T:Main2}.
 \end{proof}
 
 \section{Proof of Lemma \ref{L:Main}}
-We start off  with a proposition whose proof is given in Proposition 2.1 \cite{TessitoreZabczyk98M} 
+We start off  with a proposition whose proof is given in Proposition 2.1 \cite{TessitoreZabczyk98M}
 
 \begin{proposition}
 	\label{P:weight}
@@ -777,7 +778,7 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\\ & \le k(1+J_0(r,z_i)).
 	\end{align*}
 	Now applying this above  to the inequality for $\Norm{Y(s,y)}_q^2$ we get that
-	
+
 	\begin{align*}
 	\Norm{Y(s,y)}_q^2 &\le k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 f(z_1-z_2) \prod_{i=1}^2  G(s-r,y-z_i)  (1+J_0(r,z_i))
 	\\ &=  k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
@@ -786,13 +787,13 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\\ &\hspace{1.5em}+  k \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)J_0(r,z_2)\\
 	&=: I_1 +I_2+I_3+I_4.
 	\end{align*}
-	
+
 	We now investigate each of the integrals $I_k$ above. Throughout the remainder of this proof and the proof of Lemma 4.2 we will be using the following relation
 	\begin{equation}
 	\label{E:gsim}
 	G(s-r,y-z_i)G(r,z_i-\sigma)=G(s,y-\sigma)G\left(\dfrac{r(s-r)}{s},z_i-\sigma-\dfrac{r}{s}(y-\sigma)\right) .
 	\end{equation}
-	
+
 	\noindent \textbf{For $I_1$:}
 	\begin{align*}
 	I_1 & = \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)
@@ -807,8 +808,8 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\int_{\R^d}I_1\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)  \int_{\R^d}\rho(y)\ud y
 	\\ &\le (2\pi)^{-2d}\cdot \Norm{\rho}_{L^1(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) .
 	\end{align*}
-	
-	
+
+
 	\noindent \textbf{For $I_2$:}
 	\begin{align*}
 	I_2 &= \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)J_0(r,z_1)
@@ -826,7 +827,7 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\\&= (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
 	\end{align*}
 	where the above is true for any $0 \le s \le S$, $S>0$ is arbitrary and $C(S)$ is the constant from the admissible weight property.
-	
+
 	\noindent \textbf{For $I_3$:} By completing the same steps as for $I_2$ we get that
 	\begin{align*}
 	I_3 \le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)\int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|
@@ -854,7 +855,7 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\\ &\le (2\pi)^{-2d} C(S)\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right)\int_{\R^d}\ud \sigma \: \rho(\sigma)|\varphi(\sigma)|^2
 	\\ &= (2\pi)^{-2d}  C(S)  |\varphi|_\rho^2\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
 	\end{align*}
-	
+
 	\noindent Now, putting all of this together, we see that
 	\begin{align*}
 	\left(E |Y(s,y)|_{\rho}^q\right)^{2/q} &\le \int_{\R^d}dy \rho(y) \Norm{Y(s,y)}_q^2
@@ -938,7 +939,7 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\begin{align*}
 	\int_G \left[ \int_E \int_0^s g(r,z,y) W(\ud r, \ud z) \right]\mu(\ud y) = \int_E \int_0^s \left[ \int_G g(r,z,y) \mu(\ud y) \right] W(\ud r, \ud z).
 	\end{align*}
-	
+
 \end{theorem}
 
 \begin{remark}
@@ -978,7 +979,7 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	\begin{align*}
 	\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_1 \le (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2).
 	\end{align*}
-	
+
 	\noindent \textbf{For $L_2$:} We first use the moment bounds from \cite{CH16Comparison} along with the fact that $\Norm{u(r,z_1)}_1 \le \Norm{u(r,z_1)}_2$.
 	\begin{align*}
 	L_2 & \le k\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)(1+J_0(r,z_1))f(z_1-z_2)G(s-r,y-z_2)
@@ -1003,7 +1004,7 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	\\ & \hspace{3em}+ (2\pi)^{-2d}  \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right).
 	\end{align*}
 	\noindent \textbf{For $L_3$:} Following the same steps for $L_2$ will get you the same exact bound as for $L_3$. \\
-	
+
 	\noindent \textbf{For $L_4$:} We continue as we did for $L_2$ to see that
 	\begin{align*}
 	L_4 &\le k\iint_{\R^{2d}}\ud z_1 \ud z_2\:G(s-r,y-z_1)(1+J_0(r,z_1))f(z_1-z_2)G(s-r,y-z_2)(1+J_0(r,z_2))
@@ -1062,7 +1063,7 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	\\=:   & K_1+\cdots+K_4.
 	\end{align*}
 	We apply similar techniques as in for the first justification of Fubini's Theorem to get that
-	
+
 	\noindent \textbf{For $K_1$:}
 	\begin{align*}
 	\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_1 &\le \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}
@@ -1075,7 +1076,7 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
 	\]
 	and in fact $k_{t,1}$ is finite for each $t>0$ by Lemma \ref{L:equiv}.
-	
+
 	\noindent \textbf{For $K_2$ and $K_3$:}
 	\begin{align*}
 	& \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_2
@@ -1089,9 +1090,9 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	k_{t,2} =  \max_{0\le s \le t} \int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
 	\]
 	which is finite by Lemma \ref{L:equiv}.
-	
+
 	\noindent \textbf{For $K_4$:}
-	
+
 	\begin{align*}
 	&\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_4
 	\\&\le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
@@ -1154,108 +1155,102 @@ We are now able to prove Lemma \ref{L:Main}.
 	Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
 \end{proof}
 
-\begin{small}
+\begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
-	\begin{thebibliography}{999}
-		
-		\bibitem{AM03}
+	\begin{thebibliography}{alpha}
+		\bibitem[AM03]{AM03}% {{{
 		Assing, Sigurd and Ralf Manthey.
 		\newblock Invariant measures for stochastic heat equations with unbounded coefficients.
 		\newblock {\it Stochastic Process. Appl.} 103 (2003), no. 2, 237--256.
-		
-		\bibitem{CarMol94}
+		% }}}
+		\bibitem[CM94]{CarMol94}% {{{
 		Carmona, Ren\'e~A.  and Stanislav~A. Molchanov.
 		\newblock Parabolic Anderson problem and intermittency.
 		\newblock {\em Mem. Amer. Math. Soc.}, 108 (1994), no. 518, viii+125 pp.
-		
-		\bibitem{Cer01}
+    % }}}
+		\bibitem[Cer01]{Cer01}% {{{
 		Cerrai, Sandra.
 		\newblock {\it Second order PDE's in finite and infinite dimension.}
 		\newblock A probabilistic approach. Lecture Notes in Mathematics, 1762. Springer-Verlag, Berlin, 2001. x+330 pp.
-		
-		\bibitem{ChenDalang13Heat}
+    % }}}
+		\bibitem[CD15]{ChenDalang13Heat}% {{{
 		Chen, Le and Robert C. Dalang.
-		\newblock Moments and growth indices for nonlinear stochastic heat equation
-		with rough initial conditions.
+		\newblock Moments and growth indices for nonlinear stochastic heat equation with rough initial conditions.
 		\newblock {\em Ann.\ Probab.}  43 (2015), no. 6, 3006--3051.
-		
-		\bibitem{CHN16Density}
+    % }}}
+		\bibitem[CHN19]{CHN16Density}% {{{
 		Chen, Le, Yaozhong Hu and David Nualart.
 		\newblock Regularity and strict positivity of densities for the nonlinear stochastic heat equation.
-		% \newblock {\em Preprint at arXiv:1611.03909,} 2016.
 		\newblock {\em Mem. Amer. Math. Soc.}, 2019, to appear.
-		
-		\bibitem{CH16Comparison}
+    % }}}
+		\bibitem[CH19]{CH16Comparison}% {{{
 		Chen, Le and Jingyu Huang.
 		\newblock Comparison principle for stochastic heat equation on $\R^d$.
 		\newblock {\em Ann.\ Probab.}  47 (2019), no. 2, 989--1035.
-		
-		\bibitem{CK15SHE}
+    % }}}
+		\bibitem[CK19]{CK15SHE}% {{{
 		Chen, Le and Kunwoo Kim.
 		\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
-		
-		\bibitem{DalangEtc09Minicourse} Dalang, Robert, Davar Khoshnevisan, Carl
-		Mueller, David Nualart, and Yimin Xiao
+    % }}}
+		\bibitem[DK+09]{DalangEtc09Minicourse} % {{{
+		Dalang, Robert, Davar Khoshnevisan, Carl Mueller, David Nualart and Yimin Xiao.
 		\newblock {\it A minicourse on stochastic partial differential equations}.
-		\newblock Held at the University of Utah, Salt Lake City, UT, May 8–19, 2006.
-		Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics,
-		1962.
+		\newblock Held at the University of Utah, Salt Lake City, UT, May 8–19, 2006.  Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics, 1962.
 		\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
-		
-		\bibitem{DalQuer}
+    % }}}
+		\bibitem[DQ11]{DalQuer}% {{{
 		Dalang, Robert C. and Llu\'is Quer-Sardanyons.
 		\newblock Stochastic integrals for spde's: a comparison.
 		\newblock {\it Expo. Math.} 29 (2011), no. 1, 67--109.
-		
-		\bibitem{DZ92}
+    % }}}
+		\bibitem[DZ92a]{DZ92}% {{{
 		Da Prato, Giuseppe and Jerzy Zabczyk.
 		\newblock {\it Stochastic equations in infinite dimensions.}
 		Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
-		
-		\bibitem{DZp92}
+    % }}}
+		\bibitem[DZ92b]{DZp92}% {{{
 		Da Prato, Giuseppe and Jerzy Zabczyk.
 		\newblock {\it Invariant measures for semilinear stochastic equations.}
 		Stochastic Anal. Appl. 10, 387-408.
-		
-		
-		\bibitem{DZ96}
+    % }}}
+		\bibitem[DZ96]{DZ96}% {{{
 		Da Prato, Giuseppe and Jerzy Zabczyk.
 		\newblock {\it Ergodicity for infinite-dimensional systems. }
 		\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996.
-		
-		\bibitem{MS99}
+    % }}}
+		\bibitem[Mas99]{MS99}% {{{
 		Maslowski, Seidler.
 		\newblock {\it On sequentially weakly Fellwe solutions to SPDEs.}
 		\newblock Rend. Lincei Mat. Appl. 10, 69-78
-		
-		\bibitem{MSY16}
+    % }}}
+		\bibitem[MSY16]{MSY16}% {{{
 		Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
 		\newblock Existence and uniqueness of invariant measures for stochastic reaction-diffusion equations in unbounded domains.
 		\newblock {\it J. Theoret. Probab.} 29 (2016), no. 3, 996--1026.
-		
-		
-		\bibitem{MSY15}
+    % }}}
+		\bibitem[MSY15]{MSY15}% {{{
 		Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
 		\newblock Ito's Formula in infinite dimension and its application to the existence of invariant measures.
-		
-		\bibitem{NIST2010}
+    % }}}
+		\bibitem{NIST2010}% {{{
 		F.~W.~J. Olver, D.~W. Lozier, R.~F. Boisvert, and C.~W. Clark, editors.
 		\newblock {\em N{IST} handbook of mathematical functions}.
 		\newblock U.S. Department of Commerce National Institute of Standards  and Technology, Washington, DC. Cambridge Univ. Press, Cambridge, 2010.
-		
-		\bibitem{TessitoreZabczyk98M}
+    % }}}
+		\bibitem[TZ98]{TessitoreZabczyk98M}% {{{
 		Tessitore, Gianmario and Jerzy Zabczyk.
 		\newblock Invariant measures for stochastic heat equations.
 		\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287.
-		
-		\bibitem{Walsh} Walsh, John B.
+    % }}}
+		\bibitem[Wal86]{Walsh}% {{{
+		Walsh, John B.
 		\newblock {\it An Introduction to Stochastic Partial Differential Equations}.
 		\newblock In: \`Ecole d'\`et\'e de probabilit\'es de
 		Saint-Flour, XIV---1984, 265--439.
 		Lecture Notes in Math.\ 1180, Springer, Berlin, 1986.
-		
+    % }}}
 	\end{thebibliography}
 \end{small}
-
+% }}}
 \end{document}
