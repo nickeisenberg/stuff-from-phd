@@ -522,7 +522,7 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 	\label{T:Moment}
 	Suppose Assumption \ref{A:General} holds.
 	Let $u(t,x)$ be the unique solution to \eqref{E:spde} starting from  $\varphi(\cdot) \in L^2_\rho$.
-	\textcolor{blue}{Then for all $T>0$ and for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with}
+	Then for all $T>0$ and for all $t \in [0,T]$, $u(t,\cdot)\in L^2_\rho(\R^d)$ with
 	\begin{align}
 	\label{E:uNormRho}
 	\E\left(| u(t,\cdot)|_\rho^2\right)
@@ -535,13 +535,13 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 \end{theorem}
 
 \begin{proof}
-	\textcolor{blue}{Fix an arbitrary $T>0$ and denote $C_T:=H(T,\gamma_2)^{	1/2}$}. For any $t\in [0,T]$, by Fubini's Theorem and the moment bound \eqref{E:mb}, we see that
+	Fix an arbitrary $T>0$ and denote $C_T:=H(T,\gamma_2)^{	1/2}$. For any $t\in [0,T]$, by Fubini's Theorem and the moment bound \eqref{E:mb}, we see that
 	\begin{align*}
 	\E\left(| u(t,\cdot)|_\rho^2\right)
 	&= \E \left(\int_{\R^d}\vert u(t,x) \vert^2 \rho(x)\ud x\right)
 	\le C_T \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)\ud x.
 	\end{align*}
-	\textcolor{blue}{By definition $\rho\in L^1(\R^d)$, hence we see that}
+	By definition $\rho\in L^1(\R^d)$, hence we see that
 	\begin{align}
 	\E\left(| u(t,\cdot)|_\rho^2\right)
 	\le 2 C_T \left[ \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d}\left(\int_{\R^d}G(t,x-y)|\varphi(y)|dy\right)^2\rho(x)\ud x\right]. \label{mstep}
@@ -574,25 +574,25 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 	\sup_{0 \le t \le t_0}\E |u(t,\cdot)|_\rho^2 < \infty.
 	\]
 
-	\textcolor{blue}{Now consider $t\ge t_0>0$ and further assume that $\Upsilon(0) < \infty$ and that $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x) \le K(t)$ for any $t>0$. Now starting with \eqref{mstep}, we see that
-		\begin{align*}
+	Now consider $t\ge t_0>0$ and further assume that $\Upsilon(0) < \infty$ and that $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x) \le K(t)$ for any $t>0$. Now starting with \eqref{mstep}, we see that
+	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right)
 		& \le  C\left[1+\int_{\R^d}(G(t,\cdot)*|\varphi(\cdot)|)(x)^2\rho(x)dx\right]
-		\end{align*}
-		However,
-		\begin{align*}
+	\end{align*}
+	However,
+	\begin{align*}
 		\big(G(t,\cdot)*|\varphi(\cdot)|\big)(x) = \big(G(t-t_0,\cdot)*G(t_0,\cdot)*|\varphi(\cdot)|\big)(x) \le K(t_0) \big(G(t-t_0,\cdot)*1\big)(x) = K(t_0)
-		\end{align*}
-		where $K(t_0)$ is the bound for $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x)$. Now continuing, we see that
-		\begin{align*}
+	\end{align*}
+	where $K(t_0)$ is the bound for $\sup\limits_{x\in \R^d}(|\varphi|*G(t,\cdot))(x)$. Now continuing, we see that
+	\begin{align*}
 		\E\left(| u(t,\cdot)|_\rho^2\right)& \le  C\left[1+\int_{\R^d}K(t_0)^2\rho(x)dx\right]
-		\\ & = C \left[ 1+ K(t_0)^2\Norm{\rho}_{L^1(\R^d)}  \right] < \infty.
-		\end{align*}
-		This proves that
-		\begin{align*}
+																		\\ & = C \left[ 1+ K(t_0)^2\Norm{\rho}_{L^1(\R^d)}  \right] < \infty.
+	\end{align*}
+	This proves that
+	\begin{align*}
 		\sup_{t \ge t_0}\E |u(t,\cdot)|_\rho^2 < \infty
-		\end{align*}
-		thus completing the proof of the claim.}
+	\end{align*}
+	thus completing the proof of the claim.
 \end{proof}
 
 \section{Proof of Theorems \ref{T:Main} and \ref{T:Main2}}
@@ -677,34 +677,32 @@ We now prove a lemma which will be used to prove Theorem \ref{T:Main2}.
 	\end{align*}
 \end{lemma}
 
-\begin{proof} \textcolor{blue}{
-		We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
-		\begin{align*}
+\begin{proof} We first show that $u(t_0,x)\in L^2_\rho$ for any admissible weight.
+	\begin{align*}
 		\E |u(t_0,\cdot)|_\rho^2 &= \int_{\R^d}\ud x \: \Norm{u(t_0,x)}_2^2\rho(x)
-		\\& \le C  \int_{\R^d}\ud x \: \big(1+(|\mu|*G(t_0,\cdot)(x))\big)^2\rho(x)
-		\end{align*}
-		which follows from the moment estimates \eqref{E:mb0}. Now by applying \eqref{A:newgicon} we see that
-		\begin{align*}
+													 \\& \le C  \int_{\R^d}\ud x \: \big(1+(|\mu|*G(t_0,\cdot)(x))\big)^2\rho(x)
+	\end{align*}
+	which follows from the moment estimates \eqref{E:mb0}. Now by applying \eqref{A:newgicon} we see that
+	\begin{align*}
 		\E |u(t_0,\cdot)|_\rho^2 & \le C \int_{\R^d}\ud x \: \big(1+K(t_0)\big)^2\rho(x)
-		\\& = C\big(1+K(t_0)\big)^2\Norm{\rho}_{L^1(\R^d)}
-		\end{align*}
-		which shows that $u(t_0,x)\in L^2_\rho$ almost surely for any admissible weight. Now it remains to show $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
-		\begin{align*}
+													 \\& = C\big(1+K(t_0)\big)^2\Norm{\rho}_{L^1(\R^d)}
+	\end{align*}
+	which shows that $u(t_0,x)\in L^2_\rho$ almost surely for any admissible weight. Now it remains to show $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
+	\begin{align*}
 		\E |v(t,\cdot)|_\rho^2 &= \int_{\R^d}\Norm{v(t,x)}_2^2\rho(x) \: \ud x
-		\\& \le C \int_{\R^d} \left( 1+\left( \Norm{u(t_0,\cdot)}_2 * G(t,\cdot)(x) \right) \right)^2\rho(x) \: \ud x
-		\end{align*}
-		which follows from an extension of moment estimates \eqref{E:mb0} for random initial conditions.We now continue by again applying the moment estimates.
-		\begin{align*}
+												 \\& \le C \int_{\R^d} \left( 1+\left( \Norm{u(t_0,\cdot)}_2 * G(t,\cdot)(x) \right) \right)^2\rho(x) \: \ud x
+	\end{align*}
+	which follows from an extension of moment estimates \eqref{E:mb0} for random initial conditions.We now continue by again applying the moment estimates.
+	\begin{align*}
 		\E |v(t,\cdot)|_\rho^2 & \le C \int_{\R^d} \bigg( 1+ \big(\big[1+(\mu*G(t_0,\circ))\big](\cdot) * G(t,\cdot)\big)(x)  \bigg)^2\rho(x) \: \ud x
-		\\& = C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0,\circ))(\cdot) * G(t,\cdot)\big](x) \bigg) \bigg)^2\rho(x) \: \ud x
-		\end{align*}
-		Now an application of \eqref{A:newgicon} gives us
-		\begin{align*}
+												 \\& = C \int_{\R^d} \bigg( 1+\bigg( 1+\big[(\mu*G(t_0,\circ))(\cdot) * G(t,\cdot)\big](x) \bigg) \bigg)^2\rho(x) \: \ud x
+	\end{align*}
+	Now an application of \eqref{A:newgicon} gives us
+	\begin{align*}
 		\E |v(t,\cdot)|_\rho^2 &\le C \int_{\R^d} \bigg( 1+\bigg( 2+K(t_0) \bigg) \bigg)^2\rho(x) \: \ud x
-		\\&= C\bigg( 3 +K(t_0) \bigg)^2 \Norm{\rho}_{L^1{\R^d}}
-		\end{align*}
-		which is true for every $t>0$. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
-	}
+												 \\&= C\bigg( 3 +K(t_0) \bigg)^2 \Norm{\rho}_{L^1{\R^d}}
+	\end{align*}
+	which is true for every $t>0$. This shows $\sup_{t\ge 0} \E |v(t,\cdot)|_\rho^2 < \infty$.
 \end{proof}
 
 We now can prove Theorem \ref{T:Main2}.
