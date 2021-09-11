@@ -64,7 +64,7 @@
 % -------------------------------------------------
 
 \newcommand{\lip}{\textup{Lip}_b}
-\newcommand{\liph}{\text{Lip}_{\hat\rho}}
+\newcommand{\liph}{\text{Lip}_{\widehat{\rho}}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\e}{\mathrm{e}}
@@ -133,15 +133,38 @@ out by Da Prato and Zabczyk \cite{DZp92}, the main effort is to show that
 	\label{E:BddMnt}
 	\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_\rho^2\right) <\infty.
 \end{align}
-It is known that in most cases, solutions to \eqref{E:gspde} are {\it intermittent}, namely, the
-probability moments to \eqref{E:gspde} have exponential growth in $t$. In order to have
-\eqref{E:BddMnt}, one has to first identify the exact conditions, under which the moments to
-\eqref{E:gspde} do not possess exponential growth. This question has been answered in \cite{CK19},
-where necessary and sufficient conditions are given. In \cite{AM03,MSY15,MSY16}, a drift term
-$f(x,u)$ is included in \eqref{E:gspde} in a crucial way to help to cancel the otherwise exponential
-growing moments. The absence of such a drift term in this paper makes the problem more challenging.
-According to part (3) of Theorem 1.3 of \cite{CK19}, in order to have \eqref{E:BddMnt}, one has to
-have the Lyapunov exponent of $b$ is small enough and
+
+Recall that under the following Assumption \ref{A:General}, one can find a unique mild solution to
+\eqref{E:gspde} with sharp moment estimates; see \cite{CK19,CH19,CD15}.
+\begin{assumptions}
+	\label{A:General}
+	\begin{enumerate}[(i)]
+		\item The initial measure $\mu$ satisfies the following integrability condition:
+		\begin{equation}
+		\int_{\R^d}\exp\left(-a|x|^2\right)|\mu|(\ud x) < \infty \quad \text{for any $a>0$;} \label{A:icon}
+		\end{equation}
+		\item The spectral measure $\hat{f}$ satisfies {\it Dalang's condition}:
+		\begin{equation}
+			\label{A:dalcon}
+			\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
+			\quad \text{for some and therefore any $\beta>0$};
+		\end{equation}
+		\item The diffusion coefficient $b(x,u)$ satisfies the following Lipschitz and boundedness conditions:
+		\begin{equation}
+			|b(x,u)-b(x,v)|< L_b |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad \text{for all } u,v \in \R, \; x \in \R^d \label{A:lipcon}.
+		\end{equation}
+	\end{enumerate}
+\end{assumptions}
+
+Moreover, this solution is usually {\it intermittent}, namely, the probability moments to
+\eqref{E:gspde} have exponential growth in $t$. In order to have \eqref{E:BddMnt}, one has to first
+identify the exact conditions, under which the moments to \eqref{E:gspde} do not possess exponential
+growth. This question has been answered in \cite{CK19}, where necessary and sufficient conditions
+are given. In \cite{AM03,MSY15,MSY16}, a drift term $f(x,u)$ is included in \eqref{E:gspde} in a
+crucial way to help to cancel the otherwise exponential growing moments. The absence of such a drift
+term in this paper makes the problem more challenging.  According to part (3) of Theorem 1.3 of
+\cite{CK19}, in order to have \eqref{E:BddMnt}, one has to have $L_b$ in \eqref{A:lipcon} --- the
+Lyapunov exponent of $b$ --- small enough and
 \begin{equation}
 	\label{E:U0finite}
 	\Upsilon(0) <\infty,
@@ -174,9 +197,44 @@ than that in \cite{TZ98}; see Remark \ref{R:Cor} below.
 	\eqref{E:CorTZ}?}
 \end{remark}
 
-a more broad range of initial measures which include the Dirac delta
-distribution $\delta_0$ and for more
+Here is the main theorem of the paper:
 
+\begin{theorem}
+	\label{T:Main}
+	Under the following conditions:
+	\begin{enumerate}[(i)]
+		\item  Condition \eqref{E:U0finite} (or equivalently \eqref{E:U0Eqv}) holds and for some
+			$\alpha\in (0,1/2)$,
+			\begin{equation}
+				\label{A:fcon}
+				\int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty,
+				\quad \text{for all $t>0$;}
+			\end{equation}
+		\item Suppose that for any admissible weight $\rho$, there exists another admissible weight
+			$\widehat{\rho}$ with
+			\begin{align}
+				\label{E:rhorho}
+				\int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty
+			\end{align}
+			such that the initial condition satisfies the following condition:
+			\begin{equation}
+				\label{E:InitData}
+				\sup_{t>0} \int_{\R^d} \left[\int_{\R^d} G(t,x-y)|\mu|(\ud y)\right]^2 \widehat{\rho}(x) \ud x <\infty;
+			\end{equation}
+		\item The Lipschitz constant $L_b$ of $b$ (see \eqref{A:lipcon}) satisfies
+			\begin{equation}
+				\label{E:LipLb}
+			  L_b < ......,
+			\end{equation}
+	\end{enumerate}
+	we have that
+	\begin{enumerate}[(a)]
+		\item $u(t,\cdot)\in L_\rho^2(\R^d)$ for all $t>0$ with \eqref{E:BddMnt} satisfied;
+		\item there exists an invariant measure for the laws of $\{u(t,\cdot)\}_{t>0}$.
+	\end{enumerate}
+\end{theorem}
+
+\newpage
 
 
 One thing to
@@ -198,13 +256,13 @@ and in fact has also been show to be true in other various cases of interest \ci
 In \cite{TZ98} they follow this procedure to show the existence of an invariant measure for the solutions to
 \eqref{E:gspde} in two separate cases:
 \begin{enumerate}
-	\item The initial measure is a function, $\varphi \in L^2_\rho \cap L^2_{\hat\rho}$ where both $\rho$ and
-	$\hat\rho$ satisfy the condition that $\rho \cdot (\hat\rho)^{-1} \in L^1(\R^d)$ and the solution is
+	\item The initial measure is a function, $\varphi \in L^2_\rho \cap L^2_{\widehat{\rho}}$ where both $\rho$ and
+	$\widehat{\rho}$ satisfy the condition that $\rho \cdot (\widehat{\rho})^{-1} \in L^1(\R^d)$ and the solution is
 	bounded in probability.
 	\item The initial measure is a constant function while assuming certain integrability properties of the spectral
 	density.
 \end{enumerate}
-By now using the theory of Walsh as well as subsequent results proven in \cite{CH16Comparison} we are able to mimic the
+By now using the theory of Walsh as well as subsequent results proven in \cite{CH19} we are able to mimic the
 proof in \cite{TZ98}, but in the language of Walsh, and show the existence of invariant measures for a
 more broad group of initial conditions. However, because of the differences between the two theories of the stochastic
 integral, we must trade some of previous assumptions on the spectral density for new ones which are listed below. For
@@ -231,33 +289,13 @@ apply to such a SPDE.
 
 Before we state the main results of this paper we need to propose series of assumptions. First, we have the following:
 
-\begin{assumptions}
-	\label{A:General}
-	\begin{enumerate}[(i)]
-		\item The initial measure $\mu$ satisfies the following integrability condition:
-		\begin{equation}
-		\int_{\R^d}\exp\left(-a|x|^2\right)|\mu|(\ud x) < \infty \quad \text{for any $a>0$;} \label{A:icon}
-		\end{equation}
-		\item The spectral measure $\hat{f}$ satisfies {\it Dalang's condition}:
-		\begin{equation}
-			\label{A:dalcon}
-			\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{\beta + |\xi|^2} < \infty
-			\quad \text{for some and therefore any $\beta>0$};
-		\end{equation}
-		\item The diffusion coefficient $b(x,u)$ satisfies the following Lipschitz and boundedness conditions:
-		\begin{equation}
-		|b(x,u)-b(x,v)|< L |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad \text{for all } u,v \in \R, \; x \in \R^d \label{A:lipcon}.
-		\end{equation}
-	\end{enumerate}
-\end{assumptions}
-
 With Assumption \ref{A:General}, we can now state two already established results. The first result deals with the existence and uniqueness of the solution of \eqref{E:gspde}. The second result gives a bound on the moments $p^{th}$-moments of the solution, where we denote $\Norm{X}_p := (\E|X|^p)^{1/p}$ to be the $p^{th}$ moment of a random variable $X$. It should be noted the that proof of our main result "Insert main result" heavily relies on the moment bound given in Theorem \ref{T:ExUn} below.
 
-\begin{theorem}[Theorem 1.2 \cite{CH16Comparison}]
+\begin{theorem}[Theorem 1.2 \cite{CH19}]
 	Under Assumption \ref{A:General}, the SPDE \eqref{E:gspde} has a unique random field solution starting from $\mu$ and the solution is $L^2(\Omega)$ continuous.
 \end{theorem}
 
-\begin{theorem}[Theorem 1.7 \cite{CH16Comparison}]
+\begin{theorem}[Theorem 1.7 \cite{CH19}]
 	\label{T:ExUn}
 	Under Assumption \ref{A:General}, for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:gspde}, $u(t,x)$,
 	given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
@@ -265,7 +303,7 @@ With Assumption \ref{A:General}, we can now state two already established result
 	\label{E:mb}
 	\Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(|\mu|*G(t,\cdot))(x)\big]H(t;\gamma_p)^{1/2},
 	\end{equation}
-	where $\bar{\varsigma}=L_0/L$, $\gamma_p = 32pL^2$ and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{CH16Comparison} for
+	where $\bar{\varsigma}=L_0/L$, $\gamma_p = 32pL^2$ and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{CH19} for
 	the concrete definition of $H$).
 	Moreover, if we assume that
 	\begin{equation}
@@ -298,21 +336,21 @@ Our first main result handles the case of the existence of an invariant measure 
 
 Before we state the result, we need to make an additional assumption on the spectral measure.
 
-\begin{assumptions}
-			\item \begin{equation}
-	\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) < \infty \label{A:fcon}
-	\end{equation}
-\end{assumptions}
+% \begin{assumptions}
+% 			\item \begin{equation}
+% 	\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) < \infty \label{A:fcon}
+% 	\end{equation}
+% \end{assumptions}
 
 With this assumption now stated, we now state our first main result, Theorem \ref{T:Main}.
 
 \begin{theorem}
 	\label{T:Main}
-	Assume that Assumption \ref{A:General} holds with the stronger assumption that $\Upsilon(0) <\infty$. Also assume \eqref{A:fcon}. Now for any admissible weight $\rho$, suppose there exists another admissible weight $\hat\rho$ and an element $\hat{\varphi} \in L^2_\rho(\R^d) \cap L^2_{\hat\rho}(\R^d)$ such that
+	Assume that Assumption \ref{A:General} holds with the stronger assumption that $\Upsilon(0) <\infty$. Also assume \eqref{A:fcon}. Now for any admissible weight $\rho$, suppose there exists another admissible weight $\widehat{\rho}$ and an element $\hat{\varphi} \in L^2_\rho(\R^d) \cap L^2_{\widehat{\rho}}(\R^d)$ such that
 	\begin{align*}
-		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty
+		\int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty
 	\end{align*}
-	and $u^{\hat\varphi}(\cdot,x)$ is bounded in probability in $L^2_{\hat\rho}(\R^d)$.
+	and $u^{\hat\varphi}(\cdot,x)$ is bounded in probability in $L^2_{\widehat{\rho}}(\R^d)$.
 	Then for any $t_0 >0$ there exists an invariant measure for the laws of the solution of the SPDE \eqref{E:gspde}, $\{\mathscr L (u^{\hat\varphi}(t,\cdot))\}_{t \ge t_0}$,  in $L^2_\rho(\R^d)$ for any $L^2_{\rho}(\R^d)$ initial condition.
 \end{theorem}
 
@@ -333,7 +371,7 @@ We now state our last assumption which will be required for the proof of one of 
 	Suppose the assumptions of Theorem \ref{T:Main} remain true and in addition assume \eqref{A:newgicon} holds true. Suppose there existed
 	another admissible weight $\hat{\rho}$ such that
 	\begin{align*}
-	\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty.
+	\int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\: \ud x < \infty.
 	\end{align*}
 	 Then there exists an invariant measure for the laws of the solutions to
 	\eqref{E:gspde} in $L^2_\rho(\R^d)$ for $t>l>0$. In particular, for any $l>0$ there exists a measure that is
@@ -357,7 +395,7 @@ We now state our last assumption which will be required for the proof of one of 
 
 \begin{proof}
 	The SPDE above satisfies \eqref{A:newgicon}.
-	By Lemma \ref{L:Moments} we know that for an arbitrary $t_0>0$, the solution at $t=t_0$ from the SPDE is in $L^2_\rho \cap L^2_{\hat\rho}$. Theorem \ref{T:Main2} implies the result.
+	By Lemma \ref{L:Moments} we know that for an arbitrary $t_0>0$, the solution at $t=t_0$ from the SPDE is in $L^2_\rho \cap L^2_{\widehat{\rho}}$. Theorem \ref{T:Main2} implies the result.
 \end{proof}
 
 \section{Preliminaries}
@@ -665,7 +703,7 @@ The following theorem tells us that the solution for any $t>0$, $u^{\varphi}(t,\
 	\end{align*}
 	Then an application of the admissible weight property \eqref{E:aw} proves \eqref{E:uNormRho}.
 
-	% 	Lemma \ref{L:phi} along with Assumption \ref{A:General} guarantee the existence and uniqueness of the  solution which is show in \cite{CH16Comparison}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant.
+	% 	Lemma \ref{L:phi} along with Assumption \ref{A:General} guarantee the existence and uniqueness of the  solution which is show in \cite{CH19}. We only prove the finiteness of the supremum. Below we use $C_i$ to represent a constant.
 	% \begin{align*}
 	% \E\left(| u(t,\cdot)|_\rho^2\right) &= \E \int_{\R^d}\vert u(t,x) \vert^2 \rho(x)dx
 	% \\&\le C_1 \int_{\R^d}\bigg(1+(|\varphi|*G(t,\cdot))(x)\bigg)^2\rho(x)dx  \quad \text{by the moment bounds \eqref{E:mb0}}
@@ -719,7 +757,7 @@ the proof of Theorem \ref{T:Main} For that reason we postpone proving it until l
 	\begin{equation}
 	\label{E:cpt}
 	\mathbb{P}\{u^{\hat{\varphi}}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{
-		\hat{\varphi}}(t-t_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>t_0$}.
+		\hat{\varphi}}(t-t_0,\cdot)|_{\widehat{\rho}} < R\} \quad \text{for all $t>t_0$}.
 	\end{equation}
 \end{lemma}
 
@@ -750,15 +788,15 @@ We may now complete the proof of Theorem \ref{T:Main}, but first we must recall 
 
  	Now let $\epsilon \in (0,1)$. Since $u^{\hat\varphi}(t,x)$ is bounded in probability, we can choose $R>0$ such that for any $t \ge t_0$,
  		\[
- 			\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} \ge R\} < \epsilon.
+ 			\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\widehat{\rho}} \ge R\} < \epsilon.
  		\]
  	By applying Lemma \ref{L:Main}, we can find a compact set $\mathscr K \in L^2_{\rho}$ such that
  	\begin{align*}
- 	\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} < R\} \quad \text{for all $t>t_0$} .
+ 	\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \in \mathscr K \} \ge (1-\epsilon)\mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\widehat{\rho}} < R\} \quad \text{for all $t>t_0$} .
  	\end{align*}
  	In return, this implies that the family of laws $\mathscr L(u^{\hat \varphi}(t,\cdot))$ for $t \ge t_0$ is tight in $L^2_{\rho}$. Indeed, if we multiply both sides of \eqref{E:cpt} by $-1$ and then add $1$ to both sides we see that
  		\begin{align*}
- 			\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \not\in \mathscr K \} &\le \mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} \ge R\} + \epsilon \mathbb{P}\{ |u^{\hat \varphi}(t-t_0,\cdot)|_{\hat \rho} < R \}
+ 			\mathbb{P}\{u^{\hat \varphi}(t,\cdot) \not\in \mathscr K \} &\le \mathbb{P}\{|u^{\hat \varphi}(t-t_0,\cdot)|_{\widehat{\rho}} \ge R\} + \epsilon \mathbb{P}\{ |u^{\hat \varphi}(t-t_0,\cdot)|_{\widehat{\rho}} < R \}
  			\\& \le 2 \epsilon.
  		\end{align*}
  	Therefore, the family of probability measures
@@ -831,11 +869,11 @@ We start off  with a proposition whose proof is given in Proposition 2.1 \cite{T
 
 \begin{proposition}
 	\label{P:weight}
-	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$. Moreover, if $\hat\rho$ is another admissible weight such that
+	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$. Moreover, if $\widehat{\rho}$ is another admissible weight such that
 	\begin{align*}
-	\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\ud x < \infty
+	\int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty
 	\end{align*}
-	then for any $t<0$, the operators defined above are compact from $L^2_{\hat\rho}(\R^d)$ to $L^2_\rho(\R^d)$.
+	then for any $t<0$, the operators defined above are compact from $L^2_{\widehat{\rho}}(\R^d)$ to $L^2_\rho(\R^d)$.
 \end{proposition}
 
 We now define two operators. Let $q>2$ and $t_0>0$ be arbitrary and $\alpha \in (q^{-1},2^{-1})$. Define the operator $F_\alpha^{t_0}$ as follows
@@ -843,9 +881,9 @@ We now define two operators. Let $q>2$ and $t_0>0$ be arbitrary and $\alpha \in 
 \label{E:fop}
 \left(F_{\alpha}^{t_0} f\right)(x) := \int_0^{t_0} ds \int_{\R^d} dy \: (t_0-s)^{\alpha-1}G(t_0-s,x-y)f(s,y) .
 \end{equation}
-It is shown in the proof of Theorem 3.1 \cite{TZ98} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to
-$L^2_\rho$ where $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ is the space of functions that map $s \mapsto f(s,\cdot)$ and
-$f(s,\cdot) \in L^2_{\hat\rho}(\R^d)$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\hat\rho}^q \: \ud s < \infty$.
+It is shown in the proof of Theorem 3.1 \cite{TZ98} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\widehat{\rho}} \big)$ to
+$L^2_\rho$ where $L^q\big((0,t_0),L^2_{\widehat{\rho}} \big)$ is the space of functions that map $s \mapsto f(s,\cdot)$ and
+$f(s,\cdot) \in L^2_{\widehat{\rho}}(\R^d)$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\widehat{\rho}}^q \: \ud s < \infty$.
 
 Next we define for $\varphi \in L^2_{\rho}(\R^d)$ the operators $Y^\varphi(s,y)$, or simply as $Y(s,y)$ when there is no
 confusion, as follows
@@ -911,12 +949,12 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\end{align*}
 	Now recalling that $\Gamma$ has density $f$ and by applying Plancherel's theorem, $I_1$ is bounded above by
 	\begin{align*}
-	(2\pi)^{-2d}\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right).
+	(2\pi)^{-2d}\int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right).
 	\end{align*}
 	Now if we integrate this in $y$ over $\R^d$ with respect to $\rho(y)\ud y$ we get that
 	\begin{align*}
-	\int_{\R^d}I_1\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)  \int_{\R^d}\rho(y)\ud y
-	\\ &\le (2\pi)^{-2d}\cdot \Norm{\rho}_{L^1(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) .
+	\int_{\R^d}I_1\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)  \int_{\R^d}\rho(y)\ud y
+	\\ &\le (2\pi)^{-2d}\cdot \Norm{\rho}_{L^1(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) .
 	\end{align*}
 
 
@@ -926,25 +964,25 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\\&= \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_1)f(z_1-z_2)G(s-r,y-z_2)\int_{\R^d}\ud\sigma \: G(r,z_1-\sigma)|\varphi(\sigma)|
 	\\ &=  \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 G(s-r,y-z_2)f(z_1-z_2)G\left(\dfrac{r(s-r)}{s},z_1-\sigma-\dfrac{r}{s}(y-\sigma)\right)
 	\\& \hspace{10em} \times \int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|
-	\\& \le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)\int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|.
+	\\& \le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)\int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|.
 	\end{align*}
 	Now if we integrate this in $y$ over $\R^d$ with respect to $\rho(y)\ud y$ and apply the admissible weight property we get that
 	\begin{align*}
-	\int_{\R^d}I_2\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
+	\int_{\R^d}I_2\cdot \rho(y)\ud y &\le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
 	\\& \hspace{15em} \times \int_{\R^d}\ud y \: \rho(y)\int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|
-	\\& \le (2\pi)^{-2d} C(S)  \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
+	\\& \le (2\pi)^{-2d} C(S)  \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
 	\\& \hspace{15em} \times \int_{\R^d}\ud\sigma \:\rho(\sigma) |\varphi(\sigma)|
-	\\&= (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
+	\\&= (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
 	\end{align*}
 	where the above is true for any $0 \le s \le S$, $S>0$ is arbitrary and $C(S)$ is the constant from the admissible weight property.
 
 	\noindent \textbf{For $I_3$:} By completing the same steps as for $I_2$ we get that
 	\begin{align*}
-	I_3 \le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)\int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|
+	I_3 \le (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)\int_{\R^d}\ud\sigma \: G(s,y-\sigma)|\varphi(\sigma)|
 	\end{align*}
 	and now if we integrate this in $y$ over $\R^d$ with respect to $\rho(y)\ud y$ we will get the same bound as in for $I_2$ above. Namely,
 	\begin{align*}
-	\int_{\R^d}I_3\cdot \rho(y)\ud y &\le (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right).
+	\int_{\R^d}I_3\cdot \rho(y)\ud y &\le (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right).
 	\end{align*}
 	\textbf{For $I_4$:}
 	\begin{align*}
@@ -970,8 +1008,8 @@ Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W
 	\begin{align*}
 	\left(E |Y(s,y)|_{\rho}^q\right)^{2/q} &\le \int_{\R^d}dy \rho(y) \Norm{Y(s,y)}_q^2
 	\\ &\le \int_{\R^d}dy \rho(y) (I_1+I_2+I_3+I_4)
-	\\ &\le (2\pi)^{-2d} \Norm{\rho}_{L^1(\R^d)}  \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)
-	\\&\hspace{1em} + 2 (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
+	\\ &\le (2\pi)^{-2d} \Norm{\rho}_{L^1(\R^d)}  \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right)
+	\\&\hspace{1em} + 2 (2\pi)^{-2d} C(S) \Norm{\varphi}_{L^1_\rho(\R^d)} \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud\xi) \exp\left( -\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)|\xi|^2\right)
 	\\&\hspace{1em}+(2\pi)^{-2d} C(S)  |\varphi|_\rho^2\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right)
 	\end{align*}
 	and by assumption \ref{A:fcon} and Lemma 4.2 below,  the three integrals above are all finite any $s \ge 0$ so we may take the maximum for $0 \le s \le S$ and say there exists some constant $K_S$ dependent on $S$ such that
@@ -1083,35 +1121,35 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	\end{align*}
 	\textbf{For $L_1$:} If we back at $I_1$ from the proof of Lemma \ref{L:yineq} then we see that
 	\begin{align*}
-	L_1 &\le (2\pi)^{-2d}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	L_1 &\le (2\pi)^{-2d}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2)
 	\end{align*}
 	and now if we include the $\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}$ part of the integral we get that
 	\begin{align*}
-	\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_1 \le (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2).
+	\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_1 \le (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2).
 	\end{align*}
 
-	\noindent \textbf{For $L_2$:} We first use the moment bounds from \cite{CH16Comparison} along with the fact that $\Norm{u(r,z_1)}_1 \le \Norm{u(r,z_1)}_2$.
+	\noindent \textbf{For $L_2$:} We first use the moment bounds from \cite{CH19} along with the fact that $\Norm{u(r,z_1)}_1 \le \Norm{u(r,z_1)}_2$.
 	\begin{align*}
 	L_2 & \le k\iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)(1+J_0(r,z_1))f(z_1-z_2)G(s-r,y-z_2)
 	\\ &= kL_1 + \iint_{\R^{2d}}\ud z_1 \ud z_2 \:G(s-r,y-z_1)J_0(r,z_1)f(z_1-z_2)G(s-r,y-z_2).
 	\end{align*}
 	But this last integral above is the same thing as $I_2$ from Corollary 4.1 so we see that
 	\begin{align*}
-	L_2 &\le kL_1 + (2\pi)^{-2d}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
+	L_2 &\le kL_1 + (2\pi)^{-2d}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
 	\end{align*}
 	and now if we include the $\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}$ part of the integral we get that
 	\begin{align*}
 	& \int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_2
 	\\ & \le k\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha} L_1
-	\\ & \hspace{3em}+ (2\pi)^{-2d}\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
+	\\ & \hspace{3em}+ (2\pi)^{-2d}\int_{\R^d}\ud y \;G(t-s,x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
 	\\ & \hspace{24.5em} \times  \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
-	\\ & \le k (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-	\\ & \hspace{3em}+ (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
+	\\ & \le k (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\ & \hspace{3em}+ (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
 	\\ & \hspace{18 em} \times\int_{\R^d}\ud y \;G(t-s,x-y) \int_{\R^d}\ud \sigma \: G(s,y-\sigma)|\varphi(\sigma)|
-	\\ & = k  (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-	\\ & \hspace{3em} +(2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)\int_{\R^d}\ud \sigma \: G(t,x-\sigma)|\varphi(\sigma)|
-	\\ & \le k  (2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-	\\ & \hspace{3em}+ (2\pi)^{-2d}  \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right).
+	\\ & = k  (2\pi)^{-2d} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\ & \hspace{3em} +(2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)\int_{\R^d}\ud \sigma \: G(t,x-\sigma)|\varphi(\sigma)|
+	\\ & \le k  (2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\ & \hspace{3em}+ (2\pi)^{-2d}  \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right).
 	\end{align*}
 	\noindent \textbf{For $L_3$:} Following the same steps for $L_2$ will get you the same exact bound as for $L_3$. \\
 
@@ -1138,14 +1176,14 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	and now putting this all together for $L_4$ we see that
 	\begin{align*}
 	\int_{\R^d}& \ud y \;G_{t-s}(x-y)\int_0^s\ud r\; (s-r)^{-2\alpha}L_4
-	\\ &\le k (2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-	\\&\hspace{2em}+ 2 k  (2\pi)^{-2d} \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
+	\\ &\le k (2\pi)^{-2d}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\&\hspace{2em}+ 2 k  (2\pi)^{-2d} \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
 	\\&\hspace{2em} + k (2\pi)^{-2d}  \Norm{G(t,x-\cdot)\varphi(\cdot)^2}_{L^1(\R^d)} \int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
 	\end{align*}
 	Considering the above arguments we may say that theres is a constant $K_{x,t}$ depending on $x$ and $t$ such that
 	\begin{align*}
-	\eqref{E:fcond} &\le K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f (\ud \xi)\: \exp(-(s-r)|\xi|^2)
-	\\&\hspace{3em}+ K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
+	\eqref{E:fcond} &\le K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f} (\ud \xi)\: \exp(-(s-r)|\xi|^2)
+	\\&\hspace{3em}+ K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi) \: \exp\left(-\left(\dfrac{s-r}{2}+\dfrac{r(s-r)}{2s}\right)\right)
 	\\&\hspace{3em} + K_{x,t}\int_0^s\ud r\; (s-r)^{-2\alpha}\int_{\R^d} \hat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right) < \infty
 	\end{align*}
 	where the finiteness follows by \eqref{A:fcon} and Lemma \ref{L:equiv}. This completes the justification for the first use of Fubini's Theorem. \\
@@ -1177,27 +1215,27 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 	\noindent \textbf{For $K_1$:}
 	\begin{align*}
 	\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_1 &\le \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}
-	\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
+	\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
 	\\& \le k_{t,1}\int_0^t \ud s \: (t-s)^{\alpha-1}
 	\end{align*}
 	where
 	\[
 	k_{t,1} = \max_{0\le s \le t} \int_0^s \ud r \: (s-r)^{-2\alpha}
-	\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
+	\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
 	\]
 	and in fact $k_{t,1}$ is finite for each $t>0$ by Lemma \ref{L:equiv}.
 
 	\noindent \textbf{For $K_2$ and $K_3$:}
 	\begin{align*}
 	& \int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_2
-	\\ & \le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
-	\\ & \hspace{2em}+ k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
+	\\ & \le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
+	\\ & \hspace{2em}+ k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
 	\\ & \hspace{20em} \times \int_{\R^d}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)|
 	\\ & \le \big(k_{t,1}  + k J_0(t,x) k_{t,2} \big) \int_0^t \ud s \: (t-s)^{\alpha-1}
 	\end{align*}
 	where
 	\[
-	k_{t,2} =  \max_{0\le s \le t} \int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
+	k_{t,2} =  \max_{0\le s \le t} \int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right)|\xi|^2\right)
 	\]
 	which is finite by Lemma \ref{L:equiv}.
 
@@ -1205,15 +1243,15 @@ We now verify \eqref{E:fcond} for both applications of Fubini's Theorem. \\
 
 	\begin{align*}
 	&\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha} K_4
-	\\&\le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
-	| \\& \hspace{2em} + 2k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right) | \xi | ^2\right)
+	\\&\le k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-(t-r)|\xi|^2\right)
+	| \\& \hspace{2em} + 2k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-\left(\dfrac{t-r}{2}+\dfrac{r(t-r)}{2t}\right) | \xi | ^2\right)
 	\\& \hspace{22em} \times \int_{\R^d}\ud \sigma \:G(t , x-\sigma) | \varphi(\sigma) |
-	\\& \hspace{2em}+  k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\dfrac{r(t-r)}{t}|\xi|^2\right)\left(\int_{\R^{d}}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)\right)^2
+	\\& \hspace{2em}+  k\int_0^t \ud s \: (t-s)^{\alpha-1}\int_0^s \ud r \: (s-r)^{-2\alpha}\int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-\dfrac{r(t-r)}{t}|\xi|^2\right)\left(\int_{\R^{d}}\ud \sigma \:G(t,x-\sigma)|\varphi(\sigma)\right)^2
 	\\&\le k\big(k_{t,1}+ 2k_{t,2}J_0(t,x)+k_{t,3}J_0(t,x)^2 \big)\int_0^t \ud s \: (t-s)^{\alpha-1}
 	\end{align*}
 	where
 	\[
-	k_{t,3} = \max_{0\le s \le t} \int_{\R^d}\hat f(\ud \xi)\: \exp\left(-\dfrac{r(t-r)}{t}|\xi|^2\right)
+	k_{t,3} = \max_{0\le s \le t} \int_{\R^d}\widehat{f}(\ud \xi)\: \exp\left(-\dfrac{r(t-r)}{t}|\xi|^2\right)
 	\]
 	which is again finite by Lemma \ref{L:equiv}. Now we may say that that there exists some constant $K_t$ dependent on $t$ such that \eqref{E:fcond} has the following bound which is finite since $0<\alpha <1$
 	\begin{align*}
@@ -1237,19 +1275,19 @@ We are now able to prove Lemma \ref{L:Main}.
 	We first define a set $\mathscr K (\Theta)$ as
 	\[
 	\mathscr K (\Theta) = \{ \big(G(\delta_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
-	\quad \text{where $|y|_{\hat\rho} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\hat \rho})} \le \Theta $} \}.
+	\quad \text{where $|y|_{\widehat{\rho}} \le \Theta$  and  $|h|_{L^q(0,1,L^2_{\widehat{\rho}})} \le \Theta $} \}.
 	\]
-	Then $\mathscr K (\Theta)$ is relatively compact in $L^2_{ \rho}$ for $\Theta >0$. Moreover, by \eqref{E:yineq}, \eqref{E:1fac} and Chebychev's inequality, and if we choose $R$ and $\Theta$ so that $| \hat{\varphi}|_{\hat\rho} < R < \Theta$  then we have
+	Then $\mathscr K (\Theta)$ is relatively compact in $L^2_{ \rho}$ for $\Theta >0$. Moreover, by \eqref{E:yineq}, \eqref{E:1fac} and Chebychev's inequality, and if we choose $R$ and $\Theta$ so that $| \hat{\varphi}|_{\widehat{\rho}} < R < \Theta$  then we have
 	\begin{align*}
 	\mathbb{P}\{ u^{\hat{\varphi}}(\delta_0,\cdot) \not \in \mathscr K(\Theta) \}
 	& \le \mathbb{P}\left[ \left(\int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Theta}{\sin(\alpha \pi )} \right]
-	\\ & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\E \int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\hat \rho}^q \: \ud s
-	\\ & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg)
+	\\ & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\E \int_{0}^{1} |Y^{\hat{\varphi}}(s,\cdot)|_{\widehat{\rho}}^q \: \ud s
+	\\ & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\widehat{\rho} }^q \bigg)
 	\end{align*}
 	which implies that
 	\begin{align*}
 	\{ u^{\hat{\varphi}}(\delta_0,\cdot) \in \mathscr K(\Theta) \}
-	& \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\hat\rho }^q \bigg)
+	& \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ |{\hat{\varphi}}|_{\widehat{\rho} }^q \bigg)
 	\ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg).
 	\end{align*}
 	Therefore, if we choose $\Theta>0$ big enough such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ the we get that
@@ -1259,10 +1297,10 @@ We are now able to prove Lemma \ref{L:Main}.
 	We can now deduce from this and the semigroup property of the solution to the heat equation that
 	\begin{align*}
 	\mathbb{P}\{ u^{\hat{\varphi}}(t,\cdot) \in \mathscr K(\Theta) \} & \ge (1-
-	\epsilon)\mathbb{P}\{ |u^{\hat{\varphi}}(t-\delta_0,\cdot)|_{\hat\rho} < R
+	\epsilon)\mathbb{P}\{ |u^{\hat{\varphi}}(t-\delta_0,\cdot)|_{\widehat{\rho}} < R
 	\}.
 	\end{align*}
-	Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
+	Since we assumed that $u^{\hat \varphi}$ is bounded in probability in $L^2_{\widehat{\rho}}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u^{\hat{\varphi}}(t,\cdot)|_{\widehat{\rho}} \ge R \} < \epsilon$ and then taking $\Theta > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Theta^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
 \end{proof}
 
 \begin{small}% {{{ References
@@ -1283,7 +1321,7 @@ We are now able to prove Lemma \ref{L:Main}.
 		\newblock {\it Second order PDE's in finite and infinite dimension.}
 		\newblock A probabilistic approach. Lecture Notes in Mathematics, 1762. Springer-Verlag, Berlin, 2001. x+330 pp.
     % }}}
-		\bibitem[CD15]{ChenDalang13Heat}% {{{
+		\bibitem[CD15]{CD15}% {{{
 		Chen, Le and Robert C. Dalang.
 		\newblock Moments and growth indices for nonlinear stochastic heat equation with rough initial conditions.
 		\newblock {\em Ann.\ Probab.}  43 (2015), no. 6, 3006--3051.
@@ -1293,7 +1331,7 @@ We are now able to prove Lemma \ref{L:Main}.
 		\newblock Regularity and strict positivity of densities for the nonlinear stochastic heat equation.
 		\newblock {\em Mem. Amer. Math. Soc.}, 2019, to appear.
     % }}}
-		\bibitem[CH19]{CH16Comparison}% {{{
+		\bibitem[CH19]{CH19}% {{{
 		Chen, Le and Jingyu Huang.
 		\newblock Comparison principle for stochastic heat equation on $\R^d$.
 		\newblock {\em Ann.\ Probab.}  47 (2019), no. 2, 989--1035.
