@@ -108,21 +108,86 @@
 \section{Introduction}
 We consider the following stochastic heat equation
 \begin{equation}
-\begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$} \\
-u(0,\cdot) = \mu(\cdot)  &
-\end{cases}  \label{E:gspde}
+  \label{E:gspde}
+	\begin{cases}
+		\dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+		u(0,\cdot) = \mu(\cdot),                                                               &
+	\end{cases}
 \end{equation}
-where $b(x,u)$ is assumed to be a globally Lipschitz continuous function in $u$ with Lipschitz constant independent of $x$.
-In particular, the linear case  $b(x,u) = \lambda u$ is referred to as the \textit{parabolic Anderson model} \cite{CarMol94}.
-In this equation, $\dot{W}(t,s)$ refers to a centered Gaussian noise that is white in time and homogeneously correlated in space. The initial measure $\mu \in \mathcal{M}_B$ where $\mathcal{M}_B$ is the space of deterministic and locally finite (regular) Borel measures which satisfy \eqref{A:icon} below. In particular, we investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{E:gspde} for a more broad range of initial measures which include the Dirac delta distribution $\delta_0$ as well some weighted $L^2$ functions.
+where $b(x,u)$ is assumed to be a globally Lipschitz continuous function in $u$ with Lipschitz
+constant independent of $x$.  In particular, our assumption allows the linear case $b(x,u) = \lambda
+u$, which is usually referred to as the \textit{parabolic Anderson model} \cite{CarMol94}. In this
+equation, $\dot{W}(t,s)$ is a centered Gaussian noise that is white in time and homogeneously
+correlated in space. The initial condition $\mu$ is a deterministic, locally finite, regular, signed
+Borel measure that satisfies \eqref{A:icon} below. The aim of the paper is to investigate the
+conditions required to guarantee the existence of invariant measures for the solution to
+\eqref{E:gspde}, which is a crucial step towards the study of the ergodicity of the system.
 
-The question of the existence of invariant measures in unbounded domains with dimension $d \ge 3$ has been handled in few papers such as \cite{TessitoreZabczyk98M, AM03, MSY15, MSY16}. One thing to note is that the just mentioned papers use the theory of the stochastic integral laid out by Da Prato and Jabczyk in \cite{DZ92} while in this paper we use the theory developed by Walsh in \cite{Walsh}. The former develops a theory of integration with respect to
+
+The question of the existence of invariant measures in unbounded domains has been studied in few
+papers such as \cite{AM03, MSY15, MSY16,TZ98}. Since the spatial domain is unbounded, one needs to
+introduce a weight function $\rho$ and the corresponding weighted space $L_\rho^2(\R^d)$ as usual;
+see Section \ref{S:weightedspace} below for more details. Following the standard procedure as laid
+out by Da Prato and Zabczyk \cite{DZp92}, the main effort is to show that
+\begin{align}
+	\label{E:BddMnt}
+	\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_\rho^2\right) <\infty.
+\end{align}
+It is known that in most cases, solutions to \eqref{E:gspde} are {\it intermittent}, namely, the
+probability moments to \eqref{E:gspde} have exponential growth in $t$. In order to have
+\eqref{E:BddMnt}, one has to first identify the exact conditions, under which the moments to
+\eqref{E:gspde} do not possess exponential growth. This question has been answered in \cite{CK19},
+where necessary and sufficient conditions are given. In \cite{AM03,MSY15,MSY16}, a drift term
+$f(x,u)$ is included in \eqref{E:gspde} in a crucial way to help to cancel the otherwise exponential
+growing moments. The absence of such a drift term in this paper makes the problem more challenging.
+According to part (3) of Theorem 1.3 of \cite{CK19}, in order to have \eqref{E:BddMnt}, one has to
+have the Lyapunov exponent of $b$ is small enough and
+\begin{equation}
+	\label{E:U0finite}
+	\Upsilon(0) <\infty,
+\end{equation}
+where $\Upsilon(\cdot)$ is defined in  \eqref{A:dalcon}. Note that condition \eqref{E:U0finite} is
+equivalent to
+\begin{equation}
+	\label{E:U0Eqv}
+	d\ge 3 \quad \text{and} \quad \int_{\R^d} \frac{1}{|z|^{d-2}} \Gamma(\ud z) <\infty,
+\end{equation}
+where $\Gamma$ is the correlation measure (see \eqref{E:Cor}). Condition \eqref{E:U0finite} (or
+equivalently \eqref{E:U0Eqv}) gives the admissible correlation functions, which is weaker
+than that in \cite{TZ98}; see Remark \ref{R:Cor} below.
+
+\begin{remark}
+	\label{R:Cor}
+	The assumption on the correlation function in \cite{TZ98} is given through the spectral density
+	$\widehat{f}$ as follows:
+	\begin{equation}
+		\label{E:CorTZ}
+		\widehat{f} \in L^p(\R^d) \quad \text{for some $p\in\left(d/(d-2),\infty\right]$};
+	\end{equation}
+	see Hypothesis 2.1 ({\it ibid.}) and recall that $d\ge 3$. One can easily check if $\widehat{f}$
+	satisfies \eqref{E:U0finite}, then one can find a $p$ in the range given in  \eqref{E:CorTZ} such
+	that condition \eqref{E:CorTZ} is satisfied. In some sense, our condition \eqref{E:U0finite} seems
+	to be more precise and convenient to check.
+
+	\bigskip
+	\textcolor{magenta}{Nick, can you check the relation between the two conditions: \eqref{E:U0finite} and
+	\eqref{E:CorTZ}?}
+\end{remark}
+
+a more broad range of initial measures which include the Dirac delta
+distribution $\delta_0$ and for more
+
+
+
+One thing to
+note is that the just mentioned papers use the theory of the stochastic integral laid out by Da
+Prato and Zabczyk in \cite{DZ92} while in this paper we use the theory developed by Walsh in
+\cite{Walsh}. The former develops a theory of integration with respect to
 Hilbert-space-valued processes while the later emphasizes integration with respect to worthy martingale measures. Both
 theories have their advantages and disadvantages but have been proven to be more or less equivalent in \cite{DalQuer}.
 
 The need to prove existence of invariant measures is apparent for the fact that they are crucial in order to study the
-ergodicity of dynamical systems. Da Prato and Jabczyk \cite{DZp92} established the following procedure
+ergodicity of dynamical systems. Da Prato and Zabczyk \cite{DZp92} established the following procedure
 \begin{itemize}
 	\item Show the existence of a Markovian solution to the SPDE in question in a certain function space where the
 	transition group satisfies the Feller Property
@@ -130,7 +195,7 @@ ergodicity of dynamical systems. Da Prato and Jabczyk \cite{DZp92} established t
 \end{itemize}
 The first bullet point has been shown to be true \cite{DZ96} for a wider class of SPDEs which includes \eqref{E:gspde}
 and in fact has also been show to be true in other various cases of interest \cite{Cer01, MS99}.
-In \cite{TessitoreZabczyk98M} they follow this procedure to show the existence of an invariant measure for the solutions to
+In \cite{TZ98} they follow this procedure to show the existence of an invariant measure for the solutions to
 \eqref{E:gspde} in two separate cases:
 \begin{enumerate}
 	\item The initial measure is a function, $\varphi \in L^2_\rho \cap L^2_{\hat\rho}$ where both $\rho$ and
@@ -140,10 +205,10 @@ In \cite{TessitoreZabczyk98M} they follow this procedure to show the existence o
 	density.
 \end{enumerate}
 By now using the theory of Walsh as well as subsequent results proven in \cite{CH16Comparison} we are able to mimic the
-proof in \cite{TessitoreZabczyk98M}, but in the language of Walsh, and show the existence of invariant measures for a
+proof in \cite{TZ98}, but in the language of Walsh, and show the existence of invariant measures for a
 more broad group of initial conditions. However, because of the differences between the two theories of the stochastic
 integral, we must trade some of previous assumptions on the spectral density for new ones which are listed below. For
-example we drop hypothesis 2.1(i) as well as the assumptions from \cite[Theorem 3.3]{TessitoreZabczyk98M} for the new
+example we drop hypothesis 2.1(i) as well as the assumptions from \cite[Theorem 3.3]{TZ98} for the new
 assumptions listed below.
 
 Misiats, Stanzhytski and Yip \cite{MSY15} show the existence of a invariant measure for \eqref{E:gspde} with any
@@ -175,12 +240,13 @@ Before we state the main results of this paper we need to propose series of assu
 		\end{equation}
 		\item The spectral measure $\hat{f}$ satisfies {\it Dalang's condition}:
 		\begin{equation}
-		\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{\beta + |\xi|^2} <
-		\infty \quad \text{for some and therefore any $\beta>0$}  \label{A:dalcon}
+			\label{A:dalcon}
+			\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{\beta + |\xi|^2} < \infty
+			\quad \text{for some and therefore any $\beta>0$};
 		\end{equation}
 		\item The diffusion coefficient $b(x,u)$ satisfies the following Lipschitz and boundedness conditions:
 		\begin{equation}
-		|b(x,u)-b(x,v)|< L |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad u,v \in \R, \; x \in \R^d \label{A:lipcon}.
+		|b(x,u)-b(x,v)|< L |u-v| \quad \text{and} \quad |b(x,0)| \le L_0 \quad \text{for all } u,v \in \R, \; x \in \R^d \label{A:lipcon}.
 		\end{equation}
 	\end{enumerate}
 \end{assumptions}
@@ -223,13 +289,14 @@ With Assumption \ref{A:General}, we can now state two already established result
 Our first main result handles the case of the existence of an invariant measure for $L^2_{\rho}(\R^d)$ initial conditions (see Section \ref{S:weightedspace}), namely the following SPDE
 
 \begin{equation}
-\begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
-\\ u(0,x)=\varphi(x) & \varphi(x) \in L^2_\rho(\R^d)
-\end{cases}  \label{E:spde}.
+	\label{E:spde}
+	\begin{cases}
+		\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$} \\
+		u(0,x)=\varphi(x)                                                                      & \varphi(x) \in L^2_\rho(\R^d)
+	\end{cases}.
 \end{equation}
 
- Before we state the result, we need to make an additional assumption on the spectral measure.
+Before we state the result, we need to make an additional assumption on the spectral measure.
 
 \begin{assumptions}
 			\item \begin{equation}
@@ -280,7 +347,7 @@ We now state our last assumption which will be required for the proof of one of 
 	\begin{equation}
 	\label{E:dspde}
 	\begin{cases}
-		\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$} \\
+		\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$} \\
 		u(0,\cdot) = \delta_0(\cdot)                                                           &
 	\end{cases}
 	\end{equation}
@@ -302,13 +369,15 @@ $L^2(\Omega,\mathcal F,\mathbb P)$-valued zero mean Gaussian Processes on a comp
 \{ F(\psi) : \psi \in C_0^\infty(\R^{d+1}) \} ,
 \end{align*}
 such that
-\begin{align*}
-\E [ F(\psi)F(\varphi) ] = J(\psi,\varphi) := \int_0^\infty \ud s \int_{\R^d}
-\Gamma(dx)(\psi(s,\cdot)*\tilde{\varphi}(s,\cdot))(x)
-\end{align*}
+\begin{align}
+	\label{E:Cor}
+	\E \left[ F\left(\psi\right)F(\varphi) \right]  = J(\psi,\varphi)
+                                                 := \int_0^\infty \ud s \int_{\R^d} \Gamma(dx)(\psi(s,\cdot)*\tilde{\varphi}(s,\cdot))(x)
+\end{align}
 where $\tilde{\varphi}(x):= \varphi(-x)$ and $\Gamma$ is a tempered measure on $\R^d$ that is nonnegative and nonnegative definite. When $\Gamma$ has density $\Gamma(\ud x) = f(x)\ud x$ then $J$ above can be written as
 \begin{align*}
-J(\psi,\phi) = \int_0^\infty \ud s \int_{\R^d} \ud x \int_{\R^d} \ud y \: \psi(s,x)f(x-y)\varphi(s,y).
+	% \label{E:Cor}
+	J(\psi,\phi) = \int_0^\infty \ud s \int_{\R^d} \ud x \int_{\R^d} \ud y \: \psi(s,x)f(x-y)\varphi(s,y).
 \end{align*}
 $f$ is often referred to as the \textit{spatial correlation} function of the Gaussian Noise and its Fourier transform
 \begin{align*}
@@ -425,13 +494,13 @@ measure $\delta_0$.
 Let $\rho$ be some nonnegative function on $\R^d$.
 We denote by $L^2_\rho(\R^d)$ the weighted Hilbert space with the inner produce $\langle f,g \rangle_\rho  :=
 \int_{\R^d}f(x)g(x)\rho(x) \: \ud x$ and set $|f|_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$.
-Following Tessitore and Zabczyk \cite{TessitoreZabczyk98M}, we assume that $\rho$ is an \textit{admissible weight}
+Following Tessitore and Zabczyk \cite{TZ98}, we assume that $\rho$ is an \textit{admissible weight}
 meaning that $\rho$ is a positive, bounded and continuous function in $L^1(\R^d)$ such that for $T>0$ there exists a
 constant $C_\rho(T)$ such that
 \begin{equation}
 \big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x) \quad \text{for all $t\in[0,T]$.} \label{E:aw}
 \end{equation}
-Several examples of admissible weights are (see Example in Section 2 of \cite{TessitoreZabczyk98M})
+Several examples of admissible weights are (see Example in Section 2 of \cite{TZ98})
 \begin{equation}
 	\label{E:admRho}
 	\begin{aligned}
@@ -445,8 +514,8 @@ Several examples of admissible weights are (see Example in Section 2 of \cite{Te
 	Certainly, the smaller weight function $\rho(\cdot)$, the larger the space $L_\rho^2(\R^d)$ is.
 	For example, one may choose $\rho$ to be either a nonnegative function with compact support or the
 	heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than those in \eqref{E:admRho}
-	(up to a constant). However, one can easily check that the admissible condition in \eqref{E:aw}
-	exclude these two cases. It may be much less obvious that the following function
+	(up to a constant). However, one can easily check that the admissible condition \eqref{E:aw}
+	excludes these two cases. It may be much less obvious that the following function
 	\begin{equation*}
 		\rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d
 	\end{equation*}
@@ -480,7 +549,7 @@ For the remainder of this section, we focus ourselves on \eqref{E:gspde} with in
 namely the following stochastic heat equation.
 \begin{equation}
 \begin{cases}
-\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
+\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta u(t,x) = b(x,u(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
 \\ u(0,x)=\varphi(x) & \varphi(x) \in L^2_\rho(\R^d)
 \end{cases}  \label{E:spde}
 \end{equation}
@@ -710,7 +779,7 @@ We now prove a lemma which will be used to prove Theorem \ref{T:Main2}.
 	\begin{equation}
 	\label{E:vspde2}
 	\begin{cases}
-	\dfrac{\partial v}{\partial t}(t,x)-\frac{1}{2}\Delta_x v(t,x) = b(x,v(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
+	\dfrac{\partial v}{\partial t}(t,x)-\frac{1}{2}\Delta v(t,x) = b(x,v(t,x)\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}
 	\\ v(0,x) = u(t_0,x)  &
 	\end{cases}
 	\end{equation}
@@ -758,7 +827,7 @@ We now can prove Theorem \ref{T:Main2}.
 \end{proof}
 
 \section{Proof of Lemma \ref{L:Main}}
-We start off  with a proposition whose proof is given in Proposition 2.1 \cite{TessitoreZabczyk98M}
+We start off  with a proposition whose proof is given in Proposition 2.1 \cite{TZ98}
 
 \begin{proposition}
 	\label{P:weight}
@@ -774,7 +843,7 @@ We now define two operators. Let $q>2$ and $t_0>0$ be arbitrary and $\alpha \in 
 \label{E:fop}
 \left(F_{\alpha}^{t_0} f\right)(x) := \int_0^{t_0} ds \int_{\R^d} dy \: (t_0-s)^{\alpha-1}G(t_0-s,x-y)f(s,y) .
 \end{equation}
-It is shown in the proof of Theorem 3.1 \cite{TessitoreZabczyk98M} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to
+It is shown in the proof of Theorem 3.1 \cite{TZ98} that $F_\alpha$ is compact from $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ to
 $L^2_\rho$ where $L^q\big((0,t_0),L^2_{\hat\rho} \big)$ is the space of functions that map $s \mapsto f(s,\cdot)$ and
 $f(s,\cdot) \in L^2_{\hat\rho}(\R^d)$ and in addition $\int_0^{t_0} |f(s,\cdot)|_{\hat\rho}^q \: \ud s < \infty$.
 
@@ -1229,12 +1298,12 @@ We are now able to prove Lemma \ref{L:Main}.
 		\newblock Comparison principle for stochastic heat equation on $\R^d$.
 		\newblock {\em Ann.\ Probab.}  47 (2019), no. 2, 989--1035.
     % }}}
-		\bibitem[CK19]{CK15SHE}% {{{
+		\bibitem[CK19]{CK19}% {{{
 		Chen, Le and Kunwoo Kim.
 		\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
     % }}}
-		\bibitem[DK+09]{DalangEtc09Minicourse} % {{{
+		\bibitem[DK$^+$09]{DalangEtc09Minicourse} % {{{
 		Dalang, Robert, Davar Khoshnevisan, Carl Mueller, David Nualart and Yimin Xiao.
 		\newblock {\it A minicourse on stochastic partial differential equations}.
 		\newblock Held at the University of Utah, Salt Lake City, UT, May 8–19, 2006.  Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics, 1962.
@@ -1274,12 +1343,12 @@ We are now able to prove Lemma \ref{L:Main}.
 		Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
 		\newblock Ito's Formula in infinite dimension and its application to the existence of invariant measures.
     % }}}
-		\bibitem{NIST2010}% {{{
-		F.~W.~J. Olver, D.~W. Lozier, R.~F. Boisvert, and C.~W. Clark, editors.
+		\bibitem[OL$^+$10]{NIST2010}% {{{
+		Olver, Frank ~W.~J., Daniel~W. Lozier, Ronald~F. Boisvert and Charles~W. Clark.
 		\newblock {\em N{IST} handbook of mathematical functions}.
 		\newblock U.S. Department of Commerce National Institute of Standards  and Technology, Washington, DC. Cambridge Univ. Press, Cambridge, 2010.
     % }}}
-		\bibitem[TZ98]{TessitoreZabczyk98M}% {{{
+		\bibitem[TZ98]{TZ98}% {{{
 		Tessitore, Gianmario and Jerzy Zabczyk.
 		\newblock Invariant measures for stochastic heat equations.
 		\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287.
