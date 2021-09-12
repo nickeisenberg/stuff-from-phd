@@ -252,6 +252,7 @@ Plugging this in above gives us that
 (G(t,\cdot) * \rho)(x) &= \sum_{n=0}^\infty \frac{(-1)^n}{n!}(2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{nb}{2}, \frac{1}{2} ; - \frac{x^2}{2t} \right)
 \\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \sum_{k=0}^\infty \frac{(-nb/2)^{\bar{k}}}{(1/2)^{\bar{k}}} \frac{ (\frac{-x^2}{2t})^k }{ k! } 
 \end{align}
+Note that it seems that \eqref{E:exp(x^b)} is only true when $b \in \mathbb{N}$ (see Section \eqref{S:MMC} and equation \eqref{E:BRsumrep}). 
 
 \subsection{Special case when $x=0$ and $b=2$}\label{S:SpecCase}
 If we set $b=2$ and $x=0$ in \eqref{E:exp(x^b)} then we should be able to recover \eqref{E:exp(x^2)} with $x$ set to $0$, which is 
@@ -274,7 +275,7 @@ into Mathematica.
 
 Its possible that we may be able to use this technique to calculate \eqref{E:exp(x^b)} for more general $x$ and $b$. In fact, what I believe that we may be able to show is that if we fix any $t >0$ then $(G(t,\cdot) * |\cdot|^b)(x)$ will decay much faster than $|x|^b$ as $|x| \to \infty$.
 
-\subsection{More Mathematica Calculations.}
+\subsection{More Mathematica Calculations.}\label{S:MMC}
 I am unsure that Borel Regularization can be used. For example, I considered $b=3/2$, $t=1/2$ and $x=0$ and if we plug this into \eqref{E:exp(x^b)} then this gives us 
 \[
 (G(1/2,\cdot) * \rho)(0) = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \frac{\Gamma\left(\frac{n(3/2)+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{(3/2)n}{2}, \frac{1}{2} ; 0 \right)
@@ -294,9 +295,9 @@ and
 Integrate[(1/Sqrt[Pi])Exp[-Abs[y]^2]Exp[-Abs[y]^(3/2)],{y,-Infinity,Infinity}].
 \end{verbatim}
 However, it seems that the following is true for every $b \in \mathbb{N}$
-\[
+\begin{equation}\label{E:BRsumrep}
 \sum_{n=0}^\infty \frac{(-1)^n}{n!} \frac{\Gamma\left(\frac{n(b)+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{(b)n}{2}, \frac{1}{2} ; 0 \right) = 	\int_{\R} G(1/2,y)\exp(-|y|^b) \ud y
-\]
+\end{equation}
 where the above sum is the Borel regularization. 
 
 Lastly, what I wished to be able to do what calculate 
