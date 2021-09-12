@@ -166,6 +166,182 @@ and this is not bounded above by a constant independent of $x$ and $t$.
 
 \bigskip
 \textcolor{magenta}{This makes more sense!} 
+
+\section{Admissible Weight}
+\subsection{$\rho(x) = \exp(-|x|)$}
+
+Let $\rho(x) = \exp(-|x|)$. 	
+\begin{align*}		
+\sqrt{2\pi t} \; (G(t,\cdot) * \rho)(x) &= \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( -|x-y| \right) \ud y
+\\& \le \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( -|x| +|y| \right) \ud y \quad \quad \text{since } -|x-y| \le -|x| + |y|
+\\& = \exp(-|x|) \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( |y| \right) \ud y 
+\\& = \exp(-|x|) \int_{\R} \exp\left(-\frac{|y|^2 - 2t|y|}{2t} \right) \ud y 
+\\& = \exp(-|x|) \exp(t/2) \int_{\R} \exp\left(-\frac{(|y|-t)^2 }{2t} \right) \ud y 
+\\& =\exp(-|x|) \exp(t/2)  \sqrt{2\pi t} \left[ \text{erf}\left(\sqrt{\frac{t}{2}}\right) +1 \right]
+\end{align*}
+and therefore 
+\[
+(G(t,\cdot) * \rho)(x) \le \rho(x)\exp(t/2) \left[ \text{erf}\left(\sqrt{\frac{t}{2}}\right) +1 \right].
+\]
+Now fix $T>0$. Since $\exp(t/2)\left[ \text{erf}\left(\sqrt{t/2}\right) +1 \right]$ is increasing in $t$, then for every $t\in [0,T]$ we have that 
+\[
+(G(t,\cdot) * \rho)(x) \le \exp(T/2)\left[ \text{erf}\left(\sqrt{\frac{T}{2}}\right) +1 \right]  \rho(x)
+\]
+which shows that $\rho(x) = \exp(-|x|)$ is admissible with $C_\rho(T) = \exp(T/2)\left[ \text{erf}\left(\sqrt{\frac{T}{2}}\right) +1 \right]$, which is the sharpest such constant for the particular $\rho$ given in this example. 
+
+\subsection{$\rho(x) = \exp(-|x|^2)$}
+
+In this case 
+\[
+\rho(x) = \sqrt{\pi} G( 1/2 , x )
+\]
+and so we see that
+\begin{equation}\label{E:exp(x^2)}
+(G(t,\cdot) * \rho)(x)  = \sqrt{\pi} (G(t,\cdot) * G(1/2, \cdot)(x) = \sqrt{\pi} G(t+1/2,x) = \frac{1}{\sqrt{2t+1}} \exp\left(\frac{-|x|^2}{2t+1}\right).
+\end{equation}
+I claim that for any $T>0$, that there does not exist a constant $K(T)$ such that 	
+\[
+(G(t,\cdot) * \rho)(x) \le K(T) \exp(-|x|^2) \quad \forall \; t\in[0,T] \; \text{and} \; x\in \R.
+\]
+BWOC, suppose there did. Then for $T=4$, there exists some constant $K(4) $ such that for any $t\in[0,4]$,
+\[
+\frac{1}{\sqrt{2t+1}} \exp\left(\frac{-|x|^2}{2t+1}\right) \le K(4) \exp(-|x|^2).
+\]
+Note that for any  $0\le t \le 4$ and $x\in \R$,
+\[
+\frac{1}{3} \exp\left(\frac{-|x|^2}{2t+1}\right)  \le \frac{1}{\sqrt{2t+1}} \exp\left(\frac{-|x|^2}{2t+1}\right) 
+\]
+and so we must have 
+\[
+\frac{1}{3} \exp\left(\frac{-|x|^2}{2t+1}\right) \le K(4)\exp(-|x|^2).
+\]
+This further implies that 
+\begin{align*}
+1 &\le 3 K(4) \exp\left( \frac{|x|^2}{2t+1} - |x|^2 \right)
+\\&= 3 K(4) \exp\left( \frac{|x|^2 -2t|x|^2 -|x|^2}{2t+1} \right)
+\\& = 3 K(4) \exp\left( \frac{-2t|x|^2 }{2t+1} \right)
+\end{align*}
+and this must hold for all $t \in [0,4]$ and $x \in \R$. However, as $|x| \to \infty$ then 
+\[
+3 K(4) \exp\left( \frac{-2t|x|^2 }{2t+1} \right) \to 0
+\]
+and so 
+\begin{equation} \label{E:contradiction}
+1 \le 3 K(4) \exp\left( \frac{-2t|x|^2 }{2t+1} \right)
+\end{equation}
+cannot hold for all $x \in \R$ which is a contradiction. Thus $\exp(-|x|^2)$ is not admissible. 
+
+\subsection{$\rho(x) = \exp(-|x|^b)$}
+
+Suppose that $b\in (1,2)$ and that $\rho(x) = \exp(-|x|^b)$. 
+\begin{align*}
+(G(t,\cdot) * \rho)(x) &= \int_{\R} G(t,x-y)\exp(-|y|^b) \ud y
+\\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} \int_{\R} G(t,x-y) |y|^{nb} \ud y
+\\& = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \mathbb{E}(|N|^{nb})
+\end{align*}
+where above $N$ is a normal random variable with mean $x$ and standard deviation $t$. Note that this can't technically be done because the power series for $\exp(x)$ does not converge uniformly on the whole real line, however doing this seems to work as can be seen in Section \ref{S:SpecCase} below. According to \cite{Winklebauer}, this moment is given by 
+\[
+\mathbb{E}(|N|^{nb}) = (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{nb}{2}, \frac{1}{2} ; - \frac{x^2}{2t} \right)
+\]
+where $\phi$ is the Krummer Confluent Hypergeometric function
+\[
+_1F_1(\alpha,\gamma;z) = \phi(\alpha,\gamma;z) = \sum_{k=0}^\infty \frac{\alpha^{\bar{k}}}{\gamma^{\bar{k}}} \frac{ z^k }{ k! } \quad \text{and} \quad z^{\bar{k}} = \frac{ \Gamma(z+k) }{ \Gamma(z) }.
+\]
+Plugging this in above gives us that 
+\begin{align}\label{E:exp(x^b)}
+(G(t,\cdot) * \rho)(x) &= \sum_{n=0}^\infty \frac{(-1)^n}{n!}(2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{nb}{2}, \frac{1}{2} ; - \frac{x^2}{2t} \right)
+\\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \sum_{k=0}^\infty \frac{(-nb/2)^{\bar{k}}}{(1/2)^{\bar{k}}} \frac{ (\frac{-x^2}{2t})^k }{ k! } 
+\end{align}
+
+\subsection{Special case when $x=0$ and $b=2$}\label{S:SpecCase}
+If we set $b=2$ and $x=0$ in \eqref{E:exp(x^b)} then we should be able to recover \eqref{E:exp(x^2)} with $x$ set to $0$, which is 
+\[
+\frac{1}{\sqrt{2t+1}}.
+\]
+Letting $b=2$ and $x=2$ in \eqref{E:exp(x^b)} gives us 
+\begin{equation}\label{E:specialcase}
+\sum_{n=0}^\infty \frac{(2n)!(-2t)^n}{4^n(n!)^2}
+\end{equation}
+and plugging this into Wolfram gives us that 
+\[
+\sum_{n=0}^\infty \frac{(2n)!(-2t)^n}{4^n(n!)^2} = \frac{1}{\sqrt{2t+1}} \quad \text{whenever } |t| \le 1/2.
+\]
+Another thing to note is that the Borel Regularization of the sum \eqref{E:specialcase} is also equal to $1/\sqrt{2t+1}$ for any $t>0$. This can be easily checked by plugging 
+\begin{verbatim}
+Sum[(-2t)^k(2k)!/(4^k(k!)^2), {k, 0, Infinity}, Regularization -> "Borel"]
+\end{verbatim}
+into Mathematica. 
+
+Its possible that we may be able to use this technique to calculate \eqref{E:exp(x^b)} for more general $x$ and $b$. In fact, what I believe that we may be able to show is that if we fix any $t >0$ then $(G(t,\cdot) * |\cdot|^b)(x)$ will decay much faster than $|x|^b$ as $|x| \to \infty$.
+
+\subsection{More Mathematica Calculations.}
+I am unsure that Borel Regularization can be used. For example, I considered $b=3/2$, $t=1/2$ and $x=0$ and if we plug this into \eqref{E:exp(x^b)} then this gives us 
+\[
+(G(1/2,\cdot) * \rho)(0) = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \frac{\Gamma\left(\frac{n(3/2)+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{(3/2)n}{2}, \frac{1}{2} ; 0 \right)
+\]
+however we get different answers when using Mathematica to calculate this and also this
+\[
+\int_{\R} G(1/2,y)\exp\left(-|y|^{(3/2)}\right) \ud y.
+\]
+The codes used were 
+\begin{verbatim}
+Sum[((-1)^n Gamma[((3/2)*n+1)/2]Hypergeometric1F1[(-(3/2)*n/2),1/2,0])/(Sqrt[Pi]n!), 
+
+{n,0,Infinity}, Regularization ->"Borel"] 
+\end{verbatim}
+and 
+\begin{verbatim}
+Integrate[(1/Sqrt[Pi])Exp[-Abs[y]^2]Exp[-Abs[y]^(3/2)],{y,-Infinity,Infinity}].
+\end{verbatim}
+However, it seems that the following is true for every $b \in \mathbb{N}$
+\[
+\sum_{n=0}^\infty \frac{(-1)^n}{n!} \frac{\Gamma\left(\frac{n(b)+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{(b)n}{2}, \frac{1}{2} ; 0 \right) = 	\int_{\R} G(1/2,y)\exp(-|y|^b) \ud y
+\]
+where the above sum is the Borel regularization. 
+
+Lastly, what I wished to be able to do what calculate 
+\[
+\int_{\R} G(t,x-y)\exp(-|y|^b) \ud y
+\]
+on Mathematica for arbitrary $t,x$ and $b$ but I was not able to do so. The reason it gave me was that it took too much computational time for my account so maybe you could do it with your account. However to simplify this, we could just fix a $t$ value, say $t=1/2$ and this simplifies the integral to 
+\[
+\frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^b) \ud y.
+\]
+However I still cant calculate this on Mathematica. What I believe to be true is that if we assume by contradiction that for $T=1/2$, there exists some constant $K(1/2)$ such that for any $0 \le t \le 1/2$ and $x \in \R$
+\[
+\frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^b) \ud y \le K(1/2)\exp(-|x|^b)
+\] 
+then we will come up with a contradiction. If we use Mathematica, we see that for the case $t=1/2$ and $b=2$ then
+\[
+\lim_{x \to \infty}	\dfrac{	\frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^2) \ud y}{\exp(-|x|^2)} = \infty 
+\]
+which again shows that $\exp(-|x|^2)$ is not admissible. But Mathematica would not calculate the corresponding limit for any particular $b\in(1,2)$. For example, I tried taking $b=3/2$, which is the limit
+\[
+\lim_{x \to \infty}	\dfrac{	\frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^{3/2}) \ud y}{\exp(-|x|^{3/2})}
+\]
+and the codes I used were:
+\begin{verbatim}
+f[x_] := Integrate[(1/Sqrt[Pi])Exp[-Abs[x-y]^2]Exp[-Abs[y]^(3/2)],{y,-Infinity,Infinity}]
+
+Limit[f[x]Exp[Abs[x]^(3/2)],x ->Infinity]
+\end{verbatim}
+but Mathematica would time out each time I tried. 
+\begin{small}% {{{ References
+	\addcontentsline{toc}{section}{Bibliography}
+	\begin{thebibliography}{alpha}
+		
+		\bibitem{Winklebauer}% {{{
+		Winklebauer.
+		\newblock Moments and Absolute Moments of the
+		Normal Distribution.
+		\newblock {\it Arxiv } https://arxiv.org/abs/1209.4340.
+		% }}}
+		
+	\end{thebibliography}
+\end{small}
+% }}}
+
 \end{document}
+
 
 
