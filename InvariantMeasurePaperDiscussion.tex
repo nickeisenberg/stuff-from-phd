@@ -378,21 +378,24 @@ Our assumption is that
 	\begin{equation}\label{E:speccond}
 		\Upsilon(0) = (2\pi)^{-d} \int_{\R^d} \frac{\hat{f}(\xi)}{|\xi|^2} \ud \xi < \infty, \quad \quad d \ge 3.
 	\end{equation}
+	
+\subsection{Assuming \eqref{E:speccond}.}
+
 I believe that we may find a $\hat{f}$ that satisfies \eqref{E:speccond} but not \eqref{E:hyp2.1}. First, suppose \eqref{E:speccond} is true. Then we know that $\hat{f}(\xi)$ may have some relaxed decay properties at $|x| = \infty$ because of the help from the $|\xi|^{-2}$ term. In particular we can have decay as slow as $|\xi|^{-a}$ for $a \in (d-2,\infty)$ at infinity. At the same time, the $|\xi|^{-2}$ forces $\hat{f}$ to have growth no faster than $|\xi|^{-a}$ for $a \in (0,d-2)$ around the origin. So, if we assume $\hat{f}$ satisfies the condition \eqref{E:speccond} then $\hat{f}$ must be integrable around the origin but may not be integrable at infinity because $\hat{f}$ may have tails that decay as slow as $|\xi|^{-a}$ for $a \in (d-2,d)$. 
 
 Considering the above, it seems as if we assume $\hat{f}$ satisfies \eqref{E:speccond}, then $\hat{f}$ may not be able to satisfy the condition \eqref{E:hyp2.1}. First, let $d \ge 3$ and consider $0 < \delta < K$ where $K$ will be determined below. Now consider $\hat{f}$ such that $\hat{f}$ behaves like $|\xi|^{-(d-2-\delta)}$ around the origin and $|\xi|^{-(d-2+\delta)}$ at infinity. BWOC suppose that $\hat{f}$ satisfies condition \eqref{E:hyp2.1}. Then to take care of the thick tails, we would need $p$ to be such that 
-	\[
-		p \ge \frac{d}{d-2+\delta}
-	\]
-but recall that $p \ge d/(d-2)$ so we must choose a $\gamma >0$ such that 	
+	\begin{equation}
+		p > \frac{d}{d-2+\delta}
+	\end{equation}
+but recall that $p > d/(d-2)$ so we must choose a $\gamma >0$ such that 	
 	\[
 		\frac{d+\gamma}{d-2+\delta} > \frac{d}{d-2}
 	\]
 and thus we need 
-	\[
+	\begin{equation}\label{E:pcon}
 		p \ge \frac{d+\gamma}{d-2+\delta}.
-	\]
-However, at the same time we still need to maintain integrability around the origin. But we will now see that if we choose $\delta>0$ small enough that we will lose integrability around the origin. Note that we may say that 
+	\end{equation}
+However, at the same time we still need to maintain integrability around the origin. But we will now see that if we choose $\delta>0$ small enough that we will lose integrability around the origin. Note that because of \eqref{E:pcon} we may say that 
 	\[
 		p(d-2-\delta) \ge \frac{(d+\gamma)(d-2-\delta)}{d-2}
 	\]
@@ -413,15 +416,28 @@ then there exists a $K>0$, independent of $p$, such that for any $\delta \in (0,
 			p(d-2-\delta) \ge d
 	\]
 and so $\hat{f}$ cannot be integrable around the origin which means that $\hat{f}$ satisfies \eqref{E:speccond} but not \eqref{E:hyp2.1}.
+
+\subsection{Assuming \eqref{E:hyp2.1}.}
+I believe that an additional property of the spectral measure, $\hat{f}$, is that $\hat{f}(\xi) < \infty$ if an only if $t \not= 0$. This is assumed in \cite{BC16}. If we do not assume this then for any $\hat{f}$ satisfying \eqref{E:hyp2.1} such that $\hat{f}(0) < \infty$ will not satisfy \eqref{E:speccond}. 
+
+So lets assume that $\hat{f}$ blows up at the origin. Also assume that $\hat{f}$ satisfies the condition \eqref{E:hyp2.1}
+
+
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
+		
+		\bibitem{BC16}% {{{
+		Balan, R. and Chen, Le 
+		\newblock Parabolic Anderson Model with Space-Time Homogeneous Gaussian Noise and Rough Initial Condition
+		\newblock \textit{J Theor Probab.} (2016)
+		% }}}
 		
 		\bibitem{CDfracheat15}% {{{
 		Chen, Le and Dalang, R.
 		\newblock Moments, intermittency and growth indices for the
 		nonlinear fractional stochastic heat equation
-		\newblock Stoch PDE: Anal Comp (2015) 3:360–397
+		\newblock \textit{Stoch PDE: Anal Comp} (2015) 3:360–397
 		% }}}
 
 		\bibitem[TZ98]{TZ98}% {{{
