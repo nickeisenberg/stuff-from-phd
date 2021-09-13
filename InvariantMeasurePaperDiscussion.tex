@@ -58,45 +58,45 @@
 \begin{document}
 
 \section{(2.11) verification}
-The admissible weight property 
+The admissible weight property
 \[
-\left(G(t,\cdot)*\rho(\cdot)\right)(x) =(2\pi t)^{-d/2} \int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)dy \le K_T\rho(x) \quad \forall x \in \mathbb R^d,\; K_T \in \mathbb N,\; t\in[0,T] 
+\left(G(t,\cdot)*\rho(\cdot)\right)(x) =(2\pi t)^{-d/2} \int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)dy \le K_T\rho(x) \quad \forall x \in \mathbb R^d,\; K_T \in \mathbb N,\; t\in[0,T]
 \]
-tells us that 
+tells us that
 \begin{equation} \label{aw}
 \lim_{|x| \to \infty}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le K_T \quad t \in [0,T].
 \end{equation}
 
 \bigskip
-\textcolor{magenta}{The expression for $K_t$ should be 
+\textcolor{magenta}{The expression for $K_t$ should be
 \begin{align*}
-	K_t:= \sup_{x\in\R^d} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} 
+	K_t:= \sup_{x\in\R^d} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)}
 \end{align*}
-The limit in \eqref{aw} gives a sufficient (also necessary) condition for $K_t$ to be finite, but in general, this limit is not equal to the value of $K_t$. 
-} 
+The limit in \eqref{aw} gives a sufficient (also necessary) condition for $K_t$ to be finite, but in general, this limit is not equal to the value of $K_t$.
+}
 
 \textcolor{blue}{I meant for $K_T$ to mean $C_\rho(T)$. I made some corrections above}
 
 
-We want to show that 
+We want to show that
 \begin{equation} \label{con}
 \exp\left(-a|x|^2\right) \le K_a'\rho(x)
 \end{equation}
 
 \bigskip
-\textcolor{magenta}{Why does \eqref{aw} imply \eqref{con}?} 
+\textcolor{magenta}{Why does \eqref{aw} imply \eqref{con}?}
 
 \textcolor{blue}{\eqref{con2} and \eqref{aw} imply \eqref{con1} which implies \eqref{con}}
 
-and it suffices to show that  
+and it suffices to show that
 \begin{equation} \label{con1}
 \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le K_a'.
 \end{equation}
-since then 
+since then
 \[
 \exp\left(-a|x|^2\right) \le (K_a'+\epsilon)\rho(x) \quad |x|>R_\epsilon
-\] 
-and by the positivity and continuity of both $	\exp\left(-a|x|^2\right)$ and $\rho(x)$, we know that there exists some positive constant $K(a,\epsilon)$ such that 
+\]
+and by the positivity and continuity of both $	\exp\left(-a|x|^2\right)$ and $\rho(x)$, we know that there exists some positive constant $K(a,\epsilon)$ such that
 \[
 \exp\left(-a|x|^2\right) \le K'(a,\epsilon)\rho(x) \quad x\le R_\epsilon
 \]
@@ -104,9 +104,9 @@ and by then letting $K(a,\epsilon) = \max\{K'(a,\epsilon),(K_a'+\epsilon)\}$ the
 \[
 	\exp\left(-a|x|^2\right) \le K(a,\epsilon)\rho(x) \quad x \in \R^d
 \]
-which is what we want to show. 
+which is what we want to show.
 
-In order to show \eqref{con1}, it suffices to show that 
+In order to show \eqref{con1}, it suffices to show that
 \begin{equation} \label{con2}
 	\lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\exp\left(-a|x|^2\right)} = \infty
 \end{equation}
@@ -115,29 +115,29 @@ because this would mean that $\exp\left(-a|x|^2\right)$ is much smaller than $\l
 	0 \le \lim_{|x| \to \infty}\frac{\exp\left(-a|x|^2\right)}{\rho(x)} \le  \lim_{|x| \to \infty} \frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \le K_t
 \]
 
-\eqref{con2} is proved as follows: first recall that $|\rho(x)| < M$ for some $M \in \mathbb N$. Then, 
+\eqref{con2} is proved as follows: first recall that $|\rho(x)| < M$ for some $M \in \mathbb N$. Then,
 \begin{align*}
-0 \le	\dfrac{\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)\ud y}{\exp\left(-a|x|^2\right)} &\le \dfrac{M\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right) \ud y}{\exp\left(-a|x|^2\right)} 
-\\&  = \dfrac{M*\sqrt{2 \pi t}}{\exp\left(-a|x|^2\right)} 
+0 \le	\dfrac{\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right)\rho(y)\ud y}{\exp\left(-a|x|^2\right)} &\le \dfrac{M\int_{\mathbb R^d}\exp\left(-\frac{|x-y|^2}{2t}\right) \ud y}{\exp\left(-a|x|^2\right)}
+\\&  = \dfrac{M*\sqrt{2 \pi t}}{\exp\left(-a|x|^2\right)}
 \\& \to \infty \quad \text{as } |x|\to \infty
 \end{align*}
 
-Thus \eqref{con2} is proved which means that \eqref{con} is also true. 
+Thus \eqref{con2} is proved which means that \eqref{con} is also true.
 
 \bigskip
 
 \textcolor{magenta}{Can you give an explicit form of $C_\rho(T)$ so that we can check whether $\sup_{T>0}C_\rho(T)<\infty$, or your $K_t$? If not, can you derive some sufficient conditions that guarantee this
-property?} 
+property?}
 
-\textcolor{blue}{In the above wrote $K_t$ to mean the same thing as $C_\rho(T)$. 
+\textcolor{blue}{In the above wrote $K_t$ to mean the same thing as $C_\rho(T)$.
 	However in general there is no explicit form for this constant and also in general, $\sup_{T \ge 0}K_T \not < \infty$.
 For example, when we consider the weight $\rho(x)=\exp(-|x|)$ in $\R$ then we can show that $(G(t,\cdot)*\exp(-|\cdot|))(x) \le 2\exp(t/2) \exp(-|x|)$ and clearly $\sup_{t \ge 0} 2\exp(t/2) = \infty$.}
 \bigskip
 
-\textcolor{magenta}{This is a good example. We should not expect $\sup_{T>0}C_\rho(T)<\infty$. Actually, you may want to check eq. (4.4) of my AOP paper with Robert 2015 on p. 3040. } 
+\textcolor{magenta}{This is a good example. We should not expect $\sup_{T>0}C_\rho(T)<\infty$. Actually, you may want to check eq. (4.4) of my AOP paper with Robert 2015 on p. 3040. }
 
 \section{Mistake involving the $G(t,x) \le K G(1,x)$ inequality}
-During a meeting we had, we proved that $G(t,x) \le K G(1,x)$ where the constant $K$ does not depend on $x$ or $t$ but we made a mistake in doing so. What we did is the following (for now we work in $\R$): 
+During a meeting we had, we proved that $G(t,x) \le K G(1,x)$ where the constant $K$ does not depend on $x$ or $t$ but we made a mistake in doing so. What we did is the following (for now we work in $\R$):
 
 \begin{align*}
 \frac{G(t+1,x)}{G(1,x)} &= \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2(t+1)} + \frac{|x|^2}{2}\right)
@@ -145,7 +145,7 @@ During a meeting we had, we proved that $G(t,x) \le K G(1,x)$ where the constant
 \\& = \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2}\frac{t}{t+1}\right)
 \\& \le K
 \end{align*}
-However if we fix the mistake, what we should get is that 
+However if we fix the mistake, what we should get is that
 \begin{align*}
 \frac{G(t+1,x)}{G(1,x)} &= \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2(t+1)} + \frac{|x|^2}{2}\right)
 \\& = \sqrt{\frac{1}{t+1}}\exp\left( -\frac{|x|^2}{2} \left(\frac{1}{t+1}- 1\right)\right)
@@ -162,36 +162,36 @@ However if we fix the mistake, what we should get is that
 	\frac{G(t+t_0,x)}{G(t_0,x)} &= \sqrt{\frac{t}{t+t_0}}\exp\left(-\frac{|x|^2}{2(t+t_0)}\right)\exp\left(\frac{|x|^2}{2t_0}\right)
 	\\& = \sqrt{\frac{t_0}{t+t_0}} \exp\left(\frac{|x|^2}{2(t+t_0)}\right)
 \end{align*}
-and this is not bounded above by a constant independent of $x$ and $t$. 
+and this is not bounded above by a constant independent of $x$ and $t$.
 
 \bigskip
-\textcolor{magenta}{This makes more sense!} 
+\textcolor{magenta}{This makes more sense!}
 
 \section{Admissible Weight}
 \subsection{$\rho(x) = \exp(-|x|)$}
 
-Let $\rho(x) = \exp(-|x|)$. 	
-\begin{align*}		
+Let $\rho(x) = \exp(-|x|)$.
+\begin{align*}
 \sqrt{2\pi t} \; (G(t,\cdot) * \rho)(x) &= \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( -|x-y| \right) \ud y
 \\& \le \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( -|x| +|y| \right) \ud y \quad \quad \text{since } -|x-y| \le -|x| + |y|
-\\& = \exp(-|x|) \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( |y| \right) \ud y 
-\\& = \exp(-|x|) \int_{\R} \exp\left(-\frac{|y|^2 - 2t|y|}{2t} \right) \ud y 
-\\& = \exp(-|x|) \exp(t/2) \int_{\R} \exp\left(-\frac{(|y|-t)^2 }{2t} \right) \ud y 
+\\& = \exp(-|x|) \int_{\R} \exp\left(-\frac{|y|^2}{2t} \right) \exp\left( |y| \right) \ud y
+\\& = \exp(-|x|) \int_{\R} \exp\left(-\frac{|y|^2 - 2t|y|}{2t} \right) \ud y
+\\& = \exp(-|x|) \exp(t/2) \int_{\R} \exp\left(-\frac{(|y|-t)^2 }{2t} \right) \ud y
 \\& =\exp(-|x|) \exp(t/2)  \sqrt{2\pi t} \left[ \text{erf}\left(\sqrt{\frac{t}{2}}\right) +1 \right]
 \end{align*}
-and therefore 
+and therefore
 \[
 (G(t,\cdot) * \rho)(x) \le \rho(x)\exp(t/2) \left[ \text{erf}\left(\sqrt{\frac{t}{2}}\right) +1 \right].
 \]
-Now fix $T>0$. Since $\exp(t/2)\left[ \text{erf}\left(\sqrt{t/2}\right) +1 \right]$ is increasing in $t$, then for every $t\in [0,T]$ we have that 
+Now fix $T>0$. Since $\exp(t/2)\left[ \text{erf}\left(\sqrt{t/2}\right) +1 \right]$ is increasing in $t$, then for every $t\in [0,T]$ we have that
 \[
 (G(t,\cdot) * \rho)(x) \le \exp(T/2)\left[ \text{erf}\left(\sqrt{\frac{T}{2}}\right) +1 \right]  \rho(x)
 \]
-which shows that $\rho(x) = \exp(-|x|)$ is admissible with $C_\rho(T) = \exp(T/2)\left[ \text{erf}\left(\sqrt{\frac{T}{2}}\right) +1 \right]$, which is the sharpest such constant for the particular $\rho$ given in this example. 
+which shows that $\rho(x) = \exp(-|x|)$ is admissible with $C_\rho(T) = \exp(T/2)\left[ \text{erf}\left(\sqrt{\frac{T}{2}}\right) +1 \right]$, which is the sharpest such constant for the particular $\rho$ given in this example.
 
 \subsection{$\rho(x) = \exp(-|x|^2)$}
 
-In this case 
+In this case
 \[
 \rho(x) = \sqrt{\pi} G( 1/2 , x )
 \]
@@ -199,7 +199,7 @@ and so we see that
 \begin{equation}\label{E:exp(x^2)}
 (G(t,\cdot) * \rho)(x)  = \sqrt{\pi} (G(t,\cdot) * G(1/2, \cdot)(x) = \sqrt{\pi} G(t+1/2,x) = \frac{1}{\sqrt{2t+1}} \exp\left(\frac{-|x|^2}{2t+1}\right).
 \end{equation}
-I claim that for any $T>0$, that there does not exist a constant $K(T)$ such that 	
+I claim that for any $T>0$, that there does not exist a constant $K(T)$ such that
 \[
 (G(t,\cdot) * \rho)(x) \le K(T) \exp(-|x|^2) \quad \forall \; t\in[0,T] \; \text{and} \; x\in \R.
 \]
@@ -209,37 +209,37 @@ BWOC, suppose there did. Then for $T=4$, there exists some constant $K(4) $ such
 \]
 Note that for any  $0\le t \le 4$ and $x\in \R$,
 \[
-\frac{1}{3} \exp\left(\frac{-|x|^2}{2t+1}\right)  \le \frac{1}{\sqrt{2t+1}} \exp\left(\frac{-|x|^2}{2t+1}\right) 
+\frac{1}{3} \exp\left(\frac{-|x|^2}{2t+1}\right)  \le \frac{1}{\sqrt{2t+1}} \exp\left(\frac{-|x|^2}{2t+1}\right)
 \]
-and so we must have 
+and so we must have
 \[
 \frac{1}{3} \exp\left(\frac{-|x|^2}{2t+1}\right) \le K(4)\exp(-|x|^2).
 \]
-This further implies that 
+This further implies that
 \begin{align*}
 1 &\le 3 K(4) \exp\left( \frac{|x|^2}{2t+1} - |x|^2 \right)
 \\&= 3 K(4) \exp\left( \frac{|x|^2 -2t|x|^2 -|x|^2}{2t+1} \right)
 \\& = 3 K(4) \exp\left( \frac{-2t|x|^2 }{2t+1} \right)
 \end{align*}
-and this must hold for all $t \in [0,4]$ and $x \in \R$. However, as $|x| \to \infty$ then 
+and this must hold for all $t \in [0,4]$ and $x \in \R$. However, as $|x| \to \infty$ then
 \[
 3 K(4) \exp\left( \frac{-2t|x|^2 }{2t+1} \right) \to 0
 \]
-and so 
+and so
 \begin{equation} \label{E:contradiction}
 1 \le 3 K(4) \exp\left( \frac{-2t|x|^2 }{2t+1} \right)
 \end{equation}
-cannot hold for all $x \in \R$ which is a contradiction. Thus $\exp(-|x|^2)$ is not admissible. 
+cannot hold for all $x \in \R$ which is a contradiction. Thus $\exp(-|x|^2)$ is not admissible.
 
 \subsection{$\rho(x) = \exp(-|x|^b)$}
 
-Suppose that $b\in (1,2)$ and that $\rho(x) = \exp(-|x|^b)$. 
+Suppose that $b\in (1,2)$ and that $\rho(x) = \exp(-|x|^b)$.
 \begin{align*}
 (G(t,\cdot) * \rho)(x) &= \int_{\R} G(t,x-y)\exp(-|y|^b) \ud y
 \\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} \int_{\R} G(t,x-y) |y|^{nb} \ud y
 \\& = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \mathbb{E}(|N|^{nb})
 \end{align*}
-where above $N$ is a normal random variable with mean $x$ and standard deviation $t$. Note that this can't technically be done because the power series for $\exp(x)$ does not converge uniformly on the whole real line, however doing this seems to work as can be seen in Section \ref{S:SpecCase} below. According to \cite{Winklebauer}, this moment is given by 
+where above $N$ is a normal random variable with mean $x$ and standard deviation $t$. Note that this can't technically be done because the power series for $\exp(x)$ does not converge uniformly on the whole real line, however doing this seems to work as can be seen in Section \ref{S:SpecCase} below. According to \cite{Winklebauer}, this moment is given by
 \[
 \mathbb{E}(|N|^{nb}) = (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{nb}{2}, \frac{1}{2} ; - \frac{x^2}{2t} \right)
 \]
@@ -247,36 +247,48 @@ where $\phi$ is the Krummer Confluent Hypergeometric function
 \[
 _1F_1(\alpha,\gamma;z) = \phi(\alpha,\gamma;z) = \sum_{k=0}^\infty \frac{\alpha^{\bar{k}}}{\gamma^{\bar{k}}} \frac{ z^k }{ k! } \quad \text{and} \quad z^{\bar{k}} = \frac{ \Gamma(z+k) }{ \Gamma(z) }.
 \]
-Plugging this in above gives us that 
+Plugging this in above gives us that
 \begin{align}\label{E:exp(x^b)}
 (G(t,\cdot) * \rho)(x) &= \sum_{n=0}^\infty \frac{(-1)^n}{n!}(2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{nb}{2}, \frac{1}{2} ; - \frac{x^2}{2t} \right)
-\\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \sum_{k=0}^\infty \frac{(-nb/2)^{\bar{k}}}{(1/2)^{\bar{k}}} \frac{ (\frac{-x^2}{2t})^k }{ k! } 
+\\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \sum_{k=0}^\infty \frac{(-nb/2)^{\bar{k}}}{(1/2)^{\bar{k}}} \frac{ (\frac{-x^2}{2t})^k }{ k! }
 \end{align}
-Note that it seems that \eqref{E:exp(x^b)} is only true when $b \in \mathbb{N}$ (see Section \eqref{S:MMC} and equation \eqref{E:BRsumrep}). 
+Note that it seems that \eqref{E:exp(x^b)} is only true when $b \in \mathbb{N}$ (see Section \eqref{S:MMC} and equation \eqref{E:BRsumrep}).
+
+\bigskip
+
+\textcolor{magenta}{If it works for $b\in \mathbb{N}$, it should work for fractions as well. I can
+show you some numerical evidence that why the case $b>1$ won't work during our meeting. We may not
+need to spend too much time here unless we can really prove that $\rho$ with $b>1$ is not
+admissible.}
 
 \subsection{Special case when $x=0$ and $b=2$}\label{S:SpecCase}
-If we set $b=2$ and $x=0$ in \eqref{E:exp(x^b)} then we should be able to recover \eqref{E:exp(x^2)} with $x$ set to $0$, which is 
+If we set $b=2$ and $x=0$ in \eqref{E:exp(x^b)} then we should be able to recover \eqref{E:exp(x^2)} with $x$ set to $0$, which is
 \[
 \frac{1}{\sqrt{2t+1}}.
 \]
-Letting $b=2$ and $x=2$ in \eqref{E:exp(x^b)} gives us 
+Letting $b=2$ and $x=2$ in \eqref{E:exp(x^b)} gives us
 \begin{equation}\label{E:specialcase}
 \sum_{n=0}^\infty \frac{(2n)!(-2t)^n}{4^n(n!)^2}
 \end{equation}
-and plugging this into Wolfram gives us that 
+and plugging this into Wolfram gives us that
 \[
 \sum_{n=0}^\infty \frac{(2n)!(-2t)^n}{4^n(n!)^2} = \frac{1}{\sqrt{2t+1}} \quad \text{whenever } |t| \le 1/2.
 \]
-Another thing to note is that the Borel Regularization of the sum \eqref{E:specialcase} is also equal to $1/\sqrt{2t+1}$ for any $t>0$. This can be easily checked by plugging 
+Another thing to note is that the Borel Regularization of the sum \eqref{E:specialcase} is also equal to $1/\sqrt{2t+1}$ for any $t>0$. This can be easily checked by plugging
 \begin{verbatim}
 Sum[(-2t)^k(2k)!/(4^k(k!)^2), {k, 0, Infinity}, Regularization -> "Borel"]
 \end{verbatim}
-into Mathematica. 
+into Mathematica.
 
 Its possible that we may be able to use this technique to calculate \eqref{E:exp(x^b)} for more general $x$ and $b$. In fact, what I believe that we may be able to show is that if we fix any $t >0$ then $(G(t,\cdot) * |\cdot|^b)(x)$ will decay much faster than $|x|^b$ as $|x| \to \infty$.
 
+\bigskip
+
+\textcolor{magenta}{I can show you during our meeting this week that the case $b=2$ won't work.}
+
+
 \subsection{More Mathematica Calculations.}\label{S:MMC}
-I am unsure that Borel Regularization can be used. For example, I considered $b=3/2$, $t=1/2$ and $x=0$ and if we plug this into \eqref{E:exp(x^b)} then this gives us 
+I am unsure that Borel Regularization can be used. For example, I considered $b=3/2$, $t=1/2$ and $x=0$ and if we plug this into \eqref{E:exp(x^b)} then this gives us
 \[
 (G(1/2,\cdot) * \rho)(0) = \sum_{n=0}^\infty \frac{(-1)^n}{n!} \frac{\Gamma\left(\frac{n(3/2)+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{(3/2)n}{2}, \frac{1}{2} ; 0 \right)
 \]
@@ -284,13 +296,13 @@ however we get different answers when using Mathematica to calculate this and al
 \[
 \int_{\R} G(1/2,y)\exp\left(-|y|^{(3/2)}\right) \ud y.
 \]
-The codes used were 
+The codes used were
 \begin{verbatim}
-Sum[((-1)^n Gamma[((3/2)*n+1)/2]Hypergeometric1F1[(-(3/2)*n/2),1/2,0])/(Sqrt[Pi]n!), 
+Sum[((-1)^n Gamma[((3/2)*n+1)/2]Hypergeometric1F1[(-(3/2)*n/2),1/2,0])/(Sqrt[Pi]n!),
 
-{n,0,Infinity}, Regularization ->"Borel"] 
+{n,0,Infinity}, Regularization ->"Borel"]
 \end{verbatim}
-and 
+and
 \begin{verbatim}
 Integrate[(1/Sqrt[Pi])Exp[-Abs[y]^2]Exp[-Abs[y]^(3/2)],{y,-Infinity,Infinity}].
 \end{verbatim}
@@ -298,23 +310,23 @@ However, it seems that the following is true for every $b \in \mathbb{N}$
 \begin{equation}\label{E:BRsumrep}
 \sum_{n=0}^\infty \frac{(-1)^n}{n!} \frac{\Gamma\left(\frac{n(b)+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{(b)n}{2}, \frac{1}{2} ; 0 \right) = 	\int_{\R} G(1/2,y)\exp(-|y|^b) \ud y
 \end{equation}
-where the above sum is the Borel regularization. 
+where the above sum is the Borel regularization.
 
-Lastly, what I wished to be able to do what calculate 
+Lastly, what I wished to be able to do what calculate
 \[
 \int_{\R} G(t,x-y)\exp(-|y|^b) \ud y
 \]
-on Mathematica for arbitrary $t,x$ and $b$ but I was not able to do so. The reason it gave me was that it took too much computational time for my account so maybe you could do it with your account. However to simplify this, we could just fix a $t$ value, say $t=1/2$ and this simplifies the integral to 
+on Mathematica for arbitrary $t,x$ and $b$ but I was not able to do so. The reason it gave me was that it took too much computational time for my account so maybe you could do it with your account. However to simplify this, we could just fix a $t$ value, say $t=1/2$ and this simplifies the integral to
 \[
 \frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^b) \ud y.
 \]
 However I still cant calculate this on Mathematica. What I believe to be true is that if we assume by contradiction that for $T=1/2$, there exists some constant $K(1/2)$ such that for any $0 \le t \le 1/2$ and $x \in \R$
 \[
 \frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^b) \ud y \le K(1/2)\exp(-|x|^b)
-\] 
+\]
 then we will come up with a contradiction. If we use Mathematica, we see that for the case $t=1/2$ and $b=2$ then
 \[
-\lim_{x \to \infty}	\dfrac{	\frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^2) \ud y}{\exp(-|x|^2)} = \infty 
+\lim_{x \to \infty}	\dfrac{	\frac{1}{\sqrt{\pi}} \int_{\R} \exp(-|x-y|^2)\exp(-|y|^2) \ud y}{\exp(-|x|^2)} = \infty
 \]
 which again shows that $\exp(-|x|^2)$ is not admissible. But Mathematica would not calculate the corresponding limit for any particular $b\in(1,2)$. For example, I tried taking $b=3/2$, which is the limit
 \[
@@ -326,18 +338,22 @@ f[x_] := Integrate[(1/Sqrt[Pi])Exp[-Abs[x-y]^2]Exp[-Abs[y]^(3/2)],{y,-Infinity,I
 
 Limit[f[x]Exp[Abs[x]^(3/2)],x ->Infinity]
 \end{verbatim}
-but Mathematica would time out each time I tried. 
+but Mathematica would time out each time I tried.
+
+\bigskip
+\textcolor{magenta}{Here you might want to try ``NIntegrate'' instead of ``Integrate''.}
+
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
-		
+
 		\bibitem{Winklebauer}% {{{
 		Winklebauer.
 		\newblock Moments and Absolute Moments of the
 		Normal Distribution.
 		\newblock {\it Arxiv } https://arxiv.org/abs/1209.4340.
 		% }}}
-		
+
 	\end{thebibliography}
 \end{small}
 % }}}
