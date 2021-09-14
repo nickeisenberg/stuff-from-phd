@@ -352,13 +352,13 @@ The following equation driven by space-time white noise is studied in \cite{CDfr
 	\end{cases}
 	\]
 The following moment bounds are proven there:
-	\begin{equation}\label{E:fracheatspde} \Norm{u(t,x)}_p^2 \le 
+	\begin{equation}\label{E:fracheatspde} \Norm{u(t,x)}_p^2 \le
 	\begin{cases}
 	J_0^2(t,x) + ( [ \bar{\varsigma} + J_0^2] \star \bar{\mathcal{K}})(t,x), & p=2
 	\\  	2J_0^2(t,x) + ( [ \bar{\varsigma} + 2J_0^2] \star \hat{\mathcal{K}}_p)(t,x), & p>2,
 	\end{cases}
 	\end{equation}
-and $\mathcal{K}$ has the following upper bound 
+and $\mathcal{K}$ has the following upper bound
 	\[
 		\mathcal{K}(t,x) \le \frac{C}{t^{1/a}} {_\delta G_a}(t,x)\left(  1+ t^{1/a} \exp( \gamma^{a^*} t) \right).
 	\]
@@ -366,7 +366,7 @@ and $\mathcal{K}$ has the following upper bound
 	\begin{enumerate}
 		\item We run into the issue with this bound not being bounded in $t$
 		\item The space time convolution in the moment bound versus just a spacial convolution may cause problems. When dealing with the heat equation and a noise white in time and colored in space, the moment bound only has a spacial convolution.
-		\item We may be able to study equation \eqref{E:fracheatspde} but with a noise that is white in time and colored in space and get a result similar to the heat equation case and use this to show the existence of an invariant measure. 
+		\item We may be able to study equation \eqref{E:fracheatspde} but with a noise that is white in time and colored in space and get a result similar to the heat equation case and use this to show the existence of an invariant measure.
 	\end{enumerate}
 
 \section{$\Upsilon(\beta) \vert_{\beta =0} < \infty$ versus the spectral density integrability condition in \cite{TZ98}.}
@@ -378,102 +378,117 @@ Our assumption is that
 	\begin{equation}\label{E:speccond}
 		\Upsilon(0) = (2\pi)^{-d} \int_{\R^d} \frac{\hat{f}(\xi)}{|\xi|^2} \ud \xi < \infty, \quad \quad d \ge 3.
 	\end{equation}
-	
+
 \subsection{Assuming \eqref{E:speccond}.}
 
-I believe that we may find a $\hat{f}$ that satisfies \eqref{E:speccond} but not \eqref{E:hyp2.1}. First, suppose \eqref{E:speccond} is true. Then we know that $\hat{f}(\xi)$ may have some relaxed decay properties at $|x| = \infty$ because of the help from the $|\xi|^{-2}$ term. In particular we can have decay as slow as $|\xi|^{-a}$ for $a \in (d-2,\infty)$ at infinity. At the same time, the $|\xi|^{-2}$ forces $\hat{f}$ to have growth no faster than $|\xi|^{-a}$ for $a \in (0,d-2)$ around the origin. So, if we assume $\hat{f}$ satisfies the condition \eqref{E:speccond} then $\hat{f}$ must be integrable around the origin but may not be integrable at infinity because $\hat{f}$ may have tails that decay as slow as $|\xi|^{-a}$ for $a \in (d-2,d)$. 
+I believe that we may find a $\hat{f}$ that satisfies \eqref{E:speccond} but not \eqref{E:hyp2.1}. First, suppose \eqref{E:speccond} is true. Then we know that $\hat{f}(\xi)$ may have some relaxed decay properties at $|x| = \infty$ because of the help from the $|\xi|^{-2}$ term. In particular we can have decay as slow as $|\xi|^{-a}$ for $a \in (d-2,\infty)$ at infinity. At the same time, the $|\xi|^{-2}$ forces $\hat{f}$ to have growth no faster than $|\xi|^{-a}$ for $a \in (0,d-2)$ around the origin. So, if we assume $\hat{f}$ satisfies the condition \eqref{E:speccond} then $\hat{f}$ must be integrable around the origin but may not be integrable at infinity because $\hat{f}$ may have tails that decay as slow as $|\xi|^{-a}$ for $a \in (d-2,d)$.
 
-Considering the above, it seems as if we assume $\hat{f}$ satisfies \eqref{E:speccond}, then $\hat{f}$ may not be able to satisfy the condition \eqref{E:hyp2.1}. First, let $d \ge 3$ and consider $0 < \delta < K$ where $K$ will be determined below. Now consider $\hat{f}$ such that $\hat{f}$ behaves like $|\xi|^{-(d-2-\delta)}$ around the origin and $|\xi|^{-(d-2+\delta)}$ at infinity. BWOC suppose that $\hat{f}$ satisfies condition \eqref{E:hyp2.1}. Then to take care of the thick tails, we would need $p$ to be such that 
+Considering the above, it seems as if we assume $\hat{f}$ satisfies \eqref{E:speccond}, then $\hat{f}$ may not be able to satisfy the condition \eqref{E:hyp2.1}. First, let $d \ge 3$ and consider $0 < \delta < K$ where $K$ will be determined below. Now consider $\hat{f}$ such that $\hat{f}$ behaves like $|\xi|^{-(d-2-\delta)}$ around the origin and $|\xi|^{-(d-2+\delta)}$ at infinity. BWOC suppose that $\hat{f}$ satisfies condition \eqref{E:hyp2.1}. Then to take care of the thick tails, we would need $p$ to be such that
 	\begin{equation}
 		p > \frac{d}{d-2+\delta}
 	\end{equation}
-but recall that $p > d/(d-2)$ so we must choose a $\gamma >0$ such that 	
+but recall that $p > d/(d-2)$ so we must choose a $\gamma >0$ such that
 	\[
 		\frac{d+\gamma}{d-2+\delta} > \frac{d}{d-2}
 	\]
-and thus we need 
+and thus we need
 	\begin{equation}\label{E:pcon}
 		p \ge \frac{d+\gamma}{d-2+\delta}.
 	\end{equation}
-However, at the same time we still need to maintain integrability around the origin. But we will now see that if we choose $\delta>0$ small enough that we will lose integrability around the origin. Note that because of \eqref{E:pcon} we may say that 
+However, at the same time we still need to maintain integrability around the origin. But we will now see that if we choose $\delta>0$ small enough that we will lose integrability around the origin. Note that because of \eqref{E:pcon} we may say that
 	\[
 		p(d-2-\delta) \ge \frac{(d+\gamma)(d-2-\delta)}{d-2+\delta}
 	\]
-and if we set 
+and if we set
 	\[
 		\frac{(d+\gamma)(d-2-\delta)}{d-2 + \delta} \ge d
 	\]
-then this is satisfied when 
+then this is satisfied when
 	\begin{equation}\label{E:hyp2.1fail}
 		\frac{d-2-\delta}{d-2 + \delta} \ge \frac{d}{d+\gamma}
 	\end{equation}
-and since $\delta>0$ is arbitrary and 
+and since $\delta>0$ is arbitrary and
 	\[
 		\lim_{\delta \to 0} \frac{d-2-\delta}{d-2 + \delta} = 1 > \frac{d}{d + \gamma}
 	\]
-then there exists a $K>0$, independent of $p$, such that for any $\delta \in (0,K)$ that \eqref{E:hyp2.1fail} is true. And therefore this implies that 
+then there exists a $K>0$, independent of $p$, such that for any $\delta \in (0,K)$ that \eqref{E:hyp2.1fail} is true. And therefore this implies that
 	\[
 			p(d-2-\delta) \ge d
 	\]
 and so $\hat{f}$ cannot be integrable around the origin which means that $\hat{f}$ satisfies \eqref{E:speccond} but not \eqref{E:hyp2.1}.
 
 \subsection{Assuming \eqref{E:hyp2.1}.}
-I believe that an additional property of the spectral measure, $\hat{f}$, is that $\hat{f}(\xi) < \infty$ if an only if $t \not= 0$. This is assumed in \cite{BC16}. If we do not assume this then for any $\hat{f}$ satisfying \eqref{E:hyp2.1} such that $\hat{f}(0) < \infty$ will not satisfy \eqref{E:speccond}. 
+I believe that an additional property of the spectral measure, $\hat{f}$, is that $\hat{f}(\xi) < \infty$ if an only if $t \not= 0$. This is assumed in \cite{BC16}. If we do not assume this then for any $\hat{f}$ satisfying \eqref{E:hyp2.1} such that $\hat{f}(0) < \infty$ will not satisfy \eqref{E:speccond}.
 
-So lets assume that $\hat{f}$ blows up at the origin. Also assume that $\hat{f}$ satisfies the condition \eqref{E:hyp2.1}. I believe that even if we assume that $\hat{f}$ must blow up at the origin, then we may still construct an example that satisfies \eqref{E:hyp2.1} but not \eqref{E:speccond} which would conclude that not one condition is more general than the other. 
+So lets assume that $\hat{f}$ blows up at the origin. Also assume that $\hat{f}$ satisfies the condition \eqref{E:hyp2.1}. I believe that even if we assume that $\hat{f}$ must blow up at the origin, then we may still construct an example that satisfies \eqref{E:hyp2.1} but not \eqref{E:speccond} which would conclude that not one condition is more general than the other.
 
-Lets consider an $\hat{f}(\xi)$ such that around the origin, $\hat{f}$ behaves like $|\xi|^{-(d-2-\delta)}$ for some arbitrary $\delta >0$. Suppose the tail of $\hat{f}$ behaves like $|\xi|^{-(d-2)}$. We want to find a $p > d/(d-2)$ such that $\hat{f} \in L^2(\R^d)$.  Because of the behavior around the origin, we would need that 
+Lets consider an $\hat{f}(\xi)$ such that around the origin, $\hat{f}$ behaves like $|\xi|^{-(d-2-\delta)}$ for some arbitrary $\delta >0$. Suppose the tail of $\hat{f}$ behaves like $|\xi|^{-(d-2)}$. We want to find a $p > d/(d-2)$ such that $\hat{f} \in L^2(\R^d)$.  Because of the behavior around the origin, we would need that
 	\[
 		p < \frac{d}{d-2-\delta}.
 	\]
-But 
+But
 	\[
 		\frac{d}{d-2-\delta} > \frac{d}{d-2}
 	\]
-and so we must restrict our choice of $p$ to be such that 
+and so we must restrict our choice of $p$ to be such that
 	\begin{equation}\label{E:pinterval}
 		\frac{d}{d-2} < p < \frac{d}{d-2-\delta} .
 	\end{equation}
-Notice that because of the tail behavior, that we only need 
+Notice that because of the tail behavior, that we only need
 	\[
 		p(d-2) > d
 	\]
-which means that any $p$ satisfying \eqref{E:pinterval} will make the tail $L^p(\R^d)$ integrable. Therefore, for such an $\hat{f}$ with origin and tail behavior as described above, we may be able to find a $p$ such that $\hat{f} \in L^p(\R^d)$. 
+which means that any $p$ satisfying \eqref{E:pinterval} will make the tail $L^p(\R^d)$ integrable. Therefore, for such an $\hat{f}$ with origin and tail behavior as described above, we may be able to find a $p$ such that $\hat{f} \in L^p(\R^d)$.
 
-But this $\hat{f}$ will not satisfy the condition \eqref{E:speccond} because the tail behavior of $|\xi|^{-2}\hat{f}(\xi)$ will be $|\xi|^{-d}$, and this is not integrable. 
+But this $\hat{f}$ will not satisfy the condition \eqref{E:speccond} because the tail behavior of $|\xi|^{-2}\hat{f}(\xi)$ will be $|\xi|^{-d}$, and this is not integrable.
+
+\bigskip
+\textcolor{magenta}{Your construction/proof is convincing! This second case suggests that
+\cite{TZ98} has to contain some flaw! Can you apply my results in \cite{CK19} to show that the case
+with
+\begin{equation*}
+	\widehat{f} (\xi) = \frac{1}{1+|\xi|^{d-2}} , \qquad d\ge 3
+\end{equation*}
+is a legal spectral density (namely, nonnegative and nonnegative definite), and solution is
+intermittent (namely, no phase transition).
+}
+
+
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
-		
 		\bibitem{BC16}% {{{
-		Balan, R. and Chen, Le 
+		Balan, R. and Chen, Le
 		\newblock Parabolic Anderson Model with Space-Time Homogeneous Gaussian Noise and Rough Initial Condition
 		\newblock \textit{J Theor Probab.} (2016)
 		% }}}
-		
 		\bibitem{CDfracheat15}% {{{
 		Chen, Le and Dalang, R.
 		\newblock Moments, intermittency and growth indices for the
 		nonlinear fractional stochastic heat equation
 		\newblock \textit{Stoch PDE: Anal Comp} (2015) 3:360–397
 		% }}}
-
+		\bibitem[CK19]{CK19}% {{{
+		Chen, Le and Kunwoo Kim.
+		\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
+		\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
+    % }}}
 		\bibitem[TZ98]{TZ98}% {{{
 		Tessitore, Gianmario and Jerzy Zabczyk.
 		\newblock Invariant measures for stochastic heat equations.
 		\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287.
 		% }}}
-
 		\bibitem{Winklebauer}% {{{
 		Winklebauer.
 		\newblock Moments and Absolute Moments of the
 		Normal Distribution.
 		\newblock {\it Arxiv } https://arxiv.org/abs/1209.4340.
 		% }}}
-
 	\end{thebibliography}
 \end{small}
 % }}}
+
+
 
 \end{document}
 
