@@ -252,7 +252,7 @@ Plugging this in above gives us that
 (G(t,\cdot) * \rho)(x) &= \sum_{n=0}^\infty \frac{(-1)^n}{n!}(2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \phi\left( -\frac{nb}{2}, \frac{1}{2} ; - \frac{x^2}{2t} \right)
 \\&= \sum_{n=0}^\infty \frac{(-1)^n}{n!} (2t)^{nb/2} \frac{\Gamma\left(\frac{nb+1}{2}\right)}{\sqrt{\pi}} \sum_{k=0}^\infty \frac{(-nb/2)^{\bar{k}}}{(1/2)^{\bar{k}}} \frac{ (\frac{-x^2}{2t})^k }{ k! }
 \end{align}
-Note that it seems that \eqref{E:exp(x^b)} is only true when $b \in \mathbb{N}$ (see Section \eqref{S:MMC} and equation \eqref{E:BRsumrep}).
+Note that it seems that \eqref{E:exp(x^b)} is only true when $b \in \mathbb{N}$ (see Section \ref{S:MMC} and equation \eqref{E:BRsumrep}).
 
 \bigskip
 
@@ -420,9 +420,27 @@ and so $\hat{f}$ cannot be integrable around the origin which means that $\hat{f
 \subsection{Assuming \eqref{E:hyp2.1}.}
 I believe that an additional property of the spectral measure, $\hat{f}$, is that $\hat{f}(\xi) < \infty$ if an only if $t \not= 0$. This is assumed in \cite{BC16}. If we do not assume this then for any $\hat{f}$ satisfying \eqref{E:hyp2.1} such that $\hat{f}(0) < \infty$ will not satisfy \eqref{E:speccond}. 
 
-So lets assume that $\hat{f}$ blows up at the origin. Also assume that $\hat{f}$ satisfies the condition \eqref{E:hyp2.1}. 
+So lets assume that $\hat{f}$ blows up at the origin. Also assume that $\hat{f}$ satisfies the condition \eqref{E:hyp2.1}. I believe that even if we assume that $\hat{f}$ must blow up at the origin, then we may still construct an example that satisfies \eqref{E:hyp2.1} but not \eqref{E:speccond} which would conclude that not one condition is more general than the other. 
 
+Lets consider an $\hat{f}(\xi)$ such that around the origin, $\hat{f}$ behaves like $|\xi|^{-(d-2-\delta)}$ for some arbitrary $\delta >0$. Suppose the tail of $\hat{f}$ behaves like $|\xi|^{-(d-2)}$. We want to find a $p > d/(d-2)$ such that $\hat{f} \in L^2(\R^d)$.  Because of the behavior around the origin, we would need that 
+	\[
+		p < \frac{d}{d-2-\delta}.
+	\]
+But 
+	\[
+		\frac{d}{d-2-\delta} > \frac{d}{d-2}
+	\]
+and so we must restrict our choice of $p$ to be such that 
+	\begin{equation}\label{E:pinterval}
+		\frac{d}{d-2} < p < \frac{d}{d-2-\delta} .
+	\end{equation}
+Notice that because of the tail behavior, that we only need 
+	\[
+		p(d-2) > d
+	\]
+which means that any $p$ satisfying \eqref{E:pinterval} will make the tail $L^p(\R^d)$ integrable. Therefore, for such an $\hat{f}$ with origin and tail behavior as described above, we may be able to find a $p$ such that $\hat{f} \in L^p(\R^d)$. 
 
+But this $\hat{f}$ will not satisfy the condition \eqref{E:speccond} because the tail behavior of $|\xi|^{-2}\hat{f}(\xi)$ will be $|\xi|^{-d}$, and this is not integrable. 
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
