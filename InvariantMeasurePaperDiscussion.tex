@@ -369,7 +369,7 @@ and $\mathcal{K}$ has the following upper bound
 		\item We may be able to study equation \eqref{E:fracheatspde} but with a noise that is white in time and colored in space and get a result similar to the heat equation case and use this to show the existence of an invariant measure.
 	\end{enumerate}
 
-\section{$\Upsilon(\beta) \vert_{\beta =0} < \infty$ versus the spectral density integrability condition in \cite{TZ98}.}
+\section{$\Upsilon(\beta) \vert_{\beta =0} < \infty$ versus the spectral density integrability condition in \cite{TZ98} (hypothesis 2.1).}
 Hypothesis 2.1 \cite{TZ98} says that the spectral density $\hat{f}$ must satisfy the property that
 	\begin{equation}\label{E:hyp2.1}
  \hat{f} \in L^p(\R^d) \quad \text{for some } p \in (d/(d-2), \infty]
@@ -454,7 +454,38 @@ is a legal spectral density (namely, nonnegative and nonnegative definite), and 
 intermittent (namely, no phase transition).
 }
 
+\section{$\tilde{\Gamma} = \widehat{|\gamma^{1/2}|} *  \widehat{|\gamma^{1/2}|}$  }
+Simplifying the function
+	\begin{equation}\label{E:GammaTilde}
+		\tilde{\Gamma} := \widehat{|\gamma^{1/2}|} *  \widehat{|\gamma^{1/2}|} = \mathcal{F}(|\gamma^{1/2}|) * \mathcal{F}(|\gamma^{1/2}|)
+	\end{equation}
+gives us up to a constant 
+	\[
+		\tilde{\Gamma}(\xi) = \mathcal{F}(|\gamma|)(\xi)
+	\]
+Last time we met you mentioned to look at 
+	\[
+		g(x) = \prod_{i=1}^3 1_{[-1,1]}(x_i), \quad \quad \mathcal{F}g(\xi) = 8\prod_{i=1}^3 \frac{\sin(\xi_i)}{\xi_i}.
+	\]
+Is $g$ supposed to represent $\gamma$? If so then I think this is a problem. Let $f$ be the spatial correlation function. Since $\gamma$ is the spectral density, then up to a constant, we would have 
+	\[
+		f(x) = \mathcal{F}(g)(x) = 8\prod_{i=1}^3 \frac{\sin(x_i)}{x_i}.
+	\]
+but this is a problem because the correlation function needs to be nonnegative and nonnegative definite and $\sin(x)/x$ is not nonnegative.
 
+I think we made another mistake as well. We defined $q(x) = (g*g)(x)$ and noted that $\mathcal{F}q = (\mathcal{F}g)^2$. However, we are never taking the Fourier transform of $g*g$. \eqref{E:GammaTilde} is a convolution of Fourier transfroms, not a Fourier transform of convolutions. Using \eqref{E:GammaTilde}, we wont get the 
+	\[
+		\left|\frac{\sin(x)}{x}\right|
+	\]
+term since by using \eqref{E:GammaTilde},
+	\[
+		\tilde{\Gamma}(x) = \mathcal{F}\left( |g(\cdot)| \right)(x)  = \mathcal{F}\left( g(\cdot)\right)(x) = \prod_{i=1}^3\frac{\sin(x_i)}{x_i}.
+	\]
+In our meeting we did 
+	\[
+		\sqrt{\mathcal{F}q} = \sqrt{(\mathcal{F}f)^2} = 8\prod_{i=1}^3 \left| \frac{\sin(x_i)}{x_i} \right|
+	\]
+but I don't think this should be done.
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
