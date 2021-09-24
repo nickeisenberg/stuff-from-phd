@@ -510,6 +510,62 @@ where above $f$ is the correlation function and $\gamma$ is the spectral density
 		\int_{\R^d} \tilde{\Gamma}(\xi) |\xi|^{d-2} \ud \xi = 	\int_{\R^d} f(\xi) |\xi|^{d-2} \ud \xi
 	\] 
 which is the same thing as Dalang's condition. 
+
+\section{Meaning of $\mathcal{F}(\gamma^{1/2})$.}
+We discussed last meaning that equation (3.4) \cite{TZ98}, which says 
+	\[
+		\tilde{\Gamma} := |\widehat{\gamma^{1/2}}|*|\widehat{\gamma^{1/2}}|
+	\]
+means that we are calculating $\mathcal{F}(\gamma^{1/2})$ and then taking the absolute value and then doing the convolution. So in other words 
+	\begin{equation}\label{E:GamTil}
+			\tilde{\Gamma} := |\mathcal{F}(\gamma^{1/2})|* |\mathcal{F}(\gamma^{1/2})|.
+	\end{equation}
+We saw that this was the case by observing the proof of Theorem 3.3 \cite{TZ98}.
+	
+We then wanted to consider the case where the correlation function, $f$, is given by 
+	\[
+		f(x) =(2-|x|)1_{[-2,2]}(x)
+	\]
+which means that 
+	\[
+		\hat{f}(\xi) = \gamma(\xi) = \frac{\sin^2(x)}{x^2}.
+	\]
+Because $\gamma(\xi)$ touches $0$ an infinite number of times then we have an infinite number of options to choose from for $\sqrt{\gamma(\xi)}$. Notice that \eqref{E:GamTil} does not tell us which branch of $\sqrt{\gamma}$ to choose since the absolute value is not taken until after taking the Fourier transform. We considered the following two branches for $\sqrt{\gamma}$:
+	\begin{equation}\label{E:SqrtGamma}
+		\frac{\sin(\xi)}{\xi} \quad \text{or} \quad \frac{|\sin(\xi)|}{|\xi|}
+	\end{equation}
+however it seems like we could also choose 
+	\begin{equation}\label{E:SqrtGammaK}
+		\frac{|\sin(\xi)|}{|\xi|} K(\xi)
+	\end{equation}
+where 
+	\[ K(\xi) = 
+		\begin{cases}
+			-1 & \xi \in (2\pi, 3\pi)
+			\\ 1 & \text{otherwise}
+		\end{cases}
+	\]
+and we could come up with an infinite number of choices for $\sqrt{\gamma}$ of the form \eqref{E:SqrtGammaK}. We wanted to choose the second choice from \eqref{E:SqrtGamma} but what tells us that this is the choice we are supposed to choose?. It seems to me now that there are an infinite number of possibilities to define $\tilde{\Gamma}$ but note that if we just consider the two choices from \eqref{E:SqrtGamma} then we can get that 
+	\[
+		\tilde{\Gamma} = \left| \mathcal{F}\left(\frac{\sin(\cdot)}{\cdot} \right) \right|* \left| \mathcal{F}\left(\frac{\sin(\cdot)}{\cdot} \right) \right| 
+			\quad	\text{or}	\quad
+		\tilde{\Gamma} = \left| \mathcal{F}\left(\left|\frac{\sin(\cdot)}{\cdot} \right|\right) \right|* \left| \mathcal{F}\left(\left|\frac{\sin(\cdot)}{\cdot} \right| \right) \right| 
+	\] 
+and I do not believe that these two choices for $\tilde{\Gamma}$ are equal. 
+
+This makes me believe that there is something not being said in this paper that tells us which branch of $\sqrt{\gamma}$ needs to be chosen. I think this has something to do with the centered equation right below equation (2.3) \cite{TZ98} which says that 
+	\begin{equation}\label{E:SqrtGammaM}
+		M(\varphi)\psi = \varphi(\mathcal{F}(\gamma^{1/2}) * \psi)
+	\end{equation}
+where
+	\[
+		X^x(t) = S(t)x + \int_0^t S(t-s)M(B(X^x(s))) dW_s
+	\]
+and 
+	\[
+		B(\phi)(\xi) = b(\xi,\phi(\xi)).
+	\]
+I will look through \cite{DZ92} and \cite{DZp92} to see if this has to do with the construction of the DaPrato integral. 
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
@@ -528,7 +584,17 @@ which is the same thing as Dalang's condition.
 		Chen, Le and Kunwoo Kim.
 		\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
-    % }}}
+ 	   % }}}
+ 	   \bibitem[DZ92a]{DZ92}% {{{
+ 	 	 Da Prato, Giuseppe and Jerzy Zabczyk.
+ 	   \newblock {\it Stochastic equations in infinite dimensions.}
+ 	   Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
+  	  % }}}
+  	  \bibitem[DZ92b]{DZp92}% {{{
+  	  Da Prato, Giuseppe and Jerzy Zabczyk.
+  	  \newblock {\it Invariant measures for semilinear stochastic equations.}
+  	  Stochastic Anal. Appl. 10, 387-408.
+ 	   % }}}
 		\bibitem[TZ98]{TZ98}% {{{
 		Tessitore, Gianmario and Jerzy Zabczyk.
 		\newblock Invariant measures for stochastic heat equations.
