@@ -23,3 +23,6 @@
    * Lemma 7.2 of Xia's paper relies strongly on the form of $L(f)$ and the $\widetilde{L}(f)$ and
      the fact that they are of order 2.
    * [ ] Please check how it works for (1.26) of Xia's paper in the fractional noise case.  #765ae5cb
+
+# Here are some useful links:
+1. https://math.stackexchange.com/questions/523886/fourier-transform-of-left-frac-sin-xx-right
