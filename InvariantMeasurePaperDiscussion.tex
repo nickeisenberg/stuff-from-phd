@@ -566,6 +566,48 @@ and
 		B(\phi)(\xi) = b(\xi,\phi(\xi)).
 	\]
 I will look through \cite{DZ92} and \cite{DZp92} to see if this has to do with the construction of the DaPrato integral. 
+
+\section{Proof of Theorem 3.1 \cite{TZ98}} 
+In \textbf{step 3} of this proof they define the set 
+	\begin{equation}\label{E:KTheta}
+		\mathscr{K}(\theta) := \left\{ S(1)y + \frac{\sin(\alpha \pi)}{\pi} F_{\alpha}h  \; : \; |y|_{\hat{\rho}} \le \theta \text{ and } |h|_{L^q(0,1,L^2_{\rho})} \le \theta\right\}
+	\end{equation}
+and they also mention that by the factorization theorem from \cite{DZ96} that 
+	\begin{equation}\label{E:Factorization}
+		X^x(1) = S(1)x + \frac{\sin(\alpha \pi)}{\pi} F_{\alpha}\left( Y^x(\cdot) \right).
+	\end{equation}
+		
+They claim that if 
+	\begin{equation}\label{E:KTheta1}
+			\mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q))
+	\end{equation}
+then we have 
+	\begin{equation}\label{E:KThetaRecursive}
+		\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q)) \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\}.
+	\end{equation}
+Is this true because because 
+	\begin{align*}
+			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  &= 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} 
+			\\ &\quad \quad \quad + \mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg \vert \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\}.
+	\end{align*}
+And $R$ and $\theta$ being arbitrary means we can just take $R > \left| X^x(t-1) \right|_{\hat{\rho}}$ which implies that 
+	\[
+		 \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\} = 0
+	\]
+and so 
+	\begin{equation}\label{E:KThetaConditional}
+			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  = 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\}.
+	\end{equation}
+Now is it true that the SHE is time homogeneous in the sense that 
+	\[
+			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} = \mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(0) \right|_{\hat{\rho}} < R  \right\}? 
+	\]
+Because if this is true then because of \eqref{E:KTheta1} we have that 
+	\begin{align*}
+			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} &= \mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(0) \right|_{\hat{\rho}} < R  \right\}
+			\\ & \ge (1-k_3\theta^{-q}(1+R^q))
+	\end{align*}
+and combining this with \eqref{E:KThetaConditional} gives us \eqref{E:KThetaRecursive}.
 \begin{small}% {{{ References
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
@@ -584,17 +626,22 @@ I will look through \cite{DZ92} and \cite{DZp92} to see if this has to do with t
 		Chen, Le and Kunwoo Kim.
 		\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
- 	   % }}}
- 	   \bibitem[DZ92a]{DZ92}% {{{
- 	 	 Da Prato, Giuseppe and Jerzy Zabczyk.
- 	   \newblock {\it Stochastic equations in infinite dimensions.}
- 	   Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
-  	  % }}}
-  	  \bibitem[DZ92b]{DZp92}% {{{
-  	  Da Prato, Giuseppe and Jerzy Zabczyk.
-  	  \newblock {\it Invariant measures for semilinear stochastic equations.}
-  	  Stochastic Anal. Appl. 10, 387-408.
- 	   % }}}
+		% }}}
+		\bibitem[DZ92a]{DZ92}% {{{
+		Da Prato, Giuseppe and Jerzy Zabczyk.
+		\newblock {\it Stochastic equations in infinite dimensions.}
+		Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
+		% }}}
+		\bibitem[DZ92b]{DZp92}% {{{
+		Da Prato, Giuseppe and Jerzy Zabczyk.
+		\newblock {\it Invariant measures for semilinear stochastic equations.}
+		Stochastic Anal. Appl. 10, 387-408.
+		% }}}
+		\bibitem[DZ96]{DZ96}% {{{
+		Da Prato, Giuseppe and Jerzy Zabczyk.
+		\newblock {\it Ergodicity for infinite-dimensional systems. }
+		\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996.
+		% }}}
 		\bibitem[TZ98]{TZ98}% {{{
 		Tessitore, Gianmario and Jerzy Zabczyk.
 		\newblock Invariant measures for stochastic heat equations.
