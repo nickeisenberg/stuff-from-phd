@@ -670,6 +670,37 @@ If we assume all of this then we can prove that the laws
 	\]
 are tight and hence there exists an invariant measure. So we get the same conclusion as long as the conjecture \eqref{E:Conjecture} is correct. 
 
+\section{I do not think \eqref{E:A1.1} will work as an assumption.}
+
+Recall that we defined for $f(s,y) \in L^q(0,1,L^2_{\rho})$
+	\[
+		\left(F_{\alpha}^{t_0} f\right)(x) := \int_0^{t_0} ds \int_{\R^d} dy \: (t_0-s)^{\alpha-1}G(t_0-s,x-y)f(s,y) .
+	\]
+and
+	\[
+		Y^\varphi(s,y) =\int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(u^\varphi(r,z))W(dr,dz).
+	\]
+In Lemma 4.1, we proved that (there is a typo in our paper, the integral needs to go from $0$ to $t_0$)
+	\begin{equation}\label{E:YNorm}
+		\mathbb{E}\int_0^{t_0} Y^{\varphi}(s,\cdot)|_{\rho}^q \le |\varphi|_\rho^q.
+	\end{equation}
+In order to prove this result we either need \eqref{E:A1} or \eqref{E:A2}. If we are only going to assume \eqref{E:A1.1} then all we will be able to say is that
+	\begin{equation}\label{E:YNorm1.1}
+		\mathbb{E}\int_\lambda^{t_0} Y^{\varphi}(s,\cdot)|_{\rho}^q \le |\varphi|_\rho^q
+	\end{equation}
+and this will not be enough in order to prove the conjecture \eqref{E:Conjecture}. 
+
+This is because by Lemma 4.3 in our paper we have that 
+	\begin{align*}
+		\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y(s,\cdot)\right](x) \ud s &=	\dfrac{\sin(\alpha \pi)}{\pi}\left(F_{\alpha}^{t_0}Y^{\varphi}\right)(x)
+		\\&= \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z)
+	\end{align*}
+and thus 
+	\[
+		u^\varphi(t_0,x) = (G(t_0,\cdot) * \varphi)(x) + \dfrac{\sin(\alpha \pi)}{\pi}\left(F_{\alpha}^{t_0}Y^{\varphi}\right)(x)
+	\]
+and if you examine the proof of Lemma 3.1, this factorization is very important and in particular, the inequality \eqref{E:YNorm}. I do not see how \eqref{E:YNorm1.1} could be used to replace it. 
+
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
