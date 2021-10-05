@@ -568,6 +568,11 @@ and
 I will look through \cite{DZ92} and \cite{DZp92} to see if this has to do with the construction of the DaPrato integral. 
 
 \section{Proof of Theorem 3.1 \cite{TZ98}} 
+The proof starts by saying that the result can be proven once we show that for any $\epsilon \in (0,1)$ and $R>0$ that there exists a compact set $\mathscr{K}(\theta) \subset L^2_{\rho}$ such that 
+	\begin{equation}\label{E:3.1ineq}
+		\mathbb{P}\left\{ X^{\hat x}(t) \in \mathscr{K}(\theta) \right\} \ge (1-\epsilon)\mathbb{P} \left\{ | X^{\hat x}(t-1)|_{\hat \rho} < R \right\} \quad \text{ for all} t>1.
+	\end{equation}
+
 In \textbf{step 3} of this proof they define the set 
 	\begin{equation}\label{E:KTheta}
 		\mathscr{K}(\theta) := \left\{ S(1)y + \frac{\sin(\alpha \pi)}{\pi} F_{\alpha}h  \; : \; |y|_{\hat{\rho}} \le \theta \text{ and } |h|_{L^q(0,1,L^2_{\rho})} \le \theta\right\}
@@ -577,20 +582,24 @@ and they also mention that by the factorization theorem from \cite{DZ96} that
 		X^x(1) = S(1)x + \frac{\sin(\alpha \pi)}{\pi} F_{\alpha}\left( Y^x(\cdot) \right).
 	\end{equation}
 		
-They claim that if 
+They claim that since
 	\begin{equation}\label{E:KTheta1}
 			\mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q))
 	\end{equation}
 then we have 
 	\begin{equation}\label{E:KThetaRecursive}
-		\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q)) \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\}.
+		\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q)) \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \quad \text{for all } t>1.
 	\end{equation}
-Is this true because because 
+I am not sure why this true. I was thinking that it follows from something like the following:
 	\begin{align*}
 			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  &= 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} 
 			\\ &\quad \quad \quad + \mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg \vert \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\}.
 	\end{align*}
-And $R$ and $\theta$ being arbitrary means we can just take $R > \left| X^x(t-1) \right|_{\hat{\rho}}$ which implies that 
+However, we would want something like 
+	\begin{equation} \label{E:RUpBd}
+		R > \left| X^x(t-1) \right|_{\hat{\rho}}
+	\end{equation}
+ which implies that 
 	\[
 		 \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\} = 0
 	\]
@@ -598,7 +607,17 @@ and so
 	\begin{equation}\label{E:KThetaConditional}
 			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  = 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\}.
 	\end{equation}
-Now is it true that the SHE is time homogeneous in the sense that 
+This can't be the case though because this would imply that the following function is bounded, which we do not know to be true:
+	\[
+		(t,\omega) \mapsto \left| X^x(t-1) \right|_{\hat{\rho}}(\omega) \quad \text{for all } 	(t,\omega) \in (1,\infty) \times \Omega.
+	\]
+However, we do know that 
+	\[
+		\sup_{t>\alpha} \mathbb{E}\left[ |X^x(t,\cdot)|_{\hat \rho}^2 \right] < \infty 
+	\]
+so maybe this helps? However the statement in \eqref{E:3.1ineq} says that it needs to be for arbitrary $R>0$ and \eqref{E:RUpBd} implies that $R$ must be taken sufficiently big and thus $R$ is not arbitrary. 
+
+Now just assuming the above is it true, can we say that the SHE is time homogeneous in the sense that 
 	\[
 			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} = \mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(0) \right|_{\hat{\rho}} < R  \right\}? 
 	\]
@@ -608,7 +627,50 @@ Because if this is true then because of \eqref{E:KTheta1} we have that
 			\\ & \ge (1-k_3\theta^{-q}(1+R^q))
 	\end{align*}
 and combining this with \eqref{E:KThetaConditional} gives us \eqref{E:KThetaRecursive}.
-\begin{small}% {{{ References
+
+\section{Two possible assumptions for the initial condition.}
+We have been deciding between which of the following two assumptions we want to assume:
+	\begin{enumerate}
+		\item 
+			\begin{equation}\label{E:A1} 
+				\sup_{t>0} \int_{\R^d} (G(t,\cdot) * |\mu|)^2(x)\rho(x) \ud x < \infty
+			\end{equation}
+		\item 
+			\begin{equation} \label{E:A2} 
+				\sup_{x \in \R^d} (G(t,\cdot) * |\mu|)(x) < K(t) \quad \text{for some } K(t) \in \mathbb{N}.
+			\end{equation}
+	\end{enumerate}
+
+You originally suggested Condition \eqref{E:A1} because it gave a nice relation between the initial condition and the weight and that it may have been able to replace the admissible weight condition. However we saw last meeting that we still need to assume the admissible weight condition because of Proposition 2.1 \cite{TZ98}. 
+
+The other issue with Condition \eqref{E:A1} is that 
+	\[
+		\sup_{t>0} \int_{\R^d} (G(t,\cdot) * \delta_0)^2(x)\rho(x) \ud x = \infty.
+	\]
+In order to fix this issue with $\delta_0$, we discussed that we may potentially be able to replace Condition \eqref{E:A1} with the following:
+	\begin{equation}\label{E:A1.1}
+		\sup_{t>\lambda} \int_{\R^d} (G(t,\cdot) * |\mu|)^2(x)\rho(x) \ud x < \infty \quad \text{for any } \lambda > 0.
+	\end{equation}
+
+Now if we assume Condition \eqref{E:A1.1}, then for $\varphi \in L^2_{\rho}$, we will only be able to show that
+	\[
+		\sup_{t>\lambda} \mathbb{E} \left( |u(t,\cdot)|_{\rho} \right) < \infty.
+	\]
+Using this, we will then only be able to show the following bounded in probability statement: for all $\epsilon >0$ there exits an $R>0$ such that
+	\[
+		 \mathbb{P} \left( |u(t,\cdot)|_{\rho} \ge R \right) < \epsilon \quad \text{for all } t \ge \lambda.
+	\]
+I have not verified this, but I believe that if we assume \eqref{E:A1.1} then our version of \eqref{E:3.1ineq} becomes: for $0 < t_0 \le 1$ and $\epsilon \in (0,1)$ and $R>0$, there exists a compact set $\mathscr{K}(\theta) \subset L^2_{\rho}(\R^d)$ such that 
+	\begin{equation}\label{E:Conjecture}
+			\mathbb{P}\left\{ X^{\hat x}(t) \in \mathscr{K}(\theta) \right\} \ge (1-\epsilon)\mathbb{P} \left\{ | X^{\hat x}(t-t_0)|_{\hat \rho} < R \right\} \quad \text{for all } t> \lambda + t_0
+	\end{equation}
+If we assume all of this then we can prove that the laws
+	\[
+		\left\{\mathscr{L}(u(t,\cdot))\right\}_{t>t_0 + \lambda}
+	\]
+are tight and hence there exists an invariant measure. So we get the same conclusion as long as the conjecture \eqref{E:Conjecture} is correct. 
+
+\begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
 		\bibitem{BC16}% {{{
