@@ -1,0 +1,599 @@
+% \documentclass[a4paper,12pt]{article}{{{
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+%\usepackage{hyperref}
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+%copied from invariant measure paper
+%-----
+\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, calc}
+\usepackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+%\usepackage{eucal} this is a different font than \mathcal{•}
+\usetikzlibrary{arrows}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shadows.blur}
+\usepackage{pgfplots}
+\usepackage{mwe} % For dummy images
+% \usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+\usepackage{multicol}
+\numberwithin{equation}{section}
+%----
+%end copy from invariant measure paper
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\} }}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw} }}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
+
+\def\crtL{\theta}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+% }}}
+
+\begin{document}
+
+\section{Introduction}
+\begin{enumerate}
+	\item 
+In the first paragraph of page 2, replace the sentence "...where the initial condition $u_0$ satisfying..." with the sentence "...where the initial condition $u_0$ \textit{satisfies}..."
+
+	\item 
+In the third paragraph of page 2, replace the sentence "...is not included in STF-SHE (1), by using..." with the sentence "...is not included in \textit{the} STF-SHE (1), \textit{then} by using...". 
+
+	\item
+In the fourth paragraph of page 2, replace the sentence "...by considering the heat equation in material..." with the sentence "...by considering the heat equation in \textit{materials}..."
+
+	\item
+In the first paragraph on page 3, replace the sentence "...of the corresponding STF-SHE..." with the sentence "...of the corresponding \textit{the} STF-SHE...".
+
+	\item 
+In the first paragraph on page 3, replace the sentence "While in [19], for STF-SHE..." with the sentence  "While in [19], for \textit{the} STF-SHE...".
+
+	\item
+In the first paragraph on page 3, replace the sentence "...of the solutions of this equation grows exponentially..." with the sentence "...of the solutions of this equation \textit{grow} exponentially...".
+
+	\item
+In the first paragraph on page 3, replace the sentence "... studied non-linear noise excitation of the STF-SHE (1) in bounded domain..." with the sentence "... studied \textit{the} non-linear noise excitation of the STF-SHE (1) in \textit{a} bounded domain..."
+
+	\item
+In the second paragraph of page 3, replace the sentence "...of the parameters $\alpha$, $\beta$ in STF-SHE (1)." with the sentence "...of the parameters $\alpha$, $\beta$ in \textit{the} STF-SHE (1)."
+
+	\item
+In the third paragraph on page 3, replace the sentence "...for several classes of SPDE driven..." with the sentence "...for several classes of \textit{SPDEs} driven...".
+
+	\item
+In general, "\textit{weakly full intermittent}" should be replaced with "\textit{weakly fully intermittent}". The first occurrence is in paragraph 3 on page 3. 
+
+	\item 
+In the third paragraph on page 3, replace the sentence "...based on the estimates of moments..." with the sentence "...based on the estimates of \textit{the} moments..." 
+
+	\item 
+In the third paragraph on page 3, replace the sentence "...to STF-SHE (1). The first novelty..." with the sentence  "...to \textit{the} STF-SHE (1). The first novelty..."
+
+	\item
+In the third paragraph on page 3, remove the phrase "and so on" in the sentence "...[11], [19] and so on, in which" and replace it with "...[11], [19], in which...".
+
+	\item 
+In the third paragraph on page 3, replace the sentence "Secondly, the Green function..." with the sentence "Secondly, the \textit{Green's} function..."
+
+	\item 
+In the third paragraph on page 3, replace the sentence "...of the solution to STF-SHE..." with the sentence  "...of the solution to \textit{the} STF-SHE..."
+
+	\item
+In the fourth paragraph on page 3, replace the sentence "...and the Green function..." with the sentence  "...and the \textit{Green's} function..."
+\end{enumerate}
+		
+\section{Preliminaries}
+\subsection{The spatially inhomogeneous white noise}
+\begin{enumerate}
+	\item 
+In (A.2) on page 5, what is the reason for the $u$ subscript in $C_u$? It seems like $C_u$ only depends on $\rho$ and so it would make more sense to denote it as $C_\rho$.
+
+	\item
+In Remark 1 on page 5, replace the phrase "the author in [27]" with the phrase "Z\"{a}hle [27]".
+
+	\item 
+In (B) on page 6, the constant $K_u$ depends on $\sigma$ and does not depend on $u$, so $K_u$ should be written as $K_\sigma$. 
+
+	\item 
+In the second paragraph on page 6 replace the sentence "...and continuous random field $u=$..." with the sentence "...and continuous random \textit{fields} $u=$..."
+
+	\item 
+In the third paragraph on page 6 replace the sentence "...for the solution to STF-SHE..." with the sentence "...for the solution to \textit{the} STF-SHE..."
+
+	\item
+I just realized that in $C_u$ and $C_l$ and $K_u$ and $K_l$ that the $u$ and $l$ mean upper and lower respectively. However, since the solution is also denoted by $u$, this may cause some confusion because it seems like $C_u$ and $K_u$ depend on the solution $u(t,x)$ but this is not the case. 
+
+\end{enumerate}
+
+\subsection{Some properties of Green function}
+\begin{enumerate}
+	\item
+The title of this subsection should be "Some properties of \textit{the} \textit{Green's} function". 
+
+	\item 
+The first sentence of the subsection needs to be reworded and the use of the phrase "i.e." is used incorrectly. I would word the first sentence as follows: 
+	
+Consider the fundamental solution (or Green's function) $G_t(x)$ of the fractional heat type equation:
+	\[
+		\partial^{\beta}_t G_t(x) = -\nu(-\Delta)^{\alpha/2}G_t(x).
+	\]
+Due to our need to apply some properties of $G_t(x)$, we must assume $\nu>0$, $\beta \in (0,1)$ and $\alpha \in (0,2]$. 
+	
+	\item
+Does the Green's function not depend of the fractional integral operator $I_t^{1-\beta}$? Why do we only consider the Greens function for 
+	\[
+		\partial^{\beta}_t G_t(x) = -\nu(-\Delta)^{\alpha/2}G_t(x)
+	\]
+and not the equation 
+	\[
+		\partial^{\beta}_t G_t(x) = -\nu(-\Delta)^{\alpha/2}G_t(x) + I_t^{1-\beta}(\lambda f(t,x))
+	\]
+for some deterministic $f$?
+
+	\item 
+In the first paragraph on page 7, replace the sentence "...the first passage time of an $\beta$-stable..." with the sentence "...the first \textit{passage-time} of \textit{a} $\beta$-stable..."
+
+	\item 
+In the first paragraph on page 7, what is meant by the sentence "...or the inverse stable subordinator of index $\beta$."?  
+\end{enumerate}
+
+
+\section{Moments bounds and intermittency}
+\begin{enumerate}
+	\item
+The title should be changed to "\textit{Moment} bounds and intermittency" 
+	
+	\item
+I would remove the word "some" before the phrase "some Banach space $\mathbb{B}_{p,\theta}$. This is because we already defined what the Banach space $\mathbb{B}_{p,\theta}$ is and so it is no longer just "some" Banach space. This error is also made in the first paragraph of the subsection Upper bounds for the $p$-th moment. 
+	
+	\item
+In the first paragraph of this section, change "...the solution $u(t,x)$ to STF-SHE..." to "...the solution $u(t,x)$ to \textit{the} STF-SHE...".
+
+	\item 
+In the first paragraph of this section, there is an incomplete thought in the sentence "...we will prove the uniformly lower Lyapunov's exponent of the solution $u(t,x)$ to STF-SHE (1), which implies...". It was never stated what you are going to prove that will imply the solution grows at least exponentially. And in addition, this paper finds the Lyapunov exponent for the moments of $u(t,x)$, not $u(t,x)$ itself so we can only use this to say $\mathbb{E}|u(t,x)|^p$ grows at least exponentially. 
+
+	\item 
+In Definition 2 on page 7, why do we use this $G_t(x)$ which is the fundamental solution to equation (3 to solve equation (1)? Equation (1) contains the fractional integral operator while equation (3) does not. It seems that the fundamental solution should also depend on $I^{1-\beta}_t$. 
+\end{enumerate}
+
+\subsection{Upper bounds for the $p$-th moment}
+\begin{enumerate}
+	\item 
+In the statement of Theorem 1, change the phrases "... $u_0(x)$ satisfying..." to the phrase "... $u_0(x)$ \textit{satisfies}...".
+
+	\item
+I believe there is an error in the proof equation (6). To keep everything in order, I will discuss this later on. 
+
+	\item 
+In 1 from Remark 2, replace "...order of fractional operator..." with "...order of \textit{the} fractional operator...".
+
+	\item
+In 2 from Remark 2, replace "...$\beta \in (0,1)$, one obtains..." with "...$\beta \in (0,1)$, \textit{then} one obtains...".
+
+	\item 
+In the last line of 2 from Remark 2, replace "Especially, the..." with "\textit{However}, the...".
+
+	\item
+In 3 from Remark 2, replace "...reduces to the quantities..." with "...\textit{reduce} to the quantities...".
+	
+	\item
+In 3 from Remark 2, replace "...which coincides the results..." with "...which coincides \textit{with} the results...".
+
+	\item 
+In 3 from Remark 2, replace "...$u(t,x)$ is less..." with "...$u(t,x)$ \textit{are} less...".
+
+	\item 
+In 3 from Remark 2, replace "...the order of Holder regularity turn to be less $\frac{1}{4}$..." with "...the \textit{orders} of Holder regularity \textit{become less than} $\frac{1}{4}$..."
+
+	\item
+In 3 from Remark 2, replace "...in studying stochastic heat..." with "...in studying \textit{the} stochastic heat..." 
+\end{enumerate}
+	
+\textbf{Lemma 2.} 
+\begin{enumerate}
+	\item 
+Is $C_3$ independent of $\beta$? In the proof of Lemma 2, we use Lemma 7 which says that when $\alpha > d$ then 
+		\[
+			G_t(x) < C_2\left(t^{-\beta d/\alpha} \wedge \frac{t^\beta}{|x|^{d+\alpha}} \right).
+		\]
+	Thus $C_2$ is dependent on $G_t(x)$ and $G_t(x)$ is dependent on $\beta$. The proof of Lemma 2 uses Lemma 9 to come up with $C_3$ and after examining the proof one can see that $C_3$ depends on $C_2$ which depends on $\beta$. In addition it depends on $C_u$ which depends on $\rho$. So it seems that $C_3$ depends on both $\rho$ and $\beta$. 
+	
+	\item 
+I think the last inequality 
+	\[
+		\le 4p\Norm{u}_{p,\theta}^2 \sup_{(t,x)\in[0,T]\times \R} \int_0^t\int_{\R} G^2_s(x-y)\exp\left\{-\frac{2\theta s}{p} \right\} \rho(\ud y) \ud s.
+	\]
+should be an equality which can be seen by applying the substitution $u=t-s$ to the previous line. 
+	\item
+I believe the result is slightly off. I think what we can say is that 
+	\begin{equation}\label{L:Lemma2cor}
+		\Norm{\mathbb{S}u}_{p,\theta}^2 \le 4pC_3C_{\bar{\delta}}^*(\alpha,\beta,2\theta/p) \Norm{u}_{p,\theta}^2.
+	\end{equation}
+Notice that the last time of the proof on page 9 gives us that 
+	\[
+		\Norm{\mathbb{S}u}_{p,\theta}^2 \le 4p\Norm{u}_{p,\theta}^2 \sup_{(t,x)\in[0,T]\times \R} \int_0^t\int_{\R} G^2_s(x-y)\exp\left\{-\frac{2\theta s}{p} \right\} \rho(\ud y) \ud s.
+	\]
+Therefore to apply Lemma 9 at this step, we need to let $\theta' = 2\theta/p$ where $\theta'$ is the parameter from Lemma 9. Thus we can say that 
+	\begin{align*}
+		4p\Norm{u}_{p,\theta}^2 \sup_{(t,x)\in[0,T]\times \R} \int_0^t\int_{\R} G^2_s(x-y)\exp\left\{-\frac{2\theta s}{p} \right\} \rho(\ud y) \ud s &\le 4pC_3C_{\bar{\delta}}^*{\alpha,\beta,\theta'}\Norm{u}_{p,\theta}^2
+		\\& = 4pC_3C_{\bar{\delta}}^*(\alpha,\beta,2\theta/p) \Norm{u}_{p,\theta}^2.
+	\end{align*}
+\end{enumerate} 
+
+\textbf{Lemma 3.}
+\begin{enumerate}
+	\item
+Is $C_3'$ not the same time as $C_3$ from Lemma 2? Why can't we apply Lemma 2 directly and say that 
+	\begin{align*}
+		\Norm{\mathbb{S}u-\mathbb{S}v}_{p,\theta}^2 &= \Norm{\mathbb{S}(u-v)}_{p,\theta}^2
+		\\&\le 4pC_3C_{\bar{\delta}}^*(\alpha,\beta,2\theta/p) \Norm{u-v}_{p,\theta}^2
+	\end{align*}
+where above I added the possible correction of Lemma 2 \eqref{L:Lemma2cor}. 
+\end{enumerate}
+
+\textbf{Lemma 11:}
+
+Before I talk about Lemma 4, I will talk about Lemma 11 since the proof of Lemma 4 relies on Lemma 11.
+
+Essentially, what Lemma 11 showed was that
+	\[
+		\int_0^{t_2}\int_{\R} |G_{t-2-s}(x_2-y) - G_{t_1-s}(x_1-y)|^2 \rho(\ud y) \ud s \le 2(\mathcal{L} + \mathcal{M} + \mathcal{N})
+	\]
+where 
+	\begin{align*}
+		\mathcal{L} &=	\int_{t_1}^{t_2}\int_{\R} |G_{t-2-s}(x_2-y)|^2 \rho(\ud y) \ud s \le C|t_2-t_1|^{\frac{\alpha+\beta(\bar{\delta}-2)}{\alpha}}
+	\\	\mathcal{M} &= 	\int_0^{t_1}\int_{\R} |G_{t-2-s}(x_1-y) - G_{t_1-s}(x_1-y)|^2 \rho(\ud y) \ud s \le C|t_2-t_1|^{\frac{\alpha+\beta(\bar{\delta}-2)}{\alpha}}
+	\\ \mathcal{N} &= 	\int_0^{t_2}\int_{\R} |G_{t-2-s}(x_2-y) - G_{t_2-s}(x_1-y)|^2 \rho(\ud y) \ud s \le C |x_2-x_1|^{2\kappa}, \quad \text{for }0 < \kappa < \frac{\alpha+\beta(\bar{\delta}-2)}{\beta}.
+	\end{align*}
+
+I don't see in the proof where $\mu$ comes in to play and the only mention of $\mu$ is in the statement of the Lemma, $\mu$ never appears in the proof. 
+
+I believe what this proof shows was that 
+	\[
+			\int_0^{t_2}\int_{\R} |G_{t-2-s}(x_2-y) - G_{t_1-s}(x_1-y)|^2 \rho(\ud y) \ud s \le C \left( |t_2-t_1|^{\frac{\alpha+\beta(\bar{\delta}-2)}{\alpha}} + |x_2-x_1|^{2\kappa} \right)
+	\]
+where 
+	\[
+		0 < \kappa < \frac{\alpha+\beta(\bar{\delta}-2)}{\beta}.
+	\]
+
+\textbf{Lemma 4:}
+\begin{enumerate}
+\item It seems unclear how Lemma 11 can conclude the proof. To summarize, the last line of the proof of Lemma is says 	
+	\begin{align*}
+		&\mathbb{E}\left[ |\mathbb{S}u(t_2,x_2) - \mathbb{S}u(t_1,x_1)|^p \right]
+		\\& \le 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left( \int_0^{t_1} (G_{t_2-s}(x_2-y)-G_{t_1-s}(x_1-y))^2 \rho(\ud y) \ud s \right)^{p/2}
+		\\& \quad \quad+ 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right)\left( \int_{t_1}^{t_2} G^2_{t_2-s}(x_2-y) \rho(\ud y) \ud s \right)^{p/2}
+	\end{align*}
+and its stated the result follows from Lemma 11. However I do not see how this is the case. What I think we can show is that 
+	\begin{align*}
+		& \le 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left( \int_0^{t_1} (G_{t_2-s}(x_2-y)-G_{t_1-s}(x_1-y))^2 \rho(\ud y) \ud s \right)^{p/2}
+		\\& \quad \quad+ 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right)\left( \int_{t_1}^{t_2} G^2_{t_2-s}(x_2-y) \rho(\ud y) \ud s \right)^{p/2}
+		\\& \le 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left( \int_0^{t_2} (G_{t_2-s}(x_2-y)-G_{t_1-s}(x_1-y))^2 \rho(\ud y) \ud s \right)^{p/2}
+		\\& \quad \quad+ 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right)\left( \int_{t_1}^{t_2} G^2_{t_2-s}(x_2-y) \rho(\ud y) \ud s \right)^{p/2}
+		\\& \le 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left( 2(\mathcal{L}+\mathcal{M} + \mathcal{N}) \right)^{p/2}
+		\\& \quad \quad+ 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right)\left( \mathcal{L} \right)^{p/2}
+		\\& \le 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left( C\left(|t_2-t_1|^{\frac{\alpha + \beta(\hat{\delta} -2)}{\alpha}} + |x_2-x_1|^{2\kappa} \right)\right)^{p/2}
+		\\& \quad \quad+ 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right)\left( C\left(|t_2-t_1|^{\frac{\alpha + \beta(\hat{\delta} -2)}{\alpha}}  \right)^{p/2} \right)
+	\end{align*}
+where 
+	\[
+			0 < \kappa < \frac{\alpha+\beta(\bar{\delta}-2)}{\beta}.
+	\]
+This does not reduce to statement of the Lemma. However, through repeated use of the inequality $(a+b)^p \le 2^{p-1}(a^p+b^p)$ we can say that 
+	\begin{align}
+		&2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left( C\left(|t_2-t_1|^{\frac{\alpha + \beta(\hat{\delta} -2)}{\alpha}} + |x_2-x_1|^{2\kappa} \right)\right)^{p/2} \nonumber
+	\\ & \quad \quad+ 2^{p-1}(4p)^{p/2} \left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right)\left( C\left(|t_2-t_1|^{\frac{\alpha + \beta(\hat{\delta} -2)}{\alpha}}  \right)^{p/2} \right) \nonumber
+	\\ & \le 2^{(3p-4)/2}(4p)^{p/2} C\left(\sup_{(s,y)\in[0,T]\times \R} \mathbb{E}\left[|u(s,y)|^p\right]\right) \left(|t_2-t_1|^{\frac{p\alpha + p\beta(\hat{\delta} -2)}{2\alpha}} + |x_2-x_1|^{p\kappa} \right) \label{E:holdercont}
+	\end{align}
+and this inequality is essentially just as good as the one stated in the statement of Lemma 4. 
+
+\item I believe there is a problem when citing Kolmogrov's continuity theorem. The statement of the theorem that I am aware of is the following: 
+
+\textit{Kolmogrov Continuity Theorem:} Consider a real valued processes $\{X_t\}_{t \times \R}$. If there exists positive constants $p, b$ and $C$ such that 
+		\[
+			\mathbb{E}\left[ |X_t-X_s|^p \right] \le C |t-s|^{1+b}
+		\]
+then there is a modification of $X$ that is locally $\gamma$-Holder continuous for $0<\gamma < b/p$. 
+
+Thus if we apply this theorem with \eqref{E:holdercont} then what we see is that there is a modification of the solution that is $\mu_1$-Holder continuous in time and $\mu_2$-Holder continuous in space where 
+	\[
+		0 < \mu_1 <\left( \frac{p\alpha + p\beta(\hat{\delta} -2)}{2\alpha} - 1 \right)/p
+	\]
+and 
+	\[
+		0 < \mu_2 < (p\kappa -1)/p.
+	\]
+\end{enumerate}
+
+\textbf{Proof of Theorem 1 (Part 1):} 
+\begin{enumerate}
+	\item 
+Replace the first sentence, "Let us first..." with the following sentence: "We start by proving part (I).". 
+	
+	\item 
+In the second sentence of the proof, replace the phase "...we can easily get the first term in the right hand of [5]..." with the phrase "...we can easily \textit{see} that the first term \textit{on} the right hand \textit{side} of [5],...".
+	
+	\item
+In the fourth line of the proof, what "contractivity" of $\mathbb{T}_{0,t}u_0(x)$ are you referring too? 
+
+	\item 
+How is the first inequality in the set of centered equations on page 11 shown? It particular the inequality 
+	\[
+		\sup_{(t,x)\in[0,T]\times \R} \mathbb{E}\left[ e^{-\theta t} \left|\int_{\R} G_t(x-y)u_0(y) \ud y \right|^p \right] \le \sup_{(t,x)\in[0,T]\times \R} \mathbb{E}\left[ e^{-\theta t} \int_{\R} G_t(x-y)|u_0(y)|^p \ud y  \right].
+	\]
+	 
+	\item
+How is the second inequality in the set of centered equations on page 11 shown? It particular the inequality
+	\[
+		\sup_{(t,x)\in[0,T]\times \R} \mathbb{E}\left[ e^{\theta t} \int_{\R} G_t(x-y)|u_0(y)|^p \ud y \right]  \le \sup_{(t,x)\in[0,T]\times \R} \mathbb{E}\left[|u_0(y)|^p\right]e^{-\theta t}.
+	\]
+What happened to 
+\[
+\int_{\R}G_t(x-y) ]\ud y ?
+\]
+Does this integral equal $1$ for all $x \in \R$ and $t>0$? I not, then is this integral uniformly bounded for all $x \in \R$ and $t>0$? 
+
+	\item 
+In the second paragraph on page 12, why are we now assuming that $\hat{\delta} \in (0,1)$? Assumption (A.2) says that $\hat{\delta} \in (0,2]$. 
+
+	\item 
+In the second paragraph on page 12, replace the phrase "...it is known that the mapping..." with the phrase "...\textit{we see} that the mapping..."
+\end{enumerate}
+
+\textbf{Proof of Theorem 1 (Part 2):}
+\begin{enumerate}
+	\item 
+In the third paragraph on page 12 replace the sentence "From now on, we will formulate the proof of the second point." with the sentence "We now formulate the proof of part 2." 
+
+	\item 
+In the third paragraph on page 12, why is $\hat{\delta} \in (0,1]$? This is different from Assumption A.2.
+
+	\item 
+In the third paragraph on page 12, how does the constant $C$ only depend on $C_3$ and $C_3'$? The larger $K_u$ and $p$ become then the larger we need to choose $C$ so it seems that $C$ depends on $K_u$ and $p$. 
+
+	\item 
+In the third paragraph on page 12, what is the motivation for choosing that specific $\theta$, namely, 
+	\[
+		\theta = C K_u^{\frac{2\alpha}{\alpha + \beta(\hat{\delta}-2)}} p^{1+\frac{\alpha}{\alpha + \beta(\hat{\delta}-2)}}.
+	\]
+Why not just pick an arbitrary $\theta > \theta_0$ and continue the proof this way which would lead to the expression that for any fixed $\theta>\theta_0$, there exists a $C_1>0$ such that
+	\[
+		C_1^{p/2}\left( 1 + \sup_{x\in \R} \mathbb{E}\left[|u_0(x)|^p\right] \right) \exp(\theta t).
+	\]
+	
+	\item
+In the third paragraph on page 12, what does it mean that for the particular $\theta$ that $pC_{\hat{\delta}}^*(\alpha, \beta, \theta)$ is bounded? Does this mean that it is finite? 
+
+	\item
+In the third paragraph on page 12, replace "...to STF-SHE.." with "...to \textit{the} STF-SHE..."
+	
+	\item 
+In the third paragraph on page 12, replace the phrase "...into $\mathbb{B}_{p,\theta}$, we know that..." with the phrase "...into $\mathbb{B}_{p,\theta}$, \textit{so} we know that..."
+
+	\item 
+There is a mistake on the first centered equation on the top of page 13. We have that 	
+	\[
+		\left( \mathbb{E}\left[ e^{-\theta t} |u(t,x)|^p \right] \right)^{2/p} \le \Norm{u}_{\theta,p}^2 \le 2\sup_{x \in \R} \mathbb{E}\left[ |u_0(x)|^p \right]^{p/2} + 2C'.
+	\]
+and this implies that
+	\[
+			\mathbb{E}\left[ |u(t,x)|^p \right]  \le \left(2\sup_{x \in \R} \mathbb{E}\left[ |u_0(x)|^p \right]^{p/2} + 2C'\right)^{p/2}e^{\theta t }.
+	\]
+From this we can say that 
+	\[
+			\mathbb{E}\left[ |u(t,x)|^p \right]  \le 2^{(p-2)/2}\tilde{C}^{p/2} \left(1 + \mathbb{E}\left[ |u_0(x)|^p \right]\right) e^{\theta t}
+	\]
+where 
+	\[
+		\tilde{C} = \max\{ 2, 2C' \}.
+	\]
+\end{enumerate}
+
+\textbf{Proof of Theorem 1 (Part 2):}
+\begin{enumerate}
+	\item
+Does the $C$ appearing in the third set of centered equations on page 13 not depend on $t_1$ and $t_2$? In particular the $C$ from 
+	\begin{equation}\label{E:timeinc}
+		\sup_{y\in\R} \mathbb{E}\left[|u_0(y)|^p\right]|t_2-t_1|^p \left| \int_{\R} \frac{\partial}{\partial_t} G_t(x-y) \vert_{t=\xi} \ud y \right|^p \le C|t_2-t_1|^p.
+	\end{equation} 
+Because if we use the bound 
+	\[
+		\frac{\partial}{\partial t}G_t(x-y) \le \frac{C}{t}G_t(x-y)
+	\]
+then we get
+	\begin{align*}
+		\int_{\R} \frac{\partial}{\partial_t} G_t(x-y) \vert_{t=\xi} \ud y  &\le \int_{\R}  G_\xi(x-y) \ud y.
+	\end{align*}
+It is claimed that 
+	\[
+	\left|\int_{\R}  G_t(x-y) \ud y \right|
+	\]
+is bounded but what does that mean? Is the bound uniform in $x$ and $t$? If the bound is not uniform in $t$ then the $C$ from \eqref{E:timeinc} depends on $t_1$ and $t_2$ which cant happen. 
+
+	\item
+In the last paragraph on page 13, replace the phrase "We will therefore..." with "We will \textit{now}...".
+
+	\item
+I believe there is something missing from the first inequality on the top of page 14. What is the $\mathbb{E}$ acting on? Also, shouldn't is say $\rho(\ud y) \ud s$? Here is the inequality in question:
+	\[
+		\mathbb{E}\left[ \left| \int_{t_1}^{t_2} \int_{\R} G_{t_2-s}(x-y)\sigma(u(s,y))F_{\rho}(\ud s, \ud y) \right|^p \right] \le C \mathbb{E} \left[ \left| \int_{t_1}^{t_2} \int_{\R} G^2_{t_2-s}(x-y)\rho(\ud s) \ud y \right|^{p/2} \right]
+	\]
+	
+	\item 
+Let's consider the very next inequality,
+	\begin{align*}
+		&C \mathbb{E} \left[ \left| \int_{t_1}^{t_2} \int_{\R} G^2_{t_2-s}(x-y)\rho(\ud s) \ud y \right|^{p/2} \right] 
+	\\ & \le C \int_{t_1}{t_2} (t_2 - s)^{-2\beta/\alpha} \int_{\R}1_{\left\{ |x-y| \le (t_2-s)^{\beta / \alpha} \right\}}\rho(\ud y) \ud s 
+	\\ & \quad \quad + C \int_{t_1}{t_2} (t_2-s)^{2\beta} \int_{\R} \frac{1}{|x-y|^{2(1+\alpha)}}1_{\left\{ |x-y| > (t_2-s)^{\beta / \alpha} \right\}} \rho(\ud y) \ud s.
+	\end{align*}
+What happened to the power $p/2$ in the first integral? The entire integral on the right hand side should be raised to the power $p/2$.
+
+	\item
+Now lets consider the next inequality from the top of page 14 with the correction mentioned above,
+	\begin{align*}
+		& C \bigg(\int_{t_1}{t_2} (t_2 - s)^{-2\beta/\alpha} \int_{\R}1_{\left\{ |x-y| \le (t_2-s)^{\beta / \alpha} \right\}}\rho(\ud y) \ud s 
+	\\ & \quad \quad + C \int_{t_1}{t_2} (t_2-s)^{2\beta} \int_{\R} \frac{1}{|x-y|^{2(1+\alpha)}}1_{\left\{ |x-y| > (t_2-s)^{\beta / \alpha} \right\}} \rho(\ud y) \ud s\bigg)^{p/2}
+	\\ & \le C(t_2-t_1)^{p\mu}. 		
+	\end{align*}
+First, where is this $\mu$ coming from? It seems like that all we can say is that 
+	\begin{align*}
+		& C \bigg(\int_{t_1}{t_2} (t_2 - s)^{-2\beta/\alpha} \int_{\R}1_{\left\{ |x-y| \le (t_2-s)^{\beta / \alpha} \right\}}\rho(\ud y) \ud s 
+		\\ & \quad \quad + C \int_{t_1}{t_2} (t_2-s)^{2\beta} \int_{\R} \frac{1}{|x-y|^{2(1+\alpha)}}1_{\left\{ |x-y| > (t_2-s)^{\beta / \alpha} \right\}} \rho(\ud y) \ud s\bigg)^{p/2}
+		\\ & C\left[ \left( t_2-t_1\right)^{\frac{\alpha+\beta(\bar{\delta}-2)}{\alpha}} \right]^{p/2}
+		\\& = C\left( t_2-t_1\right)^{\frac{p\alpha+p\beta(\bar{\delta}-2)}{2\alpha}} 
+	\end{align*}	
+where above we used the bound from $\mathcal{L}$ from Lemma 11. 
+
+	\item
+On page 13, replace the phrase "Secondly, let us..." with "\textit{We now} consider...".
+
+	\item
+What happened to the $C|x_2-x_1|^{p\varrho}$ term in the upper bound given in the first centered equation on page 15. Following what is written in this proof we have that 
+	\begin{align*}
+		&\mathbb{E}\left[ |u(t,x_2)-u(t,x_1)|^p \right] 
+	\\ &\le 2^{p-1} \Bigg( \mathbb{E}\left[ \left| \int_{\R} [G_t(x_2-y)-G_t(x_1-y)]u_0(y) \ud y \right|^p \right]
+	\\ & +  \mathbb{E}\left[ \left| \int_0^t\int_{\R} [ G_{t-s}(x_2-y)-G_{t-s}(x_2-y) ] \sigma(u(s,y)) F_{\rho}(\ud s, \ud y)  \right|^p \right] \Bigg)
+	\end{align*}
+and in the proof it is claimed that 
+	\[
+		 \mathbb{E}\left[ \left| \int_{\R} [G_t(x_2-y)-G_t(x_1-y)]u_0(y) \ud y \right|^p \right] \le C|x_2-x_1|^{p\varrho}
+	\]
+and that 
+	\[
+		\mathbb{E}\left[ \left| \int_0^t\int_{\R} [ G_{t-s}(x_2-y)-G_{t-s}(x_2-y) ] \sigma(u(s,y)) F_{\rho}(\ud s, \ud y)  \right|^p \right]  \le C|x_2-x_1|^{p\kappa}
+	\]
+and thus we must have 
+	\[
+		\mathbb{E}\left[ |u(t,x_2)-u(t,x_1)|^p \right]  \le 2^{p-1}C\left(|x_2-x_1|^{p\varrho}+ |x_2-x_1|^{p\kappa} \right).
+	\]
+\end{enumerate}
+
+\end{document}
