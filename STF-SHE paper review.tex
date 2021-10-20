@@ -213,6 +213,13 @@ In the fourth paragraph on page 3, replace the sentence "...and the Green functi
 \subsection{The spatially inhomogeneous white noise}
 \begin{enumerate}
 	\item 
+How is it true that the following Ito isometry holds:
+	\[
+		\mathbb{E}\left[ |(u\cdot F_\rho)(t)|^2 \right] = \mathbb{E}\left[ \int_0^t \int_{\R} u^2(s,x) \ud s \rho(\ud x) \right]?
+	\]
+$(u\cdot F_\rho)(t)$ is a Walsh integral, not an Ito integral. See Proposition 5.18 of the mini course for the case of a step stochastic integral. Also, I can not find a reference anywhere that calculates the second moment of a Walsh integral.
+	
+	\item 
 In (A.2) on page 5, what is the reason for the $u$ subscript in $C_u$? It seems like $C_u$ only depends on $\rho$ and so it would make more sense to denote it as $C_\rho$.
 
 	\item
@@ -595,5 +602,21 @@ and thus we must have
 		\mathbb{E}\left[ |u(t,x_2)-u(t,x_1)|^p \right]  \le 2^{p-1}C\left(|x_2-x_1|^{p\varrho}+ |x_2-x_1|^{p\kappa} \right).
 	\]
 \end{enumerate}
+
+\addcontentsline{toc}{section}{Bibliography}
+\begin{thebibliography}{999}
+	\bibitem{Nueman2014} % {{{ 1.
+	Neuman, E. (2014).
+	\newblock Pathwise uniqueness of the Stochastic Heat Equation with Spatially Inhomogeneous White Noise. 
+	\newblock {https://arxiv.org/pdf/1403.4491.pdf}
+	% }}}
+	% \bibitem{BS17} % {{{ 2. -- removed.
+	% Balan, R. M. and Song, J. (2017).
+	% \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
+	% \newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
+	% % }}}
+
+
+\end{thebibliography}
 
 \end{document}
