@@ -603,19 +603,129 @@ and thus we must have
 	\]
 \end{enumerate}
 
+\subsection{Lower bound for the second moment}
+\begin{enumerate}
+	\item 
+The first sentence is unclear. There needs to be a mention of "what" is implying the exponential growth of the solution. All that is said that "...we are going to consider the uniformly lower Lyapunov exponent $\underline{\mathcal{L}}(p,x), \; p \ge 2$ of the solution $u(t,x)$ to the STF-SHE, which implies...". However we need to mention what about the lower Lyapunov exponent that implies the exponential growth. Otherwise the sentence is vague and unclear.
+	
+	\item 
+The second sentence needs to be reworded. Here is a possible way to do so: "In fact, under assumption C, if we can show that $\int_{x \in \R}\underline{\mathcal{L}}(2,x) >0$ then the solution $u(t,x)$ will exhibit the weakly full intermittency property. 
+
+	\item
+Remove the phrase "Then we can state from the last sentence of the second paragraph. Just say "The main theorem in this subsection is as follows.".
+\end{enumerate}
+
+\textbf{Theorem 2}
+\begin{enumerate}
+	\item 
+In the statement of part 2 on the top of page 16, what is the point of $T$. All it says to fix $T$ large and $T>1$ and then there is never a mention of what this $T$ is for since equation 17 never mentions anything about $T$.
+\end{enumerate}
+
+\textbf{Proof of Theorem 2 (Part 1):}
+\begin{enumerate}
+	\item 
+The word "case" is used wrong. Instead of saying case 1 or case 2, you should say part 1 and part 2. 
+
+	\item 
+In the very first line of the proof, it says "...by the property of the Green function $G_t(x)$...". What property are you referring too? In addition, $G_t(x)$ should be referred to as the "Green's function", not the "Green function". 
+
+	\item 
+There is a claim made in this paper as well as the paper \cite{FooNane2021} that by the Walsh isometry then we have that 
+	\[
+		\mathbb{E}\left[ \left| \int_0^t\int_{\R} G_{t-s}(x-y)\sigma(u(s,y)) F_{\rho}(\ud s \ud y) \right|^2\right] = \int_0^t\int_{\R} G^2_{t-s}(x-y)\mathbb{E}\left[|\sigma(u(s,y))|^2\right] \ud s \ud y 
+	\]
+but this is not a result stated in either Walsh \cite{Walsh} or \cite{Minicourse09}. As far as I know, all that can be said is that 
+	\begin{equation}\label{MiniTh5.26}
+		\mathbb{E}\left[ \left| \int_0^t\int_{\R} G_{t-s}(x-y)\sigma(u(s,y)) F_{\rho}(\ud s \ud y) \right|^2\right] \le  \int_0^t\int_{\R} \prod_{i=1}^2G^2_{t-s}(x-x_i)\mathbb{E}\left[|\sigma(u(s,x_i))|^2\right] K(\ud s \; \ud x_1 \; \ud x_2 )
+	\end{equation}
+where $K$ is the dominating measure for $F_{\rho}$. See for example, \cite{Minicourse09} Theorem 5.26. If I am correct then the rest of the proof in invalid from this step. In order for the proof to work, equality is necessary in \eqref{MiniTh5.26}. I will continue reviewing the proof ignoring this concern. 
+
+	\item 
+Change the phrase "Now let us assume that $T_0=$..." to the phrase "Now define $T_0:=$...". 
+	
+	\item 
+There is something wrong with the definition of $T_0$ as it is stated. For any fixed $t\in (0,T]$, what does the following mean:
+	\[
+		\min\left\{ (t-s)^{-\beta/\alpha}, (t-s)^{\frac{\beta}{\alpha}(\underline{\delta}-2)} \right\} \ge C_5K_l \Gamma\left(1 + \frac{\beta(\underline{\delta}-2)}{\alpha}\right)?
+	\]
+The left hand side is a function of $s$ and the right hand side is a constant. Do you mean that the left hand side is bounded below uniformly in $s$? Did you mean to write something like 
+	\[
+		\min_{s \in (0,t)}\left\{ (t-s)^{-\beta/\alpha}, (t-s)^{\frac{\beta}{\alpha}(\underline{\delta}-2)} \right\} \ge C_5K_l \Gamma\left(1 + \frac{\beta(\underline{\delta}-2)}{\alpha}\right)?
+	\]
+In addition, if we examine Lemma 6, it seems like we would want $T_0$ to be something like the following:
+	\[
+		\inf_{t\in (0,T]} \left\{\min_{s \in (0,t)}\left\{ (t-s)^{-\beta/\alpha}, (t-s)^{\frac{\beta}{\alpha}(\underline{\delta}-2)} \right\} \ge C_5K_l \left(\Gamma\left(1 + \frac{\beta(\underline{\delta}-2)}{\alpha}\right) \right)^{-1} \right\}
+	\]
+Also, in either case, why does $T_0$ even exit? What if $T_0 = \infty$?  
+
+	\item
+If $T_0 = \infty$, ie when 
+	\[
+		\left\{t \in (0,T] \; : \; \min_{s \in (0,t)}\left\{ (t-s)^{-\beta/\alpha}, (t-s)^{\frac{\beta}{\alpha}(\underline{\delta}-2)} \right\} \ge C_5K_l \left(\Gamma\left(1 + \frac{\beta(\underline{\delta}-2)}{\alpha}\right) \right)^{-1} \right\} = \emptyset
+	\]
+then the second to last centered equation on the bottom of page 16 is not true.
+
+	\item
+I believe the last centered equation on the bottom of page 16 needs some more justification. Its unclear how this follows from Lemma 6. 
+\end{enumerate}
+
+\textbf{Theorem 2 (Part 2):}
+\begin{enumerate}
+	\item 
+Label this as "Part 2" not "Case II". 
+
+	\item
+ Reword the first sentence of the proof as follows: "We will not prove the second part of Theorem 2.".
+ 
+ 	\item 
+ Remove the phrase "and etc" from the second sentence of this proof.
+ 
+ 	\item 
+ Replace the phrase "...decays no faster than polynomial." with the phrase "...has at most polynomial decay."
+ 
+ 	\item 
+ On page 18, replace the phrase "..."which appearing in the above..." with the phrase "...which appears above in...".
+ 
+ 	\item 
+ On page 18, remove the phrase "it is led to" and just write "For each $n\in\mathbb{N}$,...".
+ 
+ 	\item 
+ On page 18, it is said that "We will further decrease the domain on the function $\prod_{i=1}^n G_{s_{i-1}-s_i}^2(y_{i-1}-y_i)$ which has the required lower bound.". What is the "required lower bound" mentioned here? As is, this sentence vague and needs some further explanation. 
+ 
+ 	\item
+Why is the following true: 
+	\[
+ 	\int_{\mathcal{A}_i} G_{s_i}^2(y_{i-1}-y_i)\rho(\ud y_i) \ge C \min\left\{ s_i^{-\beta/\alpha}, s_i^{\beta(\underline{\delta}-2)/\alpha} \right\}?
+	\]
+
+	\item 
+How is equation (22) correct? All of the space variable integrals are $\int_{\R}$ while the bound being used is only for $\int_{B(0,(t+t_0)^{\beta/\alpha})}$. 
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
-	\bibitem{Nueman2014} % {{{ 1.
+	\bibitem{Nueman2014}.
 	Neuman, E. (2014).
 	\newblock Pathwise uniqueness of the Stochastic Heat Equation with Spatially Inhomogeneous White Noise. 
 	\newblock {https://arxiv.org/pdf/1403.4491.pdf}
-	% }}}
-	% \bibitem{BS17} % {{{ 2. -- removed.
-	% Balan, R. M. and Song, J. (2017).
-	% \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
-	% \newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
-	% % }}}
 
+	\bibitem{FooNane2021}.
+	Foondun, M., Erkan, N.  (2021).
+	\newblock Asymptotic properties of some space-time
+	fractional stochastic equations. 
+	\newblock {https://arxiv.org/pdf/1505.04615.pdf}
+	
+	\bibitem{Minicourse09}
+	Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
+	\newblock {\it A minicourse on stochastic partial differential equations}.
+	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+	
+	\bibitem[Wal86]{Walsh}
+	Walsh, John B.
+	\newblock {\it An Introduction to Stochastic Partial Differential Equations}.
+	\newblock In: \`Ecole d'\`et\'e de probabilit\'es de
+	Saint-Flour, XIV---1984, 265--439.
+	Lecture Notes in Math.\ 1180, Springer, Berlin, 1986.
 
 \end{thebibliography}
 
