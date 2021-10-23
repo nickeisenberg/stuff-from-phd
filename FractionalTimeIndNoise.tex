@@ -2479,6 +2479,143 @@ Equations \eqref{E:Meqquality}, \eqref{E:Eequality} and \eqref{E:EandMrelation} 
 		and plugging in the value for $B$ yields \ref{lbound}.
 	\end{NickQuestion}
 
+\begin{NickQuestion}[Connecting \cite{BCC21} with \cite{BCR09}. The importance of $\mathcal{M}$ and $\rho$.]
+	
+The following is a quick summery that shows the connection between $\rho$ and the paper \cite{BCC21}. I am just going to look at the case of the second moments, so when $p=2$. 
+
+Starting with the proof of Theorem 4.1 \cite{BCC21}, 
+	\begin{align*}
+		\mathbb{E}\left( |u(t,x)|^2 \right) &= \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 
+\\ & = \sum_{n \ge 0} \theta^n n! t^{(4-\alpha)n} \Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2
+\\ & = \sum_{n \ge 0} \theta^n \frac{t^{(4-\alpha)n}}{(n!)^{3-\alpha}}R_n
+	\end{align*}
+where
+	\[
+		R_n := (n!)^{4-\alpha}\Norm{\tilde{f_n}(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2.
+	\]
+We know wish in invoke Lemma A.2 \cite{BCC21}. For this we let 
+	\[
+		x_n := \theta^n \frac{1}{(n!)^{3-\alpha}} \quad \text{and} \quad R:= \left( \frac{2}{4- \alpha} \right)^{4-\alpha} 2^{-\alpha /2} \mathcal{M}
+	\]
+and we note that equation (4.4) from Lemma 4.3 \cite{BCC21} implies that 
+	\[
+		\lim_{n \to \infty} \frac{1}{n} \log(R_n) = \log(R)
+	\]
+and we now search for a $\beta > 0$ and $A$ such that 
+	\[
+		\lim_{t \to \infty} \frac{1}{t^\beta} \log \sum_{n \ge 0} \theta^n \frac{1}{(n!)^{3-\alpha}}R^nt^{(4-\alpha)n} =A.
+	\]
+We will then apply Lemma A.2. We see that by applying Lemma A.3 \cite{BCC21} that 
+	\begin{align*}
+		\frac{1}{(\theta R)^{1/(\beta-\alpha)}} \lim_{t \to \infty} \frac{1}{t^{(4- \alpha)/(3-\alpha)}} \log \sum_{n \ge 0} \frac{ \theta^n R^n t^{(4-\alpha)n} }{ (n!)^{3-\alpha} } &= \lim_{t\to \infty} \frac{1}{ (\theta R t^{4-\alpha})^{1/{3-\alpha}} } \log \sum_{n \ge 0} \frac{ (\theta R t^{4-\alpha})^n }{ (n!)^{3-\alpha} }
+\\ & = \lim_{t \to \infty} \frac{1}{t^{1/(3-\alpha)}} \log \sum_{n \ge 0} \frac{t^n}{(n!)^{3-\alpha}} = 3-\alpha
+	\end{align*}
+and this implies that 
+	\[
+		A= (3-\alpha)(\theta R)^{1/(3-\alpha)} \quad \text{and} \quad \beta = \frac{4-\alpha}{3-\alpha}
+	\]
+and therefore 
+	\[
+		\lim_{t \to \infty} \frac{1}{t^\beta} \log \mathbb{E}\left( |u(t,x)|^2\right) = (3-\alpha)(\theta R)^{1/{3-\alpha}}.
+	\]
+	
+\textbf{Note:} The above proof shows that $\rho$, or equivalently $\mathcal{M}$, is introduced into the problem through Lemma 4.3 \cite{BCC21} with the help of Lemmas A.2 and A.3. I will now look at Lemma 4.3. 
+
+Equation (4.3) from Lemma 4.3 says that 
+	\begin{equation}\label{E:eq(4.3)}
+		\lim_{n \to \infty} \frac{1}{n} \log \left[ \Gamma\left( (4-\alpha)n +1 \right) \Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2 \right] = \log\left( 2^{4-\alpha}2^{-\alpha/2} \mathcal{M}^{(4-\alpha)/2} \right).
+	\end{equation}
+To prove the upper bound, we use Lemma 3.7 which shows that 
+	\[
+		\Gamma\left( (4-\alpha)n +1 \right) \Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2 \le 2^{(4-\alpha)n}\frac{1}{(n!)^2} T_n
+	\]
+where 
+	\[
+		T_n = \int_{(\R^d)^n} \left[ \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \frac{1}{1+\left| \sum_{j=k}^n \xi_{\sigma(j)} \right|^2} \right]^2 \mu(\ud  \vec{\xi}).
+	\]
+Thus by applying equations (2.7) and (2.10) \cite{BCC21}
+	\[
+		\lim_{n \to \infty} \frac{1}{n} \log \left[ \Gamma\left( (4-\alpha)n +1 \right) \Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2 \right] \le 
+		\log(2^{4-\alpha}) + \log(2^{-\alpha/2} \mathcal{M}^{(4-\alpha)/2})
+	\]
+which is the upper bound to equation \eqref{E:eq(4.3)}.
+
+The lower bound to equation \eqref{E:eq(4.3)} is proven by applying the following equation (4.6) \cite{BCC21} which says the following: 
+	\begin{equation}\label{E:eq(4.6)}
+		\frac{1}{(n!)^{2}}T_n \le \Gamma\left( \frac{4- \alpha}{2}n +1 \right)^2 \Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2.
+	\end{equation}
+Equation \eqref{E:eq(4.6)} is proven as follows. We first define 
+	\[
+		J_n(t,t) := \int_{(\R^d)^n} H_n(t,x)H(\tilde{t},x) \ud \vec{x}
+	\]
+where
+	\begin{align*}
+		 H_n(t,x) &= \sum_{\sigma \in \Sigma_n} \int_{[0,t]_<^n} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) \prod_{k=1}^n G(s_k-s_{k-1},y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}
+\\ & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) \tilde{f}_n(y_1,\cdots,y_n,0,t) \ud \vec{y}.
+	\end{align*}
+Also recall that equation (1.19) \cite{BCC21} says that 
+	\[
+		\Norm{\tilde{f}_n(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2} \int_{(\R^d)^n} H_n^2(t,x) \ud \vec{x}.
+	\]
+and therefore we have 
+	\[
+		\Norm{\tilde{f}_n(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 =  \frac{1}{(n!)^2} J_n(t,t)
+	\]
+and by the scaling property we can say that 
+	\[
+		J_n(t,t) = t^{(4-\alpha)n}J_n(1,1).
+	\]
+Now suppose that $\tau$ and $\tilde{\tau}$ are independent exponential random variables with mean one. Then by Lemma 3.3 \cite{BCC21},
+	\begin{align*}
+		\mathbb{E}J_n(\tau,\tilde{\tau}) &= \int_{(\R^d)^n} \left( \int_0^{\infty} e^{-t} H_n(t,x) \ud t\right)^2 \ud \vec{x}
+\\ & \int_{(\R^d)^n} \left| \mathcal{F}L_n(\vec{\xi}) \right|^2 \mu(\ud \vec{\xi})
+\\ & = T_n
+	\end{align*}
+where above 
+	\begin{align*}
+		T_n &:= \int_{(\R^d)^n} \left| \mathcal{F}L_n(\vec{\xi}) \right|^2 \mu(\ud \vec{\xi})
+\\ & = \int_{(\R^d)^n} \left[ \sum_{\sigma \in \Sigma_n} \frac{1}{ 1 + \left| \sum_{j=k}^n \xi_{\sigma(j)} \right|^2 } \right]^2 \mu( \ud \vec{\xi})
+	\end{align*}
+and 
+	\begin{align*}
+		L_n(y_1,\cdots, y_n) &:= n! \int_0^\infty e^{-t} \tilde{f}_n(y_1,\cdots,y_n) \ud t
+\\ & = \sum_{\sigma \in \Sigma_{n}} \int_0^\infty e^{-t} \int_{[0,t]^n_<} \prod_{k=1}^n K(x_k-y_k) \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{s} \ud t
+\\ & = \sum_{\sigma \in \Sigma_{n}} L(y_{\sigma(1)}) L( y_{\sigma(2)} - y_{\sigma(1)} )\cdots L( y_{\sigma(n)} - y_{\sigma(n-1)} ).
+	\end{align*}
+Lastly, applying the Cauchy Schwarz inequality to $\mathbb{E}(J_n(\tau,\tilde{tau}))$ proves equation \eqref{E:eq(4.6)}.
+
+\textbf{Note:} From the above, we see that $\rho$, or $\mathcal{M}$, is introduced to Lemma 4.3 through Lemma 3.7 and the inequality in equation \eqref{E:eq(4.6)}. In particular, through $T_n$ and $H_n$. Equation (2.7) \cite{BCC21} is the important equation linking the SWE in \cite{BCC21} to $\rho$ from \cite{BCR09}. Equation (2.7) is as follows:
+	\begin{equation}\label{E:eq(2.7)}
+		\lim_{n \to \infty} \frac{1}{n} \log \frac{1}{(n!)^2} \int_{(\R^d)^n} \left[ \sum_{\sigma \in \Sigma_n} \frac{1}{ 1 + \left| \sum_{j=k}^n \xi_{\sigma(j)} \right|^2 } \right]^2 \mu(\ud \vec{\xi}) = \log(\rho)
+	\end{equation}
+or in other words,
+	\[
+		\lim_{n \to \infty} \frac{1}{n} \log \frac{1}{(n!)^2} \int_{(\R^d)^n} \mathcal{F}L_n^2(\vec{\xi}) \mu(\ud \vec{\xi}) = \log(\rho).
+	\]
+Note that 
+	\[
+		\mathcal{F}L_n^2(\vec{\xi})  = (n!)^2 \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1,\cdots,\xi_n,1)
+	\]
+where $\circ_i$ denotes a space variable and $\cdot$ denotes the time variable. So $\mathcal{F}L_n(\vec{\xi}) $ is the Fourier-Laplace transform of $(n!)\tilde{f_n}$ evaluated at time $1$. So we can further reduce equation \eqref{E:eq(2.7)} down to 
+	\begin{equation}\label{E:FL}
+		\lim_{n \to \infty} \frac{1}{n} \log  \int_{(\R^d)^n} \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1,\cdots,\xi_n,1) \mu(\ud \vec{\xi}) = \log(\rho).
+	\end{equation}
+Thus, it seems that the link between the SWE as in \cite{BCC21} and $\rho$ from \cite{BCR09} is that the Lyapunov exponent of the function 
+	\begin{equation}\label{E:FLfunction}
+		n \mapsto \int_{(\R^d)^n} \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1,\cdots,\xi_n,1) \mu(\ud \vec{\xi}) 
+	\end{equation}
+is equal to $\log(\rho)$.
+
+\textbf{Questions:}
+\begin{enumerate}
+	\item Why does equation \eqref{E:FL} make sense? Why should the Lyapunov exponent of the function \eqref{E:FLfunction} be equal to $\log(\rho)$ where $\rho$ is defined in \cite{BCR09}. From our last meeting, if I remember correctly, it has something to do with the finding the largest Eigen value of the operator 
+		\[
+			(\Delta + \sqrt{\theta}\dot{W}).
+		\]
+	I am still having trouble trying to see how Xia Chen made the connection to apply his paper \cite{BCR09} to the problem of finding moment asymptotics like in \cite{BCC21}.
+\end{enumerate}
+\end{NickQuestion}
+
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	\bibitem{BCC21} % {{{ 1.
