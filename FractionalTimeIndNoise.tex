@@ -2593,9 +2593,9 @@ or in other words,
 		\lim_{n \to \infty} \frac{1}{n} \log \frac{1}{(n!)^2} \int_{(\R^d)^n} \mathcal{F}L_n^2(\vec{\xi}) \mu(\ud \vec{\xi}) = \log(\rho).
 	\]
 Note that
-	\[
+	\begin{equation}\label{E:FLn}
 		\mathcal{F}L_n^2(\vec{\xi})  = (n!)^2 \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1,\cdots,\xi_n,1)
-	\]
+	\end{equation}
 where $\circ_i$ denotes a space variable and $\cdot$ denotes the time variable. So $\mathcal{F}L_n(\vec{\xi}) $ is the Fourier-Laplace transform of $(n!)\tilde{f_n}$ evaluated at time $1$. So we can further reduce equation \eqref{E:eq(2.7)} down to
 	\begin{equation}\label{E:FL}
 		\lim_{n \to \infty} \frac{1}{n} \log  \int_{(\R^d)^n} \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1,\cdots,\xi_n,1) \mu(\ud \vec{\xi}) = \log(\rho).
@@ -2606,6 +2606,24 @@ Thus, it seems that the link between the SWE as in \cite{BCC21} and $\rho$ from 
 	\end{equation}
 is equal to $\log(\rho)$.
 
+\textbf{Lemma 2.2 \cite{BCR09}:}
+
+This is the lemma that connects the two papers \cite{BCC21} and \cite{BCR09}. First we define 
+	\[
+		\zeta\left([0,t_1]\times \cdots \times [0,t_p]\right) = \int_0^{t_1}\cdots \int_0^{t_p} | X_1(s_1) + \cdots X_p(s_p)|^{-\sigma} \ud s_1 \cdots \ud s_p
+	\]
+where $X_i(t)$ are all i.i.d. $d$-dimensional symmetric stable processes of index $0< \beta \le 2$, 
+	\[
+		\mathbb{E}e^{i\lambda X_i(t)} = e^{-t|\lambda|^\beta}.
+	\]
+Now consider $\tau_1$ and $\tau_2$ to be i.i.d. exponential times with parameter 1. What Lemma 2.2 says is that (case of $p=2$ and $m=n$ for some $n \in \mathbb{N}$),
+	\[
+		\mathbb{E}\left[ \zeta\left([0,\tau_1] \times [0,\tau_2]\right)^n \right] = \int_{(\R^{d})^n} \left[ \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{ 1 + \left| \sum_{j=k}^n  \xi_{\sigma(j)} \right|^2 } \right]^2 \mu(\ud \xi_1) \cdots \mu(\ud \xi_n)
+ 	\]
+ but then by \eqref{E:FLn}, we have that 
+ 	\begin{equation}\label{E:fnZeta}
+ 		\mathbb{E}\left[ \zeta\left([0,\tau_1] \times [0,\tau_2]\right)^n \right] = (n!)^2 \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1,\cdots,\xi_n,1).
+ 	\end{equation}
 \textbf{Questions:}
 \begin{enumerate}
 	\item Why does equation \eqref{E:FL} make sense? Why should the Lyapunov exponent of the function \eqref{E:FLfunction} be equal to $\log(\rho)$ where $\rho$ is defined in \cite{BCR09}. From our last meeting, if I remember correctly, it has something to do with the finding the largest Eigen value of the operator
@@ -2620,6 +2638,9 @@ is equal to $\log(\rho)$.
 	\end{align*}
 	where $f(\cdot)$ is the correlation function. Recall that moments satisfy a deterministic PDE,
 	that is solvable when $p=2$ and $f(\cdot)=\delta$.
+	
+	\item
+What is the relationship between $\zeta\left([0,\tau_1] \times [0,\tau_2]\right)^n$ and the kernels $\tilde{f}_n(x_1,\cdots x_n,x;t)$. Why would one know that \eqref{E:fnZeta} would be true? 
 \end{enumerate}
 \end{NickQuestion}
 
