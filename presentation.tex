@@ -129,6 +129,20 @@
 	\end{frame}
 	
 	\begin{frame}[t]
+		\frametitle{Gaussian Processes}
+		
+		A Gaussian Processes, $G := \{G_t : t \in T\}$ is a stochastic process such that for and finite set of $t_1,...,t_n \in T$, the random vector $(G(t_1),...,G(t_n))$ follows a $n$-dimensional Gaussian distribution. The processes $G$ is uniquely determined by
+		\begin{enumerate}
+			\item $\mu(t) = \E(G(t))$
+			\item $C(s,t) = \E(G(t)G(s))$
+		\end{enumerate}
+		
+		\begin{theorem}[Important]
+			The space of all symmetric and non-negative definite functions, $f(s,t)$, on $T\times T$ matches the space of all covariance functions of all Gaussian processes on $T$. Thus, given a non-negative definite function on $T \times T$ then there exists a Gaussian Processes that possesses this covariance function.
+		\end{theorem}
+	\end{frame}
+	
+	\begin{frame}[t]
 		\frametitle{The noise, $W$.}
 		We start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$,
 		\[
@@ -138,12 +152,21 @@
 		\[
 		\int_{\R^d}\Gamma(\ud x) \phi(x) = \int_{\R^d} \mathcal{F}\phi(\xi) \mu(\ud \xi).
 		\]
-		The covariance for the noise is given as 
-		\begin{align*}
+		
+	We now define a functional on $C_0^{\infty}(\R^d)$.
+		\[a
+			C(\phi,\psi) =  \int_{\R^d} \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)} \mu (\ud \xi)
+		\]
+	\end{frame}
+
+\begin{frame}[t]
+\frametitle{The noise, $W$.}
+Recalling the theorem mentioned above, we have a zero mean Gaussian processes,$W=\{ W(\phi) : \phi \in C_0^{\infty} \}$, with covariance given by $C(\cdot,\cdot)$. In other words,
+	\begin{align*}
 		\mathbb{E}(W(\phi)W(\psi)) &= \int_{\R^d} \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)} \mu (\ud \xi)
 		\\ &= \int_{\R^{2d}} \phi(x)\psi(y) \gamma(x-y) \ud x \ud y.
-		\end{align*}
-		When $\mu$ has a density, we denote it as $\varphi(x)$. 
+	\end{align*}
+When $\mu$ has a density, we denote it as $\varphi(x)$. 
 	\end{frame}
 	
 	\begin{frame}[t]
@@ -332,7 +355,8 @@
 	
 	\begin{frame}[t]
 		\frametitle{The moment asymptotic}
-		\begin{theorem}
+		\begin{theorem}[Chen and Eisenberg]
+	Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then, 
 			\begin{align*}
 			\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
 			\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
@@ -349,23 +373,32 @@
 	\end{frame}
 	
 	\begin{frame}[t]
-		\frametitle{The moment asymptotic}
-		\begin{theorem} For $p \ge 2$ fixed and $t>0$ fixed respectively, we have that
+		\frametitle{Exponential Growth of the Moments in Time}
+		\begin{theorem}[Chen and Eisenberg] For $p \ge 2$ fixed, we have that
 			\begin{align*}
-			1) \lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+			\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
 			\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-			& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right);
-			\end{align*}
-			\begin{align*}
-			2) f\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
-			\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
 			& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 			\end{align*}
 		\end{theorem}
-		
+From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ grows as fast as $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time. 
+
 		
 	\end{frame}
 	
+		\begin{frame}[t]
+		\frametitle{Exponential Growth of the moments for Fixed Time}
+		\begin{theorem}[Chen and Eisenberg] For $t>0$ fixed , we have that
+			\begin{align*}
+	\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+	\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+	& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+	\end{align*}
+			\end{theorem}
+From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ grows as fast as $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well. 
+	
+		\end{frame}
+
 	\begin{frame}[t]
 		\frametitle{Final comments}
 		
