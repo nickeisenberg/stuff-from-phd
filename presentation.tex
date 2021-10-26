@@ -64,259 +64,310 @@
 
 %Information to be included in the title page:
 \title[About Beamer] %optional
-{Interpolating the Stochastic Heat and Wave Equations with Time-independent Noise.}
+{The Interpolated Stochastic Heat and Wave Equation: Solvability and Exact Moment Asymptotics}
 
+\author[Arthur, Doe] % (optional, for multiple authors)
+{Nicholas Eisenberg}
 
-\author[Eisenberg, Chen] % (optional, for multiple authors)
-{Nick~Eisenberg \and Le~Chen}
+\institute[VFU] % (optional)
+{
+	Auburn University
+}
 
-%\institute[VFU] % (optional)
-%{
-%	\inst{1}%
-%	Faculty of Physics\\
-%	UNLV
-%	\and
-%	\inst{2}%
-%	Faculty of Chemistry\\
-%	
-%}
+\date[VLC 2021] % (optional)
+{Stochastic Seminar, November 2, 2021}
 
-%\date[Fall 2020] % (optional)
-%{Fall 2020}
+\logo{\includegraphics[height=1cm]{overleaf-logo}}
 
 \begin{document}
-
-
-\frame{\titlepage}
-
-\begin{frame}[t]
-\frametitle{The interpolated stochastic heat and wave equation.}
-
-\begin{equation*}
-\begin{cases}
-\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
-u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
-u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
-\end{cases}
-\end{equation*}
-
-
-\begin{itemize}
-	\item $\partial^b_t$ is the Caputo fractional derivative
-	\item $(-\Delta)^{a/2}$ is the fractional Laplacian of order $a \in (0,2]$
-	\item $I^r_t$ is the Riemann-Liouville fractional integral of order $r \ge 0$ 
-	\item $W = \{ W(\phi) : \phi \in \mathcal{D}(\R^d) \}$ is a centered Gaussian and time-independent noise
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Case of $b=a=2$ and $r=0$ and the Riesz kernel noise.}
 	
-	\begin{equation*}
-	\begin{cases}
-	\frac{\partial^2 u}{\partial t^2}(t,x) = \Delta u(t,x) + \sqrt{\theta}\: u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
 	
-	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
-	\end{cases}
-	\end{equation*}
+	\frame{\titlepage}
 	
-\begin{theorem}[Balan, Chen, L. and Chen, X.]
-	Suppose $\mu(\ud x) = |x|^{-d+\alpha} \ud x$ and that $0 < \alpha < d \le 3$. Let $t_p:=(p-1)^{1/(4-\alpha)}t$. Then the following moment asymptotic holds:
-		\[
+	\begin{frame}[t]
+		\frametitle{The Interpolated Stochastic Heat and Wave Equation.}
+		
+		\begin{equation*}
+		\begin{cases}
+		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
+		u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+		\end{cases}
+		\end{equation*}
+		
+		
+		\begin{itemize}
+			\item $\partial^b_t$ is the Caputo fractional derivative
+			\item $(-\Delta)^{a/2}$ is the fractional Laplacian of order $a \in (0,2]$
+			\item $I^r_t$ is the Riemann-Liouville fractional integral of order $r \ge 0$ 
+			\item $W = \{ W(\phi) : \phi \in \mathcal{D}(\R^d) \}$ is a centered Gaussian and time-independent noise
+		\end{itemize}
+		
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{Case of $b=a=2$ and $r=0$ and the Riesz kernel noise.}
+		
+		\begin{equation*}
+		\begin{cases}
+		\frac{\partial^2 u}{\partial t^2}(t,x) = \Delta u(t,x) + \sqrt{\theta}\: u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
+		
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+		\end{cases}
+		\end{equation*}
+		
+		\begin{theorem}[Balan, Chen, L. and Chen, X.]
+			Suppose $\mu(\ud x) = |x|^{-d+\alpha} \ud x$ and that $0 < \alpha < d \le 3$. Let $t_p:=(p-1)^{1/(4-\alpha)}t$. Then the following moment asymptotic holds:
+			\[
 			\lim_{t_p \to \infty} t_p^{-\frac{4-\alpha}{3-\alpha}} \log \Norm{u(t,x)}_p = \theta^{\frac{1}{3-\alpha}} 2^{\frac{-\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}.
+			\]
+			In addition by fixing $p\ge 2$, we get that 
+			\[
+			\lim_{t \to \infty} t^{-\frac{4-\alpha}{3-\alpha}} \log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{1}{3-\alpha}} \theta^{\frac{1}{3-\alpha}} 2^{\frac{-\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}.
+			\]
+		\end{theorem}
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{The noise, $W$.}
+		We start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$,
+		\[
+		\Gamma(\ud x) = \gamma(x) \ud x.
 		\]
-In addition by fixing $p\ge 2$, we get that 
-	\[
-		\lim_{t \to \infty} t^{-\frac{4-\alpha}{3-\alpha}} \log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{1}{3-\alpha}} \theta^{\frac{1}{3-\alpha}} 2^{\frac{-\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}.
-	\]
-\end{theorem}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{The noise, $W$.}
-	We start with a nonnegative and nonnegative definite tempered measure $\Gamma$ with density $\gamma$,
-	\[
-	\Gamma(\ud x) = \gamma(x) \ud x.
-	\]
-	Bochner's theorem guarantees the existence of a measure $\mu$, the spectral measure, defined through the following:
-	\[
-	\int_{\R^d}\Gamma(\ud x) \phi(x) = \int_{\R^d} \mathcal{F}\phi(\xi) \mu(\ud \xi).
-	\]
-	The covariance for the noise is given as 
-	\begin{align*}
-	\mathbb{E}(W(\phi)W(\psi)) &= \int_{\R^d} \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)} \mu (\ud \xi)
-	\\ &= \int_{\R^{2d}} \phi(x)\psi(y) \gamma(x-y) \ud x \ud y.
-	\end{align*}
-	When $\mu$ has a density, we denote it as $\varphi(x)$. 
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{The noise, $W$.}
-\begin{itemize}
-	\item Let $k \in \{1,\cdots,d\}$
-	\item Partition the $d$-coordinates of $x=(x_1,\cdots,x_n)$ into $k$ distinct groups of size $d_i$ so that $d_1 + \cdots d_k =d$
-	\item $x_{(i)} = (x_{i_1},\cdots, x_{i_{d_i}})$ denotes the coordinates of the $i^{th}$ partition.
-	\item Choose $\alpha_i \in (0,d_i)$ and denote $\alpha = \sum_{i=1}^k\alpha_i$
-\end{itemize}
-
-We consider the following Riesz-type spatial correlation function and its spectral density:
-	\[
+		Bochner's theorem guarantees the existence of a measure $\mu$, the spectral measure, defined through the following:
+		\[
+		\int_{\R^d}\Gamma(\ud x) \phi(x) = \int_{\R^d} \mathcal{F}\phi(\xi) \mu(\ud \xi).
+		\]
+		The covariance for the noise is given as 
+		\begin{align*}
+		\mathbb{E}(W(\phi)W(\psi)) &= \int_{\R^d} \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)} \mu (\ud \xi)
+		\\ &= \int_{\R^{2d}} \phi(x)\psi(y) \gamma(x-y) \ud x \ud y.
+		\end{align*}
+		When $\mu$ has a density, we denote it as $\varphi(x)$. 
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{The noise, $W$.}
+		\begin{itemize}
+			\item Let $k \in \{1,\cdots,d\}$
+			\item Partition the $d$-coordinates of $x=(x_1,\cdots,x_d)$ into $k$ distinct groups of size $d_i$ so that $d_1 + \cdots d_k =d$
+			\item $x_{(i)} = (x_{i_1},\cdots, x_{i_{d_i}})$ denotes the coordinates of the $i^{th}$ partition.
+			\item Choose $\alpha_i \in (0,d_i)$ and denote $\alpha = \sum_{i=1}^k\alpha_i$
+		\end{itemize}
+		
+		We consider the following Riesz-type spatial correlation function and its spectral density:
+		\[
 		\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i} \quad \varphi(\xi) = \prod_{i=1}^k C_{\alpha_i,d_i} |{\xi}_{(i)}|^{d_i-\alpha_i}.
-	\]
+		\]
+		
+		Note that when $k=1$, the above reduces to the Riesz kernel. 
+	\end{frame}
 	
-Note that when $k=1$, the above reduces to the Riesz kernel. 
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{The fundamental solution.}
-\[
-\begin{cases}
-\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[f(t,x)\right] & \text{$x\in \R^d$, $t>0$}, \\
-u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
-u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
-\end{cases}
-\]
-
-When $f(t,x)$ is a deterministic function, the fundamental solution given through the triple 
-	\[
+	\begin{frame}[t]
+		\frametitle{The fundamental solution.}
+		\[
+		\begin{cases}
+		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[f(t,x)\right] & \text{$x\in \R^d$, $t>0$}, \\
+		u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+		\end{cases}
+		\]
+		
+		When $f(t,x)$ is a deterministic function, the fundamental solution given through the triple 
+		\[
 		\{ Z_{a,b,r,\nu,d}(t,x),   Z^*_{a,b,r,\nu,d}(t,x), Y_{a,b,r,\nu,d}(t,x)\}
-	\]
-where each member is defined explicitly through the Fox-H function. We have for $b \in (0,1]$ and $b \in (1,2)$ respectively that
-\[ u(t,x) = 
-\begin{cases}
-	(Z(t,\cdot)*u(0,\cdot))(x) + (Y\star f)(t,x)
-	\\ 	(Z^*(t,\cdot)*u(0,\cdot))(x) + (Z(t,\cdot)*\partial_tu(0,\cdot))(x) + (Y\star f)(t,x).
-\end{cases}
-\]
-
+		\]
+		where each member is defined explicitly through the Fox-H function. We have for $b \in (0,1]$ and $b \in (1,2)$ respectively that
+		\[ u(t,x) = 
+		\begin{cases}
+		(Z(t,\cdot)*u(0,\cdot))(x) + (Y\star f)(t,x)
+		\\ 	(Z^*(t,\cdot)*u(0,\cdot))(x) + (Z(t,\cdot)*\partial_tu(0,\cdot))(x) + (Y\star f)(t,x).
+		\end{cases}
+		\]
+		
+		
+	\end{frame}
 	
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Mild solution}
-Considering the constant 1 initial condition, it can be shown the solution to the homogeneous equation is equal to $1$. 
-\begin{definition}
-Let $G(t,x) = Y_{a,b,r,\nu,d}(t,x)$. For $T > 0$, a random field $u=\{u(t,x): t \in (0,T), x \in \R^d \} $ is called a \textit{mild solution} if $G(t-s,x-\cdot)u(s,\cdot)1_{\{s<t\}}$ is Skorohod integrable and the following holds almost surely:
-\end{definition}
-	\[
+	\begin{frame}[t]
+		\frametitle{Assumption on $G$}
+		We need to make an assumption that $G(t,x)$ is nonnegative. This is the case under any of the following:
+		\begin{itemize}
+			\item $d \ge 1$, $b\in(0,1]$, $a\in(0,2]$, $r\ge0$;
+			% \item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
+			\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
+			\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
+		\end{itemize}
+		\begin{figure}[htpb]
+			\centering
+			\begin{tikzpicture}[scale=1.9]
+			\draw [->] (-0.3,0) -- (2.3,0) node [right] {$a$};
+			\draw [->] (0,-0.3) -- (0,2.2) node [above] {$b$};
+			\draw [densely dashed,gray] (1,0) -- (1,2) (2,0) -- (2,2) (-0.4,1) -- (2.5,1) (0,2) -- (2,2);
+			\draw (1,0.05) -- (1,-0.05) node [below] {$1$};
+			\draw (2,0.05) -- (2,-0.05) node [below] {$2$};
+			\draw (0.05,1) -- (-0.05,1) node [left] {$1$};
+			\draw (0.05,2) -- (-0.05,2) node [left] {$2$};
+			\filldraw [fill=red!30, opacity=0.5] (0,0) rectangle (2,1);
+			\filldraw [fill=blue!30, opacity=0.5] (1,1) -- (2,1) -- (2,2);
+			\draw [thick] (1.03,1.03) -- (1.97,1.97);
+			\draw [thick] ([shift=(0:0.05)]1,1) arc (0:90:0.05);
+			\draw [thick] ([shift=(180:0.05)]2,2) arc (180:270:0.05);
+			\node at (2.3,1.5) [rotate=90, anchor=center] {$1\le d\le 3$};
+			\node at (2.3,0.45)[rotate=90, anchor=center] {$d\ge 1$};
+			\draw [thick] (0.03,1) -- (2,1);
+			\draw [thick] ([shift=(-90:0.05)]0,1) arc (-90:90:0.05);
+			\node at (1.73,1.35) [rotate=45, anchor=center] {$r\ge 0$};
+			\node at (1,0.45) {$r\ge 0$};
+			% \node at (1,0.9) {$r=0$ or $r>1$};
+			\node at (1.5,1.55) [rotate=45,anchor=south] {$r>\frac{d+3}{2}-b$};
+			\end{tikzpicture}
+		\end{figure}
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{Mild solution}
+		Considering the constant 1 initial condition, it can be shown the solution to the homogeneous equation is equal to $1$. 
+		\begin{definition}
+			Let $G(t,x) = Y_{a,b,r,\nu,d}(t,x)$. For $T > 0$, a random field $u=\{u(t,x): t \in (0,T), x \in \R^d \} $ is called a \textit{mild solution} if $G(t-s,x-\cdot)u(s,\cdot)1_{\{s<t\}}$ is Skorohod integrable and the following holds almost surely:
+		\end{definition}
+		\[
 		u(t,x) = 1 + \sqrt{\theta} \int_0^t \left(\int_{\R^d} G(t-s,x-y)u(s,y)W(\delta y)\right) \ud s.
-	\]
+		\]
+		
+		\begin{itemize}
+			\item \textit{Global Solution:} $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
+			\item \textit{Local Solution:} If there exists $0 < T_1 \le T_2 < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_1$ and $\Norm{u(t,x)}_2 $ D.N.E. for $t> T_2$.
+		\end{itemize}
+	\end{frame}
 	
-\begin{itemize}
-	\item \textit{Global Solution:} $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
-	\item \textit{Local Solution:} If there exists $0 < T_1 \le T_2 < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_1$ and $\Norm{u(t,x)}_2 $ D.N.E. for $t> T_2$.
-\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Assumption on $G$}
-We need to make an assumption that $G(t,x)$ is nonnegative. This is the case under any of the following:
-	\begin{itemize}
-		\item $d \ge 1$, $b\in(0,1]$, $a\in(0,2]$, $r\ge0$;
-		% \item $d \ge 1$, $b=1$, $a\in (0,2]$, $r=0$ or $r>1$;
-		\item $1\le d \le 3$, $1<b<a\le 2$, $r>0$;
-		\item $1 \le d \le 3$, $1 < b=a < 2$, $r > \dfrac{d+3}{2}-b$.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Theorem 1.6 (Chen and Eisenberg)}
-Assuming $G(t,x)$ is nonnegative and the noise has spatial correlation $\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}$:
-	\begin{itemize}
-		\item A \textcolor{blue}{\textit{global solution}} exists provided 
-			\[
-				0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
-			\]
-		\item Otherwise, if 
-			\[
-					r\in \left[0,1/2\right] \qquad \text{and} \qquad
-				0<\alpha = \frac{a}{b}[2(b+r)-1] \le d,
-			\]
-then a \textcolor{blue}{\textit{local solution}} exists for $t \in (0,T_p))$ where 
-	\[
-		T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}
-	\]
-and the solution D.N.E. for $t > T_2$.
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Wiener Chaos Expansion:}
-If $t=t_{n+1}$ and $x=x_{n+1}$, then a Picard iteration scheme will suggest that for  
-	\[
+	
+	\begin{frame}[t]
+		\frametitle{Wiener Chaos Expansion:}
+		If $t=t_{n+1}$ and $x=x_{n+1}$, then a Picard iteration scheme will suggest that for  
+		\[
 		f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n,
-	\]
-the solution can be written as 
-	\begin{equation}\label{E:WC}
+		\]
+		the solution can be written as 
+		\begin{equation}\label{E:WC}
 		u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d.
-	\end{equation}
-This further suggests 
-	\begin{equation}\label{E:2Mom}
+		\end{equation}
+		This further suggests 
+		\begin{equation}\label{E:2Mom}
 		\mathbb{E}(u(t,x)^2) = \sum_{k=0}^\infty \theta^{k} \Norm{f_k(\cdot,x,t)}^2_{\mathcal{H}^{\otimes n}}, \quad (t,x)\in (0,T)\times \R^d.
-	\end{equation}
-\begin{theorem}
-A unique solution exists and \eqref{E:WC} is valid if and only if \eqref{E:2Mom} is finite. 
-\end{theorem}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{The moment asymptotic}
-We define
-	\begin{align*}
-			\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
-			\\&= \nu^{-\alpha/a}\mathcal{M}_{a,d}^{2-(\alpha/a)}(\gamma,1)
-	\end{align*}
-where
-	\begin{align*}
+		\end{equation}
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{Theorem 1.6 (Chen and Eisenberg)}
+		
+		\begin{theorem}
+			Fix any $T \in (0,\infty]$. Suppose that $f_n(\cdot,x;t) \in \mathcal{H}^{\otimes n}$ for and $t \in (0,T)$ and $x\in \R^d$. Then the SPDE in question has a unique $L^2(\Omega)$ solution on $(0,T) \times \R^d$ if and only if the series 	
+			\[
+			\sum_{k=0}^\infty \theta^{k} \Norm{f_k(\cdot,x,t)}^2_{\mathcal{H}^{\otimes n}}, \quad (t,x)\in (0,T)\times \R^d.
+			\]
+			converges in $L^2(\Omega)$ for any $(t,x) \in (0,T) \times \R^d$. In this case, the second moment of the solution is given by this series. 
+		\end{theorem} 
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{Theorem 1.6 (Chen and Eisenberg)}
+		Assuming $G(t,x)$ is nonnegative and the noise has spatial correlation $\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}$:
+		\begin{itemize}
+			\item A \textcolor{blue}{\textit{global solution}} exists provided 
+			\[
+			0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
+			\]
+			\item Otherwise, if 
+			\[
+			r\in \left[0,1/2\right] \qquad \text{and} \qquad
+			0<\alpha = \frac{a}{b}[2(b+r)-1] \le d,
+			\]
+			then a \textcolor{blue}{\textit{local solution}} exists for $t \in (0,T_p))$ where 
+			\[
+			T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}
+			\]
+			and the solution D.N.E. for $t > T_2$.
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{The moment asymptotic}
+		We define
+		\begin{align*}
+		\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+		\end{align*}
+		
+		\begin{theorem}[Chen and Eisenberg]
+			When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
+			\begin{align*}
+			\lim_{n \to \infty} \frac{1}{n} \log & \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+			\\& = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
+			\end{align*}
+			where $\gamma$ is the spatial correlation function. 
+		\end{theorem}	
+	\end{frame}
+	
+	\begin{frame}[t]
+		\frametitle{The moment asymptotic}
+		We define
+		\begin{align*}
 		\mathcal{M}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
 		& = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
-	\end{align*}
-and
-\begin{gather}
-\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
-\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
-\end{gather}
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{The moment asymptotic}
-\begin{theorem}
-	\begin{align*}
-		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
-		\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
-	\end{align*}
-where
-		\begin{align}
+		\end{align*}
+		and
+		\begin{gather}
+		\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
+		\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
+		\end{gather}
+		
+		\begin{theorem}[Chen and Eisenberg]
+			When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
+			\[
+			\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
+			\]
+		\end{theorem}
+	\end{frame}
+	
+	
+	
+	\begin{frame}[t]
+		\frametitle{The moment asymptotic}
+		\begin{theorem}
+			\begin{align*}
+			\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
+			\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+			& \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+			\end{align*}
+			where
+			\begin{align}
 			\label{E:beta-tp}
 			\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
 			t_p   := (p-1)^{1-1/\beta} \: t.
-		\end{align}
-\end{theorem}
-
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{The moment asymptotic}
-\begin{theorem} For $p \ge 2$ fixed and $t>0$ fixed respectively, we have that
-	\begin{align*}
-	1) \lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
-	\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-	& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right);
-	\end{align*}
-	\begin{align*}
-2) \lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
-\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-\end{align*}
-\end{theorem}
+			\end{align}
+		\end{theorem}
+		
+	\end{frame}
 	
+	\begin{frame}[t]
+		\frametitle{The moment asymptotic}
+		\begin{theorem} For $p \ge 2$ fixed and $t>0$ fixed respectively, we have that
+			\begin{align*}
+			1) \lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+			\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+			& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right);
+			\end{align*}
+			\begin{align*}
+			2) f\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+			\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+			& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+			\end{align*}
+		\end{theorem}
+		
+		
+	\end{frame}
 	
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Final comments}
-
-\end{frame}
+	\begin{frame}[t]
+		\frametitle{Final comments}
+		
+	\end{frame}
 \end{document}
