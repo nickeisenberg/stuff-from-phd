@@ -1,0 +1,193 @@
+\documentclass[12pt]{article} %{{{
+\usepackage[text={6.2in,8.6in},centering]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs}
+\usepackage{luacode}
+\usepackage{xcolor}
+\newcommand {\R}{\mathbb{R}}
+\newcommand{\Norm}[1]{\left|\left|  #1   \right|\right|}
+\newcommand {\E}{\mathbb{E}}
+\newcommand{\lp}[2]{{\it Line #1, page #2:~}}
+\setlength{\parskip}{0.5cm plus4mm minus3mm}
+
+\begin{luacode}
+function file_exists(name)
+   local f=io.open(name,"r")
+   if f~=nil then io.close(f) return true else return false end
+end
+
+lfs = require("lfs")
+if file_exists("notes.tex")==false then
+	os.execute("touch notes.tex")
+end
+if file_exists("table") then
+	Data = dofile("table")
+else
+	Data = {
+		Author    = 'Junfeng Liu',
+		Journal   = 'ALEA',
+		Editor    = 'David Nualart',
+		From      = '2021-05-10',
+		Deadline  = '2021-08-18',
+		Completed = ' ',
+		Title     = 'Space-time fractional stochastic heat equation with spatially inhomogeneous white noise',
+		Decision  = '---',
+		Report    = './Review.pdf',
+		Paper     = './ALEA2104-003RA0.pdf',
+		Path	  = lfs.currentdir()
+	}
+end
+\end{luacode}
+
+\begin{document}
+% \noindent
+
+\begin{center}{
+Referee's report on:\\[0.5em]
+\begin{minipage}{0.8\textwidth}
+\begin{center}
+\luaexec{tex.sprint(Data['Title'])}
+\end{center}
+\end{minipage}
+\\[0.5em]
+by
+\\[0.5em]
+\luaexec{tex.sprint(Data['Author'])}
+}
+\end{center}
+% % \vskip .3in }}}
+
+% ---------------------------
+In this paper, the author studies the following space-time fractional
+stochastic heat equation:
+\begin{align*}
+	\partial^\beta_t u(t,x) = -\nu (-\Delta)^{\frac{\alpha}{2}} u(t,x)
+	+I_t^{1-\beta}\left(\lambda \sigma(u(t,x)) \dot{F}_\rho(t,x)\right),
+	\quad t>0,\: x\in\R,
+\end{align*}
+where $\beta\in (0,1)$, $\nu>0$, $\alpha\in(1,2]$ and $\lambda>0$. The main
+novelty of the paper is the study of of the spatially inhomogeneous white noise
+$\dot{F}_\rho$; see \eqref{E:F} below. There are many grammar/spelling issues
+in the paper. We list some of those up to page 9. The author are highly
+recommended to go over the paper again to check out all similar issues. In
+terms of mathematics, the results seem not complete and there are also some
+issues in the proofs of the main results; see below. We recommend a {\bf major
+revision} of the paper.
+
+
+Suggestions and concerns:
+
+\begin{enumerate}
+	\item The noise is introduced in Definition 1. It would be better to
+		explicitly write out
+		\begin{align}
+			\label{E:F}
+			\E\left(\dot{F}_\rho(t,x)\dot{F}_\rho(s,y)\right) =
+			\delta_0(t-s)\rho(x-y)\delta_0(x-y).
+		\end{align}
+	\item At the end of Section 2.1, can you give some interesting, important,
+		nontrivial examples of $\rho$? Since this is the main contribution of the
+		paper, one wants to see why such extension is necessary and important and
+		how different properties it brings.
+	\item Theorem 1: It seems that the conditions for $\alpha$ and $\beta$ are not
+		optimal. The requirement on $\alpha \in (1,2]$ can be relaxed. Indeed, by
+		\cite{CHN19}, the solvability is done under the following condition:
+		\begin{align*}
+			d < 2\alpha + \frac{\alpha}{\beta} \min\left(2 \gamma -1,0\right)
+		\end{align*}
+		By setting $d=1$ and  $\gamma=1-\beta$ for this paper, we see that
+		\begin{align*}
+			1<2\alpha + \frac{\alpha}{\beta}\min\left(1-2\beta,0\right),
+		\end{align*}
+		or equivalently,
+		\begin{align*}
+			\alpha > \frac{1}{2} \vee \beta.
+		\end{align*}
+		So it seems the right condition on $\alpha$ should be
+		\begin{align*}
+			\alpha \in (1/2\vee \beta, 2].
+		\end{align*}
+		Moreover, I don't see why you cannot let $\beta=1$ in your paper. Can you
+		explain this point?
+	\item Remark 2, point No. 2: When $\rho\equiv c$, this reduces to the standard
+		space-time white noise. All relevant statements in Theorem 1 has been also
+		proved in \cite{CHN19}. Please make the comparison to see if the moment
+		exponents in Eq. (6) and H\"older exponents you obtained are consistent
+		with the results in \cite{CHN19}.
+	\item In the third display on p. 13, the author uses
+		\begin{align}
+			\label{E:DG}
+			\frac{\partial}{\partial t}G_t(x-y) \le \frac{C}{t} G_t(x-y)
+		\end{align}
+		to prove the time increments. First of all, I am not totally sure of this
+		inequality, when one refers to [1], please give the precise equation or
+		theorem so that the reader can easily local this result. Secondly, the
+		left-hand side of \eqref{E:DG} is signed while the right-hand side is
+		nonnegative. But when applying for this inequality, one needs to take an
+		absolute value. Would this cause any issue? In other words, one may want
+		the following bounds instead:
+		\begin{align*}
+			\left|\frac{\partial}{\partial t}G_t(x-y) \right|\le \frac{C}{t} G_t(x-y)
+		\end{align*}
+		This kind of inequality does not seem correct. One may try the standard
+		heat kernel $G_t(x)=\frac{1}{\sqrt{2\pi t}} e^{- \frac{x^2}{2t}}$. In this
+		case, we see that
+		\begin{align*}
+			\frac{\partial}{\partial t}	G_t(x) =
+			\frac{1}{2}\left(\frac{x^2}{t}-1\right) \frac{G_t(x)}{t}.
+		\end{align*}
+		One cannot find a constant $C$ that is uniformly in $t,x$ so that
+		\eqref{E:DG} is true. Even this paper handles the case $\beta<1$, I don't
+		expect much difference there.
+\end{enumerate}
+
+Minor issues are listed below:
+\begin{enumerate}
+	\item Line 3 of Section 2.1, ``Randon measure" should be ``Radon measure".
+		This misspelling appeared many times in the paper.
+	\item Line 1 on page 2: ``satisfying" $\to$ ``satisfies".
+	\item Line 3 on third paragraph of page 2: Insert ``the" in front of
+		``STF-SHE". Update this grammar issue for the whole paper.
+	\item Line 4 on page 3: ``grows" $\to$ ``grow".
+	\item Line 8 on page 3: ``in bounded domain" $\to$ ``in a bounded domain".
+	\item Line -15 on page 3: ``SPDE" $\to$ ``SPDEs".
+	\item Line -12 on page 3: Insert ``the" in front of ``moments".
+	\item Line -1 on page 3: ``the Green function" $\to$ ``the Green's function".
+		Update the whole paper for this issue.
+	\item Line 1 of Remark 1: ``the author in [27]" $\to$ ``Z\"ahle [27]".
+	\item Line 10 on page 6: ``field" $\to$ ``fields".
+	\item Title of Section 3:	``Moments bounds" $\to$ ``Moment bounds".
+	\item First paragraph of both Section 3 and Section 3.1: ``some Banach space"
+		$\to$ ``the Banach space".
+	\item Line -2 in the first paragraph of Section 3: ``the solution $u(t,x)$
+		grow at least exponentially" $\to$ ``the moments of the solution $u(t,x)$
+		grow at leat exponentially".
+	\item Line 2 in the statement of Theorem 1: ``satisfying" $\to$ ``satisfies"
+	\item Remark 2 Point 1: ``The order of fractional operator" $\to$ ``The order of the
+		fractional operator"
+	\item Line 1 in Point 2 of Remark 2: Insert ``then" in front of ``one".
+	\item Line -4 on page 8: ``reduces" $\to$ ``reduce"
+	\item Line -3 on page 8: ``coincides the results" $\to$ ``coincides with the results"
+	\item Line -1 on page 8: ``is" $\to$ ``are"
+	\item Line 1 on page 9: ``order" $\to$ ``orders"
+	\item Line 2 on page 9: ``studying stochastic heat" $\to$ ``studying
+		the stochastic heat"
+\end{enumerate}
+% -------------------------------------------------
+% References go here.
+% -------------------------------------------------
+\begin{thebibliography}{999}
+\bibitem{CHN19}
+Chen, Le, Yaozhong Hu and David Nualart. (2019)
+\newblock Nonlinear stochastic time-fractional slow and fast diffusion
+equations on $\R^d$.
+\newblock {\em Stochastic Processes and their Applications}, 129, 5073--5112.
+\end{thebibliography}
+% --------------------------- {{{
+\begin{luacode}
+	Data['Completed'] = os.date()
+	Data['Decision'] = '---'
+	loadfile("./saveTable.lua")(Data,"table")
+\end{luacode}
+\end{document}
+% }}}
+
