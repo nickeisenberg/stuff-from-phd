@@ -154,7 +154,7 @@
 		\]
 		
 	We now define a functional on $C_0^{\infty}(\R^d)$.
-		\[a
+		\[
 			C(\phi,\psi) =  \int_{\R^d} \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)} \mu (\ud \xi)
 		\]
 	\end{frame}
@@ -314,49 +314,172 @@ When $\mu$ has a density, we denote it as $\varphi(x)$.
 	\end{frame}
 	
 	\begin{frame}[t]
-		\frametitle{The moment asymptotic}
-		We define
-		\begin{align*}
-		\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
-		\end{align*}
-		
-		\begin{theorem}[Chen and Eisenberg]
-			When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
-			\begin{align*}
-			\lim_{n \to \infty} \frac{1}{n} \log & \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
-			\\& = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
-			\end{align*}
-			where $\gamma$ is the spatial correlation function. 
-		\end{theorem}	
+		\frametitle{Example: Solvability for the SWE ($a=b=2$)}
+A local solution only exists when $\alpha = 3+2r \le d \le 3$.
+\begin{figure}[htb]% {{{ F:SWE
+	\centering
+	\begin{tikzpicture}[scale=0.7]
+	\draw [thick,dashed] (3,0) -- (3,5.5) node [above] {$r=0$};
+	\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+	\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+	\foreach \x in {1,...,5}{
+		\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+		\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+		\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+		\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+		\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+	}
+	\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+	\filldraw (0, 2) + (0.1, -0.05) rectangle +(2,0.05);%\filldraw (2,2) circle (0.05);
+	\filldraw (0, 3) + (0.1, -0.05) rectangle +(2.9,0.05);%\filldraw (3,3) circle (0.05);
+	% \filldraw (0, 4) + (0.1, -0.05) rectangle +(2.9,0.05);
+	% \filldraw (0, 5) + (0.1, -0.05) rectangle +(2.9,0.05);
+	% \draw (2,2) circle (0.11);
+	\draw (3,3) circle (0.11);
+	% \draw (3,4) circle (0.11);
+	% \draw (3,5) circle (0.11);
+	% \draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+	% \draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+	\draw[dashed] (0, 5) + (0.1, -0.05) rectangle +(5,0.05);
+	\draw[dashed] (0, 4) + (0.1, -0.05) rectangle +(4,0.05);
+	\end{tikzpicture}
+	\hspace{2em}
+	\begin{tikzpicture}[scale=0.7]
+	\def\x{3.2}
+	% \draw (-0.4,-1.5+\x) rectangle +(6,3);
+	% \draw (0.5,0+\x) circle (0.1); \node at (3,0+\x) {Local $L^p(\Omega)$-solution};
+	% \draw (0, -1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {No $L^2(\Omega)$-solution};
+	% \draw (0.5, 1) + (-0.15,-0.15) rectangle +(0.15,0.15); \node at (2.5,1) {White noise};
+	\draw[dashed] (0, -3+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {Unknown};
+	\draw (-0.4,-1.5+\x) rectangle +(7,3);
+	\filldraw (0, 1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {Global $L^p(\Omega)$-solution};
+	\draw (0.3,0+\x) circle (0.1); \node at (3,0+\x) {Local $L^p(\Omega)$-solution};
+	\draw (0, -1+\x) + (0.1, -0.05) rectangle +(1,0.05) node [right] {No $L^2(\Omega)$-solution};
+	\draw (0.5, 1) + (-0.15,-0.15) rectangle +(0.15,0.15); \node at (2.5,1) {White noise};
+	\draw[white] (0,-1.5) circle (0.01);
+	\end{tikzpicture}
+\end{figure}% }}}
+By replacing $\nu=2$ in the following, we recover (1.12) Balan, Chen and Chen:	
+	\[
+		T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_{2,3}(\delta_0)}},  \quad p\ge 2
+	\]
+
+
+
 	\end{frame}
 	
 	\begin{frame}[t]
+		\frametitle{Example: Solvability for the SHE ($a=2$ and  $b=1$)}
+			By setting $a=2$, $b=1$ and $r=0$, we obtain the following condition for existence of a local solution: $\alpha = 2 \le d.$
+	\begin{columns}
+		\begin{column}{0.5\textwidth}	
+		\begin{figure}[htpb]% {{{ F:SHE
+			\centering
+			\begin{tikzpicture}[scale=0.7]
+			\draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
+			\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+			\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+			\foreach \x in {1,...,5}{
+				\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+				\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+				\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+				\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+				\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+			}
+			\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+			\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.9,0.05);
+			\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.9,0.05);
+			\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.9,0.05);
+			\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.9,0.05);
+			\draw (2,2) circle (0.11);
+			\draw (2,3) circle (0.11);
+			\draw (2,4) circle (0.11);
+			\draw (2,5) circle (0.11);
+			\draw (2, 3) + (0.1, -0.05) rectangle +(1,0.05);
+			\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
+			\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
+			\end{tikzpicture}
+		\end{figure}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		\begin{itemize}
+			\item 	When $\alpha=d=2$, the critical time becomes $T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_{2,2}(\delta_0)}$.
+			\item Theorem 4.1 (Hu) proves that an $L^2(\Omega)$ solution exists for $t<2$ but not for $t>2 \pi$. 
+			\item It can be shown that $2 \le T_2 = \frac{1}{2\mathcal{M}_{2,2}(\delta_0)} \le 2\pi$
+		\end{itemize}
+\end{column}
+\end{columns}
+
+	\end{frame} 
+
+			\begin{frame}[t]
+		\frametitle{Example: Solvability For The SHE With Fractional Laplace ($b=1$, $r=0$ and $0<a \le 2$)}
+			A local solution exists when $\alpha = a \le d$. The critical time is given by $T_p = \frac{\nu}{2\theta (p-1)\mathcal{M}_{2,2}(\delta_0)}$.
+	\begin{figure}[htpb]% {{{ F:Stable
+		\centering
+		\begin{tikzpicture}[scale=0.7]
+		% \draw [thick,dashed] (2,0) -- (2,5.5) node [above] {$r=0$};
+		\draw [thick,dashed] (0.5,0) -- (0.5,6) node [above] {$a=1/2$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(0.4,0.05);
+		\draw (0.5,1) circle (0.11);
+		\draw (0.5,2) circle (0.11);
+		\draw (0.5,3) circle (0.11);
+		\draw (0.5,4) circle (0.11);
+		\draw (0.5,5) circle (0.11);
+		\draw (0.5,1) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (0.5,2) + (0.1, -0.05) rectangle +(1.5,0.05);
+		\draw (0.5,3) + (0.1, -0.05) rectangle +(2.5,0.05);
+		\draw (0.5,4) + (0.1, -0.05) rectangle +(3.5,0.05);
+		\draw (0.5,5) + (0.1, -0.05) rectangle +(4.5,0.05);
+		\end{tikzpicture}
+		\qquad 
+		\begin{tikzpicture}[scale=0.7]
+		\draw [thick,dashed] (1.5,0) -- (1.5,6) node [above] {$a=3/2$};
+		% \draw [thick,dashed] (0.5,0) -- (0.5,5.5) node [above] {$r=0$};
+		\draw [->] (-0.3,0) -- (5.5,0) node [right] {$\alpha$};
+		\draw [->] (0,-0.3) -- (0,5.5) node [above] {$d$};
+		\foreach \x in {1,...,5}{
+			\draw (\x,0.1)--++(0,-0.2) node [below] {$\x$};
+			\draw (0.1,\x)--++(-0.2,0) node [left] {$\x$};
+			\draw (\x,\x) + (-0.15,-0.15) rectangle +(0.15,0.15);
+			\draw [thick] ([shift=(-90:0.1)]0,\x) arc (-90:90:0.1);
+			\draw [thin, dotted] (\x,0) -- (\x, 5.4);
+		}
+		\filldraw (0, 1) + (0.1, -0.05) rectangle +(1,0.05);%\filldraw (1,1) circle (0.05);
+		\filldraw (0, 2) + (0.1, -0.05) rectangle +(1.4,0.05);%\filldraw (2,2) circle (0.05);
+		\filldraw (0, 3) + (0.1, -0.05) rectangle +(1.4,0.05);
+		\filldraw (0, 4) + (0.1, -0.05) rectangle +(1.4,0.05);
+		\filldraw (0, 5) + (0.1, -0.05) rectangle +(1.4,0.05);
+		\draw (1.5,2) circle (0.11);
+		\draw (1.5,3) circle (0.11);
+		\draw (1.5,4) circle (0.11);
+		\draw (1.5,5) circle (0.11);
+		\draw (1.5, 2) + (0.1, -0.05) rectangle +(0.5,0.05);
+		\draw (1.5, 3) + (0.1, -0.05) rectangle +(1.5,0.05);
+		\draw (1.5, 4) + (0.1, -0.05) rectangle +(2.5,0.05);
+		\draw (1.5, 5) + (0.1, -0.05) rectangle +(3.5,0.05);
+		\end{tikzpicture}
+
+	\end{figure}% }}}
+		\end{frame}
+	
+		\begin{frame}[t]
 		\frametitle{The moment asymptotic}
-		We define
-		\begin{align*}
-		\mathcal{M}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
-		& = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
-		\end{align*}
-		and
-		\begin{gather}
-		\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
-		\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
-		\end{gather}
-		
 		\begin{theorem}[Chen and Eisenberg]
-			When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
-			\[
-			\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
-			\]
-		\end{theorem}
-	\end{frame}
-	
-	
-	
-	\begin{frame}[t]
-		\frametitle{The moment asymptotic}
-		\begin{theorem}[Chen and Eisenberg]
-	Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then, 
+			Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then, 
 			\begin{align*}
 			\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
 			\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
@@ -372,6 +495,79 @@ When $\mu$ has a density, we denote it as $\varphi(x)$.
 		
 	\end{frame}
 	
+	\begin{frame}[t]
+		\frametitle{The moment asymptotic}
+		We define
+		\begin{align*}
+		\mathcal{M}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
+		& = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
+		\end{align*}
+		where
+		\begin{gather}
+		\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
+		\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
+		\end{gather}
+		and
+		\begin{align*}
+		\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+		\end{align*}
+	
+	\end{frame}
+	
+		\begin{frame}[t]
+		\frametitle{The moment asymptotic}
+		
+		\begin{theorem}[Chen and Eisenberg]
+			When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
+			\begin{align*}
+			\lim_{n \to \infty} \frac{1}{n} \log & \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+			\\& = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
+			\end{align*}
+			where $\gamma$ is the spatial correlation function. 
+		\end{theorem}	
+		
+		\begin{theorem}[Chen and Eisenberg]
+			When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
+			\[
+			\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
+			\]
+		\end{theorem}
+	\end{frame}
+	
+	\begin{frame}[t]
+	\frametitle{$\rho$ and the SWE}
+	\[
+	\zeta\left([0,t_1]\times \cdots \times [0,t_p]\right) = \int_0^{t_1}\cdots \int_0^{t_p} | X_1(s_1) + \cdots X_p(s_p)|^{-\sigma} \ud s_1 \cdots \ud s_p
+	\]
+	where $X_i(t)$ are all i.i.d. $d$-dimensional symmetric stable processes of index $ \beta = 2$, 
+	\[
+	\mathbb{E}e^{i\lambda X_i(t)} = e^{-t|\lambda|^\beta}.
+	\]
+
+\begin{theorem}
+	\[
+		\lim_{n \to \infty} \frac{1}{n} \log \frac{1}{(n!)^2} 	\mathbb{E}\bigg[ \zeta \big( [0,\tau_1] \times [0,\tau_2] \big)^n \bigg] = \log\big[\rho_{2,2}(\gamma)\big]
+	\]
+\end{theorem}
+	\end{frame}
+
+
+		\begin{frame}[t]
+		\frametitle{$\rho$ and the SWE}
+	\begin{theorem}[X. Chen]
+		Suppose $\tau_i$ for $1\le i \le n$ are exponential random variables with mean 1. Then,
+		\[
+		\mathbb{E}\left[ \zeta\left([0,\tau_1] \times [0,\tau_2]\right)^n \right] = \int_{(\R^{d})^n} \left[ \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{ 1 + \left| \sum_{j=k}^n  \xi_{\sigma(j)} \right|^2 } \right]^2 \mu(\ud \vec{\xi})
+		\]
+	\end{theorem}
+It can be shown that 
+	\begin{align*}
+		\mathbb{E}[ \zeta ( [0,\tau_1]  &\times [0,\tau_2] )^n ] 
+		\\ &= (n!)^2\int_{(\R^d)^2} \mathcal{F}\mathcal{L}\left[\tilde{f}_n(\circ_1,\cdots\circ_n,0;\cdot)\right]^2(\xi_1, \cdots,\xi_n,1) \mu(\ud \vec{\xi})
+	\end{align*}
+	
+	\end{frame}
+
 	\begin{frame}[t]
 		\frametitle{Exponential Growth of the Moments in Time}
 		\begin{theorem}[Chen and Eisenberg] For $p \ge 2$ fixed, we have that
