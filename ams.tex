@@ -106,26 +106,29 @@
 	\end{frame}
 
 	\begin{frame}[t]
-	\frametitle{Case of $b=a=2$ and $r=0$ and the Riesz kernel noise.}
+	\frametitle{}
 	
 	\begin{equation*}
 	\begin{cases}
-	\frac{\partial^2 u}{\partial t^2}(t,x) = \Delta u(t,x) + \sqrt{\theta}\: u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
+	\frac{\partial^b u}{\partial t^b}(t,x) = \Delta u(t,x) +  u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
+	u(0,\cdot) = 1 & b =1 \text{ (SHE)}\\
 	
-	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b =2 \text{ (SWE)},
 	\end{cases}
 	\end{equation*}
-	
-	\begin{theorem}[Balan, Chen, L. and Chen, X.]
-		Suppose $\mu(\ud x) = |x|^{-d+\alpha} \ud x$ and that $0 < \alpha < d \le 3$. Let $t_p:=(p-1)^{1/(4-\alpha)}t$. Then the following moment asymptotic holds:
+	\begin{theorem}[X. Chen (2017)]
+		For the SHE
 		\[
-		\lim_{t_p \to \infty} t_p^{-\frac{4-\alpha}{3-\alpha}} \log \Norm{u(t,x)}_p = \theta^{\frac{1}{3-\alpha}} 2^{\frac{-\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}.
-		\]
-		In addition by fixing $p\ge 2$, we get that 
-		\[
-		\lim_{t \to \infty} t^{-\frac{4-\alpha}{3-\alpha}} \log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{1}{3-\alpha}} \theta^{\frac{1}{3-\alpha}} 2^{\frac{-\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}.
+		\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{2-\alpha}} (2-\alpha)\left(\frac{2\mathcal{M}}{4-\alpha}\right)^{\frac{4-\alpha}{2-\alpha}}
 		\]
 	\end{theorem}
+	\begin{theorem}[Balan, Chen, L. and Chen, X.(2021)]
+		For the SWE
+		\[
+		\lim_{t \to \infty} t^{-\frac{4-\alpha}{3-\alpha}} \log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{1}{3-\alpha}} \left(\frac{1}{2}\right)^{\frac{\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}.
+		\]
+	\end{theorem}
+
 \end{frame}
 
 		\begin{frame}[t]
@@ -447,6 +450,14 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 	\begin{frame}
 	\frametitle{The Connection between $\rho$ and $\mathcal{M}$}
+	Recall that 
+	\begin{align*}
+	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+	\end{align*}
+	and 
+	\[
+		\lim_{n \to \infty} \frac{1}{n} \log  \left[ \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi)\right|^2 \mu (\ud \vec{\xi})\right]  = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
+	\]
 	\begin{theorem}[X. Chen (2007)]
 		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
 		\[
