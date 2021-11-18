@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass{beamer}% {{{
 \usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc}
 %\usepackage{eucal} this is a different font than \mathcal{•}
 \usetikzlibrary{arrows}
@@ -30,7 +30,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
-\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
 
 %\usepackage{lipsum}%% a garbage package you don't need except to create examples.
 %\usepackage{fancyhdr}
@@ -61,7 +61,7 @@
 }
 \setbeamertemplate{footline}[higher page number]
 
-
+% }}}
 %Information to be included in the title page:
 \title[About Beamer] %optional
 {The Interpolated Stochastic Heat and Wave Equation: Solvability and Exact Moment Asymptotics}
@@ -69,24 +69,31 @@
 \author[Arthur, Doe] % (optional, for multiple authors)
 {Nicholas Eisenberg}
 
-\institute[VFU] % (optional)
+\pgfdeclareimage[height=1.2cm]{AU}{figs/AU.png}
+\institute[Auburn University]
 {
-	Auburn University
+\pgfuseimage{AU}\\[3em]
+ \vspace{2em}
 }
 
 \date[VLC 2021] % (optional)
-{AMS Meeting, November 20, 2021}
+{ \small Special Session on \\
+	{\it Stochastic Analysis and Applications}\\[1em]
+	Fall Southeastern Sectional Meeting\\[0.5em]
+	Nov. 20--21, 2021}
 
 \logo{\includegraphics[height=1cm]{overleaf-logo}}
+\thispagestyle{empty}
 
 \begin{document}
-	
-	
+
+
 	\frame{\titlepage}
-	
+	\setcounter{page}{1}
+
 	\begin{frame}[t]
 		\frametitle{The Interpolated Stochastic Heat and Wave Equation.}
-		
+
 		\begin{equation*}
 		\begin{cases}
 		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
@@ -94,25 +101,25 @@
 		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
 		\end{cases}
 		\end{equation*}
-		
-		
+
+
 		\begin{itemize}
 			\item $\partial^b_t$ is the Caputo fractional derivative
 			\item $(-\Delta)^{a/2}$ is the fractional Laplacian of order $a \in (0,2]$
-			\item $I^r_t$ is the Riemann-Liouville fractional integral of order $r \ge 0$ 
+			\item $I^r_t$ is the Riemann-Liouville fractional integral of order $r \ge 0$
 			\item $W = \{ W(\phi) : \phi \in \mathcal{D}(\R^d) \}$ is a centered Gaussian and time-independent noise
 		\end{itemize}
-		
+
 	\end{frame}
 
 	\begin{frame}[t]
 	\frametitle{}
-	
+
 	\begin{equation*}
 	\begin{cases}
 	\frac{\partial^b u}{\partial t^b}(t,x) = \Delta u(t,x) +  u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
 	u(0,\cdot) = 1 & b =1 \text{ (SHE)}\\
-	
+
 	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b =2 \text{ (SWE)},
 	\end{cases}
 	\end{equation*}
@@ -133,10 +140,10 @@
 
 		\begin{frame}[t]
 		\frametitle{The Noise, $\dot{W}$.}
-		The time independent noise informally satisfies 
+		The time independent noise informally satisfies
 		\[
 			\mathbb{E}(\dot{W}(x)\dot{W}(y)) = \gamma(x-y).
-		\] 
+		\]
 		The spatial correlation and spectral density, $\gamma$ and $\varphi$, for the noise $\dot{W}$ can be assumed to be any of the following:
 		\begin{itemize}
 			\item \[\gamma(x) = |x|^{-\alpha}, \; \varphi(\xi) =C_1 |\xi|^{d-\alpha} \text{ where }\alpha \in (0,d)\]
@@ -155,16 +162,16 @@
 	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
 	\end{cases}
 	\]
-	
+
 	When $f(t,x)$ is a deterministic function, the fundamental solution
 	\[
 		G(t,x):=G_{a,b,r,\nu,d}(t,x)
-	\] 
+	\]
 	is defined explicitly through the Fox-H function. We have for both $b \in (0,1]$ and $b \in (1,2)$ that
 	\[
 		 u(t,x) = 1+ (G\star f)(t,x)
-	\]	
-	An important characteristic of $G$ is that 
+	\]
+	An important characteristic of $G$ is that
 		\[
 			\mathcal{F}\mathcal{L}G(s,\xi) = \frac{s^{-r}}{s^{b}+\frac{\nu}{2}|\xi|^a}
 		\]
@@ -214,7 +221,7 @@
 	\[
 	u(t,x) = 1 + \sqrt{\theta} \int_0^t \left(\int_{\R^d} G(t-s,x-y)u(s,y)W(\delta y)\right) \ud s.
 	\]
-	
+
 	\begin{itemize}
 		\item \textit{Global Solution:} $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
 		\item \textit{Local Solution:} If there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. for $t> T_b$.
@@ -222,16 +229,16 @@
 \end{frame}
 
 	\begin{frame}[t]
-	\frametitle{Wiener Chaos Expansion:}	
+	\frametitle{Wiener Chaos Expansion:}
 Through a standard procedure, we may define
 \[
 f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
 \]
-where $t=t_{n+1}$ and $x=x_{n+1}$, and say that 
+where $t=t_{n+1}$ and $x=x_{n+1}$, and say that
 	\[
 			u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d
 	\]
-and 
+and
 	\[
 		\mathbb{E}(u(t,x)^2) = \sum_{k=0}^\infty \theta^{k} \Norm{f_k(\cdot,x,t)}^2_{\mathcal{H}^{\otimes n}}, \quad (t,x)\in (0,T)\times \R^d.
 	\]
@@ -242,16 +249,16 @@ and
 	\frametitle{Theorem 1.6 (Chen and Eisenberg)}
 	Assuming $G(t,x)$ is nonnegative and the noise has spatial correlation has the form $\gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i}$:
 	\begin{itemize}
-		\item A \textcolor{blue}{\textit{global solution}} exists provided 
+		\item A \textcolor{blue}{\textit{global solution}} exists provided
 		\[
 		0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
 		\]
-		\item Otherwise, if 
+		\item Otherwise, if
 		\[
 		r\in \left[0,1/2\right] \qquad \text{and} \qquad
 		0<\alpha = \frac{a}{b}[2(b+r)-1] \le d,
 		\]
-		then a \textcolor{blue}{\textit{local solution}} exists for $t \in (0,T_p))$ where 
+		then a \textcolor{blue}{\textit{local solution}} exists for $t \in (0,T_p))$ where
 		\[
 		T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}
 		\]
@@ -305,7 +312,7 @@ and
 		\draw[white] (0,-1.5) circle (0.01);
 		\end{tikzpicture}
 	\end{figure}% }}}
-	By replacing $\nu=2$ in the following, we recover (1.12) Balan, Chen and Chen:	
+	By replacing $\nu=2$ in the following, we recover (1.12) Balan, Chen and Chen:
 	\[
 	T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_{2,3}(\delta_0)}},  \quad p\ge 2
 	\]
@@ -316,7 +323,7 @@ and
 	\frametitle{Example: Solvability for the SHE ($a=2$ and  $b=1$)}
 	By setting $a=2$, $b=1$ and $r=0$, we obtain the following condition for existence of a local solution: $\alpha = 2 \le d.$
 	\begin{columns}
-		\begin{column}{0.5\textwidth}	
+		\begin{column}{0.5\textwidth}
 			\begin{figure}[htpb]% {{{ F:SHE
 				\centering
 				\begin{tikzpicture}[scale=0.7]
@@ -348,56 +355,56 @@ and
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
 				\item 	When $\alpha=d=2$, the critical time becomes $T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_{2,2}(\delta_0)}$.
-				\item Theorem 4.1 (Hu) proves that an $L^2(\Omega)$ solution exists for $t<2$ but not for $t>2 \pi$. 
+				\item Theorem 4.1 (Hu) proves that an $L^2(\Omega)$ solution exists for $t<2$ but not for $t>2 \pi$.
 				\item $T_2$ being precise implies $2 \le T_2 = \frac{1}{2\mathcal{M}_{2,2}(\delta_0)} \le 2\pi$
 			\end{itemize}
 		\end{column}
 	\end{columns}
-	
-\end{frame} 
+
+\end{frame}
 
 \begin{frame}[t]
 	\frametitle{How to find the critical $\alpha$.}
 	\begin{align*}
-	\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \: \overbrace{t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2}^{\Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2} 
+	\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \: \overbrace{t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2}^{\Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2}
 	\\&= \sum_{n \ge 0} \frac{\theta^nt^{(2(b+r)-b\alpha/a)n}}{(n!)^{2(b+r)-(b\alpha/a)-1}} R_n
 	\end{align*}
-	and $R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2$. When $\alpha = \frac{a}{b}[2(b+r)-1]$, then the above reduces down to 
+	and $R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2$. When $\alpha = \frac{a}{b}[2(b+r)-1]$, then the above reduces down to
 	\[
 	\Norm{u(t,x)}_2^2 =  \sum_{n \ge 0} (\theta t)^n n! \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
 	\]
-	and we lose the $n!$ term in the demonstrator. 
+	and we lose the $n!$ term in the demonstrator.
 \end{frame}
 
 \begin{frame}[t]
 	\frametitle{$\rho$}
-	We define 
+	We define
 	\begin{align*}
 	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
 	\end{align*}
-	
+
 	\begin{theorem}[Theorem 2.3 X. Chen (2007)]
-		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
+		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then,
 		\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log & \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
 		\\& = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
 		\end{align*}
-		where $\gamma$ is the spatial correlation function. 
-	\end{theorem}	
-	
+		where $\gamma$ is the spatial correlation function.
+	\end{theorem}
+
 \end{frame}
 
 \begin{frame}[t]
 	\frametitle{Connection of the SPDE with $\rho$}
-	Recall from above that 
+	Recall from above that
 	\[
 	\mathcal{F}\mathcal{L}G(1,\xi) = \frac{1}{1+\frac{\nu}{2}|\xi|^a}.
 	\]
-	By using this relation, it can be shown that 
+	By using this relation, it can be shown that
 	\[
 	\mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi) = \frac{1}{n!} \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}.
 	\]
-	Applying this to the limit representation of $\rho$ above yields that 
+	Applying this to the limit representation of $\rho$ above yields that
 	\begin{align*}
 	\lim_{n \to \infty} \frac{1}{n} \log  \left[ \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi)\right|^2 \mu (\ud \vec{\xi})\right]  = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
 	\end{align*}
@@ -405,15 +412,15 @@ and
 
 \begin{frame}[t]
 	\frametitle{Lemma for the Blowup Time (SWE)}
-For simplicity, consider lets consider the SWE ($a=b=2$ and $r=0$.) The following scaling property can be easily derived by a change a variables. 
+For simplicity, consider lets consider the SWE ($a=b=2$ and $r=0$.) The following scaling property can be easily derived by a change a variables.
 	\[
 		 \Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{(4-\alpha)n}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 	\]
-Using this scaling property we see that 	
+Using this scaling property we see that
 	\[
 		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 	\]
-The following lemma is also very important. It is how $\rho$ is introduced to the paper. 
+The following lemma is also very important. It is how $\rho$ is introduced to the paper.
 	\begin{theorem}[Lemma 4.1 (R.  Balan, L. Chen, X. Chen.)]
 		\begin{itemize}
 			\item $\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]$
@@ -431,10 +438,10 @@ For simplicity, we consider the blowup time for the second moment. Because of th
 	\\& =: \sum_{n \ge 0} (\theta t)^n R_n, \quad R_n = n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2.
 	\end{align*}
 The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cauchy-Hadamard theorem can be directly applied to see that the radius of convergence is precisely $(2\theta \rho_c)^{-1} = T_2$.
-	
+
 \end{frame}
 
-	\begin{frame}[t] 
+	\begin{frame}[t]
 	\frametitle{$\mathcal{M}$}
 	We define
 	\begin{align*}
@@ -450,16 +457,16 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 	\begin{frame}
 	\frametitle{The Connection between $\rho$ and $\mathcal{M}$}
-	Recall that 
+	Recall that
 	\begin{align*}
 	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
 	\end{align*}
-	and 
+	and
 	\[
 		\lim_{n \to \infty} \frac{1}{n} \log  \left[ \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi)\right|^2 \mu (\ud \vec{\xi})\right]  = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
 	\]
 	\begin{theorem}[X. Chen (2007)]
-		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
+		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then,
 		\[
 		\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
 		\]
@@ -469,9 +476,9 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 		\begin{frame}[t]
 	\frametitle{The moment asymptotic}
 	\begin{theorem}
-		Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then, 
+		Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then,
 		\begin{align*}
-		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
+		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p
 		\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
 		& \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
 		\end{align*}
@@ -482,34 +489,34 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 		t_p   := (p-1)^{1-1/\beta} \: t.
 		\end{align}
 	\end{theorem}
-	
+
 \end{frame}
 
-	\begin{frame}[t]																																																							
+	\begin{frame}[t]
 	\frametitle{Exponential Growth of the Moments in Time}
 	\begin{theorem} For $p \ge 2$ fixed, we have that
 		\begin{align*}
-		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right)
 		\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
 		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{align*}
 	\end{theorem}
-	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time. 
-	
-	
+	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time.
+
+
 \end{frame}
 
 \begin{frame}[t]
 	\frametitle{Exponential Growth of the moments for Fixed Time}
 	\begin{theorem} For $t>0$ fixed , we have that
 		\begin{align*}
-		\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+		\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right)
 		\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
 		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{align*}
 	\end{theorem}
-	From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well. 
-	
+	From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well.
+
 \end{frame}
 
 \begin{frame}
@@ -526,7 +533,7 @@ Recall $\varphi(x) = \prod_{i=1}^n|x_{(i)}|^{d_i-\alpha_i}$. By examining Lemma 
 This can be done by using weak Young's inequality
 	\[
 		\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
-	\] 
+	\]
 where $q^{-1} + q'^{-1} = 1$ and $p^{-1}+q^{-1}+r^{-1} =2$ and
 	\[
 		\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |b(x)| \ud x, \quad |A| < \infty.
@@ -535,18 +542,18 @@ We apply this with
 	\[
 		a=F, \quad b=\varphi, \quad c= G
 	\]
-and we show that $\Norm{\varphi}_{q,w} < \infty$ with $q=d/(d-\alpha)$. 
+and we show that $\Norm{\varphi}_{q,w} < \infty$ with $q=d/(d-\alpha)$.
 \end{frame}
 
 
 \begin{frame}
 	\frametitle{Anticipated Question: Why does $\rho$ appear in the Lemma.}
-	
+
 		For simplicity we will consider the second moments of stochastic wave equation ($a=b=2$ and $r=0$). We will also only consider the limit
 			\[
 				\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]
 			\]
-		Recall that 
+		Recall that
 		\[
 		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 		\]
@@ -554,7 +561,7 @@ and we show that $\Norm{\varphi}_{q,w} < \infty$ with $q=d/(d-\alpha)$.
 		\begin{align*}
 		\frac{c_\alpha}{C_n} 2^{(4-\alpha)n}T_n \le \int_0^\infty e^{-t} \Norm{\tilde{f}(\cdot,0,t)}_{H^{\otimes n}}^2 \ud t  \le 2^{(4-\alpha)n}T_n
 		\end{align*}
-		Where $\log(C_n)/n \to 0$ and $c_\alpha >0$. 
+		Where $\log(C_n)/n \to 0$ and $c_\alpha >0$.
 \end{frame}
 
 	\begin{frame}[t]
@@ -573,7 +580,7 @@ If we find a $\beta$ and $A$ so that
 		\begin{align*}
 		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R^n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
 		\end{align*}
-	then this is implies 
+	then this is implies
 		\begin{align*}
 \lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R_n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
 \end{align*}
