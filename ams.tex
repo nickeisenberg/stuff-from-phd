@@ -71,7 +71,10 @@
 {The Interpolated Stochastic Heat and Wave Equation: Solvability and Exact Moment Asymptotics}
 
 \author[Arthur, Doe] % (optional, for multiple authors)
-{Nicholas Eisenberg}
+{Nicholas Eisenberg\\
+\bigskip
+\small Joint work with L. Chen (arXiv:2108.11473)
+}
 
 \pgfdeclareimage[height=1.2cm]{AU}{figs/AU.png}
 \institute[Auburn University]
@@ -84,7 +87,7 @@
 { \small Special Session on \\
 	{\it Stochastic Analysis and Applications}\\[1em]
 	Fall Southeastern Sectional Meeting\\[0.5em]
-	November 20-21, 2021}
+	Nov. 20--21, 2021}
 
 \logo{\includegraphics[height=1cm]{overleaf-logo}}
 \thispagestyle{empty}
@@ -202,7 +205,7 @@
 	\[
 	u(t,x) = 1 + \sqrt{\theta} \int_0^t \left(\int_{\R^d} G(t-s,x-y)u(s,y)W(\delta y)\right) \ud s
 	\]
-where $G$ is defined through the Fox-H function.
+where $G$ is defined through the {\it Fox-H} function.
 \\ $\;$ \\
 	An important characteristic of $G$ is that
 \[
@@ -468,11 +471,11 @@ Using this scaling property we see that
 	\]
 
 	\begin{lemma}[{\small Lemma 4.1 R.  Balan, L. Chen \& X. Chen '21}]
-
-		\begin{itemize}
-			\item $\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]$
-			\item $\lim_{n \to \infty}\frac{1}{n} \log\left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]$
-		\end{itemize}
+		\begin{align*}
+			\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right] \\
+			\bigskip
+			\lim_{n \to \infty}\frac{1}{n} \log\left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]
+		\end{align*}
 	\end{lemma}
 \end{frame}
 
@@ -517,7 +520,7 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 \end{frame}% }}}
 
 	\begin{frame}[t]% {{{ Moment asymptotics
-		\frametitle{The Moment Asymptotic}
+		\frametitle{The Moment Asymptotics}
 		\begin{theorem}[{\small Chen-E. '21+}]
 			Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then,
 			\begin{align*}
@@ -536,8 +539,7 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 	\begin{frame}[t]% {{{ Exponential growth of moments in time
 	% \frametitle{Exponential Growth of the Moments in Time}
-	\frametitle{Exact Moment Lyapunov Exponent \\
-	\small (Recall $\beta := \frac{2(b+r)-\frac{b\alpha}{a}}{ 2(b+r)-\frac{b\alpha}{a} -1}$)}
+	\frametitle{Exact Moment Lyapunov Exponent: \small (Recall $\beta := \frac{2(b+r)-\frac{b\alpha}{a}}{ 2(b+r)-\frac{b\alpha}{a} -1}$)}
 	\begin{corollary}[{\small Chen-E. '21+}]
 		For $p \ge 2$ fixed, we have that
 		\begin{align*}
@@ -554,7 +556,8 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 \begin{frame}[t]% {{{ Exact Large Moment Asymptotics
 	% \frametitle{Exponential Growth of the moments for Fixed Time}
-	\frametitle{Exact Large Moment Asymptotics}
+	\frametitle{Exact Large Moment Asymptotics:
+	\small (Recall $\beta := \frac{2(b+r)-\frac{b\alpha}{a}}{ 2(b+r)-\frac{b\alpha}{a} -1}$)}
 	\begin{corollary}[{\small Chen-E. '21+}] For $t>0$ fixed , we have that
 		\begin{align*}
 		\lim_{p \to \infty} & p^{-\beta} \log \E\left(|u(t,x)|^p\right)                                          \\
