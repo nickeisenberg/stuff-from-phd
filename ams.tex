@@ -93,7 +93,7 @@
 
 
 	\frame{\titlepage}
-	
+
 	\setcounter{page}{1}
 % }}}
 	\begin{frame}[t]% {{{ SHE and SWE
@@ -101,9 +101,9 @@
 
 		\begin{equation*}
 		\begin{cases}
-		\left(\partial^b_t  -\Delta \right)\: u(t,x) = \sqrt{\theta}\: u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$} \\
-		u(0,\cdot) = 1                                                                    & b=1 \quad \text{(SHE)}    \\
-		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                   & b=2 \quad \text{(SWE)}
+		\left(\partial^b_t  -\Delta \right)\: u(t,x) =  u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$} \\
+		u(0,\cdot) = 1                                                     & b=1 \quad \text{(SHE)}    \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                    & b=2 \quad \text{(SWE)}
 		\end{cases}
 		\end{equation*}
 
@@ -137,7 +137,7 @@
 	\mySeparateLine
 	\only<2>{
 	\begin{center}
-		\textcolor{red}{$b\in (1,2)$ and $a \in (0,2]$ ??}
+		\textcolor{red}{$b\in (0,2)$ and $a \in (0,2]$ ??}
 	\end{center} \vspace{-1.5em}}
 	\mySeparateLine
 	\vfill
@@ -152,16 +152,17 @@
 
 \end{frame}% }}}
 
-		\begin{frame}[t]
-	\frametitle{The Interpolated Stochastic Heat and Wave Equation (ISHWE)}
-	\begin{equation*}
-	\begin{cases}
-	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
-	u(0,\cdot) = 1                                                                                                             & b \in (0,1]               \\
-	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2)
-	\end{cases}
-	\end{equation*}
-	
+		\begin{frame}[t]%{{{ ISHWE
+	\frametitle{The Interpolated Stochastic Heat and Wave Equation}
+	\begin{equation}
+		\tag{\footnotesize ISHWE}
+		\begin{cases}
+			\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
+			u(0,\cdot) = 1                                                                                                           & b \in (0,1]               \\
+			u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                          & b \in (1,2)
+		\end{cases}
+	\end{equation}
+
 	\vfill
 	\begin{itemize}
 		\item $\partial^b_t$ is the {\it Caputo} fractional derivative
@@ -170,7 +171,7 @@
 		\bigskip
 		\item $I^r_t$ is the Riemann-Liouville fractional integral of order $r \ge 0$
 	\end{itemize}
-	
+
 \end{frame}% }}}
 
 
@@ -246,13 +247,14 @@ where $G$ is defined through the Fox-H function.
 \end{frame}
 
 \begin{frame}
-	\frametitle{Global Solution}
+	\frametitle{Global Solution\\
+	\small $\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right]$}
 	\begin{definition}
-		$u(t,x)$ is a \textit{global solution} to the ISHWE if $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
+		$u(t,x)$ is a \textit{global solution} to the {\small (ISHWE)} if $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
 	\end{definition}
 	$\;$ \\
-	\begin{theorem}[Theorem 1.6 Chen and Eisenberg '21+]
-		A global solution exists provided $G$ is nonnegative and 
+	\begin{theorem}[{\small Chen-E. '21+}]
+		A global solution exists provided $G$ is nonnegative and
 		\[
 		0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
 		\]
@@ -262,11 +264,11 @@ where $G$ is defined through the Fox-H function.
 \begin{frame}
 	\frametitle{Local Solution}
 	\begin{definition}
-		$u(t,x)$ is a \textit{local solution} to the ISHWE if there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. (does not exist) for $t> T_b$.
+		$u(t,x)$ is a \textit{local solution} to the {\small (ISHWE)} if there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. (does not exist) for $t> T_b$.
 	\end{definition}
 	$\;$ \\
-	\begin{theorem}[Theorem 1.6 Chen and Eisenberg '21+]
-		A local solution exists provided $G$ is nonnegative and 
+	\begin{theorem}[{\small Chen-E. '21+}]
+		A local solution exists provided $G$ is nonnegative and
 	if
 	\[
 	r\in \left[0,1/2\right] \qquad \text{and} \qquad
@@ -328,7 +330,7 @@ where $G$ is defined through the Fox-H function.
 		\draw[white] (0,-1.5) circle (0.01);
 		\end{tikzpicture}
 	\end{figure}% }}}
-	By replacing $\nu=2$ in the following, we recover (1.12) Balan, Chen and Chen:
+	By replacing $\nu=2$ in the following, we recover (1.12) {\small [Balan, L. Chen \& X. Chen '21]}
 	\[
 	T_p=	\frac{\nu^{3 / 2}}{2\theta (p-1) \sqrt{\mathcal{M}_{2,3}(\delta_0)}},  \quad p\ge 2
 	\]
@@ -371,7 +373,7 @@ where $G$ is defined through the Fox-H function.
 		\begin{column}{0.5\textwidth}
 			\begin{itemize}
 				\item 	When $\alpha=d=2$, the critical time becomes $T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_{2,2}(\delta_0)}$.
-				\item Theorem 4.1 (Hu) proves that an $L^2(\Omega)$ solution exists for $t<2$ but not for $t>2 \pi$.
+				\item Theorem 4.1 {\small [Y. Hu, '01]} proves that an $L^2(\Omega)$ solution exists for $t<2$ but not for $t>2 \pi$.
 				\item $T_2$ being precise implies $2 \le T_2 = \frac{1}{2\mathcal{M}_{2,2}(\delta_0)} \le 2\pi$
 			\end{itemize}
 		\end{column}
@@ -380,8 +382,8 @@ where $G$ is defined through the Fox-H function.
 \end{frame}
 
 	\begin{frame}[t]
-	\frametitle{Wiener Chaos Expansion}	
-	
+	\frametitle{Wiener Chaos Expansion}
+
 	Through a standard procedure, we may define
 	\[
 	f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
@@ -424,7 +426,7 @@ where $G$ is defined through the Fox-H function.
 	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
 	\end{align*}
 
-	
+
 
 
 	\begin{theorem}[{\small Theorem 2.3 X. Chen '07}]
@@ -454,8 +456,8 @@ where $G$ is defined through the Fox-H function.
 \end{frame}
 
 \begin{frame}
-	
-	
+
+
 Recall the scaling property
 	\[
 		 \Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{(4-\alpha)n}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
@@ -464,8 +466,8 @@ Using this scaling property we see that
 	\[
 		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 	\]
- 
-	\begin{lemma}[Lemma 4.1 R.  Balan, L. Chen, X. Chen. '21]
+
+	\begin{lemma}[{\small Lemma 4.1 R.  Balan, L. Chen \& X. Chen '21}]
 
 		\begin{itemize}
 			\item $\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]$
@@ -486,80 +488,85 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 \end{frame}
 
-	\begin{frame}[t]
-	\frametitle{$\mathcal{M}$}
-	We define
-	\begin{align*}
-	\mathcal{M}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
-	& = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
-	\end{align*}
-	where
-	\begin{gather}
-	\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
-	\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
-	\end{gather}
-\end{frame}
+	\begin{frame}[t]% {{{ M
+		\frametitle{$\mathcal{M}$}
+		We define
+		\begin{align*}
+			\mathcal{M}_{a,d}(\gamma,\theta) & := \sup_{g \in \mathcal{F}_a} \left\{ \left( \iint_{\R^{2d}} g^2(x)g^2(y) \gamma(x+y)\ud x\ud y \right)^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\} \\
+																			 & = \sup_{g \in \mathcal{F}_a} \left\{ \left\langle g^2 * g^2, \gamma \right\rangle_{L^2(\R^d)}^{1/2} - \frac{\theta}{2}\: \mathcal{E}_a(g,g) \right\},
+		\end{align*}
+		where
+		\begin{gather*}
+			\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
+			\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
+		\end{gather*}
+	\end{frame}% }}}
 
-	\begin{frame}
+	\begin{frame}% {{{ Connection between rho and M
 	\frametitle{The Connection between $\rho$ and $\mathcal{M}$}
 	Recall that
 	\begin{align*}
 	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x).
 	\end{align*}
 
-	\begin{theorem}[R. Bass, X. Chen and M. Rosen '09]
-		\[
+	\begin{theorem}[{\small Bass, X. Chen and Rosen '09}]
+	\[
 		\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
-		\]
+	\]
 	\end{theorem}
-\end{frame}
+\end{frame}% }}}
 
-
-		\begin{frame}[t]
-	\frametitle{The Moment Asymptotic}
-	\begin{theorem}[Theorem 1.7 Chen and Eisenberg '21+]
-		Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then,
+	\begin{frame}[t]% {{{ Moment asymptotics
+		\frametitle{The Moment Asymptotic}
+		\begin{theorem}[{\small Chen-E. '21+}]
+			Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then,
+			\begin{align*}
+				\lim_{t_p \to \infty} & t_p^{-\beta} \log \Norm{u(t,x)}_p                                          \\
+                              & =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                              & \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+			\end{align*}
+			where
 		\begin{align*}
-		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p
-		\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+			% \label{E:beta-tp}
+			\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
+			t_p   := (p-1)^{1-1/\beta} \: t.
 		\end{align*}
-		where
-		\begin{align}
-		\label{E:beta-tp}
-		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
-		t_p   := (p-1)^{1-1/\beta} \: t.
-		\end{align}
 	\end{theorem}
+\end{frame}% }}}
 
-\end{frame}
-
-	\begin{frame}[t]
-	\frametitle{Exponential Growth of the Moments in Time}
-	\begin{corollary}[Corollary 1.8 Chen and Eisenberg '21+] For $p \ge 2$ fixed, we have that
+	\begin{frame}[t]% {{{ Exponential growth of moments in time
+	% \frametitle{Exponential Growth of the Moments in Time}
+	\frametitle{Exact Moment Lyapunov Exponent \\
+	\small (Recall $\beta := \frac{2(b+r)-\frac{b\alpha}{a}}{ 2(b+r)-\frac{b\alpha}{a} -1}$)}
+	\begin{corollary}[{\small Chen-E. '21+}]
+		For $p \ge 2$ fixed, we have that
 		\begin{align*}
-		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right)
-		\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right)                                                                                 \\
+                        & =  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                        & \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{align*}
 	\end{corollary}
-	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time.
+	\vfill
 
+	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time,
+	and we obtain the exact expression for the constant $K_1$.
+\end{frame}% }}}
 
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Exponential Growth of the moments for Fixed Time}
-	\begin{corollary}[Corollary 1.8 Chen and Eisenberg '21+] For $t>0$ fixed , we have that
+\begin{frame}[t]% {{{ Exact Large Moment Asymptotics
+	% \frametitle{Exponential Growth of the moments for Fixed Time}
+	\frametitle{Exact Large Moment Asymptotics}
+	\begin{corollary}[{\small Chen-E. '21+}] For $t>0$ fixed , we have that
 		\begin{align*}
-		\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right)
-		\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\lim_{p \to \infty} & p^{-\beta} \log \E\left(|u(t,x)|^p\right)                                          \\
+                        & =  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+                        & \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{align*}
 	\end{corollary}
+	\vfill
+
 	From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well.
 
-\end{frame}
+\end{frame}% }}}
 
 \begin{frame}
 	\frametitle{End}
@@ -570,22 +577,29 @@ Thank you for listening!
 
 \begin{frame}
 	\frametitle{References}
+	\small
+
 	\begin{thebibliography}{999}
 		\bibitem{BCC21} % {{{ 1.
 		Balan, R. M., Chen, L., and Chen, X. (2021).
 		\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
 		\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
-		
+
 		\bibitem{BCR09}% {{{ 2.
 		Bass, R., Chen, X., and Rosen, M. (2009).
 		\newblock Large deviations for Riesz potentials of additive processes.
 		\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
 		% }}}
-		
+
 		\bibitem{Chen17AIHP} % {{{ 6.
 		Chen, X. (2017).
 		\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
 		\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
+
+		\bibitem{Chen17AIHP} % {{{ 6.
+		Hu, Y. (2001).
+		\newblock Heat equation with fractional white noise potential.
+		\newblock {\em Appl. Math. Optim.} {\bf 20} 221--243.
 		% }}}
 	\end{thebibliography}
 \end{frame}
