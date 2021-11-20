@@ -69,15 +69,21 @@
 \author[Arthur, Doe] % (optional, for multiple authors)
 {Nicholas Eisenberg}
 
-\institute[VFU] % (optional)
+\pgfdeclareimage[height=1.2cm]{AU}{figs/AU.png}
+\institute[Auburn University]
 {
-	Auburn University
+	\pgfuseimage{AU}\\[3em]
+	\vspace{2em}
 }
 
 \date[VLC 2021] % (optional)
-{AMS Meeting, November 20, 2021}
+{ \small Special Session on \\
+	{\it Stochastic Analysis and Applications}\\[1em]
+	Fall Southeastern Sectional Meeting\\[0.5em]
+	November 20-21, 2021}
 
 \logo{\includegraphics[height=1cm]{overleaf-logo}}
+\thispagestyle{empty}
 
 \begin{document}
 	
@@ -85,7 +91,7 @@
 	\frame{\titlepage}
 	
 	\begin{frame}[t]
-		\frametitle{The Interpolated Stochastic Heat and Wave Equation.}
+		\frametitle{The Interpolated Stochastic Heat and Wave Equation (ISHWE)}
 		
 		\begin{equation*}
 		\begin{cases}
@@ -132,6 +138,52 @@
 \end{frame}
 
 		\begin{frame}[t]
+	\frametitle{The Moment asymptotic}
+	\begin{theorem}
+		Suppose a global solution to the ISHWE exists and $\dot{W}$ is given through the generalized Riesz kernel defined below. Then, 
+		\begin{align*}
+		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
+		\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+		& \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
+		\end{align*}
+		where
+		\begin{align}
+		\label{E:beta-tp}
+		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
+		t_p   := (p-1)^{1-1/\beta} \: t.
+		\end{align}
+	\end{theorem}
+	
+\end{frame}
+
+\begin{frame}[t]																																																							
+	\frametitle{Exponential Growth of the Moments in Time}
+	\begin{theorem} For $p \ge 2$ fixed, we have that
+		\begin{align*}
+		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+		\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\end{align*}
+	\end{theorem}
+	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time. 
+	
+	
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{Exponential Growth of the moments for Fixed Time}
+	\begin{theorem} For $t>0$ fixed , we have that
+		\begin{align*}
+		\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+		\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\end{align*}
+	\end{theorem}
+	From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well. 
+	
+\end{frame}
+
+		\begin{frame}[t]
 		\frametitle{The Noise, $\dot{W}$.}
 		The time independent noise informally satisfies 
 		\[
@@ -147,7 +199,7 @@
 	\end{frame}
 
 \begin{frame}[t]
-	\frametitle{The fundamental solution.}
+	\frametitle{The Fundamental Solution.}
 	\[
 	\begin{cases}
 	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[f(t,x)\right] & \text{$x\in \R^d$, $t>0$}, \\
@@ -207,7 +259,7 @@
 \end{frame}
 
 	\begin{frame}[t]
-	\frametitle{Mild solution}
+	\frametitle{Mild Solution}
 	\begin{definition}
 	For $T > 0$, a random field $u=\{u(t,x): t \in (0,T), x \in \R^d \} $ is called a \textit{mild solution} if $G(t-s,x-\cdot)u(s,\cdot)1_{\{s<t\}}$ is Skorohod integrable and the following holds almost surely:
 	\end{definition}
@@ -217,12 +269,12 @@
 	
 	\begin{itemize}
 		\item \textit{Global Solution:} $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
-		\item \textit{Local Solution:} If there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. for $t> T_b$.
+		\item \textit{Local Solution:} If there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. (does not exist) for $t> T_b$.
 	\end{itemize}
 \end{frame}
 
 	\begin{frame}[t]
-	\frametitle{Wiener Chaos Expansion:}	
+	\frametitle{Wiener Chaos Expansion}	
 Through a standard procedure, we may define
 \[
 f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
@@ -357,7 +409,7 @@ and
 \end{frame} 
 
 \begin{frame}[t]
-	\frametitle{How to find the critical $\alpha$.}
+	\frametitle{How to Find the Critical $\alpha$}
 	\begin{align*}
 	\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \: \overbrace{t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2}^{\Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2} 
 	\\&= \sum_{n \ge 0} \frac{\theta^nt^{(2(b+r)-b\alpha/a)n}}{(n!)^{2(b+r)-(b\alpha/a)-1}} R_n
@@ -376,7 +428,7 @@ and
 	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
 	\end{align*}
 	
-	\begin{theorem}[Theorem 2.3 X. Chen (2007)]
+	\begin{theorem}[X. Chen (2007)]
 		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
 		\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log & \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
@@ -414,7 +466,7 @@ Using this scaling property we see that
 		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 	\]
 The following lemma is also very important. It is how $\rho$ is introduced to the paper. 
-	\begin{theorem}[Lemma 4.1 (R.  Balan, L. Chen, X. Chen.)]
+	\begin{theorem}[R.  Balan, L. Chen, X. Chen. (2021)]
 		\begin{itemize}
 			\item $\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]$
 			\item $\lim_{n \to \infty}\frac{1}{n} \log\left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]$
@@ -458,7 +510,7 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 	\[
 		\lim_{n \to \infty} \frac{1}{n} \log  \left[ \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi)\right|^2 \mu (\ud \vec{\xi})\right]  = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
 	\]
-	\begin{theorem}[X. Chen (2007)]
+	\begin{theorem}[R. Bass, X. Chen and M. Rosen (2009)]
 		When $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is the generalized Riesz kernel introduced above then, 
 		\[
 		\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
@@ -466,57 +518,33 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 	\end{theorem}
 \end{frame}
 
-		\begin{frame}[t]
-	\frametitle{The moment asymptotic}
-	\begin{theorem}
-		Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then, 
-		\begin{align*}
-		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p 
-		\\& =  \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \quad  \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right),
-		\end{align*}
-		where
-		\begin{align}
-		\label{E:beta-tp}
-		\beta := \dfrac{2(b+r)-\dfrac{b\alpha}{a}}{ 2(b+r)-\dfrac{b\alpha}{a} -1 } \qquad \text{and} \qquad
-		t_p   := (p-1)^{1-1/\beta} \: t.
-		\end{align}
-	\end{theorem}
-	
-\end{frame}
-
-	\begin{frame}[t]																																																							
-	\frametitle{Exponential Growth of the Moments in Time}
-	\begin{theorem} For $p \ge 2$ fixed, we have that
-		\begin{align*}
-		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
-		\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-		\end{align*}
-	\end{theorem}
-	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time. 
-	
-	
-\end{frame}
-
-\begin{frame}[t]
-	\frametitle{Exponential Growth of the moments for Fixed Time}
-	\begin{theorem} For $t>0$ fixed , we have that
-		\begin{align*}
-		\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right) 
-		\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
-		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
-		\end{align*}
-	\end{theorem}
-	From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well. 
-	
-\end{frame}
-
 \begin{frame}
 	\frametitle{End}
 \begin{center}
 Thank you for listening!
 \end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{References}
+	\begin{thebibliography}{999}
+		\bibitem{BCC21} % {{{ 1.
+		Balan, R. M., Chen, L., and Chen, X. (2021).
+		\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
+		\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
+		
+		\bibitem{BCR09}% {{{ 2.
+		Bass, R., Chen, X., and Rosen, M. (2009).
+		\newblock Large deviations for Riesz potentials of additive processes.
+		\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
+		% }}}
+		
+		\bibitem{Chen17AIHP} % {{{ 6.
+		Chen, X. (2017).
+		\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
+		\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
+		% }}}
+	\end{thebibliography}
 \end{frame}
 
 \begin{frame}[t]
