@@ -251,7 +251,7 @@ where $G$ is defined through the Fox-H function.
 		$u(t,x)$ is a \textit{global solution} to the ISHWE if $\Norm{u(t,x)}_p < \infty$ for any $t>0$ and $x \in \R^d$.
 	\end{definition}
 	$\;$ \\
-	\begin{theorem}
+	\begin{theorem}[Theorem 1.6 Chen and Eisenberg '21+]
 		A global solution exists provided $G$ is nonnegative and 
 		\[
 		0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
@@ -265,7 +265,7 @@ where $G$ is defined through the Fox-H function.
 		$u(t,x)$ is a \textit{local solution} to the ISHWE if there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. (does not exist) for $t> T_b$.
 	\end{definition}
 	$\;$ \\
-	\begin{theorem}
+	\begin{theorem}[Theorem 1.6 Chen and Eisenberg '21+]
 		A local solution exists provided $G$ is nonnegative and 
 	if
 	\[
@@ -387,13 +387,20 @@ where $G$ is defined through the Fox-H function.
 	f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
 	\]
 	where $t=t_{n+1}$ and $x=x_{n+1}$, and say that
-	\[
-	u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d
-	\]
-	and
-	\[
-	\mathbb{E}(u(t,x)^2) = \sum_{k=0}^\infty \theta^{k} \Norm{f_k(\cdot,x,t)}^2_{\mathcal{H}^{\otimes n}}, \quad (t,x)\in (0,T)\times \R^d.
-	\]
+	\vspace{1em}
+	\begin{enumerate}
+	\setlength\itemsep{.8em}
+	\item $u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d$
+
+	\item $\mathbb{E}(u(t,x)^2) = \sum_{k=0}^\infty \theta^{k} \Norm{f_k(\cdot,x,t)}^2_{\mathcal{H}^{\otimes n}}, \quad (t,x)\in (0,T)\times \R^d$.
+	\end{enumerate}
+\vspace{1em}
+	Through a change of variable, one can easily show that
+	\vspace{1em}
+	\begin{enumerate}
+	\item $\mathcal{F}G(t,\cdot)(c\xi) = c^{-\frac{a}{b}(b+r -1)}\mathcal{F}G\left(c^{\frac{a}{b}}t,\cdot\right)( \xi)$
+	 \item $\Norm{\widetilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{[2(b + r ) -b \alpha / a]n} \Norm{\widetilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2$
+	\end{enumerate}
 \end{frame}
 
 \begin{frame}[t]
@@ -401,11 +408,11 @@ where $G$ is defined through the Fox-H function.
 	For simplicity we consider the SWE ($a=b=2$ and $r=0$).
 	\begin{align*}
 	\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \: \overbrace{t^{[4 - \alpha ]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2}^{\Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2}
-	\\&= \sum_{n \ge 0} \frac{\theta^nt^{(4-\alpha)n}}{(n!)^{3-\alpha}} R_n
+	\\&= \sum_{n \ge 0} \frac{\theta^nt^{(4-\alpha)n}}{(n!)^{3-\alpha}} R_n, \quad R_n = (n!)^{4-\alpha}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2
 	\end{align*}
-	and $R_n = (n!)^{4-\alpha}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2$. When $\alpha = 3$, then the above reduces down to
+	When $\alpha = 3$, then the above reduces down to
 	\[
-	\Norm{u(t,x)}_2^2 =  \sum_{n \ge 0} (\theta t)^n n! \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2
+	\Norm{u(t,x)}_2^2 =  \sum_{n \ge 0} (\theta t)^n n! \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2.
 	\]
 	and we lose the $n!$ term in the demonstrator.
 \end{frame}
@@ -449,7 +456,7 @@ where $G$ is defined through the Fox-H function.
 \begin{frame}
 	
 	
-The following scaling property can be easily derived by a change a variables.
+Recall the scaling property
 	\[
 		 \Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{(4-\alpha)n}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 	\]
@@ -497,12 +504,8 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 	\frametitle{The Connection between $\rho$ and $\mathcal{M}$}
 	Recall that
 	\begin{align*}
-	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x)
+	\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x).
 	\end{align*}
-	and
-	\[
-		\lim_{n \to \infty} \frac{1}{n} \log  \left[ \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi)\right|^2 \mu (\ud \vec{\xi})\right]  = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
-	\]
 
 	\begin{theorem}[R. Bass, X. Chen and M. Rosen '09]
 		\[
@@ -513,8 +516,8 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 
 		\begin{frame}[t]
-	\frametitle{The moment asymptotic}
-	\begin{theorem}
+	\frametitle{The Moment Asymptotic}
+	\begin{theorem}[Theorem 1.7 Chen and Eisenberg '21+]
 		Suppose a global solution to the SPDE in question exists and $\dot{W}$ is given through the generalized Riesz kernel defined above. Then,
 		\begin{align*}
 		\lim_{t_p \to \infty} &  t_p^{-\beta} \log \Norm{u(t,x)}_p
@@ -533,13 +536,13 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 	\begin{frame}[t]
 	\frametitle{Exponential Growth of the Moments in Time}
-	\begin{theorem} For $p \ge 2$ fixed, we have that
+	\begin{corollary}[Corollary 1.8 Chen and Eisenberg '21+] For $p \ge 2$ fixed, we have that
 		\begin{align*}
 		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right)
 		\\&=  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
 		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{align*}
-	\end{theorem}
+	\end{corollary}
 	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time.
 
 
@@ -547,13 +550,13 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 \begin{frame}[t]
 	\frametitle{Exponential Growth of the moments for Fixed Time}
-	\begin{theorem} For $t>0$ fixed , we have that
+	\begin{corollary}[Corollary 1.8 Chen and Eisenberg '21+] For $t>0$ fixed , we have that
 		\begin{align*}
 		\lim_{p \to \infty} &  p^{-\beta} \log \E\left(|u(t,x)|^p\right)
 		\\ &=  t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
 		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
 		\end{align*}
-	\end{theorem}
+	\end{corollary}
 	From this we can deduce that $p \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_2 p^\beta }\right)$, in other words, the moments will grow exponentially in $p$ as well.
 
 \end{frame}
