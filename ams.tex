@@ -76,15 +76,16 @@
 \pgfdeclareimage[height=1.2cm]{AU}{figs/AU.png}
 \institute[Auburn University]
 {
-\pgfuseimage{AU}\\[3em]
- \vspace{2em}
+\pgfuseimage{AU}\\[1em]
+ \vspace{.1em}
 }
 
 \date[VLC 2021] % (optional)
 { \small Special Session on \\
 	{\it Stochastic Analysis and Applications}\\[1em]
 	Fall Southeastern Sectional Meeting\\[0.5em]
-	November 20-21, 2021}
+	November 20-21, 2021\\[1em]
+(Chen-E. - arXiv:2108.11473)}
 
 \logo{\includegraphics[height=1cm]{overleaf-logo}}
 \thispagestyle{empty}
@@ -429,7 +430,7 @@ where $G$ is defined through the Fox-H function.
 
 
 
-	\begin{theorem}[{\small Theorem 2.3 X. Chen '07}]
+	\begin{theorem}[{\small X. Chen '07}]
 		\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log & \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
 		\\& = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
@@ -467,12 +468,12 @@ Using this scaling property we see that
 		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
 	\]
 
-	\begin{lemma}[{\small Lemma 4.1 R.  Balan, L. Chen \& X. Chen '21}]
+	\begin{lemma}[{\small R.  Balan, L. Chen \& X. Chen '21}]
 
-		\begin{itemize}
-			\item $\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]$
-			\item $\lim_{n \to \infty}\frac{1}{n} \log\left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]$
-		\end{itemize}
+		\begin{align*}
+			\lim_{n \to \infty}\frac{1}{n} \log & \left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]
+			\\ \\ \lim_{n \to \infty}\frac{1}{n} \log & \left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]
+		\end{align*}
 	\end{lemma}
 \end{frame}
 
@@ -554,7 +555,8 @@ The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cau
 
 \begin{frame}[t]% {{{ Exact Large Moment Asymptotics
 	% \frametitle{Exponential Growth of the moments for Fixed Time}
-	\frametitle{Exact Large Moment Asymptotics}
+	\frametitle{Exact Large Moment Asymptotics \\
+		\small (Recall $\beta := \frac{2(b+r)-\frac{b\alpha}{a}}{ 2(b+r)-\frac{b\alpha}{a} -1}$)}
 	\begin{corollary}[{\small Chen-E. '21+}] For $t>0$ fixed , we have that
 		\begin{align*}
 		\lim_{p \to \infty} & p^{-\beta} \log \E\left(|u(t,x)|^p\right)                                          \\
@@ -591,12 +593,25 @@ Thank you for listening!
 		\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
 		% }}}
 
+		\bibitem{BCC21} % {{{ 1.
+		Chen, L. and Eisenberg, N. (2021+).
+		\newblock Interpolating the Stochastic Heat and Wave Equations\\ with Time-independent Noise:Solvability and Exact Asymptotics
+		\newblock {\em  arXiv:2108.11473}, submitted.
+
 		\bibitem{Chen17AIHP} % {{{ 6.
 		Chen, X. (2017).
 		\newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
 		\newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
 
-		\bibitem{Chen17AIHP} % {{{ 6.
+	\end{thebibliography}
+\end{frame}
+
+\begin{frame}[t]
+	\frametitle{References}
+	\small
+	
+	\begin{thebibliography}{999}
+		\bibitem{Hu01Heat} % {{{ 6.
 		Hu, Y. (2001).
 		\newblock Heat equation with fractional white noise potential.
 		\newblock {\em Appl. Math. Optim.} {\bf 20} 221--243.
