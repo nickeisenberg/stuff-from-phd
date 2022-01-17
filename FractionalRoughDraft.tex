@@ -171,11 +171,11 @@ Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gma
 \begin{abstract}
 	\noindent In this article, we study a class of stochastic partial differential equations with
 	fractional differential operators subject to some time-independent multiplicative Gaussian noise.
-	We derive sharp conditions, under which a unique global $L^p(\Omega)$-solution exits for all $p\ge
-	2$. In this case, we derive exact moment asymptotics following the same strategy in a recent work
-	by Balan {\it et al} \cite{BCC21}. In the case when there exits only a local solution, we
+	We derive sharp conditions, under which a unique global $L^p(\Omega)$-solution exists for all $p\ge
+	2$. In this case, we derive exact moment asymptotics following the same strategy presented in a recent work
+	by Balan {\it et al} \cite{BCC21}. In the case when there exists only a local solution, we
 	determine the precise deterministic time, $T_2$, before which a unique $L^2(\Omega)$-solution
-	exits, but after which the series corresponding to the $L^2(\Omega)$ moment of the solution blows
+	exists, but after which the series corresponding to the $L^2(\Omega)$ moment of the solution blows
 	up. By properly choosing the parameters, results in this paper interpolate the known results for
 	both stochastic heat and wave equations.  \end{abstract}
 
@@ -222,7 +222,7 @@ $\partial^b_t$ denotes the {\it Caputo fractional differential operator}
 \begin{align*}
 	\partial^b_tf(t) :=
 	\begin{cases}
-		\dfrac{1}{\Gamma(m-b)} \int_0^t \ud \tau \dfrac{f^{m}(\tau)}{(t-\tau)^{b+1-m}} & \text{if } m-1 < b < m, \bigskip \\
+		\dfrac{1}{\Gamma(m-b)} \int_0^t \ud \tau \dfrac{f^{(m)}(\tau)}{(t-\tau)^{b+1-m}} & \text{if } m-1 < b < m, \bigskip \\
 		\dfrac{\ud^m}{\ud t^m}f(t)                                                     & \text{if } b=m,
 	\end{cases}
 \end{align*}
@@ -230,14 +230,14 @@ where $m$ is an integer, and $I^r_t$ refers to the {\it Riemann-Liouville fracti
 \begin{align*}
 	I^r_tf(t) := \frac{1}{\Gamma(r)} \int_0^t (t-s)^{r-1}f(s)\ud s, \quad \text{for } t>0,
 \end{align*}
-with the convention that when $r=0$, $I^0_t = \text{Id}$ reduces to the identity operator. The
-fundamental solutions to \eqref{E:SPDE} consist of a triplet:
-\begin{align*}
-	\left\{ Z_{a,b,r,\nu,d}(t,x),\:  Z^*_{a,b,r,\nu,d}(t,x), \: Y_{a,b,r,\nu,d}(t,x) : t >0, x \in \R^d \right\}.
-\end{align*}
-Each member of the triplet can be expressed explicitly in terms of the {\it Fox H-function} which is
-much more complicated than the fundamental function for either the heat or wave equation; See
-Theorem 4.1 of \cite{CHN19}. Since we are interested in the constant one initial condition (and zero
+with the convention that when $r=0$, $I^0_t = \text{Id}$ reduces to the identity operator. The fundamental solution to \eqref{E:SPDE} is expressed explicitly in terms of the {\it Fox H-function} which is
+much more complicated than the fundamental function for either the heat or wave equation. We denote the fundamental solution as 
+\begin{equation}
+\label{E:GreenFunction}
+G(t,x):= G_{a,b,r,\nu,d}(t,x)
+\end{equation}
+We direct the reader to
+Theorem 4.1\footnote{$G(t,x)$ corresponds to $Y_{a,b,r,\nu,d}(t,x)$ from \cite{CHN19}.} of \cite{CHN19} for more details. Since we are interested in the constant one initial condition (and zero
 initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the corresponding solution to
 the homogeneous equation (i.e. the solution when there is no driving source) is equal to the
 constant one. Hence, by setting $G(t,x) := Y_{a,b,r,\nu,d}(t,x)$, \eqref{E:SPDE} can be written as
@@ -379,7 +379,7 @@ The moment asymptotics obtained by X. Chen, such as those in \cite{Chen17AIHP,Ch
 crucially on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
 1$, especially for the case when $b\in(1,2)$, we are not aware of any such Feynman-Kac formula for
 the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this difficulty has been
-overcome by studying the Weiner chaos expansion of the solution. In this paper, we follow the same
+overcome by studying the Wiener chaos expansion of the solution. In this paper, we follow the same
 strategy laid out by Balan {\it et al} ({\it ibid.}). The challenge comes from the much more
 involved parametric form of the fundamental solution.  \bigskip
 
@@ -414,7 +414,7 @@ $\gamma$ is defined in \eqref{E:corfunction}.
 	\end{align}
 	then \eqref{E:SPDE} has a local solution in the sense that
 	\begin{enumerate}
-		\item[(2-i)] For any $p\ge 2$,\eqref{E:SPDE} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
+		\item[(2-i)] For any $p\ge 2$, \eqref{E:SPDE} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
 			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
 			\begin{align}
 				\label{E:Tp}
@@ -517,7 +517,7 @@ established in Sections \ref{S:upperbd} and \ref{S:lowerbd}, respectively. Final
 \section{Examples on solvability and asymptotics}
 \label{S:SolvEx}
 
-In this section, we will give various examples to our main results. The cases with $b=1$ and $r=0$
+In this section, we will give various examples to illustrate our main results. The cases with $b=1$ and $r=0$
 are mostly known, which will be pointed out in the example below and will be used as test examples
 for our results. To the best of our knowledge, all results in this paper for either $b\ne 1,2$ or
 $r>0$ should be new.
@@ -528,8 +528,8 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 
 \begin{example}[SHE]% {{{
 	\label{Eg:CriSHE}
-	By setting $a=2$, $b=1$ and $r=0$ in \eqref{E:critical}, we obtain the following condition for SHE
-	under which there only exits a local solution:
+	By setting $a=2$, $b=1$ and $r=0$ in \eqref{E:critical}, we obtain the following condition for the SHE
+	under which there only exists a local solution:
 	\begin{align}
 		\label{E:CrSHE}
 		\alpha = 2 \le d .
@@ -553,9 +553,9 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 			\end{align*}
 			This case is covered as a special time-independent case (i.e., $H_0=1$) by Chen {\it et al} \cite[Theorem 3.4
 			and Remark 3.13]{CDOT20}.
-		\item When $d\ge 3$, SHE driven by white noise no longer has any $L^2(\Omega)$-solution. Local
-			solutions exist only when $\alpha=2$ and the noise is not white. The critical time $T_p$ takes
-			the same expression as \eqref{E:Tp-SHE2} but one needs to replace $\delta_0$ by $\gamma$.
+		\item Recall that a white noise driven SHE corresponds to when $\alpha=d$. Therefore by examining \eqref{E:alpha} and \eqref{E:critical}, we see that when $d\ge 3$, the SHE driven by white noise no longer has any $L^2(\Omega)$-solution and that local
+		solutions exist only when $\alpha=2$ and the noise is not white. This is illustrated in Figure \ref{F:SHE} below. In addition, the critical time $T_p$ takes
+		the same expression as \eqref{E:Tp-SHE2} but one needs to replace $\delta_0$ by $\gamma$.
 	\end{enumerate}
 \end{example}% }}}
 
@@ -563,14 +563,14 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\label{R:Hairer}
 	Note that we use the Skorohod integral to interpret the multiplication of the solution with the
 	noise in \eqref{E:SPDE}. Multiplication interpreted in this way is traditionally called the {\it
-	Wick product} which is consistent to the {\it It\^o} or {\it Walsh} integral (see, e.g.,
+	Wick product} which is consistent with the {\it It\^o} or {\it Walsh} integral (see, e.g.,
 	\cite{Minicourse09}) when the noise is white in time. One can also interpret this product as the
 	usual product. In order to handle the singularities caused by this multiplication, one needs to
 	carry out certain renormalization processes. In fact, for the standard SHE with white noise in
 	$\R^d$ (i.e., $a=2$, $b=1$, $\alpha=d$ and $r=0$), Hairer and Labb\'e constructed pathwise
 	solutions using the regularity structure for both cases $d=2,3$ in \cite{HairerLabbe15SHE2} and
 	\cite{HairerLabbe18SHE3}, respectively. The relation between these two types of solution is left
-	for the future work.
+	for future work.
 \end{remark}% }}}
 
 \begin{figure}[htpb]% {{{ F:SHE
@@ -617,19 +617,19 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 \begin{example}[SWE]% {{{
 	\label{Eg:CriSWE}
 	By setting $a=2$ and formally setting $b=2$ in \eqref{E:critical}, we obtain the following
-	condition for the stochastic wave equation under which there only exits a local solution:
+	condition for the stochastic wave equation under which there only exists a local solution:
 	\begin{align}
 		\label{E:CrSWE}
 		\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
 	\end{align}
-	First of all, results in Balan {\it et al} \cite{BCC21} require $d\le 3$. On the other hand,
-	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
-	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
-	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
+We recall that results in Balan {\it et al} \cite{BCC21} require $d\le 3$, and likewise,
+Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
+fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
+(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
 	\begin{align*}
 		\alpha=3=d \quad \text{and} \quad r=0,
 	\end{align*}
-	which says that at dimension $d=3$, when $\W$ is a white noise, there exits only a local
+	which says that at dimension $d=3$, when $\W$ is a white noise, there exists only a local
 	$L^p(\Omega)$ solution for all $p\ge 2$. See Figure \ref{F:SWE} for an illustration. Moreover, one
 	can check easily that the expression for the critical time $T_p$ in \eqref{E:Tp} in this case
 	reduces to
@@ -1014,9 +1014,9 @@ interested readers.
 	\label{F:FracSHE0}
 \end{figure}% }}}
 
-\begin{example}[SHE with fractional Laplace]% {{{
+\begin{example}[SHE with fractional Laplacian]% {{{
 	\label{Eg:StableSHE}
-	The stochastic heat equation with fractional Laplace (i.e., the case when $b=1$,  $r=0$ and  $a\in
+	The stochastic heat equation with fractional Laplacian (i.e., the case when $b=1$,  $r=0$ and  $a\in
 	(0,2]$) has been widely studied in the literature, but possibly with different noises. In this
 	case, the fundamental solutions are transition densities for the alpha-stable jump processes,
 	which are necessarily to be nonnegative. This is also consistent with the sufficient conditions
@@ -1026,13 +1026,7 @@ interested readers.
 		\alpha = a \le d
 	\end{align*}
 	The solvability for this case is illustrated in Figure \ref{F:Stable}. In particular, when
-	$\alpha=a=d=2$, there is only a local solution under white noise. In this case, using \eqref{E:Tp}
-	and \eqref{E:Mdelta1d}, we see that
-	\begin{align}
-		\label{E:StableSHE-Tp}
-		% T_p = \frac{2^{4/3}\nu}{3^{2/3}\theta (p-1)}, \qquad \text{for $p\ge 2$}.
-		T_p = \frac{\nu}{2\theta (p-1)\mathcal{M}_{2,2}(\delta_0)}, \qquad \text{for $p\ge 2$}.
-	\end{align}
+	$\alpha=a=d=2$, there is only a local solution under white noise. 
 \end{example}% }}}
 
 \begin{figure}[htpb]% {{{ F:Stable
@@ -1261,7 +1255,7 @@ results for both stochastic wave and heat equations.
 	\end{equation}
 	where the variational constant is given by
 	\begin{align*}
-		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
+		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
 		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
 	\end{align*}
 	with\footnote{Note that the Fourier transform is defined differently in \cite{CHSS18}.}
@@ -1283,7 +1277,7 @@ results for both stochastic wave and heat equations.
 \begin{example}[Asymptotics for SPDEs with $r=\Ceil{b}-b$ and white noise]% {{{
 	\label{Eg:AsymFracSHE}
 	In this example, we consider the case when $a=2$, $d=\alpha=1$ (white noise), and $r=\Ceil{b}-b$.
-	As seen in Example \ref{Eg:FracSHE}, there exits a global solution. In this case,
+	As seen in Example \ref{Eg:FracSHE}, there exists a global solution. In this case,
 	\begin{align*}
 		\beta = \frac{4\Ceil{b}-b}{4\Ceil{b}-b-2} \qquad \text{and} \qquad
 		t_p   = (p-1)^{\frac{2}{4\Ceil{b}-b}}\: t,
@@ -1308,7 +1302,7 @@ results for both stochastic wave and heat equations.
 
 \begin{example}[Asymptotics for SPDEs with $r=0$ and white noise]% {{{
 	\label{Eg:AymsFracSHE0}
-	From Example \ref{Eg:AymsFracSHE0}, we see that when $a=2$, $r=0$, $d=\alpha=1$ (white noise), the
+	From \eqref{E:alpha}, we see that when $a=2$, $r=0$, $d=\alpha=1$ (white noise), the
 	global solution exists when  $b\in (2 /3, 2)$. In this case, we have that
 	\begin{align*}
 		\beta = \frac{3b}{3b-2} \qquad \text{and} \qquad
@@ -1367,7 +1361,7 @@ references therein.  \bigskip
 We denote $\delta$ the {\it Skorohod integral} with respect to $W$ and denote its domain by
 $\text{Dom}(\delta)$. $u$ is called {\it Skorohod integrable} if $u\in \text{Dom}(\delta)$, in which
 case we write $\delta(u) = \int_{\R^d} u(x) W(\delta x)$ and by isometry,
-$\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
+$\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$. For a complete treatment of the Skorohod integral, see Nualart {\it et al} \cite{Nualart18Book}.
 
 \begin{definition}[Mild, local and global solutions]
 	\label{D:Sol}
@@ -1389,7 +1383,7 @@ $\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$.
 	\end{align}
 
 	\noindent (3) If there exist $0<T_1\le T_2<\infty$ such that $\Norm{u(t,x)}_p$ is finite for all
-	$t\in(0,T_1)$ and $x\in\R^d$, but $\Norm{u(t,x)}_p$ does not exist whenever $t>T_2$, the mild
+	$t\in(0,T_1)$ and $x\in\R^d$, but $\Norm{u(t,x)}_p$ diverges to infinity whenever $t>T_2$, the mild
 	solution $u(t,x)$ in this case is called a {\it local $L^p(\Omega)$-solution}.
 \end{definition}
 
@@ -1406,7 +1400,7 @@ be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \c
 % \end{definition}
 
 Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
-{\it Weiner chaos expansion}:
+{\it Wiener chaos expansion}:
 \begin{equation}
 	\label{E:solwexp}
 	u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
@@ -1443,7 +1437,7 @@ By setting $t_{n+1}=t$, the Fourier transform of the kernels, $f_n$, is given by
 \end{align}
 
 Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following scaling properties for both $\mathcal{F}G(t,\cdot)(\xi)$ and
-$\Norm{\widetilde{f_n}(\cdot,t,x)}_{\mathcal{H}^{\otimes n}}$ play an important role in the paper.
+$\Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}$ play an important role in the paper.
 
 \begin{lemma}
 	\label{L:Scale}
@@ -1467,12 +1461,12 @@ $\Norm{\widetilde{f_n}(\cdot,t,x)}_{\mathcal{H}^{\otimes n}}$ play an important 
 \end{proof}
 
 Finally, let us recall the following standard result about the existence and uniqueness of the
-solution to \eqref{E:SPDE} (or \eqref{E:IntEq}) when it can be written as the Weiner chaos expansion
+solution to \eqref{E:SPDE} (or \eqref{E:IntEq}) when it can be written as the Wiener chaos expansion
 \eqref{E:solwexp}.
 
 \begin{theorem}\label{T:2momseries}
 	Fix any $T \in (0,\infty]$. Suppose that $f_n(\cdot,x,t) \in \mathcal{H}^{\otimes n}$ for any $t
-	\in (0,T)$, $x \in R^d$ and $n \ge 1$. Then \eqref{E:SPDE} (or \eqref{E:IntEq}) has a unique
+	\in (0,T)$, $x \in \R^d$ and $n \ge 1$. Then \eqref{E:SPDE} (or \eqref{E:IntEq}) has a unique
 	$L^2(\Omega)$-solution on $(0,T) \times \R^d$ if and only if the series \eqref{E:solwexp}
 	converges in $L^2(\Omega)$ for any $(t,x) \in (0,T) \times \R^d$, which is equivalent to the
 	convergence of the series \eqref{E:2mom}. In this case, the solution is given by \eqref{E:solwexp}
@@ -1518,7 +1512,7 @@ By a similar argument as the proof of \cite[Lemma 2.3]{BCC21}, one can show that
 \end{equation}
 
 For the Riesz kernel case (see Example \ref{Eg:NoiseEg}), Bass, Chen and Rosen \cite{BCR09}
-established that when $a \in (0,2]$ and $\nu = 2$,
+established that when $a \in (0,2]$, $\nu = 2$ and $\alpha < \min\{2a,d\}$,
 \begin{equation}
 	\label{E:oldlim}
 	\lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
