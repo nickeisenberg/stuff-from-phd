@@ -409,7 +409,7 @@ $\gamma$ is defined in \eqref{E:corfunction}.
 	\noindent (2) Otherwise, if
 	\begin{align}
 		\label{E:critical}
-		r\in \left[0,1/2\right] \qquad \text{and} \qquad
+		r\in \left[0,1/2\right) \qquad \text{and} \qquad
 		0<\alpha = \frac{a}{b}[2(b+r)-1] \le d,
 	\end{align}
 	then \eqref{E:SPDE} has a local solution in the sense that
@@ -1966,7 +1966,7 @@ Equations \eqref{E:Meqquality1}, \eqref{E:Eequality1} and \eqref{E:EandMrelation
 \section{Existence and uniqueness of the solution}
 \label{S:solvable}
 
-In this section, we will prove Theorem \ref{T:solvable}. The proof will need the following lemma:
+In this section, we will prove the first part of Theorem \ref{T:solvable}. The proof will need the following lemma:
 
 \begin{lemma}[Lemma 3.5 of \cite{BCC21}]
 	\label{L:doubleExp}
@@ -2007,14 +2007,14 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	Hence, from \eqref{E:LandFL},
 	\begin{equation}
 		\label{E:FLfn}
-		\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_j \right|^a}.
+		\mathcal{F}L_n(\vec{\xi}) = \sum_{\sigma \in \Sigma_n} \prod_{k=1}^{n} \dfrac{1}{1+ \frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}.
 	\end{equation}
-	Moreover, define
-	\begin{align*}
-		H_n(t, \vec{x}) & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y} \\
-										& = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s}.
-	\end{align*}
-	Under the nonnegativity assumption  --- Assumption \ref{A:Nonnegative}, we see that for any $\vec{x}
+	Moreover, define 
+	\begin{align}
+		H_n(t, \vec{x}) & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y} \nonumber\\
+										& = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k) 	\prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \label{E:H}
+	\end{align}
+	where $K$ is defined in \eqref{E:K}. Under the nonnegativity assumption  --- Assumption \ref{A:Nonnegative}, we see that for any $\vec{x}
 	\in\R^{nd}$ fixed, the function $t\to H_n\left(t,\vec{x} \right)$ is a non-decreasing function for
 	$t\ge 0$. For this function, we are about to apply Lemma \ref{L:doubleExp}.
 
@@ -2030,9 +2030,13 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\begin{equation}
 		\label{E:Hneq1}
 		\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x}
-		= \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi});
+		= \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi})
 	\end{equation}
-	one may check the proof of Lemma 3.3 of \cite{BCC21} for more details.
+	where
+	\[
+		\mu(\ud \vec{\xi}) = \prod_{j=1}^n \mu(\ud \xi_j).
+	\]
+	One may check the proof of Lemma 3.3 of \cite{BCC21} for more details.
 
 	{\bigskip\bf\noindent Step 2.~} Now we compute the corresponding part to the left-hand side of
 	\eqref{E:doubleExp}.  First, using the fact that $K*K=\gamma$, we see that
@@ -2076,10 +2080,9 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 		\label{E:muassumption}
 		T_n(\nu, a) \le (n!)^2 C_\mu^n(\nu, a)
 		\qquad \text{with} \quad
-		C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi)
-		< \infty.
+		C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) =  C \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho<\infty.
 	\end{equation}
-	Here, the finiteness of $C_\mu(\nu,a)$ entails one part of the conditions in \eqref{E:alpha}:
+	Therefore, the finiteness of $C_\mu(\nu,a)$ will require $\alpha < 2a$ which is included in \eqref{E:alpha}:
 	\begin{align}
 		\label{E:alpha2}
 		\int_{(\R^d)} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
@@ -2090,7 +2093,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	Combining \eqref{E:fTn} and \eqref{E:muassumption} gives that
 	\begin{align}
 		\label{E:LNfnineq}
-		\int_0^\infty e^{-t} \Norm{\widetilde{f_n}(\cdot,0;t)}_{ \mathcal{H}^{ \otimes n } }^n \ud t
+		\int_0^\infty e^{-t} \Norm{\widetilde{f_n}(\cdot,0;t)}_{ \mathcal{H}^{ \otimes n } }^2 \ud t
 		\le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} C_\mu^n(\nu,a).
 	\end{align}
 
@@ -2114,14 +2117,16 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     & = \dfrac{1}{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }  \int_0^\infty e^{-t} \Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2 \ud t \\
 		% & \le \dfrac{ 2^{n \left[ 2(b+r)- \frac{b \alpha}{a} \right]} }{ \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) } T_n                                        \\
     & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{\Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }
-		\le C \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu,a) \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a }},
+		\le C^n \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu,a) \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a }},
 	\end{align*}
-	where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$.  Therefore, by
+	where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$ and is due to Stirling's formula (see \eqref{E:Stirling} below and also the proof of Theorem 3.1 \cite{BCC21}).  
+	
+	Because of the constant $1$ initial condition, $\Norm{u(t,x)}_2 =\Norm{u(t,0)}_2$ for $x \in \R^d$. Therefore, by
 	\eqref{E:2mom}, \eqref{E:normscale}, and the above inequality,
 	\begin{align}
 		\nonumber
 		\Norm{u(t,x)}_2^2 & = \sum_{n \ge 0} \theta^n n! \: t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \\
-                      & \le  C \sum_{n \ge 0} \theta^n  t^{[2(b + r ) -b \alpha / a]n} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
+                      & \le   \sum_{n \ge 0} \theta^n C^n  t^{[2(b + r ) -b \alpha / a]n} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
 		\label{E:2nomBd}
 	\end{align}
 	which is finite provided that (see \eqref{E:alpha})
@@ -2130,11 +2135,11 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 		2(b+r) - 1 - b\alpha/a > 0.
 	\end{equation}
 	Finally, an application of the Minkowski inequality and the hypercontractivity (see \cite[Theorem
-	B.1]{BCC21} or \cite{Le16} for the case of SHE) shows that for all $p\ge 2$,
+	B.1]{BCC21} or \cite{Le16} for the case of the SHE) shows that for all $p\ge 2$,
 	\begin{align}
 		\nonumber
 		\Norm{u(t,x)}_p & \le \sum_{n\ge 0} \theta^{n/2} (p-1)^{n/2} \sqrt{n!} \Norm{\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} } \\
-                    & \le  \sqrt{C} \sum_{n \ge 0} \theta^{n/2} (p-1)^{n/2}  t^{[2(b + r ) -b \alpha /a]n/2} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^{n/2} }{ (n!)^{\frac{1}{2}\left[ 2(b+r) - 1 - b\alpha/a \right]}}.
+                    & \le   \sum_{n \ge 0} \theta^{n/2} C^{n/2} (p-1)^{n/2}  t^{[2(b + r ) -b \alpha /a]n/2} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^{n/2} }{ (n!)^{\frac{1}{2}\left[ 2(b+r) - 1 - b\alpha/a \right]}} < \infty.
 		\label{E:pmomBd}
 	\end{align}
 	Therefore, under condition \eqref{E:alpha}, \eqref{E:SPDE} has an unique $L^p(\Omega)$-solution
@@ -2171,7 +2176,7 @@ which is a direct consequence of Stirling's formula.
 
 \begin{lemma}
 	\label{L:2ineq}
-	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. \\
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Recall $\rho$ which is defined in \eqref{E:rho}.\\
 	Under condition \eqref{E:alpha},
 	\begin{align}
 		\label{E:2ineq-a}
@@ -2214,9 +2219,9 @@ which is a direct consequence of Stirling's formula.
 	independent exponential random variables with mean one. In the following, we will compute
 	$\mathbb{E}[J_n(\tau,\widetilde{\tau})]$ in two ways, where
 	\begin{align*}
-		J_n(t,t') := \int_{\R^{nd}} H_n(t,x)H_n(t',x) \ud x, \qquad t,t'>0.
+		J_n(t,t') := \int_{\R^{nd}} H_n(t,x)H_n(t',x) \ud x, \qquad t,t'>0
 	\end{align*}
-	Notice that using the above notation, \eqref{E:inteq1} can be rewritten as
+	and $H$ is defined in \eqref{E:H}. Notice that using the above notation, \eqref{E:inteq1} can be rewritten as
 	\begin{align*}
 		\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2} \int_{(\R^{d})^n} H_n(t,\vec{x})^2\ud \vec{x} = \frac{1}{(n!)^2} J_n(t,t).
 	\end{align*}
@@ -2230,7 +2235,7 @@ which is a direct consequence of Stirling's formula.
 	\begin{align*}
 		\mathbb{E}[J_n(\tau,\widetilde{\tau})] & \le \mathbb{E}\left[  {\tau}^{[2(b + r ) -b \alpha / a]n/2} \right] \mathbb{E}\left[  {\widetilde{\tau}}^{[2(b + r ) -b \alpha / a]n/2} \right]J_n(1,1) \\
                                            % & = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 J_n(1,1)                                                                                  \\
-                                           & = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 (n!)^2	\Norm{\widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2.
+                                           & = \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2 (n!)^2	\Norm{\widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2.
 	\end{align*}
 	On the other hand, by \eqref{E:Hneq1} and \eqref{E:Tn}, we see that
 	\begin{align*}
@@ -2242,12 +2247,12 @@ which is a direct consequence of Stirling's formula.
 	Therefore,
 	\begin{align}
 		\label{E:2lowbd}
-		\frac{T_n(\nu,a)}{(n!)^2} \le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
+		\frac{T_n(\nu,a)}{(n!)^2} \le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
 	\end{align}
-	Now, an application of Stirling's formula shows that, as $n\to \infty$,
+	Now, an application of both Stirling's formula for the Gamma function and the Legrande duplication formula (see Lemma \ref{L:Ster+LegApp} below) shows that, as $n\to \infty$,
 	\begin{align}
 		\label{E:GammaSq}
-		\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n,
+		\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n,
 	\end{align}
 	where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. Then an application of
 	\eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
@@ -2265,15 +2270,15 @@ which is a direct consequence of Stirling's formula.
 	\end{align*}
 	Among the three inequalities in \eqref{E:alpha}, we also need to make sure that the minimum is
 	achieved by $\frac{a}{b}\left[2(b+r)-1\right]$, for which, we need to additionally require
-	$\frac{a}{b}\left[2(b+r)-1\right]\le d$ and
+	$\frac{a}{b}\left[2(b+r)-1\right] \le d$ and
 	\begin{align*}
-		\frac{a}{b}\left[2(b+r)-1\right] \le 2a \quad \Longleftrightarrow \quad r\in[0,1/2].
+		\frac{a}{b}\left[2(b+r)-1\right] < 2a \quad \Longleftrightarrow \quad r\in[0,1/2).
 	\end{align*}
-	Putting these conditions together gives the conditions stated in \eqref{E:critical}.
+	The reason for having a strict inequality above is our need to apply \eqref{E:2ineq-b} and Theorem \ref{T:Variation} later on in this proof. Putting these conditions together gives the conditions stated in \eqref{E:critical}.
 
 	We start by proving part \textit{(2-i)}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of
 	the SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
-	hyperactivity property (see \cite[Lemma B.1]{BCC21}), we have that
+	hypercontractivity property (see \cite[Lemma B.1]{BCC21}), we have that
 	\begin{align}
 		\label{E:HyContr}
 		\Norm{u(t,x)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2, 	\quad \text{for all $p\ge 2$, $t>0$ and $x\in\R^d.$}
@@ -2301,7 +2306,7 @@ which is a direct consequence of Stirling's formula.
 	\begin{align*}
 		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}_n(\cdot,0;t)}_{ \mathcal{H}^{\otimes n }}^2,
 	\end{align*}
-	is precisely $T_2$. This completes the proof of Lemma \ref{L:2ineq}.
+	is precisely $T_2$. This completes the proof of part (2) of Theorem \ref{T:solvable}.
 \end{proof}
 
 \begin{lemma}
@@ -2334,7 +2339,7 @@ which is a direct consequence of Stirling's formula.
 	\end{align*}
 	We want to find a $\beta$ and $A$ so that
 	\begin{align*}
-		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R_n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
+		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R^n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
 	\end{align*}
 	Indeed, by the following limit (see \cite[Lemma A.3]{BCC21}),
 	\begin{align*}
@@ -2451,7 +2456,7 @@ with $s_0=0$. We now give conditions under which $W_n$ is well defined.
 \end{proof}
 
 The next proposition is a restatement of Proposition 6.3 of \cite{BCC21}. The proof follows the same
-proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat here.
+proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat it here.
 \begin{proposition}
 	\label{P:Wnprop1}
 	For $f\in \mathcal{H}$, $t>0$, and $p,q>1$ with $p^{-1} + q^{-1}=1$, it holds that
@@ -2590,7 +2595,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 \begin{proof}
 	We start by letting $\tau$ be an exponential random variable with mean one. With this,
 	\begin{align*}
-		\mathbb{E}(U_u(\tau)) = \int_0^\infty e^{-t} U_n(t) \ud t
+		\mathbb{E}(U_n(\tau)) = \int_0^\infty e^{-t} U_n(t) \ud t
 		\ge \sup_{f\in \mathcal{H}_+,\: \Norm{f}_\mathcal{H} =1} \int_0^\infty e^{-t} U_n(t,f) \ud t.
 	\end{align*}
 	For any $f \in \mathcal{H}_+$ with $\Norm{f}_{\mathcal{H}}= 1$, by Bochner's theorem,
@@ -2612,7 +2617,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	\end{align*}
 	Note that since both $\mu$ and $g$ are nonnegative, we may assume $h$ is also nonnegative for the
 	remainder of this proof. With this being said, we see that for any $f \in \mathcal{H}_+$ with
-	$\Norm{f}_H =1$,
+	$\Norm{f}_\mathcal{H} =1$,
 	\begin{align*}
 		\liminf_{n \to \infty} \frac{1}{n}\log \mathbb{E}(U_n(\tau)) \ge \log \rho(\mathcal{F}f).
 	\end{align*}
@@ -2623,9 +2628,9 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	Consider a nonnegative function $h\in L^2(\R^d)$. The function
 	$h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g_h(x) := (2\pi)^{d/2}
 	\mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well
-	defined. Under these conditions, $g \in W^{1,a}(\R^d)$ with
+	defined. Under these conditions, $g_h \in W^{1,a}(\R^d)$ with
 	\begin{align*}
-		\Norm{g}_{W^{1,a}(\R^d)} = \frac{1}{(2\pi)^d} \int_{\R^d} (1+|\xi|^a) |\mathcal{F}g(\xi)|^2\ud\xi
+		\Norm{g_h}_{W^{1,a}(\R^d)} = \frac{1}{(2\pi)^d} \int_{\R^d} (1+|\xi|^a) |\mathcal{F}g_h(\xi)|^2\ud\xi
 		= \int_{\R^d} \frac{1+|\xi|^a}{1+\frac{\nu}{2}|\xi|^a} |h(\xi)|^2 \ud \xi
 		\le C_\nu \Norm{h}_{L^2(\R^d)}^2 <\infty.
 	\end{align*}
@@ -2791,7 +2796,7 @@ We need one last lemma before the proof of the lower bound:
 		\label{E:69ineq2}
 		k^{n_t}\theta^{n_t/2}U_{n_t}(t)
 		= 	k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } U_{n_t}(1)
-		\ge \frac{ k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n!)^{\frac{b}{a} \left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } R^{n_t}e^{-n_t \epsilon}.
+		\ge \frac{ k^{n_t} \theta^{n_t/2} t^{\frac{b}{a} \left( a-\frac{\alpha}{2} + \frac{a}{b}r \right)n_t } }{ (n_t!)^{\frac{b}{a} \left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } R^{n_t}e^{-n_t \epsilon}.
 	\end{align}
 	Notice that $[ct]/t \to c$ as $t \to \infty$ which means that $n_t/t \to c$ as $t \to \infty$.
 	With this we can say
@@ -2839,7 +2844,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\end{align*}
 	where $n_t = [ct_p^\beta]$. Now by choosing $c$ as in Lemma \ref{L:logUnlb} we get that
 	\begin{align*}
-		\liminf_{n \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p & \ge 	\liminf_{n \to \infty} \left( \frac{-\frac{1}{2}t_p^\beta k^2}{t_p^\beta} + \frac{1}{t_p^\beta}\log \left[ \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f) \right]  \right) \\
+		\liminf_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p & \ge 	\liminf_{t_p \to \infty} \left( \frac{-\frac{1}{2}t_p^\beta k^2}{t_p^\beta} + \frac{1}{t_p^\beta}\log \left[ \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f) \right]  \right) \\
                                                              & = -\frac{1}{2}k^2 + k^{ \frac{2a}{2ab-\alpha b +2ar} }(\rho \theta)^{\frac{a}{2ab -\alpha b + 2ar}} =: h(k).
 	\end{align*}
 	By maximizing $h$ for $k>0$, we see that $h$ is maximized at the point
@@ -2904,7 +2909,12 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	\begin{align*}
 		\mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n)
     & = \int_{[0,ct]^n_<} \prod_{k=1}^n \overline{ \mathcal{F}G(t_{k+1} - t_k, \cdot)\left( \sum_{j=1}^k \xi_j \right) }  \ud \vec{t}                                 \\
-    & = \int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}               \\
+    & = \int_{[0,t]^n_<} \prod_{k=1}^n  \overline{ \mathcal{F}G\left(c(t_{k+1} - t_k), \cdot \right)\left( \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}     \\ 
+    & = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t}
+    \end{align*}
+where in the last line we applied \eqref{E:greenscale}. Now,
+    \begin{align*}
+    \mathcal{F}f_n(\cdot,0,ct)(\xi_1,\cdots, \xi_n)
     & = \int_{[0,t]^n_<} \prod_{k=1}^n \overline{ c^{b+r-1} \mathcal{F}G\left(t_{k+1} - t_k, \cdot \right)\left( c^{b/a} \sum_{j=1}^k \xi_j \right) } c^n \ud \vec{t} \\
     & = c^{n(b+r)} \mathcal{F}f_n\left(\cdot,0,t\right)\left(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n\right),
 	\end{align*}
@@ -2913,12 +2923,60 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 		\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
      & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t                                                             \\
      & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}) \: 2\: \ud t                                                     \\
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                                 \\
+     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               
+     \end{align*}
+      where in the last line we have applied \eqref{E:Ffnscale}. Now, 
+     \begin{align*}
+     	\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t 
+     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t   \\
+     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t 
+     \end{align*}
+    where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}) = \prod_{j=1}^n \varphi(\xi) \ud \xi$. Lastly,
+     \begin{align*}
+     	\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t 
      & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t \\
      & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                               \\
      & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
 	\end{align*}
-	where we have applied \eqref{E:greenscale} in the fourth equality. This proves \eqref{E:fHn}.
+	This proves \eqref{E:fHn}.
+\end{proof}
+
+\begin{lemma}
+	\label{L:Ster+LegApp}
+	For any $n \in \mathbb{N}$ and $k>0$, the following asymptotic holds as $n \to \infty$:
+		\[
+			\Gamma\left( \frac{kn}{2} + 1 \right)^2 \sim 2^{-1}\sqrt{k} \; 2^{-kn}\sqrt{2\pi n} \; \Gamma(kn+1).
+		\]
+\end{lemma}
+\begin{proof}
+	We use the notation '$\sim$' to mean asymptotically equivalent. For example, $a(x) \sim b(x) \; \iff \; a(x)/b(x) \to 1$ as $x \to \infty$. The proof relies on two well know properties of the Gamma function:
+		\begin{enumerate}
+		\label{E:SterApp}
+			\item Sterling's Formula: $\Gamma(x+1) \sim \sqrt{2 \pi x} (x/e)^x$ as $x \to \infty$,
+			\item Legrende's duplication formula: $\Gamma(z)\Gamma(z + 1/2) = 2^{1-2z}\sqrt{\pi} \; \Gamma(2z)$ for $z \in \mathbb{C}$.
+		\end{enumerate}
+	First, by Sterling's formula we see that 
+		\begin{equation}
+		\label{E:LegApp}
+			\Gamma\left( \frac{kn}{2} +1 \right) \sim \sqrt{ \pi k n}\left(\frac{kn}{2e}\right)^{kn/2} .
+		\end{equation}
+	Now by writing 
+		\[
+			\Gamma\left( \frac{kn}{2} +1 \right) = \Gamma\left( \frac{kn+1}{2} +\frac{1}{2} \right)
+		\]
+	and applying Legrende's duplication formula, we see that 
+		\begin{equation}
+			\Gamma\left( \frac{kn}{2} +1 \right)  = \frac{2^{-kn}\sqrt{\pi}  \;\Gamma(kn+1) }{\Gamma\left(\frac{kn+1}{2}\right)}.
+		\end{equation}
+	Lastly, by combining \eqref{E:SterApp} and \eqref{E:LegApp}, get that 	
+		\begin{align}
+				\Gamma\left( \frac{kn}{2} +1 \right)^2 & \sim \frac{ \sqrt{\pi kn} \left(\frac{kn}{2e}\right)^{kn/2} 2^{-kn} \sqrt{\pi} \Gamma(kn +1) }{ \sqrt{\pi kn - \pi} \left(\frac{kn-1}{2e}\right)^{(kn-1)/2} }
+				\\& = \sqrt{\frac{\pi kn}{\pi kn -1}} \left(\frac{kn}{kn-1}\right)^{kn/2} \left(\frac{kn-1}{2e}\right)^{1/2} 2^{-kn} \sqrt{\pi} \; \Gamma(kn+1)
+				\\& \sim \sqrt{e} \left(\frac{kn-1}{2e}\right)^{1/2} 2^{-kn} \sqrt{\pi} \; \Gamma(kn+1)
+				\\& = 2^{-1} (kn-1)^{1/2} \; 2^{-kn} \sqrt{2\pi} \; \Gamma(kn+1)
+				\\& \sim 2^{-1} \sqrt{k} \; 2^{-kn} \sqrt{2 \pi n} \; \Gamma(kn+1)
+		\end{align}
+	which proves the result. 
 \end{proof}
 
 
