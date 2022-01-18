@@ -1141,7 +1141,7 @@ interested readers.
 		\draw (2, 4) + (0.1, -0.05) rectangle +(2,0.05);
 		\draw (2, 5) + (0.1, -0.05) rectangle +(3,0.05);
 	\end{tikzpicture}
-	\caption{Solvability for the stochastic heat equation with fractional Laplace, i.e, the case when
+	\caption{Solvability for the stochastic heat equation with fractional Laplacian, i.e, the case when
 		$b=1$ and $r=0$. See Figures \ref{F:SHE} and \ref{F:SWE} for the legend.}
 	\label{F:Stable}
 \end{figure}% }}}
@@ -1204,7 +1204,7 @@ results for both stochastic wave and heat equations.
 	and results in \eqref{E:momentasym} and \eqref{E:momentasym-t} recover the corresponding
 	conjectured results for SHE, namely, (1.16) and (1.17) of Balan {\it et al} \cite{BCC21},
 	respectively, which are equivalent to Theorem 1.1 and 1.2 of X. Chen \cite{Chen17AIHP} when
-	setting $\alpha_0=0$ and using \cite[Lemma A.2]{CHSX15AIHP} to rewrite the constant
+	setting $\alpha_0=0$ and using \cite[Lemma A.2]{15AIHP} to rewrite the constant
 	$\mathcal{E}$ in \cite{Chen17AIHP} in terms of $\mathcal{M}_a$. Due to the importance of the white
 	noise case, we list the corresponding asymptotics here. When $\alpha=d=1$,
 	\begin{align}
@@ -1218,7 +1218,7 @@ results for both stochastic wave and heat equations.
 	Theorem 4.1]{Hu02Chaos}.
 \end{example}% }}}
 
-\begin{example}[Asymptotics for SHE with fractional Laplace]% {{{
+\begin{example}[Asymptotics for SHE with fractional Laplacian]% {{{
 	\label{Eg:AsymStable}
 	In this example we restrict ourselves to the case when $b=1$, $a\in (0,2]$, $\alpha < d$, and $r=0$, which is the 1-dimensional SHE with fractional Laplace. With this set up we have
 	\begin{align*}
@@ -1549,7 +1549,7 @@ More generally we have the following theorem:
 
 \begin{theorem}
 	\label{T:Variation}
-	For the correlation function $\gamma$	that satisfies Assumption \ref{A:Noise}, both
+	For the correlation function $\gamma$, with $\alpha < 2a$, that also satisfies Assumption \ref{A:Noise}, both
 	\eqref{E:rhoLam} and \eqref{E:LogRhoRiez} hold with $|\cdot|^{-\alpha}$ and $\mu$ replaced by $\gamma$
 	and  $\mu$ as in \eqref{E:specfunction}, respectively. More precisely, it holds that
 	\begin{equation}
@@ -1673,7 +1673,7 @@ More generally we have the following theorem:
 																														& =    C \Norm{g}_{L^{4d/(2d-\alpha)}(\R^d)}^4,
 		\end{aligned}
 	\end{align}
-	where $\tilde{g}^2(x) = g(-x)$. Thus equation (7.1)  ({\it ibid.}) can be applied in our setting . The rest of the proof of Lemma 7.1 ({\it
+	where $\tilde{g}^2(x) = g(-x)$. Note that we must have $\alpha < 2a$ to ensure that the right hand side of the above is finite. This is seen by applying $h=\gamma$ in Lemma \ref{L:rhofinite}. Thus equation (7.1)  ({\it ibid.}) can be applied in our setting . The rest of the proof of Lemma 7.1 ({\it
 	ibid.}) remains unchanged.
 
 	It remains to update the proof of Theorem 1.5 in Section 7 ({\it ibid.}). For this, one needs only
@@ -1724,7 +1724,7 @@ weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalizati
 	\end{align}
 	where
 	\begin{align*}
-		\Norm{b}_{q,w} := \sup_{A} |A|^{-1/q'} \int_A |f(x)| \ud x, \qquad
+		\Norm{b}_{q,w} := \sup_{A} |A|^{-1/q'} \int_A |b(x)| \ud x, \qquad
 		\text{with $1/q + 1/(q')=1$},
 	\end{align*}
 	and $A$ is an arbitrary Borel set of finite measure $|A|<\infty$.
@@ -1737,7 +1737,7 @@ weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalizati
 		q = \frac{d}{d-\sum_{j=1}^d\alpha_j }
       = d/(d-\alpha).
 	\end{align*}
-	By the proof of \cite[Lemma 1.6]{BCC21}, it suffices to prove that $\Norm{\varphi}_{q,w}$ is
+	By \eqref{E:WeakYoung} above, it suffices to prove that $\Norm{\varphi}_{q,w}$ is
 	finite with $q = d/(d-\alpha)$ and $1/q' = 1 - 1/q = \alpha/d$.  \bigskip
 
 	Recall that according to Assumption \ref{A:Noise}, the $d$ coordinates are partitioned into $k$
@@ -1783,7 +1783,7 @@ weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalizati
 	which is consistent with the norm we find in \eqref{E:WeakNorm} up to a constant $C_{\alpha,d}$.
 \end{remark}
 
-In order to compare our results with known results, let us introduce another commonly used
+In order to compare our results with known results, some which were presented in Example \ref{Eg:AsymStable}, let us introduce another commonly used
 variational constant
 \begin{align}
 	\label{E:VarConstE}
@@ -1797,39 +1797,41 @@ By using the same techniques used to derive \eqref{E:ScaleM}, one can show that 
 		\mathbf{E}_{a,d}(\Theta\gamma,\theta) =\Theta^{\frac{a}{a-\alpha}} \theta^{-\frac{\alpha}{a-\alpha}}  \mathbf{E}_{a,d}(\gamma,1).
 \end{equation}
 The relation between $\mathbf{E}_{a,d}(\gamma,\theta)$ and $\mathcal{M}_{a,d}(\gamma,\theta)$ can
-be established in a similar way as \cite[Lemma A.2]{CHSX15AIHP}, which is stated in the following
+be established in a similar way as \cite[Lemma A.2]{15AIHP}, which is stated in the following
 lemma:
 
 \begin{lemma}
 	\label{L:EvsM}
-	Under Assumption \ref{A:Noise}, the following three expressions hold:
+	Under Assumption \ref{A:Noise} and assuming $\alpha <\min\{a,d\}$, the following three expressions hold:
 	\begin{gather}
 		\label{E:Erelation}
 		\mathbf{E}_{a,d}(\Theta\gamma,\theta)  = \Theta^{\frac{a}{a-\alpha}} \theta^{-\frac{\alpha}{a-\alpha}}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(a, d,\alpha)^{a/(a-\alpha)},        \\
 		\label{E:Mrelation}
 		\mathcal{M}_{a,d}(\Theta\gamma,\theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(a, d,\alpha)^{a/(2a-\alpha)}, \\
 		\label{E:EvsM}
-		\mathbf{E}_{a,d}(\Theta\gamma,\theta)  = \left( \frac{a-\alpha}{a}\right) 2^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)} \mathcal{M}_{a,d}(\Theta\gamma,\theta)^{\frac{2a-\alpha}{a-\alpha}}.
+		\mathbf{E}_{a,d}(\Theta\gamma,\theta)  = \left( \frac{a-\alpha}{a}\right) 2^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)} \mathcal{M}_{a,d}(\Theta\gamma,\theta)^{\frac{2a-\alpha}{a-\alpha}}
 	\end{gather}
+where $\sigma(a, d,\alpha)$ is defined in the following Lemma.
 \end{lemma}
 
 We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 
 \begin{lemma}
-	For any $f \in L^2(\R^d)$ with $\mathcal{E}_a(f,f) < \infty$, it holds that
+\label{L:gammaf2bdd}
+	Under Assumption \ref{A:Noise}, for any $f \in L^2(\R^d)$ with $\mathcal{E}_a(f,f) < \infty$, it holds that
 	\begin{equation}
 		\label{E:SobIneq}
 		\int_{\R^d} f^2(x)\gamma(x) \ud x \le C \Norm{f}_2^{2-(2\alpha/a)} \mathcal{E}_a(f,f)^{\alpha/a},
 	\end{equation}
-	where the constant $C$ only depends on $a, d$ and $\alpha$. Denote the best constant in
+	where the constant $C$ only depends on $a, d$ and $\alpha$ with $\alpha < \min\{a,d\}$. Denote the best constant in
 	\eqref{E:SobIneq} by $\sigma(a,d,\alpha)$.
 \end{lemma}
 
 \begin{proof}
-	The proof of this result follows the scheme laid out in the proof of  \cite[Lemma A.3]{ChenAOP12}. By the same techniques presented in Lemma \ref{T:Variation}, one can show the following quantity is finite:
+	The proof of this result follows the scheme laid out in the proof of  \cite[Lemma A.3]{ChenAOP12}. By the same techniques presented above in Lemma \ref{T:Variation}, one can show the following quantity is finite:
 	\begin{align*}
-		\Lambda & := \sup_{f\in\mathcal{F}_a}  \left\{  \int_{\R^d} g^2(x)\gamma(x) \ud x - \frac{1}{2} (2\pi)^{-d}\int_{\R^d} |x|^a|\mathcal{F} g(x)|^2 \ud x  \right\} \\
-            & =    \sup_{f\in\mathcal{F}_a}  \left\{  \int_{\R^d} g^2(x)\gamma(x) \ud x - \frac{1}{2} \mathcal{E}_a(f,f)\right\} < \infty.
+		\Lambda & := \sup_{h\in\mathcal{F}_a}  \left\{  \int_{\R^d} h^2(x)\gamma(x) \ud x - \frac{1}{2} (2\pi)^{-d}\int_{\R^d} |x|^a|\mathcal{F} h(x)|^2 \ud x  \right\} \\
+            & =    \sup_{h\in\mathcal{F}_a}  \left\{  \int_{\R^d} h^2(x)\gamma(x) \ud x - \frac{1}{2} \mathcal{E}_a(h,h)\right\} < \infty.
 	\end{align*}
 	Fix an arbitrary $f \in \mathcal{F}_a$. Clearly, $\Norm{f}_2 = 1$ and $\mathcal{E}_a(f,f) <
 	\infty$. Let $C_f$ be the constant such that
@@ -1852,66 +1854,61 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 						& = C_f t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}t^a \mathcal{E}_a(f,f) \\
 						& = C_f \left(t\mathcal{E}_a(f,f)^{1/a}\right)^\alpha - \frac{1}{2} \left( t \mathcal{E}_a(f,f)^{1/a}\right)^a.
 	\end{align*}
-	Since $t>0$, then $ t\mathcal{E}_a(f,f)^{1/a}$ runs through all of $\R$ and thus we have that
+	Since $t>0$, then $ t\mathcal{E}_a(f,f)^{1/a}$ runs through all of $\R_+$ and thus we have that
 	\[
-	\Lambda \ge \sup_{x>0} \left\{ C_fx^\alpha - \frac{1}{2}x^a \right\} = \frac{a-\alpha}{a}C_f^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}.
+	\Lambda \ge \sup_{x>0} \left\{ C_fx^\alpha - \frac{1}{2}x^a \right\} = \frac{a-\alpha}{a}C_f^{a/{a-\alpha}}\left(\frac{2\alpha }{a}\right)^{\alpha/(a-\alpha)}.
 	\]
 	Note that this reduces to the equation present in the proof of Lemma A.3 \cite{ChenAOP12} when $a=2$. By taking the $\sup$ over all $f\in \mathcal{F}_a$ we see that
 	\[
-	\infty > \Lambda \ge \frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-2)}\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}
+	\infty > \Lambda \ge \frac{a-\alpha}{a}\sigma(a,d,\alpha)^{a/{a-\alpha}}\left(\frac{2\alpha }{a}\right)^{\alpha/(a-\alpha)}.
 	\]
 	where
 	\[
-	\sup_{f\in \mathcal{F}_a} C_f = \sigma(d,\alpha)
+	\sup_{f\in \mathcal{F}_a} C_f = \sigma(a, d,\alpha)
 	\]
 	and finally we conclude that for any $f\in \mathcal{F}_a$
 	\begin{equation}\label{E:SobIneqNorm1}
-	\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
+	\int_{\R^d} f^2(x) \gamma(x)\ud x \le \sigma(a,d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a} < \infty.
 	\end{equation}
-	For arbitrary $f\in L^2(\R^2)$ with $\mathcal{E}_a(f,f) < \infty$ we apply the \eqref{E:SobIneqNorm1} to $f/\Norm{f}_2$ and see that
+	For arbitrary $f\in L^2(\R^2)$ with $\mathcal{E}_a(f,f) < \infty$ we apply \eqref{E:SobIneqNorm1} to $f/\Norm{f}_2$ and see that
 	\begin{align*}
-	\int_{\R^d} \frac{f^2(x)}{|x|^\alpha} \ud x \le \sigma(d,\alpha) \Norm{f}_2^{2-(2\alpha/a)} \mathcal{E}_a(f,f)^{\alpha/a}
+	\int_{\R^d} f^2(x) \gamma(x) \ud x \le \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)} \mathcal{E}_a(f,f)^{\alpha/a}
 	\end{align*}
 	which again reduces to the equation A.4 \cite{ChenAOP12} when $a=2$.
 \end{proof}
 
 	\begin{lemma}
-For any $f \in \mathcal{F}_a$ we have
+	\label{L:gammaf2f2bdd}
+For any $f \in \mathcal{F}_a$ and for $\alpha < \min\{a,d\}$ we have
 		\begin{equation}\label{E:sobineq1}
-			\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
+			\int_{\R^{2d}} \gamma(x+y)f^2(x)f^2(y) \ud x \ud y \le \sigma(a,d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}
 		\end{equation}
+and $\sigma(a,d,\alpha)$ is the sharpest such constant.
 	\end{lemma}
 
 	\begin{proof}
 Suppose that $f \in L^2(\R^d)$ and suppose that $\mathcal{E}_a(f,f) < \infty$ and let $y\in \R^d$ be arbitrary. Recall the translation property of the Fourier transform
 	\[
-		|\mathcal{F}f(x)|  = |\mathcal{F}f(x-y)|.
+		|\mathcal{F}f(\cdot)(\xi)|  = |\mathcal{F}f(\cdot-y)(\xi)|.
 	\]
-Then by making a substitution and applying \eqref{E:SobIneq} we see that
+Then by applying a change of variables and recalling \eqref{E:SobIneq} we see that
 	\[
-		\int_{\R^d} \frac{f^2(x)}{|x-y|^\alpha} \ud x \le \sigma(d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
+		\int_{\R^d} \frac{f^2(x)}{|x+y|^\alpha} \ud x \le \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
 	\]
 and in return,
 	\[
-		\sup_{y\in \R^d} \int_{\R^d} \frac{f^2(x)}{|x-y|^\alpha} \le \sigma(d,\alpha) 		\Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
+		\sup_{y\in \R^d} \int_{\R^d} \frac{f^2(x)}{|x+y|^\alpha} \le \sigma(a,d,\alpha) 		\Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
 Next, notice that
 	\begin{align*}
-		\int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x-y|^\alpha} \ud x \ud y &= \int_{\R^d} \ud x f^2(x) \int_{\R^d} \ud y \frac{f^(y)}{|x-y|^\alpha}
-		\\& \le \sigma(d,\alpha) \Norm{f}_2^{4-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
+		\int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x+y|^\alpha} \ud x \ud y &= \int_{\R^d} \ud x f^2(x) \int_{\R^d} \ud y \frac{f^(y)}{|x+y|^\alpha}
+		\\& \le \sigma(a,d,\alpha) \Norm{f}_2^{4-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
 	\end{align*}
-Now for two functions $f$ and $g$ and  by using the property that $\gamma(x) = C(\gamma) (K*K)(x)$, we see that
-	\begin{align*}
-		\int_{\R^{2d}} & \gamma(x-y)f^2(x)g^2(y) \ud x \ud y = C(\gamma) \int_{\R^d}\left[ \int_{\R^d}K(z-x)f^2(x) \ud x \right]\left[ \int_{\R^d}K(z-y)g^2(y) \ud y \right]\ud z
-		\\&\le C(\gamma) \left\{\int_{\R^d}\left[ \int_{\R^d}K(z-x)f^2(x) \ud x \right]^2 \ud z \right\}^{1/2}\left\{\left[ \int_{\R^d}K(z-y)g^2(y) \ud y \right]^2\ud z\right\}^{1/2}
-		\\&= \left\{ \int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \right\}^{1/2} \left\{ \int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \right\}^{1/2}
-		\\&\le \sigma(d,\alpha) \Norm{f}_2^{2-(\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/(2a)} \Norm{g}_2^{2-(1\alpha/a)}\mathcal{E}_a(g,g)^{\alpha/(2a)}
-	\end{align*}
-and when $f \in \mathcal{F}_a$ we see that this reduces to
+and when $f \in \mathcal{F}_a$, and thus $\Norm{f}_2 = 1$, we see that this reduces to
 	\[
-		\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \le \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
+		\int_{\R^{2d}} \gamma(x+y)f^2(x)f^2(y) \ud x \ud y \le \sigma(a,d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
-We note that this reduces to equation (A.1) \cite{15AIHP} for the time independent case when $a=2$.
+We note that the sharpness of $\sigma(a,d,\alpha)$ follows immediately from Lemma \ref{L:gammaf2bdd}. In addition, this reduces to equation (A.1) \cite{15AIHP} for the time independent case when $a=2$.
 	\end{proof}
 
 	\begin{proof}[Proof of Lemma \ref{L:EvsM}:]
@@ -1919,7 +1916,7 @@ We only prove the case of $\Theta=\theta=1$, the general case can be proven by a
 
 We have that
 	\begin{align}
-		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
+		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(d,\alpha) \mathcal{E}_a(g,g)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
 		\\& \le \sup_{x>0} \left\{ \sigma(d,\alpha) x^\alpha - \frac{1}{2}x^a \right\} \nonumber
 		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)} \label{E:Eupperbound}
 	\end{align}
@@ -1928,7 +1925,7 @@ and similarly
 		\mathcal{M}_{a,d}(\gamma,1) & \le \sup_{x > 0} \left\{ \sigma(d,\alpha)^{1/2} x^{\alpha/2} - \frac{1}{2} x^{a} \right\} \nonumber
 		\\&= \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}. \label{E:Mupperbound}
 	\end{align}
-Now choose $0 < \epsilon < \sigma(d,\alpha)$ and let $f\in \mathcal{F}_a$ be such that
+Recall Lemma \ref{L:gammaf2f2bdd} above and choose $0 < \epsilon < \sigma(a,d,\alpha)$ and let $f\in \mathcal{F}_a$ be such that
 	\[
 		\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \ge (\sigma(d,\alpha)-\epsilon) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
@@ -1945,11 +1942,11 @@ Notice that
 and this is true for all $t>0$ so we can say that
 	\begin{align*}
 		E_{a,d}(\gamma,1) &\ge \sup_{x>0} \left\{ (\sigma(d,\alpha)-\epsilon) x^\alpha - \frac{1}{2} x^a \right\} \nonumber
-\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-\alpha)}.
+\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-\alpha)}
 	\end{align*}
 and be letting $\epsilon \to 0$ gives us
 	\begin{equation}\label{E:Elowerbound}
-		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}.
+		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}
 	\end{equation}
 and if we combine this with \eqref{E:Eupperbound} then we see that
 	\begin{equation}\label{E:Eequality1}
@@ -1961,7 +1958,7 @@ Similarly we show that
 	\end{equation}
 Lastly, by combining \eqref{E:Eequality1} and \eqref{E:Meqquality1}, we see that
 	\begin{equation} \label{E:EandMrelation1}
-		E_{a,d}(\gamma,1) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)}\mathcal{M}_{a,d}(\gamma,1)^{(2a-\alpha)/(a-2)} .
+		E_{a,d}(\gamma,1) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-\alpha)}\mathcal{M}_{a,d}(\gamma,1)^{(2a-\alpha)/(a-\alpha)} .
 	\end{equation}
 Equations \eqref{E:Meqquality1}, \eqref{E:Eequality1} and \eqref{E:EandMrelation1} recover equations (A.2), (A.3) and (A.4) \cite{15AIHP} respectively when $a=2$.
 	\end{proof}
@@ -2995,11 +2992,6 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	Chen, X., Hu, Y.Z., Song, J., and Song, X. (2018).
 	\newblock Temporal asymptotics for fractional parabolic Anderson model.
 	\newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
-	% }}}
-	\bibitem{CHSX15AIHP} % {{{ 10.
-	Chen, X., Hu, Y.Z., Song, J., and Xing, F. (2015).
-	\newblock Exponential asymptotics for time-space Hamiltonians.
-	\newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.} {\bf 51}, no. 4, 1529–-1561.
 	% }}}
 	\bibitem{ChenLi04} % {{{ 11.
 	Chen, X. and Li, W. (2004).
