@@ -55,7 +55,7 @@
 % check references
 % -------------------------------------------------
 % \usepackage{refcheck}
-% \usepackage[notref,notcite]{showkeys}
+\usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
 
@@ -2942,22 +2942,24 @@ where in the last line we applied \eqref{E:greenscale}. Now,
 \end{proof}
 
 \begin{lemma}
-	\label{L:Ster+LegApp}
-	For any $n \in \mathbb{N}$ and $k>0$, the following asymptotic holds as $n \to \infty$:
+	\label{L:Ster+LegApp} For any $n \in \mathbb{N}$ and $k>0$, the following asymptotic holds as $n
+	\to \infty$:
 		\[
 			\Gamma\left( \frac{kn}{2} + 1 \right)^2 \sim 2^{-1}\sqrt{k} \; 2^{-kn}\sqrt{2\pi n} \; \Gamma(kn+1).
 		\]
 \end{lemma}
 \begin{proof}
-	We use the notation '$\sim$' to mean asymptotically equivalent. For example, $a(x) \sim b(x) \; \iff \; a(x)/b(x) \to 1$ as $x \to \infty$. The proof relies on two well know properties of the Gamma function:
+	We use the notation '$\sim$' to mean asymptotically equivalent. For example, $a(x) \sim b(x) \;
+	\iff \; a(x)/b(x) \to 1$ as $x \to \infty$. The proof relies on two well known properties of the
+	Gamma function:
 		\begin{enumerate}
-		\label{E:SterApp}
 			\item Sterling's Formula: $\Gamma(x+1) \sim \sqrt{2 \pi x} (x/e)^x$ as $x \to \infty$,
-			\item Legrende's duplication formula: $\Gamma(z)\Gamma(z + 1/2) = 2^{1-2z}\sqrt{\pi} \; \Gamma(2z)$ for $z \in \mathbb{C}$.
+			\item Legrende's duplication formula: $\Gamma(z)\Gamma(z + 1/2) = 2^{1-2z}\sqrt{\pi} \;
+				\Gamma(2z)$ for $z \in \mathbb{C}$.
 		\end{enumerate}
 	First, by Sterling's formula we see that 
 		\begin{equation}
-		\label{E:LegApp}
+		\label{E:SterApp}
 			\Gamma\left( \frac{kn}{2} +1 \right) \sim \sqrt{ \pi k n}\left(\frac{kn}{2e}\right)^{kn/2} .
 		\end{equation}
 	Now by writing 
@@ -2966,16 +2968,17 @@ where in the last line we applied \eqref{E:greenscale}. Now,
 		\]
 	and applying Legrende's duplication formula, we see that 
 		\begin{equation}
+			\label{E:LegApp}
 			\Gamma\left( \frac{kn}{2} +1 \right)  = \frac{2^{-kn}\sqrt{\pi}  \;\Gamma(kn+1) }{\Gamma\left(\frac{kn+1}{2}\right)}.
 		\end{equation}
-	Lastly, by combining \eqref{E:SterApp} and \eqref{E:LegApp}, get that 	
-		\begin{align}
+	Lastly, by combining \eqref{E:SterApp} and \eqref{E:LegApp}, get that 
+		\begin{align*}
 				\Gamma\left( \frac{kn}{2} +1 \right)^2 & \sim \frac{ \sqrt{\pi kn} \left(\frac{kn}{2e}\right)^{kn/2} 2^{-kn} \sqrt{\pi} \Gamma(kn +1) }{ \sqrt{\pi kn - \pi} \left(\frac{kn-1}{2e}\right)^{(kn-1)/2} }
 				\\& = \sqrt{\frac{\pi kn}{\pi kn -1}} \left(\frac{kn}{kn-1}\right)^{kn/2} \left(\frac{kn-1}{2e}\right)^{1/2} 2^{-kn} \sqrt{\pi} \; \Gamma(kn+1)
 				\\& \sim \sqrt{e} \left(\frac{kn-1}{2e}\right)^{1/2} 2^{-kn} \sqrt{\pi} \; \Gamma(kn+1)
 				\\& = 2^{-1} (kn-1)^{1/2} \; 2^{-kn} \sqrt{2\pi} \; \Gamma(kn+1)
-				\\& \sim 2^{-1} \sqrt{k} \; 2^{-kn} \sqrt{2 \pi n} \; \Gamma(kn+1)
-		\end{align}
+				\\& \sim 2^{-1} \sqrt{k} \; 2^{-kn} \sqrt{2 \pi n} \; \Gamma(kn+1),
+		\end{align*}
 	which proves the result. 
 \end{proof}
 
