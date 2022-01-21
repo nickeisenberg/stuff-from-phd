@@ -163,7 +163,7 @@ Solvability and Exact Asymptotics\footnote{Department of Mathematics and
 Statistics, Auburn University, Auburn, Alabama.}}
 \author{Le Chen\footnote{Email: \url{le.chen@auburn.edu}.}~
 	and
-Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gmail.com}.}}
+Nicholas Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gmail.com}.}}
 \date{\today}
 
 \maketitle
@@ -172,7 +172,7 @@ Nick Eisenberg\footnote{Emails: \url{nze0019@auburn.edu};~\url{nickeisenberg@gma
 	\noindent In this article, we study a class of stochastic partial differential equations with
 	fractional differential operators subject to some time-independent multiplicative Gaussian noise.
 	We derive sharp conditions, under which a unique global $L^p(\Omega)$-solution exists for all $p\ge
-	2$. In this case, we derive exact moment asymptotics following the same strategy presented in a recent work
+	2$. In this case, we derive exact moment asymptotics following the same strategy as presented in a recent work
 	by Balan {\it et al} \cite{BCC21}. In the case when there exists only a local solution, we
 	determine the precise deterministic time, $T_2$, before which a unique $L^2(\Omega)$-solution
 	exists, but after which the series corresponding to the $L^2(\Omega)$ moment of the solution blows
@@ -231,7 +231,7 @@ where $m$ is an integer, and $I^r_t$ refers to the {\it Riemann-Liouville fracti
 	I^r_tf(t) := \frac{1}{\Gamma(r)} \int_0^t (t-s)^{r-1}f(s)\ud s, \quad \text{for } t>0,
 \end{align*}
 with the convention that when $r=0$, $I^0_t = \text{Id}$ reduces to the identity operator. The fundamental solution to \eqref{E:SPDE} is expressed explicitly in terms of the {\it Fox H-function} which is
-much more complicated than the fundamental function for either the heat or wave equation. We denote the fundamental solution as 
+much more complicated than the Green's function for either the heat or wave equation. We denote the fundamental solution as 
 \begin{equation}
 \label{E:GreenFunction}
 G(t,x):= G_{a,b,r,\nu,d}(t,x)
@@ -240,7 +240,7 @@ We direct the reader to
 Theorem 4.1\footnote{$G(t,x)$ corresponds to $Y_{a,b,r,\nu,d}(t,x)$ from \cite{CHN19}.} of \cite{CHN19} for more details. Since we are interested in the constant one initial condition (and zero
 initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the corresponding solution to
 the homogeneous equation (i.e. the solution when there is no driving source) is equal to the
-constant one. Hence, by setting $G(t,x) := Y_{a,b,r,\nu,d}(t,x)$, \eqref{E:SPDE} can be written as
+constant one. Hence, \eqref{E:SPDE} can be written as
 the following stochastic integral equation:
 \begin{equation}
 	\label{E:spdeint}
@@ -553,7 +553,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 			\end{align*}
 			This case is covered as a special time-independent case (i.e., $H_0=1$) by Chen {\it et al} \cite[Theorem 3.4
 			and Remark 3.13]{CDOT20}.
-		\item Recall that a white noise driven SHE corresponds to when $\alpha=d$. Therefore by examining \eqref{E:alpha} and \eqref{E:critical}, we see that when $d\ge 3$, the SHE driven by white noise no longer has any $L^2(\Omega)$-solution and that local
+		\item Recall that the white noise driven SHE corresponds to when $\alpha=d$. Therefore by examining \eqref{E:alpha} and \eqref{E:critical}, we see that when $d\ge 3$, the SHE driven by white noise no longer has any $L^2(\Omega)$-solution. In addition, local
 		solutions exist only when $\alpha=2$ and the noise is not white. This is illustrated in Figure \ref{F:SHE} below. In addition, the critical time $T_p$ takes
 		the same expression as \eqref{E:Tp-SHE2} but one needs to replace $\delta_0$ by $\gamma$.
 	\end{enumerate}
@@ -1025,8 +1025,7 @@ interested readers.
 	\begin{align*}
 		\alpha = a \le d
 	\end{align*}
-	The solvability for this case is illustrated in Figure \ref{F:Stable}. In particular, when
-	$\alpha=a=d=2$, there is only a local solution under white noise. 
+	The solvability for this case is illustrated in Figure \ref{F:Stable}.
 \end{example}% }}}
 
 \begin{figure}[htpb]% {{{ F:Stable
@@ -1549,7 +1548,7 @@ More generally we have the following theorem:
 
 \begin{theorem}
 	\label{T:Variation}
-	For the correlation function $\gamma$, with $\alpha < 2a$, that also satisfies Assumption \ref{A:Noise}, both
+	For the correlation function $\gamma$, with $\alpha < \min\{2a,d\}$, that also satisfies Assumption \ref{A:Noise}, both
 	\eqref{E:rhoLam} and \eqref{E:LogRhoRiez} hold with $|\cdot|^{-\alpha}$ and $\mu$ replaced by $\gamma$
 	and  $\mu$ as in \eqref{E:specfunction}, respectively. More precisely, it holds that
 	\begin{equation}
@@ -1809,7 +1808,7 @@ lemma:
 		\label{E:Mrelation}
 		\mathcal{M}_{a,d}(\Theta\gamma,\theta) = \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(a, d,\alpha)^{a/(2a-\alpha)}, \\
 		\label{E:EvsM}
-		\mathbf{E}_{a,d}(\Theta\gamma,\theta)  = \left( \frac{a-\alpha}{a}\right) 2^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-2)} \mathcal{M}_{a,d}(\Theta\gamma,\theta)^{\frac{2a-\alpha}{a-\alpha}}
+		\mathbf{E}_{a,d}(\Theta\gamma,\theta)  = \left( \frac{a-\alpha}{a}\right) 2^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-\alpha)} \mathcal{M}_{a,d}(\Theta\gamma,\theta)^{\frac{2a-\alpha}{a-\alpha}}
 	\end{gather}
 where $\sigma(a, d,\alpha)$ is defined in the following Lemma.
 \end{lemma}
@@ -1893,15 +1892,15 @@ Suppose that $f \in L^2(\R^d)$ and suppose that $\mathcal{E}_a(f,f) < \infty$ an
 	\]
 Then by applying a change of variables and recalling \eqref{E:SobIneq} we see that
 	\[
-		\int_{\R^d} \frac{f^2(x)}{|x+y|^\alpha} \ud x \le \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
+		\int_{\R^d} f^2(x) \gamma(x+y)\ud x \le \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
 	\]
 and in return,
 	\[
-		\sup_{y\in \R^d} \int_{\R^d} \frac{f^2(x)}{|x+y|^\alpha} \le \sigma(a,d,\alpha) 		\Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
+		\sup_{y\in \R^d} \int_{\R^d} f^2(x) \gamma(x+y) \le \sigma(a,d,\alpha) 		\Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
 Next, notice that
 	\begin{align*}
-		\int_{\R^{2d}} \frac{f^2(x)f^2(y)}{|x+y|^\alpha} \ud x \ud y &= \int_{\R^d} \ud x f^2(x) \int_{\R^d} \ud y \frac{f^(y)}{|x+y|^\alpha}
+		\int_{\R^{2d}} f^2(x)f^2(y) \gamma(x+y) \ud x \ud y &= \int_{\R^d} \ud x f^2(x) \int_{\R^d} \ud y f^2(y)\gamma(x+y)
 		\\& \le \sigma(a,d,\alpha) \Norm{f}_2^{4-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
 	\end{align*}
 and when $f \in \mathcal{F}_a$, and thus $\Norm{f}_2 = 1$, we see that this reduces to
@@ -1916,18 +1915,18 @@ We only prove the case of $\Theta=\theta=1$, the general case can be proven by a
 
 We have that
 	\begin{align}
-		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(d,\alpha) \mathcal{E}_a(g,g)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
-		\\& \le \sup_{x>0} \left\{ \sigma(d,\alpha) x^\alpha - \frac{1}{2}x^a \right\} \nonumber
-		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)} \label{E:Eupperbound}
+		E_{a,d}(\gamma,1) &\le \sup_{g\in \mathcal{F}_a} \left\{ \sigma(a,d,\alpha) \mathcal{E}_a(g,g)^{\alpha/a} - \frac{1}{2}\: (\mathcal{E}_a(g,g)^{1/a})^a \right\} \nonumber
+		\\& \le \sup_{x>0} \left\{ \sigma(a,d,\alpha) x^\alpha - \frac{1}{2}x^a \right\} \nonumber
+		\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(a,d,\alpha)^{a/(a-\alpha)} \label{E:Eupperbound}
 	\end{align}
 and similarly
 	\begin{align}
-		\mathcal{M}_{a,d}(\gamma,1) & \le \sup_{x > 0} \left\{ \sigma(d,\alpha)^{1/2} x^{\alpha/2} - \frac{1}{2} x^{a} \right\} \nonumber
-		\\&= \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}. \label{E:Mupperbound}
+		\mathcal{M}_{a,d}(\gamma,1) & \le \sup_{x > 0} \left\{ \sigma(a,d,\alpha)^{1/2} x^{\alpha/2} - \frac{1}{2} x^{a} \right\} \nonumber
+		\\&= \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(a,d,\alpha)^{a/(2a-\alpha)}. \label{E:Mupperbound}
 	\end{align}
 Recall Lemma \ref{L:gammaf2f2bdd} above and choose $0 < \epsilon < \sigma(a,d,\alpha)$ and let $f\in \mathcal{F}_a$ be such that
 	\[
-		\int_{\R^{2d}} \gamma(x-y)f^2(x)f^2(y) \ud x \ud y \ge (\sigma(d,\alpha)-\epsilon) \mathcal{E}_a(f,f)^{\alpha/a}.
+		\int_{\R^{2d}} \gamma(x+y)f^2(x)f^2(y) \ud x \ud y \ge (\sigma(a,d,\alpha)-\epsilon) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
 Now define
 	\[
@@ -1937,24 +1936,24 @@ Notice that
 	\begin{align*}
 		E_{a,d}(\gamma,1) &\ge \int_{\R^{2d}} g^2(x)g^2(y) \gamma(x-y)\ud x\ud y - \frac{1}{2}\: \mathcal{E}_a(g,g)
 		\\&= t^\alpha \int_{\R^{2d}} \gamma(x-y) f^2(x)f^2(y) - 		\frac{1}{2} t^a \mathcal{E}_a(f,f)
-		\\& \ge (\sigma(d,\alpha)-\epsilon) t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2} t^a \mathcal{E}_a(f,f)
+		\\& \ge (\sigma(a,d,\alpha)-\epsilon) t^{\alpha} \mathcal{E}_a(f,f)^{\alpha/a} - \frac{1}{2} t^a \mathcal{E}_a(f,f)
 	\end{align*}
 and this is true for all $t>0$ so we can say that
 	\begin{align*}
-		E_{a,d}(\gamma,1) &\ge \sup_{x>0} \left\{ (\sigma(d,\alpha)-\epsilon) x^\alpha - \frac{1}{2} x^a \right\} \nonumber
-\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(d,\alpha)-\epsilon)^{a/(a-\alpha)}
+		E_{a,d}(\gamma,1) &\ge \sup_{x>0} \left\{ (\sigma(a,d,\alpha)-\epsilon) x^\alpha - \frac{1}{2} x^a \right\} \nonumber
+\\& = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}(\sigma(a,d,\alpha)-\epsilon)^{a/(a-\alpha)}
 	\end{align*}
 and be letting $\epsilon \to 0$ gives us
 	\begin{equation}\label{E:Elowerbound}
-		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}
+		E_{a,d}(\gamma,1) \ge\left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(a,d,\alpha)^{a/(a-\alpha)}
 	\end{equation}
 and if we combine this with \eqref{E:Eupperbound} then we see that
 	\begin{equation}\label{E:Eequality1}
-		E_{a,d}(\gamma,1) = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(d,\alpha)^{a/(a-\alpha)}.
+		E_{a,d}(\gamma,1) = \left(\frac{2\alpha}{a}\right)^{\alpha/(a-\alpha)}\frac{a-\alpha}{a}\sigma(a,d,\alpha)^{a/(a-\alpha)}.
 	\end{equation}
 Similarly we show that
 	\begin{equation}\label{E:Meqquality1}
-		\mathcal{M}_{a,d}(\gamma,1) = \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(d,\alpha)^{a/(2a-\alpha)}.
+		\mathcal{M}_{a,d}(\gamma,1) = \left( \frac{\alpha}{a}\right)^{\alpha/(2a-\alpha)} \frac{2a-\alpha}{2a}\sigma(a,d,\alpha)^{a/(2a-\alpha)}.
 	\end{equation}
 Lastly, by combining \eqref{E:Eequality1} and \eqref{E:Meqquality1}, we see that
 	\begin{equation} \label{E:EandMrelation1}
