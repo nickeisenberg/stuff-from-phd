@@ -213,7 +213,7 @@ and covariance
 \end{align*}
 where $\mu$ refers to the {\it spectral measure}, which is assumed to be a nonnegative and
 nonnegative definite tempered measure on $\R^d$. Let $\gamma$ be the Fourier transform of $\mu$ (see Section \ref{SS:Malliavin}),
-which is also a nonnegative and nonnegative measure on $\R^d$ thanks to Bochner's theorem.
+which is also a nonnegative and nonnegative definite measure on $\R^d$ thanks to Bochner's theorem.
 Throughout the paper, we use $\mathcal{F}\phi(\xi) = \int_{\R^d} \exp(-ix \xi) \phi(x) \ud
 x$ to denote the Fourier transform of a test function $\phi$.
 
@@ -1254,12 +1254,12 @@ results for both stochastic wave and heat equations.
 	\end{equation}
 	where the variational constant is given by
 	\begin{align*}
-		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_a} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
+		\textbf{M}(a,\alpha_0,d,\gamma) = \sup_{g \in \mathcal{A}_{a,d}} \bigg\{ \frac{1}{2} \int_0^1\int_0^1 \int_{\R^{2d}} & \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s
 		\\& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
 	\end{align*}
 	with\footnote{Note that the Fourier transform is defined differently in \cite{CHSS18}.}
 	\[
-		\mathcal{A}_d := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
+		\mathcal{A}_{a,d} := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and } (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
 	\]
 	By setting $\alpha_0=0$ and letting $g(s,x)=g(x) \in \mathcal{F}_a$ be independent in $s$, which is the time-independent setup, then Equation \eqref{E:AsymStable-t} and Lemma \ref{L:EvsM} together recover \eqref{E:AsymVar}. Indeed, by observing \eqref{E:VarConstE} and \eqref{E:EvsM}, we see that
 	\begin{align}
@@ -2033,7 +2033,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\end{equation}
 	where
 	\[
-		\mu(\ud \vec{\xi}) = \prod_{j=1}^n \mu(\ud \xi_j).
+		\mu(\ud \vec{\xi}) = \prod_{j=1}^n \mu(\ud \xi_j)= \prod_{j=1}^n \varphi(\xi) \ud \xi.
 	\]
 	One may check the proof of Lemma 3.3 of \cite{BCC21} for more details.
 
@@ -2175,8 +2175,7 @@ which is a direct consequence of Stirling's formula.
 
 \begin{lemma}
 	\label{L:2ineq}
-	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Recall $\rho$ which is defined in \eqref{E:rho}.\\
-	Under condition \eqref{E:alpha},
+	Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold and in addition that $\alpha < \min\{2a,d\}$. Recall $\rho$ which is defined in \eqref{E:rho}. Then the following identities hold true:\\
 	\begin{align}
 		\label{E:2ineq-a}
 		&\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
@@ -2248,7 +2247,11 @@ which is a direct consequence of Stirling's formula.
 		\label{E:2lowbd}
 		\frac{T_n(\nu,a)}{(n!)^2} \le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2 	\Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
 	\end{align}
-	Now, an application of both Stirling's formula for the Gamma function and the Legrande duplication formula (see Lemma \ref{L:Ster+LegApp} below) shows that, as $n\to \infty$,
+	Now, an application of Stirling's formula to the quantity 
+		\[
+			\frac{	\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2}{\Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)}
+		\]
+	shows that, as $n\to \infty$,
 	\begin{align}
 		\label{E:GammaSq}
 		\Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n,
@@ -2938,47 +2941,6 @@ where in the last line we applied \eqref{E:greenscale}. Now,
      & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
 	\end{align*}
 	This proves \eqref{E:fHn}.
-\end{proof}
-
-\begin{lemma}
-	\label{L:Ster+LegApp} For any $n \in \mathbb{N}$ and $k>0$, the following asymptotic holds as $n
-	\to \infty$:
-		\[
-			\Gamma\left( \frac{kn}{2} + 1 \right)^2 \sim 2^{-1}\sqrt{k} \; 2^{-kn}\sqrt{2\pi n} \; \Gamma(kn+1).
-		\]
-\end{lemma}
-\begin{proof}
-	We use the notation '$\sim$' to mean asymptotically equivalent. For example, $a(x) \sim b(x) \;
-	\iff \; a(x)/b(x) \to 1$ as $x \to \infty$. The proof relies on two well known properties of the
-	Gamma function:
-		\begin{enumerate}
-			\item Sterling's Formula: $\Gamma(x+1) \sim \sqrt{2 \pi x} (x/e)^x$ as $x \to \infty$,
-			\item Legrende's duplication formula: $\Gamma(z)\Gamma(z + 1/2) = 2^{1-2z}\sqrt{\pi} \;
-				\Gamma(2z)$ for $z \in \mathbb{C}$.
-		\end{enumerate}
-	First, by Sterling's formula we see that 
-		\begin{equation}
-		\label{E:SterApp}
-			\Gamma\left( \frac{kn}{2} +1 \right) \sim \sqrt{ \pi k n}\left(\frac{kn}{2e}\right)^{kn/2} .
-		\end{equation}
-	Now by writing 
-		\[
-			\Gamma\left( \frac{kn}{2} +1 \right) = \Gamma\left( \frac{kn+1}{2} +\frac{1}{2} \right)
-		\]
-	and applying Legrende's duplication formula, we see that 
-		\begin{equation}
-			\label{E:LegApp}
-			\Gamma\left( \frac{kn}{2} +1 \right)  = \frac{2^{-kn}\sqrt{\pi}  \;\Gamma(kn+1) }{\Gamma\left(\frac{kn+1}{2}\right)}.
-		\end{equation}
-	Lastly, by combining \eqref{E:SterApp} and \eqref{E:LegApp}, get that 
-		\begin{align*}
-				\Gamma\left( \frac{kn}{2} +1 \right)^2 & \sim \frac{ \sqrt{\pi kn} \left(\frac{kn}{2e}\right)^{kn/2} 2^{-kn} \sqrt{\pi} \Gamma(kn +1) }{ \sqrt{\pi kn - \pi} \left(\frac{kn-1}{2e}\right)^{(kn-1)/2} }
-				\\& = \sqrt{\frac{\pi kn}{\pi kn -1}} \left(\frac{kn}{kn-1}\right)^{kn/2} \left(\frac{kn-1}{2e}\right)^{1/2} 2^{-kn} \sqrt{\pi} \; \Gamma(kn+1)
-				\\& \sim \sqrt{e} \left(\frac{kn-1}{2e}\right)^{1/2} 2^{-kn} \sqrt{\pi} \; \Gamma(kn+1)
-				\\& = 2^{-1} (kn-1)^{1/2} \; 2^{-kn} \sqrt{2\pi} \; \Gamma(kn+1)
-				\\& \sim 2^{-1} \sqrt{k} \; 2^{-kn} \sqrt{2 \pi n} \; \Gamma(kn+1),
-		\end{align*}
-	which proves the result. 
 \end{proof}
 
 
