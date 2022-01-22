@@ -1,0 +1,223 @@
+\documentclass[12pt]{article}% {{{
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+\usepackage{amsmath,amsthm,amsfonts,amssymb, xcolor}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[shortlabels]{enumitem}
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+% For Assumption, indexed by Letters without section numbers
+\newtheorem*{assumptions*}{\assumptionnumber}
+\providecommand{\assumptionnumber}{}
+\makeatletter
+\newenvironment{assumptions}[1]
+ {%
+	 \renewcommand{\assumptionnumber}{Assumption #1}%
+\begin{assumptions*}%
+  \protected@edef\@currentlabel{#1}%
+ }
+ {%
+  \end{assumptions*}
+ }
+\makeatother
+% Useage:
+% \begin{assumptions}{X}
+% 	\label{bbb}
+% 	.......
+% \end{assumptions}
+%
+% By Assumption \ref{bbb}, ....
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\def\cA{\mathcal{A}}
+\def\cB{\mathcal{B}}
+\def\cC{\mathcal{C}}
+\def\cD{\mathcal{D}}
+\def\cE{\mathcal{E}}
+\def\cF{\mathcal{F}}
+\def\cG{\mathcal{G}}
+\def\cH{\mathcal{H}}
+\def\cI{\mathcal{I}}
+\def\cL{\mathcal{L}}
+\def\cM{\mathcal{M}}
+\def\cP{\mathcal{P}}
+\def\cQ{\mathcal{Q}}
+\def\cS{\mathcal{S}}
+\def\cU{\mathcal{U}}
+
+\def\bC{\mathbb{C}}
+\def\bD{\mathbb{D}}
+\def\bE{\mathbb{E}}
+\def\bN{\mathbb{N}}
+\def\bP{\mathbb{P}}
+\def\bR{\mathbb{R}}
+\def\R{\mathbb{R}}
+\def\bS{\mathbb{S}}
+\def\bZ{\mathbb{Z}}
+
+\def\e{\varepsilon}
+\def\SD{\mathbb{S}_{\mathbb{D} }}
+\def\N{\overline{N}}
+\def\barD{\overline{\mathbb{D}}_0}
+\def\oZ{\overline{Z}}
+\newcommand{\Norm}[1]{\left|\left|  #1   \right|\right|}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\def\E{{\mathbb E}}
+
+\def\blue{\color{blue}}
+
+\def\bs{{\bf s}}
+\def\bt{{\bf t}}
+\def\bu{{\bf u}}
+\def\bv{{\bf v}}
+\def\bx{{\bf x}}
+\def\by{{\bf y}}
+\def\bz{{\bf z}}
+\def\e{{\rm e}}
+
+\def\cprime{$'$}
+
+\renewcommand{\d}{\mathrm{d}}
+
+\topmargin -0.4in
+\headsep 0.4in
+\textheight 9.0in
+\oddsidemargin 0.02in
+\evensidemargin 0.15in
+\textwidth 6.3in
+
+\numberwithin{equation}{section}
+% }}}
+
+\title{Answers to Referee's Questions\\
+``Interpolating the Stochastic Heat and Wave Equations with Time-independent Noise: Solvability and Exact Asymptotics''}
+\author{Le Chen and Nicholas Eisenberg}
+\date{\today}
+\begin{document}
+\maketitle
+
+
+We would like to thank the two anonymous reviewers for carefully reading our
+manuscript and for providing detailed reports, which have helped us to improve
+significantly the paper. We have revised our paper accordingly. Here are a list
+of changes that we have made. The page and equation numbers refer to the
+revised version of the manuscript.
+
+\bigskip
+
+\section{Changes according to Reviewer 1}
+
+\begin{enumerate}
+	\item page 2: Fixed the "nonnegative and nonnegative-definite" typo
+	\item page 13: Fixed the typo involving $\mathcal{A}_{a,d}$. 
+\end{enumerate}
+
+\section{Changes according to Reviewer 2}
+
+\begin{enumerate}
+	\item page 1, line 21, 23 and 24: Changed "exits" to "exists". 
+	\item page 1, line 22: Added "as" to the sentence.
+	\item page 2, line 32: Added parenthesis to $f^{(m)}$. 
+	\item page 2:  We removed the mention of $Z$ and $Z^*$ and then reworded the last paragraph to accommodate this change. 
+	\item page 4, line 48: Corrected the "Wiener" misspelling. 
+	\item page 5: We corrected the condition on $r$ so that $r < 1/2$. 
+	\item page 5, line 15: We added a space after "$p \ge 2,...$".
+	\item page 6, line 23: Added the word "illustrate".
+	\item page 6, line 34: Changed "exits" to "exists". 
+	\item page 7, item (b): We referenced the theorem and figure below. 
+	\item page 7, line 7: Changed "to" to "with". 
+	\item page 7, line 14: We removed the word "the". 
+	\item page 7, line 37 and line 48: Changed "exits" to "exists". 
+	\item page 7, line 41: Reworded the paragraph starting on this line. 
+	\item page 10, line 44: Changed "Laplace" to "Laplacian". 
+	\item page 10: We removed the repeated $\alpha = a = d =2$ case from the bottom of the page. 
+	\item page 13: Fixed the $\gamma(x-y)$ typo. 
+	\item page 14, line 3: Changed "exits" to "exists". 
+	\item page 15, line 11: Added a reference to the Skorohod integral at the end of this paragraph. \\
+	\item page 15, line 31: Reworded the sentence to say that the moment "diverges to infinity" for $t>T_2$. 
+	\item page 15, line 39: Fixed the Wiener misspelling. 
+	\item page 16, line 20: Fixed the order of the arguments for the kernel $\tilde{f}_n$. 
+	\item page 16, line 38: Fixed the "Wiener" misspelling. 
+	\item page 16, line 40: Changed $R$ to $\R$. 
+	\item page 17, line 23: Added the assumption that $\alpha < \min\{2a,d\}$. 
+	\item page 17, Theorem 3.5: Added the assumption that $\alpha < \min\{2a,d\}$. 
+	\item page 20: Replaced "$f$" with "$b$" in the definition for $\Norm{\cdot}_{q,w}$.
+	\item page 20, line 23: Removed the reference to [1, Lemma 1.6].
+	\item page 21, line 9: Added an equation link to where this is referenced. 
+	\item page 21, Lemma 3.9: Added the assumption on $\alpha$. Directed the reader to the definition of $\sigma(a,d,\alpha)$. Replaced "$2$" with "$\alpha$" in the exponent. 
+	\item page 21, Lemma 3.10: Made clear that Lemma 3.5 is from the current paper. Fixed the $g$ typo inside the definition of $\Lambda$. 
+	\item page 22, line 23: Replaced "$\R$" with "$\R_+$".
+	\item page 22, line 33: Replaced "$2$" with "$\alpha$" in the exponent. 
+	\item page 22: All $\sigma(d,\alpha)$ were replaced with $\sigma(a,d,\alpha)$. 
+	\item page 22: We reverted back to using $\gamma$ instead of the Riesz kernel. ie equation (3.34).
+	\item page 22, Lemma 3.11: Replaced $\gamma(x-y)$ with $\gamma(x+y)$. 
+	\item page 23, line 4: Corrected the centered equation. 
+	\item page 23: Reverted back to using $\gamma(\cdot)$ instead of $|\cdot|^{-\alpha}$.
+	\item page 23, line 48: Replaced "$f$" with "$g$". 
+	\item page 24, line 3: Added reference to Lemma 3.11 for the use of $\sigma$. 
+	\item page 24: Removed the excess periods, fixed the exponents by changing "$2$" to "$\alpha$", and also replaced "$\sigma(d,\alpha)$" with "$\sigma(a,d,\alpha)$".
+	\item page 25, line 3: Made it clear we are only proving part I.
+	\item page 25, Eq 4.5: Fixed the $\xi_{\sigma(j)}$ error. 
+	\item page 25, line 50: Gave a reference to the function $K$. 
+	\item page 26, Eq 4.6: Explained the notation. 
+	\item page 26 and 27, Eq 4.2: $\alpha < 2a$ was assumed in the statement of the theorem and we added a reference to clarify that. We also reordered the argument as suggested. 
+	\item page 27, Eq 4.14: Replaced "$n$" with "$2$". 
+	\item page 27, line 28: Added a reference for the inequality. 
+	\item page 27, line 35: Made a comment about the switch to $x=0$. 
+	\item page 28, Lemma 5.1: Relaxed the assumption on $\alpha$ and referenced $\rho$ as was suggested. 
+	\item page 28, line 59: Added a reference for $H$. 
+	\item page 29: Fixed all the $+1$ typos. 
+	\item page 29: Explained the derivation of $C_n$. 
+	\item page 29, line 56: Fixed the misspelling of hypercontractivity. 
+	\item page 30: You were correct, we made the change to $r$ ie $r\in[0,1/2).$
+	\item page 30, line 32: Fixed the typo involving the reference to Lemma 5.1. 
+	\item page 32, line 37: Added "it". 
+	\item page 33, line 22: Fixed the subscript in $\mathbb{E}(U_n(t))$. 
+	\item page 33, line 50: Replaced $H$ with $\mathcal{H}$. 
+	\item page 35: Fixed all $g_h$ typos. 
+	\item page 37, Eq 6.19: Fixed the $n_t$ typo. 
+	\item page 38, line 10: Fixed the $t_p$ typo. 
+	\item page 39: Reformatted the proof of (4.9) and took into account the suggestions made. 
+	\item page 40: Removed the duplicated reference. 
+\end{enumerate}
+
+\section{Additional minor corrections}
+
+In addition to the above changes suggested by the two referees, we implemented
+some minor corrections which are highlighted in \textcolor{blue}{blue} in the
+manuscript. We list these below.
+
+\begin{enumerate}
+\item
+\end{enumerate}
+
+\end{document}
+
