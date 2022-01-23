@@ -1,0 +1,379 @@
+% \documentclass[a4paper,12pt]{article}{{{
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------\left( \left[ \frac{a-d}{2}\right]q + p \right)
+% Load Packages here
+% -------------------------------------------------
+%\usepackage{hyperref}
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\} }}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw} }}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
+
+\def\crtL{\theta}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+
+% % Set up mdframe for questions.
+\newcounter{NQ}
+\newcounter{LQ}
+\newcounter{ZQ}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{%
+	middlelinecolor=lightgray,
+	middlelinewidth=2pt,
+	backgroundcolor=red!20,
+	roundcorner=10pt}
+\newenvironment{NickQuestion}[1][] %
+{\refstepcounter{NQ}
+	\begin{mdframed}[backgroundcolor=lightgray]\textbf{Nick's Question \theNQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\newenvironment{LeQuestion}[1][] %
+{\refstepcounter{LQ}
+	\begin{mdframed}[backgroundcolor=red!10]\textbf{Le's Question \theLQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\newenvironment{ZhijianQuestion}[1][] %
+{\refstepcounter{ZQ}
+	\begin{mdframed}[backgroundcolor=blue!10]\textbf{Zhijian's Question \theZQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\numberwithin{NQ}{section}
+\numberwithin{LQ}{section}
+\numberwithin{ZQ}{section}
+
+\usepackage[notref,notcite]{showkeys}
+
+\title{Nick Eisenberg's Meeting Notes}
+\author{Le Chen, Nick Eisenberg, Zhijian Wu}
+\date{October 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+% }}}
+\begin{document}
+\section{Introduction}
+We study the interpolated stochastic heat and wave equation (ISHWE) for spatial dimension on $\R^d$,
+	\begin{equation}
+	\label{E:SPDE}
+	\begin{cases}
+	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = u_0                                                                                                            & b \in (0,1]               \\
+	u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & b \in (1,2).
+	\end{cases}
+	\end{equation}
+
+
+\section{Preliminaries}
+For any $t \in [0,T]$ and $x \in \R^d$, we write (assuming $\beta \in (1,2))$
+	\[
+		u(t,x) = J_0(t,x) + I(t,x)
+	\]
+where
+	\begin{align*}
+		J_0(t,x) &=\begin{cases} 
+							[Z(t,\cdot)*u_0](x) & \beta \in (0,1]
+						\\	[Z(t,\cdot)*v_0](x) + \frac{\partial}{\partial t}[Z(t,\cdot)*u_0](x) & \beta \in (1,2)
+							\end{cases}
+	\\	I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
+				\end{align*}
+	
+	\begin{lemma}[Theorem 4.1 and Lemma 5.5 \cite{CHN19}]
+	\label{L:1and2normYZ}
+Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
+	\[
+		\int_{\R^d} Y(t,x) \ud x = t^{\beta+\gamma -1 }
+	\]
+and
+	\[
+		\int_{\R^d} Y^2(t,x) \ud x = C_{\#} t^{2(\beta+\gamma-1)-d\beta/\alpha},
+	\]
+for all $t > 0$, where 
+	\[
+		C_{\#} := \frac{2}{\Gamma(d/2)(4 \pi )^{d/2}} \int_0^\infty u^{d-1}E^2_{\beta,\beta + \gamma}(-u^\alpha) \ud u.
+	\]
+Now further assume that $\beta \in (1,2)$, then 
+	\[
+		\int_{\R} Z(t,x) = t^{\lceil \beta \rceil -1} = t. 
+	\]
+	\end{lemma}
+	\begin{remark}
+When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} G^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
+	\end{remark}
+In the proof of the next proposition, we will use the following two facts:
+	\begin{equation}
+	\label{E:SUPidentities}
+		\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
+	\end{equation}
+	\begin{proposition}[Proposition 3.2 \cite{SoleMillet2021}] 
+Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma) >0$ such that for any 
+	\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
+	\]
+and 
+	\[
+		p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right].
+	\]
+we have that 
+	\begin{equation}
+	\label{E:Nbdd}
+		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
+	\end{equation}	
+where
+	\begin{align*}
+		\mathcal{T}_0 = \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+		\end{cases} 
+	\end{align*}
+Moreover for any $T>0$,
+	\begin{equation}
+	\label{E:Pnormtbdd}
+		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+	\end{equation}
+	\end{proposition}
+	\begin{proof}
+First we fix an $a>0$ and $p \in [2,\infty)$. Using Lemma \ref{L:1and2normYZ} we see that,
+	\begin{align*}
+		|J(t,x)|  &= \begin{cases} 
+								\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
+							\\	\left| (Z(t,\cdot) * v_0)(x) + \frac{\partial}{\partial t}(Z(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
+							\end{cases}
+		\\& \le \begin{cases}
+								t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
+							\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+					\end{cases} 
+	\end{align*}
+Now using \eqref{E:SUPidentities}, we see that 
+	\begin{align}
+	N_{a,p}(J) &\le \begin{cases} 
+					\sup_{t\ge 0}\sup_{x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+					\\ \sup_{t\ge 0}\sup_{x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+								\end{cases} \nonumber
+	\\ &= \begin{cases} 
+					(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+				\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
+				\end{cases} \label{E:Jbdd}
+	\end{align}
+
+Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
+	\begin{align*}
+	\Norm{I(t,x)}_p^2 &\le 4p \Norm{\int_0^t \ud s \int_{\R}\ud y \; Y^2(t-s,x-y)\sigma^2(u(s,y))  }_{p/2}
+	\\&\le 4p \int_0^t \ud s \int_{\R} \ud y \; Y^2(t-s,x-y)\Norm{\sigma^2(u(s,y))}_{p/2}.
+	\end{align*}
+Now by applying Lemma \ref{L:1and2normYZ} and the Lipschitz property of $\sigma$ we get that 
+	\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\int_0^t (t-s)^{2(\beta+\gamma-1)-\beta/\alpha} \ud s + 8pL^2(\sigma)N^2_{a,p}(u)\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y).
+	\end{align*} 
+Now under Dalang's condition \cite{CHN19}, $(1/\alpha -2)\beta-2\gamma < -1$, the first integral above can be calculated as 
+	\[
+		\int_0^t (t-s)^{2(\beta+\gamma-1)-\beta/\alpha} \ud s = \frac{\alpha t^{(2-1/\alpha)\beta + 2\gamma -1} }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta}.
+	\]
+By applying Lemma \ref{L:1and2normYZ}, we can calculate the second integral as 
+	\[
+		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{2(\beta+\gamma-1)-\beta/\alpha}.
+	\]
+Putting this together gives us that 
+	\begin{align*}
+	\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\frac{\alpha t^{(2-1/\alpha)\beta + 2\gamma -1} }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{2(\beta+\gamma-1)-\beta/\alpha}.
+	\end{align*}
+Now by multiplying both sides by $e^{-2at}$, we see that
+	\begin{align*}
+	\Norm{I(t,x)}_p^2e^{-2at} &\le \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} t^{(2-1/\alpha)\beta + 2\gamma -1} e^{-2at} 
+	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^t \ud s \; e^{-2a(t-s)}(t-s)^{2(\beta+\gamma-1)-\beta/\alpha}.
+	\end{align*}
+We now do a change of variables and again recall the definition of the Gamma function to see that 
+	\begin{align*}
+	\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} t^{(2-1/\alpha)\beta + 2\gamma -1} e^{-2at}
+	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2a(u)}(u)^{2(\beta+\gamma-1)-\beta/\alpha}.
+	\\& = \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} t^{(2-1/\alpha)\beta + 2\gamma -1} e^{-2at} 
+	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} (2a)^{1+(1/\alpha - 2)\beta - 2\gamma}\Gamma\left[ (2-1/\alpha)\beta-1+2\gamma \right]
+	\end{align*}
+where the last line is true if Dalang's condition \cite{CHN19} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
+	\begin{align*}
+	N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta}} \left[(2-1/\alpha)\beta/2+\gamma-1/2\right]^{(2-1/\alpha)\beta/2+\gamma-1/2}(ea)^{1/2 - \gamma - (2-1/\alpha)\beta/2} 
+	\\&\quad\quad\quad\quad+ L(\sigma)N_{a,p}(u) \sqrt{8pC_{\#} (2a)^{1+(1/\alpha - 2)\beta - 2\gamma}\Gamma\left[ (2-1/\alpha)\beta-1+2\gamma \right]}.
+	\end{align*}
+If we now let 
+	\begin{align*}
+		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta}}\left(\frac{(2-1/\alpha)\beta/2+\gamma-1/2}{e}\right)^{(2-1/\alpha)\beta/2+\gamma-1/2},
+		\\& \hspace{10em} \left(\frac{1}{2}\right)^{(2-1/\alpha)\beta/2+\gamma-1/2} \sqrt{8C_{\#}\Gamma\left[ (2-1/\alpha)\beta-1+2\gamma \right]}  \Bigg\}
+	\end{align*}
+then,
+	\begin{align}
+	\label{E:Ibdd}
+			N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{(2-1/\alpha)\beta/2 + \gamma - 1/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
+	\end{align}
+Now by combining \eqref{E:Jbdd} and \eqref{E:Jbdd}, we see that 
+	\begin{align}
+	N_{a,p}(u) & \le \begin{cases} 
+	(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+	\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
+	\end{cases} 
+	\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}}  + K  \frac{\sqrt{p}L(\sigma)}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}} N_{a,p}(u). \label{E:Nbddgen}
+	\end{align}
+Now choose $a>0$ such that 
+	\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
+	\]
+This implies that the following interval is nonempty:
+	\[
+		\left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right].
+	\]
+In addition, for any $p$ in this interval, we have that 
+	\[
+		\frac{\sqrt{p}L(\sigma)K}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}} \le \frac{1}{2},
+	\]
+and we also have 
+	\[
+		\frac{\sqrt{p}}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}}  \le \frac{1}{2KL(\sigma)}.
+	\]
+This along with \eqref{E:Nbddgen} implies that 
+	\begin{align*}
+		N_{a,p}(u) & \le 2 \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\end{cases} 
+			\\& \quad \quad + \frac{c(\sigma)}{L(\sigma)}
+	\end{align*}
+and this is precisely \eqref{E:Nbdd}. Note that \eqref{E:Pnormtbdd} follows immediately from \eqref{E:Nbdd}.  
+	\end{proof}
+\addcontentsline{toc}{section}{Bibliography}
+\begin{thebibliography}{999}
+	%sample
+	%\bibitem{Chen17Tran}% {{{ 3.
+	%Chen, L. (2017).
+	%\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+	%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+
+	\bibitem{CHN19}% {{{ 5.
+	Chen, L., Hu, Y., and Nualart, D. (2019).
+	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+	% }}}
+
+	\bibitem{SoleMillet2021}
+	Sanz-Sole, M. and Millet, A. (2021)
+	\newblock{\em Global solutions to stochastic wave equations with superlinear coefficients.}
+	\newblock Stochastic Processes and their Applications, Elsevier, 2021, 139, pp.175-211.
+\end{thebibliography}
+
+\end{document}
