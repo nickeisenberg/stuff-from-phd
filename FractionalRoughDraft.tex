@@ -230,17 +230,24 @@ where $m$ is an integer, and $I^r_t$ refers to the {\it Riemann-Liouville fracti
 \begin{align*}
 	I^r_tf(t) := \frac{1}{\Gamma(r)} \int_0^t (t-s)^{r-1}f(s)\ud s, \quad \text{for } t>0,
 \end{align*}
-with the convention that when $r=0$, $I^0_t = \text{Id}$ reduces to the identity operator. The fundamental solution to \eqref{E:SPDE} is expressed explicitly in terms of the {\it Fox H-function} which is
+with the convention that when $r=0$, $I^0_t = \text{Id}$ reduces to the identity operator. The fundamental solution to \eqref{E:SPDE} is expressed explicitly in terms of the {\it Fox H-function}, $H^{m,n}_{p,q}(z)$, which is
 much more complicated than the Green's function for either the heat or wave equation. We denote the fundamental solution as 
 \begin{equation}
 \label{E:GreenFunction}
-G(t,x):= G_{a,b,r,\nu,d}(t,x)
-\end{equation}
+G(t,x):= G_{a,b,r,\nu,d}(t,x),
+\end{equation} 
+where
+	\[
+		G_{a,b,r,\nu,d}(t,x) = \pi^{-d/2} |x|^{-d} t^{b+r-1} H^{2,1}_{2,3}\left( \frac{|x|^a}{2^{a-1}\nu t^b}\;  \Bigg \vert  \begin{array}{l}
+		(1,1),\; (b+r,b) \\
+		(d/2,a/2),\; (1,1),\; (1,a/2)
+		\end{array} \right)
+	\]
 We direct the reader to
 Theorem 4.1\footnote{$G(t,x)$ corresponds to $Y_{a,b,r,\nu,d}(t,x)$ from \cite{CHN19}.} of \cite{CHN19} for more details. Since we are interested in the constant one initial condition (and zero
 initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the corresponding solution to
 the homogeneous equation (i.e. the solution when there is no driving source) is equal to the
-constant one. Hence, \eqref{E:SPDE} can be written as
+constant one. Hence through superposition, \eqref{E:SPDE} can be written as
 the following stochastic integral equation:
 \begin{equation}
 	\label{E:spdeint}
@@ -1248,7 +1255,7 @@ results for both stochastic wave and heat equations.
 									\prod_{j=1}^d |x_j|^{\alpha_j} & \text{where } \alpha_j \in (0,1).
 									\end{cases}
 	\end{align}
-	They proved that for $\alpha < d$ and let $p \ge 2$,
+	They proved that for $\alpha < \min\{a,d\}$ and let $p \ge 2$,
 	\begin{equation}\label{E:AsymVar}
 		\lim_{t\to\infty} t^{-\frac{2a - \alpha - \alpha\alpha_0}{a-\alpha}}\log\mathbb{E}[|u(t,x)|^p] = p(p-1)^{\frac{a}{a-\alpha}}\textbf{M}(a,\alpha_0,d,\gamma),
 	\end{equation}
@@ -1301,7 +1308,7 @@ results for both stochastic wave and heat equations.
 
 \begin{example}[Asymptotics for SPDEs with $r=0$ and white noise]% {{{
 	\label{Eg:AymsFracSHE0}
-	From \eqref{E:alpha}, we see that when $a=2$, $r=0$, $d=\alpha=1$ (white noise), the
+	From Example \ref{Eg:FracSHE0}, we see that when $a=2$, $r=0$, $d=\alpha=1$ (white noise), the
 	global solution exists when  $b\in (2 /3, 2)$. In this case, we have that
 	\begin{align*}
 		\beta = \frac{3b}{3b-2} \qquad \text{and} \qquad
@@ -1435,7 +1442,7 @@ By setting $t_{n+1}=t$, the Fourier transform of the kernels, $f_n$, is given by
 	\mathcal{F}f_n(\cdot;x,t)(\xi_1,...,\xi_n) = e^{-i \left(\sum_{j=1}^n \xi_j \right) \cdot x} \int_{[0,t]^n_<} \prod_{k=1}^n \overline{\mathcal{F}G(t_{k+1}-t_k,\cdot)\left(\sum_{j=1}^k \xi_j\right) } 	\ud \vec{t}.
 \end{align}
 
-Recall the notation above that $G(t,x) = Y_{a,b,r,d}(t,x)$. The following scaling properties for both $\mathcal{F}G(t,\cdot)(\xi)$ and
+Recall the notation above in \eqref{E:GreenFunction} that $G(t,x) = G_{a,b,r,d}(t,x)$. The following scaling properties for both $\mathcal{F}G(t,\cdot)(\xi)$ and
 $\Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}$ play an important role in the paper.
 
 \begin{lemma}
@@ -2607,36 +2614,35 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 		\int_0^{\infty} e^{-t} U_n(t,f) \ud t & = \int_0^\infty e^{-t} W_n(t,\mathcal{F}f) \ud t \\
                                           & = \int_{\R^{dn}} \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\xi_k+\cdots + \xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n).
 	\end{align*}
-	By the same arguments as  \cite[Assumption C]{BCC21} with the replacement \eqref{E:Changes} (see
-	also the proof of \cite[Theorem 1.2]{BCR09}), we have that
+	Notice that the right hand side of the above equation takes the form as \cite[Equation (3.3)]{BCR09}. By the same arguments that follow in the proof of Theorem 2.3 {\it ibid}  with the replacement \eqref{E:Changes}, we have that
 	\begin{align*}
-		\liminf_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) \ge  \log\rho(\mathcal{F}f),
+		\liminf_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) \ge  \log\rho'(\mathcal{F}f),
 	\end{align*}
-	where $\rho(\cdot)$ is defined on the space of nonnegative and nonnegative definite functions and
-	is given by
+	where $\rho'(\cdot)$ is defined on the space of nonnegative and nonnegative definite functions and is given by
 	\begin{align*}
-		\rho(g) := \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta\right] \mu(\ud \xi).
+		\rho'(g) &:= \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta\right] \mu(\ud \xi),
 	\end{align*}
-	Note that since both $\mu$ and $g$ are nonnegative, we may assume $h$ is also nonnegative for the
-	remainder of this proof. With this being said, we see that for any $f \in \mathcal{H}_+$ with
+	where in addition, $\mathcal{F}^{-1}g \in \mathcal{H}_+$. Moreover, we are interested in the quantity 
+	\[
+		\rho'_+(g) := \sup_{h \ge 0\;\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)\left[ \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta\right] \mu(\ud \xi)
+	\]
+	which clearly satisfies 
+	\[
+		\rho'(g) \ge \rho'_+(g).
+	\]
+	 With this being said, we see that for any $f \in \mathcal{H}_+$ with
 	$\Norm{f}_\mathcal{H} =1$,
 	\begin{align*}
-		\liminf_{n \to \infty} \frac{1}{n}\log \mathbb{E}(U_n(\tau)) \ge \log \rho(\mathcal{F}f).
+		\liminf_{n \to \infty} \frac{1}{n}\log \mathbb{E}(U_n(\tau)) \ge \log \rho'_+(\mathcal{F}f).
 	\end{align*}
 	We now need to calculate
 	\begin{align*}
-		\sup_{f \in \mathcal{H}_+, \: \Norm{f}_{\mathcal{H}}=1} \rho\left(\mathcal{F}f\right).
+		\sup_{f \in \mathcal{H}_+, \: \Norm{f}_{\mathcal{H}}=1} \rho'_+\left(\mathcal{F}f\right).
 	\end{align*}
 	Consider a nonnegative function $h\in L^2(\R^d)$. The function
 	$h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g_h(x) := (2\pi)^{d/2}
 	\mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well
-	defined. Under these conditions, $g_h \in W^{1,a}(\R^d)$ with
-	\begin{align*}
-		\Norm{g_h}_{W^{1,a}(\R^d)} = \frac{1}{(2\pi)^d} \int_{\R^d} (1+|\xi|^a) |\mathcal{F}g_h(\xi)|^2\ud\xi
-		= \int_{\R^d} \frac{1+|\xi|^a}{1+\frac{\nu}{2}|\xi|^a} |h(\xi)|^2 \ud \xi
-		\le C_\nu \Norm{h}_{L^2(\R^d)}^2 <\infty.
-	\end{align*}
-	Notice that
+	defined. Notice that
 	\begin{align*}
 		\int_{\R^d} \frac{h(\xi +
 		\eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta
@@ -2649,14 +2655,14 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	that $(2\pi)^{-d}(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi)
 	=\mathcal{F}\left[|g_h|^2\right](\xi)$. Hence,
 	\begin{align*}
-		\rho(\mathcal{F}f) & = \sup_{\Norm{h}_{L^2(\R^d)}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) \mu(\ud \xi) \\
+		\rho'_+(\mathcal{F}f) & = \sup_{\Norm{h}_{L^2(\R^d)}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) \mu(\ud \xi) \\
                        & = \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g_h|^2](\xi) \mu(\ud \xi)                                   \\
                        & = \sup_{\Norm{h}_{L^2(\R^d)}=1}\langle f, |g_h|^2 \rangle _{\mathcal{H}}.
 	\end{align*}
 	With this we see that
 	\begin{align}
 		\label{E:supf}
-		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g_h|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
+		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho'_+(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g_h|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
 	\end{align}
 	where the optimal $f$ is chosen to be $|g_h|^2/\Norm{|g_h|^2}_{\mathcal{H}}$. Now we claim that
 	\begin{equation}
@@ -2665,8 +2671,8 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	\end{equation}
 	which implies that the supremum in \eqref{E:supf} can be restricted to $\mathcal{H}_+$ and
 	\begin{align*}
-		\sup_{ f \in \mathcal{H},\: \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) =
-		\sup_{ f \in \mathcal{H}_+,\: \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) =
+		\sup_{ f \in \mathcal{H},\: \Norm{f}_{\mathcal{H}}=1 } \rho'_+(\mathcal{F}f) =
+		\sup_{ f \in \mathcal{H}_+,\: \Norm{f}_{\mathcal{H}}=1 } \rho'_+(\mathcal{F}f) =
 		\sup_{\Norm{h}_{L^2}=1} \left\langle |g_h|^2, |g_h|^2 \right\rangle^{1/2} _{\mathcal{H}}.
 	\end{align*}
 	Then notice that
