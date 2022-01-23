@@ -50,6 +50,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{hypothesis}[theorem]{Hypothesis}
 \newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{question}{Question}
 
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{conjecture}[theorem]{Conjecture}
@@ -133,33 +134,6 @@
 \DeclareMathOperator{\vip}{\underline{\varsigma}}
 \DeclareMathOperator{\vv}{\varsigma}
 
-% % Set up mdframe for questions.
-\newcounter{NQ}
-\newcounter{LQ}
-\newcounter{ZQ}
-\usepackage{xcolor}
-\usepackage[framemethod=tikz]{mdframed}
-\mdfsetup{%
-	middlelinecolor=lightgray,
-	middlelinewidth=2pt,
-	backgroundcolor=red!20,
-	roundcorner=10pt}
-\newenvironment{NickQuestion}[1][] %
-{\refstepcounter{NQ}
-	\begin{mdframed}[backgroundcolor=lightgray]\textbf{Nick's Question \theNQ \: #1~~}~~~\noindent}%
-	{\end{mdframed}}
-\newenvironment{LeQuestion}[1][] %
-{\refstepcounter{LQ}
-	\begin{mdframed}[backgroundcolor=red!10]\textbf{Le's Question \theLQ \: #1~~}~~~\noindent}%
-	{\end{mdframed}}
-\newenvironment{ZhijianQuestion}[1][] %
-{\refstepcounter{ZQ}
-	\begin{mdframed}[backgroundcolor=blue!10]\textbf{Zhijian's Question \theZQ \: #1~~}~~~\noindent}%
-	{\end{mdframed}}
-\numberwithin{NQ}{section}
-\numberwithin{LQ}{section}
-\numberwithin{ZQ}{section}
-
 \usepackage[notref,notcite]{showkeys}
 
 \title{Nick Eisenberg's Meeting Notes}
@@ -170,6 +144,88 @@
 \usepackage{graphicx}
 % }}}
 \begin{document}
+
+\begin{question}[Norm increments in time and space.]
+	If we want to keep the more general initial conditions $u_0$ and $v_0$ then we need to find an upper bound of the following form:
+	\[
+		\int_{\R}|G(s,\bar{x}-y) - G(t,x-y)| \ud y \le C(T)(|s-t|+|\bar{x}-x|) \quad \text{for } t \in [0,T] \text{ and } x \in \R.
+	\]
+	To simplify this at first we can look at both 
+	\begin{align}
+		\label{E:HGspace} & \int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y \\
+		\label{E:HGtime} & \int_{\R}|G(s, x-y) - G(t,x-y)| \ud y 
+	\end{align}
+	and in addition consider the Heat equation case,
+	\[
+		G(t,x) = \frac{1}{\sqrt{2 \pi t}}\exp\left( - \frac{x^2}{2t}\right).
+	\]
+	Starting with \eqref{E:HGspace}, we first assume that $x < \bar{x}$ and use the Mean Value Theorem to get 
+	\begin{align*}
+		\int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y & \le  |\bar{x} - x| 	\int_{\R}\left|\frac{\partial G}{\partial x}(t,\xi(x,\bar{x}) -y)\right|\ud y 
+	\end{align*}
+	where $\xi(x, \bar{x}) \in (x,\bar{x})$ is a constant. Using Mathematica,
+	\begin{verbatim}
+		g[x_] := (2 Pi t)^(-1/2) Exp[-(x^2)/(2t)] 
+		
+		Integrate[Abs[D[g[x-y],x]],{y,-Infinity,Infinity}, Assumptions -> t>0 
+		&& -Infinity < x < Infinity]
+	\end{verbatim}
+	we get that for any $x\in \R$ that 
+	\[
+		\int_{\R}\left|\frac{\partial G}{\partial x}(t,x-y)\right|\ud y = \frac{\sqrt{\frac{2}{\pi}}}{\sqrt{t}}
+	\]
+	and hence 
+	\begin{align*}
+		\int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y & \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|\bar{x} - x|.
+	\end{align*}
+	Similarly for \eqref{E:HGtime}, by assuming $t<s$ we get 
+	\begin{align*}
+	\int_{\R}|G(s,x-y) - G(t,x-y)| \ud y & \le  |s - t| 	\int_{\R}\left|\frac{\partial G}{\partial t}(\eta(t,s), x -y)\right|\ud y 
+	\end{align*}
+	where $\eta(t,s) \in (t, s)$ is a constant. And by using Mathematica, 
+	\begin{verbatim}
+		Integrate [Abs[D[g[x-y],t]],{y,-Infinity, Infinity}, Assumptions -> t>0 
+		&& -Infinity < x < Infinity]
+	\end{verbatim}
+	we get that for $t>0$ and $x \in \R$ that 
+	\begin{align*}
+		\int_{\R}\left|\frac{\partial G}{\partial t}(t, x -y)\right|\ud y  & = \sqrt{\frac{2}{e \pi}} \frac{1}{t}
+	\end{align*}
+	and therefore 
+	\begin{align*}
+	\int_{\R}|G(s,x-y) - G(t,x-y)| \ud y & \le \sqrt{\frac{2}{e \pi}} \frac{1}{\eta(t,s)}  |s - t| .
+	\end{align*}
+	Now we can see that 
+	\begin{align*}
+	\int_{\R}|G(s,\bar{x}-y) - G(t,x-y)| \ud y &\le  \int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y +  \int_{\R}|G(s,\bar{x}-y) - G(t,\bar{x}-y)| \ud y  \\
+	& \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|\bar{x} - x| + \sqrt{\frac{2}{e \pi}} \frac{1}{\eta(t,s)}  |s - t|.
+	\end{align*}
+	The $t$ and $\eta(t,s)$ seem to be an issue since they are unbounded as $t, s \to 0$. 
+	
+	\begin{remark}
+		We can tweak the upper bound for \eqref{E:HGtime} at little to remove the $\eta(t,s)$. First note that 
+			\begin{align*}
+			\left|\frac{\partial G}{\partial t}(t, x -y)\right| & = \left| -\frac{\exp\left(-\frac{x^2}{2t}\right)}{2\sqrt{2 \pi} t^{3/2}} + \frac{\exp\left(-\frac{x^2}{2t}\right) x^2}{2\sqrt{2 \pi} t^{5/2} }\right| \\
+			& \le \frac{\exp\left(-\frac{x^2}{2t}\right)}{2\sqrt{2 \pi} t^{3/2}}  + \frac{\exp\left(-\frac{x^2}{2t}\right) x^2}{2\sqrt{2 \pi} t^{5/2} }
+			\end{align*}
+		and notice that for $t < s$ we have that 
+		\begin{align*}
+			\frac{\exp\left(-\frac{x^2}{2t}\right)}{2\sqrt{2 \pi} t^{3/2}}  + \frac{\exp\left(-\frac{x^2}{2t}\right) x^2}{2\sqrt{2 \pi} t^{5/2} } & \le
+			 \frac{\exp\left(-\frac{x^2}{2s}\right)}{2\sqrt{2 \pi} t^{3/2}}  + \frac{\exp\left(-\frac{x^2}{2s}\right) x^2}{2\sqrt{2 \pi} t^{5/2} }
+		\end{align*}
+		and therefore 
+		\begin{align*}
+			\int_{\R}\left|\frac{\partial G}{\partial t}(t, x -y)\right|\ud y  & \le 		 \int_{\R} \frac{\exp\left(-\frac{(x-y)^2}{2s}\right)}{2\sqrt{2 \pi} t^{3/2}}  \ud y+ \int_{\R} \frac{\exp\left(-\frac{(x-y)^2}{2s}\right) x^2}{2\sqrt{2 \pi} t^{5/2} } \ud y \\
+			&\le \frac{1}{2t}\sqrt{\frac{s}{t}} + \frac{s}{2t^2}\sqrt{\frac{s}{t}}
+		\end{align*}
+		which implies that 
+		\[
+				\int_{\R}|G(s,x-y) - G(t,x-y)| \ud y \le \left(\frac{1}{2t}\sqrt{\frac{s}{t}} + \frac{s}{2t^2}\sqrt{\frac{s}{t}}\right)|s-t|.
+		\]
+	However we still run into the same issue. 
+	\end{remark}
+		
+\end{question}
 	
 	
 	
