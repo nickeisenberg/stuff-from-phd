@@ -148,22 +148,22 @@
 \begin{question}[Norm increments in time and space.]
 	If we want to keep the more general initial conditions $u_0$ and $v_0$ then we need to find an upper bound of the following form:
 	\[
-		\int_{\R}|G(s,\bar{x}-y) - G(t,x-y)| \ud y \le C(T)(|s-t|+|\bar{x}-x|) \quad \text{for } t \in [0,T] \text{ and } x \in \R.
+		\int_{\R}|G(s,z-y) - G(t,x-y)| \ud y \le C(T)(|s-t|+|z-x|) \quad \text{for } t \in [0,T] \text{ and } x,z \in \R.
 	\]
 	To simplify this at first we can look at both 
 	\begin{align}
-		\label{E:HGspace} & \int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y \\
+		\label{E:HGspace} & \int_{\R}|G(t,z-y) - G(t,x-y)| \ud y \\
 		\label{E:HGtime} & \int_{\R}|G(s, x-y) - G(t,x-y)| \ud y 
 	\end{align}
 	and in addition consider the Heat equation case,
 	\[
 		G(t,x) = \frac{1}{\sqrt{2 \pi t}}\exp\left( - \frac{x^2}{2t}\right).
 	\]
-	Starting with \eqref{E:HGspace}, we first assume that $x < \bar{x}$ and use the Mean Value Theorem to get 
+	Starting with \eqref{E:HGspace}, we first assume that $x < z$ and use the Mean Value Theorem to get 
 	\begin{align*}
-		\int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y & \le  |\bar{x} - x| 	\int_{\R}\left|\frac{\partial G}{\partial x}(t,\xi(x,\bar{x}) -y)\right|\ud y 
+		\int_{\R}|G(t,z-y) - G(t,x-y)| \ud y & \le  |z - x| 	\int_{\R}\left|\frac{\partial G}{\partial x}(t,\xi(x,z) -y)\right|\ud y 
 	\end{align*}
-	where $\xi(x, \bar{x}) \in (x,\bar{x})$ is a constant. Using Mathematica,
+	where $\xi(x, z) \in (x,z)$ is a constant. Using Mathematica,
 	\begin{verbatim}
 		g[x_] := (2 Pi t)^(-1/2) Exp[-(x^2)/(2t)] 
 		
@@ -176,7 +176,7 @@
 	\]
 	and hence 
 	\begin{align*}
-		\int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y & \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|\bar{x} - x|.
+		\int_{\R}|G(t,z-y) - G(t,x-y)| \ud y & \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|z - x|.
 	\end{align*}
 	Similarly for \eqref{E:HGtime}, by assuming $t<s$ we get 
 	\begin{align*}
@@ -197,8 +197,8 @@
 	\end{align*}
 	Now we can see that 
 	\begin{align*}
-	\int_{\R}|G(s,\bar{x}-y) - G(t,x-y)| \ud y &\le  \int_{\R}|G(t,\bar{x}-y) - G(t,x-y)| \ud y +  \int_{\R}|G(s,\bar{x}-y) - G(t,\bar{x}-y)| \ud y  \\
-	& \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|\bar{x} - x| + \sqrt{\frac{2}{e \pi}} \frac{1}{\eta(t,s)}  |s - t|.
+	\int_{\R}|G(s,z-y) - G(t,x-y)| \ud y &\le  \int_{\R}|G(t,z-y) - G(t,x-y)| \ud y +  \int_{\R}|G(s,z-y) - G(t,z-y)| \ud y  \\
+	& \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|z - x| + \sqrt{\frac{2}{e \pi}} \frac{1}{\eta(t,s)}  |s - t|.
 	\end{align*}
 	The $t$ and $\eta(t,s)$ seem to be an issue since they are unbounded as $t, s \to 0$. 
 	
