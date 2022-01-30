@@ -175,9 +175,9 @@ We study the interpolated stochastic heat and wave equation (ISHWE) for spatial 
 	\begin{equation}
 	\label{E:SPDE}
 	\begin{cases}
-	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
-	u(0,\cdot) = u_0                                                                                                            & b \in (0,1]               \\
-	u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & b \in (1,2).
+	\left(\partial^\beta_t + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)\: u(t,x) = I^\gamma_t \left[\sigma( u(t,x)) \: \dot W(t,x) \right] & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = u_0                                                                                                            & \beta \in (0,1]               \\
+	u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & \beta \in (1,2).
 	\end{cases}
 	\end{equation}
 
@@ -199,7 +199,7 @@ where
 To establish the existence and uniqueness of random field solutions to \eqref{E:SPDE}, we will need to assume Dalang's condition:
 	\begin{equation}
 	\label{C:Dalang}
-		\int_0^s t\ud s \int_{\R^d} \ud y |Y^(s,y)|^2 < \infty, \quad \text{for all } t>0,
+		\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
 	\end{equation} 
 which is equivalent to
 	\begin{equation}
@@ -207,7 +207,13 @@ which is equivalent to
 		d < 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\} =: \Theta.
 	\end{equation}
 \section{1-d Case}
-	
+In this section we study \eqref{E:SPDE} for $d=1$. 
+\subsection{Globally Lipschitz Coefficient}
+In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
+	\[
+		|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
+	\] 
+where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$.
 	\begin{lemma}{\normalfont \cite[Theorem 4.1 and Lemma 5.5]{CHN19}}
 	\label{L:1and2normYZ}
 Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
@@ -384,7 +390,7 @@ We will need to recall the following result proved in \cite{CHN19} in order to p
 
 \begin{proposition}
 \label{P:NormInc}
-	Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Then for any $x,z \in \R$ and for any $T>0$ with $t\in [0,T]$,
+	Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
 	\begin{equation}
 	\label{E:NormInc_N(u)}
 		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
@@ -434,6 +440,61 @@ Now by taking the square root of both sides and applying the identity $\sqrt{x+y
 This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follows directly from \eqref{E:NormInc_N(u)} and Proposition \ref{P:N(u)Bdd}. 
 \end{proof}
 
+\textcolor{blue}{The holder continuity in the next proposition needs to be checked}
+
+\begin{proposition}
+	Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$. Moreover, if we consider
+	\[
+	a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
+	\]
+	where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
+	\[
+	\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+	\]
+\end{proposition}
+
+\begin{proof}
+Proposition \ref{P:NormInc} implies that 
+		\begin{equation}
+			\Norm{u(t,x) - u(r,z)}_p \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}.
+		\end{equation}
+By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$.
+	
+Next, note that by triangle inequality,
+	\begin{align*}
+		|u(t,x)|^p &\le 2^{p-1}\left( \Norm{u_0}_{\infty}^p + |u(t,x)-u_0(x)|^p \right) \\
+		&\le 2^{p-1}\left( \Norm{u_0}_{\infty}^p + \sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-u_0(x)|^p\right) \right) \\
+		&= 2^{p-1}\left( 1 + \sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-1|^p\right) \right)
+	\end{align*}
+Due to the continuity of $u$ on the compact set $[0,T] \times [-R,R]$, there exists a point $(t_0,x_0) \in [0,T] \times [-R,R]$ such that 
+	\[
+		\sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-1|^p\right) = |u(t_0,x_0)-1|^p.
+	\]
+Thus, for any $(t,x) \in [0,T] \times [-R,R]$,
+	\[
+		|u(t,x)|^p \le 2^{p-1}\left( 1  + |u(t_0,x_0)-1|^p \right)
+	\] 
+which in return implies that 
+	\[
+		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \le 2^{p-1}\left(1 + |u(t_0,x_0)-1|^p \right).
+	\]
+Now by taking the expectation of both sides and applying Proposition \ref{P:NormInc} gives us 
+	\begin{align*}
+			\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p,T)^p\left((2T)^{\rho/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
+			&= 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
+	\end{align*}
+Now if we consider
+	\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
+	\]
+where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then by Proposition \ref{P:N(u)Bdd}, we have that 
+	\[
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+	\]
+	
+	
+		
+\end{proof}
 
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
@@ -444,7 +505,7 @@ This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follow
 	%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
 	\bibitem{ChenHu21}
 	Chen, L and Hu, G. (2021).
-	\newblock Holder regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+	\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 	\newblock{\em arXiv:2105.00891.}
 	
 	\bibitem{CHN19}% {{{ 5.
