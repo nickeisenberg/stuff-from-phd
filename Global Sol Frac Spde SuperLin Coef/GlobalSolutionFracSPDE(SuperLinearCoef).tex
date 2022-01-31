@@ -213,7 +213,24 @@ In this section, we assume that the coefficient $\sigma$ is globally Lipschitz a
 	\[
 		|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
 	\] 
-where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$.
+where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. We now state an existence and uniqueness result proven in \cite{CHN19}.
+
+	\begin{theorem}
+	\label{T:SolveabilityGenLip}
+Under \eqref{C:Dalang}, the SPDE \eqref{E:SPDE} has a unique (in the sense of versions) random field solution $\{u(t,x) : (t,x) \in (0,\infty) \times \R^d \}$ if the initial data are such that 
+	\begin{equation}
+		\hat{C}_t := \sup_{t\in[0,T],\; x\in \R^d} |J_0(t,x)| < \infty.
+	\end{equation}	
+\textcolor{blue}{Moreover, the following statements are true:
+	\begin{enumerate}
+		\item $(t,x) \mapsto u(t,x)$ is $L^P(\Omega)$-continuous for all $p \ge 2$,
+		\item For all even integers $p \ge 2$, all $t \ge 0$ and $x,y\in\R^d$,
+			\begin{equation}
+				\Norm{u(t,x)}_p^2 \le 2J_0^2(t,x) + \left[ \bar{\varsigma}^2 + 2 \hat{C}_t^2 \right]\exp(C \lambda^{2/(1-\sigma)}t).
+			\end{equation}
+\end{enumerate}}
+	
+\end{theorem}
 	\begin{lemma}{\normalfont \cite[Theorem 4.1 and Lemma 5.5]{CHN19}}
 	\label{L:1and2normYZ}
 Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
@@ -241,6 +258,9 @@ In the proof of the next proposition, we will use the following two facts:
 	\label{E:SUPidentities}
 		\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
 	\end{equation}
+	
+\textcolor{blue}{I believe that Proposition \ref{P:N(u)Bdd} below can be proven for a more general dimension $d$.}
+	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{SoleMillet2021}}
 	\label{P:N(u)Bdd}
 Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma) >0$ such that for any 
@@ -380,39 +400,44 @@ We will need to recall the following result proved in \cite{CHN19} in order to p
 
 \textcolor{blue}{Not quite correct, edit this later. When $1<\beta<2$ then we need $\rho < 2(\beta + \gamma) -1 - \beta/\alpha$ \cite[Proposition 2.2]{ChenHu21}.}
 
-\begin{proposition}{\normalfont\cite[Proposition 5.4]{CHN19}}
-	Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
-		\[
-			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right),
-		\]
-	where $\rho = 2(\beta + \gamma) -1 - \beta/\alpha$ and $0< \theta < (\Theta -1) \wedge 2$ and $\Theta$ is given in \eqref{E:DalangEquiv}.
-\end{proposition}
+	\begin{proposition}{\normalfont\cite[Proposition 5.4]{CHN19}}
+Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
+	\[
+		\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right),
+	\]
+where 
+	\begin{equation}
+	\label{D:rho}
+		\rho := 2(\beta + \gamma) -1 - \beta/\alpha 
+	\end{equation}
+ and $0< \theta < (\Theta -1) \wedge 2$ and $\Theta$ is given in \eqref{E:DalangEquiv}.
+	\end{proposition}
 
-\begin{proposition}
-\label{P:NormInc}
-	Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
+	\begin{proposition}
+	\label{P:NormInc}
+Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
 	\begin{equation}
 	\label{E:NormInc_N(u)}
-		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
+		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
 	\end{equation}
-	where 
-	\[
-		\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{pL(\sigma)}.
-	\]
-	Moreover, for any 
-	\[
-	a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
-	\]
-	and 
-	\[
-	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right]
-	\]
-	we have that 
+where 
+\[
+	\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{pL(\sigma)}.
+\]
+Moreover, for any 
+\[
+a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
+\]
+and 
+\[
+p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right]
+\]
+we have that 
 	\begin{equation}
 	\label{E:NormInc_cL}
 		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
 	\end{equation}
-\end{proposition}
+	\end{proposition}
 
 \begin{proof}
 Note that because of the initial conditions, we see that $\Norm{u(t,x) - u(r,z)}_p = \Norm{I(t,x) - I(r,z)}_p$. We now apply Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
@@ -442,18 +467,20 @@ This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follow
 
 \textcolor{blue}{The holder continuity in the next proposition needs to be checked}
 
-\begin{proposition}
-	Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$. Moreover, if we consider
-	\[
-	a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
-	\]
-	where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
-	\[
-	\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
-	\]
-\end{proposition}
+	
+	\begin{proposition}
+	\label{P:Holder}
+Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$. Moreover, if we consider
+\[
+a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
+\]
+where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
+\[
+\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+\]
+	\end{proposition}
 
-\begin{proof}
+	\begin{proof}
 Proposition \ref{P:NormInc} implies that 
 		\begin{equation}
 			\Norm{u(t,x) - u(r,z)}_p \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}.
@@ -491,10 +518,95 @@ where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then by Proposition 
 	\[
 		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
 	\]
-	
-	
-		
 \end{proof}
+
+\subsection{Existence and Uniqueness of a Global Solution with Superlinear Diffusion Coefficient}
+
+We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
+	\begin{equation}
+	\label{C:SigSupLin}
+		|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
+	\end{equation}
+where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
+	\begin{equation}
+		|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+	\end{equation}
+where $\sigma_1 = c(\sigma) = \sigma(0)$.
+
+	\begin{remark}
+Because of the absence of the drift coefficient in \eqref{E:SPDE}, we may drop \cite[Assumption C1]{SoleMillet2021}.
+	\end{remark}
+
+\begin{theorem}
+	Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$, there exists a random field solution to \eqref{E:SPDE} in $[-M,M]$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
+		\begin{equation}
+			\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
+		\end{equation}
+\end{theorem}
+
+	\begin{proof}
+We first solve a {\it truncated} version of \eqref{E:SPDE}. By this, we mean $\eqref{E:SPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
+	\[
+		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+	\]
+Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
+	\[
+		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
+	\]
+Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$.
+
+We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
+	\[
+		a > \left( 8 L^2(\sigma_N) K^2 \right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma-1))} \quad \text{and} \quad p \in \left[ 2, \frac{a^{ (\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma_N)K^2} \right].
+	\] 
+Then Proposition \ref{P:Holder} implies that 
+	\begin{equation}
+	\label{E:u_NMomBdd}
+		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(P,T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
+	\end{equation}
+where we recall that 
+	\begin{equation}
+	\label{D:M1&2forSig_N}
+		\mathcal{M}_1 = \sqrt{p}\sigma_1 \quad \text{and} \quad \mathcal{M}_2(N) = \sqrt{pL(\sigma_N)} = \sqrt{p\sigma_2\ln(2N)^\delta}.
+	\end{equation}
+We now use the above to prove the existence and uniqueness of \eqref{E:SPDE} with superlinear $\sigma$ satisfying \eqref{C:SigSupLin}. For any $T>0$ and $N \ge 2$ with $N\in \mathbb{N}$, we define the following stopping time:
+	\begin{equation}
+		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
+	\end{equation}
+The uniqueness of the solution and the \textcolor{blue}{local property of the stochastic integral} imply that $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
+
+We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
+	\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
+	\]
+However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
+	\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
+	\]
+Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
+	\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
+	\]
+\textcolor{blue}{It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.}
+
+We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
+	\begin{align*}
+		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)| \ge N \right) \\
+		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right).
+	\end{align*}
+An application of \eqref{E:u_NMomBdd} gives 
+	\begin{align*}
+		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
+		&= \frac{2^{p-1} + C(p,T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
+	\end{align*}
+The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
+	\begin{align*}
+		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
+		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to \infty,
+	\end{align*}
+where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
+	\end{proof}
+
 
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
