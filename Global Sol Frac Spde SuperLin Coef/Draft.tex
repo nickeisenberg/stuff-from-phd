@@ -247,7 +247,7 @@ for all $t > 0$, where
 	\]
 Now further assume that $\beta \in (1,2)$, then 
 	\[
-		\int_{\R} Z(t,x) = t^{\lceil \beta \rceil -1} = t. 
+		\int_{\R} Z(t,x) \ud x= t^{\lceil \beta \rceil -1} = t. 
 	\]
 	\end{lemma}
 	\begin{remark}
@@ -263,13 +263,13 @@ In the proof of the next proposition, we will use the following two facts:
 	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{SoleMillet2021}}
 	\label{P:N(u)Bdd}
-Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma) >0$ such that for any 
+Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma) >0$ such that for any 
 	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma -1))}.
 	\]
 and 
 	\[
-		p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right].
+		p \in \left[ 2, \frac{a^{(\beta(2\alpha-d)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right].
 	\]
 we have that 
 	\begin{equation}
@@ -315,51 +315,51 @@ Now using \eqref{E:SUPidentities}, we see that
 
 Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
 	\begin{align*}
-	\Norm{I(t,x)}_p^2 &\le 4p \Norm{\int_0^t \ud s \int_{\R}\ud y \; Y^2(t-s,x-y)\sigma^2(u(s,y))  }_{p/2}
-	\\&\le 4p \int_0^t \ud s \int_{\R} \ud y \; Y^2(t-s,x-y)\Norm{\sigma^2(u(s,y))}_{p/2}.
+	\Norm{I(t,x)}_p^2 &\le 4p \Norm{\int_0^t \ud s \int_{\R^d}\ud y \; Y^2(t-s,x-y)\sigma^2(u(s,y))  }_{p/2}
+	\\&\le 4p \int_0^t \ud s \int_{\R^d} \ud y \; Y^2(t-s,x-y)\Norm{\sigma^2(u(s,y))}_{p/2}.
 	\end{align*}
 Now by applying Lemma \ref{L:1and2normYZ} and the Lipschitz property of $\sigma$ we get that 
 	\begin{align*}
-		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\int_0^t (t-s)^{2(\beta+\gamma-1)-\beta/\alpha} \ud s + 8pL^2(\sigma)N^2_{a,p}(u)\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y).
+		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\int_0^t (t-s)^{2(\beta+\gamma-1)-\beta d/\alpha} \ud s + 8pL^2(\sigma)N^2_{a,p}(u)\int_0^t \ud s \int_{\R^d} \ud y \; e^{2as} Y^2(t-s,x-y).
 	\end{align*} 
-Now under Dalang's condition \cite{CHN19}, $(1/\alpha -2)\beta-2\gamma < -1$, the first integral above can be calculated as 
+Now under Dalang's condition \cite{CHN19}, $(d/\alpha -2)\beta-2\gamma < -1$, the first integral above can be calculated as 
 	\[
-		\int_0^t (t-s)^{2(\beta+\gamma-1)-\beta/\alpha} \ud s = \frac{\alpha t^{(2-1/\alpha)\beta + 2\gamma -1} }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta}.
+		\int_0^t (t-s)^{2(\beta+\gamma-1)-\beta d/\alpha} \ud s = \frac{\alpha t^{(2-d/\alpha)\beta + 2\gamma -1} }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d}.
 	\]
 By applying Lemma \ref{L:1and2normYZ}, we can calculate the second integral as 
 	\[
-		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{2(\beta+\gamma-1)-\beta/\alpha}.
+		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{2(\beta+\gamma-1)-\beta d/\alpha}.
 	\]
 Putting this together gives us that 
 	\begin{align*}
-	\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\frac{\alpha t^{(2-1/\alpha)\beta + 2\gamma -1} }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{2(\beta+\gamma-1)-\beta/\alpha}.
+	\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\frac{\alpha t^{(2-d/\alpha)\beta + 2\gamma -1} }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{2(\beta+\gamma-1)-\beta d/\alpha}.
 	\end{align*}
 Now by multiplying both sides by $e^{-2at}$, we see that
 	\begin{align*}
-	\Norm{I(t,x)}_p^2e^{-2at} &\le \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} t^{(2-1/\alpha)\beta + 2\gamma -1} e^{-2at} 
-	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^t \ud s \; e^{-2a(t-s)}(t-s)^{2(\beta+\gamma-1)-\beta/\alpha}.
+	\Norm{I(t,x)}_p^2e^{-2at} &\le \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d} \; t^{(2-d/\alpha)\beta + 2\gamma -1} e^{-2at} 
+	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^t \ud s \; e^{-2a(t-s)}(t-s)^{2(\beta+\gamma-1)-\beta d/\alpha}.
 	\end{align*}
 We now do a change of variables and again recall the definition of the Gamma function to see that 
 	\begin{align*}
-	\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} t^{(2-1/\alpha)\beta + 2\gamma -1} e^{-2at}
-	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2a(u)}(u)^{2(\beta+\gamma-1)-\beta/\alpha}.
-	\\& = \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta} t^{(2-1/\alpha)\beta + 2\gamma -1} e^{-2at} 
-	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} (2a)^{1+(1/\alpha - 2)\beta - 2\gamma}\Gamma\left[ (2-1/\alpha)\beta-1+2\gamma \right]
+	\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d} t^{(2-d/\alpha)\beta + 2\gamma -1} e^{-2at}
+	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2a(u)}(u)^{2(\beta+\gamma-1)-\beta d/\alpha}.
+	\\& = \frac{8pc^2(\sigma)C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d} t^{(2-d/\alpha)\beta + 2\gamma -1} e^{-2at} 
+	\\&\quad\quad\quad\quad+ 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} (2a)^{1+(d/\alpha - 2)\beta - 2\gamma}\Gamma\left[ (2-d/\alpha)\beta-1+2\gamma \right]
 	\end{align*}
 where the last line is true if Dalang's condition \cite{CHN19} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
 	\begin{align}
-	N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta}} \left[(2-1/\alpha)\beta/2+\gamma-1/2\right]^{(2-1/\alpha)\beta/2+\gamma-1/2}(ea)^{1/2 - \gamma - (2-1/\alpha)\beta/2} \nonumber \\
-	&\quad\quad\quad\quad+ L(\sigma)N_{a,p}(u) \sqrt{8pC_{\#} (2a)^{1+(1/\alpha - 2)\beta - 2\gamma}\Gamma\left[ (2-1/\alpha)\beta-1+2\gamma \right]}. \label{E:SoleMil3.9}
+	N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d}} \left[(2-d/\alpha)\beta/2+\gamma-1/2\right]^{(2-d/\alpha)\beta/2+\gamma-1/2}(ea)^{1/2 - \gamma - (2-d/\alpha)\beta/2} \nonumber \\
+	&\quad\quad\quad\quad+ L(\sigma)N_{a,p}(u) \sqrt{8pC_{\#} (2a)^{1+(d/\alpha - 2)\beta - 2\gamma}\Gamma\left[ (2-d/\alpha)\beta-1+2\gamma \right]}. \label{E:SoleMil3.9}
 	\end{align}
 To simplify things, we now let 
 	\begin{align*}
-		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta}}\left(\frac{(2-1/\alpha)\beta/2+\gamma-1/2}{e}\right)^{(2-1/\alpha)\beta/2+\gamma-1/2},
-		\\& \hspace{10em} \left(\frac{1}{2}\right)^{(2-1/\alpha)\beta/2+\gamma-1/2} \sqrt{8C_{\#}\Gamma\left[ (2-1/\alpha)\beta-1+2\gamma \right]}  \Bigg\}
+		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#} \alpha }{2\alpha\beta + 2\alpha \gamma - \alpha - \beta d}}\left(\frac{(2-d/\alpha)\beta/2+\gamma-1/2}{e}\right)^{(2-d/\alpha)\beta/2+\gamma-1/2},
+		\\& \hspace{10em} \left(\frac{1}{2}\right)^{(2-d/\alpha)\beta/2+\gamma-1/2} \sqrt{8C_{\#}\Gamma\left[ (2-d/\alpha)\beta-1+2\gamma \right]}  \Bigg\}
 	\end{align*}
 then,
 	\begin{align}
 	\label{E:Ibdd}
-			N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{(2-1/\alpha)\beta/2 + \gamma - 1/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
+			N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{(2-d/\alpha)\beta/2 + \gamma - 1/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
 	\end{align}
 Now by combining \eqref{E:Jbdd} and \eqref{E:Ibdd}, we see that 
 	\begin{align}
@@ -367,23 +367,23 @@ Now by combining \eqref{E:Jbdd} and \eqref{E:Ibdd}, we see that
 	(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
 	\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
 	\end{cases} 
-	\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}}  + K  \frac{\sqrt{p}L(\sigma)}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}} N_{a,p}(u). \label{E:Nbddgen}
+	\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{(2-d/\alpha)\beta/2+\gamma-1/2}}  + K  \frac{\sqrt{p}L(\sigma)}{a^{(2-d/\alpha)\beta/2+\gamma-1/2}} N_{a,p}(u). \label{E:Nbddgen}
 	\end{align}
-It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{SoleMillet2021} respectively. Now choose $a>0$ such that 
+It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{SoleMillet2021} respectively. Now choose $a>0$ such that 
 	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma -1))}.
 	\]
 This implies that the following interval is nonempty:
 	\[
-		\left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right].
+		\left[ 2, \frac{a^{(\beta(2\alpha-d)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right].
 	\]
 In addition, for any $p$ in this interval, we have that 
 	\[
-		\frac{\sqrt{p}L(\sigma)K}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}} \le \frac{1}{2},
+		\frac{\sqrt{p}L(\sigma)K}{a^{(2-d/\alpha)\beta/2+\gamma-1/2}} \le \frac{1}{2},
 	\]
 and we also have 
 	\[
-		\frac{\sqrt{p}}{a^{(2-1/\alpha)\beta/2+\gamma-1/2}}  \le \frac{1}{2KL(\sigma)}.
+		\frac{\sqrt{p}}{a^{(2-d/\alpha)\beta/2+\gamma-1/2}}  \le \frac{1}{2KL(\sigma)}.
 	\]
 This along with \eqref{E:Nbddgen} implies that 
 	\begin{align*}
@@ -398,69 +398,87 @@ and this is precisely \eqref{E:Nbdd}. Note that \eqref{E:Pnormtbdd} follows imme
 
 We will need to recall the following result proved in \cite{CHN19} in order to prove Proposition \ref{P:NormInc} below. 
 
-\textcolor{blue}{Not quite correct, edit this later. When $1<\beta<2$ then we need $\rho < 2(\beta + \gamma) -1 - \beta/\alpha$ \cite[Proposition 2.2]{ChenHu21}.}
-
-	\begin{proposition}{\normalfont\cite[Proposition 5.4]{CHN19}}
+	\begin{proposition}{\normalfont\cite[Proposition 2.1 and 2.2]{ChenHu21}}
+	\label{P:YInc}
 Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
+	\begin{enumerate}
+		\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -1) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
 	\[
 		\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right),
 	\]
 where 
 	\begin{equation}
 	\label{D:rho}
-		\rho := 2(\beta + \gamma) -1 - \beta/\alpha 
+		\rho := 2(\beta + \gamma) -1 - \beta d/\alpha.
 	\end{equation}
- and $0< \theta < (\Theta -1) \wedge 2$ and $\Theta$ is given in \eqref{E:DalangEquiv}.
+		\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\[
+				\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^q + |x-z|^{\theta}\right),
+			\]
+		where 
+			\[
+				0 < q < \rho.
+			\]
+	\end{enumerate}
 	\end{proposition}
+
+	\begin{remark}
+In Proposition \ref{P:YInc} above, we may often ignore the dependence of $C$ on $\alpha, \beta, \gamma, \nu, d$ and just write $C(\theta, T)$. 
+	\end{remark}
 
 	\begin{proposition}
 	\label{P:NormInc}
-Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
+Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta d/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
 	\begin{equation}
 	\label{E:NormInc_N(u)}
-		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
+		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
 	\end{equation}
 where 
 \[
-	\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{pL(\sigma)}.
+	\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{pL(\sigma)},
 \]
+and
+	\begin{enumerate}
+		\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
+		\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
+	\end{enumerate}
 Moreover, for any 
 \[
-a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))}.
+a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma -1))}.
 \]
 and 
 \[
-p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right]
+p \in \left[ 2, \frac{a^{(\beta(2\alpha-d)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right]
 \]
 we have that 
 	\begin{equation}
 	\label{E:NormInc_cL}
-		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
+		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}} \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
 	\end{equation}
 	\end{proposition}
 
 \begin{proof}
 Note that because of the initial conditions, we see that $\Norm{u(t,x) - u(r,z)}_p = \Norm{I(t,x) - I(r,z)}_p$. We now apply Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
 	\begin{align*}
-		\Norm{I(t,x) - I(r,z)}_p^2 &\le 4p \Norm{ \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2\sigma^2(u(s,y)) }_{p/2} \\
-		&\le 4p \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Norm{\sigma^2(u(s,y)) }_{p/2}.
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 4p \Norm{ \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2\sigma^2(u(s,y)) }_{p/2} \\
+		&\le 4p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Norm{\sigma^2(u(s,y)) }_{p/2}.
 	\end{align*} 
 Now by applying the Lipchitz condition on $\sigma$ gives us that 
 	\begin{align*}
-		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \left( c^2(\sigma) + L^2(\sigma)\Norm{u(s,y)}_{p}^2\right) \\
-		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
-		& \qquad+ L^2(\sigma) \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \exp\left(2as\right)N_{a,p}^2(u)  \Bigg] \\
-		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
-		& \qquad+ L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u)  \int_0^T \ud s \int_{\R} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Bigg]. 
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \left( c^2(\sigma) + L^2(\sigma)\Norm{u(s,y)}_{p}^2\right) \\
+		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
+		& \qquad+ L^2(\sigma) \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \exp\left(2as\right)N_{a,p}^2(u)  \Bigg] \\
+		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
+		& \qquad+ L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u)  \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Bigg]. 
 	\end{align*}
-We now apply Proposition \ref{P:NormInc} to see that 
+We now apply Proposition \ref{P:YInc} to see that 
 	\begin{align*}
-	\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \bigg[ 2c^2(\sigma)C(T)\left(|t-r|^{\rho} + |x-z|^{\theta}\right)\\ 
-	& \qquad + 2 L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u) C(T) \left(|t-r|^{\rho} + |x-z|^{\theta}\right) \bigg]. 
+	\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \bigg[ c^2(\sigma)C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right)\\ 
+	& \qquad +  L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u) C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right) \bigg],
 	\end{align*}
-Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$ yields
+where $C(\theta, T)$ is as in Proposition \ref{P:YInc}. Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$ yields
 	\begin{align*}
-	\Norm{I(t,x) - I(r,z)}_p &\le 4\sqrt{C(T)p} \Big[ c(\sigma) + L(\sigma) \exp\left(aT \right)N_{a,p}(u) \Big]\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}. 
+	\Norm{I(t,x) - I(r,z)}_p &\le 2\sqrt{2C(\theta, T)p} \Big[ c(\sigma) + L(\sigma) \exp\left(aT \right)N_{a,p}(u) \Big]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}. 
 	\end{align*}
 This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follows directly from \eqref{E:NormInc_N(u)} and Proposition \ref{P:N(u)Bdd}. 
 \end{proof}
@@ -470,22 +488,27 @@ This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follow
 	
 	\begin{proposition}
 	\label{P:Holder}
-Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$. Moreover, if we consider
-\[
-a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
-\]
+Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$ where
+		\begin{enumerate}
+		\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
+		\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
+	\end{enumerate}
+Moreover, if we consider
+	\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-d)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
+	\]
 where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
-\[
-\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
-\]
+	\[
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+	\]
 	\end{proposition}
 
 	\begin{proof}
 Proposition \ref{P:NormInc} implies that 
 		\begin{equation}
-			\Norm{u(t,x) - u(r,z)}_p \le C(p,T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{\rho} + |x-z|^{\theta}\right)^{1/2}.
+			\Norm{u(t,x) - u(r,z)}_p \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}.
 		\end{equation}
-By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$.
+By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
 	
 Next, note that by triangle inequality,
 	\begin{align*}
@@ -507,16 +530,16 @@ which in return implies that
 	\]
 Now by taking the expectation of both sides and applying Proposition \ref{P:NormInc} gives us 
 	\begin{align*}
-			\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p,T)^p\left((2T)^{\rho/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
-			&= 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
+			\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p, \theta, T)^p\left((2T)^{\rho/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
+			&= 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
 	\end{align*}
 Now if we consider
 	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
+		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma -1))} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{(\beta(2\alpha-d)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma)K^2} \right],
 	\]
-where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then by Proposition \ref{P:N(u)Bdd}, we have that 
+then by Proposition \ref{P:N(u)Bdd}, we have that 
 	\[
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
 	\]
 \end{proof}
 
@@ -553,16 +576,16 @@ Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipsc
 	\[
 		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
 	\]
-Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < \rho/2$ and $0<\eta_2 < \theta/2$.
+Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
 
 We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
 	\[
-		a > \left( 8 L^2(\sigma_N) K^2 \right)^{\alpha/(\beta(2\alpha-1)+\alpha(2\gamma-1))} \quad \text{and} \quad p \in \left[ 2, \frac{a^{ (\beta(2\alpha-1)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma_N)K^2} \right].
+		a > \left( 8 L^2(\sigma_N) K^2 \right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma-1))} \quad \text{and} \quad p \in \left[ 2, \frac{a^{ (\beta(2\alpha-d)+\alpha(2\gamma-1))/\alpha}}{4L^2(\sigma_N)K^2} \right].
 	\] 
 Then Proposition \ref{P:Holder} implies that 
 	\begin{equation}
 	\label{E:u_NMomBdd}
-		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(P,T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
+		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
 	\end{equation}
 where we recall that 
 	\begin{equation}
@@ -596,8 +619,8 @@ We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb
 	\end{align*}
 An application of \eqref{E:u_NMomBdd} gives 
 	\begin{align*}
-		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p,T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
-		&= \frac{2^{p-1} + C(p,T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
+		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
+		&= \frac{2^{p-1} + C(p, \theta, T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
 	\end{align*}
 The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
 	\begin{align*}
