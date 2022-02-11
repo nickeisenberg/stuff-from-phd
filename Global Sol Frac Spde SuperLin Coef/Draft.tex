@@ -702,7 +702,7 @@ To prove existence and uniques of the solution, we will need the following lemma
 Their proof relies on a probabilistic representation of the Green's function for the solution of \eqref{E:SPDE}. Our proof takes a different approach and relies on the asymptotic behavior of the Euler-Mittag function given in \cite[Theorem 1.6]{Podlubny99}. One should note that under the assumptions \eqref{A:Y=GAssumptions} that $Y(t,x)=Z(t,x)$. However, in general, this is not the case. 
 
 	\begin{lemma}
-Suppose that $\lambda < \alpha$, then there exists a constant $C >0$ such that for any $x,y \in \R^d$ we have that 
+Suppose that $\lambda < 2\alpha$, then there exists a constant $C >0$ such that for any $x,y \in \R^d$ we have that 
 	\begin{equation}
 	\label{E:YYfBdd}
 		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
@@ -711,35 +711,38 @@ Suppose that $\lambda < \alpha$, then there exists a constant $C >0$ such that f
 	\begin{proof}
 Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
 	\[
-		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{2d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
+		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
 	\]
 where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
 	\[
-		\int_{\R^{2d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{2d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi.
+		\int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi.
 	\]
 Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{CHN19} gives us that 
 	\begin{align*}
-		\frac{1}{(2\pi)^d} 	\int_{\R^{2d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) & \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi \\
-		& = \frac{ K_f \; t^{2(\beta  \gamma -1)} }{ (2\pi)^d } \int_{\R^{2d}} \exp(-i(x-y)\xi) \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \\
-		& \le \frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi
+		\frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) & \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi \\
+		& = \frac{ K_f \; t^{2(\beta  \gamma -1)} }{ (2\pi)^d } \int_{\R^{d}} \exp(-i(x-y)\xi) \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \\
+		& \le \frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi
 	\end{align*}
 where the last inequality follows from the non-negativity of the Euler-Mittag function. Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0$ such that 
 	\[
-		\frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \le 
-		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right) |\xi|^{d-\lambda}} \ud \xi.
+		\frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \le 
+		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha \right)^2 |\xi|^{d-\lambda} } \ud \xi.
 	\]
 Another change of variables implies that 
 	\[
-		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right) |\xi|^{d-\lambda}} \ud \xi \le 
-		\frac{C\; K_f }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{2d}}  \frac{ 1 }{\left(1+ |\xi|^\alpha\right) |\xi|^{d-\lambda}} \ud \xi.
+		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi \le 
+		\frac{C\; K_f }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ 1 }{\left(1+ |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi.
 	\]
-We see that the above integral is finite if $\lambda < \alpha$ and when this is the case, we have \eqref{E:YYfBdd}.
+We see that the above integral is finite if $\lambda < 2\alpha$ and when this is the case, we have \eqref{E:YYfBdd}.
 	\end{proof}
-
+\begin{NickQuestion}
+	Note that we have $\lambda < 2 \alpha$ while Foondun and Nane \cite{FN2016} have that $\lambda < \alpha$. This may be something to look at. 
+\end{NickQuestion}
 We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} driven by the noise $\dot{F}$. 
 
 	\begin{theorem}
-Suppose that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and in addition, suppose that $\lambda < \alpha$. Then there exists a unique solution to \eqref{E:SPDE} driven by $\dot{F}$ such that 
+	\label{T:ExisAndUniq}
+Suppose that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and in addition, suppose that $\lambda < 2 \alpha$. Then there exists a unique solution to \eqref{E:SPDE} driven by $\dot{F}$ such that 
 	\[
 		u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
 	\]
@@ -797,6 +800,79 @@ however in this proof they say we must assume that $d\beta / \alpha < 1$. I thin
 
 In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]{Walsh89}. I believe that in Lemma 3.3 {\it ibid.} we should assume that $a>-1$ and not $a >1$. This would be consistent with \cite[(3.14)]{Walsh89}.
 	\end{NickQuestion}
+
+	\begin{NickQuestion} 
+The following tries to give an upper bound to $\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$. There is an issue with the upper bound of $J_0(t,x)$ depending on $t$ when the initial condition $v_0 \not = 0$. 
+
+	\begin{theorem}
+Under the assumptions of Theorem \ref{T:ExisAndUniq} we have that 
+	\begin{equation}
+		\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2 \le ...
+	\end{equation}		
+	\end{theorem} 
+	\begin{proof}
+The proof follows the strategy from the proof of \cite[Theorem 1.10]{FN2016}. We start by defining $A(t) = \sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$ and look to prove an inequality of the following type:
+	\begin{equation}
+	\label{E:Renewal}
+		A(t) \le C + C \int_0^t \frac{A(s)}{(t-s)^{...}} \; \ud s,
+	\end{equation}
+where the positive constants $C$ and $C$ above may not match. To do this, we note that 
+	\begin{align*}
+	\mathbb{E}|u(t,x)|^2 \le J^2_0(t,x) + \int_0^t \ud s \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z) f(y-z) \mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right).
+	\end{align*}
+Note that for bounded $u_0$ and $v_0$ we have that 
+	\begin{align*}
+		|J_0(t,x)| &\le 
+		\begin{cases}
+			|(Z(t,\cdot)*u_0|(x) & \beta \in (0,1] \\
+			|(Z(t,\cdot)*v_0|(x) + 	|(Z^*(t,\cdot)*u_0|(x) & \beta \in (1,2)
+		\end{cases} \\
+		&\le \begin{cases}
+					\Norm{u_0}_{\infty}|(Z(t,\cdot)*1|(x) & \beta \in (0,1] \\
+					\Norm{v_0}_{\infty}|(Z(t,\cdot)*1|(x) + 	\Norm{u_0}_{\infty}|(Z^*(t,\cdot)*1|(x) & \beta \in (1,2)
+				\end{cases} \\
+		&=  \begin{cases}
+					\Norm{u_0}_{\infty} & \beta \in (0,1] \\
+					\Norm{v_0}_{\infty} t +\Norm{u_0}_{\infty} & \beta \in (1,2).
+				\end{cases} 
+	\end{align*}
+The $t$ above in the bound may be an issue since then \eqref{E:Renewal} would then take the form 
+	\[
+		A(t) \le Ct + C \int_0^t  \frac{A(s)}{(t-s)^{...}} \; \ud s.
+	\]
+This problem does not occur when $v_0 = 0$. 
+	\end{proof}
+	\end{NickQuestion}
+\textcolor{blue}{
+The following $L^2(\R^d)$ norms may be helpful. I may remove this. Not sure if I actually need it.
+	\begin{lemma}
+	\label{L:2NormZandZ*}
+Suppose that $d < 2 \alpha$ and that $\beta \in (0,2)$ and that $\gamma \le 0$. Then,
+	\begin{equation}
+	\label{E:2NormZ}
+		\int_{\R^d} Z^2(t,x) \ud x = C_{Z} t^{\lceil \beta \rceil -1 - d\beta / \alpha}
+		\end{equation}		
+where $C_{Z} = (2\pi)^{-d}(\nu/2)^{-d/\alpha}\int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi$. In addition, we have that
+	\begin{equation}
+	\label{E:2NormZ*}
+		\int_{\R^d} {Z^*}^2(t,x) \ud x = C_{Z*} t^{-d\beta / \alpha}
+	\end{equation}		
+where $C_{Z^*} = (2\pi)^{-d} (\nu/2)^{-d/\alpha} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi$.
+	\end{lemma}
+	\begin{proof}
+We apply Parseval's identity and \cite[Theorem 4.1]{CHN19} to see that 
+	\begin{align*}
+		\int_{\R^d} Z^2(t,x) \ud x &= \frac{t^{\lceil \beta \rceil -1}}{(2\pi)^d} \int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi \\
+		&= \frac{t^{\lceil \beta \rceil -1 - d\beta / \alpha}}{(2\pi)^d} \left( \frac{\nu}{2} \right)^{-d/\alpha} \int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -|\xi|^\alpha \right)^2 \ud \xi,
+	\end{align*}
+where in the last line we applied a change of variables. Note that by \cite[Theorem 1.6]{Podlubny99}, the integral above on the right hand side is finite when $2\alpha >d$. This proves \eqref{E:2NormZ}. Similarly we have 
+	\begin{align*}
+		\int_{\R^d} {Z^*}^2(t,x) \ud x &= \frac{1}{(2\pi)^d} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi \\
+		&= \frac{t^{-d\beta /\alpha}}{(2\pi)^d} \left(\frac{\nu}{2}\right)^{-d/\alpha} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi,
+	\end{align*}
+where again the integral above on the right hand side is finite when $d < 2\alpha$.
+	\end{proof}
+}
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	%sample
