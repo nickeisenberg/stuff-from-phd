@@ -679,6 +679,8 @@ where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to
 \end{remark}
 
 \section{Spatially Homogeneous Noise Driven SPDE}
+We first examine \eqref{E:SPDE} driven by a Gaussian noise that is white in time and colored in space with Lipschitz diffusion coefficient .
+\subsection{Lipschitz Diffusion Coefficient}
 We will now look at \eqref{E:SPDE} where the noise is now white in time and colored in space. Informally this means that 
 	\[
 		\mathbb{E}\left[\dot F(t,x) \dot F(s,y)\right] = \delta_0(t-s) f(x-y)
@@ -686,6 +688,10 @@ We will now look at \eqref{E:SPDE} where the noise is now white in time and colo
 where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
 	\[
 		f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}}.
+	\]
+In addition, we assume that there exists some $L_\sigma > 0$ such that 
+	\[
+		|\sigma(x) - \sigma(y)| \le L_{\sigma} |x-y|.
 	\]
 
 To prove existence and uniques of the solution, we will need the following lemma. The following lemma is proven by Foondun and Nane \cite{FN2016} in the case that 		
@@ -731,7 +737,66 @@ We see that the above integral is finite if $\lambda < \alpha$ and when this is 
 	\end{proof}
 
 We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} driven by the noise $\dot{F}$. 
-	\
+
+	\begin{theorem}
+Suppose that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and in addition, suppose that $\lambda < \alpha$. Then there exists a unique solution to \eqref{E:SPDE} driven by $\dot{F}$ such that 
+	\[
+		u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
+	\]
+	\end{theorem} 
+	\begin{proof}
+The proof follows the strategy laid out in Walsh \cite{Walsh89}. We start by defining 
+	\[
+		u_0(t,x) := J_0(t,x) \quad \text{and} \quad u_n(t,x) := J_0(t,x) + \int_0^t \int_{\R^d} Y(t-s,x-y) \sigma(u_n(s,y)) F(\ud s, \ud y). 
+	\]
+In addition, we define 
+	\[
+		D_n(t,x) := \mathbb{E}\left| u_{n+1}(t,x) - u_n(t,x) \right|^2 \quad \text{and} \quad H_n(t) := \sup_{x \in \R^d} D_n(t,x).
+	\]
+Lastly, we define 
+	\[
+		\mathbf{\Sigma} (t,x,n) := | \sigma( u_n(t,x) ) - \sigma(u_{n-1} (t,x) ) |.
+	\]
+With this notation we see that 
+	\[
+		D_n(t,x) = \int_0^t \ud s \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right).
+	\]
+Now note that by the Lipschitz property of $\sigma$, we have that  
+	\begin{align*}
+		\mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right) &\le L^2_{\sigma} \mathbb{E} \left(|u_n(s,y)-u_{n-1}(s,y)||u_n(s,z)-u_{n-1}(s,z)|\right) \\
+		& \le L^2_{\sigma} \Norm{ u_n(s,y)-u_{n-1}(s,y) } \Norm{u_n(s,z)-u_{n-1}(s,z)} \\ 
+		& \le L^2_{\sigma} \sqrt{D_{n-1}(s,y) D_{n-1}(s,z)} \\
+		& \le L^2_{\sigma} H_{n-1}(s).
+	\end{align*}
+Thus, 
+	\begin{align*}
+			D_n(t,x) &\le L^2_{\sigma} \int_0^t H_{n-1}(s) \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \\
+			&\le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}},
+	\end{align*}
+where the last inequality follows from \eqref{E:YYfBdd}. In return, this implies that 
+	\[
+		H_n(t) \le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}}.
+	\]
+Since we assume that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$, then the result follows from the discussion before the proof of \cite[Lemma 3.3]{Walsh89}. 
+	\end{proof}
+
+	\begin{NickQuestion}
+In the existence and uniqueness proof in \cite[Theorem 1.10]{FN2016}, the following is shown 
+	\[
+		H_n(t) \le \text{const.} \int_0^t \frac{H_{n-1}(s)}{(t-s)^{\gamma \beta / \alpha}}.
+	\]
+Note that in this formula, $\gamma$ is denoting the Riesz kernel parameter. I believe that we need to assume that 
+	\[
+		\gamma \beta / \alpha < 1
+	\]
+however in this proof they say we must assume that $d\beta / \alpha < 1$. I think this is a typo. However, this assumption still is not stated in the statement of the theorem. Another issue is that they need to assume that 
+	\[
+		\gamma < \alpha
+	\]
+ in order to apply \cite[Lemma 2.7]{FN2016} and this asumption is not stated in the statement of the theorem. This assumption however would imply that $\gamma \beta / \alpha <1$ since in \cite4{FN2016} $\beta \in (0,1)$.
+
+In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]{Walsh89}. I believe that in Lemma 3.3 {\it ibid.} we should assume that $a>-1$ and not $a >1$. This would be consistent with \cite[(3.14)]{Walsh89}.
+	\end{NickQuestion}
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	%sample
@@ -769,6 +834,11 @@ We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} 
 	Sanz-Sole, M. and Millet, A. (2021)
 	\newblock{\em Global solutions to stochastic wave equations with superlinear coefficients.}
 	\newblock Stochastic Processes and their Applications, Elsevier, 2021, 139, pp.175-211.
+	
+	\bibitem{Walsh89}
+	Walsh, J. (1989)
+	\newblock{\em An Introduction to Stochastic Partial Differential Equations.}
+	\newblock \'Ecole d'\'et\'e de Probabilit\'es de Saint-Flour, XIV|1994. Lecture Notes in Math., vol. 1180, pp. 265-439. Springer, Berlin (1986).
 \end{thebibliography}
 
 \end{document}
