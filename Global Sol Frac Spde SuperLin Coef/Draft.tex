@@ -51,6 +51,8 @@
 \newtheorem{hypothesis}[theorem]{Hypothesis}
 \newtheorem{assumption}[theorem]{Assumption}
 
+\newtheorem{qu}{Question}
+
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{example}[theorem]{Example}
@@ -547,6 +549,43 @@ then by Proposition \ref{P:N(u)Bdd}, we have that
 	The H\"older continuity in time proven above in Proposition \ref{P:Holder} recovers the result proven by Foondun and Nane in \cite[Theorem 1.9]{FN2016} if we restrict ourself to the case where $\beta \in (0,1)$ and $\gamma = 1-\beta$. 
 \end{remark}
 
+	\begin{NickQuestion}
+Suppose we consider bounded initial conditions $u_0$ and $v_0$. Then 
+	\begin{align*}
+		J_0(t,x) &=\begin{cases} 
+							[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
+							[Z(t,\cdot)*v_0](x) + \frac{\partial}{\partial t}[Z(t,\cdot)*u_0](x) & \beta \in (1,2)
+							\end{cases} \\
+		& =: \begin{cases} 
+					[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
+					[Z(t,\cdot)*v_0](x) + [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
+				\end{cases}.
+	\end{align*}
+We notice that 
+	\begin{align*}
+		J_0(t,x) - J_0(s,z)
+			&= \begin{cases} 
+				[Z(t,\cdot)*u_0](x) - 	[Z(s,\cdot)*u_0](z) & \beta \in (0,1] \\ \\
+				[Z(t,\cdot)*v_0](x) - [Z(s,\cdot)*v_0](z) \\
+				\qquad + [Z^*(s,\cdot)*u_0](z) - [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
+			\end{cases}.
+	\end{align*}
+Lets just examine the $\beta \in (1,2)$ case since that case deals with both $Z$ and $Z^*$. We have that 
+	\begin{align*}
+			|J_0(t,x) - J_0(s,z)| & \le \int_{\R} |Z(t,x-y) - Z(s,z-y)| |v_0(y)| \ud y + \int_{\R} |Z^*(t,x-y) - Z^*(s,z-y)| |u_0(y)| \ud y.
+	\end{align*}
+For simplicity lets look at the time and space increments separately. For time we have that 
+	\begin{align*}
+		|J_0(t,x) - J_0(s,x)| & \le \int_{\R} |Z(t,x-y) - Z(s,x-y)| |v_0(y)| \ud y + \int_{\R} |Z^*(t,x-y) - Z^*(s,x-y)| |u_0(y)| \ud y.
+	\end{align*}
+Foondun and Nane \cite[Proof of Theorem 1.13]{FN2016} stop right and claim that the above integrals are smooth functions in $t$. Then it seems that they conclude that they are $\eta$-H\"older continuous in $t$ with $\eta=\frac{(1-\beta \gamma/\alpha)}{2}$ where $\gamma$ is the Reisz Kernel exponent. In other words they say that 
+	\[
+			|J_0(t,x) - J_0(s,x)| \le C |t-s|^\eta.x
+	\]
+
+\textcolor{blue}{Are smooth functions also $\eta$-H\"older continuous for any $\eta >0$?} If we can argue as in \cite{FN2016}, then we can relax our initial conditions to be bounded measurable functions $u_0$ and $v_0$. This is also an improvement from Sanz-Sole and Millet \cite{SoleMillet2021} since they assume the initial conditions are continuous. 
+	\end{NickQuestion}
+
 \subsection{Existence and Uniqueness of a Global Solution with Superlinear Diffusion Coefficient}
 
 We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
@@ -611,9 +650,10 @@ However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x)
 		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
 	\]
 Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
-	\[
+	\begin{equation}
+	\label{E:SupLinMildSol}
 		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
-	\]
+	\end{equation}
 \textcolor{blue}{It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.}
 
 We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
@@ -633,6 +673,10 @@ The first term clearly converges to $0$ as $N\to \infty$. As for the second term
 	\end{align*}
 where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
 	\end{proof}
+
+\begin{remark}
+	A potential project would be to show that the solution to \eqref{E:SPDE} with superlinear coefficient is Holder continuous. This requires to one to extend the Kolmogorov theorem to the type of stochastic integral used to define the mild solution in \eqref{E:SupLinMildSol}. However these stochastic integrals are no longer defined in $L^2(\Omega)$. Maybe a completely new theory needs to be developed to show continuity. \cite[Theorem 5.5.5]{Kuo} may be helpful? 
+\end{remark}
 
 
 \addcontentsline{toc}{section}{Bibliography}
@@ -657,6 +701,11 @@ where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to
 	Foondun, M and Nane E. (2016)
 	\newblock{\em  Asymptotic properties of some space-time fractional stochastic equations.}
 	\newblock{Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
+
+	\bibitem{Kuo}
+	Kuo, H. (2000)
+	\newblock{\em Introduction to Stochastic Integration}
+	\newblock Springer, Universitext
 
 	\bibitem{SoleMillet2021}
 	Sanz-Sole, M. and Millet, A. (2021)
