@@ -678,7 +678,60 @@ where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to
 	A potential project would be to show that the solution to \eqref{E:SPDE} with superlinear coefficient is Holder continuous. This requires to one to extend the Kolmogorov theorem to the type of stochastic integral used to define the mild solution in \eqref{E:SupLinMildSol}. However these stochastic integrals are no longer defined in $L^2(\Omega)$. Maybe a completely new theory needs to be developed to show continuity. \cite[Theorem 5.5.5]{Kuo} may be helpful? 
 \end{remark}
 
+\section{Spatially Homogeneous Noise Driven SPDE}
+We will now look at \eqref{E:SPDE} where the noise is now white in time and colored in space. Informally this means that 
+	\[
+		\mathbb{E}\left[\dot F(t,x) \dot F(s,y)\right] = \delta_0(t-s) f(x-y)
+	\] 
+where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
+	\[
+		f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}}.
+	\]
 
+To prove existence and uniques of the solution, we will need the following lemma. The following lemma is proven by Foondun and Nane \cite{FN2016} in the case that 		
+	\begin{equation}
+	\label{A:Y=GAssumptions}
+		\beta \in (0,1) \quad \text{and} \quad \gamma = 1 - \beta
+	\end{equation}		
+Their proof relies on a probabilistic representation of the Green's function for the solution of \eqref{E:SPDE}. Our proof takes a different approach and relies on the asymptotic behavior of the Euler-Mittag function given in \cite[Theorem 1.6]{Podlubny99}. One should note that under the assumptions \eqref{A:Y=GAssumptions} that $Y(t,x)=Z(t,x)$. However, in general, this is not the case. 
+
+	\begin{lemma}
+Suppose that $\lambda < \alpha$, then there exists a constant $C >0$ such that for any $x,y \in \R^d$ we have that 
+	\begin{equation}
+	\label{E:YYfBdd}
+		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
+	\end{equation}
+	\end{lemma}
+	\begin{proof}
+Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
+	\[
+		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{2d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
+	\]
+where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
+	\[
+		\int_{\R^{2d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{2d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi.
+	\]
+Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{CHN19} gives us that 
+	\begin{align*}
+		\frac{1}{(2\pi)^d} 	\int_{\R^{2d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) & \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi \\
+		& = \frac{ K_f \; t^{2(\beta  \gamma -1)} }{ (2\pi)^d } \int_{\R^{2d}} \exp(-i(x-y)\xi) \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \\
+		& \le \frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi
+	\end{align*}
+where the last inequality follows from the non-negativity of the Euler-Mittag function. Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0$ such that 
+	\[
+		\frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \le 
+		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right) |\xi|^{d-\lambda}} \ud \xi.
+	\]
+Another change of variables implies that 
+	\[
+		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{2d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right) |\xi|^{d-\lambda}} \ud \xi \le 
+		\frac{C\; K_f }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{2d}}  \frac{ 1 }{\left(1+ |\xi|^\alpha\right) |\xi|^{d-\lambda}} \ud \xi.
+	\]
+We see that the above integral is finite if $\lambda < \alpha$ and when this is the case, we have \eqref{E:YYfBdd}.
+	\end{proof}
+
+We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} driven by the noise $\dot{F}$. 
+	\
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	%sample
@@ -706,6 +759,11 @@ where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to
 	Kuo, H. (2000)
 	\newblock{\em Introduction to Stochastic Integration}
 	\newblock Springer, Universitext
+
+	\bibitem{Podlubny99}
+	Podlubny, I. (1999).
+	\newblock{\em Fractional Differential Equations.}
+	\newblock Mathematics in Science and Engineering, Academic Press, Vol198 (1999).
 
 	\bibitem{SoleMillet2021}
 	Sanz-Sole, M. and Millet, A. (2021)
