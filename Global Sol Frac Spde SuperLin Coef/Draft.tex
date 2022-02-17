@@ -560,7 +560,7 @@ Suppose we consider bounded initial conditions $u_0$ and $v_0$. Then
 					[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
 					[Z(t,\cdot)*v_0](x) + [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
 				\end{cases}.
-	\end{align*}
+	\end{align*} 
 We notice that 
 	\begin{align*}
 		J_0(t,x) - J_0(s,z)
@@ -702,6 +702,7 @@ To prove existence and uniques of the solution, we will need the following lemma
 Their proof relies on a probabilistic representation of the Green's function for the solution of \eqref{E:SPDE}. Our proof takes a different approach and relies on the asymptotic behavior of the Euler-Mittag function given in \cite[Theorem 1.6]{Podlubny99}. One should note that under the assumptions \eqref{A:Y=GAssumptions} that $Y(t,x)=Z(t,x)$. However, in general, this is not the case. 
 
 	\begin{lemma}
+	\label{L:intYfYbdd}
 Suppose that $\lambda < 2\alpha$, then there exists a constant $C >0$ such that for any $x,y \in \R^d$ we have that 
 	\begin{equation}
 	\label{E:YYfBdd}
@@ -783,6 +784,10 @@ where the last inequality follows from \eqref{E:YYfBdd}. In return, this implies
 Since we assume that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$, then the result follows from the discussion before the proof of \cite[Lemma 3.3]{Walsh89}. 
 	\end{proof}
 
+	\begin{remark}
+One should note that when considering the SHE ($\beta =1$, $\alpha=2$ and $\gamma=0$), the assumptions $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and $\lambda < 2 \alpha$ reduce down to $\lambda<2$ and $\lambda <3$ which recovers the well-known condition that one must have $\lambda < \min\{2,d\}$.
+	\end{remark}
+	
 	\begin{NickQuestion}
 In the existence and uniqueness proof in \cite[Theorem 1.10]{FN2016}, the following is shown 
 	\[
@@ -796,7 +801,7 @@ however in this proof they say we must assume that $d\beta / \alpha < 1$. I thin
 	\[
 		\gamma < \alpha
 	\]
- in order to apply \cite[Lemma 2.7]{FN2016} and this asumption is not stated in the statement of the theorem. This assumption however would imply that $\gamma \beta / \alpha <1$ since in \cite4{FN2016} $\beta \in (0,1)$.
+ in order to apply \cite[Lemma 2.7]{FN2016} and this assumption is not stated in the statement of the theorem. This assumption however would imply that $\gamma \beta / \alpha <1$ since in \cite{FN2016} $\beta \in (0,1)$.
 
 In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]{Walsh89}. I believe that in Lemma 3.3 {\it ibid.} we should assume that $a>-1$ and not $a >1$. This would be consistent with \cite[(3.14)]{Walsh89}.
 	\end{NickQuestion}
@@ -804,22 +809,23 @@ In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]
 	\begin{NickQuestion} 
 The following tries to give an upper bound to $\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$. There is an issue with the upper bound of $J_0(t,x)$ depending on $t$ when the initial condition $v_0 \not = 0$. 
 
-	\begin{theorem}
+	\begin{theorem}[{\cite[Theorem 1.10]{FN2016}}]
 Under the assumptions of Theorem \ref{T:ExisAndUniq} we have that 
 	\begin{equation}
 		\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2 \le ...
 	\end{equation}		
 	\end{theorem} 
 	\begin{proof}
-The proof follows the strategy from the proof of \cite[Theorem 1.10]{FN2016}. We start by defining $A(t) = \sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$ and look to prove an inequality of the following type:
+The proof follows the strategy from the proof of \cite[Theorem 1.10]{FN2016}. We start by defining $A(t) = \sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$. We will prove the following inequality:
 	\begin{equation}
 	\label{E:Renewal}
-		A(t) \le C + C \int_0^t \frac{A(s)}{(t-s)^{...}} \; \ud s,
+		A(t) \le C_1+  C_2t^{2(\lceil \beta \rceil -1)} + C_3 \int_0^t \frac{A(s)}{(t-s)^{\beta \lambda / \alpha - 2(\beta+\gamma-1)}} \; \ud s,
 	\end{equation}
-where the positive constants $C$ and $C$ above may not match. To do this, we note that 
-	\begin{align*}
-	\mathbb{E}|u(t,x)|^2 \le J^2_0(t,x) + \int_0^t \ud s \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z) f(y-z) \mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right).
-	\end{align*}
+To do this, we note that 
+	\begin{align}
+	\mathbb{E}|u(t,x)|^2 &\le J^2_0(t,x) + \int_0^t \ud s \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z) f(y-z) \mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right) \nonumber \\
+	&:= J_0^2(t,x) + I_2(t,x) 	\label{E:u2normbdd}
+	\end{align}
 Note that for bounded $u_0$ and $v_0$ we have that 
 	\begin{align*}
 		|J_0(t,x)| &\le 
@@ -836,13 +842,78 @@ Note that for bounded $u_0$ and $v_0$ we have that
 					\Norm{v_0}_{\infty} t +\Norm{u_0}_{\infty} & \beta \in (1,2).
 				\end{cases} 
 	\end{align*}
-The $t$ above in the bound may be an issue since then \eqref{E:Renewal} would then take the form 
+
+Next we note that 
+	\begin{align*}
+		\mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right) &\le L^2_{\sigma} \mathbb{E}\left( |u(s,y)||u(s,z)| \right) \\
+		& \le L^2_{\sigma} \mathbb{E}\left(|u(s,z)| \right)^{1/2}\mathbb{E}\left( |u(s,y)| \right)^{1/2} \\
+		& \le A(s).
+	\end{align*}
+Therefore, we can bound $I_2$ in \eqref{E:u2normbdd} by the following:
 	\[
-		A(t) \le Ct + C \int_0^t  \frac{A(s)}{(t-s)^{...}} \; \ud s.
+		I_2(t,x) \le L^2_{\sigma}\int_0^t \ud s A(s) \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z)f(y-z).
 	\]
-This problem does not occur when $v_0 = 0$. 
+Now applying Lemma \ref{L:intYfYbdd} we see that 
+	\[
+		I_2(t,x) \le C_2 \int_0^t \frac{A(s)}{t^{\beta \lambda / \alpha - 2(\beta + \gamma -1)}}.
+	\]
+Combining the above gives us \eqref{E:Renewal}.
 	\end{proof}
-	\end{NickQuestion}
+
+\begin{remark}
+	The bound in \eqref{E:Renewal} is different from \cite[Proposition 2.12]{FN2016} for the case of $\beta \in (1,2)$. The $C_2t$ term changes things. A similar exponential bound may be found in this case by starting from \eqref{E:u2normbdd} and then using the Piccard iteration techniques from \cite[Lemma 2.2]{CH2017}.
+\end{remark}
+
+	\begin{proposition}[{\normalfont \cite[Proposition 2.12]{FN2016}}]
+Let $k>0$ and suppose that $f$ is locally integrable. Suppose there exists a $K>0$ satisfies 
+	\begin{equation}
+	\label{E:fRenew}
+		f(t) \le K(1+t^2) + K\int_0^t (t-s)^{k-1} f(s) \ud s.
+	\end{equation}
+Then 	
+	\begin{equation}
+		f(t) \le K_1\exp\left( K_2 \cdots t \right).
+	\end{equation}
+	\end{proposition}
+	
+	\begin{proof}
+We follow the proof from \cite[Proposition 2.5]{FT2014}. For notation, let $g(t) = K(1+t^2)$ and define 
+	\[
+		(\mathcal{A}\psi)(t) := K\int_0^t (t-s)^{k-1} \psi(s) \ud s
+	\]
+for any locally integrable function $\psi$. Then \eqref{E:fRenew} can be written as 
+	\[
+		f(t) \le g(t) + \mathcal{A}\psi(t).
+	\]
+By iterating this inequality, we see that 
+	\[
+		f(t) \le \sum_{i=1}^{n-1} (\mathcal{A}^i g)(t) + (\mathcal{A}^n f)(t).
+	\]
+It is stated in the proof of \cite[Proposition 2.5]{FT2014} that 
+	\[
+		(\mathcal{A}^n f)(t) = \frac{\left(K\Gamma(\rho)\right)^2}{\Gamma(n\rho)} \int_0^t (t-s)^{n\rho -1} f(s) \ud s.
+	\]
+Using this, we can calculate $(\mathcal{A}^i g)(t)$ as follows:
+	\begin{align*}
+		(\mathcal{A}^i g)(t) &=  \frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \int_0^t (t-s)^{i\rho -1} g(s) \ud s \\
+		&= K\frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \int_0^t (t-s)^{i\rho -1} (1+s^2)  \ud s \\
+		&= K\frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \cdot \frac{t^{\rho i}(1+\rho i + t)}{\rho i (1 + \rho i)}.
+	\end{align*}
+In addition, it is stated in the proof of \cite[Proposition 2.5]{FT2014} that $(\mathcal{A}^n f)(t) \to 0$ as $n \to \infty$. Thus, we can say 
+	\begin{align*}
+		f(t) &\le \sum_{i=0}^\infty K\frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \cdot \frac{t^{\rho i}(1+\rho i + t)}{\rho i (1 + \rho i)} \\
+		&= \sum_{i=0}^\infty K\frac{\left(Kt^{\rho }\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \cdot \frac{1+\rho i + t}{\rho i (1 + \rho i)} .
+	\end{align*}
+In the proof of \cite[Proposition 2.5]{FT2014}, it is stated that 
+	\[
+		\sum_{i=0}^\infty \frac{\left(Kt^{\rho }\Gamma(\rho)\right)^i}{\Gamma(i\rho)} = E_{\rho}\left( K\Gamma(\rho) t^\rho \right),
+	\]
+where $E_\rho$ is the one-parameter Euler-Mittag function. The $\frac{1+\rho i + t}{\rho i (1 + \rho i)}$ term now makes this untrue. 
+	\end{proof}
+
+
+
+\end{NickQuestion}
 \textcolor{blue}{
 The following $L^2(\R^d)$ norms may be helpful. I may remove this. Not sure if I actually need it.
 	\begin{lemma}
@@ -880,6 +951,11 @@ where again the integral above on the right hand side is finite when $d < 2\alph
 	%Chen, L. (2017).
 	%\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
 	%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+	\bibitem{CH2017}
+	Chen L. and Huang J. (2017).
+	\newblock Comparison Principle for SHE on $\R^d$.
+	\newblock {\em The Annals of Probability} \textbf{Vol. 47, No. 2} 989 -- 1035.
+	
 	\bibitem{ChenHu21}
 	Chen, L and Hu, G. (2021).
 	\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
@@ -893,8 +969,13 @@ where again the integral above on the right hand side is finite when $d < 2\alph
 
 	\bibitem{FN2016}
 	Foondun, M and Nane E. (2016)
-	\newblock{\em  Asymptotic properties of some space-time fractional stochastic equations.}
-	\newblock{Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
+	\newblock{Asymptotic properties of some space-time fractional stochastic equations.}
+	\newblock{\em Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
+
+	\bibitem{FT2014}
+	Foondun, M. and Tian, K. (2014)
+	\newblock On some properties of a class of fractional stochastic heat equations.
+	\newblock {\em arXiv:1404.6791v1}
 
 	\bibitem{Kuo}
 	Kuo, H. (2000)
@@ -908,8 +989,8 @@ where again the integral above on the right hand side is finite when $d < 2\alph
 
 	\bibitem{SoleMillet2021}
 	Sanz-Sole, M. and Millet, A. (2021)
-	\newblock{\em Global solutions to stochastic wave equations with superlinear coefficients.}
-	\newblock Stochastic Processes and their Applications, Elsevier, 2021, 139, pp.175-211.
+	\newblock{Global solutions to stochastic wave equations with superlinear coefficients.}
+	\newblock {\em Stochastic Processes and their Applications}, Elsevier, 2021, 139, pp.175-211.
 	
 	\bibitem{Walsh89}
 	Walsh, J. (1989)
