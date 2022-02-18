@@ -265,7 +265,7 @@ In the proof of the next proposition, we will use the following two facts:
 	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{SoleMillet2021}}
 	\label{P:N(u)Bdd}
-Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma) >0$ such that for any 
+Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
 	\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{\alpha/(\beta(2\alpha-d)+\alpha(2\gamma -1))}.
 	\]
@@ -687,7 +687,11 @@ We will now look at \eqref{E:SPDE} where the noise is now white in time and colo
 	\] 
 where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
 	\[
-		f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}}.
+		f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
+	\]
+where
+	\[
+			K_f     = \pi^{-d/2}2^{-\lambda} \frac{\Gamma((d-\lambda)/2)}{\Gamma(\lambda/2)}
 	\]
 In addition, we assume that there exists some $L_\sigma > 0$ such that 
 	\[
@@ -703,10 +707,10 @@ Their proof relies on a probabilistic representation of the Green's function for
 
 	\begin{lemma}
 	\label{L:intYfYbdd}
-Suppose that $\lambda < 2\alpha$, then there exists a constant $C >0$ such that for any $x,y \in \R^d$ we have that 
+Suppose that $\lambda < 2\alpha$, then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
 	\begin{equation}
 	\label{E:YYfBdd}
-		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
+		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C K_f \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
 	\end{equation}
 	\end{lemma}
 	\begin{proof}
@@ -807,7 +811,7 @@ In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]
 	\end{NickQuestion}
 
 	\begin{NickQuestion} 
-The following tries to give an upper bound to $\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$. There is an issue with the upper bound of $J_0(t,x)$ depending on $t$ when the initial condition $v_0 \not = 0$. 
+The following tries to give an upper bound to $\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$ by using techniques from \cite{FN2016}. There is an issue with the upper bound of $J_0(t,x)$ depending on $t$ when the initial condition $v_0 \not = 0$. 
 
 	\begin{theorem}[{\cite[Theorem 1.10]{FN2016}}]
 Under the assumptions of Theorem \ref{T:ExisAndUniq} we have that 
@@ -944,6 +948,143 @@ where in the last line we applied a change of variables. Note that by \cite[Theo
 where again the integral above on the right hand side is finite when $d < 2\alpha$.
 	\end{proof}
 }
+
+\subsection{Section 4.2 Millet and Sanz-Sol\'e \cite{SoleMillet2021}}
+
+		\begin{proposition}{\normalfont\cite[Proposition 4.4]{SoleMillet2021}}
+		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
+		\[
+		a^\theta > \left( 8 L^2(\sigma)K^2\right).
+		\]
+		and 
+		\[
+		p \in \left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right].
+		\]
+		we have that 
+		\begin{equation}
+		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
+		\end{equation}	
+		where
+		\begin{align*}
+		\mathcal{T}_0 = \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+		\end{cases} 
+		\end{align*}
+		Moreover for any $T>0$,
+		\begin{equation}
+		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+		\end{equation}
+	\end{proposition}
+
+	\begin{proof}
+We note that $\mathcal{N}_{a,p}(J)$ has the same upper bound as in Proposition \ref{P:N(u)Bdd} above. In other words,
+	\[
+		\mathcal{N}_{a,p}(J) \le \begin{cases}
+		\Norm{u_0}_{\infty} & \beta \in (0,1] \\
+		(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
+		\end{cases}.
+	\]
+
+We know work to find an upper bound for $\mathcal{N}_{a,p}(I)$. The Burkholder-Davies-Gundy inequality and H\"older's inequality imply that 
+	\begin{align*}
+		\Norm{I(t,x)}_p^2 & \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \Norm{\sigma(u(s,y_1))}_p\Norm{\sigma(u(s,y_2))}_p.
+	\end{align*} 
+We now apply the Lipschitz property to see that for $i\in\{1,2\}$,
+	\begin{align*}
+		\Norm{\sigma(u(s,y_i))}_p \le c(\sigma) + L(\sigma)\Norm{u(s,y_i)}_p.
+	\end{align*}
+Therefore, we may say that 
+	\begin{align*}
+		\Norm{I(t,x)}_p^2 & \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \\
+		& \hspace{10em} \times \prod_{i=1}^2 c(\sigma) + L(\sigma)\Norm{u(s,y_i)}_p \\
+		& \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \left[c(\sigma) + L(\sigma)\exp(as)N_{a,p}(u)\right]^2 \\
+		& \le 8p c(\sigma)^2 \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \\
+		& \qquad + 8p N_{a,p}(u)^2 L(\sigma)^2\int_0^t \ud s \exp(2as) \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2).
+	\end{align*}
+Now by applying Lemma \ref{L:intYfYbdd}, we may bound the $\iint_{\R^{2d}}\ud y_1 \ud y_2$ integrals by the quantity 
+	\[
+		K_1 (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha},
+	\]
+where 
+	\begin{equation*}
+		K_1 : = C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha},
+	\end{equation*}
+and $C$ is as in Lemma \ref{L:intYfYbdd}. Before we continue, we define 
+	\begin{equation}
+	\label{D:theta}
+		\theta : = 2\beta - 1 + 2\gamma - \beta \lambda / \alpha = \frac{2 \beta \alpha - \alpha + 2 \alpha \gamma - \beta \gamma}{\alpha}.
+	\end{equation}
+In return, this gives us that 
+	\begin{align*}
+		\Norm{I(t,x)}_p^2 & \le  8p K_1 c(\sigma)^2 \int_0^t (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha} \ud s \\
+		&\qquad + 8p K_1 N_{a,p}(u)^2 L(\sigma)^2\int_0^t \exp(2as) (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha} \ud s \\
+		&= \frac{8p K_1 c(\sigma)^2}{ \theta} t ^ \theta + 8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\exp(2at) \left[ \Gamma(\theta) - \Gamma(\theta, 2at)\right]}{(2a)^{\theta} }  \\
+		& =: \triangle_1(t) + \triangle_2(t),
+	\end{align*}
+where $\Gamma(\cdot)$ denotes the Gamma function and $\Gamma(\cdot ,\circ)$ is the incomplete-upper Gamma function. Note that 
+	\[
+		\mathcal{N}_{a,p}(I)^2 \le \sup_{t \ge 0} \exp(-2at)\left( \triangle_1(t) + \triangle_2(t) \right).
+	\]
+We start with bounding $\sup_{t \ge 0} \exp(-2at)\triangle_1(t)$. Recall the identities in \eqref{E:SUPidentities}. With this we see that 
+	\[
+		\sup_{t \ge 0} \exp(-2at) t^{\theta} = (\theta)^{\theta} (2ea)^{-\theta}.
+	\]
+Hence, 
+	\begin{align*}
+		\sup_{t \ge 0} \exp(-2at)\triangle_1(t) & \le \frac{8p K_1 c(\sigma)^2}{\theta} \left(\frac{\theta}{2ea}\right)^{\theta}.
+	\end{align*}
+Next we bound $\sup_{t \ge 0} \exp(-2at)\triangle_2(t)$. Note that for any $t\ge 0$,
+	\begin{align*}
+		\exp(-2at)\triangle_2(t) &= 8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\left[ \Gamma(\theta) - \Gamma(\theta, 2at) \right]}{(2a)^\theta} \\
+		& \le  8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\Gamma(\theta)}{(2a)^{\theta}}.
+	\end{align*}
+Putting this all together gives us that 
+	\begin{align*}
+		\mathcal{N}_{a,p}(I)^2 &\le \frac{8p K_1 c(\sigma)^2}{\theta} \left(\frac{\theta}{2ea}\right)^{\theta}  + \frac{8p K_1 \Gamma(\theta) L(\sigma)^2}{ (2a)^{\theta}}N_{a,p}(u)^2,
+	\end{align*}
+and thus,
+	\begin{equation*}
+		\mathcal{N}_{a,p}(I)\le	2c(\sigma)\sqrt{\frac{2p K_1}{\theta}} \left(\frac{\theta}{2ea}\right)^{\theta/2}  + 2L(\sigma)\frac{\sqrt{2p K_1 \Gamma(\theta) }}{ (2a)^{\theta/2}}N_{a,p}(u).
+	\end{equation*}
+Similar to the proof of Proposition \ref{P:N(u)Bdd} above, we define 
+	\[
+		K = K(\alpha,\beta,\gamma,d, \lambda):= \max \left\{2\sqrt{\frac{2 K_1}{\theta}} \left(\frac{\theta}{2e}\right)^{\theta/2},   2\frac{\sqrt{2 K_1 \Gamma(\theta) }}{ (2)^{\theta/2}} \right\}.
+	\] 
+We now see that 
+	\begin{equation}
+		\mathcal{N}_{a,p}(I)\le K c(\sigma)\frac{\sqrt{p}}{ a^{\theta /2}} + K L(\sigma) \frac{\sqrt{p}}{ a^{\theta/2}} \mathcal{N}_{a,p}(u)
+	\end{equation}
+This and the bound for $\mathcal{N}_{a,p}(J)$ found above implies that 
+	\begin{align}
+		\mathcal{N}_{a,p}(u) &\le \mathcal{N}_{a,p}(J) + \mathcal{N}_{a,p}(I) \nonumber \\
+		& \le \begin{cases}
+		\Norm{u_0}_{\infty} & \beta \in (0,1] \nonumber \\
+		(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
+		\end{cases} \\
+		& \qquad + K c(\sigma)\frac{\sqrt{p}}{ a^{\theta /2}} + K L(\sigma) \frac{\sqrt{p}}{ a^{\theta/2}} \mathcal{N}_{a,p}(u) \label{E:N(u)bddColored}.
+	\end{align}
+Now consider 
+	\[
+		a^\theta > 8K^2L(\sigma)^2.
+	\]
+This implies that the interval 
+	\[
+		\left[2, \frac{a^\theta}{4K^2L(\sigma)^2}  \right]
+	\]
+is nonempty. Hence, for any $p$ in this interval we have that 
+	\[
+			\frac{KL(\sigma)\sqrt{p}}{a^{\theta/2}} \le \frac{1}{2}.
+	\]
+This along with \eqref{E:N(u)bddColored} implies that 
+	\begin{align*}
+		\mathcal{N}_{a,p}(u) &\le 2\begin{cases}
+		\Norm{u_0}_{\infty} & \beta \in (0,1] \nonumber \\
+		(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
+		\end{cases} \\
+		& \qquad + \frac{c(\sigma)}{L(\sigma)}.
+	\end{align*}
+	\end{proof}
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
 	%sample
