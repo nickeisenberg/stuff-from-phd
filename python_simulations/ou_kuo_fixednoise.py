@@ -72,7 +72,7 @@ X = J + f
 
 plt.plot(P_L, X, linewidth=1)
 plt.title('Ornstein-Uhlenbeck Process: \
-$dX_t = \\sigma dW_t +\\kappa(\mu -X_t) dt$ \n \
-$(a, b) =({}, {})$, $X_a = {}$, $\\sigma ={}$, $\\kappa={}$ and $\\mu = {}$'\
-.format(a, b, x_a, s, k, m))
+$dX_t = \\sigma dW_t +\\kappa(\\mu -X_t) dt$ \n \
+$(a, b) =({}, {})$, $X_a = {}$, $\\sigma ={}$, $\\kappa={}$ and $\\mu = {}$'
+          .format(a, b, x_a, s, k, m))
 plt.show()
