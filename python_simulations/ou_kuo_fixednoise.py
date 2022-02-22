@@ -1,4 +1,15 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+    python_simulations.ou_kuo_fixednoise
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    In this code, we simulate the geometric Brownian motion following Kuo's book.
+
+    :copyright: (c) 2022 by Nick Eisenberg (....@gamil.com).
+    :license: LICENSE_NAME, see LICENSE for more details.
+    :created at Tue 22 Feb 2022 02:43:14 PM CST
+"""
 
 import numpy as np
 import matplotlib.pyplot as plt
