@@ -1,4 +1,5 @@
-% \documentclass[a4paper,12pt]{article}{{{
+%{{{ Front matters
+% \documentclass[a4paper,12pt]{article}
 \documentclass[a4paper,11pt]{article}
 % -------------------------------------------------
 % Set up the page margins.
@@ -55,7 +56,7 @@
 % check references
 % -------------------------------------------------
 % \usepackage{refcheck}
-\usepackage[notref,notcite]{showkeys}
+% \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
 
@@ -316,7 +317,7 @@ $G(t,x)$:
 
 Regarding the noise, we formulate the following assumption in order to cover the Riesz kernel case,
 the fractional noise and a mixture of them:
-\begin{assumption}[Noise]% {{{
+\begin{assumption}[Noise]
   \label{A:Noise}
   Let $k \in \{1, \cdots , d\}$ and partition the $d$-coordinates of $x=(x_1, \cdots, x_d)$ into $k$
   distinct groups of size $d_i$ so that $d_1 + \cdots + d_k = d$. Denote $x_{(i)} = (x_{i_1} ,
@@ -327,7 +328,7 @@ the fractional noise and a mixture of them:
     \gamma(x) = \prod_{i=1}^k |x_{(i)}|^{-\alpha_i} \qquad \text{with $\alpha_i \in (0, d_i)$.}
   \end{equation}
   Define $\alpha := \sum_{i=1}^k \alpha_i$.
-\end{assumption}% }}}
+\end{assumption}
 
 \begin{remark}[Spectral density and decomposition]% {{{
   \label{R:Noise}
@@ -1402,7 +1403,8 @@ be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \c
 % \end{definition}
 
 Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
-{\it Wiener chaos expansion}:
+{\it Wiener chaos expansion} \footnote{We direct the reader to \cite[Section 5]{BS2017} for a
+complete treatment of this processes.}:
 \begin{equation}
   \label{E:solwexp}
   u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
@@ -1415,8 +1417,7 @@ $f_k(\cdot,x,t)$, obtained through the iteration, are equal to
   f_n(x_1,...,x_k;x,t) & = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n \\
                        & = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud t_1\cdots \ud t_n. \nonumber
 \end{align*}
-We direct the reader to \cite[Section 5]{BS2017} for a complete treatment of this processes. For
-ease of notation, throughout this article, we may write the above integrals as
+For ease of notation, throughout this article, we may write the above integrals as
 \begin{align*}
   f_n(x_1,...,x_n;x,t) & = \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t} \\
                        & = \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t},
@@ -1557,10 +1558,10 @@ and \eqref{E:oldrhovarrep}, the proof of which can be found in Appendix:
 More generally we have the following theorem:
 
 \begin{theorem}% {{{
-  \label{T:Variation} For the correlation function $\gamma$, with $\alpha < \min\{2a,d\}$, that also
-  satisfies Assumption \ref{A:Noise}, both \eqref{E:rhoLam} and \eqref{E:LogRhoRiez} hold with
-  $|\cdot|^{-\alpha}$ and $\mu$ replaced by $\gamma$ and $\mu$ as in \eqref{E:specfunction},
-  respectively. More precisely, it holds that
+  \label{T:Variation} Suppose that the correlation function $\gamma$ satisfies Assumption
+  \ref{A:Noise} and is such that $\alpha < \min\{2a,d\}$. Then both \eqref{E:rhoLam} and
+  \eqref{E:LogRhoRiez} hold with $|\cdot|^{-\alpha}$ and $\mu$ replaced by $\gamma$ and $\mu$ as in
+  \eqref{E:specfunction}, respectively. More precisely, it holds that
   \begin{equation}
     \label{E:rhoMrep}
     \rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty,
@@ -2873,130 +2874,112 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 
 \bigskip
 
-{\bf Acknowledgement.} We would like to thank Raluca Balan for some useful comments on our paper and
-two anonymous referees for their careful reading of the paper with many good suggestions.
+{\bf Acknowledgement.}% {{{
+We would like to thank Raluca Balan for some useful comments on our paper and two anonymous referees
+for their careful reading of the paper with many good suggestions.
 % }}}
-\addcontentsline{toc}{section}{Bibliography}
+% }}}
+\addcontentsline{toc}{section}{Bibliography}% {{{
 \begin{thebibliography}{999}
   \bibitem{BCC21} % {{{ 1.
-  Balan, R. M., Chen, L., and Chen, X. (2021).
-  \newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
-  \newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
+  Balan, R. M., Chen, L., and Chen, X. (2021). \newblock Exact asymptotics of the stochastic wave
+  equation with time-independent noise. \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. },
+  to appear.
   % }}}
-  % \bibitem{BS17} % {{{ 2. -- removed.
-  % Balan, R. M. and Song, J. (2017).
-  % \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
-  % \newblock {\em ALEA, Latin Amer. J. Probab. Math. Stat.} {\bf 14}, 799--849.
-  % % }}}
   \bibitem{BCR09}% {{{ 2.
-  Bass, R., Chen, X., and Rosen, M. (2009).
-  \newblock Large deviations for Riesz potentials of additive processes.
-  \newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
+  Bass, R., Chen, X., and Rosen, M. (2009). \newblock Large deviations for Riesz potentials of
+  additive processes. \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45},
+  626--666.
   % }}}
   \bibitem{BS2017}% {{{ 3.
-  Balan, R. and Song, J. (2017)
-  \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
-  \newblock {\em ALEA, Lat. Am. J. Probab. Math. Stat.} \textbf{14}, 799 -- 849% }}}
+  Balan, R. and Song, J. (2017) \newblock Hyperbolic Anderson Model with space-time homogeneous
+  Gaussian noise. \newblock {\em ALEA, Lat. Am. J. Probab. Math. Stat.} \textbf{14}, 799 -- 849.
+  % }}}
   \bibitem{Chen17Tran}% {{{ 4.
-  Chen, L. (2017).
-  \newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
-  \newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+  Chen, L. (2017). \newblock Nonlinear stochastic time-fractional diffusion equations on $\R$:
+  moments, H\"older regularity and intermittency. \newblock {\em Trans. Amer. Math. Soc.}
+  \textbf{369} (12) 8497--8535.
   % }}}
   \bibitem{CHHH17}% {{{ 5.
-  Chen, L., Hu, Y., Hu, G., and Huang, J. (2017).
-  \newblock Stochastic time-fractional diffusion equations on $\R^d$.
-  \newblock {\em Stochastics} \textbf{89} (1) 171--206.
+  Chen, L., Hu, Y., Hu, G., and Huang, J. (2017). \newblock Stochastic time-fractional diffusion
+  equations on $\R^d$. \newblock {\em Stochastics} \textbf{89} (1) 171--206.
   % }}}
   \bibitem{CHN19}% {{{ 6.
-  Chen, L., Hu, Y., and Nualart, D. (2019).
-  \newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
-  \newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+  Chen, L., Hu, Y., and Nualart, D. (2019). \newblock Nonlinear stochastic time-fractional slow and
+  fast diffusion equations on $\R^d$. \newblock {\em Stochastic Process. Appl.} \textbf{129},
+  5073--5112.
   % }}}
   \bibitem{ChenAOP12} % {{{ 7.
-  Chen, X. (2012).
-  \newblock Quenched asymptotics for Brownian motion of renormalized Poisson potential and for the related parabolic Anderson models.
-  \newblock {\em Ann. Probab. }, \textbf{40} (4) 1436--1482.
+  Chen, X. (2012). \newblock Quenched asymptotics for Brownian motion of renormalized Poisson
+  potential and for the related parabolic Anderson models. \newblock {\em Ann. Probab. },
+  \textbf{40} (4) 1436--1482.
   % }}}
   \bibitem{ChenAOP14} % {{{ 8.
-  Chen, X. (2014).
-  \newblock Quenched asymptotics for Brownian motion in generalized Gaussian potential.
-  \newblock {\em Ann. Probab. }, \textbf{42} (2) 576--662.
+  Chen, X. (2014). \newblock Quenched asymptotics for Brownian motion in generalized Gaussian
+  potential. \newblock {\em Ann. Probab. }, \textbf{42} (2) 576--662.
   % }}}
     \bibitem{Chen17AIHP} % {{{ 9.
-  Chen, X. (2017).
-  \newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
-  \newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
+  Chen, X. (2017). \newblock Moment asymptotics for parabolic Anderson equation with fractional
+  time-space noise: in Skorohod regime. \newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.}
+  {\bf 53} 819--841.
   % }}}
   \bibitem{Chen19AIHP}% {{{ 10.
-  Chen X. (2019).
-  \newblock Parabolic Anderson model with rough or critical Gaussian noise.
-  \newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
+  Chen X. (2019). \newblock Parabolic Anderson model with rough or critical Gaussian noise.
+  \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
   % }}}
   \bibitem{15AIHP}% {{{ 11.
-  Chen, X., Hu, Y., Song, J. and Xing, F. (2015).
-  \newblock Exponential asymptotics for time-space Hamiltonians
-  \newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{51}, 1529 -- 1561.
+  Chen, X., Hu, Y., Song, J. and Xing, F. (2015). \newblock Exponential asymptotics for time-space
+  Hamiltonians \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{51}, 1529 -- 1561.
   % }}}
   \bibitem{CDOT20} % {{{ 12.
-  Chen, X., Deya, A., Ouyang, C. and Tindel, S. (2020).
-  \newblock Moment estimates for some renormalized parabolic Anderson models.
-  \newblock {\em Ann. Probab.}, to appear 2021.
+  Chen, X., Deya, A., Ouyang, C. and Tindel, S. (2020). \newblock Moment estimates for some
+  renormalized parabolic Anderson models. \newblock {\em Ann. Probab.}, to appear 2021.
   % }}}
   \bibitem{CHSS18} % {{{ 13.
-  Chen, X., Hu, Y.Z., Song, J., and Song, X. (2018).
-  \newblock Temporal asymptotics for fractional parabolic Anderson model.
-  \newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
+  Chen, X., Hu, Y.Z., Song, J., and Song, X. (2018). \newblock Temporal asymptotics for fractional
+  parabolic Anderson model. \newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
   % }}}
   \bibitem{ChenLi04} % {{{ 14.
-  Chen, X. and Li, W. (2004).
-  \newblock Large and moderate deviations for intersection local times.
+  Chen, X. and Li, W. (2004). \newblock Large and moderate deviations for intersection local times.
   \newblock {\em Probab. Theory Related Fields} {\bf 128} 213--254.
   % }}}
    \bibitem{Minicourse09}% {{{ 15.
-  Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
-  \newblock {\it A minicourse on stochastic partial differential equations}.
-  \newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+  Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009). \newblock {\it A
+  minicourse on stochastic partial differential equations}. \newblock Springer-Verlag, Berlin, 2009.
+  xii+216 pp.
   % }}}
   \bibitem{HairerLabbe15SHE2}% {{{ 16.
-  Hairer, M. and Labb\'e, C. (2015).
-  \newblock A simple construction of the continuum parabolic Anderson model on $\R^2$.
-  \newblock {\em Electron. Commun. Probab.} \textbf{20}, no. 43, 11 pp.
+  Hairer, M. and Labb\'e, C. (2015). \newblock A simple construction of the continuum parabolic
+  Anderson model on $\R^2$. \newblock {\em Electron. Commun. Probab.} \textbf{20}, no. 43, 11 pp.
   % }}}
   \bibitem{HairerLabbe18SHE3}% {{{ 17.
-  Hairer, M. and Labb\'e, C. (2018).
-  \newblock Multiplicative stochastic heat equations on the whole space.
-  \newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
+  Hairer, M. and Labb\'e, C. (2018). \newblock Multiplicative stochastic heat equations on the whole
+  space. \newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
   % }}}
   \bibitem{Hu01Heat}% {{{ 18.
-  Hu, Y. (2001).
-  \newblock Heat equations with fractional white noise potentials.
-  \newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
+  Hu, Y. (2001). \newblock Heat equations with fractional white noise potentials. \newblock {\em
+  Appl. Math. Optim.} \textbf{43}, 221--243.
   % }}}
   \bibitem{Hu02Chaos}% {{{ 19.
-  Hu, Y. (2002).
-  \newblock Chaos expansion of heat equations with white noise potentials.
-  \newblock {\em Potential Anal. } \textbf{16}, no. 1, 45--66.
+  Hu, Y. (2002). \newblock Chaos expansion of heat equations with white noise potentials. \newblock
+  {\em Potential Anal. } \textbf{16}, no. 1, 45--66.
   % }}}
   \bibitem{Le16} % {{{ 20.
-  L\^e, K. (2016).
-  \newblock A remark on a result of Xia Chen.
-  \newblock {\em Stat. Probab. Letters} {\bf 118}, 124--126.
+  L\^e, K. (2016). \newblock A remark on a result of Xia Chen. \newblock {\em Stat. Probab. Letters}
+  {\bf 118}, 124--126.
   % }}}
   \bibitem{LiebLoss01} % {{{ 21.
-  Lieb, E. and Loss, M. (2001).
-  \newblock {\em Analysis}. Second edition.
-  \newblock Graduate Studies in Mathematics, 14.
-  \newblock American Mathematical Society, Providence, RI.
+  Lieb, E. and Loss, M. (2001). \newblock {\em Analysis}. Second edition. \newblock Graduate Studies
+  in Mathematics, 14. \newblock American Mathematical Society, Providence, RI.
   % }}}
   \bibitem{MijenaNane15SPA}% {{{ 22.
-  Mijena, J. B. and Nane, E. (2015).
-  \newblock Space-time fractional stochastic partial differential equations.
-  \newblock {\it Stochastic Process. Appl.} \textbf{125} no. 9, 3301--3326.
+  Mijena, J. B. and Nane, E. (2015). \newblock Space-time fractional stochastic partial differential
+  equations. \newblock {\it Stochastic Process. Appl.} \textbf{125} no. 9, 3301--3326.
   % }}}
   \bibitem{Nualart18Book}% {{{ 23.
-  Nualart D. and Nualart E. (2018).
-  \newblock {\em Introduction to Malliavin Calculus}.
-  \newblock Cambridge University Press.
+  Nualart D. and Nualart E. (2018). \newblock {\em Introduction to Malliavin Calculus}. \newblock
+  Cambridge University Press.
   % }}}
 \end{thebibliography}
 \end{document}
+% }}}
