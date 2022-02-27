@@ -123,7 +123,7 @@
 \newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
 \newcommand{\He}{\ensuremath{\mathrm{He} }}
 
-\def\crtL{\theta}
+\def\crtL{\rho}
 
 \newcommand{\conRef}[1]{(#1)}
 
@@ -172,8 +172,8 @@
 \usepackage{graphicx}
 % }}}
 \begin{document}
-\section{Introduction}
-We study the interpolated stochastic heat and wave equation (ISHWE) for spatial dimension on $\R^d$,
+	\section{Introduction}
+	We study the interpolated stochastic heat and wave equation (ISHWE) for spatial dimension on $\R^d$,
 	\begin{equation}
 	\label{E:SPDE}
 	\begin{cases}
@@ -182,801 +182,109 @@ We study the interpolated stochastic heat and wave equation (ISHWE) for spatial 
 	u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & \beta \in (1,2).
 	\end{cases}
 	\end{equation}
-
-
-\section{Preliminaries}
-For any $t \in [0,T]$ and $x \in \R^d$, we write (assuming $\beta \in (1,2))$
-	\[
-		u(t,x) = J_0(t,x) + I(t,x)
-	\]
-where
-	\begin{align*}
-		J_0(t,x) &=\begin{cases} 
-							[Z(t,\cdot)*u_0](x) & \beta \in (0,1]
-						\\	[Z(t,\cdot)*v_0](x) + \frac{\partial}{\partial t}[Z(t,\cdot)*u_0](x) & \beta \in (1,2)
-							\end{cases}
-	\\	I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
-				\end{align*}
-
-\textcolor{blue}{The following is for space-time white noise. For colored noise we need $\theta(\lambda) >0$ and $2\alpha > d$.}
-
-\section{Space-time White Noise}
-In this section we study \eqref{E:SPDE} for driven by space-time white noise. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SPDE}, we will need to assume Dalang's condition:
-\begin{equation}
-\label{C:Dalang}
-\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
-\end{equation} 
-which is equivalent to
-\begin{equation}
-\label{E:DalangEquiv}
-d < 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\} =: \Theta,
-\end{equation}
-which is further equivalent to 
-\begin{equation}
-\label{E:DalangEquiv2}
-\theta(d) > 0 \quad \text{and} \quad d < 2\alpha,
-\end{equation}
-where 
-\begin{equation}
-\label{D:theta}
-\theta(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
-\end{equation} 
-\subsection{Globally Lipschitz Coefficient}
-In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
-	\[
-		|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
-	\] 
-where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. We now state an existence and uniqueness result proven in \cite{CHN19}.
-
-	\begin{theorem}
-	\label{T:SolveabilityGenLip}
-Under \eqref{C:Dalang}, the SPDE \eqref{E:SPDE} has a unique (in the sense of versions) random field solution $\{u(t,x) : (t,x) \in (0,\infty) \times \R^d \}$ if the initial data are such that 
-	\begin{equation}
-		\hat{C}_t := \sup_{t\in[0,T],\; x\in \R^d} |J_0(t,x)| < \infty.
-	\end{equation}	
-\textcolor{blue}{Moreover, the following statements are true:
-	\begin{enumerate}
-		\item $(t,x) \mapsto u(t,x)$ is $L^P(\Omega)$-continuous for all $p \ge 2$,
-		\item For all even integers $p \ge 2$, all $t \ge 0$ and $x,y\in\R^d$,
-			\begin{equation}
-				\Norm{u(t,x)}_p^2 \le 2J_0^2(t,x) + \left[ \bar{\varsigma}^2 + 2 \hat{C}_t^2 \right]\exp(C \lambda^{2/(1-\sigma)}t).
-			\end{equation}
-\end{enumerate}}
 	
-\end{theorem}
+	
+	\section{Preliminaries}
+	For any $t \in [0,T]$ and $x \in \R^d$, we write (assuming $\beta \in (1,2))$
+	\[
+	u(t,x) = J_0(t,x) + I(t,x)
+	\]
+	where
+	\begin{align*}
+	J_0(t,x) &=\begin{cases} 
+	[Z(t,\cdot)*u_0](x) & \beta \in (0,1]
+	\\	[Z(t,\cdot)*v_0](x) + \frac{\partial}{\partial t}[Z(t,\cdot)*u_0](x) & \beta \in (1,2)
+	\end{cases}
+	\\	I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
+	\end{align*}
+	
+	\textcolor{blue}{The following is for space-time white noise. For colored noise we need $\rho(\lambda) >0$ and $2\alpha > d$.}
+	
+	\section{Space-time White Noise}
+	In this section we study \eqref{E:SPDE} for driven by space-time white noise. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SPDE}, we will need to assume Dalang's condition:
+	\begin{equation}
+	\label{C:Dalang}
+	\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
+	\end{equation} 
+	which is equivalent to
+	\begin{equation}
+	\label{E:DalangEquiv}
+	d < 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\} =: \Theta,
+	\end{equation}
+	which is further equivalent to 
+	\begin{equation}
+	\label{E:DalangEquiv2}
+	\rho(d) > 0 \quad \text{and} \quad d < 2\alpha,
+	\end{equation}
+	where 
+	\begin{equation}
+	\label{D:theta}
+	\rho(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
+	\end{equation} 
+	\subsection{Globally Lipschitz Coefficient}
+	In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
+	\[
+	|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
+	\] 
+	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. We now state an existence and uniqueness result proven in \cite{CHN19}.
+	
+	\begin{theorem}
+		\label{T:SolveabilityGenLip}
+		Under \eqref{C:Dalang}, the SPDE \eqref{E:SPDE} has a unique (in the sense of versions) random field solution $\{u(t,x) : (t,x) \in (0,\infty) \times \R^d \}$ if the initial data are such that 
+		\begin{equation}
+		\hat{C}_t := \sup_{t\in[0,T],\; x\in \R^d} |J_0(t,x)| < \infty.
+		\end{equation}	
+		\textcolor{blue}{Moreover, the following statements are true:
+			\begin{enumerate}
+				\item $(t,x) \mapsto u(t,x)$ is $L^P(\Omega)$-continuous for all $p \ge 2$,
+				\item For all even integers $p \ge 2$, all $t \ge 0$ and $x,y\in\R^d$,
+				\begin{equation}
+				\Norm{u(t,x)}_p^2 \le 2J_0^2(t,x) + \left[ \bar{\varsigma}^2 + 2 \hat{C}_t^2 \right]\exp(C \lambda^{2/(1-\sigma)}t).
+				\end{equation}
+		\end{enumerate}}
+		
+	\end{theorem}
 	\begin{lemma}{\normalfont \cite[Theorem 4.1 and Lemma 5.5]{CHN19}}
-	\label{L:1and2normYZ}
-Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
-	\[
+		\label{L:1and2normYZ}
+		Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
+		\[
 		\int_{\R^d} Y(t,x) \ud x = t^{\beta+\gamma -1 }
-	\]
-and
-	\[
-		\int_{\R^d} Y^2(t,x) \ud x = C_{\#} t^{2(\beta+\gamma-1)-d\beta/\alpha} = C_{\#} t^{\theta -1} ,
-	\]
-for all $t > 0$, where $\theta = \theta(d)$ and 
-	\[
+		\]
+		and
+		\[
+		\int_{\R^d} Y^2(t,x) \ud x = C_{\#} t^{2(\beta+\gamma-1)-d\beta/\alpha} = C_{\#} t^{\rho -1} ,
+		\]
+		for all $t > 0$, where $\rho = \rho(d)$ and 
+		\[
 		C_{\#} := \frac{2}{\Gamma(d/2)(4 \pi )^{d/2}} \int_0^\infty u^{d-1}E^2_{\beta,\beta + \gamma}(-u^\alpha) \ud u.
-	\]
-Now further assume that $\beta \in (1,2)$, then 
-	\[
+		\]
+		Now further assume that $\beta \in (1,2)$, then 
+		\[
 		\int_{\R} Z(t,x) \ud x= t^{\lceil \beta \rceil -1} = t. 
-	\]
+		\]
 	\end{lemma}
 	\begin{remark}
-When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} G^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
+		When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} G^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
 	\end{remark}
-In the proof of the next proposition, we will use the following two facts:
+	In the proof of the next proposition, we will use the following two facts:
 	\begin{equation}
 	\label{E:SUPidentities}
-		\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
+	\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
 	\end{equation}
 	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{SoleMillet2021}}
-	\label{P:N(u)Bdd}
-Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and consider $\theta = \theta(d)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
-	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{1/\theta}.
-	\]
-and 
-	\[
-		p \in \left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right].
-	\]
-we have that 
-	\begin{equation}
-	\label{E:Nbdd}
-		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
-	\end{equation}	
-where
-	\begin{align*}
-		\mathcal{T}_0 = \begin{cases} 
-		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
-		\end{cases} 
-	\end{align*}
-Moreover for any $T>0$,
-	\begin{equation}
-	\label{E:Pnormtbdd}
-		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
-	\end{equation}
-	\end{proposition}
-	\begin{proof}
-First we fix an $a>0$ and $p \in [2,\infty)$. Using Lemma \ref{L:1and2normYZ} we see that,
-	\begin{align*}
-		|J(t,x)|  &= \begin{cases} 
-								\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
-							\\	\left| (Z(t,\cdot) * v_0)(x) + \frac{\partial}{\partial t}(Z(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
-							\end{cases}
-		\\& \le \begin{cases}
-								t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
-							\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
-					\end{cases} 
-	\end{align*}
-Now using \eqref{E:SUPidentities}, we see that 
-	\begin{align}
-	N_{a,p}(J) &\le \begin{cases} 
-					\sup_{t\ge 0}\sup_{x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
-					\\ \sup_{t\ge 0}\sup_{x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
-								\end{cases} \nonumber
-	\\ &= \begin{cases} 
-					(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-				\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
-				\end{cases} \label{E:Jbdd}
-	\end{align}
-
-Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
-	\begin{align*}
-	\Norm{I(t,x)}_p^2 &\le 4p \Norm{\int_0^t \ud s \int_{\R^d}\ud y \; Y^2(t-s,x-y)\sigma^2(u(s,y))  }_{p/2}
-	\\&\le 4p \int_0^t \ud s \int_{\R^d} \ud y \; Y^2(t-s,x-y)\Norm{\sigma^2(u(s,y))}_{p/2}.
-	\end{align*}
-Now by applying Lemma \ref{L:1and2normYZ} and the Lipschitz property of $\sigma$ we get that 
-	\begin{align*}
-		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\int_0^t (t-s)^{\theta -1} \ud s + 8pL^2(\sigma)N^2_{a,p}(u)\int_0^t \ud s \int_{\R^d} \ud y \; e^{2as} Y^2(t-s,x-y).
-	\end{align*} 
-Now under Dalang's condition \eqref{E:DalangEquiv2}, the first integral above can be calculated as 
-	\[
-		\int_0^t (t-s)^{\theta -1} \ud s = \frac{ t^{\theta} }{\theta}.
-	\]
-By applying Lemma \ref{L:1and2normYZ}, we can calculate the second integral as 
-	\[
-		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\theta - 1}.
-	\]
-Putting this together gives us that 
-	\begin{align*}
-	\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#} \frac{ t^{\theta} }{\theta} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\theta - 1}.
-	\end{align*}
-Now by multiplying both sides by $e^{-2at}$, we see that
-	\begin{align*}
-	\Norm{I(t,x)}_p^2e^{-2at} &\le \frac{8pc^2(\sigma)C_{\#} }{\theta} \; t^{\theta} e^{-2at} 
-	\\&\qquad\qquad + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^t \ud s \; e^{-2a(t-s)}(t-s)^{\theta - 1}.
-	\end{align*}
-We now do a change of variables and again recall the definition of the Gamma function to see that 
-	\begin{align*}
-	\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\theta} \; t^{\theta} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au}(u)^{\theta -1} \\
-	& = \frac{8pc^2(\sigma)C_{\#} }{\theta} \; t^{\theta} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\theta \right)}{ (2a)^{\theta}}
-	\end{align*}
-where the last line is true if Dalang's condition \cite{CHN19} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
-	\begin{align}
-	N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#}  }{\theta}} \left(\frac{\theta}{2ea}\right)^{\theta/2} +  L(\sigma)N_{a,p}(u) \sqrt{\frac{8pC_{\#} \Gamma\left( \theta \right)}{(2a)^\theta} }. \label{E:SoleMil3.9}
-	\end{align}
-To simplify things, we now let 
-	\begin{align*}
-		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#}  }{\theta}} \left(\frac{\theta}{2e}\right)^{\theta/2}, \sqrt{\frac{8C_{\#} \Gamma\left( \theta \right) }{2^{\theta}}}  \Bigg\}
-	\end{align*}
-then,
-	\begin{align}
-	\label{E:Ibdd}
-			N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{\theta/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
-	\end{align}
-Now by combining \eqref{E:Jbdd} and \eqref{E:Ibdd}, we see that 
-	\begin{align}
-	N_{a,p}(u) & \le \begin{cases} 
-	(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-	\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
-	\end{cases} 
-	\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{\theta/2} }  + K  \frac{\sqrt{p}L(\sigma)}{a^{\theta/2}} N_{a,p}(u). \label{E:Nbddgen}
-	\end{align}
-It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{SoleMillet2021} respectively. Now choose $a>0$ such that 
-	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{1/\theta}.
-	\]
-This implies that the following interval is nonempty:
-	\[
-		\left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right].
-	\]
-In addition, for any $p$ in this interval, we have that 
-	\[
-		\frac{\sqrt{p}L(\sigma)K}{a^{\theta/2}} \le \frac{1}{2},
-	\]
-and we also have 
-	\[
-		\frac{\sqrt{p}}{a^{\theta/2}}  \le \frac{1}{2KL(\sigma)}.
-	\]
-This along with \eqref{E:Nbddgen} implies that 
-	\begin{align*}
-		N_{a,p}(u) & \le 2 \begin{cases} 
-		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
-		\end{cases} 
-			\\& \quad \quad + \frac{c(\sigma)}{L(\sigma)}
-	\end{align*}
-and this is precisely \eqref{E:Nbdd}. Note that \eqref{E:Pnormtbdd} follows immediately from \eqref{E:Nbdd}.  
-	\end{proof}
-
-We will need to recall the following result proved in \cite{CHN19} in order to prove Proposition \ref{P:NormInc} below. 
-
-	\begin{proposition}{\normalfont\cite[Proposition 2.1 and 2.2]{ChenHu21}}
-	\label{P:YInc}
-Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\theta = \theta(d)$ which is defined above in \eqref{D:theta}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
-	\begin{enumerate}
-		\item \label{P:YIncCase1}  Suppose that $0< \rho < (\Theta -1) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \rho, T)$ such that
-	\[
-		\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\theta + |x-z|^{\rho}\right).
-	\]
-		\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then for $0< \rho < (\Theta -1) \wedge 2$ there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \rho, T)$ such that
-			\[
-				\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^q + |x-z|^{\rho}\right),
-			\]
-		where 
-			\[
-				0 < q < \theta.
-			\]
-	\end{enumerate}
-	\end{proposition}
-
-	\begin{remark}
-In Proposition \ref{P:YInc} above, we may often ignore the dependence of $C$ on $\alpha, \beta, \gamma, \nu, d$ and just write $C(\rho, T)$. 
-	\end{remark}
-
-	\begin{proposition}
-	\label{P:NormInc}
-Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\theta = 2(\beta + \gamma) -1 - \beta d/\alpha$ and suppose that $0< \rho < (\Theta -1) \wedge 2$. Consider $\theta = \theta(d)$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
-	\begin{equation}
-	\label{E:NormInc_N(u)}
-		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\rho}\right)^{1/2}} \le 	C(p,\rho, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
-	\end{equation}
-where 
-\[
-	\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{pL(\sigma)},
-\]
-and
-	\begin{enumerate}
-		\item $0< q \le \theta$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
-		\item $0 < q < \theta$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
-	\end{enumerate}
-Moreover, for any 
-\[
-a > \left( 8 L^2(\sigma)K^2\right)^{1/
-\theta}.
-\]
-and 
-\[
-p \in \left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right]
-\]
-we have that 
-	\begin{equation}
-	\label{E:NormInc_cL}
-		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\rho}\right)^{1/2}} \le C(p,\rho, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
-	\end{equation}
-	\end{proposition}
-
-\begin{proof}
-Note that because of the initial conditions, we see that $\Norm{u(t,x) - u(r,z)}_p = \Norm{I(t,x) - I(r,z)}_p$. We now apply Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
-	\begin{align*}
-		\Norm{I(t,x) - I(r,z)}_p^2 &\le 4p \Norm{ \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2\sigma^2(u(s,y)) }_{p/2} \\
-		&\le 4p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Norm{\sigma^2(u(s,y)) }_{p/2}.
-	\end{align*} 
-Now by applying the Lipchitz condition on $\sigma$ gives us that 
-	\begin{align*}
-		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \left( c^2(\sigma) + L^2(\sigma)\Norm{u(s,y)}_{p}^2\right) \\
-		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
-		& \qquad+ L^2(\sigma) \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \exp\left(2as\right)N_{a,p}^2(u)  \Bigg] \\
-		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
-		& \qquad+ L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u)  \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Bigg]. 
-	\end{align*}
-We now apply Proposition \ref{P:YInc} to see that 
-	\begin{align*}
-	\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \bigg[ c^2(\sigma)C(\rho, T)\left(|t-r|^{q} + |x-z|^{\rho}\right)\\ 
-	& \qquad +  L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u) C(\rho, T)\left(|t-r|^{q} + |x-z|^{\rho}\right) \bigg],
-	\end{align*}
-where $C(\rho, T)$ is as in Proposition \ref{P:YInc}. Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$ yields
-	\begin{align*}
-	\Norm{I(t,x) - I(r,z)}_p &\le 2\sqrt{2C(\rho, T)p} \Big[ c(\sigma) + L(\sigma) \exp\left(aT \right)N_{a,p}(u) \Big]\left(|t-r|^{q} + |x-z|^{\rho}\right)^{1/2}. 
-	\end{align*}
-This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follows directly from \eqref{E:NormInc_N(u)} and Proposition \ref{P:N(u)Bdd}. 
-\end{proof}
-
-\textcolor{blue}{The holder continuity in the next proposition needs to be checked}
-
-	
-	\begin{proposition}
-	\label{P:Holder}
-Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < q/2$ and $0<\eta_2 < \rho/2$ where $0< \rho < (\Theta -1) \wedge 2$ and
-		\begin{enumerate}
-		\item $0< q \le \theta$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
-		\item $0 < q < \theta$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
-	\end{enumerate}
-Moreover, if we consider
-	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{1/\theta} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right],
-	\]
-where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
-	\[
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \rho, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
-	\]
-	\end{proposition}
-
-	\begin{proof}
-Proposition \ref{P:NormInc} implies that 
-		\begin{equation}
-			\Norm{u(t,x) - u(r,z)}_p \le C(p,\rho, T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{q} + |x-z|^{\rho}\right)^{1/2}.
-		\end{equation}
-By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < q/2$ and $0<\eta_2 < \rho/2$.
-	
-Next, note that by triangle inequality,
-	\begin{align*}
-		|u(t,x)|^p &\le 2^{p-1}\left( \Norm{u_0}_{\infty}^p + |u(t,x)-u_0(x)|^p \right) \\
-		&\le 2^{p-1}\left( \Norm{u_0}_{\infty}^p + \sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-u_0(x)|^p\right) \right) \\
-		&= 2^{p-1}\left( 1 + \sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-1|^p\right) \right)
-	\end{align*}
-Due to the continuity of $u$ on the compact set $[0,T] \times [-R,R]$, there exists a point $(t_0,x_0) \in [0,T] \times [-R,R]$ such that 
-	\[
-		\sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-1|^p\right) = |u(t_0,x_0)-1|^p.
-	\]
-Thus, for any $(t,x) \in [0,T] \times [-R,R]$,
-	\[
-		|u(t,x)|^p \le 2^{p-1}\left( 1  + |u(t_0,x_0)-1|^p \right)
-	\] 
-which in return implies that 
-	\[
-		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \le 2^{p-1}\left(1 + |u(t_0,x_0)-1|^p \right).
-	\]
-Now by taking the expectation of both sides and applying Proposition \ref{P:NormInc} gives us 
-	\begin{align*}
-			\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p, \rho, T)^p\left((2T)^{q/2} + (2R)^{\rho /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
-			&= 2^{p-1} + C(p, \rho, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
-	\end{align*}
-Now if we consider
-	\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{1/\theta} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right],
-	\]
-then by Proposition \ref{P:N(u)Bdd}, we have that 
-	\[
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \rho, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
-	\]
-\end{proof}
-
-\begin{remark}
-	The H\"older continuity in time proven above in Proposition \ref{P:Holder} recovers the result proven by Foondun and Nane in \cite[Theorem 1.9]{FN2016} if we restrict ourself to the case where $\beta \in (0,1)$ and $\gamma = 1-\beta$. 
-\end{remark}
-
-	\begin{NickQuestion}
-Suppose we consider bounded initial conditions $u_0$ and $v_0$. Then 
-	\begin{align*}
-		J_0(t,x) &=\begin{cases} 
-							[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
-							[Z(t,\cdot)*v_0](x) + \frac{\partial}{\partial t}[Z(t,\cdot)*u_0](x) & \beta \in (1,2)
-							\end{cases} \\
-		& =: \begin{cases} 
-					[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
-					[Z(t,\cdot)*v_0](x) + [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
-				\end{cases}.
-	\end{align*} 
-We notice that 
-	\begin{align*}
-		J_0(t,x) - J_0(s,z)
-			&= \begin{cases} 
-				[Z(t,\cdot)*u_0](x) - 	[Z(s,\cdot)*u_0](z) & \beta \in (0,1] \\ \\
-				[Z(t,\cdot)*v_0](x) - [Z(s,\cdot)*v_0](z) \\
-				\qquad + [Z^*(s,\cdot)*u_0](z) - [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
-			\end{cases}.
-	\end{align*}
-Lets just examine the $\beta \in (1,2)$ case since that case deals with both $Z$ and $Z^*$. We have that 
-	\begin{align*}
-			|J_0(t,x) - J_0(s,z)| & \le \int_{\R} |Z(t,x-y) - Z(s,z-y)| |v_0(y)| \ud y + \int_{\R} |Z^*(t,x-y) - Z^*(s,z-y)| |u_0(y)| \ud y.
-	\end{align*}
-For simplicity lets look at the time and space increments separately. For time we have that 
-	\begin{align*}
-		|J_0(t,x) - J_0(s,x)| & \le \int_{\R} |Z(t,x-y) - Z(s,x-y)| |v_0(y)| \ud y + \int_{\R} |Z^*(t,x-y) - Z^*(s,x-y)| |u_0(y)| \ud y.
-	\end{align*}
-Foondun and Nane \cite[Proof of Theorem 1.13]{FN2016} stop right and claim that the above integrals are smooth functions in $t$. Then it seems that they conclude that they are $\eta$-H\"older continuous in $t$ with $\eta=\frac{(1-\beta \gamma/\alpha)}{2}$ where $\gamma$ is the Reisz Kernel exponent. In other words they say that 
-	\[
-			|J_0(t,x) - J_0(s,x)| \le C |t-s|^\eta.x
-	\]
-
-\textcolor{blue}{Are smooth functions also $\eta$-H\"older continuous for any $\eta >0$?} If we can argue as in \cite{FN2016}, then we can relax our initial conditions to be bounded measurable functions $u_0$ and $v_0$. This is also an improvement from Sanz-Sole and Millet \cite{SoleMillet2021} since they assume the initial conditions are continuous. 
-	\end{NickQuestion}
-
-\subsection{Existence and Uniqueness of a Global Solution with Superlinear Diffusion Coefficient}
-
-We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
-	\begin{equation}
-	\label{C:SigSupLin}
-		|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
-	\end{equation}
-where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
-	\begin{equation}
-		|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
-	\end{equation}
-where $\sigma_1 = c(\sigma) = \sigma(0)$.
-
-	\begin{remark}
-Because of the absence of the drift coefficient in \eqref{E:SPDE}, we may drop \cite[Assumption C1]{SoleMillet2021}.
-	\end{remark}
-
-\begin{theorem}
-	Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$, there exists a random field solution to \eqref{E:SPDE} in $[-M,M]$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
-		\begin{equation}
-			\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
-		\end{equation}
-\end{theorem}
-
-	\begin{proof}
-We first solve a {\it truncated} version of \eqref{E:SPDE}. By this, we mean $\eqref{E:SPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
-	\[
-		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
-	\]
-Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
-	\[
-		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
-	\]
-Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \rho/2$.
-
-We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
-	\[
-		a > \left( 8 L^2(\sigma_N) K^2 \right)^{1/\theta} \quad \text{and} \quad p \in \left[ 2, \frac{a^{ \theta}}{4L^2(\sigma_N)K^2} \right].
-	\] 
-Then Proposition \ref{P:Holder} implies that 
-	\begin{equation}
-	\label{E:u_NMomBdd}
-		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \rho, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
-	\end{equation}
-where we recall that 
-	\begin{equation}
-	\label{D:M1&2forSig_N}
-		\mathcal{M}_1 = \sqrt{p}\sigma_1 \quad \text{and} \quad \mathcal{M}_2(N) = \sqrt{pL(\sigma_N)} = \sqrt{p\sigma_2\ln(2N)^\delta}.
-	\end{equation}
-We now use the above to prove the existence and uniqueness of \eqref{E:SPDE} with superlinear $\sigma$ satisfying \eqref{C:SigSupLin}. For any $T>0$ and $N \ge 2$ with $N\in \mathbb{N}$, we define the following stopping time:
-	\begin{equation}
-		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
-	\end{equation}
-The uniqueness of the solution and the \textcolor{blue}{local property of the stochastic integral} imply that $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
-
-We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
-	\[
-		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
-	\]
-However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
-	\[
-		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
-	\]
-Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
-	\begin{equation}
-	\label{E:SupLinMildSol}
-		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
-	\end{equation}
-\textcolor{blue}{It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.}
-
-We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
-	\begin{align*}
-		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)| \ge N \right) \\
-		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right).
-	\end{align*}
-An application of \eqref{E:u_NMomBdd} gives 
-	\begin{align*}
-		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \rho, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
-		&= \frac{2^{p-1} + C(p, \rho, T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
-	\end{align*}
-The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
-	\begin{align*}
-		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
-		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to \infty,
-	\end{align*}
-where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
-	\end{proof}
-
-\begin{remark}
-	A potential project would be to show that the solution to \eqref{E:SPDE} with superlinear coefficient is Holder continuous. This requires to one to extend the Kolmogorov theorem to the type of stochastic integral used to define the mild solution in \eqref{E:SupLinMildSol}. However these stochastic integrals are no longer defined in $L^2(\Omega)$. Maybe a completely new theory needs to be developed to show continuity. \cite[Theorem 5.5.5]{Kuo} may be helpful? 
-\end{remark}
-
-\section{Spatially Colored Noise Driven SPDE}
-In this section we will study \eqref{E:SPDE} driven by a Gaussian noise that is white in time and colored in space. Informally this means that 
-	\[
-		\mathbb{E}\left[\dot F(t,x) \dot F(s,y)\right] = \delta_0(t-s) f(x-y)
-	\] 
-where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
-	\[
-		f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
-	\]
-where
-	\[
-		K_f     = \pi^{-d/2}2^{-\lambda} \frac{\Gamma((d-\lambda)/2)}{\Gamma(\lambda/2)}.
-	\]
-
-\subsection{Lipschitz Diffusion Coefficient}
-We first examine \eqref{E:SPDE} with Lipschitz diffusion coefficient . As we will see below in Theorem \ref{T:ExisAndUniq}, to establish the existence and uniqueness of a random field solution to \eqref{E:SPDE}, we will need to assume Dalang's condition:
-	\begin{equation}
-		\label{C:DalangCl}
-		\int_0^t \ud s \int_{\R^d} \ud y_1 \ud y_2 Y(s,y_1) f(y_1-y_2) Y(s,y_2 )< \infty, \quad \text{for all } t>0,
-	\end{equation} 
-which is equivalent to
-	\begin{equation}
-		\label{E:DalangEquiv2Cl}
-		\theta(\lambda) > 0 \quad \text{and} \quad \lambda < 2\alpha,
-	\end{equation}
-where we recall from \eqref{D:theta} that
-	\begin{equation}
-		\theta(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
-	\end{equation}
-We assume that there exists some $L_\sigma > 0$ such that 
-	\[
-		|\sigma(x) - \sigma(y)| \le L_{\sigma} |x-y|.
-	\]
-
-To prove existence and uniqueness of the solution, we will need the following lemma. The following lemma is proven by Foondun and Nane \cite{FN2016} in the case that 		
-	\begin{equation}
-	\label{A:Y=GAssumptions}
-		\beta \in (0,1) \quad \text{and} \quad \gamma = 1 - \beta
-	\end{equation}		
-Their proof relies on a probabilistic representation of the Green's function for the solution of \eqref{E:SPDE}. Our proof takes a different approach and relies on the asymptotic behavior of the Euler-Mittag function given in \cite[Theorem 1.6]{Podlubny99}. One should note that under the assumptions \eqref{A:Y=GAssumptions} that $Y(t,x)=Z(t,x)$. However, in general, this is not the case. 
-
-	\begin{lemma}
-	\label{L:intYfYbdd}
-Suppose that $\lambda < 2\alpha$, then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
-	\begin{equation}
-	\label{E:YYfBdd}
-		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C K_f \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
-	\end{equation}
-	\end{lemma}
-	\begin{proof}
-Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
-	\[
-		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
-	\]
-where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
-	\[
-		\int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi.
-	\]
-Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{CHN19} gives us that 
-	\begin{align*}
-		\frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) & \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi \\
-		& = \frac{ K_f \; t^{2(\beta  \gamma -1)} }{ (2\pi)^d } \int_{\R^{d}} \exp(-i(x-y)\xi) \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \\
-		& \le \frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi
-	\end{align*}
-where the last inequality follows from the non-negativity of the Euler-Mittag function. Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0$ such that 
-	\[
-		\frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \le 
-		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha \right)^2 |\xi|^{d-\lambda} } \ud \xi.
-	\]
-Another change of variables implies that 
-	\[
-		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi \le 
-		\frac{C\; K_f }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ 1 }{\left(1+ |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi.
-	\]
-We see that the above integral is finite if $\lambda < 2\alpha$ and when this is the case, we have \eqref{E:YYfBdd}.
-	\end{proof}
-\begin{NickQuestion}
-	Note that we have $\lambda < 2 \alpha$ while Foondun and Nane \cite{FN2016} have that $\lambda < \alpha$. This may be something to look at. 
-\end{NickQuestion}
-We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} driven by the noise $\dot{F}$. 
-
-	\begin{theorem}
-	\label{T:ExisAndUniq}
-Suppose that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and in addition, suppose that $\lambda < 2 \alpha$. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SPDE} driven by $\dot{F}$ such that 
-	\[
-		u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
-	\]
-	\end{theorem} 
-	\begin{proof}
-The proof follows the strategy laid out in Walsh \cite{Walsh89}. We start by defining 
-	\[
-		u_0(t,x) := J_0(t,x) \quad \text{and} \quad u_n(t,x) := J_0(t,x) + \int_0^t \int_{\R^d} Y(t-s,x-y) \sigma(u_n(s,y)) F(\ud s, \ud y). 
-	\]
-In addition, we define 
-	\[
-		D_n(t,x) := \mathbb{E}\left| u_{n+1}(t,x) - u_n(t,x) \right|^2 \quad \text{and} \quad H_n(t) := \sup_{x \in \R^d} D_n(t,x).
-	\]
-Lastly, we define 
-	\[
-		\mathbf{\Sigma} (t,x,n) := | \sigma( u_n(t,x) ) - \sigma(u_{n-1} (t,x) ) |.
-	\]
-With this notation we see that 
-	\[
-		D_n(t,x) = \int_0^t \ud s \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right).
-	\]
-Now note that by the Lipschitz property of $\sigma$, we have that  
-	\begin{align*}
-		\mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right) &\le L^2_{\sigma} \mathbb{E} \left(|u_n(s,y)-u_{n-1}(s,y)||u_n(s,z)-u_{n-1}(s,z)|\right) \\
-		& \le L^2_{\sigma} \Norm{ u_n(s,y)-u_{n-1}(s,y) } \Norm{u_n(s,z)-u_{n-1}(s,z)} \\ 
-		& \le L^2_{\sigma} \sqrt{D_{n-1}(s,y) D_{n-1}(s,z)} \\
-		& \le L^2_{\sigma} H_{n-1}(s).
-	\end{align*}
-Thus, 
-	\begin{align*}
-			D_n(t,x) &\le L^2_{\sigma} \int_0^t H_{n-1}(s) \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \\
-			&\le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}},
-	\end{align*}
-where the last inequality follows from \eqref{E:YYfBdd}. In return, this implies that 
-	\[
-		H_n(t) \le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}}.
-	\]
-Since we assume that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$, then the result follows from the discussion before the proof of \cite[Lemma 3.3]{Walsh89}. 
-	\end{proof}
-
-	\begin{remark}
-One should note that when considering the SHE ($\beta =1$, $\alpha=2$ and $\gamma=0$), the assumptions $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and $\lambda < 2 \alpha$ reduce down to $\lambda<2$ and $\lambda <3$ which recovers the well-known condition that one must have $\lambda < \min\{2,d\}$.
-	\end{remark}
-	
-	\begin{NickQuestion}
-In the existence and uniqueness proof in \cite[Theorem 1.10]{FN2016}, the following is shown 
-	\[
-		H_n(t) \le \text{const.} \int_0^t \frac{H_{n-1}(s)}{(t-s)^{\gamma \beta / \alpha}}.
-	\]
-Note that in this formula, $\gamma$ is denoting the Riesz kernel parameter. I believe that we need to assume that 
-	\[
-		\gamma \beta / \alpha < 1
-	\]
-however in this proof they say we must assume that $d\beta / \alpha < 1$. I think this is a typo. However, this assumption still is not stated in the statement of the theorem. Another issue is that they need to assume that 
-	\[
-		\gamma < \alpha
-	\]
- in order to apply \cite[Lemma 2.7]{FN2016} and this assumption is not stated in the statement of the theorem. This assumption however would imply that $\gamma \beta / \alpha <1$ since in \cite{FN2016} $\beta \in (0,1)$.
-
-In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]{Walsh89}. I believe that in Lemma 3.3 {\it ibid.} we should assume that $a>-1$ and not $a >1$. This would be consistent with \cite[(3.14)]{Walsh89}.
-	\end{NickQuestion}
-
-	\begin{NickQuestion} 
-The following tries to give an upper bound to $\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$ by using techniques from \cite{FN2016}. There is an issue with the upper bound of $J_0(t,x)$ depending on $t$ when the initial condition $v_0 \not = 0$. 
-
-	\begin{theorem}[{\cite[Theorem 1.10]{FN2016}}]
-Under the assumptions of Theorem \ref{T:ExisAndUniq} we have that 
-	\begin{equation}
-		\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2 \le ...
-	\end{equation}		
-	\end{theorem} 
-	\begin{proof}
-The proof follows the strategy from the proof of \cite[Theorem 1.10]{FN2016}. We start by defining $A(t) = \sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$. We will prove the following inequality:
-	\begin{equation}
-	\label{E:Renewal}
-		A(t) \le C_1+  C_2t^{2(\lceil \beta \rceil -1)} + C_3 \int_0^t \frac{A(s)}{(t-s)^{\beta \lambda / \alpha - 2(\beta+\gamma-1)}} \; \ud s,
-	\end{equation}
-To do this, we note that 
-	\begin{align}
-	\mathbb{E}|u(t,x)|^2 &\le J^2_0(t,x) + \int_0^t \ud s \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z) f(y-z) \mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right) \nonumber \\
-	&:= J_0^2(t,x) + I_2(t,x) 	\label{E:u2normbdd}
-	\end{align}
-Note that for bounded $u_0$ and $v_0$ we have that 
-	\begin{align*}
-		|J_0(t,x)| &\le 
-		\begin{cases}
-			|(Z(t,\cdot)*u_0|(x) & \beta \in (0,1] \\
-			|(Z(t,\cdot)*v_0|(x) + 	|(Z^*(t,\cdot)*u_0|(x) & \beta \in (1,2)
-		\end{cases} \\
-		&\le \begin{cases}
-					\Norm{u_0}_{\infty}|(Z(t,\cdot)*1|(x) & \beta \in (0,1] \\
-					\Norm{v_0}_{\infty}|(Z(t,\cdot)*1|(x) + 	\Norm{u_0}_{\infty}|(Z^*(t,\cdot)*1|(x) & \beta \in (1,2)
-				\end{cases} \\
-		&=  \begin{cases}
-					\Norm{u_0}_{\infty} & \beta \in (0,1] \\
-					\Norm{v_0}_{\infty} t +\Norm{u_0}_{\infty} & \beta \in (1,2).
-				\end{cases} 
-	\end{align*}
-
-Next we note that 
-	\begin{align*}
-		\mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right) &\le L^2_{\sigma} \mathbb{E}\left( |u(s,y)||u(s,z)| \right) \\
-		& \le L^2_{\sigma} \mathbb{E}\left(|u(s,z)| \right)^{1/2}\mathbb{E}\left( |u(s,y)| \right)^{1/2} \\
-		& \le A(s).
-	\end{align*}
-Therefore, we can bound $I_2$ in \eqref{E:u2normbdd} by the following:
-	\[
-		I_2(t,x) \le L^2_{\sigma}\int_0^t \ud s A(s) \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z)f(y-z).
-	\]
-Now applying Lemma \ref{L:intYfYbdd} we see that 
-	\[
-		I_2(t,x) \le C_2 \int_0^t \frac{A(s)}{t^{\beta \lambda / \alpha - 2(\beta + \gamma -1)}}.
-	\]
-Combining the above gives us \eqref{E:Renewal}.
-	\end{proof}
-
-\begin{remark}
-	The bound in \eqref{E:Renewal} is different from \cite[Proposition 2.12]{FN2016} for the case of $\beta \in (1,2)$. The $C_2t$ term changes things. A similar exponential bound may be found in this case by starting from \eqref{E:u2normbdd} and then using the Piccard iteration techniques from \cite[Lemma 2.2]{CH2017}.
-\end{remark}
-
-	\begin{proposition}[{\normalfont \cite[Proposition 2.12]{FN2016}}]
-Let $k>0$ and suppose that $f$ is locally integrable. Suppose there exists a $K>0$ satisfies 
-	\begin{equation}
-	\label{E:fRenew}
-		f(t) \le K(1+t^2) + K\int_0^t (t-s)^{k-1} f(s) \ud s.
-	\end{equation}
-Then 	
-	\begin{equation}
-		f(t) \le K_1\exp\left( K_2 \cdots t \right).
-	\end{equation}
-	\end{proposition}
-	
-	\begin{proof}
-We follow the proof from \cite[Proposition 2.5]{FT2014}. For notation, let $g(t) = K(1+t^2)$ and define 
-	\[
-		(\mathcal{A}\psi)(t) := K\int_0^t (t-s)^{k-1} \psi(s) \ud s
-	\]
-for any locally integrable function $\psi$. Then \eqref{E:fRenew} can be written as 
-	\[
-		f(t) \le g(t) + \mathcal{A}\psi(t).
-	\]
-By iterating this inequality, we see that 
-	\[
-		f(t) \le \sum_{i=1}^{n-1} (\mathcal{A}^i g)(t) + (\mathcal{A}^n f)(t).
-	\]
-It is stated in the proof of \cite[Proposition 2.5]{FT2014} that 
-	\[
-		(\mathcal{A}^n f)(t) = \frac{\left(K\Gamma(\theta)\right)^2}{\Gamma(n\theta)} \int_0^t (t-s)^{n\theta -1} f(s) \ud s.
-	\]
-Using this, we can calculate $(\mathcal{A}^i g)(t)$ as follows:
-	\begin{align*}
-		(\mathcal{A}^i g)(t) &=  \frac{\left(K\Gamma(\theta)\right)^i}{\Gamma(i\theta)} \int_0^t (t-s)^{i\theta -1} g(s) \ud s \\
-		&= K\frac{\left(K\Gamma(\theta)\right)^i}{\Gamma(i\theta)} \int_0^t (t-s)^{i\theta -1} (1+s^2)  \ud s \\
-		&= K\frac{\left(K\Gamma(\theta)\right)^i}{\Gamma(i\theta)} \cdot \frac{t^{\theta i}(1+\theta i + t)}{\theta i (1 + \theta i)}.
-	\end{align*}
-In addition, it is stated in the proof of \cite[Proposition 2.5]{FT2014} that $(\mathcal{A}^n f)(t) \to 0$ as $n \to \infty$. Thus, we can say 
-	\begin{align*}
-		f(t) &\le \sum_{i=0}^\infty K\frac{\left(K\Gamma(\theta)\right)^i}{\Gamma(i\theta)} \cdot \frac{t^{\theta i}(1+\theta i + t)}{\theta i (1 + \theta i)} \\
-		&= \sum_{i=0}^\infty K\frac{\left(Kt^{\theta }\Gamma(\theta)\right)^i}{\Gamma(i\theta)} \cdot \frac{1+\theta i + t}{\theta i (1 + \theta i)} .
-	\end{align*}
-In the proof of \cite[Proposition 2.5]{FT2014}, it is stated that 
-	\[
-		\sum_{i=0}^\infty \frac{\left(Kt^{\theta }\Gamma(\theta)\right)^i}{\Gamma(i\theta)} = E_{\theta}\left( K\Gamma(\theta) t^\theta \right),
-	\]
-where $E_\theta$ is the one-parameter Euler-Mittag function. The $\frac{1+\theta i + t}{\theta i (1 + \theta i)}$ term now makes this untrue. 
-	\end{proof}
-
-
-
-\end{NickQuestion}
-\textcolor{blue}{
-The following $L^2(\R^d)$ norms may be helpful. I may remove this. Not sure if I actually need it.
-	\begin{lemma}
-	\label{L:2NormZandZ*}
-Suppose that $d < 2 \alpha$ and that $\beta \in (0,2)$ and that $\gamma \le 0$. Then,
-	\begin{equation}
-	\label{E:2NormZ}
-		\int_{\R^d} Z^2(t,x) \ud x = C_{Z} t^{\lceil \beta \rceil -1 - d\beta / \alpha}
-		\end{equation}		
-where $C_{Z} = (2\pi)^{-d}(\nu/2)^{-d/\alpha}\int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi$. In addition, we have that
-	\begin{equation}
-	\label{E:2NormZ*}
-		\int_{\R^d} {Z^*}^2(t,x) \ud x = C_{Z*} t^{-d\beta / \alpha}
-	\end{equation}		
-where $C_{Z^*} = (2\pi)^{-d} (\nu/2)^{-d/\alpha} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi$.
-	\end{lemma}
-	\begin{proof}
-We apply Parseval's identity and \cite[Theorem 4.1]{CHN19} to see that 
-	\begin{align*}
-		\int_{\R^d} Z^2(t,x) \ud x &= \frac{t^{\lceil \beta \rceil -1}}{(2\pi)^d} \int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi \\
-		&= \frac{t^{\lceil \beta \rceil -1 - d\beta / \alpha}}{(2\pi)^d} \left( \frac{\nu}{2} \right)^{-d/\alpha} \int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -|\xi|^\alpha \right)^2 \ud \xi,
-	\end{align*}
-where in the last line we applied a change of variables. Note that by \cite[Theorem 1.6]{Podlubny99}, the integral above on the right hand side is finite when $2\alpha >d$. This proves \eqref{E:2NormZ}. Similarly we have 
-	\begin{align*}
-		\int_{\R^d} {Z^*}^2(t,x) \ud x &= \frac{1}{(2\pi)^d} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi \\
-		&= \frac{t^{-d\beta /\alpha}}{(2\pi)^d} \left(\frac{\nu}{2}\right)^{-d/\alpha} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi,
-	\end{align*}
-where again the integral above on the right hand side is finite when $d < 2\alpha$.
-	\end{proof}
-}
-
-\subsection{Section 4.2 Millet and Sanz-Sol\'e \cite{SoleMillet2021}}
-
-		\begin{proposition}{\normalfont\cite[Proposition 4.4]{SoleMillet2021}}
-		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and for this proof consider $\theta = \theta(\lambda)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
+		\label{P:N(u)Bdd}
+		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and consider $\rho = \rho(d)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
 		\[
-		a^\theta > \left( 8 L^2(\sigma)K^2\right).
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
 		\]
 		and 
 		\[
-		p \in \left[ 2, \frac{a^{\theta}}{4L^2(\sigma)K^2} \right].
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right].
 		\]
 		we have that 
 		\begin{equation}
+		\label{E:Nbdd}
 		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
 		\end{equation}	
 		where
@@ -988,165 +296,861 @@ where again the integral above on the right hand side is finite when $d < 2\alph
 		\end{align*}
 		Moreover for any $T>0$,
 		\begin{equation}
+		\label{E:Pnormtbdd}
 		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
 		\end{equation}
 	\end{proposition}
-
 	\begin{proof}
-We note that $\mathcal{N}_{a,p}(J)$ has the same upper bound as in Proposition \ref{P:N(u)Bdd} above. In other words,
+		First we fix an $a>0$ and $p \in [2,\infty)$. Using Lemma \ref{L:1and2normYZ} we see that,
+		\begin{align*}
+		|J(t,x)|  &= \begin{cases} 
+		\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
+		\\	\left| (Z(t,\cdot) * v_0)(x) + \frac{\partial}{\partial t}(Z(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
+		\end{cases}
+		\\& \le \begin{cases}
+		t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
+		\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\end{cases} 
+		\end{align*}
+		Now using \eqref{E:SUPidentities}, we see that 
+		\begin{align}
+		N_{a,p}(J) &\le \begin{cases} 
+		\sup_{t\ge 0}\sup_{x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+		\\ \sup_{t\ge 0}\sup_{x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+		\end{cases} \nonumber
+		\\ &= \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
+		\end{cases} \label{E:Jbdd}
+		\end{align}
+		
+		Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
+		\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 4p \Norm{\int_0^t \ud s \int_{\R^d}\ud y \; Y^2(t-s,x-y)\sigma^2(u(s,y))  }_{p/2}
+		\\&\le 4p \int_0^t \ud s \int_{\R^d} \ud y \; Y^2(t-s,x-y)\Norm{\sigma^2(u(s,y))}_{p/2}.
+		\end{align*}
+		Now by applying Lemma \ref{L:1and2normYZ} and the Lipschitz property of $\sigma$ we get that 
+		\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\int_0^t (t-s)^{\rho -1} \ud s + 8pL^2(\sigma)N^2_{a,p}(u)\int_0^t \ud s \int_{\R^d} \ud y \; e^{2as} Y^2(t-s,x-y).
+		\end{align*} 
+		Now under Dalang's condition \eqref{E:DalangEquiv2}, the first integral above can be calculated as 
+		\[
+		\int_0^t (t-s)^{\rho -1} \ud s = \frac{ t^{\rho} }{\rho}.
+		\]
+		By applying Lemma \ref{L:1and2normYZ}, we can calculate the second integral as 
+		\[
+		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\rho - 1}.
+		\]
+		Putting this together gives us that 
+		\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#} \frac{ t^{\rho} }{\rho} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\rho - 1}.
+		\end{align*}
+		Now by multiplying both sides by $e^{-2at}$, we see that
+		\begin{align*}
+		\Norm{I(t,x)}_p^2e^{-2at} &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} 
+		\\&\qquad\qquad + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^t \ud s \; e^{-2a(t-s)}(t-s)^{\rho - 1}.
+		\end{align*}
+		We now do a change of variables and again recall the definition of the Gamma function to see that 
+		\begin{align*}
+		\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au}(u)^{\rho -1} \\
+		& = \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\rho \right)}{ (2a)^{\rho}}
+		\end{align*}
+		where the last line is true if Dalang's condition \cite{CHN19} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
+		\begin{align}
+		N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#}  }{\rho}} \left(\frac{\rho}{2ea}\right)^{\rho/2} +  L(\sigma)N_{a,p}(u) \sqrt{\frac{8pC_{\#} \Gamma\left( \rho \right)}{(2a)^\rho} }. \label{E:SoleMil3.9}
+		\end{align}
+		To simplify things, we now let 
+		\begin{align*}
+		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#}  }{\rho}} \left(\frac{\rho}{2e}\right)^{\rho/2}, \sqrt{\frac{8C_{\#} \Gamma\left( \rho \right) }{2^{\rho}}}  \Bigg\}
+		\end{align*}
+		then,
+		\begin{align}
+		\label{E:Ibdd}
+		N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{\rho/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
+		\end{align}
+		Now by combining \eqref{E:Jbdd} and \eqref{E:Ibdd}, we see that 
+		\begin{align}
+		N_{a,p}(u) & \le \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
+		\end{cases} 
+		\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{\rho/2} }  + K  \frac{\sqrt{p}L(\sigma)}{a^{\rho/2}} N_{a,p}(u). \label{E:Nbddgen}
+		\end{align}
+		It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{SoleMillet2021} respectively. Now choose $a>0$ such that 
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
+		\]
+		This implies that the following interval is nonempty:
+		\[
+		\left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right].
+		\]
+		In addition, for any $p$ in this interval, we have that 
+		\[
+		\frac{\sqrt{p}L(\sigma)K}{a^{\rho/2}} \le \frac{1}{2},
+		\]
+		and we also have 
+		\[
+		\frac{\sqrt{p}}{a^{\rho/2}}  \le \frac{1}{2KL(\sigma)}.
+		\]
+		This along with \eqref{E:Nbddgen} implies that 
+		\begin{align*}
+		N_{a,p}(u) & \le 2 \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\end{cases} 
+		\\& \quad \quad + \frac{c(\sigma)}{L(\sigma)}
+		\end{align*}
+		and this is precisely \eqref{E:Nbdd}. Note that \eqref{E:Pnormtbdd} follows immediately from \eqref{E:Nbdd}.  
+	\end{proof}
+	
+	We will need to recall the following result proved in \cite{CHN19} in order to prove Proposition \ref{P:NormInc} below. 
+	
+	\begin{proposition}{\normalfont\cite[Proposition 2.1 and 2.2]{ChenHu21}}
+		\label{P:YInc}
+		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:theta}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
+		\begin{enumerate}
+			\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -1) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\[
+			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right).
+			\]
+			\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then for $0< \theta < (\Theta -1) \wedge 2$ there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\[
+			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^q + |x-z|^{\theta}\right),
+			\]
+			where 
+			\[
+			0 < q < \rho.
+			\]
+		\end{enumerate}
+	\end{proposition}
+	
+	\begin{remark}
+		In Proposition \ref{P:YInc} above, we may often ignore the dependence of $C$ on $\alpha, \beta, \gamma, \nu, d$ and just write $C(\theta, T)$. 
+	\end{remark}
+	
+	\begin{proposition}
+		\label{P:NormInc}
+		Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$, $\rho = 2(\beta + \gamma) -1 - \beta d/\alpha$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Consider $\rho = \rho(d)$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
+		\begin{equation}
+		\label{E:NormInc_N(u)}
+		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
+		\end{equation}
+		where 
+		\[
+		\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{pL(\sigma)},
+		\]
+		and
+		\begin{enumerate}
+			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
+			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
+		\end{enumerate}
+		Moreover, for any 
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/
+			\rho}.
+		\]
+		and 
+		\[
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right]
+		\]
+		we have that 
+		\begin{equation}
+		\label{E:NormInc_cL}
+		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
+		\end{equation}
+	\end{proposition}
+	
+	\begin{proof}
+		Note that because of the initial conditions, we see that $\Norm{u(t,x) - u(r,z)}_p = \Norm{I(t,x) - I(r,z)}_p$. We now apply Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 4p \Norm{ \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2\sigma^2(u(s,y)) }_{p/2} \\
+		&\le 4p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Norm{\sigma^2(u(s,y)) }_{p/2}.
+		\end{align*} 
+		Now by applying the Lipchitz condition on $\sigma$ gives us that 
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \left( c^2(\sigma) + L^2(\sigma)\Norm{u(s,y)}_{p}^2\right) \\
+		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
+		& \qquad+ L^2(\sigma) \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \exp\left(2as\right)N_{a,p}^2(u)  \Bigg] \\
+		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
+		& \qquad+ L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u)  \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Bigg]. 
+		\end{align*}
+		We now apply Proposition \ref{P:YInc} to see that 
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \bigg[ c^2(\sigma)C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right)\\ 
+		& \qquad +  L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u) C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right) \bigg],
+		\end{align*}
+		where $C(\theta, T)$ is as in Proposition \ref{P:YInc}. Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$ yields
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p &\le 2\sqrt{2C(\theta, T)p} \Big[ c(\sigma) + L(\sigma) \exp\left(aT \right)N_{a,p}(u) \Big]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}. 
+		\end{align*}
+		This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follows directly from \eqref{E:NormInc_N(u)} and Proposition \ref{P:N(u)Bdd}. 
+	\end{proof}
+	
+	\textcolor{blue}{The holder continuity in the next proposition needs to be checked}
+	
+	\textcolor{blue}{Check the following Holder continuity with \cite{ChenHu21}.}
+	
+	\begin{proposition}
+		\label{P:Holder}
+		Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$ where $0< \theta < (\Theta -1) \wedge 2$ and
+		\begin{enumerate}
+			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
+			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
+		\end{enumerate}
+		Moreover, if we consider
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+		\]
+		where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
+		\[
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\]
+	\end{proposition}
+	
+	\begin{proof}
+		Proposition \ref{P:NormInc} implies that 
+		\begin{equation}
+		\Norm{u(t,x) - u(r,z)}_p \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}.
+		\end{equation}
+		By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
+		
+		Next, note that by triangle inequality,
+		\begin{align*}
+		|u(t,x)|^p &\le 2^{p-1}\left( \Norm{u_0}_{\infty}^p + |u(t,x)-u_0(x)|^p \right) \\
+		&\le 2^{p-1}\left( \Norm{u_0}_{\infty}^p + \sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-u_0(x)|^p\right) \right) \\
+		&= 2^{p-1}\left( 1 + \sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-1|^p\right) \right)
+		\end{align*}
+		Due to the continuity of $u$ on the compact set $[0,T] \times [-R,R]$, there exists a point $(t_0,x_0) \in [0,T] \times [-R,R]$ such that 
+		\[
+		\sup_{t\in[0,T],\; x\in[-R,R]}\left(|u(t,x)-1|^p\right) = |u(t_0,x_0)-1|^p.
+		\]
+		Thus, for any $(t,x) \in [0,T] \times [-R,R]$,
+		\[
+		|u(t,x)|^p \le 2^{p-1}\left( 1  + |u(t_0,x_0)-1|^p \right)
+		\] 
+		which in return implies that 
+		\[
+		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \le 2^{p-1}\left(1 + |u(t_0,x_0)-1|^p \right).
+		\]
+		Now by taking the expectation of both sides and applying Proposition \ref{P:NormInc} gives us 
+		\begin{align*}
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p, \theta, T)^p\left((2T)^{q/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
+		&= 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
+		\end{align*}
+		Now if we consider
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+		\]
+		then by Proposition \ref{P:N(u)Bdd}, we have that 
+		\[
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\]
+	\end{proof}
+	
+	\begin{remark}
+		The H\"older continuity in time proven above in Proposition \ref{P:Holder} recovers the result proven by Foondun and Nane in \cite[Theorem 1.9]{FN2016} if we restrict ourself to the case where $\beta \in (0,1)$ and $\gamma = 1-\beta$. 
+	\end{remark}
+	
+	\begin{NickQuestion}
+		Suppose we consider bounded initial conditions $u_0$ and $v_0$. Then 
+		\begin{align*}
+		J_0(t,x) &=\begin{cases} 
+		[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
+		[Z(t,\cdot)*v_0](x) + \frac{\partial}{\partial t}[Z(t,\cdot)*u_0](x) & \beta \in (1,2)
+		\end{cases} \\
+		& =: \begin{cases} 
+		[Z(t,\cdot)*u_0](x) & \beta \in (0,1] \\
+		[Z(t,\cdot)*v_0](x) + [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
+		\end{cases}.
+		\end{align*} 
+		We notice that 
+		\begin{align*}
+		J_0(t,x) - J_0(s,z)
+		&= \begin{cases} 
+		[Z(t,\cdot)*u_0](x) - 	[Z(s,\cdot)*u_0](z) & \beta \in (0,1] \\ \\
+		[Z(t,\cdot)*v_0](x) - [Z(s,\cdot)*v_0](z) \\
+		\qquad + [Z^*(s,\cdot)*u_0](z) - [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
+		\end{cases}.
+		\end{align*}
+		Lets just examine the $\beta \in (1,2)$ case since that case deals with both $Z$ and $Z^*$. We have that 
+		\begin{align*}
+		|J_0(t,x) - J_0(s,z)| & \le \int_{\R} |Z(t,x-y) - Z(s,z-y)| |v_0(y)| \ud y + \int_{\R} |Z^*(t,x-y) - Z^*(s,z-y)| |u_0(y)| \ud y.
+		\end{align*}
+		For simplicity lets look at the time and space increments separately. For time we have that 
+		\begin{align*}
+		|J_0(t,x) - J_0(s,x)| & \le \int_{\R} |Z(t,x-y) - Z(s,x-y)| |v_0(y)| \ud y + \int_{\R} |Z^*(t,x-y) - Z^*(s,x-y)| |u_0(y)| \ud y.
+		\end{align*}
+		Foondun and Nane \cite[Proof of Theorem 1.13]{FN2016} stop right and claim that the above integrals are smooth functions in $t$. Then it seems that they conclude that they are $\eta$-H\"older continuous in $t$ with $\eta=\frac{(1-\beta \gamma/\alpha)}{2}$ where $\gamma$ is the Reisz Kernel exponent. In other words they say that 
+		\[
+		|J_0(t,x) - J_0(s,x)| \le C |t-s|^\eta.
+		\]
+		
+		\textcolor{blue}{Are smooth functions also $\eta$-H\"older continuous for any $\eta >0$?} If we can argue as in \cite{FN2016}, then we can relax our initial conditions to be bounded measurable functions $u_0$ and $v_0$. This is also an improvement from Sanz-Sole and Millet \cite{SoleMillet2021} since they assume the initial conditions are continuous. 
+	\end{NickQuestion}
+	
+	\subsection{Existence and Uniqueness of a Global Solution with Superlinear Diffusion Coefficient}
+	
+	We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
+	\begin{equation}
+	\label{C:SigSupLin}
+	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
+	\end{equation}
+	where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
+	\begin{equation}
+	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+	\end{equation}
+	where $\sigma_1 = c(\sigma) = \sigma(0)$.
+	
+	\begin{remark}
+		Because of the absence of the drift coefficient in \eqref{E:SPDE}, we may drop \cite[Assumption C1]{SoleMillet2021}.
+	\end{remark}
+	
+	\begin{theorem}
+		Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$, there exists a random field solution to \eqref{E:SPDE} in $[-M,M]$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
+		\begin{equation}
+		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
+		\end{equation}
+	\end{theorem}
+	
+	\begin{proof}
+		We first solve a {\it truncated} version of \eqref{E:SPDE}. By this, we mean $\eqref{E:SPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
+		\[
+		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+		\]
+		Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
+		\[
+		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
+		\]
+		Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
+		
+		We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
+		\[
+		a > \left( 8 L^2(\sigma_N) K^2 \right)^{1/\rho} \quad \text{and} \quad p \in \left[ 2, \frac{a^{ \rho}}{4L^2(\sigma_N)K^2} \right].
+		\] 
+		Then Proposition \ref{P:Holder} implies that 
+		\begin{equation}
+		\label{E:u_NMomBdd}
+		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
+		\end{equation}
+		where we recall that 
+		\begin{equation}
+		\label{D:M1&2forSig_N}
+		\mathcal{M}_1 = \sqrt{p}\sigma_1 \quad \text{and} \quad \mathcal{M}_2(N) = \sqrt{pL(\sigma_N)} = \sqrt{p\sigma_2\ln(2N)^\delta}.
+		\end{equation}
+		We now use the above to prove the existence and uniqueness of \eqref{E:SPDE} with superlinear $\sigma$ satisfying \eqref{C:SigSupLin}. For any $T>0$ and $N \ge 2$ with $N\in \mathbb{N}$, we define the following stopping time:
+		\begin{equation}
+		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
+		\end{equation}
+		The uniqueness of the solution and the \textcolor{blue}{local property of the stochastic integral} imply that $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
+		
+		We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
+		\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
+		\]
+		However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
+		\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
+		\]
+		Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
+		\begin{equation}
+		\label{E:SupLinMildSol}
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
+		\end{equation}
+		\textcolor{blue}{It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.}
+		
+		We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
+		\begin{align*}
+		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)| \ge N \right) \\
+		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right).
+		\end{align*}
+		An application of \eqref{E:u_NMomBdd} gives 
+		\begin{align*}
+		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
+		&= \frac{2^{p-1} + C(p, \theta, T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
+		\end{align*}
+		The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
+		\begin{align*}
+		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
+		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to \infty,
+		\end{align*}
+		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
+	\end{proof}
+	
+	\begin{remark}
+		A potential project would be to show that the solution to \eqref{E:SPDE} with superlinear coefficient is Holder continuous. This requires to one to extend the Kolmogorov theorem to the type of stochastic integral used to define the mild solution in \eqref{E:SupLinMildSol}. However these stochastic integrals are no longer defined in $L^2(\Omega)$. Maybe a completely new theory needs to be developed to show continuity. \cite[Theorem 5.5.5]{Kuo} may be helpful? 
+	\end{remark}
+	
+	\section{Spatially Colored Noise Driven SPDE}
+	In this section we will study \eqref{E:SPDE} driven by a Gaussian noise that is white in time and colored in space. Informally this means that 
 	\[
+	\mathbb{E}\left[\dot F(t,x) \dot F(s,y)\right] = \delta_0(t-s) f(x-y)
+	\] 
+	where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
+	\[
+	f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
+	\]
+	where
+	\[
+	K_f     = \pi^{-d/2}2^{-\lambda} \frac{\Gamma((d-\lambda)/2)}{\Gamma(\lambda/2)}.
+	\]
+	
+	\subsection{Lipschitz Diffusion Coefficient}
+	We first examine \eqref{E:SPDE} with Lipschitz diffusion coefficient . As we will see below in Theorem \ref{T:ExisAndUniq}, to establish the existence and uniqueness of a random field solution to \eqref{E:SPDE}, we will need to assume Dalang's condition:
+	\begin{equation}
+	\label{C:DalangCl}
+	\int_0^t \ud s \int_{\R^d} \ud y_1 \ud y_2 Y(s,y_1) f(y_1-y_2) Y(s,y_2 )< \infty, \quad \text{for all } t>0,
+	\end{equation} 
+	which is equivalent to
+	\begin{equation}
+	\label{E:DalangEquiv2Cl}
+	\rho(\lambda) > 0 \quad \text{and} \quad \lambda < 2\alpha,
+	\end{equation}
+	where we recall from \eqref{D:theta} that
+	\begin{equation}
+	\rho(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
+	\end{equation}
+	We assume that there exists some $L_\sigma > 0$ such that 
+	\[
+	|\sigma(x) - \sigma(y)| \le L_{\sigma} |x-y|.
+	\]
+	
+	To prove existence and uniqueness of the solution, we will need the following lemma. The following lemma is proven by Foondun and Nane \cite{FN2016} in the case that 		
+	\begin{equation}
+	\label{A:Y=GAssumptions}
+	\beta \in (0,1) \quad \text{and} \quad \gamma = 1 - \beta
+	\end{equation}		
+	Their proof relies on a probabilistic representation of the Green's function for the solution of \eqref{E:SPDE}. Our proof takes a different approach and relies on the asymptotic behavior of the Euler-Mittag function given in \cite[Theorem 1.6]{Podlubny99}. One should note that under the assumptions \eqref{A:Y=GAssumptions} that $Y(t,x)=Z(t,x)$. However, in general, this is not the case. 
+	
+	\begin{lemma}
+		\label{L:intYfYbdd}
+		Suppose that $\lambda < 2\alpha$, then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
+		\begin{equation}
+		\label{E:YYfBdd}
+		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C K_f \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
+		\end{equation}
+	\end{lemma}
+	\begin{proof}
+		Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
+		\[
+		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
+		\]
+		where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
+		\[
+		\int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi.
+		\]
+		Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{CHN19} gives us that 
+		\begin{align*}
+		\frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) & \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi \\
+		& = \frac{ K_f \; t^{2(\beta  \gamma -1)} }{ (2\pi)^d } \int_{\R^{d}} \exp(-i(x-y)\xi) \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \\
+		& \le \frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi
+		\end{align*}
+		where the last inequality follows from the non-negativity of the Euler-Mittag function. Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0$ such that 
+		\[
+		\frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \le 
+		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha \right)^2 |\xi|^{d-\lambda} } \ud \xi.
+		\]
+		Another change of variables implies that 
+		\[
+		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi \le 
+		\frac{C\; K_f }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ 1 }{\left(1+ |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi.
+		\]
+		We see that the above integral is finite if $\lambda < 2\alpha$ and when this is the case, we have \eqref{E:YYfBdd}.
+	\end{proof}
+	\begin{NickQuestion}
+		Note that we have $\lambda < 2 \alpha$ while Foondun and Nane \cite{FN2016} have that $\lambda < \alpha$. This may be something to look at. 
+	\end{NickQuestion}
+	We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} driven by the noise $\dot{F}$. 
+	
+	\begin{theorem}
+		\label{T:ExisAndUniq}
+		Suppose that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and in addition, suppose that $\lambda < 2 \alpha$. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SPDE} driven by $\dot{F}$ such that 
+		\[
+		u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
+		\]
+	\end{theorem} 
+	\begin{proof}
+		The proof follows the strategy laid out in Walsh \cite{Walsh89}. We start by defining 
+		\[
+		u_0(t,x) := J_0(t,x) \quad \text{and} \quad u_n(t,x) := J_0(t,x) + \int_0^t \int_{\R^d} Y(t-s,x-y) \sigma(u_n(s,y)) F(\ud s, \ud y). 
+		\]
+		In addition, we define 
+		\[
+		D_n(t,x) := \mathbb{E}\left| u_{n+1}(t,x) - u_n(t,x) \right|^2 \quad \text{and} \quad H_n(t) := \sup_{x \in \R^d} D_n(t,x).
+		\]
+		Lastly, we define 
+		\[
+		\mathbf{\Sigma} (t,x,n) := | \sigma( u_n(t,x) ) - \sigma(u_{n-1} (t,x) ) |.
+		\]
+		With this notation we see that 
+		\[
+		D_n(t,x) = \int_0^t \ud s \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right).
+		\]
+		Now note that by the Lipschitz property of $\sigma$, we have that  
+		\begin{align*}
+		\mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right) &\le L^2_{\sigma} \mathbb{E} \left(|u_n(s,y)-u_{n-1}(s,y)||u_n(s,z)-u_{n-1}(s,z)|\right) \\
+		& \le L^2_{\sigma} \Norm{ u_n(s,y)-u_{n-1}(s,y) } \Norm{u_n(s,z)-u_{n-1}(s,z)} \\ 
+		& \le L^2_{\sigma} \sqrt{D_{n-1}(s,y) D_{n-1}(s,z)} \\
+		& \le L^2_{\sigma} H_{n-1}(s).
+		\end{align*}
+		Thus, 
+		\begin{align*}
+		D_n(t,x) &\le L^2_{\sigma} \int_0^t H_{n-1}(s) \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \\
+		&\le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}},
+		\end{align*}
+		where the last inequality follows from \eqref{E:YYfBdd}. In return, this implies that 
+		\[
+		H_n(t) \le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}}.
+		\]
+		Since we assume that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$, then the result follows from the discussion before the proof of \cite[Lemma 3.3]{Walsh89}. 
+	\end{proof}
+	
+	\begin{remark}
+		One should note that when considering the SHE ($\beta =1$, $\alpha=2$ and $\gamma=0$), the assumptions $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and $\lambda < 2 \alpha$ reduce down to $\lambda<2$ and $\lambda <3$ which recovers the well-known condition that one must have $\lambda < \min\{2,d\}$.
+	\end{remark}
+	
+	\begin{NickQuestion}
+		In the existence and uniqueness proof in \cite[Theorem 1.10]{FN2016}, the following is shown 
+		\[
+		H_n(t) \le \text{const.} \int_0^t \frac{H_{n-1}(s)}{(t-s)^{\gamma \beta / \alpha}}.
+		\]
+		Note that in this formula, $\gamma$ is denoting the Riesz kernel parameter. I believe that we need to assume that 
+		\[
+		\gamma \beta / \alpha < 1
+		\]
+		however in this proof they say we must assume that $d\beta / \alpha < 1$. I think this is a typo. However, this assumption still is not stated in the statement of the theorem. Another issue is that they need to assume that 
+		\[
+		\gamma < \alpha
+		\]
+		in order to apply \cite[Lemma 2.7]{FN2016} and this assumption is not stated in the statement of the theorem. This assumption however would imply that $\gamma \beta / \alpha <1$ since in \cite{FN2016} $\beta \in (0,1)$.
+		
+		In addition, I believe that there is a typo in the statement of \cite[Lemma 3.3]{Walsh89}. I believe that in Lemma 3.3 {\it ibid.} we should assume that $a>-1$ and not $a >1$. This would be consistent with \cite[(3.14)]{Walsh89}.
+	\end{NickQuestion}
+	
+	\begin{NickQuestion} 
+		The following tries to give an upper bound to $\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$ by using techniques from \cite{FN2016}. There is an issue with the upper bound of $J_0(t,x)$ depending on $t$ when the initial condition $v_0 \not = 0$. 
+		
+		\begin{theorem}[{\cite[Theorem 1.10]{FN2016}}]
+			Under the assumptions of Theorem \ref{T:ExisAndUniq} we have that 
+			\begin{equation}
+			\sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2 \le ...
+			\end{equation}		
+		\end{theorem} 
+		\begin{proof}
+			The proof follows the strategy from the proof of \cite[Theorem 1.10]{FN2016}. We start by defining $A(t) = \sup_{x \in \R^d} \mathbb{E}|u(t,x)|^2$. We will prove the following inequality:
+			\begin{equation}
+			\label{E:Renewal}
+			A(t) \le C_1+  C_2t^{2(\lceil \beta \rceil -1)} + C_3 \int_0^t \frac{A(s)}{(t-s)^{\beta \lambda / \alpha - 2(\beta+\gamma-1)}} \; \ud s,
+			\end{equation}
+			To do this, we note that 
+			\begin{align}
+			\mathbb{E}|u(t,x)|^2 &\le J^2_0(t,x) + \int_0^t \ud s \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z) f(y-z) \mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right) \nonumber \\
+			&:= J_0^2(t,x) + I_2(t,x) 	\label{E:u2normbdd}
+			\end{align}
+			Note that for bounded $u_0$ and $v_0$ we have that 
+			\begin{align*}
+			|J_0(t,x)| &\le 
+			\begin{cases}
+			|(Z(t,\cdot)*u_0|(x) & \beta \in (0,1] \\
+			|(Z(t,\cdot)*v_0|(x) + 	|(Z^*(t,\cdot)*u_0|(x) & \beta \in (1,2)
+			\end{cases} \\
+			&\le \begin{cases}
+			\Norm{u_0}_{\infty}|(Z(t,\cdot)*1|(x) & \beta \in (0,1] \\
+			\Norm{v_0}_{\infty}|(Z(t,\cdot)*1|(x) + 	\Norm{u_0}_{\infty}|(Z^*(t,\cdot)*1|(x) & \beta \in (1,2)
+			\end{cases} \\
+			&=  \begin{cases}
+			\Norm{u_0}_{\infty} & \beta \in (0,1] \\
+			\Norm{v_0}_{\infty} t +\Norm{u_0}_{\infty} & \beta \in (1,2).
+			\end{cases} 
+			\end{align*}
+			
+			Next we note that 
+			\begin{align*}
+			\mathbb{E}\left( |\sigma(u(s,y))||\sigma(u(s,z)| \right) &\le L^2_{\sigma} \mathbb{E}\left( |u(s,y)||u(s,z)| \right) \\
+			& \le L^2_{\sigma} \mathbb{E}\left(|u(s,z)| \right)^{1/2}\mathbb{E}\left( |u(s,y)| \right)^{1/2} \\
+			& \le A(s).
+			\end{align*}
+			Therefore, we can bound $I_2$ in \eqref{E:u2normbdd} by the following:
+			\[
+			I_2(t,x) \le L^2_{\sigma}\int_0^t \ud s A(s) \int_{\R^{2d}} \ud y \ud z Y(t-s,x-y)Y(t-s,x-z)f(y-z).
+			\]
+			Now applying Lemma \ref{L:intYfYbdd} we see that 
+			\[
+			I_2(t,x) \le C_2 \int_0^t \frac{A(s)}{t^{\beta \lambda / \alpha - 2(\beta + \gamma -1)}}.
+			\]
+			Combining the above gives us \eqref{E:Renewal}.
+		\end{proof}
+		
+		\begin{remark}
+			The bound in \eqref{E:Renewal} is different from \cite[Proposition 2.12]{FN2016} for the case of $\beta \in (1,2)$. The $C_2t$ term changes things. A similar exponential bound may be found in this case by starting from \eqref{E:u2normbdd} and then using the Piccard iteration techniques from \cite[Lemma 2.2]{CH2017}.
+		\end{remark}
+		
+		\begin{proposition}[{\normalfont \cite[Proposition 2.12]{FN2016}}]
+			Let $k>0$ and suppose that $f$ is locally integrable. Suppose there exists a $K>0$ satisfies 
+			\begin{equation}
+			\label{E:fRenew}
+			f(t) \le K(1+t^2) + K\int_0^t (t-s)^{k-1} f(s) \ud s.
+			\end{equation}
+			Then 	
+			\begin{equation}
+			f(t) \le K_1\exp\left( K_2 \cdots t \right).
+			\end{equation}
+		\end{proposition}
+		
+		\begin{proof}
+			We follow the proof from \cite[Proposition 2.5]{FT2014}. For notation, let $g(t) = K(1+t^2)$ and define 
+			\[
+			(\mathcal{A}\theta)(t) := K\int_0^t (t-s)^{k-1} \theta(s) \ud s
+			\]
+			for any locally integrable function $\theta$. Then \eqref{E:fRenew} can be written as 
+			\[
+			f(t) \le g(t) + \mathcal{A}\theta(t).
+			\]
+			By iterating this inequality, we see that 
+			\[
+			f(t) \le \sum_{i=1}^{n-1} (\mathcal{A}^i g)(t) + (\mathcal{A}^n f)(t).
+			\]
+			It is stated in the proof of \cite[Proposition 2.5]{FT2014} that 
+			\[
+			(\mathcal{A}^n f)(t) = \frac{\left(K\Gamma(\rho)\right)^2}{\Gamma(n\rho)} \int_0^t (t-s)^{n\rho -1} f(s) \ud s.
+			\]
+			Using this, we can calculate $(\mathcal{A}^i g)(t)$ as follows:
+			\begin{align*}
+			(\mathcal{A}^i g)(t) &=  \frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \int_0^t (t-s)^{i\rho -1} g(s) \ud s \\
+			&= K\frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \int_0^t (t-s)^{i\rho -1} (1+s^2)  \ud s \\
+			&= K\frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \cdot \frac{t^{\rho i}(1+\rho i + t)}{\rho i (1 + \rho i)}.
+			\end{align*}
+			In addition, it is stated in the proof of \cite[Proposition 2.5]{FT2014} that $(\mathcal{A}^n f)(t) \to 0$ as $n \to \infty$. Thus, we can say 
+			\begin{align*}
+			f(t) &\le \sum_{i=0}^\infty K\frac{\left(K\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \cdot \frac{t^{\rho i}(1+\rho i + t)}{\rho i (1 + \rho i)} \\
+			&= \sum_{i=0}^\infty K\frac{\left(Kt^{\rho }\Gamma(\rho)\right)^i}{\Gamma(i\rho)} \cdot \frac{1+\rho i + t}{\rho i (1 + \rho i)} .
+			\end{align*}
+			In the proof of \cite[Proposition 2.5]{FT2014}, it is stated that 
+			\[
+			\sum_{i=0}^\infty \frac{\left(Kt^{\rho }\Gamma(\rho)\right)^i}{\Gamma(i\rho)} = E_{\rho}\left( K\Gamma(\rho) t^\rho \right),
+			\]
+			where $E_\rho$ is the one-parameter Euler-Mittag function. The $\frac{1+\rho i + t}{\rho i (1 + \rho i)}$ term now makes this untrue. 
+		\end{proof}
+		
+		
+		
+	\end{NickQuestion}
+	\textcolor{blue}{
+		The following $L^2(\R^d)$ norms may be helpful. I may remove this. Not sure if I actually need it.
+		\begin{lemma}
+			\label{L:2NormZandZ*}
+			Suppose that $d < 2 \alpha$ and that $\beta \in (0,2)$ and that $\gamma \le 0$. Then,
+			\begin{equation}
+			\label{E:2NormZ}
+			\int_{\R^d} Z^2(t,x) \ud x = C_{Z} t^{\lceil \beta \rceil -1 - d\beta / \alpha}
+			\end{equation}		
+			where $C_{Z} = (2\pi)^{-d}(\nu/2)^{-d/\alpha}\int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi$. In addition, we have that
+			\begin{equation}
+			\label{E:2NormZ*}
+			\int_{\R^d} {Z^*}^2(t,x) \ud x = C_{Z*} t^{-d\beta / \alpha}
+			\end{equation}		
+			where $C_{Z^*} = (2\pi)^{-d} (\nu/2)^{-d/\alpha} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi$.
+		\end{lemma}
+		\begin{proof}
+			We apply Parseval's identity and \cite[Theorem 4.1]{CHN19} to see that 
+			\begin{align*}
+			\int_{\R^d} Z^2(t,x) \ud x &= \frac{t^{\lceil \beta \rceil -1}}{(2\pi)^d} \int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi \\
+			&= \frac{t^{\lceil \beta \rceil -1 - d\beta / \alpha}}{(2\pi)^d} \left( \frac{\nu}{2} \right)^{-d/\alpha} \int_{\R^d} E_{\beta,\lceil \beta \rceil}\left( -|\xi|^\alpha \right)^2 \ud \xi,
+			\end{align*}
+			where in the last line we applied a change of variables. Note that by \cite[Theorem 1.6]{Podlubny99}, the integral above on the right hand side is finite when $2\alpha >d$. This proves \eqref{E:2NormZ}. Similarly we have 
+			\begin{align*}
+			\int_{\R^d} {Z^*}^2(t,x) \ud x &= \frac{1}{(2\pi)^d} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi \\
+			&= \frac{t^{-d\beta /\alpha}}{(2\pi)^d} \left(\frac{\nu}{2}\right)^{-d/\alpha} \int_{\R^d} E_{\beta,1}\left( -2^{-1}\nu t^\beta |\xi|^\alpha \right)^2 \ud \xi,
+			\end{align*}
+			where again the integral above on the right hand side is finite when $d < 2\alpha$.
+		\end{proof}
+	}
+	
+	\subsection{Section 4.2 Millet and Sanz-Sol\'e \cite{SoleMillet2021}}
+	
+	\begin{proposition}{\normalfont\cite[Proposition 4.4]{SoleMillet2021}}
+		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and for this proof consider $\rho = \rho(\lambda)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
+		\[
+		a^\rho > \left( 8 L^2(\sigma)K^2\right).
+		\]
+		and 
+		\[
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right].
+		\]
+		we have that 
+		\begin{equation}
+		\label{E:ColorNbdd}
+		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
+		\end{equation}	
+		where
+		\begin{align*}
+		\mathcal{T}_0 = \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+		\end{cases} 
+		\end{align*}
+		Moreover for any $T>0$,
+		\begin{equation}
+		\label{E:ColorPMomBdd}
+		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+		\end{equation}
+	\end{proposition}
+	
+	\begin{proof}
+		We note that $\mathcal{N}_{a,p}(J)$ has the same upper bound as in Proposition \ref{P:N(u)Bdd} above. In other words,
+		\[
 		\mathcal{N}_{a,p}(J) \le \begin{cases}
 		\Norm{u_0}_{\infty} & \beta \in (0,1] \\
 		(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
 		\end{cases}.
-	\]
-
-We know work to find an upper bound for $\mathcal{N}_{a,p}(I)$. The Burkholder-Davies-Gundy inequality and H\"older's inequality imply that 
-	\begin{align*}
+		\]
+		
+		We know work to find an upper bound for $\mathcal{N}_{a,p}(I)$. The Burkholder-Davies-Gundy inequality and H\"older's inequality imply that 
+		\begin{align*}
 		\Norm{I(t,x)}_p^2 & \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \Norm{\sigma(u(s,y_1))}_p\Norm{\sigma(u(s,y_2))}_p.
-	\end{align*} 
-We now apply the Lipschitz property to see that for $i\in\{1,2\}$,
-	\begin{align*}
+		\end{align*} 
+		We now apply the Lipschitz property to see that for $i\in\{1,2\}$,
+		\begin{align*}
 		\Norm{\sigma(u(s,y_i))}_p \le c(\sigma) + L(\sigma)\Norm{u(s,y_i)}_p.
-	\end{align*}
-Therefore, we may say that 
-	\begin{align*}
+		\end{align*}
+		Therefore, we may say that 
+		\begin{align*}
 		\Norm{I(t,x)}_p^2 & \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \\
 		& \hspace{10em} \times \prod_{i=1}^2 c(\sigma) + L(\sigma)\Norm{u(s,y_i)}_p \\
 		& \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \left[c(\sigma) + L(\sigma)\exp(as)N_{a,p}(u)\right]^2 \\
 		& \le 8p c(\sigma)^2 \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \\
 		& \qquad + 8p N_{a,p}(u)^2 L(\sigma)^2\int_0^t \ud s \exp(2as) \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2).
-	\end{align*}
-Now by applying Lemma \ref{L:intYfYbdd}, we may bound the $\iint_{\R^{2d}}\ud y_1 \ud y_2$ integrals by the quantity 
-	\[
+		\end{align*}
+		Now by applying Lemma \ref{L:intYfYbdd}, we may bound the $\iint_{\R^{2d}}\ud y_1 \ud y_2$ integrals by the quantity 
+		\[
 		K_1 (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha},
-	\]
-where 
-	\begin{equation*}
+		\]
+		where 
+		\begin{equation*}
 		K_1 : = C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha},
-	\end{equation*}
-and $C$ is as in Lemma \ref{L:intYfYbdd}. In return, this gives us that 
-	\begin{align*}
+		\end{equation*}
+		and $C$ is as in Lemma \ref{L:intYfYbdd}. In return, this gives us that 
+		\begin{align*}
 		\Norm{I(t,x)}_p^2 & \le  8p K_1 c(\sigma)^2 \int_0^t (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha} \ud s \\
 		&\qquad + 8p K_1 N_{a,p}(u)^2 L(\sigma)^2\int_0^t \exp(2as) (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha} \ud s \\
-		&= 8p K_1 c(\sigma)^2\frac{ t ^ \theta}{\theta} + 8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\exp(2at) \left[ \Gamma(\theta) - \Gamma(\theta, 2at)\right]}{(2a)^{\theta} }  \\
+		&= 8p K_1 c(\sigma)^2\frac{ t ^ \rho}{\rho} + 8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\exp(2at) \left[ \Gamma(\rho) - \Gamma(\rho, 2at)\right]}{(2a)^{\rho} }  \\
 		& =: \triangle_1(t) + \triangle_2(t),
-	\end{align*}
-where $\Gamma(\cdot)$ denotes the Gamma function and $\Gamma(\cdot ,\circ)$ is the incomplete-upper Gamma function. Note that 
-	\[
+		\end{align*}
+		where $\Gamma(\cdot)$ denotes the Gamma function and $\Gamma(\cdot ,\circ)$ is the incomplete-upper Gamma function. Note that 
+		\[
 		\mathcal{N}_{a,p}(I)^2 \le \sup_{t \ge 0} \exp(-2at)\left( \triangle_1(t) + \triangle_2(t) \right).
-	\]
-We start with bounding $\sup_{t \ge 0} \exp(-2at)\triangle_1(t)$. Recall the identities in \eqref{E:SUPidentities}. With this we see that 
-	\[
-		\sup_{t \ge 0} \exp(-2at) t^{\theta} = (\theta)^{\theta} (2ea)^{-\theta}.
-	\]
-Hence, 
-	\begin{align*}
-		\sup_{t \ge 0} \exp(-2at)\triangle_1(t) & \le \frac{8p K_1 c(\sigma)^2}{\theta} \left(\frac{\theta}{2ea}\right)^{\theta}.
-	\end{align*}
-Next we bound $\sup_{t \ge 0} \exp(-2at)\triangle_2(t)$. Note that for any $t\ge 0$,
-	\begin{align*}
-		\exp(-2at)\triangle_2(t) &= 8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\left[ \Gamma(\theta) - \Gamma(\theta, 2at) \right]}{(2a)^\theta} \\
-		& \le  8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\Gamma(\theta)}{(2a)^{\theta}}.
-	\end{align*}
-Putting this all together gives us that 
-	\begin{align*}
-		\mathcal{N}_{a,p}(I)^2 &\le \frac{8p K_1 c(\sigma)^2}{\theta} \left(\frac{\theta}{2ea}\right)^{\theta}  + \frac{8p K_1 \Gamma(\theta) L(\sigma)^2}{ (2a)^{\theta}}N_{a,p}(u)^2,
-	\end{align*}
-and thus,
-	\begin{equation*}
-		\mathcal{N}_{a,p}(I)\le	2c(\sigma)\sqrt{\frac{2p K_1}{\theta}} \left(\frac{\theta}{2ea}\right)^{\theta/2}  + 2L(\sigma)\frac{\sqrt{2p K_1 \Gamma(\theta) }}{ (2a)^{\theta/2}}N_{a,p}(u).
-	\end{equation*}
-Similar to the proof of Proposition \ref{P:N(u)Bdd} above, we define 
-	\[
-		K = K(\alpha,\beta,\gamma,d, \lambda):= \max \left\{2\sqrt{\frac{2 K_1}{\theta}} \left(\frac{\theta}{2e}\right)^{\theta/2},   2\frac{\sqrt{2 K_1 \Gamma(\theta) }}{ (2)^{\theta/2}} \right\}.
-	\] 
-We now see that 
-	\begin{equation}
-		\mathcal{N}_{a,p}(I)\le K c(\sigma)\frac{\sqrt{p}}{ a^{\theta /2}} + K L(\sigma) \frac{\sqrt{p}}{ a^{\theta/2}} \mathcal{N}_{a,p}(u)
-	\end{equation}
-This and the bound for $\mathcal{N}_{a,p}(J)$ found above implies that 
-	\begin{align}
+		\]
+		We start with bounding $\sup_{t \ge 0} \exp(-2at)\triangle_1(t)$. Recall the identities in \eqref{E:SUPidentities}. With this we see that 
+		\[
+		\sup_{t \ge 0} \exp(-2at) t^{\rho} = (\rho)^{\rho} (2ea)^{-\rho}.
+		\]
+		Hence, 
+		\begin{align*}
+		\sup_{t \ge 0} \exp(-2at)\triangle_1(t) & \le \frac{8p K_1 c(\sigma)^2}{\rho} \left(\frac{\rho}{2ea}\right)^{\rho}.
+		\end{align*}
+		Next we bound $\sup_{t \ge 0} \exp(-2at)\triangle_2(t)$. Note that for any $t\ge 0$,
+		\begin{align*}
+		\exp(-2at)\triangle_2(t) &= 8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\left[ \Gamma(\rho) - \Gamma(\rho, 2at) \right]}{(2a)^\rho} \\
+		& \le  8p K_1 N_{a,p}(u)^2 L(\sigma)^2 \frac{\Gamma(\rho)}{(2a)^{\rho}}.
+		\end{align*}
+		Putting this all together gives us that 
+		\begin{align*}
+		\mathcal{N}_{a,p}(I)^2 &\le \frac{8p K_1 c(\sigma)^2}{\rho} \left(\frac{\rho}{2ea}\right)^{\rho}  + \frac{8p K_1 \Gamma(\rho) L(\sigma)^2}{ (2a)^{\rho}}N_{a,p}(u)^2,
+		\end{align*}
+		and thus,
+		\begin{equation*}
+		\mathcal{N}_{a,p}(I)\le	2c(\sigma)\sqrt{\frac{2p K_1}{\rho}} \left(\frac{\rho}{2ea}\right)^{\rho/2}  + 2L(\sigma)\frac{\sqrt{2p K_1 \Gamma(\rho) }}{ (2a)^{\rho/2}}N_{a,p}(u).
+		\end{equation*}
+		Similar to the proof of Proposition \ref{P:N(u)Bdd} above, we define 
+		\[
+		K = K(\alpha,\beta,\gamma,d, \lambda):= \max \left\{2\sqrt{\frac{2 K_1}{\rho}} \left(\frac{\rho}{2e}\right)^{\rho/2},   2\frac{\sqrt{2 K_1 \Gamma(\rho) }}{ (2)^{\rho/2}} \right\}.
+		\] 
+		We now see that 
+		\begin{equation}
+		\mathcal{N}_{a,p}(I)\le K c(\sigma)\frac{\sqrt{p}}{ a^{\rho /2}} + K L(\sigma) \frac{\sqrt{p}}{ a^{\rho/2}} \mathcal{N}_{a,p}(u)
+		\end{equation}
+		This and the bound for $\mathcal{N}_{a,p}(J)$ found above implies that 
+		\begin{align}
 		\mathcal{N}_{a,p}(u) &\le \mathcal{N}_{a,p}(J) + \mathcal{N}_{a,p}(I) \nonumber \\
 		& \le \begin{cases}
 		\Norm{u_0}_{\infty} & \beta \in (0,1] \nonumber \\
 		(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
 		\end{cases} \\
-		& \qquad + K c(\sigma)\frac{\sqrt{p}}{ a^{\theta /2}} + K L(\sigma) \frac{\sqrt{p}}{ a^{\theta/2}} \mathcal{N}_{a,p}(u) \label{E:N(u)bddColored}.
-	\end{align}
-Now consider 
-	\[
-		a^\theta > 8K^2L(\sigma)^2.
-	\]
-This implies that the interval 
-	\[
-		\left[2, \frac{a^\theta}{4K^2L(\sigma)^2}  \right]
-	\]
-is nonempty. Hence, for any $p$ in this interval we have that 
-	\[
-			\frac{KL(\sigma)\sqrt{p}}{a^{\theta/2}} \le \frac{1}{2}.
-	\]
-This along with \eqref{E:N(u)bddColored} implies that 
-	\begin{align*}
+		& \qquad + K c(\sigma)\frac{\sqrt{p}}{ a^{\rho /2}} + K L(\sigma) \frac{\sqrt{p}}{ a^{\rho/2}} \mathcal{N}_{a,p}(u) \label{E:N(u)bddColored}.
+		\end{align}
+		Now consider 
+		\[
+		a^\rho > 8K^2L(\sigma)^2.
+		\]
+		This implies that the interval 
+		\[
+		\left[2, \frac{a^\rho}{4K^2L(\sigma)^2}  \right]
+		\]
+		is nonempty. Hence, for any $p$ in this interval we have that 
+		\[
+		\frac{KL(\sigma)\sqrt{p}}{a^{\rho/2}} \le \frac{1}{2}.
+		\]
+		This along with \eqref{E:N(u)bddColored} implies that 
+		\begin{align*}
 		\mathcal{N}_{a,p}(u) &\le 2\begin{cases}
 		\Norm{u_0}_{\infty} & \beta \in (0,1] \nonumber \\
 		(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
 		\end{cases} \\
 		& \qquad + \frac{c(\sigma)}{L(\sigma)}.
-	\end{align*}
+		\end{align*}
+		Its easy to see that \eqref{E:ColorPMomBdd} follows directly from \eqref{E:ColorNbdd}. 
 	\end{proof}
-\addcontentsline{toc}{section}{Bibliography}
-\begin{thebibliography}{999}
-	%sample
-	%\bibitem{Chen17Tran}% {{{ 3.
-	%Chen, L. (2017).
-	%\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
-	%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
-	\bibitem{CH2017}
-	Chen L. and Huang J. (2017).
-	\newblock Comparison Principle for SHE on $\R^d$.
-	\newblock {\em The Annals of Probability} \textbf{Vol. 47, No. 2} 989 -- 1035.
+	\addcontentsline{toc}{section}{Bibliography}
+	\begin{thebibliography}{999}
+		%sample
+		%\bibitem{Chen17Tran}% {{{ 3.
+		%Chen, L. (2017).
+		%\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+		%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+		\bibitem{CH2017}
+		Chen L. and Huang J. (2017).
+		\newblock Comparison Principle for SHE on $\R^d$.
+		\newblock {\em The Annals of Probability} \textbf{Vol. 47, No. 2} 989 -- 1035.
+		
+		\bibitem{ChenHu21}
+		Chen, L and Hu, G. (2021).
+		\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+		\newblock{\em arXiv:2105.00891.}
+		
+		\bibitem{CHN19}% {{{ 5.
+		Chen, L., Hu, Y., and Nualart, D. (2019).
+		\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+		\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+		% }}}
+		
+		\bibitem{FN2016}
+		Foondun, M and Nane E. (2016)
+		\newblock{Asymptotic properties of some space-time fractional stochastic equations.}
+		\newblock{\em Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
+		
+		\bibitem{FT2014}
+		Foondun, M. and Tian, K. (2014)
+		\newblock On some properties of a class of fractional stochastic heat equations.
+		\newblock {\em arXiv:1404.6791v1}
+		
+		\bibitem{Kuo}
+		Kuo, H. (2000)
+		\newblock{\em Introduction to Stochastic Integration}
+		\newblock Springer, Universitext
+		
+		\bibitem{Podlubny99}
+		Podlubny, I. (1999).
+		\newblock{\em Fractional Differential Equations.}
+		\newblock Mathematics in Science and Engineering, Academic Press, Vol198 (1999).
+		
+		\bibitem{SoleMillet2021}
+		Sanz-Sole, M. and Millet, A. (2021)
+		\newblock{Global solutions to stochastic wave equations with superlinear coefficients.}
+		\newblock {\em Stochastic Processes and their Applications}, Elsevier, 2021, 139, pp.175-211.
+		
+		\bibitem{Walsh89}
+		Walsh, J. (1989)
+		\newblock{\em An Introduction to Stochastic Partial Differential Equations.}
+		\newblock \'Ecole d'\'et\'e de Probabilit\'es de Saint-Flour, XIV|1994. Lecture Notes in Math., vol. 1180, pp. 265-439. Springer, Berlin (1986).
+	\end{thebibliography}
 	
-	\bibitem{ChenHu21}
-	Chen, L and Hu, G. (2021).
-	\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
-	\newblock{\em arXiv:2105.00891.}
-	
-	\bibitem{CHN19}% {{{ 5.
-	Chen, L., Hu, Y., and Nualart, D. (2019).
-	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
-	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
-	% }}}
-
-	\bibitem{FN2016}
-	Foondun, M and Nane E. (2016)
-	\newblock{Asymptotic properties of some space-time fractional stochastic equations.}
-	\newblock{\em Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
-
-	\bibitem{FT2014}
-	Foondun, M. and Tian, K. (2014)
-	\newblock On some properties of a class of fractional stochastic heat equations.
-	\newblock {\em arXiv:1404.6791v1}
-
-	\bibitem{Kuo}
-	Kuo, H. (2000)
-	\newblock{\em Introduction to Stochastic Integration}
-	\newblock Springer, Universitext
-
-	\bibitem{Podlubny99}
-	Podlubny, I. (1999).
-	\newblock{\em Fractional Differential Equations.}
-	\newblock Mathematics in Science and Engineering, Academic Press, Vol198 (1999).
-
-	\bibitem{SoleMillet2021}
-	Sanz-Sole, M. and Millet, A. (2021)
-	\newblock{Global solutions to stochastic wave equations with superlinear coefficients.}
-	\newblock {\em Stochastic Processes and their Applications}, Elsevier, 2021, 139, pp.175-211.
-	
-	\bibitem{Walsh89}
-	Walsh, J. (1989)
-	\newblock{\em An Introduction to Stochastic Partial Differential Equations.}
-	\newblock \'Ecole d'\'et\'e de Probabilit\'es de Saint-Flour, XIV|1994. Lecture Notes in Math., vol. 1180, pp. 265-439. Springer, Berlin (1986).
-\end{thebibliography}
-
 \end{document}
