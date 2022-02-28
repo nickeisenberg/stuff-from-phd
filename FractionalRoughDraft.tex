@@ -2573,7 +2573,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
   $\mathcal{F}f$ is nonnegative and nonnegative definite, which further implies that $\mathcal{F}f$
   is even. In addition, Lemma \ref{L:LWn} gives us that
   \begin{align*}
-    \int_0^{\infty} e^{-t} U_n(t,f) \ud t 
+    \int_0^{\infty} e^{-t} U_n(t,f) \ud t
     & = \int_0^\infty e^{-t} W_n(t,\mathcal{F}f) \ud t \\
     & = \int_{\R^{dn}} \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\xi_k+\cdots + \xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n).
   \end{align*}
@@ -2591,7 +2591,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
   where in addition, $\mathcal{F}^{-1}g \in \mathcal{H}_+$. Moreover, we are interested in the
   quantity
   \[
-    \rho'_+(g) := \sup_{h \ge 0\;\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)\left[ 
+    \rho'_+(g) := \sup_{h \ge 0\;\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)\left[
       \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}\ud\eta
     \right] \mu(\ud \xi)
   \]
@@ -2777,14 +2777,14 @@ We are now ready to prove \eqref{E:momentasym-lower}.
   We now take the supremum over all $f \in \mathcal{H}_+$ with $\Norm{f}_{\mathcal{H}}=k >0 $.
   Recall that $W_n(t,\phi) = k^nW_n(t,\phi/k)$ for $\phi \in L^2(\mu)$ and the non-negativity of $W_n(t,\cdot)$ on $\mathcal{H}_+$. Let $c>0$.
   \begin{align*}
-      \Norm{u(t,0)}_p 
+      \Norm{u(t,0)}_p
     & \ge   \exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=k}\sum_{n \ge 0} \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \\
     & = \exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1}\sum_{n \ge 0} k^n \theta^{n/2} W_n(t_p^\beta, \mathcal{F}f) \\
     & \ge \exp\left\{ -\frac{1}{2} t_p^\beta k^2 \right\} \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f)
   \end{align*}
   where $n_t = [ct_p^\beta]$. Now by choosing $c$ as in Lemma \ref{L:logUnlb} we get that
   \begin{align*}
-    \liminf_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p 
+    \liminf_{t_p \to \infty} t_p^{-\beta} \log \Norm{u(t,x)}_p
     & \ge   \liminf_{t_p \to \infty} \left( \frac{-\frac{1}{2}t_p^\beta k^2}{t_p^\beta} + \frac{1}{t_p^\beta}\log \left[ \sup_{f\in \mathcal{H}_+ \; \Norm{f}_{\mathcal{H}}=1} k^{n_t} \theta^{{n_t}/2} U_{n_t}(t_p^\beta, f) \right]  \right) \\
     & = -\frac{1}{2}k^2 + k^{ \frac{2a}{2ab-\alpha b +2ar} }(\rho \theta)^{\frac{a}{2ab -\alpha b + 2ar}} =: h(k).
   \end{align*}
@@ -2806,12 +2806,13 @@ We are now ready to prove \eqref{E:momentasym-lower}.
   In this proof, $\mu(\ud x) = \varphi(x)\ud x = C_{\alpha,d}|x|^{-(d-\alpha)}\ud x$. By the change of
   variables $x' = \left(\nu/2\right)^{1/a} x$ and $y' = \left(\nu/2\right)^{1/a} y$, we see that
   \begin{align*}
-    \rho_{\nu,a} & \left(|\cdot|^{-\alpha}\right) = \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x) \\
-                 & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x.
+    \rho_{\nu,a} 
+    & \left(|\cdot|^{-\alpha}\right) = \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x) \\
+    & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x.
   \end{align*}
   By setting $f^*(x) =\left(\nu/2\right)^{-d/(2a)} f\left( \left(\nu/2\right)^{-1/a} x \right)$, we see that
   \begin{align*}
-    \rho_{\nu,a} \left(|\cdot|^{-\alpha}\right) 
+    \rho_{\nu,a} \left(|\cdot|^{-\alpha}\right)
     & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x \\
     & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \sup_{\Norm{f^*}_2 =1}  \int_{\R^d} \left[ \int_{\R^d} \frac{f^*\left(x+y\right)f^*\left(y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} }  \ud y \right]^2 \varphi(x)\ud x       \\
     & = \left( \frac{\nu}{2} \right)^{-\alpha/a}  \rho_{2,a}\left(|\cdot|^{-\alpha}\right),
@@ -2822,7 +2823,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
   Similarly, for \eqref{E:LogRho}, by change of variables $\xi_{\sigma(j)}' =
   \left(\nu/2\right)^{1/a} \xi_{\sigma(j)}$, we see that
   \begin{align*}
-      \lim_{n \to \infty} \frac{1}{n} 
+      \lim_{n \to \infty} \frac{1}{n}
     & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                                               \\
     & = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]                    \\
     & = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
@@ -2854,20 +2855,20 @@ We are now ready to prove \eqref{E:momentasym-lower}.
      & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t         \\
      & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}) \: 2\: \ud t \\
      & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t
-   \end{align*}
-   where in the last line we have applied \eqref{E:Ffnscale}. Now,
-   \begin{align*}
-       \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi}) \ud t \\
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t
-   \end{align*}
-    where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}) =
-    \prod_{j=1}^n \varphi(\xi) \ud \xi$. Lastly,
-     \begin{align*}
-       \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}) \ud t \\
-     & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                             \\
-     & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
+  \end{align*}
+  where in the last line we have applied \eqref{E:Ffnscale}. Now,
+  \begin{align*}
+      \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
+    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi}) \ud t \\
+    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t
+  \end{align*}
+   where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}) =
+   \prod_{j=1}^n \varphi(\xi) \ud \xi$. Lastly,
+    \begin{align*}
+      \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
+    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}) \ud t \\
+    & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                             \\
+    & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
   \end{align*}
   This proves \eqref{E:fHn}.
 \end{proof}% }}}
@@ -2882,103 +2883,119 @@ for their careful reading of the paper with many good suggestions.
 \addcontentsline{toc}{section}{Bibliography}% {{{
 \begin{thebibliography}{999}
   \bibitem{BCC21} % {{{ 1.
-  Balan, R. M., Chen, L., and Chen, X. (2021). \newblock Exact asymptotics of the stochastic wave
-  equation with time-independent noise. \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. },
-  to appear.
+  Balan, R. M., Chen, L., and Chen, X. (2021).
+  \newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
+  \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
   % }}}
   \bibitem{BCR09}% {{{ 2.
-  Bass, R., Chen, X., and Rosen, M. (2009). \newblock Large deviations for Riesz potentials of
-  additive processes. \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45},
-  626--666.
+  Bass, R., Chen, X., and Rosen, M. (2009).
+  \newblock Large deviations for Riesz potentials of additive processes.
+  \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{45}, 626--666.
   % }}}
   \bibitem{BS2017}% {{{ 3.
-  Balan, R. and Song, J. (2017) \newblock Hyperbolic Anderson Model with space-time homogeneous
-  Gaussian noise. \newblock {\em ALEA, Lat. Am. J. Probab. Math. Stat.} \textbf{14}, 799 -- 849.
+  Balan, R. and Song, J. (2017)
+  \newblock Hyperbolic Anderson Model with space-time homogeneous Gaussian noise.
+  \newblock {\em ALEA, Lat. Am. J. Probab. Math. Stat.} \textbf{14}, 799 -- 849.
   % }}}
   \bibitem{Chen17Tran}% {{{ 4.
-  Chen, L. (2017). \newblock Nonlinear stochastic time-fractional diffusion equations on $\R$:
-  moments, H\"older regularity and intermittency. \newblock {\em Trans. Amer. Math. Soc.}
-  \textbf{369} (12) 8497--8535.
+  Chen, L. (2017).
+  \newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+  \newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
   % }}}
   \bibitem{CHHH17}% {{{ 5.
-  Chen, L., Hu, Y., Hu, G., and Huang, J. (2017). \newblock Stochastic time-fractional diffusion
-  equations on $\R^d$. \newblock {\em Stochastics} \textbf{89} (1) 171--206.
+  Chen, L., Hu, Y., Hu, G., and Huang, J. (2017).
+  \newblock Stochastic time-fractional diffusion equations on $\R^d$.
+  \newblock {\em Stochastics} \textbf{89} (1) 171--206.
   % }}}
   \bibitem{CHN19}% {{{ 6.
-  Chen, L., Hu, Y., and Nualart, D. (2019). \newblock Nonlinear stochastic time-fractional slow and
-  fast diffusion equations on $\R^d$. \newblock {\em Stochastic Process. Appl.} \textbf{129},
-  5073--5112.
+  Chen, L., Hu, Y., and Nualart, D. (2019).
+  \newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+  \newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112.
   % }}}
   \bibitem{ChenAOP12} % {{{ 7.
-  Chen, X. (2012). \newblock Quenched asymptotics for Brownian motion of renormalized Poisson
-  potential and for the related parabolic Anderson models. \newblock {\em Ann. Probab. },
-  \textbf{40} (4) 1436--1482.
+  Chen, X. (2012).
+  \newblock Quenched asymptotics for Brownian motion of renormalized Poisson potential and for the related parabolic Anderson models.
+  \newblock {\em Ann. Probab. }, \textbf{40} (4) 1436--1482.
   % }}}
   \bibitem{ChenAOP14} % {{{ 8.
-  Chen, X. (2014). \newblock Quenched asymptotics for Brownian motion in generalized Gaussian
-  potential. \newblock {\em Ann. Probab. }, \textbf{42} (2) 576--662.
+  Chen, X. (2014).
+  \newblock Quenched asymptotics for Brownian motion in generalized Gaussian potential.
+  \newblock {\em Ann. Probab. }, \textbf{42} (2) 576--662.
   % }}}
-    \bibitem{Chen17AIHP} % {{{ 9.
-  Chen, X. (2017). \newblock Moment asymptotics for parabolic Anderson equation with fractional
-  time-space noise: in Skorohod regime. \newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.}
-  {\bf 53} 819--841.
+  \bibitem{Chen17AIHP} % {{{ 9.
+  Chen, X. (2017).
+  \newblock Moment asymptotics for parabolic Anderson equation with fractional time-space noise: in Skorohod regime.
+  \newblock {\em Ann. Inst. Henri Poincar\'e: Prob. Stat.} {\bf 53} 819--841.
   % }}}
   \bibitem{Chen19AIHP}% {{{ 10.
-  Chen X. (2019). \newblock Parabolic Anderson model with rough or critical Gaussian noise.
+  Chen X. (2019).
+  \newblock Parabolic Anderson model with rough or critical Gaussian noise.
   \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
   % }}}
   \bibitem{15AIHP}% {{{ 11.
-  Chen, X., Hu, Y., Song, J. and Xing, F. (2015). \newblock Exponential asymptotics for time-space
-  Hamiltonians \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{51}, 1529 -- 1561.
+  Chen, X., Hu, Y., Song, J. and Xing, F. (2015).
+  \newblock Exponential asymptotics for time-space Hamiltonians
+  \newblock {\em Ann. Inst. Henri Poincar\'e Probab. Stat. } \textbf{51}, 1529 -- 1561.
   % }}}
   \bibitem{CDOT20} % {{{ 12.
-  Chen, X., Deya, A., Ouyang, C. and Tindel, S. (2020). \newblock Moment estimates for some
-  renormalized parabolic Anderson models. \newblock {\em Ann. Probab.}, to appear 2021.
+  Chen, X., Deya, A., Ouyang, C. and Tindel, S. (2020).
+  \newblock Moment estimates for some renormalized parabolic Anderson models.
+  \newblock {\em Ann. Probab.}, to appear 2021.
   % }}}
   \bibitem{CHSS18} % {{{ 13.
-  Chen, X., Hu, Y.Z., Song, J., and Song, X. (2018). \newblock Temporal asymptotics for fractional
-  parabolic Anderson model. \newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
+  Chen, X., Hu, Y.Z., Song, J., and Song, X. (2018).
+  \newblock Temporal asymptotics for fractional parabolic Anderson model.
+  \newblock {\em Electron. J. Probab.}, {\bf 14}, 39 pp.
   % }}}
   \bibitem{ChenLi04} % {{{ 14.
-  Chen, X. and Li, W. (2004). \newblock Large and moderate deviations for intersection local times.
+  Chen, X. and Li, W. (2004).
+  \newblock Large and moderate deviations for intersection local times.
   \newblock {\em Probab. Theory Related Fields} {\bf 128} 213--254.
   % }}}
    \bibitem{Minicourse09}% {{{ 15.
-  Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009). \newblock {\it A
-  minicourse on stochastic partial differential equations}. \newblock Springer-Verlag, Berlin, 2009.
-  xii+216 pp.
+  Dalang, R., Khoshnevisan, D., Mueller, C., Nualart, D., and Xiao, Y. (2009).
+  \newblock {\it A minicourse on stochastic partial differential equations}.
+  \newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
   % }}}
   \bibitem{HairerLabbe15SHE2}% {{{ 16.
-  Hairer, M. and Labb\'e, C. (2015). \newblock A simple construction of the continuum parabolic
-  Anderson model on $\R^2$. \newblock {\em Electron. Commun. Probab.} \textbf{20}, no. 43, 11 pp.
+  Hairer, M. and Labb\'e, C. (2015).
+  \newblock A simple construction of the continuum parabolic Anderson model on $\R^2$.
+  \newblock {\em Electron. Commun. Probab.} \textbf{20} (43), 11 pp.
   % }}}
   \bibitem{HairerLabbe18SHE3}% {{{ 17.
-  Hairer, M. and Labb\'e, C. (2018). \newblock Multiplicative stochastic heat equations on the whole
-  space. \newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
+  Hairer, M. and Labb\'e, C. (2018).
+  \newblock Multiplicative stochastic heat equations on the whole space.
+  \newblock {\em J. Eur.  Math. Soc.} \textbf{20}, no. 4, 1005--1054.
   % }}}
   \bibitem{Hu01Heat}% {{{ 18.
-  Hu, Y. (2001). \newblock Heat equations with fractional white noise potentials. \newblock {\em
-  Appl. Math. Optim.} \textbf{43}, 221--243.
+  Hu, Y. (2001).
+  \newblock Heat equations with fractional white noise potentials.
+  \newblock {\em Appl. Math. Optim.} \textbf{43}, 221--243.
   % }}}
   \bibitem{Hu02Chaos}% {{{ 19.
-  Hu, Y. (2002). \newblock Chaos expansion of heat equations with white noise potentials. \newblock
-  {\em Potential Anal. } \textbf{16}, no. 1, 45--66.
+  Hu, Y. (2002).
+  \newblock Chaos expansion of heat equations with white noise potentials.
+  \newblock {\em Potential Anal. } \textbf{16} (1), 45--66.
   % }}}
   \bibitem{Le16} % {{{ 20.
-  L\^e, K. (2016). \newblock A remark on a result of Xia Chen. \newblock {\em Stat. Probab. Letters}
-  {\bf 118}, 124--126.
+  L\^e, K. (2016).
+  \newblock A remark on a result of Xia Chen.
+  \newblock {\em Stat. Probab. Letters} {\bf 118}, 124--126.
   % }}}
   \bibitem{LiebLoss01} % {{{ 21.
-  Lieb, E. and Loss, M. (2001). \newblock {\em Analysis}. Second edition. \newblock Graduate Studies
-  in Mathematics, 14. \newblock American Mathematical Society, Providence, RI.
+  Lieb, E. and Loss, M. (2001).
+  \newblock {\em Analysis}. Second edition.
+  \newblock Graduate Studies in Mathematics, 14. American Mathematical Society, Providence, RI.
   % }}}
   \bibitem{MijenaNane15SPA}% {{{ 22.
-  Mijena, J. B. and Nane, E. (2015). \newblock Space-time fractional stochastic partial differential
-  equations. \newblock {\it Stochastic Process. Appl.} \textbf{125} no. 9, 3301--3326.
+  Mijena, J. B. and Nane, E. (2015).
+  \newblock Space-time fractional stochastic partial differential equations.
+  \newblock {\it Stochastic Process. Appl.} \textbf{125} (9), 3301--3326.
   % }}}
   \bibitem{Nualart18Book}% {{{ 23.
-  Nualart D. and Nualart E. (2018). \newblock {\em Introduction to Malliavin Calculus}. \newblock
-  Cambridge University Press.
+  Nualart D. and Nualart E. (2018).
+  \newblock {\em Introduction to Malliavin Calculus}.
+  \newblock Cambridge University Press.
   % }}}
 \end{thebibliography}
 \end{document}
