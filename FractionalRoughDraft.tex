@@ -1526,15 +1526,19 @@ For the Riesz kernel case (see Example \ref{Eg:NoiseEg}), Bass, Chen and Rosen \
 established that when $a \in (0,2]$, $\nu = 2$ and $\alpha < \min\{2a,d\}$,
 \begin{equation}
   \label{E:oldlim}
-  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right]
   = \log\left( \rho_{2,a}\left(|\cdot|^{-\alpha}\right) \right),
 \end{equation}
 and \footnote{In Theorem 1.5 or eq. (1.20) of Bass {\it et al} \cite{BCR09}, the factor
 $(2\pi)^{-d}$ should not be present.}
 \begin{equation}
   \label{E:oldrhovarrep}
-  \rho_{2,a} \left(|\cdot|^{-\alpha}\right) = \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right).
+  \rho_{2,a} \left(|\cdot|^{-\alpha}\right) = \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right),
 \end{equation}
+where
+\[
+  \mu(\ud \vec{\xi}\:) = \prod_{j=1}^n \mu(\ud \xi_j)= \prod_{j=1}^n \varphi(\xi) \ud \xi.
+\]
 We first apply some scaling arguments to accommodate the parameter $\nu$ in both \eqref{E:oldlim}
 and \eqref{E:oldrhovarrep}, the proof of which can be found in Appendix:
 
@@ -1550,7 +1554,7 @@ and \eqref{E:oldrhovarrep}, the proof of which can be found in Appendix:
   and
   \begin{equation}
     \label{E:LogRhoRiez}
-    \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+    \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right]
     = \log\left( \rho_{\nu, a}\left(|\cdot|^{-\alpha}\right) \right).
   \end{equation}
 \end{lemma}
@@ -1569,7 +1573,7 @@ More generally we have the following theorem:
   and
   \begin{equation}
     \label{E:LogRho}
-    \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]
+    \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right]
     = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
   \end{equation}
 \end{theorem}% }}}
@@ -1618,8 +1622,8 @@ More generally we have the following theorem:
   Assumption  \ref{A:Noise},
   \begin{enumerate}[(i)]
     \item $\rho_{\nu,a}(\gamma)<\infty$;
-    \item $\liminf_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] \ge \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
-    \item $\limsup_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right] \le \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
+    \item $\liminf_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right] \ge \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
+    \item $\limsup_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right] \le \log\left( \rho_{\nu, a}\left(\gamma\right) \right)$;
     \item $\mathcal{M}_{a}(\gamma)<\infty$;
     \item $\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)$.
   \end{enumerate}
@@ -2022,8 +2026,8 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     L_n(\vec{y}) & := n! \int_0^\infty e^{-t}\widetilde{f_n}(\vec{y};0,t) \ud t \\
                  & = \sum_{\sigma \in \Sigma_n} \int_0^\infty e^{-t} \int_{[0,t]^n<} \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)}-y_{\sigma(k-1)}) \ud \vec{s} \ud t
   \end{align*}
-  with the convention that $s_0 = 0$ and $y_{\sigma(0)} = 0$.  By the relation of convolution and the
-  Laplace transform (or through a change of variables), we see that
+  with the convention that $s_0 = 0$ and $y_{\sigma(0)} = 0$.  By the relation of convolution and
+  the Laplace transform (or through a change of variables), we see that
   \begin{equation}
       L_n(\vec{y}) = \sum_{\sigma \in \Sigma_n} L\left(y_{\sigma(1)}\right) L\left(y_{\sigma(2)}-y_{\sigma(1)}\right) \cdots L\left(y_{\sigma(n)}-y_{\sigma(n-1)}\right).
   \end{equation}
@@ -2035,11 +2039,12 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
   Moreover, define
   \begin{align}
     H_n(t, \vec{x}) & = n! \int_{(\R^d)^n} \prod_{k=1}^n K(x_k - y_k) \widetilde{f_n}(\vec{y};0,t) \ud \vec{y} \nonumber\\
-                    & = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k)   \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s} \label{E:H}
+                    & = \sum_{\sigma \in \Sigma_n} \int_{[0,t]^n <} \int_{(\R^d)^n} \prod_{k=1}^n K(x_k-y_k)   \prod_{k=1}^n G(s_k - s_{k-1}, y_{\sigma(k)} - y_{\sigma(k-1)}) \ud \vec{y} \ud \vec{s},\label{E:H}
   \end{align}
-  where $K$ is defined in \eqref{E:K}. Under the nonnegativity assumption  --- Assumption \ref{A:Nonnegative}, we see that for any $\vec{x}
-  \in\R^{nd}$ fixed, the function $t\to H_n\left(t,\vec{x} \right)$ is a non-decreasing function for
-  $t\ge 0$. For this function, we are about to apply Lemma \ref{L:doubleExp}.
+  where recall that $K$ is defined in \eqref{E:K}. Under the nonnegativity assumption --- Assumption
+  \ref{A:Nonnegative}, we see that for any $\vec{x} \in\R^{nd}$ fixed, the function $t\to
+  H_n\left(t,\vec{x} \right)$ is a non-decreasing function for $t\ge 0$. For this function, we are
+  about to apply Lemma \ref{L:doubleExp}.
 
 
   {\bigskip\bf\noindent Step 1.~}% {{{
@@ -2054,12 +2059,8 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
   \begin{equation}
     \label{E:Hneq1}
     \int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x}
-    = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi})
+    = \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}\:).
   \end{equation}
-  where
-  \[
-    \mu(\ud \vec{\xi}) = \prod_{j=1}^n \mu(\ud \xi_j)= \prod_{j=1}^n \varphi(\xi) \ud \xi.
-  \]
   One may check the proof of Lemma 3.3 of \cite{BCC21} for more details.% }}}
 
   {\bigskip\bf\noindent Step 2.~}% {{{
@@ -2091,14 +2092,14 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     \label{E:fTn}
     \begin{aligned}
       \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-      & \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2} \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}) \\
+      & \le \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2} \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}\:) \\
       & =: \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2} T_n(\nu,a),
     \end{aligned}
   \end{align}
   where
   \begin{equation}
     \label{E:Tn}
-    T_n(\nu,a) = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}).
+    T_n(\nu,a) = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}\:).
   \end{equation}
   By the same arguments as those of Lemma 3.6 of \cite{BCC21} with the replacement
   \eqref{E:Changes}, we see that
@@ -2824,7 +2825,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
   \left(\nu/2\right)^{1/a} \xi_{\sigma(j)}$, we see that
   \begin{align*}
       \lim_{n \to \infty} \frac{1}{n}
-    & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi})\right]                                                                                               \\
+    & \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right]                                                                                               \\
     & = \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2}  \left( \frac{\nu}{2} \right)^{-n\alpha/a}  \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right]                    \\
     & = \log\left[ \left( \frac{\nu}{2} \right)^{-\alpha/a} \right] +  \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi} )\right] \\
     & = \log\left( \left( \frac{\nu}{2} \right)^{-\alpha/a} \right) + \log\left( \rho_{2,a} \left(|\cdot|^{-\alpha}\right) \right)
@@ -2852,22 +2853,22 @@ We are now ready to prove \eqref{E:momentasym-lower}.
   from which we see that
   \begin{align*}
     \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-     & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})  \ud t         \\
-     & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}) \: 2\: \ud t \\
-     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t
+     & = \int_0^\infty e^{-t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}\:)  \ud t         \\
+     & = \int_0^\infty e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;2t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}\:) \: 2\: \ud t \\
+     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi}\:)   \ud t
   \end{align*}
   where in the last line we have applied \eqref{E:Ffnscale}. Now,
   \begin{align*}
       \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi}) \ud t \\
-    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi})   \ud t
+    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi}\:) \ud t \\
+    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}\:)   \ud t
   \end{align*}
-   where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}) =
+   where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}\:) =
    \prod_{j=1}^n \varphi(\xi) \ud \xi$. Lastly,
     \begin{align*}
       \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
-    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}) \ud t \\
-    & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi})   \ud t                             \\
+    & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}\:) \ud t \\
+    & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}\:)   \ud t                             \\
     & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
   \end{align*}
   This proves \eqref{E:fHn}.
