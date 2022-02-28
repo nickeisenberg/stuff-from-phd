@@ -2210,10 +2210,10 @@ obtain the general case for $p\ge 2$. To prove the next lemma, we will need the 
 \end{align}
 which is a direct consequence of Stirling's formula.
 
-\begin{lemma}% {{{
-  \label{L:2ineq} Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold and in addition that
-  $\alpha < \min\{2a,d\}$. Let $\rho$ be the constant defined in \eqref{E:rho}. Then the following
-  identities hold true:\\
+\begin{lemma} \label{L:2ineq}
+  Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold and in addition that $\alpha <
+  \min\{2a,d\}$. Let $\rho$ be the constant defined in \eqref{E:rho}. Then the following identities
+  hold true:\\
   \begin{align}
     \label{E:2ineq-a}
     &\lim_{n \to \infty}  \frac{1}{n} \log \left( \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) \right)
@@ -2222,7 +2222,7 @@ which is a direct consequence of Stirling's formula.
     & \lim_{n \to \infty}  \frac{1}{n} \log \left( (n!)^{2(b+r)- \frac{b \alpha}{a} }\Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2  \right)
     =  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}\right) + \log\rho.
   \end{align}
-\end{lemma}% }}}
+\end{lemma}
 \begin{proof}% {{{
   The proof follows the same arguments as those of \cite[Lemma 4.3]{BCC21}. Nevertheless, we sketch
   the proof here for completeness. Recall the definition of $T_n(\nu,a)$ defined in \eqref{E:Tn}.
@@ -2349,14 +2349,14 @@ Now we are ready to prove part (2) of Theorem \ref{T:solvable}.
   is precisely $T_2$. This completes the proof of part (2) of Theorem \ref{T:solvable}.
 \end{proof}% }}}
 
-\begin{lemma}% {{{
-  \label{L:p=2} Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Under condition
-  \eqref{E:alpha}, we have that
+\begin{lemma} \label{L:p=2}
+   Assume Assumptions \ref{A:Nonnegative} and \ref{A:Noise} hold. Let $\rho$ be the constant defined
+   in \eqref{E:rho}. Under condition \eqref{E:alpha}, we have that
   \begin{equation}
       \lim_{t \to \infty} \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \nonumber
     = \left( \frac{2a}{2a(b+r)- b\alpha} \right)^\beta (\theta\rho)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
   \end{equation}
-\end{lemma}% }}}
+\end{lemma}
 \begin{proof}% {{{
   By part (1) of Theorem \ref{T:solvable}, there is an $L^2(\Omega)$ solution $u(t,x)$.  By the
   scaling property \eqref{E:normscale},
@@ -2394,8 +2394,9 @@ Now we are ready to prove part (2) of Theorem \ref{T:solvable}.
   \end{align*}
   which, by an easy algebraic manipulation, is equivalent to
   \begin{align*}
-    \lim_{t\to \infty} & \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} \\
-                       & = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}.
+    \lim_{t\to \infty} 
+    & \left[\frac{1}{t^{2(b+r)-b\alpha/a}}\right]^{\frac{1}{2(b+r)-(b\alpha/a)-1}} \log \sum_{n \ge 0} \frac{\left[ (\theta R) t^{2(b+r)-b\alpha/a}\right]^n}{(n!)^{2(b+r)-(b\alpha/a)-1}} \\
+    & = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{1}{2(b+r)-(b\alpha/a)-1}}.
   \end{align*}
   Hence,
   \begin{align*}
