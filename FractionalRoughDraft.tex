@@ -2270,24 +2270,26 @@ which is a direct consequence of Stirling's formula.
   \end{align*}
   On the other hand, by \eqref{E:Hneq1} and \eqref{E:Tn}, we see that
   \begin{align*}
-    \mathbb{E}[J_n(\tau,\widetilde{\tau})]  = \int_0^\infty \int_0^\infty e^{-t}e^{-\widetilde{t}}J_n(t,\widetilde{t}) \ud t \ud \widetilde{t}
-                                            = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x
-                                            = T_n\left(\nu,a\right).
+    \mathbb{E}[J_n(\tau,\widetilde{\tau})]
+    = \int_0^\infty \int_0^\infty e^{-t}e^{-\widetilde{t}}J_n(t,\widetilde{t}) \ud t \ud \widetilde{t}
+    = \int_{\R^{dn}}\left[ \int_0^\infty e^{-t}H_n(t,x) \ud t \right]^2 \ud x
+    = T_n\left(\nu,a\right).
   \end{align*}
   Therefore,
-  \begin{align}
-    \label{E:2lowbd}
+  \begin{align} \label{E:2lowbd}
     \frac{T_n(\nu,a)}{(n!)^2} \le \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2
     \Norm{ \widetilde{f_n}(\cdot,0;1) }_{ \mathcal{H}^{\otimes n} }^2 .
   \end{align}
-  Now, an application of Stirling's formula to the quantity
-  \[
-    \frac{  \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2}{\Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)}
-  \]
-  shows that, as $n\to \infty$,
-  \begin{align}
-    \label{E:GammaSq}
-    \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2  \sim \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n,
+  Now, an application of Stirling's formula as in \eqref{E:Stirling} to see that,
+  % to the quantity
+  % \[
+  %   \frac{  \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2}{\Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)}
+  % \]
+  % shows that,
+  as $n\to \infty$,
+  \begin{align} \label{E:GammaSq}
+    \Gamma\left( \frac{[2(b + r ) -b \alpha / a]n}{2} +1 \right)^2  \sim
+    \Gamma\left( [2(b + r ) -b \alpha / a]n +1 \right)2^{- [2(b + r ) -b \alpha / a]n}C_n,
   \end{align}
   where $C_n = 2^{-1}[2(b + r ) -b \alpha / a]^{1/2}(2 \pi n )^{1/2}$. Then an application of
   \eqref{E:LimTn}, \eqref{E:2lowbd} and \eqref{E:GammaSq} proves the lower bound of
