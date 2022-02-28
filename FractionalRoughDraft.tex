@@ -2107,10 +2107,10 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     \label{E:muassumption}
     T_n(\nu, a) \le (n!)^2 C_\mu^n(\nu, a)
     \qquad \text{with} \quad
-    C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi) =  C \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho<\infty.
+    C_\mu(\nu,a) := \int_{(\R^d)} \left(\frac{1}{1+\frac{\nu}{2}|\xi|^a}\right)^2 \mu(\ud \xi).
+    % =  C \int_0^\infty \frac{\rho^{\alpha-1}}{(1+\rho^{a})^2} \ud \rho<\infty.
   \end{equation}
-  Therefore, the finiteness of $C_\mu(\nu,a)$ will require $\alpha < 2a$ which is included in
-  \eqref{E:alpha}:
+  Notice that
   \begin{align}
     \label{E:alpha2}
     \int_{(\R^d)} \left(\frac{1}{1+|\xi|^a}\right)^2 \mu(\ud \xi)
@@ -2118,11 +2118,14 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     \quad \Longleftrightarrow \quad
     2a - \alpha +1 > 1.
   \end{align}
+  Therefore, conditions in \eqref{E:alpha} imply that $C_{\mu}(\nu,a)<\infty$.
+  % Therefore, the finiteness of $C_\mu(\nu,a)$ will require $\alpha < 2a$ which is included in
+  % \eqref{E:alpha}:
   Combining \eqref{E:fTn} and \eqref{E:muassumption} gives that
   \begin{align}
     \label{E:LNfnineq}
     \int_0^\infty e^{-t} \Norm{\widetilde{f_n}(\cdot,0;t)}_{ \mathcal{H}^{ \otimes n } }^2 \ud t
-    \le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} C_\mu^n(\nu,a).
+    \le 2^{n\left[2(b+r)-\frac{b\alpha}{a}\right]} C_\mu^n(\nu,a)<+\infty.
   \end{align}% }}}
 
   {\bigskip\bf\noindent Step 4.~}% {{{
@@ -2146,14 +2149,16 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
     & \le \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{\Gamma\left( \left[ 2(b+r)- \frac{b \alpha}{a} \right] n +1 \right) }
     \le C^n \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu,a) \right)^n }{ (n!)^{ 2(b+r) - b\alpha/a }},
   \end{align*}
-  where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$ and is due to Stirling's formula (see \eqref{E:Stirling} below and also the proof of Theorem 3.1 \cite{BCC21}).
+  where the constant $C$ depends only on the value of $2(b+r)-b\alpha/a$ and the last inequality is
+  due to Stirling's formula (see \eqref{E:Stirling} below).
 
-  Because of the constant $1$ initial condition, $\Norm{u(t,x)}_2 =\Norm{u(t,0)}_2$ for $x \in \R^d$. Therefore, by
-  \eqref{E:2mom}, \eqref{E:normscale}, and the above inequality,
+  Because of the constant one initial condition, $\Norm{u(t,x)}_2 =\Norm{u(t,0)}_2$ for all $x \in
+  \R^d$ and $t>0$. Therefore, by \eqref{E:2mom}, \eqref{E:normscale}, and the above inequality,
   \begin{align}
     \nonumber
-    \Norm{u(t,x)}_2^2 & = \sum_{n \ge 0} \theta^n n! \: t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \\
-                      & \le \sum_{n \ge 0} \theta^n C^n t^{[2(b + r ) -b \alpha / a]n} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
+    \Norm{u(t,x)}_2^2
+    & = \sum_{n \ge 0} \theta^n n! \: t^{[2(b + r ) -b \alpha / a]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2 \\
+    & \le \sum_{n \ge 0} \theta^n C^n t^{[2(b + r ) -b \alpha / a]n} \dfrac{ \left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^n }{ (n!)^{ 2(b+r) - 1 - b\alpha/a }},
     \label{E:2nomBd}
   \end{align}
   which is finite provided that (see \eqref{E:alpha})
@@ -2165,18 +2170,19 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
   B.1]{BCC21} or \cite{Le16} for the case of the SHE) shows that for all $p\ge 2$,
   \begin{align}
     \nonumber
-    \Norm{u(t,x)}_p & \le \sum_{n\ge 0} \theta^{n/2} (p-1)^{n/2} \sqrt{n!} \Norm{\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} } \\
-                    & \le \sum_{n \ge 0} \theta^{n/2} C^{n/2} (p-1)^{n/2}  t^{[2(b + r ) -b \alpha /a]n/2}
-		    \dfrac{\left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^{n/2} }{ (n!)^{\frac{1}{2}\left[ 2(b+r) - 1 - b\alpha/a \right]}} < \infty.
-		    \label{E:pmomBd}
+    \Norm{u(t,x)}_p
+    & \le \sum_{n\ge 0} \theta^{n/2} (p-1)^{n/2} \sqrt{n!} \Norm{\widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} } \\
+    & \le \sum_{n \ge 0} \theta^{n/2} C^{n/2} (p-1)^{n/2}  t^{[2(b + r ) -b \alpha /a]n/2}
+    \dfrac{\left(2^{ \left[ 2(b+r)- \frac{b \alpha}{a} \right]}C_\mu(\nu, a) \right)^{n/2} }{ (n!)^{\frac{1}{2}\left[ 2(b+r) - 1 - b\alpha/a \right]}} < \infty.
+    \label{E:pmomBd}
   \end{align}
   Therefore, under condition \eqref{E:alpha}, \eqref{E:SPDE} has an unique $L^p(\Omega)$-solution
-  $u(t,x)$ for all $p\ge 2$,  $t>0$ and $x\in\R^d$.  This proves part (1) of Theorem
+  $u(t,x)$ for all $p\ge 2$, $t>0$ and $x\in\R^d$.  This proves part (1) of Theorem
   \ref{T:solvable}.% }}}
 
   {\bigskip\bf\noindent Step 5.~}% {{{
-  The proof of part (2) of Theorem \ref{T:solvable} will be
-  postponed to part (ii) of Lemma \ref{L:2ineq} below.% }}}
+  The proof of part (2) of Theorem \ref{T:solvable} will be postponed to part (ii) of Lemma
+  \ref{L:2ineq} below.% }}}
 \end{proof}% }}}
 % }}}
 \section{Upper bound of the asymptotics}% {{{
@@ -2807,7 +2813,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
   In this proof, $\mu(\ud x) = \varphi(x)\ud x = C_{\alpha,d}|x|^{-(d-\alpha)}\ud x$. By the change of
   variables $x' = \left(\nu/2\right)^{1/a} x$ and $y' = \left(\nu/2\right)^{1/a} y$, we see that
   \begin{align*}
-    \rho_{\nu,a} 
+    \rho_{\nu,a}
     & \left(|\cdot|^{-\alpha}\right) = \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x) \\
     & = \left( \frac{\nu}{2} \right)^{-\alpha/a} \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f\left(\left(\frac{\nu}{2}\right)^{-1/a}(x+y)\right)f\left(\left(\frac{\nu}{2}\right)^{-1/a}y\right)}{\sqrt{1+|x+y|^a } \sqrt{1+|y|^a} } \left(\frac{\nu}{2}\right)^{-d/a} \ud y \right]^2 \varphi(x)\ud x.
   \end{align*}
