@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+    python_simulations.she
+    ~~~~~~~~~~~~~~~~~~~~~~
+
+    Simulation of Stochastic Heat Equation on [0,1]
+
+    :copyright: (c) 2022 by Nick Eisenberg <nickeisenberg@gmail.com>
+    :license: LICENSE_NAME, see LICENSE for more details.
+    :created at Wed 02 Mar 2022 12:11:29 PM CST
+"""
+
 # A simulation of the 1-d SHE with vanishing boundary conditions
 # u_t - (1/2)u_{xx} = u \dot{W}
 # We consider the case of a linear multiplicative space-time white noise
@@ -29,11 +42,11 @@ x_axis = np.linspace(0.0, x, nx + 1)
 def f(x):
     return np.round(np.sin(math.pi * x), 5)
 
-# Set up a matrix defining u(t,x) = (u)_{i,j}
+# Set up a matrix defining u(t,x) = (u)_{i, j}
 u = np.zeros((nx+1, nt+1), dtype=float)
 
 # Enter initial data
-u[0:,0] = f(x_axis)
+u[0:, 0] = f(x_axis)
 
 # Set up the space-time white noise
 # We first simulate K independent brownian motions
@@ -74,8 +87,7 @@ for i in range(nx + 1):
 # Set up the finite difference scheme
 for j in range(nt):
     for i in range(1,nx):
-        u[i,j+1] = u[i,j] + ((nx) ** 2) * (delta_t / 4) * (u[i+1,j] + u[i-1,j] - 2 * u[i,j])\
-                    + .01 *  nx * u[i,j] * W_tx[i,j]
+        u[i, j+1] = u[i, j] + ((nx) ** 2) * (delta_t / 4) * (u[i+1, j] + u[i-1, j] - 2 * u[i, j]) + .01 *  nx * u[i, j] * W_tx[i, j]
 
 # Set up grid
 ts, xs = np.meshgrid(t_axis, x_axis)
@@ -92,7 +104,7 @@ fig.add_axes(ax)
 ax.plot_surface(ts, xs, u, rstride=1, cstride=1, cmap='plasma')
 ax.set_title('Discretized SHE',fontsize=20)
 
-# Noise 
+# Noise
 ax1 = fig.add_subplot(122, projection='3d')
 # ax = Axes3D(fig, auto_add_to_figure=False)
 fig.add_axes(ax1)
