@@ -77,7 +77,7 @@ def BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis):
     return W_tx
 
 
-def BrownianSheetMovie():
+def BrownianSheetMovie(method):
     # Set K for the case of DaPrato.
     # Note that we must have 0 < x < pi for the case of Daprato. See Example 4.9 - DaPrato.
     K = 40
@@ -109,8 +109,10 @@ def BrownianSheetMovie():
         # ax.set_ylabel('$0 \\leq x \\leq \\pi$', fontsize=14)
         ax.set_title('Brownian Sheet', fontsize=20)
         # Choose either BrownianSheetWalsh or BrownianSheetDaprato
-        # W_tx = BrownianSheetWalsh(t, nt, x, nx)
-        W_tx = BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis)
+        if method == "DaPrato":
+            W_tx = BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis)
+        else:
+            W_tx = BrownianSheetWalsh(t, nt, x, nx)
         ax.plot_surface(ts, xs, W_tx, rstride=1, cstride=1, cmap='plasma')
         plt.draw()
         plt.pause(0.1)
@@ -139,5 +141,23 @@ def BM():
 
 
 if __name__ == "__main__":
-    BrownianSheetMovie()
-    # BM()
+    ans = True
+    while ans:
+        print("""
+        1. Simulation via Da Prato's representation.
+        2. Simulation via Walsh's Brownian Sheet.
+        3. Brownian motion.
+        4. Exit/Quit
+        """)
+        ans = input("What would you like to do? ")
+        if ans == "1":
+            BrownianSheetMovie("DaPrato")
+        elif ans == "2":
+            BrownianSheetMovie("Walsh")
+        elif ans == "3":
+            BM()
+        elif ans == "4":
+            print("\n Goodbye~!")
+            exit(1)
+        elif ans != "":
+            print("\n Not Valid Choice Try again")
