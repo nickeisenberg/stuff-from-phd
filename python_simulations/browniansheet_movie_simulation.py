@@ -39,9 +39,10 @@ def BrownianSheetWalsh(t, nt, x, nx):
             W_tx[x + 1, t + 1] = W_tx[x, t + 1] + W_tx[x + 1, t] - W_tx[x, t] + dW[0]
     return W_tx
 
+
 def BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis):
     delta_t = t / nt
-    delta_x = x / nx
+    # delta_x = x / nx
     # Generate K + 1 Brownian Motions simulations.
     # Simulate nt + 1 points: W(t_0) = 0, W(t_1), ..., W(t_k), ..., W(t_n).
     W = np.zeros((nt + 1, K + 1), dtype=float)
@@ -52,7 +53,7 @@ def BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis):
     # Write a function Wtx(t, x) = SUM where SUM is the sum from Example 4.9 DaPrato
 
     def Wtx(t, x):
-        x_index = int(x / delta_x)
+        # x_index = int(x / delta_x)
         t_index = int(t / delta_t)
         Bnt = W[t_index]
         sin_in = np.zeros(K + 1)
@@ -74,6 +75,7 @@ def BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis):
         for j in range(nt + 1):
             W_tx[i][j] = Wtx(t_axis[j], x_axis[i])
     return W_tx
+
 
 def BrownianSheetMovie():
     # Set K for the case of DaPrato.
@@ -106,7 +108,7 @@ def BrownianSheetMovie():
         # ax.set_xlabel('$ 0 \\leq t \\leq {} $'.format(t), fontsize=14)
         # ax.set_ylabel('$0 \\leq x \\leq \\pi$', fontsize=14)
         ax.set_title('Brownian Sheet', fontsize=20)
-# Choose either BrownianSheetWalsh or BrownianSheetDaprato
+        # Choose either BrownianSheetWalsh or BrownianSheetDaprato
         # W_tx = BrownianSheetWalsh(t, nt, x, nx)
         W_tx = BrownianSheetDaprato(t, nt, x, nx, K, t_axis, x_axis)
         ax.plot_surface(ts, xs, W_tx, rstride=1, cstride=1, cmap='plasma')
