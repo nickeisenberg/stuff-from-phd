@@ -1487,9 +1487,9 @@ $(2\pi)^{-d}$ should not be present.}
   \rho_{2,a} \left(|\cdot|^{-\alpha}\right) = \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right),
 \end{equation}
 where
-\begin{align*}
-  \mu(\ud \vec{\xi}\:) = \prod_{j=1}^n \mu(\ud \xi_j)= \prod_{j=1}^n \varphi(\xi) \ud \xi.
-\end{align*}
+\begin{align} \label{E:muvec}
+  \mu(\ud \vec{\xi}\:) = \prod_{j=1}^n \mu(\ud \xi_j)= \prod_{j=1}^n \varphi(\xi_j) \ud \xi_j.
+\end{align}
 We first apply some scaling arguments to accommodate the parameter $\nu$ in both \eqref{E:oldlim}
 and \eqref{E:oldrhovarrep}, the proof of which can be found in Appendix:
 
@@ -2850,15 +2850,15 @@ We are now ready to prove \eqref{E:momentasym-lower}.
     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0,t)(2^{b/a}\xi_1,\cdots,2^{b/a}\xi_n) \right|^2 \mu(\ud \vec{\xi}\:) \ud t \\
     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}\:)   \ud t
   \end{align*}
-   where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}\:) =
-   \prod_{j=1}^n \varphi(\xi) \ud \xi$. Lastly,
+   where the last line follows from a change of variables and recalling that $\mu(\ud \vec{\xi}\:)$
+   in \eqref{E:muvec}. Lastly,
     \begin{align*}
       \int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
     & = 2^{2n(b+r)}\int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 2^{\frac{-nbd}{a}} 2^{\frac{nb(d-\alpha)}{a}} \mu(\ud \vec{\xi}\:) \ud t \\
     & = 2^{n(2(b+r) - b\alpha/a)}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} \left| \mathcal{F}\widetilde{f_n}(\cdot,0;t)(\xi_1,\cdots,\xi_n) \right|^2 \mu(\ud \vec{\xi}\:)   \ud t                             \\
     & = \frac{2^{n(2(b+r) - b\alpha/a)}}{(n!)^2}  \int_0^\infty 2e^{-2t} \int_{\R^{nd}} H_n(t,\vec{x})^2 \ud \vec{x}   \ud t,
   \end{align*}
-  This proves \eqref{E:fHn}.
+  which proves \eqref{E:fHn}.
 \end{proof}
 
 \bigskip
