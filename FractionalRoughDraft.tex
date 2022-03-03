@@ -1848,9 +1848,11 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
     |\mathcal{F}f(\cdot)(\xi)|  = |\mathcal{F}f(\cdot-y)(\xi)|.
   \]
   Then by applying a change of variables and recalling \eqref{E:SobIneq} we see that
-  \[
-    \int_{\R^d} f^2(x) \gamma(x+y)\ud x \le \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}
-  \]
+  \begin{align*}
+    \int_{\R^d} f^2(x) \gamma(x+y)\ud x &= \int_{\R^d} f^2(x-y) \gamma(x)\ud x\\
+    & \le \sigma(a,d,\alpha) \Norm{f(\cdot-y)}_2^{2-(2\alpha/a)}\mathcal{E}_a\big(f(\cdot-y),f(\cdot-y)\big)^{\alpha/a} \\
+    & = \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a\big(f,f\big)^{\alpha/a}, 
+  \end{align*}
   and in return,
   \[
     \sup_{y\in \R^d} \int_{\R^d} f^2(x) \gamma(x+y) \le \sigma(a,d,\alpha)     \Norm{f}_2^{2-(2\alpha/a)}\mathcal{E}_a(f,f)^{\alpha/a}.
