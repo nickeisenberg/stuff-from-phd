@@ -6,16 +6,20 @@
 
     This is a simulation for Brownian Sheet....
 
+    A simulation of a Brownian sheet though two different methods.
+
+    1. BrownianSheetWalsh defines the Brownian Sheet through a recursive technique...
+    ... using the fact that \int_{[t, t+dt]}\int_{[x, x+dt]} dW(t, x) ~ N(0, dt * dx).
+
+    2. BrownianSheetDaprato uses the expansion given in example 4.9 from DaPrato...
+    ... "Stochastic Equations in Infinite Dimensions" on page 88.
+
+    3. BM will simulate multiple standard Brownian paths.
+
     :copyright: (c) 2022 by Nick Eisenberg <nickeisenberg@gmail.com>.
     :license: LICENSE_NAME, see LICENSE for more details.
     :created at Wed 02 Mar 2022 10:55:11 AM CST
 """
-
-# A simulation of a Brownian sheet though two differnt methods.
-# BrownianSheetWalsh defines the Brownian Sheet through a recursive technique...
-# ... using the fact that \int_{[t, t+dt]}\int_{[x, x+dt]} dW(t, x) ~ N(0, dt * dx).
-# BrownianSheetDaprato uses the expansion given in example 4.9 from DaPrato...
-# ... "Stochastic Equations in Infinite Dimensions" on page 88.
 
 import numpy as np
 import matplotlib.pyplot as plt
