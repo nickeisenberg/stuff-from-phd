@@ -2510,37 +2510,34 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
   (3.3)]{BCR09}. By the same arguments that follow in the proof of Theorem 2.3 {\it ibid} with the
   replacement \eqref{E:Changes}, we have that
   \begin{align*}
-    \liminf_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) \ge  \log\widetilde{\rho}(\mathcal{F}f),
+    \liminf_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) \ge  \log\rho(\mathcal{F}f),
   \end{align*}
-  where $\widetilde{\rho}(\cdot)$ is defined as,
+  where $\rho(\cdot)$ (check \eqref{E:rho} for a comparison) is defined as,
   \begin{align} \label{E:rho'g}
-    \widetilde{\rho}(g) &:= \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)
+    \rho(g) &:= \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)
     \left[
       \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}} \ud \eta
     \right]
-    \mu(\ud \xi).
+    \mu(\ud \xi),
   \end{align}
+  for all nonnegative and nonnegative-definite functions $g\in L^2\left(\mu(\ud\xi)\right)$. Before
+  we proceed, we first make a few comments: \medskip
 
-  % where the supremum is taken over all nonnegative and nonnegative definite functions $h$ such that.
+  \noindent (1) $g\in L^2\left(\mu\left(\ud \xi\right)\right)$ if and only if $\mathcal{F}^{-1}g \in
+  \mathcal{H}$. Moreover, $\Norm{g}_{L^2(\mu)}=\Norm{\mathcal{F}^{-1}g}_{\mathcal{H}}$.
 
-  Before we proceed, we first make a few comments: \medskip
+  \noindent (2) For $g\in L^2\left(\mu\left(\ud \xi\right)\right)$, $g$ is nonnegative definite if
+  and only if $\mathcal{F}^{-1}g \in \mathcal{H}_+$.
 
-  \noindent (1) $g\in L^2\left(\mu\left(\ud \xi\right); \R^d\right)$ if and only if
-  $\mathcal{F}^{-1}g \in \mathcal{H}$. Moreover,
-  $\Norm{g}_{L^2(\mu)}=\Norm{\mathcal{F}^{-1}g}_{\mathcal{H}}$.
-
-  \noindent (2) For $g\in L^2\left(\mu\left(\ud \xi\right); \R^d\right)$, $g$ is nonnegative
-  definite if and only if $\mathcal{F}^{-1}g \in \mathcal{H}_+$.
-
-  \noindent (3) For $g\in L^2\left(\mu\left(\ud \xi\right); \R^d\right)$, $g$ is nonnegative if and
-  only if $\mathcal{F}^{-1}g$ is nonnegative definite.
+  \noindent (3) For $g\in L^2\left(\mu\left(\ud \xi\right)\right)$, $g$ is nonnegative if and only
+  if $\mathcal{F}^{-1}g$ is nonnegative definite.
 
   \noindent (4) Finding the best nonnegative and nonnegative-definite function $g$ with
-  $\Norm{g}_{L^2(\mu)}=1$ to maximize $\widetilde{\rho}(g)$ is equivalent to finding the best
+  $\Norm{g}_{L^2(\mu)}=1$ to maximize $\rho(g)$ is equivalent to finding the best
   nonnegative and nonnegative-definite $f\in \mathcal{H}_+$ with $\Norm{f}_{\mathcal{H}}=1$ to
-  maximize $\widetilde{\rho}\left(\mathcal{F}f\right)$.
+  maximize $\rho\left(\mathcal{F}f\right)$.
 
-  \noindent (5) $\widetilde{\rho}(g)$ is well defined (i.e., finite) because for any $h\in
+  \noindent (5) $\rho(g)$ is well defined (i.e., finite) because for any $h\in
   L^2(\R^d)$ with $\Norm{h}_{L^2(\R^d)}=1$,
   \begin{align*}
     & \left|\int_{\R^d}g(\xi)
@@ -2561,140 +2558,87 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
   where the upper bound does not depends on $h$, and $\rho_{\nu,a}$ is the constant defined in
   \eqref{E:rho} which is finite due to Theorem \ref{T:Variation} (see \eqref{E:rhoMrep}).
 
-  \begin{remark}
-  Now we restrict $h$ to be nonnegative functions and define
-  % We are interested in the quantity
-  \[
-    \widetilde{\rho}_+(g) := \mathop{\sup_{h \ge 0}}_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}g(\xi)
-    \left[
-      \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}\ud\eta
-    \right]
-    \mu(\ud \xi).
-  \]
-  It is clearly that $\widetilde{\rho}(g) \ge \widetilde{\rho}_+(g)$. With this being said, we see
-  that for any $f \in \mathcal{H}_+$ with $\Norm{f}_\mathcal{H} =1$,
-  \begin{align*}
-    \liminf_{n \to \infty} \frac{1}{n}\log \mathbb{E}(U_n(\tau)) \ge \log \widetilde{\rho}_+(\mathcal{F}f).
-  \end{align*}
-  \end{remark}
-
+  Note that since both $\mu$ and $g$ are nonnegative in \eqref{E:rho'g}, the supremum in
+  \eqref{E:rho'g} has to be achieved by some nonnegative function $h$. Hence, we may assume $h$ is
+  also nonnegative for the remainder of this proof. With this being said, we see that for any $f \in
+  \mathcal{H}_+$ with $\Norm{f}_\mathcal{H} =1$,
+	\begin{align*}
+		\liminf_{n \to \infty} \frac{1}{n}\log \mathbb{E}(U_n(\tau)) \ge \log \rho(\mathcal{F}f).
+	\end{align*}
   We now need to calculate
-  \begin{gather} \label{E:doubleSup}
-    \mathop{\sup_{f \in \mathcal{H}_+}}_{\Norm{f}_{\mathcal{H}}=1} \widetilde{\rho}
-    \left(\mathcal{F}f\right) = \sup_{\Norm{h}_{L^2(\R^d)}=1} \mathop{\sup_{f \in
-    \mathcal{H}_+}}_{\Norm{f}_{\mathcal{H}}=1} I(f,h), \qquad \text{with} \\ \notag
-    I(f,h) := \int_{\R^d}\mathcal{F} f(\xi) \left[ \int_{\R^d} \frac{h(\xi +
-    \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}\ud\eta \right]
-    \mu(\ud \xi),
-  \end{gather}
-  where one can switch the order of the two suprema in \eqref{E:doubleSup} whenever necessary. Let
-  $h$ be an arbitrary (real-valued) function in $L^2(\R^d)$. It is clear that the function
-  $h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a}$ belongs to $L^2(\R^d)$ so that $g_h(x) := (2\pi)^{d/2}
+	\begin{align*}
+		\sup_{f \in \mathcal{H}_+, \: \Norm{f}_{\mathcal{H}}=1} \rho\left(\mathcal{F}f\right).
+	\end{align*}
+  Consider a nonnegative function $h\in L^2(\R^d)$. The function
+  $h(\cdot)/\sqrt{1+\frac{\nu}{2}|\cdot|^a} \in L^2(\R^d)$ so that $g_h(x) := (2\pi)^{d/2}
   \mathcal{F}^{-1}\left( \frac{h(\cdot)}{\sqrt{1+\frac{\nu}{2}|\cdot|^a}} \right)(x)$ is well
-  defined complex-valued function. Notice that
-  \begin{align*}
-	\int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}\ud\eta
+  defined. Under these conditions, $g_h \in W^{1,a}(\R^d)$ with
+	\begin{align*}
+		\Norm{g_h}_{W^{1,a}(\R^d)} = \frac{1}{(2\pi)^d} \int_{\R^d} (1+|\xi|^a) |\mathcal{F}g_h(\xi)|^2\ud\xi
+		= \int_{\R^d} \frac{1+|\xi|^a}{1+\frac{\nu}{2}|\xi|^a} |h(\xi)|^2 \ud \xi
+		\le C_\nu \Norm{h}_{L^2(\R^d)}^2 <\infty.
+	\end{align*}
+  Notice that
+	\begin{align*}
+		\int_{\R^d} \frac{h(\xi +
+		\eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}}  \ud \eta
     & = (2\pi)^{-d}\int_{\R^d} \mathcal{F}g_h(\xi-\eta)\mathcal{F}g_h(-\eta) \ud \eta \\
-    & = (2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi),
-  \end{align*}
+    & =(2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi),
+	\end{align*}
   where we have used the notation that $\widetilde{h}(x) = h(-x)$.  Since $h(\cdot)$ is real valued,
   we see that $\widetilde{\mathcal{F}g_h} = \overline{\mathcal{F}\bar{g_h}}= \mathcal{F}\bar{g_h} $.
   Using this and the fact that $\mathcal{F}(fg) = (2\pi)^{-d}\mathcal{F}(f)*\mathcal{F}(g)$, we see
   that $(2\pi)^{-d}(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi)
-  =\mathcal{F}\left[|g_h|^2\right](\xi)$. Hence,
-  \begin{align*} 
-    I(f,h) = \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}\left[|g_h|^2\right](\xi) \mu(\ud \xi).
-  \end{align*}
-
-  Let us take the supremum of $h$ first in \eqref{E:doubleSup} with $f\in \mathcal{H}_+$ fixed.
-  Because $\mathcal{F}f (\cdot)\ge 0$ and $\mu$ is a nonnegative measure, the best $h$ should be the
-  one that makes $\mathcal{F}g_h(\cdot)$ nonnegative, or equivalently, the best $h$ should be the
-  nonnegative $L^2(\R^d)$ functions. Hence, $\widetilde{\rho}_{+}(\mathcal{F}f)=
-  \widetilde{\rho}(\mathcal{F}f)$. Moreover, notice that
-  \begin{align*}
-        \widetilde{\rho}(\mathcal{F}f)
-    & = \sup_{\Norm{h}_{L^2(\R^d)}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) \mu(\ud \xi) \\
-    & = \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g_h|^2](\xi) \mu(\ud \xi)                                   \\
-    & = \sup_{\Norm{h}_{L^2(\R^d)}=1}\langle f, |g_h|^2 \rangle _{\mathcal{H}}.
-  \end{align*}
+  =\mathcal{F}\left[|g_h|^2\right](\xi)$. Hence, from \eqref{E:rhoMrep}, we see that $\mathcal{F}g_h
+  * \widetilde{\mathcal{F}g_h}\in L^2\left(\mu(d\xi)\right)$ or equivalently $|g_h|^2\in \mathcal{H}$.
+  Then,
+	\begin{align*}
+		\rho(\mathcal{F}f) & = \sup_{\Norm{h}_{L^2(\R^d)}=1}(2\pi)^{-d} \int_{\R^d}\mathcal{F}f(\xi)(\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi) \mu(\ud \xi) \\
+                       & = \sup_{\Norm{h}_{L^2(\R^d)}=1} \int_{\R^d}\mathcal{F}f(\xi)\mathcal{F}[|g_h|^2](\xi) \mu(\ud \xi)                                   \\
+                       & = \sup_{\Norm{h}_{L^2(\R^d)}=1}\langle f, |g_h|^2 \rangle _{\mathcal{H}}.
+	\end{align*}
   With this we see that
-  \begin{align}
-    \label{E:supf}
-      \sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \widetilde{\rho}_+(\mathcal{F}f)
-    = \sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g_h|^2 \rangle _{\mathcal{H}}
-    = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
-  \end{align}
+	\begin{align}
+		\label{E:supf}
+		\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} } \rho(\mathcal{F}f) = 	\sup_{ f\in \mathcal{H}, \Norm{f}_{\mathcal{H}=1} }\sup_{\Norm{h}_{L^2}=1} \langle f, |g_h|^2 \rangle _{\mathcal{H}} = \sup_{\Norm{h}_{L^2}=1} \langle |g_h|^2, |g_h|^2 \rangle^{1/2} _{\mathcal{H}}
+	\end{align}
   where the optimal $f$ is chosen to be $|g_h|^2/\Norm{|g_h|^2}_{\mathcal{H}}$. Now we claim that
-  \begin{equation}
-    \label{E:GH+}
-    |g_h|^2 \in \mathcal{H}_+,
-  \end{equation}
+	\begin{equation}
+		\label{E:GH+}
+		|g_h|^2 \in \mathcal{H}_+,
+	\end{equation}
   which implies that the supremum in \eqref{E:supf} can be restricted to $\mathcal{H}_+$ and
-  \begin{align*}
-    \sup_{f \in \mathcal{H},\: \Norm{f}_{\mathcal{H}}=1 } \widetilde{\rho}_+(\mathcal{F}f) =
-    \sup_{f \in \mathcal{H}_+,\: \Norm{f}_{\mathcal{H}}=1 } \widetilde{\rho}_+(\mathcal{F}f) =
-    \sup_{\Norm{h}_{L^2}=1} \left\langle |g_h|^2, |g_h|^2 \right\rangle^{1/2} _{\mathcal{H}}.
-  \end{align*}
+	\begin{align*}
+		\sup_{ f \in \mathcal{H},\: \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) =
+		\sup_{ f \in \mathcal{H}_+,\: \Norm{f}_{\mathcal{H}}=1 } \rho(\mathcal{F}f) =
+		\sup_{\Norm{h}_{L^2}=1} \left\langle |g_h|^2, |g_h|^2 \right\rangle^{1/2} _{\mathcal{H}}.
+	\end{align*}
   Then notice that
-  \begin{align}
-    \label{E:gsq}
-      \mathcal{F}( |g_h|^2 )(\xi)
-    = (2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi)
-    = \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}} \ud \eta.
-  \end{align}
+	\begin{align}
+		\label{E:gsq}
+		\mathcal{F}( |g_h|^2 )(\xi) = (2\pi)^{-d} (\mathcal{F}g_h*\widetilde{\mathcal{F}g_h})(\xi)
+                                = \int_{\R^d} \frac{h(\xi + \eta)h(\eta)}{\sqrt{1+\frac{\nu}{2}|\xi+\eta|^a}\sqrt{1+\frac{\nu}{2}|\eta|^a}} \ud \eta.
+	\end{align}
   Hence, from \eqref{E:rho} and \eqref{E:gsq}, we see that
-  \begin{align*}
-      \sup_{ \Norm{h}_{L^2(\R^d)}=1} \left\langle |g_h|^2, |g_h|^2 \right\rangle_{\mathcal{H}}
-    =\sup_{ \Norm{h}_{L^2(\R^d)}=1} \int_{\R^d} \left|\mathcal{F}( |g_h|^2 )(\xi)\right|^2 \mu(\ud \xi)
-    = \rho_{\nu,a}
-  \end{align*}
+	\begin{align*}
+		\sup_{ \Norm{h}_{L^2(\R^d)}=1 }\left\langle |g_h|^2, |g_h|^2 \right\rangle_{\mathcal{H}}
+		=\sup_{ \Norm{h}_{L^2(\R^d)}=1 } \int_{\R^d} \left|\mathcal{F}( |g_h|^2 )(\xi)\right|^2 \mu(\ud \xi)
+		= \rho_{\nu,a}
+	\end{align*}
   which then leads us to the lower bound:
-  \begin{align*}
-    \liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log\left(\rho_{\nu,a}^{1/2}\right).
-  \end{align*}
+	\begin{align*}
+		\liminf_{n\to \infty} \frac{1}{n} \log \mathbb{E} (U_n(\tau) ) \ge \log\left(\rho_{\nu,a}^{1/2}\right).
+	\end{align*}
   Therefore, it remains to proving \eqref{E:GH+}. First notice that from the above we see that
-  \begin{align*}
-    \int_{\R^d} \left| \mathcal{F}\left(|g_h|^2\right)(\xi) \right|^2 \mu(\ud \xi) \le \rho_{\nu,a} < \infty
-    \quad \Longrightarrow \quad |g_h(\cdot)|^2 \in \mathcal{H}.
-  \end{align*}
+	\begin{align*}
+		\int_{\R^d} \left| \mathcal{F}\left(|g_h|^2\right)(\xi) \right|^2 \mu(\ud \xi) \le \rho_{\nu,a} < \infty
+		\quad \Longrightarrow \quad |g_h(\cdot)|^2 \in \mathcal{H}.
+	\end{align*}
   Moreover, since $h$ is nonnegative, from \eqref{E:gsq}, we see that
   $\mathcal{F}\left(|g_h|^2\right)(\cdot)$ is also nonnegative. The Bochner-Schwarz theorem then
   implies that $|g_h(\cdot)|^2$ is nonnegative definite. It is clear that $|g_h(\cdot)|^2$ is
   nonnegative. This shows that $|g_h(\cdot)|^2 \in \mathcal{H}_+$.  This completes the whole proof
   of Proposition \ref{P:LogU}.
-\end{proof}
-
-\begin{lemma} \label{L:LogU}
-  It holds that
-  \begin{align} \label{E:LogU}
-    \liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} U_n(1) \right]
-    \ge \log\left( \frac{\rho_{\nu,a}^{1/2}}{ \left(\frac{b}{a}[ a-\frac{\alpha}{2} + \frac{a}{b}r ]\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} }\right).
-  \end{align}
-\end{lemma}
-\begin{proof}
-  Let $\tau$ be an exponential random variable with mean one. Notice that by some elementary scaling
-  arguments, we have that for all $t>0$,
-  \begin{align}
-    \label{E:WU}
-    W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
-    U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1),
-  \end{align}
-  which then imply that
-  \begin{align*}
-    \mathbb{E}\left[ U_n(\tau) \right] = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1)
-                                       = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1).
-  \end{align*}
-  Then by Proposition \ref{P:LogU},
-  \begin{align}\label{E:lb1}
-    \liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log\left(\rho_{\nu, a}^{1/2}\right).
-  \end{align}
-  Therefore, \eqref{E:LogU} is proven by noticing that, thanks to \eqref{E:Stirling},
-  \begin{align*}
-      \liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
-    = \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
-  \end{align*}
-  where the condition $\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) >0$ is guaranteed
-  by \eqref{E:alpha4} (or \eqref{E:alpha}).
 \end{proof}
 
 We need one last lemma before the proof of the lower bound:
