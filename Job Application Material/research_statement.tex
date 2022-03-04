@@ -1,0 +1,529 @@
+% \documentclass[a4paper,12pt]{article}{{{
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------\left( \left[ \frac{a-d}{2}\right]q + p \right)
+% Load Packages here
+% -------------------------------------------------
+%\usepackage{hyperref}
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\} }}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw} }}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
+
+\def\crtL{\theta}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+
+% % Set up mdframe for questions.
+\newcounter{NQ}
+\newcounter{LQ}
+\newcounter{ZQ}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{%
+	middlelinecolor=lightgray,
+	middlelinewidth=2pt,
+	backgroundcolor=red!20,
+	roundcorner=10pt}
+\newenvironment{NickQuestion}[1][] %
+{\refstepcounter{NQ}
+	\begin{mdframed}[backgroundcolor=lightgray]\textbf{Nick's Question \theNQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\newenvironment{LeQuestion}[1][] %
+{\refstepcounter{LQ}
+	\begin{mdframed}[backgroundcolor=red!10]\textbf{Le's Question \theLQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\newenvironment{ZhijianQuestion}[1][] %
+{\refstepcounter{ZQ}
+	\begin{mdframed}[backgroundcolor=blue!10]\textbf{Zhijian's Question \theZQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\numberwithin{NQ}{section}
+\numberwithin{LQ}{section}
+\numberwithin{ZQ}{section}
+
+\usepackage[notref,notcite]{showkeys}
+
+\title{Nick Eisenberg's Meeting Notes}
+\author{Le Chen, Nick Eisenberg, Zhijian Wu}
+\date{October 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+% }}}
+
+
+
+\usepackage{fancyhdr}
+
+
+
+\begin{document}
+\thispagestyle{fancy}
+\fancyhf{}
+\rhead{Email : \href{mailto:nickeisenberg@gmail.com}{nickeisenberg@gmail.com} \\ Mobile : 702-354-0866}
+\lhead{  \textbf{\Huge Nicholas Eisenberg} \\ 835 N Gay Street Apt 9, Auburn, Alabama, 36830}
+\rfoot{Page \thepage}
+$\;$
+	\begin{center}	
+		\huge{\textbf{Research Statement}}
+	\end{center}
+
+\section{Overview} I am currently a PhD student studying at Auburn University under the supervision of \href{http://webhome.auburn.edu/~lzc0090/}{Dr. Le Chen} and I will be defending my thesis in August 2022. Overall, my research deals with a space-time fraction stochastic partial differential equation driven by some type of Gaussian noise which varies depending on the problem in question. I will refer this equation as the Interpolated Stochastic Heat and Wave Equation (ISHWE),
+	\begin{equation}
+	\label{E:ISHWE}
+		\begin{cases}
+		\left(\partial^\beta_t + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)\: u(t,x) = I^\gamma_t \left[\sigma( u(t,x)) \: \dot W(t,x) \right] & \text{$x\in \R^d$, $t>0$} \\
+		u(0,\cdot) = u_0                                                                                                            & \beta \in (0,1]               \\
+		u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & \beta \in (1,2).
+		\end{cases}
+	\end{equation}
+The ISHWE interpolates the well known Stochastic Wave and Stochastic Heat Equations, SWE and SHE respectively, in the sense that when we let $\alpha = \beta =2$ and $\gamma =0$ then we recover the SWE and when $\alpha =2$ and $\beta=1$ and $\gamma =0$ then we recover the SHE. I have worked on problems that have dealt with proving existence and uniqueness of the solution, deriving the exact blow-up time for a local solution, proving the existence of invariant measures to the laws of the solution, deriving exact moment asymptotics, and proving regularity of the solution.   
+
+\section{Past Thesis Projects}
+\subsection{Invariant Measures of the SHE}
+\hspace{\parindent} My first project dealt with proving the existence of an invariant measure to the Stochastic Heat Equation,
+	\begin{equation}
+	\label{E:SHE}
+		\begin{cases}
+		\dfrac{\partial u}{\partial t}(t,x)-\frac{1}{2}\Delta_x u(t,x) = \sigma(u(t,x))\dot W(t,x) & 	\text{$x\in \R^d$ , $t>0$}
+		\\ u(0,x)=\mu(x) ,
+		\end{cases}
+	\end{equation}
+where $\sigma$ is globally Lipschitz satisfying 
+	\[
+		L_\sigma := \sup_{x\in \R^d} \frac{|\sigma(x)|}{|x|} < \infty 
+	\]
+and the measure $\mu$ satisfies some integrability conditions given below in Theorem \ref{T:InvMeasDelta}. The noise $\dot{W}$ is a Gaussian noise that is white in time and colored in space with spatial correlation function $f$. In formally speaking, this means 
+	\[
+		\mathbb{E}\left(\dot{W}(t,x)\dot{W}(t,z)\right) = \delta_0(t-s)f(x-z)
+	\]
+where $\delta_0$ is the Dirac delta distribution. See \cite[pg. 51]{DalangEtc09Minicourse} for more details. 
+
+The question of the existence of invariant measures in unbounded domains with dimension $d \ge 3$ has been handled in few papers such as \cite{TessitoreZabczyk98M, AM03, MSY15, MSY16}. One thing to note is that the just mentioned papers use the theory of the stochastic integral laid out by Da Prato and Jabczyk in \cite{DZ92} while in my work we used the theory developed by Walsh \cite{Walsh}. The former develops a theory of integration with respect to Hilbert-space-valued processes while the later emphasizes integration with respect to worthy martingale measures. The choice of either theory is one of mathematical convince as both have been proven to be equivalent  \cite{DalQuer}.
+
+To make a quick mention about the requirement, $d \ge 3$. Chen and Kim \cite[Theorem 1.3]{CK15SHE} proved that a phase transition to the solution of \eqref{E:SHE} happens if and only if $d \ge 3$. In other words, in dimensions $d=1$ and $d=2$, the solution to \eqref{E:SHE} will exhibit exponential growth in time no matter how we control the coefficient $\rho(x)$. In order to prove the existence of an invariant measure, we will need to require that the second moments to the solution of \eqref{SHE} be bounded in $t$ and this forces us to require $d \ge 3$.   
+
+Da Prato and Jabczyk have \cite{DZ96} established the following procedure
+	\begin{itemize}
+		\item Show the existence of a Markovian solution to the SPDE in question in a certain function space where the
+	transition group satisfies the Feller Property
+		\item Show that the solution starting from a particular initial condition is bounded in probability
+	\end{itemize}
+Da Prato and Zabczyk \cite{DZp92} have also shown that the first bullet point is true for a wider class of SPDEs which includes \eqref{E:SHE}. Zabczyk and Tessitore \cite{TessitoreZabczyk98M} follow this procedure to show the existence of an invariant measure for the laws of the solution solutions to \eqref{E:SHE} in two separate cases:
+\begin{enumerate}
+	\item The initial measure is a function, $\varphi \in L^2_\rho \cap L^2_{\hat\rho}$ where both $\rho$ and
+	$\hat\rho$ satisfy the condition that $\rho \cdot (\hat\rho)^{-1} \in L^1(\R^d)$ and the solution is
+	bounded in probability.
+	\item The initial measure is a constant function while assuming certain integrability properties of the spectral
+	density.
+\end{enumerate}
+By now using the theory of Walsh and a very important bound on $\mathbb{E}{|u(t,x)|^2}$ given by Chen \cite{CH16Comparison}, we are able to mimic the proof in \cite{TessitoreZabczyk98M}, but in the language of Walsh, and show the existence of an invariant measure for a more broad group of initial conditions, which includes the Dirac delta distribution $\delta_0$. 
+	\begin{theorem}
+	\label{T:InvMeasDelta}
+Assume $d \ge 3$ and that the initial measure $\mu$ satisfies the following integrability condition for any $t>0$:
+		\begin{equation}
+		\label{A:InvAssumpMeas}
+			 \sup_{x\in \R^d}	\big(G(t,\cdot)*|\mu|)(x) \big) < \infty,
+		\end{equation}
+and that the spectral measure $\hat{f}$ satisfies both 
+		\begin{equation}
+		\label{A:InvAssumpSpec}
+			\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{|\xi|^2} < \infty, \quad \text{and} \quad \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) < \infty.
+		\end{equation}
+Now consider any pair of admissible weights $\rho$ and $\hat{\rho}$ such that
+			\[
+				\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty.
+			\]
+Then the solution, $u(t,x)$, of \eqref{E:SHE} starting from $\mu$ satisfies 
+	\begin{enumerate}
+		\item $u(t,\cdot) \in L^2_{\rho}(\R^d) \cap L^2_{\hat \rho}(\R^d)$
+		\item $u_{t_0}(t,x) := u(t+t_0,x)$ is bounded in probability in $L^2_{\rho}(\R^d) $
+	\end{enumerate} 
+In return, there exists an invariant measure for the laws of the solution, $\{\mathscr L (u(t,\cdot))\}_{t \ge t_0}$,  in $L^2_\rho(\R^d)$.
+	\end{theorem}
+
+\subsection{Solvability and Exact Moment Asymptotics for the ISHWE \cite{CE21}}
+\hspace{\parindent} In the project, we studied the the ISHWE with constant one initial condition:
+	\begin{equation}
+	\label{E:ISHWEone}
+		\begin{cases}
+		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sigma( u(t,x)) \: \dot W(t,x) \right] & \text{$x\in \R^d$, $t>0$} \\
+		u(0,\cdot) = 1                                                                                                            & \beta \in (0,1]               \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & \beta \in (1,2)
+		\end{cases}
+	\end{equation}
+where $a \in (0,2]$, $b \in (0,2)$, $r\ge 0$, $\nu > 0$ and $\theta>0$. The fractional operators $\partial^b_t$, $(-\Delta)^{a/2}$ and $I^r_t$ respectively denote the Caputo derivative, the fractional Laplacian and the Riemann Liouville fractional integral. The noise $\dot{W}$ is a time-independent multiplicative Gaussian noise, in other words, $\mathbb{E}\left[ W(\phi) W(\psi) \right] = \int_{\R^d} \mathcal{F}\phi(\xi)\mathcal{F}\psi(\xi) \mu(\ud \xi)$, were $\mu$ is the spectral measure with density given as $\mu(\ud \xi) = \varphi(\xi)  \ud \xi$, and $\varphi(\xi) = \prod_{i=1}^k C(\alpha_i,d_i)|\xi_{(i)}|^{d_i-\alpha_i}$. We now define the mild solution to \eqref{E:ISHWEone}.
+\begin{definition}[Mild, local and global solutions]
+	\label{D:ISHWEoneSol}
+	(1) For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
+	called {\it a mild solution} to the equation \eqref{E:ISHWEone} if for all $x\in\R^d$ and $s,t$ fixed
+	with $0<s\le t <T$, $y\to G(t-s,x-y)u(s,y)$ is Skorohod integrable and the following stochastic
+	integral equation holds almost surely
+	\begin{equation}
+	\label{E:IntEq}
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s,
+	\end{equation}
+	where $G$ is the Green's function of the deterministic version of \eqref{E:ISHWEone}, ie when $\sigma( u(t,x)) \: \dot W(t,x)$ is replaced by a nice deterministic function.
+	
+	\noindent (2) Let $u(t,x)$ be a mild solution to \eqref{E:ISHWEone} (or \eqref{E:IntEq}) and fix $p\ge 1$. We call $u(t,x)$ a {\it global $L^p(\Omega)$-solution}, or simply an {\it $L^p(\Omega)$-solution} if $\Norm{u(t,x)}_p < \infty$ for all $t>0$ and $x \in \R^d$. 
+	
+	\noindent (3) If there exist $0<T_1\le T_2<\infty$ such that $\Norm{u(t,x)}_p$ is finite for all
+	$t\in(0,T_1)$ and $x\in\R^d$, but $\Norm{u(t,x)}_p$ diverges to infinity whenever $t>T_2$, the mild
+	solution $u(t,x)$ in this case is called a {\it local $L^p(\Omega)$-solution}.
+\end{definition}
+
+Because of the constant one initial condition, we are able to apply a Piccard iteration scheme to suggest that $u(t,x)$ and $\mathbb{E}(|u(t,x)|^2)$ should be given as the following:
+	\begin{equation}
+	\label{E:ISHWEoneSol2mom}
+			u(t,x) = 1 + \sum_{k \ge 1}\theta^{k/2}I_k(f_k(\cdot,x,t)), \quad \text{and} \quad 	\mathbb{E}(|u(t,x)|^2) = \sum_{k \ge 0} \theta^k k! \Norm{\tilde{f}(\cdot,x,t)}^2_{\mathcal{H}^{\otimes k }},
+	\end{equation}
+where $I_k : \mathcal{H}^{\otimes k}\left((\R^d)^k\right) \to \mathcal{H}_k$ is the $k^{th}$ order Skorohod integral and $\mathcal{H}_k$ is the $k^{th}$ Wiener chaos space and the kernels $f_k(\cdot,x,t)$ are obtained through the iteration to be
+	\[
+			f_n(x_1,...,x_k;x,t) = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n.
+	\]
+This is made legitimate in the next Theorem. 
+	\begin{theorem}[\normalfont {\cite[Theorem 1.6]{CE21}}]
+	\label{T:ISHWEoneSolv}  
+We assume some mild assumptions on the parameters of \eqref{E:ISHWEone} which guarantees the non-negativity of $G(t,x)$. This assumption does not exclude the SHE and SWE.
+
+\noindent (1) \eqref{E:ISHWEone} has a unique (global) solution $u(t,x)$, given in \eqref{E:ISHWEoneSol2mom}, in $L^p(\Omega)$ for all $p \ge 2$,
+$t>0$, and $x \in \R^d$ provided that
+	\begin{equation}
+	\label{E:alpha}
+	0< \alpha < \min\left( \frac{a}{b}\left[2(b+r)-1\right], 2a, d \right).
+	\end{equation}
+		
+\noindent (2) Otherwise, if
+	\begin{align}
+	\label{E:critical}
+		r\in \left[0,1/2\right) \qquad \text{and} \qquad
+		0<\alpha = \frac{a}{b}[2(b+r)-1] \le d,
+	\end{align}
+then \eqref{E:ISHWEone} has a local solution in the sense that
+		\begin{enumerate}
+			\item[(2-i)] For any $p\ge 2$, \eqref{E:ISHWEone} has a unique solution $u(t,x)$ in $L^p(\Omega)$ for
+			all $p \ge 2$ and $x \in \R^d$, but only for $t\in (0, T_p)$ where
+			\begin{align}
+			\label{E:Tp}
+			T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}.
+			\end{align}
+			\item[(2-ii)] For any $t>T_2$, the series defining $\mathbb{E}\left(|u(t,x)|^2\right)$ in \eqref{E:ISHWEoneSol2mom} diverges, that is, the $L^2(\Omega)$-solution $u(t,x)$ to \eqref{E:ISHWEone} does not exist whenever $t>T_2$.
+		\end{enumerate}
+	\end{theorem}
+
+The constant $\mathcal{M}_a$ is defined in \cite[Equation (3.11)]{CE21} and is shown to be finite in Theorem 3.5 {\it (ibid.)}. The second main result of this project deals with finding an exact formula the asymptotic behavior of the moments of the solution. 
+
+\begin{theorem}[\normalfont {\cite[Corollary 1.8]{CE21}}]
+Under the assumptions of Theorem \ref{T:ISHWEoneSolv} and if we assume \eqref{E:alpha}, then
+	\begin{enumerate}
+		\item  For all $p\ge 2$ fixed, it holds that
+		\begin{align}
+		\label{E:momentasym-t}
+		\begin{aligned}
+		\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) = &  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+		& \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right);
+		\end{aligned}
+		\end{align}
+		\item For all $t>0$ fixed, it holds that
+		\begin{align}
+		\label{E:momentasym-p}
+		\begin{aligned}
+		\lim_{p \to \infty} p^{-\beta} \log \E\left(|u(t,x)|^p\right) = & t^\beta \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+		& \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\end{aligned}
+		\end{align}
+	\end{enumerate}
+\end{theorem}
+
+It is important to know that under the case of the SWE, ie $a=b=2$ and $r=0$ then our results recover the work of Balan {\it et al} \cite{BCC21} and under the case of the SHE, ie $a=2$, $b=1$ and $r=0$ our results recover the work of Chen \cite[Theorem 1.1 and Theorem 1.2]{Chen19AIHP}] when we set $\alpha_0=0$. 
+
+\section{Current Thesis Project}
+\subsection{Solvability of the ISHWE With Superlinear Diffusion Term}
+My current project deals with proving the existence and uniqueness of global solutions to \eqref{E:ISHWE} with a super-linear diffusion term $\sigma$ that satisfies the following growth condition: as $|x| \to \infty$,
+\begin{equation}
+|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+\end{equation}
+where $\sigma_1 = c(\sigma) = \sigma(0)$. The work is an extension of Millet and Sanz-Sol\'e \cite{SoleMillet2021}. It is often the case that blow of the solution to SPDE's will occur when considering a super-linear diffusion coefficient. For example, Asogwa {\it et al} \cite{AMN19} study \eqref{E:ISHWE} where $\beta \in (0,1]$, $\alpha \in (0,2)$, and $\gamma = 1- \beta$. They prove in Theorem 1.2 that blow up will occur in finite time when the diffusion coefficient has super linear growth and is bounded below by a non-zero constant. The techniques in their paper can also be easily adapted \eqref{E:ISHWE} for $\beta \in (0,2)$, $\alpha \in (0,2)$ and $\gamma >0$.
+
+In this project, we require the initial conditions, $u_0$ and $v_0$, to be bounded bounded Borel functions and the noise $\dot{W}$ may either be space-time white or white in time and colored in space. When the noise is colored in space, we take the correlation function to be the Riesz kernel. As of now, I have more or less completed the case of space-time white noise but the same techniques should also apply to the colored noise case as well. 
+
+I will now outline the steps, proving the existence of a global solution to \eqref{E:ISHWE} driven by space-time white noise. We first consider the case where the diffusion coefficient $\sigma$ is globally Lipschitz. In this case, existence and uniqueness is proven in \cite[Theorem 3.1]{CHN19}. The first step was to prove the next proposition. We note that this H\''older regularity proven in Proposition \ref{P:Holder} below recovers \cite[Theorem 1.9]{FN2016}.
+
+	\begin{proposition}
+	\label{P:Holder}
+	Suppose that $u_0=1$ and $v_0=0$ and $\Theta:= 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\}$. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$ where $0< \theta < (\Theta -1) \wedge 2$ and
+	\begin{enumerate}
+		\item $0< q \le \rho$ under when $0<\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$,
+		\item $0 < q < \rho$ under $0<\alpha <2$ and $0 < \beta <2$.
+	\end{enumerate}
+	Moreover, if we consider
+	\[
+	a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+	\]
+	where $K$ is specific constant whose definition at the moment is unimportant, then we have that for any $R >0$, 
+	\[
+	\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+	\]
+\end{proposition}
+
+After proving this proposition, we can consider proving the existence of a global solution to \eqref{E:ISHWE} with a super-linear diffusion coefficient that as $|x| \to \infty$,
+	\begin{equation}
+	\label{C:SigSupLin}
+		|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta}.
+	\end{equation}
+where $\sigma_1 = c(\sigma) = \sigma(0)$. What we do now is truncate $\sigma$ in following sense:
+	\[
+		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+	\]
+This can also be done analogously in higher dimensions. For each $N$, $\sigma_N$ is globally Lipschitz and so for each $N$ we have the solution $u_N(t,x)$ where $u_N$ is the solution to \eqref{E:ISHWE} with $\sigma$ replaced my $\sigma_N$. If we define $\tau_N$ to be the following stopping time,
+	\begin{equation}
+		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T,
+	\end{equation}
+then through a bit of analysis we deduce that $\tau_N \uparrow \infty$ as $N \to \infty$ and that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Lastly, we define on each $\{ t < \tau_N \}$, $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$. A little more analysis shows that $u$ is a global solution to \eqref{E:ISHWE}. Thus we have our next theorem. 
+
+	\begin{theorem}
+		Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$ and $T>0$, there exists a random field solution to \eqref{E:ISHWE} in $[-M,M]^d$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
+	\begin{equation}
+		\sup_{t\in[0,T],\; |x| \le M} |u(t,x)| < \infty, a.s.
+	\end{equation}
+	\end{theorem}
+
+One last thing to note here is that the solution $u$ constructed in the above theorem in not defined in $L^2(\Omega)$. In order to define $u$, we use an extension of the Walsh integral which can be found in \cite{DalangSoleBook}
+
+\section{Future Projects}
+\addcontentsline{toc}{section}{Bibliography}
+\begin{thebibliography}{999}
+	%sample citation
+	%\bibitem{Nualart18Book}% {{{ 20.
+	%Nualart D. and Nualart E. (2018).
+	%\newblock {\em Introduction to Malliavin Calculus}.
+	%\newblock Cambridge University Press.
+	% }}}
+	
+	\bibitem{AM03}
+	Assing, Sigurd and Ralf Manthey.
+	\newblock Invariant measures for stochastic heat equations with unbounded coefficients.
+	\newblock {\it Stochastic Process. Appl.} 103 (2003), no. 2, 237--256.
+	
+	\bibitem{AMN19}
+	Asogwa, M., Mijena, J., and Nane, E. (2019)
+	\newblock Blow-Up Results for Space-Time Fractional Stochastic Partial Differential Equations.
+	\newblock {\it Potential Analysis} (2020) 53: 357 -- 386. 
+	
+	\bibitem{BCC21} % {{{ 1.
+	Balan, R. M., Chen, L., and Chen, X. (2021).
+	\newblock Exact asymptotics of the stochastic wave equation with time-independent noise.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat. }, to appear.
+	
+	\bibitem{Chen19AIHP}% {{{ 10.
+	Chen X. (2019).
+	\newblock Parabolic Anderson model with rough or critical Gaussian noise.
+	\newblock {\em  Ann. Inst. Henri Poincar\'e Probab. Stat.} \textbf{55}, 941--976.
+	% }}}
+	
+	\bibitem{CE21} % {{{ 1.
+	Chen, L. and Eisenberg, N. (2021).
+	\newblock Interpolating the Stochastic Heat and Wave Equations with Time-independent Noise: Solvability and Exact Asymptotics.
+	\newblock {\em  arXiv:2108.11473 }. Accepted pending revision to {\em Stochastics and  Partial Differential Equations: Analysis and Computation}.
+	
+	\bibitem{CK15SHE}
+	Chen, Le and Kunwoo Kim.
+	\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
+	\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
+	
+	\bibitem{CH16Comparison}
+	Chen, Le and Jingyu Huang.
+	\newblock Comparison principle for stochastic heat equation on $\R^d$.
+	\newblock {\em Ann.\ Probab.}  47 (2019), no. 2, 989--1035.
+	
+	\bibitem{CHN19}% {{{ 5.
+	Chen, L., Hu, Y., and Nualart, D. (2019).
+	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+	% }}}
+	
+	\bibitem{DalangSoleBook}
+	Dalang, R. and Sanz-Sol\"e, M.
+	\newblock Stochastic Partial Differential Equations.
+	\newblock Book in preparation. 
+	
+	
+	\bibitem{DalQuer}
+	Dalang, Robert C. and Llu\'is Quer-Sardanyons.
+	\newblock Stochastic integrals for spde's: a comparison.
+	\newblock {\it Expo. Math.} 29 (2011), no. 1, 67--109.
+	
+	\bibitem{DalangEtc09Minicourse} Dalang, Robert, Davar Khoshnevisan, Carl
+	Mueller, David Nualart, and Yimin Xiao
+	\newblock {\it A minicourse on stochastic partial differential equations}.
+	\newblock Held at the University of Utah, Salt Lake City, UT, May 8–19, 2006.
+	Edited by  Khoshnevisan and Firas Rassoul-Agha. Lecture Notes in Mathematics,
+	1962.
+	\newblock Springer-Verlag, Berlin, 2009. xii+216 pp.
+	
+	\bibitem{DZ92}
+	Da Prato, Giuseppe and Jerzy Zabczyk.
+	\newblock {\it Stochastic equations in infinite dimensions.}
+	Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
+	
+	\bibitem{DZp92}
+	Da Prato, Giuseppe and Jerzy Zabczyk.
+	\newblock {\it Invariant measures for semilinear stochastic equations.}
+	Stochastic Anal. Appl. 10, 387-408.
+	
+	\bibitem{DZ96}
+	Da Prato, Giuseppe and Jerzy Zabczyk.
+	\newblock {\it Ergodicity for infinite-dimensional systems. }
+	\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996.
+	
+	\bibitem{FN2016}
+	Foondun, M and Nane E. (2016)
+	\newblock{Asymptotic properties of some space-time fractional stochastic equations.}
+	\newblock{\em Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
+	
+	\bibitem{MSY15}
+	Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
+	\newblock Ito's Formula in infinite dimension and its application to the existence of invariant measures.
+	
+	\bibitem{MSY16}
+	Misiats, Oleksandr, Oleksandr Stanzhytskyi, and Nung-Kwan Yip.
+	\newblock Existence and uniqueness of invariant measures for stochastic reaction-diffusion equations in unbounded domains.
+	\newblock {\it J. Theoret. Probab.} 29 (2016), no. 3, 996--1026.
+	
+	\bibitem{SoleMillet2021}
+	Sanz-Sole, M. and Millet, A. (2021)
+	\newblock{Global solutions to stochastic wave equations with superlinear coefficients.}
+	\newblock {\em Stochastic Processes and their Applications}, Elsevier, 2021, 139, pp.175-211.
+	
+	\bibitem{TessitoreZabczyk98M}
+	Tessitore, Gianmario and Jerzy Zabczyk.
+	\newblock Invariant measures for stochastic heat equations.
+	\newblock {\it Probab. Math. Statist.} 18 (1998), no. 2, Acta Univ. Wratislav. No. 2111, 271--287.
+	
+	\bibitem{Walsh} Walsh, John B.
+	\newblock {\it An Introduction to Stochastic Partial Differential Equations}.
+	\newblock In: \`Ecole d'\`et\'e de probabilit\'es de
+	Saint-Flour, XIV---1984, 265--439.
+	Lecture Notes in Math.\ 1180, Springer, Berlin, 1986.
+\end{thebibliography}
+
+\end{document}
