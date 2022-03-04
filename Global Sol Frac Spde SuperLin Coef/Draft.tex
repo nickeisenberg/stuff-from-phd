@@ -297,7 +297,7 @@
 		Moreover for any $T>0$,
 		\begin{equation}
 		\label{E:Pnormtbdd}
-		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+		\sup_{x\in\R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
 		\end{equation}
 	\end{proposition}
 	\begin{proof}
@@ -486,7 +486,7 @@
 		This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follows directly from \eqref{E:NormInc_N(u)} and Proposition \ref{P:N(u)Bdd}. 
 	\end{proof}
 	
-	\textcolor{blue}{The holder continuity in the next proposition needs to be checked}
+	\textcolor{blue}{The holder continuity in the next proposition needs to be checked. Also I need to change the $[-R,R]$ to $|x| \le R$ in the following proof so we can consider higher dimension than $d=1$.}
 	
 	\textcolor{blue}{Check the following Holder continuity with \cite{ChenHu21}.}
 	
@@ -503,7 +503,7 @@
 		\]
 		where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then we have that 
 		\[
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
 		\]
 	\end{proposition}
 	
@@ -588,7 +588,7 @@
 		\textcolor{blue}{Are smooth functions also $\eta$-H\"older continuous for any $\eta >0$?} If we can argue as in \cite{FN2016}, then we can relax our initial conditions to be bounded measurable functions $u_0$ and $v_0$. This is also an improvement from Sanz-Sole and Millet \cite{SoleMillet2021} since they assume the initial conditions are continuous. 
 	\end{NickQuestion}
 	
-	\subsection{Existence and Uniqueness of a Global Solution with Superlinear Diffusion Coefficient}
+	\subsection{Existence of a Global Solution with Superlinear Diffusion Coefficient}
 	
 	We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
 	\begin{equation}
@@ -641,7 +641,7 @@
 		\begin{equation}
 		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
 		\end{equation}
-		The uniqueness of the solution and the \textcolor{blue}{local property of the stochastic integral} imply that $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
+		The uniqueness of the solution and the \textcolor{blue}{local property of the stochastic integral} imply that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
 		
 		We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
 		\[
@@ -991,7 +991,7 @@
 		Moreover for any $T>0$,
 		\begin{equation}
 		\label{E:ColorPMomBdd}
-		\sup_{x\in\R} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+		\sup_{x\in\R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
 		\end{equation}
 	\end{proposition}
 	
@@ -1116,7 +1116,7 @@
 		\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 		\newblock{\em arXiv:2105.00891.}
 		
-		{CHN19}% {{{ 5.
+		\bibitem{CHN19}% {{{ 5.
 		Chen, L., Hu, Y., and Nualart, D. (2019).
 		\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 		\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
