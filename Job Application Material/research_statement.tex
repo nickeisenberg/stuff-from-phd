@@ -358,6 +358,7 @@ It is important to know that under the case of the SWE, ie $a=b=2$ and $r=0$ the
 
 \section{Current Thesis Project}
 \subsection{Solvability of the ISHWE With Superlinear Diffusion Term}
+\label{S:GlobalSupLinWhite}
 My current project deals with proving the existence and uniqueness of global solutions to \eqref{E:ISHWE} with a super-linear diffusion term $\sigma$ that satisfies the following growth condition: as $|x| \to \infty$,
 \begin{equation}
 |\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
@@ -401,7 +402,7 @@ This can also be done analogously in higher dimensions. For each $N$, $\sigma_N$
 then through a bit of analysis we deduce that $\tau_N \uparrow \infty$ as $N \to \infty$ and that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Lastly, we define on each $\{ t < \tau_N \}$, $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$. A little more analysis shows that $u$ is a global solution to \eqref{E:ISHWE}. Thus we have our next theorem. 
 
 	\begin{theorem}
-		Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$ and $T>0$, there exists a random field solution to \eqref{E:ISHWE} in $[-M,M]^d$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
+		Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$ and $T>0$, there exists a random field solution to \eqref{E:ISHWE} denoted as $\{ u(t,x): (t,x) \in [0,T]\times B_M(0) \}$. This solution satisfies 
 	\begin{equation}
 		\sup_{t\in[0,T],\; |x| \le M} |u(t,x)| < \infty, a.s.
 	\end{equation}
@@ -411,20 +412,100 @@ One last thing to note here is that the solution $u$ constructed in the above th
 
 \section{Future Projects}
 \subsection{Sharp Moment Bounds for the Solution to the ISHWE}
-This project will try to generalize \cite[Lemma 2.2]{CH16Comparison} to the ISHWE. This issue that arises is the loss of the following identity: 
+
+This project will try to generalize the following lemma to the ISHWE. 
+
+	\begin{lemma}[\normalfont {\cite[Lemma 2.2]{CH16Comparison}}]
+Suppose $alpha=2$, $\beta=1$, $\gamma=0$ and $\sigma(x) = \lambda x$ in \eqref{E:ISHWE}. Suppose that the measure $\mu$ is such that $\int_{\R^d} \exp(-a|x|^2) |\mu|(\ud x) < \infty$. Denote $J_0(t,x)$ as the solution to the deterministic homogeneous SHE. Let $g:[0,\infty) \times \R^d \to [0,\infty)$ satisfy 
 	\[
-		G(s,x)G(t-s,y) = G\left( \dfrac{s(t-s)}{t}, \dfrac{sy -(t-s)x}{t} \right) G(t,x+y)
-	\] 
-The above identity is only true in the case of the SHE. 
+		\int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 G(t-s,x-y_1)G(t-s,x-y_2)f(y_1-y_2) g(s,y_1)g(s,y_2) < \infty.
+	\]
+In addition suppose,
+	\[
+		g^2(t,x) \le J_0^2(t,x) + \lambda^2\int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 G(t-s,x-y_1)G(t-s,x-y_2)f(y_1-y_2) g(s,y_1)g(s,y_2).
+	\]
+Then,
+	\[
+		g(t,x) \le (|\mu|*G(t,\cdot))(x)H(t;2\lambda^2)^{1/2}.
+	\]
+	\end{lemma}
+
+The issue that arises is the loss of the following identity for the fundamental solution of the SHE: 
+\[
+G(s,x)G(t-s,y) = G\left( \dfrac{s(t-s)}{t}, \dfrac{sy -(t-s)x}{t} \right) G(t,x+y).
+\] 
 
 \subsection{Solvability of the ISHWE With Superlinear Diffusion Term Driven by a Spatially Colored Gaussian Noise}
-This project will be a natural extension to my current project. 
+This project will be a natural extension to my current project, which was explained in Section \ref{S:GlobalSupLinWhite} above. The goal will be to prove the following results.
+
+	\begin{theorem}
+For $p \ge 2$, $T>0$ and $R>0$, there exists a series of constants $K_1$, $K_2$ and $K_3$ such that 
+	\[
+		\frac{\Norm{u(t,x)-u(s,z)}}{|x-z|^{v_1} + |t-s|^{v_2}} \le K_1\left(K_2 + K_2\exp(T a) \mathcal{N}_{a,p}(u)\right)
+	\]
+where $v_1$ and $v_2$ are to be determined and $\mathcal{N}_{a,p} = \sup_{t \ge 0, \; x \in \R^d} \exp(-at)\Norm{u(t,x)}_p$.
+	\end{theorem}
+
+	\begin{theorem}
+Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$ and $T>0$, there exists a random field solution to \eqref{E:ISHWE} driven by a spatially colored noise denoted as $\{ u(t,x): (t,x) \in [0,T]\times B_R(0) \}$. This solution satisfies 
+	\begin{equation}
+	\sup_{t\in[0,T],\; |x| \le R} |u(t,x)| < \infty, a.s.
+	\end{equation}
+\end{theorem}
 
 \subsection{ISHWE Driven by a Levy Noise}
-It has often been the case that results proven for the SWE have been able to be extended to the ISHWE. This project will aim to generalize the recent results due to Balan \cite{Balan22} to the ISHWE.
+This project will aim to generalize the recent results due to Balan \cite{Balan22} to the ISHWE. The goal will be to show existence of the solution of \eqref{E:ISHWE} driven by a L\'evy white noise, $L(A)$, defined as follows:
+	\[
+		L(A) = b|A| + \int_{A \times \{|z| \le 1\}} z \tilde{J}(\ud t, \ud x, \ud z) +    \int_{A \times \{|z| > 1\}} z J(\ud t, \ud x, \ud z)\,
+	\]
+where $A \in \mathcal{B}_0(\R_{+}\times \R^d)$ is the class of finite Lebesgue-measured sets, $|\cdot|$ denotes the Lebesgue measure and $b \in \R$. $J$ is a Poisson random measure on $\R_+ \times \R^d \times R$ and $\tilde{J}$ is the compensated version of $J$.
+
+Under the assumption that there exists $0<q\le p$ such that 
+	\[
+		\gamma_1 := \int_{|z| \le 1} |z|^p \nu(\ud z) < \infty, \quad \text{and} \quad \gamma_2 := \int_{|z|>1} |z|^q \nu(\ud z) < \infty,
+	\]
+Balan \cite{Balan22} proved the following result for the SWE.
+	\begin{theorem}
+		Assume that $\gamma_1$ and $\gamma_2$ are finite and $ p <2$ if $d=2$. Let $h(x) = 1 + |x|^\eta$ for some $d/q < \eta < (2-d(p-1))/(p-q)$. Then the truncated SWE driven by a truncated L\'evy measure,
+			\[
+				L_N(A) := b|A| + \int_{A \times \{|z| \le 1\}} z \tilde{J}(\ud t, \ud x, \ud z) +    \int_{A \times \{1 < |z| \le Nh(x)\}} z J(\ud t, \ud x, \ud z),
+			\]
+		has a unique solution denoted as $\{ u_N(t,x): t \ge 0, x\in\R^d \}$. Moreover,	
+			\[
+				\sup_{0 \le t \le T}\sup_{|x| \le R} \mathbb{E}|u_N(t,x)|^p < \infty, 
+			\]
+		for any $T>0$ and $R>0$. In $d=1$, the above supremum holds for $p \le 2$. 
+	\end{theorem}
 
 \subsection{Spatial Integral of the Solution of the ISHWE Driven by a Time-Independent Noise}
-This project will aim to generalize the recent results due to Balan and Yuan \cite{BY22} to the ISHWE.
+
+This project will aim to generalize the recent results due to Balan and Yuan \cite{BY22} to the ISHWE. In this project we will consider \eqref{E:ISHWE} driven by a time-independent Gaussian noise as was done in my previous work with Dr. Le Chen in \cite{CE21}. We will need to consider the constant 1 initial condition with 0 initial velocity: $u_0 =1$ and $v_0 =0$. As was proven in \cite[Theorem 1.6 and 3.3]{CE21}, under these conditions, there exists a unique solution that can be expressed through the following Wiener expansion:
+	\[
+		u(t,x) = 1 + \sum_{k \ge 1} I_k(f_k(\cdot,x,t)),
+	\]
+where $B_R(0)$ is the ball centered at the origin. We will want to investigate the quantity 
+	\[
+		F_R(t) := \int_{B_R(0)} u(t,x) -1 \; \ud x.
+	\]
+Balan and Yuan \cite{BY22} proved the following theorem, which will be the main focus of this future project. 
+
+	\begin{theorem}[\normalfont {\cite[Theorem 1.3]{BY22}} ]
+If $d=1$, then we take the noise to be white. If $ d >1$, then the noise will be colored with correlation function, $\gamma \in L^1(\R^d)$ which satisfies Dalang's condition. We have the following:
+	\begin{enumerate}
+		\item for any $t>0$ and $s>0$,	
+			\[
+				\mathbb{E}[F_R(t)F_R(s)] \sim K(t,s)R^d \text{ as } R\to \infty, \text{ where } K(t,x): = \omega_d \int_{\R^d} \rho_{t,s}(z) \ud z < \infty,
+			\]
+			and in particular, $\sigma_R^2(t) \sim K(t,t) R^d$ as $R \to infty$ where $\sigma_R^2 = \mathbb{E}(|F_r(t)|^2)$ and $\rho_{t,s} := \left[ (u(t,x)-1)(u(s,y)-1) \right]$,
+		\item for any $t>0$,
+			\[
+				d_{TV}\left( \frac{F_R(t)}{\sigma_R(t), Z} \right) \le C_t R^{-d/2},
+			\]
+		where $d_{TV}$ is the total variation distance and $Z$ is a standard normal random variable,
+		\item there exists a continuous modification of the process $\{R^{-d/2}F_R(t)\}_{t \ge 0}$ which converges in distribution in $C[0,\infty)$ as $R \to \infty$, to a zero-mean Gaussian processes with covariance $K(t,s)$.
+	\end{enumerate}
+	\end{theorem}
+
 
 \addcontentsline{toc}{section}{Bibliography}
 \begin{thebibliography}{999}
@@ -447,7 +528,7 @@ This project will aim to generalize the recent results due to Balan and Yuan \ci
 	
 	\bibitem{Balan22}
 	Balan, R.
-	\newblock Stochastic wave equation with Lévy white noise
+	\newblock Stochastic wave equation with L\'evy white noise
 	\newblock {\it arXiv:2111.14242}
 	
 	\bibitem{BY22}
