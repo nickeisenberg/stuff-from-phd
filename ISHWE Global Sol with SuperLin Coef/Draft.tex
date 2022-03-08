@@ -552,6 +552,7 @@
 	\end{remark}
 	
 	\begin{NickQuestion}
+	\label{Q:HolderGeneralInitial}
 		Suppose we consider bounded initial conditions $u_0$ and $v_0$. Then 
 		\begin{align*}
 		J_0(t,x) &=\begin{cases} 
@@ -586,6 +587,53 @@
 		\]
 		
 		\textcolor{blue}{Are smooth functions also $\eta$-H\"older continuous for any $\eta >0$?} If we can argue as in \cite{FN2016}, then we can relax our initial conditions to be bounded measurable functions $u_0$ and $v_0$. This is also an improvement from Sanz-Sole and Millet \cite{SoleMillet2021} since they assume the initial conditions are continuous. 
+	\end{NickQuestion}
+
+	\begin{NickQuestion}[Continue of Question \ref{Q:HolderGeneralInitial}]
+Suppose that $\beta \in (0,1]$ and that $0 \le s < t$. Then,
+	\begin{align}
+		|J(t,x) - J(s,x)| &\le \Norm{u_0}_{\infty} \int_{\R^d} | Z(t,x-y) - Z(s, x-y) | \ud y \nonumber \\
+		&= \Norm{u_0}_{\infty} |t-s| \int_{\R^d} \left| \frac{\partial}{\partial t} Z(\xi(s,t),x-y) \right| \ud y \label{E:DZnorm}
+	\end{align}
+where $s \le \xi(s,t) \le t$. Now we will calculate $\frac{\partial}{\partial t} Z(\xi(s,t),x-y)$.
+	\begin{align*}
+		\frac{\partial}{\partial t} Z(\xi(s,t),x) &= 	\frac{\partial}{\partial t} \left( \pi^{-d/2} t^{\lceil \beta \rceil - 1} |x|^{-d} H_{2,3}^{2,1}\left( \frac{|x|^\alpha}{2^{\alpha -1}\nu t^\beta} \bigg\vert \begin{matrix} (1,1) & (\lceil \beta \rceil,\beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right)  \right) \\
+		&= \frac{\partial}{\partial t} \left( \pi^{-d/2} |x|^{-d} H_{2,3}^{2,1}\left( \frac{|x|^\alpha}{2^{\alpha -1}\nu t^\beta} \bigg\vert \begin{matrix} (1,1) & (1,\beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right)  \right) \\
+		&= \pi^{-d/2} |x|^{-d} \frac{\partial}{\partial t} \left( H_{2,3}^{2,1}\left( \frac{1}{(ct)^\beta} \bigg\vert \begin{matrix} (1,1) & (1,\beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right)  \right)
+	\end{align*}
+where $ c = (2^{\alpha-1}\nu / |x|^{-\alpha})^{1/\beta}$. We now apply \cite[(2.2.6)]{Kilbas} to see that,
+	\begin{align*}
+	\pi^{-d/2} |x|^{-d} \frac{\partial}{\partial t}  H_{2,3}^{2,1} & \left( \frac{1}{(ct)^\beta} \bigg\vert \begin{matrix} (1,1) & (1,\beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right) \\  
+		&= \frac{\pi^{-d/2}|x|^{-d} }{t}  H_{3,4}^{3,1}\left( \frac{1}{(ct)^\beta} \bigg\vert \begin{matrix} (1,1) & (1,\beta) & (0, \beta) &
+			\\(1,\beta) & (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right) \\
+		&= \frac{\pi^{-d/2}|x|^{-d} }{t}  H_{3,4}^{3,1}\left( \frac{1}{(ct)^\beta} \bigg\vert \begin{matrix} (1,1) & (0, \beta) & (1,\beta) &
+			\\(1,\beta) & (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right) \\
+		& = \frac{\pi^{-d/2}|x|^{-d} }{t}  H_{2,3}^{2,1}\left( \frac{1}{(ct)^\beta} \bigg\vert \begin{matrix} (1,1) & (0, \beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right),
+	\end{align*}
+where in the last line we used \cite[(2.1.2)]{Kilbas}. Replacing $c$ above gives us that 
+	\begin{align*}
+		\frac{\partial}{\partial t} Z(\xi(s,t),x) &= \frac{\pi^{-d/2}|x|^{-d} }{t}  H_{2,3}^{2,1}\left( \frac{1}{(ct)^\beta} \bigg\vert \begin{matrix} (1,1) & (0, \beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right) \\ 
+		& = \frac{\pi^{-d/2}|x|^{-d} }{t}  H_{2,3}^{2,1}\left( \frac{|x|^{\alpha}}{2^{\alpha -1} \nu t^\beta} \bigg\vert \begin{matrix} (1,1) & (0, \beta) &
+		\\ (d/2,\alpha/2) & (1,1) & (1,\alpha/2) \end{matrix} \right).
+	\end{align*}
+We need to calculate \eqref{E:DZnorm}. In order to do this, we can calculate $\mathcal{F} \left( \frac{\partial}{\partial t} Z(\xi(s,t),\cdot) \right)(0)$. However if we examine the proof of \cite[Lemma 4.2]{CHHH16}, then is appears that 
+	\[
+		\mathcal{F} \left( \frac{\partial}{\partial t} Z(\xi(s,t),\cdot) \right)(\xi) = 
+			\frac{1}{t} H_{1,2}^{1,1}\left( 2^{-1} \nu t^\beta |\xi|^{\alpha} \bigg\vert \begin{matrix} (0,1) & 
+		\\ (0,1) & (1, \beta) \end{matrix} \right).
+	\]
+This can no longer be written as a Mittag-Leffler function since by \cite[(A.19)]{CHHH16} we would have 
+	\[
+		\frac{1}{t} H_{1,2}^{1,1}\left( 2^{-1} \nu t^\beta |\xi|^{\alpha} \bigg\vert \begin{matrix} (0,1) & 
+		\\ (0,1) & (1, \beta) \end{matrix} \right) = \frac{1}{t} E_{\beta,0}\left( - 2^{-1} \nu t^\beta |\xi|^{\alpha} \right),
+	\]
+and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to calculate \eqref{E:DZnorm} in this case. 
 	\end{NickQuestion}
 	
 	\subsection{Existence of a Global Solution with Superlinear Diffusion Coefficient}
@@ -1116,6 +1164,11 @@
 		\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 		\newblock{\em arXiv:2105.00891.}
 		
+		\bibitem{CHHH16}
+		Chen, L., Hu, G., Hu, Y. and Huang, J. (2016)
+		\newblock{Space-time fractional diffusions in Gaussian noisy environment}
+		\newblock{\it Stochastics}, 89:1, 171--206.
+		
 		\bibitem{CHN19}% {{{ 5.
 		Chen, L., Hu, Y., and Nualart, D. (2019).
 		\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
@@ -1131,6 +1184,10 @@
 		Foondun, M. and Tian, K. (2014)
 		\newblock On some properties of a class of fractional stochastic heat equations.
 		\newblock {\em arXiv:1404.6791v1}
+		
+		\bibitem{Kilbas}
+		\newblock H-Transforms: Theory and Applications 
+		\newblock{\it An International Series of Monographs in Mathematics.}
 		
 		\bibitem{Kuo}
 		Kuo, H. (2000)
