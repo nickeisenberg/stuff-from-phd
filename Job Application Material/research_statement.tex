@@ -179,7 +179,9 @@
 \begin{document}
 \thispagestyle{fancy}
 \fancyhf{}
-\rhead{Email : \href{mailto:nickeisenberg@gmail.com}{nickeisenberg@gmail.com} \\ Mobile : 702-354-0866}
+\rhead{Email : \href{mailto:nickeisenberg@gmail.com}{nickeisenberg@gmail.com}, \\
+	\href{mailto:nze0019@auburn.edu}{nze0019@auburn.edu} \\
+	Mobile : 702-354-0866}
 \lhead{  \textbf{\Huge Nicholas Eisenberg} \\ 835 N Gay Street Apt 9, Auburn, Alabama, 36830}
 \rfoot{Page \thepage}
 $\;$
@@ -187,7 +189,7 @@ $\;$
 		\huge{\textbf{Research Statement}}
 	\end{center}
 
-\section{Overview} I am currently a PhD student studying at Auburn University under the supervision of \href{http://webhome.auburn.edu/~lzc0090/}{Dr. Le Chen} and I will be defending my thesis in August 2022. Overall, my research deals with a space-time fractional stochastic partial differential equation driven by some type of Gaussian noise which varies depending on the problem in question. I will refer this equation as the Interpolated Stochastic Heat and Wave Equation (ISHWE),
+\section{Overview} I am currently a PhD student studying at Auburn University under the supervision of \href{http://webhome.auburn.edu/~lzc0090/}{Dr. Le Chen} and I will be defending my thesis in August 2022. Overall, my research deals with a space-time fractional stochastic partial differential equation driven by some type of Gaussian noise which varies depending on the problem in question. I will refer this equation as the {\it Interpolated Stochastic Heat and Wave Equation} (ISHWE),
 	\begin{equation}
 	\label{E:ISHWE}
 		\begin{cases}
@@ -196,7 +198,7 @@ $\;$
 		u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & \beta \in (1,2).
 		\end{cases}
 	\end{equation}
-The ISHWE interpolates the well known Stochastic Wave and Stochastic Heat Equations, SWE and SHE respectively, in the sense that when we let $\alpha = \beta =2$ and $\gamma =0$ then we recover the SWE and when $\alpha =2$ and $\beta=1$ and $\gamma =0$ then we recover the SHE. I have worked on problems that have dealt with proving the existence and uniqueness of a solution, deriving the exact blow-up time for a local solution, proving the existence of invariant measures of the solution, deriving exact moment asymptotics, and proving regularity of the solution.   
+The ISHWE interpolates the well known {\it Stochastic Wave and Stochastic Heat Equations}, SWE and SHE respectively, in the sense that when we let $\alpha = \beta =2$ and $\gamma =0$ then we recover the SWE and when $\alpha =2$ and $\beta=1$ and $\gamma =0$ then we recover the SHE. I have worked on problems that have dealt with proving the existence and uniqueness of a solution, deriving the exact blow-up time for a local solution, proving the existence of invariant measures of the solution, deriving exact moment asymptotics, and proving regularity of the solution.   
 
 \section{Past Thesis Projects}
 \subsection{Invariant Measures of the SHE}
@@ -455,7 +457,18 @@ Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ sa
 	\end{equation}
 \end{theorem}
 
-\subsection{ISHWE Driven by a Levy Noise}
+To overcome the introduction of the spatially correlation, we have the following lemma which will be useful.  
+	\begin{lemma}
+	\label{L:intYfYbdd}
+	Suppose that the spatial correlation function is given to be the Riesz Kernel, $f(x) = x^{-\lambda}$, and that $\lambda < 2\alpha$. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
+	\begin{equation}
+	\label{E:YYfBdd}
+	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C K_f \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
+	\end{equation}
+\end{lemma}
+
+Using this lemma we will be able to prove an analogous result as \cite[Proposition 4.4]{SoleMillet2021} which was key to complete the project in the space-time white noise case. 
+\subsection{ISHWE Driven by a L\'evy Noise}
 This project will aim to generalize the recent results due to Balan \cite{Balan22} to the ISHWE. The goal will be to show existence of the solution of \eqref{E:ISHWE} driven by a L\'evy white noise, $L(A)$, defined as follows:
 	\[
 		L(A) = b|A| + \int_{A \times \{|z| \le 1\}} z \tilde{J}(\ud t, \ud x, \ud z) +    \int_{A \times \{|z| > 1\}} z J(\ud t, \ud x, \ud z)\,
