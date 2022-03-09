@@ -1154,6 +1154,59 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 		\end{align*}
 		Its easy to see that \eqref{E:ColorPMomBdd} follows directly from \eqref{E:ColorNbdd}. 
 	\end{proof}
+
+	\begin{proposition}[\normalfont { \cite[Proposition 4.8]{SoleMillet2021} }]
+	Statement...
+	\end{proposition}
+
+	\begin{proof}
+By the Burkholder Davies Gundy inequality, we have that 
+	\begin{align*}
+		\Norm{ I(t,x)-I(t,z) }_p^2 &\le 4p \Norm{ \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 f(y_1-y_2) \prod_{i=1}^2 (G(t-s,x-y_i) - G(t-s, z-y_i)\sigma(u(s,y_i)) }_{p/2} \\
+		& =: 4p \Norm{ Q }_{p/2} 
+	\end{align*}
+We now reorganize the integrand of $Q$ above by following \cite[Theorem 3.1]{HHN13}. By expanding the integrand of $Q$, we get that 
+	\begin{align*}
+		Q & =  \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,x-y_1) G(t-s, x-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  G(t-s,x-y_1) G(t-s, z-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  G(t-s,z-y_1) G(t-s, x-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2))  \\
+		& \quad + \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  G(t-s,z-y_1) G(t-s, z-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
+		& =: I_1 + I_2 + I_3 + I_4.
+	\end{align*}
+We now introduce the following notation:
+	\begin{align*}
+	\Sigma_x(s,y) &= \sigma(u(s,x-y)), \quad \Sigma_{x,z}(s,y) = \sigma(u(s,x-y)) - \sigma(u(s,z-y)), \\
+	h_1(s,y_1,y_2) &= f(y_1,y_2) \Sigma_{x,z}(s,y_1)  \Sigma_{x,z}(s,y_2) \\
+	h_2(s, y_1, y_2) &= [f(y_1 - y_2 + \xi) - f(y_1 - y_2)] \Sigma_x(s,y_2) \Sigma_{x,z}(s,y_2) \\ 
+	h_3(s, y_1, y_2) &= h_2(s, y_2, y_1) \\
+	h_4(s, y_1, y_2) &= [2f(y_1- y_2) - f(y_1 - y_2 + \xi) - f(y_1 - y_2 - \xi)]\Sigma_{x}(s,y) \Sigma_{x}(s,z).
+	\end{align*}
+With this notation along with a change of variables, we rewrite $I_1$ through $I_4$ as the following:
+	\begin{align*}
+		I_1 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2)\Sigma_x(s,y_1)\Sigma_x(s,y_2) \\
+		I_2 &= - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_z(s,y_2) \\
+		&= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_{x,z}(s,y_2) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
+		I_3 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_2)\Sigma_{x,z}(s,y_1) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
+		I_4 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2)\Sigma_z(s,y_1)\Sigma_z(s,y_2) \\
+		& = \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2)(\Sigma_{x,z}(s,y_1)-\Sigma_{x}(s,y_1)(\Sigma_{x,z}(s,y_2) - \Sigma_{x}(s,y_2)),
+	\end{align*}
+where above $I_3$ is derived in the same way $I_2$ was derived. Now if we expand $I_4$ and regroup all the terms in $I_1 + \cdots I_4$, we get that 
+	\begin{equation}
+		Q = \sum_{i=1}^4 Q_i
+	\end{equation}
+where
+	\begin{equation}
+	Q_i = \int_0^t \iint_{\R^{2d}} \ud y_1 \ud y_2 G(t-s,y_1)G(t-s,y_2) f(y_1-y_2) h_i(s, y_1, y_2).
+	\end{equation}
+Thus 
+	\[
+		\Norm{ I(t,x)-I(t,z) }_p^2 \le 4p \sum_{i=1}^4 \Norm{Q_i}_{p/2}.
+	\]
+We now estimate each $\Norm{Q_i}_{p/2}$ separately.  
+	\end{proof}
+
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{999}
 		%sample
@@ -1191,6 +1244,12 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 		Foondun, M. and Tian, K. (2014)
 		\newblock On some properties of a class of fractional stochastic heat equations.
 		\newblock {\em arXiv:1404.6791v1}
+		
+		\bibitem{HHN13}
+		Hu, Y., Huang, J. and Nualart, D. (2013)
+		\newblock On H ̈older continuity of the solution of stochastic wave
+		equations
+		\newblock {\it arXiv:1308.6607v1}
 		
 		\bibitem{Kilbas}
 		\newblock H-Transforms: Theory and Applications 
