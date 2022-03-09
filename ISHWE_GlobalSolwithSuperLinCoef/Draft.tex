@@ -742,7 +742,7 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 	\] 
 	where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
 	\[
-	f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
+	f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \varphi(x):= \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
 	\]
 	where
 	\[
@@ -1155,6 +1155,27 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 		Its easy to see that \eqref{E:ColorPMomBdd} follows directly from \eqref{E:ColorNbdd}. 
 	\end{proof}
 
+We now state a lemma which will be used later on. 
+
+	\begin{lemma}
+Let $\phi$ and $\psi$ be bounded Borel functions. Then for $s,t > 0$ and $z \in \R^d$ we have,
+	\begin{align}
+		\iint_{\R^{2d}} \ud x \ud y \; \phi(x) Y(t,x) \psi(y) Y(s,y) f(x-y +z) = (2\pi)^{-d} \int_{\R^d} \mathcal{F}(\phi Y(t,\cdot))(\xi) \overline{\mathcal{F}(\psi Y(t,\cdot))(\xi)} e^{-iz \cdot \xi} \mu(\ud \xi)
+	\end{align}
+	\end{lemma}
+	\begin{proof}
+For notation, define $Y_\phi(t,x) = \phi(x)Y(t,x)$ and $Y_\psi(t,x) = \phi(x)Y(t,x)$. The boundedness and measureability of $\phi$ and $\psi$ guarantees the existence of $\mathcal{F}Y_\phi$ and $\mathcal{F}Y_\psi$. Thus we have,
+	\begin{align*}
+		\iint_{\R^{2d}} \ud x \ud y \; Y_{\phi}(t,x) Y_{\psi}(s,y) f(x-y +z) &= 	\int_{\R^{d}} \ud x \; Y_{\phi}(t,x) (Y_{\psi}(s,\cdot)*f(\cdot + z)) (x).
+	\end{align*}		
+Parseval's identity implies that 
+	\begin{align*}
+		\int_{\R^{d}} \ud x \; Y_{\phi}(t,x) (Y_{\psi}(s,\cdot)*f(\cdot + z)) (x) & = (2 \pi)^{-d}\int_{\R^{d}} \ud \xi \; \mathcal{F}(Y_{\phi}(t,\cdot))(\xi) \overline{\mathcal{F}((Y_{\psi}(s,\cdot))(\xi) \mathcal{F}(f(\cdot + x))} \\
+		&= (2 \pi)^{-d}\int_{\R^{d}} \mu(\ud \xi) \; \mathcal{F}(Y_{\phi}(t,\cdot))(\xi) \overline{\mathcal{F}((Y_{\psi}(s,\cdot))(\xi)} e^{-ix\cdot\xi},
+	\end{align*}
+where $\mu(\ud \xi) = \varphi(\xi) \ud \xi$. This completes the proof. 
+	\end{proof}
+
 	\begin{proposition}[\normalfont { \cite[Proposition 4.8]{SoleMillet2021} }]
 	Statement...
 	\end{proposition}
@@ -1162,18 +1183,18 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 	\begin{proof}
 By the Burkholder Davies Gundy inequality, we have that 
 	\begin{align*}
-		\Norm{ I(t,x)-I(t,z) }_p^2 &\le 4p \Norm{ \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 f(y_1-y_2) \prod_{i=1}^2 (G(t-s,x-y_i) - G(t-s, z-y_i)\sigma(u(s,y_i)) }_{p/2} \\
+		\Norm{ I(t,x)-I(t,z) }_p^2 &\le 4p \Norm{ \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 f(y_1-y_2) \prod_{i=1}^2 (Y(t-s,x-y_i) - Y(t-s, z-y_i)\sigma(u(s,y_i)) }_{p/2} \\
 		& =: 4p \Norm{ Q }_{p/2} 
 	\end{align*}
 We now reorganize the integrand of $Q$ above by following \cite[Theorem 3.1]{HHN13}. By expanding the integrand of $Q$, we get that 
 	\begin{align*}
-		Q & =  \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,x-y_1) G(t-s, x-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
-		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  G(t-s,x-y_1) G(t-s, z-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
-		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  G(t-s,z-y_1) G(t-s, x-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2))  \\
-		& \quad + \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  G(t-s,z-y_1) G(t-s, z-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
+		Q & =  \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,x-y_1) Y(t-s, x-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  Y(t-s,x-y_1) Y(t-s, z-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  Y(t-s,z-y_1) Y(t-s, x-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2))  \\
+		& \quad + \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \;  Y(t-s,z-y_1) Y(t-s, z-y_2)f(y_1-y_2)\sigma(u(s,y_1))\sigma(u(s,y_2)) \\
 		& =: I_1 + I_2 + I_3 + I_4.
 	\end{align*}
-We now introduce the following notation:
+Now let $\xi = x-z$ and consider the following notation:
 	\begin{align*}
 	\Sigma_x(s,y) &= \sigma(u(s,x-y)), \quad \Sigma_{x,z}(s,y) = \sigma(u(s,x-y)) - \sigma(u(s,z-y)), \\
 	h_1(s,y_1,y_2) &= f(y_1,y_2) \Sigma_{x,z}(s,y_1)  \Sigma_{x,z}(s,y_2) \\
@@ -1183,14 +1204,14 @@ We now introduce the following notation:
 	\end{align*}
 With this notation along with a change of variables, we rewrite $I_1$ through $I_4$ as the following:
 	\begin{align*}
-		I_1 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2)\Sigma_x(s,y_1)\Sigma_x(s,y_2) \\
-		I_2 &= - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_z(s,y_2) \\
-		&= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_{x,z}(s,y_2) \\
-		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
-		I_3 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_2)\Sigma_{x,z}(s,y_1) \\
-		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
-		I_4 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2)\Sigma_z(s,y_1)\Sigma_z(s,y_2) \\
-		& = \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; G(t-s,y_1) G(t-s, y_2)f(y_1-y_2)(\Sigma_{x,z}(s,y_1)-\Sigma_{x}(s,y_1)(\Sigma_{x,z}(s,y_2) - \Sigma_{x}(s,y_2)),
+		I_1 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)\Sigma_x(s,y_1)\Sigma_x(s,y_2) \\
+		I_2 &= - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_z(s,y_2) \\
+		&= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_{x,z}(s,y_2) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
+		I_3 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_2)\Sigma_{x,z}(s,y_1) \\
+		& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
+		I_4 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)\Sigma_z(s,y_1)\Sigma_z(s,y_2) \\
+		& = \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)(\Sigma_{x,z}(s,y_1)-\Sigma_{x}(s,y_1)(\Sigma_{x,z}(s,y_2) - \Sigma_{x}(s,y_2)),
 	\end{align*}
 where above $I_3$ is derived in the same way $I_2$ was derived. Now if we expand $I_4$ and regroup all the terms in $I_1 + \cdots I_4$, we get that 
 	\begin{equation}
@@ -1198,14 +1219,22 @@ where above $I_3$ is derived in the same way $I_2$ was derived. Now if we expand
 	\end{equation}
 where
 	\begin{equation}
-	Q_i = \int_0^t \iint_{\R^{2d}} \ud y_1 \ud y_2 G(t-s,y_1)G(t-s,y_2) f(y_1-y_2) h_i(s, y_1, y_2).
+	Q_i = \int_0^t \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,y_1)Y(t-s,y_2) f(y_1-y_2) h_i(s, y_1, y_2).
 	\end{equation}
 Thus 
 	\[
 		\Norm{ I(t,x)-I(t,z) }_p^2 \le 4p \sum_{i=1}^4 \Norm{Q_i}_{p/2}.
 	\]
 We now estimate each $\Norm{Q_i}_{p/2}$ separately.  
-	\end{proof}
+
+\textit{Upper bound for $Q_1$:} Using the Lipschitz property of $\sigma$, Minkowski's inequality and the triangle inequality gives is 
+	\begin{align*}
+		\Norm{Q_1}_{p/2} &\le L(\sigma)^2 \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2) f(y_1 - y_2) \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
+		& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} \int_0^t \ud s \; (t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha} \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
+		& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} (t)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}\int_0^t \ud s \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right],
+	\end{align*} 
+where the second inequality above follows from Lemma \ref{L:intYfYbdd}.
+\end{proof}
 
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{999}
