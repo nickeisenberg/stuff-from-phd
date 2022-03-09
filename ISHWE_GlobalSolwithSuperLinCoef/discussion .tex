@@ -1,0 +1,253 @@
+% \documentclass[a4paper,12pt]{article}{{{
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------\left( \left[ \frac{a-d}{2}\right]q + p \right)
+% Load Packages here
+% -------------------------------------------------
+%\usepackage{hyperref}
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{question}{Question}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\} }}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw} }}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
+
+\def\crtL{\theta}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+
+\usepackage[notref,notcite]{showkeys}
+
+\title{Nick Eisenberg's Meeting Notes}
+\author{Le Chen, Nick Eisenberg, Zhijian Wu}
+\date{October 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+% }}}
+\begin{document}
+
+\begin{question}[Norm increments in time and space.]
+	If we want to keep the more general initial conditions $u_0$ and $v_0$ then we need to find an upper bound of the following form:
+	\[
+		\int_{\R}|G(s,z-y) - G(t,x-y)| \ud y \le C(T)(|s-t|+|z-x|) \quad \text{for } t \in [0,T] \text{ and } x,z \in \R.
+	\]
+	To simplify this at first we can look at both 
+	\begin{align}
+		\label{E:HGspace} & \int_{\R}|G(t,z-y) - G(t,x-y)| \ud y \\
+		\label{E:HGtime} & \int_{\R}|G(s, x-y) - G(t,x-y)| \ud y 
+	\end{align}
+	and in addition consider the Heat equation case,
+	\[
+		G(t,x) = \frac{1}{\sqrt{2 \pi t}}\exp\left( - \frac{x^2}{2t}\right).
+	\]
+	Starting with \eqref{E:HGspace}, we first assume that $x < z$ and use the Mean Value Theorem to get 
+	\begin{align*}
+		\int_{\R}|G(t,z-y) - G(t,x-y)| \ud y & \le  |z - x| 	\int_{\R}\left|\frac{\partial G}{\partial x}(t,\xi(x,z) -y)\right|\ud y 
+	\end{align*}
+	where $\xi(x, z) \in (x,z)$ is a constant. Using Mathematica,
+	\begin{verbatim}
+		g[x_] := (2 Pi t)^(-1/2) Exp[-(x^2)/(2t)] 
+		
+		Integrate[Abs[D[g[x-y],x]],{y,-Infinity,Infinity}, Assumptions -> t>0 
+		&& -Infinity < x < Infinity]
+	\end{verbatim}
+	we get that for any $x\in \R$ that 
+	\[
+		\int_{\R}\left|\frac{\partial G}{\partial x}(t,x-y)\right|\ud y = \frac{\sqrt{\frac{2}{\pi}}}{\sqrt{t}}
+	\]
+	and hence 
+	\begin{align*}
+		\int_{\R}|G(t,z-y) - G(t,x-y)| \ud y & \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|z - x|.
+	\end{align*}
+	Similarly for \eqref{E:HGtime}, by assuming $t<s$ we get 
+	\begin{align*}
+	\int_{\R}|G(s,x-y) - G(t,x-y)| \ud y & \le  |s - t| 	\int_{\R}\left|\frac{\partial G}{\partial t}(\eta(t,s), x -y)\right|\ud y 
+	\end{align*}
+	where $\eta(t,s) \in (t, s)$ is a constant. And by using Mathematica, 
+	\begin{verbatim}
+		Integrate [Abs[D[g[x-y],t]],{y,-Infinity, Infinity}, Assumptions -> t>0 
+		&& -Infinity < x < Infinity]
+	\end{verbatim}
+	we get that for $t>0$ and $x \in \R$ that 
+	\begin{align*}
+		\int_{\R}\left|\frac{\partial G}{\partial t}(t, x -y)\right|\ud y  & = \sqrt{\frac{2}{e \pi}} \frac{1}{t}
+	\end{align*}
+	and therefore 
+	\begin{align*}
+	\int_{\R}|G(s,x-y) - G(t,x-y)| \ud y & \le \sqrt{\frac{2}{e \pi}} \frac{1}{\eta(t,s)}  |s - t| .
+	\end{align*}
+	Now we can see that 
+	\begin{align*}
+	\int_{\R}|G(s,z-y) - G(t,x-y)| \ud y &\le  \int_{\R}|G(t,z-y) - G(t,x-y)| \ud y +  \int_{\R}|G(s,z-y) - G(t,z-y)| \ud y  \\
+	& \le \sqrt{\frac{2}{\pi}} \frac{1}{\sqrt{t}}|z - x| + \sqrt{\frac{2}{e \pi}} \frac{1}{\eta(t,s)}  |s - t|.
+	\end{align*}
+	The $1/\sqrt{t}$ and $1/\eta(t,s)$ seem to be an issue since they are unbounded as $t, s \to 0$. 
+	
+	\begin{remark}
+		We can tweak the upper bound for \eqref{E:HGtime} at little to remove the $\eta(t,s)$. First note that 
+			\begin{align*}
+			\left|\frac{\partial G}{\partial t}(t, x )\right| & = \left| -\frac{\exp\left(-\frac{x^2}{2t}\right)}{2\sqrt{2 \pi} t^{3/2}} + \frac{\exp\left(-\frac{x^2}{2t}\right) x^2}{2\sqrt{2 \pi} t^{5/2} }\right| \\
+			& \le \frac{\exp\left(-\frac{x^2}{2t}\right)}{2\sqrt{2 \pi} t^{3/2}}  + \frac{\exp\left(-\frac{x^2}{2t}\right) x^2}{2\sqrt{2 \pi} t^{5/2} }
+			\end{align*}
+		and notice that for $t < s$ we have that 
+		\begin{align*}
+			\frac{\exp\left(-\frac{x^2}{2t}\right)}{2\sqrt{2 \pi} t^{3/2}}  + \frac{\exp\left(-\frac{x^2}{2t}\right) x^2}{2\sqrt{2 \pi} t^{5/2} } & \le
+			 \frac{\exp\left(-\frac{x^2}{2s}\right)}{2\sqrt{2 \pi} t^{3/2}}  + \frac{\exp\left(-\frac{x^2}{2s}\right) x^2}{2\sqrt{2 \pi} t^{5/2} }
+		\end{align*}
+		and therefore 
+		\begin{align*}
+			\int_{\R}\left|\frac{\partial G}{\partial t}(t, x -y)\right|\ud y  & \le 		 \int_{\R} \frac{\exp\left(-\frac{(x-y)^2}{2s}\right)}{2\sqrt{2 \pi} t^{3/2}}  \ud y+ \int_{\R} \frac{\exp\left(-\frac{(x-y)^2}{2s}\right) x^2}{2\sqrt{2 \pi} t^{5/2} } \ud y \\
+			&= \frac{1}{2t}\sqrt{\frac{s}{t}} + \frac{s}{2t^2}\sqrt{\frac{s}{t}}
+		\end{align*}
+		which implies that 
+		\[
+				\int_{\R}|G(s,x-y) - G(t,x-y)| \ud y \le \left(\frac{1}{2t}\sqrt{\frac{s}{t}} + \frac{s}{2t^2}\sqrt{\frac{s}{t}}\right)|s-t|.
+		\]
+	However we still run into the same issue. 
+	\end{remark}
+		
+\end{question}
+
+
+	
+	
+	\addcontentsline{toc}{section}{Bibliography}
+	\begin{thebibliography}{999}
+		%sample
+		%\bibitem{Chen17Tran}% {{{ 3.
+		%Chen, L. (2017).
+		%\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+		%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+		
+		\bibitem{CHN19}% {{{ 5.
+		Chen, L., Hu, Y., and Nualart, D. (2019).
+		\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+		\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+		% }}}
+		
+		\bibitem{SoleMillet2021}
+		Sanz-Sole, M. and Millet, A. (2021)
+		\newblock{\em Global solutions to stochastic wave equations with superlinear coefficients.}
+		\newblock Stochastic Processes and their Applications, Elsevier, 2021, 139, pp.175-211.
+	\end{thebibliography}
+	
+\end{document}
