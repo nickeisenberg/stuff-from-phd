@@ -1158,6 +1158,7 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 We now state a lemma which will be used later on. 
 
 	\begin{lemma}
+	\label{L:Y_phiParseval}
 Let $\phi$ and $\psi$ be bounded Borel functions. Then for $s,t > 0$ and $z \in \R^d$ we have,
 	\begin{align}
 		\iint_{\R^{2d}} \ud x \ud y \; \phi(x) Y(t,x) \psi(y) Y(s,y) f(x-y +z) = (2\pi)^{-d} \int_{\R^d} \mathcal{F}(\phi Y(t,\cdot))(\xi) \overline{\mathcal{F}(\psi Y(t,\cdot))(\xi)} e^{-iz \cdot \xi} \mu(\ud \xi)
@@ -1170,8 +1171,8 @@ For notation, define $Y_\phi(t,x) = \phi(x)Y(t,x)$ and $Y_\psi(t,x) = \phi(x)Y(t
 	\end{align*}		
 Parseval's identity implies that 
 	\begin{align*}
-		\int_{\R^{d}} \ud x \; Y_{\phi}(t,x) (Y_{\psi}(s,\cdot)*f(\cdot + z)) (x) & = (2 \pi)^{-d}\int_{\R^{d}} \ud \xi \; \mathcal{F}(Y_{\phi}(t,\cdot))(\xi) \overline{\mathcal{F}((Y_{\psi}(s,\cdot))(\xi) \mathcal{F}(f(\cdot + x))} \\
-		&= (2 \pi)^{-d}\int_{\R^{d}} \mu(\ud \xi) \; \mathcal{F}(Y_{\phi}(t,\cdot))(\xi) \overline{\mathcal{F}((Y_{\psi}(s,\cdot))(\xi)} e^{-ix\cdot\xi},
+		\int_{\R^{d}} \ud x \; Y_{\phi}(t,x) (Y_{\psi}(s,\cdot)*f(\cdot + z)) (x) & = (2 \pi)^{-d}\int_{\R^{d}} \ud \zeta \; \mathcal{F}(Y_{\phi}(t,\cdot))(\zeta) \overline{\mathcal{F}((Y_{\psi}(s,\cdot))(\zeta) \mathcal{F}(f(\cdot + x))} \\
+		&= (2 \pi)^{-d}\int_{\R^{d}} \mu(\ud \zeta) \; \mathcal{F}(Y_{\phi}(t,\cdot))(\zeta) \overline{\mathcal{F}((Y_{\psi}(s,\cdot))(\zeta)} e^{-ix\cdot\zeta},
 	\end{align*}
 where $\mu(\ud \xi) = \varphi(\xi) \ud \xi$. This completes the proof. 
 	\end{proof}
@@ -1198,7 +1199,7 @@ Now let $\xi = x-z$ and consider the following notation:
 	\begin{align*}
 	\Sigma_x(s,y) &= \sigma(u(s,x-y)), \quad \Sigma_{x,z}(s,y) = \sigma(u(s,x-y)) - \sigma(u(s,z-y)), \\
 	h_1(s,y_1,y_2) &= f(y_1,y_2) \Sigma_{x,z}(s,y_1)  \Sigma_{x,z}(s,y_2) \\
-	h_2(s, y_1, y_2) &= [f(y_1 - y_2 + \xi) - f(y_1 - y_2)] \Sigma_x(s,y_2) \Sigma_{x,z}(s,y_2) \\ 
+	h_2(s, y_1, y_2) &= [f(y_1 - y_2 + \xi) - f(y_1 - y_2)] \Sigma_x(s,y_2) \Sigma_{x,z}(s,y_1) \\ 
 	h_3(s, y_1, y_2) &= h_2(s, y_2, y_1) \\
 	h_4(s, y_1, y_2) &= [2f(y_1- y_2) - f(y_1 - y_2 + \xi) - f(y_1 - y_2 - \xi)]\Sigma_{x}(s,y) \Sigma_{x}(s,z).
 	\end{align*}
@@ -1227,13 +1228,21 @@ Thus
 	\]
 We now estimate each $\Norm{Q_i}_{p/2}$ separately.  
 
-\textit{Upper bound for $Q_1$:} Using the Lipschitz property of $\sigma$, Minkowski's inequality and the triangle inequality gives is 
+\textit{Upper bound for $\Norm{Q_1}_{p/2}$.} Using the Lipschitz property of $\sigma$, Minkowski's inequality and the triangle inequality gives is 
 	\begin{align*}
 		\Norm{Q_1}_{p/2} &\le L(\sigma)^2 \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2) f(y_1 - y_2) \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
 		& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} \int_0^t \ud s \; (t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha} \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
 		& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} (t)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}\int_0^t \ud s \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right],
 	\end{align*} 
 where the second inequality above follows from Lemma \ref{L:intYfYbdd}.
+
+To bound the remaining $Q_i's$, we will need to consider the following truncations which will then allow us to apply Lemma \ref{L:Y_phiParseval}. For $k \ge 1$ we define $\Sigma_{x}^k(s,y) = \Sigma_{x}(s,y) 1_{\{\Sigma_{x}(s,y) \le k \}}$ and $\Sigma_{x,z}^k(s,y) = \Sigma_{x,z}(s,y) 1_{\{\Sigma_{x,z}(s,y) \le k \}}$ and then we define $Q_i^k$ the same as $Q_i$ but with $h_i$ replaced with $h_i^k$ where $h_i^k$ is defined by replacing $\Sigma_{x}(s,y) $ and $\Sigma_{x,z}(s,y) $ with $\Sigma_{x}^k(s,y)$ and $\Sigma_{x,z}^k(s,y)$ respectively in $h_i$.
+
+\textit{Upper Bound for $\Norm{Q_2^k}_{p/2}$.} We apply Lemma \ref{L:Y_phiParseval} with $\phi(y_2) = \Sigma_{x}^k(s,y_2)$ and $\psi(y_1) = \Sigma_{x,z}^k(s,y_1)$. Thus we have that up to a constant of $(2\pi)^{-d}$,
+	\[
+		Q_2^k = \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \overline{ \mathcal{F}(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot))(\xi) }\mathcal{F}(\Sigma_{x,z} Y(t-s,\cdot))(\xi)[e^{-i\xi \cdot \zeta}-1],
+	\]
+where we recall that $\zeta = x - z$. 
 \end{proof}
 
 	\addcontentsline{toc}{section}{Bibliography}
