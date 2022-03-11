@@ -736,19 +736,104 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 	\end{remark}
 	
 	\section{Spatially Colored Noise Driven SPDE}
-	In this section we will study \eqref{E:SPDE} driven by a Gaussian noise that is white in time and colored in space. Informally this means that 
+In this section we will study \eqref{E:SPDE} driven by a Gaussian noise that is white in time and colored in space. In other words, we start with a non-negative and nonnegative definite tempered distribution on $\mathscr{S}'(\R^d)$ which we denote as $\Lambda$. Then the Bochner-Schwartz theorem says that $\Lambda$ is the Fourier transform of a non-negative, tempered and symmetric measure which we denote as $\mu$. $\mu$ is referred to as the {\it spectral measure}. Because of this, the following functional is nonnegative definite and symmetric on $C_0(\R_+ \times \R^d)$:
+	\begin{equation}
+	\label{E:CovNoise}
+		C(\phi, \psi) := \int_0^\infty \ud t \int_{\R^{d}}  \Lambda(\ud x) \; (\phi(t,\cdot)*\tilde{\psi}(t,\cdot))(x), \quad \tilde{\psi}(x) = \psi(-x).
+	\end{equation}
+Thus we may identify $C$ as the covariance functional of some Gaussian process. This leads to the following definition.
+	\begin{definition}
+A zero-mean Gaussian processes, $F := \{ F(\phi) : \phi \in C_0(\R_+ \times \R^d) \}$ is said to be white in time and homogeneously colored in space if $\mathbb{E}(F(\phi)F(\psi)) = C(\phi,\psi)$. 
+	\end{definition}
+
+	\begin{assumption}
+	\label{A:NoiseAssum1}
+For the remainder of this paper, we will only consider the Gaussian noises that satisfy the following three conditions:
+		\begin{enumerate}
+			\item the spectral measure $\mu$ is such that $\int_{\R^d} \frac{\mu(\ud \zeta)}{1 + |\zeta|^\alpha} < \infty$,
+			\item $\Lambda$ is absolutely continuous with respect to the Lebesgue measure and therefore has a density, $\Lambda(\ud x) = f(x) \ud x$. Furthermore, when this is the case, we may often write $\mu(\ud \zeta) = \varphi(\zeta) \ud \zeta$ where we have the relation $\mathcal{F}\varphi = f$,
+			\item the correlation functions satisfies for some $\lambda \in (0,d)$ and for all $c>0$, $f(cx) = c^{-\lambda}f(x)$, which in return implies that $\varphi(cx) = c^{d- \lambda}\varphi(x)$.
+		\end{enumerate}
+	\end{assumption}
+
+\noindent Under this assumption, we may rewrite \eqref{E:CovNoise} as 
 	\[
-	\mathbb{E}\left[\dot F(t,x) \dot F(s,y)\right] = \delta_0(t-s) f(x-y)
-	\] 
-	where $f$ is the Riesz kernel with parameter $\lambda \in (0,d)$:
-	\[
-	f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \varphi(x):= \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
+		C(\phi,\psi) = \int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(t,x) f(x-y) \psi(t,y)
 	\]
+  and by applying Placherel's identity, this further implies that 
+  	\[
+  		\int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(x) f(x-y) \psi(y) = (2 \pi)^{-d} \int_0^\infty \ud t \int_{\R^{2d}} \mu(\ud \zeta) \mathcal{F}(\phi(t,\cdot))(\zeta) \overline{\mathcal{F}(\psi(t,\cdot))(\zeta)}.
+  	\]
+We now prove a lemma which will be used to prove the existence and uniqueness of the solution. It is proven by Foondun and Nane \cite{FN2016} in the case that 		
+\begin{equation}
+\label{A:Y=GAssumptions}
+\beta \in (0,1) \quad \text{and} \quad \gamma = 1 - \beta.
+\end{equation}		
+
+  	\begin{lemma}
+  	\label{L:YfYbdd}
+  	Suppose Assumption \ref{A:NoiseAssum1} holds. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
+  	\begin{equation}
+  	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } < \infty
+  	\end{equation}
+  \end{lemma}
+  \begin{proof}
+ Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
+  	\[
+  	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
+  	\]
+ where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
+  	\[
+  	\int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\zeta) \mathcal{F}(Y(t,\cdot)*f)(\zeta) \ud \zeta.
+  	\]
+ Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{CHN19} gives us that 
+  	\begin{align*}
+  	\frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\zeta) & \mathcal{F}(Y(t,\cdot)*f)(\zeta) \ud \xi \\
+  	& = \frac{ t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}} \exp(-i(x-y)\zeta) E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\zeta|^\alpha}{2}\right)^2 \mu(\ud \zeta).
+  	\end{align*}
+ Hence by taking the absoulte value on both sides and recalling the positivity of $f$, $Y$ and the Mittag-Leffler function we get that 
+  	\begin{align*}
+  			\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le \frac{ t^{2(\beta + \gamma -1)} }{ (2\pi)^d } \int_{\R^{d}}  E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\zeta|^\alpha}{2}\right)^2 \mu(\ud \zeta).
+  	\end{align*}
+Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0$ depending only on $\beta$ and $\gamma$ such that 
+	\[
+		\frac{ t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2 \mu(\ud \zeta).\le 
+  		\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 } .
+ 	\]
+ Another change of variables implies that 
+  	\[
+  	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  \le 
+  	\frac{C }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } .
+  	\]
+The finiteness of the above integral follows from Assumption \ref{A:NoiseAssum1}.
+  \end{proof}	
+  	
+  \begin{NickQuestion}
+ Lemma \ref{L:YfYbdd} is a problem. Later on we will need to assume that 
+ 	\begin{equation}
+ 	\label{A:Problem}
+ 		2(\beta + \gamma -1)-\beta \lambda/\alpha > 0
+ 	\end{equation}
+ which is stronger than the original assumption that 
+ 	\[
+ 		2(\beta + \gamma) -1 -\beta \lambda/\alpha.
+ 	\]
+ \eqref{A:Problem} excludes the SHE and the case when $\gamma = \lceil \beta \rceil -1$. 
+  \end{NickQuestion}	
+  	
+	\begin{example}
+	\label{E:RieszKernel}
+Consider the function $f(x)$, which is the well-known Riesz kernel with parameter $\lambda \in (0,d)$:
+		\[
+			f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \varphi(x):= \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
+		\]
 	where
-	\[
-	K_f     = \pi^{-d/2}2^{-\lambda} \frac{\Gamma((d-\lambda)/2)}{\Gamma(\lambda/2)}.
-	\]
-	
+		\[
+			K_f     = \pi^{-d/2}2^{-\lambda} \frac{\Gamma((d-\lambda)/2)}{\Gamma(\lambda/2)}.
+		\]
+Considering Assumption \ref{A:NoiseAssum1}, if we assume $\lambda < \min\{d,2\}$, then we may consider our Gaussian processes to have its correlation function given to be the Riesz kernel, $f(x)=|x|^{-\lambda}$. 
+	\end{example} 
+
 	\subsection{Lipschitz Diffusion Coefficient}
 	We first examine \eqref{E:SPDE} with Lipschitz diffusion coefficient . As we will see below in Theorem \ref{T:ExisAndUniq}, to establish the existence and uniqueness of a random field solution to \eqref{E:SPDE}, we will need to assume Dalang's condition:
 	\begin{equation}
@@ -768,52 +853,8 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 	\[
 	|\sigma(x) - \sigma(y)| \le L_{\sigma} |x-y|.
 	\]
-	
-	To prove existence and uniqueness of the solution, we will need the following lemma. The following lemma is proven by Foondun and Nane \cite{FN2016} in the case that 		
-	\begin{equation}
-	\label{A:Y=GAssumptions}
-	\beta \in (0,1) \quad \text{and} \quad \gamma = 1 - \beta
-	\end{equation}		
-	Their proof relies on a probabilistic representation of the Green's function for the solution of \eqref{E:SPDE}. Our proof takes a different approach and relies on the asymptotic behavior of the Euler-Mittag function given in \cite[Theorem 1.6]{Podlubny99}. One should note that under the assumptions \eqref{A:Y=GAssumptions} that $Y(t,x)=Z(t,x)$. However, in general, this is not the case. 
-	
-	\begin{lemma}
-		\label{L:intYfYbdd}
-		Suppose that $\lambda < 2\alpha$, then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
-		\begin{equation}
-		\label{E:YYfBdd}
-		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C K_f \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}.
-		\end{equation}
-	\end{lemma}
-	\begin{proof}
-		Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
-		\[
-		\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
-		\]
-		where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
-		\[
-		\int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi.
-		\]
-		Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{CHN19} gives us that 
-		\begin{align*}
-		\frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\xi) & \mathcal{F}(Y(t,\cdot)*f)(\xi) \ud \xi \\
-		& = \frac{ K_f \; t^{2(\beta  \gamma -1)} }{ (2\pi)^d } \int_{\R^{d}} \exp(-i(x-y)\xi) \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \\
-		& \le \frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi
-		\end{align*}
-		where the last inequality follows from the non-negativity of the Euler-Mittag function. Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0$ such that 
-		\[
-		\frac{K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2}{|\xi|^{d-\lambda}} \ud \xi \le 
-		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha \right)^2 |\xi|^{d-\lambda} } \ud \xi.
-		\]
-		Another change of variables implies that 
-		\[
-		\frac{C\; K_f \; t^{2(\beta + \gamma -1)}  }{ (2\pi)^d } \int_{\R^{d}}  \frac{ 1 }{\left(1+ \frac{\nu}{2} t^\beta |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi \le 
-		\frac{C\; K_f }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ 1 }{\left(1+ |\xi|^\alpha\right)^2 |\xi|^{d-\lambda}} \ud \xi.
-		\]
-		We see that the above integral is finite if $\lambda < 2\alpha$ and when this is the case, we have \eqref{E:YYfBdd}.
-	\end{proof}
-	\begin{NickQuestion}
-		Note that we have $\lambda < 2 \alpha$ while Foondun and Nane \cite{FN2016} have that $\lambda < \alpha$. This may be something to look at. 
-	\end{NickQuestion}
+
+
 	We can now prove the existence and uniqueness of the solution to \eqref{E:SPDE} driven by the noise $\dot{F}$. 
 	
 	\begin{theorem}
@@ -852,7 +893,7 @@ and $E_{\alpha, \beta}$ is not defined for $\beta = 0$. So I am unsure of how to
 		D_n(t,x) &\le L^2_{\sigma} \int_0^t H_{n-1}(s) \int_{\R^d} \ud z \; \ud y \; Y(t-s,x-y) Y(t-s,x-z) f(y-z) \\
 		&\le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}},
 		\end{align*}
-		where the last inequality follows from \eqref{E:YYfBdd}. In return, this implies that 
+		where the last inequality follows from Lemma \ref{L:YfYbdd}. In return, this implies that 
 		\[
 		H_n(t) \le C L^2_{\sigma} \left(\frac{\nu}{2}\right)^{-\lambda / \alpha} \int_0^t \ud s \; \frac{H_{n-1}(s)}{(t-s)^{\lambda \beta / \alpha - 2(\beta + \gamma -1)}}.
 		\]
