@@ -702,6 +702,59 @@ and thus
 and if you examine the proof of Lemma 3.1, this factorization is very important and in particular, the inequality \eqref{E:YNorm}. I do not see how \eqref{E:YNorm1.1} could be used to replace it. 
 
 One last thing to add is that this problem does not present itself with the original assumption \eqref{E:A2} so we may want to stick with that in order to apply the $\delta_0$ initial condition. However, this means we can only used bounded initial conditions. 
+
+\section{Tightness of $U(t_0,\cdot)$}
+Define 
+	\begin{equation}
+	\label{E:U}
+		U(T,\cdot)(A) = \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u_{u_0}(t,\cdot))(A) \; \ud t
+	\end{equation}
+where $u_0$ is the initial condition and $A \in \mathscr{B}(L^2_{\rho}(\R^d))$. We see that $\mathscr{L}(u_{u_0}(t,\cdot))(A)$ defines a probability measure on $\mathscr{B}(L^2_{\rho}(\R^d))$. Because $u_{u_0}(t,x)$ is jointly continuous on $(0,\infty) \times \R^d$ then I believe that $t \mapsto \mathscr{L}(u_{u_0}(t,\cdot))(A)$ is continuous. 
+
+First I will show that \eqref{E:U} defines a probability measure. Lets consider a general measure space $(E, \mathscr{E})$ and let $\mathcal{M}_1(E)$ denote the set of probability measures on $(E, \mathscr{E})$. Define 
+	\begin{equation}
+		\label{E:IntProb}
+		P_T(A) := \frac{1}{T-a} \int_a^T p_t(A) \; \ud t,
+	\end{equation}
+where $T>a \ge 0$, $t \in (a,T)$, $p_t \in \mathcal{M}_1(E)$, and  $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$.
+
+\noindent \textbf{\eqref{E:IntProb} defines a Probability Measure:} First, consider the probability measures $p_1,\cdots, p_n \in \mathcal{M}_1(E)$. It is easy to verify that $(p_1 + \cdots + p_n)/n \in \mathcal{M}_1(E)$. Now suppose that for $T > a \ge 0$ and $t \in (a,T)$ that $p_t \in \mathcal{M}_1(E)$ and that $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$. Then the Lebesgue integral in \eqref{E:IntProb} exists for each $A \in \mathscr{E}$. It remains to show that $P_T \in \mathcal{M}_1(E)$. Note that 
+	\begin{align*}
+		P_T(A) = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(A) \Delta_n
+	\end{align*} 
+where $\Delta_n = (T-a)/n$ and $P_n$ is a partition of $[a,b]$ constructed from such $\Delta_n$. From this we easily deduce that 
+	\[
+		P_T(E) = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(E) \Delta_n = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} \Delta_n = 1. 
+	\]
+In addition, it is clear that $P_T(A) \ge 0$ so it remains to show countable additivity. Suppose $\{A_j\}_{j \ge 1} \in \mathscr{E}$ are disjoint. Then,
+	\begin{align*}
+		P_T\left(\sum_{j \ge 1} A_j \right) &= \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}\left(\sum_{j \ge 1} A_j \right) \Delta_n \\
+		&= \lim_{t_n \in P_n} \frac{1}{T-a} \sum_{j \ge 1} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n 
+	\end{align*}
+where the last line follows because each $p_{t_k} \in \mathcal{M}_1(E)$. Since 
+	\[
+		\sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n \le \sum_{t_k \in P_n}  \Delta_n = 1,
+	\]
+then the dominated convergence theorem implies that
+	\begin{align*}
+		\lim_{t_n \in P_n} \frac{1}{T-a} \sum_{j \ge 1} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n &=  \sum_{j \ge 1} \lim_{t_n \in P_n} \frac{1}{T-a} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n \\
+		&=  \sum_{j \ge 1} p(A_j),
+	\end{align*}
+and so $P_T$ is countably additive which means $P_T \in \mathcal{M}_1(E)$. 
+
+\begin{remark}
+	\normalfont
+	It seems that the assumption $t \mapsto p_t(A)$ defines a continuous mapping may be unnecessary. It seems all we would really need is the existence of the Lebesgue integral in \eqref{E:IntProb} which only requires $t \mapsto p_t(A)$ be measurable and bounded almost everywhere. DaPrato \cite{DZ96} requires that $P_t(x,A) = u_x(t,\cdot)(A)$ be a stochastically continuous Feller semi-group in order for \eqref{E:U} to be a probability measure, which happens to be the case in our situation. 
+\end{remark}
+
+\noindent \textbf{\eqref{E:IntProb} is tight if the $p_t$ are tight:} Now lets further assume that the family of probability measures $\{p_t\}_{t \in [a,T]}$ is tight. Let $\epsilon>0$ be given. Then there exists a a compact set $K \in \mathscr{E}$ such that for each $t \in [a,b]$, $p_t(K^c) < \epsilon$ where $K^c = E \setminus K$. Then, 
+	\begin{align*}
+		P_T(K) &= \frac{1}{b-a} \int_a^b p_t(K) \; \ud t \\
+		&= \lim_{t_n \in P_n} \frac{1}{b-a}\sum_{t_k \in P_n} p_{t_k}(K) \Delta_n \\
+		& \le \epsilon  \lim_{t_n \in P_n} \frac{1}{b-a}\sum_{t_k \in P_n} \Delta_n \\
+		&= \epsilon,
+	\end{align*}
+which implies that the family  $\{P_T\}_{T \ge a}$ defined in \eqref{E:IntProb} is tight.
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
@@ -725,6 +778,11 @@ One last thing to add is that this problem does not present itself with the orig
 		Da Prato, Giuseppe and Jerzy Zabczyk.
 		\newblock {\it Stochastic equations in infinite dimensions.}
 		Encyclopedia of Mathematics and its Applications, 44. Cambridge University Press, Cambridge, 1992. xviii+454 pp.
+		% }}}
+		\bibitem[DZ96]{DZ96}% {{{
+		Da Prato, Giuseppe and Jerzy Zabczyk.
+		\newblock {\it Ergodicity for infinite-dimensional systems. }
+		\newblock London Mathematical Society Lecture Note Series, 229. Cambridge University Press, Cambridge, 1996.
 		% }}}
 		\bibitem[DZ92b]{DZp92}% {{{
 		Da Prato, Giuseppe and Jerzy Zabczyk.
