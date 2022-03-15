@@ -747,11 +747,11 @@ and so $P_T$ is countably additive which means $P_T \in \mathcal{M}_1(E)$.
 	It seems that the assumption $t \mapsto p_t(A)$ defines a continuous mapping may be unnecessary. It seems all we would really need is the existence of the Lebesgue integral in \eqref{E:IntProb} which only requires $t \mapsto p_t(A)$ be measurable and bounded almost everywhere. DaPrato \cite{DZ96} requires that $P_t(x,A) = u_x(t,\cdot)(A)$ be a stochastically continuous Feller semi-group in order for \eqref{E:U} to be a probability measure, which happens to be the case in our situation. 
 \end{remark}
 
-\noindent \textbf{\eqref{E:IntProb} is tight if the $p_t$ are tight:} Now lets further assume that the family of probability measures $\{p_t\}_{t \in [a,T]}$ is tight. Let $\epsilon>0$ be given. Then there exists a a compact set $K \in \mathscr{E}$ such that for each $t \in [a,b]$, $p_t(K^c) < \epsilon$ where $K^c = E \setminus K$. Then, 
+\noindent \textbf{\eqref{E:IntProb} is tight if the $p_t$ are tight:} Now lets further assume that the family of probability measures $\{p_t\}_{t \in [a,T]}$ is tight. Let $\epsilon>0$ be given. Then there exists a a compact set $K \in \mathscr{E}$ such that for each $t \in [a,T]$, $p_t(K^c) < \epsilon$ where $K^c = E \setminus K$. Then, 
 	\begin{align*}
-		P_T(K) &= \frac{1}{b-a} \int_a^b p_t(K) \; \ud t \\
-		&= \lim_{t_n \in P_n} \frac{1}{b-a}\sum_{t_k \in P_n} p_{t_k}(K) \Delta_n \\
-		& \le \epsilon  \lim_{t_n \in P_n} \frac{1}{b-a}\sum_{t_k \in P_n} \Delta_n \\
+		P_T(K) &= \frac{1}{T-a} \int_a^b p_t(K) \; \ud t \\
+		&= \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(K) \Delta_n \\
+		& \le \epsilon  \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} \Delta_n \\
 		&= \epsilon,
 	\end{align*}
 which implies that the family  $\{P_T\}_{T \ge a}$ defined in \eqref{E:IntProb} is tight.
