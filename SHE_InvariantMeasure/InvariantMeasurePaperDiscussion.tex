@@ -783,6 +783,21 @@ and so $P_T$ is countably additive which means $P_T \in \mathcal{M}_1(E)$.
 		&= \epsilon,
 	\end{align*}
 which implies that the family  $\{P_T\}_{T \ge a}$ defined in \eqref{E:IntProb} is tight.
+
+\newpage
+\section{Assumptions for Fubini's}
+If you examine the complete proof that I have written in the long version of the invariant measure paper, you will see that in order to apply Fubini's theorem, we will need to assume the following:
+	\begin{enumerate}
+		\item $ \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)} < \infty$, 
+		\item $ \mathcal{H}(s) = \int_0^s \ud r (s-r)^{-2\alpha} \int_{\R} \hat{f}(\ud \xi) \exp\left(-(s-r) |\xi|^2\right) < \infty $,
+		\item $\int_0^s \ud r (s-r)^{-2\alpha} \int_{\R} \hat{f}(\ud \xi) \exp\left( -\left( \frac{s-r}{2} + \frac{r(s-r)}{2s} \right) |\xi|^2 \right) < \infty $,
+		\item $\int_0^s \ud r (s-r)^{-2\alpha} \int_{\R} \hat{f}(\ud \xi) \exp\left( -\frac{r(s-r)}{2s} |\xi|^2 \right) < \infty $.
+	\end{enumerate}
+The first item is true since we assume out initial measure, $\varphi$ satisfies 
+	\[
+		\int_{\R^d} \exp(-a|x|^2) \varphi(x) \ud x < \infty.
+	\]
+The second item is also true by assumption. Lastly, the finiteness of $\mathcal{H}(s)$ implies that items 3 and 4 are true, which is proven in Lemma 4.2 of the longer version of the paper on GitHub. 
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
