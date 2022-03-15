@@ -716,8 +716,7 @@ First I will show that \eqref{E:U} defines a probability measure. Lets consider 
 		\label{E:IntProb}
 		P_T(A) := \frac{1}{T-a} \int_a^T p_t(A) \; \ud t,
 	\end{equation}
-where $T>a \ge 0$, $t \in (a,T)$, $p_t \in \mathcal{M}_1(E)$, and  $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$.
-
+where $T>a \ge 0$, $t \in (a,T)$, $p_t \in \mathcal{M}_1(E)$, and  $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$.t
 \bigskip
 \textcolor{magenta}{Eq. \eqref{E:IntProb} cannot be true. In other words:
 \begin{align*}
@@ -726,6 +725,25 @@ where $T>a \ge 0$, $t \in (a,T)$, $p_t \in \mathcal{M}_1(E)$, and  $t \mapsto p_
   & \ne \frac{1}{T}\int_{t_0}^{t_0+T} \mathbb{P}\left( u(s,\cdot) \in A\right)
   \ud s.
 \end{align*}}
+
+\bigskip
+\textcolor{blue}{
+ 	\begin{align*}
+		\mathbb{P}\left(U(T,\cdot) \in A \right) &:= U(T,\cdot)(A) \\
+		&= \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u_{u_0}(t,\cdot))(A) \; \ud t.
+	\end{align*} 
+So in \eqref{E:IntProb}, we let $p_t(A) = \mathscr{L}(u_{u_0}(t,\cdot))(A)$. However I am starting to think that all of this is unnecessary. Since the the family of measures $\{\mathscr{L}(u_{u_0}(t,\cdot))(\circ)\}_{t>0}$ is tight then given any $\epsilon >0$ we can find a compact set $K \in \mathscr{B}(L_\rho^2(\R^d))$ such that 
+	\[
+		\mathscr{L}(u_{u_0}(t,\cdot))(K^c) = \mathbb{P}\left[\omega \in \Omega : u_{u_0}(t,\cdot)(\omega) \in K^c \right] \le \epsilon.
+	\]
+Then we immediately see that 
+	\begin{align*}
+		U(T,\cdot)(K^c) &= \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u_{u_0}(t,\cdot))(K^c) \; \ud t \\
+		&\le \frac{1}{T} \int_{t_0}^{T + t_0} \epsilon \; \ud t \\
+		&= \epsilon,
+	\end{align*}
+So the family of probability measures $\{U(T,\cdot)(\circ) \}_{T>0}$ is tight.
+}
 
 
 \noindent \textbf{\eqref{E:IntProb} defines a Probability Measure:} First, consider the probability measures $p_1,\cdots, p_n \in \mathcal{M}_1(E)$. It is easy to verify that $(p_1 + \cdots + p_n)/n \in \mathcal{M}_1(E)$. Now suppose that for $T > a \ge 0$ and $t \in (a,T)$ that $p_t \in \mathcal{M}_1(E)$ and that $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$. Then the Lebesgue integral in \eqref{E:IntProb} exists for each $A \in \mathscr{E}$. It remains to show that $P_T \in \mathcal{M}_1(E)$. Note that 
