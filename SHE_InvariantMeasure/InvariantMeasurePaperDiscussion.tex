@@ -718,6 +718,16 @@ First I will show that \eqref{E:U} defines a probability measure. Lets consider 
 	\end{equation}
 where $T>a \ge 0$, $t \in (a,T)$, $p_t \in \mathcal{M}_1(E)$, and  $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$.
 
+\bigskip
+\textcolor{magenta}{Eq. \eqref{E:IntProb} cannot be true. In other words:
+\begin{align*}
+  \mathbb{P}\left(U(T,\cdot) \in A \right)
+  & = \mathbb{P}\left(\frac{1}{T}\int_{t_0}^{t_0+T} u(s,\cdot) \ud s \in A\right)\\
+  & \ne \frac{1}{T}\int_{t_0}^{t_0+T} \mathbb{P}\left( u(s,\cdot) \in A\right)
+  \ud s.
+\end{align*}}
+
+
 \noindent \textbf{\eqref{E:IntProb} defines a Probability Measure:} First, consider the probability measures $p_1,\cdots, p_n \in \mathcal{M}_1(E)$. It is easy to verify that $(p_1 + \cdots + p_n)/n \in \mathcal{M}_1(E)$. Now suppose that for $T > a \ge 0$ and $t \in (a,T)$ that $p_t \in \mathcal{M}_1(E)$ and that $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$. Then the Lebesgue integral in \eqref{E:IntProb} exists for each $A \in \mathscr{E}$. It remains to show that $P_T \in \mathcal{M}_1(E)$. Note that 
 	\begin{align*}
 		P_T(A) = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(A) \Delta_n
