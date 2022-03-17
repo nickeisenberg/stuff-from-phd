@@ -198,7 +198,7 @@ $\;$
 		u(0,\cdot) = u_0, \quad \partial_t u(0,\cdot) = v_0                                                                            & \beta \in (1,2).
 		\end{cases}
 	\end{equation}
-The ISHWE interpolates the well known {\it Stochastic Wave and Stochastic Heat Equations}, SWE and SHE respectively, in the sense that when we let $\alpha = \beta =2$ and $\gamma =0$ then we recover the SWE and when $\alpha =2$ and $\beta=1$ and $\gamma =0$ then we recover the SHE. I have worked on problems that have dealt with proving the existence and uniqueness of a solution, deriving the exact blow-up time for a local solution, proving the existence of invariant measures of the solution, deriving exact moment asymptotics, and proving regularity of the solution.   
+The ISHWE interpolates the well known {\it Stochastic Wave and Stochastic Heat Equations}, SWE and SHE respectively, in the sense that when we let $\alpha = \beta =2$ and $\gamma =0$ then we recover the SWE and when $\alpha =2$ and $\beta=1$ and $\gamma =0$ then we recover the SHE. I have worked on problems that have dealt with proving the existence and uniqueness of a solution, deriving the exact blow-up time for a local solution, proving the existence of invariant measures of the solution, deriving exact moment asymptotics, and proving regularity of the solution. 
 
 \section{Past Thesis Projects}
 \subsection{Invariant Measures of the SHE}
@@ -241,20 +241,20 @@ Da Prato and Zabczyk \cite{DZp92} have also shown that the first bullet point is
 By now using the theory of Walsh and a very important bound on $\mathbb{E}{|u(t,x)|^2}$ given by Chen \cite{CH16Comparison}, we are able to mimic the proof in \cite{TessitoreZabczyk98M}, but in the language of Walsh, and show the existence of an invariant measure for a more broad group of initial conditions, which includes the Dirac delta distribution $\delta_0$. 
 	\begin{theorem}
 	\label{T:InvMeasDelta}
-Assume $d \ge 3$ and that the initial measure $\mu$ satisfies the following integrability condition for any $t>0$:
+Assume $d \ge 3$ and consider any pair of admissible weights $\rho$ and $\hat{\rho}$ such that
+	\[
+		\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty.
+	\]
+Also, suppose that the initial measure $\mu$ satisfies the following integrability condition:
 		\begin{equation}
 		\label{A:InvAssumpMeas}
-			 \sup_{x\in \R^d}	\big(G(t,\cdot)*|\mu|)(x) \big) < \infty,
+			 \limsup_{t \ge 0}	\int_{\R^d} \ud x \hat{\rho}(x) \left[\int_{\R^d} |\mu|(\ud y) G(t,x-y)\right]^2 < \infty,
 		\end{equation}
 and that the spectral measure $\hat{f}$ satisfies both 
 		\begin{equation}
 		\label{A:InvAssumpSpec}
 			\Upsilon(0) := (2\pi)^{-d}\int_{\R^d}\dfrac{\hat f(\ud \xi)}{|\xi|^2} < \infty, \quad \text{and} \quad \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^{d}} \hat f(\ud \xi) \exp\left(-(s-r)|\xi|^2 \right) < \infty.
 		\end{equation}
-Now consider any pair of admissible weights $\rho$ and $\hat{\rho}$ such that
-			\[
-				\int_{\R^d}\dfrac{\rho(x)}{\hat\rho(x)}\: \ud x < \infty.
-			\]
 Then the solution, $u(t,x)$, of \eqref{E:SHE} starting from $\mu$ satisfies 
 	\begin{enumerate}
 		\item $u(t,\cdot) \in L^2_{\rho}(\R^d) \cap L^2_{\hat \rho}(\R^d)$
@@ -262,6 +262,7 @@ Then the solution, $u(t,x)$, of \eqref{E:SHE} starting from $\mu$ satisfies
 	\end{enumerate} 
 In return, there exists an invariant measure for the laws of the solution, $\{\mathscr L (u(t,\cdot))\}_{t \ge t_0}$,  in $L^2_\rho(\R^d)$.
 	\end{theorem}
+
 
 \subsection{Solvability and Exact Moment Asymptotics for the ISHWE \cite{CE21}}
 \hspace{\parindent} In this project, we studied the the ISHWE with constant one initial condition:
