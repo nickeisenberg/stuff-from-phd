@@ -866,6 +866,36 @@ Combining this with \eqref{E:BasselPreInv} give us that
 \textcolor{magenta}{Can you obtain the rate of $\mathcal{H}(t)$ as $t\to 0$?
 This is important.}
 
+\section{Integrability conditions}
+We want to compare 
+\begin{enumerate}
+	\item $\Upsilon(0) < \infty$ and $\mathcal{H}(t) <\infty$
+	\item $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$.
+\end{enumerate}
+
+
+\textbf{(2) does not imply (1):} Suppose that $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$. Then  we may have as $|x| \to 0$ that $\hat{f}(x) \sim \frac{1}{|x|^{d - \delta}}$ where $0 < \delta < d$. As for the tails, the worst case scenario we may have is when $\hat{f} \sim \frac{1}{|x|^{d - \eta}}$ as $|x| \to \infty$ for some $0<\eta<d$. So under these conditions at the origin and as $|x| \to \infty$, we need a $1 \le p < d/(d-2)$ such that 
+	\[
+		p(d-\delta) <d, \quad \text{and} \quad p(d - \eta)>d,
+	\]
+which implies that we must have 
+	\[
+		\frac{d}{d-\eta} < p < \frac{d}{d - \delta} \quad \text{and} \quad 0 < \eta < \delta < 2.
+	\]
+However, this is not a problem and such an $\hat{f}$ exists. For example when $d=3$, $\delta = 1.5$, $\eta = 1$, and 
+	\[
+		f(x) = \begin{cases}
+					|x|^{-1.5} & |x| \le 1 \\
+					|x|^{-2} & |x| \ge 10 \\ 
+					\text{continous and decreasing} & 1 < |x| < 10
+				\end{cases}
+	\]
+then if we choose a $p$ such that 
+	\[
+		\frac{d}{d-\eta} = \frac{3}{2} < p < \frac{3}{1.5} = \frac{d}{d-\delta}, 
+	\]
+then $\hat{f} \in L^p(\R^d)$. For example, if $p=1.75$ then $1.5*1.75 < 3$ and $2 * 1.75 > 3$ and so $\hat{f} \in L^p(\R^3)$. However this same $\hat{f}$ does not satisfy $\Upsilon(0) < \infty$ since around the origin, $\hat{f}(x)|x|^{-2}$ will not be integrable. 
+
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
