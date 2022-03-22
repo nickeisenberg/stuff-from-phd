@@ -937,11 +937,13 @@ The first integral in \eqref{E:vsol} can be shown using Fubini's theorem to be w
 		\int_{\R^d} G(t,x-y) u(t_0,y) \ud y = J(t+t_0,x) + \int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
 	\]
 Then \eqref{E:vsol} and \eqref{E:vsolrestart} would need to imply that
-	\begin{align*}
+	\begin{align}
 		\int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W(\ud s, \ud y) \\
-		&  = \int_0^{t+t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
-	\end{align*}
-My intuition is that this is not true. The first two integrals on the left hand side are integrating over $[0,t_0] \times \R^d$ and $[0,t] \times \R^d$ while the second integral is integrating over $[0,t_0+t] \times\R^d$ and so the left hand side integrals are not containing the information of $\dot{W}$ on $[t,t+t_0] \times \R^d$ which is contained in the integral on the right hand side.
+		&  = \int_0^{t+t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y) \label{E:ChgOfVar}.
+	\end{align}
+My intuition is that \eqref{E:ChgOfVar} can not be true almost surely. The first two integrals on the left hand side are integrating over $[0,t_0] \times \R^d$ and $[0,t] \times \R^d$ while the second integral is integrating over $[0,t_0+t] \times\R^d$ and so the left hand side integrals are not containing the information of $\dot{W}$ on $[t,t+t_0] \times \R^d$ which is contained in the integral on the right hand side.
+
+What may be true is $\mathbb{E}(|LHS|^2) = \mathbb{E}(|RHS|^2)$ but I have been unable to verify this.
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
