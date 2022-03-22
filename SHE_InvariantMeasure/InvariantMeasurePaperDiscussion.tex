@@ -901,6 +901,47 @@ it is interesting to know that the gap is huge here, I though the difference
 might be that we can allow logarithm correction to make $\Upsilon(0)<\infty$
 but Tessitore's condition does not allow such arrangement.}
 
+\section{Restarting the solution}
+Suppose we have 
+	\begin{equation} \label{E:SHE}
+	u(t,x) =
+	\begin{cases}
+	\dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+	u(0,\cdot) = \mu(\cdot),                                                               &
+	\end{cases}
+	\end{equation}
+and 
+	\begin{equation} \label{E:SHErestart}
+	v(t,x) =
+	\begin{cases}
+	\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+	u(0,\cdot) = u(t_0,\cdot)       .                                                      &
+	\end{cases}
+	\end{equation}
+We want it to be the case that $v(t,x) = u(t+t_0,x)$. Is the following true?
+	\[
+		v(t,x) = \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W(\ud s, \ud y)?
+	\]
+If so then we would like to have 
+	\begin{align}
+		v(t,x) &= \int_{\R^d} G(t,x-y) v(0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W(\ud s, \ud y) \nonumber \\ 
+		&= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W(\ud s, \ud y) \label{E:vsol}
+	\end{align}
+and also we would like to have 
+	\begin{equation}
+	\label{E:vsolrestart}
+		v(t,x) = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t+t_0} \int_{\R^d} G(t+t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
+	\end{equation}
+The first integral in \eqref{E:vsol} can be shown using Fubini's theorem to be written as
+	\[
+		\int_{\R^d} G(t,x-y) u(t_0,y) \ud y = J(t+t_0,x) + \int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
+	\]
+Then \eqref{E:vsol} and \eqref{E:vsolrestart} would need to imply that
+	\begin{align*}
+		\int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W(\ud s, \ud y) \\
+		&  = \int_0^{t+t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
+	\end{align*}
+My intuition is that this is not true. The first two integrals on the left hand side are integrating over $[0,t_0] \times \R^d$ and $[0,t] \times \R^d$ while the second integral is integrating over $[0,t_0+t] \times\R^d$ and so the left hand side integrals are not containing the information of $\dot{W}$ on $[t,t+t_0] \times \R^d$ which is contained in the integral on the right hand side.
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
