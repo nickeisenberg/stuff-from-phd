@@ -943,6 +943,26 @@ Then \eqref{E:vsol} and \eqref{E:vsolrestart} would need to imply that
 	\end{align}
 
 I have been unable to show in what sense the above equality could be true. 
+
+\section{Fix for the random initial data}
+
+I previously proved that for $L^2_{\rho}(\R^d)$ initial conditions that 
+	\[
+		\mathbb{E} \int_0^1 \Norm{Y^{\varphi}(s,\cdot)}_{\rho}^q \ud s \le K \Norm{\varphi}_\rho^q.
+	\]
+I think that for random initial conditions, $f(x)(\omega)$, that this can be extended to 
+	\[
+		\mathbb{E} \int_0^1 \Norm{Y^{f}(s,\cdot)}_{\rho}^q \ud s \le K \mathbb{E}\left(\Norm{f(\cdot)}_{\rho}^q\right).
+	\]
+For random initial conditions we may still have the factorization formula 
+	\[
+		u(t,x) = (G(t,\cdot)*u^\mu(t_0,\cdot))(x) + \frac{\sin(\alpha \pi)}{\pi}F_\alpha^t(Y^{u^\mu(t_0,\cdot)})(x), \quad t\ge t_0.
+	\] 
+We then define the set 
+	\[
+		\mathcal{K}(\Theta) := \left\{ (G(t_0,\cdot)*y)(x) + (F_\alpha^{t_0}h)(x), \quad \text{where } \mathbb{E}(\Norm{y}_{\rho}) \le \Theta \text{ and } \mathbb{E}(\Norm{h}_{L^q(0,1,L^2_{\rho})}) \le \Theta \right\}.
+	\]
+We may then be able to continue the proof as in Tessitore Theorem 3.1. I need to still verify the details. 
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
