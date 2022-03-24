@@ -161,6 +161,11 @@ We then work in the weighted Hilbert Space, $L^2_{\rho}(\R^d)$, with norm define
 		\[
 			\Norm{\phi(\cdot)}_{L^2_\rho(\R^d)}^2 = \int_{\R^d} \phi(x)^2 \rho(x) \ud x. \vspace{.1in}
 		\] 
+Some examples of admissible weights include the following:
+	\[
+		\frac{1}{1+|x|^a}, \; a >d \qquad \text{and} \qquad \exp(-a|x|), \; a>0.
+	\]
+
 \end{frame}
 
 \begin{frame}{Intermittency}
@@ -181,6 +186,29 @@ The solution is said to be {\it fully intermittent} when
 	\]
 \end{frame}
 
+\begin{frame}{Bounded Moments}
+	Under the assumptions for existence and uniqueness, we have the following moment bound
+		\[
+			\Norm{u(t,x)}_p \le C[1 + J_+(t,x)]H(t;\gamma_p)^{1/2}, \quad \gamma_p = 32pL_b^2,
+		\]
+	where $t\mapsto H(t,\gamma_p)$ is nondecreasing. Following a strategy laid out by Daprato and Zabczyk, we wish to prove that 
+	\[
+	\sup_{t \ge 0} \mathbb{E}\left( \Norm{u(t,x)}_{L^2_{\rho}(\R^d)}^2 \right) < \infty .
+	\]
+	Hence, a phase transition must occur. By Theorem 1.3, this forces us to require $d \ge 3$ and $\Upsilon(0) < \infty$. If we further assume that $L_b$ is small then we may also say 
+	\[
+		\Norm{u(t,x)}_p \le C[1 + J_+(t,x)].
+	\]
+	
+\end{frame}
+
+\begin{frame}{Large Peaks: $u_t - \frac{1}{2}u_{xx} = \lambda u \dot{W}$ with $u_0(x) = \sin(\pi x)$}
+	\begin{center}
+	$\lambda = 0$ \includegraphics[scale=.2]{lambda0} \quad  $\lambda = .1$ \includegraphics[scale=.2]{lambdasmall}
+	
+	$\lambda = 1$ \includegraphics[scale=.2]{lambda1} \quad $\lambda = 4$ \includegraphics[scale=.2]{lambda4}
+	\end{center}
+\end{frame}
 
 	
 	
