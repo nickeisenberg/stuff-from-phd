@@ -902,6 +902,7 @@ might be that we can allow logarithm correction to make $\Upsilon(0)<\infty$
 but Tessitore's condition does not allow such arrangement.}
 
 \section{Restarting the solution}
+\subsection{Verification of restart}
 Suppose we have 
 	\begin{equation} \label{E:SHE}
 	u(t,x) =
@@ -944,6 +945,42 @@ Then \eqref{E:vsol} and \eqref{E:vsolrestart} would need to imply that
 
 I have been unable to show in what sense the above equality could be true. 
 
+\subsection{Assumption on the restarted initial condition}
+
+Also, in order to show the existence on an invariant measure, we need to assume that 
+	\begin{equation} \label{A:initialbdd}
+		\sup_{x \in \R^d} (G(t,\cdot) * |\mu|)(x) < \infty \quad \text{for any } t\ge 0.
+	\end{equation}
+So if we want to show that our restarted solution, $v$, has an invariant measure, we will also need to show that 
+	\[
+		\sup_{x \in \R^d} (G(t,\cdot) * |v(0,\cdot)|)(x) < \infty \quad \text{for any } t\ge 0.
+	\]
+which means that we need to show (almost surely) that 
+	\begin{equation} \label{A:RandomInitial}
+			\sup_{x \in \R^d} (G(t,\cdot) * |u(t_0,\cdot)|)(x) < \infty \quad \text{for any } t\ge 0.
+	\end{equation}
+Recall that 
+	\[
+		u(t_0,x) = \int_{\R^d} G(t_0,x-y) \mu(\ud y) + \int_0^{t_0} \int_{\R^d} G(t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
+	\]
+So $|u(t_0,\cdot)|$ is a processes and the absolute values add some difficulty. The comparison principle show that we may remove the absolute value signs for the $\delta_0$ initial condition though. Thus we would just need to show
+	\begin{align*}
+		\sup_{x \in \R^d} (G(t,\cdot) * u(t_0,\cdot))(x) < \infty \quad \text{for any } t\ge 0.
+	\end{align*}
+We have that 
+	\begin{align*}
+		(G(t,\cdot) * u(t_0,\cdot))(x) & = \int_{\R^d} G(t,x-y)u(t_0,y) \ud y \\
+		& = \int_{\R^d} \ud y \; G(t,x-y) \left( \int_{\R^d} G(t_0,y-z) \delta_0(\ud z) + \int_0^{t_0} \int_{\R^d} G(t_0-s,y-z) b(z,u(s,z)) W(\ud s, \ud z)\right) \\
+		& = \int_{\R^d} G(t,x-y) G(t_0,y) \ud y + \int_{\R^d} \ud y \; G(t,x-y) \int_0^{t_0} \int_{\R^d} W(\ud s, \ud z)  G(t_0-s,y-z) b(z,u(s,z)) \\
+		& = G(t+t_0,x) + \int_0^{t_0} \int_{\R^d} G(t+t_0 -s,x-z) b(z,u(s,z)) W(\ud s, \ud z),
+	\end{align*}
+where in the last line I assume that stochastic Fubini's theorem could be applied. 
+
+\textcolor{blue}{I answered this concern as I finished typing it. As long as we assume \eqref{A:initialbdd}, then we will be able to show 
+	\[
+		\sup_{t \ge t_0} \mathbb{E}\left[\Norm{u^{\mu}(t,\cdot)}_{\rho}^2\right] < \infty
+	\] 
+which is all that is needed.}
 \section{Fix for the random initial data}
 
 I previously proved that for $L^2_{\rho}(\R^d)$ initial conditions that 
