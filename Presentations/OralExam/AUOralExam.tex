@@ -729,7 +729,7 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 		\\&= \sum_{n \ge 0} (\theta t)^n n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2
 		\\& =: \sum_{n \ge 0} (\theta t)^n R_n, \quad R_n = n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2.
 		\end{align*}
-		The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho_c)$. Now the Cauchy-Hadamard theorem can be directly applied to see that the radius of convergence is precisely $(2\theta \rho_c)^{-1} = T_2$.
+		The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho)$. Now the Cauchy-Hadamard theorem can be directly applied to see that the radius of convergence is precisely $(2\theta \rho)^{-1} = T_2$.
 		
 	\end{frame}
 	
@@ -745,21 +745,13 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 		\mathcal{E}_a(g,g) := (2\pi)^{-d} \int_{\R^d} |\xi|^a |\mathcal{F}g(\xi)|^2 \ud \xi \quad \text{and} \\
 		\mathcal{F}_a      := \left\{f\in L^2(\R^d): \: \Norm{f}_{L^2(\R^d)}=1,\: \mathcal{E}_a(f,f)<\infty \right\}.
 		\end{gather*}
-	\end{frame}% }}}
-	
-	\begin{frame}% {{{ Connection between rho and M
-		\frametitle{The Connection between $\rho$ and $\mathcal{M}$}
-		Recall that
-		\begin{align*}
-		\rho_{\nu,a}(\gamma) &= \sup_{\Norm{f}_{L^2(\R^d)} =1} \int_{\R^d} \left[ \int_{\R^d} \frac{f(x+y)f(y)}{\sqrt{1+\frac{\nu}{2}|x+y|^a } \sqrt{1+\frac{\nu}{2}|y|^a} } \ud y \right]^2 \mu(\ud x).
-		\end{align*}
 		
-		\begin{theorem}[{\small Bass, X. Chen and Rosen '09}]
+			\begin{theorem}[{\small Bass, X. Chen and Rosen '09}]
 			\[
 			\rho_{\nu,a}(\gamma) = \nu^{-\alpha/a} \mathcal{M}_a^{2-(\alpha / a)}(\gamma)<\infty
 			\]
 		\end{theorem}
-	\end{frame}% }}}
+	\end{frame}% }}}f
 	
 	\begin{frame}[t]% {{{ Moment asymptotics
 		\frametitle{The Moment Asymptotic}
@@ -815,13 +807,6 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 	\end{frame}% }}}
 	
 	\begin{frame}
-		\frametitle{End}
-		\begin{center}
-			Thank you for listening!
-		\end{center}
-	\end{frame}
-	
-	\begin{frame}
 		\frametitle{References}
 		\small
 		
@@ -863,63 +848,123 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 		\end{thebibliography}
 	\end{frame}
 	
-	\begin{frame}[t]
-		\frametitle{Anticipated Question: Finiteness of $\rho$}
-		Recall $\varphi(x) = \prod_{i=1}^n|x_{(i)}|^{d_i-\alpha_i}$. By examining Lemma 1.6 (X. Chen 2007), to show $\rho$ is finite for the generalized Riesz kernel, then we need to prove the following:
-		\[\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}\]
-		This can be done by using weak Young's inequality
-		\[
-		\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
-		\]
-		where $q^{-1} + q'^{-1} = 1$ and $p^{-1}+q^{-1}+r^{-1} =2$ and
-		\[
-		\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |b(x)| \ud x, \quad |A| < \infty.
-		\]
-		We apply this with
-		\[
-		a=F, \quad b=\varphi, \quad c= G
-		\]
-		and we show that $\Norm{\varphi}_{q,w} < \infty$ with $q=d/(d-\alpha)$.
-	\end{frame}
-	
-	
+%	\begin{frame}[t]
+%		\frametitle{Anticipated Question: Finiteness of $\rho$}
+%		Recall $\varphi(x) = \prod_{i=1}^n|x_{(i)}|^{d_i-\alpha_i}$. By examining Lemma 1.6 (X. Chen 2007), to show $\rho$ is finite for the generalized Riesz kernel, then we need to prove the following:
+%		\[\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi(x-y) \ud y \ud x \le C \Norm{F}_{2d/(d+\alpha)} \Norm{G}_{2d/(d+ \alpha)}\]
+%		This can be done by using weak Young's inequality
+%		\[
+%		\left|	\int_{\R^d}\int_{\R^d}a(x)b(x-y)c(y) \ud x \ud y \right| \le K_{p,q,r,d} \Norm{a}_p\Norm{b}_{q,w}\Norm{c}_r
+%		\]
+%		where $q^{-1} + q'^{-1} = 1$ and $p^{-1}+q^{-1}+r^{-1} =2$ and
+%		\[
+%		\Norm{b}_{q,w} = \sup_{A} |A|^{-1/q'} \int_A |b(x)| \ud x, \quad |A| < \infty.
+%		\]
+%		We apply this with
+%		\[
+%		a=F, \quad b=\varphi, \quad c= G
+%		\]
+%		and we show that $\Norm{\varphi}_{q,w} < \infty$ with $q=d/(d-\alpha)$.
+%	\end{frame}
+%	
+%	
+%	\begin{frame}
+%		\frametitle{Anticipated Question: Why does $\rho$ appear in the Lemma.}
+%		
+%		For simplicity we will consider the second moments of stochastic wave equation ($a=b=2$ and $r=0$). We will also only consider the limit
+%		\[
+%		\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]
+%		\]
+%		Recall that
+%		\[
+%		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
+%		\]
+%		Define $T_n:= \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}\tilde{f}_n(1,\xi)\right|^2 \mu (\ud \vec{\xi})$. Through direct calculation and Sterlings formula:
+%		\begin{align*}
+%		\frac{c_\alpha}{C_n} 2^{(4-\alpha)n}T_n \le \int_0^\infty e^{-t} \Norm{\tilde{f}(\cdot,0,t)}_{H^{\otimes n}}^2 \ud t  \le 2^{(4-\alpha)n}T_n
+%		\end{align*}
+%		Where $\log(C_n)/n \to 0$ and $c_\alpha >0$.
+%	\end{frame}
+%	
+%	\begin{frame}[t]
+%		\frametitle{Anticipated Question: Finding the moment asymptotic}
+%		\begin{align*}
+%		\mathbb{E}(|u(t,x)|^2) = \sum_{n \ge 0} z_n R_nt^{(2(b+r)-b\alpha/a)n}
+%		\end{align*}
+%		\begin{align*}
+%		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad
+%		z_n = \frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}.
+%		\end{align*}
+%		\begin{align*}
+%		\frac{1}{n}\log(R_n) \to  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right )  \quad \text{as } n\to \infty.
+%		\end{align*}
+%		If we find a $\beta$ and $A$ so that
+%		\begin{align*}
+%		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R^n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
+%		\end{align*}
+%		then this is implies
+%		\begin{align*}
+%		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R_n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
+%		\end{align*}
+%	\end{frame}
+
 	\begin{frame}
-		\frametitle{Anticipated Question: Why does $\rho$ appear in the Lemma.}
-		
-		For simplicity we will consider the second moments of stochastic wave equation ($a=b=2$ and $r=0$). We will also only consider the limit
-		\[
-		\lim_{n \to \infty}\frac{1}{n} \log\left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]
-		\]
-		Recall that
-		\[
-		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
-		\]
-		Define $T_n:= \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}\tilde{f}_n(1,\xi)\right|^2 \mu (\ud \vec{\xi})$. Through direct calculation and Sterlings formula:
-		\begin{align*}
-		\frac{c_\alpha}{C_n} 2^{(4-\alpha)n}T_n \le \int_0^\infty e^{-t} \Norm{\tilde{f}(\cdot,0,t)}_{H^{\otimes n}}^2 \ud t  \le 2^{(4-\alpha)n}T_n
-		\end{align*}
-		Where $\log(C_n)/n \to 0$ and $c_\alpha >0$.
+		\begin{center}
+			Project 3:
+			Global Solutions for the Interpolated Stochastic Heat and Wave Equation with a Superlinear Drift Term
+		\end{center}
 	\end{frame}
-	
-	\begin{frame}[t]
-		\frametitle{Anticipated Question: Finding the moment asymptotic}
-		\begin{align*}
-		\mathbb{E}(|u(t,x)|^2) = \sum_{n \ge 0} z_n R_nt^{(2(b+r)-b\alpha/a)n}
-		\end{align*}
-		\begin{align*}
-		R_n = (n!)^{2(b+r)-b\alpha/a}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2 \quad \text{and} \quad
-		z_n = \frac{\theta^n}{(n!)^{2(b+r)-(b\alpha/a)-1}}.
-		\end{align*}
-		\begin{align*}
-		\frac{1}{n}\log(R_n) \to  \log\left( \left(\frac{2}{2(b+r)-\frac{b\alpha}{a}}\right)^{2(b+r)-\frac{b\alpha}{a}}  \rho \right )  \quad \text{as } n\to \infty.
-		\end{align*}
-		If we find a $\beta$ and $A$ so that
-		\begin{align*}
-		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R^n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
-		\end{align*}
-		then this is implies
-		\begin{align*}
-		\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R_n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
-		\end{align*}
+
+	\begin{frame}{The Interpolated Stochastic Heat and Wave Equation}
+		\begin{equation}
+		\begin{cases}
+		\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sigma(u(t,x))\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
+		u(0,\cdot) = 1                                                                                                           & b \in (0,1]               \\
+		u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                          & b \in (1,2)
+		\end{cases}
+		\end{equation}
+The drift coefficient has super-linear growth: 
+		\[
+				|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta} \quad \text{as } |x| \to \infty.
+		\]
+We first consider the noise to be space-time white. In other words, the covariance structure is defined for $\phi,\psi \in C_0^\infty(\R_+ \times \R^d) $ as
+		\[
+		J(\phi, \psi) := \mathbb{E}(W(\phi)W(\psi)) = \int_0^\infty \ud s \int_{\R^d} \ud x \; \phi(s,x)\psi(s,x).
+		\]
+	\end{frame}
+
+	\begin{frame}{Existence and Uniqueness}
+Because of the bounded initial conditions, \cite[Theorem 3.1]{CHN19} implies that the following condition on $Y$ will imply existence and uniqueness:
+		\begin{equation*}
+		\label{C:Dalang}
+		\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
+		\end{equation*} 
+		which is equivalent to
+		\begin{equation*}
+		\label{E:DalangEquiv}
+		d < 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\} =: \Theta,
+		\end{equation*}
+		which is further equivalent to 
+		\begin{equation*}
+		\label{E:DalangEquiv2}
+		\rho(d) > 0 \quad \text{and} \quad d < 2\alpha,
+		\end{equation*}
+		where 
+		\begin{equation*}
+		\label{D:theta}
+		\rho(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
+		\end{equation*} 
+	\end{frame}
+
+		\begin{frame}
+		\frametitle{References}
+		\small
+		
+		\begin{thebibliography}{999}
+			\bibitem{CHN19} % {{{ 1.
+			L. Chen, Y. Hu, D. Naulart (2019)
+			\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+			\newblock {\em  Stochastic Processes and their Applications}, 129 5073--5112.
+		\end{thebibliography}
 	\end{frame}
 \end{document}
