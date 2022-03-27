@@ -185,10 +185,10 @@
 	
 	
 	\section{Preliminaries}
-	For any $t \in [0,T]$ and $x \in \R^d$, we write (assuming $\beta \in (1,2))$
-	\[
-	u(t,x) = J_0(t,x) + I(t,x)
-	\]
+For any $t \in [0,T]$ and $x \in \R^d$, we write (assuming $\beta \in (1,2))$
+\[
+u(t,x) = J_0(t,x) + I(t,x)
+\]
 	where
 	\begin{align*}
 	J_0(t,x) &=\begin{cases} 
@@ -197,6 +197,11 @@
 	\end{cases}
 	\\	I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
 	\end{align*}
+
+The function $Y$ is defined through the Fox-H function and its Fourier transform can be shown to be given as 
+	\[
+		\mathcal{F}Y(t,\cdot)(\xi) = t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}(-2^{-1}\nu t^\beta |\xi|^\alpha)
+	\]
 	
 	\textcolor{blue}{The following is for space-time white noise. For colored noise we need $\rho(\lambda) >0$ and $2\alpha > d$.}
 	
@@ -274,7 +279,7 @@
 	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{SoleMillet2021}}
 		\label{P:N(u)Bdd}
-		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and consider $\rho = \rho(d)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
+		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and $\rho = \rho(d) > 0$, where $\rho(x)$ is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
 		\]
@@ -409,11 +414,11 @@
 		\label{P:YInc}
 		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:theta}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
 		\begin{enumerate}
-			\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -1) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -d) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
 			\[
 			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right).
 			\]
-			\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then for $0< \theta < (\Theta -1) \wedge 2$ there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then for $0< \theta < (\Theta -d) \wedge 2$ there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
 			\[
 			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^q + |x-z|^{\theta}\right),
 			\]
@@ -430,7 +435,7 @@
 	
 	\begin{proposition}
 		\label{P:NormInc}
-		Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$ and suppose that $0< \theta < (\Theta -1) \wedge 2$. Consider $\rho = \rho(d)$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
+		Suppose that $u_0=1$ and that $v_0 =0$ so that $u(t,x) = 1 + I(t,x)$. Let $a>0$ and suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$,
 		\begin{equation}
 		\label{E:NormInc_N(u)}
 		\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
@@ -492,11 +497,7 @@
 	
 	\begin{proposition}
 		\label{P:Holder}
-		Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. Then $u$ has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$ where $0< \theta < (\Theta -1) \wedge 2$ and
-		\begin{enumerate}
-			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
-			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
-		\end{enumerate}
+		Suppose that $u_0$ and $v_0$ are as on Proposition \ref{P:NormInc} above. 
 		Moreover, if we consider
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],

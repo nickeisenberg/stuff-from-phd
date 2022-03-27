@@ -933,6 +933,25 @@ We first consider the noise to be space-time white. In other words, the covarian
 		\]
 	\end{frame}
 
+\begin{frame}{Mild Solution}
+	For any $t \in [0,T]$ and $x \in \R^d$, we write
+	\[
+	u(t,x) = 1 + I(t,x)
+	\]
+	where
+	\begin{align*}
+		I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
+	\end{align*}
+	The function $Y$ is defined through the Fox-H function and its Fourier transform can be shown to be given as 
+	\[
+	\mathcal{F}Y(t,\cdot)(\xi) = t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}(-2^{-1}\nu t^\beta |\xi|^\alpha),
+	\]
+	where
+	\[
+		E_{\alpha,\beta}(z) = \sum_{k \ge 0}\frac{z^k}{\Gamma(\alpha k + \beta)}.
+	\]
+\end{frame}
+
 	\begin{frame}{Existence and Uniqueness}
 Because of the bounded initial conditions, \cite[Theorem 3.1]{CHN19} implies that the following condition on $Y$ will imply existence and uniqueness:
 		\begin{equation*}
@@ -956,6 +975,81 @@ Because of the bounded initial conditions, \cite[Theorem 3.1]{CHN19} implies tha
 		\end{equation*} 
 	\end{frame}
 
+	\begin{frame}{Some Results for a Globally Lipschitz Drift Term}
+We first prove some results assuming that the drift term, $\sigma$ is globally Lipschitz:
+	\[
+		|\sigma(x) - \sigma(y)| \le L(\sigma) |x-y|, \quad x,y \in \R^d.
+	\]
+We also define 
+	\end{frame}
+
+	
+	\begin{frame}
+	\begin{proposition}
+Suppose that $d < 2 \alpha$ and $\rho = \rho(d) > 0$. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
+	\[
+	a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+	\]
+	Then we have that 
+	\begin{equation}
+	\label{E:Nbdd}
+	N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
+	\end{equation}	
+	where
+	\begin{align*}
+	\mathcal{T}_0 = \begin{cases} 
+	(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+	\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+	\end{cases} 
+	\end{align*}
+	Moreover for any $T>0$,
+	\begin{equation}
+	\label{E:Pnormtbdd}
+	\sup_{x\in\R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+	\end{equation}
+\end{proposition}
+	\end{frame}
+
+	\begin{frame}
+Suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Let $T>0$ and $t,r \in [0,T]$. Then for any
+\[
+a > \left( 8 L^2(\sigma)K^2\right)^{1/
+	\rho} \quad {and} \quad p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+\]
+and any $x,z \in \R^d$ we have that
+\begin{equation}
+\label{E:NormInc_cL}
+\frac{\Norm{u(t,x)-u(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
+\end{equation}
+where,
+	\begin{enumerate}
+	\item $0< q \le \rho$ under $\beta \in (0,1]$ and $\gamma \in (0, 1-\beta]$,
+	\item $0 < q < \rho$ under $\beta \in (0,2)$ and $\gamma >0$,
+\end{enumerate}
+and 
+	\[
+		\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{p}L(\sigma).
+	\]
+	\end{frame}
+
+\begin{frame}{Holder Continuity}
+	The solution, $u$, has a version, still denoted by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$ where $0< \theta < (\Theta - d) \wedge 2$ and \vspace{.1in}
+	\begin{enumerate}
+		\item $0< q \le \rho$ under $\beta \in (0,1]$ and $\gamma \in (0, 1-\beta]$,
+		\item $0 < q < \rho$ under $\beta \in (0,2)$ and $\gamma >0$, \vspace{.1in}
+	\end{enumerate}
+Moreover, if we consider
+\[
+a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+\]
+then we have that 
+\begin{align*}
+\mathbb{E}\bigg[ \sup_{t\in[0,T],\; |x| \le R} & |u(t,x)|^p \bigg] \\ 
+&\le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+\end{align*}
+	
+\end{frame}
+
 		\begin{frame}
 		\frametitle{References}
 		\small
@@ -967,4 +1061,5 @@ Because of the bounded initial conditions, \cite[Theorem 3.1]{CHN19} implies tha
 			\newblock {\em  Stochastic Processes and their Applications}, 129 5073--5112.
 		\end{thebibliography}
 	\end{frame}
+
 \end{document}
