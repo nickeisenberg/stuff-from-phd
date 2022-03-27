@@ -1050,6 +1050,59 @@ then we have that
 	
 \end{frame}
 
+\begin{frame}{Locally Lipschitz Diffusion Term}
+	\begin{equation*}
+	\begin{cases}
+	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sigma(u(t,x))\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = 1                                                                                                           & b \in (0,1]               \\
+	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                          & b \in (1,2)
+	\end{cases}
+	\end{equation*}
+	\[
+		|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+	\]
+	where $\sigma_1 = \sigma(0)$ and $\sigma_2 >0$.
+	
+		\begin{theorem}
+	 Let $M, T>0$. Under Dalang's condition, $\rho(d)>0$ and $d < 2\alpha$,  there exists a random field solution for $|x| \le M$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
+		\begin{equation*}
+		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
+		\end{equation*}
+	\end{theorem}
+\end{frame}
+
+\begin{frame}{Proof Sketch}
+We consider a truncated version of the equation where $\sigma$ replaced by $\sigma_N$: 
+	\[
+		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+	\]
+We see that $\sigma_N$ is Lipschitz:
+	\[
+		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|,
+	\]
+so there exists a unique solution which is Holder continuous, which we denote as $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. We define,
+	\[
+		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T .
+	\]
+We see that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$.
+\end{frame}
+
+\begin{frame}{Proof Sketch}
+We can show that $\sup_N \tau_N = T$ which implies that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
+	\[
+	u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
+	\]
+	However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
+	\[
+	u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
+	\]
+	Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
+	\begin{equation}
+	\label{E:SupLinMildSol}
+	u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
+	\end{equation}
+\end{frame}
+
 		\begin{frame}
 		\frametitle{References}
 		\small
