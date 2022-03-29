@@ -48,6 +48,8 @@
 
 \setbeamersize{text margin left=2mm,text margin right=2mm}
 
+\usepackage{animate}
+
 \usepackage{tikz}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
@@ -73,12 +75,6 @@
 \author[Arthur, Doe] % (optional, for multiple authors)
 {Nicholas Eisenberg}
 
-\pgfdeclareimage[height=1.2cm]{AU}{figs/AU.png}
-\institute[Auburn University]
-{
-	\pgfuseimage{AU}\\[1em]
-	\vspace{.1em}
-}
 
 \date[VLC 2021] % (optional)
 { \small March 29, 2022 
@@ -230,6 +226,22 @@ Consider a measure space $(E, \mathscr{E})$ and denote $\mathcal{M}_1(E)$ to be 
 	
 \end{frame}
 
+\begin{frame}{Theorem: Existence of an Invariant measure}
+	A processes $u(t,\cdot)(\omega)$ is bounded in probability in $L^2_{\rho}(\R^d)$ if
+	\[
+	\forall \epsilon >0, \; \exists R>0: \; \forall t>0, \; \mathbb{P}\left\{ \Norm{u(t,\cdot)}_{L^2_{\rho}(\R^d)} \ge R \right\} \le \epsilon.
+	\] 	
+	
+	Tessitore and Zabczyk proved the following: \vspace{.1in}
+	\begin{theorem}
+		Suppose $d \ge 3$ and that there exists a $p \in [1,d/(d+2))$ such that the spatial correlation density $\gamma \in L^p(\R^d)$. Suppose that there exists two weights, $\rho$ and $\hat{\rho}$ and an element $\phi \in L^2_{\rho}(\R^d) \cap L^2_{\hat{\rho}}(\R^d)$ such that 
+		\[
+		\frac{\rho}{\hat{\rho}} \in L^1(\R^d) \quad \text{and} \quad u^\phi(t,\cdot) \text{is bounded in probability in} L^2_{\hat{\rho}} .
+		\]
+		Then there exists an invariant measure in $L^2_{\rho}(\R^d)$. 
+	\end{theorem}
+\end{frame}
+
 \begin{frame}{Sketch of the Proof of Existence}
 	It has been shown by DaPrato and Zabczyk that $P_t(\phi,\Gamma) := \mathscr{L}(u^\phi(t,\cdot))(\Gamma)$ defines a Markov transition function on $(L^2_{\rho}(\R^d), \mathscr{L})$ where,	
 		\[
@@ -245,22 +257,6 @@ Consider a measure space $(E, \mathscr{E})$ and denote $\mathcal{M}_1(E)$ to be 
 		\] 
 	and moreover, $\eta$ is invariant in $L^2_{\rho}(\R^d)$.
 		
-\end{frame}
-
-\begin{frame}{Theorem: Existence of an Invariant measure}
-A processes $u(t,\cdot)(\omega)$ is bounded in probability in $L^2_{\rho}(\R^d)$ if
-	\[
-		\forall \epsilon >0, \; \exists R>0: \; \forall t>0, \; \mathbb{P}\left\{ \Norm{u(t,\cdot)}_{L^2_{\rho}(\R^d)} \ge R \right\} \le \epsilon.
-	\] 	
-		
-Tessitore and Zabczyk proved the following: \vspace{.1in}
-	\begin{theorem}
-		Suppose $d \ge 3$ and that there exists a $p \in [1,d/(d+2))$ such that the spatial correlation density $\gamma \in L^p(\R^d)$. Suppose that there exists two weights, $\rho$ and $\hat{\rho}$ and an element $\phi \in L^2_{\rho}(\R^d) \cap L^2_{\hat{\rho}}(\R^d)$ such that 
-			\[
-				\frac{\rho}{\hat{\rho}} \in L^1(\R^d) \quad \text{and} \quad u^\phi(t,\cdot) \text{is bounded in probability in} L^2_{\hat{\rho}} .
-			\]
-		Then there exists an invariant measure in $L^2_{\rho}(\R^d)$. 
-	\end{theorem}
 \end{frame}
 
 
@@ -362,7 +358,7 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 		\end{itemize}
 		
 	\end{frame}% }}}
-	\begin{frame}[c]% {{{ Two Known results.
+	\begin{frame}{Known Results}% {{{ Two Known results.
 		% \begin{equation*}
 		% \begin{cases}
 		% 	\frac{\partial^b u}{\partial t^b}(t,x) = \Delta u(t,x) +  u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
@@ -377,16 +373,7 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 			\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{2-\alpha}} (2-\alpha)\left(\frac{2\mathcal{M}}{4-\alpha}\right)^{\frac{4-\alpha}{2-\alpha}}
 			\]
 		\end{center}
-		\vfill
-		
-		\mySeparateLine
-		\only<2>{
-			\begin{center}
-				\textcolor{red}{$b\in (0,2)$ and $a \in (0,2]$ ??}
-			\end{center} \vspace{-1.5em}}
-		\mySeparateLine
-		\vfill
-		
+		\vspace{.3in}
 		\begin{center}
 			For the SWE, i.e., \textcolor{cyan}{$b=2$} ($a=2$, $\nu=2$)\\
 			{\small [Balan, L. Chen, and X. Chen '21]}
@@ -650,20 +637,48 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 		\end{enumerate}
 	\end{frame}
 	
-	\begin{frame}[t]
+		\begin{frame}[t]
 		\frametitle{How to Find the Critical $\alpha$}
 		For simplicity we consider the SWE ($a=b=2$ and $r=0$).
 		\begin{align*}
 		\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \: \overbrace{t^{[4 - \alpha ]n}  \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2}^{\Norm{ \widetilde{f_n}(\cdot,0,t) }_{ \mathcal{H}^{\otimes n} }^2}
-		\\&= \sum_{n \ge 0} \frac{\theta^nt^{(4-\alpha)n}}{(n!)^{3-\alpha}} R_n, \quad R_n = (n!)^{4-\alpha}\Norm{\widetilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2
+		\\&\le \sum_{n \ge 0} \frac{(\theta t^{4-\alpha}c_12^{4-\alpha} C_\mu)^n }{(n!)^{3-\alpha}}  , \quad C_\mu = \int_{\R^d} \left(\frac{1}{1+|\xi|^2}\right)^2 \mu(\ud \xi) < \infty
 		\end{align*}
-		When $\alpha = 3$, then the above reduces down to
-		\[
-		\Norm{u(t,x)}_2^2 =  \sum_{n \ge 0} (\theta t)^n n! \Norm{ \widetilde{f_n}(\cdot,0,1) }_{ \mathcal{H}^{\otimes n} }^2.
-		\]
-		and we lose the $n!$ term in the demonstrator.
+		When $\alpha = 3$, then the above reduces down to, we lose the $n!$ term in the denominator. 
 	\end{frame}
 	
+		\begin{frame}[t]
+		\frametitle{How to Find the Blowup Time (SWE)}
+		Recall from above that the critical case corresonds to $\alpha = 3 = d$.
+		\begin{align*}
+		\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}(\cdot,0,t)}_{H^{\otimes n}}^2
+		\\&= \sum_{n \ge 0} (\theta t)^n n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2
+		\\& =: \sum_{n \ge 0} (\theta t)^n R_n, \quad R_n = n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2.
+		\end{align*}
+		The lemma below says that $\frac{1}{n}\log{R_n} \to \log(2 \rho)$. Now the Cauchy-Hadamard theorem can be directly applied to see that the radius of convergence is precisely $(2\theta \rho)^{-1} = T_2$.
+		
+	\end{frame}
+	
+	\begin{frame}
+		Recall the scaling property
+		\[
+		\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{(4-\alpha)n}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
+		\]
+		Using this scaling property we see that
+		\[
+		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
+		\]
+		
+		\begin{lemma}[{\small R.  Balan, L. Chen \& X. Chen '21}]
+			
+			\begin{align*}
+			\lim_{n \to \infty}\frac{1}{n} \log & \left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]
+			\\ \\ \lim_{n \to \infty}\frac{1}{n} \log & \left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]
+			\end{align*}
+		\end{lemma}
+	\end{frame}
+	
+		
 	\begin{frame}[t]
 		\frametitle{$\rho$}
 		We define
@@ -698,39 +713,6 @@ With the absence of noise, we know that $v(t,x) = u(t+t_0,x)$ and we wish to sho
 		\begin{align*}
 		\lim_{n \to \infty} \frac{1}{n} \log  \left[ \int_{(\R^d)^n} \left| \mathcal{F}\mathcal{L}(\tilde{f}_n)(1,\xi)\right|^2 \mu (\ud \vec{\xi})\right]  = \log\left( \rho_{\nu, a}\left(\gamma\right) \right).
 		\end{align*}
-	\end{frame}
-	
-	\begin{frame}
-		
-		
-		Recall the scaling property
-		\[
-		\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{(4-\alpha)n}\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
-		\]
-		Using this scaling property we see that
-		\[
-		\int_0^\infty e^{-t}\Norm{\tilde{f}_n(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2  \ud t = \Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
-		\]
-		
-		\begin{lemma}[{\small R.  Balan, L. Chen \& X. Chen '21}]
-			
-			\begin{align*}
-			\lim_{n \to \infty}\frac{1}{n} \log & \left(\Gamma((4-\alpha)n+1)\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ 2^{4-\alpha}\rho \right]
-			\\ \\ \lim_{n \to \infty}\frac{1}{n} \log & \left((n!)^{4-\alpha}\Norm{\tilde{f}_n(\cdot,0;1)}_{\mathcal{H}^{\otimes n}}^2\right) = \log\left[ \left(\frac{2}{4-\alpha}\right)^{4-\alpha}\rho \right]
-			\end{align*}
-		\end{lemma}
-	\end{frame}
-	
-	\begin{frame}[t]
-		\frametitle{How to Find the Blowup Time (SWE)}
-		Recall from above that the critical case corresonds to $\alpha = 3 = d$.
-		\begin{align*}
-		\Norm{u(t,x)}_2^2 &= \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}(\cdot,0,t)}_{H^{\otimes n}}^2
-		\\&= \sum_{n \ge 0} (\theta t)^n n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2
-		\\& =: \sum_{n \ge 0} (\theta t)^n R_n, \quad R_n = n! \Norm{\tilde{f}(\cdot,0,1)}_{H^{\otimes n}}^2.
-		\end{align*}
-		The above lemma says that $\frac{1}{n}\log{R_n} \to \log(2 \rho)$. Now the Cauchy-Hadamard theorem can be directly applied to see that the radius of convergence is precisely $(2\theta \rho)^{-1} = T_2$.
-		
 	\end{frame}
 	
 	\begin{frame}[t]% {{{ M
