@@ -903,6 +903,8 @@ but Tessitore's condition does not allow such arrangement.}
 
 \section{Restarting the solution}
 \subsection{Verification of restart}
+\textcolor{blue}{There is circular reasoning at \eqref{E:t0Restart}. I will fix later}
+
 Suppose we have 
 	\begin{equation} \label{E:SHE}
 	u(t,x) =
@@ -915,36 +917,49 @@ and
 	\begin{equation} \label{E:SHErestart}
 	v(t,x) =
 	\begin{cases}
-	\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
-	u(0,\cdot) = u(t_0,\cdot)       .                                                      &
+	\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+	v(0,\cdot) = u(t_0,\cdot)       ,                                                      &
 	\end{cases}
+	\end{equation}	
+	
+where $\dot{W}_{t_0}(t,x) = \dot{W}(t+t_0,x)$. We want it to be the case that 
+	\begin{equation} \label{E:t0Restart}
+		v(t,x) = u(t+t_0,x).
 	\end{equation}
-We want it to be the case that $v(t,x) = u(t+t_0,x)$. Is the following true?
-	\[
-		v(t,x) = \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W(\ud s, \ud y)?
-	\]
-If so then we would like to have 
+If we assume that \eqref{E:t0Restart} is true, then
 	\begin{align}
-		v(t,x) &= \int_{\R^d} G(t,x-y) v(0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W(\ud s, \ud y) \nonumber \\ 
-		&= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W(\ud s, \ud y) \label{E:vsol}
+		v(t,x) &= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W_{t_0}(\ud s, \ud y) \nonumber \\
+		&= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) \label{E:vsol}
 	\end{align}
-and also we would like to have 
+and because of \eqref{E:t0Restart}, we would also like to have 
 	\begin{equation}
 	\label{E:vsolrestart}
-		v(t,x) = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t+t_0} \int_{\R^d} G(t+t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
+		v(t,x) = u(t+t_0,x) = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t+t_0} \int_{\R^d} G(t+t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
 	\end{equation}
 The first integral in \eqref{E:vsol} can be shown using Fubini's theorem to be written as
-	\[
-		\int_{\R^d} G(t,x-y) u(t_0,y) \ud y = J(t+t_0,x) + \int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
-	\]
-Then \eqref{E:vsol} and \eqref{E:vsolrestart} would need to imply that
+	\begin{equation} \label{E:RestartHomogeneous}
+		\int_{\R^d} G(t,x-y) u(t_0,y) \ud y = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
+	\end{equation}
+Thus to prove \eqref{E:vsolrestart}, it suffices to prove the following:
 	\begin{align}
-		\int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W(\ud s, \ud y) \\
+		\int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) \nonumber \\
 		&  = \int_0^{t+t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y) \label{E:ChgOfVar}.
 	\end{align}
-
-I have been unable to show in what sense the above equality could be true. 
-
+	
+Intuitively, we would like the following to be true:
+	\begin{equation} \label{E:ChgOfVar2}
+		\int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t + t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
+	\end{equation}
+Note that \eqref{E:ChgOfVar2}, would follow by the change of variable $s' = s + t_0$. Then plugging \eqref{E:ChgOfVar2} into the LHS of \eqref{E:ChgOfVar} would give us 
+	\begin{align*}
+		\text{LHS of }\eqref{E:ChgOfVar} = \int_0^{t_0} \int_{\R^d} G(t+t_0-s, x-y) b(y,u(s,y)) W(\ud s, \ud y) + \int_{t_0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y),
+	\end{align*}
+and lastly we would like for it to be the case that 
+	\begin{align}
+		\int_0^{t_0} \int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_{t_0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y) \nonumber \\
+		&= \int_{0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y) \label{E:SumOfInt}.
+	\end{align}
+Then \eqref{E:ChgOfVar2} and \eqref{E:SumOfInt} would imply that \eqref{E:ChgOfVar} which in return would prove \eqref{E:vsolrestart}. Hence it suffices to prove \eqref{E:ChgOfVar2} and \eqref{E:SumOfInt}. However, both 
 \subsection{Assumption on the restarted initial condition}
 
 Also, in order to show the existence on an invariant measure, we need to assume that 
