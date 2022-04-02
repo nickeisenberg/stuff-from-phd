@@ -902,8 +902,7 @@ might be that we can allow logarithm correction to make $\Upsilon(0)<\infty$
 but Tessitore's condition does not allow such arrangement.}
 
 \section{Restarting the solution}
-\subsection{Verification of restart}
-\textcolor{blue}{There is circular reasoning at \eqref{E:t0Restart}. I will fix later}
+\subsection{Some informal notes on restart}
 
 Suppose we have 
 	\begin{equation} \label{E:SHE}
@@ -931,7 +930,7 @@ If we assume that \eqref{E:t0Restart} is true, then
 		v(t,x) &= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W_{t_0}(\ud s, \ud y) \nonumber \\
 		&= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) \label{E:vsol}
 	\end{align}
-and because of \eqref{E:t0Restart}, we would also like to have 
+and because of \eqref{E:t0Restart}, we also have 
 	\begin{equation}
 	\label{E:vsolrestart}
 		v(t,x) = u(t+t_0,x) = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t+t_0} \int_{\R^d} G(t+t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
@@ -940,7 +939,7 @@ The first integral in \eqref{E:vsol} can be shown using Fubini's theorem to be w
 	\begin{equation} \label{E:RestartHomogeneous}
 		\int_{\R^d} G(t,x-y) u(t_0,y) \ud y = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y).
 	\end{equation}
-Thus to prove \eqref{E:vsolrestart}, it suffices to prove the following:
+Thus \eqref{E:vsol}, \eqref{E:vsolrestart} and \eqref{E:RestartHomogeneous}, imply:
 	\begin{align}
 		\int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) \nonumber \\
 		&  = \int_0^{t+t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y) \label{E:ChgOfVar}.
@@ -959,7 +958,7 @@ and lastly we would like for it to be the case that
 		\int_0^{t_0} \int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_{t_0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y) \nonumber \\
 		&= \int_{0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y) \label{E:SumOfInt}.
 	\end{align}
-Then \eqref{E:ChgOfVar2} and \eqref{E:SumOfInt} would imply that \eqref{E:ChgOfVar} which in return would prove \eqref{E:vsolrestart}. Hence it suffices to prove \eqref{E:ChgOfVar2} and \eqref{E:SumOfInt}. However, both 
+
 \subsection{Assumption on the restarted initial condition}
 
 Also, in order to show the existence on an invariant measure, we need to assume that 
@@ -978,7 +977,7 @@ Recall that
 	\[
 		u(t_0,x) = \int_{\R^d} G(t_0,x-y) \mu(\ud y) + \int_0^{t_0} \int_{\R^d} G(t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
 	\]
-So $|u(t_0,\cdot)|$ is a processes and the absolute values add some difficulty. The comparison principle show that we may remove the absolute value signs for the $\delta_0$ initial condition though. Thus we would just need to show
+So $|u(t_0,\cdot)|$ is a processes and the absolute values add some difficulty. The comparison principle shows that if we assume that $b(0)=0$ then we may remove the absolute value signs for the $\delta_0$ initial condition though. Thus we would just need to show
 	\begin{align*}
 		\sup_{x \in \R^d} (G(t,\cdot) * u(t_0,\cdot))(x) < \infty \quad \text{for any } t\ge 0.
 	\end{align*}
@@ -991,7 +990,7 @@ We have that
 	\end{align*}
 where in the last line I assume that stochastic Fubini's theorem could be applied. 
 
-\textcolor{blue}{I answered this concern as I finished typing it. As long as we assume \eqref{A:initialbdd}, then we will be able to show 
+\textcolor{blue}{\eqref{A:RandomInitial} may not be an issue. As long as we assume \eqref{A:initialbdd}, then we will be able to show 
 	\[
 		\sup_{t \ge t_0} \mathbb{E}\left[\Norm{u^{\mu}(t,\cdot)}_{\rho}^2\right] < \infty
 	\] 
@@ -1047,6 +1046,85 @@ Should we then assume \eqref{E:LipCondStrong} in our invariant measure project?
 \eqref{E:LipCondStrong}. In the latter case, we can make a comment saying that we can handle the general case
 \eqref{E:LipCond} as well.}
 
+\section{Questions about Theorem 1.3 \cite{CK17} or Theorem 1.5 \cite{CH19}}
+\begin{enumerate}
+	\item 
+In the first several lines of the proof of either Th 1.3 \cite{CK17} or Th 1.5 \cite{CH19} it is claimed that by the weak comparison principle, we may assume that $\mu$ has compact support. Why does the weak comparison principle imply this?
+	
+	\item 
+In case 1 of Th 1.3 \cite{CK17}, it says that we may suppose that $f(x)\mu(\ud x) = \textbf{1}_{[-d,d]}(x)$ because if $f(x) =\textbf{1}_{[a,b]}(x)$ then we could consider $f(x-(a+b)/2)$. I don't see how this is a justification for us to be able to assume that $f(x)\mu(\ud x) = \textbf{1}_{[-d,d]}(x)$.  If $f(x) =\textbf{1}_{[a,b]}(x)$ then,
+	\[
+		f(x-(a+b)/2) = 
+		\begin{cases}
+			1 & \frac{3a + b}{2} \le x \le \frac{a + 3b}{2} \\
+			0 & \text{otherwise},
+		\end{cases}
+	\]
+and I don't see the relation with this and $f(x)\mu(\ud x) = \textbf{1}_{[-d,d]}(x)$.
+
+	\item 
+I believe there is a typo in the first paragraph of case 1. I is that 
+	\begin{center}
+		...if $f(x) = c\textbf{1}_{[-d,d]}(x)$, then we can consider $\tilde{u}(t,x) = c u(t,x)$ which is the unique solution to the SPDE \textcolor{blue}{with initial function $\textbf{1}_{[-d,d]}(x)$} and replacing $\rho(z)$ with $c\rho(z/c)$...
+	\end{center}
+but I believe the blue text needs to be replaced with \textcolor{blue}{with initial function $c\textbf{1}_{[-d,d]}(x)$}. Note that 
+	\[
+		u(t,x) = \int_{\R} G(t,x-y)f(y) \ud y + \int_0^t\int_{\R} G(t-s,x-y) \rho(u(s,y)) W(\ud s, \ud y)
+	\]
+and so 
+	\[
+		cu(t,x) = \int_{\R} G(t,x-y) cf(y) \ud y + \int_0^t\int_{\R} G(t-s,x-y) c\rho\left(\frac{c u(s,y)}{c}\right) W(\ud s, \ud y)
+	\]
+and so we see that $\tilde{u}(t,x) = c u(t,x)$ solves the SPDE with initial function $c\textbf{1}_{[-d,d]}(x)$ and $\rho(z)$ replaced with $c\rho(z/c)$.
+	
+	\item
+I think there is another typo in Case 1 in the paragraph right after equation (4.6). First, we define $w_k(t,x)$ as the solution to
+	\[
+		\begin{cases}
+			(\frac{\partial}{\partial t} - _xD_\delta^a)w_k(t,x) = \rho_k(w_k(t,x)) \dot{W}_k(t,x) & s >0, \; x \in \R \\
+			w_k(0,x) = \textbf{1}_{S_{k-1}^m}
+		\end{cases}
+	\]
+where $\rho_k(x) = \beta^{-k}\rho(\beta^k x)$ and $\dot{W}_k(s,x) = \dot{W}(s + kt/m, x)$. It then says that if $v(t,x)$ is the solution to the SPDE with initial data $f(x) = \beta^{k}\textbf{1}_{S_{k-1}^m}(x)$ with the time shifted noise \textcolor{blue}{and with the same $\rho_k$} then $v(s,x) = \beta^k w_k(s,x)$ a.s. I think that the blue text needs to be replaced with \textcolor{blue}{with $\rho$.} Note that 
+	\[
+		w_k(s,x) = \int_{\R} G(s,x-y)f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho_k(w_k(r,y)) W_k(\ud r, \ud y)
+	\]
+then we see that 
+	\begin{align*}
+		v(s,x) = \beta^k w_k(s,x) &= \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \beta^k\rho_k\left(\frac{\beta^k w_k(r,y)}{\beta^k}\right) W_k(\ud r, \ud y) \\ 
+		&= \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho(\beta^k w_k(r,y)) W_k(\ud r, \ud y) \\
+		& = \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho(v(r,y)) W_k(\ud r, \ud y) 
+	\end{align*}
+and thus $v(s,x) = \beta^k w_k(s,x) $ solves the SPDE with initial condition $f(x) = \beta^{k}\textbf{1}_{S_{k-1}^m}(x)$, with the time shifted noise, and with $\rho$ not $\rho_k$. Note that right after this, the claim is made that $u(s + kt/m, x) \ge v(s,x)$ which follows from the weak comparison principle and the Markov property. But this statement can only be made if $v$ and $u$ are solutions to the same SPDE, ie they have to have the same diffusion term, $\rho$. Since $u$ has diffusion term $\rho$ then so does $v$, which is what I showed above, so the typo does not affect anything. 
+
+	\item
+I have tried searching Google but I have not found a reference that shows the solution to the SHE in this setting has a the Strong Markov property or the regular Markov Property. The only paper I found was this one \cite{BK08} by Raluca from 2008 which only considers $u_t = \Delta u + \dot{F}, \; u(0,x) = 0$ for $t \in [0,T]$ and $x \in \R^d$. 
+
+	\item
+Why does the Markov property, the weak comparison principle and 
+	\begin{equation} \label{E:Pw_k}
+		\mathbb{P}\left( w_k(s,x) \ge \beta \textbf{1}_{S_{k}^m} \; \text{for all} \; s \in \left[ \frac{t}{2m}, \frac{t}{m}\right]  \; \text{and} \; x \in \R  \right) \ge 1 - c(m)
+	\end{equation}
+imply that 
+	\[
+		\mathbb{P}(A_k | \mathcal{F}_{kt/m}) \ge 1 - c(m), \quad \text{a.s. on} \; A_{k-1} \; \text{for} \; 1 \le k \le m-1.
+	\]
+Since on $A_{k-1}$, $u(s + kt/m, x) \ge v(s,x) = \beta^k w_k(s,z)$ then \eqref{E:Pw_k} implies that 
+	\[
+		\mathbb{P}\left( u(s + kt/m,x) \ge \beta^{k+1} \textbf{1}_{S_{k}^m} \; \text{for all} \; s \in \left[ \frac{t}{2m}, \frac{t}{m}\right]  \; \text{and} \; x \in \R  \right) \ge 1 - c(m).
+	\]
+Is it because of the Markov property that 
+	\[
+		\mathbb{P}(A_k | \mathcal{F}_{kt/m}) = \mathbb{P}(A_k | u(kt/m,\cdot))
+	\]
+and by the comparison principle, $A_k$ happens when $u(kt/m,x) \ge v(s,x)$ which further happens on $A_{k-1}$. Thus on $A_{k-1}$, we have
+	\[
+		\mathbb{P}(A_k | u(kt/m,\cdot)) \ge 1 - c(m)
+	\]
+\end{enumerate}
+
+
+
 \begin{small}% {{{ Reference
 	\addcontentsline{toc}{section}{Bibliography}
 	\begin{thebibliography}{alpha}
@@ -1055,17 +1133,33 @@ Should we then assume \eqref{E:LipCondStrong} in our invariant measure project?
 		\newblock Parabolic Anderson Model with Space-Time Homogeneous Gaussian Noise and Rough Initial Condition
 		\newblock \textit{J Theor Probab.} (2016)
 		% }}}
+		\bibitem{BK08}% {{{
+		Balan, R. and Kim, D
+		\newblock The Stochastic Heat Equation Driven by a Gaussian Noise: germ Markov Property
+		\newblock \textit{arXiv:0806.1898}
+		% }}}
 		\bibitem{CDfracheat15}% {{{
 		Chen, Le and Dalang, R.
 		\newblock Moments, intermittency and growth indices for the
 		nonlinear fractional stochastic heat equation
 		\newblock \textit{Stoch PDE: Anal Comp} (2015) 3:360–397
 		% }}}
+		\bibitem[CK17]{CK17}% {{{
+		Chen, Le and Kunwoo Kim.
+		\newblock On comparison principle and strict positivity of solutions to the
+		nonlinear stochastic fractional heat equations.
+		\newblock {\em Annales de l’Institut Henri Poincaré - Probabilités et Statistiques},  Vol. 53, No. 1, 358–388
+		% }}}
 		\bibitem[CK19]{CK19}% {{{
 		Chen, Le and Kunwoo Kim.
 		\newblock Nonlinear stochastic heat equation driven by spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Math. Sci. Ser. B}, 39B (2019), No. 3, 645--668.
 		% }}}
+		\bibitem[CH19]{CH19}%{{{
+		L. Chen and J Huang
+		\newblock Comparison Principle For Stochastic Heat Equation on $\R^d$
+		\newblock {\em The Annals of Probability} 2019, Vol. 47, No. 2, 989-1035
+		%}}}
 		\bibitem[DZ92a]{DZ92}% {{{
 		Da Prato, Giuseppe and Jerzy Zabczyk.
 		\newblock {\it Stochastic equations in infinite dimensions.}
