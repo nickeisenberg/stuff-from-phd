@@ -821,11 +821,12 @@ where,
 	\begin{enumerate}
 		\item $G_s(x) = \frac{(\pi)^{-d/2}}{\Gamma(s/2)}\int_0^\infty e^{-t}e^{-|x|^2/(4t)} t^{(s-d)/2} \frac{\ud t}{t}$,
 		\item $G_s(x) \le c(s,d) \left( |x|^{s-d} + 1 + O(|x|^{s-d+2}) \right)$, for $0<s<d$ and $|x| \le 2$,
+		\item $G_s(x) \le c(s,d) \left(1 + O(|x|^{s-d}) \right)$, for $d<s$ and $|x| \le 2$,
 		\item $G_s(x) \le C(s,d)e^{-|x|/2}$, when $|x| \ge 2$.
 	\end{enumerate}
 Hence, $G_s(x)$ exhibits exponential decay as $x \to \infty$, and so if we
 consider $d \ge 3$, $d-2 < s < d$, and $\alpha < 1/2$ then it is easy to see
-that both $\mathcal{H}(t) \infty$ for any $t>0$ and $\Upsilon(0) < \infty$. 
+that both $\mathcal{H}(t) < \infty$ for any $t>0$ and $\Upsilon(0) < \infty$. 
 
 \bigskip
 \textbf{Details for item 1 above.} Consider the following definitions for the inverse Fourier transform:
@@ -866,6 +867,56 @@ Combining this with \eqref{E:BasselPreInv} give us that
 \textcolor{magenta}{Can you obtain the rate of $\mathcal{H}(t)$ as $t\to 0$?
 This is important.}
 
+\subsection{Requirement for the Bessel parameter,$s$.}
+Recall from above that 
+	\begin{equation} \label{E:FBessel}
+		\mathcal{F}G_s(\xi) = \frac{1}{(1+  |\xi|^2)^{s/2}},
+	\end{equation}
+and that the origin asymptotics of the Bessel kernel are:
+	\[
+		\frac{1}{c(s,d)} \le \frac{G_s(x)}{H_s(x)} \le c(s,d),
+	\]
+where
+	\[ 
+		H_s(x) =
+		\begin{cases}
+			|x|^{s-d} + 1 + O(|x|^{s-d+2})  & \text{for $0<s<d$ and $|x| \le 2$}, \\
+			\log\left(\frac{2}{|x|}\right) + 1  +O(|x|^2) & \text{for $s=n$}, \\
+			1 + O(|x|^{s-d}) & \text{for $d<s$ and $|x| \le 2$}.
+		\end{cases}
+	\]
+Note that the Bessel Kernal does not have blow up at the origin when $s >d$. Because of this, we hope to be able to handle the case $s < d$ so we in fact have blow up at the origin. 
+
+We need to make sure that 
+	\[
+		\mathcal{H}_{\alpha}(t) = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \; \exp\left(-r|\xi|^2\right) < \infty \quad \text{for all } t>0.
+	\]
+Because of \eqref{E:FBessel}, this reduces to showing
+	\begin{align*}
+		\mathcal{H}(t) &= \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}.
+	\end{align*}
+We need to calculate this integral. By polar coordinates,
+	\begin{align*}
+		& \int_0^t \ud r \; r^{-2\alpha}  \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} = 	\sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \frac{\exp(-r t^2)}{(1+t^2)^{s/2}} t^{d-1} \ud t \\
+		&= \frac{\sigma\left(\mathbb{S}^{d-1}\right) \Gamma(d/2)}{2}\int_0^t  \; r^{-2\alpha} \; \text{HypergeometricU}\left[\frac{d}{2}, \frac{2+d-s}{2}, r\right] \ud r \\
+		&=  \frac{\pi \sigma\left(\mathbb{S}^{d-1}\right) \Gamma(d/2) t^{1-2\alpha}}{2} \csc\left[\frac{\pi(d-s)}{2}\right] \\
+		& \times \Bigg(- \frac{\Gamma(1-2\alpha)\text{HypergeometricPFQRegularized}\left[\left\{ 1-2\alpha, \frac{d}{2} \right\}, \left\{ 2-2\alpha, \frac{2+d-s}{2} \right\}, t\right] }{ \Gamma(s/2) } \\
+		& \qquad + \frac{ t^{(s-d)/2} \Gamma((2-4\alpha-d+s)/2)}{\Gamma(d/2) } \\
+		& \qquad \times \text{HypergeometricPFQRegularized}\left[ \left\{ \frac{2-4\alpha-d+s}{2}, \frac{s}{2} \right\}, \left\{ \frac{2-d+s}{2}, \frac{4-4\alpha-d+s}{2} \right\}, t \right]   \Bigg) < \infty,
+	\end{align*}
+and this holds when 
+	\begin{equation}
+		4\alpha + d -2 < s.
+	\end{equation}
+Recall that we are only considering $\alpha \in (0, 1/2)$. Because of this, the following interval is nonempty:
+	\begin{equation}
+		(4\alpha + d -2 , d).
+	\end{equation}
+Thus we may choose 
+	\begin{equation} \label{E:BesselOriginBlowUp}
+		s \in (4\alpha + d -2 , d),
+	\end{equation}
+which allows us to consider a Bessel kernel with origin blow up.
 \section{Integrability conditions}
 We want to compare 
 \begin{enumerate}

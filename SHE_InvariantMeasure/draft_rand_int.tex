@@ -411,47 +411,12 @@ The only issue is at $t=0$ which does not matter for the $\limsup_{t \to \infty}
 	  \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
 	  \quad \text{for all $t>0$};
       \end{align}
-\textcolor{blue}{ I made a mistake here before. We don't apply $f(x) = \delta_0(x)$ here. If we consider the Bessel Kernel, then we have for some $0<s<d$ that
-		\begin{align*}
-			\mathcal{H}(t) &= \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} \\
-			&= \int_{\R^d} \ud \xi \; \frac{1}{ (1+|\xi|^2)^{s/2}} \int_0^t \ud r \; r^{-2\alpha} \exp(-r|\xi|^2) \\
-			&= \int_{\R^d} \ud \xi \; \frac{|\xi|^{4\alpha - 2}}{ (1+|\xi|^2)^{s/2}} \int_0^{t|\xi|^2} \ud r \; r^{-2\alpha} \exp(-r) \\
-			&=  \int_{\R^d} \ud \xi \; \frac{|\xi|^{4\alpha - 2} \left( \Gamma(1-2\alpha) - \Gamma(1- 2\alpha, t|\xi|^2) \right)}{ (1+|\xi|^2)^{s/2}},
-		\end{align*}
-where $\Gamma(a,b)$ is the incomplete gamma function which satisfies $\lim\limits_{b \to 0} \Gamma(a,b) = \Gamma(a)$. 
-I just realized that for the Bessel kernel, $G_s$, that $\mathcal{F}G_s$ is only integrable when $s >d$. I believe we will need to choose $s>d$ in order to make things work. When $s >d$, $G_s(x)$ will still have exponential decay and is bounded at the origin. Continuing with $s>d$, 
-	\begin{align*}
-		\int_{\R^d} & \ud \xi \; \frac{|\xi|^{4\alpha - 2} \left( \Gamma(1-2\alpha) - \Gamma(1- 2\alpha, t|\xi|^2) \right)}{ (1+|\xi|^2)^{s/2}} \\ &= \Gamma(1-2\alpha)\int_{\R^d}  \frac{|\xi|^{4\alpha - 2}}{ (1+|\xi|^2)^{s/2}} \; \ud \xi - \int_{\R^d} \ud \xi \; \frac{|\xi|^{4\alpha - 2}\Gamma(1- 2\alpha, t|\xi|^2)  }{ (1+|\xi|^2)^{s/2}} \\
-		&= K_1(\alpha, d, s) t^{1-2\alpha} \text{HypergeometricPFQ}( \cdot , \cdot ,t) \\
-		&\qquad \qquad + K_2(\alpha,d,s) t^{(2-4\alpha-d+s)/2}\text{HypergeometricPFQ}( \cdot , \cdot ,t),
-	\end{align*}
-where the last line is true if $4\alpha +d >2$ and $s > d$. The function $t \mapsto \text{HypergeometricPFQ}( \cdot , \cdot ,t)$ essentially behaves like $e^t$ at the origin and so we see that $\mathcal{H}(t)$ has polynomial decay at the origin at rate $\min\{1-2a, (2-4\alpha -d+s)/2 \}$.
-}
+
     \item For some $q>2$ and $\alpha\in \left(q^{-1},2^{-1}\right)$,
       \begin{align} \label{E:GH-int}
 	\int_{0}^t \left[\mathcal{G}_{\widehat{\rho},q}(s)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$}.
       \end{align}
-\textcolor{blue}{
-When \eqref{E:H} is true then $\mathcal{H}_\alpha(t)$ is continuous on $\R_+$ and is continuous from the right at $t=0$ and $\mathcal{H}_\alpha(0) = 0$. For this reason, it seem that in order to show \eqref{E:GH-int}, it suffices to show
-	\begin{equation}
-	\label{E:GH-int2}
-		\int_0^t \mathcal{G}_{\hat{\rho}}(s)^{q/2} \ud s < \infty, \quad \text{for all } t >0.
-	\end{equation}
-Lets again consider the $\delta_0$ initial condition and the weight $\hat{\rho}(x) = \exp(-x)$. Then
-	\begin{align*}
-		\mathcal{G}_{\widehat{\rho}}(s) &= \int_{\R^d} \frac{1}{(2 \pi s)^d}\exp(-|x|^2/s)\exp(-|x|) \ud x \\
-		&= \sigma\left(\mathbb{S}^{d-1}\right) \int_0^\infty \frac{1}{(2 \pi s)^d}\exp(-r^2/s)\exp(-r) r^{d-1} ud r \\
-		&=  (4 \pi)^{-d} s^{-d/2} \Gamma(d) \text{HypergeometricU}\left[\frac{d}{2},\frac{1}{2}, \frac{s}{4}\right] \\
-		&=: D(s).
-	\end{align*}
-	\textcolor{magenta}{You should not discard $\mathcal{H}_\alpha(s)$. It will help to
-	integrate around zero. What if $\mathcal{H}(s) = e^{-1/s}$, which will beat any polynomial
-      blow up at zero? This may not happen, but the decay rate of $\mathcal{H}(s)$ at zero should
-    not be discarded.}\\ We now need to integrate $D(s)^{q/2}$ for a $q>2$. According to
-    Mathematica, the integral \[ \int_0^4 D(s) \; \ud s < \infty, \quad \text{when } d <2. \] It
-    wont calculate $\int_0^4 D(s)^{q/2} \; \ud s$ for any $q>2$ but I am assuming that even if it
-    could, then it would require $d<2$ which will not work in our case since we need $d \ge 3$.
-    Also, Mathematica would not compute \eqref{E:GH-int2} with the polynomial-decay weight. }
+
   \end{enumerate}
   Then we have that
   \begin{enumerate}[(a)]
