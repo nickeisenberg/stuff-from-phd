@@ -887,6 +887,8 @@ where
 	\]
 Note that the Bessel Kernal does not have blow up at the origin when $s >d$. Because of this, we hope to be able to handle the case $s < d$ so we in fact have blow up at the origin. 
 
+\subsubsection{Finiteness of $\mathcal{H}_\alpha(t)$}
+
 We need to make sure that 
 	\[
 		\mathcal{H}_{\alpha}(t) = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \; \exp\left(-r|\xi|^2\right) < \infty \quad \text{for all } t>0.
@@ -897,7 +899,7 @@ Because of \eqref{E:FBessel}, this reduces to showing
 	\end{align*}
 We need to calculate this integral. By polar coordinates,
 	\begin{align*}
-		& \int_0^t \ud r \; r^{-2\alpha}  \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} = 	\sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \frac{\exp(-r t^2)}{(1+t^2)^{s/2}} t^{d-1} \ud t \\
+		& \int_0^t \ud r \; r^{-2\alpha}  \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} = 	\sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
 		&= \frac{\sigma\left(\mathbb{S}^{d-1}\right) \Gamma(d/2)}{2}\int_0^t  \; r^{-2\alpha} \; \text{HypergeometricU}\left[\frac{d}{2}, \frac{2+d-s}{2}, r\right] \ud r \\
 		&=  \frac{\pi \sigma\left(\mathbb{S}^{d-1}\right) \Gamma(d/2) t^{1-2\alpha}}{2} \csc\left[\frac{\pi(d-s)}{2}\right] \\
 		& \times \Bigg(- \frac{\Gamma(1-2\alpha)\text{HypergeometricPFQRegularized}\left[\left\{ 1-2\alpha, \frac{d}{2} \right\}, \left\{ 2-2\alpha, \frac{2+d-s}{2} \right\}, t\right] }{ \Gamma(s/2) } \\
@@ -913,17 +915,68 @@ Recall that we are only considering $\alpha \in (0, 1/2)$. Because of this, the 
 		(4\alpha + d -2 , d).
 	\end{equation}
 Thus we may choose 
-	\begin{equation} \label{E:BesselOriginBlowUp}
+	\begin{equation} \label{E:BesParamCond}
 		s \in (4\alpha + d -2 , d),
 	\end{equation}
 which allows us to consider a Bessel kernel with origin blow up.
+
+\subsubsection{Finiteness of $\int_0^T \mathcal{G}_{\hat{\rho}}(t)\mathcal{H}_{\alpha}(t) \ud t$ for the $\delta_0(\cdot)$ initial condition}
+
+First, for the $\delta_0$ initial condition we have that,	
+	\begin{align*}
+		\mathcal{G}_{\widehat{\rho}} (t) &= \int_{\R^d} \ud x \; \left[\int_{\R^d} G(t,x-y) \delta_0(\ud y)  \right]^2 \hat{\rho}(x) \\
+		&= \int_{\R^d} \ud x \; G(t,x)^2 \hat{\rho}(x) \\
+		&= \frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \hat\rho(x) \ud x.
+	\end{align*}
+We now apply the admissible weight property,
+	\begin{align*}
+		\frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \hat\rho(x) \ud x &= \frac{(\pi t)^{d/2} }{(2\pi t)^d} (G(t/2, \cdot) * \hat{\rho})(0) \\
+		&\le C(T) t^{-d/2} \hat{\rho}(0), \quad \forall \; 0 \le t \le [0,T].
+	\end{align*}
+Hence,	
+	\begin{equation} \label{E:Gorigin}
+			\mathcal{G}_{\widehat{\rho}} (t) = O\left( t^{-d/2} \right) , \quad t \to 0.
+	\end{equation}
+As for $\mathcal{H}_\alpha$, from the above we see that 
+	\begin{equation}\label{E:Horigin}
+		\mathcal{H}_\alpha(t) = O\left(t^{1-2\alpha}  + t^{(2 - 4\alpha + s -d)/2}\right), \quad t \to 0.
+	\end{equation}
+This is because 
+	\[
+		\text{HypergeometricPFQRegularized}\left[ \cdot, \cdot, 0 \right] > 0.
+	\]
+Recall that because of \eqref{E:BesParamCond}, we have $2 - 4\alpha + s -d > 0$. Putting \eqref{E:Gorigin} and \eqref{E:Horigin} together gives us 
+	\begin{equation}
+				\mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) = O\left( t^{(2-4\alpha-d)/2} + t^{(2-4\alpha+s-2d)/2}\right), \quad t \to 0.
+	\end{equation}
+Since we assume $\alpha \in (0,1/2)$, we have that $2 - 2\alpha >0$, and again recall that $2 - 4\alpha + s -d >0$. Then
+	\[
+		\frac{2-4\alpha-d}{2} \ge -d, \quad \text{and} \quad \frac{2-4\alpha+s-2d}{2} \ge -d,
+	\]
+which implies that 
+	\[
+		\int_0^T \mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) \ud t < \infty, \quad \forall T>0.
+	\]
+
+\subsection{Summary}
+Suppose $d \ge 3$. If we consider the $\delta_0$ initial and suppose that the correlation function of the noise is defined to be the Bessel kernel, $G_s(x)$, where $s \in (4\alpha + d -2 , d)$, then we have the following:
+	\begin{enumerate}
+		\item $\mathcal{G}_\rho(t) := \int_{\R^d} \left(\int_{\R^d} G(t, x-y) \delta_0(\ud y)\right)^2 \rho(x) \ud x < \infty, \quad \forall t>0$,
+		\item $\limsup_{t \to \infty} \mathcal{G}_\rho(t) < \infty$,
+		\item for any $\alpha \in (0,1/2)$ we have that $\mathcal{H}_{\alpha}(t)< \infty$ for any $t>0$,
+		\item for any $q>2$ and $\alpha \in (q^{-1}, 2^{-1})$ we have that
+			\[
+				\int_0^T \mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) \ud t < \infty, \quad \forall T>0.
+			\]
+	\end{enumerate}
+Hence the main results in the paper will apply.
+
 \section{Integrability conditions}
 We want to compare 
 \begin{enumerate}
 	\item $\Upsilon(0) < \infty$ and $\mathcal{H}(t) <\infty$
 	\item $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$.
 \end{enumerate}
-
 
 \textbf{(2) does not imply (1):} Suppose that $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$. Then  we may have as $|x| \to 0$ that $\hat{f}(x) \sim \frac{1}{|x|^{d - \delta}}$ where $0 < \delta < d$. As for the tails, the worst case scenario we may have is when $\hat{f} \sim \frac{1}{|x|^{d - \eta}}$ as $|x| \to \infty$ for some $0<\eta<d$. So under these conditions at the origin and as $|x| \to \infty$, we need a $1 \le p < d/(d-2)$ such that 
 	\[
