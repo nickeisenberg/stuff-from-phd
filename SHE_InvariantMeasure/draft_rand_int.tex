@@ -215,15 +215,16 @@ main effort is to show that
 For convenience, we will write $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$.
 
 
-Recall that under the following Assumption \ref{A:General}, one can find a unique mild solution to
-\eqref{E:SHE} with sharp moment estimates; see
+Recall that under the following Assumption \ref{A:General}, one can find a unique mild solution to \eqref{E:SHE} with sharp moment estimates; see
 \cite{chen.kim:19:nonlinear,chen.huang:19:comparison,chen.dalang:15:moments}.
 \begin{assumptions} \label{A:General}
+\textcolor{blue}{Random initial measure. Need to clarify this.}
   \begin{enumerate}[(i)]
     \item The initial measure $\mu$ satisfies the following integrability condition:
       \begin{equation} \label{A:icon}
-	\int_{\R^d}\exp\left(-a|x|^2\right)|\mu|(\ud x) < \infty \quad \text{for all $a>0$;}
+	\int_{\R^d}\exp\left(-a|x|^2\right)\mu_2^*(\ud x) < \infty \quad \text{for all $a>0$},
       \end{equation}
+      where $\mu_*^2$ is defined below in \eqref{E:qJ*}.
     \item The spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
       \begin{equation} \label{A:dalcon}
 	\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
@@ -231,6 +232,7 @@ Recall that under the following Assumption \ref{A:General}, one can find a uniqu
       \end{equation}
   \end{enumerate}
 \end{assumptions}
+\textcolor{blue}{I think \eqref{A:icon} is good enough}
 
 Moreover, this solution is usually {\it intermittent}, namely, the probability moments to
 \eqref{E:SHE} have certain exponential growth in $t$. In order to have moments bounded in time as
@@ -256,22 +258,6 @@ equivalently \eqref{E:U0Eqv}) gives the admissible correlation functions, which 
 in \cite{tessitore.zabczyk:98:invariant}; see Remark \ref{R:Cor} below.
 
 \textcolor{blue}{
-\textbf{(1):} I don't believe that $\Upsilon(0) <0$ is sufficient for \eqref{E:BddMnt}. Note that Theorem 1.3 \cite{chen.huang:19:comparison} says that a phase transition will happen if and only if $\Upsilon(0) < \infty$ and this only means that there exists a $\underline{\lambda}_c$ such that if $L(b) \le \underline{\lambda}_c$ then
-	\begin{equation}
-	\label{E:LyapExpon}
-		\sup_{x \in \R^d} \limsup_{t \to \infty} \frac{\log \mathbb{E}(|u(t,x)|^2)}{t} = 0.
-	\end{equation}
-All this tells us is that $\sup_{x \in \R^d} \mathbb{E}(|u(t,x)|^2) = o(e^t)$. However, we still may have that $\sup_{x \in \R^d} \mathbb{E}(|u(t,x)|^2) = O(t^n)$ for any $n \in \mathbb{N}$ since if $\sup_{x \in \R^d} \mathbb{E}(|u(t,x)|^2)$ has polynomial growth then \eqref{E:LyapExpon} is still true. Moreover, if we recall Lemma 2.1 \cite{chen.huang:19:comparison}, which says
-	\[
-		\limsup_{t \to \infty} \frac{1}{t} \log H(t;\gamma_2) \le \inf\left\{\beta>0 : \Upsilon(2\beta) < \frac{1}{2\gamma_2} \right\},
-	\]
-where $\gamma_2 = 64L(b)^2$, then if $\Upsilon(0) < \infty$ and we choose $L(b)$ small enough, all we can say is that $H(t,\gamma_2) = O(t^n)$ and therefore can still be unbounded. \\
-\textcolor{magenta}{This I agree. That's why we have the extra condition \eqref{E:InitData} below.
-Then Theorem 3.3 of Tessitore, the conditions of which are almost the same as ours, gives the
-sufficient conditions for which the moments (after integrating against weight function) is indeed
-bounded, no growth, even polynomial type. Our condition \eqref{E:InitData} is a way to ensure this
-happens. Please check the hierarchy of assumptions stated in our results.}\\
-\textbf{(2):} We may have been operating under the wrong assumption that Theorem 3.1 \cite{tessitore.zabczyk:98:invariant} requires bounded moments in $t$. I believe this is why you thought  \eqref{E:CorTZ} was an issue. However Theorem 3.1 ibid does not require bounded moments, it only requires that the solution is bounded in probability. It then claims that when $t \mapsto \mathbb{E}(|u(t,\cdot)|_{\rho}^2)$ is bounded, then the solution is bounded in probability in $L^2_{\rho}(\R^d)$, but this is not if an only if. Ie, there may exists solutions that are bounded in probability but $t \mapsto \Norm{u(t,\cdot)}_{\rho}$ blows up with positive probability. So in other words, I think the integrability condition \eqref{E:CorTZ} was never meant to be a condition to ensure bounded moments, it is only the minimum integrability condition on the correlation function so that the proof of Theorem 3.1 ibid works. \\
 \textbf{(3):} Now that we have condition \eqref{E:CorTZ} written correctly, I believe that \eqref{E:U0finite} implies \eqref{E:CorTZ}. We consider
 	\[
 		\Upsilon(0) = \int_{\R^d} \frac{\hat{f}(z)}{|x|^2} \ud z < \infty.
@@ -367,7 +353,7 @@ J^*(r,z) = \left(G(r,\cdot)* \mu^*\right)(x) \quad \text{and} \quad
   does not depend on $t$, it holds that
   \begin{equation} \label{E:uInLrho}
      \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
-     \le C \mathcal{G}_{\rho, \mu_*}(t) < \infty.
+     \le C \mathcal{G}_{\rho, 2}(t) < \infty.
   \end{equation}
 \end{theorem}
 \begin{proof}
@@ -405,9 +391,9 @@ Here is the main theorem of the paper:
 	  \quad \text{for all $t>0$};
       \end{align}
 
-    \item For some $q>2$ and $\alpha\in \left(q^{-1},2^{-1}\right)$,
+    \item for some $q>2$ and $\alpha\in \left(q^{-1},2^{-1}\right)$,
       \begin{align} \label{E:GH-int}
-	\int_{0}^t \left[\mathcal{G}_{\widehat{\rho},q}(s)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$}.
+	\int_{0}^t \left[\mathcal{G}_{\widehat{\rho}, q}(s)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$}.
       \end{align}
 
   \end{enumerate}
@@ -429,6 +415,8 @@ Here is the main theorem of the paper:
   for example, when $\rho(x)\le C\: \widehat{\rho}(x)$ for all $x\in\R^d$, then we do have
   $u(t,\cdot)\in L_\rho^2(\R^d)$ and $\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right) <\infty$
   by part (a) of Theorem \ref{T:Main}.
+  
+  \textcolor{blue}{Need to make a comment that when $u(0, \cdot) = \delta_0(\cdot)$ then $u(t_\cdot) \in L^2_\rho)$ for any weight $\rho$. This is important for \eqref{E:Restartbdd}.}
 \end{remark}
 \begin{example}[Correlation measures] \label{E:Gamma}
   Here are a few examples of correlation measures $\Gamma$ that satisfy condition \eqref{E:GH-int}.
@@ -525,32 +513,33 @@ Several examples of admissible weights are (see Example in Section 2 of
   $L^2_\rho(\R^d)$.
 \end{proposition}
 
-%\begin{lemma}\label{L:RhoDom}
-%  For any admissible weight function $\rho$ and $a>0$, there exists a constant $K_{\rho,a}>0$ such
-%  that
-%  \begin{align} \label{E:RhoDom}
-%    \exp\left(-a|x|^2\right)\le K_{\rho,a}\: \rho(x),\qquad \text{for all $x\in\R^d$.}
-%  \end{align}
-%\end{lemma}
-%\begin{proof}
-%  Let $\rho$ be an arbitrary admissible weight function and $a>0$. By \eqref{E:aw},
-%  \begin{align*}
-%        \frac{\exp\left(-a|x|^2\right)}{\rho(x)}
-%    & = \frac{\exp\left(-a|x|^2\right)}{\rho(x)} \frac{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}\\
-%    & \le \left(\sup_{x \in \R^d,\: t\in[0,1]}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \right)
-%        \frac{\exp\left(-a|x|^2\right)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}\\
-%    & \le C_\rho(1) \frac{\exp\left(-a|x|^2\right)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}.
-%  \end{align*}
-%  Noticing that for some constant $\Theta>0$, $\rho(x) \ge \Theta \prod_{\ell=1}^{d}
-%  \one_{[-1,1]}(x_\ell)$, a simple exercise shows that
-%  \begin{align*}
-%    C_{\rho,a}
-%    :=  \sup_{x\in\R^d}\frac{\exp\left(-a|x|^2\right)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}
-%    \le \frac{1}{\Theta} \left(\sup_{x\in\R}\frac{\exp\left(-a x^2\right)}{\left(G(1,\cdot)*\one_{[-1,1]}(\cdot)\right)(x)}\right)^d
-%    <   \infty.
-%  \end{align*}
-%  This proves the lemma with $K_{\rho,a} = C_\rho(1) C_{\rho,a}$.
-%\end{proof}
+\textcolor{blue}{We need Lemma \ref{L:RhoDom} to how that $\varphi \in L^2_{\rho}$ will satisfy \eqref{A:icon}.}
+\begin{lemma}\label{L:RhoDom}
+  For any admissible weight function $\rho$ and $a>0$, there exists a constant $K_{\rho,a}>0$ such
+  that
+  \begin{align} \label{E:RhoDom}
+    \exp\left(-a|x|^2\right)\le K_{\rho,a}\: \rho(x),\qquad \text{for all $x\in\R^d$.}
+  \end{align}
+\end{lemma}
+\begin{proof}
+  Let $\rho$ be an arbitrary admissible weight function and $a>0$. By \eqref{E:aw},
+  \begin{align*}
+        \frac{\exp\left(-a|x|^2\right)}{\rho(x)}
+    & = \frac{\exp\left(-a|x|^2\right)}{\rho(x)} \frac{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}\\
+    & \le \left(\sup_{x \in \R^d,\: t\in[0,1]}\frac{\left(G(t,\cdot)*\rho(\cdot)\right)(x)}{\rho(x)} \right)
+        \frac{\exp\left(-a|x|^2\right)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}\\
+    & \le C_\rho(1) \frac{\exp\left(-a|x|^2\right)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}.
+  \end{align*}
+  Noticing that for some constant $\Theta>0$, $\rho(x) \ge \Theta \prod_{\ell=1}^{d}
+  \one_{[-1,1]}(x_\ell)$, a simple exercise shows that
+  \begin{align*}
+    C_{\rho,a}
+    :=  \sup_{x\in\R^d}\frac{\exp\left(-a|x|^2\right)}{\left(G(1,\cdot)*\rho(\cdot)\right)(x)}
+    \le \frac{1}{\Theta} \left(\sup_{x\in\R}\frac{\exp\left(-a x^2\right)}{\left(G(1,\cdot)*\one_{[-1,1]}(\cdot)\right)(x)}\right)^d
+    <   \infty.
+  \end{align*}
+  This proves the lemma with $K_{\rho,a} = C_\rho(1) C_{\rho,a}$.
+\end{proof}
 
 \begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}]
   Under Assumption \ref{A:General}, the SPDE \eqref{E:SHE} has a unique random field solution
@@ -614,7 +603,7 @@ As for $Y_\alpha$, we have the following result:
   \begin{equation} \label{E:Y}
     Y(s,y):= \left[Y_\alpha b\left(\circ, u(\cdot,\circ)\right)\right](s,y) = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,u(r,z))W(\ud r,\ud z).
   \end{equation}
-  Under the conditions of Theorem \ref{T:Lrho} and (iii) of Theorem \ref{T:Main}, for all $q\ge 2$,
+  Under the assumptions of Theorem \ref{T:Lrho} and (iii) of Theorem \ref{T:Main}, then for all $q\ge 2$,
   $s>0$ and $y\in\R^d$,
   \begin{align} \label{E:NormY}
     \Norm{Y(s,y)}_q^2 \le C_q\: [J_q^*(s,y)]^2\: \mathcal{H}_\alpha(s).
@@ -697,7 +686,7 @@ As for $Y_\alpha$, we have the following result:
   \end{align*}
   Plugging the above expression to the far right-hand of \eqref{E:EYqr} proves \eqref{E:yineq}.
   Finally, the finiteness of the upper bound in \eqref{E:yineq} is guaranteed by condition
-  \eqref{E:GH-int}. This completes the proof of Lemma \ref{L:yineq}.
+  \eqref{E:GH-int'}. This completes the proof of Lemma \ref{L:yineq}.
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
@@ -747,7 +736,7 @@ But this follows immediately from \eqref{E:NormY}. Indeed
 		& =C \mathcal{H}_\alpha(s) \int_{\R^d}\ud y \: G(t-s,x-y) \int_{\R^d} \mu_2^*(\ud x) G(s,y-z) \\
 		&= C \mathcal{H}_\alpha(s) J_2^*(t,x).
 	\end{align*}
- Then Condition \eqref{E:GH-int2} implies that $I_1 < \infty$. 
+ Then Condition \eqref{E:H} implies that $I_1 < \infty$. 
 
 % We can simplify the following by applying \eqref{E:NormY}.
 % See above few lines.
@@ -796,8 +785,11 @@ But this follows immediately from \eqref{E:NormY}. Indeed
   \begin{align*}
     I_2 & \le C J_*^2(t,x) \int_0^t \ud r \: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(t-r)}{r}|\xi|^2\right),
   \end{align*}
-  which is finite because it is finite when $\alpha$ is replaced by $2\alpha$; see the proof of
-  Lemma \ref{L:yineq}. This completes the proof of Lemma \ref{L:Factorize}.
+  which is finite by \eqref{E:H} where we replace $\alpha$ with $\alpha/2$. Indeed, since $r(t-r) \ge tr/2$ for $r \in [0,t]$, then
+	\begin{align*}
+		\int_0^t \ud r \: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(t-r)}{r}|\xi|^2\right) &\le \int_0^t \ud r \: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r}{2}|\xi|^2\right) < \infty.
+	\end{align*}
+This completes the proof of Lemma \ref{L:Factorize}.
 \end{proof}
 \begin{codes}% Mathematica
 
@@ -864,68 +856,64 @@ Integrate[(t-s)^{a-1} (s-r)^{-2a},{s,r,t},Assumptions->{t>r>0,0<a<1/2}]
 We are now ready to prove part (b) of Theorem \ref{T:Main}.
 
 \begin{proof}[Proof of Theorem \ref{T:Main} (b)]
- Let $t_0>0$. By the Markov property of the solution we may say that for any $t \ge 0$,  $u(t + t_0/2,x) = v(t,x)$ where $v(t,x)$ is the solution to 
+ In this proof we will use $\stackrel{\mathcal{L}}{=}$ to denote equality in law, otherwise, the equality holds almost surely. Let $t_0>0$ and consider the following restarted equation:
  \begin{equation} \label{E:SHErandint}
  	\begin{cases}
  		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0/2}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
 		 v(0,\cdot) = u(t_0/2,\cdot),                                                               &
 	\end{cases}
  \end{equation}
-and $\dot W_{t_0/2}(t,x) = \dot W(t + t_0/2,x)$ denotes the time shifted noise. In other words, for all $t \ge 0$
+where $\dot W_{t_0/2}(t,x) = \dot W(t + t_0/2,x)$ denotes the time shifted noise. We note that \eqref{E:uInLrho} implies that this random initial condition, $u(t_0/2,\cdot)$ satisfies \eqref{A:icon} and thus the solution to \eqref{E:SHErandint} exists and we denote the solution as $v$. By the Markov property of the solution to \eqref{E:SHE}, we may say that for any $t \ge 0$,  $u(t + t_0/2,x) \stackrel{\mathcal{L}}{=} v(t,x)$, where $\mathcal{L}$ means the equality is in law. In other words, for all $t \ge 0$, the following holds:
 	\begin{align*}
-		u(t + t_0/2,x ) = v(t,x) = (G(t,\cdot) * u(t_0/2,\cdot))(x) + \int_0^{t}\int_{\R^d} G(t - s, x-y)b(y,v(s, y)) W_{t_0/2}(\ud s, \ud y).
+		u(t + t_0/2,x ) \stackrel{\mathcal{L}}{=} v(t,x) = (G(t,\cdot) * u(t_0/2,\cdot))(x) + \int_0^{t}\int_{\R^d} G(t - s, x-y)b(y,v(s, y)) W_{t_0/2}(\ud s, \ud y).
 	\end{align*}
-For and $t \ge 0$, \eqref{E:uInLrho} says that $\mathbb{E}\left(\Norm{u(t,\cdot)}_{\hat\rho}^2\right) < \infty $. Thus we may consider for any $t>0$, $u(t + t_0/2,x) = v(t,x)$ the solution of \eqref{E:SHE} starting from the random function $u(t_0/2,\cdot)$, which satisfies $\mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right) < \infty$. 
-
-We now define the set $\mathscr K (\Lambda)$ as
-\textcolor{blue}{
- \[
- \mathscr K (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
- \quad \text{where $\Norm{y}_{\hat\rho} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\hat \rho})} \le \Lambda $} \}.
- \]
- Then $\mathscr K (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. 
-}
-
-Recall that by \eqref{E:1fac}, we may say
- 	\begin{equation}
- 		u(t_0,x) = v(t_0/2,x) = \Big(G(t_0/2,\cdot) * u(t_0/2,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0/2,x),
- 	\end{equation}
- and $Y_v$ here is defined with respect to $v$, 
+We will use the notation $Y_v$ and $\mathcal{G}_{\hat\rho, q}^v$ where
  	\[
- 		 Y_v(s,y):= \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0/2}(\ud r,\ud z)
+ 		 Y_v(s,y):= \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0/2}(\ud r,\ud z),
  	\]
-\textcolor{blue}{
-Moreover, by \eqref{E:yineq} and Chebychev's inequality we have
- \begin{align}
- \mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr K(\Lambda) \}
- &= \mathbb{P}\{ v(t_0/2,\cdot) \not \in \mathscr K(\Lambda) \} \nonumber \\
- & \le \mathbb{P}\left[ \left(\int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\rho}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t_0/2,\cdot)}_{\rho} > \Lambda \right] \nonumber \\ 
- & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\hat \rho}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\rho}^2\right) \nonumber \\ 
- & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\rho}^2\right) < \infty \label{E:Restartbdd}
- \end{align}
-}
-and similarly $\mathcal{G}_{\hat\rho, q}^v$ is defined with respect to $v$,
-	\begin{equation}
-		\mathcal{G}_{\hat\rho, q}^v(s) = \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x.
-	\end{equation}
-The finiteness of \eqref{E:Restartbdd} follows from the admissible weight property, H\"older's inequality, \eqref{E:mb0}, \eqref{E:uInLrho} and \eqref{E:GH-int}. Indeed, first note that
+ and 
+	\begin{align*}
+		\mathcal{G}_{\hat\rho, q}^v(s) &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{v(0,y)}_q\ud y\right)^2 \hat\rho(x) \ud x \\
+		&= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x.
+	\end{align*}
+ We define $\mathcal{G}_{\hat\rho, q}^u(s)$ and $Y_u$ in an equivalent manner. We wish to be able to apply the factorization result \eqref{E:1fac} and also the bound in \eqref{E:yineq} for $Y_v$. This requires us to show that $v(0,\cdot) = u(t_0/2, \cdot)$ satisfies \eqref{E:G} and \eqref{E:GH-int'} with $\hat{\rho}$.  Indeed, H\"older's inequality and the admissible weight property imply that
 	\begin{align*}
 		\mathcal{G}_{\hat\rho, q}^v(s)  &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x \\
 		&\le \int_{\R^d} \int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q^2\ud y  \; \hat\rho(x) \ud x \\
-		& \le C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y \\
-		& \le C(t_0) \int_{\R^d} \Big(G(t_0/2,\cdot) * (1+\Norm{\mu}_q)\Big)^2(y) \hat\rho(y) \ud y = C(t_0) \mathcal{G}_{\hat\rho, q}^u(t_0/2).
+		& \le C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y.
 	\end{align*}
-Finally, this and the continuity of $\mathcal{H}_\alpha(s)$ for $s \in [0,t_0/2]$ shows that,
+Now by \eqref{E:mb0},
+	\begin{align*}
+		C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y &\le C(t_0) \int_{\R^d} \Big(G(t_0/2,\cdot) * (1+\Norm{\mu}_q)\Big)^2(y) \hat\rho(y) \ud y \\
+		&= C(t_0) \mathcal{G}_{\hat\rho, q}^u(t_0/2) < \infty,
+	\end{align*}
+where the finiteness follows from \eqref{E:InitData}. Finally, this and the continuity of $\mathcal{H}_\alpha(s)$ for $s \in [0,t_0/2]$ shows that,
 	\[
 		\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s \le \mathcal{G}_{\hat\rho, q}^u(t_0/2)^{q/2} \int_0^{t_0/2} \left( \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s < \infty.
 	\]
-\textcolor{blue}{
+Thus we are justified in saying that by \eqref{E:1fac}, 
+\begin{equation}
+u(t_0,x) \stackrel{\mathcal{L}}{=} v(t_0/2,x) = \Big(G(t_0/2,\cdot) * u(t_0/2,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0/2,x).
+\end{equation}
+We now define the set $\mathscr K (\Lambda)$ as
+	\[
+	\mathscr K (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
+	\quad \text{where $\Norm{y}_{\hat\rho} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\hat \rho})} \le \Lambda $} \}.
+	\]
+Then by Proposition \ref{P:F-Comp}, $\mathscr K (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. Moreover, by \eqref{E:yineq} and Chebyshev's inequality we have
+	\begin{align}
+	\mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr K(\Lambda) \}
+	&= \mathbb{P}\{ v(t_0/2,\cdot) \not \in \mathscr K(\Lambda) \} \nonumber \\
+	& \le \mathbb{P}\left[ \left(\int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t_0/2,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber \\ 
+	& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\hat \rho}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) \nonumber \\ 
+	& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) < \infty \label{E:Restartbdd}
+	\end{align}
 With all this said, \eqref{E:Restartbdd} implies that 
  \begin{align*}
  \mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \}
  & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right)
  \end{align*}
- Therefore, if we choose $\Lambda > \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\hat\rho}^2\right) > 0$ big enough such that 
+ Therefore, we can choose $\Lambda > 0$ big enough such that 
  	\[
  		\dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right) < \epsilon,
  	\]
@@ -939,8 +927,18 @@ With all this said, \eqref{E:Restartbdd} implies that
  \epsilon)\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} < \Lambda
  \}.
  \end{align*}
- Since we assumed that $u$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
-}
+ We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0/2$ that there exists a $C>0$ such that
+ 	\[
+ 		\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} \ge \Lambda
+ 		\} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0/2,\cdot)}_{\hat\rho}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\hat{\rho}, q}\left( t - \frac{t_0}{2} \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
+ 	\]
+ Thus, by enlarging $\Lambda$ if necessary, 
+ 	\[
+ 		\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} \ge \Lambda
+ 		\}  \le \epsilon, \quad \forall \; t \ge t_0/2,
+ 	\]
+thus completing the proof of \eqref{E:cpt}.
+% Since we assumed that $u$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
 \end{proof}
 
 % {{{ All references: New ones with biber
