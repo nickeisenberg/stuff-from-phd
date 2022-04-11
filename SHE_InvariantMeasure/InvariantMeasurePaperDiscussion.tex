@@ -910,7 +910,7 @@ and this holds when
 	\begin{equation}
 		4\alpha + d -2 < s.
 	\end{equation}
-Recall that we are only considering $\alpha \in (0, 1/2)$. Because of this, the following interval is nonempty:
+Recall that we are only considering $\alpha \in (1/q, 1/2)$ for some $q>2$,. Because of this, the following interval is nonempty:
 	\begin{equation}
 		(4\alpha + d -2 , d).
 	\end{equation}
@@ -922,23 +922,25 @@ which allows us to consider a Bessel kernel with origin blow up.
 
 \subsubsection{Finiteness of $\int_0^T \mathcal{G}_{\hat{\rho}}(t)\mathcal{H}_{\alpha}(t) \ud t$ for the $\delta_0(\cdot)$ initial condition}
 
-First, for the $\delta_0$ initial condition we have that,	
+We need to pick a weight. Let's choose $\hat\rho(x)=\exp(-|x|)$, otherwise the calculations become more difficult. So, for the $\delta_0$ initial condition we have that,	
 	\begin{align*}
-		\mathcal{G}_{\widehat{\rho}} (t) &= \int_{\R^d} \ud x \; \left[\int_{\R^d} G(t,x-y) \delta_0(\ud y)  \right]^2 \hat{\rho}(x) \\
-		&= \int_{\R^d} \ud x \; G(t,x)^2 \hat{\rho}(x) \\
-		&= \frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \hat\rho(x) \ud x.
+		\mathcal{G}_{\widehat{\rho}} (t) &= \int_{\R^d} \ud x \; \left[\int_{\R^d} G(t,x-y) \delta_0(\ud y)  \right]^2 \exp(-|x|) \\
+		&= \int_{\R^d} \ud x \; G(t,x)^2 \exp(-|x|) \\
+		&= \frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \exp(-|x|) \ud x.
 	\end{align*}
-We now apply the admissible weight property,
+We now calculate this with polar coordinates:
 	\begin{align*}
-		\frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \hat\rho(x) \ud x &= \frac{(\pi t)^{d/2} }{(2\pi t)^d} (G(t/2, \cdot) * \hat{\rho})(0) \\
-		&\le C(T) t^{-d/2} \hat{\rho}(0), \quad \forall \; 0 \le t \le T.
+		\frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \exp(-|x|) \ud x &= \frac{\sigma(\mathbb{S}^{d-1})}{(2 \pi t)^d} \int_0^\infty \exp\left(- r^2/t\right) \exp(-r) r^{d-1}\ud r \\
+		&= \frac{\sigma(\mathbb{S}^{d-1})}{(2 \pi t)^d}2^{-d}t^{d/2}\Gamma(d) \text{HypergeometricU}\left[ \frac{d}{2}, \frac{1}{2}, \frac{t}{4} \right] \\
+		&= C(d)\text{HypergeometricU}\left[ \frac{d}{2}, \frac{1}{2}, \frac{t}{4} \right] \cdot t^{-d/2} \\
+		& = O(t^{-d/2}) \quad \text{as} \quad t \to 0^+.
 	\end{align*}
-\textcolor{blue}{
-Hence,	
+Thus
 	\begin{equation} \label{E:Gorigin}
-			\mathcal{G}_{\widehat{\rho}} (t) = O\left( t^{-d/2} \right) , \quad t \to 0.
+			\mathcal{G}_{\widehat{\rho}} (t)  = O(t^{-d/2}) \quad \text{as} \quad t \to 0^+,
 	\end{equation}
-This is the mistake.}
+so $\mathcal{G_{\rho}}(t)$ is not integrable around the origin. This means that $\mathcal{H}_{\alpha}(t)$ is going to need to help in order for $\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2} \ud t < \infty$. 
+
 As for $\mathcal{H}_\alpha$, from the above we see that 
 	\begin{equation}\label{E:Horigin}
 		\mathcal{H}_\alpha(t) = O\left(t^{1-2\alpha}  + t^{(2 - 4\alpha + s -d)/2}\right), \quad t \to 0.
@@ -948,31 +950,25 @@ This is because
 		\text{HypergeometricPFQRegularized}\left[ \cdot, \cdot, 0 \right] > 0.
 	\]
 Recall that because of \eqref{E:BesParamCond}, we have $2 - 4\alpha + s -d > 0$. Putting \eqref{E:Gorigin} and \eqref{E:Horigin} together gives us 
+	\begin{align}
+				\mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) &= O(t^{-d/2}) O\left(t^{1-2\alpha }  + t^{(2 - 4\alpha + s -d)/2}\right), \quad t \to 0 \nonumber \\
+				&= O\left(t^{1-2\alpha - d/2}  + t^{(2 - 4\alpha + s - 2d)/2}\right), \quad t \to 0 \nonumber \\
+				&= O\left(t^{(2- 4\alpha - d)/2}  + t^{(2 - 4\alpha + s - 2d)/2}\right), \quad t \to 0 .
+	\end{align}
+Hence,
 	\begin{equation}
-				\mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) = O\left( t^{(2-4\alpha-d)/2} + t^{(2-4\alpha+s-2d)/2}\right), \quad t \to 0.
+		\left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2} \le O\left(t^{(2- 4\alpha - d)q/4}  + t^{(2 - 4\alpha + s - 2d)q/4}\right), \quad t \to 0 .
 	\end{equation}
-Since we assume $\alpha \in (0,1/2)$, we have that $2 - 4\alpha >0$, and again recall that $2 - 4\alpha + s -d >0$. Then
+We will require that 
+	\begin{align}
+		\frac{(2- 4\alpha - d)q}{4} \ge -1 \quad &\text{and} \quad \frac{[(2 - 4\alpha + s - d) - d]q}{4} \ge -1 \nonumber \\
+		\implies (2- 4\alpha - d) \ge -\frac{4}{q} \quad &\text{and} \quad (2 - 4\alpha + s - d) - d \ge -\frac{4}{q} \label{E:OriginProblem}
+	\end{align}
+I don't think there is any room. Consider the first condition in \eqref{E:OriginProblem}. This says that we must have 
 	\[
-		\frac{2-4\alpha-d}{2} \ge -d, \quad \text{and} \quad \frac{2-4\alpha+s-2d}{2} \ge -d,
+		d \le 2 - 4\alpha + \frac{4}{q} \le 2 - \frac{4}{q} + \frac{4}{q} = 2.
 	\]
-which implies that 
-	\[
-		\int_0^T \mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) \ud t < \infty, \quad \forall T>0.
-	\]
-\textcolor{blue}{I made a mistake above in blue... When applying the admissible weight property, we get that $\mathcal{G}_{\rho} \le O(t^{-d/2})$. This does not imply that $\int_0^T \mathcal{G}_{\rho}(t) \ud t < \infty$. I didn't realize that this was a $1-d$ integral... 
-}
-\subsection{Summary}
-Suppose $d \ge 3$. If we consider the $\delta_0$ initial and suppose that the correlation function of the noise is defined to be the Bessel kernel, $G_s(x)$, where $s \in (4\alpha + d -2 , d)$, then we have the following:
-	\begin{enumerate}
-		\item $\mathcal{G}_\rho(t) := \int_{\R^d} \left(\int_{\R^d} G(t, x-y) \delta_0(\ud y)\right)^2 \rho(x) \ud x < \infty, \quad \forall t>0$,
-		\item $\limsup_{t \to \infty} \mathcal{G}_\rho(t) < \infty$,
-		\item for any $\alpha \in (0,1/2)$ we have that $\mathcal{H}_{\alpha}(t)< \infty$ for any $t>0$,
-		\item for any $q>2$ and $\alpha \in (q^{-1}, 2^{-1})$ we have that
-			\[
-				\int_0^T \mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) \ud t < \infty, \quad \forall T>0.
-			\]
-	\end{enumerate}
-Hence the main results in the paper will apply.
+But we must require that $d \ge 3$. Thus $	\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2}$ will not converge if we consider the Bessel kernel, $G_s$ with $s < d$ and the $\delta_0$ initial condition.
 
 \section{Integrability conditions}
 We want to compare 
