@@ -933,10 +933,12 @@ We now apply the admissible weight property,
 		\frac{1}{(2 \pi t)^d} \int_{\mathbb R^d} \exp\left(- |x|^2/t\right) \hat\rho(x) \ud x &= \frac{(\pi t)^{d/2} }{(2\pi t)^d} (G(t/2, \cdot) * \hat{\rho})(0) \\
 		&\le C(T) t^{-d/2} \hat{\rho}(0), \quad \forall \; 0 \le t \le T.
 	\end{align*}
+\textcolor{blue}{
 Hence,	
 	\begin{equation} \label{E:Gorigin}
 			\mathcal{G}_{\widehat{\rho}} (t) = O\left( t^{-d/2} \right) , \quad t \to 0.
 	\end{equation}
+This is the mistake.}
 As for $\mathcal{H}_\alpha$, from the above we see that 
 	\begin{equation}\label{E:Horigin}
 		\mathcal{H}_\alpha(t) = O\left(t^{1-2\alpha}  + t^{(2 - 4\alpha + s -d)/2}\right), \quad t \to 0.
@@ -957,7 +959,8 @@ which implies that
 	\[
 		\int_0^T \mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) \ud t < \infty, \quad \forall T>0.
 	\]
-
+\textcolor{blue}{I made a mistake above in blue... When applying the admissible weight property, we get that $\mathcal{G}_{\rho} \le O(t^{-d/2})$. This does not imply that $\int_0^T \mathcal{G}_{\rho}(t) \ud t < \infty$. I didn't realize that this was a $1-d$ integral... 
+}
 \subsection{Summary}
 Suppose $d \ge 3$. If we consider the $\delta_0$ initial and suppose that the correlation function of the noise is defined to be the Bessel kernel, $G_s(x)$, where $s \in (4\alpha + d -2 , d)$, then we have the following:
 	\begin{enumerate}
