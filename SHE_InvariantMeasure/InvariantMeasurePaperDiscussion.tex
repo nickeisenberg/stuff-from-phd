@@ -969,7 +969,71 @@ I don't think there is any room. Consider the first condition in \eqref{E:Origin
 		d \le 2 - 4\alpha + \frac{4}{q} \le 2 - \frac{4}{q} + \frac{4}{q} = 2.
 	\]
 But we must require that $d \ge 3$. Thus $	\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2}$ will not converge if we consider the Bessel kernel, $G_s$ with $s < d$ and the $\delta_0$ initial condition. Note that we can't even apply the Bessel Kernel with $s >d$ and in this case the Bessel Kernel does not even blow up in the origin. No matter what $s$ we choose for the Bessel Kernel, $G_s$, the first condition in \eqref{E:OriginProblem} will always require that $d \le 2$. 
+
+\section{Solution for the above issue}
+I believe the above integrability issue can be ignored. We only consider the the restarted solution. I just remembered that this was the reason why I went through and reproved all the results for random initial conditions last week. 
+
+Suppose we start with 
+	\begin{equation} \label{E:SHE1}
+		u(t,x) =
+		\begin{cases}
+		\dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+		u(0,\cdot) = \delta_0(\cdot),                                                               &
+		\end{cases}
+	\end{equation}
+and then consider the restarted solution
+	\begin{equation} \label{E:SHErestar1}
+		v(t,x) =
+		\begin{cases}
+		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+		v(0,\cdot) = u(t_0,\cdot)       .                                                     &
+		\end{cases}
+	\end{equation}	
 	
+From now on we will only work with $v$. In this case, $Y$ from the factorization theorem is defined as 
+	\begin{equation}
+		Y(s,y) := \int_0^s \int_{\R^d} (s-r)^{-\alpha} G(s-r, y-z)b(z, v(r,z)) W(\ud r, \ud z).
+	\end{equation}
+In the current version of the paper, I already changed the factorization results so we can consider random initial conditions. For example we have that 
+	\begin{equation} \label{E:FacBdd}
+		\mathbb{E} \left(\int_0^t \Norm{Y(s,\cdot)}_{\rho}^q \ud s \right) \le \Theta \int_0^t \left[ \mathcal{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s) \right]^{q/2} \ud s 
+	\end{equation}
+whenever the right-hand side is finite, and where 
+	\[
+		\mathcal{G}_{\rho, q}(s) = \int_{\R^d} (J_q^*(s,x))^2 \rho(x) \ud x,
+	\]
+and
+	\[
+		J_q^*(s,x) = \int_{\R^d} G(s,x-y) \mu_q^*(\ud y), \quad \mu_q^*(\ud y) = (1 + \Norm{v(0,y)}_q)(\ud y).
+	\]
+Hence, we just need to show the finiteness of \eqref{E:FacBdd}. We start with looking at $\mathcal{G}_{\rho, q}$. 
+	\begin{align*}
+			\mathcal{G}_{\rho, q}(s) &=  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x \\
+			&= \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \rho(x) \ud x \\
+			&= \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x \\
+			&\le 2 \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x.
+	\end{align*}
+Recall that $u(t_0,x) \stackrel{\mathcal{L}}{=} v(0,x)$. Then by the moment bounds we have 
+	\begin{align*}
+		\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{u(t_0,y)}_q\ud y\right)^2 \rho(x) \ud x \\
+		&\le C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \rho(x) \ud x \\
+		&= C \int_{\R^d} \left(1  +\int_{\R^d} G(s,x-y) (G(t_0,\cdot)*\delta_0)(y) \ud y\right)^2 \rho(x) \ud x \\
+		&= C \int_{\R^d} \left(1  + (G(t_0+s,\cdot)*\delta_0)(x) \right)^2 \rho(x) \ud x \\
+		&\le 2C\Norm{\rho}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \rho(x) \ud x \\
+		&= 2C\Norm{\rho}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s, x))^2 \rho(x) \ud x \\
+		&\le 2C\Norm{\rho}_{L^1(\R^d)} + \frac{C}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x.
+	\end{align*}
+Putting this all together gives us 
+	\begin{align*}
+		\mathcal{G}_{\rho, q}(s) \le 4\Norm{\rho}_{L^1(\R^d)} + \frac{C}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x =: \textbf{G}_{\rho, q}(s),
+	\end{align*}
+and because $t_0>0$ is fixed, we see that $s \mapsto \textbf{G}_{\rho, q}(s)$ is continuous for $s \in [0, T]$ for any $T>0$. Similarly, $s \mapsto \mathcal{H}_\alpha(s)$ is also continuous on $[0,T]$. Thus,
+	\begin{equation}
+		\int_0^t \left(\mathcal{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s \le 	\int_0^t \left(\textbf{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s < \infty.
+	\end{equation}
+	
+So when considering the $\delta_0$ initial condition in \eqref{E:SHE1}, we just work with the restated equation \eqref{E:SHErestar1} and then everything works fine... AT LEAST I HOPE!
+
 
 \section{Integrability conditions}
 We want to compare 
