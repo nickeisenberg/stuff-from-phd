@@ -769,7 +769,14 @@ But this follows immediately from \eqref{E:NormY}. Indeed
 %  \end{align*}
 %  where we have applied the same arguments as those in the proof of Lemma \ref{L:yineq} in the
 %  second inequality. Condition \eqref{E:GH-int} implies that $I_1<\infty$. \bigskip
-
+\textcolor{blue}{
+A type has been made above when using \eqref{E:NormY} to bound $\Norm{Y(s,y)}_2^2$. Note that we need to show
+	\begin{align*}
+		\int_{\R^d} \ud y \; G(t-s,x-y) \Norm{Y(s,y)}_2^2 &\le C \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 \mathcal{H}_\alpha(s) \\
+		&= \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 < \infty
+	\end{align*}
+However, because $s$ and $t$ are fixed, this will follow from the assumption \eqref{E:G} which says that $\mathcal{G}_{\rho, 2}(s) < \infty$ for each $s >0$. This is due to the fact that $\exp(-|x|^2) \le C \rho(x)$.
+}
   {\bf\noindent Step 2.~} Similarly, as for \eqref{E:Fubini_2}, we need to show that
   \begin{align*}
     I_2:= & \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: \\
