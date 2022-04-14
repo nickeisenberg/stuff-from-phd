@@ -1011,7 +1011,7 @@ Hence, we just need to show the finiteness of \eqref{E:FacBdd}. We start with lo
 			\mathcal{G}_{\rho, q}(s) &=  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x \\
 			&= \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \rho(x) \ud x \\
 			&= \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x \\
-			&\le 2 \Norm{\rho}_{L^1(\R^d)} + \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x.
+			&\le 2 \Norm{\rho}_{L^1(\R^d)} + 2\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x.
 	\end{align*}
 Recall that $u(t_0,x) \stackrel{\mathcal{L}}{=} v(0,x)$. Then by the moment bounds we have 
 	\begin{align*}
@@ -1019,13 +1019,17 @@ Recall that $u(t_0,x) \stackrel{\mathcal{L}}{=} v(0,x)$. Then by the moment boun
 		&\le C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \rho(x) \ud x \\
 		&= C \int_{\R^d} \left(1  +\int_{\R^d} G(s,x-y) (G(t_0,\cdot)*\delta_0)(y) \ud y\right)^2 \rho(x) \ud x \\
 		&= C \int_{\R^d} \left(1  + (G(t_0+s,\cdot)*\delta_0)(x) \right)^2 \rho(x) \ud x \\
-		&\le 2C\Norm{\rho}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \rho(x) \ud x \\
-		&= 2C\Norm{\rho}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s, x))^2 \rho(x) \ud x \\
-		&\le 2C\Norm{\rho}_{L^1(\R^d)} + \frac{C}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x.
+		&\le 2C\Norm{\rho}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \rho(x) \ud x \\
+		&= 2C\Norm{\rho}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s, x))^2 \rho(x) \ud x \\
+		&= 2C\Norm{\rho}_{L^1(\R^d)} + 2C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x,
 	\end{align*}
+where in the last line we used 
+	\[
+		G(t,x)^2 = \frac{(2\sqrt{\pi})^{-d}}{t^{d/2}} G\left(\frac{t}{2}, x\right).
+	\]
 Putting this all together gives us 
 	\begin{align*}
-		\mathcal{G}_{\rho, q}(s) \le 4\Norm{\rho}_{L^1(\R^d)} + \frac{C}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x =: \textbf{G}_{\rho, q}(s),
+		\mathcal{G}_{\rho, q}(s) \le (2+4C)\Norm{\rho}_{L^1(\R^d)} + 4C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x =: \textbf{G}_{\rho, q}(s),
 	\end{align*}
 and because $t_0>0$ is fixed, we see that $s \mapsto \textbf{G}_{\rho, q}(s)$ is continuous for $s \in [0, T]$ for any $T>0$. Similarly, $s \mapsto \mathcal{H}_\alpha(s)$ is also continuous on $[0,T]$. Thus,
 	\begin{equation}
