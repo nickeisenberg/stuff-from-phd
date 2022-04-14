@@ -162,6 +162,6 @@ if __name__ == "__main__":
             BM()
         elif ans == "4":
             print("\n Goodbye~!")
-            exit(1)
+            ans = False
         elif ans != "":
             print("\n Not Valid Choice Try again")

@@ -4,14 +4,22 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
 from matplotlib.animation import FuncAnimation
 
+# execfile("../python_simulations/browniansheet_movie_simulation.py")
+
+if len(sys.argv) < 2:
+    print("Give the number of path to generate.")
+    exit(1)
+else:
+    path_amt = int(sys.argv[1])
+
 # create the time interval and partition
-t = 0.3
-n = 100
+t = 3
+n = 400
 
 # How many sample paths?
-path_amt = 3
 
 
 # Create a brownian sample path
@@ -99,12 +107,13 @@ def anim_func(i):
 animation = FuncAnimation(fig,
                           func=anim_func,
                           frames=np.linspace(0, t, n+1),
-                          interval=3,
+                          interval=1,
                           repeat=False
                           )
 
 plt.title('Sample Paths of Brownian Motion')
 plt.show()
+
 #########
 
 # def anim_func(i):
