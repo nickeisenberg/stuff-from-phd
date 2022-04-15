@@ -194,7 +194,7 @@ papers such as \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:inv
 <\infty.
 \end{align}
 
-In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} verified \eqref{E:BddMnt} when $\mu(\ud x) = \ud x$ under the assumption that the spectral density $\hat{f}$ satisfies \textcolor{blue}{...reference example below...}. We expand this result and show the existence of an invariant measure when $\mu(\cdot)$ satisfies \eqref{E:InitData} and \eqref{E:GH-int} below, as well as one of the following:
+In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} verified \eqref{E:BddMnt} when $\mu(\ud x) = \ud x$ under the assumption that the spectral density $\hat{f}$ satisfies \textcolor{blue}{...reference example below...}. We will expand this result and show the existence of an invariant measure when $\mu(\cdot)$ satisfies \eqref{E:InitData} and \eqref{E:GH-int} below, as well as one of the following:
 \begin{enumerate}
 	\item $\mu(\ud x)$ is a deterministic, locally finite, regular, signed Borel measure with the corresponding {\it Hahn decomposition} $\mu=\mu_+-\mu_-$ 
 	\item $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is a processes in $L^2(\Omega, L^2_{\rho}(\R^d))$, namely  $\mathbb{E} \left( \Norm{\varphi(\cdot)}_{ L^2_{\rho}(\R^d)}\right) < \infty$.
@@ -260,8 +260,7 @@ order to have \eqref{E:BddMnt}, one has to have $L_b$ (the Lyapunov exponent of 
 \end{equation}
 
 \begin{remark} \label{R:Cor}
-  We should make several comments the condition \eqref{E:U0finite}. The assumption on the correlation function in \cite{tessitore.zabczyk:98:invariant} is given
-  through the spectral density $\widehat{f}$ as follows:
+The assumption on the correlation function in \cite{tessitore.zabczyk:98:invariant} is given through the spectral density $\widehat{f}$ as follows:
   \begin{equation} \label{E:CorTZ}
     \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
   \end{equation}
@@ -327,7 +326,7 @@ Here is the main theorem of the paper:
 \begin{theorem} \label{T:Main}
   Assume that all assumptions of Theorem \ref{T:Lrho} hold. Let $q >2$ be arbitrary but fixed. Moreover, suppose that
   \begin{enumerate}[(i)]
-    \item $\rho$ be an admissible weight and there exists another admissible weight $\widehat{\rho}$
+    \item if $\rho$ is an admissible weight and there exists another admissible weight $\widehat{\rho}$
       such that
       \begin{align} \label{E:rhorho}
         \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty,
@@ -364,7 +363,6 @@ Here is the main theorem of the paper:
     \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot)\}_{t>0}$.
   \end{enumerate}
 \end{theorem}
-
 
 \begin{example}[Correlation measures] \label{E:Gamma+f}
   Here are a few examples of correlation measures $\Gamma$ that satisfy condition \eqref{E:GH-int}.
@@ -528,7 +526,7 @@ The following factorization property of the heat kernel will be used in this pap
   G(s-r,y-z)G(r,z-\sigma)=G(s,y-\sigma)G\left(\dfrac{r(s-r)}{s},z-\sigma-\dfrac{r}{s}(y-\sigma)\right) .
 \end{equation}
 
-\section{Proof of part (a) of Theorem \ref{T:Main}}
+\section{Proof of part (a) of Theorem \ref{T:Main}} \label{S:mainproof}
 For $\alpha\in (0,1)$, $t>0$ and $x\in\R^d$, define formally \begin{align} \label{E:Ops}
   \begin{aligned}
     \left(F_{\alpha} f\right)(t,x) & := \int_0^{t} \int_{\R^d} (t-s)^{\alpha-1}G(t-s,x-y)f(s,y)\: \ud s \ud y  \quad \text{and} \\
