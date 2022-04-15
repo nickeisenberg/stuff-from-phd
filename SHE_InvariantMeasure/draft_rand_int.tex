@@ -205,26 +205,32 @@ The question of the existence of invariant measures in unbounded domains has bee
 papers such as \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:invariant,
 misiats.stanzhytskyi.ea:16:existence,tessitore.zabczyk:98:invariant}. Since the spatial domain is
 unbounded, one needs to introduce a weight function $\rho$ and the corresponding weighted space
-$L_\rho^2(\R^d)$ as usual; see Section \ref{S:weightedspace} below for more details. Following the
+$L_\rho^2(\R^d)$ as usual; see Section \ref{S:Prelim} below for more details. Following the
 standard procedure as laid out by Da Prato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant}, the
 main effort is to show that
 \begin{align} \label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{L^2_\rho(\R^d)}^2\right)
   <\infty.
 \end{align}
-For convenience, we will write $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$.
+For convenience, we will from now on write $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$ and $\Norm{X}_q = \left(\mathbb{E}(|X|^q)\right)^{1/q}$ where $q\ge 1$. 
 
+We now state Assumption \ref{A:General}, under which one can find a unique mild solution to \eqref{E:SHE} with sharp moment estimates; see
+\cite{chen.kim:19:nonlinear,chen.huang:19:comparison,chen.dalang:15:moments}. 
 
-Recall that under the following Assumption \ref{A:General}, one can find a unique mild solution to \eqref{E:SHE} with sharp moment estimates; see
-\cite{chen.kim:19:nonlinear,chen.huang:19:comparison,chen.dalang:15:moments}.
-\begin{assumptions} \label{A:General}
-\textcolor{blue}{Random initial measure. Need to clarify this.}
+\begin{assumptions} \label{A:General} $\;$
   \begin{enumerate}[(i)]
-    \item The initial measure $\mu$ satisfies the following integrability condition:
-      \begin{equation} \label{A:icon}
-	\int_{\R^d}\exp\left(-a|x|^2\right)\mu_2^*(\ud x) < \infty \quad \text{for all $a>0$},
+    \item The initial measure $\mu$ can either random or deterministic. When $\mu$ is random, it must satisfy the following integrability condition: 
+    \begin{equation} \label{A:icon}
+    \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\mu(\ud x)}_2 :=  \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\varphi(x)}_2 \ud x < \infty \quad \text{for all $a>0$},
+    \end{equation} 
+    where $\varphi \in L^2_\rho\left(\R^d, L^2(\Omega)\right)$ for some weight $\rho$, namely
+    \[
+  	 \int_{\R^d} \Norm{\varphi(x)}_2^2 \rho(x) \ud x < \infty.
+    \]
+     When $\mu$ is deterministic, it satisfies the 	following integrability condition:
+      \begin{equation} \label{A:iconDet}
+	\int_{\R^d}\exp\left(-a|x|^2\right)|\mu|(\ud x) < \infty \quad \text{for all $a>0$},
       \end{equation}
-      where $\mu_*^2$ is defined below in \eqref{E:qJ*}.
     \item The spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
       \begin{equation} \label{A:dalcon}
 	\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
@@ -232,8 +238,9 @@ Recall that under the following Assumption \ref{A:General}, one can find a uniqu
       \end{equation}
   \end{enumerate}
 \end{assumptions}
-\textcolor{blue}{I think \eqref{A:icon} is good enough}
-
+\begin{notation}
+	For ease of notation, we will always write $\Norm{\mu(\ud x)}_q$ whether $\mu$ is deterministic or random. This shall not cause any confusion since if $\mu$ is deterministic, then we can informally think of $\mu$ as a constant in that $\Norm{\mu(\ud x)}_q = |\mu|(\ud x)\Norm{1}_q = |\mu|(\ud x)$.
+\end{notation}
 Moreover, this solution is usually {\it intermittent}, namely, the probability moments to
 \eqref{E:SHE} have certain exponential growth in $t$. In order to have moments bounded in time as
 required in \eqref{E:BddMnt}, one has to first identify the exact conditions, under which the
@@ -257,78 +264,29 @@ where $\Gamma$ is the correlation measure (see \eqref{E:Cor}). Condition \eqref{
 equivalently \eqref{E:U0Eqv}) gives the admissible correlation functions, which is weaker than that
 in \cite{tessitore.zabczyk:98:invariant}; see Remark \ref{R:Cor} below.
 
-\textcolor{blue}{
-\textbf{(3):} Now that we have condition \eqref{E:CorTZ} written correctly, I believe that \eqref{E:U0finite} implies \eqref{E:CorTZ}. We consider
-	\[
-		\Upsilon(0) = \int_{\R^d} \frac{\hat{f}(z)}{|x|^2} \ud z < \infty.
-	\]
-It seems that the worst function that satisfies this is
-	\[
-		\hat{f}(z) =
-			\begin{cases}
-				\frac{1}{|z|^{d-2-\delta}} & |z| \le 1 \\
-				\frac{1}{|z|^{d-2+\eta}} & |z| \ge 10 \\
-				\text{continuous} & 1 \le |z| \le 10,
-			\end{cases}
-	\]
-where $\eta > 0$ and $\delta > 0$ are arbitrary. We want to show that such a $\hat{f}$ also satisfies \eqref{E:CorTZ}. Note that we need the following:
-	\[
-		p(d-2-\delta) < d \quad \text{and} \quad p(d-2+\eta) > d.
-	\]
-This implies that
-	\[
-		\frac{d}{d-2+\eta} < p < \frac{d}{d-2-\delta},
-	\]
-and note that for any $\eta>0$, that
-	\[
-		\frac{d}{d-2+\eta} < \frac{d}{d-2},
-	\]
-which implies
-	\[
-		\left( \frac{d}{d-2+\eta}, \frac{d}{d-2-\delta} \right) \cap \left[1, \frac{d}{d-2} \right) \not= \emptyset.
-	\]
-Therefore there will always be a $p \in [1, d/(d-2)$ such that $\hat{f}$ satisfies \eqref{E:CorTZ}. Hence \eqref{E:CorTZ} is more general than \eqref{E:U0finite}.
-}
-
-\textcolor{magenta}{ Did you try the reverse order? \eqref{E:CorTZ} implies \eqref{E:U0finite}?} \\
-\textcolor{blue}{On the discussion file on the master branch I have an example which works for \eqref{E:CorTZ} but not \eqref{E:U0finite}.} \\
- \textcolor{magenta}{The issue of your arguments is that we may have logarithm corrections for $\widehat{f}$, such as
-  \begin{align*}
-    \widehat{f}(z) = \frac{1}{|z|^{d-2} | \log\left(|z|\right) | (1+ |z|^\delta)}
-  \end{align*}
-  where $\delta>0$. Certainly we need to make this nonnegative definite-definite, which should be
-  doable. Indeed in my paper "Dense blowup...", we have constructed such correlation functions. You
-  can play with this idea to include more logarithms such as
-  \begin{align*}
-    \widehat{f}(z) = \frac{1}{|z|^{d-2} | \log\left(|z|\right) \log\left(\log\left(|z|\right)\right)| (1+ |z|^\delta)}.
-  \end{align*}
-  You can also make the logarithm correction at infinity not zero. So my impression is that the
-integrability condition of type \eqref{E:CorTZ} might not be the best way to characterize the
-situation. }
-
 \begin{remark} \label{R:Cor}
-  The assumption on the correlation function in \cite{tessitore.zabczyk:98:invariant} is given
+  We should make several comments the condition \eqref{E:U0finite}. The assumption on the correlation function in \cite{tessitore.zabczyk:98:invariant} is given
   through the spectral density $\widehat{f}$ as follows:
   \begin{equation} \label{E:CorTZ}
     \widehat{f} \in L^p(\R^d) \quad \text{for some $p\in \left[1,d/(d-2)\right)$};
   \end{equation}
-  see Hypothesis 2.1 ({\it ibid.}) and recall that $d\ge 3$. One can easily check if $\widehat{f}$
-  satisfies \eqref{E:U0finite}, then one can find a $p$ in the range given in \eqref{E:CorTZ} such
-  that condition \eqref{E:CorTZ} is satisfied. In some sense, our condition \eqref{E:U0finite} seems
-  to be more precise and convenient to check. \textcolor{magenta}{Need to be extended...}
+  see Hypothesis 2.1 ({\it ibid.}) and recall that $d\ge 3$. One can construct an example that satisfies \eqref{E:CorTZ} but fails to satisfy \eqref{E:U0finite}. However as was illustrated in \cite{tessitore.zabczyk:98:invariant}, \eqref{E:CorTZ} was not enough of an assumption to give a concrete example of the existence of an invariant measure and additional assumptions were needed. See Theorem 3.3 {\it ibid} where it is further assumed that $d \ge 3$ and the Lipschitz constant of $b$ satisfies $l^{-2} > \textbf{l}$, where
+  	\begin{equation}
+	  	\tilde \Gamma := \left| \sqrt{ \mathcal{F}(f) }  \right| * \left| \sqrt{\mathcal{F}(f)}  \right| \quad \text{and} \quad \textbf{l}:= \frac{\mathbf{\Gamma}(d/2 -1)}{4 \pi^{d/2}} \int_{\R^d} \tilde{\Gamma}(\ud \zeta) |\zeta|^{2-d},
+  	\end{equation}
+  where $\mathbf{\Gamma}$ is the Gamma function. These additional assumptions parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}, however one can see that \eqref{E:U0finite} is more compact and easier to check.
 \end{remark}
 
 \begin{notation}
-We need to introduce some notation. Denote
+We need to introduce some more notation. Denote
 \begin{align} \label{E:qJ*}
-J_{q}^*(r,z) = \left(G(r,\cdot)*\mu_q^*\right)(x) \quad \text{and} \quad
-\mu_q^*:= 1+ \Norm{\mu}_q.
+	\mu_q^*:= 1+ \Norm{\mu}_q \quad \text{and} \quad J_{q}^*(r,z) = \left(G(r,\cdot)*\mu_q^*\right)(x) .
 \end{align}
-We make note that for deterministic initial measures, that the above just simplifies to 
+We remind the reader that for deterministic initial measures
 \begin{align} \label{E:J*}
-J^*(r,z) = \left(G(r,\cdot)* \mu^*\right)(x) \quad \text{and} \quad
-\mu^*:= 1+ |\mu|
+	\mu_q^* = \mu^* = 1+ |\mu| \quad \text{and} \quad  J_{q}^*(r,z) = J^*(r,z) = \left(G(r,\cdot)* \mu^*\right)(x).
 \end{align}
+Again, whether $\mu$ is random or deterministic, we will always use the notation given in \eqref{E:qJ*}.
 \end{notation}
 
 \begin{theorem} \label{T:Lrho}
@@ -344,10 +302,11 @@ J^*(r,z) = \left(G(r,\cdot)* \mu^*\right)(x) \quad \text{and} \quad
       \end{equation}
     \item the correlation measure $\Gamma$ satisfies \eqref{E:U0finite} (or equivalently
       \eqref{E:U0Eqv});
-    \item the Lipschitz constant $L_b$ of $b$ (see \eqref{E:lipcon}) satisfies
+    \item the Lipschitz constant $L_b$ of $b$ (see Theorem \ref{T:H(t)Bdd} below) satisfies 
       \begin{equation} \label{E:LipLb}
-        L_b < .......
+        2L_b^2 < \frac{1}{128 \Upsilon(0)}.
       \end{equation}
+      \textcolor{blue}{In Lemma \ref{L:yineq}, we will need to assume that $qL_b^2 < \frac{1}{128 \Upsilon(0)}$ for some $q > 2$. This $q$ can be fixed throughout the paper so we do not run into the problem that $qL_b^2 < \frac{1}{128 \Upsilon(0)}$ needs to hold for every $q>2$.}
   \end{enumerate}
   Then for all $t>0$, $u(t,\cdot)\in L_{\rho}^2(\R^d)$ a.s. Moreover, for some constant $C>0$ which
   does not depend on $t$, it holds that
@@ -395,6 +354,10 @@ Here is the main theorem of the paper:
       \begin{align} \label{E:GH-int}
 	\int_{0}^t \left[\mathcal{G}_{\widehat{\rho}, q}(s)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$}.
       \end{align}
+     \item for some $q>2$, the condition \eqref{E:LipLb} is strengthened to 
+     \[
+     	qL_b^2 < \frac{1}{128 \Upsilon(0)}.
+     \]
 
   \end{enumerate}
   Then we have that
@@ -456,7 +419,7 @@ Here is the main theorem of the paper:
   arbitrarily close to zero. This completes the proof of part (c) of Theorem \ref{T:Main}.
 \end{proof}
 
-\section{Preliminaries}
+\section{Preliminaries} \label{S:Prelim}
 
 % \subsection{The weighted space $L^2_\rho(\R^d)$}\label{S:weightedspace}
 
@@ -541,7 +504,7 @@ Several examples of admissible weights are (see Example in Section 2 of
   This proves the lemma with $K_{\rho,a} = C_\rho(1) C_{\rho,a}$.
 \end{proof}
 
-\begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}]
+\begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:H(t)Bdd}
   Under Assumption \ref{A:General}, the SPDE \eqref{E:SHE} has a unique random field solution
   starting from $\mu$ and the solution is $L^2(\Omega)$ continuous.
 \end{theorem}
@@ -556,7 +519,7 @@ Several examples of admissible weights are (see Example in Section 2 of
   nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for the concrete definition of $H$).
   Moreover, if we assume that
   \begin{equation}\label{A:dalcon0}
-    \Upsilon(0) < \infty
+    \Upsilon(0) < \infty \quad \text{and} \quad \gamma_p < \frac{1}{4\Upsilon(0)},
   \end{equation}
   then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
   \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
