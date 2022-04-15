@@ -375,7 +375,7 @@ Hypothesis 2.1 \cite{TZ98} says that the spectral density $\hat{f}$ must satisfy
  \hat{f} \in L^p(\R^d) \quad \text{for some } p \in (d/(d-2), \infty]
  	\end{equation}
  \textcolor{blue}{Equation \eqref{E:hyp2.1} is not correct. Hypothesis 2.1 \cite{TZ98} says that there exists a $p \ge 1$ such that $(1-1/p)(d/2) <\ 1$ which implies that $1 \le p < d/(d-2)$. So equation (1.11) in the shortened version of the paper is not right. This also means that the two functions that I constructed down below are not correct as well.}
- 
+
 Our assumption is that
 	\begin{equation}\label{E:speccond}
 		\Upsilon(0) = (2\pi)^{-d} \int_{\R^d} \frac{\hat{f}(\xi)}{|\xi|^2} \ud \xi < \infty, \quad \quad d \ge 3.
@@ -389,19 +389,19 @@ Considering the above, it seems as if we assume $\hat{f}$ satisfies \eqref{E:spe
 	\begin{equation}
 		p > \frac{d}{d-2+\delta}
 	\end{equation}
-and to take care of the origin, we need 
+and to take care of the origin, we need
 	\begin{equation}
 		p < \frac{d}{d - 2 -\delta}
 	\end{equation}
-and therefore 
+and therefore
 	\begin{equation}
 		\frac{d}{d-2+\delta} < p < \frac{d}{d - 2 -\delta}.
 	\end{equation}
-This is not a problem because 
+This is not a problem because
 	\[
 			\frac{d}{d-2+\delta} < \frac{d}{d-2}  < \frac{d}{d - 2 -\delta}
 	\]
-and so there exists a $p > d/(d-2)$, namely 
+and so there exists a $p > d/(d-2)$, namely
 	\[
 		 p \in \left[\frac{d}{d - 2 -\delta}, \frac{d}{d-2}  \right],
 	\]
@@ -483,13 +483,13 @@ but I don't think this should be done.
 meeting. Please show that $h$ is nonnegative and nonnegative definite. Moreover, how would you find
 $\sqrt{\mathcal{F}f (\xi)}$?}
 
-Isn't the condition 	
+Isn't the condition
 	\begin{equation}\label{E:GamTilCon}
 	\tilde{\Gamma} = \mathcal{F}(|\gamma^{1/2}|) * \mathcal{F}(|\gamma^{1/2}|), \quad \quad \frac{\Gamma(d/2 -1 )}{4 \pi^{d/2}} \int_{\R^d} \tilde{\Gamma}(\xi) |\xi|^{d-2} \ud \xi < \infty
 	\end{equation}
 the same thing as Dalang's condition? I don't think the absolute value adds any restriction because up to a constant we have:
 	\begin{align*}
-			\tilde{\Gamma} &= \mathcal{F}(|\gamma^{1/2}|) * \mathcal{F}(|\gamma^{1/2}|) 
+			\tilde{\Gamma} &= \mathcal{F}(|\gamma^{1/2}|) * \mathcal{F}(|\gamma^{1/2}|)
 			\\ &= \mathcal{F}\left( |\gamma^{1/2}| \cdot |\gamma^{1/2}| \right)
 			\\& = \mathcal{F}( |\gamma| )
 			\\& = \mathcal{F}( \gamma )
@@ -498,25 +498,25 @@ the same thing as Dalang's condition? I don't think the absolute value adds any 
 where above $f$ is the correlation function and $\gamma$ is the spectral density and hence both are nonnegative and nonnegative definite. Therefore, \eqref{E:GamTilCon} can be written as the following:
 	\[
 		\int_{\R^d} \tilde{\Gamma}(\xi) |\xi|^{d-2} \ud \xi = 	\int_{\R^d} f(\xi) |\xi|^{d-2} \ud \xi
-	\] 
-which is the same thing as Dalang's condition. 
+	\]
+which is the same thing as Dalang's condition.
 
 \section{Meaning of $\mathcal{F}(\gamma^{1/2})$.}
-We discussed last meaning that equation (3.4) \cite{TZ98}, which says 
+We discussed last meaning that equation (3.4) \cite{TZ98}, which says
 	\[
 		\tilde{\Gamma} := |\widehat{\gamma^{1/2}}|*|\widehat{\gamma^{1/2}}|
 	\]
-means that we are calculating $\mathcal{F}(\gamma^{1/2})$ and then taking the absolute value and then doing the convolution. So in other words 
+means that we are calculating $\mathcal{F}(\gamma^{1/2})$ and then taking the absolute value and then doing the convolution. So in other words
 	\begin{equation}\label{E:GamTil}
 			\tilde{\Gamma} := |\mathcal{F}(\gamma^{1/2})|* |\mathcal{F}(\gamma^{1/2})|.
 	\end{equation}
 We saw that this was the case by observing the proof of Theorem 3.3 \cite{TZ98}.
-	
-We then wanted to consider the case where the correlation function, $f$, is given by 
+
+We then wanted to consider the case where the correlation function, $f$, is given by
 	\[
 		f(x) =(2-|x|)1_{[-2,2]}(x)
 	\]
-which means that 
+which means that
 	\[
 		\hat{f}(\xi) = \gamma(\xi) = \frac{\sin^2(x)}{x^2}.
 	\]
@@ -524,26 +524,26 @@ Because $\gamma(\xi)$ touches $0$ an infinite number of times then we have an in
 	\begin{equation}\label{E:SqrtGamma}
 		\frac{\sin(\xi)}{\xi} \quad \text{or} \quad \frac{|\sin(\xi)|}{|\xi|}
 	\end{equation}
-however it seems like we could also choose 
+however it seems like we could also choose
 	\begin{equation}\label{E:SqrtGammaK}
 		\frac{|\sin(\xi)|}{|\xi|} K(\xi)
 	\end{equation}
-where 
-	\[ K(\xi) = 
+where
+	\[ K(\xi) =
 		\begin{cases}
 			-1 & \xi \in (2\pi, 3\pi)
 			\\ 1 & \text{otherwise}
 		\end{cases}
 	\]
-and we could come up with an infinite number of choices for $\sqrt{\gamma}$ of the form \eqref{E:SqrtGammaK}. We wanted to choose the second choice from \eqref{E:SqrtGamma} but what tells us that this is the choice we are supposed to choose? It seems to me now that there are an infinite number of possibilities to define $\tilde{\Gamma}$ and note that if we just consider the two choices from \eqref{E:SqrtGamma} then we can get that 
+and we could come up with an infinite number of choices for $\sqrt{\gamma}$ of the form \eqref{E:SqrtGammaK}. We wanted to choose the second choice from \eqref{E:SqrtGamma} but what tells us that this is the choice we are supposed to choose? It seems to me now that there are an infinite number of possibilities to define $\tilde{\Gamma}$ and note that if we just consider the two choices from \eqref{E:SqrtGamma} then we can get that
 	\[
-		\tilde{\Gamma} = \left| \mathcal{F}\left(\frac{\sin(\cdot)}{\cdot} \right) \right|* \left| \mathcal{F}\left(\frac{\sin(\cdot)}{\cdot} \right) \right| 
+		\tilde{\Gamma} = \left| \mathcal{F}\left(\frac{\sin(\cdot)}{\cdot} \right) \right|* \left| \mathcal{F}\left(\frac{\sin(\cdot)}{\cdot} \right) \right|
 			\quad	\text{or}	\quad
-		\tilde{\Gamma} = \left| \mathcal{F}\left(\left|\frac{\sin(\cdot)}{\cdot} \right|\right) \right|* \left| \mathcal{F}\left(\left|\frac{\sin(\cdot)}{\cdot} \right| \right) \right| 
-	\] 
-and I do not believe that these two choices for $\tilde{\Gamma}$ are equal. 
+		\tilde{\Gamma} = \left| \mathcal{F}\left(\left|\frac{\sin(\cdot)}{\cdot} \right|\right) \right|* \left| \mathcal{F}\left(\left|\frac{\sin(\cdot)}{\cdot} \right| \right) \right|
+	\]
+and I do not believe that these two choices for $\tilde{\Gamma}$ are equal.
 
-This makes me believe that there is something not being said in this paper that tells us which branch of $\sqrt{\gamma}$ needs to be chosen. I think this has something to do with the centered equation right below equation (2.3) \cite{TZ98} which says that 
+This makes me believe that there is something not being said in this paper that tells us which branch of $\sqrt{\gamma}$ needs to be chosen. I think this has something to do with the centered equation right below equation (2.3) \cite{TZ98} which says that
 	\begin{equation}\label{E:SqrtGammaM}
 		M(\varphi)\psi = \varphi(\mathcal{F}(\gamma^{1/2}) * \psi)
 	\end{equation}
@@ -551,49 +551,49 @@ where
 	\[
 		X^x(t) = S(t)x + \int_0^t S(t-s)M(B(X^x(s))) dW_s
 	\]
-and 
+and
 	\[
 		B(\phi)(\xi) = b(\xi,\phi(\xi)).
 	\]
-I will look through \cite{DZ92} and \cite{DZp92} to see if this has to do with the construction of the DaPrato integral. 
+I will look through \cite{DZ92} and \cite{DZp92} to see if this has to do with the construction of the DaPrato integral.
 
-\section{Proof of Theorem 3.1 \cite{TZ98}} 
-The proof starts by saying that the result can be proven once we show that for any $\epsilon \in (0,1)$ and $R>0$ that there exists a compact set $\mathscr{K}(\theta) \subset L^2_{\rho}$ such that 
+\section{Proof of Theorem 3.1 \cite{TZ98}}
+The proof starts by saying that the result can be proven once we show that for any $\epsilon \in (0,1)$ and $R>0$ that there exists a compact set $\mathscr{K}(\theta) \subset L^2_{\rho}$ such that
 	\begin{equation}\label{E:3.1ineq}
 		\mathbb{P}\left\{ X^{\hat x}(t) \in \mathscr{K}(\theta) \right\} \ge (1-\epsilon)\mathbb{P} \left\{ | X^{\hat x}(t-1)|_{\hat \rho} < R \right\} \quad \text{ for all} t>1.
 	\end{equation}
 
-In \textbf{step 3} of this proof they define the set 
+In \textbf{step 3} of this proof they define the set
 	\begin{equation}\label{E:KTheta}
 		\mathscr{K}(\theta) := \left\{ S(1)y + \frac{\sin(\alpha \pi)}{\pi} F_{\alpha}h  \; : \; |y|_{\hat{\rho}} \le \theta \text{ and } |h|_{L^q(0,1,L^2_{\rho})} \le \theta\right\}
 	\end{equation}
-and they also mention that by the factorization theorem from \cite{DZ96} that 
+and they also mention that by the factorization theorem from \cite{DZ96} that
 	\begin{equation}\label{E:Factorization}
 		X^x(1) = S(1)x + \frac{\sin(\alpha \pi)}{\pi} F_{\alpha}\left( Y^x(\cdot) \right).
 	\end{equation}
-		
+
 They claim that since
 	\begin{equation}\label{E:KTheta1}
 			\mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q))
 	\end{equation}
-then we have 
+then we have
 	\begin{equation}\label{E:KThetaRecursive}
 		\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\} \ge (1-k_3\theta^{-q}(1+R^q)) \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \quad \text{for all } t>1.
 	\end{equation}
 I am not sure why this true. I was thinking that it follows from something like the following:
 	\begin{align*}
-			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  &= 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} 
+			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  &= 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\}
 			\\ &\quad \quad \quad + \mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg \vert \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\}.
 	\end{align*}
-However, we would want something like 
+However, we would want something like
 	\begin{equation} \label{E:RUpBd}
 		R > \left| X^x(t-1) \right|_{\hat{\rho}}
 	\end{equation}
- which implies that 
+ which implies that
 	\[
 		 \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} \ge R  \right\} = 0
 	\]
-and so 
+and so
 	\begin{equation}\label{E:KThetaConditional}
 			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta)  \right\}  = 	\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} \mathbb{P}\left\{ \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\}.
 	\end{equation}
@@ -601,17 +601,17 @@ This can't be the case though because this would imply that the following functi
 	\[
 		(t,\omega) \mapsto \left| X^x(t-1) \right|_{\hat{\rho}}(\omega) \quad \text{for all } 	(t,\omega) \in (1,\infty) \times \Omega.
 	\]
-However, we do know that 
+However, we do know that
 	\[
-		\sup_{t>\alpha} \mathbb{E}\left[ |X^x(t,\cdot)|_{\hat \rho}^2 \right] < \infty 
+		\sup_{t>\alpha} \mathbb{E}\left[ |X^x(t,\cdot)|_{\hat \rho}^2 \right] < \infty
 	\]
-so maybe this helps? However the statement in \eqref{E:3.1ineq} says that it needs to be for arbitrary $R>0$ and \eqref{E:RUpBd} implies that $R$ must be taken sufficiently big and thus $R$ is not arbitrary. 
+so maybe this helps? However the statement in \eqref{E:3.1ineq} says that it needs to be for arbitrary $R>0$ and \eqref{E:RUpBd} implies that $R$ must be taken sufficiently big and thus $R$ is not arbitrary.
 
-Now just assuming the above is it true, can we say that the SHE is time homogeneous in the sense that 
+Now just assuming the above is it true, can we say that the SHE is time homogeneous in the sense that
 	\[
-			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} = \mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(0) \right|_{\hat{\rho}} < R  \right\}? 
+			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} = \mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(0) \right|_{\hat{\rho}} < R  \right\}?
 	\]
-Because if this is true then because of \eqref{E:KTheta1} we have that 
+Because if this is true then because of \eqref{E:KTheta1} we have that
 	\begin{align*}
 			\mathbb{P}\left\{ X^x(t) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(t-1) \right|_{\hat{\rho}} < R  \right\} &= \mathbb{P}\left\{ X^x(1) \in \mathscr{K}(\theta) \bigg\vert  \left| X^x(0) \right|_{\hat{\rho}} < R  \right\}
 			\\ & \ge (1-k_3\theta^{-q}(1+R^q))
@@ -621,19 +621,19 @@ and combining this with \eqref{E:KThetaConditional} gives us \eqref{E:KThetaRecu
 \section{Two possible assumptions for the initial condition.}
 We have been deciding between which of the following two assumptions we want to assume:
 	\begin{enumerate}
-		\item 
-			\begin{equation}\label{E:A1} 
+		\item
+			\begin{equation}\label{E:A1}
 				\sup_{t>0} \int_{\R^d} (G(t,\cdot) * |\mu|)^2(x)\rho(x) \ud x < \infty
 			\end{equation}
-		\item 
-			\begin{equation} \label{E:A2} 
+		\item
+			\begin{equation} \label{E:A2}
 				\sup_{x \in \R^d} (G(t,\cdot) * |\mu|)(x) < K(t) \quad \text{for some } K(t) \in \mathbb{N}.
 			\end{equation}
 	\end{enumerate}
 
-You originally suggested Condition \eqref{E:A1} because it gave a nice relation between the initial condition and the weight and that it may have been able to replace the admissible weight condition. However we saw last meeting that we still need to assume the admissible weight condition because of Proposition 2.1 \cite{TZ98}. 
+You originally suggested Condition \eqref{E:A1} because it gave a nice relation between the initial condition and the weight and that it may have been able to replace the admissible weight condition. However we saw last meeting that we still need to assume the admissible weight condition because of Proposition 2.1 \cite{TZ98}.
 
-The other issue with Condition \eqref{E:A1} is that 
+The other issue with Condition \eqref{E:A1} is that
 	\[
 		\sup_{t>0} \int_{\R^d} (G(t,\cdot) * \delta_0)^2(x)\rho(x) \ud x = \infty.
 	\]
@@ -650,7 +650,7 @@ Using this, we will then only be able to show the following bounded in probabili
 	\[
 		 \mathbb{P} \left( |u(t,\cdot)|_{\rho} \ge R \right) < \epsilon \quad \text{for all } t \ge \lambda.
 	\]
-I have not verified this, but I believe that if we assume \eqref{E:A1.1} then our version of \eqref{E:3.1ineq} becomes: for $0 < t_0 \le 1$ and $\epsilon \in (0,1)$ and $R>0$, there exists a compact set $\mathscr{K}(\theta) \subset L^2_{\rho}(\R^d)$ such that 
+I have not verified this, but I believe that if we assume \eqref{E:A1.1} then our version of \eqref{E:3.1ineq} becomes: for $0 < t_0 \le 1$ and $\epsilon \in (0,1)$ and $R>0$, there exists a compact set $\mathscr{K}(\theta) \subset L^2_{\rho}(\R^d)$ such that
 	\begin{equation}\label{E:Conjecture}
 			\mathbb{P}\left\{ X^{\hat x}(t) \in \mathscr{K}(\theta) \right\} \ge (1-\epsilon)\mathbb{P} \left\{ | X^{\hat x}(t-t_0)|_{\hat \rho} < R \right\} \quad \text{for all } t> \lambda + t_0
 	\end{equation}
@@ -658,7 +658,7 @@ If we assume all of this then we can prove that the laws
 	\[
 		\left\{\mathscr{L}(u(t,\cdot))\right\}_{t>t_0 + \lambda}
 	\]
-are tight and hence there exists an invariant measure. So we get the same conclusion as long as the conjecture \eqref{E:Conjecture} is correct. 
+are tight and hence there exists an invariant measure. So we get the same conclusion as long as the conjecture \eqref{E:Conjecture} is correct.
 
 \section{I do not think \eqref{E:A1.1} will work as an assumption.}
 
@@ -678,30 +678,30 @@ In order to prove this result we either need \eqref{E:A1} or \eqref{E:A2}. If we
 	\begin{equation}\label{E:YNorm1.1}
 		\mathbb{E}\int_\lambda^{t_0} Y^{\varphi}(s,\cdot)|_{\rho}^q \le |\varphi|_\rho^q
 	\end{equation}
-and this will not be enough in order to prove the conjecture \eqref{E:Conjecture}. 
+and this will not be enough in order to prove the conjecture \eqref{E:Conjecture}.
 
-This is because by Lemma 4.3 in our paper we have that 
+This is because by Lemma 4.3 in our paper we have that
 	\begin{align*}
 		\dfrac{\sin(\alpha \pi)}{\pi}\int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y(s,\cdot)\right](x) \ud s &=	\dfrac{\sin(\alpha \pi)}{\pi}\left(F_{\alpha}^{t_0}Y^{\varphi}\right)(x)
 		\\&= \int_0^t  \int_{\R^d} G(t-r,x-z)b(u(r,z)) W(\ud r,\ud z)
 	\end{align*}
-and thus 
+and thus
 	\[
 		u^\varphi(t_0,x) = (G(t_0,\cdot) * \varphi)(x) + \dfrac{\sin(\alpha \pi)}{\pi}\left(F_{\alpha}^{t_0}Y^{\varphi}\right)(x)
 	\]
-and if you examine the proof of Lemma 3.1, this factorization is very important and in particular, the inequality \eqref{E:YNorm}. I do not see how \eqref{E:YNorm1.1} could be used to replace it. 
+and if you examine the proof of Lemma 3.1, this factorization is very important and in particular, the inequality \eqref{E:YNorm}. I do not see how \eqref{E:YNorm1.1} could be used to replace it.
 
-One last thing to add is that this problem does not present itself with the original assumption \eqref{E:A2} so we may want to stick with that in order to apply the $\delta_0$ initial condition. However, this means we can only used bounded initial conditions. 
+One last thing to add is that this problem does not present itself with the original assumption \eqref{E:A2} so we may want to stick with that in order to apply the $\delta_0$ initial condition. However, this means we can only used bounded initial conditions.
 
 \section{Tightness of $U(t_0,\cdot)$}
-Define 
+Define
 	\begin{equation}
 	\label{E:U}
 		U(T,\cdot)(A) = \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u_{u_0}(t,\cdot))(A) \; \ud t
 	\end{equation}
-where $u_0$ is the initial condition and $A \in \mathscr{B}(L^2_{\rho}(\R^d))$. We see that $\mathscr{L}(u_{u_0}(t,\cdot))(A)$ defines a probability measure on $\mathscr{B}(L^2_{\rho}(\R^d))$. Because $u_{u_0}(t,x)$ is jointly continuous on $(0,\infty) \times \R^d$ then I believe that $t \mapsto \mathscr{L}(u_{u_0}(t,\cdot))(A)$ is continuous. 
+where $u_0$ is the initial condition and $A \in \mathscr{B}(L^2_{\rho}(\R^d))$. We see that $\mathscr{L}(u_{u_0}(t,\cdot))(A)$ defines a probability measure on $\mathscr{B}(L^2_{\rho}(\R^d))$. Because $u_{u_0}(t,x)$ is jointly continuous on $(0,\infty) \times \R^d$ then I believe that $t \mapsto \mathscr{L}(u_{u_0}(t,\cdot))(A)$ is continuous.
 
-First I will show that \eqref{E:U} defines a probability measure. Lets consider a general measure space $(E, \mathscr{E})$ and let $\mathcal{M}_1(E)$ denote the set of probability measures on $(E, \mathscr{E})$. Define 
+First I will show that \eqref{E:U} defines a probability measure. Lets consider a general measure space $(E, \mathscr{E})$ and let $\mathcal{M}_1(E)$ denote the set of probability measures on $(E, \mathscr{E})$. Define
 	\begin{equation}
 		\label{E:IntProb}
 		P_T(A) := \frac{1}{T-a} \int_a^T p_t(A) \; \ud t,
@@ -721,12 +721,12 @@ where $T>a \ge 0$, $t \in (a,T)$, $p_t \in \mathcal{M}_1(E)$, and  $t \mapsto p_
  	\begin{align*}
 		\mathbb{P}\left(U(T,\cdot) \in A \right) &:= U(T,\cdot)(A) \\
 		&= \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u_{u_0}(t,\cdot))(A) \; \ud t.
-	\end{align*} 
-So in \eqref{E:IntProb}, we let $p_t(A) = \mathscr{L}(u_{u_0}(t,\cdot))(A)$. However I am starting to think that all of this is unnecessary. Since the the family of measures $\{\mathscr{L}(u_{u_0}(t,\cdot))(\circ)\}_{t>0}$ is tight then given any $\epsilon >0$ we can find a compact set $K \in \mathscr{B}(L_\rho^2(\R^d))$ such that 
+	\end{align*}
+So in \eqref{E:IntProb}, we let $p_t(A) = \mathscr{L}(u_{u_0}(t,\cdot))(A)$. However I am starting to think that all of this is unnecessary. Since the the family of measures $\{\mathscr{L}(u_{u_0}(t,\cdot))(\circ)\}_{t>0}$ is tight then given any $\epsilon >0$ we can find a compact set $K \in \mathscr{B}(L_\rho^2(\R^d))$ such that
 	\[
 		\mathscr{L}(u_{u_0}(t,\cdot))(K^c) = \mathbb{P}\left[\omega \in \Omega : u_{u_0}(t,\cdot)(\omega) \in K^c \right] \le \epsilon.
 	\]
-Then we immediately see that 
+Then we immediately see that
 	\begin{align*}
 		U(T,\cdot)(K^c) &= \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u_{u_0}(t,\cdot))(K^c) \; \ud t \\
 		&\le \frac{1}{T} \int_{t_0}^{T + t_0} \epsilon \; \ud t \\
@@ -736,20 +736,20 @@ So the family of probability measures $\{U(T,\cdot)(\circ) \}_{T>0}$ is tight. S
 }
 
 
-\noindent \textbf{\eqref{E:IntProb} defines a Probability Measure:} First, consider the probability measures $p_1,\cdots, p_n \in \mathcal{M}_1(E)$. It is easy to verify that $(p_1 + \cdots + p_n)/n \in \mathcal{M}_1(E)$. Now suppose that for $T > a \ge 0$ and $t \in (a,T)$ that $p_t \in \mathcal{M}_1(E)$ and that $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$. Then the Lebesgue integral in \eqref{E:IntProb} exists for each $A \in \mathscr{E}$. It remains to show that $P_T \in \mathcal{M}_1(E)$. Note that 
+\noindent \textbf{\eqref{E:IntProb} defines a Probability Measure:} First, consider the probability measures $p_1,\cdots, p_n \in \mathcal{M}_1(E)$. It is easy to verify that $(p_1 + \cdots + p_n)/n \in \mathcal{M}_1(E)$. Now suppose that for $T > a \ge 0$ and $t \in (a,T)$ that $p_t \in \mathcal{M}_1(E)$ and that $t \mapsto p_t(A)$ is continuous for each $A \in \mathscr{E}$. Then the Lebesgue integral in \eqref{E:IntProb} exists for each $A \in \mathscr{E}$. It remains to show that $P_T \in \mathcal{M}_1(E)$. Note that
 	\begin{align*}
 		P_T(A) = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(A) \Delta_n
-	\end{align*} 
-where $\Delta_n = (T-a)/n$ and $P_n$ is a partition of $[a,b]$ constructed from such $\Delta_n$. From this we easily deduce that 
+	\end{align*}
+where $\Delta_n = (T-a)/n$ and $P_n$ is a partition of $[a,b]$ constructed from such $\Delta_n$. From this we easily deduce that
 	\[
-		P_T(E) = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(E) \Delta_n = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} \Delta_n = 1. 
+		P_T(E) = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(E) \Delta_n = \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} \Delta_n = 1.
 	\]
 In addition, it is clear that $P_T(A) \ge 0$ so it remains to show countable additivity. Suppose $\{A_j\}_{j \ge 1} \in \mathscr{E}$ are disjoint. Then,
 	\begin{align*}
 		P_T\left(\sum_{j \ge 1} A_j \right) &= \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}\left(\sum_{j \ge 1} A_j \right) \Delta_n \\
-		&= \lim_{t_n \in P_n} \frac{1}{T-a} \sum_{j \ge 1} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n 
+		&= \lim_{t_n \in P_n} \frac{1}{T-a} \sum_{j \ge 1} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n
 	\end{align*}
-where the last line follows because each $p_{t_k} \in \mathcal{M}_1(E)$. Since 
+where the last line follows because each $p_{t_k} \in \mathcal{M}_1(E)$. Since
 	\[
 		\sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n \le \sum_{t_k \in P_n}  \Delta_n = 1,
 	\]
@@ -758,14 +758,14 @@ then the dominated convergence theorem implies that
 		\lim_{t_n \in P_n} \frac{1}{T-a} \sum_{j \ge 1} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n &=  \sum_{j \ge 1} \lim_{t_n \in P_n} \frac{1}{T-a} \sum_{t_k \in P_n} p_{t_k}\left( A_j \right) \Delta_n \\
 		&=  \sum_{j \ge 1} p(A_j),
 	\end{align*}
-and so $P_T$ is countably additive which means $P_T \in \mathcal{M}_1(E)$. 
+and so $P_T$ is countably additive which means $P_T \in \mathcal{M}_1(E)$.
 
 \begin{remark}
 	\normalfont
-	It seems that the assumption $t \mapsto p_t(A)$ defines a continuous mapping may be unnecessary. It seems all we would really need is the existence of the Lebesgue integral in \eqref{E:IntProb} which only requires $t \mapsto p_t(A)$ be measurable and bounded almost everywhere. DaPrato \cite{DZ96} requires that $P_t(x,A) = u_x(t,\cdot)(A)$ be a stochastically continuous Feller semi-group in order for \eqref{E:U} to be a probability measure, which happens to be the case in our situation. 
+	It seems that the assumption $t \mapsto p_t(A)$ defines a continuous mapping may be unnecessary. It seems all we would really need is the existence of the Lebesgue integral in \eqref{E:IntProb} which only requires $t \mapsto p_t(A)$ be measurable and bounded almost everywhere. DaPrato \cite{DZ96} requires that $P_t(x,A) = u_x(t,\cdot)(A)$ be a stochastically continuous Feller semi-group in order for \eqref{E:U} to be a probability measure, which happens to be the case in our situation.
 \end{remark}
 
-\noindent \textbf{\eqref{E:IntProb} is tight if the $p_t$ are tight:} Now lets further assume that the family of probability measures $\{p_t\}_{t \in [a,T]}$ is tight. Let $\epsilon>0$ be given. Then there exists a a compact set $K \in \mathscr{E}$ such that for each $t \in [a,T]$, $p_t(K^c) < \epsilon$ where $K^c = E \setminus K$. Then, 
+\noindent \textbf{\eqref{E:IntProb} is tight if the $p_t$ are tight:} Now lets further assume that the family of probability measures $\{p_t\}_{t \in [a,T]}$ is tight. Let $\epsilon>0$ be given. Then there exists a a compact set $K \in \mathscr{E}$ such that for each $t \in [a,T]$, $p_t(K^c) < \epsilon$ where $K^c = E \setminus K$. Then,
 	\begin{align*}
 		P_T(K) &= \frac{1}{T-a} \int_a^b p_t(K) \; \ud t \\
 		&= \lim_{t_n \in P_n} \frac{1}{T-a}\sum_{t_k \in P_n} p_{t_k}(K) \Delta_n \\
@@ -778,20 +778,20 @@ which implies that the family  $\{P_T\}_{T \ge a}$ defined in \eqref{E:IntProb} 
 \section{Assumptions for Fubini's}
 If you examine the complete proof that I have written in the long version of the invariant measure paper, you will see that in order to apply Fubini's theorem, we will need to assume the following:
 	\begin{enumerate}
-		\item $ \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)} < \infty$, 
+		\item $ \Norm{G(t,x-\cdot)\varphi(\cdot)}_{L^1(\R^d)} < \infty$,
 		\item $ \mathcal{H}(s) = \int_0^s \ud r (s-r)^{-2\alpha} \int_{\R} \hat{f}(\ud \xi) \exp\left(-(s-r) |\xi|^2\right) < \infty $,
 		\item $\int_0^s \ud r (s-r)^{-2\alpha} \int_{\R} \hat{f}(\ud \xi) \exp\left( -\left( \frac{s-r}{2} + \frac{r(s-r)}{2s} \right) |\xi|^2 \right) < \infty $,
 		\item $\int_0^s \ud r (s-r)^{-2\alpha} \int_{\R} \hat{f}(\ud \xi) \exp\left( -\frac{r(s-r)}{2s} |\xi|^2 \right) < \infty $.
 	\end{enumerate}
-The first item is true since we assume out initial measure, $\varphi$ satisfies 
+The first item is true since we assume out initial measure, $\varphi$ satisfies
 	\[
 		\int_{\R^d} \exp(-a|x|^2) \varphi(x) \ud x < \infty.
 	\]
-The second item is also true by assumption. Lastly, the finiteness of $\mathcal{H}(s)$ implies that items 3 and 4 are true, which is proven in Lemma 4.2 of the longer version of the paper on GitHub. 
+The second item is also true by assumption. Lastly, the finiteness of $\mathcal{H}(s)$ implies that items 3 and 4 are true, which is proven in Lemma 4.2 of the longer version of the paper on GitHub.
 
 \section{Bessel kernal}
 
-Unfortunately, we may not consider the Riesz kernel in our setting due to the assumption that $\Upsilon(0) < \infty$. Indeed, for $0<s<d$, the Riesz kernel is defined to be $f(x) = |x|^{s-d}$ and in order for 
+Unfortunately, we may not consider the Riesz kernel in our setting due to the assumption that $\Upsilon(0) < \infty$. Indeed, for $0<s<d$, the Riesz kernel is defined to be $f(x) = |x|^{s-d}$ and in order for
 	\[
 		\Upsilon(0) = \int_{\R^d} \frac{f(x)}{|x|^{d-2}} \ud x =
 		\int_{\R^d} \frac{1}{|x|^{2d-s-2}} < \infty,
@@ -800,7 +800,7 @@ one would need both $s-2 > d$ and $s-2 < d$, which clearly is not possible. Howe
 	\[
 		(I-\Delta)^{-s/2}f = f * G_s,
 	\]
-where, 
+where,
 	\[
 	  \mathcal{F}G_s(\xi) = \frac{1}{(1+  |\xi|^2)^{s/2}}.
 	\]
@@ -814,7 +814,7 @@ where,
 	\end{enumerate}
 Hence, $G_s(x)$ exhibits exponential decay as $x \to \infty$, and so if we
 consider $d \ge 3$, $d-2 < s < d$, and $\alpha < 1/2$ then it is easy to see
-that both $\mathcal{H}(t) < \infty$ for any $t>0$ and $\Upsilon(0) < \infty$. 
+that both $\mathcal{H}(t) < \infty$ for any $t>0$ and $\Upsilon(0) < \infty$.
 
 \bigskip
 \textbf{Details for item 1 above.} Consider the following definitions for the inverse Fourier transform:
@@ -829,7 +829,7 @@ Before we continue we recall the following:
 	\begin{equation}
 	\label{E:Fexp}
 		\text{if } f(\xi) = \exp(-\pi |\xi|^2) \text{ then } \mathcal{F}_0^{-1}f(x) = f(x).
-	\end{equation}  
+	\end{equation}
 Now, if we assume that $\Re z>0$ and $A>0$, then
 	\[
 		A^{-z/2} = \frac{1}{\Gamma(z/2)} \int_0^\infty e^{-tA}t^{z/2} \frac{\ud t}{t}.
@@ -839,14 +839,14 @@ Using this we see that
 	\label{E:BasselPreInv}
 		(1+|\xi|^2)^{-z/2} = \frac{1}{\Gamma(z/2)} \int_0^\infty e^{-t} e^{-t|\xi|^2} t^{z/2} \frac{\ud t}{t}.
 	\end{equation}
-We now want to take the inverse Fourier transform of both sides in $\xi$. This reduces to just finding the inverse Fourier transform of $f(\xi) := \exp(-t|\xi|^2) = \exp\left(-\pi \left| \frac{\sqrt{t} \xi}{\sqrt{\pi}} \right|^2\right)$. Hence we can use \eqref{E:Fexp} to see that 
+We now want to take the inverse Fourier transform of both sides in $\xi$. This reduces to just finding the inverse Fourier transform of $f(\xi) := \exp(-t|\xi|^2) = \exp\left(-\pi \left| \frac{\sqrt{t} \xi}{\sqrt{\pi}} \right|^2\right)$. Hence we can use \eqref{E:Fexp} to see that
 	\begin{align*}
 		\mathcal{F}^{-1}f(x) &= \mathcal{F}_0^{-1}f\left(\frac{x}{2\pi}\right) \\
 		&= \frac{\exp\left(-\pi \left| \frac{x/(2\pi)}{\sqrt{t/\pi}} \right|^2\right)}{(t/\pi)^{d/2}} \\
 		&= \frac{\exp\left(-\pi \frac{|x|^2/4 \pi^2}{t/\pi} \right)}{(t/\pi)^{d/2}} \\
 		&= \frac{\exp\left(- \frac{|x|^2}{4t} \right)}{(t/\pi)^{d/2}}.
 	\end{align*}
-Combining this with \eqref{E:BasselPreInv} give us that 
+Combining this with \eqref{E:BasselPreInv} give us that
 	\[
 		G_s(x) = \mathcal{F}^{-1}((1+|\cdot|^{2})^{-s/2}) = \frac{(\pi)^{-d/2}}{\Gamma(s/2)}\int_0^\infty e^{-t}e^{-|x|^2/(4t)} t^{(s-d)/2} \frac{\ud t}{t}.
 	\]
@@ -856,7 +856,7 @@ Combining this with \eqref{E:BasselPreInv} give us that
 This is important.}
 
 \subsection{Requirement for the Bessel parameter,$s$.}
-Recall from above that 
+Recall from above that
 	\begin{equation} \label{E:FBessel}
 		\mathcal{F}G_s(\xi) = \frac{1}{(1+  |\xi|^2)^{s/2}},
 	\end{equation}
@@ -865,7 +865,7 @@ and that the origin asymptotics of the Bessel kernel are:
 		\frac{1}{c(s,d)} \le \frac{G_s(x)}{H_s(x)} \le c(s,d),
 	\]
 where
-	\[ 
+	\[
 		H_s(x) =
 		\begin{cases}
 			|x|^{s-d} + 1 + O(|x|^{s-d+2})  & \text{for $0<s<d$ and $|x| \le 2$}, \\
@@ -873,11 +873,11 @@ where
 			1 + O(|x|^{s-d}) & \text{for $d<s$ and $|x| \le 2$}.
 		\end{cases}
 	\]
-Note that the Bessel Kernal does not have blow up at the origin when $s >d$. Because of this, we hope to be able to handle the case $s < d$ so we in fact have blow up at the origin. 
+Note that the Bessel Kernal does not have blow up at the origin when $s >d$. Because of this, we hope to be able to handle the case $s < d$ so we in fact have blow up at the origin.
 
 \subsubsection{Finiteness of $\mathcal{H}_\alpha(t)$}
 
-We need to make sure that 
+We need to make sure that
 	\[
 		\mathcal{H}_{\alpha}(t) = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \; \exp\left(-r|\xi|^2\right) < \infty \quad \text{for all } t>0.
 	\]
@@ -894,7 +894,7 @@ We need to calculate this integral. By polar coordinates,
 		& \qquad + \frac{ t^{(s-d)/2} \Gamma((2-4\alpha-d+s)/2)}{\Gamma(d/2) } \\
 		& \qquad \times \text{HypergeometricPFQRegularized}\left[ \left\{ \frac{2-4\alpha-d+s}{2}, \frac{s}{2} \right\}, \left\{ \frac{2-d+s}{2}, \frac{4-4\alpha-d+s}{2} \right\}, t \right]   \Bigg) < \infty,
 	\end{align*}
-and this holds when 
+and this holds when
 	\begin{equation}
 		4\alpha + d -2 < s.
 	\end{equation}
@@ -902,15 +902,34 @@ Recall that we are only considering $\alpha \in (1/q, 1/2)$ for some $q>2$,. Bec
 	\begin{equation}
 		(4\alpha + d -2 , d).
 	\end{equation}
-Thus we may choose 
+Thus we may choose
 	\begin{equation} \label{E:BesParamCond}
 		s \in (4\alpha + d -2 , d),
 	\end{equation}
 which allows us to consider a Bessel kernel with origin blow up.
 
+\newpage
+Nick, here is what I suppose to try:
+\begin{align*}
+    \int_0^t \ud r \; r^{-2\alpha}  \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}
+  = \sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}.
+\end{align*}
+By change of variables, $z^2= y$, we see that
+\begin{align*}
+  \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}
+  = \frac{1}{2} \int_0^\infty \ud y\; e^{-r y} (1+y)^{s/2} y^{\frac{d}{2}-1} \ud y
+  = \frac{\Gamma\left(d/2\right)}{2}U\left(\frac{d}{2},\frac{d+2-s}{2},r\right),
+\end{align*}
+where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function (see \cite[Chapter 13]{NIST2010}) and
+the last equality can be found in (13.4.4) on p. 326 of \cite{NIST2010}. Then use (13.2.16) -- (13.2.22) on p. 323 of
+\cite{NIST2010}  to discuss the limit of $r\to 0$ of the above integral. Once this is done, you can combine the $\ud r$
+integral give the comprehensive picture.
+
+\newpage
+
 \subsubsection{Finiteness of $\int_0^T \left(\mathcal{G}_{\hat{\rho}}(t)\mathcal{H}_{\alpha}(t)\right)^{q/2} \ud t$ for the $\delta_0(\cdot)$ initial condition}
 
-We need to pick a weight. Let's choose $\hat\rho(x)=\exp(-|x|)$, otherwise the calculations become more difficult. So, for the $\delta_0$ initial condition we have that,	
+We need to pick a weight. Let's choose $\hat\rho(x)=\exp(-|x|)$, otherwise the calculations become more difficult. So, for the $\delta_0$ initial condition we have that,
 	\begin{align*}
 		\mathcal{G}_{\widehat{\rho}} (t) &= \int_{\R^d} \ud x \; \left[\int_{\R^d} G(t,x-y) \delta_0(\ud y)  \right]^2 \exp(-|x|) \\
 		&= \int_{\R^d} \ud x \; G(t,x)^2 \exp(-|x|) \\
@@ -927,17 +946,17 @@ Thus
 	\begin{equation} \label{E:Gorigin}
 			\mathcal{G}_{\widehat{\rho}} (t)  = O(t^{-d/2}) \quad \text{as} \quad t \to 0^+,
 	\end{equation}
-so $\mathcal{G_{\rho}}(t)$ is not integrable around the origin. This means that $\mathcal{H}_{\alpha}(t)$ is going to need to help in order for $\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2} \ud t < \infty$. 
+so $\mathcal{G_{\rho}}(t)$ is not integrable around the origin. This means that $\mathcal{H}_{\alpha}(t)$ is going to need to help in order for $\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2} \ud t < \infty$.
 
-As for $\mathcal{H}_\alpha$, from the above we see that 
+As for $\mathcal{H}_\alpha$, from the above we see that
 	\begin{equation}\label{E:Horigin}
 		\mathcal{H}_\alpha(t) = O\left(t^{1-2\alpha}  + t^{(2 - 4\alpha + s -d)/2}\right), \quad t \to 0.
 	\end{equation}
-This is because 
+This is because
 	\[
 		0< \text{HypergeometricPFQRegularized}\left[ \cdot, \cdot, 0 \right] < \infty.
 	\]
-Recall that because of \eqref{E:BesParamCond}, we have $2 - 4\alpha + s -d > 0$. Putting \eqref{E:Gorigin} and \eqref{E:Horigin} together gives us 
+Recall that because of \eqref{E:BesParamCond}, we have $2 - 4\alpha + s -d > 0$. Putting \eqref{E:Gorigin} and \eqref{E:Horigin} together gives us
 	\begin{align}
 				\mathcal{G}_{\widehat{\rho}} (t)\mathcal{H}_\alpha(t) &= O(t^{-d/2}) O\left(t^{1-2\alpha }  + t^{(2 - 4\alpha + s -d)/2}\right), \quad t \to 0 \nonumber \\
 				&= O\left(t^{1-2\alpha - d/2}  + t^{(2 - 4\alpha + s - 2d)/2}\right), \quad t \to 0 \nonumber \\
@@ -947,21 +966,21 @@ Hence,
 	\begin{equation}
 		\left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2} \le O\left(t^{(2- 4\alpha - d)q/4}  + t^{(2 - 4\alpha + s - 2d)q/4}\right), \quad t \to 0 .
 	\end{equation}
-We will require that 
+We will require that
 	\begin{align}
 		\frac{(2- 4\alpha - d)q}{4} \ge -1 \quad &\text{and} \quad \frac{[(2 - 4\alpha + s - d) - d]q}{4} \ge -1 \nonumber \\
 		\implies (2- 4\alpha - d) \ge -\frac{4}{q} \quad &\text{and} \quad (2 - 4\alpha + s - d) - d \ge -\frac{4}{q} \label{E:OriginProblem}
 	\end{align}
-I don't think there is any room. Consider the first condition in \eqref{E:OriginProblem}. This says that we must have 
+I don't think there is any room. Consider the first condition in \eqref{E:OriginProblem}. This says that we must have
 	\[
 		d \le 2 - 4\alpha + \frac{4}{q} \le 2 - \frac{4}{q} + \frac{4}{q} = 2.
 	\]
-But we must require that $d \ge 3$. Thus $	\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2}$ will not converge if we consider the Bessel kernel, $G_s$ with $s < d$ and the $\delta_0$ initial condition. Note that we can't even apply the Bessel Kernel with $s >d$ and in this case the Bessel Kernel does not even blow up in the origin. No matter what $s$ we choose for the Bessel Kernel, $G_s$, the first condition in \eqref{E:OriginProblem} will always require that $d \le 2$. 
+But we must require that $d \ge 3$. Thus $	\int_0^T \left(\mathcal{G}_{\rho}(t) \mathcal{H}_{\alpha}(t)\right)^{q/2}$ will not converge if we consider the Bessel kernel, $G_s$ with $s < d$ and the $\delta_0$ initial condition. Note that we can't even apply the Bessel Kernel with $s >d$ and in this case the Bessel Kernel does not even blow up in the origin. No matter what $s$ we choose for the Bessel Kernel, $G_s$, the first condition in \eqref{E:OriginProblem} will always require that $d \le 2$.
 
 \section{Solution for the above issue}
-I believe the above integrability issue can be ignored. We only consider the the restarted solution. I just remembered that this was the reason why I went through and reproved all the results for random initial conditions last week. 
+I believe the above integrability issue can be ignored. We only consider the the restarted solution. I just remembered that this was the reason why I went through and reproved all the results for random initial conditions last week.
 
-Suppose we start with 
+Suppose we start with
 	\begin{equation} \label{E:SHE1}
 		u(t,x) =
 		\begin{cases}
@@ -976,17 +995,17 @@ and then consider the restarted solution
 		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
 		v(0,\cdot) = u(t_0,\cdot)       .                                                     &
 		\end{cases}
-	\end{equation}	
-	
-From now on we will only work with $v$. In this case, $Y$ from the factorization theorem is defined as 
+	\end{equation}
+
+From now on we will only work with $v$. In this case, $Y$ from the factorization theorem is defined as
 	\begin{equation}
 		Y(s,y) := \int_0^s \int_{\R^d} (s-r)^{-\alpha} G(s-r, y-z)b(z, v(r,z)) W(\ud r, \ud z).
 	\end{equation}
-In the current version of the paper, I already changed the factorization results so we can consider random initial conditions. For example we have that 
+In the current version of the paper, I already changed the factorization results so we can consider random initial conditions. For example we have that
 	\begin{equation} \label{E:FacBdd}
-		\mathbb{E} \left(\int_0^t \Norm{Y(s,\cdot)}_{\rho}^q \ud s \right) \le \Theta \int_0^t \left[ \mathcal{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s) \right]^{q/2} \ud s 
+		\mathbb{E} \left(\int_0^t \Norm{Y(s,\cdot)}_{\rho}^q \ud s \right) \le \Theta \int_0^t \left[ \mathcal{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s) \right]^{q/2} \ud s
 	\end{equation}
-whenever the right-hand side is finite, and where 
+whenever the right-hand side is finite, and where
 	\[
 		\mathcal{G}_{\rho, q}(s) = \int_{\R^d} (J_q^*(s,x))^2 \rho(x) \ud x,
 	\]
@@ -994,14 +1013,14 @@ and
 	\[
 		J_q^*(s,x) = \int_{\R^d} G(s,x-y) \mu_q^*(\ud y), \quad \mu_q^*(\ud y) = (1 + \Norm{v(0,y)}_q)(\ud y).
 	\]
-Hence, we just need to show the finiteness of \eqref{E:FacBdd}. We start with looking at $\mathcal{G}_{\rho, q}$. 
+Hence, we just need to show the finiteness of \eqref{E:FacBdd}. We start with looking at $\mathcal{G}_{\rho, q}$.
 	\begin{align*}
 			\mathcal{G}_{\rho, q}(s) &=  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x \\
 			&= \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \rho(x) \ud x \\
 			&= \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x \\
 			&\le 2 \Norm{\rho}_{L^1(\R^d)} + 2\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x.
 	\end{align*}
-Recall that $u(t_0,x) \stackrel{\mathcal{L}}{=} v(0,x)$. Then by the moment bounds we have 
+Recall that $u(t_0,x) \stackrel{\mathcal{L}}{=} v(0,x)$. Then by the moment bounds we have
 	\begin{align*}
 		\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \rho(x) \ud x &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{u(t_0,y)}_q\ud y\right)^2 \rho(x) \ud x \\
 		&\le C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \rho(x) \ud x \\
@@ -1011,11 +1030,11 @@ Recall that $u(t_0,x) \stackrel{\mathcal{L}}{=} v(0,x)$. Then by the moment boun
 		&= 2C\Norm{\rho}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s, x))^2 \rho(x) \ud x \\
 		&= 2C\Norm{\rho}_{L^1(\R^d)} + 2C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x,
 	\end{align*}
-where in the last line we used 
+where in the last line we used
 	\[
 		G(t,x)^2 = \frac{(2\sqrt{\pi})^{-d}}{t^{d/2}} G\left(\frac{t}{2}, x\right).
 	\]
-Putting this all together gives us 
+Putting this all together gives us
 	\begin{align*}
 		\mathcal{G}_{\rho, q}(s) \le (2+4C)\Norm{\rho}_{L^1(\R^d)} + 4C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \rho(x) \ud x =: \textbf{G}_{\rho, q}(s),
 	\end{align*}
@@ -1023,38 +1042,38 @@ and because $t_0>0$ is fixed, we see that $s \mapsto \textbf{G}_{\rho, q}(s)$ is
 	\begin{equation}
 		\int_0^t \left(\mathcal{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s \le 	\int_0^t \left(\textbf{G}_{\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s < \infty.
 	\end{equation}
-	
+
 So when considering the $\delta_0$ initial condition in \eqref{E:SHE1}, we just work with the restated equation \eqref{E:SHErestar1} and then everything works fine... AT LEAST I HOPE!
 
 
 \section{Integrability conditions}
-We want to compare 
+We want to compare
 \begin{enumerate}
 	\item $\Upsilon(0) < \infty$ and $\mathcal{H}(t) <\infty$
 	\item $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$.
 \end{enumerate}
 
-\textbf{(2) does not imply (1):} Suppose that $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$. Then  we may have as $|x| \to 0$ that $\hat{f}(x) \sim \frac{1}{|x|^{d - \delta}}$ where $0 < \delta < d$. As for the tails, the worst case scenario we may have is when $\hat{f} \sim \frac{1}{|x|^{d - \eta}}$ as $|x| \to \infty$ for some $0<\eta<d$. So under these conditions at the origin and as $|x| \to \infty$, we need a $1 \le p < d/(d-2)$ such that 
+\textbf{(2) does not imply (1):} Suppose that $\hat{f} \in L^p(\R^d)$ for $1 \le p < d/(d-2)$. Then  we may have as $|x| \to 0$ that $\hat{f}(x) \sim \frac{1}{|x|^{d - \delta}}$ where $0 < \delta < d$. As for the tails, the worst case scenario we may have is when $\hat{f} \sim \frac{1}{|x|^{d - \eta}}$ as $|x| \to \infty$ for some $0<\eta<d$. So under these conditions at the origin and as $|x| \to \infty$, we need a $1 \le p < d/(d-2)$ such that
 	\[
 		p(d-\delta) <d, \quad \text{and} \quad p(d - \eta)>d,
 	\]
-which implies that we must have 
+which implies that we must have
 	\[
 		\frac{d}{d-\eta} < p < \frac{d}{d - \delta} \quad \text{and} \quad 0 < \eta < \delta < 2.
 	\]
-However, this is not a problem and such an $\hat{f}$ exists. For example when $d=3$, $\delta = 1.5$, $\eta = 1$, and 
+However, this is not a problem and such an $\hat{f}$ exists. For example when $d=3$, $\delta = 1.5$, $\eta = 1$, and
 	\[
 		f(x) = \begin{cases}
 					|x|^{\delta - d} = |x|^{-1.5} & |x| \le 1 \\
-					|x|^{\eta -d} = |x|^{-2} & |x| \ge 10 \\ 
+					|x|^{\eta -d} = |x|^{-2} & |x| \ge 10 \\
 					\text{continous and decreasing} & 1 < |x| < 10,
 				\end{cases}
 	\]
-then if we choose a $p$ such that 
+then if we choose a $p$ such that
 	\[
-		\frac{d}{d-\eta} = \frac{3}{2} < p < \frac{3}{1.5} = \frac{d}{d-\delta}, 
+		\frac{d}{d-\eta} = \frac{3}{2} < p < \frac{3}{1.5} = \frac{d}{d-\delta},
 	\]
-then $\hat{f} \in L^p(\R^d)$. For example, if $p=1.75$ then $1.5*1.75 < 3$ and $2 * 1.75 > 3$ and so $\hat{f} \in L^p(\R^3)$. However this same $\hat{f}$ does not satisfy $\Upsilon(0) < \infty$ since around the origin, $\hat{f}(x)|x|^{-2}$ will not be integrable. 
+then $\hat{f} \in L^p(\R^d)$. For example, if $p=1.75$ then $1.5*1.75 < 3$ and $2 * 1.75 > 3$ and so $\hat{f} \in L^p(\R^3)$. However this same $\hat{f}$ does not satisfy $\Upsilon(0) < \infty$ since around the origin, $\hat{f}(x)|x|^{-2}$ will not be integrable.
 
 \bigskip \textcolor{magenta}{I have to read your arguments more carefully but
 it is interesting to know that the gap is huge here, I though the difference
@@ -1064,7 +1083,7 @@ but Tessitore's condition does not allow such arrangement.}
 \section{Restarting the solution}
 \subsection{Some informal notes on restart}
 
-Suppose we have 
+Suppose we have
 	\begin{equation} \label{E:SHE}
 	u(t,x) =
 	\begin{cases}
@@ -1072,16 +1091,16 @@ Suppose we have
 	u(0,\cdot) = \mu(\cdot),                                                               &
 	\end{cases}
 	\end{equation}
-and 
+and
 	\begin{equation} \label{E:SHErestart}
 	v(t,x) =
 	\begin{cases}
 	\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
 	v(0,\cdot) = u(t_0,\cdot)       ,                                                      &
 	\end{cases}
-	\end{equation}	
-	
-where $\dot{W}_{t_0}(t,x) = \dot{W}(t+t_0,x)$. We want it to be the case that 
+	\end{equation}
+
+where $\dot{W}_{t_0}(t,x) = \dot{W}(t+t_0,x)$. We want it to be the case that
 	\begin{equation} \label{E:t0Restart}
 		v(t,x) = u(t+t_0,x).
 	\end{equation}
@@ -1090,7 +1109,7 @@ If we assume that \eqref{E:t0Restart} is true, then
 		v(t,x) &= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,v(s,y)) W_{t_0}(\ud s, \ud y) \nonumber \\
 		&= \int_{\R^d} G(t,x-y) u(t_0,y) \ud y + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) \label{E:vsol}
 	\end{align}
-and because of \eqref{E:t0Restart}, we also have 
+and because of \eqref{E:t0Restart}, we also have
 	\begin{equation}
 	\label{E:vsolrestart}
 		v(t,x) = u(t+t_0,x) = \int_{\R^d} G(t+t_0,x-y) \mu(\ud y) + \int_0^{t+t_0} \int_{\R^d} G(t+t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
@@ -1104,16 +1123,16 @@ Thus \eqref{E:vsol}, \eqref{E:vsolrestart} and \eqref{E:RestartHomogeneous}, imp
 		\int_0^{t_0}\int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) \nonumber \\
 		&  = \int_0^{t+t_0}\int_{\R^d} G(t+t_0-s, x-y)b(y,u(s,y)) W(\ud s, \ud y) \label{E:ChgOfVar}.
 	\end{align}
-	
+
 Intuitively, we would like the following to be true:
 	\begin{equation} \label{E:ChgOfVar2}
 		\int_0^t \int_{\R^d} G(t-s,x-y) b(y,u(s+t_0,y)) W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t + t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
 	\end{equation}
-Note that \eqref{E:ChgOfVar2}, would follow by the change of variable $s' = s + t_0$. Then plugging \eqref{E:ChgOfVar2} into the LHS of \eqref{E:ChgOfVar} would give us 
+Note that \eqref{E:ChgOfVar2}, would follow by the change of variable $s' = s + t_0$. Then plugging \eqref{E:ChgOfVar2} into the LHS of \eqref{E:ChgOfVar} would give us
 	\begin{align*}
 		\text{LHS of }\eqref{E:ChgOfVar} = \int_0^{t_0} \int_{\R^d} G(t+t_0-s, x-y) b(y,u(s,y)) W(\ud s, \ud y) + \int_{t_0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y),
 	\end{align*}
-and lastly we would like for it to be the case that 
+and lastly we would like for it to be the case that
 	\begin{align}
 		\int_0^{t_0} \int_{\R^d} G(t+t_0-s, x-y) & b(y,u(s,y)) W(\ud s, \ud y) + \int_{t_0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y) \nonumber \\
 		&= \int_{0}^{t+t_0} \int_{\R^d} G(t + t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y) \label{E:SumOfInt}.
@@ -1121,19 +1140,19 @@ and lastly we would like for it to be the case that
 
 \subsection{Assumption on the restarted initial condition}
 
-Also, in order to show the existence on an invariant measure, we need to assume that 
+Also, in order to show the existence on an invariant measure, we need to assume that
 	\begin{equation} \label{A:initialbdd}
 		\sup_{x \in \R^d} (G(t,\cdot) * |\mu|)(x) < \infty \quad \text{for any } t\ge 0.
 	\end{equation}
-So if we want to show that our restarted solution, $v$, has an invariant measure, we will also need to show that 
+So if we want to show that our restarted solution, $v$, has an invariant measure, we will also need to show that
 	\[
 		\sup_{x \in \R^d} (G(t,\cdot) * |v(0,\cdot)|)(x) < \infty \quad \text{for any } t\ge 0.
 	\]
-which means that we need to show (almost surely) that 
+which means that we need to show (almost surely) that
 	\begin{equation} \label{A:RandomInitial}
 			\sup_{x \in \R^d} (G(t,\cdot) * |u(t_0,\cdot)|)(x) < \infty \quad \text{for any } t\ge 0.
 	\end{equation}
-Recall that 
+Recall that
 	\[
 		u(t_0,x) = \int_{\R^d} G(t_0,x-y) \mu(\ud y) + \int_0^{t_0} \int_{\R^d} G(t_0-s,x-y) b(y,u(s,y)) W(\ud s, \ud y).
 	\]
@@ -1141,42 +1160,42 @@ So $|u(t_0,\cdot)|$ is a processes and the absolute values add some difficulty. 
 	\begin{align*}
 		\sup_{x \in \R^d} (G(t,\cdot) * u(t_0,\cdot))(x) < \infty \quad \text{for any } t\ge 0.
 	\end{align*}
-We have that 
+We have that
 	\begin{align*}
 		(G(t,\cdot) * u(t_0,\cdot))(x) & = \int_{\R^d} G(t,x-y)u(t_0,y) \ud y \\
 		& = \int_{\R^d} \ud y \; G(t,x-y) \left( \int_{\R^d} G(t_0,y-z) \delta_0(\ud z) + \int_0^{t_0} \int_{\R^d} G(t_0-s,y-z) b(z,u(s,z)) W(\ud s, \ud z)\right) \\
 		& = \int_{\R^d} G(t,x-y) G(t_0,y) \ud y + \int_{\R^d} \ud y \; G(t,x-y) \int_0^{t_0} \int_{\R^d} W(\ud s, \ud z)  G(t_0-s,y-z) b(z,u(s,z)) \\
 		& = G(t+t_0,x) + \int_0^{t_0} \int_{\R^d} G(t+t_0 -s,x-z) b(z,u(s,z)) W(\ud s, \ud z),
 	\end{align*}
-where in the last line I assume that stochastic Fubini's theorem could be applied. 
+where in the last line I assume that stochastic Fubini's theorem could be applied.
 
-\textcolor{blue}{\eqref{A:RandomInitial} may not be an issue. As long as we assume \eqref{A:initialbdd}, then we will be able to show 
+\textcolor{blue}{\eqref{A:RandomInitial} may not be an issue. As long as we assume \eqref{A:initialbdd}, then we will be able to show
 	\[
 		\sup_{t \ge t_0} \mathbb{E}\left[\Norm{u^{\mu}(t,\cdot)}_{\rho}^2\right] < \infty
-	\] 
+	\]
 which is all that is needed.}
 \section{Fix for the random initial data}
 
-I previously proved that for $L^2_{\rho}(\R^d)$ initial conditions that 
+I previously proved that for $L^2_{\rho}(\R^d)$ initial conditions that
 	\[
 		\mathbb{E} \int_0^1 \Norm{Y^{\varphi}(s,\cdot)}_{\rho}^q \ud s \le K \Norm{\varphi}_\rho^q.
 	\]
-I think that for random initial conditions, $f(x)(\omega)$, that this can be extended to 
+I think that for random initial conditions, $f(x)(\omega)$, that this can be extended to
 	\[
 		\mathbb{E} \int_0^1 \Norm{Y^{f}(s,\cdot)}_{\rho}^q \ud s \le K \mathbb{E}\left(\Norm{f(\cdot)}_{\rho}^q\right).
 	\]
-For random initial conditions we may still have the factorization formula 
+For random initial conditions we may still have the factorization formula
 	\[
 		u(t,x) = (G(t,\cdot)*u^\mu(t_0,\cdot))(x) + \frac{\sin(\alpha \pi)}{\pi}F_\alpha^t(Y^{u^\mu(t_0,\cdot)})(x), \quad t\ge t_0.
-	\] 
-We then define the set 
+	\]
+We then define the set
 	\[
 		\mathcal{K}(\Theta) := \left\{ (G(t_0,\cdot)*y)(x) + (F_\alpha^{t_0}h)(x), \quad \text{where } \mathbb{E}(\Norm{y}_{\rho}) \le \Theta \text{ and } \mathbb{E}(\Norm{h}_{L^q(0,1,L^2_{\rho})}) \le \Theta \right\}.
 	\]
-We may then be able to continue the proof as in Tessitore Theorem 3.1. I need to still verify the details. \textcolor{blue}{This makes $\mathcal{K}$ a random set.}  
+We may then be able to continue the proof as in Tessitore Theorem 3.1. I need to still verify the details. \textcolor{blue}{This makes $\mathcal{K}$ a random set.}
 
 \section{Lipschitz Constant}
-In our Invariant measure paper, we have only assumed that 
+In our Invariant measure paper, we have only assumed that
 	\begin{equation} \label{E:LipCond}
 		|b(x,u) - b(x,v)| \le L_b |u-v| \quad \text{and} \quad |b(x,0)| \le L_0.
 	\end{equation}
@@ -1184,19 +1203,19 @@ In your paper with Kunwoo Kim \cite{CK19}, you have that the Lipschitz constant 
 	\begin{equation} \label{E:LipCondStrong}
 		\sup_{x \in \R^d} \frac{|b(x)|}{|x|} < \infty,
 	\end{equation}
-which requires that $b(0) = 0$. We are also using Lemma 2.5 \cite{CK19} which says that when $\Upsilon(0) < \infty$ and when $\nu > 2 \gamma \Upsilon(0)$, then 
+which requires that $b(0) = 0$. We are also using Lemma 2.5 \cite{CK19} which says that when $\Upsilon(0) < \infty$ and when $\nu > 2 \gamma \Upsilon(0)$, then
 	\[
 		H_\nu(t,\gamma) \le \frac{\nu}{\nu - 2\gamma \Upsilon(0)}.
 	\]
-Recall that when considering the moment bound, 
+Recall that when considering the moment bound,
 	\[
 		\Norm{u(t,x)}_p \le [\bar\varsigma + \sqrt{2}(|\mu|*G(t,\cdot))(x)]H(t;\gamma_p)^{1/2},
 	\]
-that we have $\gamma_p = 32pL_b^2$. So we see that when $\nu = 2$ and when 
+that we have $\gamma_p = 32pL_b^2$. So we see that when $\nu = 2$ and when
 	\[
 		L_b^2 \le \frac{1}{32p\Upsilon(0)},
 	\]
-then $H(t;\gamma_p)$ will be bounded $t$. But this requires us to use the $L_b$ from \eqref{E:LipCondStrong}. If we just assume that $b(x)$ satisfies \eqref{E:LipCond}, then $b(0)$ may not be $0$ and so \eqref{E:LipCondStrong} will not hold true and then we can't use Lemma 2.5 \cite{CK19}. 
+then $H(t;\gamma_p)$ will be bounded $t$. But this requires us to use the $L_b$ from \eqref{E:LipCondStrong}. If we just assume that $b(x)$ satisfies \eqref{E:LipCond}, then $b(0)$ may not be $0$ and so \eqref{E:LipCondStrong} will not hold true and then we can't use Lemma 2.5 \cite{CK19}.
 
 Should we then assume \eqref{E:LipCondStrong} in our invariant measure project?
 \bigskip
@@ -1208,13 +1227,13 @@ Should we then assume \eqref{E:LipCondStrong} in our invariant measure project?
 
 \section{Questions about Theorem 1.3 \cite{CK17} or Theorem 1.5 \cite{CH19}}
 \begin{enumerate}
-	\item 
+	\item
 In the first several lines of the proof of either Th 1.3 \cite{CK17} or Th 1.5 \cite{CH19} it is claimed that by the weak comparison principle, we may assume that $\mu$ has compact support. Why does the weak comparison principle imply this?
-	
-	\item 
+
+	\item
 In case 1 of Th 1.3 \cite{CK17}, it says that we may suppose that $f(x)\mu(\ud x) = \textbf{1}_{[-d,d]}(x)$ because if $f(x) =\textbf{1}_{[a,b]}(x)$ then we could consider $f(x-(a+b)/2)$. I don't see how this is a justification for us to be able to assume that $f(x)\mu(\ud x) = \textbf{1}_{[-d,d]}(x)$.  If $f(x) =\textbf{1}_{[a,b]}(x)$ then,
 	\[
-		f(x-(a+b)/2) = 
+		f(x-(a+b)/2) =
 		\begin{cases}
 			1 & \frac{3a + b}{2} \le x \le \frac{a + 3b}{2} \\
 			0 & \text{otherwise},
@@ -1222,21 +1241,21 @@ In case 1 of Th 1.3 \cite{CK17}, it says that we may suppose that $f(x)\mu(\ud x
 	\]
 and I don't see the relation with this and $f(x)\mu(\ud x) = \textbf{1}_{[-d,d]}(x)$.
 
-	\item 
-I believe there is a typo in the first paragraph of case 1. I is that 
+	\item
+I believe there is a typo in the first paragraph of case 1. I is that
 	\begin{center}
 		...if $f(x) = c\textbf{1}_{[-d,d]}(x)$, then we can consider $\tilde{u}(t,x) = c u(t,x)$ which is the unique solution to the SPDE \textcolor{blue}{with initial function $\textbf{1}_{[-d,d]}(x)$} and replacing $\rho(z)$ with $c\rho(z/c)$...
 	\end{center}
-but I believe the blue text needs to be replaced with \textcolor{blue}{with initial function $c\textbf{1}_{[-d,d]}(x)$}. Note that 
+but I believe the blue text needs to be replaced with \textcolor{blue}{with initial function $c\textbf{1}_{[-d,d]}(x)$}. Note that
 	\[
 		u(t,x) = \int_{\R} G(t,x-y)f(y) \ud y + \int_0^t\int_{\R} G(t-s,x-y) \rho(u(s,y)) W(\ud s, \ud y)
 	\]
-and so 
+and so
 	\[
 		cu(t,x) = \int_{\R} G(t,x-y) cf(y) \ud y + \int_0^t\int_{\R} G(t-s,x-y) c\rho\left(\frac{c u(s,y)}{c}\right) W(\ud s, \ud y)
 	\]
 and so we see that $\tilde{u}(t,x) = c u(t,x)$ solves the SPDE with initial function $c\textbf{1}_{[-d,d]}(x)$ and $\rho(z)$ replaced with $c\rho(z/c)$.
-	
+
 	\item
 I think there is another typo in Case 1 in the paragraph right after equation (4.6). First, we define $w_k(t,x)$ as the solution to
 	\[
@@ -1245,35 +1264,35 @@ I think there is another typo in Case 1 in the paragraph right after equation (4
 			w_k(0,x) = \textbf{1}_{S_{k-1}^m}
 		\end{cases}
 	\]
-where $\rho_k(x) = \beta^{-k}\rho(\beta^k x)$ and $\dot{W}_k(s,x) = \dot{W}(s + kt/m, x)$. It then says that if $v(t,x)$ is the solution to the SPDE with initial data $f(x) = \beta^{k}\textbf{1}_{S_{k-1}^m}(x)$ with the time shifted noise \textcolor{blue}{and with the same $\rho_k$} then $v(s,x) = \beta^k w_k(s,x)$ a.s. I think that the blue text needs to be replaced with \textcolor{blue}{with $\rho$.} Note that 
+where $\rho_k(x) = \beta^{-k}\rho(\beta^k x)$ and $\dot{W}_k(s,x) = \dot{W}(s + kt/m, x)$. It then says that if $v(t,x)$ is the solution to the SPDE with initial data $f(x) = \beta^{k}\textbf{1}_{S_{k-1}^m}(x)$ with the time shifted noise \textcolor{blue}{and with the same $\rho_k$} then $v(s,x) = \beta^k w_k(s,x)$ a.s. I think that the blue text needs to be replaced with \textcolor{blue}{with $\rho$.} Note that
 	\[
 		w_k(s,x) = \int_{\R} G(s,x-y)f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho_k(w_k(r,y)) W_k(\ud r, \ud y)
 	\]
-then we see that 
+then we see that
 	\begin{align*}
-		v(s,x) = \beta^k w_k(s,x) &= \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \beta^k\rho_k\left(\frac{\beta^k w_k(r,y)}{\beta^k}\right) W_k(\ud r, \ud y) \\ 
+		v(s,x) = \beta^k w_k(s,x) &= \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \beta^k\rho_k\left(\frac{\beta^k w_k(r,y)}{\beta^k}\right) W_k(\ud r, \ud y) \\
 		&= \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho(\beta^k w_k(r,y)) W_k(\ud r, \ud y) \\
-		& = \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho(v(r,y)) W_k(\ud r, \ud y) 
+		& = \int_{\R} G(s,x-y) \beta^k f(y) \ud y + \int_0^s\int_{\R} G(s-r,x-y) \rho(v(r,y)) W_k(\ud r, \ud y)
 	\end{align*}
-and thus $v(s,x) = \beta^k w_k(s,x) $ solves the SPDE with initial condition $f(x) = \beta^{k}\textbf{1}_{S_{k-1}^m}(x)$, with the time shifted noise, and with $\rho$ not $\rho_k$. Note that right after this, the claim is made that $u(s + kt/m, x) \ge v(s,x)$ which follows from the weak comparison principle and the Markov property. But this statement can only be made if $v$ and $u$ are solutions to the same SPDE, ie they have to have the same diffusion term, $\rho$. Since $u$ has diffusion term $\rho$ then so does $v$, which is what I showed above, so the typo does not affect anything. 
+and thus $v(s,x) = \beta^k w_k(s,x) $ solves the SPDE with initial condition $f(x) = \beta^{k}\textbf{1}_{S_{k-1}^m}(x)$, with the time shifted noise, and with $\rho$ not $\rho_k$. Note that right after this, the claim is made that $u(s + kt/m, x) \ge v(s,x)$ which follows from the weak comparison principle and the Markov property. But this statement can only be made if $v$ and $u$ are solutions to the same SPDE, ie they have to have the same diffusion term, $\rho$. Since $u$ has diffusion term $\rho$ then so does $v$, which is what I showed above, so the typo does not affect anything.
 
 	\item
-I have tried searching Google but I have not found a reference that shows the solution to the SHE in this setting has a the Strong Markov property or the regular Markov Property. The only paper I found was this one \cite{BK08} by Raluca from 2008 which only considers $u_t = \Delta u + \dot{F}, \; u(0,x) = 0$ for $t \in [0,T]$ and $x \in \R^d$. 
+I have tried searching Google but I have not found a reference that shows the solution to the SHE in this setting has a the Strong Markov property or the regular Markov Property. The only paper I found was this one \cite{BK08} by Raluca from 2008 which only considers $u_t = \Delta u + \dot{F}, \; u(0,x) = 0$ for $t \in [0,T]$ and $x \in \R^d$.
 
 	\item
-Why does the Markov property, the weak comparison principle and 
+Why does the Markov property, the weak comparison principle and
 	\begin{equation} \label{E:Pw_k}
 		\mathbb{P}\left( w_k(s,x) \ge \beta \textbf{1}_{S_{k}^m} \; \text{for all} \; s \in \left[ \frac{t}{2m}, \frac{t}{m}\right]  \; \text{and} \; x \in \R  \right) \ge 1 - c(m)
 	\end{equation}
-imply that 
+imply that
 	\[
 		\mathbb{P}(A_k | \mathcal{F}_{kt/m}) \ge 1 - c(m), \quad \text{a.s. on} \; A_{k-1} \; \text{for} \; 1 \le k \le m-1.
 	\]
-Since on $A_{k-1}$, $u(s + kt/m, x) \ge v(s,x) = \beta^k w_k(s,z)$ then \eqref{E:Pw_k} implies that 
+Since on $A_{k-1}$, $u(s + kt/m, x) \ge v(s,x) = \beta^k w_k(s,z)$ then \eqref{E:Pw_k} implies that
 	\[
 		\mathbb{P}\left( u(s + kt/m,x) \ge \beta^{k+1} \textbf{1}_{S_{k}^m} \; \text{for all} \; s \in \left[ \frac{t}{2m}, \frac{t}{m}\right]  \; \text{and} \; x \in \R  \right) \ge 1 - c(m).
 	\]
-Is it because of the Markov property that 
+Is it because of the Markov property that
 	\[
 		\mathbb{P}(A_k | \mathcal{F}_{kt/m}) = \mathbb{P}(A_k | u(kt/m,\cdot))
 	\]
@@ -1355,6 +1374,11 @@ and by the comparison principle, $A_k$ happens when $u(kt/m,x) \ge v(s,x)$ which
 		\newblock Moments and Absolute Moments of the
 		Normal Distribution.
 		\newblock {\it Arxiv } https://arxiv.org/abs/1209.4340.
+    \bibitem{NIST2010}
+    F.~W.~J. Olver, D.~W. Lozier, R.~F. Boisvert, and C.~W. Clark (eds).
+    \newblock {\em N{IST} Handbook of mathematical functions}.
+    \newblock U.S. Department of Commerce National Institute of Standards and
+      Technology, Washington, DC, 2010.
 		% }}}
 	\end{thebibliography}
 \end{small}
