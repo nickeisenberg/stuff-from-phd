@@ -178,16 +178,35 @@ nonnegative and nonnegative definite, $\phi$ and $\varphi$ are test functions, i
 $C_c^\infty(\R^{d+1})$. $\Gamma$ is called the {\it correlation measure} and when it is absolutely
 continuous with respect to the Lebesgue measure, i.e., $\Gamma(\ud x) = f(x)\ud x$, we call $f$ the
 {\it correlation function}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a
-nonnegative and nonnegative definite tempered measure, which is called {\it spectral measure} and
-denoted by $\widehat{f}(\ud \xi)$. The initial condition $\mu$ is a deterministic, locally finite,
-regular, signed Borel measure with the corresponding {\it Hahn decomposition} being
-$\mu=\mu_+-\mu_-$. Denote $|\mu|=\mu_++\mu_-$. The aim of the paper is to investigate the conditions
-required to guarantee the existence of invariant measures for the solution to \eqref{E:SHE}, which
-is a crucial step towards the study of the ergodicity of the system.
+nonnegative and nonnegative definite tempered measure, which is called {\it spectral measure} and is denoted by $\widehat{f}(\ud \xi)$. Moreover, in the case where $\Gamma$ has density $f$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud \xi$. 
 
-We first note that the solution to \eqref{E:SHE} is interpreted as the {\it mild solution} as
+ The aim of the paper is to investigate the conditions
+required to guarantee the existence of invariant measures for the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system. Following the
+standard procedure as laid out by Da Prato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant}, the
+main effort is to show that
+\begin{align} \label{E:BddMnt}
+\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{L^2_\rho(\R^d)}^2\right)
+<\infty.
+\end{align}
+In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} verified \eqref{E:BddMnt} when $\mu(\ud x) = \ud x$. We build from their method and show the existence of an invariant measure when $\mu(\cdot)$ satisfies \eqref{E:InitData} and \eqref{E:GH-int} below, as well as one of the following:
+\begin{enumerate}
+	\item $\mu(\ud x)$ is a deterministic, locally finite, regular, signed Borel measure with the corresponding {\it Hahn decomposition} $\mu=\mu_+-\mu_-$ 
+	\item $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is a processes in $L^2(\Omega, L^2_{\rho}(\R^d))$, namely  $\mathbb{E} \left( \Norm{\varphi(\cdot)}_{ L^2_{\rho}(\R^d)}\right) < \infty$.
+\end{enumerate}  
+Some applicable deterministic intitial measures include: 
+	\[
+		\text{Dirac delta measure }\delta_0(\ud x), \quad \text{Lebesgue measure } \ud x, \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
+	\]
+
+The question of the existence of invariant measures in unbounded domains has been studied in few
+papers such as \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:invariant,
+	misiats.stanzhytskyi.ea:16:existence,tessitore.zabczyk:98:invariant}. Since the spatial domain is
+unbounded, one needs to introduce a weight function $\rho$ and the corresponding weighted space
+$L_\rho^2(\R^d)$ as usual; see Section \ref{S:Prelim} below for more details. 
+
+We first note that the solution to \eqref{E:SHE} is interpreted as the {\it mild solution},
 \begin{equation} \label{E:gmsol}
-  u(t,x)=\int_{\R^d}G(t,x-y)\mu(\ud y) + \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y)
+  u(t,x)=\int_{\R^d}G(t,x-y)\mu(\ud y) + \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y),
 \end{equation}
 where $G(t,x) = (2 \pi t)^{-d/2}\exp\left( -(|x|^2)/2t \right)$ is the heat kernel and the
 stochastic integral above is the {\it Walsh integral} (see
@@ -195,24 +214,15 @@ stochastic integral above is the {\it Walsh integral} (see
 Throughout the paper, we use the following notation:
 \begin{align} \label{E:J}
   \begin{gathered}
-    J_0(t,x) := \int_{\R^d}G(t,x-y)\mu(\ud y),   \quad
-    J_+(t,x) := \int_{\R^d}G(t,x-y)|\mu|(\ud y), \\
+    J_0(t,x) := (G(t,
+    \cdot) * \mu)(x) =\int_{\R^d}G(t,x-y)\mu(\ud y) ,   \quad
+    J_+(t,x) := (G(t,
+    \cdot) * |\mu|)(x) , \\
     \text{and} \quad I(t,x):= \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y).
   \end{gathered}
 \end{align}
 
-The question of the existence of invariant measures in unbounded domains has been studied in few
-papers such as \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:invariant,
-misiats.stanzhytskyi.ea:16:existence,tessitore.zabczyk:98:invariant}. Since the spatial domain is
-unbounded, one needs to introduce a weight function $\rho$ and the corresponding weighted space
-$L_\rho^2(\R^d)$ as usual; see Section \ref{S:Prelim} below for more details. Following the
-standard procedure as laid out by Da Prato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant}, the
-main effort is to show that
-\begin{align} \label{E:BddMnt}
-  \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{L^2_\rho(\R^d)}^2\right)
-  <\infty.
-\end{align}
-For convenience, we will from now on write $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$ and $\Norm{X}_q = \left(\mathbb{E}(|X|^q)\right)^{1/q}$ where $q\ge 1$. 
+For convenience, we will from now on write $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$ and $\Norm{X}_p = \left(\mathbb{E}(|X|^p)\right)^{1/p}$ where $p\ge 1$. 
 
 We now state Assumption \ref{A:General}, under which one can find a unique mild solution to \eqref{E:SHE} with sharp moment estimates; see
 \cite{chen.kim:19:nonlinear,chen.huang:19:comparison,chen.dalang:15:moments}. 
@@ -223,9 +233,9 @@ We now state Assumption \ref{A:General}, under which one can find a unique mild 
     \begin{equation} \label{A:icon}
     \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\mu(\ud x)}_2 :=  \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\varphi(x)}_2 \ud x < \infty \quad \text{for all $a>0$},
     \end{equation} 
-    where $\varphi \in L^2_\rho\left(\R^d, L^2(\Omega)\right)$ for some weight $\rho$, namely
+    where $\varphi \in L^2\left(\Omega, L^2_{\rho}(\R^d)\right)$ for some weight $\rho$, namely
     \[
-  	 \int_{\R^d} \Norm{\varphi(x)}_2^2 \rho(x) \ud x < \infty.
+  	 	\mathbb{E} \left( \Norm{\varphi(\cdot)}_{ L^2_{\rho}(\R^d)}\right) < \infty.
     \]
      When $\mu$ is deterministic, it satisfies the 	following integrability condition:
       \begin{equation} \label{A:iconDet}
@@ -321,7 +331,7 @@ Again, whether $\mu$ is random or deterministic, we will always use the notation
   \begin{align*}
     \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
     & = \E \left(\int_{\R^d}\vert u(t,x) \vert^2 \rho(x)\ud x\right)                                                                  \\
-    & \le C \int_{\R^d}\bigg(1+(\Norm{\mu}_2*G(t,\cdot))(x)\bigg)^2\rho(x)\ud x                                                              \\
+    & \le C \int_{\R^d}\bigg(1+(G(t,\cdot) * \Norm{\mu}_2)(x)\bigg)^2\rho(x)\ud x                                                              \\
     & = C \int_{\R^d}\bigg( \Big(G(t,\cdot) *(1+\Norm{\mu}_2)\Big)(x) \bigg)^2\rho(x)\ud x \\
     &=  C \int_{\R^d}J_2^*(t,x)^2\rho(x)\ud x \\
     & = C \mathcal{G}_{\rho, 2}(t) < \infty
@@ -333,28 +343,28 @@ Again, whether $\mu$ is random or deterministic, we will always use the notation
 Here is the main theorem of the paper:
 
 \begin{theorem} \label{T:Main}
-  Assume that all assumptions of Theorem \ref{T:Lrho} hold. Moreover, suppose that
+  Assume that all assumptions of Theorem \ref{T:Lrho} hold. Let $q >2$ be arbitrary but fixed. Moreover, suppose that
   \begin{enumerate}[(i)]
     \item $\rho$ be an admissible weight and there exists another admissible weight $\widehat{\rho}$
       such that
       \begin{align} \label{E:rhorho}
-        \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty;
+        \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty,
       \end{align}
     \item the weight function $\widehat{\rho}$ and the initial condition satisfy the following condition:
       \begin{equation} \label{E:InitData}
-	\limsup_{t>0}\: \mathcal{G}_{\widehat{\rho},q}(t) <\infty;
+	\limsup_{t>0}\: \mathcal{G}_{\widehat{\rho},q}(t) <\infty,
       \end{equation}
     \item for some $\alpha\in (0,1/2)$, the spectral measure $\widehat{f}$ satisfies that
       \begin{align} \label{E:H}
 	  \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
-	  \quad \text{for all $t>0$};
+	  \quad \text{for all $t>0$},
       \end{align}
 
-    \item for some $q>2$ and $\alpha\in \left(q^{-1},2^{-1}\right)$,
+    \item for $\alpha\in \left(q^{-1},2^{-1}\right)$,
       \begin{align} \label{E:GH-int}
-	\int_{0}^t \left[\mathcal{G}_{\widehat{\rho}, q}(s)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$}.
+	\int_{0}^t \left[\mathcal{G}_{\widehat{\rho}, q}(s)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty \quad \text{for all $t>0$},
       \end{align}
-     \item for some $q>2$, the condition \eqref{E:LipLb} is strengthened to 
+     \item the condition \eqref{E:LipLb} is strengthened to 
      \[
      	qL_b^2 < \frac{1}{128 \Upsilon(0)}.
      \]
@@ -402,10 +412,10 @@ Here is the main theorem of the paper:
   \end{align*}
   We claim that the family of laws $U(T,\cdot)$ for $T > 0$ is tight in $L^2_{\rho}(\R^d)$. Indeed,
   for any $\epsilon\in (0,1)$, by part (a), there exists a compact set $\mathcal{K}\in
-  L_\rho^2(\R^d)$ such that \eqref{E:cpt} holds, which implies that
+  L_\rho^2(\R^d)$ such that \eqref{E:cpt} holds. This implies that
   \begin{align*}
     U(T)\left(\mathcal{K}^c\right)
-    & = \frac{1}{T} \int_{T_0}^{T + T_0} \mathscr{L}(u_{u_0}(t,\cdot))\left(\mathcal{K}^c\right) \; \ud t
+    & = \frac{1}{T} \int_{T_0}^{T + T_0} \mathscr{L}(u(t,\cdot))\left(\mathcal{K}^c\right) \; \ud t
       \le \frac{1}{T} \int_{T_0}^{T + T_0} \epsilon \; \ud t
       = \epsilon, \quad \text{for all $T>0$}.
   \end{align*}
@@ -425,7 +435,7 @@ Here is the main theorem of the paper:
 
 Let $\rho$ be some nonnegative function on $\R^d$. We denote by $L^2_\rho(\R^d)$ the weighted
 Hilbert space with the inner produce $\langle f,g \rangle_\rho := \int_{\R^d}f(x)g(x)\rho(x) \: \ud
-x$ and set $|f|_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. Following Tessitore and Zabczyk
+x$ and set $\Norm{f}_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. Following Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant}, we make the following definition:
 
 \begin{definition} \label{D:Rho}
@@ -513,7 +523,7 @@ Several examples of admissible weights are (see Example in Section 2 of
   Under Assumption \ref{A:General}, for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:SHE},
   $u(t,x)$, given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
   \begin{equation} \label{E:mb}
-  \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(\Norm{\mu}_p*G(t,\cdot))(x)\big]H(t;\gamma_p)^{1/2},
+  \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * \Norm{\mu}_p)(x)\big]H(t;\gamma_p)^{1/2},
   \end{equation}
   where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ and the function $H(t;\gamma_p)$ is
   nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for the concrete definition of $H$).
@@ -524,7 +534,7 @@ Several examples of admissible weights are (see Example in Section 2 of
   then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
   \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
   \begin{equation} \label{E:mb0}
-    \Norm{u(t,x)}_p \le C\big(L_0+J_+(t,x)\big),
+    \Norm{u(t,x)}_p \le C\big(L_0+ J_p(t,x) \big),
   \end{equation}
   where $L_0$ is from \eqref{E:lipcon}.
 \end{theorem}
