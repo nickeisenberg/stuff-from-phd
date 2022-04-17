@@ -14,6 +14,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{amssymb,
+		nccmath,
+		geometry,
 	    latexsym,
 	    amsmath,
 	    graphics,
@@ -216,18 +218,22 @@ see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem 3.
 	\end{equation}
 where $\mathbf{\Gamma}$ is the Gamma function. 
 
-These additional assumptions given by Tessitore and Zabczyk parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}, however one can see that both \eqref{E:U0finite} and \eqref{E:LipLb} are more compact and easier to check than \eqref{E:TZspec}. Moreover, our method allows us expand our choice of initial condition $\mu(\cdot)$. Some applicable deterministic intitial measures include (see Example \ref{E:Gamma+f} below): 
+These additional assumptions given by Tessitore and Zabczyk parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}, however one can see that both \eqref{E:U0finite} and \eqref{E:LipLb} are more compact and easier to check than \eqref{E:TZspec}. Moreover, our method allows us expand our choice of initial condition $\mu(\cdot)$. Some applicable deterministic initial measures include (see Example \ref{E:Gamma+f} below): 
 	\[
 		\text{Dirac delta measure }\delta_0(\ud x), \quad \text{Lebesgue measure } \ud x, \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d),
 	\]  
 but more generally, any initial data $\mu$ that satisfy \eqref{E:InitData} and \eqref{E:GH-int} below, as well as one of the following:
-\begin{enumerate}
-	\item $\mu(\ud x)$ is a deterministic, locally finite, regular, signed Borel measure with the corresponding {\it Hahn decomposition} $\mu=\mu_+-\mu_-$ 
-	\item $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is an $\mathcal{F}_0$ measurable process in $L^2(\Omega, L^2_{\rho}(\R^d))$, namely  $\mathbb{E} \left( \Norm{\varphi(\cdot)}_{ L^2_{\rho}(\R^d)}\right) < \infty$.
-\end{enumerate}  
+\begin{fleqn}
+\begin{align} 
+	(1) \; &\mu(\ud x) \text{ is a deterministic, locally finite, regular, signed Borel measure with the} \nonumber \\
+	&\text{ corresponding {\it Hahn decomposition} $\mu=\mu_+-\mu_-$} \label{E:DetInit} \\
+	(2) \; &\mu(\ud x) = \varphi(x) \ud x \text{ where $\varphi$ is an $\mathcal{F}_0$ measurable process in $L^2(\Omega, L^2_{\rho}(\R^d))$,} \nonumber\\
+	& \text{namely  $\mathbb{E} \left( \Norm{\varphi(\cdot)}_{ L^2_{\rho}(\R^d)}\right) < \infty$.} \label{E:RandInit}
+\end{align}  
+\end{fleqn}
 
 \begin{remark}
-	We point out that \eqref{E:SHE} starting from any deterministic measure as described above can in some sense be viewed as a solution of \eqref{E:SHE} starting from a process $\varphi \in L^2(\Omega, L^2_{\rho}(\R^d))$. Indeed, let $u$ denote the mild solution to \eqref{E:SHE} starting from $\mu$ which satisfies the conditions of Theorem \ref{T:Main}. For any $t_0 >0$, consider the following restarted equation:
+	We point out that \eqref{E:SHE} starting from any deterministic measure, $\mu$, as in \eqref{E:DetInit} can be viewed as a solution of \eqref{E:SHE} starting from a process $\varphi \in L^2(\Omega, L^2_{\rho}(\R^d))$. Indeed, let $u$ denote the mild solution to \eqref{E:SHE} starting from $\mu$ which satisfies the conditions of Theorem \ref{T:Main}. For any $t_0 >0$, consider the following restarted equation:
 		 \begin{equation} \label{E:restart}
 		\begin{cases}
 		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
@@ -238,7 +244,7 @@ but more generally, any initial data $\mu$ that satisfy \eqref{E:InitData} and \
 		\[
 			\int_0^t \int_{\R^d} W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t+t_0} \int_{\R^d} W(\ud s, \ud y).
 		\]
-	By Theorem \ref{T:Solve}, $u(t_0,\cdot)$ is $\mathcal{F}_{t_0}$ measurable and by \eqref{E:uInLrho}, we see that $u(t_0,\cdot) \in L^2(\Omega, L^2_{\rho}(\R^d))$. Moreover, the semi-group property of the heat kernel implies that for any $t\ge 0$, we have $u(t + t_0,x) \stackrel{\mathcal{L}}{=} v(t,x)$ where $\mathcal{L}$ denotes equality in law. Since we are interested in studying the long time behavior of \eqref{E:SHE}, we obtain the same information by choosing to study the restarted equation. For this reason unless we state otherwise, we will focus our attention completely on \eqref{E:SHE} starting from a $\mathcal{F}_0$ measurable processes $\varphi \in L^2(\Omega, L^2_{\rho}(\R^d))$. This simplification of \eqref{E:SHE} to the restarted equation is key in order to argue the existence of an invariant measure. See Example \ref{E:Gamma+f} below for a continue of this discussion.
+	By Theorem \ref{T:Solve}, $u(t_0,\cdot)$ is $\mathcal{F}_{t_0}$ measurable and by \eqref{E:uInLrho}, we see that $u(t_0,\cdot) \in L^2(\Omega, L^2_{\rho}(\R^d))$. Moreover, the semi-group property of the heat kernel implies that for any $t\ge 0$, we have $u(t + t_0,x) \stackrel{\mathcal{L}}{=} v(t,x)$ where $\mathcal{L}$ denotes equality in law. Since we are interested in studying the long time behavior of \eqref{E:SHE}, we obtain the same information by choosing to study the restarted equation. For this reason unless we state otherwise, we will focus our attention completely on \eqref{E:SHE} starting from a $\mathcal{F}_0$ measurable processes $\varphi \in L^2(\Omega, L^2_{\rho}(\R^d))$, in others words \eqref{E:SHE} starting from data which satisfy \eqref{E:RandInit}. This simplification of \eqref{E:SHE} to the restarted equation is key in order to argue the existence of an invariant measure. See Example \ref{E:Gamma+f} below for a continue of this discussion.
 	
 \end{remark}
 
@@ -313,7 +319,7 @@ Again, whether $\mu$ is random or deterministic, we will always use the notation
 We may now a preliminary result used to prove Theorem \eqref{T:Main} below.
 
 \begin{theorem} \label{T:Lrho}
-  Assume that
+  Consider \eqref{E:SHE} starting from $\mu$ which satisfies \eqref{E:RandInit}. Assume that
   \begin{enumerate}[(i)]
     \item $\rho: \R^d \to \R_+$ is an nonnegative $L^1(\R^d)$ function;
     \item the initial measure $\mu$, either random or deterministic, satisfies that
@@ -351,7 +357,7 @@ This proves Theorem \ref{T:Lrho}.
 Here is the main theorem of the paper:
 
 \begin{theorem} \label{T:Main}
-  Assume that all assumptions of Theorem \ref{T:Lrho} hold. Let $q >2$ be arbitrary but fixed. Moreover, suppose that
+  Consider \eqref{E:SHE} starting from $\mu$ which satisfies \eqref{E:RandInit}. Assume that all assumptions of Theorem \ref{T:Lrho} hold. Let $q >2$ be arbitrary but fixed. Moreover, suppose that
   \begin{enumerate}[(i)]
     \item if $\rho$ is an admissible weight and there exists another admissible weight $\widehat{\rho}$
       such that
@@ -425,9 +431,9 @@ and for $H(x) =  |x|^{s-d} + 1 + O(|x|^{s-d+2})$,
 		\frac{1}{c(s,d)} \le \frac{B_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2.
 	\]
 Hence $B_s(x)$ has blow up at the origin and exponential decay at infinity. Moreover, 
-	\[
+	\begin{equation} \label{E:FB}
 		\mathcal{F}G_s(\xi) = \frac{1}{(1+  |\xi|^2)^{s/2}}.
-	\]
+	\end{equation}
 It is easy to see that $\delta_0$ satisfies \eqref{A:icon}. Moreover, it is easy to see that if $d-2 < s < d$ then $\Upsilon(0) < \infty$ and so the conditions of Theorem \eqref{T:Solve} and Theorem \ref{T:ExUn} are satisfied and a unique mild solution, $u$, exists that starts from $\delta_0$ and is driven by a Gaussian noise with correlation function $B_s(x)$. We denote $v(t,x)$ to be the restarted solution as in \eqref{E:restart}. We now show that $v$ satisfies the conditions in Theorem \ref{T:Main}. In other words, it remains to prove that $v(0,\cdot) = u(t_0,\cdot)$ and $B_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int}. 
 
 Let $q>2$ be arbitrary. Starting with \eqref{E:InitData},
@@ -447,21 +453,46 @@ where in the last line we used Recall that $u(t_0,x) = v(0,x)$. In the following
 			&= C\Norm{\widehat{\rho}}_{L^1(\R^d)} + C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \widehat{\rho}(x) \ud x \\
 			&=: \textbf{G}(s),
 	\end{align*}
-and this verifies \eqref{E:InitData} because $t_0 > 0$ is fixed.
+and this verifies \eqref{E:InitData} because $t_0 > 0$ is fixed. Moreover, this implies that for any $T>0$, $\mathcal{G}_{\widehat{\rho}, q}(s)$ is bounded on $s \in [0,T]$. This will be needed below.
 
-Now lets verify \eqref{E:H}.
+Now lets verify \eqref{E:H} for the Bessel kernel, $B_s$. By recalling \eqref{E:FB}, we have
+	\begin{align*}
+		\mathcal{H}_{\alpha}(s) &= \int_0^s \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} \\
+		& = \sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}.
+	\end{align*}
+Let's examine the $\int_0^\infty \ud z$ integral and apply the change of variables $y = z^2$. This yields,
+	\begin{align*}
+		  \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}
+		= \frac{1}{2} \int_0^\infty \ud y\; e^{-r y} (1+y)^{s/2} y^{\frac{d}{2}-1} \ud y
+		= \frac{\Gamma\left(d/2\right)}{2}U\left(\frac{d}{2},\frac{d+2-s}{2},r\right),
+	\end{align*}
+where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function (see \cite[Chapter 13]{olver.Lozier.boisvert.clark.2010:NIST}) and the last equality can be found in (13.4.4) on p. 326 of \cite{olver.Lozier.boisvert.clark.2010:NIST}. Thus, to show the finiteness of $\mathcal{H}_{\alpha}(s)$ for each $s >0$, it suffices to show that the following integral is finite:
+	\begin{equation} \label{E:BesselHG}
+		\int_0^s r^{-2\alpha} \; U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) \; \ud r.
+	\end{equation}
+The behavior of $U(\alpha, \beta, t)$ around the origin is given in \cite[Section 13.2 (iii)]{olver.Lozier.boisvert.clark.2010:NIST} and is given in cases on $\beta$, which in our case is $(d+2-s)/2$. Recall above that we are taking $d-2 < s < d$. For this reason, the only case in \cite[Section 13.2 (iii)]{olver.Lozier.boisvert.clark.2010:NIST} that is applicable is $1 < (d+2-s)/2 < 2$ and in this case 
+	\begin{equation}
+		r^{-2\alpha} U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) = O\left( r^{1-2\alpha- (d+2-s)/2} + r^{-2\alpha} + r^{2 - 2\alpha -  (d+2-s)/2}  \right).
+	\end{equation}
+So in order \eqref{E:BesselHG} to be finite we need 
+	\[
+		\min\{ 1 - 2\alpha -  (d+2-s)/2, -2\alpha, 2 - 2\alpha -  (d+2-s)/2\} \ge -1.
+	\]
+Recall that we are assuming $\alpha \in (q^{-1}, 2^{-1})$ so $-2\alpha >-1$. Thus it suffices to set 
+	\[
+		1 - 2\alpha -  (d+2-s)/2, -2\alpha \ge -1 \quad \iff \quad 2 - 4\alpha -d + s >0.
+	\]
+This is indeed possible as $2-4\alpha >0$ and again because $d-2 < s < d$, one can take $s$ sufficiently close to $d$ so that $(2 - 4\alpha) - (d-s) >0$. This completes the verification for \eqref{E:H}. 
 
-	\vspace{1in}
-	Here are a few examples of correlation measures $\Gamma$ that satisfy condition \eqref{E:GH-int}.
-	The Bessel potential (see, e.g., Section 1.2.2 of \cite{grafakos:14:modern})...
-	... \textcolor{magenta}{TBD} ...
-	Here are few examples:
-	\begin{enumerate}
-		\item If the initial condition $\mu$ is the Lebesgue measure, than the left-hand side of
-		\eqref{E:InitData} is equal to $\Norm{\widehat{\rho}}_{L^1(\R^d)}$, which is finite and does
-		not depend on $t$.
-		\item If $\mu=\delta_0$,
-	\end{enumerate}
+Lastly we need to verify \eqref{E:GH-int}. But essentially all the work for this has been completed. The verification of \eqref{E:H} implies that $\mathcal{H}_\alpha(s)$ is continuous on $s \in [0, T]$ for any $T>0$ and we already saw aboves that $\mathcal{G}_{\widehat{\rho}, q}(s)$ was bounded on $[0, T]$. These two facts imply \eqref{E:GH-int}, thus allowing us to apply Theorem \eqref{T:Main} and verify the existence of an invariant measure to \eqref{E:SHE} with initial data, $\mu(\cdot) = u(t_0, \cdot)$ and noise $W$ with correlation function given to be the Bessel kernel $B_s$. Since we are only concerned with the long term behavior of the solution and because for all $t >0$ we have $u(t + t_0,x) \stackrel{\mathcal{L}}{=} v(t,x)$, what we have actually done was verify the existence of an invariant measure for \eqref{E:SHE} starting from $\delta_0$ with correlation function $B_s(x)$. 
+\end{example}
+
+\begin{example}[More examples]
+We would like to point out that the following initial data are also applicable when considering the correlation function to be the Bessel kernel $B_s(x)$ with $s < d$:
+	\[
+		\text{Lebesgue measure } \ud x \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
+	\]  
+The interested reader may go trough the same steps above to see that \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int} are all finite.
 \end{example}
 
 \section{Preliminaries} \label{S:Prelim}
@@ -882,6 +913,55 @@ Integrate[(t-s)^{a-1} (s-r)^{-2a},{s,r,t},Assumptions->{t>r>0,0<a<1/2}]
 We are now ready to prove part (b) of Theorem \ref{T:Main}.
 
 \begin{proof}[Proof of Theorem \ref{T:Main} (b)]
+Recall that from Lemma \ref{L:Factorize} implies that for any $t_0 > 0$,
+	\[
+		u(t_0,x) = \Big(G(t_0,\cdot) * u(0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y\right](t_0,x),
+	\]
+and again recall that we assume $u(0,\cdot)$ satisfies \eqref{E:RandInit}. Now define the set $\mathscr K (\Lambda)$ as
+\[
+\mathscr K (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
+\quad \text{where $\Norm{y}_{\hat\rho} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\hat \rho})} \le \Lambda $} \}.
+\]
+Then by Proposition \ref{P:F-Comp}, $\mathscr K (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. Moreover, by \eqref{E:yineq} and Chebyshev's inequality we have
+\begin{align}
+\mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr K(\Lambda) \}
+& \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber \\ 
+& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y(s,\cdot)}_{\hat \rho}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot}_{\widehat{\rho}}^2\right) \nonumber \\ 
+& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\hat\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot}_{\widehat{\rho}}^2\right) < \infty \label{E:Restartbdd}
+\end{align}
+With all this said, \eqref{E:Restartbdd} implies that 
+\begin{align*}
+\mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \}
+& \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0} \left(\mathcal{G}_{\hat\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot)}_{\rho}^2\right)
+\end{align*}
+Therefore, we can choose $\Lambda > 0$ big enough such that 
+\[
+\dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0} \left(\mathcal{G}_{\hat\rho, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot)}_{\rho}^2\right) < \epsilon,
+\]
+thus we get that
+\begin{align*}
+\mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \} & \ge 1- \epsilon.
+\end{align*}
+We can now deduce from this and the semigroup property of the solution to the heat equation that for any $t > t_0$,
+\begin{align*}
+\mathbb{P}\{ u(t,\cdot) \in \mathscr K(\Lambda) \} & \ge (1-
+\epsilon)\mathbb{P}\{ \Norm{u(t-t_0,\cdot)}_{\hat\rho} < \Lambda
+\}.
+\end{align*}
+We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0$ that there exists a $C>0$ such that
+\[
+\mathbb{P}\{ \Norm{u(t-t_0,\cdot)}_{\hat\rho} \ge \Lambda
+\} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0,\cdot)}_{\hat\rho}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\hat{\rho}, q}\left( t - t_0 \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
+\]
+Thus, by enlarging $\Lambda$ if necessary, 
+\[
+\mathbb{P}\{ \Norm{u(t-t_0,\cdot)}_{\hat\rho} \ge \Lambda
+\}  \le \epsilon, \quad \forall \; t \ge t_0,
+\]
+thus completing the proof of \eqref{E:cpt}.
+% Since we assumed that $u$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
+	
+\newpage	
  In this proof we will use $\stackrel{\mathcal{L}}{=}$ to denote equality in law, otherwise, the equality holds almost surely. Let $t_0>0$ and consider the following restarted equation:
  \begin{equation} \label{E:SHErandint}
  	\begin{cases}
