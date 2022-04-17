@@ -195,23 +195,22 @@ papers such as \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:inv
 \end{align}
 
 However, this solution is usually {\it intermittent}, namely, the probability moments to
-\eqref{E:SHE} have certain exponential growth in $t$. In order to have moments bounded in time as
+\eqref{E:SHE} have a certain exponential growth in $t$. In \cite{assing.manthey:03:invariant,misiats.stanzhytskyi.ea:20:invariant,misiats.stanzhytskyi.ea:16:existence},
+a drift term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help to cancel the
+otherwise exponential growing moments. The absence of such a drift term in this paper makes the
+problem more challenging. In order to have moments bounded in time, as
 required in \eqref{E:BddMnt}, one has to first identify the exact conditions, under which the
 moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in
 \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, one has to have $L_b$ (the Lyapunov exponent of $b$) in \eqref{E:lipcon}  small enough, the spatial dimension $d \ge 3$, and we must strengthen \eqref{A:dalcon} to the following:
 \begin{equation} \label{E:U0finite}
 \Upsilon(0) <\infty.
 \end{equation}
-In \cite{assing.manthey:03:invariant,misiats.stanzhytskyi.ea:20:invariant,misiats.stanzhytskyi.ea:16:existence},
-a drift term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help to cancel the
-otherwise exponential growing moments. The absence of such a drift term in this paper makes the
-problem more challenging.
 
 In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} prove existence of an Invariant measure when staring from a deterministic $L^2_{\rho}(\R^d)$ function under the assumption the solution satisfies a boundedness in probability condition and also that the spectral density $\hat{f}$ satisfies  
 	\begin{equation} \label{E:CorTZ}
 		\widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 	\end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}, the only concrete example given was for \eqref{E:SHE} starting from the constant $1$ and the following additional assumptions were needed: $d \ge 3$ and the Lipschitz constant of $b$ must satisfy $l^{-2} > \textbf{l}$, where
+see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}, the only concrete example given was for \eqref{E:SHE} starting from the constant $1$ and the following additional assumptions were needed: $d \ge 3$ and the Lipschitz constant of $b$ must satisfy $L(b)^{-2} > \textbf{l}$, where
 	\begin{equation} \label{E:TZspec}
 		\tilde \Gamma := \left| \sqrt{ \mathcal{F}(f) }  \right| * \left| \sqrt{\mathcal{F}(f)}  \right| \quad \text{and} \quad \textbf{l}:= \frac{\mathbf{\Gamma}(d/2 -1)}{4 \pi^{d/2}} \int_{\R^d} \tilde{\Gamma}(\ud \zeta) |\zeta|^{2-d},
 	\end{equation}
@@ -227,49 +226,41 @@ but more generally, any initial data $\mu$ that satisfy \eqref{E:InitData} and \
 	\item $\mu(\ud x) = \varphi(x) \ud x$ where $\varphi$ is an $\mathcal{F}_0$ measurable process in $L^2(\Omega, L^2_{\rho}(\R^d))$, namely  $\mathbb{E} \left( \Norm{\varphi(\cdot)}_{ L^2_{\rho}(\R^d)}\right) < \infty$.
 \end{enumerate}  
 
+\begin{remark}
+	We point out that \eqref{E:SHE} starting from any deterministic measure as described above can in some sense be viewed as a solution of \eqref{E:SHE} starting from a process $\varphi \in L^2(\Omega, L^2_{\rho}(\R^d))$. Indeed, let $u$ denote the mild solution to \eqref{E:SHE} starting from $\mu$ which satisfies the conditions of Theorem \ref{T:Main}. For any $t_0 >0$, consider the following restarted equation:
+		 \begin{equation} \label{E:restart}
+		\begin{cases}
+		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+		v(0,\cdot) = u(t_0,\cdot),                                                           &
+		\end{cases}
+		\end{equation}
+	where $\dot{W}_{t_0}(t,x) := \dot{W}(t + t_0,x)$ denotes the time shifted noise. Ie, 
+		\[
+			\int_0^t \int_{\R^d} W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t+t_0} \int_{\R^d} W(\ud s, \ud y).
+		\]
+	By Theorem \ref{T:Solve}, $u(t_0,\cdot)$ is $\mathcal{F}_{t_0}$ measurable and by \eqref{E:uInLrho}, we see that $u(t_0,\cdot) \in L^2(\Omega, L^2_{\rho}(\R^d))$. Moreover, the semi-group property of the heat kernel implies that for any $t\ge 0$, we have $u(t + t_0,x) \stackrel{\mathcal{L}}{=} v(t,x)$ where $\mathcal{L}$ denotes equality in law. Since we are interested in studying the long time behavior of \eqref{E:SHE}, we obtain the same information by choosing to study the restarted equation. For this reason unless we state otherwise, we will focus our attention completely on \eqref{E:SHE} starting from a $\mathcal{F}_0$ measurable processes $\varphi \in L^2(\Omega, L^2_{\rho}(\R^d))$. This simplification of \eqref{E:SHE} to the restarted equation is key in order to argue the existence of an invariant measure. See Example \ref{E:Gamma+f} below for a continue of this discussion.
+	
+\end{remark}
+
 %According to \cite[Theorem 1.3]{chen.kim:19:nonlinear}, in
 %order to have \eqref{E:BddMnt}, one has to have $L_b$ (the Lyapunov exponent of $b$) in \eqref{E:lipcon}  small enough, the spatial dimension $d \ge 3$, and we must strengthen \eqref{A:dalcon} to the following:
 %\begin{equation} \label{E:U0finite}
 %\Upsilon(0) <\infty.
 %\end{equation}
 
-We now give some notation before we stating Assumption \ref{A:General}, under which one can find a unique mild solution to \eqref{E:SHE} with sharp moment estimates; see
-\cite{chen.kim:19:nonlinear,chen.huang:19:comparison,chen.dalang:15:moments}.
-\begin{notation}
-We will use $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$. Also by defining $\Norm{X}_p := \left(\mathbb{E}(|X|^p)\right)^{1/p}$ where $p\ge 1$, 
-	\begin{align} \label{E:J}
-	    J_0(t,x) := (G(t,
- 	   \cdot) * \mu)(x) =\int_{\R^d}G(t,x-y)\mu(\ud y)    \quad \text{and} \quad
- 	   J_p(t,x) := (G(t,
-  	  \cdot) * \Norm{\mu}_p)(x),
-    \end{align}
-where we use the following convention:
-	\[ 
-		\Norm{\mu(\ud x)}_p = 
-			\begin{cases}
-				|\mu|(\ud x) & \text{when } \mu \text{ is deterministic} \\
-				\Norm{\varphi(x)}_p \ud x & \text{when } \mu \text{ is random}.
-			\end{cases}
-	\]
-We also denote
-    \begin{align*}
-		I(t,x):= \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y).
-	\end{align*}
-\end{notation}
-
-\begin{assumptions} \label{A:General} 
-\begin{enumerate}[(i)]
-    \item The initial measure $\mu$ must satisfy the following integrability condition: 
-    \begin{equation} \label{A:icon}
-    \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\mu(\ud x)}_2 < \infty \quad \text{for all $a>0$}.
-    \end{equation} 
-    \item The spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
-      \begin{equation} \label{A:dalcon}
-	\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
-	\quad \text{for some and therefore any $\beta>0$}.
-      \end{equation}
-  \end{enumerate}
-\end{assumptions} 
+%\begin{assumptions} \label{A:General} 
+%\begin{enumerate}[(i)]
+%    \item The initial measure $\mu$ must satisfy the following integrability condition: 
+%    \begin{equation} \label{A:icon}
+%    \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\mu(\ud x)}_2 < \infty \quad \text{for all $a>0$}.
+%    \end{equation} 
+%    \item The spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
+%      \begin{equation} \label{A:dalcon}
+%	\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
+%	\quad \text{for some and therefore any $\beta>0$}.
+%      \end{equation}
+%  \end{enumerate}
+%\end{assumptions} 
 
 %\begin{remark} \label{R:Cor}
 %The assumption on the correlation function in \cite{tessitore.zabczyk:98:invariant} is given through the spectral density $\widehat{f}$ as follows:
@@ -282,21 +273,44 @@ We also denote
 %  	\end{equation}
 %  where $\mathbf{\Gamma}$ is the Gamma function. These additional assumptions parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}, however one can see that both \eqref{E:U0finite} and \eqref{E:LipLb} are more compact and easier to check than \eqref{E:TZspec}.
 %\end{remark}
-
-We must introduce some more notation before stating the main results.
+We now give some notation.
 \begin{notation}
-We need to introduce some more notation. Denote
+We will use $\Norm{\cdot}_\rho$ instead of $\Norm{\cdot}_{L^2_\rho(\R^d)}$. Now let $p\ge 1$. By defining $\Norm{X}_p := \left(\mathbb{E}(|X|^p)\right)^{1/p}$, 
+	\begin{align} \label{E:J}
+	    J_0(t,x) := (G(t,
+ 	   \cdot) * \mu)(x) =\int_{\R^d}G(t,x-y)\mu(\ud y)    \quad \text{and} \quad
+ 	   J_p(t,x) := (G(t,
+  	  \cdot) * \Norm{\mu}_p)(x),
+    \end{align}
+where we use the following convention:
+	\[ 
+	\mu(\ud x) = 
+	\begin{cases}
+		\mu(\ud x) & \text{when } \mu \text{ is deterministic} \\
+		\varphi(x)\ud x & \text{when } \mu \text{ is random},
+	\end{cases} \quad
+	\Norm{\mu(\ud x)}_p = 
+		\begin{cases}
+			|\mu|(\ud x) & \text{when } \mu \text{ is deterministic} \\
+			\Norm{\varphi(x)}_p \ud x & \text{when } \mu \text{ is random}.
+		\end{cases}
+	\]
+%We also denote
+%    \begin{align*}
+%		I(t,x):= \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y).
+%	\end{align*}
+Lastly, we denote
 \begin{align} \label{E:qJ*}
-	\mu_q^*:= 1+ \Norm{\mu}_q \quad \text{and} \quad J_{q}^*(r,z) = \left(G(r,\cdot)*\mu_q^*\right)(x) .
+	\mu_p^*:= 1+ \Norm{\mu}_p \quad \text{and} \quad J_{p}^*(r,z) = \left(G(r,\cdot)*\mu_p^*\right)(x) .
 \end{align}
 We remind the reader that for deterministic initial measures
 \begin{align} \label{E:J*}
-	\mu_q^* = \mu^* = 1+ |\mu| \quad \text{and} \quad  J_{q}^*(r,z) = J^*(r,z) = \left(G(r,\cdot)* \mu^*\right)(x).
+	\mu_p^* = \mu^* = 1+ |\mu| \quad \text{and} \quad  J_{p}^*(r,z) = J^*(r,z) = \left(G(r,\cdot)* \mu^*\right)(x).
 \end{align}
 Again, whether $\mu$ is random or deterministic, we will always use the notation given in \eqref{E:qJ*}.
 \end{notation}
 
-We may now state a preliminary result used to prove Theorem \eqref{T:Main} below.
+We may now a preliminary result used to prove Theorem \eqref{T:Main} below.
 
 \begin{theorem} \label{T:Lrho}
   Assume that
@@ -310,7 +324,7 @@ We may now state a preliminary result used to prove Theorem \eqref{T:Main} below
 	\quad \text{for all $t>0$},
       \end{equation}
     \item the correlation measure $\Gamma$ satisfies \eqref{E:U0finite},
-    \item the Lipschitz constant $L_b$ of $b$ (see Theorem \ref{T:H(t)Bdd} below) satisfies 
+    \item the Lipschitz constant $L_b$ of $b$ (see Theorem \ref{T:ExUn} below) satisfies 
       \begin{equation} \label{E:LipLb}
         2L_b^2 < \frac{1}{128 \Upsilon(0)}.
       \end{equation}
@@ -377,20 +391,6 @@ Here is the main theorem of the paper:
   \end{enumerate}
 \end{theorem}
 
-\begin{example}[Correlation measures] \label{E:Gamma+f}
-  Here are a few examples of correlation measures $\Gamma$ that satisfy condition \eqref{E:GH-int}.
-  The Bessel potential (see, e.g., Section 1.2.2 of \cite{grafakos:14:modern})...
-  ... \textcolor{magenta}{TBD} ...
-\end{example}
-\begin{example}[Initial conditions] \label{E:Init}
-  Here are few examples:
-  \begin{enumerate}
-    \item If the initial condition $\mu$ is the Lebesgue measure, than the left-hand side of
-      \eqref{E:InitData} is equal to $\Norm{\widehat{\rho}}_{L^1(\R^d)}$, which is finite and does
-      not depend on $t$.
-    \item If $\mu=\delta_0$,
-  \end{enumerate}
-\end{example}
 \begin{proof}[Proof of Theorem \ref{T:Main} (b)]
       Fix an arbitrary $T_0>0$ and denote
   \begin{align*}
@@ -414,6 +414,55 @@ Here is the main theorem of the paper:
   invariant measure for $\mathscr{L}(u(t,\cdot))$, $t\ge T_0$. Finally, we can choose $T_0$ to be
   arbitrarily close to zero. This completes the proof of part (c) of Theorem \ref{T:Main}.
 \end{proof}
+
+\begin{example}[Bessel kernel and $\delta_0$ initial data] \label{E:Gamma+f}
+We end this section with an example of an applicable initial data and spectral density. Note that because of \eqref{E:InitData} and \eqref{E:GH-int}, the initial data and spectral density must exist in tandem. Let's consider the initial data $\mu(\cdot) = \delta_0(\cdot)$ and let the correlation function of $W$ be $f(x) = B_s(x)$, where $B_s$ denotes the Bessel kernel with parameter $s$. It is shown in \cite[Section 1.2.2]{grafakos:14:modern} that there exists $c(s,d)$ and $C(s,d)$ such that for $0 < s < d$
+	\[
+		B_s(x) \le C(s,d) \exp(-|x|/2) \quad \text{for} \quad |x| \ge 2, 
+	\]
+and for $H(x) =  |x|^{s-d} + 1 + O(|x|^{s-d+2})$,
+	\[
+		\frac{1}{c(s,d)} \le \frac{B_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2.
+	\]
+Hence $B_s(x)$ has blow up at the origin and exponential decay at infinity. Moreover, 
+	\[
+		\mathcal{F}G_s(\xi) = \frac{1}{(1+  |\xi|^2)^{s/2}}.
+	\]
+It is easy to see that $\delta_0$ satisfies \eqref{A:icon}. Moreover, it is easy to see that if $d-2 < s < d$ then $\Upsilon(0) < \infty$ and so the conditions of Theorem \eqref{T:Solve} and Theorem \ref{T:ExUn} are satisfied and a unique mild solution, $u$, exists that starts from $\delta_0$ and is driven by a Gaussian noise with correlation function $B_s(x)$. We denote $v(t,x)$ to be the restarted solution as in \eqref{E:restart}. We now show that $v$ satisfies the conditions in Theorem \ref{T:Main}. In other words, it remains to prove that $v(0,\cdot) = u(t_0,\cdot)$ and $B_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int}. 
+
+Let $q>2$ be arbitrary. Starting with \eqref{E:InitData},
+	\begin{align*}
+		\mathcal{G}_{\widehat{\rho}, q}(s) &=  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x \\
+		&= \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \widehat{\rho}(x) \ud x \\
+		&= \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x \\
+		&\le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{u(t_0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x,
+	\end{align*}
+where in the last line we used Recall that $u(t_0,x) = v(0,x)$. In the following, $C$ is a generic constant independent of $s$ that may change from line to line. By applying the moment bound \eqref{E:mb0} we see that 
+	\begin{align*}
+			\mathcal{G}_{\widehat{\rho}, q}(s) &\le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \widehat{\rho}(x) \ud x \\
+			&= 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  +\int_{\R^d} G(s,x-y) (G(t_0,\cdot)*\delta_0)(y) \ud y\right)^2 \widehat{\rho}(x) \ud x \\
+			&=2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  + (G(t_0+s,\cdot)*\delta_0)(x) \right)^2 \widehat{\rho}(x) \ud x \\
+			&\le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \widehat{\rho}(x) \ud x \\
+			&\le C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s, x))^2 \widehat{\rho}(x) \ud x \\
+			&= C\Norm{\widehat{\rho}}_{L^1(\R^d)} + C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \widehat{\rho}(x) \ud x \\
+			&=: \textbf{G}(s),
+	\end{align*}
+and this verifies \eqref{E:InitData} because $t_0 > 0$ is fixed.
+
+Now lets verify \eqref{E:H}.
+
+	\vspace{1in}
+	Here are a few examples of correlation measures $\Gamma$ that satisfy condition \eqref{E:GH-int}.
+	The Bessel potential (see, e.g., Section 1.2.2 of \cite{grafakos:14:modern})...
+	... \textcolor{magenta}{TBD} ...
+	Here are few examples:
+	\begin{enumerate}
+		\item If the initial condition $\mu$ is the Lebesgue measure, than the left-hand side of
+		\eqref{E:InitData} is equal to $\Norm{\widehat{\rho}}_{L^1(\R^d)}$, which is finite and does
+		not depend on $t$.
+		\item If $\mu=\delta_0$,
+	\end{enumerate}
+\end{example}
 
 \section{Preliminaries} \label{S:Prelim}
 
@@ -500,13 +549,24 @@ Several examples of admissible weights are (see Example in Section 2 of
   This proves the lemma with $K_{\rho,a} = C_\rho(1) C_{\rho,a}$.
 \end{proof}
 
-\begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:H(t)Bdd}
-  Under Assumption \ref{A:General}, the SPDE \eqref{E:SHE} has a unique random field solution
-  starting from $\mu$ and the solution is $L^2(\Omega)$ continuous.
+\begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:Solve}
+Suppose that 
+		\begin{enumerate}[(i)]
+			\item The initial measure $\mu$ must satisfy the following integrability condition: 
+			\begin{equation} \label{A:icon}
+			\int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\mu(\ud x)}_2 < \infty \quad \text{for all $a>0$}.
+			\end{equation} 
+			\item The spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
+			\begin{equation} \label{A:dalcon}
+			\Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
+			\quad \text{for some and therefore any $\beta>0$}.
+			\end{equation}
+		\end{enumerate}
+then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution is $L^2(\Omega)$ continuous and is adapted to the filtration induced by ${W}$.
 \end{theorem}
 
 \begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}] \label{T:ExUn}
-  Under Assumption \ref{A:General}, for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:SHE},
+  Under the assumptions of Theorem \ref{T:Solve}, for any $t>0$ and $x \in \R^d$, the solution to \eqref{E:SHE},
   $u(t,x)$, given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
   \begin{equation} \label{E:mb}
   \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * \Norm{\mu}_p)(x)\big]H(t;\gamma_p)^{1/2},
