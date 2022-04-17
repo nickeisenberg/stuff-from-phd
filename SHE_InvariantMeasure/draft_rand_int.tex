@@ -466,11 +466,11 @@ Let's examine the $\int_0^\infty \ud z$ integral and apply the change of variabl
 		= \frac{1}{2} \int_0^\infty \ud y\; e^{-r y} (1+y)^{s/2} y^{\frac{d}{2}-1} \ud y
 		= \frac{\Gamma\left(d/2\right)}{2}U\left(\frac{d}{2},\frac{d+2-s}{2},r\right),
 	\end{align*}
-where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function (see \cite[Chapter 13]{olver.Lozier.boisvert.clark.2010:NIST}) and the last equality can be found in (13.4.4) on p. 326 of \cite{olver.Lozier.boisvert.clark.2010:NIST}. Thus, to show the finiteness of $\mathcal{H}_{\alpha}(s)$ for each $s >0$, it suffices to show that the following integral is finite:
+where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function (see \cite[Chapter 13]{oliver.lozier.boisvert.clark:2010:nist}) and the last equality can be found in \cite[13.4.4]{oliver.lozier.boisvert.clark:2010:nist}. Thus, to show the finiteness of $\mathcal{H}_{\alpha}(s)$ for each $s >0$, it suffices to show that the following integral is finite:
 	\begin{equation} \label{E:BesselHG}
 		\int_0^s r^{-2\alpha} \; U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) \; \ud r.
 	\end{equation}
-The behavior of $U(\alpha, \beta, t)$ around the origin is given in \cite[Section 13.2 (iii)]{olver.Lozier.boisvert.clark.2010:NIST} and is given in cases on $\beta$, which in our case is $(d+2-s)/2$. Recall above that we are taking $d-2 < s < d$. For this reason, the only case in \cite[Section 13.2 (iii)]{olver.Lozier.boisvert.clark.2010:NIST} that is applicable is $1 < (d+2-s)/2 < 2$ and in this case 
+The behavior of $U(\alpha, \beta, t)$ around the origin is given in \cite[Section 13.2 (iii)]{oliver.lozier.boisvert.clark:2010:nist} and is given in cases on $\beta$, which in our case is $(d+2-s)/2$. Recall above that we are taking $d-2 < s < d$. For this reason, the only case in \cite[Section 13.2 (iii)]{oliver.lozier.boisvert.clark:2010:nist} that is applicable is $1 < (d+2-s)/2 < 2$ and in this case 
 	\begin{equation}
 		r^{-2\alpha} U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) = O\left( r^{1-2\alpha- (d+2-s)/2} + r^{-2\alpha} + r^{2 - 2\alpha -  (d+2-s)/2}  \right).
 	\end{equation}
@@ -772,7 +772,7 @@ As for $Y_\alpha$, we have the following result:
   4.18 of \cite{da-prato.zabczyk:92:stochastic}) in \eqref{E:Fubini_1} and \eqref{E:Fubini_2} in the
   following two steps. \bigskip
 
-  {\bf\noindent Step 1.~} In this step, we justify the change of orders in \eqref{E:Fubini_1}.
+  {\bf\noindent Step 1.~} In this step, we justify the change of orders in \eqref{E:Fubini_1}. Note that $t, x$ and $s$ are fixed.
   It suffices to prove the following condition:
   \begin{align*}
     I_1:= & \int_{\R^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:               \\
@@ -782,11 +782,10 @@ As for $Y_\alpha$, we have the following result:
   \end{align*}
 But this follows immediately from \eqref{E:NormY}. Indeed  
 	\begin{align*}
-		\int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y(s,y)}_2^2  &\le C \int_{\R^d}\ud y \: G(t-s,x-y) J_2^*(s,y) \mathcal{H}_\alpha(s) \\
-		& =C \mathcal{H}_\alpha(s) \int_{\R^d}\ud y \: G(t-s,x-y) \int_{\R^d} \mu_2^*(\ud x) G(s,y-z) \\
-		&= C \mathcal{H}_\alpha(s) J_2^*(t,x).
+		\int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y(s,y)}_2^2  &\le \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 \mathcal{H}_\alpha(s) \\
+		& =C \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2.
 	\end{align*}
- Then Condition \eqref{E:H} implies that $I_1 < \infty$. 
+ Then Condition \eqref{E:G} implies that $I_1 < \infty$ as $\rho(y)$ cannot decay as fast as $y \mapsto G(t-s,x-y)$ (See Remark \ref{R:admRho}). 
 
 % We can simplify the following by applying \eqref{E:NormY}.
 % See above few lines.
@@ -819,14 +818,14 @@ But this follows immediately from \eqref{E:NormY}. Indeed
 %  \end{align*}
 %  where we have applied the same arguments as those in the proof of Lemma \ref{L:yineq} in the
 %  second inequality. Condition \eqref{E:GH-int} implies that $I_1<\infty$. \bigskip
-\textcolor{blue}{
-A type has been made above when using \eqref{E:NormY} to bound $\Norm{Y(s,y)}_2^2$. Note that we need to show
-	\begin{align*}
-		\int_{\R^d} \ud y \; G(t-s,x-y) \Norm{Y(s,y)}_2^2 &\le C \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 \mathcal{H}_\alpha(s) \\
-		&= \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 < \infty
-	\end{align*}
-However, because $s$ and $t$ are fixed, this will follow from the assumption \eqref{E:G} which says that $\mathcal{G}_{\rho, 2}(s) < \infty$ for each $s >0$. This is due to the fact that $\exp(-|x|^2) \le C \rho(x)$.
-}
+%\textcolor{blue}{
+%A type has been made above when using \eqref{E:NormY} to bound $\Norm{Y(s,y)}_2^2$. Note that we need to show
+%	\begin{align*}
+%		\int_{\R^d} \ud y \; G(t-s,x-y) \Norm{Y(s,y)}_2^2 &\le C \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 \mathcal{H}_\alpha(s) \\
+%		&= \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y)\left(J_2^*(s,y)\right)^2 < \infty
+%	\end{align*}
+%However, because $s$ and $t$ are fixed, this will follow from the assumption \eqref{E:G} which says that $\mathcal{G}_{\rho, 2}(s) < \infty$ for each $s >0$. This is due to the fact that $\exp(-|x|^2) \le C \rho(x)$.
+%}
   {\bf\noindent Step 2.~} Similarly, as for \eqref{E:Fubini_2}, we need to show that
   \begin{align*}
     I_2:= & \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: \\
@@ -961,90 +960,90 @@ Thus, by enlarging $\Lambda$ if necessary,
 thus completing the proof of \eqref{E:cpt}.
 % Since we assumed that $u$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
 	
-\newpage	
- In this proof we will use $\stackrel{\mathcal{L}}{=}$ to denote equality in law, otherwise, the equality holds almost surely. Let $t_0>0$ and consider the following restarted equation:
- \begin{equation} \label{E:SHErandint}
- 	\begin{cases}
- 		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0/2}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
-		 v(0,\cdot) = u(t_0/2,\cdot),                                                               &
-	\end{cases}
- \end{equation}
-where $\dot W_{t_0/2}(t,x) = \dot W(t + t_0/2,x)$ denotes the time shifted noise. \textcolor{blue}{Should the time shifted noise be equality in law?} We note that \eqref{E:uInLrho} implies that this random initial condition, $u(t_0/2,\cdot)$ satisfies \eqref{A:icon} and thus the solution to \eqref{E:SHErandint} exists and we denote the solution as $v$. By the Markov property of the solution to \eqref{E:SHE}, we may say that for any $t \ge 0$,  $u(t + t_0/2,x) \stackrel{\mathcal{L}}{=} v(t,x)$, where $\mathcal{L}$ means the equality is in law. In other words, for all $t \ge 0$, the following holds:
-	\begin{align*}
-		u(t + t_0/2,x ) \stackrel{\mathcal{L}}{=} v(t,x) = (G(t,\cdot) * u(t_0/2,\cdot))(x) + \int_0^{t}\int_{\R^d} G(t - s, x-y)b(y,v(s, y)) W_{t_0/2}(\ud s, \ud y).
-	\end{align*}
-We will use the notation $Y_v$ and $\mathcal{G}_{\hat\rho, q}^v$ where
- 	\[
- 		 Y_v(s,y):= \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0/2}(\ud r,\ud z),
- 	\]
- and 
-	\begin{align*}
-		\mathcal{G}_{\hat\rho, q}^v(s) &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{v(0,y)}_q\ud y\right)^2 \hat\rho(x) \ud x \\
-		&= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x.
-	\end{align*}
- We define $\mathcal{G}_{\hat\rho, q}^u(s)$ and $Y_u$ in an equivalent manner. We wish to be able to apply the factorization result \eqref{E:1fac} and also the bound in \eqref{E:yineq} for $Y_v$. This requires us to show that $v(0,\cdot) = u(t_0/2, \cdot)$ satisfies \eqref{E:G} and \eqref{E:GH-int'} with $\hat{\rho}$.  Indeed, H\"older's inequality and the admissible weight property imply that
-	\begin{align*}
-		\mathcal{G}_{\hat\rho, q}^v(s)  &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x \\
-		&\le \int_{\R^d} \int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q^2\ud y  \; \hat\rho(x) \ud x \\
-		& \le C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y.
-	\end{align*}
-Now by \eqref{E:mb0},
-	\begin{align*}
-		C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y &\le C(t_0) \int_{\R^d} \Big(G(t_0/2,\cdot) * (1+\Norm{\mu}_q)\Big)^2(y) \hat\rho(y) \ud y \\
-		&= C(t_0) \mathcal{G}_{\hat\rho, q}^u(t_0/2) < \infty,
-	\end{align*}
-where the finiteness follows from \eqref{E:InitData}. Finally, this and the continuity of $\mathcal{H}_\alpha(s)$ for $s \in [0,t_0/2]$ shows that,
-	\[
-		\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s \le \mathcal{G}_{\hat\rho, q}^u(t_0/2)^{q/2} \int_0^{t_0/2} \left( \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s < \infty.
-	\]
-Thus we are justified in saying that by \eqref{E:1fac}, 
-\begin{equation}
-u(t_0,x) \stackrel{\mathcal{L}}{=} v(t_0/2,x) = \Big(G(t_0/2,\cdot) * u(t_0/2,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0/2,x).
-\end{equation}
-We now define the set $\mathscr K (\Lambda)$ as
-	\[
-	\mathscr K (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
-	\quad \text{where $\Norm{y}_{\hat\rho} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\hat \rho})} \le \Lambda $} \}.
-	\]
-Then by Proposition \ref{P:F-Comp}, $\mathscr K (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. Moreover, by \eqref{E:yineq} and Chebyshev's inequality we have
-	\begin{align}
-	\mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr K(\Lambda) \}
-	&= \mathbb{P}\{ v(t_0/2,\cdot) \not \in \mathscr K(\Lambda) \} \nonumber \\
-	& \le \mathbb{P}\left[ \left(\int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t_0/2,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber \\ 
-	& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\hat \rho}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) \nonumber \\ 
-	& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) < \infty \label{E:Restartbdd}
-	\end{align}
-With all this said, \eqref{E:Restartbdd} implies that 
- \begin{align*}
- \mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \}
- & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right)
- \end{align*}
- Therefore, we can choose $\Lambda > 0$ big enough such that 
- 	\[
- 		\dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right) < \epsilon,
- 	\]
- then we get that
- \begin{align*}
- \mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \} & \ge 1- \epsilon.
- \end{align*}
- We can now deduce from this and the semigroup property of the solution to the heat equation that
- \begin{align*}
- \mathbb{P}\{ u(t,\cdot) \in \mathscr K(\Lambda) \} & \ge (1-
- \epsilon)\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} < \Lambda
- \}.
- \end{align*}
- We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0/2$ that there exists a $C>0$ such that
- 	\[
- 		\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} \ge \Lambda
- 		\} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0/2,\cdot)}_{\hat\rho}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\hat{\rho}, q}\left( t - \frac{t_0}{2} \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
- 	\]
- Thus, by enlarging $\Lambda$ if necessary, 
- 	\[
- 		\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} \ge \Lambda
- 		\}  \le \epsilon, \quad \forall \; t \ge t_0/2,
- 	\]
-thus completing the proof of \eqref{E:cpt}.
-% Since we assumed that $u$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
+%\newpage	
+% In this proof we will use $\stackrel{\mathcal{L}}{=}$ to denote equality in law, otherwise, the equality holds almost surely. Let $t_0>0$ and consider the following restarted equation:
+% \begin{equation} \label{E:SHErandint}
+% 	\begin{cases}
+% 		\dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0/2}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
+%		 v(0,\cdot) = u(t_0/2,\cdot),                                                               &
+%	\end{cases}
+% \end{equation}
+%where $\dot W_{t_0/2}(t,x) = \dot W(t + t_0/2,x)$ denotes the time shifted noise. \textcolor{blue}{Should the time shifted noise be equality in law?} We note that \eqref{E:uInLrho} implies that this random initial condition, $u(t_0/2,\cdot)$ satisfies \eqref{A:icon} and thus the solution to \eqref{E:SHErandint} exists and we denote the solution as $v$. By the Markov property of the solution to \eqref{E:SHE}, we may say that for any $t \ge 0$,  $u(t + t_0/2,x) \stackrel{\mathcal{L}}{=} v(t,x)$, where $\mathcal{L}$ means the equality is in law. In other words, for all $t \ge 0$, the following holds:
+%	\begin{align*}
+%		u(t + t_0/2,x ) \stackrel{\mathcal{L}}{=} v(t,x) = (G(t,\cdot) * u(t_0/2,\cdot))(x) + \int_0^{t}\int_{\R^d} G(t - s, x-y)b(y,v(s, y)) W_{t_0/2}(\ud s, \ud y).
+%	\end{align*}
+%We will use the notation $Y_v$ and $\mathcal{G}_{\hat\rho, q}^v$ where
+% 	\[
+% 		 Y_v(s,y):= \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0/2}(\ud r,\ud z),
+% 	\]
+% and 
+%	\begin{align*}
+%		\mathcal{G}_{\hat\rho, q}^v(s) &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{v(0,y)}_q\ud y\right)^2 \hat\rho(x) \ud x \\
+%		&= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x.
+%	\end{align*}
+% We define $\mathcal{G}_{\hat\rho, q}^u(s)$ and $Y_u$ in an equivalent manner. We wish to be able to apply the factorization result \eqref{E:1fac} and also the bound in \eqref{E:yineq} for $Y_v$. This requires us to show that $v(0,\cdot) = u(t_0/2, \cdot)$ satisfies \eqref{E:G} and \eqref{E:GH-int'} with $\hat{\rho}$.  Indeed, H\"older's inequality and the admissible weight property imply that
+%	\begin{align*}
+%		\mathcal{G}_{\hat\rho, q}^v(s)  &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \hat\rho(x) \ud x \\
+%		&\le \int_{\R^d} \int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q^2\ud y  \; \hat\rho(x) \ud x \\
+%		& \le C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y.
+%	\end{align*}
+%Now by \eqref{E:mb0},
+%	\begin{align*}
+%		C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \hat\rho(y) \ud y &\le C(t_0) \int_{\R^d} \Big(G(t_0/2,\cdot) * (1+\Norm{\mu}_q)\Big)^2(y) \hat\rho(y) \ud y \\
+%		&= C(t_0) \mathcal{G}_{\hat\rho, q}^u(t_0/2) < \infty,
+%	\end{align*}
+%where the finiteness follows from \eqref{E:InitData}. Finally, this and the continuity of $\mathcal{H}_\alpha(s)$ for $s \in [0,t_0/2]$ shows that,
+%	\[
+%		\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s \le \mathcal{G}_{\hat\rho, q}^u(t_0/2)^{q/2} \int_0^{t_0/2} \left( \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s < \infty.
+%	\]
+%Thus we are justified in saying that by \eqref{E:1fac}, 
+%\begin{equation}
+%u(t_0,x) \stackrel{\mathcal{L}}{=} v(t_0/2,x) = \Big(G(t_0/2,\cdot) * u(t_0/2,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0/2,x).
+%\end{equation}
+%We now define the set $\mathscr K (\Lambda)$ as
+%	\[
+%	\mathscr K (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
+%	\quad \text{where $\Norm{y}_{\hat\rho} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\hat \rho})} \le \Lambda $} \}.
+%	\]
+%Then by Proposition \ref{P:F-Comp}, $\mathscr K (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. Moreover, by \eqref{E:yineq} and Chebyshev's inequality we have
+%	\begin{align}
+%	\mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr K(\Lambda) \}
+%	&= \mathbb{P}\{ v(t_0/2,\cdot) \not \in \mathscr K(\Lambda) \} \nonumber \\
+%	& \le \mathbb{P}\left[ \left(\int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t_0/2,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber \\ 
+%	& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\hat \rho}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) \nonumber \\ 
+%	& \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) < \infty \label{E:Restartbdd}
+%	\end{align}
+%With all this said, \eqref{E:Restartbdd} implies that 
+% \begin{align*}
+% \mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \}
+% & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right)
+% \end{align*}
+% Therefore, we can choose $\Lambda > 0$ big enough such that 
+% 	\[
+% 		\dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\hat\rho, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right) < \epsilon,
+% 	\]
+% then we get that
+% \begin{align*}
+% \mathbb{P}\{ u(t_0,\cdot) \in \mathscr K(\Lambda) \} & \ge 1- \epsilon.
+% \end{align*}
+% We can now deduce from this and the semigroup property of the solution to the heat equation that
+% \begin{align*}
+% \mathbb{P}\{ u(t,\cdot) \in \mathscr K(\Lambda) \} & \ge (1-
+% \epsilon)\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} < \Lambda
+% \}.
+% \end{align*}
+% We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0/2$ that there exists a $C>0$ such that
+% 	\[
+% 		\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} \ge \Lambda
+% 		\} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0/2,\cdot)}_{\hat\rho}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\hat{\rho}, q}\left( t - \frac{t_0}{2} \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
+% 	\]
+% Thus, by enlarging $\Lambda$ if necessary, 
+% 	\[
+% 		\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\hat\rho} \ge \Lambda
+% 		\}  \le \epsilon, \quad \forall \; t \ge t_0/2,
+% 	\]
+%thus completing the proof of \eqref{E:cpt}.
+%% Since we assumed that $u$ is bounded in probability in $L^2_{\hat \rho}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\hat\rho} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
 \end{proof}
 
 % {{{ All references: New ones with biber
