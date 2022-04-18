@@ -195,17 +195,17 @@ to the \textit{parabolic Anderson model} \cite{carmona.molchanov:94:parabolic}.
  	\]
  where $A \in \mathscr{B}(E)$ and $\mathscr{L}(u(t,\cdot,\zeta))(A)$ is the law of \eqref{E:SHE} starting from $\zeta$.
  \textcolor{blue}{
- This is the only part left of the paper that I want to confirm. I think $E$ needs to be the bounded space of continuous functions. This is how it is defined in \cite{da-prato.g-atarek.ea:92:invariant} and \cite{assing.manthey:03:invariant}. How do we define the laws for random initial conditions, $\varphi$, that are almost surely in $L^2_{\rho}(\R^d)$? See \eqref{E:RandInit}. I believe there may not be an issue because of the $\varphi \in \mathcal{F}_0$ assumption but I want to make sure. It seems that other authors ignore this issue. \vspace{.2in} \\
- After reading \cite{assing.manthey:03:invariant} a little more carefully, I think what we need as our definition is
- 	\[
-		 \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge t_0,
-	 \]
-where $\zeta$ is any measure satisfying \eqref{E:DetInit}. I believe that $\eta$ would still be a measure on the space $L^2_{\rho}(\R^d)$. Thus we have expanded the domain of
-	\[
-		\zeta \mapsto \mathscr{L}(u(t,\cdot, \zeta))(A), \quad t \ge t_0,
-	\]
-from $\zeta \in C_b(\R^d)$ to $\zeta \in M$ where $M$ is the space of deterministic measures as in \eqref{E:DetInit}.
- Still unclear on all of this.
+ This is the only part left of the paper that I want to confirm. There is a lack of definitions in the papers \cite{assing.manthey:03:invariant}, \cite{tessitore.zabczyk:98:invariant}, and \cite{misiats.stanzhytskyi.ea:16:existence} about the meaning of a invariant measure. However \cite{da-prato.g-atarek.ea:92:invariant} has a definition. Following that, I believe the definition is there exists a measure $\eta$ such that 
+ 	\begin{equation} \label{D:invmeasureC_b}
+		 \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge 0.
+	 \end{equation}
+What is confusing is that we are integrating over all of the possible initial conditions. Daprato showed that if we can verify that the solution is bounded in probability for just one specific initial condition $\zeta_0$, then there exists an invariant measure. So it almost seems that proving that there exists an invariant measure for the constant $1$ initial condition is just as good as proving an invariant measure for a bounded and continuous $\varphi$ since both $1, \varphi \in C_b(\R^d)$.
+\vspace{.2in} \\ 
+Instead of starting our equation from a $C_b(\R^d)$ function, we started it from a measure satisfying $\eqref{E:DetInit}$. Lets call the space of measures that satisfy \eqref{E:DetInit} $\mathcal{M}$. Is this a measure space? Did we prove that there exists an $\eta$ such that 
+	 \begin{equation} \label{D:invmeasureMEASURE}
+		\eta(A) = \int_{\mathcal{M}} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge t_0?
+	\end{equation}
+I am going to continue thinking about this...
 }
 
  Existence in unbounded domains has been studied in few
