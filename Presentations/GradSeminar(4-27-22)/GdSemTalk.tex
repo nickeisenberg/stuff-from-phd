@@ -161,20 +161,56 @@ Since $X_t \ge 0$, maybe we could say that
 If the rain is constant then it makes sense for the variance to be constant. Moreover, as time continuous, there will be more water in the cup on average, so the mean should be a function in time.
 \end{frame}
 
-\begin{frame}{Brownian Motion. The most important stochastic process?}
+\begin{frame}{Brownian Motion.}
+Brownian motion is a very widely used stochastic processes. We will construct Brownian motion through a random walk.
 
-
+\begin{Theorem}
+	Consider a random walk $X = \{X_{0}=0, X_{t_1}, \cdots, X_{t_n}\}$. Suppose that for $k \in \{1, \cdots ,n\}$ that
+		\[
+			\mathbb{P}\left[ X_{t_k} = -h \right] = \mathbb{P}\left[ X_{t_k} = h \right] = 1/2.
+		\]
+	and suppose that the time increments are all constant:
+		\[
+			t_k-t_{k-1} = d \quad \forall k \in \{ 1, \cdots, n \}.
+		\]
+	Suppose that $h^2 = d$. Now define 
+		\[
+			B_n(t_{k}) = \sum_{i=0}^k X_{t_i}.
+		\]
+	Then $B_n$ converges to a Brownian motion. 
+\end{Theorem}
 \end{frame}
 
+\begin{frame}{Random Walk Example}
+\begin{center}
+\includegraphics[scale=.6]{randomwalk1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Random Walk Example}
+	\begin{center}
+		\includegraphics[scale=.6]{randomwalk2.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Random Walk Example}
+	\begin{center}
+		\includegraphics[scale=.6]{randomwalk3.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Random Walk Example}
+	\begin{center}
+		\includegraphics[scale=.6]{BrownianMotion.png}
+	\end{center}
+\end{frame}
+	
 	\begin{frame}
 		\frametitle{References}
 		\small
 		
 		\begin{thebibliography}{999}
-			\bibitem{CHN19} % {{{ 1.
-			L. Chen, Y. Hu, D. Naulart (2019)
-			\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
-			\newblock {\em  Stochastic Processes and their Applications}, 129 5073--5112.
+	
 		\end{thebibliography}
 	\end{frame}
 
