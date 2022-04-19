@@ -195,14 +195,42 @@ Brownian motion is a very widely used stochastic processes. We will construct Br
 
 \begin{frame}{Random Walk Example}
 	\begin{center}
-		\includegraphics[scale=.6]{randomwalk3.png}
+		\includegraphics[scale=.55]{randomwalk3.png}
 	\end{center}
 \end{frame}
 
 \begin{frame}{Random Walk Example}
 	\begin{center}
-		\includegraphics[scale=.6]{BrownianMotion.png}
+		\includegraphics[scale=.7]{BrownianMotion.png}
 	\end{center}
+\end{frame}
+
+\begin{frame}{Why do we care about Brownian Motion? An application to finance.}
+	Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the point of entry into the investment. We can define a return rate as follows:
+		\[
+			S_t = S_0(1 + R_t ), \quad R_t = \text{ the return rate over the period $[0,t]$} .
+		\]
+	We want to make predictions of our return. In a very simple model, we can assume that 
+		\[
+			R_t \sim \text{Normal}(\mu t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
+		\]
+	In terms of Stochastic Calculus, we express this as the following stochastic differential equation:
+		\[
+			dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
+		\]
+	
+\end{frame}
+
+\begin{frame}{Modeling a stock price with geometric brownian motion}
+The notation 
+	\[
+		dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
+	\]
+is only symbolic as $dB_t$ does not exist. The above can be legitimately viewed as the following integral equation:
+	\[
+		S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
+	\] 		
+The stochastic processes $S_t$ that solves the above equation is called a Geometric Brownian Motion. 
 \end{frame}
 	
 	\begin{frame}
