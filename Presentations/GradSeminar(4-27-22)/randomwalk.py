@@ -28,6 +28,6 @@ for i in range(pamt):
 for i in range(pamt):
     plt.plot(x_axis, X[i], marker='o')
 
-plt.title('{} sample paths of a random walk \n jump size = {} and step size = {} \n number of steps = {}'.format(pamt, round(h,3), d, len(dy)))
+plt.title('{} sample paths of a random walk \n jump size = {} and step size = {} \n number of steps = {}'.format(pamt, round(h,3), round(d, 2), len(dy)))
 plt.show()
 
