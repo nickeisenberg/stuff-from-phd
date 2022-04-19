@@ -205,6 +205,32 @@ Brownian motion is a very widely used stochastic processes. We will construct Br
 	\end{center}
 \end{frame}
 
+
+\begin{frame}{The Ito integral (special case)}
+	Suppose that $f$ is a continuous function with bounded variation. Then we can define:
+		\[
+			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_t(\omega) - B_{t_{i-1}}(\omega)),
+		\]
+	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the Ito integral in this case the left point Riemann sum. 
+\end{frame}
+
+\begin{frame}
+		\begin{theorem}[Ito's Formula]
+		If $f$ is twice continuously differentiable then we have the following "Fundamental Theorem of Ito Calculus"
+		\[
+		\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
+		\]
+	\end{theorem}
+For example, if we apply the above to $f(x) = x^2 / 2$ then we have 
+	\[
+		\int_a^t B_s \; \ud B_s = \frac{B_t^2}{2} - \frac{B_a^2}{2} - \frac{t-a}{2},
+	\]
+which is close but not quite the same thing as 
+	\[
+		\int_a^t x \; \ud x = \frac{t^2}{2} - \frac{a^2}{2}.
+	\]
+\end{frame}
+
 \begin{frame}{Why do we care about Brownian Motion? An application to finance.}
 	Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the point of entry into the investment. We can define a return rate as follows:
 		\[
@@ -224,7 +250,7 @@ Brownian motion is a very widely used stochastic processes. We will construct Br
 \begin{frame}{Modeling a stock price with geometric brownian motion}
 The notation 
 	\[
-		dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
+		dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_tQ \text{ is a Brownian motion}
 	\]
 is only symbolic as $dB_t$ does not exist. The above can be legitimately viewed as the following integral equation:
 	\[
