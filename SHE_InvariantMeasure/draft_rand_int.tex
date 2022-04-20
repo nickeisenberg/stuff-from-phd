@@ -172,7 +172,7 @@ where $\mathscr{B}_b(\R^d)$ are the bounded Borel sets and $\mathcal{N}$ are the
 J(\psi,\phi) := \E \left[ \dot{W}\left(\psi\right)\dot{W}\left(\phi\right) \right]
 = \int_0^\infty \ud s \int_{\R^d} \Gamma(\ud x)(\psi(s,\cdot)*\tilde{\phi}(s,\cdot))(x), \quad \tilde{\phi}(x):= \phi(-x),
 \end{align}
-where $\Gamma$ is a nonnegative and nonnegative definite tempered measure on $\R^d$ that is referred to as the {\it correlation measure}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a nonnegative and nonnegative definite tempered measure, which is called {\it spectral measure} and is denoted by $\widehat{f}(\ud \xi)$. Moreover, in the case where $\Gamma$ has density $f$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud \xi$.
+where $\Gamma$ is a nonnegative and nonnegative definite tempered measure on $\R^d$ that is referred to as the {\it correlation measure}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a nonnegative and nonnegative definite tempered measure, which is called {\it spectral measure} and is denoted by $\widehat{f}(\ud \xi)$. Moreover, in the case where $\Gamma$ has density $f$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud \xi$. The initial condition $\mu$ must satisfy either \eqref{E:DetInit} or \eqref{E:RandInit} below.
 %The initial measure, $\mu(\ud x)$ can be either a deterministic, locally finite, regular, signed Borel measure with the corresponding {\it Hahn decomposition} $\mu=\mu_+-\mu_-$.
 
 
@@ -189,28 +189,20 @@ stochastic integral is the {\it Walsh integral} (see
 In particular, our assumption allows the linear case $b(x,u) = \lambda u$, which is usually referred
 to the \textit{parabolic Anderson model} \cite{carmona.molchanov:94:parabolic}.
 
- The aim of this paper is to investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system.  We will see below in Theorem \ref{T:Lrho} that in our setting, the solution to \eqref{E:SHE} almost surely belongs to a weighted space of square integrable function, $L^2_{\rho}(\R^d)$. By an invariant measure for \eqref{E:SHE}, we mean a measure, $\eta$, on the space $(E, \mathscr{B}(E))$ such that
- 	\[
- 		\eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge 0,
- 	\]
- where $A \in \mathscr{B}(E)$ and $\mathscr{L}(u(t,\cdot,\zeta))(A)$ is the law of \eqref{E:SHE} starting from $\zeta$.
- \textcolor{blue}{
- This is the only part left of the paper that I want to confirm. There is a lack of definitions in the papers \cite{assing.manthey:03:invariant}, \cite{tessitore.zabczyk:98:invariant}, and \cite{misiats.stanzhytskyi.ea:16:existence} about the meaning of a invariant measure. However \cite{da-prato.g-atarek.ea:92:invariant} has a definition. Following that, I believe the definition is there exists a measure $\eta$ such that 
- 	\begin{equation} \label{D:invmeasureC_b}
-		 \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge 0.
-	 \end{equation}
-What is confusing is that we are integrating over all of the possible initial conditions. Daprato showed that if we can verify that the solution is bounded in probability for just one specific initial condition $\zeta_0$, then there exists an invariant measure. So it almost seems that proving that there exists an invariant measure for the constant $1$ initial condition is just as good as proving an invariant measure for a bounded and continuous $\varphi$ since both $1, \varphi \in C_b(\R^d)$.
-\vspace{.2in} \\ 
-Instead of starting our equation from a $C_b(\R^d)$ function, we started it from a measure satisfying $\eqref{E:DetInit}$. Lets call the space of measures that satisfy \eqref{E:DetInit} $\mathcal{M}$. Is this a measure space? Did we prove that there exists an $\eta$ such that 
-	 \begin{equation} \label{D:invmeasureMEASURE}
-		\eta(A) = \int_{\mathcal{M}} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge t_0?
-	\end{equation}
-I am going to continue thinking about this...
-}
+ The aim of this paper is to investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system. By an invariant measure for \eqref{E:SHE}, we mean a measure, $\eta$, on some Hilbert space $(E, \mathscr{B}(E))$ such that
+ \[
+ \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge 0,
+ \]
+ where $A \in \mathscr{B}(E)$ and $\mathscr{L}(u(t,\cdot,\zeta))(A)$ is the law of \eqref{E:SHE} starting from $\zeta$. DaPrato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant} established the following procedure:
+ \begin{enumerate}
+ 	\item show the solution is Markovian and that its transition semigroup is Feller,
+ 	\item show that the solution starting from a suitable initial condition, $\varphi \in E$, is bounded bounded in probability with respect to $E$.
+ \end{enumerate} 
+ The first point does not restrict us when studying \eqref{E:SHE} as was shown in \textcolor{blue}{Inster Reference}. However the second point takes some work so show. As we will see below, in order to give actual examples, one needs to prove the stronger condition \eqref{E:BddMnt} in order to verify the boundedness in probability condition. 
 
  Existence in unbounded domains has been studied in few
 papers such as \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:invariant,
-	misiats.stanzhytskyi.ea:16:existence,tessitore.zabczyk:98:invariant}. Since the spatial domain is unbounded, one needs to introduce a weight function $\rho$ and the corresponding weighted space $L_\rho^2(\R^d)$ as usual; see Section \ref{S:Prelim} below for more details. Following the standard procedure as laid out by Da Prato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant}, the main effort is to show that:
+misiats.stanzhytskyi.ea:16:existence,tessitore.zabczyk:98:invariant}. Since the spatial domain is unbounded, one needs to introduce a weight function $\rho$ and the corresponding weighted space $L_\rho^2(\R^d)$ as usual; see Section \ref{S:Prelim} below for more details. Following the standard procedure as laid out by Da Prato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant}, the main effort is to show that:
 \begin{align} \label{E:BddMnt}
 \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{L^2_\rho(\R^d)}^2\right)
 <\infty.
@@ -224,21 +216,25 @@ problem more challenging. In order to have moments bounded in time, as
 required in \eqref{E:BddMnt}, one has to first identify the exact conditions, under which the
 moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in
 \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, one has to have $L_b$ (the Lyapunov exponent of $b$) in \eqref{E:lipcon}  small enough, the spatial dimension $d \ge 3$, and we must strengthen \eqref{A:dalcon} to the following:
-\begin{equation} \label{E:U0finite}
-\Upsilon(0) <\infty.
-\end{equation}
+	\begin{equation} \label{E:U0finite}
+		\int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} =: \Upsilon(0) <\infty.
+	\end{equation}
 
-In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} prove existence of an Invariant measure when staring from a deterministic $L^2_{\rho}(\R^d)$ function under the assumption the solution satisfies a boundedness in probability condition and also that the spectral density $\hat{f}$ satisfies
+In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} prove existence of an Invariant measure when staring from a deterministic $L^2_{\rho}(\R^d)$ function under the assumption that the solution is bounded in probability and also that the spectral density $\hat{f}$ satisfies
 	\begin{equation} \label{E:CorTZ}
 		\widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 	\end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}, the only concrete example given was for \eqref{E:SHE} starting from the constant $1$ and the following additional assumptions were needed: $d \ge 3$ and the Lipschitz constant of $b$ must satisfy $L(b)^{-2} > \textbf{l}$, where
+see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}, in order to apply this theorem, the following additional assumptions were needed: $d \ge 3$ and the Lipschitz constant of $b$ must satisfy $L(b)^{-2} > \textbf{l}$, where
 	\begin{equation} \label{E:TZspec}
 		\tilde \Gamma := \left| \sqrt{ \mathcal{F}(f) }  \right| * \left| \sqrt{\mathcal{F}(f)}  \right| \quad \text{and} \quad \textbf{l}:= \frac{\mathbf{\Gamma}(d/2 -1)}{4 \pi^{d/2}} \int_{\R^d} \tilde{\Gamma}(\ud \zeta) |\zeta|^{2-d},
 	\end{equation}
-where $\mathbf{\Gamma}$ is the Gamma function.
+where $\mathbf{\Gamma}$ is the Gamma function. With these assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant measure on the spaced of continuous and bounded $L^2_{\rho}(\R^d)$ functions.
 
-These additional assumptions given by Tessitore and Zabczyk parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}, however one can see that both \eqref{E:U0finite} and \eqref{E:LipLb} are more compact and easier to check than \eqref{E:TZspec}. Moreover, our method allows us expand our choice of initial condition $\mu(\cdot)$. Some applicable deterministic initial measures include (see Example \ref{E:Gamma+f} below):
+These additional assumptions given by Tessitore and Zabczyk parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}. However, it is not at all trivial to check which spectral densities, $\hat{f}(\ud \xi)$, satisfy \eqref{E:TZspec} and no such examples were given in \cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from \eqref{E:TZspec} that one can not take the spectral density of the noise to be the Reisz kernel, $\hat{f}(\xi) = |\xi|^{d-\alpha}$, for any $0 < \alpha < d$ but this can be easily seen from our condition \eqref{E:U0finite}. 
+
+The condition that $d \ge 3$ forces us to only consider a colored noise as in \eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is unfortunate. However, as we will see in Example \ref{E:Gamma+f} below, we are able to apply the Bessel kernel, $B_s(x)$, with $s < d$. The kernel has exponential tails and power growth at the origin. So in absence of the Riesz kernel, we still may apply our results to a kernel, namely the Bessel kernel, that has origin blow up. 
+
+Moreover, our method allows us to verify\eqref{E:BddMnt} for more general initial conditions $\mu(\cdot)$. Some applicable deterministic initial measures include (see Example \ref{E:Gamma+f} below):
 	\[
 		\text{Dirac delta measure }\delta_0(\ud x), \quad \text{Lebesgue measure } \ud x, \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d),
 	\]
