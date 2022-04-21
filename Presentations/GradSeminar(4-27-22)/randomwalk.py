@@ -4,8 +4,8 @@
 # It is a standard result that as the step size goes to 0, that the walk will ...
 # ... converge to a brownian motion.
 
-IMPORT numpy as np
-IMPORT matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.pyplot as plt
 
 # pick the interval for the random walk
 a = 3
