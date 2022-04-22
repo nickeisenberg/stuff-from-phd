@@ -48,7 +48,8 @@
 
 \setbeamersize{text margin left=2mm,text margin right=2mm}
 
-\usepackage{animate}
+%\usepackage[autoplay, loop, scale]{animate}
+%\usepackage{graphicx}
 
 \usepackage{tikz}
 \usepackage{pgfplots}
@@ -81,12 +82,14 @@ An introduction to stochastic calculus with applications to finance}
 { \small March 29, 2022 
 }
 
-\logo{\includegraphics[height=1cm]{overleaf-logo}}
-\thispagestyle{empty}
-
 \begin{document}
 	\frame{\titlepage}	
 	\setcounter{page}{1}
+%	\begin{frame}
+%		\centering
+%			\animategraphics[autoplay, loop, scale=.15]{3}{rwalk2bm}{1}{18}
+%	\end{frame}
+
 	\begin{frame}{Stochastic Calculus}
 In Real Analysis we study measurable functions:
 	\[
@@ -147,57 +150,50 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 
 \end{frame}
 
-\begin{frame}{Examples}
-	\begin{example}
-Suppose we leave a cup out in the rain. We may model this with a stochastic processes as 
-	\[
-		X_t(\omega) = \text{Amount of rain in the cup at time $t$}.
-	\]
-Since $X_t \ge 0$, maybe we could say that 
-	\[
-		X_t \sim \text{Gamma Distribution with } \mu := \mu(t) \text{ and constant variance } \sigma^2
-	\]
-	\end{example}
-If the rain is constant then it makes sense for the variance to be constant. Moreover, as time continuous, there will be more water in the cup on average, so the mean should be a function in time.
-\end{frame}
 
-\begin{frame}{Brownian Motion.}
-Brownian motion is a very widely used stochastic processes. We will construct Brownian motion through a random walk.
-
-\begin{Theorem}
-	Consider a random walk $X = \{X_{0}=0, X_{t_1}, \cdots, X_{t_n}\}$. Suppose that for $k \in \{1, \cdots ,n\}$ that
-		\[
-			\mathbb{P}\left[ X_{t_k} = -h \right] = \mathbb{P}\left[ X_{t_k} = h \right] = 1/2.
-		\]
-	and suppose that the time increments are all constant:
-		\[
-			t_k-t_{k-1} = d \quad \forall k \in \{ 1, \cdots, n \}.
-		\]
-	Suppose that $h^2 = d$. Now define 
-		\[
-			B_n(t_{k}) = \sum_{i=0}^k X_{t_i}.
-		\]
-	Then $B_n$ converges to a Brownian motion. 
-\end{Theorem}
-\end{frame}
-
-\begin{frame}{Random Walk Example}
-\begin{center}
-\includegraphics[scale=.6]{randomwalk1.png}
-\end{center}
-\end{frame}
+%\begin{frame}
+%	\begin{example}
+%Suppose we leave a cup out in the rain. We may model this with a stochastic processes as 
+%	\[
+%		X_t(\omega) = \text{Amount of rain in the cup at time $t$}.
+%	\]
+%Since $X_t \ge 0$, maybe we could say that 
+%	\[
+%		X_t \sim \text{Gamma Distribution with } \mu := \mu(t) \text{ and constant variance } \sigma^2
+%	\]
+%	\end{example}
+%If the rain is constant then it makes sense for the variance to be constant. Moreover, as time continuous, there will be more water in the cup on average, so the mean should be a function in time.
+%\end{frame}
 
 \begin{frame}{Random Walk Example}
 	\begin{center}
-		\includegraphics[scale=.6]{randomwalk2.png}
+		\includegraphics[scale=.6]{randomwalk5steps.png}
 	\end{center}
 \end{frame}
 
 \begin{frame}{Random Walk Example}
 	\begin{center}
-		\includegraphics[scale=.55]{randomwalk3.png}
+		\includegraphics[scale=.6]{randomwalk10steps.png}
 	\end{center}
 \end{frame}
+
+\begin{frame}{Random Walk Example}
+	\begin{center}
+		\includegraphics[scale=.6]{randomwalk20steps.png}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Random Walk Example}
+	\begin{center}
+		\includegraphics[scale=.6]{randomwalk40steps.png}
+	\end{center}
+\end{frame}
+
+%\begin{frame}{Random Walk Example}
+%	\begin{center} 
+%		\includegraphics[scale=.55]{randomwalk70steps.png}
+%	\end{center}
+%\end{frame}
 
 \begin{frame}{Random Walk Example}
 	\begin{center}
@@ -205,29 +201,52 @@ Brownian motion is a very widely used stochastic processes. We will construct Br
 	\end{center}
 \end{frame}
 
+\begin{frame}{Brownian Motion.}
+	
+	\begin{Theorem}
+		Consider a random walk $X = \{X_{0}=0, X_{t_1}, \cdots, X_{t_n}\}$. Suppose that for $k \in \{1, \cdots ,n\}$ that
+		\[
+		\mathbb{P}\left[ X_{t_k} = -h \right] = \mathbb{P}\left[ X_{t_k} = h \right] = 1/2.
+		\]
+		and suppose that the time increments are all constant:
+		\[
+		t_k-t_{k-1} = d \quad \forall k \in \{ 1, \cdots, n \}.
+		\]
+		Suppose that $h^2 = d$. Now define 
+		\[
+		B_n(t_{k}) = \sum_{i=0}^k X_{t_i}.
+		\]
+		Then $B_n$ converges to a Brownian motion. 
+	\end{Theorem}
+\end{frame}
 
 \begin{frame}{The Ito integral (special case)}
-	Suppose that $f$ is a continuous function with bounded variation. Then we can define:
+	Suppose that $f$ is a nice continuous function. Then we can define:
 		\[
 			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_t(\omega) - B_{t_{i-1}}(\omega)),
 		\]
 	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the Ito integral in this case the left point Riemann sum. 
-\end{frame}
-
-\begin{frame}
+	
+	\vspace{.1in}
+	
 		\begin{theorem}[Ito's Formula]
 		If $f$ is twice continuously differentiable then we have the following "Fundamental Theorem of Ito Calculus"
 		\[
 		\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
 		\]
 	\end{theorem}
+	
+\end{frame}
+
+
+\begin{frame}[t]
 
 \begin{example}
 If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have 
 	\[
 		\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2},
 	\]
-which is close but not quite the same thing as 
+which is not quite the same thing as 
 	\[
 		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2} 
 	\]
@@ -245,7 +264,7 @@ which is close but not quite the same thing as
 		\]
 	We want to make predictions of our return. In a very simple model, we can assume that 
 		\[
-			R_t \sim \text{Normal}(\mu t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
+			R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
 		\]
 	In terms of Stochastic Calculus, we express this as the following stochastic differential equation:
 		\[
@@ -366,25 +385,79 @@ and
 	\]
 	\end{frame}
 
-	\begin{frame}{Potential for unlimited profit}
+\begin{frame}{Potential for unlimited profit}
 In practice, option contracts are priced by "the market". This means that the cost of a contract is literally what the buyer is willing to pay or what the seller is willing to sell at. 
 
 \vspace{.1in}
 
 This gives the educated buyer (or seller) a chance to make profit. 
 
-\vspace{.1in}\\
+\vspace{.1in}
 
 Suppose the fair price for a call contract with strike $K$ is $\$q$ but we find a buyer, who does not know about the Black Scholes model, who wants to buy the contract for $\$p \; > \; \$q$. We can do the following:
 	\begin{itemize}
 		\item sell a contract for $\$p$,
-		\item invest $\$q$ in the underlying stock at time $t=0$,
+		\item invest $\$q$ in stock and bond at time $t=0$ in a self financing strategy (HARD TO DO),
 		\item keep the remaining $p-q$ dollars.
 		\item pay the buyer $(S_T -K)^+$ at expiration.
 	\end{itemize}
 No matter what, we make $p - q$ dollars. If we sell 100 contracts then we make $100(p-q)$...
-	\end{frame}
 
+\end{frame}
+
+\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
+	\centering
+	\includegraphics[scale=.5]{bsheet4.png}
+\end{frame}
+
+\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
+	\centering
+	\includegraphics[scale=.5]{bsheet3.png}
+\end{frame}
+
+\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
+	\centering
+	\includegraphics[scale=.5]{bsheet1.png}
+\end{frame}
+
+\begin{frame}[t]{Stochastic Heat Equation}
+	\[
+	\begin{cases}
+		\frac{\partial}{\partial t} u(t,x) - \frac{\partial^2}{\partial x^2} u(t,x) = \lambda u(t,x) \frac{\partial^2}{\partial t \partial x}W(t,x) & t \ge 0, \; x\in \R \\
+		u(0, x) = f(x) & x \in \R
+	\end{cases}
+	\]
+\vspace{.1 in}
+
+The solution to the stochastic heat equation is given through the following integral equation:
+	\[
+		u(t,x) = \int_{\R} G(t, x-y) f(y) \ud y + \lambda \int_0^t \int_{\R} G(t-s,x-y) u(s,y) W(\ud s, \ud y),
+	\]
+where
+	\[
+		G(t,x) = \frac{1}{\sqrt{2 \pi t} }\exp\left(-\frac{|x|^2}{2t}\right)
+	\]
+\end{frame}
+
+\begin{frame}
+	\centering
+	\includegraphics[scale=.5]{SHEdeltaNoise0.png}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\includegraphics[scale=.5]{SHEdeltaNoise1.png}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\includegraphics[scale=.5]{SHEdeltaNoise2.png}
+\end{frame}
+
+\begin{frame}
+	\centering
+	\includegraphics[scale=.5]{SHEdeltaNoise2.15.png}
+\end{frame}
 
 	\begin{frame}
 		\frametitle{References}

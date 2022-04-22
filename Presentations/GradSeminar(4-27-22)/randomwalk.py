@@ -8,14 +8,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # pick the interval for the random walk
-a = 3
-b = 10
+a = 0
+b = 5
 
 # state how many paths you want to plot
 pamt = 2
 
 # jump size is h and step size is del
-d = (b-a)/70
+d = (b-a)/40
 h = np.sqrt(d)
 
 # create array to store the paths
