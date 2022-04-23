@@ -189,11 +189,17 @@ stochastic integral is the {\it Walsh integral} (see
 In particular, our assumption allows the linear case $b(x,u) = \lambda u$, which is usually referred
 to the \textit{parabolic Anderson model} \cite{carmona.molchanov:94:parabolic}.
 
- The aim of this paper is to investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system. By an invariant measure for \eqref{E:SHE}, we mean a measure, $\eta$, on some Hilbert space $(E, \mathscr{B}(E))$ such that
+ The aim of this paper is to investigate the conditions required to guarantee the existence of invariant measures for the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system. We will see below in Theorem \ref{T:Lrho} that for any $t \ge t_0 >0$, the solution $u(t,\cdot)$ to \eqref{E:SHE} starting from an intitial condition that satisfies either \eqref{E:DetInit} or \eqref{E:RandInit}, almost surely lives in the Hilbert space, $\mathcal{E}_{t_0} = (E_{t_0}, \; \Norm{\cdot}_{E_{t_0}})$ where $E_{t_0}$ is the space of measurable random fields, $\{\varphi_t(x)\}_{\{ t \ge t_0, \; x\in \R^d\}}$, adapted to $\{\mathcal{F}_t\}_{t \ge t_0}$, such that for any $t\ge t_0$,
+ 	\[
+ 		\Norm{\varphi_t}_{E_{t_0}}^2 := \mathbb{E} \left(\Norm{\varphi_t(\cdot)}_{L^2_{\rho}(\R^d)}^2\right) < \infty,
+ 	\]
+ where $\Norm{\cdot}_{L^2_{\rho}(\R^d)}$ denotes the $\rho$-weighted $L^2(\R^d)$ norm (see Section \ref{S:Prelim}). 
+ 	
+ By an invariant measure for \eqref{E:SHE}, we mean a measure, $\eta$, on $\mathscr{B}(E_{t_0})$ such that
  \[
- \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall t \ge 0,
+ \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \zeta))(A) \; \eta(\ud \zeta), \quad \forall \; t \ge t_0,
  \]
- where $A \in \mathscr{B}(E)$ and $\mathscr{L}(u(t,\cdot,\zeta))(A)$ is the law of \eqref{E:SHE} starting from $\zeta$. DaPrato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant} established the following procedure:
+ where $A \in \mathscr{B}(E_{t_0})$ and $\mathscr{L}(u(t,\cdot,\zeta))(A)$ is the law of \eqref{E:SHE} starting from $\zeta$. DaPrato and Zabczyk \cite{da-prato.g-atarek.ea:92:invariant} established the following procedure:
  \begin{enumerate}
  	\item show the solution is Markovian and that its transition semigroup is Feller,
  	\item show that the solution starting from a suitable initial condition, $\varphi \in E$, is bounded bounded in probability with respect to $E$.
@@ -220,7 +226,7 @@ moments to \eqref{E:SHE} do not possess exponential growth. This question has be
 		\int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} =: \Upsilon(0) <\infty.
 	\end{equation}
 
-In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} prove existence of an Invariant measure when staring from a deterministic $L^2_{\rho}(\R^d)$ function under the assumption that the solution is bounded in probability and also that the spectral density $\hat{f}$ satisfies
+In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} prove existence of an invariant measure for \eqref{E:SHE} in $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap L^2_{\tilde\rho}(\R^d)$ where $\rho (\tilde\rho)^{-1} \in L^1(\R^d)$ and the solution starting from $\varphi$ is bounded in probability in $L^2_{\tilde \rho}(\R^d)$ and also that the spectral density $\hat{f}$ satisfies
 	\begin{equation} \label{E:CorTZ}
 		\widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 	\end{equation}
@@ -228,17 +234,21 @@ see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem 3.
 	\begin{equation} \label{E:TZspec}
 		\tilde \Gamma := \left| \sqrt{ \mathcal{F}(f) }  \right| * \left| \sqrt{\mathcal{F}(f)}  \right| \quad \text{and} \quad \textbf{l}:= \frac{\mathbf{\Gamma}(d/2 -1)}{4 \pi^{d/2}} \int_{\R^d} \tilde{\Gamma}(\ud \zeta) |\zeta|^{2-d},
 	\end{equation}
-where $\mathbf{\Gamma}$ is the Gamma function. With these assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant measure on the spaced of continuous and bounded $L^2_{\rho}(\R^d)$ functions.
+where $\mathbf{\Gamma}$ is the Gamma function. With these assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant measure. In other words, the invariant measure takes the form of \eqref{E:InvMeasForm} below with $\varphi = 1$. 
 
-These additional assumptions given by Tessitore and Zabczyk parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}. However, it is not at all trivial to check which spectral densities, $\hat{f}(\ud \xi)$, satisfy \eqref{E:TZspec} and no such examples were given in \cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from \eqref{E:TZspec} that one can not take the spectral density of the noise to be the Reisz kernel, $\hat{f}(\xi) = |\xi|^{d-\alpha}$, for any $0 < \alpha < d$ but this can be easily seen from our condition \eqref{E:U0finite}. 
+Proving uniqueness of the measure is a much harder task. Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} apply the {\em Krylov-Bogoliubov} theorem \cite[Theorem 3.1.1]{da-prato.zabczyk:96:ergodicity} in order to show existence of the invariant measure which shows the invariant measure, $\eta$, takes the following form:
+	\begin{equation} \label{E:InvMeasForm}
+		\eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_1^{T_n + 1} \mathscr{L}(u(t,\cdot, \varphi))(A) \ud t.
+	\end{equation}
+In the above, $\{T_n\}$ is an appropriately chosen sequence of positive numbers increasing to infinity. Thus, we see from this theorem that the invariant measure arises from the initial condition. An open question is if $\varphi_1$ and $\varphi_2$ are two such initial conditions that satisfy \eqref{E:BddMnt} and if $\eta_1$ and $\eta_2$ are the two invariant measures that arise from $\varphi_1$ and $\varphi_2$ respectively then does $\eta_1 = \eta_2$? 
 
-The condition that $d \ge 3$ forces us to only consider a colored noise as in \eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is unfortunate. However, as we will see in Example \ref{E:Gamma+f} below, we are able to apply the Bessel kernel, $B_s(x)$, with $s < d$. The kernel has exponential tails and power growth at the origin. So in absence of the Riesz kernel, we still may apply our results to a kernel, namely the Bessel kernel, that has origin blow up. 
+The additional assumptions given by Tessitore and Zabczyk parallel our assumptions \eqref{E:U0finite} and \eqref{E:LipLb}. However, it is not at all trivial to check which spectral densities, $\hat{f}(\ud \xi)$, satisfy \eqref{E:TZspec} and no such examples were given in \cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from \eqref{E:TZspec} that one can not take the spectral density of the noise to be the Reisz kernel, $\hat{f}(\xi) = |\xi|^{d-\alpha}$, for any $0 < \alpha < d$ but this can be easily seen from our condition \eqref{E:U0finite}. The condition that $d \ge 3$ forces us to only consider a colored noise as in \eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is unfortunate. However, as we will see in Example \ref{E:Gamma+f} below, we are able to apply the Bessel kernel, $B_s(x)$, with $s < d$, which has exponential decaying tails and power growth at the origin. So in absence of the Riesz kernel, we still may apply our results to a kernel, namely the Bessel kernel, that has origin blow up. 
 
-Moreover, our method allows us to verify\eqref{E:BddMnt} for more general initial conditions $\mu(\cdot)$. Some applicable deterministic initial measures include (see Example \ref{E:Gamma+f} below):
+Moreover, our method allows us to verify \eqref{E:BddMnt} for more general initial conditions $\mu(\cdot)$. Some applicable deterministic initial measures include (see Example \ref{E:Gamma+f} below):
 	\[
-		\text{Dirac delta measure }\delta_0(\ud x), \quad \text{Lebesgue measure } \ud x, \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d),
+		\text{Dirac delta measure }\delta_0(\ud x) \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d),
 	\]
-but more generally, any initial data $\mu$ that satisfy \eqref{E:InitData} and \eqref{E:GH-int} below, as well as one of the following:
+but more generally, any initial data $\mu$ that satisfies \eqref{E:InitData} and \eqref{E:GH-int} below, as well as one of the following:
 \begin{fleqn}
 \begin{align}
 	(1) \; &\mu(\ud x) \text{ is a deterministic, locally finite, regular, signed Borel measure with the} \nonumber \\
