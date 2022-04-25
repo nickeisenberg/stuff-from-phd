@@ -257,7 +257,36 @@ which is not quite the same thing as
 	\includegraphics[scale=.7]{StochIntegralExample}
 \end{frame}
 
-\begin{frame}{Why do we care about Brownian Motion? An application to finance.}
+\begin{frame}[t]{One more example}
+	For a nice function $f(t,x)$ we can generalize Itos formula to 
+	\[
+	f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \ud s.
+	\]
+	Now consider the function $f(t,x) = tx$. Then 
+	\[
+	\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
+	\]
+	Plugging this in above for $a=0$ gives us
+	\[
+	tB_t = \int_0^t s \ud B_s + \int_0^t B_s \ud s,
+	\]
+	So we see that the Riemann integral of a Brownian motion is 
+	\[
+	\int_0^t B_s \ud s = t B_t -  \int_0^t s \ud B_s.
+	\]
+\end{frame}
+
+\begin{frame}[t]{Continuity?!}
+	\centering
+	\includegraphics[scale=.6]{riemannBM.png}
+\end{frame}
+
+\begin{frame}{Why do we care about Brownian Motion?}
+	\centering
+	\includegraphics[scale=.3]{simmons.png}
+\end{frame}
+
+\begin{frame}{An application to finance.}
 	Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the point of entry into the investment. We can define a return rate as follows:
 		\[
 			S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
