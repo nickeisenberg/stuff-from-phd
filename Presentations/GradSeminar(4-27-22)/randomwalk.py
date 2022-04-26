@@ -13,7 +13,7 @@ b = 5
 pamt = 2
 
 # jump size is h and step size is del
-d = (b-a)/70
+d = (b-a)/20
 h = np.sqrt(d)
 
 # create array to store the paths

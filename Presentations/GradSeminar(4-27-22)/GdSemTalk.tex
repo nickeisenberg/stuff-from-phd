@@ -90,44 +90,51 @@ An introduction to stochastic calculus with applications to finance and SPDEs}
 %			\animategraphics[autoplay, loop, scale=.15]{3}{rwalk2bm}{1}{18}
 %	\end{frame}
 
-	\begin{frame}{Stochastic Calculus}
-In Real Analysis we study measurable functions:
-	\[
-		f : D \to R,
-	\]
-where both $D$ and $R$ are measurable spaces:
-	\[
-		(D, \sigma(D), \mu_1) \quad \text{and} \quad (R, \sigma(R), \mu_2).
-	\]
+	\begin{frame}[t]{Calculus}
+%In Real Analysis we study measurable functions:
+%	\[
+%		f : D \to R,
+%	\]
+%where both $D$ and $R$ are measurable spaces:
+%	\[
+%		(D, \sigma(D), \mu_1) \quad \text{and} \quad (R, \sigma(R), \mu_2).
+%	\]
 In undergraduate Calculus, we focus only on real valued measurable on $\R^d$:
 	\[
-		f : D \subseteq \R^d \to \R^d,
+		f : D \subseteq \R \to \R,
 	\]
-and the measure space that is implies is the following:
+and the measure space that is implied is the following:
 	\[
-		(\R^d, \mathscr{B}(\R^d), \lambda),
+		(\R, \mathscr{B}(\R), \lambda),
 	\]
-where $\lambda$ is Lebesgue measure.
+where $\lambda$ is Lebesgue measure. Recall the average value of $f$ on $(a,b)$:
+	\[
+		\frac{1}{\lambda[(a,b)]} \int_a^b f(x) \; \ud x.= \frac{1}{b-a} \int_a^b f(x) \; \ud x.
+	\]
 	\end{frame}
 
-	\begin{frame}{Stochastic Calculus}
-When studying Stochastic Calculus, and in general  Probability Theory, we consider measurable functions,
+	\begin{frame}[t]{Stochastic Calculus}
+When studying Probability Theory, we consider measurable functions (random variables),
 	\[
-		X : \Omega \to \R^d,
+		X : \Omega \to \R,
 	\]
 and we consider the measure spaces 
 	\[
-		(\Omega, \mathcal{F}, \mathbb{P}) \quad \text{and} \quad (\R^d, \mathscr{B}(\R^d), \lambda),
+		(\Omega, \mathcal{F}, \mathbb{P}) \quad \text{and} \quad (\R, \mathscr{B}(\R), \lambda),
 	\]
 where $\Omega$ and $\mathcal{F}$ are referred to as the sample space and set of possible events and
 	\[
 		\mathbb{P}(\Omega) = 1.
 	\]
-\begin{definition}[Random Variable]
-	A measurable function $X: \Omega \to \R^d$ is called a {\it $\R^d$-valued Random Variable}.
-\end{definition}
-
-So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables. 
+%\begin{definition}[Random Variable]
+%	A measurable function $X: \Omega \to \R^d$ is called a {\it $\R^d$-valued Random Variable}.
+%\end{definition}
+%
+%So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables. 
+The average or expected value of $X$ is 
+	\[
+		\mathbb{E}(X) = \int_{\Omega} X(\omega) \; \ud\mathbb{P}(\omega) = \int_{\R} x \;\ud F(x) = \int_{\R} x f(x) \;\ud x.
+	\]
 	\end{frame}
 
 \begin{frame}{Stochastic Processes}
@@ -138,7 +145,7 @@ A stochastic process is a random variable that is indexed by set, $T$, which usu
 	\]
 One can think a stochastic processes as a two parameter function
 	\[
-		X_t(\omega) = X(t,\omega): T \times \Omega \to \R^d.
+		X_t(\omega) = X(t,\omega): T \times \Omega \to \R.
 	\]
 	\end{definition}
 	\begin{definition}[Sample Path]
@@ -173,7 +180,7 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 
 \begin{frame}{Random Walk Example}
 	\begin{center}
-		\includegraphics[scale=.6]{randomwalk10steps.png}
+		\includegraphics[scale=.55]{randomwalk10steps.png}
 	\end{center}
 \end{frame}
 
@@ -220,37 +227,53 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 	\end{Theorem}
 \end{frame}
 
-\begin{frame}{The Ito integral (special case)}
-	Suppose that $f$ is a nice continuous function. Then we can define:
+\begin{frame}[t]{The Ito integral (special case)}
+	Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
 		\[
-			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_t(\omega) - B_{t_{i-1}}(\omega)),
+			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
 		\]
 	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the Ito integral in this case the left point Riemann sum. 
 	
 	\vspace{.1in}
-	
-		\begin{theorem}[Ito's Formula]
-		If $f$ is twice continuously differentiable then we have the following "Fundamental Theorem of Ito Calculus"
+	In general, this formula is not true because the increments \vspace{.1in}
 		\[
-		\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
+			\ud B_{t_i}(\omega) :=  B_{t_i}(\omega) - B_{t_{i-1}}(\omega) \vspace{.1in}
 		\]
-	\end{theorem}
+	are very bad.
+	
 	
 \end{frame}
 
+\begin{frame}{White Noise}
+	\centering
+	\includegraphics[scale=.7]{whitenoise.png}
+\end{frame}
 
-\begin{frame}[t]
+\begin{frame}{Increments of a smooth function for reference}
+	\centering
+	\includegraphics[scale=.7]{niceincrements.png}
+\end{frame}
+
+
+
+\begin{frame}[t]{A 'Fundamental Theorem of Ito Calculus'}
+	If $f$ is twice continuously differentiable then we have the following "Fundamental Theorem of Ito Calculus"
+	\[
+	\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
+	\]
 
 \begin{example}
 If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have 
 	\[
-		\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2},
+		\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2}.
 	\]
-which is not quite the same thing as 
-	\[
-		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2} 
-	\]
+%which is not quite the same thing as 
+%	\[
+%		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2} 
+%	\]
+
 \end{example}
+
 \end{frame}
 
 \begin{frame}{Two sample paths}
@@ -260,23 +283,22 @@ which is not quite the same thing as
 \begin{frame}[t]{One more example}
 	For a nice function $f(t,x)$ we can generalize Itos formula to 
 	\[
-	f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \ud s.
+	f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \left( \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \right) \ud s.
 	\]
+	\begin{example}
 	Now consider the function $f(t,x) = tx$. Then 
 	\[
 	\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
 	\]
 	Plugging this in above for $a=0$ gives us
 	\[
-	tB_t = \int_0^t s \ud B_s + \int_0^t B_s \ud s,
+	tB_t = \int_0^t s \; \ud B_s + \int_0^t B_s \; \ud s, \quad \implies \quad 	\int_0^t B_s \; \ud s = t B_t -  \int_0^t s \; \ud B_s.
 	\]
-	So we see that the Riemann integral of a Brownian motion is 
-	\[
-	\int_0^t B_s \ud s = t B_t -  \int_0^t s \ud B_s.
-	\]
+
+\end{example}
 \end{frame}
 
-\begin{frame}[t]{Continuity?!}
+\begin{frame}[t]{Smoothness?!}
 	\centering
 	\includegraphics[scale=.6]{riemannBM.png}
 \end{frame}
@@ -313,7 +335,7 @@ is only symbolic as $dB_t$ does not exist. The above can be legitimately viewed 
 	\] 		
 The stochastic processes $S_t$ that solves the above equation is called a Geometric Brownian Motion. 	Notice that we have came up with a random variable that models the stock price:
 	\[
-		S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k \; \ud B_k(\omega).
+		S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
 	\]
 \end{frame}
 
