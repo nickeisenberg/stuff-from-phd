@@ -510,6 +510,36 @@ where
 	\includegraphics[scale=.5]{SHEdeltaNoise2.15.png}
 \end{frame}
 
+\begin{frame}[t]{Growth of Moments}
+	We have a quantity that describes the growth of the $p^{th}$ moments of the solutions to the stochastic heat question:
+	\[
+	\lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t}.
+	\]
+	What does this limit say about the growth or decay of the moments? 
+	
+\end{frame}
+
+\begin{frame}[t]{Growth of Moments for the Stochastic Heat Equation}
+		\[
+	\begin{cases}
+	\frac{\partial}{\partial t} u(t,x) - \frac{1}{2}\frac{\partial^2}{\partial x^2} u(t,x) = \sqrt{\lambda} u(t,x) \frac{\partial}{\partial x}W(x) & t \ge 0, \; x\in \R \\
+	u(0, x) = 1 & x \in \R
+	\end{cases}
+	\]
+	\begin{theorem}[Hu 2002]
+	For the above equation, we can prove that 
+	\[
+		\lim_{t \to \infty} \frac{\log\left[ \mathbb{E}(|u(t,x)|^p) \right]}{t^3} = \frac{p(p-1)\lambda^2}{24}
+	\]
+	which means that 
+	\[
+		t \mapsto \mathbb{E}(|u(t,x)|^p) = O\left[ \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right) \right], \quad \text{as } t \to \infty.
+	\]
+	So the moments grow exponentially in time.
+\end{theorem}
+	
+	
+\end{frame}
 	\begin{frame}
 		\frametitle{References}
 		\small
@@ -519,6 +549,11 @@ where
 			K. Chung and R. Williams (1990)
 			\newblock{Introduction to Stochastic Integration}
 			\newblock {\em Probability and Its Applications}, Birkh\"auser
+			
+			\bibitem{Hu}
+				Hu, Y. 2002
+			\newblock{Chaos expansion of heat equations with white noise potentials.}
+			\newblock{\em Potential Analysis} \textbf{16}, no. 1, 45-66.
 			
 			\bibitem{Kuo}
 			H. Kuo (2000)

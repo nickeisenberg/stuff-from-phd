@@ -6,7 +6,7 @@ a = 0
 b = 5
 
 # partition 
-n = 1000
+n = 500 
 delta = (b - a) / n
 
 # time axis 
