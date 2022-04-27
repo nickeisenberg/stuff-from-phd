@@ -227,6 +227,21 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 	\end{Theorem}
 \end{frame}
 
+\begin{frame}[t]{Proving the fundamental theorem of algebra using Brownian motion} 
+	\begin{theorem}
+		For any non-constant polynomial in $\mathbb{C}$, there exists a $z \in \mathbb{C}$ such that $p(z) = 0$.
+	\end{theorem}
+\begin{proof}
+	\begin{itemize}
+		\item If $p(z) \not = 0$ for and $z \in \mathbb{C}$ then $f = 1/p$ is analytic and tends to $0$ at infinity as $p$ is entire and thus unbounded.
+		\item Let $\alpha < \beta$ and $\Lambda_1 = \{ \Re(f) \le \alpha\}$ and $\Lambda_2 = \{ \Re(f) \ge \beta \}$. Both $\Lambda_1$ and $\Lambda_2$ contain an open set due to continuity.
+		\item $f(B_t)$ is a continuous local martingale and Doob's martingale convergence theorem implies $\lim_{t \to \infty }f(B_t)(\omega)$ exists with probability $1$.
+		\item But, for all $T>0$, $B_t$ will revisit $\Lambda_1$ and $\Lambda_2$ after $T$ with probability $1$.
+		\item So with probability $1$, $\liminf_{t \to \infty} f(B_t) \le \alpha < \beta \le \limsup_{t \to \infty} f(B_t)$. This contradicts the fact that $\lim_{t \to \infty }f(B_t)(\omega)$ exists with probability $1$.
+	\end{itemize} 
+\end{proof}
+\end{frame}
+
 \begin{frame}[t]{The Ito integral (special case)}
 	Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
 		\[
