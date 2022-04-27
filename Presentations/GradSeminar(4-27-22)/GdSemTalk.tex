@@ -64,26 +64,31 @@
 	\hfill%
 	\usebeamercolor[fg]{page number in head/foot}%
 	\usebeamerfont{page number in head/foot}%
-	\insertframenumber\,/\,\inserttotalframenumber\kern1em\vskip20pt%
+	\insertframenumber\,/\,\inserttotalframenumber\kern1em\vskip40pt%
 }
 \setbeamertemplate{footline}[higher page number]
 
+% \usefoottemplate{\hfill \insertframenumber{} / 45}
 % }}}
 % {{{ Title page
 \title[About Beamer] %optional
-{Graduate Seminar \\
-An introduction to stochastic calculus with applications to finance and SPDEs}
+{An introduction to stochastic calculus \\[0.3em]
+  with applications to\\[0.3em]
+finance \& SPDEs}
 
 \author[Arthur, Doe] % (optional, for multiple authors)
-{Nicholas Eisenberg}
+{Nicholas Eisenberg\\[4em]}
 
 
 \date[VLC 2021] % (optional)
-{ \small March 29, 2022 
+{
+  Graduate Seminar \\[1em] \small
+  Auburn University\\
+  March 29, 2022
 }
 
 \begin{document}
-	\frame{\titlepage}	
+	\frame{\titlepage}
 	\setcounter{page}{1}
 %	\begin{frame}
 %		\centering
@@ -118,7 +123,7 @@ When studying Probability Theory, we consider measurable functions (random varia
 	\[
 		X : \Omega \to \R,
 	\]
-and we consider the measure spaces 
+and we consider the measure spaces
 	\[
 		(\Omega, \mathcal{F}, \mathbb{P}) \quad \text{and} \quad (\R, \mathscr{B}(\R), \lambda),
 	\]
@@ -130,8 +135,8 @@ where $\Omega$ and $\mathcal{F}$ are referred to as the sample space and set of 
 %	A measurable function $X: \Omega \to \R^d$ is called a {\it $\R^d$-valued Random Variable}.
 %\end{definition}
 %
-%So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables. 
-The average or expected value of $X$ is 
+%So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables.
+The average or expected value of $X$ is
 	\[
 		\mathbb{E}(X) = \int_{\Omega} X(\omega) \; \ud\mathbb{P}(\omega) = \int_{\R} x \;\ud F(x) = \int_{\R} x f(x) \;\ud x.
 	\]
@@ -160,11 +165,11 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 
 %\begin{frame}
 %	\begin{example}
-%Suppose we leave a cup out in the rain. We may model this with a stochastic processes as 
+%Suppose we leave a cup out in the rain. We may model this with a stochastic processes as
 %	\[
 %		X_t(\omega) = \text{Amount of rain in the cup at time $t$}.
 %	\]
-%Since $X_t \ge 0$, maybe we could say that 
+%Since $X_t \ge 0$, maybe we could say that
 %	\[
 %		X_t \sim \text{Gamma Distribution with } \mu := \mu(t) \text{ and constant variance } \sigma^2
 %	\]
@@ -197,7 +202,7 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 \end{frame}
 
 %\begin{frame}{Random Walk Example}
-%	\begin{center} 
+%	\begin{center}
 %		\includegraphics[scale=.55]{randomwalk70steps.png}
 %	\end{center}
 %\end{frame}
@@ -209,7 +214,7 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 \end{frame}
 
 \begin{frame}{Brownian Motion.}
-	
+
 	\begin{Theorem}
 		Consider a random walk $X = \{X_{0}=0, X_{t_1}, \cdots, X_{t_n}\}$. Suppose that for $k \in \{1, \cdots ,n\}$ that
 		\[
@@ -219,11 +224,11 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 		\[
 		t_k-t_{k-1} = d \quad \forall k \in \{ 1, \cdots, n \}.
 		\]
-		Suppose that $h^2 = d$. Now define 
+		Suppose that $h^2 = d$. Now define
 		\[
 		B_n(t_{k}) = \sum_{i=0}^k X_{t_i}.
 		\]
-		Then $B_n$ converges to a Brownian motion. 
+		Then $B_n$ converges to a Brownian motion.
 	\end{Theorem}
 \end{frame}
 
@@ -232,16 +237,16 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 		\[
 			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
 		\]
-	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the Ito integral in this case the left point Riemann sum. 
-	
+	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the Ito integral in this case the left point Riemann sum.
+
 	\vspace{.1in}
 	In general, this formula is not true because the increments \vspace{.1in}
 		\[
 			\ud B_{t_i}(\omega) :=  B_{t_i}(\omega) - B_{t_{i-1}}(\omega) \vspace{.1in}
 		\]
 	are very bad.
-	
-	
+
+
 \end{frame}
 
 \begin{frame}[t]{White Noise}
@@ -263,13 +268,13 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 	\]
 
 \begin{example}
-If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have 
+If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 	\[
 		\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2}.
 	\]
-%which is not quite the same thing as 
+%which is not quite the same thing as
 %	\[
-%		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2} 
+%		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2}
 %	\]
 
 \end{example}
@@ -281,12 +286,12 @@ If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 \end{frame}
 
 \begin{frame}[t]{One more example}
-	For a nice function $f(t,x)$ we can generalize Itos formula to 
+	For a nice function $f(t,x)$ we can generalize Itos formula to
 	\[
 	f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \left( \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \right) \ud s.
 	\]
 	\begin{example}
-	Now consider the function $f(t,x) = tx$. Then 
+	Now consider the function $f(t,x) = tx$. Then
 	\[
 	\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
 	\]
@@ -313,7 +318,7 @@ If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 		\[
 			S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
 		\]
-	We want to make predictions of our return. In a very simple model, we can assume that 
+	We want to make predictions of our return. In a very simple model, we can assume that
 		\[
 			R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
 		\]
@@ -321,18 +326,18 @@ If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 		\[
 		R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
 		\]
-	
+
 \end{frame}
 
 \begin{frame}{Modeling a stock price with geometric brownian motion}
-The notation 
+The notation
 	\[
 		dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
 	\]
 is only symbolic as $dB_t$ does not exist. The above can be legitimately viewed as the following integral equation:
 	\[
 		S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
-	\] 		
+	\]
 The stochastic processes $S_t$ that solves the above equation is called a Geometric Brownian Motion. 	Notice that we have came up with a random variable that models the stock price:
 	\[
 		S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
@@ -346,8 +351,8 @@ The stochastic processes $S_t$ that solves the above equation is called a Geomet
 \end{frame}
 
 \begin{frame}{Black-Scholes option pricing model for European calls}
-		Suppose at time $t=0$ you buy a contract from a seller, allowing you to purchase 1 share of a stock at time $t=T$ and a set price of $K$, regardless if what the stock price at time $T$ is. 
-		\begin{align*} 
+		Suppose at time $t=0$ you buy a contract from a seller, allowing you to purchase 1 share of a stock at time $t=T$ and a set price of $K$, regardless if what the stock price at time $T$ is.
+		\begin{align*}
 		\text{Payout and time $T$} &=
 			\begin{cases}
 				S_T - K & \text{if } S_T > k \\
@@ -356,7 +361,7 @@ The stochastic processes $S_t$ that solves the above equation is called a Geomet
 			&= (S_T - K)^+
 		\end{align*}
 
-What is a fair price for the this contract? 
+What is a fair price for the this contract?
 
 For this we need a to create a self-financing strategy.
 \end{frame}
@@ -366,11 +371,11 @@ For this we need a to create a self-financing strategy.
 		\[
 			dS_t = \mu S_t \ud t + \sigma S_t \ud B_t.
 		\]
-	Let $a_{t_{i}}$ be the amount of shares owned over the period $t \in (t_{i-1}, t_i]$. Then at any time $t \in [0,T]$, the amount of shares owned is 
+	Let $a_{t_{i}}$ be the amount of shares owned over the period $t \in (t_{i-1}, t_i]$. Then at any time $t \in [0,T]$, the amount of shares owned is
 		\[
 			a_t = \sum_{i=1}^n a_{t_i} \textbf{1}_{(t_{i-1}, t_i]}(t)
 		\]
-	and the realized over $[0,T]$ 
+	and the realized over $[0,T]$
 		\begin{align*}
 			a_TS_T - a_0S_0 = \sum_{i=1}^n a_{t_i} (S_{t_{i}} - S_{t_{i-1}}) &= \int_0^T a_t \; \ud S_t \\
 			&= \mu \int_0^T a_t S_t \; \ud t + \sigma \int_0^T a_t S_t \; \ud B_t
@@ -379,17 +384,17 @@ For this we need a to create a self-financing strategy.
 
 \begin{frame}
 	Summarizing the last slide...
-		\[ 
+		\[
 			\text{Our stock profit on time $[0,T]$} = \underbrace{a_TS_T - a_0S_0  =  \int_0^T a_t \; \ud S_t }
 		\]
 	Now suppose we also invest in a bond with interest rate, $r$, that has price $\beta_t$ at time $t$. Similarly...
 		\[
-			\text{Our bond profit on time $[0,T]$} = \underbrace{b_TS_T - b_0S_0  =  \int_0^T b_t \; \ud \beta_t} 
+			\text{Our bond profit on time $[0,T]$} = \underbrace{b_TS_T - b_0S_0  =  \int_0^T b_t \; \ud \beta_t}
 		\]
 	\begin{definition}[Self Financing Strategy]
-	A pair of stocks and bonds, $(a,b)$, is self financing if 
+	A pair of stocks and bonds, $(a,b)$, is self financing if
 		\[
-			a_TS_T + b_TS_T = a_0S_0 + b_0S_0 +  \int_0^T a_t \; \ud S_t + \int_0^T b_t \; \ud \beta_t 
+			a_TS_T + b_TS_T = a_0S_0 + b_0S_0 +  \int_0^T a_t \; \ud S_t + \int_0^T b_t \; \ud \beta_t
 		\]
 	\end{definition}
 \end{frame}
@@ -407,18 +412,18 @@ For this we need a to create a self-financing strategy.
 	 \begin{align*}
 	 f(S_T, 0) = V_T = (S_T - K)^+ \quad \text{and} \quad  f(S_0, T) =V_0
 	 \end{align*}
-	So we need to find $f$. Moreover, $f(S_0, T)$ is the fair price to pay. 
+	So we need to find $f$. Moreover, $f(S_0, T)$ is the fair price to pay.
 	\end{frame}
 
 	\begin{frame}
-It can be shown that $f$ solves the following partial differential equation 
+It can be shown that $f$ solves the following partial differential equation
 	\[
 		\begin{cases}
 			\frac{\partial f}{\partial s}(s, x) = \frac{1}{2} \sigma^2 x^2 \frac{\partial^2f}{\partial x^2}(s,x) + rx\frac{\partial f}{\partial x}(s,x) - r f(s,x) & (s,x) \in [0,T] \times (0,\infty) \\
 			f(0,x) = (x-K)^+ & x \in (0,\infty).
 		\end{cases}
 	\]
-The solution is given by 
+The solution is given by
 	\[
 		f(t,x) = x \Phi\big(g(t,x)\big) - K e^{-rt}\Phi\big( h(t,x) \big),
 	\]
@@ -437,11 +442,11 @@ and
 	\end{frame}
 
 \begin{frame}{Potential for unlimited profit}
-In practice, option contracts are priced by "the market". This means that the cost of a contract is literally what the buyer is willing to pay or what the seller is willing to sell at. 
+In practice, option contracts are priced by "the market". This means that the cost of a contract is literally what the buyer is willing to pay or what the seller is willing to sell at.
 
 \vspace{.1in}
 
-This gives the educated buyer (or seller) a chance to make profit. 
+This gives the educated buyer (or seller) a chance to make profit.
 
 \vspace{.1in}
 
@@ -515,8 +520,8 @@ where
 	\[
 	\lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t}.
 	\]
-	What does this limit say about the growth or decay of the moments? 
-	
+	What does this limit say about the growth or decay of the moments?
+
 \end{frame}
 
 \begin{frame}[t]{Growth of Moments for the Stochastic Heat Equation}
@@ -527,34 +532,34 @@ where
 	\end{cases}
 	\]
 	\begin{theorem}[Hu 2002]
-	For the above equation, we can prove that 
+	For the above equation, we can prove that
 	\[
 		\lim_{t \to \infty} \frac{\log\left[ \mathbb{E}(|u(t,x)|^p) \right]}{t^3} = \frac{p(p-1)\lambda^2}{24}
 	\]
-	which means that 
+	which means that
 	\[
 		t \mapsto \mathbb{E}(|u(t,x)|^p) = O\left[ \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right) \right], \quad \text{as } t \to \infty.
 	\]
 	So the moments grow exponentially in time.
 \end{theorem}
-	
-	
+
+
 \end{frame}
 	\begin{frame}
 		\frametitle{References}
 		\small
-		
+
 		\begin{thebibliography}{999}
 			\bibitem{CW}
 			K. Chung and R. Williams (1990)
 			\newblock{Introduction to Stochastic Integration}
 			\newblock {\em Probability and Its Applications}, Birkh\"auser
-			
+
 			\bibitem{Hu}
 				Hu, Y. 2002
 			\newblock{Chaos expansion of heat equations with white noise potentials.}
 			\newblock{\em Potential Analysis} \textbf{16}, no. 1, 45-66.
-			
+
 			\bibitem{Kuo}
 			H. Kuo (2000)
 			\newblock{Introduction to Stochastic Integration}
