@@ -89,10 +89,11 @@ finance \& SPDEs}
 \begin{document}
 \frame[noframenumbering,plain]{\titlepage}
 \setcounter{page}{1}
-%	\begin{frame}
+%\begin{frame}
 %		\centering
 %			\animategraphics[autoplay, loop, scale=.15]{3}{rwalk2bm}{1}{18}
 %	\end{frame}
+% }}}
 
 \begin{frame}[t]{Calculus}
 %In Real Analysis we study measurable functions:
@@ -117,7 +118,7 @@ where $\lambda$ is Lebesgue measure. Recall the average value of $f$ on $(a,b)$:
 	\]
 	\end{frame}
 
-	\begin{frame}[t]{Stochastic Calculus}
+\begin{frame}[t]{Stochastic Calculus}
 When studying Probability Theory, we consider measurable functions (random variables),
 	\[
 		X : \Omega \to \R,
@@ -152,6 +153,8 @@ One can think a stochastic processes as a two parameter function
 		X_t(\omega) = X(t,\omega): T \times \Omega \to \R.
 	\]
 	\end{definition}
+  \pause
+
 	\begin{definition}[Sample Path]
 The variable $\omega$ represents the idea of a single possible outcome. The following function is then referred to as a {\it sample path}:
 	\[
@@ -160,7 +163,6 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 	\end{definition}
 
 \end{frame}
-
 
 %\begin{frame}
 %	\begin{example}
@@ -212,7 +214,7 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 	\end{center}
 \end{frame}
 
-\begin{frame}{Brownian Motion.}
+\begin{frame}{Brownian Motion}
 
 	\begin{Theorem}
 		Consider a random walk $X = \{X_{0}=0, X_{t_1}, \cdots, X_{t_n}\}$. Suppose that for $k \in \{1, \cdots ,n\}$ that
@@ -227,16 +229,16 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 		\[
 		B_n(t_{k}) = \sum_{i=0}^k X_{t_i}.
 		\]
-		Then $B_n$ converges to a Brownian motion.
+    Then $B_n$ converges to a \textcolor{magenta}{Brownian motion}.
 	\end{Theorem}
 \end{frame}
 
-\begin{frame}[t]{The Ito integral (special case)}
+\begin{frame}[t]{The It\^o's integral \small (a special case -- {\it Wiener integral})}
 	Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
 		\[
 			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
 		\]
-	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the Ito integral in this case the left point Riemann sum.
+	where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the It\^o's integral in this case the left point Riemann sum.
 
 	\vspace{.1in}
 	In general, this formula is not true because the increments \vspace{.1in}
@@ -244,8 +246,6 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 			\ud B_{t_i}(\omega) :=  B_{t_i}(\omega) - B_{t_{i-1}}(\omega) \vspace{.1in}
 		\]
 	are very bad.
-
-
 \end{frame}
 
 \begin{frame}[t]{White Noise}
@@ -258,14 +258,12 @@ The variable $\omega$ represents the idea of a single possible outcome. The foll
 	\includegraphics[scale=.7]{niceincrements.png}
 \end{frame}
 
-
-
-\begin{frame}[t]{A 'Fundamental Theorem of Ito Calculus'}
-	If $f$ is twice continuously differentiable then we have the following "Fundamental Theorem of Ito Calculus"
+\begin{frame}[t]{A ``Fundamental Theorem of It\^o's Calculus"}
+	If $f$ is twice continuously differentiable then we have the following ``Fundamental Theorem of It\^o's Calculus"
 	\[
 	\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
 	\]
-
+\pause
 \begin{example}
 If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 	\[
@@ -285,16 +283,17 @@ If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 \end{frame}
 
 \begin{frame}[t]{One more example}
-	For a nice function $f(t,x)$ we can generalize Itos formula to
+  For a nice function $f(t,x)$, we can generalize It\^o's formula to
 	\[
 	f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \left( \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \right) \ud s.
 	\]
-	\begin{example}
-	Now consider the function $f(t,x) = tx$. Then
+  \pause
+  \begin{example}
+  Now consider the function $f(t,x) = tx$. Then
 	\[
 	\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
 	\]
-	Plugging this in above for $a=0$ gives us
+  Plugging this in above for $a=0$ gives us
 	\[
 	tB_t = \int_0^t s \; \ud B_s + \int_0^t B_s \; \ud s, \quad \implies \quad 	\int_0^t B_s \; \ud s = t B_t -  \int_0^t s \; \ud B_s.
 	\]
@@ -313,31 +312,42 @@ If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
 \end{frame}
 
 \begin{frame}{An application to finance.}
-	Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the point of entry into the investment. We can define a return rate as follows:
-		\[
-			S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
-		\]
-	We want to make predictions of our return. In a very simple model, we can assume that
-		\[
-			R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
-		\]
-	In terms of Stochastic Calculus, we express this as the following stochastic differential equation:
-		\[
-		R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
-		\]
+  Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the
+  point of entry into the investment. We can define a return rate as follows:
+  \[
+    S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
+  \]
+  \pause
 
+  We want to make predictions of our return. In a very simple model, we can
+  assume that
+  \[
+    R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
+  \]
+  \pause
+
+  In terms of Stochastic Calculus, we express this as the following stochastic
+  differential equation:
+  \[
+  R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
+  \]
 \end{frame}
 
-\begin{frame}{Modeling a stock price with geometric brownian motion}
+\begin{frame}{Modeling a stock price with geometric Brownian motion}
 The notation
-	\[
-		dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
-	\]
-is only symbolic as $dB_t$ does not exist. The above can be legitimately viewed as the following integral equation:
-	\[
-		S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
-	\]
-The stochastic processes $S_t$ that solves the above equation is called a Geometric Brownian Motion. 	Notice that we have came up with a random variable that models the stock price:
+\[
+  dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
+\]
+is only symbolic as $dB_t$ does not exist. \pause The above can be legitimately
+viewed as the following integral equation:
+\[
+  S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
+\]
+\pause
+
+The stochastic processes $S_t$ that solves the above equation is called a
+\textcolor{magenta}{\it Geometric Brownian Motion}. \pause Notice that we have
+came up with a random variable that models the stock price:
 	\[
 		S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
 	\]
@@ -384,18 +394,22 @@ For this we need a to create a self-financing strategy.
 \begin{frame}
 	Summarizing the last slide...
 		\[
-			\text{Our stock profit on time $[0,T]$} = \underbrace{a_TS_T - a_0S_0  =  \int_0^T a_t \; \ud S_t }
+			\text{Our stock profit on time $[0,T]$} = \boxed{a_TS_T - a_0S_0  =  \int_0^T a_t \; \ud S_t }
 		\]
-	Now suppose we also invest in a bond with interest rate, $r$, that has price $\beta_t$ at time $t$. Similarly...
+    \pause
+	Now suppose we also invest in a bond with interest rate, $r$, that has price
+  $\beta_t$ at time $t$. \pause Similarly...
 		\[
-			\text{Our bond profit on time $[0,T]$} = \underbrace{b_TS_T - b_0S_0  =  \int_0^T b_t \; \ud \beta_t}
+			\text{Our bond profit on time $[0,T]$} = \boxed{b_TS_T - b_0S_0  =  \int_0^T b_t \; \ud \beta_t}
 		\]
-	\begin{definition}[Self Financing Strategy]
-	A pair of stocks and bonds, $(a,b)$, is self financing if
+    \pause
+
+  \begin{definition}[Self Financing Strategy]
+    A pair of stocks and bonds, $(a,b)$, is \textcolor{magenta}{\it self financing} if
 		\[
-			a_TS_T + b_TS_T = a_0S_0 + b_0S_0 +  \int_0^T a_t \; \ud S_t + \int_0^T b_t \; \ud \beta_t
+			a_TS_T + b_TS_T = a_0S_0 + b_0S_0 +  \int_0^T a_t \; \ud S_t + \int_0^T b_t \; \ud \beta_t.
 		\]
-	\end{definition}
+  \end{definition}
 \end{frame}
 
 \begin{frame}{Fair price for a European call option}
@@ -414,34 +428,41 @@ For this we need a to create a self-financing strategy.
 	So we need to find $f$. Moreover, $f(S_0, T)$ is the fair price to pay.
 	\end{frame}
 
-	\begin{frame}
-It can be shown that $f$ solves the following partial differential equation
+\begin{frame}
+  It can be shown that $f$ solves the following partial differential equation
+
 	\[
 		\begin{cases}
-			\frac{\partial f}{\partial s}(s, x) = \frac{1}{2} \sigma^2 x^2 \frac{\partial^2f}{\partial x^2}(s,x) + rx\frac{\partial f}{\partial x}(s,x) - r f(s,x) & (s,x) \in [0,T] \times (0,\infty) \\
-			f(0,x) = (x-K)^+ & x \in (0,\infty).
+			\dfrac{\partial f}{\partial s}(s, x) = \frac{1}{2} \sigma^2 x^2 \dfrac{\partial^2f}{\partial x^2}(s,x) + rx\dfrac{\partial f}{\partial x}(s,x) - r f(s,x) & (s,x) \in [0,T] \times \R_+, \\[1em]
+			f(0,x) = (x-K)^+                                                                                                                                          & x \in (0,\infty).
 		\end{cases}
 	\]
-The solution is given by
+  \pause
+  \bigskip
+
+  The solution is given by
 	\[
 		f(t,x) = x \Phi\big(g(t,x)\big) - K e^{-rt}\Phi\big( h(t,x) \big),
 	\]
-where
+  where
 	\[
 		g(t,x) = \left[ \ln\left(\frac{x}{K}\right) + \left(r  +\frac{1}{2} \sigma^2\right) t \right] / (\sigma \sqrt{t}),
 	\]
-and
+
 	\[
 		h(t,x) = g(t,x) - \sigma / \sqrt{t},
 	\]
-and
+
 	\[
-		\Phi(t) = \frac{1}{\sqrt{2\pi}}\int_0^t \exp\left(-\frac{|x|^2}{2}\right) \ud x
+		\Phi(t) = \frac{1}{\sqrt{2\pi}}\int_0^t \exp\left(-\frac{x^2}{2}\right) \ud x.
 	\]
-	\end{frame}
+\end{frame}
 
 \begin{frame}{Potential for unlimited profit}
-In practice, option contracts are priced by "the market". This means that the cost of a contract is literally what the buyer is willing to pay or what the seller is willing to sell at.
+In practice, option contracts are priced by ``the market". This means that the
+cost of a contract is literally what the buyer is willing to pay or what the
+seller is willing to sell at.
+\pause
 
 \vspace{.1in}
 
@@ -537,17 +558,24 @@ where
 	\]
 	which means that
 	\[
-		t \mapsto \mathbb{E}(|u(t,x)|^p) = O\left[ \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right) \right], \quad \text{as } t \to \infty.
+		t \mapsto \mathbb{E}(|u(t,x)|^p \asymp \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right), \quad \text{as } t \to \infty.
 	\]
 	So the moments grow exponentially in time.
 \end{theorem}
 
 
 \end{frame}
-	\begin{frame}
-		\frametitle{References}
-		\small
 
+\begin{frame}
+		% \frametitle{References}
+
+    \begin{center}
+      \huge
+      Thanks for your listening~!
+    \end{center}
+
+    \bigskip
+		\small
 		\begin{thebibliography}{999}
 			\bibitem{CW}
 			K. Chung and R. Williams (1990)
