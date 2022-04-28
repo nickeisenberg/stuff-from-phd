@@ -198,8 +198,8 @@ solution} to \eqref{E:SHE}:
 \begin{equation} \label{E:gmsol}
   u(t,x)=\int_{\R^d}G(t,x-y)\mu(\ud y) + \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y),
 \end{equation}
-where $G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\frac{|x|^2}{2t} \right)$ is the
-heat kernel and the stochastic integral is the {\it Walsh integral} (see
+where $G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\left(2t\right)^{-1}|x|^2\right)$
+is the heat kernel and the stochastic integral is the {\it Walsh integral} (see
 \cite{walsh:86:introduction,dalang.khoshnevisan.ea:09:minicourse}).
 
 Regarding the function $b(t,x)$, we assume that for some constants $L_b>0$ and
@@ -214,22 +214,36 @@ which is usually referred to the \textit{parabolic Anderson model}
 
 The aim of this paper is to investigate the conditions required to guarantee
 the existence of invariant measures for the solution to \eqref{E:SHE}, which is
-a crucial step towards the study of the ergodicity of the system. We will see
-that for any $t_0>0$ that the solution of \eqref{E:SHE}, $u(t_0,\cdot)$,
-belongs to the Hilbert space $\mathcal{E}_{t_0} = (E_{t_0},
-\Norm{\cdot}_{E_{t_0}})$; see Remark \ref{R:Restart} below. Then by an
-invariant measure for \eqref{E:SHE}, we mean a measure, $\eta$, on
-$\mathscr{B}(E_{t_0})$ such that
-\begin{equation}\label{D:InvMeas}
-  \eta(A) = \int_{E} \mathscr{L}(u(t,\cdot, \varphi))(A) \; \eta(\ud  \zeta),
-  \quad \text{for all} \; t \ge t_0,
+a crucial step towards the study of the ergodicity of the system. Let $\rho$ be
+an admissible weight function (see Definition \ref{D:Rho}) and we will work
+under the Hilbert space $H=L_\rho^2(\R^d)$. Let $\mathcal{B}(H)$ be the space
+of all bounded Borel functions on $H$. Following
+\cite{da-prato.g-atarek.ea:92:invariant}, a probability measure $\eta$ on the
+Borel $\sigma$-field $\mathcal{B}(H)$ is said to be invariant for \eqref{E:SHE}
+if
+\begin{equation}\label{E:InvMeas}
+  \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\mu))(A) \; \eta(\ud  \zeta),
+  \quad \text{for all $ t>0$ and $A\in \mathcal{B}(H)$},
 \end{equation}
-where $A \in \mathscr{B}(L^2_{\rho}(\R^d))$ and
-$\mathscr{L}(u(t,\cdot,\varphi))(A)$ is the law of \eqref{E:SHE} starting from
-$\varphi \in E_{t_0}$;
-\begin{equation} \label{D:law}
- \mathscr{L}(u(t,\cdot,\varphi))(A) = \mathbb{P}\left[\omega \in  \Omega: u(t, \cdot, \varphi)(\omega) \in A\right], \quad t \ge t_0.
-\end{equation}
+where we use the notation that $u(t,x;\varphi)$ with a third argument to
+emphasize the dependence of the solution to \eqref{E:SHE} on the initial
+condition $u(0,\cdot)=\varphi$. Note that in \eqref{E:InvMeas} we require $t$
+to be strictly bigger than zero, unlike Eq. (3) of
+\cite{da-prato.g-atarek.ea:92:invariant} where one imposes $t\ge 0$.
+
+
+% We will see
+% that for any $t_0>0$ that the solution of \eqref{E:SHE}, $u(t_0,\cdot)$,
+% belongs to the Hilbert space $\mathcal{E}_{t_0} = (E_{t_0},
+% \Norm{\cdot}_{E_{t_0}})$; see Remark \ref{R:Restart} below. Then by an
+% invariant measure for \eqref{E:SHE}, we mean a measure, $\eta$, on
+% $\mathscr{B}(E_{t_0})$ such that
+% where $A \in \mathscr{B}(L^2_{\rho}(\R^d))$ and
+% $\mathscr{L}(u(t,\cdot,\varphi))(A)$ is the law of \eqref{E:SHE} starting from
+% $\varphi \in E_{t_0}$;
+% \begin{equation} \label{D:law}
+%  \mathscr{L}(u(t,\cdot,\varphi))(A) = \mathbb{P}\left[\omega \in  \Omega: u(t, \cdot, \varphi)(\omega) \in A\right], \quad t \ge t_0.
+% \end{equation}
 Due the {\it Krylov-Bogoliubov theorem} (see \cite[Theorem
 3.1.1]{da-prato.zabczyk:96:ergodicity}), we see that that existence of the
 measure can depend on the initial condition and under suitable conditions, for
@@ -528,16 +542,16 @@ Here is the main theorem of the paper:
   Then we have that
   \begin{enumerate}[(a)]
     \item for any $ t_0>0$, the sequence of laws of
-      $\{\mathcal{L}u(t,\cdot)\}_{t\ge t_0}$ is tight, i.e., for any $\epsilon
-      \in (0,1)$, there exists a compact set $\mathscr{K}\subset
+      $\{\mathcal{L}u(t,\cdot;\mu)\}_{t\ge t_0}$ is tight, i.e., for any
+      $\epsilon \in (0,1)$, there exists a compact set $\mathscr{K}\subset
       L^2_{\rho}(\R^d)$ such that
       \begin{equation} \label{E:cpt}
-        \mathcal{L}u(t,\cdot)(\mathcal{K})
-        :=  \mathbb{P}\left( u(t,\cdot) \in \mathscr{K}\: \right)
+        \mathcal{L}u(t,\cdot;\mu)(\mathcal{K})
+        :=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right)
         \ge 1-\epsilon, \qquad \text{for all $t\ge t_0>0$};
       \end{equation}
     \item there exists an invariant measure for the laws
-      $\{\mathcal{L}u(t,\cdot)\}_{t>t_0}$.
+      $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$.
   \end{enumerate}
 \end{theorem}
 
@@ -545,27 +559,30 @@ We will postpone the proof of Theorem \ref{T:Main} (a) to Section
 \ref{S:mainproof}. The proof of part (b) based on (a) is routine:
 
 \begin{proof}[Proof of Theorem \ref{T:Main} (b)]
-      Fix an arbitrary $T_0>0$ and denote
+  Fix an arbitrary $t_0>0$ and denote
   \begin{align*}
-    U(T) := \dfrac{1}{T}\int_{T_0}^{T+T_0} \mathcal{L}\left(u(t,\cdot)\right)\: \ud t, \quad T>0.
+    U(T) := \dfrac{1}{T}\int_{t_0}^{T+t_0} \mathcal{L}\left(u(t,\cdot;\mu)\right)\: \ud t, \quad T>0.
   \end{align*}
-  We claim that the family of laws $U(T,\cdot)$ for $T > 0$ is tight in $L^2_{\rho}(\R^d)$. Indeed,
-  for any $\epsilon\in (0,1)$, by part (a), there exists a compact set $\mathcal{K}\in
-  L_\rho^2(\R^d)$ such that \eqref{E:cpt} holds. This implies that
+  We claim that the family of laws $U(T,\cdot)$ for $T > 0$ is tight in
+  $L^2_{\rho}(\R^d)$. Indeed, for any $\epsilon\in (0,1)$, by part (a), there
+  exists a compact set $\mathcal{K}\in L_\rho^2(\R^d)$ such that \eqref{E:cpt}
+  holds. This implies that
   \begin{align*}
     U(T)\left(\mathcal{K}\right)
-    & = \frac{1}{T} \int_{T_0}^{T + T_0} \mathscr{L}(u(t,\cdot))\left(\mathcal{K}\right) \; \ud t
-      \ge \frac{1}{T} \int_{T_0}^{T + T_0} (1-\epsilon) \; \ud t
+    & = \frac{1}{T} \int_{t_0}^{T + t_0} \mathscr{L}(u(t,\cdot;\mu))\left(\mathcal{K}\right) \; \ud t
+      \ge \frac{1}{T} \int_{t_0}^{T + t_0} (1-\epsilon) \; \ud t
       = 1-\epsilon, \quad \text{for all $T>0$}.
   \end{align*}
 
-  Let $\{T_n\}_{n\in \mathbb{N}}$ be any deterministic sequence such that $T_n\uparrow \infty$.
-  Since $\left\{U(T_n)\right\}_{n\ge 1}$ is a tight sequence of measures, there exists a subsequence
-  $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, say, $\eta$, on
-  $L_\rho^2(\R^d)$. Then one can apply for the {\it Krylov-Bogoliubov theorem} (see, e.g.,
-  \cite[Theorem 3.1.1]{da-prato.zabczyk:96:ergodicity}) to conclude that the measure $\eta$ is the
-  invariant measure for $\mathscr{L}(u(t,\cdot))$, $t\ge T_0$. Finally, we can choose $T_0$ to be
-  arbitrarily close to zero. This completes the proof of part (b) of Theorem \ref{T:Main}.
+  Let $\{T_n\}_{n\in \mathbb{N}}$ be any deterministic sequence such that
+  $T_n\uparrow \infty$. Since $\left\{U(T_n)\right\}_{n\ge 1}$ is a tight
+  sequence of measures, there exists a subsequence
+  $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, say,
+  $\eta$, on $L_\rho^2(\R^d)$. Then one can apply for the Krylov-Bogoliubov
+  theorem (see, e.g., \cite[Theorem 3.1.1]{da-prato.zabczyk:96:ergodicity}) to
+  conclude that the measure $\eta$ is the invariant measure for
+  $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge t_0$. Finally, since $t_0$ can be
+  arbitrarily close to zero, one can conclude part (b) of Theorem \ref{T:Main}.
 \end{proof}
 
 
