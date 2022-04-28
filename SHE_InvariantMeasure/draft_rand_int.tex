@@ -1034,24 +1034,26 @@ As for $Y_\alpha$, we have the following result:
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z).
   \end{equation}
   Under the assumptions of Theorem \ref{T:Lrho} and (iii) of Theorem
-  \ref{T:Main}, then for all $q\ge 2$, $s>0$ and $y\in\R^d$,
+  \ref{T:Main}, then
   \begin{align} \label{E:NormY}
-  \Norm{Y_v(s,y)}_q^2 \le C_q\: [J_*(s + t_0,y)]^2\: \mathcal{H}_\alpha(s).
+    \Norm{Y_v(s,y)}_q^2 \le C_q\: [J_*(s + t_0,y)]^2\: \mathcal{H}_\alpha(s) <\infty
+    \qquad \text{for all $q\ge 2$, $s>0$, $y\in\R^d$.}
   \end{align}
-  Moreover, if
+  Moreover, for any nonnegative function $\rho$ (not necessarily admissible),
+  if
   \begin{enumerate}
-    \item[(iv')] for some $q\ge 2$ and $\alpha\in \left(0,1/2\right)$, the
-      weight function $\rho$ (not necessarily admissible)
+    \item[(iv')] for the constant $\alpha$ in \eqref{E:NormY}, there exists
+      $q>1/\alpha$ such that
     \begin{align} \label{E:GH-int'}
-      \int_{0}^t \left[\mathcal{G}^u_{\rho}(s + t_0)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$},
+      \int_{0}^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$},
     \end{align}
   \end{enumerate}
   then there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$
   such that
   \begin{equation} \label{E:yineq}
     \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
-    \le \Theta \int_0^t \left[\mathcal{G}^u_{\rho}(s + t_0)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s
-    <   \infty.
+    \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s
+    <   \infty, \quad \text{for all $t>0$}.
   \end{equation}
 \end{lemma}
 \begin{proof}
@@ -1064,9 +1066,9 @@ As for $Y_\alpha$, we have the following result:
     \le \left(\int_{\R^d} \Norm{ Y_v(s,y) }_q^2\rho(y) \ud y \right)^{q/2}.
     % = \Norm{\Norm{Y(s,\cdot)}_q}_\rho^q.
   \end{align}
-  Now we look to find an appropriate upper bound for $\Norm{Y(s,y)}^2_q$. By
+  Now we need to find an appropriate upper bound for $\Norm{Y(s,y)}^2_q$. By
   the Burkholder-Davis-Gundy inequality, as well as Minkowski's integral
-  inequality to see that
+  inequality, we see that
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2 \le
     C_q \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 \:
@@ -1084,12 +1086,13 @@ As for $Y_\alpha$, we have the following result:
   \begin{align} \label{E:NormB}
     \Norm{b(z_i, v(r,z_i))}_q
     \le C\left(1+\Norm{v(r,z_i)}_q\right)
-    \le C\bigg(1+(G(r+ t_0,\cdot) * |\mu|))(z_i)\bigg) = C J_*(r + t_0,z_i), \quad i=1,2,
+    % \le C\bigg(1+(G(r+ t_0,\cdot) * |\mu|))(z_i)\bigg)
+    \le  C J_0\left(r + t_0,z_i;\mu^*\right), \quad i=1,2.
   \end{align}
-  where $J_*$ is defined in \eqref{E:J*u}. Therefore,
+  Therefore,
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2
-    & \le C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i=1}^2  \bigg( G(s-r,y-z_i)  J_*(r + t_0,z_i)\bigg)                        \\
+    & \le C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i=1}^2  \bigg( G(s-r,y-z_i)  J_0\left(r + t_0,z_i;\mu^*\right)\bigg)         \\
     & = C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2) \iint_{\R^{2d}} \ud z_1\ud z_2                                            \\
     & \quad \times f(z_1-z_2) \prod_{i=1}^{2} \bigg( G(s-r,y-z_i)G(r + t_0,z_i-\sigma_i) \bigg)                                                                                \\
     & = C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0,y-\sigma_2)                              \\
@@ -1097,15 +1100,17 @@ As for $Y_\alpha$, we have the following result:
     & \le C (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}}\mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0, y-\sigma_2)               \\
     & \quad \times \int_{\R^d} \widehat{f}(\ud \xi) \exp\left(-\frac{(r + t_0)(s-r)}{s+ t_0}|\xi|^2\right),
   \end{align*}
-  where we have applied \eqref{E:gsim} and Plancherel's theorem. Therefore,
+  where we have applied \eqref{E:gsim} and Plancherel's theorem. Hence,
   \begin{align*}
-   \Norm{Y_v(s,y)}_q^2 \le C (2\pi)^{-2d} [J_*(s + t_0,y)]^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}|\xi|^2\right).
+   \Norm{Y_v(s,y)}_q^2 \le C (2\pi)^{-2d} J_0^2\left(s + t_0,y;\mu^*\right) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}|\xi|^2\right).
   \end{align*}
-  Notice the function
+  Because the function
   \[
-   t_0 \mapsto \frac{r + t_0}{s + t_0} \quad \text{for } t_0 > 0,
+   t_0 \mapsto \frac{r + t_0}{s + t_0} = 1- \frac{s-r}{s+t_0} \quad \text{for } t_0 > 0,
   \]
-  is increasing in $t_0 $ whenever $s > r > 0$. Thus we have that
+  is nondecreasing in $t_0 $ whenever $s > r > 0$, we can replace the two
+  appearances of $t_0$ in the exponent of the above inequality by zero to see
+  that
   \begin{equation} \label{E_:NormY}
     \Norm{Y_v(s,y)}_q^2 \le C (2\pi)^{-2d} [J_*(s + t_0,y)]^2 \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
   \end{equation}
@@ -1120,15 +1125,17 @@ As for $Y_\alpha$, we have the following result:
   Plugging the above bound back to \eqref{E_:NormY} proves \eqref{E:NormY}.
   \bigskip
 
-  It remains to prove \eqref{E:yineq}. By the definition of $\mathcal{G}^u_{\rho}(t)$ in \eqref{E:G}
-  and by \eqref{E:NormY}, we see that
+  It remains to prove \eqref{E:yineq}. By the definition of
+  $\mathcal{G}_{\rho}(t;\mu)$ in \eqref{E:G} and by \eqref{E:NormY}, we see
+  that
   \begin{align*}
     \int_{\R^d}\Norm{Y_v(s,y)}_q^2 \: \rho(y)\ud y
-    & \le C \: \mathcal{G}^u_{\rho}(s + t_0) \mathcal{H}_\alpha(s).
+    & \le C \: \mathcal{G}_{\rho}(s + t_0;\mu) \mathcal{H}_\alpha(s).
   \end{align*}
-  Plugging the above expression to the far right-hand of \eqref{E:EYqr} proves \eqref{E:yineq}.
-  Finally, the finiteness of the upper bound in \eqref{E:yineq} is guaranteed by condition
-  \eqref{E:GH-int'}. This completes the proof of Lemma \ref{L:yineq}.
+  Plugging the above expression to the far right-hand of \eqref{E:EYqr} proves
+  \eqref{E:yineq}. Finally, the finiteness of the upper bound in
+  \eqref{E:yineq} is guaranteed by condition \eqref{E:GH-int'}. This completes
+  the proof of Lemma \ref{L:yineq}.
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
