@@ -1,4 +1,5 @@
-noremap <leader><leader> :w <bar>:!./SamplePathAni.py 3 & <cr>
+" noremap <leader><leader> :w <bar>:!./SamplePathAni.py 3 & <cr>
+noremap <leader><leader> :w <bar>:!.% & <cr>
 " function! CopyAllBib()
 "   " echom "Run biber now..."
 "   let filenameRoot=expand("%:r")

@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # A simulation of the 1-d SHE with vanishing boundary conditions
 # u_t - (1/2)u_{xx} = \lambda * u \dot{W}
 # k is a multipicative constant.
@@ -13,13 +15,13 @@ from matplotlib import animation
 # Set the time and space intervals. Choose number of partitions of each.
 
 # Time
-t = .10038
-nt = 500
+t = .2
+nt = 1000
 delta_t = t / nt
 
 # Space
-x = 1
-nx = 100
+x = .1
+nx = 50
 delta_x = x / nx
 
 # create the time and spatial axis
@@ -65,7 +67,7 @@ def ulbd(lbd):
     return(ulbd)
 
 # u = ulbd(lbd)
-NF = 10 
+NF = 10
 u = np.zeros((NF,nx+1, nt+1))
 for i in range(NF):
     u[i,:,:] = ulbd(3 * ((i+1)/NF))
