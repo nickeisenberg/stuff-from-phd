@@ -778,38 +778,37 @@ may remove the Lemma.}
 \end{proof}
 
 \begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:Solve}
-Suppose that
-  \begin{enumerate}[(i)]
-   \item the initial measure $\mu$ satisfies the following integrability condition:
-   \begin{equation} \label{A:icon}
-   \int_{\R^d}\exp\left(-a|x|^2\right)\Norm{\mu(\ud x)}_2 < \infty \quad \text{for all $a>0$},
-   \end{equation}
-   \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
-   \begin{equation} \label{A:dalcon}
-   \Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
-   \quad \text{for some and therefore any $\beta>0$}.
-   \end{equation}
-  \end{enumerate}
-then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution is $L^2(\Omega)$ continuous and is adapted to the filtration induced by ${W}$.
+  Suppose that
+    \begin{enumerate}[(i)]
+     \item the initial measure $\mu$ is an $\mathcal{F}_0$-measurable random variable that satisfies
+       the following integrability condition:
+       \begin{equation} \label{A:icon}
+         \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
+       \end{equation}
+     \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
+       \begin{equation} \label{A:dalcon}
+         \Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
+         \quad \text{for some and therefore any $\beta>0$}.
+       \end{equation}
+    \end{enumerate}
+  then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
+  is $L^2(\Omega)$ continuous and is adapted to the filtration induced by ${W}$.
 \end{theorem}
 
 \begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}] \label{T:ExUn}
-  Under the assumptions of Theorem \ref{T:Solve}, for any $t>0$ and $x \in
-  \R^d$, the solution to \eqref{E:SHE}, $u(t,x)$, given by \eqref{E:gmsol} is
-  in $L^p(\Omega)$ and for $p\ge 2$
+  Under the assumptions of Theorem \ref{T:Solve}, for any $t>0$ and $x \in \R^d$, the solution to
+  \eqref{E:SHE}, $u(t,x)$, given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
   \begin{equation} \label{E:mb}
     \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * |\mu|)(x)\big]H(t;\gamma_p)^{1/2},
   \end{equation}
-  where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ (see \eqref{E:lipcon}
-  for $L_0$ and $L_b$) and the function $H(t;\gamma_p)$ is nondecreasing in $t$
-  (see \cite{chen.huang:19:comparison} for the expression of $H$). Moreover, if
-  two conditions in \eqref{E:U0finite} hold,
+  where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ (see \eqref{E:lipcon} for $L_0$ and $L_b$)
+  and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for
+  the expression of $H$). Moreover, if two conditions in \eqref{E:U0finite} hold,
   % \begin{equation}\label{A:dalcon0}
   %   \Upsilon(0) < \infty \quad \text{and} \quad \gamma_p < \frac{1}{4\Upsilon(0)},
   % \end{equation}
-  then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing
-  $C=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
-  H(t;\gamma_p)^{1/2}<\infty$, we have that
+  then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
+  \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
   \begin{equation} \label{E:mb0}
     \Norm{u(t,x)}_p \le C\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg).
   \end{equation}
@@ -1033,12 +1032,15 @@ As for $Y_\alpha$, we have the following result:
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z).
   \end{equation}
-  Under the assumptions of Theorem \ref{T:Lrho} and (iii) of Theorem
+  Then we have that
+  % Under the assumptions of Theorem \ref{T:Lrho} and (iii) of Theorem
   \ref{T:Main}, then
   \begin{align} \label{E:NormY}
-    \Norm{Y_v(s,y)}_q^2 \le C_q\: J_0^2(s + t_0,y;\mu^;\mu^**)\: \mathcal{H}_\alpha(s) <\infty
-    \qquad \text{for all $q\ge 2$, $s>0$, $y\in\R^d$.}
+    \Norm{Y_v(s,y)}_q^2 \le C_q\: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s),
+    \qquad \text{for all $q\ge 2$, $s>0$, $y\in\R^d$,}
   \end{align}
+  which is finite if \eqref{E:H} holds.
+
   Moreover, for any nonnegative function $\rho$ (not necessarily admissible),
   if
   \begin{enumerate}
@@ -1139,10 +1141,9 @@ As for $Y_\alpha$, we have the following result:
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
-  Fix an arbitrary $ t_0>0$. Let $u(t, x;\mu)$ be the solution to \eqref{E:SHE}
-  and $Y_v$ be as in \eqref{E:Y}. Under the conditions of Theorem \ref{T:Lrho}
-  and (iii) of Theorem \ref{T:Main}, for all $\alpha \in (0,1/2)$, the
-  following factorization holds
+  Fix an arbitrary $ t_0>0$. Let $u(t, x;\mu)$ be the solution to \eqref{E:SHE} and $Y_v$ be as in \eqref{E:Y}. Under
+  the conditions of Theorem \ref{T:Lrho} and (iii) of Theorem \ref{T:Main}, for all $\alpha \in (0,1/2)$, the following
+  factorization holds
   \begin{equation*}
     \dfrac{\sin(\alpha \pi)}{\pi}
     \int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s
@@ -1155,23 +1156,46 @@ As for $Y_\alpha$, we have the following result:
   \end{equation}
 \end{lemma}
 \begin{proof}
-  The lemma is straightforward provided that one can switch the orders of
-  stochastic and ordinary integrals:
+  The lemma is straightforward provided that one can switch the orders of stochastic and ordinary integrals:
   \begin{align}
-      & \int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag                                                        \\
-    = & \int_0^t \ud s (t-s)^{\alpha-1}\int_{\R^d} \ud y\: G(t-s,x-y) \notag                                                                  \\
+      & \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag                                                     \\
+    = & \int_0^t \ud s\: (t-s)^{\alpha-1}\int_{\R^d} \ud y\: G(t-s,x-y) \notag                                                                  \\
       & \times \int_0^s\: \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \notag                                      \\
     = & \int_0^t \ud s\: (t-s)^{\alpha-1} \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(t-r,x-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \label{E:Fubini_1} \\
-    = & \int_0^t  \int_{\R^d} W(\ud r,\ud z)G(t-r,x-z)b(z,v(r,z)) \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1} \label{E:Fubini_2}        \\
+    = & \int_0^t \int_{\R^d} W(\ud r,\ud z)G(t-r,x-z)b(z,v(r,z)) \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1} \label{E:Fubini_2}         \\
     = & \dfrac{\pi}{\sin(\alpha \pi)}\int_0^t  \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),\notag
   \end{align}
-  where the last step is the Beta integral which requires that $\alpha\in
-  (0,1)$. It remains to justify the two applications of the stochastic Fubini's
-  theorem (see Theorem 5.30 of Chapter one in
-  \cite{dalang.khoshnevisan.ea:09:minicourse}, or also
-  \cite{walsh:86:introduction} or Theorem 4.18 of
-  \cite{da-prato.zabczyk:92:stochastic}) in \eqref{E:Fubini_1} and
-  \eqref{E:Fubini_2} in the following two steps. \bigskip
+  where the last step is the {\it Beta integral} which requires that $\alpha\in (0,1)$. It remains to justify the two
+  applications of the stochastic Fubini's theorem (see Theorem 5.30 of Chapter one in
+  \cite{dalang.khoshnevisan.ea:09:minicourse}, or also \cite{walsh:86:introduction} or Theorem 4.18 of
+  \cite{da-prato.zabczyk:92:stochastic}) in \eqref{E:Fubini_1} and \eqref{E:Fubini_2} in the following two steps.
+  \bigskip
+
+  % {{{ A failure try
+  % To justify the change of orders in the above arguments, it suffices to show that
+  % \begin{align*}
+  %   I:= & \int_0^t \ud s \: (t-s)^{\alpha-1}\int_{\R^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: \\
+  %       & \times f(z_1-z_2) \left(  \prod_{i=1}^{2} G(s-r,y-z_i)\right)  \: \E\left(\prod_{i=1}^{2}b(z_i,v(r,z_i))\right)                     \\
+  %    =  & \int_0^t \ud s \: (t-s)^{\alpha-1}\int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                \\
+  %    <  & \: +\infty.
+  % \end{align*}
+  % By the moment bounds for $Y_v(s,y)$ in \eqref{E:NormY}, we see that
+  % \begin{align*}
+  %   I \le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y) J_0^2(s+t_0,y;\mu^*) \\
+  %   =     & C \int_0^t \ud s \: (t-s)^{\alpha-1} \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y)                      \\
+  %         & \times \iint_{\R^{2d}}\mu^*(\ud z_1)\mu^*(\ud z_2)\: G\left(s+t_0,y-z_1\right)G\left(s+t_0,y-z_2\right).
+  % \end{align*}
+  % Now we bound the three heat kernels using \eqref{E:gsim} as follows:
+  % \begin{align*}
+  %    G & (t-s,x-y)  \prod_{i=1}^{2}G(s+t_0,y- z_i)                                                                                                             \\
+  %      & =\frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s,0\right)} \prod_{i=1}^{2}G\left(s+t_0,y- z_i\right)                                                   \\
+  %      & \le 2^d \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s),0\right)} \prod_{i=1}^{2}G\left(2s+2t_0,y- z_i\right)                                         \\
+  %      & = 2^d [4(t-s)]^{d/2} \prod_{i=1}^{2}\bigg[ G\left(2s+2t_0,y- z_i\right)G\left(2(t-s),x-y\right)\bigg]                                                 \\
+  %      & = 2^{2d} (t-s)^{d/2} \prod_{i=1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},y-\frac{s+t_0}{t+t_0}(x- z_i)\right)\right] \\
+  %      & \le 2^{2d} (t-s)^{d/2} \prod_{i=1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},0\right)\right]\\
+  %      & \le 2^{2d} (t-s)^{d/2} \prod_{i=1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},0\right)\right].
+  % \end{align*}
+  % }}}
 
   {\bf\noindent Step 1.~} In this step, we justify the change of orders in
   \eqref{E:Fubini_1}. Note that $t, x$ and $s$ are fixed. It suffices to prove
