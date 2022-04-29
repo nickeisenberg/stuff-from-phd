@@ -926,7 +926,6 @@ For $F_\alpha$, the Step 1 of the proof of \cite[Theorem
   compact.
 \end{proposition}
 
-As for $Y_\alpha$, we have the following result:
 
 % {{{ -- Removed stuff
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1023,10 +1022,13 @@ As for $Y_\alpha$, we have the following result:
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % }}}
 
+As for $Y_\alpha$, we have the following two lemmas, which hold for both non-restarted SHE ($t_0=0$)
+and the restarted SHE ($ t_0>0$):
+
 \begin{lemma} \label{L:yineq}
-  Fix an arbitrary $ t_0>0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart} and
-  $\dot{W}_{t_0}$ be the time-shifted noise; see \eqref{E:ShiftW}. For any $\alpha\in (0,1/2)$,
-  denote (with slight abuse of notation)
+  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
+  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
+  when $ t_0=0$. For any $\alpha\in (0,1/2)$, denote (with slight abuse of notation)
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z).
@@ -1127,8 +1129,9 @@ As for $Y_\alpha$, we have the following result:
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
-  Fix an arbitrary $ t_0>0$. Let $u(t, x;\mu)$ be the solution to \eqref{E:SHE} and $Y_v$ be as in
-  \eqref{E:Y}. If \eqref{E:H} holds for some $\alpha\in (0,1/2)$, then the following factorization
+  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
+  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
+  when $ t_0=0$. If \eqref{E:H} holds for some $\alpha\in (0,1/2)$, then the following factorization
   holds
   \begin{equation*}
     \dfrac{\sin(\alpha \pi)}{\pi}
@@ -1212,26 +1215,23 @@ As for $Y_\alpha$, we have the following result:
   Therefore, $I_1\le C_{t,s,t_0} \: \mathcal{H}_{\alpha}(s) \: J_0^2\left(2(t+t_0),x;\mu^*\right)
   <\infty$. \bigskip
 
-  {\bf\noindent Step 2.~} Similarly, as for \eqref{E:Fubini_2}, we need to show
-  that
+  {\bf\noindent Step 2.~} Similarly, as for \eqref{E:Fubini_2}, we need to show that
   \begin{align*}
     I_2:= & \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: \\
           & \times f(z_1-z_2) \left(  \prod_{i=1}^{2} G(t-r,x-z_i)\right)  \: \E\left(\prod_{i=1}^{2}b(z_i,v(r,z_i))\right) < \infty.
   \end{align*}
-  By the Cauchy Schwartz inequality, \eqref{E:NormB} and because $\alpha\in
-  (0,1/2)$,
+  By the Cauchy Schwartz inequality, \eqref{E:NormB} and because $\alpha\in (0,1/2)$,
   \begin{align*}
-    I_2\le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i=1}^{2}\bigg(  G(t-r,x-z_i) J_*(r + t_0,z_i)\bigg) \\
-         = & C' \int_0^t \ud r \: (t-r)^{-\alpha}  \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i=1}^{2}\bigg(  G(t-r,x-z_i) J_*(r + t_0, z_i)\bigg).
+    I_2\le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i=1}^{2}\bigg(  G(t-r,x-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg) \\
+         = & C' \int_0^t \ud r \: (t-r)^{-\alpha}  \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i=1}^{2}\bigg(  G(t-r,x-z_i) J_0\left(r + t_0, z_i;\mu^*\right)\bigg).
   \end{align*}
-  Now by the same arguments as those leading to \eqref{E:NormY} (with $2\alpha$
-  there replaced by $\alpha$), we see that
+  Now by the same arguments as those leading to \eqref{E:NormY} (with $2\alpha$ there replaced by
+  $\alpha$), we see that
   \begin{align*}
-    I_2 & \le C (J_*(t,x))^2 \int_0^t \ud r \: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(t-r)}{t}|\xi|^2\right),
+    I_2 & \le C J_0^2\left(t,x; \mu^*\right) \int_0^t \ud r \: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(t-r)}{t}|\xi|^2\right),
   \end{align*}
-  which is finite by \eqref{E:H} where we replace $\alpha$ with $\alpha/2$ and
-  repeat the same steps right after Equation \eqref{E_:NormY}. This completes
-  the proof of Lemma \ref{L:Factorize}.
+  which is finite by \eqref{E:H} where we replace $\alpha$ with $\alpha/2$ and repeat the same steps
+  right after \eqref{E_:NormY}. This completes the proof of Lemma \ref{L:Factorize}.
 \end{proof}
 
 % {{{ -- Removed stuff
