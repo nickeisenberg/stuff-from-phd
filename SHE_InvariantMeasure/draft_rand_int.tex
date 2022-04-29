@@ -1127,22 +1127,23 @@ As for $Y_\alpha$, we have the following result:
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
-  Fix an arbitrary $ t_0>0$. Let $u(t, x;\mu)$ be the solution to \eqref{E:SHE} and $Y_v$ be as in \eqref{E:Y}. Under
-  the conditions of Theorem \ref{T:Lrho} and (iii) of Theorem \ref{T:Main}, for all $\alpha \in (0,1/2)$, the following
-  factorization holds
+  Fix an arbitrary $ t_0>0$. Let $u(t, x;\mu)$ be the solution to \eqref{E:SHE} and $Y_v$ be as in
+  \eqref{E:Y}. If \eqref{E:H} holds for some $\alpha\in (0,1/2)$, then the following factorization
+  holds
   \begin{equation*}
     \dfrac{\sin(\alpha \pi)}{\pi}
     \int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s
-    = \int_0^t  \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z).
+    = \int_0^t  \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),
   \end{equation*}
-  As a consequence,
+  for all $t>0$ and $x\in\R^d$. As a consequence,
   \begin{equation} \label{E:1fac}
     v(t,x)= \left[G(t, \cdot) * u(t_0,\cdot; \mu)\right](x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t,x),
     \quad \text{for all $t>0$ and  $x\in\R^d$}.
   \end{equation}
 \end{lemma}
 \begin{proof}
-  The lemma is straightforward provided that one can switch the orders of stochastic and ordinary integrals:
+  The lemma is straightforward provided that one can switch the orders of stochastic and ordinary
+  integrals:
   \begin{align}
       & \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag                                                     \\
     = & \int_0^t \ud s\: (t-s)^{\alpha-1}\int_{\R^d} \ud y\: G(t-s,x-y) \notag                                                                  \\
@@ -1151,11 +1152,11 @@ As for $Y_\alpha$, we have the following result:
     = & \int_0^t \int_{\R^d} W(\ud r,\ud z)G(t-r,x-z)b(z,v(r,z)) \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1} \label{E:Fubini_2}         \\
     = & \dfrac{\pi}{\sin(\alpha \pi)}\int_0^t  \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),\notag
   \end{align}
-  where the last step is the {\it Beta integral} which requires that $\alpha\in (0,1)$. It remains to justify the two
-  applications of the stochastic Fubini's theorem (see Theorem 5.30 of Chapter one in
-  \cite{dalang.khoshnevisan.ea:09:minicourse}, or also \cite{walsh:86:introduction} or Theorem 4.18 of
-  \cite{da-prato.zabczyk:92:stochastic}) in \eqref{E:Fubini_1} and \eqref{E:Fubini_2} in the following two steps.
-  \bigskip
+  where the last step is the {\it Beta integral} which requires that $\alpha\in (0,1)$. It remains
+  to justify the two applications of the stochastic Fubini's theorem (see Theorem 5.30 of Chapter
+  one in \cite{dalang.khoshnevisan.ea:09:minicourse}, or also \cite{walsh:86:introduction} or
+  Theorem 4.18 of \cite{da-prato.zabczyk:92:stochastic}) in \eqref{E:Fubini_1} and
+  \eqref{E:Fubini_2} in the following two steps. \bigskip
 
   % {{{ A failure try
   % To justify the change of orders in the above arguments, it suffices to show that
@@ -1183,23 +1184,33 @@ As for $Y_\alpha$, we have the following result:
   % \end{align*}
   % }}}
 
-  {\bf\noindent Step 1.~} In this step, we justify the change of orders in
-  \eqref{E:Fubini_1}. Note that $t, x$ and $s$ are fixed. It suffices to prove
-  the following condition:
+  {\bf\noindent Step 1.~} In this step, we justify the change of orders in \eqref{E:Fubini_1}. Note
+  that $t, x$ and $s$ are fixed. It suffices to prove the following condition:
   \begin{align*}
-  I_1:= & \int_{\R^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:               \\
-        & \times f(z_1-z_2) \left(  \prod_{i=1}^{2} G(s-r,y-z_i)\right)  \: \E\left(\prod_{i=1}^{2}b(z_i,v(r,z_i))\right) \\
-     =  & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                              \\
-     <  & \: +\infty.
+    I_1:= & \int_{\R^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:               \\
+          & \times f(z_1-z_2) \left(  \prod_{i=1}^{2} G(s-r,y-z_i)\right)  \: \E\left(\prod_{i=1}^{2}b(z_i,v(r,z_i))\right) \\
+       =  & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                              \\
+       <  & \: +\infty.
   \end{align*}
   But this follows immediately from \eqref{E:NormY}. Indeed
   \begin{align*}
     \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2
-    & \le C \int_{\R^d} \ud y \;  G(t-s,x-y) J_0^2(s+t_0,y;\mu^*) \mathcal{H}_\alpha(s) \\
-    & =C \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y) J_0^2(s+t_0,y;\mu^*).
+    \le & C \int_{\R^d} \ud y \;  G(t-s,x-y) J_0^2(s+t_0,y;\mu^*) \mathcal{H}_\alpha(s)                       \\
+     =  & C \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \;  G(t-s,x-y)\iint_{\R^{2d}}\mu^*(\ud z_1)\mu^*(\ud z_2) \\
+        & \times G\left(s+t_0,y-z_1\right)G\left(s+t_0,y-z_2\right).
   \end{align*}
-  Then Condition \eqref{E:G} implies that $I_1 < \infty$ as $\rho(y)$ cannot
-  decay as fast as $y \mapsto G(t-s,x-y)$ (See Remark \ref{R:admRho}).
+  Now we bound the three heat kernels using \eqref{E:gsim} as follows:
+  \begin{align*}
+     G & (t-s,x-y)  \prod_{i=1}^{2}G(s+t_0,y- z_i)                                                                                                             \\
+       & =\frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s,0\right)} \prod_{i=1}^{2}G\left(s+t_0,y- z_i\right)                                                   \\
+       & \le 2^d \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s),0\right)} \prod_{i=1}^{2}G\left(2s+2t_0,y- z_i\right)                                         \\
+       & = 2^d [4(t-s)]^{d/2} \prod_{i=1}^{2}\bigg[ G\left(2s+2t_0,y- z_i\right)G\left(2(t-s),x-y\right)\bigg]                                                 \\
+       & = 2^{2d} (t-s)^{d/2} \prod_{i=1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},y-\frac{s+t_0}{t+t_0}(x- z_i)\right)\right] \\
+       & \le 2^{2d} (t-s)^{d/2} \prod_{i=1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},0\right)\right]\\
+       & \le C_{t,s,t_0} \prod_{i=1}^{2} G\left(2(t+t_0),x- z_i\right).
+  \end{align*}
+  Therefore, $I_1\le C_{t,s,t_0} \: \mathcal{H}_{\alpha}(s) \: J_0^2\left(2(t+t_0),x;\mu^*\right)
+  <\infty$. \bigskip
 
   {\bf\noindent Step 2.~} Similarly, as for \eqref{E:Fubini_2}, we need to show
   that
