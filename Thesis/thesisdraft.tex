@@ -101,6 +101,31 @@ urlcolor=blue
 \newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
 % }}}
 
+% Biber --------------------
+\usepackage[backend=biber,
+style=alphabetic,
+hyperref=true,
+backref=true,
+natbib=true,
+sorting=nyt,
+abbreviate=true]{biblatex}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+	\clearfield{doi}
+	\clearfield{url}
+	\clearfield{issn}
+	\clearlist{location}
+	\clearfield{month}
+	\clearfield{series}
+	
+	\ifentrytype{book}{}{% Remove publisher and editor except for books
+		\clearlist{publisher}
+		\clearname{editor}
+	}
+}
+% \addbibresource{All.bib}
+\addbibresource{./thesis_biber.bib}
+% }}}
+%-------------------------
 
 %%%%%Format rules: Normal margins are 1 in. If you need to print with 1.5in margins, uncomment the line below
 %\oddsidemargin0.5in \textwidth6in
@@ -118,12 +143,12 @@ urlcolor=blue
 %\newtheorem{theorem}{  \normalfont Theorem} [chapter]
 
 % Put the title, author, and date in. 
-\title{Sample Thesis Title Goes Here}
+\title{The interpolated stochastic heat and wave equation: solvability, exact moment asymptotics and special case properties.}
 \author{Nicholas Eisenberg} 
 \date{\today} %date of graduation
 \copyrightyear{2022} %copyright year
 
-\keywords{Stochastic partial differential equations, stochastic heat equation, interpolated stochastic heat and wave equation, invariant measure, exact moment asymptotics, Gaussian noise, Caputo derivative, fractional Laplacian.}
+\keywords{Stochastic partial differential equations, interpolated stochastic heat and wave equation, stochastic heat equation, fractional calculus, invariant measure, exact moment asymptotics, Gaussian noise, Caputo derivative, fractional Laplacian.}
 
 % Put the Thesis Adviser here. 
 \adviser{Le Chen}
@@ -192,7 +217,7 @@ Put text of the acknowledgments here.
  
 The study of deterministic Calculus can be thought of as the starting point of the search to model physical phenomena with math. The story has it, that Issac Newton was first inspired to develop what would be known as the theory of Calculus so that he could describe a falling apple from a tree. Very simple scenarios, such as the apple falling from the tree, were for the first time successfully described but of course, not all scenarios are "simple" and more theory needed to be developed. 
 
-Consider the situation where we have a perfectly round piece of wire with infinitesimally small radius and suppose that we initially heat this wire. Assuming that there is no addition heat being added to our system, how could we model the evolution of the temperature at a specific point $x$ on the piece of wire? In other words, can we find a function $u(t,x)$ that gives us the exact temperature at position $x$ on the wire at time $t$? The answer is yes, and thanks to Joesph Fourier, we know that this scenario can be modeled by the so called heat equation:
+Consider the situation where we have a perfectly round piece of wire with infinitesimally small radius and suppose that we initially heat this wire. Assuming that there is no additional heat being added to our system, how could we model the evolution of the temperature at a specific point $x$ on the piece of wire? In other words, can we find a function $u(t,x)$ that gives us the exact temperature at position $x$ on the wire at time $t$? The answer is yes, and thanks to Joesph Fourier, we know that this scenario can be modeled by the so called heat equation:
 	\[
 		\begin{cases}
 			\mathcal{H}u(t,x) = 0 & t \ge 0, \; x \in \R \\
@@ -204,14 +229,33 @@ where $\mathcal{H}$ is the heat operator:
 		\mathcal{H}u(t,x) = \frac{\partial u}{\partial t}(t,x) - \frac{\partial^2 u}{\partial x^2}(t,x)
 	\]
 
-In order to fully utilize the above model, we need to make the problem more realistic. In any real-life scenario, we can not safely assume that there will not be any outside heat affecting our system. Moreover, it is safe to assume that any outside heat affecting our system will be done so in some sort of "random" way. The question now is, how do we model this randomness? When the spatial dimension is $1$, as is above in our heat model, John Walsh laid out the frame work to describe such problem in his seminal textbook, {\em An Introduction to Stochastic Partial Differential Equations.} The idea is to construct a {\em Gaussian space-time white noise}, $\dot{W}$, and consider the following {\em stochastic heat equation}:
+In order to fully utilize the above model, we need to make the problem more realistic. In any real-life scenario, we can not safely assume that there will not be any outside heat affecting our system. Moreover, it is safe to assume that any outside heat affecting our system will be done in some sort of "random" way. The question now is, how do we model this randomness? When the spatial dimension is $1$, as is above in our heat model, John Walsh laid out the frame work to describe such problem in his seminal textbook, {\em An Introduction to Stochastic Partial Differential Equations.} The idea is to construct a {\em Gaussian space-time white noise}, $\dot{W}$, and consider the following {\em stochastic heat equation}:
 	\begin{equation}\label{E:introSHE}
 	\begin{cases}
 		\mathcal{H}u(t,x)  = \rho(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R \\
 	u(0,x) = f(x) & x \in \R,
 	\end{cases}
 	\end{equation}
-where $\rho$ is a globally Lipschitz function and $f$ describes the initial heat of our wire.
+where $\rho$ is a globally Lipschitz function and $f$ describes the initial heat of our wire. See Section \ref{S:SHE} for a through introduction of this set up.
+	
+%   \begin{figure*}
+%	\centering
+%	\begin{subfigure}[b]{0.475\textwidth}
+%		\centering
+%		\includegraphics[width=\textwidth]{figs/whitenoise.png}
+%		\caption[]%
+%		{{\small $\lambda = 0$}}    
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}[b]{0.475\textwidth}  
+%		\centering 
+%		\includegraphics[width=\textwidth]{figs/spacetimewhite.png}
+%		\caption[]%
+%		{{\small $\lambda = 1.8$}}    
+%	\end{subfigure}
+%	\caption[]
+%	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
+%\end{figure*}	
 	
 This notation is purely formal as $\dot{W}$ does not exist as a function but as a distribution. However we can make sense of the above equation as the following {\em stochastic Walsh integral equation}:
 	\begin{equation} \label{E:introMsol}
@@ -222,7 +266,7 @@ where $G(t,x)$ is the Gaussian heat kernal:
 		G(t,x) = \frac{\exp\left(- \frac{|x|^2}{2t}\right)}{\sqrt{2 \pi t}}, \quad t > 0, \; x \in \R.
 	\]
 	
-Thus through this novel idea due to Walsh, we now move one step closer to being able to model real-life phenomena under much more realistic conditions. The next question then would be under what conditions is the equation \eqref{E:introSHE} well-possed? Also, can we consider apply this theory to other partial differential operators such as the wave operator,
+Thus through this novel idea due to Walsh, we now move one step closer to being able to model real-life phenomena under much more realistic conditions. The next question then would be under what conditions is the equation \eqref{E:introSHE} well-possed? Also, can we apply this theory to other partial differential operators such as the wave operator,
 	\[
 		\mathcal{W}u(t,x) = \frac{\partial^2 u}{\partial t^2}  - \frac{\partial^2 u}{\partial x^2} 
 	\]
@@ -230,18 +274,9 @@ or even a more general fractional operator of the following type:
 	\[
 		\mathcal{L}_{b, \alpha}u(t,x) = \partial_b u(t,x) - (-\Delta)^{-\alpha / 2}, 
 	\]
-where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian.
+where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian. The fractional operator, $\mathcal{L}_{\alpha, \beta}$ will be thoroughly discussed in sections \ref{S:ISHWEmom} and \ref{S:Global} below. As for the stochastic wave equation, we direct the interested reader to \cite{dalang.khoshnevisan.ea:09:minicourse, milletsole.global2021, balan.chen.chen:03:invariant} to name a few. We will now briefly discuss the stochastic heat equation before introducing the first project of this thesis.
 
-To give a complete treatment of the above questions would be deserving of multiple textbooks. As for \eqref{E:introSHE}, Chen and Dalang proved the following:
-	\begin{theorem}
-		Suppose that the function globally Lipschitz function $\rho$ and the initial distribution $f(\cdot)$ satisfy the following:
-			\[
-				|\rho(x)| \le L_{\rho}^2(L_0^2 + |x|^2), \quad \text{and} \quad 	\int_{\R} \exp(-a|x|^2) \; f(\ud x), 
-			\]
-		for some $L_b, L_0 > 0$ and any $a>0$. Then for $p \ge 2$, there exists a unique, $L^p(\Omega)$-continuous process that almost surely satisfies \eqref{E:introMsol}.
-	\end{theorem}
-
-It important to note that the above theorem allows for the initial condition to be the Dirac delta distribution. Moreover, this is a very natural choice and has many real world applications. 
+As for the well-possedness of Equation \eqref{E:introSHE} above, Chen and Dalang \cite{chen.dalang:15:moments} proved the following:
 
    \begin{figure*}
 	\centering
@@ -258,9 +293,20 @@ It important to note that the above theorem allows for the initial condition to 
 		\caption[]%
 		{{\small $\lambda = 1.8$}}    
 	\end{subfigure}
-	\caption[]
-{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
+	\caption[] 
+	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
+	\label{F:SHEsim1}
 \end{figure*}
+
+	\begin{theorem}
+		Suppose that the function $\rho$ is globally Lipschitz function and the initial distribution $f(\cdot)$ satisfies the following:
+			\[
+				|\rho(x)| \le L_{\rho}^2(L_0^2 + |x|^2), \quad \text{and} \quad 	\int_{\R} \exp(-a|x|^2) \; f(\ud x) < \infty, 
+			\]
+		for some $L_b, L_0 > 0$ and any $a>0$. Then for $p \ge 2$, there exists a unique, $L^p(\Omega)$-continuous process that almost surely satisfies \eqref{E:introMsol}.
+	\end{theorem}
+
+\noindent It important to note that the above theorem allows for the initial condition to be the Dirac delta distribution. Moreover, this is a very natural choice and has many real world applications. 
 
 
 \begin{figure*}
@@ -269,7 +315,7 @@ It important to note that the above theorem allows for the initial condition to 
 		\centering 
 		\includegraphics[width=\textwidth]{figs/deltaNoise2.2.png}
 		\caption[]%
-		{{\small $\lambda = 2.2$}}    
+		{{\small $\lambda = 2.2$}} 
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.475\textwidth}   
@@ -278,40 +324,48 @@ It important to note that the above theorem allows for the initial condition to 
 		\caption[]%
 		{{\small $\lambda = 2.8$}}    
 	\end{subfigure}
-	\caption[]
+	\caption[] 
 	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
-	\label{fig:mean and std of nets}
+	\label{F:SHEsim2}
 \end{figure*}
 
-These simulations illustrate a phenomena not seen in the deterministic case, that is, the formation of very large peaks widely separated by very deep valleys. This may seem unrealistic in practice but there is in fact a situation where one may make sense of this. Consider the $\delta_0(\cdot)$ initial condition to by representative of the "big bang" at the creation of our universe. One may assume that this is a highly random and chaotic event the transfer of heat may be roughly modeled Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$ for some "large" $\lambda > 0$. These tall, but isolated, peaks that form may be though of as the formation formation of galaxies and the empty space in between can just be thought of as the emptiness of outer space. Of course this is highly simplified, but still a nice way to picture what is happening in the simulations. 
+The simulations in Figures \ref{F:SHEsim1} and \ref{F:SHEsim2} illustrate a phenomena not seen in the deterministic case, that is, the formation of very large peaks widely separated by very deep valleys. This may seem unrealistic in practice but there is in fact a situation where one may make sense of this. Consider the $\delta_0(\cdot)$ initial condition to by representative of the "big bang" at the creation of our universe. One may assume that this is a highly random and chaotic event and that the transfer of heat may be roughly modeled Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$ for some "large" $\lambda > 0$. These tall, but isolated, peaks that form may be though of as the formation formation of galaxies and the empty space in between can just be thought of as the emptiness of outer space. Of course this is highly simplified, but still a nice way to picture what is happening in the simulations. 
+
+Describing the growth of the peaks is an interesting question on its own. At the moment, it is an open question to describe the growth of the sample paths in time to the stochastic heat equation, in other words, the growth of the function
+	\[
+		t \mapsto u(t,x)(\omega), \quad x \in \R^d, \; \omega \in \Omega.
+	\]
+However, we do have some results on the growth in time of the $p^{th}$ moments of the solution for $p\ge2$. Some references that address this matter can found in \cite{chen.dalang:15:moments, chen.huang:19:comparison, chen.kim:19:nonlinear}. Namely, in many cases of interest, the $p^{th}$ moments to the solution of the stochastic heat equation grow exponentially in time. In the first project described in Section \ref{S:InvMeas} below, we will require bounded moments in time and we will see that this will require us to only consider the spatial dimension $d \ge 3$ and the noise, $\dot{W}$ to be colored in space rather than white. We will now continue this discussion more in the next section where we will rigorously define the stochastic heat equation.
+
+
+\section {The Stochastic Heat Equation} \label{S:SHE}
+
+text...
+
+
+\section { \normalfont The Interpolated Stochastic Heat and Wave Equation} \label{S:ISHWE}
+
+
+
+\chapter{ \normalfont Invariant Measures for the Stochastic Heat Equation} \label{C:InvMeas}
+
+text...
+
+\chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{S:ISHWEmom}
+
+text...
+
+
+\chapter{ \normalfont Existence of Global Solutions to the ISHWE with a Super-linear Diffusion Term}\label{S:Global}
+
+text...
 
 
 
 
 
 
-\section { \normalfont This is an example of a section heading}
 
-
-\chapter{New Chapter}
-\begin{theorem}
-Another theorem.
-\end{theorem}
-
-\begin{figure}
-  \begin{center}
-  \setlength{\unitlength}{.7in}
-    \begin{picture}(4.2,1)
-      \put(0.2,.5){\circle{0.1}}
-      \put(0.9,.5){\circle{0.2}}
-      \put(1.6,.5){\circle{0.3}}
-      \put(2.3,.5){\circle{0.4}}
-      \put(3.1,.5){\circle{0.5}}
-      \put(3.8,.5){\circle{0.6}}
-    \end{picture}
-  \end{center}
- \caption{Hollow circles}\label{HollowCircles}
-\end{figure}
 
 %%%%%%%%Two options for having a bibliography. If you use a separate file or multiple files:
 %\bibliography{./robotics,./imageprocessing,./thesis}
@@ -319,42 +373,20 @@ Another theorem.
 
 %Or you can include the bibliography entries directly:
 
-\begin{thebibliography}{99}
-%\newcommand{\AmS}{$${\protect\the\textfont2 A}\kern-.1667em\lower
-%         .5ex\hbox{\protect\the\textfont2 M}\kern
-%         -.125em{\protect\the\textfont2 S}}
+%\begin{thebibliography}{99}
+%%\newcommand{\AmS}{$${\protect\the\textfont2 A}\kern-.1667em\lower
+%%         .5ex\hbox{\protect\the\textfont2 M}\kern
+%%         -.125em{\protect\the\textfont2 S}}
+%
+%\bibitem{hahn} Jane Hahn, ``\LaTeX{} For Everyone,'' Personal TeX Inc., 
+%  12 Madrona Street, Mill Valley, California.
+%
+%\end{thebibliography}
 
-\bibitem{hahn} Jane Hahn, ``\LaTeX{} For Everyone,'' Personal TeX Inc., 
-  12 Madrona Street, Mill Valley, California.
-
-\bibitem{goossens} Frank Mittelbach and Michel Goossens (with
-Johannes Braams, David Carlisle, and Chris Rowley),
-  ``The \LaTeX{} Companion,'' second edition, Addison-Wesley, 2004.
-
-\bibitem{GRM:LaTeXGraphicsCompanion} 
-Michal Goossens, Sabastian Rahtz, and Frank Mittelbach, ``The \LaTeX{} 
-Graphics Companion,'' Addison-Wesley, 1997.
-
-\bibitem{Gra:MathIntoLaTeX} George Gr\"atzer, ``Math into \LaTeX: An 
-introduction to \LaTeX{} and \mbox{\AmS-\LaTeX},'' Birkh\"auser, 1996.
-
-\bibitem{hoenig} Alan Hoenig, ``\TeX{} Unbound: \LaTeX{} and \TeX{} strategies
-for Fonts, Graphics, and More,'' Oxford University Press, 1997. Includes
-practical advice and numerous exammples for a wide range of topics,
-includeing virtual fonts, graphics, and resources for the internet and
-multimedia.
-
-\bibitem{KH} Helmut Kopka and Patrick W. Daly, ``A Guide to \LaTeXe:
-  Document Preparation for Beginners and Advanced Users,'' 2nd ed.,
-  Addison-Wesley, 1995.
-
-\bibitem{lamport} Leslie Lamport, ``\LaTeX: A Document Preparation
-  System,'' 2nd ed., Addison-Wesley, 1994.
-
-\bibitem{walsh} Norman Walsh, ``Making \TeX{} Work,'' O'Reilly and
-  Associates, 1994.
-
-\end{thebibliography}
+% {{{ All references: New ones with biber
+\addcontentsline{toc}{section}{References}
+\printbibliography[title={References}]
+% }}}
 
 
 
