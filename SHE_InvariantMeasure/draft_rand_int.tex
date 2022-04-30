@@ -526,31 +526,73 @@ part (b) based on (a) is routine:
 
 \section{Examples} \label{S:Example}
 
-\begin{example}[Bessel kernel and $\delta_0$ initial data] \label{Ex:Gamma+f}
-  We end this section with an example of an applicable initial data and spectral density. Note that
-  because of \eqref{E:GH-int}, the initial data and spectral density must exist in tandem. Let's
-  consider the initial data $\mu(\cdot) = \delta_0(\cdot)$ and let the correlation function of $W$
-  be $f(x) = B_s(x)$, where $B_s$ denotes the Bessel kernel with parameter $s$. It is shown in
-  \cite[Section 1.2.2]{grafakos:14:modern} that there exists $c(s,d)$ and $C(s,d)$ such that for $0
-  < s < d$
-   \[
-    B_s(x) \le C(s,d) \exp(-|x|/2) \quad \text{for} \quad |x| \ge 2,
-   \]
-  and for $H(x) = |x|^{s-d} + 1 + O(|x|^{s-d+2})$,
-   \[
-    \frac{1}{c(s,d)} \le \frac{B_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2.
-   \]
-  Hence $B_s(x)$ has blow up at the origin and exponential decay at infinity. Moreover,
-  \begin{equation} \label{E:FB}
-    \mathcal{F}G_s(\xi) = \frac{1}{(1+  |\xi|^2)^{s/2}}.
-  \end{equation}
+\subsection{Bessel kernel}
+
+\begin{example}[Bessel kernel as a correlation function] \label{Ex:Gamma+f}
+  Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
+  (see, e.g., Section 1.2.2 of \cite{grafakos:14:modern})
+  \begin{enumerate}
+    \item $f_s(x)>0$ for all $x\in\R^d$ and $ \Norm{f_s}_{L^1(\R^d)}=1$;
+    \item there exists a constant $C(s,d)>0$ such that
+      \begin{align*}
+        f_s(x) \le C(s,d) \exp(-|x|/2) \quad \text{for} \quad |x| \ge 2;
+      \end{align*}
+    \item there exists a constant $c(s,d)>0$ such that
+      \begin{align*}
+        \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2, \quad \text{with}
+      \end{align*}
+      \begin{align*}
+        H_s(x) =
+        \begin{cases}
+          |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,}\cr
+          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}\cr
+           1 + O(|x|^{s-d})                               & \text{for $s>d$;}
+        \end{cases}
+        \end{align*}
+      \item the Fourier transform of $f_s$ is strictly positive:
+        \begin{equation} \label{E:FB}
+          \mathcal{F}f_s(\xi) = \frac{1}{(1+|\xi|^2)^{s/2}}.
+        \end{equation}
+  \end{enumerate}
+    Properties 1 and 4 ensure that $f_s$ is a nonnegative and nonnegative-definite measure for any
+    $s>0$. Property 4 ensures that
+    \begin{align*}
+      \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
+    \end{align*}
+    In the following, we will assume that $s>d-2$ and $d\ge 3$.
+\end{example}
+
+\begin{proposition}
+  Let $f_s$ be the Bessel kernel defined in Example \ref{Ex:Gamma+f}. Then for $s>d-2$ and  $d\ge
+  3$, it holds that
+  \begin{align*}
+    \Upsilon(0) = \frac{2 \pi^{d/2} \Gamma\left((-d+s+2)/2\right)}{d\:(d-2)\:\Gamma\left(s/2\right)}.
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  By the spherical coordinates and \eqref{E:FB},
+  \begin{align*}
+    \Upsilon(0) = \int_{\R^d} \frac{\ud\xi}{|\xi|^2\left(1+|\xi|^2\right)^{s/2}}
+    = \frac{\pi^{d/2}}{\Gamma\left(\frac{d}{2}+1\right)} \int_0^\infty \frac{r^{d-1}}{r^2\left(1+r^2\right)^{s/2}} \ud r.
+  \end{align*}
+  Now by change of variable $z=\frac{r^2}{1+r^2}$, we can transform the above integral to the Beta
+  integral:
+  \begin{align*}
+     \int_0^\infty \frac{r^{d-1}}{r^2\left(1+r^2\right)^{s/2}} \ud r
+     = \frac{1}{2} \int_0^1 z^{d/2-2}(1-z)^{(s-d)/2}\ud z =
+     \frac{\Gamma\left(d/2-1\right)\Gamma\left((s-d+2)/2\right)}{2\Gamma(s/2)}.
+  \end{align*}
+  This proves the proposition.
+\end{proof}
+
+\begin{example}
   It is easy to see that $\delta_0$ satisfies \eqref{A:icon}. Moreover, it is easy to see that if
   $d-2 < s < d$ then $\Upsilon(0) < \infty$ and so the conditions of Theorem \eqref{T:Solve} and
   Theorem \ref{T:ExUn} are satisfied and a unique mild solution, $u$, exists that starts from
-  $\delta_0$ and is driven by a Gaussian noise with correlation function $B_s(x)$. We denote
+  $\delta_0$ and is driven by a Gaussian noise with correlation function $f_s(x)$. We denote
   $v(t,x)$ to be the restarted solution as in \eqref{E:restart}. We now show that $v$ satisfies the
   conditions in Theorem \ref{T:Main}. In other words, it remains to prove that $v(0,\cdot) =
-  u(t_0,\cdot)$ and $B_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and
+  u(t_0,\cdot)$ and $f_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and
   \eqref{E:GH-int}.
 
   Let $q>2$ be arbitrary. Starting with \eqref{E:InitData},
@@ -578,7 +620,7 @@ part (b) based on (a) is routine:
   implies that for any $T>0$, $\mathcal{G}_{\widehat{\rho}, q}(s)$ is bounded on
   $s \in [0,T]$. This will be needed below.
 
-  Now lets verify \eqref{E:H} for the Bessel kernel, $B_s$. By recalling
+  Now lets verify \eqref{E:H} for the Bessel kernel, $f_s$. By recalling
   \eqref{E:FB}, we have
    \begin{align*}
     \mathcal{H}_{\alpha}(s)
@@ -629,12 +671,12 @@ part (b) based on (a) is routine:
   $[0, T]$. These two facts imply \eqref{E:GH-int}, thus allowing us to apply
   Theorem \eqref{T:Main} and verify the existence of an invariant measure to
   \eqref{E:SHE} with initial data, $\mu(\cdot) = u(t_0, \cdot)$ and noise
-  $\dot{W}_{t_0}$ with correlation function given to be the Bessel kernel $B_s$.
+  $\dot{W}_{t_0}$ with correlation function given to be the Bessel kernel $f_s$.
   Recall that the invariant measures derived from specific initial conditions take
   the form of \eqref{E:InvMeasForm}. Since for all $t >0$ we have $u(t + t_0,x)
   \stackrel{\mathcal{L}}{=} v(t,x)$, what we have actually done was verify the
   existence of an invariant measure$, \eta$, for \eqref{E:SHE} starting from
-  $\delta_0$ with correlation function $B_s(x)$. Indeed,
+  $\delta_0$ with correlation function $f_s(x)$. Indeed,
    \begin{align*}
     \eta(A) & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(v(t,\cdot, u(t_0,\cdot)))(A) \; \ud t   \\
             & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t + t_0,\cdot, \delta_0))(A) \; \ud t \\
