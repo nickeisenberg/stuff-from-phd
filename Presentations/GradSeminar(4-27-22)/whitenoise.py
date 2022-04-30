@@ -21,5 +21,5 @@ dotW[1:] = dB
 
 # plot 
 plt.plot(part, dotW, linewidth=.5)
-plt.title('White Noise: $dB_t$') 
+# plt.title('White Noise: $dB_t$') 
 plt.show()
