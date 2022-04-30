@@ -229,7 +229,7 @@ where $\mathcal{H}$ is the heat operator:
 		\mathcal{H}u(t,x) = \frac{\partial u}{\partial t}(t,x) - \frac{\partial^2 u}{\partial x^2}(t,x)
 	\]
 
-In order to fully utilize the above model, we need to make the problem more realistic. In any real-life scenario, we can not safely assume that there will not be any outside heat affecting our system. Moreover, it is safe to assume that any outside heat affecting our system will be done in some sort of "random" way. The question now is, how do we model this randomness? When the spatial dimension is $1$, as is above in our heat model, John Walsh laid out the frame work to describe such problem in his seminal textbook, {\em An Introduction to Stochastic Partial Differential Equations.} The idea is to construct a {\em Gaussian space-time white noise}, $\dot{W}$, and consider the following {\em stochastic heat equation}:
+In order to fully utilize the above model, we need to make the problem more realistic. In any real-life scenario, we can not safely assume that there will not be any outside heat affecting our system. Moreover, it is safe to assume that any outside heat affecting our system will be done in some sort of "random" way. The question now is, how do we model this randomness? When the spatial dimension is $1$, as is above in our heat model, John Walsh laid out the frame work to describe such problem in his seminal textbook, {\em An Introduction to Stochastic Partial Differential Equations.} The idea is to construct a {\em Gaussian space-time white noise}, $\dot{W}$ (see Section \ref{S:Noise}), and consider the following {\em stochastic heat equation}:
 	\begin{equation}\label{E:introSHE}
 	\begin{cases}
 		\mathcal{H}u(t,x)  = \rho(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R \\
@@ -276,7 +276,7 @@ or even a more general fractional operator of the following type:
 	\]
 where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian. The fractional operator, $\mathcal{L}_{\alpha, \beta}$ will be thoroughly discussed in section \ref{S:ISHWE} below as well as in Chapters \ref{C:ISHWEmom} and \ref{C:Global}. As for the stochastic wave equation, we direct the interested reader to \cite{dalang.khoshnevisan.ea:09:minicourse, milletsole.global2021, balan.chen.chen:03:invariant} to name a few. 
 
-Because of its importance, we will finish this introduction with a brief discussion about the stochastic heat equation before giving a more thorough treatment in Section \ref{S:SHE}. As for the well-possedness of Equation \eqref{E:introSHE} above, Chen and Dalang \cite{chen.dalang:15:moments} proved the following:
+We will finish this introduction with a brief discussion about the stochastic heat equation before giving a more thorough treatment in Section \ref{S:SHE}. As for the well-possedness of Equation \eqref{E:introSHE} above, Chen and Dalang \cite{chen.dalang:15:moments} proved the following:
 
    \begin{figure*}
 	\centering
@@ -337,9 +337,175 @@ Describing the growth of the peaks is an interesting question on its own. At the
 	\]
 However, we do have some results on the growth in time of the $p^{th}$ moments of the solution for $p\ge2$. Some references that address this matter can found in \cite{chen.dalang:15:moments, chen.huang:19:comparison, chen.kim:19:nonlinear} and also Chapter \ref{C:ISHWEmom} below. Namely, in many cases of interest, the $p^{th}$ moments to the solution of the stochastic heat equation, and more generally the space-time fractional equation defined in Section \ref{S:ISHWE}, grow exponentially in time. This phenomena is reffered to as {\em intermittency}.
 
+\section{Gaussian Noise}\label{S:Noise}
+The driving force of a stochastic partial differential equation is the noise term, usually denoted by $\dot{W}$. Throughout this thesis we will considers three such types: white in time and white in space, white in time and colored in space, and time independent. We will now define each of the three. 
+
+
+\subsection{White in time and either spatially white or colored} \label{SS:whitecolor}
+
+We follow the set up as in \cite{dalang.khoshnevisan.ea:09:minicourse}. First, let $\Gamma(\ud x)$ be a non-negative and non-negative definite tempered measure, ie,
+	\[
+		\int_{\R^{d}} \Gamma(\ud x)(\phi * \tilde{\phi})(x) \ge 0, \quad \forall \; \phi \in \mathscr{L}(\R^d),
+	\]
+where $\mathscr{L}(\R^d)$ denotes the space of Schwartz functions and $\tilde{\phi}(x) = \phi(-x)$ and in addition 
+	\[
+		\int_{\R^d} \Gamma(\ud x) \; \frac{1}{(1 + |x|^2)^r} < \infty.
+	\]
+The Bochner-Schwartz theorem \cite{Schwartz.1966} guarantees the existence of a measure $\mu$, referred to as the {\em spectral measure}, whose Fourier transform is $\Gamma$: $\mathcal{F}\mu = \Gamma$. This means that 
+	\[
+		\int_{\R^d} \Gamma(\ud x) \phi(x) = \int_{\R^d} \mu(\ud \xi) \mathcal{F}\phi(\xi),
+	\]
+where we choose the following as our definition of the Fourier transform:
+	\[
+		\mathcal{F}\phi(\xi)  = \int_{\R^d} \ud x \; \exp\left(-i \xi \cdot x\right) \phi(x).
+	\]
+
+\begin{definition}
+	Consider the $L^2(\Omega, \mathcal{F}, \mathbb{P})$ valued mean zero Gaussian process
+		\[
+			W = \left( W(\phi), \; \phi \in C_0^{\infty}(\R^{d+1}) \right)
+		\]
+	such that 
+		\[
+			\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{2d}} \Gamma(\ud x) \left( \phi(s,\cdot)*\tilde{\psi}(s ,\cdot) \right)(x).
+		\]
+	When $\Gamma(\ud x) = \delta_0(x)$ then $W$ is referred to as a {\em spatially homogeneous Gaussian space-time white noise}. Otherwise we say that $W$ is white in time and {\em colored} in space. 
+\end{definition}
+
+	   \begin{figure*}
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figs/bsheet1.png}
+		\caption[]%
+		{}    
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.475\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{figs/bsheet2.png}
+		\caption[]%
+		{}    
+	\end{subfigure}
+	\caption[] 
+	{\small A simulation of two sample paths of a Brownian sheet.} 
+	\label{F:bsheet}
+\end{figure*}
+
+\begin{example}[Proposition 4.19 \cite{da-prato.zabczyk:92:stochastic}] A space-time white noise is the distributional derivative of a Brownian sheet. See Figure \ref{F:bsheet}.
+
+Note that in the case of a space-time white noise that the covariance takes the following form:
+	\[
+		\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{d}}\ud x \; \phi(s,x) \psi(s ,x),
+	\]
+and when the noise is colored and $\Gamma$ has density $f$ then the covariance takes the form
+	\begin{equation} \label{E:CorrDensity}
+		\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{2d}}\ud x \ud y \; \phi(s,x) f(x-y) \psi(s ,y).
+	\end{equation}
+Lastly, by the convolution property of the Fourier transform, we may say that 
+	\[
+		\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{d}} \mu(\ud \xi) \; \mathcal{F}\phi(s,\xi)  \overline{\mathcal{F}\psi(s , \xi)}.
+	\]	
+	
+\end{example}
+	
+	
+
+
+\subsection{Time independent}\label{SS:timeind}
+
+A time independent Gaussian noise is defined similarly as above.
+
+\begin{definition}
+	A {\em time-independent spatially homogeneous} Gaussian noise is a Gaussian processes indexed on $C_0^{\infty}(\R^d)$,	
+	\[
+		W = \left(W(\phi) :  \phi \in C_0^{\infty}(\R^d)\right),
+	\]
+	with the following covariance structure
+	\[
+		\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_{\R^{d}} \mu(\ud \xi)  \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)},
+	\]
+	where we have the relation that $\Gamma = \mathcal{F}\mu$ just as we did in Section \ref{SS:whitecolor}.
+\end{definition}
+
+
 \section {The Stochastic Heat Equation} \label{S:SHE}
+We will now introduce more formally the stochastic heat equation along with several important results that will be needed throughout this thesis. There many resources to choose for an introduction to the stochastic heat equation \cite{chen.dalang:15:moments, chen.kim:19:nonlinear, dalang.khoshnevisan.ea:09:minicourse, da-prato.zabczyk:92:stochastic, khoshnevisan.cbms.2014}. 
 
+Recall from \eqref{E:introSHE} that the stochastic heat equation can be written informally in the following way:
+	
+	\begin{equation}\label{E:SHE}
+\begin{cases}
+\frac{\partial u}{\partial t}(t,x)  = \frac{\nu}{2} \Delta_xu(t,x) + \rho(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R^d \\
+u(0,x) = \mu(\cdot) & x \in \R^d.
+\end{cases}
+\end{equation}
+The initial distribution $\mu$ is a deterministic and locally finite Borel measure which must satisfy the following inequality 
+	\begin{equation}\label{A:InitCon}
+		\int_{\R^d} \exp\left(-a |x|^2\right) |\mu|(\ud x) < \infty, \quad \text{for all } a > 0,
+	\end{equation}
+where $|\mu| = \mu^+ + \mu^-$. In general, $d \ge 1$, $\nu >0$ and the noise may be either of the three noises introduced in Section \ref{S:Noise}. However, as we will see in Chapter \ref{C:InvMeas}, our only case of interest is when $d \ge 3$ and the noise is white in time and colored in space. For that reason we will restrict ourselves to that case.
 
+We will denote by $\hat{f}(\ud \xi)$, the spectral measure of the noise $\dot{W}$ and in the case when $\Gamma$ has density $f$, as in \eqref{E:CorrDensity} above, then the spectral measure takes the form $\hat{f}(\xi) \ud \xi$. We define the following property known as {\em Dalang's condition}:
+	\begin{equation}\label{A:DalCon}
+		\Upsilon(\beta) := \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty, \quad \text{for some and hence all } \beta > 0.
+	\end{equation}
+
+By a solution to \eqref{E:SHE}, we mean a solution to the following stochastic integral equation:
+	\begin{align}
+		u(t,x) &= \int_{0}^\infty G(t,x-y) \mu (\ud y) + \int_0^t\int_{\R^d} G(t-s, x-y) \rho(u(s,y)) W(\ud s, \ud y) \nonumber \\
+		&= J_0(t,x) + I(t,x) \label{E:MildSolSHE}
+	\end{align}
+where $G$ is the heat kernel 
+	\[
+		G(t,x) = (2\pi \nu t)^{-d/2} \exp\left(-\frac{|x|^2}{2 2 \nu t}\right).
+	\]
+\begin{definition}
+	A random field $u = (u(t,x) : t \ge 0, \; x \in \R^d)$ is a {\em mild solution} to \eqref{E:SHE} if 
+		\begin{enumerate}
+			\item $u$ is adapted to the filtration generated by the noise $W$,
+			\item $u$ is jointly measureable with respect to $\mathscr{B}((0,\infty) \times \R^d) \times \mathcal{F}$,
+			\item $\Norm{I(t,x)}_2 < \infty$ for all $(t,x) \in (0,\infty) \times \R^d$,
+			\item $u$ satisfies \eqref{E:MildSolSHE} a.s. for all $(t,x) \in (0,\infty) \times \R^d$.
+		\end{enumerate}
+\end{definition}
+
+We have the following solvability theorem 
+
+\begin{theorem}[Theorem 2.4 \cite{chen.kim:19:nonlinear}] \label{T:SHEsolve}
+	Suppose that the initial distribution and the spectral measure satisfy both \eqref{A:InitCon} and \eqref{A:InitCon} respectively. Suppose that $\rho$ is globally Lipschitz with Lipschitz constant $L_rho$. Then there exists a unique (in the sense of versions) random-field solution starting from $\mu$ that is $L^2(\Omega)$-continuous. 
+\end{theorem}
+
+The next result gives us a very useful bound on the $p^{th}$ moments of the solution. In order to fully utilize the result, we need to strengthen some of our assumption to the following:
+	\begin{equation} \label{E:U0finite}
+	\Upsilon(0) := \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad
+	64L^2_{b}   <  \frac{1}{4\Upsilon(0)};
+	\end{equation}
+
+%\begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}]
+%	Under the same assumptions of Theorem \ref{T:SHEsolve}, for any $p \ge 2$, $t > 0$ and $x \in \R^d$ we have that 
+%		\[
+%			\Norm{u(t,x)}_p \le C \left[\bar\varsigma + \sqrt{2}(G(t,\cdot)*|\mu|)(x)\right]H(t; \gamma_p)^{1/2}
+%		\]
+%	where $\bar\varsigma = |\rho(0)|/L_\rho$, $\gamma_p = 32pL_\rho^2$ and $H(t;\gamma_p)$ is a nondecreasing function in $t$ whose exact definition is not important in this setting. Moreover, under the added assumption that  
+%\end{theorem}
+
+\begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}, Lemma 2.5 \cite{chen.kim:19:nonlinear}] \label{T:ExUn}
+	Under the assumptions of Theorem \ref{T:SHEsolve}, for any $t>0$ and $x \in \R^d$, the solution to
+	\eqref{E:SHE}, $u(t,x)$, is in $L^p(\Omega)$ and for $p\ge 2$
+	\begin{equation} \label{E:mb}
+	\Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * |\mu|)(x)\big]H(t;\gamma_p)^{1/2},
+	\end{equation}
+	where $\bar{\varsigma}=|\rho(0)|/L_{\rho}$, $\gamma_p = 32pL_{\rho}^2$ and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for the expression of $H$). Moreover, if two conditions in \eqref{E:U0finite} hold,
+	% \begin{equation}\label{A:dalcon0}
+	%   \Upsilon(0) < \infty \quad \text{and} \quad \gamma_p < \frac{1}{4\Upsilon(0)},
+	% \end{equation}
+	then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
+	\overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
+	\begin{equation} 
+	\Norm{u(t,x)}_p \le C\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg).
+	\end{equation}
+\end{theorem}
 
 
 \section { \normalfont The Interpolated Stochastic Heat and Wave Equation} \label{S:ISHWE}
