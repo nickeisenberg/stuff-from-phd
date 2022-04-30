@@ -1389,16 +1389,16 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 
   Recall that Lemma \ref{L:Factorize} implies that
   \begin{align*}
-    v(t_0,x) = \Big(G(t-t_0,\cdot) * u(t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
+    v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
   \end{align*}
   Now define the set $\mathscr{K} (\Lambda)$ as
   \begin{align*}
-    \mathscr{K} (\Lambda) = \left\{ \big(G(t-t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x):
+    \mathscr{K} (\Lambda) = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x):
     \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
   \end{align*}
-  Then by Proposition \ref{P:weight} (since $t-t_0\ge t_0>0$) and Proposition \ref{P:F-Comp},
-  $\mathscr{K} (\Lambda)$ is relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Moreover, by
-  Chebyshev's inequality, \eqref{E:uInLrho} and \eqref{E:yineq}, we see that
+  Then by Proposition \ref{P:weight} and Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is
+  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Moreover, by Chebyshev's inequality,
+  \eqref{E:uInLrho} and \eqref{E:yineq}, we see that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
     & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber         \\
@@ -1424,144 +1424,6 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   which proves part (a) of Theorem \ref{T:Main}.
 \end{proof}
 
-% {{{ -- Removed Stuff
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{proof}[Proof of Theorem \ref{T:Main} (b)]
-% Recall that from Lemma \ref{L:Factorize} implies that for any $t_0 > 0$,
-% \[
-% u(t_0,x) = \Big(G(t_0,\cdot) * u(0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y\right](t_0,x),
-% \]
-% and again recall that we assume $u(0,\cdot)$ satisfies \eqref{E:RandInit}. Now define the set $\mathscr{K} (\Lambda)$ as
-% \[
-% \mathscr{K} (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
-% \quad \text{where $\Norm{y}_{\widehat{\rho}} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\widehat{\rho}})} \le \Lambda $} \}.
-% \]
-% Then by Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. Moreover, by \eqref{E:yineq} and Chebyshev's inequality we have
-% \begin{align}
-% \mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \}
-% & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber \\
-% & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y(s,\cdot)}_{\widehat{\rho}}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot}_{\widehat{\rho}}^2\right) \nonumber \\
-% & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot}_{\widehat{\rho}}^2\right) < \infty \label{E:Restartbdd}
-% \end{align}
-% With all this said, \eqref{E:Restartbdd} implies that
-% \begin{align*}
-% \mathbb{P}\{ u(t_0,\cdot) \in \mathscr{K}(\Lambda) \}
-% & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot)}_{\rho}^2\right)
-% \end{align*}
-% Therefore, we can choose $\Lambda > 0$ big enough such that
-% \[
-% \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}, q}(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(0,\cdot)}_{\rho}^2\right) < \epsilon,
-% \]
-% thus we get that
-% \begin{align*}
-% \mathbb{P}\{ u(t_0,\cdot) \in \mathscr{K}(\Lambda) \} & \ge 1- \epsilon.
-% \end{align*}
-% We can now deduce from this and the semigroup property of the solution to the heat equation that for any $t > t_0$,
-% \begin{align*}
-% \mathbb{P}\{ u(t,\cdot) \in \mathscr{K}(\Lambda) \} & \ge (1-
-% \epsilon)\mathbb{P}\{ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} < \Lambda
-% \}.
-% \end{align*}
-% We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0$ that there exists a $C>0$ such that
-% \[
-% \mathbb{P}\{ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} \ge \Lambda
-% \} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\hat{\rho}, q}\left( t - t_0 \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
-% \]
-% Thus, by enlarging $\Lambda$ if necessary,
-% \[
-% \mathbb{P}\{ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} \ge \Lambda
-% \}  \le \epsilon, \quad \forall \; t \ge t_0,
-% \]
-% thus completing the proof of \eqref{E:cpt}.
-% % Since we assumed that $u$ is bounded in probability in $L^2_{\widehat{\rho}}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\widehat{\rho}} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
-%
-% %\newpage
-% % In this proof we will use $\stackrel{\mathcal{L}}{=}$ to denote equality in law, otherwise, the equality holds almost surely. Let $t_0>0$ and consider the following restarted equation:
-% % \begin{equation} \label{E:SHErandint}
-% %  \begin{cases}
-% %   \dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0/2}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
-% %   v(0,\cdot) = u(t_0/2,\cdot),                                                               &
-% % \end{cases}
-% % \end{equation}
-% %where $\dot W_{t_0/2}(t,x) = \dot W(t + t_0/2,x)$ denotes the time shifted noise. \textcolor{blue}{Should the time shifted noise be equality in law?} We note that \eqref{E:uInLrho} implies that this random initial condition, $u(t_0/2,\cdot)$ satisfies \eqref{A:icon} and thus the solution to \eqref{E:SHErandint} exists and we denote the solution as $v$. By the Markov property of the solution to \eqref{E:SHE}, we may say that for any $t \ge 0$,  $u(t + t_0/2,x) \stackrel{\mathcal{L}}{=} v(t,x)$, where $\mathcal{L}$ means the equality is in law. In other words, for all $t \ge 0$, the following holds:
-% % \begin{align*}
-% %  u(t + t_0/2,x ) \stackrel{\mathcal{L}}{=} v(t,x) = (G(t,\cdot) * u(t_0/2,\cdot))(x) + \int_0^{t}\int_{\R^d} G(t - s, x-y)b(y,v(s, y)) W_{t_0/2}(\ud s, \ud y).
-% % \end{align*}
-% %We will use the notation $Y_v$ and $\mathcal{G}_{\widehat{\rho}, q}^v$ where
-% %  \[
-% %    Y_v(s,y):= \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0/2}(\ud r,\ud z),
-% %  \]
-% % and
-% % \begin{align*}
-% %  \mathcal{G}_{\widehat{\rho}, q}^v(s) &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{v(0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x \\
-% %  &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x.
-% % \end{align*}
-% % We define $\mathcal{G}_{\widehat{\rho}, q}^u(s)$ and $Y_u$ in an equivalent manner. We wish to be able to apply the factorization result \eqref{E:1fac} and also the bound in \eqref{E:yineq} for $Y_v$. This requires us to show that $v(0,\cdot) = u(t_0/2, \cdot)$ satisfies \eqref{E:G} and \eqref{E:GH-int'} with $\hat{\rho}$.  Indeed, H\"older's inequality and the admissible weight property imply that
-% % \begin{align*}
-% %  \mathcal{G}_{\widehat{\rho}, q}^v(s)  &= \int_{\R^d} \left(\int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x \\
-% %  &\le \int_{\R^d} \int_{\R^d} G(s,x-y)\Norm{u(t_0/2,y)}_q^2\ud y  \; \widehat{\rho}(x) \ud x \\
-% %  & \le C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \widehat{\rho}(y) \ud y.
-% % \end{align*}
-% %Now by \eqref{E:mb0},
-% % \begin{align*}
-% %  C(t_0) \int_{\R^d} \Norm{u(t_0/2,y)}_q^2 \widehat{\rho}(y) \ud y &\le C(t_0) \int_{\R^d} \Big(G(t_0/2,\cdot) * (1+\Norm{\mu}_q)\Big)^2(y) \widehat{\rho}(y) \ud y \\
-% %  &= C(t_0) \mathcal{G}_{\widehat{\rho}, q}^u(t_0/2) < \infty,
-% % \end{align*}
-% %where the finiteness follows from \eqref{E:InitData}. Finally, this and the continuity of $\mathcal{H}_\alpha(s)$ for $s \in [0,t_0/2]$ shows that,
-% % \[
-% %  \int_0^{t_0/2} \left(\mathcal{G}_{\widehat{\rho}, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s \le \mathcal{G}_{\widehat{\rho}, q}^u(t_0/2)^{q/2} \int_0^{t_0/2} \left( \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s < \infty.
-% % \]
-% %Thus we are justified in saying that by \eqref{E:1fac},
-% %\begin{equation}
-% %u(t_0,x) \stackrel{\mathcal{L}}{=} v(t_0/2,x) = \Big(G(t_0/2,\cdot) * u(t_0/2,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0/2,x).
-% %\end{equation}
-% %We now define the set $\mathscr{K} (\Lambda)$ as
-% % \[
-% % \mathscr{K} (\Lambda) = \{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x),
-% % \quad \text{where $\Norm{y}_{\widehat{\rho}} \le \Lambda$  and  $\Norm{h}_{L^q(0,1,L^2_{\widehat{\rho}})} \le \Lambda $} \}.
-% % \]
-% %Then by Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is relatively compact in $L^2_{ \rho}$ for $\Lambda >0$. Moreover, by \eqref{E:yineq} and Chebyshev's inequality we have
-% % \begin{align}
-% % \mathbb{P}\{ u(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \}
-% % &= \mathbb{P}\{ v(t_0/2,\cdot) \not \in \mathscr{K}(\Lambda) \} \nonumber \\
-% % & \le \mathbb{P}\left[ \left(\int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t_0/2,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber \\
-% % & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0/2} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) \nonumber \\
-% % & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0/2} \left(\mathcal{G}_{\widehat{\rho}, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot}_{\widehat{\rho}}^2\right) < \infty \label{E:Restartbdd}
-% % \end{align}
-% %With all this said, \eqref{E:Restartbdd} implies that
-% % \begin{align*}
-% % \mathbb{P}\{ u(t_0,\cdot) \in \mathscr{K}(\Lambda) \}
-% % & \ge 1- \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\widehat{\rho}, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right)
-% % \end{align*}
-% % Therefore, we can choose $\Lambda > 0$ big enough such that
-% %  \[
-% %   \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0/2} \left(\mathcal{G}_{\widehat{\rho}, q}^v(s) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0/2,\cdot)}_{\rho}^2\right) < \epsilon,
-% %  \]
-% % then we get that
-% % \begin{align*}
-% % \mathbb{P}\{ u(t_0,\cdot) \in \mathscr{K}(\Lambda) \} & \ge 1- \epsilon.
-% % \end{align*}
-% % We can now deduce from this and the semigroup property of the solution to the heat equation that
-% % \begin{align*}
-% % \mathbb{P}\{ u(t,\cdot) \in \mathscr{K}(\Lambda) \} & \ge (1-
-% % \epsilon)\mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\widehat{\rho}} < \Lambda
-% % \}.
-% % \end{align*}
-% % We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0/2$ that there exists a $C>0$ such that
-% %  \[
-% %   \mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\widehat{\rho}} \ge \Lambda
-% %   \} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0/2,\cdot)}_{\widehat{\rho}}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\hat{\rho}, q}\left( t - \frac{t_0}{2} \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
-% %  \]
-% % Thus, by enlarging $\Lambda$ if necessary,
-% %  \[
-% %   \mathbb{P}\{ \Norm{u(t-t_0/2,\cdot)}_{\widehat{\rho}} \ge \Lambda
-% %   \}  \le \epsilon, \quad \forall \; t \ge t_0/2,
-% %  \]
-% %thus completing the proof of \eqref{E:cpt}.
-% %% Since we assumed that $u$ is bounded in probability in $L^2_{\widehat{\rho}}$ then for and $\epsilon >0$ we can fix $R>0$ such that $\mathbb{P}\{ |u(t,\cdot)|_{\widehat{\rho}} \ge R \} < \epsilon$ and then taking $\Lambda > R$ such that $ \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\bigg( 1+ R^q \bigg) < \epsilon$ concludes the claim.
-%\end{proof}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% }}}
 
 % {{{ All references: New ones with biber
 \addcontentsline{toc}{section}{References}
