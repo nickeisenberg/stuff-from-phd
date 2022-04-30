@@ -718,7 +718,7 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \begin{align*}
     \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty,
   \end{align*}
-  then for any $t<0$, the operators defined above are compact from $L^2_{\widehat{\rho}}(\R^d)$ to
+  then for any $t>0$, the operators defined above are compact from $L^2_{\widehat{\rho}}(\R^d)$ to
   $L^2_\rho(\R^d)$.
 \end{proposition}
 
@@ -1380,80 +1380,48 @@ Integrate[(t-s)^{a-1} (s-r)^{-2a},{s,r,t},Assumptions->{t>r>0,0<a<1/2}]
 We are now ready to prove part (a) of Theorem \ref{T:Main}.
 
 \begin{proof}[Proof of Theorem \ref{T:Main} (a)]
-  In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and $t_0=\tau/2$. We consider the
-  case $t\ge \tau$. Let $v$ and  $v'$ be the solution to \eqref{E:restart} restarted from $ t_0$ and
-  $t- t_0$, respectively. Then
+  In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and $t_0=\tau/2$. Throughout the
+  proof, we have $t\ge \tau$. Let $v$ be the solution to \eqref{E:restart} that is restarted from
+  $t- t_0$. Then
   \begin{align*}
-    v(t_0,\cdot)  \stackrel{\mathcal{L}}{=} u(\tau,\cdot) \quad \text{and} \quad
-    v'(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t>\tau$}.
+    v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
   \end{align*}
 
-  We first consider $v(t_0,\cdot)$. Recall that Lemma \ref{L:Factorize} implies that
+  Recall that Lemma \ref{L:Factorize} implies that
   \begin{align*}
-    v(t_0,x) = \Big(G(t_0,\cdot) * u(t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
+    v(t_0,x) = \Big(G(t-t_0,\cdot) * u(t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
   \end{align*}
   Now define the set $\mathscr{K} (\Lambda)$ as
   \begin{align*}
-    \mathscr{K} (\Lambda) = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x):
+    \mathscr{K} (\Lambda) = \left\{ \big(G(t-t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x):
     \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
   \end{align*}
-  Then by Propositions \ref{P:weight} and \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is relatively
-  compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Moreover, by Chebyshev's inequality,
-  \eqref{E:uInLrho} and \eqref{E:yineq}, we see that
+  Then by Proposition \ref{P:weight} (since $t-t_0\ge t_0>0$) and Proposition \ref{P:F-Comp},
+  $\mathscr{K} (\Lambda)$ is relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Moreover, by
+  Chebyshev's inequality, \eqref{E:uInLrho} and \eqref{E:yineq}, we see that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
-    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber       \\
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0,\cdot)}_{\widehat{\rho}}^2\right) \nonumber                                    \\
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0,\cdot)}_{\widehat{\rho}}^2\right) \\
+    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber         \\
+    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right) \nonumber                                      \\
+    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
+    + \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)\\
+    & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
+    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\\
     & < \infty,
   \end{align*}
-  where the upper bound does not depend on $t$. Hence, for any $\epsilon>0$,
-  % \begin{align*} \mathbb{P}\{ v(t_0,\cdot) \in \mathscr{K}(\Lambda) \} & \ge 1-
-  % \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0}
-  % \left(\mathcal{G}_{\widehat{\rho}}(s + t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud
-  % s\right) - \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0,\cdot)}_{\rho}^2\right), \end{align*}
-  by choosing $\Lambda > 0$ big enough such that
+  where the upper bound does not depend on $t$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
+  0$ big enough such that
   \begin{align*}
-    \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \left(\Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right) + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t_0,\cdot)}_{\rho}^2\right) < \epsilon,
+    \dfrac{\sin^q(\alpha \pi)\Theta}{\pi^q \Lambda^q} \left(\sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}\left(s + t;\mu\right) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right)
+    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right) < \epsilon,
   \end{align*}
   we can ensure that
   \begin{align*}
-    \mathbb{P}\{ v(t_0,\cdot) \in \mathscr{K}(\Lambda) \} & \ge 1- \epsilon.
+      \mathbb{P}\left(u(t,\cdot) \in \mathscr{K}(\Lambda) \right)
+    = \mathbb{P}\left(v(t_0,\cdot) \in \mathscr{K}(\Lambda) \right)
+    \ge 1- \epsilon, \quad  \text{for all $t\ge \tau$,}
   \end{align*}
-
-  Now we study $v'(t_0,\cdot)$. The argument is similar to the previous case except that some
-  appearances of  $t_0$ should be replaced by $t-t_0$. In particular,
-  \begin{align*}
-    \mathbb{P} \left[ v'(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t- t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
-    + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right)\\
-    & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
-    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathbb{E}\left(\Norm{u(t,\cdot)}_{\widehat{\rho}}^2\right)\\
-    & < \infty,
-  \end{align*}
-  where the upper bound does not depend on $t$.
-
-
-  We can now deduce from this and the semigroup property of the solution to the heat equation that
-  for any $t > t_0$,
-  \begin{equation}\label{E:vtight}
-    \mathbb{P}\{ v(t,\cdot) \in \mathscr{K}(\Lambda) \} \ge (1- \epsilon)\mathbb{P}\{ \Norm{v(t-t_0,\cdot)}_{\widehat{\rho}} < \Lambda \}.
-  \end{equation}
-  We now apply Chebyshev's inequality and \eqref{E:InitData} to see that for all $t > t_0$ that
-  there exists a $C>0$ such that
-  \begin{align*}
-    \mathbb{P}\{ \Norm{v(t-t_0,\cdot)}_{\widehat{\rho}} \ge \Lambda
-    \} \le \frac{\mathbb{E}\left( \Norm{v(t-t_0,\cdot)}_{\widehat{\rho}}^2 \right)}{\Lambda^2} = \frac{\mathbb{E}\left( \Norm{u(t,\cdot, \mu)}_{\widehat{\rho}}^2 \right)}{\Lambda^2} \le C\frac{\mathcal{G}_{\widehat{\rho}}\left( t;\mu \right) }{\Lambda^2} \le \frac{C}{\Lambda^2}.
-  \end{align*}
-  Thus, by enlarging $\Lambda$ if necessary,
-  \begin{align*}
-    \mathbb{P}\{ \Norm{v(t-t_0,\cdot)}_{\widehat{\rho}} \ge \Lambda\} = \mathbb{P}\{ \Norm{u(t,\cdot)}_{\widehat{\rho}} \ge \Lambda \}  \le \epsilon, \quad \forall \; t \ge t_0.
-  \end{align*}
-  Combining this with \eqref{E:vtight} yields
-  \begin{align*}
-    \mathbb{P}\left\{ u(t, \cdot) \in \mathscr{K}(\Lambda) \right\} \ge (1-\epsilon), \quad t \ge t'_0,
-  \end{align*}
-  where $t'_0 = 2 t_0$. Since $t_0 >0$ is arbitrary, this completes the proof of \eqref{E:cpt}.
+  which proves part (a) of Theorem \ref{T:Main}.
 \end{proof}
 
 % {{{ -- Removed Stuff
