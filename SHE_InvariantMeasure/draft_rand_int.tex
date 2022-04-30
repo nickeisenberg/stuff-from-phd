@@ -562,19 +562,23 @@ part (b) based on (a) is routine:
     In the following, we will assume that $s>d-2$ and $d\ge 3$.
 \end{example}
 
-\begin{proposition}
-  Let $f_s$ be the Bessel kernel defined in Example \ref{Ex:Gamma+f}. Then for $s>d-2$ and $d\ge 3$,
-  it holds that
-  \begin{align*}
+\begin{proposition} \label{P:Bessel}
+  Let $f_s$ be the Bessel kernel defined in Example \ref{Ex:Gamma+f}. Then we have:
+  \begin{align} \label{E:UpsionB}
     \Upsilon(0) = \frac{2 \pi^{d/2} \Gamma\left((s-d+2)/2\right)}{(d-2)\:\Gamma\left(s/2\right)},
-    \qquad \text{for all $s>d-2$ and $d>2$.}
-  \end{align*}
+    \qquad \text{for all $s>d-2$ and $d>2$,}
+  \end{align}
+  and for all $t>0$,
+  \begin{align} \label{E:HaB}
+    \mathcal{H}_\alpha(t) <\infty \quad \Longleftrightarrow \quad 0<\alpha<(s-d-2)/4.
+  \end{align}
 \end{proposition}
 \begin{proof}
   By the spherical coordinates and \eqref{E:FB},
   \begin{align*}
     \Upsilon(0) = \int_{\R^d} \frac{\ud\xi}{|\xi|^2\left(1+|\xi|^2\right)^{s/2}}
-    = \frac{2\pi^{d/2}}{\Gamma\left(d/2\right)} \int_0^\infty \frac{r^{d-1}}{r^2\left(1+r^2\right)^{s/2}} \ud r.
+    = C_d \int_0^\infty \frac{r^{d-1}}{r^2\left(1+r^2\right)^{s/2}} \ud r, \qquad
+    C_d:=\frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}.
   \end{align*}
   Now by change of variable $z=r^2/(1+r^2)$, we can evaluate the above integral explicitly by
   transforming it to the Beta integral:
@@ -583,7 +587,28 @@ part (b) based on (a) is routine:
      = \frac{1}{2} \int_0^1 z^{d/2-2}(1-z)^{(s-d)/2}\ud z =
      \frac{\Gamma\left(d/2-1\right)\Gamma\left((s-d+2)/2\right)}{2\Gamma(s/2)},
   \end{align*}
-  which is finite provided that $s>d-2>0$. This proves the proposition.
+  which is finite provided that $s>d-2>0$. This proves \eqref{E:UpsionB}.
+
+  As for \eqref{E:HaB}, from \eqref{E:H} and by the spherical coordinates, for all $t>0$,
+  \begin{align*}
+    \mathcal{H}_{\alpha}(s)
+    & = \int_0^s \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}     \\
+    & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
+    & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
+  \end{align*}
+  Notice that for $r\in (0,t]$,
+  \begin{align*}
+    \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(t+z^2)^{s/2}} z^{d-1}
+    \le
+    \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}
+    \le
+    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s/2},
+  \end{align*}
+  where the lower and upper bounds are finite and do not depend on $r$. Hence,
+  \begin{align*}
+    \mathcal{H}_\alpha(t)<\infty \quad  \Longleftrightarrow  \quad -2\alpha + (s-d) /2 >-1.
+  \end{align*}
+  This proves \eqref{E:HaB}.
 \end{proof}
 
 \begin{example}
