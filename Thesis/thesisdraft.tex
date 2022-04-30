@@ -268,11 +268,11 @@ where $G(t,x)$ is the Gaussian heat kernal:
 	
 Thus through this novel idea due to Walsh, we now move one step closer to being able to model real-life phenomena under much more realistic conditions. The next question then would be under what conditions is the equation \eqref{E:introSHE} well-possed? Also, can we apply this theory to other partial differential operators such as the wave operator,
 	\[
-		\mathcal{W}u(t,x) = \frac{\partial^2 u}{\partial t^2}  - \frac{\partial^2 u}{\partial x^2} 
+		\mathcal{W}u(t,x) = \frac{\partial^2 u}{\partial t^2}(t,x)  - \frac{\partial^2 u}{\partial x^2}(t,x)
 	\]
 or even a more general fractional operator of the following type:
 	\[
-		\mathcal{L}_{b, \alpha}u(t,x) = \partial_b u(t,x) - (-\Delta)^{-\alpha / 2}, 
+		\mathcal{L}_{b, \alpha}u(t,x) = \partial_b u(t,x) - (-\Delta)^{-\alpha / 2}u(t,x), 
 	\]
 where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian. The fractional operator, $\mathcal{L}_{\alpha, \beta}$ will be thoroughly discussed in section \ref{S:ISHWE} below as well as in Chapters \ref{C:ISHWEmom} and \ref{C:Global}. As for the stochastic wave equation, we direct the interested reader to \cite{dalang.khoshnevisan.ea:09:minicourse, milletsole.global2021, balan.chen.chen:03:invariant} to name a few. 
 
@@ -377,22 +377,23 @@ where we choose the following as our definition of the Fourier transform:
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{figs/bsheet1.png}
-		\caption[]%
-		{}    
+%		\caption[]%
+%		{}    
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.475\textwidth}  
 		\centering 
 		\includegraphics[width=\textwidth]{figs/bsheet2.png}
-		\caption[]%
-		{}    
+%		\caption[]%
+%		{}    
 	\end{subfigure}
 	\caption[] 
 	{\small A simulation of two sample paths of a Brownian sheet.} 
 	\label{F:bsheet}
 \end{figure*}
 
-\begin{example}[Proposition 4.19 \cite{da-prato.zabczyk:92:stochastic}] A space-time white noise is the distributional derivative of a Brownian sheet. See Figure \ref{F:bsheet}.
+\begin{proposition}[Proposition 4.19 \cite{da-prato.zabczyk:92:stochastic}] A space-time white noise is the distributional derivative of a Brownian sheet. See Figure \ref{F:bsheet}.
+\end{proposition}
 
 Note that in the case of a space-time white noise that the covariance takes the following form:
 	\[
@@ -407,9 +408,13 @@ Lastly, by the convolution property of the Fourier transform, we may say that
 		\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{d}} \mu(\ud \xi) \; \mathcal{F}\phi(s,\xi)  \overline{\mathcal{F}\psi(s , \xi)}.
 	\]	
 	
-\end{example}
-	
-	
+\begin{definition}
+	Following \cite{walsh:86:introduction}, we extend $W$ to a sigma-finite $L^2(\Omega)$-valued measure $A \mapsto W(A)$ where is $A$ is a bounded Borel subset of $(0, \infty) \times \R^d$. We then define the {\em natural filtration}, $(\mathcal{F}_t)_{t \ge 0}$, where 
+		\[
+			\mathcal{F}_t = \sigma \left( W_s(A) : 0 \le s \le t, \; A \in \mathscr{B}_b((0,\infty) \times \R^d) \right) \vee \mathcal{N},
+		\]
+	where $\mathcal{N}$ denotes the set of $\mathbb{P}$-null sets in $\mathcal{F}$ and $\mathscr{B}_b((0,\infty) \times \R^d)$ is the space of bounded Borel subsets of $(0,\infty) \times \R^d$.
+\end{definition}
 
 
 \subsection{Time independent}\label{SS:timeind}
@@ -417,7 +422,7 @@ Lastly, by the convolution property of the Fourier transform, we may say that
 A time independent Gaussian noise is defined similarly as above.
 
 \begin{definition}
-	A {\em time-independent spatially homogeneous} Gaussian noise is a Gaussian processes indexed on $C_0^{\infty}(\R^d)$,	
+	A {\em time-independent spatially homogeneous} Gaussian noise is a $L^2(\Omega, \mathcal{F}, \mathbb{P})$ valued mean zero Gaussian processes indexed on $C_0^{\infty}(\R^d)$,	
 	\[
 		W = \left(W(\phi) :  \phi \in C_0^{\infty}(\R^d)\right),
 	\]
@@ -430,7 +435,7 @@ A time independent Gaussian noise is defined similarly as above.
 
 
 \section {The Stochastic Heat Equation} \label{S:SHE}
-We will now introduce more formally the stochastic heat equation along with several important results that will be needed throughout this thesis. There many resources to choose for an introduction to the stochastic heat equation \cite{chen.dalang:15:moments, chen.kim:19:nonlinear, dalang.khoshnevisan.ea:09:minicourse, da-prato.zabczyk:92:stochastic, khoshnevisan.cbms.2014}. 
+We will now introduce more formally the stochastic heat equation along with several important results that will be needed throughout this thesis. There many resources to choose for an introduction to the stochastic heat equation \cite{chen.dalang:15:moments, chen.kim:19:nonlinear, dalang.khoshnevisan.ea:09:minicourse, da-prato.zabczyk:92:stochastic, khoshnevisan.cbms.2014, walsh:86:introduction}. 
 
 Recall from \eqref{E:introSHE} that the stochastic heat equation can be written informally in the following way:
 	
@@ -450,13 +455,12 @@ We will denote by $\hat{f}(\ud \xi)$, the spectral measure of the noise $\dot{W}
 	\begin{equation}\label{A:DalCon}
 		\Upsilon(\beta) := \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty, \quad \text{for some and hence all } \beta > 0.
 	\end{equation}
-
 By a solution to \eqref{E:SHE}, we mean a solution to the following stochastic integral equation:
 	\begin{align}
 		u(t,x) &= \int_{0}^\infty G(t,x-y) \mu (\ud y) + \int_0^t\int_{\R^d} G(t-s, x-y) \rho(u(s,y)) W(\ud s, \ud y) \nonumber \\
 		&= J_0(t,x) + I(t,x) \label{E:MildSolSHE}
 	\end{align}
-where $G$ is the heat kernel 
+where the above is a {\em Walsh} stochastic integral \cite{walsh:86:introduction} and $G$ is the heat kernel 
 	\[
 		G(t,x) = (2\pi \nu t)^{-d/2} \exp\left(-\frac{|x|^2}{2 2 \nu t}\right).
 	\]
