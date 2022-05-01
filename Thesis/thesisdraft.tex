@@ -26,6 +26,7 @@
 	relsize,
 	tikz,
 	amsfonts,
+	mathabx,
 	mathrsfs,
 	makeidx,
 	comment,
@@ -514,6 +515,196 @@ The next result gives us a very useful bound on the $p^{th}$ moments of the solu
 
 \section { \normalfont The Interpolated Stochastic Heat and Wave Equation} \label{S:ISHWE}
 
+We will consider the ISHWE driven by all three noises introduced in Section \ref{S:Noise}. The set up for the time-independent case is much different so we will address that case separately in Section \ref{SS:ISHWEtimeind}. We will then introduce the set with either a space-time white noise or a noise that is white in time and colored in space in Section \ref{SS:ISHWEnoisetime}.
+
+Before stating the equation, we need to define some fractional differential operators. We start with the {\em fractional Laplacian}. Recall the formula
+	\[
+	(-\Delta) f (x) = ((|\cdot|^{2})\hat{f}(\cdot))^{\vee}(x).
+	\]
+Following \cite{grafakos:14:modern}, we are then motivated to define the fractional Laplacian of order $0 < \alpha < d$ as
+	\begin{equation} \label{D:fraclaplacian}
+		(-\Delta)^{\alpha / 2} f (x) := ((|\cdot|^{\alpha})\hat{f}(\cdot))^{\vee}(x),
+	\end{equation}
+where $\widehat f$ and $\widecheck f$ are shorthand for the Fourier and inverse Fourier transform of $f$ respectively. Thus, the fractional Laplacian can be written as a convolution,
+	\[
+			(-\Delta)^{\alpha / 2} f (x) = ( (R_{d-\alpha}(\cdot) * f(\cdot)) (x),
+	\]
+where (see \cite[Example 1.3]{balan.chen.chen:03:invariant})
+	\begin{align*}
+		R_{d-\alpha}(x) &= (2\pi)^{-d} (|\cdot|^\alpha)^{\vee}(x) \\
+		& = 2^{-\alpha} \frac{(2\pi)^{-d}}{\pi^{d/4}} \frac{\Gamma((d-\alpha)/2)}{\Gamma(\alpha/2)}|x|^{-d+\alpha}.
+	\end{align*}
+Next we define the {\em Caputo derivative} of order $\beta > 0$ as 
+	\[ \partial^{\beta}f(t) :=
+		\begin{cases}
+			\frac{1}{\Gamma(m- \beta)} \int_0^t \ud \tau \; \frac{f^{(m)}(\tau) }{(t-\tau)^{\beta + 1 -m}} & m-1 < \beta < m \\
+			\frac{d^m}{dt^m}f(t) & \beta = m.
+		\end{cases}
+	\]
+Lastly we define the {\em Riemann-Liouville fractional integral} of order $\gamma > 0$ as 
+	\[
+		I_t^{\gamma} f(t) := \frac{1}{\Gamma(\gamma)} \int_0^t (t-s)^{\gamma -1} f(s) \ud s.
+	\]
+For more on $\partial^{\beta}$ and $I_t^{\gamma}$ see \cite{podlubny.1999}.
+
+\subsection{Time-independent noise case} \label{SS:ISHWEtimeind}
+
+The {\em interpolated stochastic heat equation} (ISHWE) driven by a time-independent Gaussian noise is given by 
+	\begin{equation} \label{E:ISHWE}
+	\begin{cases}
+	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
+	u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
+	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+	\end{cases},
+	\end{equation}
+where $a \in (0,2)$, $b \in (0,2)$, $r\ge0$, $\nu >0$ and $\theta > 0$. We recall from above that 
+	\[
+		\mathbb{E}[W(\phi)W(\psi)] = \int_{\R^d} \mathcal{F}\phi(\xi) \overline{\mathcal{F}\psi(\xi)} \mu(\ud \xi) =: \mathcal{H},
+	\]
+where $\mu$ is the spectral measure of the noise.
+
+The
+fundamental solution to \eqref{E:ISHWE} is expressed explicitly in terms of the {\it Fox H-function},
+$H^{m,n}_{p,q}(z)$, which is much more complicated than the Green's function for either the heat or
+wave equation. In this case, we denote the fundamental solution as
+\begin{equation} \label{E:GreenFunction}
+G(t,x):= G_{a,b,r,\nu,d}(t,x),
+\end{equation}
+where
+\[
+G_{a,b,r,\nu,d}(t,x) = \pi^{-d/2} |x|^{-d} t^{b+r-1} H^{2,1}_{2,3}\left( \frac{|x|^a}{2^{a-1}\nu t^b}\;  \Bigg \vert  \begin{array}{l}
+(1,1),\; (b+r,b) \\
+(d/2,a/2),\; (1,1),\; (1,a/2)
+\end{array} \right).
+\]
+We direct the reader to Theorem 4.1\footnote{$G(t,x)$ corresponds to $Y_{a,b,r,\nu,d}(t,x)$ from
+	\cite{chen.hu.nualart:19:spacetimefrac}.} of \cite{chen.hu.nualart:19:spacetimefrac} for more details. Since we are interested in the constant one initial
+condition (and zero initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the
+corresponding solution to the homogeneous equation (i.e. the solution when there is no driving
+source) is equal to the constant one. Hence through superposition, \eqref{E:ISHWE} can be written as
+the following stochastic integral equation:
+\begin{equation} \label{E:spdeint}
+u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
+\end{equation}
+where the stochastic integral is in the {\it Skorohod} sense (see \cite{nualart.nualart:18:malliavin}). The reason for choosing to define the solution through the Skorohod integral is due the the fact that the noise is no longer white in time. Because if this, we may no longer use the theory of Walsh \cite{walsh:86:introduction}.
+
+We now formalize this in the next definition.
+
+\begin{definition}[Mild, local and global solutions] \label{D:Sol}
+	(1) For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
+	called {\it a mild solution} to the equation \eqref{E:ISHWE} if for all $x\in\R^d$ and $s,t$ fixed
+	with $0<s\le t <T$, $y\to G(t-s,x-y)u(s,y)$ is Skorohod integrable and the following stochastic
+	integral equation holds almost surely
+	\begin{equation} \label{E:ISHWEIntEq}
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s.
+	\end{equation}
+	
+	\noindent (2) Let $u(t,x)$ be a mild solution to \eqref{E:ISHWE} (or \eqref{E:ISHWEIntEq}) and fix $p\ge
+	1$. We call $u(t,x)$ a {\it global $L^p(\Omega)$-solution}, or simply an {\it
+		$L^p(\Omega)$-solution} if
+	\begin{align} \label{E:Lp}
+	\Norm{u(t,x)}_p < \infty \qquad \text{for all $t>0$ and $x \in \R^d$.}
+	\end{align}
+	
+	\noindent (3) If there exist $0<T_1\le T_2<\infty$ such that $\Norm{u(t,x)}_p$ is finite for all
+	$t\in(0,T_1)$ and $x\in\R^d$, but $\Norm{u(t,x)}_p$ diverges to infinity whenever $t>T_2$, the mild
+	solution $u(t,x)$ in this case is called a {\it local $L^p(\Omega)$-solution}.
+\end{definition}
+
+The existence and uniqueness of the solution will be proven in Chapter \ref{C:ISHWEmom}. We now finish this section with some more preliminary facts that will be needed later on. Note that through construction of the Skorohod integral $\delta$, a mild solution is necessarily to
+be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \cite[Chapter
+3]{nualart.nualart:18:malliavin}.  \bigskip
+
+Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
+{\it Wiener chaos expansion} \footnote{Wiener chaos expansion has been widely to solve the linear
+	stochastic partial differential equations. We direct interested readers to \cite[Section
+	5]{balan.song:17:wavespacetimecolor} for a presentation of this procedure.}:
+\begin{equation} \label{E:solwexp}
+u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
+\end{equation}
+where $I_k : \mathcal{H}^{\otimes k}\left((\R^d)^k\right) \to \mathcal{H}_k$ is the $k^{th}$ order
+Skorohod integral and $\mathcal{H}_k$ is the $k^{th}$ Wiener chaos space and the kernels
+$f_k(\cdot,x,t)$, obtained through the iteration, are equal to
+\begin{align*}
+% \label{E:wker}
+f_n(x_1,...,x_k;x,t)
+& = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud t_1\cdots \ud t_n \\
+& = \int_0^t \int_0^{t_n}\cdots \int_0^{t_2} G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud t_1\cdots \ud t_n. \nonumber
+\end{align*}
+For ease of notation, throughout this article, we may write the above integrals as
+\begin{align*}
+f_n(x_1,...,x_n;x,t)
+& = \int_{[0,t]^n_<} G(t-t_n,x-x_n)\cdots G(t_2-t_1,x_2-x_1) \ud \vec{t} \\
+& = \int_{[0,t]^n_<}G(t_1,x-x_n)\cdots G(t_n-t_{n-1},x_2-x_1) \ud \vec{t},
+\end{align*}
+where $[0,t]_<^n:=\{(t_1,\cdots,t_n)\in [0,t]^n:\: t_1<\cdots < t_n\}$ and $\ud \vec{t} = \ud t_1 \cdots \ud t_n$. As usual, we use
+$\widetilde{f_n}(\cdot, x, t)$ to denote the symmetrization of $f_n(\cdot,x,t)$:
+\begin{align*}
+\widetilde{f_n}(\cdot; x, t)
+& = \frac{1}{n!} \sum_{\rho \in \Sigma_n} f_n\left(x_{\rho(1)},\cdots, x_{\rho(n)}\right) \\
+& = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G\left(t-t_n,x-x_{\rho(n)}\right)\cdots G\left(t_2-t_1,x_{\rho(2)}-x_{\rho(1)}\right) \ud \vec{t},
+\end{align*}
+where $\Sigma_n$ is the set of all permutations of $\{1,\cdots,n\} $.
+% In particular, for $x=0$ we have
+% \begin{align}
+%   \label{E:fperm0}
+%   \widetilde{f_n}(\cdot; 0, t) = \frac{1}{n!} \sum_{\rho \in \Sigma_n} \int_{[0,t]^n_<} G(t_1,x_{\rho(1)})\cdots G(t_n-t_{n-1},x_{\rho(n)}-x_{\rho(n-1)}) \ud \vec{t}.
+% \end{align}
+By setting $t_{n+1}=t$, the Fourier transform of the kernels, $f_n$, is given by
+\begin{align} \label{E:fweker}
+\mathcal{F}f_n(\cdot;x,t)(\xi_1,...,\xi_n)
+= e^{-i \left(\sum_{j=1}^n \xi_j \right) \cdot x} \int_{[0,t]^n_<}
+\prod_{k=1}^n \overline{\mathcal{F}G(t_{k+1}-t_k,\cdot)\left(\sum_{j=1}^k \xi_j\right) } \ud \vec{t}.
+\end{align}
+
+Recall the notation above in \eqref{E:GreenFunction} that $G(t,x) = G_{a,b,r,d}(t,x)$. The following
+scaling properties for both $\mathcal{F}G(t,\cdot)(\xi)$ and
+$\Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}$ play an important role in the paper.
+
+\begin{lemma} \label{L:Scale}
+	For any $c,t>0$, $n\ge 1$, $\xi,\xi_1,\cdots,\xi_n\in\R^d$, the following scaling properties hold:
+	\begin{gather} \label{E:greenscale}
+	\mathcal{F}G(t,\cdot)(c\xi) = c^{-\frac{a}{b}(b+r
+		-1)}\mathcal{F}G\left(c^{\frac{a}{b}}t,\cdot\right)( \xi) \quad \text{and} \quad
+	\mathcal{F}G(ct,\cdot)(\xi) = c^{b+r -1}\mathcal{F}G(t,\cdot)(c^{b/a} \xi), \\
+	\label{E:Ffnscale} \mathcal{F}\widetilde{f}_n(\cdot,0,ct)(\xi_1,\cdots,\xi_n) = c^{n(b+r)}
+	\mathcal{F}\widetilde{f}_n(\cdot,0,t)(c^{b/a}\xi_1, \cdots, c^{b/a}\xi_n), \\
+	\label{E:normscale} \Norm{\widetilde{f_n}(\cdot,0,t)}_{\mathcal{H}^{\otimes n}}^2 = t^{[2(b + r
+		) -b \alpha / a]n} \Norm{\widetilde{f_n}(\cdot,0,1)}_{\mathcal{H}^{\otimes n}}^2.
+	\end{gather}
+\end{lemma}
+\begin{proof}
+	The scaling properties in \eqref{E:greenscale} are direct consequences of the explicit expression
+	of $\mathcal{F}G(t,\cdot)(\xi)$ as in \cite[(4.8)]{chen.hu.nualart:19:spacetimefrac}. Property \eqref{E:Ffnscale} is an easy
+	exercise of change of variables on \eqref{E:fweker}. Property \eqref{E:normscale} is a direct
+	consequence of \eqref{E:greenscale}, \eqref{E:Ffnscale}, and the scaling property of the spectral
+	measure $\mu$. We leave the details for the interested readers.
+\end{proof}
+
+Finally, let us recall the following standard result about the existence and uniqueness of the
+solution to \eqref{E:ISHWE} (or \eqref{E:ISHWEIntEq}) when it can be written as the Wiener chaos expansion
+\eqref{E:solwexp}.
+
+\begin{theorem}\label{T:2momseries}
+	Fix any $T \in (0,\infty]$. Suppose that $f_n(\cdot,x,t) \in \mathcal{H}^{\otimes n}$ for any $t
+	\in (0,T)$, $x \in \R^d$ and $n \ge 1$. Then \eqref{E:ISHWE} (or \eqref{E:ISHWEIntEq}) has a unique
+	$L^2(\Omega)$-solution on $(0,T) \times \R^d$ if and only if the series \eqref{E:solwexp}
+	converges in $L^2(\Omega)$ for any $(t,x) \in (0,T) \times \R^d$, which is equivalent to the
+	convergence of the series \eqref{E:2mom}. In this case, the solution is given by \eqref{E:solwexp}
+	with the second moment given by
+	\begin{equation} \label{E:2mom}
+	\mathbb{E}\left(u(t,x)^2\right)
+	= \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2
+	\quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
+	\end{equation}
+\end{theorem}
+
+
+
+
+
+
+\subsection{Time-dependent noise case} \label{SS:ISHWEnoisetime}
 
 
 \chapter{ \normalfont Invariant Measures for the Stochastic Heat Equation} \label{C:InvMeas}
