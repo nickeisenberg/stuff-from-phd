@@ -466,20 +466,20 @@ Here is the main theorem of the paper:
     \item for some $\alpha\in (0,1/2)$, the spectral measure $\widehat{f}$ satisfies that
       \begin{align} \label{E:H}
          \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
-         \quad \text{for all $t>0$};
+         \quad \text{for all $t>0$}.
       \end{align}
-    \item for the constant $\alpha$ in (ii), there exists $q>1/\alpha$ (i.e., $q^{-1}< \alpha<
-      2^{-1}$) such that
-      \begin{align} \label{E:GH-int}
-        \limsup_{t>0}\: \int_0^{t_0} \left[\mathcal{G}_{\widehat{\rho}}(s + t_0 + t;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty;
-      \end{align}
-      \textcolor{magenta}{(This condition is new or significantly different from the previous
-      version, please check if it is satisfied for the examples in Section \ref{S:Example}.)}
-    \item the second condition in \eqref{E:U0finite} is strengthened accordingly with $q$ given in
-      (iv) to
-      \begin{align*}
-        qL_b^2 < \frac{1}{128 \Upsilon(0)}.
-      \end{align*}
+    % \item for the constant $\alpha$ in (ii), there exists $q>1/\alpha$ (i.e., $q^{-1}< \alpha<
+    %   2^{-1}$) such that
+    %   \begin{align} \label{E:GH-int}
+    %     \limsup_{t>0}\: \int_0^{t_0} \left[\mathcal{G}_{\widehat{\rho}}(s + t_0 + t;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty;
+    %   \end{align}
+    %   \textcolor{magenta}{(This condition is new or significantly different from the previous
+    %   version, please check if it is satisfied for the examples in Section \ref{S:Example}.)}
+    % \item the second condition in \eqref{E:U0finite} is strengthened accordingly with $q$ given in
+    %   (iv) to
+    %   \begin{align*}
+    %     qL_b^2 < \frac{1}{128 \Upsilon(0)}.
+    %   \end{align*}
   \end{enumerate}
   Then we have that
   \begin{enumerate}[(a)]
@@ -575,7 +575,7 @@ part (b) based on (a) is routine:
 \end{example}
 
 \begin{proposition} \label{P:Bessel}
-  Let $f_s$ be the Bessel kernel defined in Example \ref{Ex:Gamma+f}. Then we have:
+  For the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in Example \ref{Ex:Gamma+f}, it holds that
   \begin{align} \label{E:UpsionB}
     \Upsilon(0) = \frac{2 \pi^{d/2} \Gamma\left((s-d+2)/2\right)}{(d-2)\:\Gamma\left(s/2\right)},
     \qquad \text{for all $s>d-2$ and $d>2$,}
@@ -730,12 +730,6 @@ The interested reader may go trough the same steps above to see that
 \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int} are all finite.
 \end{example}
 
-\begin{example}[Bounded initial conditions]
-  When the initial condition is bounded, namely, $\mu(\ud x) =\phi(x)\ud x$
-  with $\phi\in L^\infty(\R^d)$, our conditions in our Theorems \ref{T:Lrho}
-  and \ref{T:Main} will be greatly simplified. \textcolor{magenta}{(Give
-  details here...)}
-\end{example}
 
 \section{Preliminaries} \label{S:Prelim}
 
@@ -1469,23 +1463,47 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
   \end{align*}
   Then by Proposition \ref{P:weight} and Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is
-  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Moreover, by Chebyshev's inequality,
-  \eqref{E:uInLrho} and \eqref{E:yineq}, we see that
+  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Notice that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
-    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber         \\
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right) \nonumber                                      \\
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
-    + \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)\\
-    & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
-    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\\
-    & < \infty,
+    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
+    + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \\
+    & =: I_1+I_2.
   \end{align*}
-  where the upper bound does not depend on $t$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
+  By Chebyshev's inequality and \eqref{E:uInLrho}, we see that
+  \begin{align*}
+    I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right)
+    \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
+  \end{align*}
+  where the upper bound does not depend on $t$ and the upper bound is finite due to the fact that
+  $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$ that is bounded at
+  infinity thanks to condition \eqref{E:InitData}. Similarly, by Chebyshev's inequality and
+  \eqref{E:yineq},
+  \begin{align*}
+    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s \\
+        & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\\
+        & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s.
+  \end{align*}
+  Condition \eqref{E:H} implies that $\mathcal{H}_\alpha(s)$ is a continuous function that vanishes
+  at $s=0$. Hence, $\int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty$. Combining these two
+  upper bounds, we see that
+  \begin{align*}
+    \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
+    \le
+    \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s
+    +
+    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
+    <\infty,
+  \end{align*}
+  with the upper bound uniform in $t\ge \tau$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
   0$ big enough such that
   \begin{align*}
-    \dfrac{\sin^q(\alpha \pi)\Theta}{\pi^q \Lambda^q} \left(\sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}\left(s + t;\mu\right) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right)
-    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right) < \epsilon,
+    \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s
+    +
+    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
+    < \epsilon,
   \end{align*}
   we can ensure that
   \begin{align*}
