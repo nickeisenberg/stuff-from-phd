@@ -284,10 +284,14 @@ for bounded second moments one has to have the spatial dimension $d \ge 3$, and 
 spectral measure, $\hat{f}$, and Lipschitz constant, $L_b$, (the Lyapunov exponent of $b$) in
 \eqref{E:lipcon} must satisfy the following:
 \begin{equation} \label{E:U0finite}
-  \Upsilon(0) := \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad
-  64L^2_{b}   <  \frac{1}{4\Upsilon(0)};
+  \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad
+  64L^2_{b}   <  \frac{1}{4\Upsilon(0)},
 \end{equation}
-see the Assumption \eqref{A:dalcon0} below.
+where the first condition is a strengthened version of {\it Dalang's condition}:
+\begin{align} \label{E:Dalang}
+  \Upsilon(\beta) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta+ |\xi|^2} <\infty,
+   \quad \text{for some (and hence) all $\beta>0$.}
+\end{align}
 
 In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} prove existence of an invariant measure for \eqref{E:SHE} in
@@ -451,7 +455,7 @@ Here is the main theorem of the paper:
 
 \begin{theorem} \label{T:Main}
   Let $u(t,x)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that all conditions in
-  Theorem \ref{T:Lrho} are satisfied. Moreover, we assume that
+  Theorem \ref{T:Lrho}, with $u_0$ replaced by $\mu$, are satisfied. Moreover, we assume that
   \begin{enumerate}[(i)]
     \item if $\rho$ is an admissible weight (see Definition \ref{D:Rho} below) and there exists
       another admissible weight $\widehat{\rho}$ such that
@@ -466,33 +470,32 @@ Here is the main theorem of the paper:
     \item for some $\alpha\in (0,1/2)$, the spectral measure $\widehat{f}$ satisfies that
       \begin{align} \label{E:H}
          \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
-         \quad \text{for all $t>0$};
+         \quad \text{for all $t>0$}.
       \end{align}
-    \item for the constant $\alpha$ in (ii), there exists $q>1/\alpha$ (i.e., $q^{-1}< \alpha<
-      2^{-1}$) such that
-      \begin{align} \label{E:GH-int}
-        \limsup_{t>0}\: \int_0^{t_0} \left[\mathcal{G}_{\widehat{\rho}}(s + t_0 + t;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty;
-      \end{align}
-      \textcolor{magenta}{(This condition is new or significantly different from the previous
-      version, please check if it is satisfied for the examples in Section \ref{S:Example}.)}
-    \item the second condition in \eqref{E:U0finite} is strengthened accordingly with $q$ given in
-      (iv) to
-      \begin{align*}
-        qL_b^2 < \frac{1}{128 \Upsilon(0)}.
-      \end{align*}
+    % \item for the constant $\alpha$ in (ii), there exists $q>1/\alpha$ (i.e., $q^{-1}< \alpha<
+    % 2^{-1}$) such that
+    %   \begin{align} \label{E:GH-int}
+    %     \limsup_{t>0}\: \int_0^{t_0} \left[\mathcal{G}_{\widehat{\rho}}(s + t_0 + t;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty;
+    %   \end{align}
+    % \textcolor{magenta}{(This condition is new or significantly different from the previous
+    % version, please check if it is satisfied for the examples in Section \ref{S:Example}.)}
+    % \item the second condition in \eqref{E:U0finite} is strengthened accordingly with $q$ given in
+    % (iv) to
+    %   \begin{align*}
+    %     qL_b^2 < \frac{1}{128 \Upsilon(0)}.
+    %   \end{align*}
   \end{enumerate}
   Then we have that
   \begin{enumerate}[(a)]
-    \item for any $\tau>0$, the sequence of laws of $\{\mathcal{L}u(t,\cdot;\mu)\}_{t\ge \tau}$
-      is tight, i.e., for any $\epsilon \in (0,1)$, there exists a compact set $\mathscr{K}\subset
+    \item for any $\tau>0$, the sequence of laws of $\{\mathcal{L}u(t,\cdot;\mu)\}_{t\ge \tau}$ is
+      tight, i.e., for any $\epsilon \in (0,1)$, there exists a compact set $\mathscr{K}\subset
       L^2_{\rho}(\R^d)$ such that
       \begin{equation} \label{E:cpt}
         \mathcal{L}u(t,\cdot;\mu)(\mathcal{K})
         :=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
         \qquad \text{for all $t\ge \tau>0$};
       \end{equation}
-    \item there exists an invariant measure for the laws
-      $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$.
+    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$.
   \end{enumerate}
 \end{theorem}
 
@@ -525,17 +528,15 @@ part (b) based on (a) is routine:
 
 \begin{remark}[$L^\infty(\R^d)$ initial condition] \label{R:BddInit}
   We emphasize that if the initial condition $\mu$ is deterministic and is such that $\mu(\ud x) =
-  \varphi(x)\ud x$ with $\varphi\in L^\infty(\R^d)$, then many conditions in both Theorems
-  \ref{T:Lrho} and \ref{T:Main} can be significantly simplified. To be more precise, conditions
-  \eqref{E:G} and \eqref{E:InitData} are trivially satisfied because:
+  \varphi(x)\ud x$ with $\varphi\in L^\infty(\R^d)$, then all conditions related to
+  $\mathcal{G}_\rho(\cdot)$ in both Theorems \ref{T:Lrho} and \ref{T:Main} are trivially satisfied.
+  To be more precise, conditions \eqref{E:G}, \eqref{E:InitData} and \eqref{E:GH-int} hold by
+  noticing that the function $\mathcal{H}_\alpha(t)$ in \eqref{E:H} is a continuous function on
+  the closed interval $[0,t_0]$ and
   \begin{align*}
     \mathcal{G}_\rho(t;\varphi) \le \Norm{\varphi}_{L^\infty(\R^d)}^2 \Norm{\rho}_{L^1(\R^d)}< \infty
     \quad \text{uniformly for all $t\ge 0$.}
   \end{align*}
-  Accordingly, condition \eqref{E:GH-int} reduces to
-  \begin{align} \label{E:GH-int-bdd}
-    \int_0^{t_0} \mathcal{H}_\alpha^{q/2}(s) \ud s <\infty.
-  \end{align}
 \end{remark}
 
 \section{Examples} \label{S:Example}
@@ -577,9 +578,9 @@ part (b) based on (a) is routine:
 \end{example}
 
 \begin{proposition} \label{P:Bessel}
-  Let $f_s$ be the Bessel kernel defined in Example \ref{Ex:Gamma+f}. Then we have:
+  For the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in Example \ref{Ex:Gamma+f}, it holds that
   \begin{align} \label{E:UpsionB}
-    \Upsilon(0) = \frac{2 \pi^{d/2} \Gamma\left((s-d+2)/2\right)}{(d-2)\:\Gamma\left(s/2\right)},
+    \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)},
     \qquad \text{for all $s>d-2$ and $d>2$,}
   \end{align}
   and for all $t>0$,
@@ -590,8 +591,8 @@ part (b) based on (a) is routine:
 \begin{proof}
   By the spherical coordinates and \eqref{E:FB},
   \begin{align*}
-    \Upsilon(0) = \int_{\R^d} \frac{\ud\xi}{|\xi|^2\left(1+|\xi|^2\right)^{s/2}}
-    = C_d \int_0^\infty \frac{r^{d-1}}{r^2\left(1+r^2\right)^{s/2}} \ud r, \qquad
+    \Upsilon(0) = \left(2\pi\right)^{-d} \int_{\R^d} \frac{\ud\xi}{|\xi|^2\left(1+|\xi|^2\right)^{s/2}}
+    = \left(2\pi\right)^{-d} C_d \int_0^\infty \frac{r^{d-1}}{r^2\left(1+r^2\right)^{s/2}} \ud r, \qquad
     C_d:=\frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}.
   \end{align*}
   Now by change of variable $z=r^2/(1+r^2)$, we can evaluate the above integral explicitly by
@@ -610,19 +611,15 @@ part (b) based on (a) is routine:
     & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
     & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
   \end{align*}
-  Notice that for $r\in (0,t]$,
+  Denote the $\ud z$-integral in the far right-hand side of the above equalities by $I$. Notice that
   \begin{align*}
     \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(t+z^2)^{s/2}} z^{d-1}
-    \le
-    \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}
-    \le
-    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s/2},
+    \le I \le
+    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s/2}, \quad \text{for all $t\in[0,t]$,}
   \end{align*}
-  where the lower and upper bounds are finite and do not depend on $r$. Hence,
-  \begin{align*}
-    \mathcal{H}_\alpha(t)<\infty \quad  \Longleftrightarrow  \quad -2\alpha + (s-d) /2 >-1.
-  \end{align*}
-  This proves \eqref{E:HaB}.
+  with both lower and upper bounds being finite and independent of $r$. Therefore,
+  $\mathcal{H}_\alpha(t)<\infty$ if and only if $-2\alpha + (s-d) /2 >-1$. This proves
+  \eqref{E:HaB}.
 \end{proof}
 
 \begin{example}
@@ -736,12 +733,6 @@ The interested reader may go trough the same steps above to see that
 \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int} are all finite.
 \end{example}
 
-\begin{example}[Bounded initial conditions]
-  When the initial condition is bounded, namely, $\mu(\ud x) =\phi(x)\ud x$
-  with $\phi\in L^\infty(\R^d)$, our conditions in our Theorems \ref{T:Lrho}
-  and \ref{T:Main} will be greatly simplified. \textcolor{magenta}{(Give
-  details here...)}
-\end{example}
 
 \section{Preliminaries} \label{S:Prelim}
 
@@ -840,28 +831,28 @@ may remove the Lemma.}
        \begin{equation} \label{A:icon}
          \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
        \end{equation}
-     \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition}, namely,
-       \begin{equation} \label{A:dalcon}
-         \Upsilon(\beta) := (2\pi)^{-d}\int_{\R^d}\dfrac{\widehat{f}(\ud \xi)}{\beta + |\xi|^2} < \infty
-         \quad \text{for some and therefore any $\beta>0$}.
-       \end{equation}
+     \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
     \end{enumerate}
   then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
   is $L^2(\Omega)$ continuous and is adapted to the filtration induced by ${W}$.
 \end{theorem}
 
 \begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}] \label{T:ExUn}
-  Under the assumptions of Theorem \ref{T:Solve}, for any $t>0$ and $x \in \R^d$, the solution to
-  \eqref{E:SHE}, $u(t,x)$, given by \eqref{E:gmsol} is in $L^p(\Omega)$ and for $p\ge 2$
+  Under the assumptions of Theorem \ref{T:Solve}, for any $t>0$, $x \in \R^d$ and $p \ge 2$, the
+  solution to \eqref{E:SHE}, $u(t,x)$, given by \eqref{E:gmsol} is in $L^p(\Omega)$ and
   \begin{equation} \label{E:mb}
     \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * |\mu|)(x)\big]H(t;\gamma_p)^{1/2},
   \end{equation}
   where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ (see \eqref{E:lipcon} for $L_0$ and $L_b$)
   and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for
-  the expression of $H$). Moreover, if two conditions in \eqref{E:U0finite} hold,
-  % \begin{equation}\label{A:dalcon0}
-  %   \Upsilon(0) < \infty \quad \text{and} \quad \gamma_p < \frac{1}{4\Upsilon(0)},
-  % \end{equation}
+  the expression of the function $H$). Moreover \footnote{This statement is from Lemma 2.5 of
+    \cite{chen.kim:19:nonlinear}. In the current paper, we do not need the lower bound of the
+  moments, hence, there is no need to make the cone conditions as in {\it ibid.}; only the Lipschitz
+condition on $b$ will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
+first condition in \eqref{E:U0finite} holds and the second one is strengthened to
+  \begin{equation}\label{E:pLip}
+     32 p L_b^2 < \frac{1}{4\Upsilon(0)},
+  \end{equation}
   then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
   \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
   \begin{equation} \label{E:mb0}
@@ -1075,39 +1066,47 @@ and the restarted SHE ($ t_0>0$):
 \begin{lemma} \label{L:yineq}
   Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
   and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
-  when $ t_0=0$. For any $\alpha\in (0,1/2)$, denote (with slight abuse of notation)
+  when $ t_0=0$.  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon}
+  and $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that for some $\alpha\in
+  (0,1/2)$, condition \eqref{E:H} is satisfied. Then
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
-               = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z).
+               = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
   \end{equation}
-  Then we have that
-  \begin{align} \label{E:NormY}
-    \Norm{Y_v(s,y)}_q^2 \le C_q\: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s),
-    \qquad \text{for all $q\ge 2$, $s>0$, $y\in\R^d$,}
-  \end{align}
-  which is finite if \eqref{E:H} holds. Moreover, under the assumptions of Theorem \ref{T:Lrho}, if
+  has the following properties:
   \begin{enumerate}
-    \item[(iv')] for the constant $\alpha$ in \eqref{E:NormY}, there exists $q>1/\alpha$ such that
+    \item For all $q\ge 2$, $s>0$, $y\in\R^d$,
+      \begin{align} \label{E:NormY}
+        \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
+      \end{align}
+      where we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
+    \item If $\Upsilon(0)<\infty$ and $q>\max\left(1/\alpha, 128 L_b^2 \Upsilon(0)\right)$, then the
+      function $H\left(t;32qL_b^2\right)$ in \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e.,
+      $\sup_{t\ge 0}H\left(t;32qL_b^2\right)<\infty$;
+    \item Under conditions in part 2, if $\rho$ is a nonnegative $L^1(\R^d)$ function, then there
+      exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend on
+      $t$, such that for $t>0$,
+      \begin{equation} \label{E:yineq}
+        \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
+        \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s,
+      \end{equation}
+      which is finite provided that
     \begin{align} \label{E:GH-int'}
-      \int_{0}^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty, \quad \text{for all $t>0$},
+      \int_{0}^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty.
     \end{align}
   \end{enumerate}
-  then there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$ such that
-  \begin{equation} \label{E:yineq}
-    \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
-    \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s
-    <   \infty, \quad \text{for all $t>0$}.
-  \end{equation}
 \end{lemma}
 \begin{proof}
   In the proof, we use $C$ to denote a generic constant that may change its value at each
-  appearance. We first prove \eqref{E:NormY}. By the Burkholder-Davis-Gundy inequality, as well as
+  appearance. \bigskip
+
+  \noindent (1) We first prove \eqref{E:NormY}. By the Burkholder-Davis-Gundy inequality and
   Minkowski's integral inequality, we see that
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2 \le
-    C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2 \:
-           & G(s-r,y-z_1) \Norm{b\left(z_1,v(r,z_1)\right)}_q f(z_1-z_2) \\
-    \times & G(s-r,y-z_2) \Norm{b\left(z_2,v(r,z_2)\right)}_q.
+    C \int_0^s \ud r \: (s-r)^{-2\alpha}
+    \iint_{\R^{2d}} \ud z_1\ud z_2 \: & G(s-r,y-z_1) \Norm{b\left(z_1,v(r,z_1)\right)}_q \\
+    \times f(z_1-z_2)                 & G(s-r,y-z_2) \Norm{b\left(z_2,v(r,z_2)\right)}_q.
   \end{align*}
   Note that for the Lipschitz condition in \eqref{E:lipcon}, we have that
   \begin{align*}
@@ -1115,28 +1114,30 @@ and the restarted SHE ($ t_0>0$):
     & \le \left|b\left(x,v\right) - b\left(x,0\right)\right| + \left|b\left(x,0\right)\right|
     \le L_b |v| + L_0 \le C (1+|v|),\quad C:=L_b\vee L_0.
   \end{align*}
-  We apply this and the moment bound \eqref{E:MomBddRst} to $\Norm{b(z_i, v(r,z_i))}_q$ above to see
-  that
-  \begin{align} \label{E:NormB}
+  We apply this and the moment bound \eqref{E:mb} to $\Norm{b(z_i, v(r,z_i))}_q$ above to see that
+  \begin{align*} % \label{E:NormB}
     \Norm{b(z_i, v(r,z_i))}_q
-    \le C\left(1+\Norm{v(r,z_i)}_q\right)
-    % \le C\bigg(1+(G(r+ t_0,\cdot) * |\mu|))(z_i)\bigg)
-    \le  C J_0\left(r + t_0,z_i;\mu^*\right), \quad i=1,2.
-  \end{align}
-  Therefore,
+    & \le C\left(1+\Norm{v(r,z_i)}_q\right)                               \\
+    & =   C\left(1+\Norm{u(r+t_0,z_i)}_q\right)                           \\
+    & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right) \\
+    & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i=1,2, \: r\in(0,s),
+  \end{align*}
+  where in the last step, we have used the fact that $H(t;\gamma)$ is a nondecreasing function; see
+  Lemma 2.6 of \cite{chen.kim:19:nonlinear}. Therefore, by denoting
+  $C_s:=H\left(s+t_0;32qL_b^2\right)$,
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2
-    & \le C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i=1}^2  \bigg( G(s-r,y-z_i)  J_0\left(r + t_0,z_i;\mu^*\right)\bigg)         \\
-    & = C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2) \iint_{\R^{2d}} \ud z_1\ud z_2                                            \\
+    & \le C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i=1}^2  \bigg( G(s-r,y-z_i)  J_0\left(r + t_0,z_i;\mu^*\right)\bigg)     \\
+    & = C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2) \iint_{\R^{2d}} \ud z_1\ud z_2                                        \\
     & \quad \times f(z_1-z_2) \prod_{i=1}^{2} \bigg( G(s-r,y-z_i)G(r + t_0,z_i-\sigma_i) \bigg)                                                                                \\
-    & = C \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0,y-\sigma_2)                              \\
+    & = C C_s\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0,y-\sigma_2)                           \\
     & \quad \times\iint_{\R^{2d}} \ud z_1\ud z_2 f(z_1-z_2)  \prod_{i=1}^2 G\left(\frac{(r+t_0)(s-r)}{s + t_0}, z_i-\sigma_i\frac{r + t_0}{s + t_0}-\frac{s-r}{s+t_0}y \right) \\
-    & \le C (2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}}\mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0, y-\sigma_2)               \\
+    & \le C C_s(2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}}\mu^*(\ud \sigma_1) \mu^*(\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0, y-\sigma_2)            \\
     & \quad \times \int_{\R^d} \widehat{f}(\ud \xi) \exp\left(-\frac{(r + t_0)(s-r)}{s+ t_0}|\xi|^2\right),
   \end{align*}
   where we have applied \eqref{E:gsim} and Plancherel's theorem. Hence,
   \begin{align*}
-   \Norm{Y_v(s,y)}_q^2 \le C (2\pi)^{-2d} J_0^2\left(s + t_0,y;\mu^*\right) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}|\xi|^2\right).
+   \Norm{Y_v(s,y)}_q^2 \le C C_s (2\pi)^{-2d} J_0^2\left(s + t_0,y;\mu^*\right) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}|\xi|^2\right).
   \end{align*}
   Because the function
   \[
@@ -1145,7 +1146,7 @@ and the restarted SHE ($ t_0>0$):
   is nondecreasing in $t_0 $ whenever $s > r > 0$, we can replace the two appearances of $t_0$ in
   the exponent of the above inequality by zero to see that
   \begin{equation} \label{E_:NormY}
-    \Norm{Y_v(s,y)}_q^2 \le C (2\pi)^{-2d} J_0^2(s + t_0,y;\mu^*) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
+    \Norm{Y_v(s,y)}_q^2 \le C C_s (2\pi)^{-2d} J_0^2(s + t_0,y;\mu^*) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
   \end{equation}
   Furthermore, by symmetry of $r(s-r)/s$ and the fact that $r(s-r)/s \ge r/2$ for all $r\in
   [0,s/2]$, we see that the above double integral is bounded by
@@ -1156,8 +1157,10 @@ and the restarted SHE ($ t_0>0$):
     =   & \: 2^{2(1-\alpha)} \mathcal{H}_\alpha(s).
   \end{align*}
   Plugging the above bound back to \eqref{E_:NormY} proves \eqref{E:NormY}. \bigskip
+  \bigskip
 
-  It remains to prove \eqref{E:yineq}. An application of Minkowski's inequality shows that
+  \noindent (2-3) Part (2) is a direct consequence of Theorem \ref{T:ExUn}. It remains to prove
+  \eqref{E:yineq}. An application of Minkowski's inequality shows that
   \begin{align} \label{E:EYqr}
     \E\left( \Norm{Y_v(s,\cdot)}_{\rho}^q\right)
     = \Norm{\int_{\R^d} Y_v(s,y)^2\rho(y) \ud y }_{q/2}^{q/2}
@@ -1475,23 +1478,47 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
   \end{align*}
   Then by Proposition \ref{P:weight} and Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is
-  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Moreover, by Chebyshev's inequality,
-  \eqref{E:uInLrho} and \eqref{E:yineq}, we see that
+  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Notice that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
-    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right] + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \nonumber         \\
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right) \nonumber                                      \\
-    & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
-    + \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)\\
-    & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s
-    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\\
-    & < \infty,
+    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
+    + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \\
+    & =: I_1+I_2.
   \end{align*}
-  where the upper bound does not depend on $t$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
+  By Chebyshev's inequality and \eqref{E:uInLrho}, we see that
+  \begin{align*}
+    I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right)
+    \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
+  \end{align*}
+  where the upper bound does not depend on $t$ and the upper bound is finite due to the fact that
+  $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$ that is bounded at
+  infinity thanks to condition \eqref{E:InitData}. Similarly, by Chebyshev's inequality and
+  \eqref{E:yineq},
+  \begin{align*}
+    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s \\
+        & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\\
+        & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s.
+  \end{align*}
+  Condition \eqref{E:H} implies that $\mathcal{H}_\alpha(s)$ is a continuous function that vanishes
+  at $s=0$. Hence, $\int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty$. Combining these two
+  upper bounds, we see that
+  \begin{align*}
+    \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
+    \le
+    \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s
+    +
+    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
+    <\infty,
+  \end{align*}
+  with the upper bound uniform in $t\ge \tau$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
   0$ big enough such that
   \begin{align*}
-    \dfrac{\sin^q(\alpha \pi)\Theta}{\pi^q \Lambda^q} \left(\sup_{t\ge t_0}\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}\left(s + t;\mu\right) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\right)
-    + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right) < \epsilon,
+    \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s
+    +
+    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
+    < \epsilon,
   \end{align*}
   we can ensure that
   \begin{align*}
