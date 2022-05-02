@@ -465,7 +465,7 @@ Here is the main theorem of the paper:
     \item the weight function $\widehat{\rho}$ and the initial condition satisfy the following
       condition:
       \begin{equation} \label{E:InitData}
-        \limsup_{t>0}\: \mathcal{G}_{\widehat{\rho}}(t+ t_0;\mu) < \infty;
+        \limsup_{t>0}\: \mathcal{G}_{\widehat{\rho}}(t;\mu) < \infty;
       \end{equation}
     \item for some $\alpha\in (0,1/2)$, the spectral measure $\widehat{f}$ satisfies that
       \begin{align} \label{E:H}
@@ -526,20 +526,84 @@ part (b) based on (a) is routine:
   close to zero, one can conclude part (b) of Theorem \ref{T:Main}.
 \end{proof}
 
-\begin{remark}[$L^\infty(\R^d)$ initial condition] \label{R:BddInit}
+
+\section{Discussions and Examples} \label{S:Example}
+
+\subsection{Various initial conditions}
+
+
+\begin{example}[$L^\infty(\R^d)$ initial condition] \label{Ex:BddInit}
   We emphasize that if the initial condition $\mu$ is deterministic and is such that $\mu(\ud x) =
   \varphi(x)\ud x$ with $\varphi\in L^\infty(\R^d)$, then all conditions related to
   $\mathcal{G}_\rho(\cdot)$ in both Theorems \ref{T:Lrho} and \ref{T:Main} are trivially satisfied.
-  To be more precise, conditions \eqref{E:G}, \eqref{E:InitData} and \eqref{E:GH-int} hold by
-  noticing that the function $\mathcal{H}_\alpha(t)$ in \eqref{E:H} is a continuous function on
-  the closed interval $[0,t_0]$ and
+  To be more precise, both conditions \eqref{E:G} and \eqref{E:InitData} hold because
   \begin{align*}
     \mathcal{G}_\rho(t;\varphi) \le \Norm{\varphi}_{L^\infty(\R^d)}^2 \Norm{\rho}_{L^1(\R^d)}< \infty
     \quad \text{uniformly for all $t\ge 0$.}
   \end{align*}
-\end{remark}
+\end{example}
 
-\section{Examples} \label{S:Example}
+\begin{example}[Delta initial condition] \label{Ex:delta}
+  In this example, we study the case when the initial condition $\mu$ is the Dirac delta measure at
+  zero, namely, $\delta_0$. Let $\rho$ be a nonnegative and  $L^1(\R^d)$ function. Since
+  \begin{align*}
+    \mathcal{G}_\rho(t;\delta_0)
+    = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
+    \le G(t,0)^2 \Norm{\rho}_{L^1(\R^d)},
+    \quad \text{for all $t>0$.}
+  \end{align*}
+  we see that both conditions \eqref{E:G} and \eqref{E:InitData} are satisfied. In particular,
+  $\limsup_{t>0} \mathcal{G}_\rho(t;\delta_0)=0$.
+\end{example}
+
+The following proposition shows that for initial conditions with unbounded tails, condition
+\eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
+
+\begin{proposition}
+  Suppose that $\rho=\exp(-|x|)$, which is an admissible weight function. Let the initial condition
+  $\mu$ be given as
+  \begin{align*}
+    \mu(\ud x) = |x|^\alpha \ud x \quad \text{with $\alpha>0$}.
+  \end{align*}
+  Then condition \eqref{E:G} is satisfied, but condition \eqref{E:InitData} fails.
+\end{proposition}
+\begin{proof}
+  Notice that by scaling arguments,
+  \begin{align*}
+    \mathcal{G}_\rho(t;\mu)
+    & = \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x\\
+    & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x\\
+    & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi\\
+  \end{align*}
+  Let $C_\alpha$ and $C_\alpha'$ be generic constants that may depend on $\alpha $ and may change
+  their value at each appearance. Because
+  \begin{align*}
+    % \int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
+    \le C_\alpha \int_{\R^d}G\left(1,z\right) \left(|\xi|^\alpha + |z|^\alpha\right) \ud z
+    = C_\alpha' \left( 1+|\xi|^\alpha\right),
+  \end{align*}
+  we see that
+  \begin{align*}
+    \mathcal{G}_\rho(t;\mu)
+    & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi \\
+    & = C_\alpha'\int_{\R^d}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r      \\
+    & = C_\alpha'\left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
+    & = C_\alpha (1+ t^\alpha)<\infty.
+  \end{align*}
+  Hence, condition \eqref{E:G} is satisfied.
+
+  To show that condition \eqref{E:InitData} fails, one needs to find the lower bound of
+  $\mathcal{G}_\rho(t;\mu)$. Indeed,
+  \begin{align*}
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
+    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z                                     \\
+    & = \frac{1}{\sqrt{2\pi}}\int_{\R}G\left(1,z\right) \big| |\xi| - |x| \big|^\alpha e^{-\frac{x^2}{2}} \ud x \\
+    & \ge \frac{1}{\sqrt{2\pi}}\int_{|\xi|}^\infty G\left(1,z\right) \big| |\xi| - |x| \big|^\alpha e^{-\frac{x^2}{2}} \ud x \\
+  \end{align*}
+  \textcolor{magenta}{Nick, can you figure out the rest part? My strategy may not work. But I
+  believe the result should be true.}
+\end{proof}
 
 \subsection{Bessel kernel}
 
@@ -622,117 +686,132 @@ part (b) based on (a) is routine:
   \eqref{E:HaB}.
 \end{proof}
 
-\begin{example}
-  It is easy to see that $\delta_0$ satisfies \eqref{A:icon}. Moreover, it is easy to see that if
-  $d-2 < s < d$ then $\Upsilon(0) < \infty$ and so the conditions of Theorem \eqref{T:Solve} and
-  Theorem \ref{T:ExUn} are satisfied and a unique mild solution, $u$, exists that starts from
-  $\delta_0$ and is driven by a Gaussian noise with correlation function $f_s(x)$. We denote
-  $v(t,x)$ to be the restarted solution as in \eqref{E:restart}. We now show that $v$ satisfies the
-  conditions in Theorem \ref{T:Main}. In other words, it remains to prove that $v(0,\cdot) =
-  u(t_0,\cdot)$ and $f_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and
-  \eqref{E:GH-int}.
+% \begin{example}
+%   It is easy to see that $\delta_0$ satisfies \eqref{A:icon}. Moreover, it is easy to see that if
+%   $d-2 < s < d$ then $\Upsilon(0) < \infty$ and so the conditions of Theorem \eqref{T:Solve} and
+%   Theorem \ref{T:ExUn} are satisfied and a unique mild solution, $u$, exists that starts from
+%   $\delta_0$ and is driven by a Gaussian noise with correlation function $f_s(x)$. We denote
+%   $v(t,x)$ to be the restarted solution as in \eqref{E:restart}. We now show that $v$ satisfies the
+%   conditions in Theorem \ref{T:Main}. In other words, it remains to prove that $v(0,\cdot) =
+%   u(t_0,\cdot)$ and $f_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and
+%   \eqref{E:GH-int}.
+%
+%   Let $q>2$ be arbitrary. Starting with \eqref{E:InitData},
+%    \begin{align*}
+%     \mathcal{G}_{\widehat{\rho}, q}(s)
+%     & =  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x                        \\
+%     & = \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \widehat{\rho}(x) \ud x \\
+%     & = \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x     \\
+%     & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{u(t_0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x,
+%    \end{align*}
+%   where in the last line we used Recall that $u(t_0,x) = v(0,x)$. In the
+%   following, $C$ is a generic constant independent of $s$ that may change from
+%   line to line. By applying the moment bound \eqref{E:mb0} we see that
+%    \begin{align*}
+%      \mathcal{G}_{\widehat{\rho}, q}(s)
+%      & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \widehat{\rho}(x) \ud x \\
+%      & = 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  +\int_{\R^d} G(s,x-y) (G(t_0,\cdot)*\delta_0)(y) \ud y\right)^2 \widehat{\rho}(x) \ud x                \\
+%      & =2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  + (G(t_0+s,\cdot)*\delta_0)(x) \right)^2 \widehat{\rho}(x) \ud x                                        \\
+%      & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \widehat{\rho}(x) \ud x                 \\
+%      & \le C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s, x))^2 \widehat{\rho}(x) \ud x                                                                        \\
+%      & = C\Norm{\widehat{\rho}}_{L^1(\R^d)} + C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \widehat{\rho}(x) \ud x             \\
+%      & =: \textbf{G}(s),
+%    \end{align*}
+%   and this verifies \eqref{E:InitData} because $t_0 > 0$ is fixed. Moreover, this
+%   implies that for any $T>0$, $\mathcal{G}_{\widehat{\rho}, q}(s)$ is bounded on
+%   $s \in [0,T]$. This will be needed below.
+%
+%   Now lets verify \eqref{E:H} for the Bessel kernel, $f_s$. By recalling
+%   \eqref{E:FB}, we have
+%    \begin{align*}
+%     \mathcal{H}_{\alpha}(s)
+%     & = \int_0^s \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} \\
+%     & = \sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}.
+%    \end{align*}
+%   Let's examine the $\int_0^\infty \ud z$ integral and apply the change of
+%   variables $y = z^2$. This yields,
+%   \begin{align*}
+%       \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}
+%     = \frac{1}{2} \int_0^\infty \ud y\; e^{-r y} (1+y)^{s/2} y^{\frac{d}{2}-1} \ud y
+%     = \frac{\Gamma\left(d/2\right)}{2}U\left(\frac{d}{2},\frac{d+2-s}{2},r\right),
+%   \end{align*}
+%   where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function
+%   (see \cite[Chapter 13]{olver.lozier.ea:10:nist}) and the last equality can be
+%   found in \cite[13.4.4]{olver.lozier.ea:10:nist}. Thus, to show the finiteness
+%   of $\mathcal{H}_{\alpha}(s)$ for each $s >0$, it suffices to show that the
+%   following integral is finite:
+%    \begin{equation} \label{E:BesselHG}
+%     \int_0^s r^{-2\alpha} \; U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) \; \ud r.
+%    \end{equation}
+%   The behavior of $U(\alpha, \beta, t)$ around the origin is given in
+%   \cite[Section 13.2 (iii)]{olver.lozier.ea:10:nist} and is given in cases on
+%   $\beta$, which in our case is $(d+2-s)/2$. Recall above that we are taking $d-2
+%   < s < d$. For this reason, the only case in \cite[Section 13.2
+%   (iii)]{olver.lozier.ea:10:nist} that is applicable is $1 < (d+2-s)/2 < 2$ and
+%   in this case
+%   \begin{equation}
+%     r^{-2\alpha} U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) = O\left( r^{1-2\alpha- (d+2-s)/2} + r^{-2\alpha} + r^{2 - 2\alpha -  (d+2-s)/2}  \right).
+%   \end{equation}
+%   So in order \eqref{E:BesselHG} to be finite we need
+%    \[
+%     \min\{ 1 - 2\alpha -  (d+2-s)/2, -2\alpha, 2 - 2\alpha -  (d+2-s)/2\} \ge -1.
+%    \]
+%   Recall that we are assuming $\alpha \in (q^{-1}, 2^{-1})$ so $-2\alpha >-1$.
+%   Thus it suffices to set
+%    \[
+%     1 - 2\alpha -  (d+2-s)/2, -2\alpha \ge -1 \quad \iff \quad 2 - 4\alpha -d + s >0.
+%    \]
+%   This is indeed possible as $2-4\alpha >0$ and $d-2 < s < d$, thus one can take
+%   $s$ sufficiently close to $d$ so that $(2 - 4\alpha) - (d-s) >0$. This
+%   completes the verification for \eqref{E:H}.
+%
+%   Lastly we need to verify \eqref{E:GH-int}. But essentially all the work for
+%   this has been completed. The verification of \eqref{E:H} implies that
+%   $\mathcal{H}_\alpha(s)$ is continuous on $s \in [0, T]$ for any $T>0$ and we
+%   already saw above that $\mathcal{G}_{\widehat{\rho}, q}(s)$ was bounded on
+%   $[0, T]$. These two facts imply \eqref{E:GH-int}, thus allowing us to apply
+%   Theorem \eqref{T:Main} and verify the existence of an invariant measure to
+%   \eqref{E:SHE} with initial data, $\mu(\cdot) = u(t_0, \cdot)$ and noise
+%   $\dot{W}_{t_0}$ with correlation function given to be the Bessel kernel $f_s$.
+%   Recall that the invariant measures derived from specific initial conditions take
+%   the form of \eqref{E:InvMeasForm}. Since for all $t >0$ we have $u(t + t_0,x)
+%   \stackrel{\mathcal{L}}{=} v(t,x)$, what we have actually done was verify the
+%   existence of an invariant measure$, \eta$, for \eqref{E:SHE} starting from
+%   $\delta_0$ with correlation function $f_s(x)$. Indeed,
+%    \begin{align*}
+%     \eta(A) & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(v(t,\cdot, u(t_0,\cdot)))(A) \; \ud t   \\
+%             & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t + t_0,\cdot, \delta_0))(A) \; \ud t \\
+%             & = \lim_{n \to \infty} \int_{t'_0}^{T_n + t'_0} \mathscr{L}(u(t,\cdot, \delta_0))(A) \; \ud t, \quad t'_0 = 2t_0.
+%    \end{align*}
+%   Hence we may start \eqref{E:SHE} at $\delta_0$.
+% \end{example}
+%
+% \begin{example}[More examples] \label{Ex:More}
+% We would like to point out that the following initial data are also applicable
+% when considering the correlation function to be the Bessel kernel $B_s(x)$ with
+% $s < d$:
+%  \[
+%   \text{Lebesgue measure } \ud x \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
+%  \]
+% The interested reader may go trough the same steps above to see that
+% \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int} are all finite.
+% \end{example}
+%
 
-  Let $q>2$ be arbitrary. Starting with \eqref{E:InitData},
-   \begin{align*}
-    \mathcal{G}_{\widehat{\rho}, q}(s)
-    & =  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x                        \\
-    & = \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \widehat{\rho}(x) \ud x \\
-    & = \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x     \\
-    & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{u(t_0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x,
-   \end{align*}
-  where in the last line we used Recall that $u(t_0,x) = v(0,x)$. In the
-  following, $C$ is a generic constant independent of $s$ that may change from
-  line to line. By applying the moment bound \eqref{E:mb0} we see that
-   \begin{align*}
-     \mathcal{G}_{\widehat{\rho}, q}(s)
-     & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \widehat{\rho}(x) \ud x \\
-     & = 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  +\int_{\R^d} G(s,x-y) (G(t_0,\cdot)*\delta_0)(y) \ud y\right)^2 \widehat{\rho}(x) \ud x                \\
-     & =2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  + (G(t_0+s,\cdot)*\delta_0)(x) \right)^2 \widehat{\rho}(x) \ud x                                        \\
-     & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \widehat{\rho}(x) \ud x                 \\
-     & \le C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s, x))^2 \widehat{\rho}(x) \ud x                                                                        \\
-     & = C\Norm{\widehat{\rho}}_{L^1(\R^d)} + C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \widehat{\rho}(x) \ud x             \\
-     & =: \textbf{G}(s),
-   \end{align*}
-  and this verifies \eqref{E:InitData} because $t_0 > 0$ is fixed. Moreover, this
-  implies that for any $T>0$, $\mathcal{G}_{\widehat{\rho}, q}(s)$ is bounded on
-  $s \in [0,T]$. This will be needed below.
+\subsection{Mat\'ern kernel}
 
-  Now lets verify \eqref{E:H} for the Bessel kernel, $f_s$. By recalling
-  \eqref{E:FB}, we have
-   \begin{align*}
-    \mathcal{H}_{\alpha}(s)
-    & = \int_0^s \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} \\
-    & = \sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}.
-   \end{align*}
-  Let's examine the $\int_0^\infty \ud z$ integral and apply the change of
-  variables $y = z^2$. This yields,
-  \begin{align*}
-      \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}
-    = \frac{1}{2} \int_0^\infty \ud y\; e^{-r y} (1+y)^{s/2} y^{\frac{d}{2}-1} \ud y
-    = \frac{\Gamma\left(d/2\right)}{2}U\left(\frac{d}{2},\frac{d+2-s}{2},r\right),
-  \end{align*}
-  where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function
-  (see \cite[Chapter 13]{olver.lozier.ea:10:nist}) and the last equality can be
-  found in \cite[13.4.4]{olver.lozier.ea:10:nist}. Thus, to show the finiteness
-  of $\mathcal{H}_{\alpha}(s)$ for each $s >0$, it suffices to show that the
-  following integral is finite:
-   \begin{equation} \label{E:BesselHG}
-    \int_0^s r^{-2\alpha} \; U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) \; \ud r.
-   \end{equation}
-  The behavior of $U(\alpha, \beta, t)$ around the origin is given in
-  \cite[Section 13.2 (iii)]{olver.lozier.ea:10:nist} and is given in cases on
-  $\beta$, which in our case is $(d+2-s)/2$. Recall above that we are taking $d-2
-  < s < d$. For this reason, the only case in \cite[Section 13.2
-  (iii)]{olver.lozier.ea:10:nist} that is applicable is $1 < (d+2-s)/2 < 2$ and
-  in this case
-  \begin{equation}
-    r^{-2\alpha} U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) = O\left( r^{1-2\alpha- (d+2-s)/2} + r^{-2\alpha} + r^{2 - 2\alpha -  (d+2-s)/2}  \right).
-  \end{equation}
-  So in order \eqref{E:BesselHG} to be finite we need
-   \[
-    \min\{ 1 - 2\alpha -  (d+2-s)/2, -2\alpha, 2 - 2\alpha -  (d+2-s)/2\} \ge -1.
-   \]
-  Recall that we are assuming $\alpha \in (q^{-1}, 2^{-1})$ so $-2\alpha >-1$.
-  Thus it suffices to set
-   \[
-    1 - 2\alpha -  (d+2-s)/2, -2\alpha \ge -1 \quad \iff \quad 2 - 4\alpha -d + s >0.
-   \]
-  This is indeed possible as $2-4\alpha >0$ and $d-2 < s < d$, thus one can take
-  $s$ sufficiently close to $d$ so that $(2 - 4\alpha) - (d-s) >0$. This
-  completes the verification for \eqref{E:H}.
+In this part, we investigate the case when the correlation function $f(x)$ is given by the {\it
+Mat\'ern function}, namely,
+\begin{align*}
+  f(x) = f_{\rho,\nu}(x) := \sigma^2 \frac{2^{1-\nu}}{\Gamma(\nu)} \left(\sqrt{2\nu} \frac{|x|}{\rho}\right)^\nu K_\nu\left(\sqrt{2\nu} \frac{|x|}{\rho}\right),
+\end{align*}
+where $K_\nu(\cdot)$ is the modified Bessel function of the second kind, and $\rho,\nu>0$ are two
+parameters.
+\bigskip
 
-  Lastly we need to verify \eqref{E:GH-int}. But essentially all the work for
-  this has been completed. The verification of \eqref{E:H} implies that
-  $\mathcal{H}_\alpha(s)$ is continuous on $s \in [0, T]$ for any $T>0$ and we
-  already saw above that $\mathcal{G}_{\widehat{\rho}, q}(s)$ was bounded on
-  $[0, T]$. These two facts imply \eqref{E:GH-int}, thus allowing us to apply
-  Theorem \eqref{T:Main} and verify the existence of an invariant measure to
-  \eqref{E:SHE} with initial data, $\mu(\cdot) = u(t_0, \cdot)$ and noise
-  $\dot{W}_{t_0}$ with correlation function given to be the Bessel kernel $f_s$.
-  Recall that the invariant measures derived from specific initial conditions take
-  the form of \eqref{E:InvMeasForm}. Since for all $t >0$ we have $u(t + t_0,x)
-  \stackrel{\mathcal{L}}{=} v(t,x)$, what we have actually done was verify the
-  existence of an invariant measure$, \eta$, for \eqref{E:SHE} starting from
-  $\delta_0$ with correlation function $f_s(x)$. Indeed,
-   \begin{align*}
-    \eta(A) & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(v(t,\cdot, u(t_0,\cdot)))(A) \; \ud t   \\
-            & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t + t_0,\cdot, \delta_0))(A) \; \ud t \\
-            & = \lim_{n \to \infty} \int_{t'_0}^{T_n + t'_0} \mathscr{L}(u(t,\cdot, \delta_0))(A) \; \ud t, \quad t'_0 = 2t_0.
-   \end{align*}
-  Hence we may start \eqref{E:SHE} at $\delta_0$.
-\end{example}
-
-\begin{example}[More examples] \label{Ex:More}
-We would like to point out that the following initial data are also applicable
-when considering the correlation function to be the Bessel kernel $B_s(x)$ with
-$s < d$:
- \[
-  \text{Lebesgue measure } \ud x \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
- \]
-The interested reader may go trough the same steps above to see that
-\eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int} are all finite.
-\end{example}
-
+\textcolor{magenta}{Nick, I found this correlation function is very popular now in machine learning
+and statistics. Shall we try if this works in our case? I may search first from Wikipedia and find
+more references and especially find the Fourier transform of $f$.}
 
 \section{Preliminaries} \label{S:Prelim}
 
@@ -846,9 +925,9 @@ may remove the Lemma.}
   where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ (see \eqref{E:lipcon} for $L_0$ and $L_b$)
   and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for
   the expression of the function $H$). Moreover \footnote{This statement is from Lemma 2.5 of
-    \cite{chen.kim:19:nonlinear}. In the current paper, we do not need the lower bound of the
-  moments, hence, there is no need to make the cone conditions as in {\it ibid.}; only the Lipschitz
-condition on $b$ will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
+    \cite{chen.kim:19:nonlinear}. In the current paper, since we do not need the lower bound of the
+  moments, there is no need to make the cone conditions on $b(\cdot)$ as in {\it ibid.} and the
+Lipschitz condition will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
 first condition in \eqref{E:U0finite} holds and the second one is strengthened to
   \begin{equation}\label{E:pLip}
      32 p L_b^2 < \frac{1}{4\Upsilon(0)},
@@ -1074,7 +1153,7 @@ and the restarted SHE ($ t_0>0$):
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
   \end{equation}
   has the following properties:
-  \begin{enumerate}
+  \begin{enumerate}[(1)]
     \item For all $q\ge 2$, $s>0$, $y\in\R^d$,
       \begin{align} \label{E:NormY}
         \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
@@ -1083,9 +1162,9 @@ and the restarted SHE ($ t_0>0$):
     \item If $\Upsilon(0)<\infty$ and $q>\max\left(1/\alpha, 128 L_b^2 \Upsilon(0)\right)$, then the
       function $H\left(t;32qL_b^2\right)$ in \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e.,
       $\sup_{t\ge 0}H\left(t;32qL_b^2\right)<\infty$;
-    \item Under conditions in part 2, if $\rho$ is a nonnegative $L^1(\R^d)$ function, then there
-      exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend on
-      $t$, such that for $t>0$,
+    \item Under conditions in part (2), if $\rho$ is a nonnegative and $L^1(\R^d)$ function, then
+      there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend
+      on $t$, such that for $t>0$,
       \begin{equation} \label{E:yineq}
         \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
         \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s,
@@ -1096,6 +1175,23 @@ and the restarted SHE ($ t_0>0$):
     \end{align}
   \end{enumerate}
 \end{lemma}
+\begin{remark}
+  Condition \eqref{E:GH-int'} is true for $t_0>0$ because $\mathcal{G}_\rho(t;\mu)$ is a continuous
+  function for $t>0$ and $\mathcal{H}_\alpha(s)$ is continuous and bounded for $s\in [0,t]$ thanks
+  to \eqref{E:H}. However, when $t_0=0$, the situation is much more trickier. For example, when the
+  initial condition is the delta initial condition, we have that
+  \begin{align*}
+    \mathcal{G}_{\widehat{\rho}}(t;\delta_0)
+    = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
+    = G(2t,0) \int_{\R^d} G(t/2,x)\rho(x)\ud x
+    < \infty,
+  \end{align*}
+  where one can obtain the second equality via \eqref{E:gsim}. Hence, when $s\to 0$,
+  $\mathcal{G}_{\widehat{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. On the other hand,
+  $\mathcal{H}_\alpha(s)$ goes to zero with a different rate. One needs to combine these two rates
+  to check if condition \eqref{E:GH-int'} holds. By introducing $t_0$ (or restart the heat
+  equation), one can avoid this tricky issue.
+\end{remark}
 \begin{proof}
   In the proof, we use $C$ to denote a generic constant that may change its value at each
   appearance. \bigskip
@@ -1159,7 +1255,7 @@ and the restarted SHE ($ t_0>0$):
   Plugging the above bound back to \eqref{E_:NormY} proves \eqref{E:NormY}. \bigskip
   \bigskip
 
-  \noindent (2-3) Part (2) is a direct consequence of Theorem \ref{T:ExUn}. It remains to prove
+  \noindent (2--3) Part (2) is a direct consequence of Theorem \ref{T:ExUn}. It remains to prove
   \eqref{E:yineq}. An application of Minkowski's inequality shows that
   \begin{align} \label{E:EYqr}
     \E\left( \Norm{Y_v(s,\cdot)}_{\rho}^q\right)
