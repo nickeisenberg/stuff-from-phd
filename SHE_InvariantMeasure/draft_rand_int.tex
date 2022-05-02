@@ -531,7 +531,6 @@ part (b) based on (a) is routine:
 
 \subsection{Various initial conditions}
 
-
 \begin{example}[$L^\infty(\R^d)$ initial condition] \label{Ex:BddInit}
   We emphasize that if the initial condition $\mu$ is deterministic and is such that $\mu(\ud x) =
   \varphi(x)\ud x$ with $\varphi\in L^\infty(\R^d)$, then all conditions related to
@@ -617,17 +616,15 @@ The following proposition shows that for initial conditions with unbounded tails
         f_s(x) \le C(s,d) \exp(-|x|/2) \quad \text{for} \quad |x| \ge 2;
       \end{align*}
     \item there exists a constant $c(s,d)>0$ such that
-      \begin{align*}
-        \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2, \quad \text{with}
-      \end{align*}
-      \begin{align*}
+      \begin{gather*}
+        \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2, \quad \text{with} \\
         H_s(x) =
         \begin{cases}
           |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,}\cr
           \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}\cr
            1 + O(|x|^{s-d})                               & \text{for $s>d$;}
         \end{cases}
-        \end{align*}
+        \end{gather*}
       \item the Fourier transform of $f_s$ is strictly positive:
         \begin{equation} \label{E:FB}
           \mathcal{F}f_s(\xi) = \frac{1}{(1+|\xi|^2)^{s/2}}.
@@ -639,6 +636,32 @@ The following proposition shows that for initial conditions with unbounded tails
       \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
     \end{align*}
     In the following, we will assume that $s>d-2$ and $d\ge 3$.
+\end{example}
+
+\begin{example}[Mat\'ern class of correlation functions]
+  The {\it Mat\'ern class of correlation functions} have been widely used in spatial statistics; one
+  may check a recent work \cite{loh.sun.ea:21:on} for references. Following Section 2.10 of
+  \cite{stein:99:interpolation}, this class of correlation functions are given by
+  \begin{align} \label{E:Matern}
+    K(x) = \phi \cdot (\alpha |x|)^\nu \mathcal{K}_\nu\left(\alpha |x|\right), \quad  \text{for
+    $x\in\R^d$ with }\phi>0, \alpha>0, \nu >0 ,
+  \end{align}
+  where $\mathcal{K}_\nu(\cdot)$ is the modified Bessel function of second type, $\alpha$ and $\nu$
+  refer to the {\it scaling and smoothness parameters}, respectively. From the inversion formula
+  (see p. 46 {\it ibid.}), one sees that
+  \begin{align*}
+    \mathcal{F}K(\xi) = (2\pi)^{d} \mathcal{F}^{-1} K(\xi) = (2\pi)^d f(|\xi|)
+    \quad \text{with} \quad
+    f(\xi) = \frac{2^{\nu-1} \phi \Gamma\left(\nu +d/2\right)\alpha^{2\nu}}{\pi^{d/2}\left(\alpha^2+|\xi|^2\right)^{\nu+d/2}}, \quad  \xi\in\R^d.
+  \end{align*}
+  Comparing the above expression with \eqref{E:FB}, we see that the class of Bessel kernel $f_s$,
+  with $s>d-2$ and $d\ge 3$, includes the Mat\'ern class \eqref{E:Matern} as a special case under
+  the following choice of parameters:
+  \begin{align*}
+    \alpha = 1,\quad \nu=(s-d)/2,\quad  \text{and} \quad \phi= 2^{(2-d-s)/2} \pi^{-d/2} \Gamma(s /2)^{-1}.
+  \end{align*}
+  Note that the requirement of the smoothness parameter $\nu>0$ for the Mat\'ern class corresponds
+  to the case of the Bessel kernel with $s>d$.
 \end{example}
 
 \begin{proposition} \label{P:Bessel}
@@ -679,7 +702,7 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(t+z^2)^{s/2}} z^{d-1}
     \le I \le
-    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s/2}, \quad \text{for all $t\in[0,t]$,}
+    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s/2}, \quad \text{for all $r\in[0,t]$,}
   \end{align*}
   with both lower and upper bounds being finite and independent of $r$. Therefore,
   $\mathcal{H}_\alpha(t)<\infty$ if and only if $-2\alpha + (s-d) /2 >-1$. This proves
@@ -798,20 +821,6 @@ The following proposition shows that for initial conditions with unbounded tails
 % \end{example}
 %
 
-\subsection{Mat\'ern kernel}
-
-In this part, we investigate the case when the correlation function $f(x)$ is given by the {\it
-Mat\'ern function}, namely,
-\begin{align*}
-  f(x) = f_{\rho,\nu}(x) := \sigma^2 \frac{2^{1-\nu}}{\Gamma(\nu)} \left(\sqrt{2\nu} \frac{|x|}{\rho}\right)^\nu K_\nu\left(\sqrt{2\nu} \frac{|x|}{\rho}\right),
-\end{align*}
-where $K_\nu(\cdot)$ is the modified Bessel function of the second kind, and $\rho,\nu>0$ are two
-parameters.
-\bigskip
-
-\textcolor{magenta}{Nick, I found this correlation function is very popular now in machine learning
-and statistics. Shall we try if this works in our case? I may search first from Wikipedia and find
-more references and especially find the Fourier transform of $f$.}
 
 \section{Preliminaries} \label{S:Prelim}
 
