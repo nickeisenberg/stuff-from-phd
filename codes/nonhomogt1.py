@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 from scipy.special import gamma, factorial, logsumexp
 import matplotlib.pyplot as plt
@@ -15,10 +17,10 @@ from mpmath import *
 #            sum_i = ((t ** ((b / 2) - 1)) / 2) * m_i
 #            value_x = sum(sum_i)
 #        Y[x] = value_x
-#    return(Y) 
+#    return(Y)
 #
 
-# try using mpmath to find the sum 
+# try using mpmath to find the sum
 
 def Y(i):
     if b * ((i - 1) / 2) == int(b * ((i - 1) / 2)):
@@ -32,17 +34,17 @@ def Y(i):
 for b in [.5, .8, 1, 1.4]:
     xn = 4
     n = 500
-    x_axis = np.linspace(-1 * xn, xn, n+1) 
+    x_axis = np.linspace(-1 * xn, xn, n+1)
 
     Yvalue = np.zeros(n + 1)
     b = b
     t = 1
     ind = 0
     for x in x_axis:
-        x = x 
+        x = x
         Yvalue[ind] = mp.nsum(Y, [0, 200])
         ind = ind + 1
-    
+
     plt.plot(x_axis, Yvalue, label='b = {}'.format(b))
     plt.legend(loc="upper left")
 
@@ -51,10 +53,10 @@ for b in [1.9]:
     # x axis
     x0 = 0
     xn = 4
-    
+
     # partition the x axis
     n = 250
-    x_axis_pos = np.linspace(x0, xn, n + 1) 
+    x_axis_pos = np.linspace(x0, xn, n + 1)
     x_axis = np.linspace(-1 * xn, xn, 2*n + 1)
 
     Yvalue_pos = np.zeros(n + 1)
@@ -70,10 +72,10 @@ for b in [1.9]:
         else:
             Yvalue_pos[ind] = Yvalue_pos[ind -1]
         ind = ind + 1
-    
+
     Yvalue_neg = np.flip(Yvalue_pos)
     Yvalue = np.concatenate((Yvalue_neg, Yvalue_pos[1:]))
-    
+
     plt.plot(x_axis, Yvalue , label='b = {}'.format(b))
     plt.legend(loc="upper left")
 
@@ -85,7 +87,7 @@ for b in [1.9]:
 #plt.plot(x_axis, Y_2b01(1, x_axis, b), label='b = {}'.format(b))
 #plt.legend(loc="upper left")
 
-# generate multiple plots 
+# generate multiple plots
 #for b in [1/8, 1/2, 3/4, 1, 1.2, 1.4]:
 #    plt.plot(x_axis, Y_2b01(1, x_axis, b), label='b = {}'.format(b))
 #plt.legend(loc="upper left")
