@@ -593,7 +593,19 @@ The following proposition shows that for initial conditions with unbounded tails
   Hence, condition \eqref{E:G} is satisfied.
 
   To show that condition \eqref{E:InitData} fails, one needs to find the lower bound of
-  $\mathcal{G}_\rho(t;\mu)$. Indeed,
+  $\mathcal{G}_\rho(t;\mu)$. Using super-additivity when $\alpha\ge 2$ and the concavity when
+  $\alpha\in (0,2)$, we see that for some constant $C_\alpha>0$,
+  \begin{align*}
+    |\xi|^\alpha = \left(\xi_1^2 + \cdots + \xi_d^2\right)^{\alpha /2}
+    \ge C_\alpha \left(\xi_1^\alpha + \cdots + \xi_d^\alpha\right).
+  \end{align*}
+  Hence,
+  \begin{align*}
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
+    & \ge C_\alpha \sum_{k=1}^{d}\int_{\R^d}G\left(1,z\right)|\xi_k-z_k|^\alpha \ud z \\
+    & = C_\alpha \sum_{k=1}^{d}\int_{\R}G\left(1,z\right)|\xi_k-z_k|^\alpha \ud z_k   \\
+  \end{align*}
+  Indeed,
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
     & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z                                      \\
