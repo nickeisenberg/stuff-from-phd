@@ -20,6 +20,6 @@ dotW = np.zeros(n + 1)
 dotW[1:] = dB
 
 # plot 
-plt.plot(part, dotW, linewidth=.5)
-# plt.title('White Noise: $dB_t$') 
+plt.plot(part, dotW, linewidth=1)
+plt.title('White Noise: $dB_t = dB_t - dB_{t - \Delta :}$') 
 plt.show()

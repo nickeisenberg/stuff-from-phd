@@ -1,0 +1,642 @@
+\documentclass{beamer}% {{{
+\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc}
+%\usepackage{eucal} this is a different font than \mathcal{•}
+\usetikzlibrary{arrows}
+%\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{lemma}{Lemma}
+\newtheorem{assumptions}{Assumptions}[section]
+\newtheorem{proposition}{Proposition}
+%\newtheorem{definition}{Definition}
+\newtheorem{notation}{Notation}
+\usepackage{mathrsfs}
+%\usepackage[shortlabels]{enumitem}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shadows.blur}
+\usepackage{pgfplots}
+\usepackage{mwe} % For dummy images
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{dcolumn}
+\newcolumntype{2}{D{.}{}{2.0}}
+\usepackage{multicol}
+\numberwithin{equation}{section}
+
+\newcommand{\lip}{\textup{Lip}_b}
+\newcommand{\liph}{\text{Lip}_{\hat\rho}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+
+\newcommand{\mySeparateLine}{
+	\begin{center}
+		\makebox[\linewidth]{\rule{0.6\paperwidth}{0.4pt}}
+\end{center}}
+%\usepackage{lipsum}%% a garbage package you don't need except to create examples.
+%\usepackage{fancyhdr}
+%\pagestyle{fancy}
+%\lhead{\Huge Version A}
+%\rhead{\thepage}
+%\cfoot{}
+%\renewcommand{\headrulewidth}{0pt}
+
+
+
+\setbeamersize{text margin left=2mm,text margin right=2mm}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+
+\allowdisplaybreaks
+
+
+\defbeamertemplate{footline}{higher page number}
+{%
+	\hfill%
+	\usebeamercolor[fg]{page number in head/foot}%
+	\usebeamerfont{page number in head/foot}%
+	\insertframenumber\,/\,\inserttotalframenumber\kern1em\vskip20pt%
+}
+\setbeamertemplate{footline}[higher page number]
+
+% }}}
+% {{{ Title page
+\title[About Beamer] %optional
+{The Interpolated Stochastic Heat and Wave Equation: Solvability and Exact Moment Asymptotics}
+
+\author[Arthur, Doe] % (optional, for multiple authors)
+{Nicholas Eisenberg}
+
+%\pgfdeclareimage[height=1.2cm]{AU}{figs/AU.png}
+\institute[Auburn University]
+{
+%	\pgfuseimage{AU}\\[1em]
+	\vspace{.1em}
+}
+
+\date[VLC 2021] % (optional)
+{ \small Special Session on \\
+	{\it Stochastic Analysis and Applications}\\[1em]
+	Fall Southeastern Sectional Meeting\\[0.5em]
+	November 20-21, 2021}
+
+\logo{\includegraphics[height=1cm]{overleaf-logo}}
+\thispagestyle{empty}
+
+\begin{document}
+	
+	
+	\frame{\titlepage}
+	
+	\setcounter{page}{1}
+	% }}}
+	
+	\begin{frame}[t]{Stochastic Calculus}
+		When studying Probability Theory, we consider measurable functions (random variables),
+		\[
+		X : \Omega \to \R,
+		\]
+		and we consider the measure spaces
+		\[
+		(\Omega, \mathcal{F}, \mathbb{P}) \quad \text{and} \quad (\R, \mathscr{B}(\R), \lambda),
+		\]
+		where $\Omega$ and $\mathcal{F}$ are referred to as the sample space and set of possible events and
+		\[
+		\mathbb{P}(\Omega) = 1.
+		\]
+		%\begin{definition}[Random Variable]
+		%	A measurable function $X: \Omega \to \R^d$ is called a {\it $\R^d$-valued Random Variable}.
+		%\end{definition}
+		%
+		%So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables.
+		The average or expected value of $X$ is
+		\[
+		\mathbb{E}(X) = \int_{\Omega} X(\omega) \; \ud\mathbb{P}(\omega) = \int_{\R} x \;\ud F(x) = \int_{\R} x f(x) \;\ud x.
+		\]
+	\end{frame}
+	
+	\begin{frame}{Stochastic Processes}
+		\begin{definition}[Stochastic Process]
+			A stochastic process is a random variable that is indexed by set, $T$, which usually represents time:
+			\[
+			X_t(\omega), \quad t \in T, \; \omega \in \Omega.
+			\]
+			One can think a stochastic processes as a two parameter function
+			\[
+			X_t(\omega) = X(t,\omega): T \times \Omega \to \R.
+			\]
+		\end{definition}
+		
+		
+		\begin{definition}[Sample Path]
+			The variable $\omega$ represents the idea of a single possible outcome. The following function is then referred to as a {\it sample path}:
+			\[
+			t \mapsto X_t(\omega).
+			\]
+		\end{definition}
+		
+	\end{frame}
+	
+	%\begin{frame}
+	%	\begin{example}
+	%Suppose we leave a cup out in the rain. We may model this with a stochastic processes as
+	%	\[
+	%		X_t(\omega) = \text{Amount of rain in the cup at time $t$}.
+	%	\]
+	%Since $X_t \ge 0$, maybe we could say that
+	%	\[
+	%		X_t \sim \text{Gamma Distribution with } \mu := \mu(t) \text{ and constant variance } \sigma^2
+	%	\]
+	%	\end{example}
+	%If the rain is constant then it makes sense for the variance to be constant. Moreover, as time continuous, there will be more water in the cup on average, so the mean should be a function in time.
+	%\end{frame}
+	
+	\begin{frame}{Random Walk Example}
+		\begin{center}
+			\includegraphics[scale=.6]{randomwalk5steps.png}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}{Random Walk Example}
+		\begin{center}
+			\includegraphics[scale=.55]{randomwalk10steps.png}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}{Random Walk Example}
+		\begin{center}
+			\includegraphics[scale=.6]{randomwalk20steps.png}
+		\end{center}
+	\end{frame}
+	
+	\begin{frame}{Random Walk Example}
+		\begin{center}
+			\includegraphics[scale=.6]{randomwalk40steps.png}
+		\end{center}
+	\end{frame}
+	
+	%\begin{frame}{Random Walk Example}
+	%	\begin{center}
+	%		\includegraphics[scale=.55]{randomwalk70steps.png}
+	%	\end{center}
+	%\end{frame}
+	
+	\begin{frame}{Random Walk Example}
+		\begin{center}
+			\includegraphics[scale=.7]{BrownianMotion.png}
+		\end{center}
+	\end{frame}
+	
+%	\begin{frame}{Brownian Motion}
+%		
+%		\begin{Theorem}
+%			Consider a random walk $X = \{X_{0}=0, X_{t_1}, \cdots, X_{t_n}\}$. Suppose that for $k \in \{1, \cdots ,n\}$ that
+%			\[
+%			\mathbb{P}\left[ X_{t_k} = -h \right] = \mathbb{P}\left[ X_{t_k} = h \right] = 1/2.
+%			\]
+%			and suppose that the time increments are all constant:
+%			\[
+%			t_k-t_{k-1} = d \quad \forall k \in \{ 1, \cdots, n \}.
+%			\]
+%			Suppose that $h^2 = d$. Now define
+%			\[
+%			B_n(t_{k}) = \sum_{i=0}^k X_{t_i}.
+%			\]
+%			Then $B_n$ converges to a \textcolor{magenta}{Brownian motion}.
+%		\end{Theorem}
+%	\end{frame}
+
+		\begin{frame}{What can we do with Brownian Motion?}
+	Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the
+	point of entry into the investment. We can define a return rate as follows:
+	\[
+	S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
+	\]
+	
+	We want to make predictions of our return. In a very simple model, we can
+	assume that
+	\[
+	R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
+	\]
+	
+	In terms of Stochastic Calculus, we express this as the following stochastic
+	differential equation:
+	\[
+	R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
+	\]
+\end{frame}
+
+	\begin{frame}{Modeling a stock price with geometric Brownian motion}
+	The notation
+	\[
+	dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
+	\]
+	is only symbolic as $dB_t$ does not exist. 
+	
+	The above can be legitimately
+	viewed as the following integral equation:
+	\[
+	S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
+	\]
+	
+	The stochastic processes $S_t$ that solves the above equation is called a
+	\textcolor{magenta}{\it Geometric Brownian Motion}. 
+	Notice that we have
+	came up with a random variable that models the stock price:
+	\[
+	S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
+	\]
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[scale=.64]{geometricbmotion.png}
+	\end{center}
+\end{frame}
+	
+	\begin{frame}[t]{The It\^o's integral \small (a special case -- {\it Wiener integral})}
+			Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
+			\[
+			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
+			\]
+			where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the It\^o's integral in this case the left point Riemann sum.
+			
+			\vspace{.1in}
+			In general, this formula is not true because the increments \vspace{.1in}
+			\[
+			\ud B_{t_i}(\omega) :=  B_{t_i}(\omega) - B_{t_{i-1}}(\omega) \vspace{.1in}
+			\]
+			are very bad.
+		\end{frame}
+		
+		\begin{frame}[t]{White Noise}
+			\centering
+			\includegraphics[width=13cm, height=8.5cm]{whitenoise.png}
+		\end{frame}
+		
+		\begin{frame}{Increments of a smooth function for reference}
+			\centering
+			\includegraphics[scale=.7]{niceincrements.png}
+		\end{frame}
+		
+		\begin{frame}[t]{A ``Fundamental Theorem of It\^o's Calculus"}
+			If $f$ is twice continuously differentiable then we have the following ``Fundamental Theorem of It\^o's Calculus"
+			\[
+			\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
+			\]
+			\begin{example}
+				If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
+				\[
+				\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2}.
+				\]
+				%which is not quite the same thing as
+				%	\[
+				%		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2}
+				%	\]
+				
+			\end{example}
+			
+		\end{frame}
+		
+		\begin{frame}{Two sample paths}
+			\includegraphics[scale=.7]{StochIntegralExample}
+		\end{frame}
+		
+		\begin{frame}[t]{One more example}
+			For a nice function $f(t,x)$, we can generalize It\^o's formula to
+			\[
+			f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \left( \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \right) \ud s.
+			\]
+			\begin{example}
+				Now consider the function $f(t,x) = tx$. Then
+				\[
+				\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
+				\]
+				Plugging this in above for $a=0$ gives us
+				\[
+				tB_t = \int_0^t s \; \ud B_s + \int_0^t B_s \; \ud s, \quad \implies \quad 	\int_0^t B_s \; \ud s = t B_t -  \int_0^t s \; \ud B_s.
+				\]
+				
+			\end{example}
+		\end{frame}
+		
+		\begin{frame}[t]{Smoothness?!}
+			\centering
+			\includegraphics[scale=.6]{riemannBM.png}
+		\end{frame}
+		
+%		\begin{frame}{Why do we care about Brownian Motion?}
+%			\centering
+%			\includegraphics[scale=.3]{simmons.png}
+%		\end{frame}
+		
+%		\begin{frame}{An application to finance.}
+%			Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the
+%			point of entry into the investment. We can define a return rate as follows:
+%			\[
+%			S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
+%			\]
+%			
+%			We want to make predictions of our return. In a very simple model, we can
+%			assume that
+%			\[
+%			R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
+%			\]
+%			
+%			In terms of Stochastic Calculus, we express this as the following stochastic
+%			differential equation:
+%			\[
+%			R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
+%			\]
+%		\end{frame}
+		
+%		\begin{frame}{Modeling a stock price with geometric Brownian motion}
+%			The notation
+%			\[
+%			dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
+%			\]
+%			is only symbolic as $dB_t$ does not exist. 
+%			
+%			The above can be legitimately
+%			viewed as the following integral equation:
+%			\[
+%			S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
+%			\]
+%			
+%			The stochastic processes $S_t$ that solves the above equation is called a
+%			\textcolor{magenta}{\it Geometric Brownian Motion}. 
+%			Notice that we have
+%			came up with a random variable that models the stock price:
+%			\[
+%			S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
+%			\]
+%		\end{frame}
+		
+%		\begin{frame}
+%			\begin{center}
+%				\includegraphics[scale=.64]{geometricbmotion.png}
+%			\end{center}
+%		\end{frame}
+		
+%		\begin{frame}{Black-Scholes option pricing model for European calls}
+%			Suppose at time $t=0$ you buy a contract from a seller, allowing you to purchase 1 share of a stock at time $t=T$ and a set price of $K$, regardless if what the stock price at time $T$ is.
+%			\begin{align*}
+%			\text{Payout and time $T$} &=
+%			\begin{cases}
+%			S_T - K & \text{if } S_T > k \\
+%			0 & \text{otherwise}
+%			\end{cases} \\
+%			&= (S_T - K)^+
+%			\end{align*}
+%			
+%			What is a fair price for the this contract?
+%			
+%			For this we need a to create a self-financing strategy.
+%		\end{frame}
+%		
+%		\begin{frame}
+%			We assume that the stocks price follows a geometric Brownian motion,
+%			\[
+%			dS_t = \mu S_t \ud t + \sigma S_t \ud B_t.
+%			\]
+%			Let $a_{t_{i}}$ be the amount of shares owned over the period $t \in (t_{i-1}, t_i]$. Then at any time $t \in [0,T]$, the amount of shares owned is
+%			\[
+%			a_t = \sum_{i=1}^n a_{t_i} \textbf{1}_{(t_{i-1}, t_i]}(t)
+%			\]
+%			and the realized over $[0,T]$
+%			\begin{align*}
+%			a_TS_T - a_0S_0 = \sum_{i=1}^n a_{t_i} (S_{t_{i}} - S_{t_{i-1}}) &= \int_0^T a_t \; \ud S_t \\
+%			&= \mu \int_0^T a_t S_t \; \ud t + \sigma \int_0^T a_t S_t \; \ud B_t
+%			\end{align*}
+%		\end{frame}
+		
+%		\begin{frame}
+%			Summarizing the last slide...
+%			\[
+%			\text{Our stock profit on time $[0,T]$} = \boxed{a_TS_T - a_0S_0  =  \int_0^T a_t \; \ud S_t }
+%			\]
+%	
+%			Now suppose we also invest in a bond with interest rate, $r$, that has price
+%			$\beta_t$ at time $t$. 
+%			Similarly...
+%			\[
+%			\text{Our bond profit on time $[0,T]$} = \boxed{b_TS_T - b_0S_0  =  \int_0^T b_t \; \ud \beta_t}
+%			\]
+%			
+%			\begin{definition}[Self Financing Strategy]
+%				A pair of stocks and bonds, $(a,b)$, is \textcolor{magenta}{\it self financing} if
+%				\[
+%				a_TS_T + b_TS_T = a_0S_0 + b_0S_0 +  \int_0^T a_t \; \ud S_t + \int_0^T b_t \; \ud \beta_t.
+%				\]
+%			\end{definition}
+%		\end{frame}
+		
+%		\begin{frame}{Fair price for a European call option}
+%			A fair price for a European call option that allows the buyer to buy 1 share at price $K$ at time $T$ regardless of the price of the stock $S_T$ at time $T$ is the amount one would need to invest in a self financing strategy,
+%			\[
+%			\underbrace{a_TS_T + b_TS_T}_{V_T} = \underbrace{a_0S_0 + b_0S_0}_{V_0} +  \int_0^T a_t \; \ud S_t + \int_0^T b_t \; \ud \beta_t ,
+%			\]
+%			such that the value of the strategy at time $T$ is equal to $(S_T - K)^+$:
+%			\[
+%			V_T = (S_T - K)^+
+%			\]
+%			Let $f(S_t, T-t) = V_t$. So we see that
+%			\begin{align*}
+%			f(S_T, 0) = V_T = (S_T - K)^+ \quad \text{and} \quad  f(S_0, T) =V_0
+%			\end{align*}
+%			So we need to find $f$. Moreover, $f(S_0, T)$ is the fair price to pay.
+%		\end{frame}
+		
+%		\begin{frame}
+%			It can be shown that $f$ solves the following partial differential equation
+%			
+%			\[
+%			\begin{cases}
+%			\dfrac{\partial f}{\partial s}(s, x) = \frac{1}{2} \sigma^2 x^2 \dfrac{\partial^2f}{\partial x^2}(s,x) + rx\dfrac{\partial f}{\partial x}(s,x) - r f(s,x) & (s,x) \in [0,T] \times \R_+, \\[1em]
+%			f(0,x) = (x-K)^+                                                                                                                                          & x \in (0,\infty).
+%			\end{cases}
+%			\]
+%			\bigskip
+			
+%			The solution is given by
+%			\[
+%			f(t,x) = x \Phi\big(g(t,x)\big) - K e^{-rt}\Phi\big( h(t,x) \big),
+%			\]
+%			where
+%			\[
+%			g(t,x) = \left[ \ln\left(\frac{x}{K}\right) + \left(r  +\frac{1}{2} \sigma^2\right) t \right] / (\sigma \sqrt{t}),
+%			\]
+%			
+%			\[
+%			h(t,x) = g(t,x) - \sigma / \sqrt{t},
+%			\]
+%			
+%			\[
+%			\Phi(t) = \frac{1}{\sqrt{2\pi}}\int_0^t \exp\left(-\frac{x^2}{2}\right) \ud x.
+%			\]
+%		\end{frame}
+		
+%		\begin{frame}{Potential for unlimited profit}
+%			In practice, option contracts are priced by ``the market". This means that the
+%			cost of a contract is literally what the buyer is willing to pay or what the
+%			seller is willing to sell at.
+%
+%
+%			\vspace{.1in}
+%			
+%			This gives the educated buyer (or seller) a chance to make profit.
+%			
+%			\vspace{.1in}
+			
+%			Suppose the fair price for a call contract with strike $K$ is $\$q$ but we find a buyer, who does not know about the Black Scholes model, who wants to buy the contract for $\$p \; > \; \$q$. We can do the following:
+%			\begin{itemize}
+%				\item sell a contract for $\$p$,
+%				\item invest $\$q$ in stock and bond at time $t=0$ in a self financing strategy (HARD TO DO),
+%				\item keep the remaining $p-q$ dollars.
+%				\item pay the buyer $(S_T -K)^+$ at expiration.
+%			\end{itemize}
+%			No matter what, we make $p - q$ dollars. If we sell 100 contracts then we make $100(p-q)$...
+%			
+%		\end{frame}
+
+				\begin{frame}[t]{Stochastic Heat Equation}
+			\[
+			\begin{cases}
+			\frac{\partial}{\partial t} u(t,x) - \frac{\partial^2}{\partial x^2} u(t,x) = \lambda u(t,x) \frac{\partial^2}{\partial t \partial x}W(t,x) & t \ge 0, \; x\in \R \\
+			u(0, x) = f(x) & x \in \R
+			\end{cases}
+			\]
+			\vspace{.1 in}
+			
+			The solution to the stochastic heat equation is given through the following integral equation:
+			\[
+			u(t,x) = \int_{\R} G(t, x-y) f(y) \ud y + \lambda \int_0^t \int_{\R} G(t-s,x-y) u(s,y) W(\ud s, \ud y),
+			\]
+			where
+			\[
+			G(t,x) = \frac{1}{\sqrt{2 \pi t} }\exp\left(-\frac{|x|^2}{2t}\right)
+			\]
+		\end{frame}
+		
+		\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
+			\centering
+			\includegraphics[scale=.5]{bsheet4.png}
+		\end{frame}
+		
+%		\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
+%			\centering
+%			\includegraphics[scale=.5]{bsheet3.png}
+%		\end{frame}
+	
+		\begin{frame}{Approximation of a space-time white noise}
+			\centering
+			\includegraphics[scale=.5]{spacetimewhite.png}
+		\end{frame}
+		
+	\begin{frame}{Random vs Deterministic}
+		\begin{itemize}
+			\item The solution to the stochastic heat equation is a stochastic process. 
+			\[
+				u(t,x)(\omega_1), \quad u(t,x)(\omega_2), \quad \cdots, \quad u(t,x)(\omega_n).
+			\]
+			 \item The random solution only exists implicitly through the integral equation. \vspace{.3in}
+			\item $\frac{\partial}{\partial x} u(t,x)$ and $\frac{\partial}{\partial t} u(t,x)$ does not exists in the random case with space-time white noise. \vspace{.3in}
+			\item Interesting 'blow up' happens in the random case. This actually has real-world application. 
+		\end{itemize}
+	\end{frame}
+		
+		\begin{frame}
+			\centering
+			\includegraphics[scale=.5]{SHEdeltaNoise0.png}
+		\end{frame}
+		
+		\begin{frame}
+			\centering
+			\includegraphics[scale=.5]{SHEdeltaNoise1.png}
+		\end{frame}
+		
+		\begin{frame}
+			\centering
+			\includegraphics[scale=.5]{SHEdeltaNoise2.png}
+		\end{frame}
+		
+		\begin{frame}
+			\centering
+			\includegraphics[scale=.5]{SHEdeltaNoise2.05.png}
+		\end{frame}
+		
+		\begin{frame}
+			\centering
+			\includegraphics[scale=.5]{SHEdeltaNoise2.15.png}
+		\end{frame}
+	
+		\begin{frame}
+		\centering
+		\includegraphics[scale=.5]{SHEdeltaNoise2.2.png}
+		\end{frame}
+		
+		\begin{frame}[t]{Growth of Moments}
+			We have a quantity that describes the growth of the $p^{th}$ moments of the solutions to the stochastic heat question:
+			\[
+			\lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t}.
+			\]
+			What does this limit say about the growth or decay of the moments?
+			
+		\end{frame}
+		
+		\begin{frame}[t]{Growth of Moments for the Stochastic Heat Equation}
+			\[
+			\begin{cases}
+			\frac{\partial}{\partial t} u(t,x) - \frac{1}{2}\frac{\partial^2}{\partial x^2} u(t,x) = \sqrt{\lambda} u(t,x) \frac{\partial}{\partial x}W(x) & t \ge 0, \; x\in \R \\
+			u(0, x) = 1 & x \in \R
+			\end{cases}
+			\]
+			\begin{theorem}[Hu 2002]
+				For the above equation, we can prove that
+				\[
+				\lim_{t \to \infty} \frac{\log\left[ \mathbb{E}(|u(t,x)|^p) \right]}{t^3} = \frac{p(p-1)\lambda^2}{24}
+				\]
+				which means that
+				\[
+				t \mapsto \mathbb{E}(|u(t,x)|^p \asymp \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right), \quad \text{as } t \to \infty.
+				\]
+				So the moments grow exponentially in time.
+			\end{theorem}
+		\end{frame}
+		
+		%\begin{frame}
+		%		% \frametitle{References}
+		%
+		%    \begin{center}
+		%      \huge
+		%      Thanks for your listening~!
+		%    \end{center}
+		%
+		%    \bigskip
+		%		\small
+		%		\begin{thebibliography}{999}
+		%			\bibitem{CW}
+		%			K. Chung and R. Williams (1990)
+		%			\newblock{Introduction to Stochastic Integration}
+		%			\newblock {\em Probability and Its Applications}, Birkh\"auser
+		%
+		%			\bibitem{Hu}
+		%				Hu, Y. 2002
+		%			\newblock{Chaos expansion of heat equations with white noise potentials.}
+		%			\newblock{\em Potential Analysis} \textbf{16}, no. 1, 45-66.
+		%
+		%			\bibitem{Kuo}
+		%			H. Kuo (2000)
+		%			\newblock{Introduction to Stochastic Integration}
+		%			\newblock {\em Universitext}, Springer
+		%		\end{thebibliography}
+		%	\end{frame}
+		
+	\end{document}
+
