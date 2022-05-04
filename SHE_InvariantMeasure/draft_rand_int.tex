@@ -598,12 +598,17 @@ The following proposition shows that for initial conditions with unbounded tails
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
     & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z                                      \\
     & = \frac{C_d}{\sqrt{2\pi}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x         \\
-    & \ge \frac{C_d}{\sqrt{2\pi}}\int_{2|\xi|}^\infty \big( x-|\xi| \big)^\alpha e^{-\frac{x^2}{2}}x^{d-1} \ud x \\
+    & \ge \frac{C_d}{\sqrt{2\pi}}\int_{2|\xi|}^\infty \big( x-|\xi| \big)^\alpha e^{-\frac{x^2}{2}}x^{d-1} \ud x
+    +   \frac{C_d}{\sqrt{2\pi}}\int_{0}^{|\xi|} \big( |\xi|-x \big)^\alpha e^{-\frac{x^2}{2}}x^{d-1} \ud x \\
     & \ge \frac{C_d}{\sqrt{2\pi}} |\xi|^\alpha\int_{2|\xi|}^\infty e^{-\frac{x^2}{2}}x^{d-1} \ud x               \\
     & = C |\xi|^\alpha.
   \end{align*}
-  \textcolor{magenta}{Nick, can you figure out the rest part? My strategy may not work. But I
-  believe the result should be true.}
+  Therefore,
+  \begin{align*}
+    \mathcal{G}_\rho(t;\mu)\ge C \int_{\R^d} t^{\alpha + d/2} |\xi|^{2\alpha} e^{-\sqrt{t}|\xi|}\ud
+    \xi \ge C.
+  \end{align*}
+  \textcolor{magenta}{Nick, This is not what we need. We need $t^\alpha$ term not $t^0$ tercm.}
 \end{proof}
 
 \subsection{Bessel kernel}
@@ -1124,11 +1129,11 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both non-res
 and the restarted SHE ($ t_0>0$):
 
 \begin{lemma} \label{L:yineq}
-  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
-  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
-  when $ t_0=0$.  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon}
-  and $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that for some $\alpha\in
-  (0,1/2)$, condition \eqref{E:H} is satisfied. Then
+  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that condition \eqref{E:H} is
+  satisfied for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution
+  to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise (see
+  \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
@@ -1256,10 +1261,11 @@ and the restarted SHE ($ t_0>0$):
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
-  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
-  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
-  when $ t_0=0$. If \eqref{E:H} holds for some $\alpha\in (0,1/2)$, then the following factorization
-  holds
+  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that condition \eqref{E:H} is
+  satisfied for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution
+  to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise (see
+  \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then the following factorization holds
   \begin{equation*}
     \dfrac{\sin(\alpha \pi)}{\pi}
     \int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s
