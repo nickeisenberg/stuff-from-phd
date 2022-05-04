@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import numpy as np
 from scipy.special import gamma, factorial
 import matplotlib.pyplot as plt
@@ -21,7 +23,7 @@ xn = 4
 
 # partition the x axis
 n = 25
-x_axis_pos = np.linspace(x0, xn, n + 1) 
+x_axis_pos = np.linspace(x0, xn, n + 1)
 x_axis = np.linspace(-1 * xn, xn, 2*n + 1)
 
 t = 1
@@ -34,7 +36,7 @@ ind_t = 0
 # ------------------------
 
 # -----------------------
-# for b <= 1.5 
+# for b <= 1.5
 for t in t_axis:
     ind_x = 0
     Yvalue_pos = np.zeros(n + 1)
@@ -48,8 +50,8 @@ for t in t_axis:
 # ------------------------
 
 # ------------------------
-## for b > 1.8. I dont think this works well for 1.5 < b < 1.8 
-#for t in t_axis: 
+## for b > 1.8. I dont think this works well for 1.5 < b < 1.8
+#for t in t_axis:
 #    ind_x = 0
 #    Yvalue_pos = np.zeros(n + 1)
 #    for x in x_axis_pos:
