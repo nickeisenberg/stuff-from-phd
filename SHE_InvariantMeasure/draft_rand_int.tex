@@ -671,8 +671,8 @@ The following proposition shows that for initial conditions with unbounded tails
         \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2, \quad \text{with} \\
         H_s(x) =
         \begin{cases}
-          |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,}\cr
-          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}\cr
+          |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,} \\
+          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}   \\
            1 + O(|x|^{s-d})                               & \text{for $s>d$;}
         \end{cases}
         \end{gather*}
@@ -723,8 +723,36 @@ The following proposition shows that for initial conditions with unbounded tails
   \end{align}
   and for all $t>0$,
   \begin{align} \label{E:HaB}
-    \mathcal{H}_\alpha(t) <\infty \quad \Longleftrightarrow \quad 0<\alpha<(s-d-2)/4.
+    \mathcal{H}_\alpha(t) <\infty \quad \Longleftrightarrow \quad 0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
   \end{align}
+  where $a_+ := \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following series
+  expansions $t\to 0$: \renewcommand{\arraystretch}{2}
+  \begin{align*}
+    \mathcal{H}_\alpha(t) = \left\{
+      \begin{array}{lc}
+        \begin{aligned}
+          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right)}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}  t^{(s-d)/2+1-2\alpha}                  \\
+          \quad - \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}              t^{1-2\alpha}                          \\
+          +                                                                                        O\left(t^{(s-d)/2+2(1-\alpha)}\right), \\[1em]
+        \end{aligned}
+        &
+        \begin{gathered}
+         d-2<s<d \quad \text{and} \\
+         \alpha < \frac{1}{2} -\frac{1}{4}(d-s),
+        \end{gathered} \\
+        \begin{aligned}
+           -\frac{\pi ^{d/2}}{(1-2 \alpha) \Gamma \left(d/2\right)}t^{1-2\alpha}\log(t)                                                                \\
+           +\frac{\pi ^{d/2} \left(4 \alpha  \gamma -2 \gamma +(2 \alpha -1) \psi(d/2)+1\right)}{(1-2 \alpha)^2 \Gamma \left(d/2\right)}t^{1-2 \alpha} \\
+           +O\left(t^2\log(t)\right),                                                                                                                  \\[1em]
+        \end{aligned}                                                                                                           & s=d,     \\
+        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}t^{1-2\alpha} + O\left(t^{(s-d)/2+1-2\alpha}\right), & d<s<d+2, \\
+        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2,   \\
+        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\right),                   & s>d+2,   \\
+      \end{array}
+      \right.
+  \end{align*}
+  where $\psi(x)=\frac{\ud}{\ud x}\Gamma(x)$ refers to the {\em digamma function} and $\gamma\approx
+  0.57721$ to {\em Euler's constant}; see 5.2.2 and 5.2.3 on p. 136 of \cite{askey.roy:10:gamma}.
 \end{proposition}
 \begin{proof}
   By the spherical coordinates and \eqref{E:FB},
@@ -745,19 +773,32 @@ The following proposition shows that for initial conditions with unbounded tails
   As for \eqref{E:HaB}, from \eqref{E:H} and by the spherical coordinates, for all $t>0$,
   \begin{align*}
     \mathcal{H}_{\alpha}(t)
-    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}     \\
-    & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
-    & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
+    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}             \\
+    & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}         \\
+    & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{\frac{d}{2}-1} \\
+    & =: \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
+    % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
   \end{align*}
-  Denote the $\ud z$-integral in the far right-hand side of the above equalities by $I$. Notice that
+  By \cite[13.4.4 on p.326]{olde-daalhuis:10:confluent}, $I(r)$ is the {\it confluent hypergeometric
+  function}:
   \begin{align*}
-    \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(t+z^2)^{s/2}} z^{d-1}
-    \le I \le
-    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s}, \quad \text{for all $r\in[0,t]$,}
+    I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
   \end{align*}
-  with both lower and upper bounds being finite and independent of $r$. Therefore,
-  $\mathcal{H}_\alpha(t)<\infty$ if and only if $-2\alpha + (s-d) /2 >-1$. This proves
-  \eqref{E:HaB}.
+  By 18.2.18 -- 13.2.22 on p. 323 {\it ibid.}, we see that
+  \renewcommand{\arraystretch}{2}
+  \begin{align*}
+    I(r) = \left\{
+      \begin{array}{lcl}
+        \dfrac{\Gamma\left((d-s)/2\right)}{\Gamma(d/2)}r^{(s-d)/2}+\dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2+1}\right) & d-2<s<d & \text{\small 18.2.18}, \\
+        -\dfrac{1}{\Gamma(d/2)}\left(\log(r) + \psi(d/2) + 2\gamma \right) +O\left(r\log(r)\right)                                               & s=d     & \text{\small 18.2.19}, \\
+        \dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2}\right)                                                              & d<s<d+2 & \text{\small 18.2.20}, \\
+        \dfrac{1}{\Gamma\left(d/2+1\right)} + O\left(r\log(r)\right)                                                                             & s=d+2   & \text{\small 18.2.21}, \\
+        \dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r\right)                                                                        & s>d+2   & \text{\small 18.2.22}. \\
+      \end{array}
+      \right.
+  \end{align*}
+  Then integrating the right-hand side of the above expressions against $\pi^{d/2}r^{-2\alpha}\ud r$
+  over $[0,t]$ proves Proposition \ref{P:Bessel}.
 \end{proof}
 
 % \begin{example}
