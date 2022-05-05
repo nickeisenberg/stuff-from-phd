@@ -558,24 +558,31 @@ part (b) based on (a) is routine:
 The following proposition shows that for initial conditions with unbounded tails, condition
 \eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
 
-\begin{proposition}
+\begin{proposition} \label{P:growtail}
   Suppose that $\rho=\exp(-|x|)$, which is an admissible weight function. Let the initial condition
   $\mu$ be given as
   \begin{align*}
     \mu(\ud x) = |x|^\alpha \ud x \quad \text{with $\alpha>0$}.
   \end{align*}
-  Then condition \eqref{E:G} is satisfied, but condition \eqref{E:InitData} fails.
+  Then for some constants $C, C'>0$, it holds that
+  \begin{align} \label{E:growtail}
+    C' (1+t^\alpha) \le \mathcal{G}_\rho(t;\mu) \le C (1+t^\alpha), \qquad \text{for all $t>0$}.
+  \end{align}
+  In particular, this implies that condition \eqref{E:G} is satisfied, but condition
+  \eqref{E:InitData} fails.
 \end{proposition}
 \begin{proof}
   Notice that by scaling arguments,
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
-    & = \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x\\
-    & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x\\
-    & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi\\
+    & = \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x                                        \\
+    & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x    \\
+    & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
   \end{align*}
-  Let $C_\alpha$ and $C_\alpha'$ be generic constants that may depend on $\alpha $ and may change
-  their value at each appearance. Because
+  In the following, let $C$, $C_\alpha$ and $C_\alpha'$ be generic constants that may depend on
+  $\alpha $ and may change their value at each appearance. \bigskip
+
+  \noindent{\it Upper bound:~} Because
   \begin{align*}
     % \int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
@@ -586,94 +593,66 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
     & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi \\
-    & = C_\alpha'\int_{\R^d}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r      \\
+    & = C_\alpha'\int_{\R}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r        \\
     & = C_\alpha'\left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
     & = C_\alpha (1+ t^\alpha)<\infty.
   \end{align*}
-  Hence, condition \eqref{E:G} is satisfied.
+  Hence, this proves the upper bound in \eqref{E:growtail}. \bigskip
 
-  To show that condition \eqref{E:InitData} fails, one needs to find the lower bound of
-  $\mathcal{G}_\rho(t;\mu)$.
-  % Using super-additivity when $\alpha\ge 2$ and the concavity when
-  % $\alpha\in (0,2)$, we see that for some constant $C_\alpha>0$,
-  % \begin{align*}
-  %   |\xi|^\alpha = \left(\xi_1^2 + \cdots + \xi_d^2\right)^{\alpha /2}
-  %   \ge C_\alpha \left(\xi_1^\alpha + \cdots + \xi_d^\alpha\right).
-  % \end{align*}
-  % Hence,
-  % \begin{align*}
-  %   \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
-  %   & \ge C_\alpha \sum_{k=1}^{d}\int_{\R^d}G\left(1,z\right)|\xi_k-z_k|^\alpha \ud z \\
-  %   & = C_\alpha \sum_{k=1}^{d}\int_{\R}G\left(1,z\right)|\xi_k-z_k|^\alpha \ud z_k   \\
-  %   & = C_\alpha d \int_{\R}G\left(1,z\right)|\xi_k-z|^\alpha \ud z
-  % \end{align*}
-  Indeed,
+  \noindent{\it Lower bound:~} Now we prove the lower bound in \eqref{E:growtail}. Indeed,
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
-    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z
-      = \frac{C_d}{\sqrt{2\pi}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x.
-    % & \ge \frac{C_d}{\sqrt{2\pi}}\int_{2|\xi|}^\infty \big( x-|\xi| \big)^\alpha e^{-\frac{x^2}{2}}x^{d-1} \ud x
-    % +   \frac{C_d}{\sqrt{2\pi}}\int_{0}^{|\xi|} \big( |\xi|-x \big)^\alpha e^{-\frac{x^2}{2}}x^{d-1} \ud x \\
-    % & \ge \frac{C_d}{\sqrt{2\pi}} |\xi|^\alpha\int_{2|\xi|}^\infty e^{-\frac{x^2}{2}}x^{d-1} \ud x               \\
-    % & = C |\xi|^\alpha.
+    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z \\
+    &  = \frac{C_d}{\sqrt{2\pi}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
+    &  \ge C \int_1^2 \big| |\xi| - x \big|^\alpha \ud x \\
+    &  = \frac{C}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
-  Now we study the function $\psi(r):=\int_0^\infty \left(1+r^\alpha\right)^{-1}|r-x|^\alpha e^{-x^2/2}x^{d-1}\ud x$. It is
-  clear that $\psi(x)>0$ and $\psi(0)\in (0,\infty)$. Because
+  where, by consider three cases, we have
   \begin{align*}
-    \left(1+r^\alpha\right)^{-1}|r-x|^\alpha e^{-x^2/2}x^{d-1}
-    & \le C \frac{r^\alpha + x^\alpha+1}{1+r^\alpha}e^{-x^2/2}x^{d-1}    \\
-    & \le C \left(1+\frac{x^\alpha}{1+r^\alpha}\right) e^{-x^2/2}x^{d-1} \\
-    & \le C \left(1+x^\alpha\right) e^{-x^2/2}x^{d-1},
+    \psi(r)
+    & =
+    \begin{cases}
+      (2-r)^{\alpha+1} - (1-r)^{\alpha+1} & \text{if $0<r<1$},        \\
+      (2-r)^{\alpha+1} + (r-1)^{\alpha+1} & \text{if $1\le r \le 2$}, \\
+      (r-1)^{\alpha+1} - (r-2)^{\alpha+1} & \text{if $r > 2$},
+    \end{cases} \\
+    & = \text{sgn}(2-r)|r-2|^{\alpha+1} + \text{sgn}(r-1)|r-1|^{\alpha+1}.
   \end{align*}
-  which is integrable with respect to $\ud x$. Hence, by the dominated convergence,
-  $\lim_{r\to \infty}\psi(r) = \int_0^\infty e^{-x^2/2}x^{d-1}\ud x<\infty$. Therefore, $\psi(r)$ is
-  a strictly positive function on $[0,\infty]$. Hence,
+  We claim that
+  \begin{align} \label{E:psi}
+    \inf_{r\ge 0} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}>0.
+  \end{align}
+  With \eqref{E:psi}, we have that
   \begin{align*}
-    C_1:=\sup_{r\ge 0} \psi(r)<\infty.
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z \ge C \sqrt{1+|\xi|^{2\alpha}}.
   \end{align*}
-  On the other hand,
+  Then, by the same arguments, we obtain the lower bound in \eqref{E:growtail}. It remains to prove
+  \eqref{E:psi}, which will be proved in three cases:
+
+  When $r>2$, we see that
   \begin{align*}
-    \psi(r) & \ge \int_1^2 \left(1+r^\alpha\right)^{-1}|r-x|^\alpha e^{-x^2/2}x^{d-1}\ud x
-              \ge C \int_1^2 \left(1+r^\alpha\right)^{-1}|r-x|^\alpha \ud x
-              =:C \left(1+r^\alpha\right)^{-1}I(r).
-  \end{align*}
-  By consider three cases, $r\in (0,1]$, $r\in (1,2]$, and  $r>2$, we see that
-  \begin{align*}
-    I(r)=\int_1^2 |r-x|^\alpha \ud x = \frac{1}{1+\alpha}\left(\text{sgn}(r-1)|r-1|^{\alpha+1}- \text{sgn}(r-2)|r-2|^{\alpha+1}\right)
-  \end{align*}
-  Now, by taking derivatives, it is ready to see that when $I(r)$ is nonincreasing for $r\in (0,1]$
-  and hence,
-  \begin{align*}
-    \inf_{r\in(0,1)} \frac{I(r)}{1+r^\alpha} = \frac{1}{2} I(1).
-  \end{align*}
-  For $r>2$, we see that
-  \begin{align*}
-    \frac{(1+\alpha)I(r)}{1+r^\alpha}
-    & = \frac{(r-1)^{\alpha+1}-(r-2)^{\alpha+1}}{1+r^\alpha} \\
-    & \ge \frac{(r-1)^{\alpha+1}-(r-1)^{\alpha}(r-2)}{1+r^\alpha} \\
-    & =  \frac{(r-1)^{\alpha}}{1+r^\alpha} \ge C_\alpha \left(\frac{r-1}{1+r}\right)^\alpha
+    \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}
+    & \ge C_\alpha \frac{(r-1)^{\alpha+1}-(r-2)^{\alpha+1}}{(1+r)^\alpha}       \\
+    & \ge C_\alpha \frac{(r-1)^{\alpha}(r-1)-(r-1)^{\alpha}(r-2)}{(1+r)^\alpha} \\
+    & = C_\alpha \left(\frac{r-1}{1+r}\right)^\alpha
     = C_\alpha \left(1-\frac{2}{1+r}\right)^\alpha \ge C_\alpha \left(1-\frac{2}{3}\right)^\alpha.
   \end{align*}
-  For the case when $r\in(1,2]$, the global minimum is achieved at $r=3/2$. Combing these cases, we
-  see that
+  which shows that $\inf_{r>2} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
+
+  When $r\in(1,2]$, elementary calculations show that the minimum of $\psi(r)$ is achieved at
+  $r=3/2$. Hence,
   \begin{align*}
-    \inf_{r\in(1,2)} \frac{I(r)}{1+r^\alpha} \ge \frac{I(3/2) }{1+2^\alpha}>0.
-  \end{align*}
-  Combining all these cases, we have proved that
-  \begin{align*}
-    C_2:=\inf_{r\ge 0}\psi(r) >0.
-  \end{align*}
-  Therefore,
-  \begin{align*}
-   a
+    \inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2) }{\sqrt{1+4^\alpha}}>0.
   \end{align*}
 
-  Therefore,
+  Similarly, when $r\in (0,1]$, by differentiation, one finds that the function $\psi(r)$ is nonincreasing.
+  Hence, the minimum is achieved at $r=1$:
   \begin{align*}
-    \mathcal{G}_\rho(t;\mu)\ge C \int_{\R^d} t^{\alpha + d/2} |\xi|^{2\alpha} e^{-\sqrt{t}|\xi|}\ud
-    \xi \ge C.
+    \inf_{r\in(0,1]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1) }{\sqrt{2}}>0.
   \end{align*}
-  \textcolor{magenta}{Nick, This is not what we need. We need $t^\alpha$ term not $t^0$ term.}
+
+  Combing the above three cases proves \eqref{E:psi}. This completes the proof of Proposition
+  \ref{P:growtail}.
 \end{proof}
 
 \subsection{Bessel kernel}
