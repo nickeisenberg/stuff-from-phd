@@ -159,24 +159,24 @@
 We consider the following {\it stochastic heat equation} (SHE):
 \begin{equation} \label{E:SHE}
     \begin{cases}
-     \dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
-     u(0,\cdot) = \mu(\cdot),                                                               &
-   \end{cases},
+     \dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$, $t>0$}, \\
+     u(0,\cdot) = \mu(\cdot).
+   \end{cases}
 \end{equation}
 The noise, $\dot{W}(t,s)$, is a centered Gaussian noise that is white in time and homogeneously
 colored in space defined on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with natural
 filtration $(\mathcal{F}_t)$:
- \[
+\begin{align*}
   \mathcal{F}_t = \sigma(W_s(A): \; 0 \le s \le t, \; A \in \mathscr{B}_b(\R^d)) \vee \mathcal{N},
- \]
+\end{align*}
 where $\mathscr{B}_b(\R^d)$ denotes the bounded Borel sets on $\R^d$ and $\mathcal{N}$ are the
-$\mathbb{P}$-null sets of $\Omega$. Its covariance structure, $J$, is defined on
-$C_c^\infty(\R^{d+1}) \times C_c^\infty(\R^{d+1})$ as follows:
+$\mathbb{P}$-null sets of $\Omega$. Its covariance structure, $J$, is defined on as follows:
 \begin{align} \label{E:Cor}
   J(\psi,\phi) := \E \left[ \dot{W}\left(\psi\right)\dot{W}\left(\phi\right) \right]
                 = \int_0^\infty \ud s \int_{\R^d} \Gamma(\ud x)(\psi(s,\cdot)*\widetilde{\phi}(s,\cdot))(x),
 \end{align}
-where $\widetilde{\phi}(x) := \phi(-x)$, ``$*$" refers to the convolution in spatial variable, and
+for all $\psi,\phi\in C_c(\R^{1+d})$, i.e., continuous functions with compact support, where
+$\widetilde{\phi}(x) := \phi(-x)$, ``$*$" refers to the convolution in spatial variable, and
 $\Gamma$ is a nonnegative and nonnegative definite tempered measure on $\R^d$ that is commonly
 referred to as the {\it correlation measure}. The Fourier transform of $\Gamma$ (in the generalized
 sense) is also a nonnegative and nonnegative definite tempered measure, which is called {\it
@@ -292,6 +292,11 @@ where the first condition is a strengthened version of {\it Dalang's condition}:
   \Upsilon(\beta) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta+ |\xi|^2} <\infty,
    \quad \text{for some (and hence) all $\beta>0$.}
 \end{align}
+Note that conditions in \eqref{E:U0finite} imply that the following open interval is not empty:
+\begin{align} \label{E:Interval}
+  \left(128 L_b^2 \Upsilon(0), 1/2\right) \ne \emptyset.
+\end{align}
+
 
 In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} prove existence of an invariant measure for \eqref{E:SHE} in
@@ -455,10 +460,10 @@ Here is the main theorem of the paper:
 
 \begin{theorem} \label{T:Main}
   Let $u(t,x)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that all conditions in
-  Theorem \ref{T:Lrho}, with $u_0$ replaced by $\mu$, are satisfied. Moreover, we assume that
+  Theorem \ref{T:Lrho}, with $u_0$ replaced by $\mu$ and $\rho$ being an admissible weight (see
+  Definition \ref{D:Rho} below), are satisfied. Moreover, we assume that
   \begin{enumerate}[(i)]
-    \item if $\rho$ is an admissible weight (see Definition \ref{D:Rho} below) and there exists
-      another admissible weight $\widehat{\rho}$ such that
+    \item there exists another admissible weight $\widehat{\rho}$ such that
       \begin{align} \label{E:rhorho}
         \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty;
       \end{align}
@@ -467,7 +472,8 @@ Here is the main theorem of the paper:
       \begin{equation} \label{E:InitData}
         \limsup_{t>0}\: \mathcal{G}_{\widehat{\rho}}(t;\mu) < \infty;
       \end{equation}
-    \item for some $\alpha\in (0,1/2)$, the spectral measure $\widehat{f}$ satisfies that
+    \item for some $\alpha\in \left(128\Upsilon(0)L_b^2,1/2\right)$ (see \eqref{E:Interval}), the
+      spectral measure $\widehat{f}$ satisfies that
       \begin{align} \label{E:H}
          \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
          \quad \text{for all $t>0$}.
@@ -495,7 +501,8 @@ Here is the main theorem of the paper:
         :=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
         \qquad \text{for all $t\ge \tau>0$};
       \end{equation}
-    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$.
+    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$ in
+      $L^2_\rho(\R^d)$.
   \end{enumerate}
 \end{theorem}
 
@@ -655,7 +662,7 @@ The following proposition shows that for initial conditions with unbounded tails
   \ref{P:growtail}.
 \end{proof}
 
-\subsection{Bessel kernel}
+\subsection{Bessel kernel and Mat\'ern class of correlation functions}
 
 \begin{example}[Bessel kernel as a correlation function] \label{Ex:Gamma+f}
   Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
@@ -681,8 +688,9 @@ The following proposition shows that for initial conditions with unbounded tails
           \mathcal{F}f_s(\xi) = \frac{1}{(1+|\xi|^2)^{s/2}}.
         \end{equation}
   \end{enumerate}
-    Properties 1 and 4 ensure that $f_s$ is a nonnegative and nonnegative-definite tempered measure
-    for all $s>0$. From Property 4, we see that
+  Indeed, one can use \eqref{E:FB} as the definition of the Bessel kernel. Properties 1 and 4 ensure
+  that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$. From Property
+  4, we see that
     \begin{align*}
       \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
     \end{align*}
@@ -717,14 +725,11 @@ The following proposition shows that for initial conditions with unbounded tails
 
 \begin{proposition} \label{P:Bessel}
   For the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in Example \ref{Ex:Gamma+f}, it holds that
-  \begin{align} \label{E:UpsionB}
-    \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)},
-    \qquad \text{for all $s>d-2$ and $d>2$,}
-  \end{align}
-  and
-  \begin{align} \label{E:HaB}
+  \begin{gather} \label{E:UpsionB}
+    \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)}, \qquad \text{for all $s>d-2$ and $d>2$, and} \\
+    \label{E:HaB}
     \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad  \Longleftrightarrow \quad 0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
-  \end{align}
+  \end{gather}
   where $a_+ := \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following series
   expansion of $\mathcal{H}_\alpha(t)$ at $t\to 0$: % \renewcommand{\arraystretch}{2}
   \begin{align} \label{E:HaBS}
@@ -800,7 +805,8 @@ The following proposition shows that for initial conditions with unbounded tails
       \right.
   \end{align*}
   Then integrating the right-hand side of the above expressions against $\pi^{d/2}r^{-2\alpha}\ud r$
-  over $[0,t]$ proves Proposition \ref{P:Bessel}.
+  over $[0,t]$ gives the five cases in \eqref{E:HaBS}. This completes the proof of Proposition
+  \ref{P:Bessel}.
 \end{proof}
 
 % \begin{example}
@@ -1217,10 +1223,10 @@ and the restarted SHE ($ t_0>0$):
 
 \begin{lemma} \label{L:yineq}
   Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
-  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that condition \eqref{E:H} is
-  satisfied for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution
-  to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise (see
-  \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that the integral in
+  \eqref{E:H} is finite for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be
+  the solution to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise
+  (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
@@ -1232,12 +1238,15 @@ and the restarted SHE ($ t_0>0$):
         \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
       \end{align}
       where we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
-    \item If $\Upsilon(0)<\infty$ and $q>\max\left(1/\alpha, 128 L_b^2 \Upsilon(0)\right)$, then the
-      function $H\left(t;32qL_b^2\right)$ in \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e.,
-      $\sup_{t\ge 0}H\left(t;32qL_b^2\right)<\infty$;
-    \item Under conditions in part (2), if $\rho$ is a nonnegative and $L^1(\R^d)$ function, then
-      there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend
-      on $t$, such that for $t>0$,
+    \item Under \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for some $\alpha\in
+      \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(128 L_b^2
+      \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in \eqref{E:NormY} is
+      uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge 0}H\left(t;32qL_b^2\right)<\infty$;
+    \item Under \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for some $\alpha\in
+      \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(128 L_b^2
+      \Upsilon(0), \: \alpha\right)$ and for any nonnegative and $L^1(\R^d)$-function $\rho$, there
+      exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend on
+      $t$, such that for $t>0$,
       \begin{equation} \label{E:yineq}
         \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
         \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s,
@@ -1284,13 +1293,13 @@ and the restarted SHE ($ t_0>0$):
     \le L_b |v| + L_0 \le C (1+|v|),\quad C:=L_b\vee L_0.
   \end{align*}
   We apply this and the moment bound \eqref{E:mb} to $\Norm{b(z_i, v(r,z_i))}_q$ above to see that
-  \begin{align*} % \label{E:NormB}
+  \begin{align} \label{E:NormB}
     \Norm{b(z_i, v(r,z_i))}_q
-    & \le C\left(1+\Norm{v(r,z_i)}_q\right)                               \\
-    & =   C\left(1+\Norm{u(r+t_0,z_i)}_q\right)                           \\
-    & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right) \\
+    & \le C\left(1+\Norm{v(r,z_i)}_q\right)                               \notag \\
+    & =   C\left(1+\Norm{u(r+t_0,z_i)}_q\right)                           \notag \\
+    & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
     & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i=1,2, \: r\in(0,s),
-  \end{align*}
+  \end{align}
   where in the last step, we have used the fact that $H(t;\gamma)$ is a nondecreasing function; see
   Lemma 2.6 of \cite{chen.kim:19:nonlinear}. Therefore, by denoting
   $C_s:=H\left(s+t_0;32qL_b^2\right)$,
@@ -1638,17 +1647,48 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
   \end{align*}
 
-  Recall that Lemma \ref{L:Factorize} implies that
+  % The two conditions in \eqref{E:U0finite} imply that the following interval
+  % \begin{align*}
+  %   \left(128 L_b^2 \Upsilon(0),\: 1/2\right]
+  % \end{align*}
+  % is nonempty.
+
+  According to Assumption (i), we can choose and fix some admissible weight function
+  $\widehat{\rho}$ such that \eqref{E:rhorho} is satisfied. Hence, by Proposition \ref{P:weight},
+  the following set
   \begin{align*}
+    \mathscr{K}_1 (\Lambda) :=\left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x): \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \right\}
+    \quad \text{with $\Lambda>0$}
+  \end{align*}
+  is relative compact in $L_\rho^2(\R^d)$. Thanks to \eqref{E:U0finite} (see also
+  \eqref{E:Interval}) and Assumption (iii), we can choose and fix some $q$ and $\alpha$ with
+  \begin{align} \label{E:Choice}
+    128 L_b^2 \Upsilon(0) < \frac{1}{q} < \alpha <\frac{1}{2}
+    \qquad \left(\text{or equivalently} \quad
+    2< \frac{1}{\alpha} < q < \frac{1}{128 L_b^2 \Upsilon(0)}\:\right)
+  \end{align}
+  such that \eqref{E:H} holds. Hence, by Lemma \ref{L:Factorize}, we have the following
+  factorization:
+  \begin{align} \label{E:Fact}
     v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
-  \end{align*}
-  Now define the set $\mathscr{K} (\Lambda)$ as
+  \end{align}
+  In particular, the operator $F_\alpha$ is well defined. With the choice of $\alpha$ and $q$ in
+  \eqref{E:Choice}, we can apply Proposition \ref{P:F-Comp} to see that the following set
   \begin{align*}
-    \mathscr{K} (\Lambda) = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x):
-    \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+    \mathscr{K}_2 (\Lambda):=
+    \left\{(F_\alpha h)(x): \Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
+    \quad \text{with $\Lambda>0$}
   \end{align*}
-  Then by Proposition \ref{P:weight} and Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is
-  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Notice that
+  is relative compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
+  (\Lambda)$ as
+  \begin{align*}
+    \mathscr{K} (\Lambda)
+    & :=\mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
+    & = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x): \:\Norm{y}_{\widehat{\rho}}
+    \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+  \end{align*}
+
+  Notice that from the factorization formula \eqref{E:Fact},
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
     & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
@@ -1658,22 +1698,41 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   By Chebyshev's inequality and \eqref{E:uInLrho}, we see that
   \begin{align*}
     I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right)
-    \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
-    \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
-    = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
+    \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right).
+    % \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    % = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
   \end{align*}
-  where the upper bound does not depend on $t$ and the upper bound is finite due to the fact that
-  $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$ that is bounded at
-  infinity thanks to condition \eqref{E:InitData}. Similarly, by Chebyshev's inequality and
-  \eqref{E:yineq},
+  Because $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$, and because it
+  is also bounded at infinity thanks to Assumption (ii) (see \eqref{E:InitData}), we have that
+  \begin{align} \label{E:GtBdd}
+    \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    \le \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    =   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty.
+  \end{align}
+  Therefore, we can bound $I_2$ from above with a constant that does not depend on $t\ge \tau$,
+  namely,
   \begin{align*}
-    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s \\
-        & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\\
-        & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s.
+    I_2 \le\frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty.
   \end{align*}
-  Condition \eqref{E:H} implies that $\mathcal{H}_\alpha(s)$ is a continuous function that vanishes
-  at $s=0$. Hence, $\int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty$. Combining these two
-  upper bounds, we see that
+
+  As for $I_1$, with the choice of $\alpha$ and $q$ in \eqref{E:Choice}, one can apply Chebyshev's
+  inequality and part (3) of Lemma \ref{L:yineq} to see that
+  \begin{align*}
+    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s
+          \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
+          \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud
+          s.
+  \end{align*}
+  where the constant $\Theta$ does not depend on $t$. Noticing that Assumption (iii) (see
+  \eqref{E:H}) implies that $\mathcal{H}_\alpha(s)$ is a continuous function that vanishes at $s=0$
+  so that $\int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty$, together with \eqref{E:GtBdd},
+  we derive the following upper bound for $I_2$ that is uniform in $t\ge \tau$.
+  \begin{align*}
+     I_1 \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0}
+     \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2}
+     \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty.
+  \end{align*}
+  Combining these two upper bounds, we see that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
     \le
@@ -1682,8 +1741,8 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
     <\infty,
   \end{align*}
-  with the upper bound uniform in $t\ge \tau$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
-  0$ big enough such that
+  with the upper bound holding uniformly for all $t\ge \tau$. Hence, for any $\epsilon>0$, by
+  choosing $\Lambda > 0$ big enough such that
   \begin{align*}
     \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s
     +
