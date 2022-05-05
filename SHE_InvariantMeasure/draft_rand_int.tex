@@ -721,38 +721,40 @@ The following proposition shows that for initial conditions with unbounded tails
     \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)},
     \qquad \text{for all $s>d-2$ and $d>2$,}
   \end{align}
-  and for all $t>0$,
+  and
   \begin{align} \label{E:HaB}
-    \mathcal{H}_\alpha(t) <\infty \quad \Longleftrightarrow \quad 0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
+    \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad  \Longleftrightarrow \quad 0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
   \end{align}
   where $a_+ := \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following series
-  expansions $t\to 0$: \renewcommand{\arraystretch}{2}
-  \begin{align*}
+  expansion of $\mathcal{H}_\alpha(t)$ at $t\to 0$: % \renewcommand{\arraystretch}{2}
+  \begin{align} \label{E:HaBS}
     \mathcal{H}_\alpha(t) = \left\{
-      \begin{array}{lc}
+      \begin{array}{lcl}
         \begin{aligned}
-          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right)}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}  t^{(s-d)/2+1-2\alpha}                  \\
-          \quad - \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}              t^{1-2\alpha}                          \\
-          +                                                                                        O\left(t^{(s-d)/2+2(1-\alpha)}\right), \\[1em]
+          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right)}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}  t^{(s-d)/2+1-2\alpha}                  \\[1em]
+          \quad - \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}              t^{1-2\alpha}                          \\[1em]
+          +                                                                                        O\left(t^{(s-d)/2+2(1-\alpha)}\right), \\[1.2em]
         \end{aligned}
         &
         \begin{gathered}
-         d-2<s<d \quad \text{and} \\
-         \alpha < \frac{1}{2} -\frac{1}{4}(d-s),
-        \end{gathered} \\
+         d-2<s<d    \\
+         \text{and} \\
+         \alpha < \frac{1}{2} -\frac{1}{4}(d-s)
+       \end{gathered} & \text{\em(\ref{E:HaBS}-a)} \\
         \begin{aligned}
-           -\frac{\pi ^{d/2}}{(1-2 \alpha) \Gamma \left(d/2\right)}t^{1-2\alpha}\log(t)                                                                \\
-           +\frac{\pi ^{d/2} \left(4 \alpha  \gamma -2 \gamma +(2 \alpha -1) \psi(d/2)+1\right)}{(1-2 \alpha)^2 \Gamma \left(d/2\right)}t^{1-2 \alpha} \\
-           +O\left(t^2\log(t)\right),                                                                                                                  \\[1em]
-        \end{aligned}                                                                                                           & s=d,     \\
-        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}t^{1-2\alpha} + O\left(t^{(s-d)/2+1-2\alpha}\right), & d<s<d+2, \\
-        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2,   \\
-        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\right),                   & s>d+2,   \\
+            \frac{\pi ^{d/2}}{(1-2 \alpha) \Gamma \left(d/2\right)}t^{1-2\alpha}\log\left(\frac{1}{t}\right)                                    \\[1em]
+           +\frac{\pi ^{d/2} \left(1- (1-2 \alpha) \left[\psi(d/2)+2\gamma\right]\right)}{(1-2 \alpha)^2 \Gamma \left(d/2\right)}t^{1-2 \alpha} \\[1em]
+           +O\left(t^2\log(t)\right),                                                                                                           \\[1.2em]
+        \end{aligned}                                                                                                           & s=d     & \text{\em(\ref{E:HaBS}-b)} \\ [1em]
+        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}t^{1-2\alpha} + O\left(t^{(s-d)/2+1-2\alpha}\right), & d<s<d+2 & \text{\em(\ref{E:HaBS}-c)} \\ [1.5em]
+        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2   & \text{\em(\ref{E:HaBS}-d)} \\ [1.5em]
+        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\right),                   & s>d+2   & \text{\em(\ref{E:HaBS}-e)} \\ [1.5em]
       \end{array}
       \right.
-  \end{align*}
-  where $\psi(x)=\frac{\ud}{\ud x}\Gamma(x)$ refers to the {\em digamma function} and $\gamma\approx
-  0.57721$ to {\em Euler's constant}; see 5.2.2 and 5.2.3 on p. 136 of \cite{askey.roy:10:gamma}.
+  \end{align}
+  where $\psi(x)=\frac{\ud}{\ud x}\log\Gamma(x)$ refers to the {\em digamma function} and $\gamma\approx
+  0.57721$ to {\em Euler's constant}; see, e.g., 5.2.2 and 5.2.3 on p. 136 of
+  \cite{askey.roy:10:gamma}.
 \end{proposition}
 \begin{proof}
   By the spherical coordinates and \eqref{E:FB},
@@ -770,22 +772,22 @@ The following proposition shows that for initial conditions with unbounded tails
   \end{align*}
   which is finite provided that $s>d-2>0$. This proves \eqref{E:UpsionB}.
 
-  As for \eqref{E:HaB}, from \eqref{E:H} and by the spherical coordinates, for all $t>0$,
+  It remains to prove \eqref{E:HaBS}, which then implies \eqref{E:HaB}. From \eqref{E:H} and by the
+  spherical coordinates, for all $t>0$,
   \begin{align*}
     \mathcal{H}_{\alpha}(t)
-    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}             \\
-    & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}         \\
-    & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{\frac{d}{2}-1} \\
+    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}     \\
+    & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
+    & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{d/2-1} \\
     & =: \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
     % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
   \end{align*}
-  By \cite[13.4.4 on p.326]{olde-daalhuis:10:confluent}, $I(r)$ is the {\it confluent hypergeometric
-  function}:
+  By \cite[13.4.4 on p.326]{olde-daalhuis:10:confluent}, $I(r)$ is equal to the {\it confluent
+  hypergeometric function}:
   \begin{align*}
     I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
   \end{align*}
-  By 18.2.18 -- 13.2.22 on p. 323 {\it ibid.}, we see that
-  \renewcommand{\arraystretch}{2}
+  By 18.2.18 -- 13.2.22 on p. 323 {\it ibid.}, we see that \renewcommand{\arraystretch}{2}
   \begin{align*}
     I(r) = \left\{
       \begin{array}{lcl}
