@@ -865,10 +865,13 @@ The following proposition shows that for initial conditions with unbounded tails
 
 Let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
 \begin{align*}
-  M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta .
+  M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
 \end{align*}
-If $\widehat{f}(\zeta)$ is strictly positive for all $\zeta\in\R^d$, then there is no ambiguity when
-taking square root and hence one can remove the absolute value to see that
+and consider two cases: \bigskip
+
+{\bf\noindent Case I:~} If $\widehat{f}(\zeta)$ is strictly positive for all $\zeta\in\R^d$, then
+there is no ambiguity when taking square root and hence one can remove the absolute value to see
+that
 \begin{align*}
   M(f)
   & = \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (\zeta) |\zeta|^{2-d} \ud \zeta \\
@@ -882,8 +885,37 @@ for Riesz kernel (in the generalized sense):
   \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
 \end{align*}
 Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
-(2\pi)^{d/2}\Upsilon(0)$. Comparing with the second condition in \eqref{E:U0finite}, namely,
-$L_b^{-2}> 256 \Upsilon(0)$, ours are better when $d> \frac{16\log(2)}{\log(2\pi)} \approx 6.03$.
+(2\pi)^{d/2}\Upsilon(0)$. Comparing this with the second condition in \eqref{E:U0finite}, namely,
+$L_b^{-2}> 256 \Upsilon(0)$, our condition is sharper when $d> \frac{16\log(2)}{\log(2\pi)} \approx
+6.03$. \bigskip
+
+{\bf\noindent Case II:~} If $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
+namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute value in
+\eqref{E:TZspec} becomes tricky, which will be illustrated in the following example:
+
+\begin{example}
+  Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. It is clear that $ \widehat{g}(\xi) =
+  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-x,0)$. It is clear that $f$
+  is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
+  \xi^{-2}\sin^2(\xi)\ge 0$. But in this case, $\widehat{f}(\cdot)$ is only nonnegative (not
+  strictly positive) with infinite many zeros. Hence, when taking the square root of
+  $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive and
+  negative branches:
+  \begin{enumerate}
+    \item Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$ is preferable
+      since its inverse Fourier transform can be easily computed, which is equal to $g(x)$.
+      Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the absolute
+      value signs in \eqref{E:TZspec} do not pose any additional restrictions.
+    \item However, if one chooses the positive branches, namely,
+      $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, it is not clear how to compute its
+      Fourier transform. In general, some bad choices of the positive/negative branches may make the
+      conditions in \eqref{E:TZspec} fail. For example, such choice may turn
+      $\sqrt{\widehat{f}(\xi)}$ into a distribution, then taking the absolute value of a
+      distribution (unless it is a measure) may be problematic. Or even one may find some choice
+      such that $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, it may well be possible to be
+      signed and after taking absolute values, the integral in \eqref{E:TZspec} may blow up.
+  \end{enumerate}
+\end{example}
 
 \section{Preliminaries} \label{S:Prelim}
 
