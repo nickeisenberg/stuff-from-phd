@@ -286,7 +286,7 @@ spectral measure, $\hat{f}$, and Lipschitz constant, $L_b$, (the Lyapunov expone
 \eqref{E:lipcon} must satisfy the following:
 \begin{equation} \label{E:U0finite}
   \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad
-  64L^2_{b}   <  \frac{1}{4\Upsilon(0)},
+  64 L^2_{b}   <  \frac{1}{4\Upsilon(0)},
 \end{equation}
 where the first condition is a strengthened version of {\it Dalang's condition}:
 \begin{align} \label{E:Dalang}
@@ -556,11 +556,36 @@ part (b) based on (a) is routine:
     \mathcal{G}_\rho(t;\delta_0)
     = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
     \le G(t,0)^2 \Norm{\rho}_{L^1(\R^d)},
-    \quad \text{for all $t>0$.}
+    \quad \text{for all $t>0$,}
   \end{align*}
   we see that both conditions \eqref{E:G} and \eqref{E:InitData} are satisfied. In particular,
   $\limsup_{t>0} \mathcal{G}_\rho(t;\delta_0)=0$.
 \end{example}
+
+
+\begin{example}[More initial conditions not in $L_\rho^2(\R^d)$] \label{Ex:Riesz}
+  In this example, we study the case when $\mu(\ud x) = |x|^{-\alpha}\ud x$ for some $\alpha\in
+  (0,d)$. It is clear that when $\alpha\in (d/2,d)$, $\mu\not\in L_\rho^2(\R^d)$. However, in this
+  case, we have
+  \begin{align*}
+    J_0(t,x) = \left(G(t,\cdot)* |\cdot|^{-\alpha}\right)(x)
+    \le \left(G(t,\cdot)* |\cdot|^{-\alpha}\right)(0).
+  \end{align*}
+  Hence,
+  \begin{align*}
+    J_0(t,x) \le C_d (2\pi t)^{-d/2} \int_0^\infty e^{-\frac{r^2}{2t}} r^{-\alpha + d-1} \ud r = C_* t^{-\alpha/2},
+    \quad \text{with $C_*=\frac{2^{-\alpha/2}\Gamma\left((d-\alpha)/2\right)}{\Gamma(d/2)}$},
+  \end{align*}
+  which implies that
+  \begin{align*}
+    \mathcal{G}_\rho\left(t;|\cdot|^{-\alpha}\right)
+    \le \int_{\R^d} J_0^2(t,x) \rho(x) \ud x
+    = C_*^2 t^{-\alpha} \Norm{\rho}_{L^1(\R^d)},
+    \quad \text{for all $t>0$.}
+  \end{align*}
+  Therefore, we see that both conditions \eqref{E:G} and \eqref{E:InitData} are satisfied.
+\end{example}
+
 
 The following proposition shows that for initial conditions with unbounded tails, condition
 \eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
@@ -610,7 +635,7 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
     & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z \\
-    &  = \frac{C_d}{\sqrt{2\pi}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
+    &  = \frac{C_d}{\left(2\pi\right)^{d/2}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
     &  \ge C \int_1^2 \big| |\xi| - x \big|^\alpha \ud x \\
     &  = \frac{C}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
@@ -838,7 +863,7 @@ The following proposition shows that for initial conditions with unbounded tails
   different factor in front of the integral in \eqref{E:TZspec} from  that in (3.4) ({\it ibid.}).
 \end{remark}
 
-Let denote the right-side of the second condition \eqref{E:TZspec} by $M(f)$, namely,
+Let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
 \begin{align*}
   M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta .
 \end{align*}
@@ -856,7 +881,9 @@ for Riesz kernel (in the generalized sense):
   \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
   \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
 \end{align*}
-
+Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
+(2\pi)^{d/2}\Upsilon(0)$. Comparing with the second condition in \eqref{E:U0finite}, namely,
+$L_b^{-2}> 256 \Upsilon(0)$, ours are better when $d> \frac{16\log(2)}{\log(2\pi)} \approx 6.03$.
 
 \section{Preliminaries} \label{S:Prelim}
 
@@ -919,16 +946,16 @@ Here are several examples of admissible weights (see Example in Section 2 of
 
 \begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:Solve}
   Suppose that
-    \begin{enumerate}[(i)]
-     \item the initial measure $\mu$ is an $\mathcal{F}_0$-measurable random variable that satisfies
-       the following integrability condition:
-       \begin{equation} \label{A:icon}
-         \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
-       \end{equation}
-     \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
-    \end{enumerate}
-  then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
-  is $L^2(\Omega)$ continuous and is adapted to the filtration induced by ${W}$.
+  \begin{enumerate}[(i)]
+   \item the initial measure $\mu$ is an $\mathcal{F}_0$-measurable random variable that satisfies
+     the following integrability condition:
+     \begin{equation} \label{A:icon}
+       \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
+     \end{equation}
+   \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
+  \end{enumerate}
+  Then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
+  is $L^2(\Omega)$ continuous and is adapted to the filtration $\{\mathcal{F}_t\}_{t\ge 0}$.
 \end{theorem}
 
 \begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}] \label{T:ExUn}
@@ -939,20 +966,43 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \end{equation}
   where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ (see \eqref{E:lipcon} for $L_0$ and $L_b$)
   and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for
-  the expression of the function $H$). Moreover \footnote{This statement is from Lemma 2.5 of
-    \cite{chen.kim:19:nonlinear}. In the current paper, since we do not need the lower bound of the
-  moments, there is no need to make the cone conditions on $b(\cdot)$ as in {\it ibid.} and the
-Lipschitz condition will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
-first condition in \eqref{E:U0finite} holds and the second one is strengthened to
+  the expression of the function $H$).
+%   Moreover \footnote{This statement is from Lemma 2.5 of
+%     \cite{chen.kim:19:nonlinear}. In the current paper, since we do not need the lower bound of the
+%   moments, there is no need to make the cone conditions on $b(\cdot)$ as in {\it ibid.} and the
+% Lipschitz condition will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
+% first condition in \eqref{E:U0finite} holds and the second one is strengthened to
+%   \begin{equation}\label{E:pLip}
+%      32 p L_b^2 < \frac{1}{4\Upsilon(0)},
+%   \end{equation}
+%   then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
+%   \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
+%   \begin{equation} \label{E:mb0}
+%     \Norm{u(t,x)}_p \le C\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg).
+%   \end{equation}
+\end{theorem}
+
+\begin{corollary}
+  Under the same setting as Theorem \ref{T:ExUn}, if the two conditions in \eqref{E:U0finite} hold
+  (see also \eqref{E:Interval}), then
+  \begin{equation} \label{E:mb0}
+    \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
+    \quad \text{for all $p$ s.t. } 1/p \in \left(128 L_b^2\Upsilon(0),1/2\right),
+  \end{equation}
+  where $C_p=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$.
+\end{corollary}
+\begin{proof}
+  Lemma 2.5 of \cite{chen.kim:19:nonlinear} gives one sufficient condition, namely,
+  $2\gamma_p\Upsilon(0)<1$, under which the function $H((t;\gamma_p)$ is bounded in $t$. Therefore,
+  by taking into account the expression of $\gamma_p$ in Theorem \ref{T:ExUn}, we see that as a
+  direct consequence of \eqref{E:mb}, whenever
   \begin{equation}\label{E:pLip}
      32 p L_b^2 < \frac{1}{4\Upsilon(0)},
   \end{equation}
-  then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
-  \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
-  \begin{equation} \label{E:mb0}
-    \Norm{u(t,x)}_p \le C\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg).
-  \end{equation}
-\end{theorem}
+  we have all $p$-th moments ($p\ge 2$) bounded as given in \eqref{E:mb0}.
+\end{proof}
+
+
 
 \begin{remark}[Restarted SHE] \label{R:Restat}
   Recall that the Markov property of the solution to \eqref{E:SHE} implies that for any $t\ge
