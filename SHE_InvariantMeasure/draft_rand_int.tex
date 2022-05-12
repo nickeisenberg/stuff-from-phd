@@ -159,31 +159,32 @@
 We consider the following {\it stochastic heat equation} (SHE):
 \begin{equation} \label{E:SHE}
     \begin{cases}
-     \dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
-     u(0,\cdot) = \mu(\cdot),                                                               &
-   \end{cases},
+     \dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$, $t>0$}, \\
+     u(0,\cdot) = \mu(\cdot).
+   \end{cases}
 \end{equation}
 The noise, $\dot{W}(t,s)$, is a centered Gaussian noise that is white in time and homogeneously
 colored in space defined on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with natural
 filtration $(\mathcal{F}_t)$:
- \[
+\begin{align*}
   \mathcal{F}_t = \sigma(W_s(A): \; 0 \le s \le t, \; A \in \mathscr{B}_b(\R^d)) \vee \mathcal{N},
- \]
+\end{align*}
 where $\mathscr{B}_b(\R^d)$ denotes the bounded Borel sets on $\R^d$ and $\mathcal{N}$ are the
-$\mathbb{P}$-null sets of $\Omega$. Its covariance structure, $J$, is defined on
-$C_c^\infty(\R^{d+1}) \times C_c^\infty(\R^{d+1})$ as follows:
+$\mathbb{P}$-null sets of $\Omega$. Its covariance structure, $J$, is defined on as follows:
 \begin{align} \label{E:Cor}
   J(\psi,\phi) := \E \left[ \dot{W}\left(\psi\right)\dot{W}\left(\phi\right) \right]
                 = \int_0^\infty \ud s \int_{\R^d} \Gamma(\ud x)(\psi(s,\cdot)*\widetilde{\phi}(s,\cdot))(x),
 \end{align}
-where $\widetilde{\phi}(x) := \phi(-x)$, ``$*$" refers to the convolution in spatial variable, and
-$\Gamma$ is a nonnegative and nonnegative definite tempered measure on $\R^d$ that is commonly
-referred to as the {\it correlation measure}. The Fourier transform of $\Gamma$ (in the generalized
-sense) is also a nonnegative and nonnegative definite tempered measure, which is called {\it
-spectral measure} and is denoted by $\widehat{f}(\ud \xi)$. Moreover, in the case where $\Gamma$ has
-density $f$, namely, $\Gamma(\ud x)=f(x) \ud x$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud
-\xi$. The initial condition $\mu$ is a deterministic, locally finite, regular, signed Borel measure
-that satisfies some integrability condition at the infinity (see \eqref{A:icon} below).
+for all continuous and rapidly decreasing functions $\psi$ and $\phi$, where $\widetilde{\phi}(x) :=
+\phi(-x)$, ``$*$" refers to the convolution in spatial variable, and $\Gamma$ is a nonnegative and
+nonnegative definite tempered measure on $\R^d$ that is commonly referred to as the {\it correlation
+measure}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a nonnegative and
+nonnegative definite tempered measure, which is called {\it spectral measure} and is denoted by
+$\widehat{f}(\ud \xi)$ \footnote{See Remark \ref{R:Fourier} for the convention of Fourier transform
+that is used in this paper.}. Moreover, in the case where $\Gamma$ has density $f$, namely,
+$\Gamma(\ud x)=f(x) \ud x$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud \xi$. The initial
+condition $\mu$ is a deterministic, locally finite, regular, signed Borel measure that satisfies
+some integrability condition at the infinity (see \eqref{A:icon} below).
 
 
 Any jointly measurable $L^2(\Omega)$-continuous $\mathcal{F}_t$-adapted processes, $u=(u(t,x): \; t
@@ -285,13 +286,19 @@ spectral measure, $\hat{f}$, and Lipschitz constant, $L_b$, (the Lyapunov expone
 \eqref{E:lipcon} must satisfy the following:
 \begin{equation} \label{E:U0finite}
   \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad
-  64L^2_{b}   <  \frac{1}{4\Upsilon(0)},
+  64 L^2_{b}   <  \frac{1}{4\Upsilon(0)},
 \end{equation}
 where the first condition is a strengthened version of {\it Dalang's condition}:
 \begin{align} \label{E:Dalang}
   \Upsilon(\beta) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta+ |\xi|^2} <\infty,
    \quad \text{for some (and hence) all $\beta>0$.}
 \end{align}
+Note that conditions in \eqref{E:U0finite} guarantee the existence of the following non-empty open
+interval:
+\begin{align} \label{E:Interval}
+  \left(128 L_b^2 \Upsilon(0), 1/2\right) \ne \emptyset.
+\end{align}
+
 
 In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} prove existence of an invariant measure for \eqref{E:SHE} in
@@ -303,32 +310,30 @@ spectral density $\hat{f}$ satisfies
   \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
 see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem
-3.3]{tessitore.zabczyk:98:invariant}, in order to apply this theorem, the following additional
-assumptions were needed: $d \ge 3$ and the Lipschitz constant of $b$ must satisfy $L(b)^{-2} >
-\textbf{l}$, where
+3.3]{tessitore.zabczyk:98:invariant}, in order to apply this theorem (or to have moments uniformly
+bounded in time), the following additional
+assumptions were imposed:
  \begin{equation} \label{E:TZspec}
-  \widetilde \Gamma := \left| \sqrt{ \mathcal{F}(f) }  \right| * \left| \sqrt{\mathcal{F}(f)}  \right| \quad \text{and} \quad \textbf{l}:= \frac{\mathbf{\Gamma}(d/2 -1)}{4 \pi^{d/2}} \int_{\R^d} \widetilde{\Gamma}(\ud \zeta) |\zeta|^{2-d},
+   d\ge 3 \quad \text{and} \quad
+   L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left|  \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta ,
  \end{equation}
-where $\mathbf{\Gamma}$ is the Gamma function. With these assumptions, they were able to prove that
-\eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt} and thus is bounded in
-probability, verifying the existence of an invariant measure. Moreover, the measure takes the form
-of \eqref{E:InvMeasForm} above with $\varphi = 1$.
+where $\Gamma$ refers to the Gamma function; See Remark \ref{R:Fourier}. With these assumptions,
+they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
+and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
+measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$.
 
-The additional assumptions given by Tessitore and Zabczyk parallel our
-assumptions \eqref{E:U0finite} and \eqref{E:LipLb}. However, it is not at all
-trivial to check which spectral densities, $\hat{f}(\ud \xi)$, satisfy
-\eqref{E:TZspec} and no such examples were given in
-\cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from
-\eqref{E:TZspec} that one can not take the spectral density of the noise to be
-the Riesz kernel, $\hat{f}(\xi) = |\xi|^{d-\alpha}$, for any $0 < \alpha < d$
-but this can be easily seen from our condition \eqref{E:U0finite}. The
-condition that $d \ge 3$ forces us to only consider a colored noise as in
-\eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is
-unfortunate. However, as we will see in Example \ref{Ex:Gamma+f} below, we are
-able to apply the Bessel kernel, $B_s(x)$, with $s < d$, which has exponential
-decaying tails and power growth at the origin. So in absence of the Riesz
-kernel, we still may apply our results to a kernel, namely the Bessel kernel,
-that has origin blow up.
+The additional assumptions given by Tessitore and Zabczyk parallel our assumptions
+\eqref{E:U0finite} and \eqref{E:LipLb}. However, it is not at all trivial to check which spectral
+densities, $\hat{f}(\ud \xi)$, satisfy \eqref{E:TZspec} and no such examples were given in
+\cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from \eqref{E:TZspec} that
+one can not take the spectral density of the noise to be the Riesz kernel, $\hat{f}(\xi) =
+|\xi|^{d-\alpha}$, for any $0 < \alpha < d$ but this can be easily seen from our condition
+\eqref{E:U0finite}. The condition that $d \ge 3$ forces us to only consider a colored noise as in
+\eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is unfortunate. However, as
+we will see in Example \ref{Ex:Gamma+f} below, we are able to apply the Bessel kernel, $B_s(x)$,
+with $s < d$, which has exponential decaying tails and power growth at the origin. So in absence of
+the Riesz kernel, we still may apply our results to a kernel, namely the Bessel kernel, that has
+origin blow up.
 
 Moreover by applying a restart argument (see Remark \ref{R:Restart} and Example
 \ref{Ex:Gamma+f} below), our method allows us to verify \eqref{E:BddMnt}, and
@@ -455,10 +460,10 @@ Here is the main theorem of the paper:
 
 \begin{theorem} \label{T:Main}
   Let $u(t,x)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that all conditions in
-  Theorem \ref{T:Lrho}, with $u_0$ replaced by $\mu$, are satisfied. Moreover, we assume that
+  Theorem \ref{T:Lrho}, with $u_0$ replaced by $\mu$ and $\rho$ being an admissible weight (see
+  Definition \ref{D:Rho} below), are satisfied. Moreover, we assume that
   \begin{enumerate}[(i)]
-    \item if $\rho$ is an admissible weight (see Definition \ref{D:Rho} below) and there exists
-      another admissible weight $\widehat{\rho}$ such that
+    \item there exists another admissible weight $\widehat{\rho}$ such that
       \begin{align} \label{E:rhorho}
         \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty;
       \end{align}
@@ -467,7 +472,8 @@ Here is the main theorem of the paper:
       \begin{equation} \label{E:InitData}
         \limsup_{t>0}\: \mathcal{G}_{\widehat{\rho}}(t;\mu) < \infty;
       \end{equation}
-    \item for some $\alpha\in (0,1/2)$, the spectral measure $\widehat{f}$ satisfies that
+    \item for some $\alpha\in \left(128\Upsilon(0)L_b^2,1/2\right)$ (see \eqref{E:Interval}), the
+      spectral measure $\widehat{f}$ satisfies that
       \begin{align} \label{E:H}
          \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
          \quad \text{for all $t>0$}.
@@ -495,7 +501,8 @@ Here is the main theorem of the paper:
         :=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
         \qquad \text{for all $t\ge \tau>0$};
       \end{equation}
-    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$.
+    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t>0}$ in
+      $L^2_\rho(\R^d)$.
   \end{enumerate}
 \end{theorem}
 
@@ -549,33 +556,65 @@ part (b) based on (a) is routine:
     \mathcal{G}_\rho(t;\delta_0)
     = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
     \le G(t,0)^2 \Norm{\rho}_{L^1(\R^d)},
-    \quad \text{for all $t>0$.}
+    \quad \text{for all $t>0$,}
   \end{align*}
   we see that both conditions \eqref{E:G} and \eqref{E:InitData} are satisfied. In particular,
   $\limsup_{t>0} \mathcal{G}_\rho(t;\delta_0)=0$.
 \end{example}
 
+
+\begin{example}[More initial conditions not in $L_\rho^2(\R^d)$] \label{Ex:Riesz}
+  In this example, we study the case when $\mu(\ud x) = |x|^{-\alpha}\ud x$ for some $\alpha\in
+  (0,d)$. It is clear that when $\alpha\in (d/2,d)$, $\mu\not\in L_\rho^2(\R^d)$. However, in this
+  case, we have
+  \begin{align*}
+    J_0(t,x) = \left(G(t,\cdot)* |\cdot|^{-\alpha}\right)(x)
+    \le \left(G(t,\cdot)* |\cdot|^{-\alpha}\right)(0).
+  \end{align*}
+  Hence,
+  \begin{align*}
+    J_0(t,x) \le C_d (2\pi t)^{-d/2} \int_0^\infty e^{-\frac{r^2}{2t}} r^{-\alpha + d-1} \ud r = C_* t^{-\alpha/2},
+    \quad \text{with $C_*=\frac{2^{-\alpha/2}\Gamma\left((d-\alpha)/2\right)}{\Gamma(d/2)}$},
+  \end{align*}
+  which implies that
+  \begin{align*}
+    \mathcal{G}_\rho\left(t;|\cdot|^{-\alpha}\right)
+    \le \int_{\R^d} J_0^2(t,x) \rho(x) \ud x
+    = C_*^2 t^{-\alpha} \Norm{\rho}_{L^1(\R^d)},
+    \quad \text{for all $t>0$.}
+  \end{align*}
+  Therefore, we see that both conditions \eqref{E:G} and \eqref{E:InitData} are satisfied.
+\end{example}
+
+
 The following proposition shows that for initial conditions with unbounded tails, condition
 \eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
 
-\begin{proposition}
+\begin{proposition} \label{P:growtail}
   Suppose that $\rho=\exp(-|x|)$, which is an admissible weight function. Let the initial condition
   $\mu$ be given as
   \begin{align*}
     \mu(\ud x) = |x|^\alpha \ud x \quad \text{with $\alpha>0$}.
   \end{align*}
-  Then condition \eqref{E:G} is satisfied, but condition \eqref{E:InitData} fails.
+  Then for some constants $C, C'>0$, it holds that
+  \begin{align} \label{E:growtail}
+    C' (1+t^\alpha) \le \mathcal{G}_\rho(t;\mu) \le C (1+t^\alpha), \qquad \text{for all $t>0$}.
+  \end{align}
+  In particular, this implies that condition \eqref{E:G} is satisfied, but condition
+  \eqref{E:InitData} fails.
 \end{proposition}
 \begin{proof}
   Notice that by scaling arguments,
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
-    & = \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x\\
-    & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x\\
-    & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi\\
+    & = \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x                                        \\
+    & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x    \\
+    & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
   \end{align*}
-  Let $C_\alpha$ and $C_\alpha'$ be generic constants that may depend on $\alpha $ and may change
-  their value at each appearance. Because
+  In the following, let $C$, $C_\alpha$ and $C_\alpha'$ be generic constants that may depend on
+  $\alpha $ and may change their value at each appearance. \bigskip
+
+  \noindent{\it Upper bound:~} Because
   \begin{align*}
     % \int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
@@ -586,27 +625,69 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
     & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi \\
-    & = C_\alpha'\int_{\R^d}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r      \\
+    & = C_\alpha'\int_{\R}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r        \\
     & = C_\alpha'\left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
     & = C_\alpha (1+ t^\alpha)<\infty.
   \end{align*}
-  Hence, condition \eqref{E:G} is satisfied.
+  Hence, this proves the upper bound in \eqref{E:growtail}. \bigskip
 
-  To show that condition \eqref{E:InitData} fails, one needs to find the lower bound of
-  $\mathcal{G}_\rho(t;\mu)$. Indeed,
+  \noindent{\it Lower bound:~} Now we prove the lower bound in \eqref{E:growtail}. Indeed,
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
-    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z                                      \\
-    & = \frac{C_d}{\sqrt{2\pi}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x         \\
-    & \ge \frac{C_d}{\sqrt{2\pi}}\int_{2|\xi|}^\infty \big( x-|\xi| \big)^\alpha e^{-\frac{x^2}{2}}x^{d-1} \ud x \\
-    & \ge \frac{C_d}{\sqrt{2\pi}} |\xi|^\alpha\int_{2|\xi|}^\infty e^{-\frac{x^2}{2}}x^{d-1} \ud x               \\
-    & = C |\xi|^\alpha.
+    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z \\
+    &  = \frac{C_d}{\left(2\pi\right)^{d/2}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
+    &  \ge C \int_1^2 \big| |\xi| - x \big|^\alpha \ud x \\
+    &  = \frac{C}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
-  \textcolor{magenta}{Nick, can you figure out the rest part? My strategy may not work. But I
-  believe the result should be true.}
+  where, by consider three cases, we have
+  \begin{align*}
+    \psi(r)
+    & =
+    \begin{cases}
+      (2-r)^{\alpha+1} - (1-r)^{\alpha+1} & \text{if $0<r<1$},        \\
+      (2-r)^{\alpha+1} + (r-1)^{\alpha+1} & \text{if $1\le r \le 2$}, \\
+      (r-1)^{\alpha+1} - (r-2)^{\alpha+1} & \text{if $r > 2$},
+    \end{cases} \\
+    & = \text{sgn}(2-r)|r-2|^{\alpha+1} + \text{sgn}(r-1)|r-1|^{\alpha+1}.
+  \end{align*}
+  We claim that
+  \begin{align} \label{E:psi}
+    \inf_{r\ge 0} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}>0.
+  \end{align}
+  With \eqref{E:psi}, we have that
+  \begin{align*}
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z \ge C \sqrt{1+|\xi|^{2\alpha}}.
+  \end{align*}
+  Then, by the same arguments, we obtain the lower bound in \eqref{E:growtail}. It remains to prove
+  \eqref{E:psi}, which will be proved in three cases:
+
+  When $r>2$, we see that
+  \begin{align*}
+    \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}
+    & \ge C_\alpha \frac{(r-1)^{\alpha+1}-(r-2)^{\alpha+1}}{(1+r)^\alpha}       \\
+    & \ge C_\alpha \frac{(r-1)^{\alpha}(r-1)-(r-1)^{\alpha}(r-2)}{(1+r)^\alpha} \\
+    & = C_\alpha \left(\frac{r-1}{1+r}\right)^\alpha
+    = C_\alpha \left(1-\frac{2}{1+r}\right)^\alpha \ge C_\alpha \left(1-\frac{2}{3}\right)^\alpha.
+  \end{align*}
+  which shows that $\inf_{r>2} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
+
+  When $r\in(1,2]$, elementary calculations show that the minimum of $\psi(r)$ is achieved at
+  $r=3/2$. Hence,
+  \begin{align*}
+    \inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2) }{\sqrt{1+4^\alpha}}>0.
+  \end{align*}
+
+  Similarly, when $r\in (0,1]$, by differentiation, one finds that the function $\psi(r)$ is nonincreasing.
+  Hence, the minimum is achieved at $r=1$:
+  \begin{align*}
+    \inf_{r\in(0,1]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1) }{\sqrt{2}}>0.
+  \end{align*}
+
+  Combing the above three cases proves \eqref{E:psi}. This completes the proof of Proposition
+  \ref{P:growtail}.
 \end{proof}
 
-\subsection{Bessel kernel}
+\subsection{Bessel kernel and Mat\'ern class of correlation functions}
 
 \begin{example}[Bessel kernel as a correlation function] \label{Ex:Gamma+f}
   Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
@@ -622,8 +703,8 @@ The following proposition shows that for initial conditions with unbounded tails
         \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2, \quad \text{with} \\
         H_s(x) =
         \begin{cases}
-          |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,}\cr
-          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}\cr
+          |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,} \\
+          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}   \\
            1 + O(|x|^{s-d})                               & \text{for $s>d$;}
         \end{cases}
         \end{gather*}
@@ -632,8 +713,9 @@ The following proposition shows that for initial conditions with unbounded tails
           \mathcal{F}f_s(\xi) = \frac{1}{(1+|\xi|^2)^{s/2}}.
         \end{equation}
   \end{enumerate}
-    Properties 1 and 4 ensure that $f_s$ is a nonnegative and nonnegative-definite tempered measure
-    for all $s>0$. From Property 4, we see that
+  Indeed, one can use \eqref{E:FB} as the definition of the Bessel kernel. Properties 1 and 4 ensure
+  that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$. From Property
+  4, we see that
     \begin{align*}
       \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
     \end{align*}
@@ -668,14 +750,41 @@ The following proposition shows that for initial conditions with unbounded tails
 
 \begin{proposition} \label{P:Bessel}
   For the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in Example \ref{Ex:Gamma+f}, it holds that
-  \begin{align} \label{E:UpsionB}
-    \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)},
-    \qquad \text{for all $s>d-2$ and $d>2$,}
+  \begin{gather} \label{E:UpsionB}
+    \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)}, \qquad \text{for all $s>d-2$ and $d>2$, and} \\
+    \label{E:HaB}
+    \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad  \Longleftrightarrow \quad 0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
+  \end{gather}
+  where $a_+ := \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following series
+  expansion of $\mathcal{H}_\alpha(t)$ at $t\to 0$: % \renewcommand{\arraystretch}{2}
+  \begin{align} \label{E:HaBS}
+    \mathcal{H}_\alpha(t) = \left\{
+      \begin{array}{lcl}
+        \begin{aligned}
+          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right)}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}  t^{(s-d)/2+1-2\alpha}                  \\[1em]
+          \quad - \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}              t^{1-2\alpha}                          \\[1em]
+          +                                                                                        O\left(t^{(s-d)/2+2(1-\alpha)}\right), \\[1.2em]
+        \end{aligned}
+        &
+        \begin{gathered}
+         d-2<s<d    \\
+         \text{and} \\
+         \alpha < \frac{1}{2} -\frac{1}{4}(d-s)
+       \end{gathered} & \text{\em(\ref{E:HaBS}-a)} \\
+        \begin{aligned}
+            \frac{\pi ^{d/2}}{(1-2 \alpha) \Gamma \left(d/2\right)}t^{1-2\alpha}\log\left(\frac{1}{t}\right)                                    \\[1em]
+           +\frac{\pi ^{d/2} \left(1- (1-2 \alpha) \left[\psi(d/2)+2\gamma\right]\right)}{(1-2 \alpha)^2 \Gamma \left(d/2\right)}t^{1-2 \alpha} \\[1em]
+           +O\left(t^2\log(t)\right),                                                                                                           \\[1.2em]
+        \end{aligned}                                                                                                           & s=d     & \text{\em(\ref{E:HaBS}-b)} \\ [1em]
+        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}t^{1-2\alpha} + O\left(t^{(s-d)/2+1-2\alpha}\right), & d<s<d+2 & \text{\em(\ref{E:HaBS}-c)} \\ [1.5em]
+        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2   & \text{\em(\ref{E:HaBS}-d)} \\ [1.5em]
+        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\right),                   & s>d+2   & \text{\em(\ref{E:HaBS}-e)} \\ [1.5em]
+      \end{array}
+      \right.
   \end{align}
-  and for all $t>0$,
-  \begin{align} \label{E:HaB}
-    \mathcal{H}_\alpha(t) <\infty \quad \Longleftrightarrow \quad 0<\alpha<(s-d-2)/4.
-  \end{align}
+  where $\psi(x)=\frac{\ud}{\ud x}\log\Gamma(x)$ refers to the {\em digamma function} and $\gamma\approx
+  0.57721$ to {\em Euler's constant}; see, e.g., 5.2.2 and 5.2.3 on p. 136 of
+  \cite{askey.roy:10:gamma}.
 \end{proposition}
 \begin{proof}
   By the spherical coordinates and \eqref{E:FB},
@@ -693,136 +802,120 @@ The following proposition shows that for initial conditions with unbounded tails
   \end{align*}
   which is finite provided that $s>d-2>0$. This proves \eqref{E:UpsionB}.
 
-  As for \eqref{E:HaB}, from \eqref{E:H} and by the spherical coordinates, for all $t>0$,
+  It remains to prove \eqref{E:HaBS}, which then implies \eqref{E:HaB}. From \eqref{E:H} and by the
+  spherical coordinates, for all $t>0$,
   \begin{align*}
     \mathcal{H}_{\alpha}(t)
     & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}     \\
     & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
-    & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
+    & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{d/2-1} \\
+    & =: \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
+    % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
   \end{align*}
-  Denote the $\ud z$-integral in the far right-hand side of the above equalities by $I$. Notice that
+  By \cite[13.4.4 on p.326]{olde-daalhuis:10:confluent}, $I(r)$ is equal to the {\it confluent
+  hypergeometric function}:
   \begin{align*}
-    \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(t+z^2)^{s/2}} z^{d-1}
-    \le I \le
-    \int_0^\infty \ud z \; \exp(-z^2) z^{d-1-s}, \quad \text{for all $r\in[0,t]$,}
+    I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
   \end{align*}
-  with both lower and upper bounds being finite and independent of $r$. Therefore,
-  $\mathcal{H}_\alpha(t)<\infty$ if and only if $-2\alpha + (s-d) /2 >-1$. This proves
-  \eqref{E:HaB}.
+  By 18.2.18 -- 13.2.22 on p. 323 {\it ibid.}, we see that \renewcommand{\arraystretch}{2}
+  \begin{align*}
+    I(r) = \left\{
+      \begin{array}{lcl}
+        \dfrac{\Gamma\left((d-s)/2\right)}{\Gamma(d/2)}r^{(s-d)/2}+\dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2+1}\right) & d-2<s<d & \text{\small 18.2.18}, \\
+        -\dfrac{1}{\Gamma(d/2)}\left(\log(r) + \psi(d/2) + 2\gamma \right) +O\left(r\log(r)\right)                                               & s=d     & \text{\small 18.2.19}, \\
+        \dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2}\right)                                                              & d<s<d+2 & \text{\small 18.2.20}, \\
+        \dfrac{1}{\Gamma\left(d/2+1\right)} + O\left(r\log(r)\right)                                                                             & s=d+2   & \text{\small 18.2.21}, \\
+        \dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r\right)                                                                        & s>d+2   & \text{\small 18.2.22}. \\
+      \end{array}
+      \right.
+  \end{align*}
+  Then integrating the right-hand side of the above expressions against $\pi^{d/2}r^{-2\alpha}\ud r$
+  over $[0,t]$ gives the five cases in \eqref{E:HaBS}. This completes the proof of Proposition
+  \ref{P:Bessel}.
 \end{proof}
 
-% \begin{example}
-%   It is easy to see that $\delta_0$ satisfies \eqref{A:icon}. Moreover, it is easy to see that if
-%   $d-2 < s < d$ then $\Upsilon(0) < \infty$ and so the conditions of Theorem \eqref{T:Solve} and
-%   Theorem \ref{T:ExUn} are satisfied and a unique mild solution, $u$, exists that starts from
-%   $\delta_0$ and is driven by a Gaussian noise with correlation function $f_s(x)$. We denote
-%   $v(t,x)$ to be the restarted solution as in \eqref{E:restart}. We now show that $v$ satisfies the
-%   conditions in Theorem \ref{T:Main}. In other words, it remains to prove that $v(0,\cdot) =
-%   u(t_0,\cdot)$ and $f_s(x)$ satisfy the conditions \eqref{E:InitData}, \eqref{E:H} and
-%   \eqref{E:GH-int}.
-%
-%   Let $q>2$ be arbitrary. Starting with \eqref{E:InitData},
-%    \begin{align*}
-%     \mathcal{G}_{\widehat{\rho}, q}(s)
-%     & =  \int_{\R^d} \left( \int_{\R^d} G(s,x-y) \mu_q^*(\ud y)\right)^2 \rho(x) \ud x                        \\
-%     & = \int_{\R^d} \left( \int_{\R^d} G(s,x-y) (1 + \Norm{v(0,y)}_q)(\ud y)\right)^2 \widehat{\rho}(x) \ud x \\
-%     & = \int_{\R^d} \left( 1 + \int_{\R^d} G(s,x-y) \Norm{v(0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x     \\
-%     & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2\int_{\R^d} \left(\int_{\R^d} G(s,x-y) \Norm{u(t_0,y)}_q\ud y\right)^2 \widehat{\rho}(x) \ud x,
-%    \end{align*}
-%   where in the last line we used Recall that $u(t_0,x) = v(0,x)$. In the
-%   following, $C$ is a generic constant independent of $s$ that may change from
-%   line to line. By applying the moment bound \eqref{E:mb0} we see that
-%    \begin{align*}
-%      \mathcal{G}_{\widehat{\rho}, q}(s)
-%      & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C \int_{\R^d} \left(\int_{\R^d} G(s,x-y) \left[1 + (G(t_0,\cdot)*\delta_0)(y)\right]\ud y\right)^2 \widehat{\rho}(x) \ud x \\
-%      & = 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  +\int_{\R^d} G(s,x-y) (G(t_0,\cdot)*\delta_0)(y) \ud y\right)^2 \widehat{\rho}(x) \ud x                \\
-%      & =2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + C \int_{\R^d} \left(1  + (G(t_0+s,\cdot)*\delta_0)(x) \right)^2 \widehat{\rho}(x) \ud x                                        \\
-%      & \le 2 \Norm{\widehat{\rho}}_{L^1(\R^d)} + 2C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  2C\int_{\R^d} (G(t_0+s,\cdot)*\delta_0)(x)^2 \widehat{\rho}(x) \ud x                 \\
-%      & \le C\Norm{\widehat{\rho}}_{L^1(\R^d)} +  C\int_{\R^d} (G(t_0+s, x))^2 \widehat{\rho}(x) \ud x                                                                        \\
-%      & = C\Norm{\widehat{\rho}}_{L^1(\R^d)} + C\frac{(2\sqrt{\pi})^{-d}}{(t_0 + s)^{d/2}} \int_{\R^d} G\left(\frac{t_0 + s}{2}, x\right) \widehat{\rho}(x) \ud x             \\
-%      & =: \textbf{G}(s),
-%    \end{align*}
-%   and this verifies \eqref{E:InitData} because $t_0 > 0$ is fixed. Moreover, this
-%   implies that for any $T>0$, $\mathcal{G}_{\widehat{\rho}, q}(s)$ is bounded on
-%   $s \in [0,T]$. This will be needed below.
-%
-%   Now lets verify \eqref{E:H} for the Bessel kernel, $f_s$. By recalling
-%   \eqref{E:FB}, we have
-%    \begin{align*}
-%     \mathcal{H}_{\alpha}(s)
-%     & = \int_0^s \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}} \\
-%     & = \sigma\left(\mathbb{S}^{d-1}\right)\int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}.
-%    \end{align*}
-%   Let's examine the $\int_0^\infty \ud z$ integral and apply the change of
-%   variables $y = z^2$. This yields,
-%   \begin{align*}
-%       \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1}
-%     = \frac{1}{2} \int_0^\infty \ud y\; e^{-r y} (1+y)^{s/2} y^{\frac{d}{2}-1} \ud y
-%     = \frac{\Gamma\left(d/2\right)}{2}U\left(\frac{d}{2},\frac{d+2-s}{2},r\right),
-%   \end{align*}
-%   where $U\left(\alpha,\beta,t\right)$ is the confluent hypergeometric U function
-%   (see \cite[Chapter 13]{olver.lozier.ea:10:nist}) and the last equality can be
-%   found in \cite[13.4.4]{olver.lozier.ea:10:nist}. Thus, to show the finiteness
-%   of $\mathcal{H}_{\alpha}(s)$ for each $s >0$, it suffices to show that the
-%   following integral is finite:
-%    \begin{equation} \label{E:BesselHG}
-%     \int_0^s r^{-2\alpha} \; U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) \; \ud r.
-%    \end{equation}
-%   The behavior of $U(\alpha, \beta, t)$ around the origin is given in
-%   \cite[Section 13.2 (iii)]{olver.lozier.ea:10:nist} and is given in cases on
-%   $\beta$, which in our case is $(d+2-s)/2$. Recall above that we are taking $d-2
-%   < s < d$. For this reason, the only case in \cite[Section 13.2
-%   (iii)]{olver.lozier.ea:10:nist} that is applicable is $1 < (d+2-s)/2 < 2$ and
-%   in this case
-%   \begin{equation}
-%     r^{-2\alpha} U\left(\frac{d}{2},\frac{d+2-s}{2},r\right) = O\left( r^{1-2\alpha- (d+2-s)/2} + r^{-2\alpha} + r^{2 - 2\alpha -  (d+2-s)/2}  \right).
-%   \end{equation}
-%   So in order \eqref{E:BesselHG} to be finite we need
-%    \[
-%     \min\{ 1 - 2\alpha -  (d+2-s)/2, -2\alpha, 2 - 2\alpha -  (d+2-s)/2\} \ge -1.
-%    \]
-%   Recall that we are assuming $\alpha \in (q^{-1}, 2^{-1})$ so $-2\alpha >-1$.
-%   Thus it suffices to set
-%    \[
-%     1 - 2\alpha -  (d+2-s)/2, -2\alpha \ge -1 \quad \iff \quad 2 - 4\alpha -d + s >0.
-%    \]
-%   This is indeed possible as $2-4\alpha >0$ and $d-2 < s < d$, thus one can take
-%   $s$ sufficiently close to $d$ so that $(2 - 4\alpha) - (d-s) >0$. This
-%   completes the verification for \eqref{E:H}.
-%
-%   Lastly we need to verify \eqref{E:GH-int}. But essentially all the work for
-%   this has been completed. The verification of \eqref{E:H} implies that
-%   $\mathcal{H}_\alpha(s)$ is continuous on $s \in [0, T]$ for any $T>0$ and we
-%   already saw above that $\mathcal{G}_{\widehat{\rho}, q}(s)$ was bounded on
-%   $[0, T]$. These two facts imply \eqref{E:GH-int}, thus allowing us to apply
-%   Theorem \eqref{T:Main} and verify the existence of an invariant measure to
-%   \eqref{E:SHE} with initial data, $\mu(\cdot) = u(t_0, \cdot)$ and noise
-%   $\dot{W}_{t_0}$ with correlation function given to be the Bessel kernel $f_s$.
-%   Recall that the invariant measures derived from specific initial conditions take
-%   the form of \eqref{E:InvMeasForm}. Since for all $t >0$ we have $u(t + t_0,x)
-%   \stackrel{\mathcal{L}}{=} v(t,x)$, what we have actually done was verify the
-%   existence of an invariant measure$, \eta$, for \eqref{E:SHE} starting from
-%   $\delta_0$ with correlation function $f_s(x)$. Indeed,
-%    \begin{align*}
-%     \eta(A) & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(v(t,\cdot, u(t_0,\cdot)))(A) \; \ud t   \\
-%             & = \lim_{n \to \infty} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t + t_0,\cdot, \delta_0))(A) \; \ud t \\
-%             & = \lim_{n \to \infty} \int_{t'_0}^{T_n + t'_0} \mathscr{L}(u(t,\cdot, \delta_0))(A) \; \ud t, \quad t'_0 = 2t_0.
-%    \end{align*}
-%   Hence we may start \eqref{E:SHE} at $\delta_0$.
-% \end{example}
-%
-% \begin{example}[More examples] \label{Ex:More}
-% We would like to point out that the following initial data are also applicable
-% when considering the correlation function to be the Bessel kernel $B_s(x)$ with
-% $s < d$:
-%  \[
-%   \text{Lebesgue measure } \ud x \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
-%  \]
-% The interested reader may go trough the same steps above to see that
-% \eqref{E:InitData}, \eqref{E:H} and \eqref{E:GH-int} are all finite.
-% \end{example}
-%
+\subsection{Comparing Tessitore and Zabczyk's condition}
 
+\begin{remark} \label{R:Fourier}
+  The Fourier transform may be defined differently depending how to handle the $2\pi$ constant. In
+  this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we use the convention
+  that
+  \begin{align*}
+    \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
+    \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+  \end{align*}
+  Hence, the Plancherel theorem takes the form of
+  \begin{align} \label{E:Plancherel}
+    \int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
+  \end{align}
+  It has not been explicitly mentioned in \cite{tessitore.zabczyk:98:invariant} about the convention
+  of the Fourier transform. However, by checking the proof of Theorem 3.3 ({\it ibid.}) it suggests
+  that the following convention has been used
+  \begin{align*}
+    \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
+    \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi,
+  \end{align*}
+  so that the Plancherel theorem takes the form of $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
+  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$ without the additional factor
+  $(2\pi)^{-d}$. When we translate their condition (3.4) ({\it ibid.}) to \eqref{E:TZspec}, we have
+  taken into account of this difference. In particular, the spectral density $\gamma$ ({\it ibid.})
+  corresponds $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. This accounts the slightly
+  different factor in front of the integral in \eqref{E:TZspec} from  that in (3.4) ({\it ibid.}).
+\end{remark}
+
+Let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
+\begin{align*}
+  M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
+\end{align*}
+and consider two cases: \bigskip
+
+{\bf\noindent Case I:~} If $\widehat{f}(\zeta)$ is strictly positive for all $\zeta\in\R^d$, then
+there is no ambiguity when taking square root and hence one can remove the absolute value to see
+that
+\begin{align*}
+  M(f)
+  & = \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (\zeta) |\zeta|^{2-d} \ud \zeta \\
+  & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\zeta)  |\zeta|^{-2} \ud \zeta
+    = \left(2\pi\right)^{d/2}\Upsilon(0),
+\end{align*}
+where we have applied the Plancherel theorem (see \eqref{E:Plancherel}) and the Fourier transform
+for Riesz kernel (in the generalized sense):
+\begin{align*}
+  \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
+  \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
+\end{align*}
+Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
+(2\pi)^{d/2}\Upsilon(0)$. Comparing this with the second condition in \eqref{E:U0finite}, namely,
+$L_b^{-2}> 256 \Upsilon(0)$, our condition is sharper when $d> \frac{16\log(2)}{\log(2\pi)} \approx
+6.03$. \bigskip
+
+{\bf\noindent Case II:~} If $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
+namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute value in
+\eqref{E:TZspec} becomes tricky, which will be illustrated in the following example:
+
+\begin{example}
+  Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. It is clear that $ \widehat{g}(\xi) =
+  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-x,0)$. It is clear that $f$
+  is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
+  \xi^{-2}\sin^2(\xi)\ge 0$. But in this case, $\widehat{f}(\cdot)$ is only nonnegative (not
+  strictly positive) with infinite many zeros. Hence, when taking the square root of
+  $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive and
+  negative branches:
+  \begin{enumerate}
+    \item Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$ is preferable
+      since its inverse Fourier transform can be easily computed, which is equal to $g(x)$.
+      Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the absolute
+      value signs in \eqref{E:TZspec} do not pose any additional restrictions.
+    \item However, if one chooses the positive branches, namely,
+      $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, it is not clear how to compute its
+      Fourier transform. In general, some bad choices of the positive/negative branches may make the
+      conditions in \eqref{E:TZspec} fail. For example, such choice may turn
+      $\sqrt{\widehat{f}(\xi)}$ into a distribution, then taking the absolute value of a
+      distribution (unless it is a measure) may be problematic. Or even one may find some choice
+      such that $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, it may well be possible to be
+      signed and after taking absolute values, the integral in \eqref{E:TZspec} may blow up.
+  \end{enumerate}
+\end{example}
 
 \section{Preliminaries} \label{S:Prelim}
 
@@ -885,16 +978,16 @@ Here are several examples of admissible weights (see Example in Section 2 of
 
 \begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:Solve}
   Suppose that
-    \begin{enumerate}[(i)]
-     \item the initial measure $\mu$ is an $\mathcal{F}_0$-measurable random variable that satisfies
-       the following integrability condition:
-       \begin{equation} \label{A:icon}
-         \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
-       \end{equation}
-     \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
-    \end{enumerate}
-  then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
-  is $L^2(\Omega)$ continuous and is adapted to the filtration induced by ${W}$.
+  \begin{enumerate}[(i)]
+   \item the initial measure $\mu$ is an $\mathcal{F}_0$-measurable random variable that satisfies
+     the following integrability condition:
+     \begin{equation} \label{A:icon}
+       \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
+     \end{equation}
+   \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
+  \end{enumerate}
+  Then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
+  is $L^2(\Omega)$ continuous and is adapted to the filtration $\{\mathcal{F}_t\}_{t\ge 0}$.
 \end{theorem}
 
 \begin{theorem}[Theorem 1.7 \cite{chen.huang:19:comparison}] \label{T:ExUn}
@@ -905,20 +998,43 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \end{equation}
   where $\bar{\varsigma}=L_0/L_b$, $\gamma_p = 32pL_b^2$ (see \eqref{E:lipcon} for $L_0$ and $L_b$)
   and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see \cite{chen.huang:19:comparison} for
-  the expression of the function $H$). Moreover \footnote{This statement is from Lemma 2.5 of
-    \cite{chen.kim:19:nonlinear}. In the current paper, since we do not need the lower bound of the
-  moments, there is no need to make the cone conditions on $b(\cdot)$ as in {\it ibid.} and the
-Lipschitz condition will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
-first condition in \eqref{E:U0finite} holds and the second one is strengthened to
+  the expression of the function $H$).
+%   Moreover \footnote{This statement is from Lemma 2.5 of
+%     \cite{chen.kim:19:nonlinear}. In the current paper, since we do not need the lower bound of the
+%   moments, there is no need to make the cone conditions on $b(\cdot)$ as in {\it ibid.} and the
+% Lipschitz condition will be sufficient to guarantee the upper bounds of the $p$-th moments.}, if the
+% first condition in \eqref{E:U0finite} holds and the second one is strengthened to
+%   \begin{equation}\label{E:pLip}
+%      32 p L_b^2 < \frac{1}{4\Upsilon(0)},
+%   \end{equation}
+%   then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
+%   \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
+%   \begin{equation} \label{E:mb0}
+%     \Norm{u(t,x)}_p \le C\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg).
+%   \end{equation}
+\end{theorem}
+
+\begin{corollary}
+  Under the same setting as Theorem \ref{T:ExUn}, if the two conditions in \eqref{E:U0finite} hold
+  (see also \eqref{E:Interval}), then
+  \begin{equation} \label{E:mb0}
+    \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
+    \quad \text{for all $p$ s.t. } 1/p \in \left(128 L_b^2\Upsilon(0),1/2\right),
+  \end{equation}
+  where $C_p=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$.
+\end{corollary}
+\begin{proof}
+  Lemma 2.5 of \cite{chen.kim:19:nonlinear} gives one sufficient condition, namely,
+  $2\gamma_p\Upsilon(0)<1$, under which the function $H((t;\gamma_p)$ is bounded in $t$. Therefore,
+  by taking into account the expression of $\gamma_p$ in Theorem \ref{T:ExUn}, we see that as a
+  direct consequence of \eqref{E:mb}, whenever
   \begin{equation}\label{E:pLip}
      32 p L_b^2 < \frac{1}{4\Upsilon(0)},
   \end{equation}
-  then this function $H(t;\gamma_p)$ is bounded in $t$. Hence, by choosing $C=\left(\sqrt{2}\vee
-  \overline{\varsigma}\right)\sup_{t\ge 0} H(t;\gamma_p)^{1/2}<\infty$, we have that
-  \begin{equation} \label{E:mb0}
-    \Norm{u(t,x)}_p \le C\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg).
-  \end{equation}
-\end{theorem}
+  we have all $p$-th moments ($p\ge 2$) bounded as given in \eqref{E:mb0}.
+\end{proof}
+
+
 
 \begin{remark}[Restarted SHE] \label{R:Restat}
   Recall that the Markov property of the solution to \eqref{E:SHE} implies that for any $t\ge
@@ -1124,11 +1240,11 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both non-res
 and the restarted SHE ($ t_0>0$):
 
 \begin{lemma} \label{L:yineq}
-  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
-  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
-  when $ t_0=0$.  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon}
-  and $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that for some $\alpha\in
-  (0,1/2)$, condition \eqref{E:H} is satisfied. Then
+  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that the integral in
+  \eqref{E:H} is finite for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be
+  the solution to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise
+  (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
@@ -1140,12 +1256,15 @@ and the restarted SHE ($ t_0>0$):
         \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
       \end{align}
       where we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
-    \item If $\Upsilon(0)<\infty$ and $q>\max\left(1/\alpha, 128 L_b^2 \Upsilon(0)\right)$, then the
-      function $H\left(t;32qL_b^2\right)$ in \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e.,
-      $\sup_{t\ge 0}H\left(t;32qL_b^2\right)<\infty$;
-    \item Under conditions in part (2), if $\rho$ is a nonnegative and $L^1(\R^d)$ function, then
-      there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend
-      on $t$, such that for $t>0$,
+    \item Under \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for some $\alpha\in
+      \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(128 L_b^2
+      \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in \eqref{E:NormY} is
+      uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge 0}H\left(t;32qL_b^2\right)<\infty$;
+    \item Under \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for some $\alpha\in
+      \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(128 L_b^2
+      \Upsilon(0), \: \alpha\right)$ and for any nonnegative and $L^1(\R^d)$-function $\rho$, there
+      exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend on
+      $t$, such that for $t>0$,
       \begin{equation} \label{E:yineq}
         \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
         \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s,
@@ -1192,13 +1311,13 @@ and the restarted SHE ($ t_0>0$):
     \le L_b |v| + L_0 \le C (1+|v|),\quad C:=L_b\vee L_0.
   \end{align*}
   We apply this and the moment bound \eqref{E:mb} to $\Norm{b(z_i, v(r,z_i))}_q$ above to see that
-  \begin{align*} % \label{E:NormB}
+  \begin{align} \label{E:NormB}
     \Norm{b(z_i, v(r,z_i))}_q
-    & \le C\left(1+\Norm{v(r,z_i)}_q\right)                               \\
-    & =   C\left(1+\Norm{u(r+t_0,z_i)}_q\right)                           \\
-    & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right) \\
+    & \le C\left(1+\Norm{v(r,z_i)}_q\right)                               \notag \\
+    & =   C\left(1+\Norm{u(r+t_0,z_i)}_q\right)                           \notag \\
+    & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
     & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i=1,2, \: r\in(0,s),
-  \end{align*}
+  \end{align}
   where in the last step, we have used the fact that $H(t;\gamma)$ is a nondecreasing function; see
   Lemma 2.6 of \cite{chen.kim:19:nonlinear}. Therefore, by denoting
   $C_s:=H\left(s+t_0;32qL_b^2\right)$,
@@ -1256,10 +1375,11 @@ and the restarted SHE ($ t_0>0$):
 \end{proof}
 
 \begin{lemma}[Factorization lemma] \label{L:Factorize}
-  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
-  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
-  when $ t_0=0$. If \eqref{E:H} holds for some $\alpha\in (0,1/2)$, then the following factorization
-  holds
+  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that condition \eqref{E:H} is
+  satisfied for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution
+  to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise (see
+  \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then the following factorization holds
   \begin{equation*}
     \dfrac{\sin(\alpha \pi)}{\pi}
     \int_0^t(t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s
@@ -1545,17 +1665,48 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
   \end{align*}
 
-  Recall that Lemma \ref{L:Factorize} implies that
+  % The two conditions in \eqref{E:U0finite} imply that the following interval
+  % \begin{align*}
+  %   \left(128 L_b^2 \Upsilon(0),\: 1/2\right]
+  % \end{align*}
+  % is nonempty.
+
+  According to Assumption (i), we can choose and fix some admissible weight function
+  $\widehat{\rho}$ such that \eqref{E:rhorho} is satisfied. Hence, by Proposition \ref{P:weight},
+  the following set
   \begin{align*}
+    \mathscr{K}_1 (\Lambda) :=\left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x): \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \right\}
+    \quad \text{with $\Lambda>0$}
+  \end{align*}
+  is relative compact in $L_\rho^2(\R^d)$. Thanks to \eqref{E:U0finite} (see also
+  \eqref{E:Interval}) and Assumption (iii), we can choose and fix some $q$ and $\alpha$ with
+  \begin{align} \label{E:Choice}
+    128 L_b^2 \Upsilon(0) < \frac{1}{q} < \alpha <\frac{1}{2}
+    \qquad \left(\text{or equivalently} \quad
+    2< \frac{1}{\alpha} < q < \frac{1}{128 L_b^2 \Upsilon(0)}\:\right)
+  \end{align}
+  such that \eqref{E:H} holds. Hence, by Lemma \ref{L:Factorize}, we have the following
+  factorization:
+  \begin{align} \label{E:Fact}
     v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
-  \end{align*}
-  Now define the set $\mathscr{K} (\Lambda)$ as
+  \end{align}
+  In particular, the operator $F_\alpha$ is well defined. With the choice of $\alpha$ and $q$ in
+  \eqref{E:Choice}, we can apply Proposition \ref{P:F-Comp} to see that the following set
   \begin{align*}
-    \mathscr{K} (\Lambda) = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x):
-    \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+    \mathscr{K}_2 (\Lambda):=
+    \left\{(F_\alpha h)(x): \Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
+    \quad \text{with $\Lambda>0$}
   \end{align*}
-  Then by Proposition \ref{P:weight} and Proposition \ref{P:F-Comp}, $\mathscr{K} (\Lambda)$ is
-  relatively compact in $L^2_{ \rho}(\R^d)$ for $\Lambda>0$. Notice that
+  is relative compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
+  (\Lambda)$ as
+  \begin{align*}
+    \mathscr{K} (\Lambda)
+    & :=\mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
+    & = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x): \:\Norm{y}_{\widehat{\rho}}
+    \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+  \end{align*}
+
+  Notice that from the factorization formula \eqref{E:Fact},
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
     & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
@@ -1565,22 +1716,41 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   By Chebyshev's inequality and \eqref{E:uInLrho}, we see that
   \begin{align*}
     I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right)
-    \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
-    \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
-    = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
+    \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right).
+    % \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    % = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
   \end{align*}
-  where the upper bound does not depend on $t$ and the upper bound is finite due to the fact that
-  $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$ that is bounded at
-  infinity thanks to condition \eqref{E:InitData}. Similarly, by Chebyshev's inequality and
-  \eqref{E:yineq},
+  Because $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$, and because it
+  is also bounded at infinity thanks to Assumption (ii) (see \eqref{E:InitData}), we have that
+  \begin{align} \label{E:GtBdd}
+    \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    \le \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
+    =   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty.
+  \end{align}
+  Therefore, we can bound $I_2$ from above with a constant that does not depend on $t\ge \tau$,
+  namely,
   \begin{align*}
-    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s \\
-        & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s\\
-        & \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s.
+    I_2 \le\frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty.
   \end{align*}
-  Condition \eqref{E:H} implies that $\mathcal{H}_\alpha(s)$ is a continuous function that vanishes
-  at $s=0$. Hence, $\int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty$. Combining these two
-  upper bounds, we see that
+
+  As for $I_1$, with the choice of $\alpha$ and $q$ in \eqref{E:Choice}, one can apply Chebyshev's
+  inequality and part (3) of Lemma \ref{L:yineq} to see that
+  \begin{align*}
+    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s
+          \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
+          \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud
+          s.
+  \end{align*}
+  where the constant $\Theta$ does not depend on $t$. Noticing that Assumption (iii) (see
+  \eqref{E:H}) implies that $\mathcal{H}_\alpha(s)$ is a continuous function that vanishes at $s=0$
+  so that $\int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty$, together with \eqref{E:GtBdd},
+  we derive the following upper bound for $I_2$ that is uniform in $t\ge \tau$.
+  \begin{align*}
+     I_1 \le  \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0}
+     \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2}
+     \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s<\infty.
+  \end{align*}
+  Combining these two upper bounds, we see that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
     \le
@@ -1589,8 +1759,8 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
     <\infty,
   \end{align*}
-  with the upper bound uniform in $t\ge \tau$. Hence, for any $\epsilon>0$, by choosing $\Lambda >
-  0$ big enough such that
+  with the upper bound holding uniformly for all $t\ge \tau$. Hence, for any $\epsilon>0$, by
+  choosing $\Lambda > 0$ big enough such that
   \begin{align*}
     \dfrac{\sin^q(\alpha \pi)\Theta }{\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \int_0^{t_0}\mathcal{H}_{\alpha}^{q/2}(s) \ud s
     +
