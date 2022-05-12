@@ -31,6 +31,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
 \newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\rdot}{\tikz\draw[red,fill=red] (0,0) circle (.5ex); \;}
 
 \newcommand{\mySeparateLine}{
 	\begin{center}
@@ -68,7 +69,7 @@
 % }}}
 % {{{ Title page
 \title[About Beamer] %optional
-{The Interpolated Stochastic Heat and Wave Equation: Solvability and Exact Moment Asymptotics}
+{NNSS Presentation}
 
 \author[Arthur, Doe] % (optional, for multiple authors)
 {Nicholas Eisenberg}
@@ -81,10 +82,9 @@
 }
 
 \date[VLC 2021] % (optional)
-{ \small Special Session on \\
-	{\it Stochastic Analysis and Applications}\\[1em]
-	Fall Southeastern Sectional Meeting\\[0.5em]
-	November 20-21, 2021}
+{
+	May 19, 2022
+}
 
 \logo{\includegraphics[height=1cm]{overleaf-logo}}
 \thispagestyle{empty}
@@ -97,29 +97,55 @@
 	\setcounter{page}{1}
 	% }}}
 	
-	\begin{frame}[t]{Stochastic Calculus}
-		When studying Probability Theory, we consider measurable functions (random variables),
-		\[
-		X : \Omega \to \R,
-		\]
-		and we consider the measure spaces
-		\[
-		(\Omega, \mathcal{F}, \mathbb{P}) \quad \text{and} \quad (\R, \mathscr{B}(\R), \lambda),
-		\]
-		where $\Omega$ and $\mathcal{F}$ are referred to as the sample space and set of possible events and
-		\[
-		\mathbb{P}(\Omega) = 1.
-		\]
-		%\begin{definition}[Random Variable]
-		%	A measurable function $X: \Omega \to \R^d$ is called a {\it $\R^d$-valued Random Variable}.
-		%\end{definition}
-		%
-		%So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables.
-		The average or expected value of $X$ is
-		\[
-		\mathbb{E}(X) = \int_{\Omega} X(\omega) \; \ud\mathbb{P}(\omega) = \int_{\R} x \;\ud F(x) = \int_{\R} x f(x) \;\ud x.
-		\]
+	\begin{frame}{Talking Points }
+			\rdot Background and motivation \vspace{.5in} \\
+			\rdot Stochastic ordinary differential equations. \\
+			\hspace{.5in} - Finance \vspace{.5 in} \\
+			\rdot Stochastic partial differential equations. \\
+			\hspace{.5in} - Research 
 	\end{frame}
+
+\begin{frame}{The Questions}
+	  \rdot We want to model the evolution of heat of a piece of initially heated wire. How can we account for random outside sources of heat that affect the wires temperature? (SHE) \vspace {.5in} \\
+	  
+	  \rdot We want to model the growth of a cluster of cells undergoing mitosis. How can we include the randomness in our model? (KPZ- equation) \vspace{.5in} \\
+	  
+	  \rdot We are investors looking to make estimations on the return rate of our current investments. Can we make legitimate assumptions on the "randomness" of our returns? (Ornstein-Uhlenbeck process)
+	
+\end{frame}
+
+\begin{frame}{Noise}
+	 \rdot Essentially, the randomness is accounted for by a random noise, usually Gaussian. \vspace{.5in} \\ 
+	 
+	 \rdot The noise can be thought of as the derivative of a non-differentiable function. In the the case of a SODE, the derivative of Brownian motion and in the case of a SPDE, the derivative of a Brownian sheet. \vspace{.5in} \\ 
+	 
+	 \rdot There are more general noises, but it is still helpful to keep the above "rough" idea in our heads. 
+	
+\end{frame}
+	
+%	\begin{frame}[t]{Stochastic Calculus}
+%		When studying Probability Theory, we consider measurable functions (random variables),
+%		\[
+%		X : \Omega \to \R,
+%		\]
+%		and we consider the measure spaces
+%		\[
+%		(\Omega, \mathcal{F}, \mathbb{P}) \quad \text{and} \quad (\R, \mathscr{B}(\R), \lambda),
+%		\]
+%		where $\Omega$ and $\mathcal{F}$ are referred to as the sample space and set of possible events and
+%		\[
+%		\mathbb{P}(\Omega) = 1.
+%		\]
+%		%\begin{definition}[Random Variable]
+%		%	A measurable function $X: \Omega \to \R^d$ is called a {\it $\R^d$-valued Random Variable}.
+%		%\end{definition}
+%		%
+%		%So essentially, Stochastic Calculus and Probability is just Real Analysis on Random Variables.
+%		The average or expected value of $X$ is
+%		\[
+%		\mathbb{E}(X) = \int_{\Omega} X(\omega) \; \ud\mathbb{P}(\omega) = \int_{\R} x \;\ud F(x) = \int_{\R} x f(x) \;\ud x.
+%		\]
+%	\end{frame}
 	
 	\begin{frame}{Stochastic Processes}
 		\begin{definition}[Stochastic Process]
@@ -169,17 +195,17 @@
 		\end{center}
 	\end{frame}
 	
-	\begin{frame}{Random Walk Example}
+	\begin{frame}{Random walk Example}
 		\begin{center}
 			\includegraphics[scale=.6]{randomwalk20steps.png}
 		\end{center}
 	\end{frame}
 	
-	\begin{frame}{Random Walk Example}
-		\begin{center}
-			\includegraphics[scale=.6]{randomwalk40steps.png}
-		\end{center}
-	\end{frame}
+%	\begin{frame}{Random Walk Example}
+%		\begin{center}
+%			\includegraphics[scale=.6]{randomwalk40steps.png}
+%		\end{center}
+%	\end{frame}
 	
 	%\begin{frame}{Random Walk Example}
 	%	\begin{center}
@@ -191,6 +217,16 @@
 		\begin{center}
 			\includegraphics[scale=.7]{BrownianMotion.png}
 		\end{center}
+	\end{frame}
+
+		\begin{frame}[t]{White Noise}
+		\centering
+		\includegraphics[width=13cm, height=8.5cm]{whitenoise.png}
+	\end{frame}
+	
+	\begin{frame}{Increments of a Smooth Function for Reference}
+		\centering
+		\includegraphics[scale=.7]{niceincrements.png}
 	\end{frame}
 	
 %	\begin{frame}{Brownian Motion}
@@ -212,46 +248,48 @@
 %		\end{Theorem}
 %	\end{frame}
 
-		\begin{frame}{What can we do with Brownian Motion?}
-	Consider a stock that has value $S_t$ at time $t$. Consider $t=0$ to be the
-	point of entry into the investment. We can define a return rate as follows:
+		\begin{frame}{What Can We Do with Brownian Motion?}
+  \rdot $S_0 = \text{stock price at entry}$ \quad \quad $S_t = \text{stock price after } t \text{ time}$. 
 	\[
 	S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
 	\]
-	
-	We want to make predictions of our return. In a very simple model, we can
-	assume that
+\vspace{.1in} \\
+
+\rdot We want to make predictions on the return rate. 
 	\[
-	R_t \sim \text{Normal}(\mu_t, \sigma^2), \quad \mu \in \R,\; \sigma \in (0,\infty).
+	 R_t \; \sim \text{Normal}(\mu t, \sigma^2 t), \quad \mu \in \R,\; \sigma \in (0,\infty).
 	\]
-	
-	In terms of Stochastic Calculus, we express this as the following stochastic
-	differential equation:
+\vspace{.1in} \\
+
+\rdot We can model this with a stochastic differential equation.
 	\[
-	R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion.}
+	R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } dS_t = S_{t + \Delta t} - S_t
 	\]
+\vspace{.1in} \\ 
+\rdot It can be shown that $\mu \ud t + \sigma \ud B_t \sim \text{Normal}(\mu \cdot \Delta t,\; \sigma^2 \cdot \Delta t)$
 \end{frame}
 
-	\begin{frame}{Modeling a stock price with geometric Brownian motion}
-	The notation
+	\begin{frame}{} $\;$\\
+\rdot This notation is only symbolic as $dB_t$ does not ``exist":
 	\[
-	dS_t = \mu S_t \ud t + \sigma S_t \ud B_t, \quad \text{where } B_t \text{ is a Brownian motion}
+	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t \quad \text{or} \quad dS_t = \mu S_t \ud t + \sigma S_t \ud B_t
 	\]
-	is only symbolic as $dB_t$ does not exist. 
+ \vspace{.1in}\\
 	
-	The above can be legitimately
+\rdot The above can be legitimately
 	viewed as the following integral equation:
 	\[
 	S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
 	\]
+	\vspace{.1in}\\
 	
-	The stochastic processes $S_t$ that solves the above equation is called a
-	\textcolor{magenta}{\it Geometric Brownian Motion}. 
-	Notice that we have
-	came up with a random variable that models the stock price:
+\rdot Notice that we have came up with a random variable that models the stock price:
 	\[
 	S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
-	\]
+	\] \vspace{.1in}\\
+	
+	\rdot The stochastic processes $S_t$ that solves the above equation is called a
+	\textcolor{magenta}{\it Geometric Brownian Motion}. 
 \end{frame}
 
 \begin{frame}
@@ -260,7 +298,7 @@
 	\end{center}
 \end{frame}
 	
-	\begin{frame}[t]{The It\^o's integral \small (a special case -- {\it Wiener integral})}
+	\begin{frame}[t]{It\^o's Integral \small (a special case -- {\it Wiener integral})}
 			Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
 			\[
 			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
@@ -275,61 +313,51 @@
 			are very bad.
 		\end{frame}
 		
-		\begin{frame}[t]{White Noise}
-			\centering
-			\includegraphics[width=13cm, height=8.5cm]{whitenoise.png}
-		\end{frame}
+%		\begin{frame}[t]{A ``Fundamental Theorem of It\^o's Calculus"}
+%			If $f$ is twice continuously differentiable then we have the following ``Fundamental Theorem of It\^o's Calculus"
+%			\[
+%			\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
+%			\]
+%			\begin{example}
+%				If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
+%				\[
+%				\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2}.
+%				\]
+%				%which is not quite the same thing as
+%				%	\[
+%				%		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2}
+%				%	\]
+%				
+%			\end{example}
+%			
+%		\end{frame}
 		
-		\begin{frame}{Increments of a smooth function for reference}
-			\centering
-			\includegraphics[scale=.7]{niceincrements.png}
-		\end{frame}
+%		\begin{frame}{Two sample paths}
+%			\includegraphics[scale=.7]{StochIntegralExample}
+%		\end{frame}
 		
-		\begin{frame}[t]{A ``Fundamental Theorem of It\^o's Calculus"}
-			If $f$ is twice continuously differentiable then we have the following ``Fundamental Theorem of It\^o's Calculus"
-			\[
-			\int_a^t \frac{d}{ds} f(B_s) \ud B_s = f(B_t) - f(B_a) - \frac{1}{2} \int_a^t \frac{d^2}{ds^2}(B_s) \ud s.
-			\]
-			\begin{example}
-				If we apply the above to $f(x) = x^2 / 2$ with $a=0$ then we have
-				\[
-				\int_0^t B_s \; \ud B_s = \frac{B_t^2}{2}  - \frac{t}{2}.
-				\]
-				%which is not quite the same thing as
-				%	\[
-				%		\int_0^{B_t} x \; \ud x = \frac{B_t^2}{2}
-				%	\]
-				
-			\end{example}
-			
-		\end{frame}
+%		\begin{frame}[t]{One more example}
+%			For a nice function $f(t,x)$, we can generalize It\^o's formula to
+%			\[
+%			f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \left( \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \right) \ud s.
+%			\]
+%			\begin{example}
+%				Now consider the function $f(t,x) = tx$. Then
+%				\[
+%				\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
+%				\]
+%				Plugging this in above for $a=0$ gives us
+%				\[
+%				tB_t = \int_0^t s \; \ud B_s + \int_0^t B_s \; \ud s, \quad \implies \quad 	\int_0^t B_s \; \ud s = t B_t -  \int_0^t s \; \ud B_s.
+%				\]
+%				
+%			\end{example}
+%		\end{frame}
 		
-		\begin{frame}{Two sample paths}
-			\includegraphics[scale=.7]{StochIntegralExample}
-		\end{frame}
-		
-		\begin{frame}[t]{One more example}
-			For a nice function $f(t,x)$, we can generalize It\^o's formula to
-			\[
-			f(t,B_t) - f(a, B_a) = \int_a^t \frac{\partial f}{\partial x}(s, B_s) \ud B_s + \int_a^t \left( \frac{\partial f}{\partial t}(s, B_s) + \frac{\partial^2 f}{\partial x^2}(s, B_s) \right) \ud s.
-			\]
-			\begin{example}
-				Now consider the function $f(t,x) = tx$. Then
-				\[
-				\frac{\partial f}{\partial t}(t,x) = x, \quad \frac{\partial f}{\partial x}(t,x) = t, \quad \frac{\partial^2 f}{\partial x^2}(t,x) =0
-				\]
-				Plugging this in above for $a=0$ gives us
-				\[
-				tB_t = \int_0^t s \; \ud B_s + \int_0^t B_s \; \ud s, \quad \implies \quad 	\int_0^t B_s \; \ud s = t B_t -  \int_0^t s \; \ud B_s.
-				\]
-				
-			\end{example}
-		\end{frame}
-		
-		\begin{frame}[t]{Smoothness?!}
-			\centering
-			\includegraphics[scale=.6]{riemannBM.png}
-		\end{frame}
+%		\begin{frame}[t]{Smoothness?!}
+%			\centering
+%			\includegraphics[scale=.6]{riemannBM.png}
+%		\end{frame}
 		
 %		\begin{frame}{Why do we care about Brownian Motion?}
 %			\centering
@@ -524,7 +552,7 @@
 			\]
 		\end{frame}
 		
-		\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
+		\begin{frame}{Sample Path of a Brownian Sheet, $W(t,x)$}
 			\centering
 			\includegraphics[scale=.5]{bsheet4.png}
 		\end{frame}
@@ -534,7 +562,7 @@
 %			\includegraphics[scale=.5]{bsheet3.png}
 %		\end{frame}
 	
-		\begin{frame}{Approximation of a space-time white noise}
+		\begin{frame}{Approximation of a Space-Time White Noise Differential}
 			\centering
 			\includegraphics[scale=.5]{spacetimewhite.png}
 		\end{frame}
@@ -561,10 +589,10 @@
 			\includegraphics[scale=.5]{SHEdeltaNoise1.png}
 		\end{frame}
 		
-		\begin{frame}
-			\centering
-			\includegraphics[scale=.5]{SHEdeltaNoise2.png}
-		\end{frame}
+%		\begin{frame}
+%			\centering
+%			\includegraphics[scale=.5]{SHEdeltaNoise2.png}
+%		\end{frame}
 		
 		\begin{frame}
 			\centering
@@ -576,21 +604,30 @@
 			\includegraphics[scale=.5]{SHEdeltaNoise2.15.png}
 		\end{frame}
 	
-		\begin{frame}
-		\centering
-		\includegraphics[scale=.5]{SHEdeltaNoise2.2.png}
-		\end{frame}
+%		\begin{frame}
+%		\centering
+%		\includegraphics[scale=.5]{SHEdeltaNoise2.2.png}
+%		\end{frame}
 		
-		\begin{frame}[t]{Growth of Moments}
-			We have a quantity that describes the growth of the $p^{th}$ moments of the solutions to the stochastic heat question:
-			\[
-			\lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t}.
-			\]
-			What does this limit say about the growth or decay of the moments?
-			
-		\end{frame}
+	\begin{frame}[t]{Growth of the paths and moments}
+\rdot Can we accurately describe the creation of these large peaks? In other words, how can we describe the sample paths of the solution: 
+	\[
+		t \mapsto u(t,x)(\omega) \quad \text{and} \quad x \mapsto u(t,x)(\omega)
+	\] \vspace{.15in}
+	
+\rdot This is a hard question, a current open problem is calculate the following limit
+\[
+\lim_{t \to \infty} \frac{\log|u(t,x)|}{t^{K}}.
+\] \vspace{.15in}
+
+\rdot This limit has been calculated in the following sense for the SHE
+\[
+\lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t^K}, \quad p \ge 2.
+\]
 		
-		\begin{frame}[t]{Growth of Moments for the Stochastic Heat Equation}
+	\end{frame}
+		
+		\begin{frame}[t]{Growth of moments for the stochastic heat equation}
 			\[
 			\begin{cases}
 			\frac{\partial}{\partial t} u(t,x) - \frac{1}{2}\frac{\partial^2}{\partial x^2} u(t,x) = \sqrt{\lambda} u(t,x) \frac{\partial}{\partial x}W(x) & t \ge 0, \; x\in \R \\
@@ -637,6 +674,176 @@
 		%			\newblock {\em Universitext}, Springer
 		%		\end{thebibliography}
 		%	\end{frame}
+		
+	\begin{frame}[t]%{{{ ISHWE
+	\frametitle{The Interpolated Stochastic Heat and Wave Equation}
+	\begin{equation}
+	\tag{\footnotesize ISHWE}
+	\begin{cases}
+	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = 1                                                                                                           & b \in (0,1]               \\
+	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                          & b \in (1,2)
+	\end{cases}
+	\end{equation}
+	
+	\vfill
+
+	\rdot  $\partial^b_t$ is the {\it Caputo} fractional derivative \vspace{.15in} \\
+
+	\rdot  $(-\Delta)^{a/2}$ is the fractional Laplacian of order $a \in (0,2]$ \vspace{.15in} \\
+
+	\rdot  $I^r_t$ is the Riemann-Liouville fractional integral of order $r \ge 0$ \vspace{.15in} \\
+	
+	\rdot $\dot{W}$ is a time-independent Gaussian noise defined on $\phi,\psi \in C_0^\infty(\R^d) $:
+	\[
+	J(\phi, \psi) := \mathbb{E}(W(\phi)W(\psi)) = \int_{\R^d} \ud x \; \phi(x) |x-y|^{-\alpha} \psi(y)
+	\]
+\end{frame}
+
+\begin{frame}{Fractional Differential Operators}
+	\rdot We recall a property of the standard Laplacian, $\Delta = \frac{\partial^2}{\partial x_1^2} + \cdots + \frac{\partial^2}{\partial x_d^2}$:
+		\[
+			(-\Delta) f (x) = \bigg((|\cdot|^{2})\hat{f}(\cdot) \bigg)^{\vee}(x).
+		\]
+	This gives motivation for the fractional Laplacian:
+		\begin{equation*} \label{D:fraclaplacian}
+	(-\Delta)^{\alpha / 2} f (x) := \bigg((|\cdot|^{\alpha})\hat{f}(\cdot) \bigg)^{\vee}(x),
+	\end{equation*}
+	
+	\rdot The Caputo derivative is defined as 
+		\begin{align*}
+		\partial^b_tf(t) :=
+		\begin{cases}
+		\dfrac{1}{\Gamma(m-b)} \int_0^t \ud \tau \dfrac{f^{(m)}(\tau)}{(t-\tau)^{b+1-m}} & \text{if } m-1 < b < m, \bigskip \\
+		\dfrac{\ud^m}{\ud t^m}f(t)                                                       & \text{if } b=m,
+		\end{cases}
+		\end{align*}
+\end{frame}
+
+\begin{frame}{Mild Solution}
+	\rdot The solution to the ISHWE is any processes that satisfies the following stochastic integral equation: 
+	\begin{equation} \label{E:spdeint}
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
+	\end{equation} \vspace{.15in} \\
+	
+	\rdot The kernal $G$ is defined through the Fox-H function:
+	\begin{align*}
+	& G_{a,b,r,\nu,d}(t,x) \\
+	 &= \pi^{-d/2} |x|^{-d} t^{b+r-1} H^{2,1}_{2,3}\left( \frac{|x|^a}{2^{a-1}\nu t^b}\;  \Bigg \vert  \begin{array}{l}
+	(1,1),\; (b+r,b) \\
+	(d/2,a/2),\; (1,1),\; (1,a/2)
+	\end{array} \right).
+	\end{align*}
+\end{frame}
+
+	\begin{frame}
+	\frametitle{Global Solution\\
+		\small $\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right]$}
+	\begin{definition}
+		$u(t,x)$ is a \textit{global solution} to the {\small (ISHWE)} if $\Norm{u(t,x)}_p < \infty$ for any $0 < t < T$ and $x \in \R^d$ where $T>0$ is arbitrary.
+	\end{definition}
+	$\;$ \vspace{0in} \\
+	\begin{theorem}[{\small Chen-E. '21+}]
+		A global solution exists provided $G$ is nonnegative and
+		\[
+		0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
+		\]
+	\end{theorem}
+
+$u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d$
+
+		\[
+f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
+\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local Solution}
+	\begin{definition}
+		$u(t,x)$ is a \textit{local solution} to the {\small (ISHWE)} if there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. (does not exist) for $t> T_b$.
+	\end{definition}
+	$\;$ \\
+	\begin{theorem}[{\small Chen-E. '21+}]
+		A local solution exists provided $G$ is nonnegative and
+		if
+		\[
+		r\in \left[0,1/2\right] \qquad \text{and} \qquad
+		0<\alpha = \frac{a}{b}[2(b+r)-1] \le d.
+		\]
+		In this case, a unique $L^p(\Omega)$ solution exists for $t \in (0,T_p)$ where
+		\[
+		T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}
+		\]
+		and the solution does not exist for $t > T_2$.
+	\end{theorem}
+\end{frame}
+
+	\begin{frame}[t]% {{{ Exponential growth of moments in time
+	% \frametitle{Exponential Growth of the Moments in Time}
+	\frametitle{Exact Moment Lyapunov Exponent \\
+		\small (Recall $\beta := \frac{2(b+r)-\frac{b\alpha}{a}}{ 2(b+r)-\frac{b\alpha}{a} -1}$)}
+	\begin{corollary}[{\small Chen-E. '21+}]
+		For $p \ge 2$ fixed, we have that
+		\begin{align*}
+		\lim_{t \to \infty} & t^{-\beta} \log \E\left(|u(t,x)|^p\right)                                                                                 \\
+		& =  p(p-1)^{\frac{1}{2(b+r)-\frac{b\alpha}{a} -1}} \left(\frac{1}{2}\right)\left(\frac{2a}{2a(b+r)- b\alpha} \right)^\beta \\
+		& \quad \quad \times \left(\theta\nu^{-\alpha/a} \mathcal{M}_a^{\frac{2a-\alpha}{a}}\right)^{\frac{a}{2a(b+r)-b\alpha-a}}\left(2(b+r)-\frac{b\alpha}{a}-1\right).
+		\end{align*}
+	\end{corollary}
+	\vfill
+	
+	From this we can deduce that $t \mapsto \mathbb{E}(|u(t,x)|^p)$ will grow like $\exp\left({K_1 t^\beta }\right)$, in other words, the moments will grow exponentially in time,
+	and we obtain the exact expression for the constant $K_1$.
+\end{frame}% }}}
+
+\begin{frame}{Where Is There Room for Improvement?}
+	\rdot Continuity of the solution has not been proven for the fractional equation or any of its simple cases (eq SHE or SWE). \vspace{.3in} \\
+	
+	\rdot Sample path asymptotics:
+		\[
+			\lim_{ t \to \infty} \frac{\log|u(t,x)|}{t^K}.
+		\] \vspace{.1in} \\
+		
+	\rdot More general initial conditions. \vspace{.3in} \\ 
+	
+	\rdot More general drift term. \vspace{.3in} \\ 
+	
+	\rdot More general noise. 
+	
+\end{frame}
+
+	\begin{frame}{The Case of Space-time White Noise}
+	\begin{equation}
+	\begin{cases}
+	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sigma(u(t,x))\: \dot W(t, x) \right] & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = 1                                                                                                           & b \in (0,1]               \\
+	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                          & b \in (1,2)
+	\end{cases}
+	\end{equation}
+	The drift coefficient has super-linear growth: 
+	\[
+	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta} \quad \text{as } |x| \to \infty.
+	\]
+	We first consider the noise to be space-time white. In other words, the covariance structure is defined for $\phi,\psi \in C_0^\infty(\R_+ \times \R^d) $ as
+	\[
+	J(\phi, \psi) := \mathbb{E}(W(\phi)W(\psi)) = \int_0^\infty \ud s \int_{\R^d} \ud x \; \phi(s,x)\psi(s,x).
+	\]
+\end{frame}
+
+\begin{frame}{Solvability and Properties of the Solution}
+	\rdot The goal is to see if Global existence can occur? And if so, in what sense? \vspace{.1in} \\ 
+	\hspace{.2in}- Local solutions have been shown to exist. \\
+	\hspace{.2in}- Blow-up of the solution has been shown as well when the drift term grows sufficiently fast. \vspace{.6in} \\
+	
+	\rdot Can asymptotics of the solution be shown? \vspace{.6in} \\
+	
+	\rdot Is the solution continuous? And if so "how" continuous is the solution. 
+	
+\end{frame}
+
+\begin{frame}
+	\rdot Really the only issue is the super-linear drift term. 
+\end{frame}
 		
 	\end{document}
 
