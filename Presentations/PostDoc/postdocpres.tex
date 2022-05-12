@@ -620,7 +620,7 @@
 \lim_{t \to \infty} \frac{\log|u(t,x)|}{t^{K}}.
 \] \vspace{.15in}
 
-\rdot This limit has been calculated in the following sense for the SHE
+\rdot This limit has been calculated in the following sense for the SHE (and also other SPDEs which we will see below)
 \[
 \lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t^K}, \quad p \ge 2.
 \]
@@ -749,12 +749,6 @@
 		0 < \alpha < \min\left( \frac{a}{b}[2(b+r) -1], 2a, d \right)
 		\]
 	\end{theorem}
-
-$u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d$
-
-		\[
-f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
-\]
 \end{frame}
 
 \begin{frame}
@@ -776,6 +770,21 @@ f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=
 		\]
 		and the solution does not exist for $t > T_2$.
 	\end{theorem}
+\end{frame}
+
+\begin{frame}{Special Form of the Solution}
+	\rdot The time independent noise and the constant initial conditions allows to prove the following explicit representation of the solution:
+	\[ u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d \]
+	
+	\[
+	f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=1}^n G(t_{k+1}-t_k,x_{k+1}-x_k) \ud t_1 \cdots \ud t_n
+	\]
+	
+	\rdot Moreover, we can show that the convergence of the above series is equivalent to showing the following: 
+	\[
+		\Norm{u(t,x)}_2^2 = \sum_{n \ge 0} \theta^n n! \Norm{\tilde{f}(\cdot,0,t)}_{H^{\otimes n}}^2 < \infty
+	\]
+
 \end{frame}
 
 	\begin{frame}[t]% {{{ Exponential growth of moments in time
@@ -841,8 +850,36 @@ f_n(x_1, \cdots , x_n; x, t) = \int_0^t\int_0^{t_n}\cdots \int_0^{t_2} \prod_{k=
 	
 \end{frame}
 
-\begin{frame}
-	\rdot Really the only issue is the super-linear drift term. 
+\begin{frame}{Existence of the Solution}
+	We consider a truncated version of the equation where $\sigma$ replaced by $\sigma_N$: 
+	\[
+	\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+	\]
+	\centering
+	\includegraphics[scale = .33]{sigmaN.png}
+\end{frame}
+
+\begin{frame}{Sketch}
+	\rdot We see that $\sigma_N$ is Lipschitz:
+	\[
+	|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|,
+	\]
+	so there exists a unique solution which is Holder continuous, which we denote as $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. \vspace{.2in}
+	
+	\rdot When
+	\[
+	2b + 2r -1 -b d / a > 0 \quad \text{and} \quad d < 2 a,
+	\]
+	$u_N \to u$ which satisfies
+	\begin{equation*}
+	\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
+	\end{equation*}
+	
+	\rdot The convergence is not $\mathbb{E}(|u_N -u|^2 ) \to 0$, which is the usual convergence that is proven. What we have is 
+		\[
+			\lim_{N \to \infty} \mathbb{P}\left( |u_N - u| \right) \to 0.
+		\]
+	\rdot So far not much is known about $u$ other than existence and uniqueness. 
 \end{frame}
 		
 	\end{document}
