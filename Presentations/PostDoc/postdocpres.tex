@@ -1,5 +1,5 @@
 \documentclass{beamer}% {{{
-\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc}
+\usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc,	graphicx, subcaption, mwe}
 %\usepackage{eucal} this is a different font than \mathcal{•}
 \usetikzlibrary{arrows}
 %\newtheorem{theorem}{Theorem}[section]
@@ -736,6 +736,19 @@
 	\end{align*}
 \end{frame}
 
+\begin{frame}{$G(1,x)$ with $a=2, \gamma=0, \nu =2, d=1$ and $.5 \le b <2$}
+	\centering
+	\includegraphics[scale=.7]{ybt1.png}
+\end{frame}
+
+\begin{frame}[t]{$G(t,x)$ with $b = .5,\; .8,\; 1,\; 1.9$ and $1 \le t \le 4$}
+	\centering
+	\includegraphics[scale=.3]{yb.5.png} \qquad
+	\includegraphics[scale=.27]{yb.8.png} 
+	\includegraphics[scale=.27]{yb1.png} \qquad
+	\includegraphics[scale=.3]{yb1.9.png} 	
+\end{frame}
+
 	\begin{frame}
 	\frametitle{Global Solution\\
 		\small $\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right]$}
@@ -805,23 +818,23 @@
 	and we obtain the exact expression for the constant $K_1$.
 \end{frame}% }}}
 
-\begin{frame}{Where Is There Room for Improvement?}
-	\rdot Continuity of the solution has not been proven for the fractional equation or any of its simple cases (eq SHE or SWE). \vspace{.3in} \\
-	
-	\rdot Sample path asymptotics:
-		\[
-			\lim_{ t \to \infty} \frac{\log|u(t,x)|}{t^K}.
-		\] \vspace{.1in} \\
-		
-	\rdot More general initial conditions. \vspace{.3in} \\ 
-	
-	\rdot More general drift term. \vspace{.3in} \\ 
-	
-	\rdot More general noise. 
-	
-\end{frame}
+%\begin{frame}{Where Is There Room for Improvement?}
+%	\rdot Continuity of the solution has not been proven for the fractional equation or any of its simple cases (eq SHE or SWE). \vspace{.3in} \\
+%	
+%	\rdot Sample path asymptotics:
+%		\[
+%			\lim_{ t \to \infty} \frac{\log|u(t,x)|}{t^K}.
+%		\] \vspace{.1in} \\
+%		
+%	\rdot More general initial conditions. \vspace{.3in} \\ 
+%	
+%	\rdot More general drift term. \vspace{.3in} \\ 
+%	
+%	\rdot More general noise. 
+%	
+%\end{frame}
 
-	\begin{frame}{The Case of Space-time White Noise}
+	\begin{frame}{The Case of a time-dependent Noise and super-linear diffusion term}
 	\begin{equation}
 	\begin{cases}
 	\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sigma(u(t,x))\: \dot W(t, x) \right] & \text{$x\in \R^d$, $t>0$} \\
@@ -829,28 +842,48 @@
 	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                          & b \in (1,2)
 	\end{cases}
 	\end{equation}
-	The drift coefficient has super-linear growth: 
+	\rdot The diffusion coefficient has super-linear growth: 
 	\[
 	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta} \quad \text{as } |x| \to \infty.
 	\]
-	We first consider the noise to be space-time white. In other words, the covariance structure is defined for $\phi,\psi \in C_0^\infty(\R_+ \times \R^d) $ as
+\rdot The noise is white in time and either white or colored in space, ie for $\phi,\psi \in C_0^\infty(\R_+ \times \R^d) $ 
+		\[ \mathbb{E}(W(\phi)W(\psi)) =
+			\begin{cases}
+			\int_0^\infty \ud s \int_{\R^d} \ud x \; \phi(s,x)\psi(s,x) \\
+			\int_0^\infty \ud s \int_{\R^{2d}} \ud x \ud y \; \phi(s,x) |x-y|^{-\alpha}\psi(s,y).
+			\end{cases}
+		\]
+\end{frame}
+
+%\begin{frame}{Solvability and Properties of the Solution}
+%	\rdot The goal is to see if Global existence can occur? And if so, in what sense? \vspace{.1in} \\ 
+%	\hspace{.2in}- Local solutions have been shown to exist. \\
+%	\hspace{.2in}- Blow-up of the solution has been shown as well when the drift term grows sufficiently fast. \vspace{.6in} \\
+%	
+%	\rdot Can asymptotics of the solution be shown? \vspace{.6in} \\
+%	
+%	\rdot Is the solution continuous? And if so "how" continuous is the solution. 
+%	
+%\end{frame}
+
+\begin{frame}{Results when $|\sigma(x)| \le |\sigma(0)| +  L(\sigma)|x|$}
+
+\rdot A global solution exists when $\rho:= 2b + 2r -1 -b d / a > 0$ and $d < 2 a$.	\vspace{.2in}
+	
+\rdot When a global solution exists, then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
 	\[
-	J(\phi, \psi) := \mathbb{E}(W(\phi)W(\psi)) = \int_0^\infty \ud s \int_{\R^d} \ud x \; \phi(s,x)\psi(s,x).
+	a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
 	\]
+	Then for any $T>0$,
+	\begin{equation}
+	\label{E:Pnormtbdd}
+	\sup_{x\in\R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+	\end{equation}
+	
+\rdot The solution $u(t,x)$ is continuous in $t$ and in $x$. 
 \end{frame}
 
-\begin{frame}{Solvability and Properties of the Solution}
-	\rdot The goal is to see if Global existence can occur? And if so, in what sense? \vspace{.1in} \\ 
-	\hspace{.2in}- Local solutions have been shown to exist. \\
-	\hspace{.2in}- Blow-up of the solution has been shown as well when the drift term grows sufficiently fast. \vspace{.6in} \\
-	
-	\rdot Can asymptotics of the solution be shown? \vspace{.6in} \\
-	
-	\rdot Is the solution continuous? And if so "how" continuous is the solution. 
-	
-\end{frame}
-
-\begin{frame}{Existence of the Solution}
+\begin{frame}{Existence of the Solution for Super-linear $\sigma$ Term}
 	We consider a truncated version of the equation where $\sigma$ replaced by $\sigma_N$: 
 	\[
 	\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
