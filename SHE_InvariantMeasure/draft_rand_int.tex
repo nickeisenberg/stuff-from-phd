@@ -300,21 +300,21 @@ conditions are shown in the Figure \ref{F:Dalang}.
     \usetikzlibrary{arrows.meta}
     \begin{tikzpicture}[scale=1, x=6em, y=6em]
       % \tikzset{>=latex}
-      \def\inc{0.1}
-      \def\xo{1.0}
+      \def\inc{0.07}
+      \def\xo{1.2}
       \def\yo{0.5}
-      \def\xg{3.0}
-      \def\yg{1.7}
-      \draw[->] (-0.2,0) -- (\xg+1,0) node[right] {$\alpha$};
-      \draw[->] (0,-0.2) -- (0,\yg+0.3) node[above] {$\beta$};
-      \draw (\xo,\inc) --++ (0,-2*\inc) node[below] {$0$};
-      \draw (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
-      \draw (\inc,\yo) --++ (-2*\inc,0) node[left] {$0$};
-      \draw (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
-      \node[text width=10em, align = center] (01) at (\xo,\yg) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
-      \node[text width=10em, align = center] (00) at (\xo,\yo) {$\Upsilon(0)<\infty$\\ first condition\\ in \eqref{E:U0finite}};
-      \node[text width=10em, align = center] (10) at (\xg,\yo) {$\Upsilon_\alpha(0)<\infty$\\ Condition \eqref{E:Dalang-a0}};
-      \node[text width=10em, align = center] (11) at (\xg,\yg) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition \eqref{E:Dalang-ab}};
+      \def\xg{3.7}
+      \def\yg{1.5}
+      \draw[] (\xo-0.9,0) -- (\xg+0.7,0);  % node[right] {$\alpha$};
+      \draw[] (0,\yo-0.3) -- (0,\yg+0.3); % node[above] {$\beta$};
+      \draw[thick] (\xo,\inc) --++ (0,-2*\inc) node[below] {$\alpha=0$};
+      \draw[thick] (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
+      \draw[thick] (\inc,\yo) --++ (-2*\inc,0) node[left] {$\beta=0$};
+      \draw[thick] (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
+      \node[text width=13em, align = center] (01) at (\xo,\yg) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
+      \node[text width=13em, align = center] (00) at (\xo,\yo) {$\Upsilon(0)<\infty$\\ first condition in \eqref{E:U0finite}};
+      \node[text width=13em, align = center] (10) at (\xg,\yo) {$\Upsilon_\alpha(0)<\infty$\\ Condition \eqref{E:Dalang-a0}};
+      \node[text width=13em, align = center] (11) at (\xg,\yg) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition \eqref{E:Dalang-ab}};
       % \draw[double,double distance=0.4em, ->] (00) -- (01);
       \node[] at (\xo,0.5*\yo+0.5*\yg) {\huge$\Uparrow$};
       \node[] at (\xg,0.5*\yo+0.5*\yg) {\huge$\Uparrow$};
