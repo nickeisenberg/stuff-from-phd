@@ -124,7 +124,7 @@ abbreviate=true]{biblatex}
 	}
 }
 % \addbibresource{All.bib}
-\addbibresource{./thesis_biber.bib}
+\addbibresource{thesis_biber.bib}
 % }}}
 %-------------------------
 
@@ -302,7 +302,7 @@ We will finish this introduction with a brief discussion about the stochastic he
 	\begin{theorem}
 		Suppose that the function $\rho$ is globally Lipschitz function and the initial distribution $f(\cdot)$ satisfies the following:
 			\[
-				|\rho(x)| \le L_{\rho}^2(L_0^2 + |x|^2), \quad \text{and} \quad 	\int_{\R} \exp(-a|x|^2) \; f(\ud x) < \infty, 
+				|\rho(x)| \le L_{\rho}^2(L_0^2 + |x|^2), \quad \text{and} \quad 	\int_{\R} \exp(-a|x|^2) \; |f|(\ud x) < \infty, 
 			\]
 		for some $L_b, L_0 > 0$ and any $a>0$. Then for $p \ge 2$, there exists a unique, $L^p(\Omega)$-continuous process that almost surely satisfies \eqref{E:introMsol}.
 	\end{theorem}
@@ -478,10 +478,10 @@ where the above is a {\em Walsh} stochastic integral \cite{walsh:86:introduction
 We have the following solvability theorem 
 
 \begin{theorem}[Theorem 2.4 \cite{chen.kim:19:nonlinear}] \label{T:SHEsolve}
-	Suppose that the initial distribution and the spectral measure satisfy both \eqref{A:InitCon} and \eqref{A:InitCon} respectively. Suppose that $\rho$ is globally Lipschitz with Lipschitz constant $L_rho$. Then there exists a unique (in the sense of versions) random-field solution starting from $\mu$ that is $L^2(\Omega)$-continuous. 
+	Suppose that the initial distribution and the spectral measure satisfy both \eqref{A:InitCon} and \eqref{A:DalCon} respectively. Suppose that $\rho$ is globally Lipschitz with Lipschitz constant $L_{\rho}$. Then there exists a unique (in the sense of versions) random-field solution starting from $\mu$ that is $L^2(\Omega)$-continuous. 
 \end{theorem}
 
-The next result gives us a very useful bound on the $p^{th}$ moments of the solution. In order to fully utilize the result, we need to strengthen some of our assumption to the following:
+The next result gives us a very useful bound on the $p^{th}$ moments of the solution. In order to fully utilize the result, we need to strengthen some of our assumptions to the following:
 	\begin{equation} \label{E:U0finite}
 	\Upsilon(0) := \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad
 	64L^2_{b}   <  \frac{1}{4\Upsilon(0)};
@@ -515,7 +515,7 @@ The next result gives us a very useful bound on the $p^{th}$ moments of the solu
 
 \section { \normalfont The Interpolated Stochastic Heat and Wave Equation} \label{S:ISHWE}
 
-We will consider the ISHWE driven by all three noises introduced in Section \ref{S:Noise}. The set up for the time-independent case is much different so we will address that case separately in Section \ref{SS:ISHWEtimeind}. We will then introduce the set with either a space-time white noise or a noise that is white in time and colored in space in Section \ref{SS:ISHWEnoisetime}.
+We will consider the ISHWE driven by all three noises introduced in Section \ref{S:Noise}. The set up for the time-independent case is much different so we will address that case separately in Section \ref{SS:ISHWEtimeind}. We will then introduce the set-up with either a space-time white noise or a noise that is white in time and colored in space in Section \ref{SS:ISHWEnoisetime}.
 
 Before stating the equation, we need to define some fractional differential operators. We start with the {\em fractional Laplacian}. Recall the formula
 	\[
@@ -586,7 +586,7 @@ the following stochastic integral equation:
 \begin{equation} \label{E:spdeint}
 u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d}G(t-s,x-y)u(s,y) W(\delta y) \right) \ud s,
 \end{equation}
-where the stochastic integral is in the {\it Skorohod} sense (see \cite{nualart.nualart:18:malliavin}). The reason for choosing to define the solution through the Skorohod integral is due the the fact that the noise is no longer white in time. Because if this, we may no longer use the theory of Walsh \cite{walsh:86:introduction}.
+where the stochastic integral is in the {\it Skorohod} sense (see \cite{nualart.nualart:18:malliavin}). The reason for choosing to define the solution through the Skorohod integral is due the the fact that the noise is no longer white in time. Because of this, we may no longer use the theory of Walsh \cite{walsh:86:introduction}.
 
 	   \begin{figure*}
 	\centering
