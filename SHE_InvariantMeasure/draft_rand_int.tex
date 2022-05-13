@@ -280,51 +280,82 @@ where the first condition is a strengthened version of {\it Dalang's condition}:
    \quad \text{for some (and hence) all $\beta>0$.}
 \end{align}
 Recall that in order to obtain the H\"older continuity of the solution, one needs to strengthen
-\eqref{E:Dalang} in a different way as follows
-\begin{align*}
+\eqref{E:Dalang} in a different way as follows, for some $\alpha\in (0,1]$,
+\begin{align} \label{E:Dalang-ab}
   \Upsilon_\alpha(\beta) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+|\xi|^2\right)^{1-\alpha}}<\infty
-  \quad \text{for some $\alpha\in (0,1]$ and for some (hence all) $\beta>0$;}
-\end{align*}
+  \quad \text{for some (hence all) $\beta>0$;}
+\end{align}
 see Theorem 1.8 of \cite{chen.huang:19:comparison} or \cite{sanz-sole.sarra:02:holder}. Similarly,
-one may strengthen \eqref{E:U0finite} as follows
-\begin{equation} \label{Ea:U0finite}
-  \Upsilon_\alpha(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-2\alpha)}} <\infty \quad \text{and} \quad
-  64 L^2_{b}   <  \frac{\alpha}{2\Upsilon(0)},
-  \quad  \text{for some $\alpha\in (0,1/2]$.}
+one can further strengthen condition \eqref{E:Dalang-ab} to
+\begin{equation} \label{E:Dalang-a0}
+  \Upsilon_\alpha(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
+  \quad  \text{for some $\alpha\in (0,1]$.}
 \end{equation}
 We use the convention that when $\alpha=0$, we simply drop it from the expression
-$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$.
+$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. The relations of these
+conditions are shown in the Figure \ref{F:Dalang}.
 
+\begin{figure}[htpb]
+  \begin{center}
+    \usetikzlibrary{arrows.meta}
+    \begin{tikzpicture}[scale=1, x=6em, y=6em]
+      % \tikzset{>=latex}
+      \def\inc{0.1}
+      \def\xo{1.0}
+      \def\yo{0.5}
+      \def\xg{3.0}
+      \def\yg{1.7}
+      \draw[->] (-0.2,0) -- (\xg+1,0) node[right] {$\alpha$};
+      \draw[->] (0,-0.2) -- (0,\yg+0.3) node[above] {$\beta$};
+      \draw (\xo,\inc) --++ (0,-2*\inc) node[below] {$0$};
+      \draw (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
+      \draw (\inc,\yo) --++ (-2*\inc,0) node[left] {$0$};
+      \draw (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
+      \node[text width=10em, align = center] (01) at (\xo,\yg) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
+      \node[text width=10em, align = center] (00) at (\xo,\yo) {$\Upsilon(0)<\infty$\\ first condition\\ in \eqref{E:U0finite}};
+      \node[text width=10em, align = center] (10) at (\xg,\yo) {$\Upsilon_\alpha(0)<\infty$\\ Condition \eqref{E:Dalang-a0}};
+      \node[text width=10em, align = center] (11) at (\xg,\yg) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition \eqref{E:Dalang-ab}};
+      % \draw[double,double distance=0.4em, ->] (00) -- (01);
+      \node[] at (\xo,0.5*\yo+0.5*\yg) {\huge$\Uparrow$};
+      \node[] at (\xg,0.5*\yo+0.5*\yg) {\huge$\Uparrow$};
+      \node[] at (0.5*\xo+0.5*\xg,\yg) {\huge$\Leftarrow$};
+    \end{tikzpicture}
+  \end{center}
 
-Note that conditions in \eqref{E:U0finite} guarantee the existence of the following non-empty open
-interval:
+  \caption{Relations among conditions \eqref{E:Dalang}, \eqref{E:Dalang-ab}, \eqref{E:Dalang-a0} and
+  the first condition in \eqref{E:U0finite}. Check also Lemma \ref{L:HUA} for the relation between
+$\Upsilon(0)<\infty$ and $\Upsilon_\alpha(0)<\infty$.}
+
+  \label{F:Dalang}
+\end{figure}
+
+Note that the two conditions in \eqref{E:U0finite} guarantee the existence of the following
+non-empty open interval:
 \begin{align} \label{E:Interval}
-  \left(128 L_b^2 \Upsilon(0), 1/2\right) \ne \emptyset.
+  \left(2^8 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
 \end{align}
 
 Now we are ready to state our two main results of the paper:
 
-
 \begin{theorem} \label{T:Lrho}
-  Let $u_0(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
-  $u(t,x;u_0)$ be the solution to \eqref{E:SHE} starting from $u_0$. Assume
-  that
+  % Let $u_0(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
+  Let $u(t,x;\mu)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that
   \begin{enumerate}[(i)]
     \item $\rho: \R^d \to \R_+$ is an nonnegative $L^1(\R^d)$ function;
-    \item the initial condition $u_0$ satisfies
+    \item the initial condition $\mu$ satisfies
       \begin{equation} \label{E:G}
-        \mathcal{G}_{\rho}(t;u_0)
-        := \int_{\R^d} \E\left(J_0^2\left(t,x;1+|u_0|\right)\right) \rho(x)\: \ud x< \infty
+        \mathcal{G}_{\rho}(t;\mu)
+        := \int_{\R^d} J_0^2\left(t,x;1+|\mu|\right) \rho(x)\: \ud x< \infty
         \quad \text{for all $t>0$};
       \end{equation}
-    \item the correlation measure $\Gamma$ and the Lipschitz constant $L_b$ of
-      $b$ satisfy conditions in \eqref{E:U0finite}.
+    \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
+      conditions in \eqref{E:U0finite}.
   \end{enumerate}
-  Then for all $t>0$, $u(t,\cdot;u_0)\in L_{\rho}^2(\R^d)$ a.s. Moreover, for
-  some constant $C>0$ which does not depend on $t$, it holds that
+  Then there exists an unique $L^2(\Omega)$-continuous solution $u(t,x)$ such that for some constant
+  $C>0$ which does not depend on $t$,
   \begin{equation} \label{E:uInLrho}
-    \E\left(\Norm{u(t,\cdot;u_0)}_{\rho}^2\right)
-    \le C \mathcal{G}_{\rho}(t;u_0)
+    \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
+    \le C \mathcal{G}_{\rho}(t;\mu)
     < \infty.
   \end{equation}
 \end{theorem}
@@ -332,9 +363,8 @@ Now we are ready to state our two main results of the paper:
 This theorem will be proved in Section \ref{S:Lrho}.
 
 \begin{theorem} \label{T:Main}
-  Let $u(t,x)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that all conditions in
-  Theorem \ref{T:Lrho}, with $u_0$ replaced by $\mu$ and $\rho$ being an admissible weight (see
-  Definition \ref{D:Rho} below), are satisfied. Moreover, we assume that
+  Let $u(t,x)$ be the solution to \eqref{E:SHE} starting from $\mu$ and let $\rho$ be an admissible
+  weight function. Assume that
   \begin{enumerate}[(i)]
     \item there exists another admissible weight $\widehat{\rho}$ such that
       \begin{align} \label{E:rhorho}
@@ -345,12 +375,10 @@ This theorem will be proved in Section \ref{S:Lrho}.
       \begin{equation} \label{E:InitData}
         \limsup_{t>0}\: \mathcal{G}_{\widehat{\rho}}(t;\mu) < \infty;
       \end{equation}
-    \item for some $\alpha\in \left(128\Upsilon(0)L_b^2,1/2\right)$ (see \eqref{E:Interval}), the
-      spectral measure $\widehat{f}$ satisfies that
-      \begin{align} \label{E:H}
-         \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
-         \quad \text{for all $t>0$}.
-      \end{align}
+    \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
+      conditions in \eqref{E:U0finite};
+    \item for some $\alpha\in \left(2^8\Upsilon(0)L_b^2,1\right)$ (see \eqref{E:Interval}), the
+      spectral measure $\widehat{f}$ satisfies \eqref{E:Dalang-a0}.
   \end{enumerate}
   Then we have that
   \begin{enumerate}[(a)]
@@ -1157,10 +1185,15 @@ and the restarted SHE ($ t_0>0$):
 
 \begin{lemma} \label{L:yineq}
   Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
-  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that the integral in
-  \eqref{E:H} is finite for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be
-  the solution to the restarted SHE \eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise
-  (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $ t_0=0$. Then
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that for some $\alpha\in
+  (0,1/2)$, $\widehat{f}$ satisfies the following condition
+  \begin{align} \label{E:H}
+     \mathcal{H}_\alpha(t):= \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
+     \quad \text{for all $t>0$}.
+  \end{align}
+  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
+  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
+  when $ t_0=0$. Then
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
@@ -1412,19 +1445,19 @@ Integrate[(t-s)^{a-1} (s-r)^{-2a},{s,r,t},Assumptions->{t>r>0,0<a<1/2}]
 
 \end{codes}
 
-Finally, we characterize conditions \eqref{Ea:U0finite} and \eqref{E:H} in the following lemma:
+Finally, we characterize conditions \eqref{E:Dalang-a0} and \eqref{E:H} in the following lemma:
 
 \begin{lemma} \label{L:HUA}
-  For all $\alpha\in [0,1/2]$, we have the following properties:
+  For all $\alpha\in (0,1/2]$, we have the following properties:
   \begin{enumerate}[(1)]
   \item $\left(2\pi\right)^{-d}\mathcal{H}_\alpha(t)\le
-    \Gamma\left(1-2\alpha\right)\Upsilon_\alpha(0)$ for all $t>0$ and hence
+    \Gamma\left(1-2\alpha\right)\Upsilon_{2\alpha}(0)$ for all $t>0$ and hence
     \begin{align} \label{E:HUA}
-      \Upsilon_\alpha(0)<\infty \quad \Longrightarrow \quad \mathcal{H}_\alpha(t)<\infty \quad \text{for
+      \Upsilon_{2\alpha}(0)<\infty \quad \Longrightarrow \quad \mathcal{H}_\alpha(t)<\infty \quad \text{for
       all $t>0$};
     \end{align}
   \item $\lim_{t\to\infty}\left(2\pi\right)^{-d}\mathcal{H}_\alpha(t)= \Gamma\left(1-2\alpha\right)
-    \Upsilon_\alpha(0)$;
+    \Upsilon_{2\alpha}(0)$;
   \item if $\Upsilon(0)<\infty$, then the reverse implication of \eqref{E:HUA} holds.
 \end{enumerate}
 \end{lemma}
@@ -1434,22 +1467,16 @@ Finally, we characterize conditions \eqref{Ea:U0finite} and \eqref{E:H} in the f
   for (2), by Fubini's theorem, we see that
   \begin{align} \label{E:Fubini}
     \lim_{t\to\infty}\mathcal{H}_\alpha(t)
-    & = \int_0^\infty \ud r \: r^{-2\alpha} \int_{\R^d} \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right)
+    & = \int_0^\infty \ud r \: r^{-2\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{ -r|\xi|^2 }
       = \Gamma(1-2\alpha) \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^{2\left(1-2\alpha\right)}}
-      = C \Upsilon_\alpha(0),
+      = C \Upsilon_{2\alpha}(0),
   \end{align}
   with $C:=\Gamma(1-2\alpha)(2\pi)^d$. As for (3), from \eqref{E:Fubini}, for any $t>0$, by
   splitting the $\ud r$ integral into two parts we see that
   \begin{align*}
-    C \Upsilon_\alpha(0) &= \int_0^\infty \ud r \: r^{-2\alpha} \int_{\R^d}
-    \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right) = \mathcal{H}_\alpha(t) + I_\alpha(t), \quad \text{with} \\
-    I_\alpha(t) &= \int_t^\infty \ud r \: r^{-2\alpha} \int_{\R^d}
+    C \Upsilon_{2\alpha}(0) & = \int_0^\infty \ud r \: r^{-2\alpha} \int_{\R^d} \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right) = \mathcal{H}_\alpha(t) + I_\alpha(t), \quad \text{with} \\
+    I_\alpha(t)             & = \int_t^\infty \ud r \: r^{-2\alpha} \int_{\R^d}
     \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right).
-    % & = + \int_t^\infty \ud r \: r^{-2\alpha} \int_{\R^d}
-    % \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right) \\
-    % & \le \mathcal{H}_\alpha(t) + t^{-2\alpha} \int_t^\infty \ud r \: \int_{\R^d}
-    % \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right) \\
-    % & \le \mathcal{H}_\alpha(t) + t^{-2\alpha} \Upsilon(0).
   \end{align*}
   Notice that
   \begin{align*}
@@ -1460,7 +1487,7 @@ Finally, we characterize conditions \eqref{Ea:U0finite} and \eqref{E:H} in the f
   \end{align*}
   Therefore,
   \begin{align*}
-    \Upsilon_\alpha(0) \le \frac{\mathcal{H}_\alpha(t)}{(2\pi)^d\Gamma(1-2\alpha)} +
+    \Upsilon_{2\alpha}(0) \le \frac{\mathcal{H}_\alpha(t)}{(2\pi)^d\Gamma(1-2\alpha)} +
     \frac{\Upsilon(0)}{\Gamma\left(1-2\alpha\right)t^{2\alpha}} <\infty, \quad \text{for all $t>0$,}
   \end{align*}
   which proves (3).
