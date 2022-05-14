@@ -1,0 +1,21 @@
+\frametitle{Reverse Cauchy-Schwarz inequality}
+  \begin{lemma}[{\it\small Xia Chen ...} ] \label{L:NonDecr}
+    If $f: [0,\infty)\to [0,\infty)$ is a non-decreasing function, then
+    \begin{align*}
+     2 \int_{0}^{\infty} \e^{-2t}f^2(t) \ud t\leq \left( \int_0^{\infty}\e^{-t}f(t) \ud t\right)^2.
+    \end{align*}
+  \end{lemma}
+  \pause
+  \vspace{-1em}
+  \begin{proof}
+    Let $\tau$ and $\tau'$ be two independent random variables with exponential distribution of mean $1$. \pause
+    Then $\tau \wedge \tau'$ has an exponential distribution with density $g(t)=2 \e^{-2t}$ and \pause
+    \begin{align*}
+      \left(\int_0^{\infty} \e^{-t} f(t) \ud t \right)^2
+      & = \int_0^{\infty}\int_0^{\infty} \e^{-t} \e^{-s}f(t) f(s)\ud t \ud s \\
+      & = \E[f(\tau)]\E[f(\tau')]                                            \\ \pause
+      & = \E[f(\tau) f(\tau')]                                               \\ \pause
+      & \geq \E[f^2(\tau \wedge \tau')]                                      \\ \pause
+      & = 2\int_0^{\infty}\e^{-2t}f^2(t) \ud t.
+    \end{align*}
+  \end{proof}
