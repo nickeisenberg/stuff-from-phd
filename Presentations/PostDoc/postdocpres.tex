@@ -97,21 +97,64 @@
 	\setcounter{page}{1}
 	% }}}
 	
-	\begin{frame}{Talking Points }
-			\rdot Background and motivation \vspace{.5in} \\
-			\rdot Stochastic ordinary differential equations. \\
-			\hspace{.5in} - Finance \vspace{.5 in} \\
-			\rdot Stochastic partial differential equations. \\
-			\hspace{.5in} - Research 
-	\end{frame}
+%	\begin{frame}{Talking Points }
+%			\rdot Background and motivation \vspace{.5in} \\
+%			\rdot Stochastic ordinary differential equations. \\
+%			\hspace{.5in} - Finance \vspace{.5 in} \\
+%			\rdot Stochastic partial differential equations. \\
+%			\hspace{.5in} - Research 
+%	\end{frame}
 
-\begin{frame}{The Questions}
-	  \rdot We want to model the evolution of heat of a piece of initially heated wire. How can we account for random outside sources of heat that affect the wires temperature? (SHE) \vspace {.5in} \\
-	  
-	  \rdot We want to model the growth of a cluster of cells undergoing mitosis. How can we include the randomness in our model? (KPZ- equation) \vspace{.5in} \\
-	  
-	  \rdot We are investors looking to make estimations on the return rate of our current investments. Can we make legitimate assumptions on the "randomness" of our returns? (Ornstein-Uhlenbeck process)
+\begin{frame}{Some of the Questions}
+	\rdot We want to model the growth of a cluster of cells undergoing mitosis. How can we include the randomness in our model? (KPZ- equation) \vspace{.5in} \\
 	
+	\rdot We are investors looking for arbitrage opportunities on call options. Can we calculate a fair price?  (Black-Scholes-Merton model) \vspace {.5in} \\
+	
+	\rdot We want to model the evolution of heat of a piece of initially heated wire. How can we account for random outside sources of heat that affect the wires temperature? (SHE) 
+	
+	
+	
+\end{frame}
+
+\begin{frame}{Macroscopic Cell Growth}
+	\centering 
+	
+	\includegraphics[scale=.2]{maccell1.png} \qquad \includegraphics[scale=.2]{maccell2.png} \vfill
+	
+	\includegraphics[scale=.2]{maccell3.png} \qquad
+	\includegraphics[scale=.2]{maccell4.png}
+\end{frame}
+
+\begin{frame}{Microscopic Cell Growth}
+	\centering 
+	
+	\includegraphics[scale=.2]{miccell1.png} \qquad \includegraphics[scale=.2]{miccell2.png} \vfill
+	
+	\includegraphics[scale=.2]{miccell3.png} \qquad
+	\includegraphics[scale=.2]{miccell4.png}
+\end{frame}
+
+\begin{frame}{Solving the KPZ Equation} % Hairer
+	\begin{minipage}{0.3\textwidth}
+		\includegraphics[scale=0.15]{hairer.png}
+	\end{minipage}
+	\begin{minipage}{0.65\textwidth}
+		\begin{itemize}
+			\small
+			\item $\frac{\partial}{\partial t}u(t,x) = \frac{1}{2}\Delta_x u(t,x) + \frac{\lambda}{2}(\nabla_x u(t,x))^2 + \dot{W}(t,x)$ \bigskip
+			\item M. Hairer. Solving the KPZ equation. {\it Annals of Mathematics}, vol. 178, 2013.
+			\bigskip
+			\item M. Hairer. A theory of regularity structures. {\it Inventiones mathematicae}, vol. 198, 2014.
+			\bigskip
+			\mySeparateLine
+			\bigskip
+			\item[]
+			\begin{center}
+				\Large
+				Fields Medal in 2014
+			\end{center}
+		\end{itemize}
+	\end{minipage}
 \end{frame}
 
 \begin{frame}{Noise}
@@ -147,27 +190,27 @@
 %		\]
 %	\end{frame}
 	
-	\begin{frame}{Stochastic Processes}
-		\begin{definition}[Stochastic Process]
-			A stochastic process is a random variable that is indexed by set, $T$, which usually represents time:
-			\[
-			X_t(\omega), \quad t \in T, \; \omega \in \Omega.
-			\]
-			One can think a stochastic processes as a two parameter function
-			\[
-			X_t(\omega) = X(t,\omega): T \times \Omega \to \R.
-			\]
-		\end{definition}
-		
-		
-		\begin{definition}[Sample Path]
-			The variable $\omega$ represents the idea of a single possible outcome. The following function is then referred to as a {\it sample path}:
-			\[
-			t \mapsto X_t(\omega).
-			\]
-		\end{definition}
-		
-	\end{frame}
+%	\begin{frame}{Stochastic Processes}
+%		\begin{definition}[Stochastic Process]
+%			A stochastic process is a random variable that is indexed by set, $T$, which usually represents time:
+%			\[
+%			X_t(\omega), \quad t \in T, \; \omega \in \Omega.
+%			\]
+%			One can think a stochastic processes as a two parameter function
+%			\[
+%			X_t(\omega) = X(t,\omega): T \times \Omega \to \R.
+%			\]
+%		\end{definition}
+%		
+%		
+%		\begin{definition}[Sample Path]
+%			The variable $\omega$ represents the idea of a single possible outcome. The following function is then referred to as a {\it sample path}:
+%			\[
+%			t \mapsto X_t(\omega).
+%			\]
+%		\end{definition}
+%		
+%	\end{frame}
 	
 	%\begin{frame}
 	%	\begin{example}
@@ -183,19 +226,19 @@
 	%If the rain is constant then it makes sense for the variance to be constant. Moreover, as time continuous, there will be more water in the cup on average, so the mean should be a function in time.
 	%\end{frame}
 	
-	\begin{frame}{Random Walk Example}
+	\begin{frame}{Random Walk}
 		\begin{center}
 			\includegraphics[scale=.6]{randomwalk5steps.png}
 		\end{center}
 	\end{frame}
 	
-	\begin{frame}{Random Walk Example}
+	\begin{frame}{Random Walk}
 		\begin{center}
 			\includegraphics[scale=.55]{randomwalk10steps.png}
 		\end{center}
 	\end{frame}
 	
-	\begin{frame}{Random walk Example}
+	\begin{frame}{Random Walk}
 		\begin{center}
 			\includegraphics[scale=.6]{randomwalk20steps.png}
 		\end{center}
@@ -213,7 +256,7 @@
 	%	\end{center}
 	%\end{frame}
 	
-	\begin{frame}{Random Walk Example}
+	\begin{frame}{Random Walk $\to$ Brownian Motion}
 		\begin{center}
 			\includegraphics[scale=.7]{BrownianMotion.png}
 		\end{center}
@@ -249,69 +292,118 @@
 %	\end{frame}
 
 		\begin{frame}{What Can We Do with Brownian Motion?}
-  \rdot $S_0 = \text{stock price at entry}$ \quad \quad $S_t = \text{stock price after } t \text{ time}$. 
+  \rdot $S_0 = \text{stock price at entry}$ \quad $S_t = \text{stock price after } t \text{ time periods}$
 	\[
-	S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \text{ is the return rate over the period $[0,t]$} .
+	S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \; \sim \text{Normal}(\mu t, \sigma^2 t), \quad \mu \in \R,\; \sigma \in (0,\infty).
 	\]
 \vspace{.1in} \\
 
-\rdot We want to make predictions on the return rate. 
-	\[
-	 R_t \; \sim \text{Normal}(\mu t, \sigma^2 t), \quad \mu \in \R,\; \sigma \in (0,\infty).
-	\]
-\vspace{.1in} \\
+%\rdot We want to make predictions on the return rate. 
+%	\[
+%	 R_t \; \sim \text{Normal}(\mu t, \sigma^2 t), \quad \mu \in \R,\; \sigma \in (0,\infty).
+%	\]
+%\vspace{.1in} \\
 
 \rdot We can model this with a stochastic differential equation.
 	\[
-	R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t, \quad \text{where } dS_t = S_{t + \Delta t} - S_t
+	R_t =	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t \quad \text{or} \quad dS_t = \mu S_t \ud t + \sigma S_t \ud B_t
 	\]
-\vspace{.1in} \\ 
-\rdot It can be shown that $\mu \ud t + \sigma \ud B_t \sim \text{Normal}(\mu \cdot \Delta t,\; \sigma^2 \cdot \Delta t)$
+\vspace{0in} \\ 
+\rdot It can be shown that $\mu \ud t + \sigma \ud B_t \sim \text{Normal}(\mu \cdot \Delta t,\; \sigma^2 \cdot \Delta t)$ \vspace{.2in} \\
+
+\rdot The legitimate representation of the stochastic ODE is the following:
+\[
+S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
+\] 
 \end{frame}
 
-	\begin{frame}{} $\;$\\
-\rdot This notation is only symbolic as $dB_t$ does not ``exist":
-	\[
-	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t \quad \text{or} \quad dS_t = \mu S_t \ud t + \sigma S_t \ud B_t
-	\]
- \vspace{.1in}\\
-	
-\rdot The above can be legitimately
-	viewed as the following integral equation:
-	\[
-	S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
-	\]
-	\vspace{.1in}\\
-	
-\rdot Notice that we have came up with a random variable that models the stock price:
-	\[
-	S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
-	\] \vspace{.1in}\\
-	
-	\rdot The stochastic processes $S_t$ that solves the above equation is called a
-	\textcolor{magenta}{\it Geometric Brownian Motion}. 
-\end{frame}
+%	\begin{frame}{} $\;$\\
+%\rdot This notation is only symbolic as $dB_t$ does not ``exist":
+%	\[
+%	\frac{dS_t}{S_t} = \mu \ud t + \sigma \ud B_t \quad \text{or} \quad dS_t = \mu S_t \ud t + \sigma S_t \ud B_t
+%	\]
+% \vspace{.1in}\\
+%	
+%\rdot The above can be legitimately
+%	viewed as the following integral equation:
+%	\[
+%	S_t - S_0 = \int_0^t \mu S_k \; \ud k + \int_0^t \sigma S_k \; \ud B_k.
+%	\]
+%	\vspace{.1in}\\
+%	
+%\rdot Notice that we have came up with a random variable that models the stock price:
+%	\[
+%	S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\omega) \; \ud B_k(\omega).
+%	\] \vspace{.1in}\\
+%	
+%	\rdot The stochastic processes $S_t$ that solves the above equation is called a
+%	\textcolor{magenta}{\it Geometric Brownian Motion}. 
+%\end{frame}
 
 \begin{frame}
 	\begin{center}
 		\includegraphics[scale=.64]{geometricbmotion.png}
 	\end{center}
 \end{frame}
+
+\begin{frame}{Black-Scholes-Merton Option Model}
+	\centering 
+	\includegraphics[scale=.5]{black.png} \hfill \includegraphics[scale=.542]{scholes.png} \hfill  \includegraphics[scale=.5]{merton.png}
+\end{frame}
+
+\begin{frame}{Fair Price for a European Call Option}
+	\rdot Consider a contract that permits the holder to purchase, at precisely time $t=T$, 1 share of a stock at price $K$ regardless of the price of the stock at time $t=T$. \vspace{.2in} \\
 	
-	\begin{frame}[t]{It\^o's Integral \small (a special case -- {\it Wiener integral})}
-			Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
-			\[
-			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
-			\]
-			where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the It\^o's integral in this case the left point Riemann sum.
-			
-			\vspace{.1in}
-			In general, this formula is not true because the increments \vspace{.1in}
-			\[
-			\ud B_{t_i}(\omega) :=  B_{t_i}(\omega) - B_{t_{i-1}}(\omega) \vspace{.1in}
-			\]
-			are very bad.
-		\end{frame}
+	\rdot What is the fair price for this contract at time $t=0$? \vspace{.1in} \\
+	
+	\centering
+	\includegraphics[scale=.2]{callpayout.png}
+	
+\end{frame}
+
+\begin{frame}
+	It can be shown that $f(T, S_0)$ is the fair price where $f$ solves the following partial differential equation...
+	
+	\[
+	\begin{cases}
+	\dfrac{\partial f}{\partial s}(s, x) = \frac{1}{2} \sigma^2 x^2 \dfrac{\partial^2f}{\partial x^2}(s,x) + rx\dfrac{\partial f}{\partial x}(s,x) - r f(s,x) & (s,x) \in [0,T] \times \R_+, \\[1em]
+	f(0,x) = (x-K)^+                                                                                                                                          & x \in (0,\infty).
+	\end{cases}
+	\]
+	\bigskip
+	
+	The solution is given by
+	\[
+	f(t,x) = x \Phi\big(g(t,x)\big) - K e^{-rt}\Phi\big( h(t,x) \big),
+	\]
+	where
+	\[
+	g(t,x) = \left[ \ln\left(\frac{x}{K}\right) + \left(r  +\frac{1}{2} \sigma^2\right) t \right] / (\sigma \sqrt{t}),
+	\]
+	
+	\[
+	h(t,x) = g(t,x) - \sigma / \sqrt{t},
+	\]
+	
+	\[
+	\Phi(t) = \frac{1}{\sqrt{2\pi}}\int_0^t \exp\left(-\frac{x^2}{2}\right) \ud x.
+	\]
+\end{frame}
+	
+%	\begin{frame}[t]{It\^o's Integral \small (a special case -- {\it Wiener integral})}
+%			Suppose that $f$ is a nice continuous function. Then we can define: \vspace{.1in}
+%			\[
+%			\int_0^t f(s) \ud B_s(\omega) := \lim_{\Norm{P} \to 0} \sum _{i \in P} f(t_{i-1}) (B_{t_i}(\omega) - B_{t_{i-1}}(\omega)), \vspace{.1in}
+%			\]
+%			where $P = {t_0 = 0, t_1, t_2, \cdots, t_n = t}$ is a partition of $[0,t]$. In other words, the It\^o's integral in this case the left point Riemann sum.
+%			
+%			\vspace{.1in}
+%			In general, this formula is not true because the increments \vspace{.1in}
+%			\[
+%			\ud B_{t_i}(\omega) :=  B_{t_i}(\omega) - B_{t_{i-1}}(\omega) \vspace{.1in}
+%			\]
+%			are very bad.
+%		\end{frame}
 		
 %		\begin{frame}[t]{A ``Fundamental Theorem of It\^o's Calculus"}
 %			If $f$ is twice continuously differentiable then we have the following ``Fundamental Theorem of It\^o's Calculus"
@@ -554,7 +646,7 @@
 		
 		\begin{frame}{Sample Path of a Brownian Sheet, $W(t,x)$}
 			\centering
-			\includegraphics[scale=.5]{bsheet4.png}
+			\includegraphics[scale=.47]{bsheet4.png}
 		\end{frame}
 		
 %		\begin{frame}{Sample path of a Brownian Sheet, $W(t,x)$}
@@ -564,7 +656,7 @@
 	
 		\begin{frame}{Approximation of a Space-Time White Noise Differential}
 			\centering
-			\includegraphics[scale=.5]{spacetimewhite.png}
+			\includegraphics[scale=.47]{spacetimewhite.png}
 		\end{frame}
 		
 	\begin{frame}{Random vs Deterministic}
