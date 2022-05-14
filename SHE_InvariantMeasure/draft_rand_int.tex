@@ -233,22 +233,18 @@ Section \ref{SS:Weight}. Let $\mathcal{B}(H)$ be the space of all bounded Borel 
 Following \cite{da-prato.g-atarek.ea:92:invariant}, a probability measure $\eta$ on the Borel
 $\sigma$-field $\mathcal{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
 \begin{equation}\label{E:InvMeas}
-  \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\mu))(A) \; \eta(\ud  \zeta),
-  \quad \text{for all $ t>0$ and $A\in \mathcal{B}(H)$},
+  \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
+  \quad \text{for all $ t\ge 0$ and $A\in \mathcal{B}(H)$},
 \end{equation}
-where we use the notation $u(t,x;\varphi)$ with a third argument to emphasize its dependence on the
-initial condition $u(0,\cdot)=\varphi$. Note that in \eqref{E:InvMeas} we require $t$ to be strictly
-bigger than zero, unlike Eq. (3) of \cite{da-prato.g-atarek.ea:92:invariant} where one imposes $t\ge
-0$.
-
-Due the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
-11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
+where we use the notation $u(t,x;\zeta)$ with a third argument to emphasize its dependence on the
+initial condition $u(0,\cdot)=\zeta$. Due the {\it Krylov-Bogoliubov theorem} (see, e.g.,
+\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
 $\{\mathcal{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct the
 invariant measure via
 \begin{equation} \label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
 \end{equation}
-for any sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$.  A critical step in obtaining the
+for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$.  A critical step in obtaining the
 tightness result is to show that the moment is uniformly bounded in time:
 \begin{align} \label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
@@ -339,7 +335,7 @@ non-empty open interval:
 Now we are ready to state our two main results of the paper:
 
 \begin{theorem} \label{T:Lrho}
-  % Let $u_0(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
+  % Let $\mu(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
   Let $u(t,x;\mu)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that
   \begin{enumerate}[(i)]
     \item $\rho: \R^d \to \R_+$ is an nonnegative $L^1(\R^d)$ function;
@@ -937,7 +933,7 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   (see also \eqref{E:Interval}), then
   \begin{equation} \label{E:mb0}
     \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
-    \quad \text{for all $p$ s.t. } 1/p \in \left(128 L_b^2\Upsilon(0),1/2\right),
+    \quad \text{for all $p$ s.t. } 1/p \in \left(128 L_b^2\Upsilon(0),1\right),
   \end{equation}
   where $C_p=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
   H(t;\gamma_p)^{1/2}<\infty$.
@@ -957,16 +953,14 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
 Now we are ready to prove Theorem \ref{T:Lrho}.
 
 \begin{proof}[Proof of Theorem \ref{T:Lrho}]
-  Under condition (iii), we can apply Fubini's Theorem and the moment bound \eqref{E:mb0} below
-  \footnote{For random initial condition, one only needs to take the expectation on both sides of
-  \eqref{E:mb0}.} to see that for some constant $C>0$ independent of $t$, which may vary from line
-  to line,
+  Under condition (iii), we can apply Fubini's Theorem and the moment bound \eqref{E:mb0} below to
+  see that for some constant $C>0$ independent of $t$, which may vary from line to line,
   \begin{align*}
-    \E\left(\Norm{u(t,\cdot;u_0)}_{\rho}^2\right)
-    & = \E\left[\E \left(\int_{\R^d}\vert u\left(t,x;u_0\right) \vert^2 \rho(x)\ud x\bigg| \mathcal{F}_0\right) \right] \\
-    & \le C \E \left[\int_{\R^d}\bigg(1+(G(t,\cdot) * |u_0|)(x)\bigg)^2\rho(x)\ud x\right]                              \\
-    & = C \int_{\R^d}\E \left[\bigg( \Big(G(t,\cdot) *(1+|u_0|)\Big)(x) \bigg)^2\right]\rho(x)\ud x                     \\
-    & = C \:\mathcal{G}_{\rho}(t;u_0) < \infty.
+    \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
+    % & = \E\left[\E \left(\int_{\R^d}\vert u\left(t,x;\mu\right) \vert^2 \rho(x)\ud x\bigg| \mathcal{F}_0\right) \right] \\
+    & \le C\: \E \left[\int_{\R^d}\bigg(1+(G(t,\cdot) * |\mu|)(x)\bigg)^2\rho(x)\ud x\right]                              \\
+    & = C \int_{\R^d}\E \left[\bigg( \Big(G(t,\cdot) *(1+|\mu|)\Big)(x) \bigg)^2\right]\rho(x)\ud x                     \\
+    & = C \:\mathcal{G}_{\rho}(t;\mu) < \infty.
   \end{align*}
   This proves Theorem \ref{T:Lrho}.
 \end{proof}
