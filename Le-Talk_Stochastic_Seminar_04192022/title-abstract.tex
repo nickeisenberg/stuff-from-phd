@@ -1,0 +1,167 @@
+\documentclass[12pt]{article}
+% -------------------------------------------------
+%
+% | |    ___   / ___| |__   ___ _ __
+% | |   / _ \ | |   | '_ \ / _ \ '_ \
+% | |__|  __/ | |___| | | |  __/ | | |
+% |_____\___|  \____|_| |_|\___|_| |_|
+%
+%  Created on Mon 21 Mar 2022 08:00:08 AM CDT
+%
+% -------------------------------------------------
+% Load Packages here
+% -------------------------------------------------
+% {{{
+
+\usepackage{enumerate,filecontents,xcolor,url}
+
+\RequirePackage{amsthm,amsmath,amssymb,amscd,mathrsfs}
+
+\usepackage[
+  text={6.2in,8.6in},
+  centering
+  ]{geometry}
+
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue,
+  filecolor=magenta,
+  urlcolor=cyan,
+  citecolor=magenta,
+  pdftitle={title and abstract of Le Chen's talk},
+  pdfpagemode=FullScreen
+  ]{hyperref}
+
+% }}}
+% -------------------------------------------------
+% Bibtex related
+% -------------------------------------------------
+% {{{
+
+\usepackage[
+  strict=true,
+  style=english
+  ]{csquotes}
+
+\usepackage[
+  backend=biber,
+  style=alphabetic,
+  natbib=true,
+  maxbibnames=99,
+  sorting=ynt,
+  abbreviate=true
+  ]{biblatex}
+
+% Other options for sorting:
+%  nty—sorts entries by name, title, year;
+%  nyt—sorts entries by name, year, title;
+%  nyvt—sorts entries by name, year, volume, title;
+%  anyt—sorts entries by alphabetic label, name, year, title;
+%  anyvt—sorts entries by alphabetic label, name, year, volume, title;
+%  ynt—sorts entries by year, name, title;
+%  ydnt—sorts entries by year (descending order), name, title;
+%  none—no sorting.
+%  Entries appear in the order they appear in the text.
+
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+  \clearfield{doi}
+  \clearfield{url}
+  \clearfield{issn}
+  \clearlist{location}
+  \clearfield{month}
+  \clearfield{series}
+
+  \ifentrytype{book}{}{% Remove publisher and editor except for books
+    \clearlist{publisher}
+    \clearname{editor}
+  }
+}
+
+\addbibresource{title-abstract.bib}
+% \addbibresource{All.bib}
+% \addbibresource{~/Dropbox/workspace/svn/refdb/All.bib}
+
+% }}}
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+% {{{
+\theoremstyle{plain} \newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary} \newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition} \newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% }}}
+% -------------------------------------------------
+% Define short hand symbols.
+% -------------------------------------------------
+% }}}
+% -------------------------------------------------
+% Title, authors and date go here.
+% -------------------------------------------------
+% {{{
+
+\title{Bridging the ``real" and ``imaginary" worlds}
+
+\author{
+  Le Chen \\
+  Auburn University \\[1em]
+  }
+
+\date{April 19, 2022 \\[1em]
+  Stochastic Analysis Seminar \\[1em]
+  Auburn University
+  }
+
+\begin{document} \maketitle \noindent
+
+% }}}
+% -------------------------------------------------
+% Document begins here
+% -------------------------------------------------
+
+\noindent {\it Abstract:} In this talk, we will show how one can use the fractional calculus to connect the equations of distinct natures, or to be more precise, the parabolic equations with the hyperbolic ones. We will present some recent work that demonstrates how properties of equations in these two worlds can be interpolated. This talk is prepared with a general audience in mind, so no knowledge of advanced mathematics, such as stochastic analysis, is required. Graduate students are especially welcome to attend.
+
+Finally, as an advertisement, mathematical modeling using fractional calculus has attracted a lot of attentions recently. One may find more information on the semester long program in the prestigious Issac Newton Institue for Mathematical Sciences at Oxford University:
+
+\begin{center}
+  \url{https://www.newton.ac.uk/event/fde2/}
+\end{center}
+
+
+% -------------------------------------------------
+% References go here.
+% -------------------------------------------------
+% --------------------------- {{{
+% \begingroup
+% \global\let\savedifeof=\ifeof
+% \def\ifeof#1{\global\let\ifeof=\savedifeof\iftrue}%
+% \begin{filecontents}{title-abstract.bib}
+%
+% @ARTICLE{balan.chen.ea:22:exact,
+%   AUTHOR = {Balan, Raluca M. and Chen, Le and Chen, Xia},
+%   URL = {https://www.arxiv.org/abs/2007.10203},
+%   DATE = {2022-07},
+%   JOURNALTITLE = {to appear in Ann. Inst. Henri Poincaré Probab. Stat., preprint at arXiv:2007.10203},
+%   TITLE = {Exact asymptotics of the stochastic wave equation with time-independent noise},
+% }
+%
+% @ARTICLE{chen.eisenberg:22:interpolating,
+%   AUTHOR = {Chen, Le and Eisenberg, Nicholas},
+%   URL = {https://www.arxiv.org/abs/2108.11473},
+%   DATE = {2022-08},
+%   JOURNALTITLE = {to appear in Stoch. Partial Differ. Equ. Anal. Comput., preprint at arXiv:2108.11473},
+%   TITLE = {Interpolating the Stochastic Heat and Wave Equations with Time-independent Noise: Solvability and Exact Asymptotics},
+% }
+%
+% \end{filecontents}
+% \printbibliography[title={References}]
+\end{document}
+% }}}
