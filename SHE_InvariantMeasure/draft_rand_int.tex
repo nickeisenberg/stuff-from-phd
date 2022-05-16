@@ -226,7 +226,7 @@ weighted space as in \cite{tessitore.zabczyk:98:invariant}:
   \end{equation}
 \end{definition}
 
-Let $\rho$ be an admissible weight function, which introduces the Hilbert space $H:=L_\rho^2(\R^d)$
+Let $\rho$ be an admissible weight function, then we may introduce the Hilbert space $H:=L_\rho^2(\R^d)$
 with $\langle f,g \rangle_\rho := \int_{\R^d}f(x)g(x)\rho(x) \: \ud x$ and $\Norm{f}_\rho^2
 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. More discussions about the weight function can be found in
 Section \ref{SS:Weight}. Let $\mathcal{B}(H)$ be the space of all bounded Borel functions on $H$.
@@ -237,15 +237,19 @@ $\sigma$-field $\mathcal{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} 
   \quad \text{for all $ t\ge 0$ and $A\in \mathcal{B}(H)$},
 \end{equation}
 where we use the notation $u(t,x;\zeta)$ with a third argument to emphasize its dependence on the
-initial condition $u(0,\cdot)=\zeta$. Due the {\it Krylov-Bogoliubov theorem} (see, e.g.,
+initial condition $u(0,\cdot)=\zeta$ and $\mathscr{L}(u(t,\cdot;\zeta))(A)$ denotes the law of the solution:
+	\[
+		\mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathcal{B}(H).
+	\]
+Due the {\it Krylov-Bogoliubov theorem} (see, e.g.,
 \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
 $\{\mathcal{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct the
 invariant measure via
 \begin{equation} \label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
 \end{equation}
-for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$.  A critical step in obtaining the
-tightness result is to show that the moment is uniformly bounded in time:
+for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$.  A critical step in obtaining
+tightness is to show that the following moment is uniformly bounded in time:
 \begin{align} \label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
   <\infty.
@@ -257,8 +261,7 @@ It is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, na
 probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. In
 \cite{assing.manthey:03:invariant,misiats.stanzhytskyi.ea:20:invariant,misiats.stanzhytskyi.ea:16:existence},
-a drift (or reaction-diffusion) term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help
-to cancel the otherwise exponential growing moments. The absence of such a drift term in this paper
+a drift (or reaction-diffusion) term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help cancel the otherwise exponential growing moments. The absence of such a drift term in this paper
 makes the problem more challenging. In order to have moments bounded in time, as required in
 \eqref{E:BddMnt}, one has to first identify the exact conditions, under which the moments to
 \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem
@@ -349,7 +352,7 @@ Now we are ready to state our two main results of the paper:
       conditions in \eqref{E:U0finite}.
   \end{enumerate}
   Then there exists an unique $L^2(\Omega)$-continuous solution $u(t,x)$ such that for some constant
-  $C>0$ which does not depend on $t$,
+  $C>0$, which does not depend on $t$, and for all $t > 0$ the following holds:
   \begin{equation} \label{E:uInLrho}
     \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
     \le C \mathcal{G}_{\rho}(t;\mu)
@@ -363,14 +366,14 @@ This theorem will be proved in Section \ref{S:Lrho}.
   Let $u(t,x)$ be the solution to \eqref{E:SHE} starting from $\mu$ and let $\rho$ be an admissible
   weight function. Assume that
   \begin{enumerate}[(i)]
-    \item there exists another admissible weight $\widehat{\rho}$ such that
+    \item there exists another admissible weight $\tilde{\rho}$ such that
       \begin{align} \label{E:rhorho}
-        \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty;
+        \int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty;
       \end{align}
-    \item the weight function $\widehat{\rho}$ and the initial condition satisfy the following
+    \item the weight function $\tilde{\rho}$ and the initial condition satisfy the following
       condition:
       \begin{equation} \label{E:InitData}
-        \limsup_{t>0}\: \mathcal{G}_{\widehat{\rho}}(t;\mu) < \infty;
+        \limsup_{t>0}\: \mathcal{G}_{\tilde{\rho}}(t;\mu) < \infty;
       \end{equation}
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in \eqref{E:U0finite};
@@ -465,11 +468,11 @@ The admissible condition \ref{E:aw} is needed in this paper due to the following
 \begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
   For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
   \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$.
-  Moreover, if $\widehat{\rho}$ is another admissible weight such that
+  Moreover, if $\tilde{\rho}$ is another admissible weight such that
   \begin{align*}
-    \int_{\R^d}\dfrac{\rho(x)}{\widehat{\rho}(x)}\ud x < \infty,
+    \int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
   \end{align*}
-  then for any $t>0$, the operators defined above are compact from $L^2_{\widehat{\rho}}(\R^d)$ to
+  then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
   $L^2_\rho(\R^d)$.
 \end{proposition}
 \subsection{Various initial conditions} \label{SS:Init}
@@ -1017,9 +1020,9 @@ In this section, we establish a factorization lemma with corresponding moment es
 For $F_\alpha$, the Step 1 of the proof of \cite[Theorem 3.1]{tessitore.zabczyk:98:invariant} showed
 the following proposition:
 \begin{proposition} \label{P:F-Comp}
-  Let $\rho$ and $ \widehat{\rho}$ be given in condition (i) of Theorem \ref{T:Main} (see
+  Let $\rho$ and $ \tilde{\rho}$ be given in condition (i) of Theorem \ref{T:Main} (see
   \eqref{E:rhorho}). For any $q>2$, $t_0>0$ and $\alpha \in (q^{-1},2^{-1})$, the operator
-  $F_\alpha$ as an operator from $L^q\big((0,t_0);\: L^2_{\widehat{\rho}}(\R^d)\: \big)$ to
+  $F_\alpha$ as an operator from $L^q\big((0,t_0);\: L^2_{\tilde{\rho}}(\R^d)\: \big)$ to
   $L^2_\rho(\R^d)$ is compact.
 \end{proposition}
 
@@ -1170,17 +1173,17 @@ and the restarted SHE ($ t_0>0$):
   to \eqref{E:H}. However, when $t_0=0$, the situation is much more trickier. For example, when the
   initial condition is the delta initial condition, we have that
   \begin{align*}
-    \mathcal{G}_{\widehat{\rho}}(t;\delta_0)
+    \mathcal{G}_{\tilde{\rho}}(t;\delta_0)
     = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
     = G(2t,0) \int_{\R^d} G(t/2,x)\rho(x)\ud x
     < \infty,
   \end{align*}
   where one can obtain the second equality via \eqref{E:gsim}. Hence, when $s\to 0$,
-  $\mathcal{G}_{\widehat{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. On the other hand,
+  $\mathcal{G}_{\tilde{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. On the other hand,
   $\mathcal{H}_\alpha(s)$ goes to zero with a different rate. One needs to combine these two rates
   to check if condition \eqref{E:GH-int'} holds. By introducing $t_0$ (or restart the heat
   equation), one can avoid this issue (of the potential singularity of
-  $\mathcal{G}_{\widehat{\rho}}$ at $s=0$).
+  $\mathcal{G}_{\tilde{\rho}}$ at $s=0$).
 \end{remark}
 \begin{proof}
   In the proof, we use $C$ to denote a generic constant that may change its value at each
@@ -1447,10 +1450,10 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   \end{align*}
 
   According to Assumption (i), we can choose and fix some admissible weight function
-  $\widehat{\rho}$ such that \eqref{E:rhorho} is satisfied. Hence, by Proposition \ref{P:weight},
+  $\tilde{\rho}$ such that \eqref{E:rhorho} is satisfied. Hence, by Proposition \ref{P:weight},
   the following set
   \begin{align*}
-    \mathscr{K}_1 (\Lambda) :=\left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x): \:\:\Norm{y}_{\widehat{\rho}} \le \Lambda \right\}
+    \mathscr{K}_1 (\Lambda) :=\left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x): \:\:\Norm{y}_{\tilde{\rho}} \le \Lambda \right\}
     \quad \text{with $\Lambda>0$}
   \end{align*}
   is relative compact in $L_\rho^2(\R^d)$.
@@ -1475,7 +1478,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   we can apply Proposition \ref{P:F-Comp} to see that the following set
   \begin{align*}
     \mathscr{K}_2 (\Lambda):=
-    \left\{(F_\alpha h)(x): \Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
+    \left\{(F_\alpha h)(x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
     \quad \text{with $\Lambda>0$}
   \end{align*}
   is relative compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
@@ -1483,43 +1486,43 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   \begin{align*}
     \mathscr{K} (\Lambda)
     & :=\mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
-    & = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x): \:\Norm{y}_{\widehat{\rho}}
-    \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\widehat{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+    & = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x): \:\Norm{y}_{\tilde{\rho}}
+    \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
   \end{align*}
 
   Notice that from the factorization formula \eqref{E:Fact},
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
-    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
-    + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\widehat{\rho}} > \Lambda \right] \\
+    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
+    + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\tilde{\rho}} > \Lambda \right] \\
     & =: I_1+I_2.
   \end{align*}
   By Chebyshev's inequality and \eqref{E:uInLrho}, we see that
   \begin{align*}
-    I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\widehat{\rho}}^2\right)
+    I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\tilde{\rho}}^2\right)
     \le \frac{1}{\Lambda^2} \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right).
     % \le \frac{1}{\Lambda^2} \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
     % = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty,
   \end{align*}
-  Because $\mathcal{G}_{\widehat{\rho}}(t;\mu)$ is a continuous function for $t>0$, and because it
+  Because $\mathcal{G}_{\tilde{\rho}}(t;\mu)$ is a continuous function for $t>0$, and because it
   is also bounded at infinity thanks to Assumption (ii) (see \eqref{E:InitData}), we have that
   \begin{align} \label{E:GtBdd}
-    \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
-    \le \sup_{t\ge \tau}  \mathcal{G}_{\widehat{\rho}}\left(t-t_0;\mu\right)
-    =   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty.
+    \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu\right)
+    \le \sup_{t\ge \tau}  \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu\right)
+    =   \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)<\infty.
   \end{align}
   Therefore, we can bound $I_2$ from above with a constant that does not depend on $t\ge \tau$,
   namely,
   \begin{align*}
-    I_2 \le\frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)<\infty.
+    I_2 \le\frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)<\infty.
   \end{align*}
 
   As for $I_1$, with the choice of $\alpha$ and $q$ in \eqref{E:Choice}, one can apply Chebyshev's
   inequality and part (3) of Lemma \ref{L:yineq} to see that
   \begin{align*}
-    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\widehat{\rho}}^q \: \ud s
+    I_1 & \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s
           \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
-          \left(\mathcal{G}_{\widehat{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s,
+          \left(\mathcal{G}_{\tilde{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s,
   \end{align*}
   where the constant $\Theta$ does not depend on $t$. As we have seen from above that
   $\Upsilon_{2\alpha}(0)<\infty$, we can apply Lemma \ref{L:HUA} to bound $\mathcal{H}_{\alpha}(s)$
@@ -1527,23 +1530,23 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   Hence, together with \eqref{E:GtBdd}, we obtain the following upper bound for $I_1$ that is
   uniform in $t\ge \tau$:
   \begin{align*}
-    I_1 \le  \dfrac{\sin^q(\alpha \pi)\Theta (2\pi)^{dq/2} t_0 }{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0).
+    I_1 \le  \dfrac{\sin^q(\alpha \pi)\Theta (2\pi)^{dq/2} t_0 }{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0).
   \end{align*}
   Combining these two upper bounds, we see that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
     \le
-    \dfrac{\sin^q(\alpha \pi)\Theta (2\pi)^{dq/2} t_0 }{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0)
+    \dfrac{\sin^q(\alpha \pi)\Theta (2\pi)^{dq/2} t_0 }{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0)
     +
-    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
+    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)
     <\infty,
   \end{align*}
   with the upper bound holding uniformly for all $t\ge \tau$. Hence, for any $\epsilon>0$, by
   choosing $\Lambda > 0$ big enough such that
   \begin{align*}
-    \dfrac{\sin^q(\alpha \pi)\Theta (2\pi)^{dq/2} t_0 }{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0)
+    \dfrac{\sin^q(\alpha \pi)\Theta (2\pi)^{dq/2} t_0 }{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left( \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0)
     +
-    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\widehat{\rho}}\left(t;\mu\right)
+    \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)
     < \epsilon,
   \end{align*}
   we can ensure that
