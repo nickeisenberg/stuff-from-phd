@@ -695,7 +695,7 @@ The following proposition shows that for initial conditions with unbounded tails
 \begin{proposition} \label{P:Bessel}
   For the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in Example \ref{Ex:Gamma+f}, it holds that
   \begin{gather} \label{E:UpsionB}
-    \Upsilon(0) = \frac{2 \Gamma\left((s-d+2)/2\right)}{\pi^{d/2} (d-2)\:\Gamma\left(s/2\right)},
+    \Upsilon_{\alpha}(0) = \frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{2-d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s/2\right)},
     \qquad \text{for all $s>d-2$ and $d>2$, and} \\
     \label{E:HaB} \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad \Longleftrightarrow \quad
     0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
@@ -798,32 +798,32 @@ assumptions were imposed:
    d\ge 3 \quad \text{and} \quad
    L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left|  \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta ,
  \end{equation}
-where $\Gamma$ refers to the Gamma function; See Remark \ref{R:Fourier}. With these assumptions,
+where $\Gamma$ refers to the Gamma function; see Remark \ref{R:Fourier}. With these assumptions,
 they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
 and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
 measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$.
 
-The additional assumptions given by Tessitore and Zabczyk parallel our assumptions
-\eqref{E:Dalang-00} and \eqref{E:LipLb}. However, it is not at all trivial to check which spectral
-densities, $\hat{f}(\ud \xi)$, satisfy \eqref{E:TZspec} and no such examples were given in
-\cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from \eqref{E:TZspec} that
-one can not take the spectral density of the noise to be the Riesz kernel, $\hat{f}(\xi) =
-|\xi|^{d-\alpha}$, for any $0 < \alpha < d$ but this can be easily seen from our condition
-\eqref{E:Dalang-00}. The condition that $d \ge 3$ forces us to only consider a colored noise as in
-\eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is unfortunate. However, as
-we will see in Example \ref{Ex:Gamma+f} below, we are able to apply the Bessel kernel, $B_s(x)$,
-with $s < d$, which has exponential decaying tails and power growth at the origin. So in absence of
-the Riesz kernel, we still may apply our results to a kernel, namely the Bessel kernel, that has
-origin blow up.
+%The additional assumptions given by Tessitore and Zabczyk parallel our assumptions
+%\eqref{E:Dalang-00} and \eqref{E:LipLb}. However, it is not at all trivial to check which spectral
+%densities, $\hat{f}(\ud \xi)$, satisfy \eqref{E:TZspec} and no such examples were given in
+%\cite{tessitore.zabczyk:98:invariant}. For example, it may not be obvious from \eqref{E:TZspec} that
+%one can not take the spectral density of the noise to be the Riesz kernel, $\hat{f}(\xi) =
+%|\xi|^{d-\alpha}$, for any $0 < \alpha < d$ but this can be easily seen from our condition
+%\eqref{E:Dalang-00}. The condition that $d \ge 3$ forces us to only consider a colored noise as in
+%\eqref{E:Cor} and so the loss of the ability to apply the Riesz kernel is unfortunate. However, as
+%we will see in Example \ref{Ex:Gamma+f} below, we are able to apply the Bessel kernel, $B_s(x)$,
+%with $s < d$, which has exponential decaying tails and power growth at the origin. So in absence of
+%the Riesz kernel, we still may apply our results to a kernel, namely the Bessel kernel, that has
+%origin blow up.
 
-Moreover by applying a restart argument (see Remark \ref{R:Restart} and Example \ref{Ex:Gamma+f}
-below), our method allows us to verify \eqref{E:BddMnt}, and in return \eqref{E:InvMeasForm}, for
-more general initial conditions $\mu(\cdot)$ which include:
-\begin{align*}
-  \text{Dirac delta measure }\delta_0(\ud x) \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
-\end{align*}
-Thus, we can expand our choice of initial data to include singular distributions, which are outside
-the space of $L^2_{\rho}(\R^d)$. We will expand on this in the following remark.
+%Moreover by applying a restart argument (see Remark \ref{R:Restart} and Example \ref{Ex:Gamma+f}
+%below), our method allows us to verify \eqref{E:BddMnt}, and in return \eqref{E:InvMeasForm}, for
+%more general initial conditions $\mu(\cdot)$ which include:
+%\begin{align*}
+%  \text{Dirac delta measure }\delta_0(\ud x) \quad \text{and} \quad \varphi(x)\ud x \text{ with } \varphi \in C^{\infty}(\R^d).
+%\end{align*}
+%Thus, we can expand our choice of initial data to include singular distributions, which are outside
+%the space of $L^2_{\rho}(\R^d)$. We will expand on this in the following remark.
 
 
 
@@ -854,6 +854,16 @@ the space of $L^2_{\rho}(\R^d)$. We will expand on this in the following remark.
   different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it ibid.}).
 \end{remark}
 
+
+\textcolor{blue}{Why is the Fourier inverse used here and what happened to the $(2\pi)^{2d}$ term in the denominator from \eqref{E:TZspec}? Pretty sure it is a type since letting 
+\[
+	  M(f) := \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
+\]
+simplifies correctly to 
+	\[
+	\frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\zeta)  |\zeta|^{-2} \ud \zeta
+	\]
+}
 Let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
 \begin{align*}
   M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
@@ -878,6 +888,9 @@ for Riesz kernel (in the generalized sense):
 Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 256 \Upsilon(0)$,
 our condition is sharper when $d> \frac{16\log(2)}{\log(2\pi)} \approx 6.03$. \bigskip
+
+
+\textcolor{blue}{Have you seen remark 3.6 \cite{tessitore.zabczyk:98:invariant}? They seem to ignore the issue that arises when $\hat{f}$ has zeros.}
 
 {\bf\noindent Case II:~} If $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
 namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute value in
@@ -910,6 +923,7 @@ namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute v
 \section{Moment Estimates -- Proof of Theorem \ref{T:Lrho}} \label{S:Lrho}
 We first state some known results and prove a moment bound in Corollary \ref{C:Mom}.
 
+\textcolor{blue}{We have already denoted $\mu$ as a deterministic measure and in the following theorem we say that it is random. Also, when $\mu$ is random, we need to specify what $|\mu|$ means in Corollary \ref{C:Mom}. When $\mu$ is random then $|\mu| = \Norm{\mu}_{p}$.}
 \begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:Solve}
   Suppose that
   \begin{enumerate}[(i)]
@@ -1145,18 +1159,27 @@ and the restarted SHE ($ t_0>0$):
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
   \end{equation}
   has the following properties:
+  
+  \textcolor{blue}{We need to define $\mu^*$ in the case that $\mu$ is random and also deterministic. In this case we have that 
+  \[ \mu^* = 
+  		\begin{cases}
+	  		1 + |\mu| & \text{$\mu$ deterministc} \\
+	  		1 + \Norm{\mu}_q & \text{$\mu$ random}.
+  		\end{cases}
+  \]
+}
   \begin{enumerate}[(1)]
     \item For all $q\ge 2$, $s>0$, $y\in\R^d$,
       \begin{align} \label{E:NormY}
         \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
       \end{align}
       where we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
-    \item Under two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
+    \item Under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
       some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
       \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in
       \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge
       0}H\left(t;32qL_b^2\right)<\infty$;
-    \item Under two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
+    \item Under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
       some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
       \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and
       $L^1(\R^d)$-function $\rho$, there exists a constant $\Theta =
@@ -1445,6 +1468,23 @@ Finally, we characterize conditions \eqref{E:Dalang-a0} and \eqref{E:H} in the f
 
 We are now ready to prove part (a) of Theorem \ref{T:Main}.
 
+\textcolor{blue}{
+I find it a little confusing when we restart at $t-t_0$. The first centered equation says that 
+	\[
+		    v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
+	\]
+which is a little confusing since we said already that $t_0 = \tau / 2$ is fixed. So saying that $ v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot)$ for any $t \ge \tau$ makes is seem like $u$ is constant. But what really is going on is that $v$ is implicitly defined through $t$ in the sense that 
+	\[
+		v(s, x) \stackrel{\mathcal{L}}{=} u(s, x, u(t-t_0,x)) \quad s \ge 0
+	\]
+where $t \ge 2t_0 > 0$. \bigskip \\
+This seems to be avoidable if we just consider 
+	\[
+			v(t, x) \stackrel{\mathcal{L}}{=} u(t, x, u(t_0,x)) \quad t \ge 0
+	\]
+where $t_0 > 0$ is arbitrary. 
+}
+
 \begin{proof}[Proof of Theorem \ref{T:Main} (a)]
   In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and $t_0=\tau/2$. Throughout the
   proof, we have $t\ge \tau$. Let $v$ be the solution to \eqref{E:restart} that is restarted from
@@ -1461,6 +1501,11 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \quad \text{with $\Lambda>0$}
   \end{align*}
   is relative compact in $L_\rho^2(\R^d)$.
+
+\textcolor{blue}{I think there is some redundancy in the following paragraph. Note that we only need $\mathcal{H}_{\alpha}(t) < \infty$ for any $t \ge 0$. We already proved that $\Upsilon_{2\alpha}(0) < \infty$ will imply this. So for that reason, there is no reason to say that "Now we can apply Part (3) of Lemma \ref{L:HUA}, thanks to
+	\eqref{E:Dalang-00}, to see that \eqref{E:H} holds." \bigskip \\
+Lastly, $\Upsilon_{2\alpha}(0) < \infty$ seems to be sufficient but not necessary and really what we really need is only for $\mathcal{H}_{\alpha}(t) < \infty$. Maybe we want to make a remark about this. It doe not matter too much since the Bessel kernel easily verifies both. 
+}
 
   Assumption (iii), i.e., \eqref{E:U0finite}, implies that the interval $\left(2^7L_b^2 \Upsilon(0),
   1/2\right)$ is not empty. Moreover, Assumption (iv), i.e., \eqref{E:Dalang-a0}, guarantees that
