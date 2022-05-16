@@ -413,12 +413,7 @@ of the following aspects:
   \item We give ...
 \end{enumerate}
 
-This paper is organized as follows: In Section \ref{S:Example}, we provide some more discussions and
-examples for our main results. In particular, we make a few discussions on the weight function in
-Section \ref{SS:Weight}; we show that our results could include a wider class of initial conditions
-in \ref{SS:Init};
-
-Finally, two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho}
+This paper is organized as follows: In Section \ref{S:Example}, we will further discuss our main results and provide some examples. In particular, in Section \ref{SS:Weight}  we make some comments on the weight function and in Section \ref{SS:Init} we show that our results could include a wider class of initial conditions. Finally, the two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho}
 and \ref{S:mainproof}, respectively.
 \bigskip
 
@@ -428,7 +423,12 @@ property of the heat kernel
 \begin{equation} \label{E:gsim}
   G(t,x)G(s,y)=G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
 \end{equation}
-which can be easily verified. The convention of Fourier transform is given in Remark \ref{R:Fourier}
+which can be easily verified. We also will repeatedly use the following spherical coordinate formula:
+	\[
+		\int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
+	\]
+and we may from time to time use the following $\sigma(\mathbb{S}^{d-1})  = 2(\pi)^{d/2} / \Gamma(d/2)$. 
+The convention of Fourier transform is given in Remark \ref{R:Fourier}
 below.
 
 % We reserve $C_d$ for the constant coming from the change of variable
@@ -490,7 +490,7 @@ The admissible condition \ref{E:aw} is needed in this paper due to the following
 
 \begin{example}[Delta initial condition] \label{Ex:delta}
   In this example, we study the case when the initial condition $\mu$ is the Dirac delta measure at
-  zero, namely, $\delta_0$. Let $\rho$ be a nonnegative and  $L^1(\R^d)$ function. Since
+  zero, namely, $\delta_0$. Let $\rho$ be a nonnegative $L^1(\R^d)$ function. Since
   \begin{align*}
     \mathcal{G}_\rho(t;\delta_0)
     = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
@@ -536,7 +536,7 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \mu(\ud x) = |x|^\alpha \ud x \quad \text{with $\alpha>0$}.
   \end{align*}
-  Then for some constants $C, C'>0$, it holds that
+  Then for some constants $C, C'>0$ that depend on $d$ and $\alpha$, it holds that
   \begin{align} \label{E:growtail}
     C' (1+t^\alpha) \le \mathcal{G}_\rho(t;\mu) \le C (1+t^\alpha), \qquad \text{for all $t>0$}.
   \end{align}
@@ -551,8 +551,8 @@ The following proposition shows that for initial conditions with unbounded tails
     & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x    \\
     & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
   \end{align*}
-  In the following, let $C$, $C_\alpha$ and $C_\alpha'$ be generic constants that may depend on
-  $\alpha $ and may change their value at each appearance. \bigskip
+  In the following, let $C$, $C_\alpha$, $C_\alpha'$, $C_{\alpha, d}$ and $C'_{\alpha, d}$ be generic constants that may depend on
+  $\alpha $ and $d$ and may change their value at each appearance. \bigskip
 
   \noindent{\it Upper bound:~} Because
   \begin{align*}
@@ -561,13 +561,16 @@ The following proposition shows that for initial conditions with unbounded tails
     \le C_\alpha \int_{\R^d}G\left(1,z\right) \left(|\xi|^\alpha + |z|^\alpha\right) \ud z
     = C_\alpha' \left( 1+|\xi|^\alpha\right),
   \end{align*}
+  \textcolor{blue}{I believe for the last equality to hold, this would force $C_\alpha'$ to also depend on $\xi$. This issue is resolved if we just replace $=$ with $\le$ and then let $C_\alpha' = \max\{1, \int_{\R^d}G(1,z)|z|^\alpha \ud z \}$
+}
+  
   we see that
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
     & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi \\
-    & = C_\alpha'\int_{\R}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r        \\
-    & = C_\alpha'\left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
-    & = C_\alpha (1+ t^\alpha)<\infty.
+    & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r        \\
+    & = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
+    & = C'_{\alpha, d} (1+ t^\alpha)<\infty.
   \end{align*}
   Hence, this proves the upper bound in \eqref{E:growtail}. \bigskip
 
@@ -575,11 +578,11 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
     & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z \\
-    &  = \frac{C_d}{\left(2\pi\right)^{d/2}}\int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
-    &  \ge C \int_1^2 \big| |\xi| - x \big|^\alpha \ud x \\
-    &  = \frac{C}{1+\alpha} \psi\left(|\xi|\right),
+    &  \ge {C_d} \int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
+    &  \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x \\
+    &  = \frac{C_d}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
-  where, by consider three cases, we have
+  where, by considering three cases, we have
   \begin{align*}
     \psi(r)
     & =
@@ -596,10 +599,10 @@ The following proposition shows that for initial conditions with unbounded tails
   \end{align}
   With \eqref{E:psi}, we have that
   \begin{align*}
-    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z \ge C \sqrt{1+|\xi|^{2\alpha}}.
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z \ge C_{\alpha, d} \sqrt{1+|\xi|^{2\alpha}}.
   \end{align*}
-  Then, by the same arguments, we obtain the lower bound in \eqref{E:growtail}. It remains to prove
-  \eqref{E:psi}, which will be proved in three cases:
+  Then, by the same arguments as above for the upper bound, we obtain the lower bound in \eqref{E:growtail}. It remains to prove
+  \eqref{E:psi}, which will be proved in three cases. 
 
   When $r>2$, we see that
   \begin{align*}
@@ -607,9 +610,10 @@ The following proposition shows that for initial conditions with unbounded tails
     & \ge C_\alpha \frac{(r-1)^{\alpha+1}-(r-2)^{\alpha+1}}{(1+r)^\alpha}       \\
     & \ge C_\alpha \frac{(r-1)^{\alpha}(r-1)-(r-1)^{\alpha}(r-2)}{(1+r)^\alpha} \\
     & = C_\alpha \left(\frac{r-1}{1+r}\right)^\alpha
-    = C_\alpha \left(1-\frac{2}{1+r}\right)^\alpha \ge C_\alpha \left(1-\frac{2}{3}\right)^\alpha.
+    = C_\alpha \left(1-\frac{2}{1+r}\right)^\alpha \ge C_\alpha \left(1-\frac{2}{3}\right)^\alpha,
   \end{align*}
-  which shows that $\inf_{r>2} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
+  where in the first inequality, we considered two cases: $2\alpha \ge 1$ and $2 \alpha < 1$. When $2\alpha < 1$, we used concavity to say that $ (1 + r^{2\alpha})^{2\alpha} / 2 \le ((1+r)/2)^{2\alpha}$. When $2\alpha \ge 1$ we used the fact that for $a,b>0$ that $a^{2\alpha} + b^{2\alpha} \le (a+b)^{2\alpha}$.
+  This shows that $\inf_{r>2} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
 
   When $r\in(1,2]$, elementary calculations show that the minimum of $\psi(r)$ is achieved at
   $r=3/2$. Hence,
