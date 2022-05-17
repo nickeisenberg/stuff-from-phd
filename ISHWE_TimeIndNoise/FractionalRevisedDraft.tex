@@ -2644,6 +2644,38 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
   of Proposition \ref{P:LogU}.
 \end{proof}
 
+\begin{lemma} \label{L:LogU}
+  It holds that
+  \begin{align} \label{E:LogU}
+    \liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} U_n(1) \right]
+    \ge \log\left( \frac{\rho_{\nu,a}^{1/2}}{ \left(\frac{b}{a}[ a-\frac{\alpha}{2} + \frac{a}{b}r ]\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} }\right).
+  \end{align}
+\end{lemma}
+\begin{proof}
+  Let $\tau$ be an exponential random variable with mean one. Notice that by some elementary scaling
+  arguments, we have that for all $t>0$,
+  \begin{align}
+    \label{E:WU}
+    W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
+    U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1),
+  \end{align}
+  which then imply that
+  \begin{align*}
+    \mathbb{E}\left[ U_n(\tau) \right] = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1)
+                                       = \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1).
+  \end{align*}
+  Then by Proposition \ref{P:LogU},
+  \begin{align}\label{E:lb1}
+    \liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log\left(\rho_{\nu, a}^{1/2}\right).
+  \end{align}
+  Therefore, \eqref{E:LogU} is proven by noticing that, thanks to \eqref{E:Stirling},
+  \begin{align*}
+      \liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
+    = \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
+  \end{align*}
+  where the condition $\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) >0$ is guaranteed
+  by \eqref{E:alpha4} (or \eqref{E:alpha}).
+\end{proof}
 We need one last lemma before the proof of the lower bound:
 
 \begin{lemma} \label{L:logUnlb}
