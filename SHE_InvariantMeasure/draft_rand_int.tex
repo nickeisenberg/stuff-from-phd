@@ -1491,10 +1491,43 @@ those by Tessitore and Zabczyk. Let me know if you agree or maybe I have missed 
 \begin{proof}[Proof of Theorem \ref{T:Main} (a)]
   In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and $t_0=\tau/2$. Throughout the
   proof, we have $t\ge \tau$. Let $v$ be the solution to \eqref{E:restart} that is restarted from
-  $t- t_0$. Then
-  \begin{align*}
-    v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
-  \end{align*}
+  $t- t_0$. Then (see Figure \ref{F:RestartedSHE} for some illustrations)
+  % \begin{align*}
+  %   v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
+  % \end{align*}
+
+  \begin{align} \label{E:RestaredSHE}
+    v_t\left(s,x\right) \stackrel{\mathcal{L}}{=} u\left(s,x; u\left(t-t_0,\cdot;\mu\right)\right) \quad \text{for $t\ge\tau$}.
+  \end{align}
+
+\begin{figure}[htpb]
+  \begin{center}
+    \begin{tikzpicture}[scale=1, transform shape]
+      \tikzset{>=latex}
+      \draw [->] (-0.2,0) --++ (8.5,0) node[right] {$s$};
+      \draw[thick] (0,0) --++(0,0.2) --++(0,-0.4) node[below] {$0$};
+      \draw (1,0) --++(0,0.2) --++(0,-0.4) node[below] {$t_0$};
+      \draw (2,0) --++(0,0.2) --++(0,-0.4) node[below] {$\tau$};
+      \draw (4,0) --++(0,0.2) --++(0,-0.4) node[below] {$t-t_0$};
+      \draw (5,0) --++(0,0.2) --++(0,-0.4) node[below] {$t$};
+      \draw (6.5,0) --++(0,0.2) --++(0,-0.4) node[below] {$t-t_0+s$}
+            ++ (0,-0.7) node[below] (u1) {$u(t-t_0+s,x;\mu)$}
+            ++ (0,-0.6) node[below] {$||$}
+            ++ (0,-0.6) node[below] {$u\left(s,x;u(t-t_0,\cdot;\mu)\right)$};
+
+      \draw [->] (3.8,1) --++ (4.5,0) node[right] {$s$};
+      \draw[thick] (4,1) --++(0,-0.2) --++(0,0.4) node[above] {$0$};
+      \draw (5,1) --++(0,-0.2) --++(0,0.4) node[above] {$t_0$};
+      \draw (6.5,1) --++(0,-0.2) --++(0,0.4) node[above] {$s$} ++ (0,0.5) node[above] (v) {$v_t(s,x)$};
+
+      \draw[dotted] (6.5,0.2) -- (6.5,0.8);
+      \draw[dotted] (5,0.2) -- (5,0.8);
+      \draw[dotted] (4,0.2) -- (4,0.8);
+    \end{tikzpicture}
+  \end{center}
+  \caption{Some illustrations for the restarted SHE in \eqref{E:RestaredSHE}.}
+  \label{F:RestartedSHE}
+\end{figure}
 
   According to Assumption (i), we can choose and fix some admissible weight function
   $\tilde{\rho}$ such that \eqref{E:rhorho} is satisfied. Hence, by Proposition \ref{P:weight},
@@ -1537,7 +1570,7 @@ $\mathcal{H}_\alpha(t)<\infty$ for all $t>0$. Have you missed this part -- Part 
   we can apply Proposition \ref{P:F-Comp} to see that the following set
   \begin{align*}
     \mathscr{K}_2 (\Lambda):=
-    \left\{(F_\alpha h)(x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
+    \left\{(F_\alpha h)(t_0,x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
     \quad \text{with $\Lambda>0$}
   \end{align*}
   is relative compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
@@ -1545,7 +1578,7 @@ $\mathcal{H}_\alpha(t)<\infty$ for all $t>0$. Have you missed this part -- Part 
   \begin{align*}
     \mathscr{K} (\Lambda)
     & :=\mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
-    & = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(x): \:\Norm{y}_{\tilde{\rho}}
+    & = \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(t_0, x): \:\Norm{y}_{\tilde{\rho}}
     \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
   \end{align*}
 
