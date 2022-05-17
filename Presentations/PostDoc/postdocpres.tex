@@ -256,10 +256,12 @@
 	%	\end{center}
 	%\end{frame}
 	
-	\begin{frame}{Random Walk $\to$ Brownian Motion}
+	\begin{frame}[t]{Random Walk $\to$ Brownian Motion}
 		\begin{center}
-			\includegraphics[scale=.7]{BrownianMotion.png}
+			\includegraphics[scale=.55]{BrownianMotion.png}
 		\end{center}
+	\rdot Property of Brownian Motion: $B_t \sim B_{t - \Delta t} +  \text{Normal}(0,\Delta t)$. \vspace{.1in} \\
+	\rdot Recall that $\text{Normal}(0,\Delta t) = \sqrt{\Delta t} \: \text{Normal}(0, 1)$
 	\end{frame}
 
 	\begin{frame}{Square Root Growth}
@@ -671,15 +673,13 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 		\end{frame}
 		
 	\begin{frame}{Random vs Deterministic}
-		\begin{itemize}
-			\item The solution to the stochastic heat equation is a stochastic process. 
+			\rdot The solution to the stochastic heat equation is a stochastic process. 
 			\[
 				u(t,x)(\omega_1), \quad u(t,x)(\omega_2), \quad \cdots, \quad u(t,x)(\omega_n).
 			\]
-			 \item The random solution only exists implicitly through the integral equation. \vspace{.3in}
-			\item $\frac{\partial}{\partial x} u(t,x)$ and $\frac{\partial}{\partial t} u(t,x)$ does not exists in the random case with space-time white noise. \vspace{.3in}
-			\item Interesting 'blow up' happens in the random case. This actually has real-world application. 
-		\end{itemize}
+			 \rdot The random solution only exists implicitly through the integral equation. \vspace{.3in} \\
+			\rdot $\frac{\partial}{\partial x} u(t,x)$ and $\frac{\partial}{\partial t} u(t,x)$ does not exists in the random case with space-time white noise. \vspace{.3in} \\
+			\rdot Interesting 'blow up' happens in the random case. This actually has real-world application. 
 	\end{frame}
 		
 		\begin{frame}
@@ -747,13 +747,10 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 	\end{equation*}
 	
 	\vspace{.5in}
-	\begin{itemize}
-		\item $\dot{W}$ is a time-independent Gaussian noise defined on $\phi,\psi \in C_0^\infty(\R^d) $:
+		\rdot $\dot{W}$ is a time-independent Gaussian noise defined on $\phi,\psi \in C_0^\infty(\R^d) $:
 		\[
 		\mathbb{E}(W(\phi)W(\psi)) = \int_{\R^{2d}} \ud x \ud y \; \phi(x) |x-y|^{-\alpha} \psi(y)
 		\]
-	\end{itemize}
-	
 \end{frame}% }}}
 
 	\begin{frame}{Known Results}% {{{ Two Known results.
@@ -765,7 +762,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 	% \end{cases}
 	% \end{equation*}
 	\begin{center}
-		For the SHE, i.e., \textcolor{red}{$b=1$} \\
+	{\raggedleft \rdot}	For the SHE, i.e., \textcolor{red}{$b=1$} \\
 		{\small [X. Chen '17]}
 		\[
 		\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{2-\alpha}} (2-\alpha)\left(\frac{2\mathcal{M}}{4-\alpha}\right)^{\frac{4-\alpha}{2-\alpha}}
@@ -773,7 +770,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 	\end{center}
 	\vspace{.3in}
 	\begin{center}
-		For the SWE, i.e., \textcolor{red}{$b=2$} \\
+	{\raggedleft \rdot}	For the SWE, i.e., \textcolor{red}{$b=2$} \\
 		{\small [Balan, L. Chen, and X. Chen '21]}
 		\[
 		\lim_{t \to \infty} t^{-\frac{4-\alpha}{3-\alpha}} \log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{1}{3-\alpha}} \left(\frac{1}{2}\right)^{\frac{\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}
@@ -940,7 +937,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 \end{frame}
 
 \begin{frame}{Special Form of the Solution}
-	\rdot The time independent noise and the constant initial conditions allows to prove the following explicit representation of the solution:
+	\rdot The time independent noise and the constant initial conditions allows us to prove the following explicit representation of the solution:
 	\[ u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2} I_k(f_k(\cdot,x,t)), \quad (t,x)\in (0,T)\times \R^d \]
 	
 	\[
