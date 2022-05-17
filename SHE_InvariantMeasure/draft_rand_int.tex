@@ -1616,11 +1616,40 @@ $\mathcal{H}_\alpha(t)<\infty$ for all $t>0$. Have you missed this part -- Part 
   \end{align*}
   which proves part (a) of Theorem \ref{T:Main}.
 \end{proof}
+
+\textcolor{blue}{
+Let $t_0 > 0$ and consider $v(t,x) = u(t,x; u(t_0 / 2,\cdot)) = u(t+t_0,x; \mu)$ so that $u(t_0,x) = v(t_0 /2, x)$. When we have a measure initial condition we sort of need to run a little time, and then run a little more time. What I mean is that we start with $u(t,x; \mu)$ and then consider $u(t_0 / 2, x ; \,mu)$ and use this as our new starting point. Then we start Tessitore's argument. \bigskip \\
+So we have $u(t_0,x) = v(t_0 /2, x) = (G(t_0, \cdot)*u(t_0/2, \cdot))(x) + \frac{\sin(\alpha \pi)}{\pi}[F_{\alpha}Y_v](t_0/2, x)$. We define 
+	\[
+		\mathscr{K}(\Lambda) := \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(t_0/2, x): \:\Norm{y}_{\tilde{\rho}}
+		\le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0/2);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+	\]
+Then,
+	\begin{align*}
+		\mathbb{P}\left\{ u(t_0, \cdot) \not \in \mathscr{K}(\Lambda) \right\} &= \mathbb{P}\left\{ v(t_0/2, \cdot) \not \in \mathscr{K}(\Lambda) \right\} \\
+		& \le \mathbb{P}\left\{ \left( \int_0^{t_0/2} \Norm{Y_v(s,\cdot)}^q_{\tilde \rho} \ud s\right)^{1/q} > \frac{\pi \Lambda}{\sin(\alpha \pi)} \right\} + \mathbb{P}\left\{ \Norm{u(t_0/2, \cdot)}_{\tilde \rho} > \Lambda \right\} \\
+		&\le \frac{\sin^q(\alpha \pi)}{\pi^q \lambda^q} \mathbb{E} \int_0^{t_0 / 2} \Norm{Y_v(s,\cdot)}_{\tilde \rho}^q \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left( \Norm{u(t_0/2,\cdot)}_{\tilde \rho}^2 \right) \\
+		& \le \frac{\sin^q(\alpha \pi)}{\pi^q \lambda^q} \Theta \int_{0}^{t_0/2} \left(\mathcal{G}_{\tilde \rho}(s + t_0 /2; \mu)\mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left( \Norm{u(t_0/2,\cdot)}_{\tilde \rho}^2 \right) < \infty.
+	\end{align*}
+Note that  $\mathbb{P}\left\{ \Norm{u(t_0/2, \cdot)}_{\tilde \rho} > \Lambda \right\}$ from the second line of the proof does not appear in Tessitore's paper. This is because they have a deterministic initial condition and they do not need to do this initial runnng of $t_0/2$ time and they can immediately choose their initial condition, $\varphi$, to be such that $\Norm{\varphi}_{\tilde \rho} < \Lambda$. We can't do this directly and this is why we have to start by running $t_0/2$ time and then consider $u(t_0/2,x)$ as our starting point. \bigskip \\
+Continuing above, we can choose $\Lambda>0$ sufficiently big so that 
+	\[
+		\mathbb{P}\left\{ u(t_0, \cdot) \in \mathscr{K}(\Lambda) \right\} \ge 1 - \epsilon.
+	\]
+Now we can continue with your $t-t_0/2$ argument. Indeed, pick any $t > t_0$. The Markov property of the solution allows us to say that 
+	\begin{align*}
+		\mathbb{P}\left\{ u(t, \cdot) \in \mathscr{K}(\Lambda) \right\} &= \mathbb{P}\left\{ u(t, \cdot) \in \mathscr{K}(\Lambda) \Big\vert  \Norm{u(t-t_0/2, \cdot)}_{\tilde{\rho}} < \Lambda \right\} \mathbb{P}\left\{ \Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\} \\
+		& \ge (1-\epsilon) \mathbb{P}\left\{\Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\}.
+	\end{align*}
+This is what Tessitore does in the centered equation above Remark 3.2. Lastly we finish by saying 
+	\[
+		\mathbb{P}\left\{\Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0/2, \cdot)}_{\tilde \rho}^2 \right) }{\Lambda^2} \le C \frac{\mathcal{G}_{\tilde \rho}(t - t_0 / 2; \mu) }{\Lambda^2}.
+	\]
+There we can enlarge $\Lambda$ to get $\mathbb{P}\left\{\Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\} < \epsilon$ for all $ t \ge t_0$. This completes the proof.
+}
+
 \subsection{Proof of part (b) of Theorem \ref{T:Main}}
-
-The proof of part (b) based on (a) is routine.
-
-\begin{proof}[Proof of Theorem \ref{T:Main} (b)]
+\begin{proof}
   Fix an arbitrary $\tau>0$ and denote
   \begin{align*}
     U(T) := \dfrac{1}{T}\int_{\tau}^{T+\tau} \mathcal{L}\left(u(t,\cdot;\mu)\right)\: \ud t, \quad T>0.
