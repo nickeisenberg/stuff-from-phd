@@ -21,5 +21,5 @@ dotW[1:] = dB
 
 # plot 
 plt.plot(part, dotW, linewidth=1)
-plt.title('White Noise differential: $dB_t \\approx B_t - B_{t - \Delta t}:$') 
+plt.title('White Noise differential: $dB_t \\approx \\int_{t - \\Delta t}^tdB_s = B_t - B_{t - \Delta t}:$') 
 plt.show()

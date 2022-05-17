@@ -69,7 +69,7 @@
 % }}}
 % {{{ Title page
 \title[About Beamer] %optional
-{NNSS Presentation}
+{Stochastic Partial Differential Equations: Some Applications and Theoretical Results}
 
 \author[Arthur, Doe] % (optional, for multiple authors)
 {Nicholas Eisenberg}
@@ -110,7 +110,7 @@
 	
 	\rdot We are investors looking for arbitrage opportunities on call options. Can we calculate a fair price?  (Black-Scholes-Merton model) \vspace {.5in} \\
 	
-	\rdot We want to model the evolution of heat of a piece of initially heated wire. How can we account for random outside sources of heat that affect the wires temperature? (SHE) 
+	\rdot We want to model the evolution of heat of a piece of an initially heated wire. How can we account for random outside sources of heat that affect the wires temperature? (SHE) 
 	
 	
 	
@@ -271,7 +271,7 @@
 
 		\begin{frame}[t]{White Noise}
 		\centering
-		\includegraphics[width=13cm, height=8.5cm]{whitenoise.png}
+		\includegraphics[width=13.5cm, height=8.5cm]{whitenoise.png}
 	\end{frame}
 	
 	\begin{frame}{Increments of a Smooth Function for Reference}
@@ -299,7 +299,7 @@
 %	\end{frame}
 
 		\begin{frame}{What Can We Do with Brownian Motion?}
-  \rdot $S_0 = \text{stock price at entry}$ \quad $S_t = \text{stock price after } t \text{ time periods}$
+  \rdot $S_0 = \text{stock price at entry}$ \quad $S_t = \text{stock price after } t \text{ time-periods}$
 	\[
 	S_t = S_0(1 + R_t ), \quad R_t := \frac{S_t - S_0}{S_0} \; \sim \text{Normal}(\mu t, \sigma^2 t), \quad \mu \in \R,\; \sigma \in (0,\infty).
 	\]
@@ -349,13 +349,17 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 
 \begin{frame}
 	\begin{center}
-		\includegraphics[scale=.64]{geometricbmotion.png}
+		\includegraphics[scale=.55]{geometricbmotion.png}
 	\end{center}
 \end{frame}
 
 \begin{frame}{Black-Scholes-Merton Option Model}
-	\centering 
-	\includegraphics[scale=.5]{black.png} \hfill \includegraphics[scale=.542]{scholes.png} \hfill  \includegraphics[scale=.5]{merton.png}
+	\begin{center} 
+	\includegraphics[scale=.5]{black.png} \hfill \includegraphics[scale=.542]{scholes.png} \hfill  \includegraphics[scale=.5]{merton.png} \vspace{.2in} \\
+	\end{center}
+
+\rdot Scholes and Merton received the Nobel Memorial Prize in Economics - 1997. \vspace{.1in} \\
+\rdot Unfortunately Black passed away due to cancer before the award was presented. 
 \end{frame}
 
 \begin{frame}{Fair Price for a European Call Option}
@@ -635,7 +639,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 				\begin{frame}[t]{Stochastic Heat Equation}
 			\[
 			\begin{cases}
-			\frac{\partial}{\partial t} u(t,x) - \frac{\partial^2}{\partial x^2} u(t,x) = \lambda u(t,x) \frac{\partial^2}{\partial t \partial x}W(t,x) & t \ge 0, \; x\in \R \\
+			\frac{\partial}{\partial t} u(t,x) - \frac{1}{2}\frac{\partial^2}{\partial x^2} u(t,x) = \lambda u(t,x) \frac{\partial^2}{\partial t \partial x}W(t,x) & t \ge 0, \; x\in \R \\
 			u(0, x) = f(x) & x \in \R
 			\end{cases}
 			\]
@@ -708,43 +712,95 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 %		\includegraphics[scale=.5]{SHEdeltaNoise2.2.png}
 %		\end{frame}
 		
-	\begin{frame}[t]{Growth of the paths and moments}
+	\begin{frame}[t]{Growth of the Paths and Moments}
 \rdot Can we accurately describe the creation of these large peaks? In other words, how can we describe the sample paths of the solution: 
 	\[
 		t \mapsto u(t,x)(\omega) \quad \text{and} \quad x \mapsto u(t,x)(\omega)
-	\] \vspace{.15in}
+	\] \vspace{.05in}
 	
-\rdot This is a hard question, a current open problem is calculate the following limit
+\rdot This is a hard question and a current open problem is calculate the following limit
 \[
-\lim_{t \to \infty} \frac{\log|u(t,x)|}{t^{K}}.
+\lim_{t \to \infty} \frac{\log|u(t,x)|}{t^{K}} = 
+	\begin{cases}
+		0 & t \mapsto u(t,x) \text{ grows slower than } e^{t^K} \\
+		C & t \mapsto u(t,x) \text{ grows the same as } e^{C \: t^K} \\
+		\infty & t \mapsto u(t,x) \text{ grows faster than } e^{t^K}
+	\end{cases}.
 \] \vspace{.15in}
 
-\rdot This limit has been calculated in the following sense for the SHE (and also other SPDEs which we will see below)
+\rdot The following has been calculated for the SHE and SWE (and also other SPDEs which we will see below)
 \[
 \lim_{t \to \infty} \frac{\log\left[\mathbb{E}(|u(t,x)|^p)\right]}{t^K}, \quad p \ge 2.
 \]
 		
 	\end{frame}
+
+	\begin{frame}[t]% {{{ SHE and SWE
+	\frametitle{The Stochastic Heat and Wave Equations}
+	
+	\begin{equation*}
+	\begin{cases}
+	\left(\partial^b_t  -\Delta_x \right)\: u(t,x) =  u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = 1                                                     & b=1 \quad \text{(SHE)}    \\
+	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                    & b=2 \quad \text{(SWE)}
+	\end{cases}
+	\end{equation*}
+	
+	\vspace{.5in}
+	\begin{itemize}
+		\item $\dot{W}$ is a time-independent Gaussian noise defined on $\phi,\psi \in C_0^\infty(\R^d) $:
+		\[
+		\mathbb{E}(W(\phi)W(\psi)) = \int_{\R^{2d}} \ud x \ud y \; \phi(x) |x-y|^{-\alpha} \psi(y)
+		\]
+	\end{itemize}
+	
+\end{frame}% }}}
+
+	\begin{frame}{Known Results}% {{{ Two Known results.
+	% \begin{equation*}
+	% \begin{cases}
+	% 	\frac{\partial^b u}{\partial t^b}(t,x) = \Delta u(t,x) +  u(t,x)\: \dot W(x) & \text{$x\in \R^d$, $t>0$}, \\
+	% 	u(0,\cdot) = 1                                                               & b =1 \text{ (SHE)}         \\
+	% 	u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                              & b =2 \text{ (SWE)},
+	% \end{cases}
+	% \end{equation*}
+	\begin{center}
+		For the SHE, i.e., \textcolor{red}{$b=1$} \\
+		{\small [X. Chen '17]}
+		\[
+		\lim_{t\to \infty}t^{-\frac{4-\alpha}{2-\alpha}}\log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{2}{2-\alpha}} (2-\alpha)\left(\frac{2\mathcal{M}}{4-\alpha}\right)^{\frac{4-\alpha}{2-\alpha}}
+		\]
+	\end{center}
+	\vspace{.3in}
+	\begin{center}
+		For the SWE, i.e., \textcolor{red}{$b=2$} \\
+		{\small [Balan, L. Chen, and X. Chen '21]}
+		\[
+		\lim_{t \to \infty} t^{-\frac{4-\alpha}{3-\alpha}} \log \mathbb{E}|u(t,x)|^p =p(p-1)^{\frac{1}{3-\alpha}} \left(\frac{1}{2}\right)^{\frac{\alpha}{2(3-\alpha)}} \frac{3- \alpha}{2} \left( \frac{2 \mathcal{M}^{1/2}}{4-\alpha} \right)^{\frac{4-\alpha}{3-\alpha}}
+		\]
+	\end{center}
+	
+\end{frame}% }}}
 		
-		\begin{frame}[t]{Growth of moments for the stochastic heat equation}
-			\[
-			\begin{cases}
-			\frac{\partial}{\partial t} u(t,x) - \frac{1}{2}\frac{\partial^2}{\partial x^2} u(t,x) = \sqrt{\lambda} u(t,x) \frac{\partial}{\partial x}W(x) & t \ge 0, \; x\in \R \\
-			u(0, x) = 1 & x \in \R
-			\end{cases}
-			\]
-			\begin{theorem}[Hu 2002]
-				For the above equation, we can prove that
-				\[
-				\lim_{t \to \infty} \frac{\log\left[ \mathbb{E}(|u(t,x)|^p) \right]}{t^3} = \frac{p(p-1)\lambda^2}{24}
-				\]
-				which means that
-				\[
-				t \mapsto \mathbb{E}(|u(t,x)|^p \asymp \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right), \quad \text{as } t \to \infty.
-				\]
-				So the moments grow exponentially in time.
-			\end{theorem}
-		\end{frame}
+%		\begin{frame}[t]{Growth of moments for the stochastic heat equation}
+%			\[
+%			\begin{cases}
+%			\frac{\partial}{\partial t} u(t,x) - \frac{1}{2}\frac{\partial^2}{\partial x^2} u(t,x) = \sqrt{\lambda} u(t,x) \frac{\partial}{\partial x}W(x) & t \ge 0, \; x\in \R \\
+%			u(0, x) = 1 & x \in \R
+%			\end{cases}
+%			\]
+%			\begin{theorem}[Hu 2002]
+%				For the above equation, we can prove that
+%				\[
+%				\lim_{t \to \infty} \frac{\log\left[ \mathbb{E}(|u(t,x)|^p) \right]}{t^3} = \frac{p(p-1)\lambda^2}{24}
+%				\]
+%				which means that
+%				\[
+%				t \mapsto \mathbb{E}(|u(t,x)|^p \asymp \exp\left( \frac{p(p-1)\lambda^2}{24} t^3\right), \quad \text{as } t \to \infty.
+%				\]
+%				So the moments grow exponentially in time.
+%			\end{theorem}
+%		\end{frame}
 		
 		%\begin{frame}
 		%		% \frametitle{References}
@@ -787,7 +843,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 	
 	\vfill
 
-	\rdot  $\partial^b_t$ is the {\it Caputo} fractional derivative \vspace{.15in} \\
+	\rdot  $\partial^b_t$ is the {\it Caputo} fractional derivative of order $b > 0$ \vspace{.15in} \\
 
 	\rdot  $(-\Delta)^{a/2}$ is the fractional Laplacian of order $a \in (0,2]$ \vspace{.15in} \\
 
@@ -849,8 +905,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 \end{frame}
 
 	\begin{frame}
-	\frametitle{Global Solution\\
-		\small $\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right]$}
+	\frametitle{Global Solution: {\small $\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right]$}}
 	\begin{definition}
 		$u(t,x)$ is a \textit{global solution} to the {\small (ISHWE)} if $\Norm{u(t,x)}_p < \infty$ for any $0 < t < T$ and $x \in \R^d$ where $T>0$ is arbitrary.
 	\end{definition}
@@ -864,7 +919,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 \end{frame}
 
 \begin{frame}
-	\frametitle{Local Solution}
+	\frametitle{Local Solution: {\small $\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right) u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right]$}}
 	\begin{definition}
 		$u(t,x)$ is a \textit{local solution} to the {\small (ISHWE)} if there exists $0 < T_a \le T_b < \infty$ such that $\Norm{u(t,x)}_2 < \infty$ when $0<t<T_a$ and $\Norm{u(t,x)}_2 $ D.N.E. (does not exist) for $t> T_b$.
 	\end{definition}
@@ -876,9 +931,9 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 		r\in \left[0,1/2\right] \qquad \text{and} \qquad
 		0<\alpha = \frac{a}{b}[2(b+r)-1] \le d.
 		\]
-		In this case, a unique $L^p(\Omega)$ solution exists for $t \in (0,T_p)$ where
+		In this case, a unique local $L^2(\Omega)$ solution exists for $t \in (0,T_2)$ where
 		\[
-		T_p := \dfrac{\nu^{\alpha/a}}{2 \theta (p-1) \mathcal{M}_a^{(2a-\alpha)/a}}
+		T_p := \dfrac{\nu^{\alpha/a}}{2 \theta \mathcal{M}_a^{(2a-\alpha)/a}}
 		\]
 		and the solution does not exist for $t > T_2$.
 	\end{theorem}
@@ -996,7 +1051,7 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 	\[
 	|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|,
 	\]
-	so there exists a unique solution which is Holder continuous, which we denote as $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. \vspace{.2in}
+	so there exists a unique solution that is continuous, which we denote as $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. \vspace{.2in}
 	
 	\rdot When
 	\[
@@ -1010,8 +1065,17 @@ S_t(\omega)  = S_0 +  \int_0^t \mu S_k(\omega) \; \ud k + \int_0^t \sigma S_k(\o
 	\rdot The convergence is not $\mathbb{E}(|u_N -u|^2 ) \to 0$, which is the usual convergence that is proven. What we have is 
 		\[
 			\lim_{N \to \infty} \mathbb{P}\left( |u_N - u| \right) \to 0.
-		\]
-	\rdot So far not much is known about $u$ other than existence and uniqueness. 
+		\] 
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\vfill
+		
+		Thank you!
+		
+		\vfill 
+	\end{center}
 \end{frame}
 		
 	\end{document}
