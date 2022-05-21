@@ -811,7 +811,7 @@ For $\alpha \in (0, 1/2)$, we introduce the following quantity which will now be
 \subsection{Comparing Tessitore and Zabczyk's condition} \label{SS:TessZabz}
 
 In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} prove existence of an invariant measure for \eqref{E:SHE} in
+\cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE} in
 $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
 L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$ and the solution
 starting from $\varphi$ is bounded in probability in $L^2_{\widetilde \rho}(\R^d)$ and also that the
@@ -820,7 +820,7 @@ spectral density $\hat{f}$ satisfies
   \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
 see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem
-3.3]{tessitore.zabczyk:98:invariant}, in order to apply this theorem (or to have moments uniformly
+3.3]{tessitore.zabczyk:98:invariant}, in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
 bounded in time), the following additional
 assumptions were imposed:
  \begin{equation} \label{E:TZspec}
@@ -830,7 +830,7 @@ assumptions were imposed:
 where $\Gamma$ refers to the Gamma function; see Remark \ref{R:Fourier}. With these assumptions,
 they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
 and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
-measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$.
+measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, a specific $\widehat{f}$ which satisfies \eqref{E:TZspec} was not given.
 
 \begin{remark} \label{R:Fourier}
   The Fourier transform may be defined differently depending how to handle the $2\pi$ constant. In
@@ -840,41 +840,44 @@ measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$.
     \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
     \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
   \end{align}
-  Hence, the Plancherel theorem takes the form of
+  Hence, Plancherel's theorem takes the form of
   \begin{align} \label{E:Plancherel}
     \int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
   \end{align}
-  The authors did not explicitly mention in \cite{tessitore.zabczyk:98:invariant} about the
-  convention of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that
+  Note that the authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their convention of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that
   the following convention has been used
   \begin{align*}
     \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
     \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
   \end{align*}
-  Hence, the Plancherel theorem takes the form of $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
+  Hence, Plancherel's theorem takes the form of $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
   \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$ without the additional factor
-  $(2\pi)^{-d}$. When we translate their condition (3.4) ({\it ibid.}) to \eqref{E:TZspec}, we have
-  taken into account of this difference. In particular, the spectral density $\gamma$ ({\it ibid.})
-  corresponds to $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. This accounts the slightly
+  $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.})
+  corresponds to $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is condition (3.4) \cite{tessitore.zabczyk:98:invariant}, takes into account this difference therefore explaining the slightly
   different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it ibid.}).
 \end{remark}
 
 Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. Now let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
 \begin{align*}
-  M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
+  M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta.
 \end{align*}
-and consider two cases: \bigskip
+We now consider the following two cases. \bigskip
 
 {\bf\noindent Case I:~} If $\widehat{f}(\zeta)$ is strictly positive for all $\zeta\in\R^d$, then
-there is no ambiguity when taking square root and hence one can remove the absolute value to see
+there is no ambiguity when taking the square root and hence one can remove the absolute value to see
 that
+
+\textcolor{blue}{
+Why is there no issue with removing the absolute value signs when $\widehat{f} > 0$? Is it because $\sqrt{\widehat{f}}$ is non-negative definite so the positivity of $\widehat{f}$ will imply the positivity of $\mathcal{F}^{-1}(\sqrt{\widehat{f}})$?
+}
+
 \begin{align*}
   M(f)
   & = \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (\zeta) |\zeta|^{2-d} \ud \zeta \\
   & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\zeta)  |\zeta|^{-2} \ud \zeta
     = \left(2\pi\right)^{d/2}\Upsilon(0),
 \end{align*}
-where we have applied the Plancherel theorem (see \eqref{E:Plancherel}) and the Fourier transform
+where we have applied Plancherel's theorem (see \eqref{E:Plancherel}) and the Fourier transform
 for Riesz kernel (in the generalized sense):
 \begin{align*}
   \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
@@ -902,13 +905,11 @@ namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute v
       Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the absolute
       value signs in \eqref{E:TZspec} do not pose any additional restrictions.
     \item However, if one chooses the positive branches, namely,
-      $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, it is not clear how to compute its
+      $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute its
       Fourier transform. In general, some bad choices of the positive/negative branches may make the
       conditions in \eqref{E:TZspec} fail. For example, such choice may turn
-      $\sqrt{\widehat{f}(\xi)}$ into a distribution, then taking the absolute value of a
-      distribution (unless it is a measure) may be problematic. Or even one may find some choice
-      such that $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, it may well be possible to be
-      signed and after taking absolute values, the integral in \eqref{E:TZspec} may blow up.
+      $\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value of a
+      distribution (unless it is a measure) may be problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up. Theses issues seem to be ignored in Remarks 3.5 and 3.6 \cite{tessitore.zabczyk:98:invariant}.
   \end{enumerate}
 \end{example}
 
@@ -945,7 +946,7 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   (see also \eqref{E:Interval}), then
   \begin{equation} \label{E:mb0}
     \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
-    \quad \text{for all $p$ s.t. } 1/p \in \left(128 L_b^2\Upsilon(0),1\right),
+    \quad \text{for all $p$ such that } 1/p \in \left(128 L_b^2\Upsilon(0),1\right),
   \end{equation}
   where $C_p=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
   H(t;\gamma_p)^{1/2}<\infty$.
@@ -996,7 +997,7 @@ Now we are ready to prove Theorem \ref{T:Lrho}.
   \begin{align} \label{E:ShiftW}
     \int_0^t \int_{\R^d} W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t+t_0} \int_{\R^d} W(\ud s, \ud y).
   \end{align}
-  Under conditions in \eqref{E:U0finite}, Theorem \ref{T:ExUn} and \eqref{E:eqLaw} imply immediately
+  Under the conditions in \eqref{E:U0finite}, Theorem \ref{T:ExUn} and \eqref{E:eqLaw} imply immediately
   that
   \begin{align}\label{E:MomBddRst}
   \Norm{v(t,x)}_q =   \Norm{u(t+t_0,x;\mu)}_q
@@ -1029,7 +1030,7 @@ In this section, we establish a factorization lemma with corresponding moment es
 For $F_\alpha$, the Step 1 of the proof of \cite[Theorem 3.1]{tessitore.zabczyk:98:invariant} showed
 the following proposition:
 \begin{proposition} \label{P:F-Comp}
-  Let $\rho$ and $ \tilde{\rho}$ be given in condition (i) of Theorem \ref{T:Main} (see
+  Let $\rho$ and $ \tilde{\rho}$ be given as in condition (i) of Theorem \ref{T:Main} (see
   \eqref{E:rhorho}). For any $q>2$, $t_0>0$ and $\alpha \in (q^{-1},2^{-1})$, the operator
   $F_\alpha$ as an operator from $L^q\big((0,t_0);\: L^2_{\tilde{\rho}}(\R^d)\: \big)$ to
   $L^2_\rho(\R^d)$ is compact.
@@ -1131,11 +1132,11 @@ the following proposition:
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 % }}}
 
-As for $Y_\alpha$, we have the following two lemmas, which hold for both non-restarted SHE ($t_0=0$)
-and the restarted SHE ($ t_0>0$):
+As for $Y_\alpha$, we have the following two lemmas, which hold for both the non-restarted SHE ($t_0=0$)
+and the restarted SHE ($ t_0>0$).
 
 \begin{lemma} \label{L:yineq}
-  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and
+  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and that
   $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that for some $\alpha\in
   (0,1/2)$, $\widehat{f}$ satisfies the following condition
   \begin{align*} 
@@ -1191,9 +1192,9 @@ and the restarted SHE ($ t_0>0$):
   where one can obtain the second equality via \eqref{E:gsim}. Hence, when $s\to 0$,
   $\mathcal{G}_{\tilde{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. On the other hand,
   $\mathcal{H}_\alpha(s)$ goes to zero with a different rate. One needs to combine these two rates
-  to check if condition \eqref{E:GH-int'} holds. By introducing $t_0$ (or restart the heat
-  equation), one can avoid this issue (of the potential singularity of
-  $\mathcal{G}_{\tilde{\rho}}$ at $s=0$).
+  to check if condition \eqref{E:GH-int'} holds. By introducing $t_0$ and restarting the heat
+  equation, one can avoid this issue, that being the potential singularity of
+  $\mathcal{G}_{\tilde{\rho}}$ at $s=0$.
 \end{remark}
 \begin{proof}
   In the proof, we use $C$ to denote a generic constant that may change its value at each
@@ -1272,7 +1273,7 @@ and the restarted SHE ($ t_0>0$):
     \int_{\R^d}\Norm{Y_v(s,y)}_q^2 \: \rho(y)\ud y
     & \le C \: \mathcal{G}_{\rho}(s + t_0;\mu) \mathcal{H}_\alpha(s).
   \end{align*}
-  Plugging the above expression to the far right-hand of \eqref{E:EYqr} proves \eqref{E:yineq}.
+  Plugging the above expression to the far right-hand side of \eqref{E:EYqr} proves \eqref{E:yineq}.
   Finally, the finiteness of the upper bound in \eqref{E:yineq} is guaranteed by condition
   \eqref{E:GH-int'}. This completes the proof of Lemma \ref{L:yineq}.
 \end{proof}
@@ -1415,7 +1416,7 @@ Finally, we characterize conditions \eqref{E:Dalang-a0} and \eqref{E:H} in the f
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-  We only need to consider the case when $\alpha>0$
+  We only need to consider the case when $\alpha>0$.
   It is clear that the function $\mathcal{H}_\alpha(t)$ is nondecreasing. Hence, (2) implies (1). As
   for (2), by Fubini's theorem, we see that
   \begin{align} \label{E:Fubini}
@@ -1424,8 +1425,7 @@ Finally, we characterize conditions \eqref{E:Dalang-a0} and \eqref{E:H} in the f
       = \Gamma(1-2\alpha) \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^{2\left(1-2\alpha\right)}}
       = C \Upsilon_{2\alpha}(0),
   \end{align}
-  with $C:=\Gamma(1-2\alpha)(2\pi)^d$. As for (3), from \eqref{E:Fubini}, for any $t>0$, by
-  splitting the $\ud r$ integral into two parts we see that
+  with $C:=\Gamma(1-2\alpha)(2\pi)^d$. As for (3), for any $t>0$ we split the $\ud r$ integral of \eqref{E:Fubini} into two parts and see that
   \begin{align*}
     C \Upsilon_{2\alpha}(0) & = \int_0^\infty \ud r \: r^{-2\alpha} \int_{\R^d} \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right) = \mathcal{H}_\alpha(t) + I_\alpha(t), \quad \text{with} \\
     I_\alpha(t)             & = \int_t^\infty \ud r \: r^{-2\alpha} \int_{\R^d}
@@ -1454,7 +1454,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 \begin{proof}[Proof of Theorem \ref{T:Main} (a)]
   In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and let $t_0 = \tau/2$. Throughout the
   proof, we have $t\ge \tau$. Let $v$ be the solution to \eqref{E:restart} that is restarted from
-  $t- t_0$. Then (see Figure \ref{F:RestartedSHE} for some illustrations)
+  $t- t_0$. Then (see Figure \ref{F:RestartedSHE} for an illustration)
   % \begin{align*}
   %   v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
   % \end{align*}
@@ -1499,7 +1499,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \mathscr{K}_1 (\Lambda) :=\left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x): \:\:\Norm{y}_{\tilde{\rho}} \le \Lambda \right\}
     \quad \text{with $\Lambda>0$}
   \end{align*}
-  is relative compact in $L_\rho^2(\R^d)$.
+  is relatively compact in $L_\rho^2(\R^d)$.
 
   Assumption (iii), i.e., \eqref{E:U0finite}, implies that the interval $\left(2^7L_b^2 \Upsilon(0),
   1/2\right)$ is not empty. Moreover, Assumption (iv), i.e., \eqref{E:Dalang-a0}, guarantees that
@@ -1512,7 +1512,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   \begin{align} \label{E:Fact}
     v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
   \end{align}
-  Part (3) of Lemma \ref{L:yineq} shows that for any $q$ in the following range:
+  Part (3) of Lemma \ref{L:yineq} shows that for any $q$ in the following range,
   \begin{align} \label{E:Choice}
     128 L_b^2 \Upsilon(0) < \frac{1}{q} < \alpha <\frac{1}{2}
     \qquad \left(\text{or equivalently} \quad
@@ -1524,7 +1524,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \left\{(F_\alpha h)(t_0,x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
     \quad \text{with $\Lambda>0$}
   \end{align*}
-  is relative compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
+  is relatively compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
   (\Lambda)$ as
   \begin{align*}
     \mathscr{K} (\Lambda)
@@ -1618,13 +1618,17 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   \end{align*}
 
   Let $\{T_n\}_{n\in \mathbb{N}}$ be any deterministic sequence such that $T_n\uparrow \infty$.
-  Since $\left\{U(T_n)\right\}_{n\ge 1}$ is a tight sequence of measures, there exists a subsequence
-  $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, say, $\eta$, on
+  Since $\left\{U(T_n)\right\}_{n\ge 1}$ is a tight sequence of measures, then there exists a subsequence
+  $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, $\eta$, on
   $L_\rho^2(\R^d)$. Then one can apply for the Krylov-Bogoliubov existence theorem (see, e.g.,
-  \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) to conclude that the measure $\eta$ is the
-  invariant measure for $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge \tau$. Finally, since $\tau$ can be
-  arbitrarily close to zero, one can conclude part (b) of Theorem \ref{T:Main}.
+  \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) to conclude that the measure $\eta$ is an
+  invariant measure for $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge \tau$. \textcolor{blue}{Finally, since $\tau$ can be
+  arbitrarily close to zero, one can conclude part (b) of Theorem \ref{T:Main}.}
 \end{proof}
+
+\textcolor{blue}{
+I think we should remove the last blue sentence from the proof. I changed (b) from Theorem \ref{T:Main} too. I think we need (b) as it is now ie $t\ge \tau$ not $t>0$.
+}
 
 % {{{ All references: New ones with biber
 \addcontentsline{toc}{section}{References}
@@ -1653,4 +1657,3 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 % \cite{grafakos:14:modern}
 % \cite{tessitore.zabczyk:98:invariant}
 
-sdfa
