@@ -410,7 +410,7 @@ of the following aspects:
     functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
     \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
     the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-  \item We give ...
+  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in what proceeds Remark \ref{R:Fourier}.
 \end{enumerate}
 
 This paper is organized as follows: In Section \ref{S:Example}, we will further discuss our main results and provide some examples. In particular, in Section \ref{SS:Weight}  we make some comments on the weight function and in Section \ref{SS:Init} we show that our results could include a wider class of initial conditions. Finally, the two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho}
@@ -702,10 +702,10 @@ The following proposition shows that for initial conditions with unbounded tails
     0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
   \end{gather}
   where $a_+ := \max(a,0)$ and $\mathcal{H}_\alpha(t)$ is defined in \eqref{E:H} below.
-  \textcolor{magenta}{In particular, when $\alpha=0$, we have
-  \begin{align*}
-   \Upsilon(0) = ... \text{Nick, please include this special case}
-  \end{align*}}
+  In particular, when $\alpha=0$, we have
+  \begin{equation} \label{E:Upsilon_0}
+   \Upsilon(0) = \frac{-\pi \csc\left(\frac{\pi d}{2}\right)}{2^d \pi^{d/2} \Gamma(d/2) \Gamma(s/2)}.
+  \end{equation}
   Moreover, for $\alpha\in(0,1/2)$, we have the following series expansion of
   $\mathcal{H}_\alpha(t)$ at $t\to 0$: % \renewcommand{\arraystretch}{2}
   \begin{align} \label{E:HaBS}
@@ -750,7 +750,7 @@ The following proposition shows that for initial conditions with unbounded tails
      & = \frac{1}{2} \int_0^1 z^{d/2+\alpha-2}(1-z)^{(s-d)/2-\alpha}\ud z \\
      & = \frac{\Gamma\left(d/2-1+\alpha\right)\Gamma\left((s-d)/2+1-\alpha\right)}{2\Gamma(s/2)},
   \end{align*}
-  which is finite provided that $s>d-2(1-\alpha)>0$. This proves \eqref{E:UpsionB}.
+  which is finite provided that $s>d-2(1-\alpha)>0$. This proves \eqref{E:UpsionB}. We then easily deduce \eqref{E:Upsilon_0} by letting $\alpha = 0$ in \eqref{E:UpsionB} and applying the formula $\Gamma(z)\Gamma(1-z) = \pi \csc(\pi x)$. 
 
   It remains to prove \eqref{E:HaBS}, which then implies \eqref{E:HaB}. From \eqref{E:H} and by the
   spherical coordinates, for all $t>0$,
@@ -835,20 +835,7 @@ measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$.
   different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it ibid.}).
 \end{remark}
 
-
-\textcolor{blue}{Why is the Fourier inverse used here and what happened to the $(2\pi)^{2d}$ term in the denominator from \eqref{E:TZspec}? Pretty sure it is a type since letting
-\[
-	  M(f) := \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
-\]
-simplifies correctly to
-	\[
-	\frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\zeta)  |\zeta|^{-2} \ud \zeta
-	\]
-}
-\textcolor{magenta}{Either way does the job, Fourier or inverse Fourier. The difference is a factor
-of $(2\pi)^{-d}$. Please do it again.}
-
-Let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
+Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. Now let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
 \begin{align*}
   M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
 \end{align*}
@@ -872,14 +859,6 @@ for Riesz kernel (in the generalized sense):
 Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 256 \Upsilon(0)$,
 our condition is sharper when $d> \frac{16\log(2)}{\log(2\pi)} \approx 6.03$. \bigskip
-
-
-\textcolor{blue}{Have you seen remark 3.6 \cite{tessitore.zabczyk:98:invariant}? They seem to ignore the issue that arises when $\hat{f}$ has zeros.}
-
-\textcolor{magenta}{Yes, Remark 3.6 doesn't specify which square root to take and only assume that
-$\mathcal{F}\left(\sqrt{\widehat{f}}\right)\ge 0$. This condition is satisfied easily for case 1 in
-Example \ref{Ex:sqrt} but is far from being clear for case 2. Can you tell for case 2 of the example
-below, whether $\mathcal{F}\left(\sqrt{\widehat{f}}\right)\ge 0$?}
 
 {\bf\noindent Case II:~} If $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
 namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute value in
@@ -912,18 +891,13 @@ namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute v
 \section{Moment Estimates -- Proof of Theorem \ref{T:Lrho}} \label{S:Lrho}
 We first state some known results and prove a moment bound in Corollary \ref{C:Mom}.
 
-\textcolor{blue}{We have already denoted $\mu$ as a deterministic measure and in the following theorem we say that it is random. Also, when $\mu$ is random, we need to specify what $|\mu|$ means in Corollary \ref{C:Mom}. When $\mu$ is random then $|\mu| = \Norm{\mu}_{p}$.}
-
-\textcolor{magenta}{Yes, this has to be made consistent. I haven't gone through this. Can you make
-the corresponding updates regarding this point?}
-
 \begin{theorem}[Theorem 1.2 \cite{chen.huang:19:comparison}] \label{T:Solve}
   Suppose that
   \begin{enumerate}[(i)]
-   \item the initial measure $\mu$ is an $\mathcal{F}_0$-measurable random variable that satisfies
+   \item the initial deterministic measure $\mu$ satisfies
      the following integrability condition:
      \begin{equation} \label{A:icon}
-       \E \left(\int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x)\right) < \infty \quad \text{for all $a>0$},
+       \int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x) < \infty \quad \text{for all $a>0$},
      \end{equation}
    \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
   \end{enumerate}
@@ -1153,26 +1127,18 @@ and the restarted SHE ($ t_0>0$):
   \end{equation}
   has the following properties:
 
-  \textcolor{blue}{We need to define $\mu^*$ in the case that $\mu$ is random and also deterministic. In this case we have that
-  \[ \mu^* =
-  		\begin{cases}
-	  		1 + |\mu| & \text{$\mu$ deterministc} \\
-	  		1 + \Norm{\mu}_q & \text{$\mu$ random}.
-  		\end{cases}
-  \]
-}
   \begin{enumerate}[(1)]
-    \item For all $q\ge 2$, $s>0$, $y\in\R^d$,
+    \item for all $q\ge 2$, $s>0$, $y\in\R^d$,
       \begin{align} \label{E:NormY}
         \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2(s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
       \end{align}
-      where we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
-    \item Under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
+      where $\mu^* = 1 + |\mu|$ and we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
+    \item under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
       some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
       \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in
       \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge
       0}H\left(t;32qL_b^2\right)<\infty$;
-    \item Under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
+    \item under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
       some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
       \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and
       $L^1(\R^d)$-function $\rho$, there exists a constant $\Theta =
@@ -1461,35 +1427,8 @@ Finally, we characterize conditions \eqref{E:Dalang-a0} and \eqref{E:H} in the f
 
 We are now ready to prove part (a) of Theorem \ref{T:Main}.
 
-\textcolor{blue}{
-I find it a little confusing when we restart at $t-t_0$. The first centered equation says that
-	\[
-		    v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
-	\]
-which is a little confusing since we said already that $t_0 = \tau / 2$ is fixed. So saying that $ v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot)$ for any $t \ge \tau$ makes is seem like $u$ is constant. But what really is going on is that $v$ is implicitly defined through $t$ in the sense that
-	\[
-		v(s, x) \stackrel{\mathcal{L}}{=} u(s, x, u(t-t_0,x)) \quad s \ge 0
-	\]
-where $t \ge 2t_0 > 0$. \bigskip \\
-This seems to be avoidable if we just consider
-	\[
-			v(t, x) \stackrel{\mathcal{L}}{=} u(t, x, u(t_0,x)) \quad t \ge 0
-	\]
-where $t_0 > 0$ is arbitrary.
-}
-
-\textcolor{magenta}{Restarting at $t-t_0$ is crucial, check the original proof by Tessitore and
-Zabczyk. This is also needed in the proof below for $ I_1$ to be uniform in time. Note that the
-integral is from zero to $ t_0$ in the upper bound of $I_1$, if it is from $ t_0$ to $t$, then this
-upper bound will depend on $t$. $u$ is not constant certainly, but you can always think that it is
-started just $t_0$ period time ago, in other words, at $ t_0$ time ago, $u$ was started somewhere
-and what you have now is that process having been run just for $ t_0$ period of time.\\
-For suggestion of $v(t,x)$, could you carry out the rest of the proof to make sure you get bounds
-uniform in time? This is exactly what we missed before. Please check the proof below and also
-those by Tessitore and Zabczyk. Let me know if you agree or maybe I have missed something.}
-
 \begin{proof}[Proof of Theorem \ref{T:Main} (a)]
-  In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and $t_0=\tau/2$. Throughout the
+  In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and let $t_0 = \tau/2$. Throughout the
   proof, we have $t\ge \tau$. Let $v$ be the solution to \eqref{E:restart} that is restarted from
   $t- t_0$. Then (see Figure \ref{F:RestartedSHE} for some illustrations)
   % \begin{align*}
@@ -1525,7 +1464,7 @@ those by Tessitore and Zabczyk. Let me know if you agree or maybe I have missed 
       \draw[dotted] (4,0.2) -- (4,0.8);
     \end{tikzpicture}
   \end{center}
-  \caption{Some illustrations for the restarted SHE in \eqref{E:RestaredSHE}.}
+  \caption{An illustration for the restarted SHE in \eqref{E:RestaredSHE}.}
   \label{F:RestartedSHE}
 \end{figure}
 
@@ -1538,25 +1477,13 @@ those by Tessitore and Zabczyk. Let me know if you agree or maybe I have missed 
   \end{align*}
   is relative compact in $L_\rho^2(\R^d)$.
 
-\textcolor{blue}{I think there is some redundancy in the following paragraph. Note that we only need $\mathcal{H}_{\alpha}(t) < \infty$ for any $t \ge 0$. We already proved that $\Upsilon_{2\alpha}(0) < \infty$ will imply this. So for that reason, there is no reason to say that "Now we can apply Part (3) of Lemma \ref{L:HUA}, thanks to
-	\eqref{E:Dalang-00}, to see that \eqref{E:H} holds." \bigskip \\
-Lastly, $\Upsilon_{2\alpha}(0) < \infty$ seems to be sufficient but not necessary and really what we really need is only for $\mathcal{H}_{\alpha}(t) < \infty$. Maybe we want to make a remark about this. It doe not matter too much since the Bessel kernel easily verifies both.
-}
-
-\textcolor{magenta}{I agree with the first paragraph. I have updated the statement accordingly. \\
-  As for the second paragraph, note that we always assume that $\Upsilon(0)<\infty$, under which
-$\Upsilon_{2\alpha}(0)<\infty$ is equivalent (not only sufficient, but also necessary) to
-$\mathcal{H}_\alpha(t)<\infty$ for all $t>0$. Have you missed this part -- Part (3) of Lemma
-\ref{L:HUA} or do you have any concern about this lemma?}
-
   Assumption (iii), i.e., \eqref{E:U0finite}, implies that the interval $\left(2^7L_b^2 \Upsilon(0),
   1/2\right)$ is not empty. Moreover, Assumption (iv), i.e., \eqref{E:Dalang-a0}, guarantees that
   there exists a constant $\alpha$ in this interval, namely, $2^7L_b^2\Upsilon(0) <\alpha<1/2$ such
   that \eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e.,
   $\Upsilon_{2\alpha}(0)<\infty$. Now we can apply part (3) of Lemma \ref{L:HUA}, thanks to
-  \eqref{E:Dalang-00}, to see that \textcolor{magenta}{$\Upsilon_{2\alpha}(0)<\infty$ if and only
-  if} \eqref{E:H} holds. Therefore, both Lemmas \ref{L:Factorize} and \ref{L:yineq} (in particular,
-  the part (3)) are applicable. In particular, Lemma \ref{L:Factorize} ensures that the following
+  \eqref{E:Dalang-00}, to see that $\Upsilon_{2\alpha}(0)<\infty$ if and only
+  if \eqref{E:H} holds. Therefore, both Lemmas \ref{L:yineq} and \ref{L:Factorize} (more precisely part (3) of Lemma \ref{L:yineq}) are applicable. In particular, Lemma \ref{L:Factorize} ensures that the following
   factorization is well defined:
   \begin{align} \label{E:Fact}
     v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
@@ -1649,37 +1576,6 @@ $\mathcal{H}_\alpha(t)<\infty$ for all $t>0$. Have you missed this part -- Part 
   \end{align*}
   which proves part (a) of Theorem \ref{T:Main}.
 \end{proof}
-
-\textcolor{blue}{
-Let $t_0 > 0$ and consider $v(t,x) = u(t,x; u(t_0 / 2,\cdot)) = u(t+t_0,x; \mu)$ so that $u(t_0,x) = v(t_0 /2, x)$. When we have a measure initial condition we sort of need to run a little time, and then run a little more time. What I mean is that we start with $u(t,x; \mu)$ and then consider $u(t_0 / 2, x ; \,mu)$ and use this as our new starting point. Then we start Tessitore's argument. \bigskip \\
-So we have $u(t_0,x) = v(t_0 /2, x) = (G(t_0, \cdot)*u(t_0/2, \cdot))(x) + \frac{\sin(\alpha \pi)}{\pi}[F_{\alpha}Y_v](t_0/2, x)$. We define 
-	\[
-		\mathscr{K}(\Lambda) := \left\{ \big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(t_0/2, x): \:\Norm{y}_{\tilde{\rho}}
-		\le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0/2);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
-	\]
-Then,
-	\begin{align*}
-		\mathbb{P}\left\{ u(t_0, \cdot) \not \in \mathscr{K}(\Lambda) \right\} &= \mathbb{P}\left\{ v(t_0/2, \cdot) \not \in \mathscr{K}(\Lambda) \right\} \\
-		& \le \mathbb{P}\left\{ \left( \int_0^{t_0/2} \Norm{Y_v(s,\cdot)}^q_{\tilde \rho} \ud s\right)^{1/q} > \frac{\pi \Lambda}{\sin(\alpha \pi)} \right\} + \mathbb{P}\left\{ \Norm{u(t_0/2, \cdot)}_{\tilde \rho} > \Lambda \right\} \\
-		&\le \frac{\sin^q(\alpha \pi)}{\pi^q \lambda^q} \mathbb{E} \int_0^{t_0 / 2} \Norm{Y_v(s,\cdot)}_{\tilde \rho}^q \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left( \Norm{u(t_0/2,\cdot)}_{\tilde \rho}^2 \right) \\
-		& \le \frac{\sin^q(\alpha \pi)}{\pi^q \lambda^q} \Theta \int_{0}^{t_0/2} \left(\mathcal{G}_{\tilde \rho}(s + t_0 /2; \mu)\mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s + \frac{1}{\Lambda^2} \mathbb{E}\left( \Norm{u(t_0/2,\cdot)}_{\tilde \rho}^2 \right) < \infty.
-	\end{align*}
-Note that  $\mathbb{P}\left\{ \Norm{u(t_0/2, \cdot)}_{\tilde \rho} > \Lambda \right\}$ from the second line of the proof does not appear in Tessitore's paper. This is because they have a deterministic initial condition and they do not need to do this initial runnng of $t_0/2$ time and they can immediately choose their initial condition, $\varphi$, to be such that $\Norm{\varphi}_{\tilde \rho} < \Lambda$. We can't do this directly and this is why we have to start by running $t_0/2$ time and then consider $u(t_0/2,x)$ as our starting point. \bigskip \\
-Continuing above, we can choose $\Lambda>0$ sufficiently big so that 
-	\[
-		\mathbb{P}\left\{ u(t_0, \cdot) \in \mathscr{K}(\Lambda) \right\} \ge 1 - \epsilon.
-	\]
-Now we can continue with your $t-t_0/2$ argument. Indeed, pick any $t > t_0$. The Markov property of the solution allows us to say that 
-	\begin{align*}
-		\mathbb{P}\left\{ u(t, \cdot) \in \mathscr{K}(\Lambda) \right\} &= \mathbb{P}\left\{ u(t, \cdot) \in \mathscr{K}(\Lambda) \Big\vert  \Norm{u(t-t_0/2, \cdot)}_{\tilde{\rho}} < \Lambda \right\} \mathbb{P}\left\{ \Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\} \\
-		& \ge (1-\epsilon) \mathbb{P}\left\{\Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\}.
-	\end{align*}
-This is what Tessitore does in the centered equation above Remark 3.2. Lastly we finish by saying 
-	\[
-		\mathbb{P}\left\{\Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\} \le \frac{\mathbb{E}\left( \Norm{u(t-t_0/2, \cdot)}_{\tilde \rho}^2 \right) }{\Lambda^2} \le C \frac{\mathcal{G}_{\tilde \rho}(t - t_0 / 2; \mu) }{\Lambda^2}.
-	\]
-There we can enlarge $\Lambda$ to get $\mathbb{P}\left\{\Norm{u(t-t_0/2, \cdot)}_{\tilde \rho} < \Lambda \right\} < \epsilon$ for all $ t \ge t_0$. This completes the proof.
-}
 
 \subsection{Proof of part (b) of Theorem \ref{T:Main}}
 \begin{proof}
