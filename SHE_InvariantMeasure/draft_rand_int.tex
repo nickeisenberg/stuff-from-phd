@@ -957,9 +957,13 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   by taking into account the expression of $\gamma_p$ in Theorem \ref{T:ExUn}, we see that as a
   direct consequence of \eqref{E:mb}, whenever
   \begin{equation}\label{E:pLip}
-     32 p L_b^2 < \frac{1}{4\Upsilon(0)},
+     32 p L_b^2 < \frac{1}{4\Upsilon(0)}, \quad \textcolor{blue}{\text{why not } 32p L_b^2 < 1 / (2\Upsilon(0))?}
   \end{equation}
   we have all $p$-th moments ($p\ge 2$) bounded as given in \eqref{E:mb0}.
+
+  \textcolor{blue}{
+For each $p_1 > p_2 \ge 2$,  we need to choose a smaller $L_b$ so that $32pL_b^2 < 1 / (2\Upsilon(0) ) $. We can't make a statement that all $p$ norms for $p \ge 2$ are bounded in $t$, we can only make that state for individual $p$ by appropriately choosing $L_b$ small enough. This is not an issue though as we always are fixing our $p$ values for the norm.
+}
 \end{proof}
 
 
@@ -1137,7 +1141,7 @@ and the restarted SHE ($ t_0>0$).
 
 \begin{lemma} \label{L:yineq}
   Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and that
-  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Assume that for some $\alpha\in
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Recall $\mathcal{H}_{\alpha}(t)$ defined in \eqref{E:H} and assume that for some $\alpha\in
   (0,1/2)$, $\widehat{f}$ satisfies the following condition
   \begin{align*} 
      \mathcal{H}_\alpha(t) = \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
@@ -1162,7 +1166,18 @@ and the restarted SHE ($ t_0>0$).
       some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
       \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in
       \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge
-      0}H\left(t;32qL_b^2\right)<\infty$;
+      0}H\left(t;32qL_b^2\right)<\infty$; 
+ 
+ \textcolor{blue}{
+	I think $(64L_b^2 \Upsilon(0), \alpha)$ being nonempty is all we need. Note that we must consider $\alpha \in (0, 1/2)$. Next, because of Prop \ref{P:F-Comp}, we need $1 / q \in (0, \alpha)$ which is going to be the first restriction. Our second restriction comes from Theorem \ref{T:ExUn}. Note that for bounded moments in time, we need $2\gamma_q \Upsilon(0) < 1$, or in other words, $64 q L_b^2 \Upsilon(0) < 1$ and this is the second restriction. Summarizing this gives us that we need both 
+		\[
+			64 L_b^2 \Upsilon(0) < 1 / q \quad \text{and} \quad 1 / q < \alpha < 1/2,
+		\]  
+	or by putting this together 
+		\[
+				64 L_b^2 \Upsilon(0) < 1 / q < \alpha.
+		\]
+}
     \item under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
       some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
       \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and
