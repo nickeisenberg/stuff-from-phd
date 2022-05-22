@@ -127,7 +127,7 @@ abbreviate=true]{biblatex}
 	}
 }
 % \addbibresource{All.bib}
-\addbibresource{thesis_biber.bib}
+\addbibresource{All.bib}
 % }}}
 %-------------------------
 
@@ -278,7 +278,7 @@ or even a more general fractional operator of the following type:
 	\[
 		\mathcal{L}_{b, \alpha}u(t,x) = \partial_b u(t,x) - (-\Delta)^{-\alpha / 2}u(t,x), 
 	\]
-where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian. The fractional operator, $\mathcal{L}_{\alpha, \beta}$ will be thoroughly discussed in section \ref{S:ISHWE} below as well as in Chapters \ref{C:ISHWEmom} and \ref{C:Global}. As for the stochastic wave equation, we direct the interested reader to \cite{dalang.khoshnevisan.ea:09:minicourse, milletsole.global2021, balan.chen.chen:03:invariant} to name a few. 
+where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian. The fractional operator, $\mathcal{L}_{\alpha, \beta}$ will be thoroughly discussed in section \ref{S:ISHWE} below as well as in Chapters \ref{C:ISHWEmom} and \ref{C:Global}. As for the stochastic wave equation, we direct the interested reader to \cite{millet.sanz-sole:21:global, dalang.khoshnevisan.ea:09:minicourse} to name a few. 
 
 We will finish this introduction with a brief discussion about the stochastic heat equation before giving a more thorough treatment in Section \ref{S:SHE}. As for the well-possedness of Equation \eqref{E:introSHE} above, Chen and Dalang \cite{chen.dalang:15:moments} proved the following:
 
@@ -348,7 +348,7 @@ text...
 
 \chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{C:ISHWEmom}
 \section{Introduction}
-In this paper we study the following {\it stochastic partial differential equation} (SPDE) with
+In this paper we study the following {\it stochastic partial differential equation} (SPDE) with 
 fractional differential operators:
 \begin{equation} \label{E:SPDE}
 \begin{cases}
@@ -398,7 +398,7 @@ G_{a,b,r,\nu,d}(t,x) = \pi^{-d/2} |x|^{-d} t^{b+r-1} H^{2,1}_{2,3}\left( \frac{|
 \end{array} \right).
 \]
 We direct the reader to Theorem 4.1\footnote{$G(t,x)$ corresponds to $Y_{a,b,r,\nu,d}(t,x)$ from
-	\cite{CHN19}.} of \cite{CHN19} for more details. Since we are interested in the constant one initial
+	\cite{chen.hu.ea:19:nonlinear}.} of \cite{chen.hu.ea:19:nonlinear} for more details. Since we are interested in the constant one initial
 condition (and zero initial velocity when $b>1$), Theorem 4.1 ({\it ibid.}) implies that the
 corresponding solution to the homogeneous equation (i.e. the solution when there is no driving
 source) is equal to the constant one. Hence through superposition, \eqref{E:SPDE} can be written as
@@ -417,9 +417,9 @@ $G(t,x)$:
 
 \begin{remark} \label{R:Nonnegative}
 	% Regarding the nonnegativity assumption --- Assumption \ref{A:Nonnegative},
-	Thanks to Theorem 4.6 of \cite{CHN19} (see also Theorem 3.1 of \cite{CHHH17} for the case when $r=0$),
+	Thanks to Theorem 4.6 of \cite{chen.hu.ea:19:nonlinear} (see also Theorem 3.1 of \cite{chen.hu.ea:17:space-time} for the case when $r=0$),
 	we have the following four groups of sufficient conditions \footnote{Note that when $d\ge 1$,
-		$b=1$ and $a\in (0,2]$, part (1) of \cite[Theorem 4.6]{CHN19} says that the fundamental solution
+		$b=1$ and $a\in (0,2]$, part (1) of \cite[Theorem 4.6]{chen.hu.ea:19:nonlinear} says that the fundamental solution
 		$Y$, which is the fundamental solution $G$ in this paper, is nonnegative provided $r=0$ or
 		$r>1$. Indeed, because in this case $Z$ is always nonnegative, for $r>0$, $Y$ as a fractional
 		integral of $Z$ (see (4.5), {\it ibid.}),  $Y$, or our $G$, should also be nonnegative. We thank
@@ -507,8 +507,8 @@ the fractional noise and a mixture of them:
 	K(x)       = \beta_{\alpha,d}|x|^{-(d+\alpha)/2}.
 	\end{equation}
 	\noindent (2) Setting $k=d$ in \eqref{E:corfunction} and \eqref{E:specfunction} recovers the
-	time-independent fractional noise. The corresponding SHE with such noise was earlier studied by Hu
-	\cite{Hu01Heat}. For this noise, we have that
+	time-independent fractional noise. The corresponding SHE with such noise was earlier studied by Hu \textcolor{blue}{come back to this citation}
+	\cite{hu:01:heat}. For this noise, we have that
 	\begin{equation}\label{E:fracnoise}
 	\gamma(x)    = \prod_{i=1}^d |x_i|^{-\alpha_i}, \quad
 	\varphi(\xi) = \prod_{i=1}^d C_{\alpha_i,1} |\xi_i|^{-(1-\alpha_i)}\quad\text{and}\quad
@@ -517,23 +517,23 @@ the fractional noise and a mixture of them:
 \end{example}
 \bigskip
 
-In a recent work by Balan {\it et al} \cite{BCC21}, the same equation as \eqref{E:SPDE}, but
+In a recent work by Balan {\it et al} \cite{balan.chen.ea:22:exact}, the same equation as \eqref{E:SPDE}, but
 exclusively for the {\it stochastic wave equation} (SWE), namely, the case when $a=b=\nu=2$ and
 $r=0$, has been studied, where both the well-posedness and the exact moment asymptotics have been
 obtained. The corresponding {\it stochastic heat equation} (SHE), namely, the case when $a=2$,
-$b=\nu=1$ and $r=0$, has been earlier studied by Hu \cite{Hu01Heat}, but only for the well-posedness
+$b=\nu=1$ and $r=0$, has been earlier studied by Hu \cite{hu:01:heat}, but only for the well-posedness
 and exclusively for the fractional noise \eqref{E:fracnoise}.  The corresponding moment asymptotics
-have been obtained by X. Chen \cite{Chen17AIHP} as a special case by setting $\alpha_0=0$. One may
-check Remark 1.9 of Balan {\it et al} \cite{BCC21} for the explicit expressions in terms of notation
+have been obtained by X. Chen \cite{chen:17:moment} as a special case by setting $\alpha_0=0$. One may
+check Remark 1.9 of Balan {\it et al} \cite{balan.chen.ea:22:exact} for the explicit expressions in terms of notation
 of the current paper. In this paper, by working on a more general class of SPDEs, we are able to
 interpolate the asymptotics for both SWE and SHE; see Section \ref{SS:EgAsym} below for more
 details. Moreover, we give the sharp conditions under which there exists only a local $L^2(\Omega)$
 solution.
 
-The moment asymptotics obtained by X. Chen, such as those in \cite{Chen17AIHP,Chen19AIHP}, rely
+The moment asymptotics obtained by X. Chen, such as those in \cite{chen:17:moment, chen:19:parabolic}, rely
 crucially on the Feynman-Kac representation of the moments of the solution. However, whenever $b\ne
 1$, especially for the case when $b\in(1,2)$, we are not aware of any such Feynman-Kac formula for
-the moments. Instead, in the recent work by Balan {\it et al} \cite{BCC21}, this difficulty has been
+the moments. Instead, in the recent work by Balan {\it et al} \cite{balan.chen.ea:22:exact}, this difficulty has been
 overcome by studying the Wiener chaos expansion of the solution. In this paper, we follow the same
 strategy laid out by Balan {\it et al} ({\it ibid.}). The challenge comes from the much more
 involved parametric form of the fundamental solution.  \bigskip
@@ -672,15 +672,14 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 		\begin{align} \label{E:Tp-SHE2}
 		T_p = \dfrac{\nu}{2\theta (p-1) \mathcal{M}_{2,2}(\delta_0)}, \qquad p\ge 2.
 		\end{align}
-		Note that in part 2) of Theorem 4.1 of Hu \cite{Hu02Chaos}, some lower and upper bounds for $
+		Note that in part 2) of Theorem 4.1 of Hu \cite{hu:02:chaos}, some lower and upper bounds for $
 		T_2$ were obtained. More precisely, by setting additionally that $\theta=1$ and $\nu=1$, Hu
 		({\it ibid.}) proved that when $t<2$, an $L^2(\Omega)$ solution exists but when $t>2\pi$, the
 		second moment of the solution blows up. It is an interesting exercise to show that
 		\begin{align*}
 		2\le T_2 = \frac{1}{2 \mathcal{M}_{2,2}(\delta_0)} \le 2\pi, \qquad \text{where $d=2$.}
 		\end{align*}
-		This case is covered as a special time-independent case (i.e., $H_0=1$) by Chen {\it et al}
-		\cite[Theorem 3.4 and Remark 3.13]{CDOT20}.
+		This case is covered as a special time-independent case (i.e., $H_0=1$) by Chen {\it et al} \cite[Theorem 3.4 and Remark 3.13]{chen.deya.ea:21:moment}.
 		\item Recall that the white noise driven SHE corresponds to when $\alpha=d$. Therefore by
 		examining \eqref{E:alpha} and \eqref{E:critical}, we see that when $d\ge 3$, the SHE driven by
 		white noise no longer has any $L^2(\Omega)$-solution. In addition, local solutions exist only
@@ -694,12 +693,11 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	Note that we use the Skorohod integral to interpret the multiplication of the solution with the
 	noise in \eqref{E:SPDE}. Multiplication interpreted in this way is traditionally called the {\it
 		Wick product} which is consistent with the {\it It\^o} or {\it Walsh} integral (see, e.g.,
-	\cite{Minicourse09}) when the noise is white in time. One can also interpret this product as the
+	\cite{dalang.khoshnevisan.ea:09:minicourse}) when the noise is white in time. One can also interpret this product as the
 	usual product. In order to handle the singularities caused by this multiplication, one needs to
 	carry out certain renormalization processes. In fact, for the standard SHE with white noise in
 	$\R^d$ (i.e., $a=2$, $b=1$, $\alpha=d$ and $r=0$), Hairer and Labb\'e constructed pathwise
-	solutions using the regularity structure for both cases $d=2,3$ in \cite{HairerLabbe15SHE2} and
-	\cite{HairerLabbe18SHE3}, respectively. The relation between these two types of solution is left
+	solutions using the regularity structure for both cases $d=2,3$ in \cite{hairer.labbe:15:simple} and \cite{hairer.labbe:18:multiplicative}, respectively. The relation between these two types of solution is left
 	for future work.
 \end{remark}
 
@@ -750,7 +748,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 	\begin{align} \label{E:CrSWE}
 	\alpha=3 + 2 r\le d \quad \text{and} \quad r\in[0,1/2].
 	\end{align}
-	We recall that results in Balan {\it et al} \cite{BCC21} require $d\le 3$, and likewise,
+	We recall that results in Balan {\it et al} \cite{balan.chen.ea:22:exact} require $d\le 3$, and likewise,
 	Assumption \ref{A:Nonnegative} and all known sufficient conditions for the nonnegativity of the
 	fundamental solution (see Remark \ref{R:Nonnegative}) also require $d\le 3$ in case of $b\in
 	(1,2)$. With this restriction, conditions \eqref{E:CrSWE} reduce to
@@ -812,7 +810,7 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 
 \begin{example}[Fractional SPDEs with $r=\Ceil{b}-b$ and $a=2$] \label{Eg:FracSHE}
 	For the fractional SDPEs with $b\ne 1$, many known works focus on the case when $r=\Ceil{b}-b$,
-	where $\Ceil{b}$ is the ceiling function; see, e,g., \cite{Chen17Tran,MijenaNane15SPA}. To
+	where $\Ceil{b}$ is the ceiling function; see, e,g., \cite{chen:17:nonlinear, mijena.nane:15:space-time}. To
 	facilitate the discussions here, we will only focus on the case when $a=2$. In particular, by
 	setting $r=\Ceil{b}-b$ and $a=2$, conditions in \eqref{E:critical} become
 	\begin{align} \label{E:CrFrSHE}
@@ -1000,9 +998,9 @@ In this part, we list some concrete examples regarding the solvability --- Theor
 
 \begin{example}[Fractional SPDEs with $r=0$ and $a=2$] \label{Eg:FracSHE0}
 	In this example, we study the special case of the fractional SPDEs when $r=0$. The choice of $r=0$
-	has been used in, e.g., \cite{CHHH17}.  We will only consider the case $a=2$ for simplicity. Now
+	has been used in, e.g., \cite{chen.hu.ea:17:space-time}.  We will only consider the case $a=2$ for simplicity. Now
 	by setting $r=0$ and $a=2$ and restricting $b\le 1$, conditions in \eqref{E:critical} become
-	\begin{align} \label{E:CrFrSHE}
+	\begin{align} \label{E:CrFrSHE2}
 	\alpha =4- \frac{2}{b} \le d \quad  \text{and} \quad b\in (0,1].
 	\end{align}
 	As discussed in Example \ref{Eg:FracSHE}, Assumption \ref{A:Nonnegative} is satisfied for all
@@ -1283,8 +1281,7 @@ results for both stochastic wave and heat equations.
 	t_p   = (p-1)^{1/(4-\alpha)} t,
 	\end{align*}
 	and results in \eqref{E:momentasym}, \eqref{E:momentasym-t}, and \eqref{E:momentasym-p} recover
-	the corresponding results for the stochastic wave equation, namely, (1.9), (1.10), and (1.11) of
-	\cite{BCC21}, respectively.  Due to the importance of white noise and for the future references,
+	the corresponding results for the stochastic wave equation, namely, (1.9), (1.10), and (1.11) of \cite{balan.chen.ea:22:exact}, respectively.  Due to the importance of white noise and for the future references,
 	here we list two special cases regarding white noise:\\
 	
 	\noindent(1) The SWE with white noise in $\R$: By further setting $d=\alpha=1$, we see that
@@ -1316,10 +1313,9 @@ results for both stochastic wave and heat equations.
 	t_p=(p-1)^{2/(4-\alpha)}t,
 	\end{align*}
 	and results in \eqref{E:momentasym} and \eqref{E:momentasym-t} recover the corresponding
-	conjectured results for SHE, namely, (1.16) and (1.17) of Balan {\it et al} \cite{BCC21},
-	respectively, which are equivalent to Theorem 1.1 and 1.2 of X. Chen \cite{Chen17AIHP} when
-	setting $\alpha_0=0$ and using \cite[Lemma A.2]{15AIHP} to rewrite the constant $\mathcal{E}$ in
-	\cite{Chen17AIHP} in terms of $\mathcal{M}_a$. Due to the importance of the white noise case, we
+	conjectured results for SHE, namely, (1.16) and (1.17) of Balan {\it et al} \cite{balan.chen.ea:22:exact},
+	respectively, which are equivalent to Theorem 1.1 and 1.2 of X. Chen \cite{chen:17:moment} when
+	setting $\alpha_0=0$ and using \cite[Lemma A.2]{chen.hu.ea:15:exponential} to rewrite the constant $\mathcal{E}$ in \cite{chen:17:moment} in terms of $\mathcal{M}_a$. Due to the importance of the white noise case, we
 	list the corresponding asymptotics here. When $\alpha=d=1$,
 	\begin{align} \label{E:AsymSHE1d}
 	\lim_{t \to \infty} \frac{\log \E\left(|u(t,x)|^p\right)}{t^3} = \frac{p(p-1)^2\theta^2}{24\nu}
@@ -1328,7 +1324,7 @@ results for both stochastic wave and heat equations.
 	\end{align}
 	where we have applied \eqref{E:Mdelta1d}. Note that some upper and lower bounds for the first
 	limit in \eqref{E:AsymSHE1d} in case of $p=2$ were earlier obtained by Hu \cite[part 1) of Theorem
-	4.1]{Hu02Chaos}.
+	4.1]{hu:02:chaos}.
 \end{example}
 
 \begin{example}[Asymptotics for SHE with fractional Laplacian] \label{Eg:AsymStable}
@@ -1350,7 +1346,7 @@ results for both stochastic wave and heat equations.
 	\left( \frac{1}{2} \right)\left( \frac{2a}{2a-\alpha} \right)^{\frac{2a-\alpha}{a-\alpha}}
 	\left[ \theta \nu^{-\alpha/a} \mathcal{M}_{a,d}^{\frac{2a-\alpha}{a}} \right]^{ \frac{a}{a-\alpha} } \left(\frac{a-\alpha}{a}\right).
 	\end{align}
-	this setup has been studied in \cite{CHSS18} for the case of a time-dependent noise where the
+	this setup has been studied in \cite{chen.hu.ea:18:temporal} for the case of a time-dependent noise where the
 	covariance function is given by
 	\begin{align*}
 	\mathbb{E}[\dot{W}(r,x)\dot{W}(s,y)] = |r-s|^{-\alpha_0}\gamma(x-y)
@@ -1373,7 +1369,7 @@ results for both stochastic wave and heat equations.
 	& \frac{\gamma(x-y)}{|r-s|^{\alpha_0}}g^2(s,x)g^2(r,y)  \ud x \ud y \ud r \ud s \\
 	& - (2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s \bigg\}
 	\end{align*}
-	with\footnote{Note that the Fourier transform is defined differently in \cite{CHSS18}.}
+	with\footnote{Note that the Fourier transform is defined differently in \cite{chen.hu.ea:18:temporal}.}
 	\begin{align*}
 	\mathcal{A}_{a,d} := \left\{ g(s,x) : \int_{\R^d} g^2(s,x) \ud x = 1, \forall s \in [0,1] \text{ and }
 	(2\pi)^{-d} \int_0^1 \int_{\R^d} |x|^a |\mathcal{F}g(s,\xi)|^2 \ud \xi \ud s < \infty \right\}.
@@ -1472,14 +1468,14 @@ Let $\mathcal{H}$ be the completion of $\mathcal{D}(\R^d)$ with respect to $\lan
 \rangle_{\mathcal{H}}$ and thus we see $\phi \mapsto W(\phi)$ is an isometry from
 $\mathcal{D}(\R^d)$ to $L^2(\Omega)$, that is, $\E\left(W(\phi)^2\right) =
 \Norm{\phi}_{\mathcal{H}}^2$ for $\phi\in \mathcal{D}(\R^d)$. One can extend this isometry from
-$\mathcal{D}(\R^d)$ to $\mathcal{H}$. We refer the interested readers to \cite{Minicourse09} and
+$\mathcal{D}(\R^d)$ to $\mathcal{H}$. We refer the interested readers to \cite{dalang.khoshnevisan.ea:09:minicourse} and
 references therein.  \bigskip
 
 We denote $\delta$ the {\it Skorohod integral} with respect to $W$ and denote its domain by
 $\text{Dom}(\delta)$. $u$ is called {\it Skorohod integrable} if $u\in \text{Dom}(\delta)$, in which
 case we write $\delta(u) = \int_{\R^d} u(x) W(\delta x)$ and by isometry,
 $\E\left(\delta(u)^2\right)=\E(\Norm{u}_{\mathcal{H}}^2)$. For a complete treatment of the Skorohod
-integral, see Nualart {\it et al} \cite{Nualart18Book}.
+integral, see Nualart {\it et al} \cite{nualart.nualart:18:introduction}.
 
 \begin{definition}[Mild, local and global solutions] \label{D:Sol}
 	(1) For $T\in (0,\infty]$, a random field $u=\left\{u(t,x) : t \in (0,T),\: x\in\R^d\right\}$ is
@@ -1504,7 +1500,7 @@ integral, see Nualart {\it et al} \cite{Nualart18Book}.
 
 Note that through construction of the Skorohod integral $\delta$, a mild solution is necessarily to
 be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \cite[Chapter
-3]{Nualart18Book}.  \bigskip
+3]{nualart.nualart:18:introduction}.  \bigskip
 
 % \begin{definition}
 %   \label{D:CriDim}
@@ -1517,7 +1513,7 @@ be an $L^2(\Omega)$-solution.  For more details, one may check, e.g., Nualart \c
 Through the standard {\it Picard iteration} scheme, the solution can be expressed by the following
 {\it Wiener chaos expansion} \footnote{Wiener chaos expansion has been widely to solve the linear
 	stochastic partial differential equations. We direct interested readers to \cite[Section
-	5]{BS2017} for a presentation of this procedure.}:
+	5]{balan.song:17:hyperbolic} for a presentation of this procedure.}:
 \begin{equation} \label{E:solwexp}
 u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
 \end{equation}
@@ -1574,7 +1570,7 @@ $\Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}$ play an important 
 \end{lemma}
 \begin{proof}
 	The scaling properties in \eqref{E:greenscale} are direct consequences of the explicit expression
-	of $\mathcal{F}G(t,\cdot)(\xi)$ as in \cite[(4.8)]{CHN19}. Property \eqref{E:Ffnscale} is an easy
+	of $\mathcal{F}G(t,\cdot)(\xi)$ as in \cite[(4.8)]{chen.hu.ea:19:nonlinear}. Property \eqref{E:Ffnscale} is an easy
 	exercise of change of variables on \eqref{E:fweker}. Property \eqref{E:normscale} is a direct
 	consequence of \eqref{E:greenscale}, \eqref{E:Ffnscale}, and the scaling property of the spectral
 	measure $\mu$. We leave the details for the interested readers.
@@ -1621,20 +1617,20 @@ where
 \end{gather}
 We often omit the dimension $d$ in  $ \mathcal{M}_{a,d}$ when it is clear from context.  We use the
 convention that $\mathcal{M}_a(f):=\mathcal{M}_a(f,1)$ to be consistent with notation \eqref{E:M1}.
-By a similar argument as the proof of \cite[Lemma 2.3]{BCC21}, one can show that
+By a similar argument as the proof of \cite[Lemma 2.3]{balan.chen.ea:22:exact}, one can show that
 \begin{equation} \label{E:ScaleM}
 \mathcal{M}_a(\Theta \gamma , \theta) =
 \Theta^{\frac{a}{2a-\alpha}}\theta^{-\frac{\alpha}{2a-\alpha}} \mathcal{M}_a( \gamma , 1),
 \qquad \text{for all $\theta$ and $\Theta>0 $.}
 \end{equation}
 
-For the Riesz kernel case (see Example \ref{Eg:NoiseEg}), Bass, Chen and Rosen \cite{BCR09}
+For the Riesz kernel case (see Example \ref{Eg:NoiseEg}), Bass, Chen and Rosen \cite{bass.chen.ea:09:large}
 established that when $a \in (0,2]$, $\nu = 2$ and $\alpha < \min\{2a,d\}$,
 \begin{equation} \label{E:oldlim}
 \lim_{n \to \infty} \frac{1}{n} \log \left[ \frac{1}{(n!)^2} \int_{(\R^d)^n} \left( \sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+ |\sum_{j=k}^n \xi_{\sigma(j)}|^a}\right)^2 \mu (\ud \vec{\xi}\:)\right]
 = \log\left( \rho_{2,a}\left(|\cdot|^{-\alpha}\right) \right),
 \end{equation}
-and \footnote{In Theorem 1.5 or eq. (1.20) of Bass {\it et al} \cite{BCR09}, the factor
+and \footnote{In Theorem 1.5 or eq. (1.20) of Bass {\it et al} \cite{bass.chen.ea:09:large}, the factor
 	$(2\pi)^{-d}$ should not be present.}
 \begin{equation} \label{E:oldrhovarrep}
 \rho_{2,a} \left(|\cdot|^{-\alpha}\right) = \mathcal{M}_a^{2-(\alpha/a)}\left(|\cdot|^{-\alpha},2\right),
@@ -1684,19 +1680,19 @@ More generally we have the following theorem:
 	\begin{align} \label{E:Mdelta1d}
 	\mathcal{M}_{2,1}(\delta_0)= (3/4)(1/6)^{1/3},
 	\end{align}
-	which is a consequence of Chen and Li \cite[Lemma 7.2]{ChenLi04} with $p=2$. When $d\ge 2$, the
+	which is a consequence of Chen and Li \cite[Lemma .2]{chen.li:04:large} with $p=2$. When $d\ge 2$, the
 	value of $\mathcal{M}_{2,d}(\delta_0)$ can be expressed using the best constant for the classical
-	{\it Gagliardo-Nirenberg} inequality; see Remark 3.13 of Chen {\it et al} \cite{CDOT20} for more
+	{\it Gagliardo-Nirenberg} inequality; see Remark 3.13 of Chen {\it et al} \cite{chen.deya.ea:21:moment} for more
 	details.
 \end{remark}
 
 \begin{proof}[Sketch of the proof of Theorem \ref{T:Variation}]
 	The proof of this theorem follows essentially the identical proof as Bass {\it et al}
-	\cite{BCR09}, which is exclusively for the Riesz kernel. One simplification is that we only need
+	\cite{bass.chen.ea:09:large}, which is exclusively for the Riesz kernel. One simplification is that we only need
 	to handle the case $p=2$ thanks to the hypercontractivity property. For our slight extension to
 	the noise given in Assumption \ref{A:Noise}, there is no need to repeat their paper. Instead we
 	will only point out the differences and necessary changes. For your convenience, the
-	correspondence of parameters between Bass {\it et al} \cite{BCR09} and the current paper is listed
+	correspondence of parameters between Bass {\it et al} \cite{bass.chen.ea:09:large} and the current paper is listed
 	in the following Table \ref{Tb:Notation}.
 	
 	\begin{table}[htpb]
@@ -1709,7 +1705,7 @@ More generally we have the following theorem:
 			\begin{tabular}{|c|c|c|c|c|c|c|c|}
 				\hline
 				& \multicolumn{2}{c|}{Laplace} & \multicolumn{3}{c|}{Noise} & Moment   & Variational Const.  \\ \hline
-				Bass {\it et al} \cite{BCR09} & $\beta$                      & $2$                        & $\sigma$ & $|\cdot|^{-\sigma}$  & $\varphi_{d-\sigma}$ & $p$ & $\Lambda_\sigma$                                \\
+				Bass {\it et al} \cite{bass.chen.ea:09:large} & $\beta$                      & $2$                        & $\sigma$ & $|\cdot|^{-\sigma}$  & $\varphi_{d-\sigma}$ & $p$ & $\Lambda_\sigma$                                \\
 				Current paper                 & $a$                          & $\nu$                      & $\alpha$ & $\gamma(\cdot)$      & $\varphi$            & $2$ & $\mathcal{M}_a\left(|\cdot|^{-\alpha},2\right)$ \\ \hline
 			\end{tabular}
 		\end{tabular}
@@ -1792,7 +1788,7 @@ More generally we have the following theorem:
 	\ref{T:Variation}.
 \end{proof}
 
-Note that the proof of \cite[Lemma 1.6]{BCR09} relies on inequality (1.27) on p.  630 ({\it ibid.}),
+Note that the proof of \cite[Lemma 1.6]{bass.chen.ea:09:large} relies on inequality (1.27) on p.  630 ({\it ibid.}),
 which was a consequence of {\it Sobolev's inequality}. For the more general noises studied in this
 paper, we can no longer apply this inequality. Instead, we prove the following lemma using the {\it
 	weak Young's inequality} (see, e.g., \cite[p.107]{LiebLoss01}) as a generalization of Lemma 1.6
@@ -1808,7 +1804,7 @@ paper, we can no longer apply this inequality. Instead, we prove the following l
 	\end{align*}
 \end{lemma}
 \begin{proof}
-	By observing the proof of Lemma 1.6 of \cite{BCR09}, we only need to prove that
+	By observing the proof of Lemma 1.6 of \cite{bass.chen.ea:09:large}, we only need to prove that
 	\begin{equation} \label{E:fracrhofinite}
 	\int_{\R^d}\int_{\R^d} F(y)G(x)\varphi\left(x-y\right) \ud y \ud x
 	\le C \Norm{F}_{L^{2d/(d+\alpha)}(\R^d)} \Norm{G}_{L^{2d/(d+\alpha)}(\R^d)},
@@ -1904,7 +1900,7 @@ and $\theta>0$ that
 = \Theta^{\frac{a}{a-\alpha}} \theta^{-\frac{\alpha}{a-\alpha}}  \mathbf{E}_{a,d}(\gamma,1).
 \end{equation}
 The relation between $\mathbf{E}_{a,d}(\gamma,\theta)$ and $\mathcal{M}_{a,d}(\gamma,\theta)$ can be
-established in a similar way as \cite[Lemma A.2]{15AIHP}, which is stated in the following lemma:
+established in a similar way as \cite[Lemma A.2]{chen.hu.ea:15:exponential}, which is stated in the following lemma:
 
 \begin{lemma} \label{L:EvsM}
 	Under Assumption \ref{A:Noise} and assuming $\alpha <\min\{a,d\}$, the following three expressions hold:
@@ -1933,7 +1929,7 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 	best constant in \eqref{E:SobIneq} by $\sigma(a,d,\alpha)$.
 \end{lemma}
 \begin{proof}
-	The proof of this result follows the scheme laid out in the proof of \cite[Lemma A.3]{ChenAOP12}.
+	The proof of this result follows the scheme laid out in the proof of \cite[Lemma A.3]{chen:12:quenched}.
 	By the same techniques presented above in Lemma \ref{T:Variation}, one can show the following
 	quantity is finite:
 	\begin{align*}
@@ -1965,7 +1961,7 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 	\begin{align*}
 	\Lambda \ge \sup_{x>0} \left\{ C_fx^\alpha - \frac{1}{2}x^a \right\} = \frac{a-\alpha}{a}C_f^{a/(a-\alpha)}\left(\frac{2\alpha }{a}\right)^{\alpha/(a-\alpha)}.
 	\end{align*}
-	Note that this reduces to the equation present in the proof of Lemma A.3 \cite{ChenAOP12} when
+	Note that this reduces to the equation present in the proof of Lemma A.3 \cite{chen:12:quenched} when
 	$a=2$. By taking the $\sup$ over all $f\in \mathcal{F}_a$ we see that
 	\begin{align*}
 	\infty > \Lambda \ge \frac{a-\alpha}{a}\sigma(a,d,\alpha)^{a/(a-\alpha)}\left(\frac{2\alpha }{a}\right)^{\alpha/(a-\alpha)}.
@@ -1983,7 +1979,7 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 	\begin{align*}
 	\int_{\R^d} f^2(x) \gamma(x) \ud x \le \sigma(a,d,\alpha) \Norm{f}_2^{2-(2\alpha/a)} \mathcal{E}_a(f,f)^{\alpha/a}
 	\end{align*}
-	which again reduces to the equation A.4 \cite{ChenAOP12} when $a=2$.
+	which again reduces to the equation A.4 \cite{chen:12:quenched} when $a=2$.
 \end{proof}
 
 \begin{lemma} \label{L:gammaf2f2bdd}
@@ -2020,7 +2016,7 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 	\int_{\R^{2d}} \gamma(x+y)f^2(x)f^2(y) \ud x \ud y \le \sigma(a,d,\alpha) \mathcal{E}_a(f,f)^{\alpha/a}.
 	\]
 	We note that the sharpness of $\sigma(a,d,\alpha)$ follows immediately from Lemma
-	\ref{L:gammaf2bdd}. In addition, this reduces to equation (A.1) \cite{15AIHP} for the time
+	\ref{L:gammaf2bdd}. In addition, this reduces to equation (A.1) \cite{chen.hu.ea:15:exponential} for the time
 	independent case when $a=2$.
 \end{proof}
 
@@ -2081,7 +2077,7 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 	E_{a,d}(\gamma,1) = \left( \frac{a-\alpha}{a}\right)(2)^{\alpha/(a-\alpha)}\left( \frac{2a-\alpha}{2a} \right)^{-(2a-\alpha)/(a-\alpha)}\mathcal{M}_{a,d}(\gamma,1)^{(2a-\alpha)/(a-\alpha)} .
 	\end{equation}
 	Equations \eqref{E:Meqquality1}, \eqref{E:Eequality1} and \eqref{E:EandMrelation1} recover
-	equations (A.2), (A.3) and (A.4) of \cite{15AIHP} respectively when $a=2$.
+	equations (A.2), (A.3) and (A.4) of \cite{chen.hu.ea:15:exponential} respectively when $a=2$.
 \end{proof}
 
 \section{Existence and uniqueness of the solution} \label{S:solvable}
@@ -2089,14 +2085,14 @@ We need to prove two lemmas in order to prove Lemma \ref{L:EvsM}.
 In this section, we will prove part (1) of Theorem \ref{T:solvable}. The proof will need the
 following lemma:
 
-\begin{lemma}[Lemma 3.5 of \cite{BCC21}] \label{L:doubleExp}
+\begin{lemma}[Lemma 3.5 of \cite{balan.chen.ea:22:exact}] \label{L:doubleExp}
 	If $H:[0,\infty) \to [0,\infty)$ is a non-decreasing function, then
 	\begin{equation} \label{E:doubleExp}
 	2\int_0^\infty e^{-2t}H^2(t) \ud t \le \left( \int_0^\infty e^{-t} H(t) \ud t \right)^2.
 	\end{equation}
 \end{lemma}
 
-The proof of Theorem \ref{T:solvable} follows the same strategy as \cite[Section 3]{BCC21} with
+The proof of Theorem \ref{T:solvable} follows the same strategy as \cite[Section 3]{balan.chen.ea:22:exact} with
 minor changes such as
 \begin{align} \label{E:Changes}
 \frac{1}{1+|\xi|^2} \qquad \text{replaced by} \qquad \frac{1}{1+\frac{\nu}{2}|\xi|^a}.
@@ -2112,7 +2108,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\mathcal{F}L(\xi) = \int_0^\infty e^{-t}\mathcal{F}G(t,\cdot)(\xi) \ud t
 	= \dfrac{1}{1 + \frac{\nu}{2}|\xi|^a};
 	\end{equation}
-	see the proof of Theorem 4.1 of \cite{CHN19} for the last equality.  Similarly, let $L_n(\vec{y})$
+	see the proof of Theorem 4.1 of \cite{chen.hu.ea:19:nonlinear} for the last equality.  Similarly, let $L_n(\vec{y})$
 	to be the Laplace transform of $\widetilde{f_n}(\vec{y},0,\cdot)$ evaluated at one, namely,
 	\begin{align*}
 	L_n(\vec{y}) & := n! \int_0^\infty e^{-t}\widetilde{f_n}(\vec{y};0,t) \ud t \\
@@ -2153,7 +2149,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\int_{(\R^d)^n} \left[ \int_0^\infty e^{-t} H_n(t,\vec{x}) \ud t \right]^2 \ud \vec{x}
 	= \int_{(\R^d)^n} | \mathcal{F}L_n(\vec{\xi}) |^2 \mu(\ud \vec{\xi}\:).
 	\end{equation}
-	One may check the proof of Lemma 3.3 of \cite{BCC21} for more details.% }}}
+	One may check the proof of Lemma 3.3 of \cite{balan.chen.ea:22:exact} for more details.% }}}
 	
 	{\bigskip\bf\noindent Step 2.~}% {{{
 	Now we compute the corresponding part to the left-hand side of
@@ -2161,7 +2157,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\begin{equation} \label{E:inteq1}
 	\Norm{\widetilde{f_n}(\cdot,0;t)}_{\mathcal{H}^{\otimes n}}^2 = \frac{1}{(n!)^2}\int_{(\R^d)^n} H_n^2(t,\vec{x}) \ud \vec{x};
 	\end{equation}
-	one may check the proof of Lemma 3.4 of \cite{BCC21} for more details.  By the scaling property
+	one may check the proof of Lemma 3.4 of \cite{balan.chen.ea:22:exact} for more details.  By the scaling property
 	for $\mathcal{F}\widetilde{f}_n$ in \eqref{E:Ffnscale}, one can show that
 	\begin{align} \label{E:fHn}
 	\int_0^\infty e^{-t} \Norm{ \widetilde{f}_n(\cdot,0,t) }_{\mathcal{H}^{\otimes n}}^2 \ud t
@@ -2188,7 +2184,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\begin{equation} \label{E:Tn}
 	T_n(\nu,a) = \int_{(\R^d)^n} \left[\sum_{\sigma \in \Sigma_n} \prod_{k=1}^n \frac{1}{1+\frac{\nu}{2}\left|\sum_{j=k}^n \xi_{\sigma(j)} \right|^a}\right]^2 \mu(\ud \vec{\xi}\:).
 	\end{equation}
-	By the same arguments as those of Lemma 3.6 of \cite{BCC21} with the replacement
+	By the same arguments as those of Lemma 3.6 of \cite{balan.chen.ea:22:exact} with the replacement
 	\eqref{E:Changes}, we see that
 	\begin{equation} \label{E:muassumption}
 	T_n(\nu, a) \le (n!)^2 C_\mu^n(\nu, a)
@@ -2250,8 +2246,7 @@ Nevertheless, for completeness, here we streamline and reorganize this proof as 
 	\begin{equation} \label{E:alpha4}
 	2(b+r) - 1 - b\alpha/a > 0.
 	\end{equation}
-	Finally, an application of the Minkowski inequality and the hypercontractivity (see \cite[Theorem
-	B.1]{BCC21} or \cite{Le16} for the case of the SHE) shows that for all $p\ge 2$,
+	Finally, an application of the Minkowski inequality and the hypercontractivity (see \cite[Theorem B.1]{balan.chen.ea:22:exact} or \cite{le:16:remark} for the case of the SHE) shows that for all $p\ge 2$,
 	\begin{align}
 	\nonumber
 	\Norm{u(t,x)}_p
@@ -2283,7 +2278,7 @@ condition \eqref{E:alpha}), namely,
 \end{equation}
 
 As for the upper bound, we will first establish the corresponding result for $p=2$ in Lemma
-\ref{L:p=2} and then apply the hypercontractivity property given by Theorem B.1 in \cite{BCC21} to
+\ref{L:p=2} and then apply the hypercontractivity property given by Theorem B.1 in \cite{balan.chen.ea:22:exact} to
 obtain the general case for $p\ge 2$. To prove the next lemma, we will need the following equality
 \begin{align} \label{E:Stirling}
 \lim_{n \to \infty} \frac{1}{n}\log\left( \frac{\Gamma(an+1)}{(n!)^a} \right) = a \log(a), \quad
@@ -2304,7 +2299,7 @@ which is a direct consequence of Stirling's formula.
 	\end{align}
 \end{lemma}
 \begin{proof}
-	The proof follows the same arguments as those of \cite[Lemma 4.3]{BCC21}. Nevertheless, we sketch
+	The proof follows the same arguments as those of \cite[Lemma 4.3]{balan.chen.ea:22:exact}. Nevertheless, we sketch
 	the proof here for completeness. Recall the definition of $T_n(\nu,a)$ defined in \eqref{E:Tn}.
 	From \eqref{E:LogRho}, we see that
 	\begin{align} \label{E:LimTn}
@@ -2395,7 +2390,7 @@ Now we are ready to prove part (2) of Theorem \ref{T:solvable}.
 	
 	We start by proving part \textit{(2-i)}. Let $u_{\lambda}$ for $\lambda >0$ be the solution of the
 	SPDE \eqref{E:SPDE} with $\theta$ replaced with $\lambda$ and $u=u_\theta$. By the
-	hypercontractivity property (see \cite[Lemma B.1]{BCC21}), we have that
+	hypercontractivity property (see \cite[Lemma B.1]{balan.chen.ea:22:exact}), we have that
 	\begin{align}
 	\label{E:HyContr}
 	\Norm{u(t,x)}_p \le \Norm{u_{(p-1)\theta}(t,x)}_2,   \quad \text{for all $p\ge 2$, $t>0$ and $x\in\R^d.$}
@@ -2461,7 +2456,7 @@ Now we are ready to prove part (2) of Theorem \ref{T:solvable}.
 	\begin{align*}
 	\lim_{t \to \infty}\frac{1}{t^\beta} \log \sum_{n \ge 0} z_n R^n \left(t^{(2(b+r)-b\alpha/a)}\right)^n = A.
 	\end{align*}
-	Indeed, by the following limit (see \cite[Lemma A.3]{BCC21}),
+	Indeed, by the following limit (see \cite[Lemma A.3]{balan.chen.ea:22:exact}),
 	\begin{align*}
 	\lim_{t\to\infty} t^{-1/\gamma}\log\sum_{n\ge 0} (n!)^{-\gamma} t^n = \gamma, \qquad \text{for all $\gamma>0$,}
 	\end{align*}
@@ -2481,7 +2476,7 @@ Now we are ready to prove part (2) of Theorem \ref{T:solvable}.
 	\beta = \frac{2a(b+r)-b\alpha}{2a(b+r)-(b\alpha)-a} \quad \text{and} \quad
 	A   = [2(b+r) - (b\alpha/a) -1](\theta R)^{\frac{a}{2a(b+r)-b\alpha-a}}.
 	\end{align*}
-	Finally, an application of \cite[Lemma A.2]{BCC21} shows that
+	Finally, an application of \cite[Lemma A.2]{balan.chen.ea:22:exact} shows that
 	\begin{align*}
 	\lim_{t\to \infty}
 	& \frac{1}{t^\beta} \log \mathbb{E}(|u(t,x)|^2) \\
@@ -2540,7 +2535,7 @@ with $s_0=0$. We now give conditions under which $W_n$ is well defined.
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	The proof follows the exact arguments as those in the proof of Lemma 6.2 of \cite{BCC21} except
+	The proof follows the exact arguments as those in the proof of Lemma 6.2 of \cite{balan.chen.ea:22:exact} except
 	that one needs to use the following Laplace transform:
 	\begin{align*}
 	\int_0^\infty e^{-t} \mathcal{F}G(t,\cdot)(\xi) \; \ud t =\frac{1}{1+\frac{\nu}{2}|\xi|^a};
@@ -2548,8 +2543,8 @@ with $s_0=0$. We now give conditions under which $W_n$ is well defined.
 	see the second equation in \eqref{E:LandFL}.
 \end{proof}
 
-The next proposition is a restatement of Proposition 6.3 of \cite{BCC21}. The proof follows the same
-proof as that of Proposition 6.3 of \cite{BCC21}. We will not repeat it here.
+The next proposition is a restatement of Proposition 6.3 of \cite{balan.chen.ea:22:exact}. The proof follows the same
+proof as that of Proposition 6.3 of \cite{balan.chen.ea:22:exact}. We will not repeat it here.
 \begin{proposition} \label{P:Wnprop1}
 	For $f\in \mathcal{H}$, $t>0$, and $p,q>1$ with $p^{-1} + q^{-1}=1$, it holds that
 	\begin{align} \label{E:Wnprop1}
@@ -2575,7 +2570,7 @@ together, from which we can determine the constants $t_p$ and $\beta$ defined in
 	\eqref{E:Wnprop1} holds. For some constants $V,W>0$, which will be determined in this proof, let
 	$f_\tau(x):=\tau^V f(\tau^W x)$ be a scaled version of $f$. It is clear that $f_\tau\in
 	\mathcal{H}$. By some elementary scaling arguments (see the proof of the Lemma 6.4 of
-	\cite{BCC21}), one can show that
+	\cite{balan.chen.ea:22:exact}), one can show that
 	\begin{gather}
 	\Norm{f_\tau}_{\mathcal{H}}^2 = \tau^{2(V-dW)+W\alpha} \Norm{f}_\mathcal{H}^2 \quad \text{and}\\
 	W_n \left(t,\mathcal{F}f_\tau\right) = \tau^{n\left[ V-W\left( (d-\alpha)+ \frac{a}{b}(b+r)
@@ -2661,8 +2656,7 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	& = \int_0^\infty e^{-t} W_n(t,\mathcal{F}f) \ud t \\
 	& = \int_{\R^{dn}} \prod_{k=1}^n \mathcal{F}f(\xi_k) \prod_{k=1}^n \frac{1}{1+ \frac{\nu}{2}|\xi_k+\cdots + \xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n).
 	\end{align*}
-	Notice that the right hand side of the above equation takes the form as \cite[Equation
-	(3.3)]{BCR09}. By the same arguments that follow in the proof of Theorem 2.3 {\it ibid} with the
+	Notice that the right hand side of the above equation takes the form as \cite[Equation (3.3)]{bass.chen.ea:09:large}. By the same arguments that follow in the proof of Theorem 2.3 {\it ibid} with the
 	replacement \eqref{E:Changes}, we have that
 	\begin{align*}
 	\liminf_{n\to \infty}\frac{1}{n} \log \int_{\R^{dn}} \prod_{k=1}^n(\mathcal{F}f)(\xi_k) \prod_{k=1}^n\frac{1}{1+\frac{\nu}{2}|\xi_k+\cdots+\xi_n|^a} \mu(\ud \xi_1) \cdots \mu(\ud \xi_n) \ge  \log\rho(\mathcal{F}f),
@@ -2795,6 +2789,39 @@ It is clear that $W_n(t) \ge U_n(t) \ge 0$.
 	nonnegative. This shows that $|g_h(\cdot)|^2 \in \mathcal{H}_+$.  This completes the whole proof
 	of Proposition \ref{P:LogU}.
 \end{proof}
+
+\begin{lemma} \label{L:LogU}
+	It holds that
+	\begin{align} \label{E:LogU}
+	\liminf_{n\to \infty} \frac{1}{n}\log \left[ (n!)^{ \frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} U_n(1) \right]
+	\ge \log\left( \frac{\rho_{\nu,a}^{1/2}}{ \left(\frac{b}{a}[ a-\frac{\alpha}{2} + \frac{a}{b}r ]\right)^{\frac{b}{a}(a-\frac{\alpha}{2} + \frac{a}{b}r)} }\right).
+	\end{align}
+\end{lemma}
+\begin{proof}
+	Let $\tau$ be an exponential random variable with mean one. Notice that by some elementary scaling
+	arguments, we have that for all $t>0$,
+	\begin{align}
+	\label{E:WU}
+	W_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} W_n(1) \quad \text{and} \quad
+	U_n(t) = t^{n\frac{b}{a}\left(a- \frac{\alpha}{2}+\frac{a}{b}r \right)} U_n(1),
+	\end{align}
+	which then imply that
+	\begin{align*}
+	\mathbb{E}\left[ U_n(\tau) \right] = \mathbb{E}\left( \tau^{n\frac{b}{a}(a-\frac{\alpha}{2}+\frac{a}{b}r)} \right) U_n(1)
+	= \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1).
+	\end{align*}
+	Then by Proposition \ref{P:LogU},
+	\begin{align}\label{E:lb1}
+	\liminf_{n\to \infty} \frac{1}{n} \log \left[ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) U_n(1) \right] \ge \log\left(\rho_{\nu, a}^{1/2}\right).
+	\end{align}
+	Therefore, \eqref{E:LogU} is proven by noticing that, thanks to \eqref{E:Stirling},
+	\begin{align*}
+	\liminf_{n\to \infty} \frac{1}{n} \log \left( \frac{ \Gamma\left( n\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) +1 \right) }{ (n!)^{\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right)} } \right )
+	= \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \log\left( \frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) \right),
+	\end{align*}
+	where the condition $\frac{b}{a}\left(a-\frac{\alpha}{2} +\frac{a}{b}r \right) >0$ is guaranteed
+	by \eqref{E:alpha4} (or \eqref{E:alpha}).
+\end{proof} 
 
 We need one last lemma before the proof of the lower bound:
 
