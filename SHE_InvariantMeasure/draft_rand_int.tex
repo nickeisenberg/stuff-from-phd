@@ -815,7 +815,7 @@ assumptions were imposed:
 where $\Gamma$ refers to the Gamma function; see Remark \ref{R:Fourier}. With these assumptions,
 they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
 and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
-measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, a specific $\widehat{f}$ which satisfies \eqref{E:TZspec} was not given.
+measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, a specific $\widehat{f}$ which satisfies \eqref{E:TZspec} was not given. 
 
 \begin{remark} \label{R:Fourier}
   The Fourier transform may be defined differently depending how to handle the $2\pi$ constant. In
@@ -830,25 +830,25 @@ measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly
     \int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
   \end{align}
   Note that the authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their convention of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that
-  the following convention has been used
+  the following convention has been used:
   \begin{align*}
     \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
     \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
   \end{align*}
-  Hence, Plancherel's theorem takes the form of $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
-  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$ without the additional factor
+  Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
+  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
   $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.})
   corresponds to $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is condition (3.4) \cite{tessitore.zabczyk:98:invariant}, takes into account this difference therefore explaining the slightly
   different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it ibid.}).
 \end{remark}
 
-Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. Now let us denote the right-side of the second condition in \eqref{E:TZspec} by $M(f)$, namely,
+Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. We may rewrite the integral in the second condition of \eqref{E:TZspec} as follows:
 \begin{align*}
-  M(f) := \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta.
+  \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta.
 \end{align*}
-We now consider the following two cases. \bigskip
+We now consider a couple of situations that may arise and we discuss some of the issues that may occur. \bigskip
 
-{\bf\noindent Case I:~} If both $\mathcal{F}^{-1}\left[\sqrt{\widehat{f}(\cdot)}\right](\xi)$ and $\widehat{f}$ are strictly positive for all $\zeta\in\R^d$, then
+{\bf\noindent Situation I:~} If both $\mathcal{F}^{-1}\left[\sqrt{\widehat{f}(\cdot)}\right](\xi)$ and $\widehat{f}$ are strictly positive for all $\zeta\in\R^d$, then
 there is no ambiguity when taking the square root and one can remove the absolute value to see
 that
 \begin{align*}
@@ -865,15 +865,44 @@ for Riesz kernel (in the generalized sense):
 \end{align*}
 Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
-our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$. One should note that the assumption that $\mathcal{F}^{-1}\left[\sqrt{\widehat{f}(\cdot)}\right](\xi)$ is nonnegative is quite strong and requires $\sqrt{\widehat{f}}$ to be non-negative and non-negative definite, which does not follow from the non-negative definiteness of $f$. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = \max\{1-x,0\}$. Then $f$ is non-negative and non-negative definite but one can show in this case that $\mathcal{F}^{-1}\left(\widehat{f}\right)(\xi)$ takes on both positive and negative values, thus one cannot remove the absolute value signs. \bigskip
+our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$. 
 
-{\bf\noindent Case II:~} Suppose $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
+\begin{figure}
+	\centering
+	\includegraphics[scale=.9]{figs/fresnel.png}
+	\caption{A plot of  $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ for $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$.}
+\end{figure}
+One should note that the assumption that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ is nonnegative is quite strong and requires $\sqrt{\widehat{f}}$ to be non-negative definite, which does not follow from the non-negative definiteness of $f$. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then $f$ is non-negative and non-negative definite, which is shown in Example \ref{Ex:sqrt} below. Moreover, one can show that in this case that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ takes on both positive and negative values. Indeed, since $\sqrt{\widehat{f}(\xi)} = 2^{-1}\sqrt{\max\{2-|\xi|,0\}}$ is even, the inverse Fourier transform takes the following form:
+	\[
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) = 2 \int_0^2 2^{-1}\sqrt{2-x} \cos(x\: \zeta) \ud x.
+	\]
+Therefore 
+	\begin{align*}
+			\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) &= \int_0^2 \sqrt{x} \cos((2-x)\: \zeta) \ud x \\ 
+			& = 2 \int_0^{\sqrt{2}} x^2 \cos(2\zeta- \zeta x^2) \ud x \\
+			&= 2\cos(2\zeta) \int_0^{\sqrt{2}} x^2 \cos(\zeta x^2) \ud x  +2 \sin(2\zeta) \int_0^{\sqrt{2}} x^2 \sin(\zeta x^2) \ud x.
+	\end{align*}
+Where in the first equality we used the change of variables, $x' = 2 - x$ and in the second equality we used the the change of variables $x' = \sqrt{x}$. We now do an integration by parts to see that 
+	\begin{align*}
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) &= - \cos(2y) \int_0 ^{\sqrt{2}} \frac{\sin(x^2 \zeta)}{\zeta} \ud x + \sin(2\zeta) \int_0 ^{\sqrt{2}} \frac{\cos(x^2 \zeta)}{\zeta} \ud x,
+	\end{align*}
+and lastly applying the change of variables $x' = x\sqrt{2\zeta/\pi}$ gives us 
+	\[
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) = \frac{ \sqrt{\frac{\pi}{2}}\left(-\cos(2\zeta)\mathcal{S}\left(\frac{2\sqrt{\zeta}}{\sqrt{\pi}}\right) + \sin(2\zeta) \mathcal{C}\left( \frac{2 \sqrt{\zeta}}{\sqrt{\pi}} \right) \right)}{ \zeta^{3/2} },
+	\]
+where $\mathcal{S}$ and $\mathcal{C}$ are the Fresnel integrals (see \cite[7.2 (iii)]{olver.lozier.ea:10:nist}):
+	\[
+		\mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t. 
+	\]
+\bigskip
+
+{\bf\noindent Situation II:~} Suppose $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,y
 namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, then removing the absolute value in
 \eqref{E:TZspec} becomes tricky, which will be illustrated in the following example:
 
 \begin{example} \label{Ex:sqrt}
   Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. It is clear that $ \widehat{g}(\xi) =
-  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-x,0)$. It is clear that $f$
+  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that $f$
   is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
   \xi^{-2}\sin^2(\xi)\ge 0$. But in this case, $\widehat{f}(\cdot)$ is only nonnegative (not
   strictly positive) with infinite many zeros. Hence, when taking the square root of
