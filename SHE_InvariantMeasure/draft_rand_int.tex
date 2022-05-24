@@ -411,7 +411,7 @@ of the following aspects:
     functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
     \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
     the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in what proceeds Remark \ref{R:Fourier}.
+  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
 \end{enumerate}
 
 This paper is organized as follows: In Section \ref{S:Example}, we will further discuss our main results and provide some examples. In particular, in Section \ref{SS:Weight}  we make some comments on the weight function and in Section \ref{SS:Init} we show that our results could include a wider class of initial conditions. Finally, the two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho}
@@ -793,7 +793,7 @@ For $\alpha \in (0, 1/2)$, we introduce the following quantity which will now be
   \ref{P:Bessel}.
 \end{proof}
 
-\subsection{Comparing Tessitore and Zabczyk's condition} \label{SS:TessZabz}
+\subsection{Difficulties with Tessitore and Zabczyk's condition} \label{SS:TessZabz}
 
 In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE} in
@@ -852,8 +852,7 @@ We now consider a couple of situations that may arise and we discuss some of the
 there is no ambiguity when taking the square root and one can remove the absolute value to see
 that
 \begin{align*}
-  M(f)
-  & = \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (\zeta) |\zeta|^{2-d} \ud \zeta \\
+\Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (\zeta) |\zeta|^{2-d} \ud \zeta \\
   & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\zeta)  |\zeta|^{-2} \ud \zeta
     = \left(2\pi\right)^{d/2}\Upsilon(0),
 \end{align*}
@@ -872,7 +871,7 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 	\includegraphics[scale=.9]{figs/fresnel.png}
 	\caption{A plot of  $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ for $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$.}
 \end{figure}
-One should note that the assumption that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ is nonnegative is quite strong and requires $\sqrt{\widehat{f}}$ to be non-negative definite, which does not follow from the non-negative definiteness of $f$. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then $f$ is non-negative and non-negative definite, which is shown in Example \ref{Ex:sqrt} below. Moreover, one can show that in this case that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ takes on both positive and negative values. Indeed, since $\sqrt{\widehat{f}(\xi)} = 2^{-1}\sqrt{\max\{2-|\xi|,0\}}$ is even, the inverse Fourier transform takes the following form:
+One should note that the assumption that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ is nonnegative is quite strong and requires $\sqrt{\widehat{f}}$ to be non-negative definite, which may not be true even if $f$ is non-negative and non-negative definite. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then $f$ is non-negative and non-negative definite, which is shown in Example \ref{Ex:sqrt} below. We will now show that in this case, $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ takes on both positive and negative values. Since $\sqrt{\widehat{f}(\xi)} = 2^{-1}\sqrt{\max\{2-|\xi|,0\}}$ is even, the inverse Fourier transform takes the following form:
 	\[
 		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) = 2 \int_0^2 2^{-1}\sqrt{2-x} \cos(x\: \zeta) \ud x.
 	\]
@@ -886,7 +885,7 @@ Where in the first equality we used the change of variables, $x' = 2 - x$ and in
 	\begin{align*}
 		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) &= - \cos(2y) \int_0 ^{\sqrt{2}} \frac{\sin(x^2 \zeta)}{\zeta} \ud x + \sin(2\zeta) \int_0 ^{\sqrt{2}} \frac{\cos(x^2 \zeta)}{\zeta} \ud x,
 	\end{align*}
-and lastly applying the change of variables $x' = x\sqrt{2\zeta/\pi}$ gives us 
+and lastly we apply the change of variables $x' = x\sqrt{2\zeta/\pi}$ too see 
 	\[
 		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) = \frac{ \sqrt{\frac{\pi}{2}}\left(-\cos(2\zeta)\mathcal{S}\left(\frac{2\sqrt{\zeta}}{\sqrt{\pi}}\right) + \sin(2\zeta) \mathcal{C}\left( \frac{2 \sqrt{\zeta}}{\sqrt{\pi}} \right) \right)}{ \zeta^{3/2} },
 	\]
@@ -894,11 +893,11 @@ where $\mathcal{S}$ and $\mathcal{C}$ are the Fresnel integrals (see \cite[7.2 (
 	\[
 		\mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t. 
 	\]
+Thus even if $f$ is both non-negative and non-negative definite, we may still have problems with removing the absolute value sign. 
 \bigskip
 
-{\bf\noindent Situation II:~} Suppose $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,y
-namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, then removing the absolute value in
-\eqref{E:TZspec} becomes tricky, which will be illustrated in the following example:
+{\bf\noindent Situation II:~} Suppose $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$. Then removing the absolute value in
+\eqref{E:TZspec} becomes tricky, which will be illustrated in the following example.
 
 \begin{example} \label{Ex:sqrt}
   Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. It is clear that $ \widehat{g}(\xi) =
