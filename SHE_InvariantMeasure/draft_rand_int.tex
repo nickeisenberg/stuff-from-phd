@@ -272,20 +272,9 @@ $b$) in \eqref{E:lipcon} have to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
-  & \text{and} \quad 64 L^2_{b}   <  \frac{1}{4\Upsilon(0)}\:.\label{E:Lipb}
+  & \text{and} \quad 64 L^2_{b}   <  \frac{1}{2\Upsilon(0)}\:.\label{E:Lipb}
 \end{align}
 \end{subequations}
-\textcolor{blue}{
-Why do we have 
-	\[
-		64 L^2_{b}   <  \frac{1}{4\Upsilon(0)}
-	\]
-instead of 
-	\[
-		64 L^2_{b}   <  \frac{1}{2\Upsilon(0)}
-	\]
-which is all that is required in \cite{chen.kim:19:nonlinear}.
-}
 
 Note that condition \eqref{E:Dalang-00} is a strengthened version of {\it Dalang's condition}:
 \begin{align} \label{E:Dalang}
@@ -402,7 +391,7 @@ This theorem will be proved in Section \ref{S:Lrho}.
         :=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
         \qquad \text{for all $t\ge \tau>0$};
       \end{equation}
-    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t \ge \tau}$ in
+    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t > 0}$ in
       $L^2_\rho(\R^d)$.
   \end{enumerate}
 \end{theorem}
@@ -537,10 +526,6 @@ The admissible condition \ref{E:aw} is needed in this paper due to the following
   \end{align*}
   Therefore, we see that both conditions \eqref{E:G} and \eqref{E:InitData} are satisfied.
 \end{example}
-
-\textcolor{blue}{
-	Should Proposition \ref{P:growtail} below be changed to an example? 
-}
 
 The following proposition shows that for initial conditions with unbounded tails, condition
 \eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
@@ -863,14 +848,9 @@ Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. Now let 
 \end{align*}
 We now consider the following two cases. \bigskip
 
-{\bf\noindent Case I:~} If $\widehat{f}(\zeta)$ is strictly positive for all $\zeta\in\R^d$, then
-there is no ambiguity when taking the square root and hence one can remove the absolute value to see
+{\bf\noindent Case I:~} If both $\mathcal{F}^{-1}\left[\sqrt{\widehat{f}(\cdot)}\right](\xi)$ and $\widehat{f}$ are strictly positive for all $\zeta\in\R^d$, then
+there is no ambiguity when taking the square root and one can remove the absolute value to see
 that
-
-\textcolor{blue}{
-Why is there no issue with removing the absolute value signs when $\widehat{f} > 0$? Is it because $\sqrt{\widehat{f}}$ is non-negative definite so the positivity of $\widehat{f}$ will imply the positivity of $\mathcal{F}^{-1}(\sqrt{\widehat{f}})$?
-}
-
 \begin{align*}
   M(f)
   & = \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (\zeta) |\zeta|^{2-d} \ud \zeta \\
@@ -884,11 +864,11 @@ for Riesz kernel (in the generalized sense):
   \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
 \end{align*}
 Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
-(2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 256 \Upsilon(0)$,
-our condition is sharper when $d> \frac{16\log(2)}{\log(2\pi)} \approx 6.03$. \bigskip
+(2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
+our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$. One should note that the assumption that $\mathcal{F}^{-1}\left[\sqrt{\widehat{f}(\cdot)}\right](\xi)$ is nonnegative is quite strong and requires $\sqrt{\widehat{f}}$ to be non-negative and non-negative definite, which does not follow from the non-negative definiteness of $f$. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = \max\{1-x,0\}$. Then $f$ is non-negative and non-negative definite but one can show in this case that $\mathcal{F}^{-1}\left(\widehat{f}\right)(\xi)$ takes on both positive and negative values, thus one cannot remove the absolute value signs. \bigskip
 
-{\bf\noindent Case II:~} If $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
-namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, how to remove the absolute value in
+{\bf\noindent Case II:~} Suppose $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative,
+namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$, then removing the absolute value in
 \eqref{E:TZspec} becomes tricky, which will be illustrated in the following example:
 
 \begin{example} \label{Ex:sqrt}
@@ -946,7 +926,7 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   (see also \eqref{E:Interval}), then
   \begin{equation} \label{E:mb0}
     \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
-    \quad \text{for all $p$ such that } 1/p \in \left(128 L_b^2\Upsilon(0),1\right),
+    \quad \text{for all $p$ such that } 1/p \in \left(64 L_b^2\Upsilon(0),1\right),
   \end{equation}
   where $C_p=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
   H(t;\gamma_p)^{1/2}<\infty$.
@@ -957,13 +937,9 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   by taking into account the expression of $\gamma_p$ in Theorem \ref{T:ExUn}, we see that as a
   direct consequence of \eqref{E:mb}, whenever
   \begin{equation}\label{E:pLip}
-     32 p L_b^2 < \frac{1}{4\Upsilon(0)}, \quad \textcolor{blue}{\text{why not } 32p L_b^2 < 1 / (2\Upsilon(0))?}
+     32 p L_b^2 < \frac{1}{2\Upsilon(0)}, 
   \end{equation}
-  we have all $p$-th moments ($p\ge 2$) bounded as given in \eqref{E:mb0}.
-
-  \textcolor{blue}{
-For each $p_1 > p_2 \ge 2$,  we need to choose a smaller $L_b$ so that $32pL_b^2 < 1 / (2\Upsilon(0) ) $. We can't make a statement that all $p$ norms for $p \ge 2$ are bounded in $t$, we can only make that state for individual $p$ by appropriately choosing $L_b$ small enough. This is not an issue though as we always are fixing our $p$ values for the norm.
-}
+  we have the $p$-th moment bounded as given in \eqref{E:mb0}.
 \end{proof}
 
 
@@ -1163,24 +1139,13 @@ and the restarted SHE ($ t_0>0$).
       \end{align}
       where $\mu^* = 1 + |\mu|$ and we refer to Theorem \ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
     \item under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
-      some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
-      \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in
+      some $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
+      \left(64 L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$ in
       \eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge
       0}H\left(t;32qL_b^2\right)<\infty$; 
- 
- \textcolor{blue}{
-	I think $(64L_b^2 \Upsilon(0), \alpha)$ being nonempty is all we need. Note that we must consider $\alpha \in (0, 1/2)$. Next, because of Prop \ref{P:F-Comp}, we need $1 / q \in (0, \alpha)$ which is going to be the first restriction. Our second restriction comes from Theorem \ref{T:ExUn}. Note that for bounded moments in time, we need $2\gamma_q \Upsilon(0) < 1$, or in other words, $64 q L_b^2 \Upsilon(0) < 1$ and this is the second restriction. Summarizing this gives us that we need both 
-		\[
-			64 L_b^2 \Upsilon(0) < 1 / q \quad \text{and} \quad 1 / q < \alpha < 1/2,
-		\]  
-	or by putting this together 
-		\[
-				64 L_b^2 \Upsilon(0) < 1 / q < \alpha.
-		\]
-}
     \item under the two conditions in \eqref{E:U0finite}, if the integral in \eqref{E:H} is finite for
-      some $\alpha\in \left(128 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
-      \left(128 L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and
+      some $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in
+      \left(64 L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and
       $L^1(\R^d)$-function $\rho$, there exists a constant $\Theta =
       \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend on $t$, such that for $t>0$,
       \begin{equation} \label{E:yineq}
@@ -1529,9 +1494,9 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   \end{align}
   Part (3) of Lemma \ref{L:yineq} shows that for any $q$ in the following range,
   \begin{align} \label{E:Choice}
-    128 L_b^2 \Upsilon(0) < \frac{1}{q} < \alpha <\frac{1}{2}
+    64 L_b^2 \Upsilon(0) < \frac{1}{q} < \alpha <\frac{1}{2}
     \qquad \left(\text{or equivalently} \quad
-    2< \frac{1}{\alpha} < q < \frac{1}{128 L_b^2 \Upsilon(0)}\:\right),
+    2< \frac{1}{\alpha} < q < \frac{1}{64 L_b^2 \Upsilon(0)}\:\right),
   \end{align}
   we can apply Proposition \ref{P:F-Comp} to see that the following set
   \begin{align*}
@@ -1637,13 +1602,8 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, $\eta$, on
   $L_\rho^2(\R^d)$ (e.g. see \cite[Theorem 5.1]{billingsley:99:convergence}). Then one can apply for the Krylov-Bogoliubov existence theorem (see, e.g.,
   \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) to conclude that the measure $\eta$ is an
-  invariant measure for $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge \tau$. \textcolor{blue}{Finally, since $\tau$ can be
-  arbitrarily close to zero, one can conclude part (b) of Theorem \ref{T:Main}.}
+  invariant measure for $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge \tau$. Finally, since $\tau$ can be arbitrarily close to zero, one can conclude part (b) of Theorem \ref{T:Main}.
 \end{proof}
-
-\textcolor{blue}{
-I think we should remove the last blue sentence from the proof. I changed (b) from Theorem \ref{T:Main} too. I think we need (b) as it is now ie $t\ge \tau$ not $t>0$.
-}
 
 % {{{ All references: New ones with biber
 \addcontentsline{toc}{section}{References}
