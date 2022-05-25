@@ -137,9 +137,9 @@
 \begin{abstract}
   This paper deals with the long term behavior of the solution to the nonlinear stochastic heat
   equation $\partial u /\partial t - \frac{1}{2}\Delta u= b(u)\dot{W}$ for a Lipschitz continuous
-  diffusion coefficient $b$ which is not necessarily bounded such as $b(u)=u$. Using the theory of
+  diffusion coefficient $b$, which is not necessarily bounded, such as $b(u)=u$. Using the theory of
   the stochastic integral laid out by John Walsh, we provide conditions which will guarantee the
-  existence of an invariant measure for a broad range of initial conditions which includes bounded
+  existence of an invariant measure for a broad range of initial conditions, which includes bounded
   $L^2_\rho$ functions as well as the Dirac delta distribution $\delta_0$.
 \end{abstract}
 \bigskip
@@ -181,18 +181,18 @@ transform that is used in this paper.}. Moreover, in the case where $\Gamma$ has
 namely, $\Gamma(\ud x)=f(x) \ud x$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud \xi$. The
 initial condition $\mu$ is a deterministic, locally finite, regular, signed Borel measure that
 satisfies the following integrability condition at the infinity (see \eqref{A:icon} below).
-\begin{equation} \label{E:Init}
+\begin{equation*} 
   \int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x) < \infty \quad \text{for all $a>0$},
-\end{equation}
+\end{equation*}
 where $|\mu|=\mu_++\mu_-$ and $\mu=\mu_+-\mu_-$ refers to the {\it Hahn decomposition} of the measure
-$\mu$. The function $b(x,u)$ is Lipschitz continuous in the second variable, uniformly in the first
-one, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
+$\mu$. The function $b(x,u)$ is uniformly bounded in the first
+variable and Lipschitz continuous in the second variable, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
 \begin{equation} \label{E:lipcon}
   |b(x,u)-b(x,v)|< L_b |u-v| \quad \text{and} \quad
   |b(x,0)| \le L_0 \quad \text{for all } u,v \in \R, \; x \in \R^d.
 \end{equation}
 In particular, our assumption allows the linear case $b(x,u) = \lambda u$, which is usually referred
-to the \textit{parabolic Anderson model} \cite{carmona.molchanov:94:parabolic}. The SPDEs
+to as the \textit{parabolic Anderson model} \cite{carmona.molchanov:94:parabolic}. The SPDE
 \eqref{E:SHE} is understood in its {\it mild form}:
 \begin{equation} \label{E:gmsol}
   u(t,x) = J_0(t,x;\mu)+ \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y),
@@ -207,18 +207,17 @@ integral}. We refer the interested readers to
 for more details of the set up. \\
 
 
-The aim of this paper is to investigate the conditions required to guarantee the existence of
-invariant measures for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
+The aim of this paper is to investigate the conditions required to guarantee the existence of an invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
 the ergodicity of the system. The existence of invariant measure under the setting of the entire
 space $\R^d$ has been much less studied. In addition to Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant}, with which we will follow closely in this paper, a
 few other papers that consider the whole space include \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:invariant,
-misiats.stanzhytskyi.ea:16:existence}. One thing to note is that the just mentioned papers use the theory of the stochastic integral developed by Daprato \cite{da-prato.zabczyk:14:stochastic} while we use the theory developed by Walsh \cite{walsh:86:introduction}. As far we know, this is the first paper to handle the problem in question using Walsh's theory. Lastly,  since the space $\R^d$ is not compact, one needs to work on a
+misiats.stanzhytskyi.ea:16:existence}. One thing to note is that the just mentioned papers use the theory of the stochastic integral developed by Daprato et al \cite{da-prato.zabczyk:14:stochastic} while we use the theory developed by Walsh \cite{walsh:86:introduction}. As far as we know, this is the first paper which handles proving the existence of an invariant measure using Walsh's theory. Lastly,  since the space $\R^d$ is not compact, one needs to work on a
 weighted space as in \cite{tessitore.zabczyk:98:invariant}:
 
 \begin{definition} \label{D:Rho}
   $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive,
-  bounded and continuous function in $L^1(\R^d)$ such that for $T>0$ there exists a constant
+  bounded and continuous function in $L^1(\R^d)$ such that for $T>0$, there exists a constant
   $C_\rho(T)$ such that
   \begin{equation} \label{E:aw}
     \big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x)
@@ -228,7 +227,7 @@ weighted space as in \cite{tessitore.zabczyk:98:invariant}:
 
 Let $\rho$ be an admissible weight function. Then we may introduce the Hilbert space
 $H:=L_\rho^2(\R^d)$ with $\langle f,g \rangle_\rho := \int_{\R^d}f(x)g(x)\rho(x) \: \ud x$ and
-$\Norm{f}_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. More discussions about the weight function
+$\Norm{f}_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. A continued discussion about the weight function
 can be found in Section \ref{SS:Weight}. Let $\mathcal{B}(H)$ be the space of all bounded Borel
 functions on $H$. Following  \cite{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$
 on the Borel $\sigma$-field $\mathcal{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
@@ -266,7 +265,7 @@ makes the problem more challenging. In order to have moments bounded in time, as
 \eqref{E:BddMnt}, one has to first identify the exact conditions, under which the moments to
 \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem
 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More
-precisely, for bounded second moments one has to have the spatial dimension $d \ge 3$, and in
+precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in
 addition, the spectral measure, $\hat{f}$, and Lipschitz constant, $L_b$, (the Lyapunov exponent of
 $b$) in \eqref{E:lipcon} have to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
@@ -295,7 +294,7 @@ one can further strengthen condition \eqref{E:Dalang-ab} to
 \end{equation}
 We use the convention that when $\alpha=0$, we simply drop it from the expression
 $\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. The relations of these
-conditions are shown in the Figure \ref{F:Dalang}.
+conditions are shown in Figure \ref{F:Dalang}.
 
 \begin{figure}[htpb]
   \begin{center}
@@ -330,13 +329,13 @@ and $\Upsilon_\alpha(0)<\infty$.}
   \label{F:Dalang}
 \end{figure}
 
-Note that the two conditions in \eqref{E:Dalang-00} guarantee the existence of the following
+Note that the two conditions in \eqref{E:U0finite} guarantee the existence of the following
 non-empty open interval:
 \begin{align} \label{E:Interval}
-  \left(2^8 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
+  \left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
 \end{align}
 
-Now we are ready to state our two main results of the paper:
+Now we are ready to state our two main results of the paper.
 
 \begin{theorem} \label{T:Lrho}
   % Let $\mu(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
@@ -353,11 +352,11 @@ Now we are ready to state our two main results of the paper:
       conditions in \eqref{E:U0finite}.
   \end{enumerate}
   Then there exists an unique $L^2(\Omega)$-continuous solution $u(t,x)$ such that for some constant
-  $C>0$, which does not depend on $t$, and for all $t > 0$ the following holds:
+  $C>0$, which does not depend on $t$, the following holds:
   \begin{equation} \label{E:uInLrho}
     \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
     \le C \mathcal{G}_{\rho}(t;\mu)
-    < \infty.
+    < \infty, \quad \text{for any } t > 0. 
   \end{equation}
 \end{theorem}
 
@@ -378,7 +377,7 @@ This theorem will be proved in Section \ref{S:Lrho}.
       \end{equation}
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in \eqref{E:U0finite};
-    \item for some $\alpha\in \left(2^8\Upsilon(0)L_b^2,1\right)$ (see \eqref{E:Interval}), the
+    \item for some $\alpha\in \left(2^7\Upsilon(0)L_b^2,1\right)$ (see \eqref{E:Interval}), the
       spectral measure $\widehat{f}$ satisfies \eqref{E:Dalang-a0}.
   \end{enumerate}
   Then we have that
@@ -406,7 +405,7 @@ of the following aspects:
 \begin{enumerate}
   \item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
     the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
-    initial condition. Here we give precise condition on the initial condition, namely,
+    initial condition. Here we give precise conditions on the initial condition, namely,
     \eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
     functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
     \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
@@ -683,7 +682,7 @@ The following proposition shows that for initial conditions with unbounded tails
     \quad \text{with} \quad
     f(\xi) = \frac{2^{\nu-1} \phi \Gamma\left(\nu +d/2\right)\alpha^{2\nu}}{\pi^{d/2}\left(\alpha^2+|\xi|^2\right)^{\nu+d/2}}, \quad  \xi\in\R^d.
   \end{align*}
-  Comparing the above expression with \eqref{E:FB}, we see that the class of Bessel kernel $f_s$,
+  Comparing the above expression with \eqref{E:FB}, we see that the class of Bessel kernels $f_s$,
   with $s>d-2$ and $d\ge 3$, includes the Mat\'ern class \eqref{E:Matern} as a special case under
   the following choice of parameters:
   \begin{align*}
@@ -752,7 +751,7 @@ For $\alpha \in (0, 1/2)$, we introduce the following quantity which will now be
     \Upsilon_\alpha(0) = \left(2\pi\right)^{-d} \int_{\R^d} \frac{\ud\xi}{|\xi|^{2(1-\alpha)}\left(1+|\xi|^2\right)^{s/2}}
     = \left(2\pi\right)^{-d} C_d \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r,
   \end{align*}
-  where $C_d:=\frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}$. Now by change of variable $z=r^2/(1+r^2)$,
+  where $C_d:=\frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}$. Now by the change of variables $z=r^2/(1+r^2)$,
   we can evaluate the above integral explicitly by transforming it to the Beta integral:
   \begin{align*}
     \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r
@@ -815,7 +814,7 @@ assumptions were imposed:
 where $\Gamma$ refers to the Gamma function; see Remark \ref{R:Fourier}. With these assumptions,
 they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
 and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
-measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, a specific $\widehat{f}$ which satisfies \eqref{E:TZspec} was not given. 
+measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
 \begin{remark} \label{R:Fourier}
   The Fourier transform may be defined differently depending how to handle the $2\pi$ constant. In
@@ -906,7 +905,7 @@ Thus even if $f$ is both non-negative and non-negative definite, we may still ha
   \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that $f$
   is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
   \xi^{-2}\sin^2(\xi)\ge 0$. But in this case, $\widehat{f}(\cdot)$ is only nonnegative (not
-  strictly positive) with infinite many zeros. Hence, when taking the square root of
+  strictly positive) with infinitely many zeros. Hence, when taking the square root of
   $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive and
   negative branches:
   \begin{enumerate}
@@ -919,7 +918,7 @@ Thus even if $f$ is both non-negative and non-negative definite, we may still ha
       Fourier transform. In general, some bad choices of the positive/negative branches may make the
       conditions in \eqref{E:TZspec} fail. For example, such choice may turn
       $\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value of a
-      distribution (unless it is a measure) may be problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up. Theses issues seem to be ignored in Remarks 3.5 and 3.6 \cite{tessitore.zabczyk:98:invariant}.
+      distribution (unless it is a measure) may be problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up. 
   \end{enumerate}
 \end{example}
 
@@ -957,7 +956,7 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   \begin{equation} \label{E:mb0}
     \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
     \quad \text{for all $p$ such that } 1/p \in \left(64 L_b^2\Upsilon(0),1\right),
-  \end{equation}
+  \end{equation}  
   where $C_p=\left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
   H(t;\gamma_p)^{1/2}<\infty$.
 \end{corollary}
@@ -977,7 +976,7 @@ Now we are ready to prove Theorem \ref{T:Lrho}.
 
 \begin{proof}[Proof of Theorem \ref{T:Lrho}]
   Under condition (iii), we can apply Fubini's Theorem and the moment bound \eqref{E:mb0} below to
-  see that for some constant $C>0$ independent of $t$, which may vary from line to line,
+  see that for some constant $C>0$ independent of $t$, which may vary from line to line, that
   \begin{align*}
     \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
     % & = \E\left[\E \left(\int_{\R^d}\vert u\left(t,x;\mu\right) \vert^2 \rho(x)\ud x\bigg| \mathcal{F}_0\right) \right] \\
@@ -1012,7 +1011,7 @@ Now we are ready to prove Theorem \ref{T:Lrho}.
   \begin{align}\label{E:MomBddRst}
   \Norm{v(t,x)}_q =   \Norm{u(t+t_0,x;\mu)}_q
                   \le C_q\bigg(1 + (G(t+t_0, \cdot)* |\mu|)(x) \bigg)
-                  =   C_q J_0(t+t_0,x;\mu^*),
+                  =   C_q J_0(t+t_0,x; 1+|\mu|),
   \end{align}
   for all $q\ge 2$ and $t>0$, where the constant $C_q$ does not depend on $t$. Moreover, under the
   assumptions of Theorem \ref{T:Lrho}, we have $v(0,\cdot)\in L_\rho^2(\R^d)$ a.s. and
@@ -1037,13 +1036,13 @@ In this section, we establish a factorization lemma with corresponding moment es
   \end{aligned}
 \end{align}
 
-For $F_\alpha$, the Step 1 of the proof of \cite[Theorem 3.1]{tessitore.zabczyk:98:invariant} showed
+For $F_\alpha$, the first step of the proof of \cite[Theorem 3.1]{tessitore.zabczyk:98:invariant} showed
 the following proposition:
 \begin{proposition} \label{P:F-Comp}
   Let $\rho$ and $ \tilde{\rho}$ be given as in condition (i) of Theorem \ref{T:Main} (see
   \eqref{E:rhorho}). For any $q>2$, $t_0>0$ and $\alpha \in (q^{-1},2^{-1})$, the operator
-  $F_\alpha$ as an operator from $L^q\big((0,t_0);\: L^2_{\tilde{\rho}}(\R^d)\: \big)$ to
-  $L^2_\rho(\R^d)$ is compact.
+  $F_\alpha$, as an operator from $L^q\big((0,t_0);\: L^2_{\tilde{\rho}}(\R^d)\: \big)$ to
+  $L^2_\rho(\R^d)$, is compact.
 \end{proposition}
 
 
@@ -1147,8 +1146,8 @@ and the restarted SHE ($ t_0>0$).
 
 \begin{lemma} \label{L:yineq}
   Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and that
-  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Recall $\mathcal{H}_{\alpha}(t)$ defined in \eqref{E:H} and assume that for some $\alpha\in
-  (0,1/2)$, $\widehat{f}$ satisfies the following condition
+  $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Suppose that \eqref{E:H} is satisfied for some $\alpha\in
+  (0,1/2)$, i.e.,
   \begin{align*} 
      \mathcal{H}_\alpha(t) = \int_0^t \ud r \: r^{-2\alpha} \int_{\R^{d}} \widehat{f}(\ud \xi) \exp\left(-r|\xi|^2 \right) < \infty
      \quad \text{for all $t>0$}.
@@ -1470,7 +1469,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   % \end{align*}
 
   \begin{align} \label{E:RestaredSHE}
-    v_t\left(s,x\right) \stackrel{\mathcal{L}}{=} u\left(s,x; u\left(t-t_0,\cdot;\mu\right)\right) \quad \text{for $t\ge\tau$}.
+    v_t\left(s,x\right) \stackrel{\mathcal{L}}{=} u\left(s,x; u\left(t-t_0,\cdot;\mu\right)\right) \quad \text{for $s \ge 0$ and $t\ge\tau$}.
   \end{align}
 
 \begin{figure}[htpb]
@@ -1511,9 +1510,9 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   \end{align*}
   is relatively compact in $L_\rho^2(\R^d)$.
 
-  Assumption (iii), i.e., \eqref{E:U0finite}, implies that the interval $\left(2^7L_b^2 \Upsilon(0),
+  Assumption (iii), i.e., \eqref{E:U0finite}, implies that the interval $\left(64L_b^2 \Upsilon(0),
   1/2\right)$ is not empty. Moreover, Assumption (iv), i.e., \eqref{E:Dalang-a0}, guarantees that
-  there exists a constant $\alpha$ in this interval, namely, $2^7L_b^2\Upsilon(0) <\alpha<1/2$ such
+  there exists a constant $\alpha$ in this interval, namely, $64L_b^2\Upsilon(0) <\alpha<1/2$, such
   that \eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e.,
   $\Upsilon_{2\alpha}(0)<\infty$. Now we can apply part (3) of Lemma \ref{L:HUA}, thanks to
   \eqref{E:Dalang-00}, to see that $\Upsilon_{2\alpha}(0)<\infty$ if and only
@@ -1558,7 +1557,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     % = \frac{1}{\Lambda^2}   \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)<\infty,
   \end{align*}
   Because $\mathcal{G}_{\tilde{\rho}}(t;\mu)$ is a continuous function for $t>0$, and because it
-  is also bounded at infinity thanks to Assumption (ii) (see \eqref{E:InitData}), we have that
+  is also bounded at infinity, thanks to Assumption (ii) (see \eqref{E:InitData}), we have that
   \begin{align} \label{E:GtBdd}
     \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu\right)
     \le \sup_{t\ge \tau}  \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu\right)
@@ -1577,7 +1576,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
           \le \dfrac{\sin^q(\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
           \left(\mathcal{G}_{\tilde{\rho}}(s + t-t_0;\mu) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s,
   \end{align*}
-  where the constant $\Theta$ does not depend on $t$. As we have seen from above that
+  where the constant $\Theta$ does not depend on $t$. As we have seen from above, since
   $\Upsilon_{2\alpha}(0)<\infty$, we can apply Lemma \ref{L:HUA} to bound $\mathcal{H}_{\alpha}(s)$
   from above by the finite bound: $\left(2\pi\right)^d \Gamma(1-2\alpha) \Upsilon_{2\alpha}(0)$.
   Hence, together with \eqref{E:GtBdd}, we obtain the following upper bound for $I_1$ that is
@@ -1630,7 +1629,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
   Let $\{T_n\}_{n\in \mathbb{N}}$ be any deterministic sequence such that $T_n\uparrow \infty$.
   Since $\left\{U(T_n)\right\}_{n\ge 1}$ is a tight sequence of measures, then there exists a subsequence
   $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, $\eta$, on
-  $L_\rho^2(\R^d)$ (e.g. see \cite[Theorem 5.1]{billingsley:99:convergence}). Then one can apply for the Krylov-Bogoliubov existence theorem (see, e.g.,
+  $L_\rho^2(\R^d)$ (e.g. see \cite[Theorem 5.1]{billingsley:99:convergence}). Then one can apply the Krylov-Bogoliubov existence theorem (see, e.g.,
   \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) to conclude that the measure $\eta$ is an
   invariant measure for $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge \tau$. Finally, since $\tau$ can be arbitrarily close to zero, one can conclude part (b) of Theorem \ref{T:Main}.
 \end{proof}
