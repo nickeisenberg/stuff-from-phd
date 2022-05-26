@@ -168,7 +168,7 @@ abbreviate=true]{biblatex}
 
 \professor{Xiaoying Han, Professor of Mathematics and Statistics and Actuarial Program Director}
 
-\professor{Put the dean's name here}
+\professor{George Flowers, Dean and Professor of Mechanical Engineering}
 
 \begin{document}
 
@@ -177,11 +177,26 @@ abbreviate=true]{biblatex}
 \TitlePage 
 
 \begin{abstract} 
-Place the text of the abstract here. Headings come automatically.
+This thesis will consist of two projects, the first relating to a space-time fractional stochastic partial differential equation and the second relating to the stochastic heat equation which is a special case of the former. We will be focused on properties including solvability, deriving exact moment asymptotics and proving the existence of an invariant measure.
+	
+In this first project, we study a class of space-time fractional stochastic partial differential equations subject to some time-independent multiplicative Gaussian noise.
+We derive sharp conditions, under which a unique global $L^p(\Omega)$-solution exists for all
+$p\ge 2$. In this case, we derive exact moment asymptotics following the same strategy as that in
+a recent work by Balan {\it et al} \cite{balan.chen.ea:22:exact}. In the case when there exists only a local
+solution, we determine the precise deterministic time, $T_2$, before which a unique
+$L^2(\Omega)$-solution exists, but after which the series corresponding to the $L^2(\Omega)$
+moment of the solution blows up. By properly choosing the parameters, results in this paper
+interpolate the known results for both stochastic heat and wave equations.
+
+The second project deals with the long term behavior of the solution to the nonlinear stochastic heat
+equation with no drift term that is driven by a Gaussian noise that is white in time and colored in space. Using the theory of
+the stochastic integral laid out by John Walsh, we provide conditions which will guarantee the
+existence of an invariant measure for a broad range of initial conditions, which includes bounded
+$L^2_\rho$ functions as well as the Dirac delta distribution $\delta_0$.
 \end{abstract}
 
 \begin{acknowledgments}
-Put text of the acknowledgments here.
+
 \end{acknowledgments}
 
 \begin{singlespace}
@@ -218,71 +233,18 @@ Put text of the acknowledgments here.
 
  \chapter {Introduction}  % Use \\ for long titles  
 \vspace{-1cm} %Use when chapter name is long -reduce distance between title and chapter text
- 
-The study of deterministic Calculus can be thought of as the starting point of the search to model physical phenomena with math. The story has it, that Issac Newton was first inspired to develop what would be known as the theory of Calculus so that he could describe a falling apple from a tree. Very simple scenarios, such as the apple falling from the tree, were for the first time successfully described but of course, not all scenarios are "simple" and more theory needed to be developed. 
+Consider the situation where a perfectly round and infinitesimally thin piece of wire is initially heated. Also suppose that there is a source of heat that is a function of the temperature of the wire itself. Can we model the temperature of the wire as a function of position and time? In other words, does there exist a function, $u(t,x)$ such that $u(t,x)$ gives the temperature of the wire at a position $x$ and at a time $t$? The answer is yes, and this scenario described can be modeled by the well known heat equation: 
+\[
+\begin{cases}
+\dfrac{\partial u}{\partial t}(t,x) - \dfrac{\partial^2 u}{\partial x^2}(t,x) = \rho(u(t,x)) & t \ge 0, \; x \in \R^d \\
+u(0,x) = f(x) & x \in \R^d,
+\end{cases}
+\]
+where $f(x)$ describes the initial temperature at a position $x$ and $\rho$ is a globally Lipschitz function. 
 
-Consider the situation where we have a perfectly round piece of wire with infinitesimally small radius and suppose that we initially heat this wire. Assuming that there is no additional heat being added to our system, how could we model the evolution of the temperature at a specific point $x$ on the piece of wire? In other words, can we find a function $u(t,x)$ that gives us the exact temperature at position $x$ on the wire at time $t$? The answer is yes, and thanks to Joesph Fourier, we know that this scenario can be modeled by the so called heat equation:
-	\[
-		\begin{cases}
-			\mathcal{H}u(t,x) = 0 & t \ge 0, \; x \in \R \\
-			u(0,x) = f(x) & x \in \R,
-		\end{cases}
-	\]
-where $\mathcal{H}$ is the heat operator:
-	\[
-		\mathcal{H}u(t,x) = \frac{\partial u}{\partial t}(t,x) - \frac{\partial^2 u}{\partial x^2}(t,x)
-	\]
+However, this above system is completely deterministic in the sense that there is no randomness involved. In other words, every single simulation of modeling the evolution of heat starting from $f(x)$ will be the same. In practice this is unrealistic and for sure there will be some randomness involved that will affect the evolution of the temperature of the wire in some random way. The need to model this randomness is the motivation behind the field of stochastic partial differential equations.
 
-In order to fully utilize the above model, we need to make the problem more realistic. In any real-life scenario, we can not safely assume that there will not be any outside heat affecting our system. Moreover, it is safe to assume that any outside heat affecting our system will be done in some sort of "random" way. The question now is, how do we model this randomness? When the spatial dimension is $1$, as is above in our heat model, John Walsh laid out the frame work to describe such problem in his seminal textbook, {\em An Introduction to Stochastic Partial Differential Equations.} The idea is to construct a {\em Gaussian space-time white noise}, $\dot{W}$ (see Section \ref{S:Noise}), and consider the following {\em stochastic heat equation}:
-	\begin{equation}\label{E:introSHE}
-	\begin{cases}
-		\mathcal{H}u(t,x)  = \rho(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R \\
-	u(0,x) = f(x) & x \in \R,
-	\end{cases}
-	\end{equation}
-where $\rho$ is a globally Lipschitz function and $f$ describes the initial heat of our wire. See Section \ref{S:SHE} for a through introduction of this set up.
-	
-%   \begin{figure*}
-%	\centering
-%	\begin{subfigure}[b]{0.475\textwidth}
-%		\centering
-%		\includegraphics[width=\textwidth]{figs/whitenoise.png}
-%		\caption[]%
-%		{{\small $\lambda = 0$}}    
-%	\end{subfigure}
-%	\hfill
-%	\begin{subfigure}[b]{0.475\textwidth}  
-%		\centering 
-%		\includegraphics[width=\textwidth]{figs/spacetimewhite.png}
-%		\caption[]%
-%		{{\small $\lambda = 1.8$}}    
-%	\end{subfigure}
-%	\caption[]
-%	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
-%\end{figure*}	
-	
-This notation is purely formal as $\dot{W}$ does not exist as a function but as a distribution. However we can make sense of the above equation as the following {\em stochastic Walsh integral equation}:
-	\begin{equation} \label{E:introMsol}
-		u(t,x) = \int_{\R^d} G(t, x-y)f(y) \ud y + \int_0^t \int_{\R^d} G(t-s, x-y) \rho(u(s,y)) W(\ud s, \ud y),
-	\end{equation}
-where $G(t,x)$ is the Gaussian heat kernal:
-	\[
-		G(t,x) = \frac{\exp\left(- \frac{|x|^2}{2t}\right)}{\sqrt{2 \pi t}}, \quad t > 0, \; x \in \R.
-	\]
-	
-Thus through this novel idea due to Walsh, we now move one step closer to being able to model real-life phenomena under much more realistic conditions. The next question then would be under what conditions is the equation \eqref{E:introSHE} well-possed? Also, can we apply this theory to other partial differential operators such as the wave operator,
-	\[
-		\mathcal{W}u(t,x) = \frac{\partial^2 u}{\partial t^2}(t,x)  - \frac{\partial^2 u}{\partial x^2}(t,x)
-	\]
-or even a more general fractional operator of the following type:
-	\[
-		\mathcal{L}_{b, \alpha}u(t,x) = \partial_b u(t,x) - (-\Delta)^{-\alpha / 2}u(t,x), 
-	\]
-where $\partial_b$ is the {\em Caputo} time-derivative of order $b > 0$ and $(-\Delta)^{-\alpha / 2}$ is the fractional Laplacian. The fractional operator, $\mathcal{L}_{\alpha, \beta}$ will be thoroughly discussed in section \ref{S:ISHWE} below as well as in Chapters \ref{C:ISHWEmom} and \ref{C:Global}. As for the stochastic wave equation, we direct the interested reader to \cite{millet.sanz-sole:21:global, dalang.khoshnevisan.ea:09:minicourse} to name a few. 
-
-We will finish this introduction with a brief discussion about the stochastic heat equation before giving a more thorough treatment in Section \ref{S:SHE}. As for the well-possedness of Equation \eqref{E:introSHE} above, Chen and Dalang \cite{chen.dalang:15:moments} proved the following:
-
-   \begin{figure*}
+   \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.475\textwidth}
 		\centering
@@ -299,21 +261,27 @@ We will finish this introduction with a brief discussion about the stochastic he
 	\end{subfigure}
 	\caption[] 
 	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
-	\label{F:SHEsim1}
-\end{figure*}
+	\label{Fig:SHEsim1}
+\end{figure}
 
-	\begin{theorem}
-		Suppose that the function $\rho$ is globally Lipschitz function and the initial distribution $f(\cdot)$ satisfies the following:
-			\[
-				|\rho(x)| \le L_{\rho}^2(L_0^2 + |x|^2), \quad \text{and} \quad 	\int_{\R} \exp(-a|x|^2) \; |f|(\ud x) < \infty, 
-			\]
-		for some $L_b, L_0 > 0$ and any $a>0$. Then for $p \ge 2$, there exists a unique, $L^p(\Omega)$-continuous process that almost surely satisfies \eqref{E:introMsol}.
-	\end{theorem}
+Following Walsh \cite{walsh:86:introduction}, we can improve the above system by introducing a Gaussian noise term, $\dot{W}$ (see ): 
+	\begin{equation}\label{E:introSHE}
+\begin{cases}
+\dfrac{\partial u}{\partial t}(t,x) - \dfrac{\partial^2 u}{\partial x^2}(t,x  = \rho(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R^d \\
+u(0,x) = f(x) & x \in \R^d,
+\end{cases}
+\end{equation}
+which can be legitimately interpreted as the following stochastic integral equation:
+	\begin{equation} \label{E:introMsol}
+u(t,x) = \int_{\R^d} G(t, x-y)f(y) \ud y + \int_0^t \int_{\R^d} G(t-s, x-y) \rho(u(s,y)) W(\ud s, \ud y),
+\end{equation}
+where the integral above is the {\em Walsh integral} and $G(t,x)$ is the Gaussian heat kernal:
+\[
+G(t,x) = \frac{\exp\left(- \frac{|x|^2}{2t}\right)}{\sqrt{2 \pi t}}, \quad t > 0, \; x \in \R^d.
+\]
+The above is referred to as the {\em stochastic heat equation} (SHE) and is a widely studied stochastic partial differential equation. See for example \cite{khoshnevisan:14:analysis, walsh:86:introduction, chen.dalang:13:moments, chen.dalang:14:holder-continuity, carmona.molchanov:94:parabolic, hu.huang.ea:16:on, balan.chen:18:parabolic} and also Chapter \ref{Ch:InvMeas} below where we prove the existence of an invariant measure for the stochastic heat equation. 
 
-\noindent It important to note that the above theorem allows for the initial condition to be the Dirac delta distribution. Moreover, this is a very natural choice and has many real world applications. 
-
-
-\begin{figure*}
+\begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.475\textwidth}   
 		\centering 
@@ -330,20 +298,85 @@ We will finish this introduction with a brief discussion about the stochastic he
 	\end{subfigure}
 	\caption[] 
 	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
-	\label{F:SHEsim2}
-\end{figure*}
+	\label{Fig:SHEsim2}
+\end{figure}
 
-The simulations in Figures \ref{F:SHEsim1} and \ref{F:SHEsim2} illustrate a phenomena not seen in the deterministic case, that is, the formation of very large peaks widely separated by very deep valleys. This may seem unrealistic in practice but there is in fact a situation where one may make sense of this. Consider the $\delta_0(\cdot)$ initial condition to by representative of the "big bang" at the creation of our universe. One may assume that this is a highly random and chaotic event and that the transfer of heat may be roughly modeled Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$ for some "large" $\lambda > 0$. These tall, but isolated, peaks that form may be though of as the formation formation of galaxies and the empty space in between can just be thought of as the emptiness of outer space. Of course this is highly simplified, but still a nice way to picture what is happening in the simulations. 
+The noise term, $\dot{W}$, brings fundamental changes to the solution $u(t,x)$ which can be seen from the simulations in Figures \ref{Fig:SHEsim1} and \ref{Fig:SHEsim2}. In particular, one can notice that as we increase $\lambda$, or the level of noise that we allow in our system, then the formation of taller and taller peaks begin to form. This phenomena is referred to as {\em intermittency} and this concept will be one of the main focuses of my first project which is presented in Chapter \ref{Ch:ISHWEmom} below.
 
-Describing the growth of the peaks is an interesting question on its own. At the moment, it is an open question to describe the growth of the sample paths in time to the stochastic heat equation, in other words, the growth of the function
+In particular, in the following chapter we will study the following space-time fractional stochastic partial differential equation driven by the {\em time-independent noise} $\dot{W}(x)$ that interpolates both the stochastic heat and wave equation:
+\begin{equation} \label{E:IntroISHWE}
+\begin{cases}
+\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
+u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
+u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+\end{cases}
+\end{equation}
+where $\partial^b_t $ is the {\em Caputo} derivative, $(-\Delta)^{a/2}$ is the {\em fractional Laplacian} and $I^r_t$ is the {\em Riemann-Liouville fractional integral}. Similar to the stochastic heat equation above, \eqref{E:IntroISHWE} is understood through the  following stochastic integral equation:
+	  \begin{equation} \label{E:IntroISHWEmild}
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s,
+	\end{equation}
+	
+	   \begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figs/Yb.5.png}
+		\caption[]%
+		{b = .5}    
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.32\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figs/Yb1.png}
+		\caption[]%
+		{b = 1}    
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.32\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{figs/Yb1.9.png}
+		\caption[]%
+		{b = 1.9}    
+	\end{subfigure}
+	\caption[] 
+	{\small Some plots of $G_{2,b,0,2,1}(t,x)$ with $-4 \le x \le 4$ and $1 \le t \le 4$.} 
+	\label{Fig:FoxSurface}
+\end{figure}
+	
+where, because of the choice of noise, the stochastic integral above is the {\em Skorohod} integral \cite{nualart.nualart:18:introduction} and here $G = G_{a, b, r, \nu, d}$ is the fundamental solution which is given through the Fox H-function (see Figures \ref{Fig:FoxSurface} and \ref{Fig:FoxCross} and \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}). One can see that when $a=2$, $b=1$ and $r=0$ then \eqref{E:IntroISHWE} reduces to the stochastic heat equation and when $a=b=2$ and $r=o$ then it reduces to the stochastic wave equation. Lastly, we mention that a key feature of the solution, which is due to the choice of noise and simplified initial conditions, is the following Wiener Chaos expansion of the solution 
+\begin{equation} \label{E:IntroISHWEwcexp}
+u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)).
+\end{equation}
+
+The main goals will be to prove existence and uniqueness of the solution (Theorem \ref{T:solvable}) and to calculate the following limits:
 	\[
-		t \mapsto u(t,x)(\omega), \quad x \in \R^d, \; \omega \in \Omega.
+		\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
+		\quad \text{and} \quad 
+		\lim_{p \to \infty} p^{-\beta} \log \E\left(|u(t,x)|^p\right),
 	\]
-However, we do have some results on the growth in time of the $p^{th}$ moments of the solution for $p\ge2$. Some references that address this matter can found in \cite{chen.dalang:15:moments, chen.huang:19:comparison, chen.kim:19:nonlinear} and also Chapter \ref{C:ISHWEmom} below. Namely, in many cases of interest, the $p^{th}$ moments to the solution of the stochastic heat equation, and more generally the space-time fractional equation defined in Section \ref{S:ISHWE}, grow exponentially in time. This phenomena is reffered to as {\em intermittency}.
+where $\beta$ is a constant that is to be determined (Theorem \ref{T:asym} and Corollary \ref{C:Lim}). One should note that both the positivity and the finiteness of the above limits imply that the following functions exhibit exponential growth:
+\[
+t \mapsto \E\left(|u(t,x)|^p\right) 
+\quad \text{and} \quad
+p \mapsto \E\left(|u(t,x)|^p\right).
+\]
 
-\chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{C:ISHWEmom}
+\begin{figure}[t]
+	\centering
+	\includegraphics[scale=.8]{figs/Ybt1.png}
+	\caption[] 
+	{\small Cross sections of $G_{2,b,0,2,1}(t,x)$ with $-4 \le x \le 4$ and $t = 1$.} 
+	\label{Fig:FoxCross}
+\end{figure}
+
+As for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if the $p^{th}$ moments, $\Norm{u(t,x)}_p$, exist for any $x \in \R^d$ and $t>0$. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for any $x \in \R^d$, the $p^{th}$ moments exist for $t<T_{1,p}$ and blow up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition for any $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
+
+In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE}.  
+
+
+\chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{Ch:ISHWEmom}
 \section{Introduction}
-In this paper we study the following {\it stochastic partial differential equation} (SPDE) with 
+In this chapter we study the following {\it stochastic partial differential equation} (SPDE) with 
 fractional differential operators:
 \begin{equation} \label{E:SPDE}
 \begin{cases}
@@ -2980,10 +3013,10 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 	which proves \eqref{E:fHn}.
 \end{proof}
 
-\chapter{ \normalfont Invariant Measures for the Stochastic Heat Equation} \label{C:InvMeas}
+\chapter{ \normalfont Invariant Measures for the Stochastic Heat Equation} \label{Ch:InvMeas}
 
 \section{Introduction}
-We consider the following {\it stochastic heat equation} (SHE):
+In this chapter we consider the following {\it stochastic heat equation} (SHE):
 \begin{equation} \label{E:SHE}
 \begin{cases}
 \dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \R^d$, $t>0$}, \\
