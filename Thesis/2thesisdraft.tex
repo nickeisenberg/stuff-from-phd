@@ -387,7 +387,15 @@ However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solut
 \subsection{A brief overview of the second project}
 In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE}. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, often there is a strong need to know the ergodic behavior if the dynamical system and no ergodic behavior can exists without an invariant measure, hence, proving the existence of such a measure is a crucial starting point. 
 
-Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da-prato.g-atarek.ea:92:invariant} however proving uniqueness is a much harder question \cite{hairer.mattingly:06:ergodicity}.  
+Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da-prato.g-atarek.ea:92:invariant}, which revolves around showing that the probability laws of the solution satisfy the following tightness condition:
+	 \begin{equation} \label{E:Introcpt}
+	\mathcal{L}u(t,\cdot;\mu)(\mathcal{K})
+	:=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
+	\qquad \text{for all $t\ge \tau>0$},
+	\end{equation}
+	where $\mathcal{K}$ is some compact set to be determined (see Theorem \ref{T:Main} below) and $
+
+however proving uniqueness is a much harder question \cite{hairer.mattingly:06:ergodicity}
 
 
 \chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{Ch:ISHWEmom}
@@ -4517,12 +4525,14 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 %
 %\end{thebibliography}
 
+%%%%%%%%%%%%%% uncomment later
+
 % {{{ All references: New ones with biber
-\addcontentsline{toc}{section}{References}
-\printbibliography[title={References}]
+%\addcontentsline{toc}{section}{References}
+%\printbibliography[title={References}]
 % }}}
 
-
+%%%%%%%%%%%%%%%%%
 
 \appendix
 \chapter*{Appendices\addcontentsline{toc}{chapter}{Appendices}}
