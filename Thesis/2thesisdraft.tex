@@ -385,15 +385,27 @@ The calculation of these limits is a very long an lengthly process so hold any f
 However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if the $p^{th}$ moments, $\Norm{u(t,x)}_p$, exist for any $x \in \R^d$ and $t>0$. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for any $x \in \R^d$, the $p^{th}$ moments exist for $t<T_{1,p}$ and blow up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition for any $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
 
 \subsection{A brief overview of the second project}
-In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE}. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, often there is a strong need to know the ergodic behavior if the dynamical system and no ergodic behavior can exists without an invariant measure, hence, proving the existence of such a measure is a crucial starting point. 
+In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior if the dynamical system and no ergodic behavior can exists without an invariant measure, hence, proving the existence of such a measure is a crucial starting point. 
 
-Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da-prato.g-atarek.ea:92:invariant}, which revolves around showing that the probability laws of the solution satisfy the following tightness condition:
-	 \begin{equation} \label{E:Introcpt}
-	\mathcal{L}u(t,\cdot;\mu)(\mathcal{K})
+Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da-prato.g-atarek.ea:92:invariant}, which revolves around showing the following:
+\begin{enumerate}
+	\item the probability laws of the solution form a {\em Markov transition function},
+	\item  the existence of a compact set $\mathcal{K} \subset L^2_{\rho}(\R^d)$ such that the probability laws of the solution satisfy the following tightness condition:
+	\begin{equation} \label{E:Introcpt}
+	\mathscr{L}u(t,\cdot;\mu)(\mathcal{K})
 	:=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
 	\qquad \text{for all $t\ge \tau>0$},
 	\end{equation}
-	where $\mathcal{K}$ is some compact set to be determined (see Theorem \ref{T:Main} below) and $
+\end{enumerate}
+where $\mathscr{L}$ denotes the law and $L^2_{\rho}(\R^d)$ denotes the $\rho$-weighted space of square integrable functions for some positive, bounded and continuous function $\rho \in L^1(\R^d)$. Lastly, when one verifies the above steps, then by applying the The Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) we can show that the invariant measure, which we denote as $\eta$, takes the following form:
+	\begin{equation} \label{E:IntroInvMeasForm}
+	\eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t, \quad A \subset \mathscr{B}(L^2_{\rho}(\R^d))
+	\end{equation}
+	for some appropriately chosen sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$ and where $\mathscr{B}(L^2_{\rho}(\R^d))$.
+
+ It should be noted that the first bullet posses no issue to us here as the solution to the SHE is Markov (e.g. see \cite[Theorem 9.21]{da-prato.zabczyk:14:stochastic}). 
+
+On the other hand, the second bullet point above is quite difficult to show and requires a lot of work. 
 
 however proving uniqueness is a much harder question \cite{hairer.mattingly:06:ergodicity}
 

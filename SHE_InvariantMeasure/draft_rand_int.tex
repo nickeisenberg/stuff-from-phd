@@ -228,21 +228,22 @@ weighted space as in \cite{tessitore.zabczyk:98:invariant}:
 Let $\rho$ be an admissible weight function. Then we may introduce the Hilbert space
 $H:=L_\rho^2(\R^d)$ with $\langle f,g \rangle_\rho := \int_{\R^d}f(x)g(x)\rho(x) \: \ud x$ and
 $\Norm{f}_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. A continued discussion about the weight function
-can be found in Section \ref{SS:Weight}. Let $\mathcal{B}(H)$ be the space of all bounded Borel
-functions on $H$. Following  \cite{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$
-on the Borel $\sigma$-field $\mathcal{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
+can be found in Section \ref{SS:Weight}. 
+
+Following  \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$
+on the Borel $\sigma$-field $\mathscr{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
 \begin{equation}\label{E:InvMeas}
   \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
-  \quad \text{for all $ t\ge 0$ and $A\in \mathcal{B}(H)$},
+  \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$},
 \end{equation}
 where we use the notation $u(t,x;\zeta)$ with a third argument to emphasize its dependence on the
 initial condition $u(0,\cdot)=\zeta$ and $\mathscr{L}(u(t,\cdot;\zeta))(A)$ denotes the law of the solution:
 	\[
-		\mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathcal{B}(H).
+		\mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 	\]
 Due to the {\it Krylov-Bogoliubov theorem} (see, e.g.,
 \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
-$\{\mathcal{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct the
+$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct the
 invariant measure via
 \begin{equation} \label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
