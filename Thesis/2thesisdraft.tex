@@ -44,6 +44,11 @@ urlcolor=blue
 \usepackage[shortlabels]{enumitem}
 % }}}
 
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{decorations.markings}
+
 
 
 \setlength\cftparskip{-2pt}
@@ -387,6 +392,74 @@ However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solut
 \subsection{A brief overview of the second project}
 In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior if the dynamical system and no ergodic behavior can exists without an invariant measure, hence, proving the existence of such a measure is a crucial starting point. 
 
+Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ and we will see below in Theorem \ref{T:Lrho} that the solution starting from $\mu$, which we denote as $u(t,\cdot; \mu)$ is almost surely in this weighted space for a broad range on initial data which may be a measure such as the Dirac delta measure, an unbounded function such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ or simply a bounded continuous function.
+
+A crucial property of the system that must be exhibited for an invariant measure to exist is the Markov property. Essentially this means that one must be able to restart their system whenever they choose and the system will act as if it is just "picking up where it left off". It makes sense that the SHE would satisfy this property as heat always moves from hot to cold. Thus no matter when we restart are system, the transfer of heat will just continue as if nothing happened. 
+
+However, this restart property is not always satisfied. Consider the situation where we pull back a string that is tightly secured at both end points. When we release the the string, it will vibrate back and fourth until the string loses its momentum and ends back at rest. Well, when we stop this system we completely lose the information on which direction the string was moving in and how fast the string was moving (see Figure \ref{Fig:stringstop}). 
+\begin{figure}[t]
+\captionsetup{singlelinecheck = false, format= hang, justification=raggedright}
+\begin{center}
+	\newbox\qbox
+	\setbox\qbox\hbox{?}
+	\edef\qmarkHeight{\the\ht\qbox}
+	\begin{tikzpicture}[scale = 1.5]
+\begin{axis}[
+axis lines=none,
+xmin=-.3, xmax=3.18,
+ymin=-4, ymax=4,
+domain=0:3.14,samples=500,
+]
+
+\addplot [black,thick,
+postaction={decorate, decoration={markings, 
+		mark=at position 0 with {\fill circle(2pt);},
+		mark=at position 1 with {\fill circle(2pt);}
+}}
+]  {sin(deg(x))/1.4};
+\draw[->, thick](1.3, -1)--(1.3, 0);
+\draw[->, thick](1.84, 0)--(1.84, -1);
+\draw[black] (1.57,-.7) -- (1.57, -.7) node[yshift=\qmarkHeight/2]{?}; 
+\end{axis}
+\end{tikzpicture} 
+\end{center}
+\caption{Position of the string at a certain time before vibrations have ceased.}
+\label{Fig:stringstop}
+\end{figure}
+When we re-release the string and restart the system, the string will always move in the direction of least resistance but this may not have been the direction the strong was moving in when stopped (see Figure \ref{Fig:stringstart}). So we can't restart this system in the sense that when we do restart, the system continues like nothing happened.
+\begin{figure}[t]
+\begin{center}
+	\begin{tikzpicture}[scale = 1.5]
+	\begin{axis}[
+	axis lines=none,
+	xmin=-.3, xmax=3.18,
+	ymin=-4, ymax=4,
+	domain=0:3.14,samples=500,
+	]
+	
+	\addplot [black,thick,
+	postaction={decorate, decoration={markings, 
+			mark=at position 0 with {\fill circle(2pt);},
+			mark=at position 1 with {\fill circle(2pt);}
+	}}
+	]  {sin(deg(x))/1.4};
+	\draw[->, thick] (1.57,0) -- (1.57, -1); 
+	\end{axis}
+	\end{tikzpicture} 
+\end{center}
+\caption{Direction of movement when re-releasing the string, regardless of the direction the string was moving when stopped.}
+\label{Fig:stringstart}
+\end{figure}
+
+With the weight, we define the invariant measure to be any probability measure $\eta$ on $\mathscr{B}(L^2_{\rho}(\R^d))$, the Borel subsets of $L^2_{\rho}(\R^d)$, such that:
+\begin{equation}\label{E:IntroInvMeas}
+\eta(A) = \int_{L^2_{\rho}(\R^d)} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
+\quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$ },
+\end{equation} 
+where $u(t,x;\zeta)$ is the solution to the SHE starting from $\zeta \in L^2_{\rho}(\R^d)$. 
+
+Note that this above equality says that the $\eta$-average of the laws $A \mapsto \mathscr{L}(u(t,\cdot;\zeta))(A)$ are invariant with respect to time which is key part of an ergodic dynamical system. We should mention that there an equivalent way to define an invariant measure which may 
+
 Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da-prato.g-atarek.ea:92:invariant}, which revolves around showing the following:
 \begin{enumerate}
 	\item the probability laws of the solution form a {\em Markov transition function},
@@ -397,7 +470,7 @@ Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da
 	\qquad \text{for all $t\ge \tau>0$},
 	\end{equation}
 \end{enumerate}
-where $\mathscr{L}$ denotes the law and $L^2_{\rho}(\R^d)$ denotes the $\rho$-weighted space of square integrable functions for some positive, bounded and continuous function $\rho \in L^1(\R^d)$. Lastly, when one verifies the above steps, then by applying the The Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) we can show that the invariant measure, which we denote as $\eta$, takes the following form:
+where $\mathscr{L}$ denotes the law. Lastly, when one verifies the above steps, then by applying the Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), we can show that the invariant measure, $\eta$, takes the following form:
 	\begin{equation} \label{E:IntroInvMeasForm}
 	\eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t, \quad A \subset \mathscr{B}(L^2_{\rho}(\R^d))
 	\end{equation}
