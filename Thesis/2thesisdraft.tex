@@ -240,7 +240,7 @@ $L^2_\rho$ functions as well as the Dirac delta distribution $\delta_0$.
 
  \chapter {Introduction}  % Use \\ for long titles  
 \vspace{-1cm} %Use when chapter name is long -reduce distance between title and chapter text
-The field of {\em stochastic partial differential equations} (SPDEs) is a relatively new field that has proven to be extremely useful. In the 1960's a Japanese mathematician named Kyosi Ito pioneered what would later be referred to as {\em Ito Calculus}. This new and innovative material would then inspire other mathematicians, such as J. Walsh and R. Dalang, to set the framework for stochastic partial differential equations. Today, SPDEs is as active as ever and the field has even seen a Field's medal winner, Martin Hairer \cite{hairer:13:solving}, and several Nobel Memorial Prize in Economics winners, Myron Scholes and Robert Merton \footnote{Fischer Black would have also been Awarded the Nobel Memorial Prize in Economics but he passed away prior to the presentation of the award.} \cite{black.scholes:73:options}.
+The field of {\em stochastic partial differential equations} (SPDEs) is a relatively new field that has proven to be extremely useful. In the 1960's a Japanese mathematician named Kyosi Ito pioneered what would later be referred to as {\em Ito calculus}. This new and innovative material would then inspire other mathematicians, such as J. Walsh and R. Dalang, to set the framework for stochastic partial differential equations. Today, SPDEs is as active as ever and the field has even seen a Field's medal winner, Martin Hairer \cite{hairer:13:solving}, and several Nobel Memorial Prize in Economics winners, Myron Scholes and Robert Merton \footnote{Fischer Black would have also been Awarded the Nobel Memorial Prize in Economics but he passed away prior to the presentation of the award.} \cite{black.scholes:73:options}.
 
 Let's consider one application, which will lead us to the first project presented in Chapter \ref{Ch:ISHWEmom}. Consider the situation where an infinitesimally thin piece of wire is initially heated. Also suppose that there is no external source of heat. Can we model the temperature of the wire as a function of position and time? In other words, does there exist a function, $u(t,x)$, such that $u(t,x)$ gives the temperature of the wire at a position $x$ and at a time $t$? The answer is yes, and this scenario can be modeled by the well known heat equation: 
 \[
@@ -251,14 +251,14 @@ u(0,x) = \zeta(x) & x \in \R,
 \]
 where $\zeta(x)$ describes the initial temperature at a position $x$.
 
-However, the above system is completely deterministic in the sense that there is no randomness involved. In other words, every single simulation of modeling the evolution of heat starting from $\zeta(x)$ will be the same. In practice this is unrealistic and for sure there will be some randomness involved that will affect the evolution of the temperature in some random way. The need to model this randomness is the motivation behind the field of stochastic partial differential equations.
+However, the above system is completely deterministic in the sense that there is no randomness involved. In other words, every single simulation of modeling the evolution of heat starting from $\zeta(x)$ will be the same. In practice this is unrealistic and for sure there will be some randomness involved that will affect the evolution of the temperature. The need to model this randomness is the motivation behind the field of stochastic partial differential equations.
 
-We will use a $0$-mean Gaussian noise, which we denote as $\dot{W}$, to introduce the randomness into our system. The noise will always be uniquely defined by associating it with an appropriate positive-definite covariance functional of the following form:
+We will use a $0$-mean Gaussian noise, which we denote as $\dot{W}$, to introduce randomness into our system. The noise will always be uniquely defined by associating it with an appropriate positive-definite covariance functional of the following form:
 	\begin{align} \label{E:IntroCor}
 	\E \left[ \dot{W}\left(\psi\right)\dot{W}\left(\phi\right) \right]
 	= \int_0^\infty \ud s \int_{\R^d} \Gamma(\ud x)(\psi(s,\cdot)*\widetilde{\phi}(s,\cdot))(x), 
 	\end{align}
-where $\psi$ and $\phi$ are Schwartz functions, $\widetilde{\phi}(s,\cdot))(x) = \phi(s,-x)$ and $'*'$ denotes the spatial convolution. We will always assume that $\Gamma(\ud x) = f(x) \ud x$ and we will refer to $f$ as the {\em correlation function} and its Fourier transform, $\widehat{f}(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$, will be denoted as the {\em spectral density}. 
+where $\psi$ and $\phi$ are Schwartz functions, $\widetilde{\phi}(s,\cdot))(x) = \phi(s,-x)$ and $'*'$ denotes the spatial convolution. We will always assume that $\Gamma(\ud x) = f(x) \ud x$ it a non-negative and non-negative definite tempered measure and we will refer to $f$ as the {\em correlation function} and its Fourier transform, $\widehat{f}(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$, will be denoted as the {\em spectral density}. 
 
 \begin{figure}[t]
 	\centering
@@ -266,18 +266,18 @@ where $\psi$ and $\phi$ are Schwartz functions, $\widetilde{\phi}(s,\cdot))(x) =
 		\centering 
 		\includegraphics[width=\textwidth]{figs/deltaNoise0.png}
 		\caption[]%
-		{{\small $\lambda = 2.2$}} 
+		{{\small $\lambda = 0$}} 
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.475\textwidth}   
 		\centering 
 		\includegraphics[width=\textwidth]{figs/deltaNoise1.8.png}
 		\caption[]%
-		{{\small $\lambda = 2.8$}}    
+		{{\small $\lambda = 1.8$}}    
 	\end{subfigure}
 	\caption[] 
 	{\small Simulations of Equation \eqref{E:introSHE} with $d=1$, $\zeta(\cdot) = \delta_0(\cdot)$ and $b(u) = \lambda u$.} 
-	\label{Fig:SHEsim2}
+	\label{Fig:SHEsim1}
 \end{figure}
 
 Following Walsh \cite{walsh:86:introduction}, we incorporate the noise into our system in the following way: 
@@ -303,41 +303,21 @@ Equation \ref{E:introSHE} is referred to as the {\em stochastic heat equation} (
 		\centering
 		\includegraphics[width=\textwidth]{figs/deltaNoise2.2.png}
 		\caption[]%
-		{{\small $\lambda = 0$}}    
+		{{\small $\lambda = 2.2$}}    
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.475\textwidth}  
 		\centering 
 		\includegraphics[width=\textwidth]{figs/deltaNoise2.8.png}
 		\caption[]%
-		{{\small $\lambda = 1.8$}}    
+		{{\small $\lambda = 2.8$}}    
 	\end{subfigure}
 	\caption[] 
 	{\small Simulations of Equation \eqref{E:introSHE} with $d=1$, $\zeta(\cdot) = \delta_0(\cdot)$ and $b(u) = \lambda u$.} 
-	\label{Fig:SHEsim1}
+	\label{Fig:SHEsim2}
 \end{figure}
 
-%\begin{figure}
-%	\centering
-%	\begin{subfigure}[b]{0.475\textwidth}   
-%		\centering 
-%		\includegraphics[width=\textwidth]{figs/deltaNoise2.2.png}
-%		\caption[]%
-%		{{\small $\lambda = 2.2$}} 
-%	\end{subfigure}
-%	\hfill
-%	\begin{subfigure}[b]{0.475\textwidth}   
-%		\centering 
-%		\includegraphics[width=\textwidth]{figs/deltaNoise2.8.png}
-%		\caption[]%
-%		{{\small $\lambda = 2.8$}}    
-%	\end{subfigure}
-%	\caption[] 
-%	{\small Simulations of Equation \eqref{E:introSHE} with $d=1$, $\zeta(\cdot) = \delta_0(\cdot)$ and $b(u) = \lambda u$.} 
-%	\label{Fig:SHEsim2}
-%\end{figure}
-
-The noise term, $\dot{W}$, brings fundamental changes to the solution $u(t,x)$ which can be seen from the simulations in Figures \ref{Fig:SHEsim1} and \ref{Fig:SHEsim2}. In particular, one can notice that as we increase $\lambda$, or the level of noise that we allow in our system, then the formation of taller and taller peaks begin to form. This phenomena is referred to as {\em intermittency}, see \cite{chen.kim:19:nonlinear, khoshnevisan.kim:15:non-linear, carmona.molchanov:95:stationary}. This concept will be one of the main focuses of my first project which is presented in Chapter \ref{Ch:ISHWEmom} below.
+The noise term, $\dot{W}$, brings fundamental changes to the solution $u(t,x)$ which can be seen from the simulations in Figures \ref{Fig:SHEsim1} and \ref{Fig:SHEsim2}. In particular, one can notice that as we increase $\lambda$, or the level of noise that we allow in our system, then the formation of taller and taller peaks begin to form. This phenomena is referred to as {\em intermittency}, see \cite{chen.kim:19:nonlinear, khoshnevisan.kim:15:non-linear, carmona.molchanov:95:stationary}. This concept will be one of the main focuses of my first project which I will now introduce.
 
 	   \begin{figure}[b]
 	\centering
@@ -389,13 +369,13 @@ where, because of the choice of noise, the stochastic integral above is the {\em
 	\label{Fig:FoxCross}
 \end{figure}
 
-An important key feature of the solution, which is due to the choice of noise and simplified initial conditions, is the following Wiener Chaos expansion of the solution 
+An important key feature of the solution, which is due to the choice of noise and simplified initial conditions, is the following Wiener Chaos expansion of the solution:
 \begin{equation} \label{E:IntroISHWEwcexp}
 u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
 \end{equation}
 where $I_k$ denotes the $k^{th}$ order Skorohod integral and the kernels $f_k$ are calculated through a standard Picard iteration procedure (see the discussion after Definition \ref{D:Sol} below). Because of an orthogonality result that is exhibited by the integrals $I_k$ (e.g. \cite[Equation 4.1]{nualart.nualart:18:introduction}), one may deduce the following useful expression for the second moment of the solution (see Theorem \ref{T:2momseries} below):
 \[
-	    \mathbb{E}\left(u(t,x)^2\right)
+	    \mathbb{E}\left(|u(t,x)|^2\right)
 	= \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2
 	\quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
 \]
@@ -413,15 +393,14 @@ t \mapsto \E\left(|u(t,x)|^p\right)
 \quad \text{and} \quad
 p \mapsto \E\left(|u(t,x)|^p\right).
 \]
-The calculation of these limits is a very long an lengthly process so we hold any further discussion until Chapter \ref{Ch:ISHWEmom}.
-
+The calculation of these limits is a very long and lengthly process so we hold any further discussion until Chapter \ref{Ch:ISHWEmom}.
 
 However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if for any $p \ge 2$, $x \in \R^d$ and $t>0$, the $p^{th}$ moment, $\Norm{u(t,x)}_p$, exists. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for any $p \ge 2$ and $x \in \R^d$, the $p^{th}$ moment exists for $t<T_{1,p}$ and blows up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition, for any $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
 
 \subsection{A brief overview of the second project}
 In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior of the dynamical system and no ergodic behavior can exists without an invariant measure. Hence proving the existence of such a measure is a crucial starting point. 
 
-Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ (see Section \ref{SS:Weight}). We will see below in Theorem \ref{T:Lrho}, that the solution starting from $\mu$, which we denote as $u(t,\cdot; \mu)$, is almost surely in this weighted space for a broad range of initial data which includes all bounded functions, some unbounded functions such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ and even measures such as the Dirac delta measure.
+Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ (see Section \ref{SS:Weight}). We will see below in Theorem \ref{T:Lrho}, that the solution starting from $\mu$, which we denote as $u(t,\cdot; \mu)$, is almost surely in this weighted space for a broad range of initial data, which includes all bounded functions, some unbounded functions such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ and even measures such as the Dirac delta measure.
 
 A crucial property of the system that must be exhibited for an invariant measure to exist is the {\em Markov property}. Essentially this means that one must be able to stop and restart their system whenever they choose and that the system then must act the same as it would if it were allowed to run uninterrupted. It makes sense that the SHE would satisfy this property since heat always moves from hot to cold. Thus no matter when we restart our system, the transfer of heat will just continue as if nothing happened. 
 
@@ -534,32 +513,32 @@ We should also mention now that there is an equivalent way that one can define t
 \end{equation} 
 For more on these equivilent definitions, we direct the reader to \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}.
 
-Tessitore and Zabczyk laid forth a schematic to prove the existence of an invariant measure in \cite{tessitore.zabczyk:98:invariant}, which revolves around showing the following:
+Tessitore and Zabczyk laid forth a schematic to prove the existence of an invariant measure in their paper \cite{tessitore.zabczyk:98:invariant}, which revolves around showing the following:
 \begin{enumerate}
 	\item the probability laws of the solution form a family of {\em Markovian transition functions},
 	\item  the solution, $u(t,x;\mu)$, satisfies a boundedness in probability condition.
 \end{enumerate}
-Moreover, when one verifies the above steps, then by applying the Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), it can be shown that the invariant measure, $\eta$, takes the following form:
+Moreover, when one verifies the above steps, then by applying the Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), it can be shown that the invariant measure, $\eta$, takes the following form for any $t_0 > 0$:
 	\begin{equation} \label{E:IntroInvMeasForm}
 	\eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t, \quad A \subset \mathscr{B}(L^2_{\rho}(\R^d)),
 	\end{equation}
-where $\{T_n\}_{n\ge 1}$ is an appropriately chosen sequence with $T_n\uparrow \infty$ and where $\mathscr{B}(L^2_{\rho}(\R^d))$ (see Theorem \ref{T:Main} below).
+where $\{T_n\}_{n\ge 1}$ is an appropriately chosen sequence with $T_n\uparrow \infty$ (see Theorem \ref{T:Main} below).
 
-Note that we already discussed that the first item above is satisfied in our setting. On the other hand, the second item will require some effort to show. A sufficient condition that implies this boundedness condition is the following:
+Note that we already discussed that the first item above is satisfied in our setting. On the other hand, the second item will require some effort to show. A sufficient condition that is more easily verified which implies this boundedness condition is the following:
 	\begin{align} \label{E:IntroBddMnt}
 	\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
 	<\infty.
 	\end{align}
-We remind the reader that for the SHE, moments usually grow exponentially in time (e.g. see \cite[Theorem 1.3]{chen.kim:19:nonlinear}), and so for the above finiteness to occur we will need additional assumptions (e.g. see Equation \eqref{E:U0finite} below). 
+We remind the reader that for the SHE, moments usually grow exponentially in time (e.g. see \cite[Theorem 1.3]{chen.kim:19:nonlinear}), and so for the above finiteness to occur, we will need additional assumptions (e.g. see Equation \eqref{E:U0finite} below). 
 
 In fact, in order for Tessitore and Zabczyk to provide a specific scenario where an invariant measure exists (e.g. \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}), they had to significantly strengthen their assumptions and require the following:
  \begin{equation} \label{E:IntroTZspec}
 d\ge 3 \quad \text{and} \quad
 L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left|  \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
 \end{equation}
-where $L_b$ is the Lipschitz constant of the drift term and $\hat{f}$ is the spectral density of the noise (see Section \ref{SS:TessZabz} below). Moreover, under this strengthened assumption, they proved that there exists an invariant measure for the SHE starting from the constant $1$ initial condition (e.g. \eqref{E:introSHE} with $\zeta(x) = 1$). However, due to its complexity, \eqref{E:IntroTZspec} was not calculated for any specific $\widehat{f}$ and without being able to do so, one may not apply this result for a specific noise. This is clearly a huge set back as picking the noise of your system is the main reason one would want to study a SPDE.
+where $L_b$ is the Lipschitz constant of the diffusion term and $\hat{f}$ is the spectral density of the noise (see Section \ref{SS:TessZabz} below). Moreover, under this strengthened assumption, they proved that there exists an invariant measure for the SHE starting from the constant $1$ initial condition (e.g. \eqref{E:introSHE} with $\zeta(x) = 1$). However, due to its complexity, \eqref{E:IntroTZspec} was not calculated for any specific $\widehat{f}$ and without being able to do so, one may not apply this result for a specific noise. This is clearly a huge set back as picking the noise of your system is the main reason one would want to study a SPDE.
 
-Our results vastly improve on this as we provide much simpler and more easily verifiable conditions in our Theorem \ref{T:Main} below that will guarantee the existence of an invariant measure. Moreover in Section \ref{SS:Bassel}, we are able to give specific examples of spectral densities, $\widehat{f}$, that satisfy the conditions of our Theorem \ref{T:Main}. In addition, in Section \ref{SS:Init} we enlarge the space of initial conditions to include all bounded functions, some unbounded functions and even some measures such as the Dirac delta measure. 
+Our results vastly improve on this as we provide much simpler and more easily verifiable conditions in our Theorem \ref{T:Main} below that will guarantee the existence of an invariant measure. Moreover in Section \ref{SS:Bassel}, we are able to give specific examples of spectral densities, $\widehat{f}$, that satisfy the conditions of our Theorem \ref{T:Main}. In addition, in Section \ref{SS:Init} we enlarge the space of allowable initial conditions to include all bounded functions, some unbounded functions and even some measures such as the Dirac delta measure. 
 
 \chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{Ch:ISHWEmom}
 \section{Introduction and main results}
