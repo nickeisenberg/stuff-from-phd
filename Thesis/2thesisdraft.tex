@@ -238,93 +238,106 @@ $L^2_\rho$ functions as well as the Dirac delta distribution $\delta_0$.
 
  \chapter {Introduction}  % Use \\ for long titles  
 \vspace{-1cm} %Use when chapter name is long -reduce distance between title and chapter text
-The field of {\em stochastic partial differential equations} (SPDEs) is a relatively new field that has proven to be extremely useful. In the 1960's a Japanese mathematician named Kyosi Ito pioneered what would later be referred to as {\em Ito Calculus}. This new and innovative material would then inspire other mathematicians, such as J. Walsh and R. Dalang, to set the framework for stochastic partial differential equations. It is also worth mentioning that field has seen a Field's medal winner, Martin Hairer \cite{hairer:13:solving}, and several Nobel Memorial Prize in Economics winners, Myron Scholes and Robert Merton \footnote{Fischer Black would have also been Awarded the Nobel Memorial Prize in Economics but he passed away prior to the presentation of the award.} \cite{black.scholes:73:options}.
+The field of {\em stochastic partial differential equations} (SPDEs) is a relatively new field that has proven to be extremely useful. In the 1960's a Japanese mathematician named Kyosi Ito pioneered what would later be referred to as {\em Ito Calculus}. This new and innovative material would then inspire other mathematicians, such as J. Walsh and R. Dalang, to set the framework for stochastic partial differential equations. Today, SPDEs is as active as ever and the field has even seen a Field's medal winner, Martin Hairer \cite{hairer:13:solving}, and several Nobel Memorial Prize in Economics winners, Myron Scholes and Robert Merton \footnote{Fischer Black would have also been Awarded the Nobel Memorial Prize in Economics but he passed away prior to the presentation of the award.} \cite{black.scholes:73:options}.
 
-Let's consider one application which will lead us to the first project presented in Chapter \ref{Ch:ISHWEmom}. Consider the situation where infinitesimally thin piece of wire is initially heated. Also suppose that there is no external source of heat. Can we model the temperature of the wire as a function of position and time? In other words, does there exist a function, $u(t,x)$ such that $u(t,x)$ gives the temperature of the wire at a position $x$ and at a time $t$? The answer is yes, and this scenario described can be modeled by the well known heat equation: 
+Let's consider one application, which will lead us to the first project presented in Chapter \ref{Ch:ISHWEmom}. Consider the situation where an infinitesimally thin piece of wire is initially heated. Also suppose that there is no external source of heat. Can we model the temperature of the wire as a function of position and time? In other words, does there exist a function, $u(t,x)$, such that $u(t,x)$ gives the temperature of the wire at a position $x$ and at a time $t$? The answer is yes, and this scenario can be modeled by the well known heat equation: 
 \[
 \begin{cases}
 \dfrac{\partial u}{\partial t}(t,x) = \dfrac{\partial^2 u}{\partial x^2}(t,x) & t \ge 0, \; x \in \R \\
-u(0,x) = f(x) & x \in \R,
+u(0,x) = \zeta(x) & x \in \R,
 \end{cases}
 \]
-where $f(x)$ describes the initial temperature at a position $x$ and $\rho$ is a globally Lipschitz function. 
+where $\zeta(x)$ describes the initial temperature at a position $x$.
 
-However, this above system is completely deterministic in the sense that there is no randomness involved. In other words, every single simulation of modeling the evolution of heat starting from $f(x)$ will be the same. In practice this is unrealistic and for sure there will be some randomness involved that will affect the evolution of the temperature of the wire in some random way. The need to model this randomness is the motivation behind the field of stochastic partial differential equations.
+However, the above system is completely deterministic in the sense that there is no randomness involved. In other words, every single simulation of modeling the evolution of heat starting from $\zeta(x)$ will be the same. In practice this is unrealistic and for sure there will be some randomness involved that will affect the evolution of the temperature in some random way. The need to model this randomness is the motivation behind the field of stochastic partial differential equations.
 
-   \begin{figure}
-	\centering
-	\begin{subfigure}[b]{0.475\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{figs/deltaNoise0.png}
-		\caption[]%
-		{{\small $\lambda = 0$}}    
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.475\textwidth}  
-		\centering 
-		\includegraphics[width=\textwidth]{figs/deltaNoise1.8.png}
-		\caption[]%
-		{{\small $\lambda = 1.8$}}    
-	\end{subfigure}
-	\caption[] 
-	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
-	\label{Fig:SHEsim1}
-\end{figure}
+We will use a $0$-mean Gaussian noise, which we denote as $\dot{W}$, to introduce the randomness into our system. The noise will always be uniquely defined by associating it with an appropriate positive-definite covariance functional of the following form:
+	\begin{align} \label{E:IntroCor}
+	\E \left[ \dot{W}\left(\psi\right)\dot{W}\left(\phi\right) \right]
+	= \int_0^\infty \ud s \int_{\R^d} \Gamma(\ud x)(\psi(s,\cdot)*\widetilde{\phi}(s,\cdot))(x), 
+	\end{align}
+where $\psi$ and $\phi$ are Schwartz functions, $\widetilde{\phi}(s,\cdot))(x) = \phi(s,-x)$ and $'*'$ denotes the spatial convolution. We will always assume that $\Gamma(\ud x) = f(x) \ud x$ and we will refer to $f$ as the {\em correlation function} and its Fourier transform, $\widehat{f}(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$, will be denoted as the {\em spectral density}. 
 
-Following Walsh \cite{walsh:86:introduction}, we can improve the above system by introducing a Gaussian noise term, $\dot{W}$: 
-	\begin{equation}\label{E:introSHE}
-\begin{cases}
-\dfrac{\partial u}{\partial t}(t,x) - \dfrac{\partial^2 u}{\partial x^2}(t,x  = \rho(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R^d \\
-u(0,x) = f(x) & x \in \R^d.
-\end{cases}
-\end{equation}
-The above equation can be legitimately interpreted as the following stochastic integral equation:
-	\begin{equation} \label{E:introMsol}
-u(t,x) = \int_{\R^d} G(t, x-y)f(y) \ud y + \int_0^t \int_{\R^d} G(t-s, x-y) \rho(u(s,y)) W(\ud s, \ud y),
-\end{equation}
-where the stochastic integral above is the {\em Walsh integral} and $G(t,x)$ is the Gaussian heat kernal
-\[
-G(t,x) = \frac{\exp\left(- \frac{|x|^2}{2t}\right)}{\sqrt{2 \pi t}}, \quad t > 0, \; x \in \R^d.
-\]
-Equation \ref{E:introSHE} is referred to as the {\em stochastic heat equation} (SHE) and is a widely studied stochastic partial differential equation. See for example \cite{khoshnevisan:14:analysis, walsh:86:introduction, chen.dalang:13:moments, chen.dalang:14:holder-continuity, carmona.molchanov:94:parabolic, hu.huang.ea:16:on, balan.chen:18:parabolic} and also Chapter \ref{Ch:InvMeas} below where we prove the existence of an invariant measure for the stochastic heat equation. 
-
-\begin{figure}
+\begin{figure}[t]
 	\centering
 	\begin{subfigure}[b]{0.475\textwidth}   
 		\centering 
-		\includegraphics[width=\textwidth]{figs/deltaNoise2.2.png}
+		\includegraphics[width=\textwidth]{figs/deltaNoise0.png}
 		\caption[]%
 		{{\small $\lambda = 2.2$}} 
 	\end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.475\textwidth}   
 		\centering 
-		\includegraphics[width=\textwidth]{figs/deltaNoise2.8.png}
+		\includegraphics[width=\textwidth]{figs/deltaNoise1.8.png}
 		\caption[]%
 		{{\small $\lambda = 2.8$}}    
 	\end{subfigure}
 	\caption[] 
-	{\small Simulations of Equation \eqref{E:introSHE} with $f(\cdot) = \delta_0(\cdot)$ and $\rho(u) = \lambda u$.} 
+	{\small Simulations of Equation \eqref{E:introSHE} with $d=1$, $\zeta(\cdot) = \delta_0(\cdot)$ and $b(u) = \lambda u$.} 
 	\label{Fig:SHEsim2}
 \end{figure}
 
-The noise term, $\dot{W}$, brings fundamental changes to the solution $u(t,x)$ which can be seen from the simulations in Figures \ref{Fig:SHEsim1} and \ref{Fig:SHEsim2}. In particular, one can notice that as we increase $\lambda$, or the level of noise that we allow in our system, then the formation of taller and taller peaks begin to form. This phenomena is referred to as {\em intermittency}, see \cite{chen.kim:19:nonlinear, khoshnevisan.kim:15:non-linear, carmona.molchanov:95:stationary}. This concept will be one of the main focuses of my first project which is presented in Chapter \ref{Ch:ISHWEmom} below.
-
-\subsection{A brief overview of the first project}
-In particular, in the following chapter we will study the following space-time fractional stochastic partial differential equation driven by the {\em time-independent noise} $\dot{W}(x)$ that interpolates both the stochastic heat and wave equation:
-\begin{equation} \label{E:IntroISHWE}
+Following Walsh \cite{walsh:86:introduction}, we incorporate the noise into our system in the following way: 
+	\begin{equation}\label{E:introSHE}
 \begin{cases}
-\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
-u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
-u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+\dfrac{\partial u}{\partial t}(t,x) - \dfrac{\partial^2 u}{\partial x^2}(t,x  = b(u(t,x))\dot{W}(t,x) & t \ge 0, \; x \in \R^d \\
+u(0,x) = \zeta(x) & x \in \R^d,
 \end{cases}
 \end{equation}
-where $\partial^b_t $ is the {\em Caputo} derivative, $(-\Delta)^{a/2}$ is the {\em fractional Laplacian} and $I^r_t$ is the {\em Riemann-Liouville fractional integral}. Similar to the stochastic heat equation above, \eqref{E:IntroISHWE} is understood through the  following stochastic integral equation:
-	  \begin{equation} \label{E:IntroISHWEmild}
-	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s,
-	\end{equation}
-	
-	   \begin{figure}
+where we assume the diffusion term $b$ to be Lipschitz continuous with Lipschitz constant $L_b$. The above equation is purely notational and can be legitimately interpreted as the following stochastic integral equation:
+	\begin{equation} \label{E:introMsol}
+u(t,x) = \int_{\R^d} G(t, x-y)\zeta(y) \ud y + \int_0^t \int_{\R^d} G(t-s, x-y) b(u(s,y)) W(\ud s, \ud y),
+\end{equation}
+where the stochastic integral above is the {\em Walsh integral} and $G(t,x)$ is the Gaussian heat kernel
+\[
+G(t,x) = \frac{\exp\left(- \frac{|x|^2}{2t}\right)}{\sqrt{2 \pi t}}, \quad t > 0, \; x \in \R^d.
+\]
+Equation \ref{E:introSHE} is referred to as the {\em stochastic heat equation} (SHE) and is a widely studied stochastic partial differential equation, see for example \cite{khoshnevisan:14:analysis, walsh:86:introduction, chen.dalang:13:moments, chen.dalang:14:holder-continuity, carmona.molchanov:94:parabolic, hu.huang.ea:16:on, balan.chen:18:parabolic} and also Chapter \ref{Ch:InvMeas} below where we prove the existence of an invariant measure for the stochastic heat equation. 
+
+   \begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.475\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{figs/deltaNoise2.2.png}
+		\caption[]%
+		{{\small $\lambda = 0$}}    
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.475\textwidth}  
+		\centering 
+		\includegraphics[width=\textwidth]{figs/deltaNoise2.8.png}
+		\caption[]%
+		{{\small $\lambda = 1.8$}}    
+	\end{subfigure}
+	\caption[] 
+	{\small Simulations of Equation \eqref{E:introSHE} with $d=1$, $\zeta(\cdot) = \delta_0(\cdot)$ and $b(u) = \lambda u$.} 
+	\label{Fig:SHEsim1}
+\end{figure}
+
+%\begin{figure}
+%	\centering
+%	\begin{subfigure}[b]{0.475\textwidth}   
+%		\centering 
+%		\includegraphics[width=\textwidth]{figs/deltaNoise2.2.png}
+%		\caption[]%
+%		{{\small $\lambda = 2.2$}} 
+%	\end{subfigure}
+%	\hfill
+%	\begin{subfigure}[b]{0.475\textwidth}   
+%		\centering 
+%		\includegraphics[width=\textwidth]{figs/deltaNoise2.8.png}
+%		\caption[]%
+%		{{\small $\lambda = 2.8$}}    
+%	\end{subfigure}
+%	\caption[] 
+%	{\small Simulations of Equation \eqref{E:introSHE} with $d=1$, $\zeta(\cdot) = \delta_0(\cdot)$ and $b(u) = \lambda u$.} 
+%	\label{Fig:SHEsim2}
+%\end{figure}
+
+The noise term, $\dot{W}$, brings fundamental changes to the solution $u(t,x)$ which can be seen from the simulations in Figures \ref{Fig:SHEsim1} and \ref{Fig:SHEsim2}. In particular, one can notice that as we increase $\lambda$, or the level of noise that we allow in our system, then the formation of taller and taller peaks begin to form. This phenomena is referred to as {\em intermittency}, see \cite{chen.kim:19:nonlinear, khoshnevisan.kim:15:non-linear, carmona.molchanov:95:stationary}. This concept will be one of the main focuses of my first project which is presented in Chapter \ref{Ch:ISHWEmom} below.
+
+	   \begin{figure}[b]
 	\centering
 	\begin{subfigure}[b]{0.32\textwidth}
 		\centering
@@ -351,18 +364,20 @@ where $\partial^b_t $ is the {\em Caputo} derivative, $(-\Delta)^{a/2}$ is the {
 	\label{Fig:FoxSurface}
 \end{figure}
 
-\noindent where, because of the choice of noise, the stochastic integral above is the {\em Skorohod} integral \cite{nualart.nualart:18:introduction} and here $G = G_{a, b, r, \nu, d}$ is the fundamental solution which is given through the Fox H-function (see Figures \ref{Fig:FoxSurface} and \ref{Fig:FoxCross} and \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}). One can see that when $a=2$, $b=1$ and $r=0$ then \eqref{E:IntroISHWE} reduces to the stochastic heat equation and when $a=b=2$ and $r=0$ then it reduces to the stochastic wave equation.
-
-An important key feature of the solution, which is due to the choice of noise and simplified initial conditions, is the following Wiener Chaos expansion of the solution 
-\begin{equation} \label{E:IntroISHWEwcexp}
-u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
+\subsection{A brief overview of the first project}
+In the following chapter we will study the following space-time fractional stochastic partial differential equation driven by a {\em time-independent noise} $\dot{W}(x)$ that interpolates both the stochastic heat and wave equations:
+\begin{equation} \label{E:IntroISHWE}
+\begin{cases}
+\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sqrt{\theta}\: u(t,x)\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
+u(0,\cdot) = 1                                                                                                             & b \in (0,1],               \\
+u(0,\cdot) = 1, \quad \partial_t u(0,\cdot) = 0                                                                            & b \in (1,2),
+\end{cases}
 \end{equation}
-where $I_k$ denotes the $k^{th}$ order Skorohod integral and the kernels $f_k$ are calculated through a standard Picard iteration procedure (see the discussion after Definition \ref{D:Sol} below). Because of an orthogonality result that is exhibited by integrals $I_k$ (e.g. \cite[Equation 4.1]{nualart.nualart:18:introduction}), one may deduce the following useful expression for the second moment of the solution (see Theorem \ref{T:2momseries} below):
-\[
-	    \mathbb{E}\left(u(t,x)^2\right)
-	= \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2
-	\quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
-\]
+where $\partial^b_t $ is the {\em Caputo} derivative, $(-\Delta)^{a/2}$ is the {\em fractional Laplacian} and $I^r_t$ is the {\em Riemann-Liouville fractional integral}. Similar to the stochastic heat equation above, \eqref{E:IntroISHWE} is understood through the  following stochastic integral equation:
+	  \begin{equation} \label{E:IntroISHWEmild}
+	u(t,x) = 1 + \sqrt{\theta}\int_0^t \left( \int_{\R^d} G(t-s,x-y)u(s,y) W(\delta y) \right)\ud s,
+	\end{equation}
+where, because of the choice of noise, the stochastic integral above is the {\em Skorohod} integral \cite{nualart.nualart:18:introduction} and here $G = G_{a, b, r, \nu, d}$ is the fundamental solution which is given through the Fox H-function (see Figures \ref{Fig:FoxSurface} and \ref{Fig:FoxCross} and \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}). One can see that when $a=2$, $b=1$ and $r=0$ then \eqref{E:IntroISHWE} reduces to the stochastic heat equation and when $a=b=2$ and $r=0$ then it reduces to the stochastic wave equation.
 
 \begin{figure}[t]
 	\centering
@@ -372,138 +387,45 @@ where $I_k$ denotes the $k^{th}$ order Skorohod integral and the kernels $f_k$ a
 	\label{Fig:FoxCross}
 \end{figure}
 
+An important key feature of the solution, which is due to the choice of noise and simplified initial conditions, is the following Wiener Chaos expansion of the solution 
+\begin{equation} \label{E:IntroISHWEwcexp}
+u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
+\end{equation}
+where $I_k$ denotes the $k^{th}$ order Skorohod integral and the kernels $f_k$ are calculated through a standard Picard iteration procedure (see the discussion after Definition \ref{D:Sol} below). Because of an orthogonality result that is exhibited by the integrals $I_k$ (e.g. \cite[Equation 4.1]{nualart.nualart:18:introduction}), one may deduce the following useful expression for the second moment of the solution (see Theorem \ref{T:2momseries} below):
+\[
+	    \mathbb{E}\left(u(t,x)^2\right)
+	= \sum_{n \ge 0} \theta^n n!  \Norm{\widetilde{f_n}(\cdot,x,t)}_{\mathcal{H}^{\otimes n}}^2
+	\quad \text{for all $(t,x) \in (0,T) \times \R^d$}.
+\]
+
 The main goals will be to prove existence and uniqueness of the solution (Theorem \ref{T:solvable}) and to calculate the following limits:
 	\[
 		\lim_{t \to \infty} t^{-\beta} \log \E\left(|u(t,x)|^p\right) 
 		\quad \text{and} \quad 
 		\lim_{p \to \infty} p^{-\beta} \log \E\left(|u(t,x)|^p\right),
 	\]
-where $\beta$ is a constant that is to be determined (Theorem \ref{T:asym} and Corollary \ref{C:Lim}). One should note that both the positivity and the finiteness of the above limits imply that the following functions exhibit exponential growth:
+where $\beta$ is a constant that is to be determined (see Theorem \ref{T:asym} and Corollary \ref{C:Lim}). One should note that both the positivity and the finiteness of the above limits imply that the following functions exhibit exponential growth:
+
 \[
 t \mapsto \E\left(|u(t,x)|^p\right) 
 \quad \text{and} \quad
 p \mapsto \E\left(|u(t,x)|^p\right).
 \]
-The calculation of these limits is a very long an lengthly process so hold any further discussion on the, until Chapter \ref{Ch:ISHWEmom}.
+The calculation of these limits is a very long an lengthly process so we hold any further discussion until Chapter \ref{Ch:ISHWEmom}.
 
 
-However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if the $p^{th}$ moments, $\Norm{u(t,x)}_p$, exist for any $x \in \R^d$ and $t>0$. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for any $x \in \R^d$, the $p^{th}$ moments exist for $t<T_{1,p}$ and blow up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition for any $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
+However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if for any $p \ge 2$, $x \in \R^d$ and $t>0$, the $p^{th}$ moment, $\Norm{u(t,x)}_p$, exists. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for any $p \ge 2$ and $x \in \R^d$, the $p^{th}$ moment exists for $t<T_{1,p}$ and blows up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition, for any $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
 
 \subsection{A brief overview of the second project}
-In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior if the dynamical system and no ergodic behavior can exists without an invariant measure, hence, proving the existence of such a measure is a crucial starting point. 
+In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior of the dynamical system and no ergodic behavior can exists without an invariant measure. Hence proving the existence of such a measure is a crucial starting point. 
 
-Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ and we will see below in Theorem \ref{T:Lrho} that the solution starting from $\mu$, which we denote as $u(t,\cdot; \mu)$ is almost surely in this weighted space for a broad range on initial data which may be a measure such as the Dirac delta measure, an unbounded function such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ or simply a bounded continuous function.
+Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ (see Section \ref{SS:Weight}). We will see below in Theorem \ref{T:Lrho}, that the solution starting from $\mu$, which we denote as $u(t,\cdot; \mu)$, is almost surely in this weighted space for a broad range of initial data which includes all bounded functions, some unbounded functions such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ and even measures such as the Dirac delta measure.
 
-A crucial property of the system that must be exhibited for an invariant measure to exist is the Markov property. Essentially this means that one must be able to restart their system whenever they choose and the system will act as if it is just "picking up where it left off". It makes sense that the SHE would satisfy this property as heat always moves from hot to cold. Thus no matter when we restart are system, the transfer of heat will just continue as if nothing happened. 
+A crucial property of the system that must be exhibited for an invariant measure to exist is the {\em Markov property}. Essentially this means that one must be able to stop and restart their system whenever they choose and that the system then must act the same as it would if it were allowed to run uninterrupted. It makes sense that the SHE would satisfy this property since heat always moves from hot to cold. Thus no matter when we restart our system, the transfer of heat will just continue as if nothing happened. 
 
-However, this restart property is not always satisfied. Consider the situation where we pull back a string that is tightly secured at both end points. When we release the the string, it will vibrate back and fourth until the string loses its momentum and ends back at rest. Well, when we stop this system we completely lose the information on which direction the string was moving in and how fast the string was moving (see Figure \ref{Fig:stringstop}). 
+However, this restart property is not always satisfied. Consider the situation where we pull back a string that is tightly secured at both end points. When we release the string, it will vibrate back and fourth until it loses its momentum and ends back at rest. The problem that presents itself here is that two vibrating strings could have the same position but different velocities (see Figure \ref{Fig:stringstop}). 
 
-%\noindent
-%\begin{figure}
-%\begin{minipage}{.5\textwidth}
-%	\begin{center}
-%		\begin{tikzpicture}[scale = 1]
-%		\begin{axis}[
-%		axis lines=none,
-%		xmin=-.3, xmax=3.18,
-%		ymin=-4, ymax=4,
-%		domain=0:3.14,samples=200,
-%		]
-%		
-%		\addplot [black,thick,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}}
-%		] {sin(deg(x))/.9};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/.78};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/.68};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/.6};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/.55};
-%		
-%		\draw[->, thick](1.57, 0)--(1.57, -1);
-%		\end{axis}
-%		\end{tikzpicture} 
-%	\end{center}
-%\end{minipage}% This must go next to `\end{minipage}`
-%\begin{minipage}{.5\textwidth}
-%	\begin{center}
-%		\begin{tikzpicture}[scale = 1]
-%		\begin{axis}[
-%		axis lines=none,
-%		xmin=-.3, xmax=3.18,
-%		ymin=-4, ymax=4,
-%		domain=0:3.14,samples=500,
-%		]
-%		
-%		\addplot [black,thick,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}}
-%		] {sin(deg(x))/.9};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/.98};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/1.5};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/2};
-%		
-%		\addplot [black,dotted,
-%		postaction={decorate, decoration={markings, 
-%				mark=at position 0 with {\fill circle(2pt);},
-%				mark=at position 1 with {\fill circle(2pt);}
-%		}} 
-%		] {sin(deg(x))/2.5};
-%		
-%		\draw[->, thick](1.3, -1)--(1.3, 0);
-%		\draw[->, thick](1.84, 0)--(1.84, -1);
-%		\end{axis}
-%		\end{tikzpicture} 
-%	\end{center}
-%\end{minipage}
-%\end{figure}
-
-\begin{figure}[t]
+\begin{figure}[!htbp]
 \begin{center}
 	\newbox\qbox
 	\setbox\qbox\hbox{?}
@@ -544,10 +466,10 @@ domain=0:7,samples=200,
 ] {(x-8)*(15-x) / 13.6};
 
 
-\fill (0,0) circle (2pt);
-\fill (7,0) circle (2pt);
-\fill (8,0) circle (2pt);
-\fill (15,0) circle (2pt);
+\fill (0,0) circle (1.75pt);
+\fill (7,0) circle (1.75pt);
+\fill (8,0) circle (1.75pt);
+\fill (15,0) circle (1.75pt);
 
 \draw[->, line width=.2mm] (3.5,-.6) -- (3.5,0);
 \draw[->, line width=.2mm] (11.5,0) -- (11.5,-.6);
@@ -555,11 +477,12 @@ domain=0:7,samples=200,
 
 \end{tikzpicture} 
 \end{center}
-\caption{A still shot of two vibrating strings that happen to be at the same position but moving in opposite directions.}
+\caption{A still shot of two vibrating strings at the same position but moving in opposite directions.}
 \label{Fig:stringstop}
 \end{figure}
-When we re-release the string and restart the system, the string will always move in the direction of least resistance but this may not have been the direction the strong was moving in when stopped (see Figure \ref{Fig:stringstart}). So we can't restart this system in the sense that when we do restart, the system continues like nothing happened.
-\begin{figure}[t]
+
+\noindent For example, suppose we froze both strings illustrated above. When we initiate the restart, both stings will not continue as they were prior to the restart. What will happen is that they both will start moving in the direction of least resistance (see Figure \ref{Fig:stringstart}).  
+\begin{figure}[!htbp]
 \begin{center}
 	\begin{tikzpicture}[scale = 1.5]
 	\begin{axis}[
@@ -579,54 +502,65 @@ When we re-release the string and restart the system, the string will always mov
 	\end{axis}
 	\end{tikzpicture} 
 \end{center}
-\caption{Direction of movement when re-releasing the string, regardless of the direction the string was moving when stopped.}
+\caption{Direction of movement when re-releasing the string, regardless of the prior velocity.}
 \label{Fig:stringstart}
 \end{figure}
+\noindent Thus the system will appear differently as it would if it were never restarted at all. This heuristically shows us that this system can not satisfy the Markov property and therefore an invariant measure will not exist in this setting.
 
-Because of the Markov property, the probability laws of the solution
+
+We define the probability laws of the solution as
 	\[
-	P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathscr{B}(L^2_{\rho}(\R^d)),
+	\mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathscr{B}(L^2_{\rho}(\R^d)),
 	\]
-form a family of Markovian transition functions where $\mathscr{B}(L^2_{\rho}(\R^d))$ denotes the Borel subsets of $L^2_{\rho}(\R^d)$. Moreover, the transition functions form a {\em transition semi-group} defined as follows:
+where $\mathscr{B}(L^2_{\rho}(\R^d))$ denotes the Borel subsets of $L^2_{\rho}(\R^d)$. Because of the Markov property of the solution, the laws form a family of {\em Markovian transition functions}, $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$, for $\zeta \in L^2_{\rho}(\R^d)$. Moreover, the transition functions form a {\em transition semi-group} defined as follows:
 	\[
 		P_t\varphi(x) = \int_{L^2_{\rho}(\R^d)} P_t(x, \ud y) \varphi(y), \quad \varphi \in \mathcal{B}(L^2_{\rho}(\R^d)),
 	\]
- where $\mathcal{B}(L^2_{\rho}(\R^d))$ denotes the bounded Borel measurable functions on $L^2_{\rho}(\R^2)$. With this said, we define the invariant measure to be any probability measure $\eta$ on $\mathscr{B}(L^2_{\rho}(\R^d))$, such that
+ where $\mathcal{B}(L^2_{\rho}(\R^d))$ denotes the bounded Borel measurable functions on $L^2_{\rho}(\R^d)$. 
+ 
+ With this said, we say that a probability measure, $\eta$, on $\mathscr{B}(L^2_{\rho}(\R^d))$ is {\em invariant} for \eqref{E:introSHE} when the following holds:
 \begin{equation}\label{E:IntroInvMeas2}
 \int_{L^2_{\rho}(\R^d)} P_t\varphi(x)\eta(\ud x) = \int_{L^2_{\rho}(\R^d)} \varphi(x) \eta(\ud x),
 \quad \text{for all $ t\ge 0$ and $\varphi \in \mathcal{B}(L^2_{\rho})(\R^d)$ }.
 \end{equation} 
-Recall that by definition, $P_0\varphi(x) = \varphi(x)$, and so \eqref{E:IntroInvMeas2} is essentially saying that the transition semi-group is {\em time-invariant} with respect to the invariant measure $\eta$ which is a key feature of ergodicity. 
+Recall that by definition $P_0\varphi(x) = \varphi(x)$ and so \eqref{E:IntroInvMeas2} is essentially saying that the transition semi-group is {\em time-invariant} with respect to the invariant measure $\eta$. We mention that this is a key feature of ergodicity. 
 
-We should also mention now that there is an equivalent way that one can define the invariant measure, and in fact it is the definition that we will choose to use for the remainder of this thesis. Any probability measure $\eta$
-on the Borel $\sigma$-field $\mathscr{B}(H)$ is said to also be invariant for \eqref{E:SHE} if
+We should also mention now that there is an equivalent way that one can define the invariant measure, and in fact it is the definition that we will choose to use for the remainder of this thesis. Any probability measure, $\eta$, on the Borel $\sigma$-field $\mathscr{B}(L^2_{\rho}(\R^d))$ is said to also be invariant for \eqref{E:introSHE} if
 \begin{equation}\label{E:IntroInvMeas}
 \eta(A) = \int_{L^2_{\rho}(\R^d)} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
 \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(L^2_{\rho})(\R^d)$}.
 \end{equation} 
 For more on these equivilent definitions, we direct the reader to \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}.
 
-Da Prato and Zabczyk laid forth forth a schematic to prove existence in \cite{da-prato.g-atarek.ea:92:invariant}, which revolves around showing the following:
+Tessitore and Zabczyk laid forth a schematic to prove the existence of an invariant measure in \cite{tessitore.zabczyk:98:invariant}, which revolves around showing the following:
 \begin{enumerate}
-	\item the probability laws of the solution form a {\em Markov transition function},
-	\item  the existence of a compact set $\mathcal{K} \subset L^2_{\rho}(\R^d)$ such that the probability laws of the solution satisfy the following tightness condition:
-	\begin{equation} \label{E:Introcpt}
-	\mathscr{L}u(t,\cdot;\mu)(\mathcal{K})
-	:=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
-	\qquad \text{for all $t\ge \tau>0$},
-	\end{equation}
+	\item the probability laws of the solution form a family of {\em Markovian transition functions},
+	\item  the solution, $u(t,x;\mu)$, satisfies a boundedness in probability condition.
 \end{enumerate}
-where $\mathscr{L}$ denotes the law. Moreover, when one verifies the above steps, then by applying the Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}) it can be shown that the invariant measure, $\eta$, takes the following form:
+Moreover, when one verifies the above steps, then by applying the Krylov–Bogoliubov existence theorem (\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), it can be shown that the invariant measure, $\eta$, takes the following form:
 	\begin{equation} \label{E:IntroInvMeasForm}
-	\eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t, \quad A \subset \mathscr{B}(L^2_{\rho}(\R^d))
+	\eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t, \quad A \subset \mathscr{B}(L^2_{\rho}(\R^d)),
 	\end{equation}
-	for some appropriately chosen sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$ and where $\mathscr{B}(L^2_{\rho}(\R^d))$ (see Theorem \ref{T:Main} below).
+where $\{T_n\}_{n\ge 1}$ is an appropriately chosen sequence with $T_n\uparrow \infty$ and where $\mathscr{B}(L^2_{\rho}(\R^d))$ (see Theorem \ref{T:Main} below).
 
+Note that we already discussed that the first item above is satisfied in our setting. On the other hand, the second item will require some effort to show. A sufficient condition that implies this boundedness condition is the following:
+	\begin{align} \label{E:IntroBddMnt}
+	\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
+	<\infty.
+	\end{align}
+We remind the reader that for the SHE, moments usually grow exponentially in time (e.g. see \cite[Theorem 1.3]{chen.kim:19:nonlinear}), and so for the above finiteness to occur we will need additional assumptions (e.g. see Equation \eqref{E:U0finite} below). 
 
+In fact, in order for Tessitore and Zabczyk to provide a specific scenario where an invariant measure exists (e.g. \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}), they had to significantly strengthen their assumptions and require the following:
+ \begin{equation} \label{E:IntroTZspec}
+d\ge 3 \quad \text{and} \quad
+L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left|  \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta,
+\end{equation}
+where $L_b$ is the Lipschitz constant of the drift term and $\hat{f}$ is the spectral density of the noise (see Section \ref{SS:TessZabz} below). Moreover, under this strengthened assumption, they proved that there exists an invariant measure for the SHE starting from the constant $1$ initial condition (e.g. \eqref{E:introSHE} with $\zeta(x) = 1$). However, due to its complexity, \eqref{E:IntroTZspec} was not calculated for any specific $\widehat{f}$ and without being able to do so, one may not apply this result for a specific noise. This is clearly a huge set back as picking the noise of your system is the main reason one would want to study a SPDE.
 
+Our results vastly improve on this as we provide much simpler and more easily verifiable conditions in our Theorem \ref{T:Main} below that will guarantee the existence of an invariant measure. Moreover in Section \ref{SS:Bassel}, we are able to give specific examples of spectral densities, $\widehat{f}$, that satisfy the conditions of our Theorem \ref{T:Main}. In addition, in Section \ref{SS:Init} we enlarge the space of initial conditions to include all bounded functions, some unbounded functions and even some measures such as the Dirac delta measure. 
 
 \chapter{ \normalfont Exact Moment Asymptotics for the Interpolated Stochastic Heat and Wave Equation} \label{Ch:ISHWEmom}
-\section{Introduction}
+\section{Introduction and main results}
 In this chapter we study the following {\it stochastic partial differential equation} (SPDE) with 
 fractional differential operators:
 \begin{equation} \label{E:SPDE}
@@ -3266,7 +3200,7 @@ We are now ready to prove \eqref{E:momentasym-lower}.
 
 \chapter{ \normalfont Invariant Measures for the Stochastic Heat Equation} \label{Ch:InvMeas}
 
-\section{Introduction}
+\section{Introduction and main results}
 In this chapter we consider the following {\it stochastic heat equation} (SHE):
 \begin{equation} \label{E:SHE}
 \begin{cases}
