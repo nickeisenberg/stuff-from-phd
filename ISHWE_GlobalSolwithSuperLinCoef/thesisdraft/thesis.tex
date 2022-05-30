@@ -1,0 +1,783 @@
+% \documentclass[a4paper,12pt]{article}{{{
+\documentclass[a4paper,11pt]{article}
+% -------------------------------------------------
+% Set up the page margins.
+% -------------------------------------------------
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \setlength{\topmargin}{-0.25in}
+\usepackage[margin=1in]{geometry}
+
+% -------------------------------------------------\left( \left[ \frac{a-d}{2}\right]q + p \right)
+% Load Packages here
+% -------------------------------------------------
+%\usepackage{hyperref}
+\usepackage{graphicx,url,subfig}
+\RequirePackage[OT1]{fontenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\RequirePackage[numbers]{natbib}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{datetime}
+\usepackage{etex}
+% \usepackage[notcite,notref,color]{showkeys}
+\usepackage[normalem]{ulem} % either use this (simple) or
+\usepackage{soul} % use this (many fancier options)
+\makeatother
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\usepackage{mathrsfs}
+
+
+% -------------------------------------------------
+% check references
+% -------------------------------------------------
+% \usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+
+% -------------------------------------------------
+% Environments here
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{exercise}{Exercise}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+
+\newtheorem{qu}{Question}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+% -------------------------------------------------
+%  Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\W}{\dot{W}}
+\newcommand{\B}{\textbf{B}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\Ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\Floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\Lad}{\text{L}_{\text{ad}}^2}
+\newcommand{\SI}[1]{\mathcal{I}\left[#1 \right]}
+\newcommand{\SIB}[2]{\mathcal{I}_{#2}\left[#1 \right]}
+\newcommand{\Indt}[1]{1_{\left\{#1 \right\} }}
+\newcommand{\LadInPrd}[1]{\left\langle #1 \right\rangle_{\text{L}_\text{ad}^2}}
+\newcommand{\LadNorm}[1]{\left|\left|  #1 \right|\right|_{\text{L}_\text{ad}^2}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\Ito}{It\^{o} }
+\newcommand{\Itos}{It\^{o}'s }
+\newcommand{\spt}[1]{\text{supp}\left(#1\right)}
+\newcommand{\InPrd}[1]{\left\langle #1 \right\rangle}
+\newcommand{\mr}{\textbf{r}}
+\newcommand{\Ei}{\text{Ei}}
+\newcommand{\arctanh}{\operatorname{arctanh}}
+\newcommand{\ind}[1]{\mathbb{I}_{\left\{ {#1} \right\} }}
+
+\DeclareMathOperator{\esssup}{\ensuremath{ess\,sup}}
+
+\newcommand{\steps}[1]{\vskip 0.3cm \textbf{#1}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\myVec}[1]{\overrightarrow{#1}}
+\newcommand{\sincos}{\begin{array}{c} \cos \\ \sin \end{array}\!\!}
+\newcommand{\CvBc}[1]{\left\{\:#1\:\right\}}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\myEnd}{\hfill$\square$}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Shi}{\text{Shi}}
+\newcommand{\Chi}{\text{Chi}}
+\newcommand{\Daw}{\ensuremath{\mathrm{daw} }}
+\newcommand{\Erf}{\ensuremath{\mathrm{erf} }}
+\newcommand{\Erfi}{\ensuremath{\mathrm{erfi} }}
+\newcommand{\Erfc}{\ensuremath{\mathrm{erfc} }}
+\newcommand{\He}{\ensuremath{\mathrm{He} }}
+
+\def\crtL{\rho}
+
+\newcommand{\conRef}[1]{(#1)}
+
+\DeclareMathOperator{\Lip}{\mathit{L}}
+\DeclareMathOperator{\LIP}{Lip}
+\DeclareMathOperator{\lip}{\mathit{l}}
+
+\DeclareMathOperator{\Vip}{\overline{\varsigma}}
+\DeclareMathOperator{\vip}{\underline{\varsigma}}
+\DeclareMathOperator{\vv}{\varsigma}
+
+% % Set up mdframe for questions.
+\newcounter{NQ}
+\newcounter{LQ}
+\newcounter{ZQ}
+\usepackage{xcolor}
+\usepackage[framemethod=tikz]{mdframed}
+\mdfsetup{%
+	middlelinecolor=lightgray,
+	middlelinewidth=2pt,
+	backgroundcolor=red!20,
+	roundcorner=10pt}
+\newenvironment{NickQuestion}[1][] %
+{\refstepcounter{NQ}
+	\begin{mdframed}[backgroundcolor=lightgray]\textbf{Nick's Question \theNQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\newenvironment{LeQuestion}[1][] %
+{\refstepcounter{LQ}
+	\begin{mdframed}[backgroundcolor=red!10]\textbf{Le's Question \theLQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\newenvironment{ZhijianQuestion}[1][] %
+{\refstepcounter{ZQ}
+	\begin{mdframed}[backgroundcolor=blue!10]\textbf{Zhijian's Question \theZQ \: #1~~}~~~\noindent}%
+	{\end{mdframed}}
+\numberwithin{NQ}{section}
+\numberwithin{LQ}{section}
+\numberwithin{ZQ}{section}
+
+%%%%%%%%%%%%%%%%%%%%%
+\usepackage[backend=biber,
+style=alphabetic,
+hyperref=true,
+backref=true,
+natbib=true,
+sorting=nyt,
+abbreviate=true]{biblatex}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+	\clearfield{doi}
+	\clearfield{url}
+	\clearfield{issn}
+	\clearlist{location}
+	\clearfield{month}
+	\clearfield{series}
+	
+	\ifentrytype{book}{}{% Remove publisher and editor except for books
+		\clearlist{publisher}
+		\clearname{editor}
+	}
+}
+\addbibresource{All.bib}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[notref,notcite]{showkeys}
+
+\title{Nick Eisenberg's Meeting Notes}
+\author{Le Chen, Nick Eisenberg, Zhijian Wu}
+\date{October 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+% }}}
+
+
+\title{Global solutions for the interpolated stochastic heat and wave equation with a super-linear diffusion term}
+\author{Le Chen\\Auburn University\\\texttt{le.chen@auburn.edu}\\
+	\and
+	Nicholas Eisenberg\\Auburn University\\\texttt{nze0019@auburn.edu}
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In this paper we prove the existence of a global solution to the interpolated stochastic heat and wave equation driven by a space-time white noise and with a super-linear non-linear diffusion term.
+\end{abstract}
+\bigskip
+
+\noindent{\it \noindent MSC 2010 subject classification}:
+\smallskip
+
+\noindent{\it Keywords}: 
+\smallskip
+
+\tableofcontents
+	\section{Introduction}
+	In this chapter, we study the interpolated stochastic heat and wave equation (ISHWE) on the whole space $\R^d$,
+	\begin{equation} \label{E:SupLinSPDE}
+	\begin{cases}
+	\left(\partial^\beta_t + \frac{\nu}{2}(-\Delta)^{\alpha/2}\right)\: u(t,x) = I^\gamma_t \left[\sigma( u(t,x)) \: \dot W(t,x) \right] & \text{$x\in \R^d$, $t>0$} \\
+	u(0,\cdot) = u_0(x)                                                                                                         & \beta \in (0,1]               \\
+	u(0,\cdot) = u_0(x), \quad \partial_t u(0,\cdot) = v_0(x)                                                                            & \beta \in (1,2),
+	\end{cases}
+	\end{equation}
+	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is taken to be space-time and the initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
+	\begin{equation}
+	\label{C:SigSupLin}
+	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
+	\end{equation}
+	where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
+	\begin{equation}
+	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+	\end{equation}
+	where $\sigma_1 = \sigma(0)$.
+	
+For any $T>0$ with $t \in [0,T]$ and $x \in \R^d$, the solution to \eqref{E:SupLinSPDE} is understood in the {\em mild} sense as the solution to the following stochastic integral equation:
+\[
+u(t,x) = J_0(t,x) + I(t,x),
+\]
+	where
+	\begin{align*}
+	J_0(t,x) &=\begin{cases} 
+	[Z(t,\cdot)*u_0](x) & \beta \in (0,1]
+	\\	[Z(t,\cdot)*v_0](x) + [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
+	\end{cases}
+	\\	I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
+	\end{align*}
+
+The fundamental solution is a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through the Fox-H function, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
+	\begin{align*}
+		\mathcal{F}Z(t,\cdot)(\xi) &= t^{\lceil \beta \rceil -1} E_{\beta, \lceil \beta \rceil}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
+		\mathcal{F}Z^*(t,\cdot)(\xi) &= t^{\beta + \gamma  -1} E_{\beta, \beta + \gamma}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
+		\mathcal{F}Y(t,\cdot)(\xi) &= t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}(-2^{-1}\nu t^\beta |\xi|^\alpha),
+	\end{align*}
+where $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
+	\[
+		E_{a,b}(z) := \sum_{k=0}^{\infty} \frac{z^k}{\Gamma(ak+b)}, \quad a>0, \: b>0,
+	\]
+and $\Gamma$ is the standard {\em Gamma-function}. 
+
+We mention that under the special case where $\alpha \in (1,2)$, $\beta \in (0,1]$ and $\gamma = 1 - \beta$, that $Z = Z^* = Y$, which is easily seen from their Fourier transforms given above. For that reason, let $Y$ denote the fundamental solution in this case. Moreover, under this case there is a probabilistic representation for $Y$ which is used by the authors in \cite{foondun.liu.ea:19:some, foondun.nane:17:asymptotic, mijena.nane:15:space-time, foondun.liu.ea:17:moment, mijena.nane:16:intermittence}.  Indeed, let $X_t$ denote a symmetric $\alpha$-stable process with density $p(t,x)$. Let $D=\{D_r, \: r \ge 0\}$ denote a $\beta$-stable subordinator and $E_t$ its first passage time. Then it is known that the density of the time changed processes $X_{E_t}$ is given by $Y(t,x)$ and we have that 
+	\[
+		Y(t,x) = \int_0^\infty p(s,x)f_{E_t}(s) \: \ud s,
+	\]
+where
+	\[
+		f_{E_t}(s) = t \beta^{-1} x^{-1-1/\beta}g_{\beta}\left(tx^{-1/\beta} \right),
+	\]
+where $G_\beta(\cdot)$ is the density function of $D_1$ and is smooth on the real line with $g_{\beta}(x) = 0$ for $x \le 0$.
+
+The goal of this paper is to prove the existence of a global solution to \eqref{E:SupLinSPDE}. The work is highly motivated by the recent work by Millet et al \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, no work on global existence of \eqref{E:SupLinSPDE} with a super-linear diffusion term has been done yet. However, the calculations are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. 
+	
+	\section{Space-time White Noise}
+	In this section we study \eqref{E:SupLinSPDE} for driven by space-time white noise. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SupLinSPDE}, we will need to assume Dalang's condition:
+	\begin{equation}
+	\label{C:Dalang}
+	\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
+	\end{equation} 
+	which is equivalent to
+	\begin{equation}
+	\label{E:DalangEquiv}
+	d < 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\} =: \Theta,
+	\end{equation}
+	which is further equivalent to 
+	\begin{equation}
+	\label{E:DalangEquiv2}
+	\rho(d) > 0 \quad \text{and} \quad d < 2\alpha,
+	\end{equation}
+	where 
+	\begin{equation}
+	\label{D:theta}
+	\rho(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
+	\end{equation} 
+	\subsection{Globally Lipschitz Coefficient}
+	In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
+	\[
+	|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
+	\] 
+	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. We now state an existence and uniqueness result proven in \cite{chen.hu.ea:19:nonlinear}.
+	
+	\begin{theorem}
+		\label{T:SolveabilityGenLip}
+		Under \eqref{C:Dalang}, the SPDE \eqref{E:SupLinSPDE} has a unique (in the sense of versions) random field solution $\{u(t,x) : (t,x) \in (0,\infty) \times \R^d \}$ if the initial data are such that 
+		\begin{equation} \label{E:HomogBdd}
+		\widehat{C}_T := \sup_{t\in[0,T],\; x\in \R^d} |J_0(t,x)| < \infty.
+		\end{equation}	
+%		\textcolor{blue}{Moreover, the following statements are true:
+%			\begin{enumerate}
+%				\item $(t,x) \mapsto u(t,x)$ is $L^P(\Omega)$-continuous for all $p \ge 2$,
+%				\item For all even integers $p \ge 2$, all $t \ge 0$ and $x,y\in\R^d$,
+%				\begin{equation}
+%				\Norm{u(t,x)}_p^2 \le 2J_0^2(t,x) + \left[ \bar{\varsigma}^2 + 2 \hat{C}_t^2 \right]\exp(C \lambda^{2/(1-\sigma)}t).
+%				\end{equation}
+%		\end{enumerate}}
+		
+	\end{theorem}
+	\begin{lemma}{\normalfont \cite[Theorem 4.1 and Lemma 5.5]{chen.hu.ea:19:nonlinear}}
+		\label{L:1and2normYZ}
+		Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
+		\[
+		\int_{\R^d} Y(t,x) \ud x = t^{\beta+\gamma -1 }
+		\]
+		and
+		\[
+		\int_{\R^d} Y^2(t,x) \ud x = C_{\#} t^{2(\beta+\gamma-1)-d\beta/\alpha} = C_{\#} t^{\rho -1} ,
+		\]
+		for all $t > 0$, where $\rho = \rho(d)$ and 
+		\[
+		C_{\#} := \frac{2}{\Gamma(d/2)(4 \pi )^{d/2}} \int_0^\infty u^{d-1}E^2_{\beta,\beta + \gamma}(-u^\alpha) \ud u.
+		\]
+		Now further assume that $\beta \in (1,2)$, then 
+		\[
+		\int_{\R} Z(t,x) \ud x= t^{\lceil \beta \rceil -1} = t. 
+		\]
+	\end{lemma}
+	\begin{remark}
+		When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} G^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
+	\end{remark}
+	In the proof of the next proposition, we will use the following two facts:
+	\begin{equation}
+	\label{E:SUPidentities}
+	\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
+	\end{equation}
+	
+	\begin{proposition}{\normalfont\cite[Proposition 3.2]{millet.sanz-sole:21:global}}
+		\label{P:N(u)Bdd}
+		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and $\rho = \rho(d) > 0$, where $\rho(x)$ is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
+		\]
+		and 
+		\[
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right].
+		\]
+		we have that 
+		\begin{equation}
+		\label{E:Nbdd}
+		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
+		\end{equation}	
+		where
+		\begin{align*}
+		\mathcal{T}_0 = \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+		\end{cases} 
+		\end{align*}
+		Moreover for any $T>0$,
+		\begin{equation}
+		\label{E:Pnormtbdd}
+		\sup_{x\in\R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+		\end{equation}
+	\end{proposition}
+	\begin{proof}
+		First we fix an $a>0$ and $p \in [2,\infty)$. Using Lemma \ref{L:1and2normYZ} we see that,
+		\begin{align*}
+		|J(t,x)|  &= \begin{cases} 
+		\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
+		\\	\left| (Z(t,\cdot) * v_0)(x) + \frac{\partial}{\partial t}(Z(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
+		\end{cases}
+		\\& \le \begin{cases}
+		t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
+		\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\end{cases} 
+		\end{align*}
+		Now using \eqref{E:SUPidentities}, we see that 
+		\begin{align}
+		N_{a,p}(J) &\le \begin{cases} 
+		\sup_{t\ge 0}\sup_{x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+		\\ \sup_{t\ge 0}\sup_{x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+		\end{cases} \nonumber
+		\\ &= \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
+		\end{cases} \label{E:Jbdd}
+		\end{align}
+		
+		Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
+		\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 4p \Norm{\int_0^t \ud s \int_{\R^d}\ud y \; Y^2(t-s,x-y)\sigma^2(u(s,y))  }_{p/2}
+		\\&\le 4p \int_0^t \ud s \int_{\R^d} \ud y \; Y^2(t-s,x-y)\Norm{\sigma^2(u(s,y))}_{p/2}.
+		\end{align*}
+		Now by applying Lemma \ref{L:1and2normYZ} and the Lipschitz property of $\sigma$ we get that 
+		\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#}\int_0^t (t-s)^{\rho -1} \ud s + 8pL^2(\sigma)N^2_{a,p}(u)\int_0^t \ud s \int_{\R^d} \ud y \; e^{2as} Y^2(t-s,x-y).
+		\end{align*} 
+		Now under Dalang's condition \eqref{E:DalangEquiv2}, the first integral above can be calculated as 
+		\[
+		\int_0^t (t-s)^{\rho -1} \ud s = \frac{ t^{\rho} }{\rho}.
+		\]
+		By applying Lemma \ref{L:1and2normYZ}, we can calculate the second integral as 
+		\[
+		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\rho - 1}.
+		\]
+		Putting this together gives us that 
+		\begin{align*}
+		\Norm{I(t,x)}_p^2 &\le 8pc^2(\sigma)C_{\#} \frac{ t^{\rho} }{\rho} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\rho - 1}.
+		\end{align*}
+		Now by multiplying both sides by $e^{-2at}$, we see that
+		\begin{align*}
+		\Norm{I(t,x)}_p^2e^{-2at} &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} 
+		\\&\qquad\qquad + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^t \ud s \; e^{-2a(t-s)}(t-s)^{\rho - 1}.
+		\end{align*}
+		We now do a change of variables and again recall the definition of the Gamma function to see that 
+		\begin{align*}
+		\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au}(u)^{\rho -1} \\
+		& = \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\rho \right)}{ (2a)^{\rho}}
+		\end{align*}
+		where the last line is true if Dalang's condition \cite{chen.hu.ea:19:nonlinear} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
+		\begin{align}
+		N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#}  }{\rho}} \left(\frac{\rho}{2ea}\right)^{\rho/2} +  L(\sigma)N_{a,p}(u) \sqrt{\frac{8pC_{\#} \Gamma\left( \rho \right)}{(2a)^\rho} }. \label{E:SoleMil3.9}
+		\end{align}
+		To simplify things, we now let 
+		\begin{align*}
+		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#}  }{\rho}} \left(\frac{\rho}{2e}\right)^{\rho/2}, \sqrt{\frac{8C_{\#} \Gamma\left( \rho \right) }{2^{\rho}}}  \Bigg\}
+		\end{align*}
+		then,
+		\begin{align}
+		\label{E:Ibdd}
+		N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{\rho/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
+		\end{align}
+		Now by combining \eqref{E:Jbdd} and \eqref{E:Ibdd}, we see that 
+		\begin{align}
+		N_{a,p}(u) & \le \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
+		\end{cases} 
+		\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{\rho/2} }  + K  \frac{\sqrt{p}L(\sigma)}{a^{\rho/2}} N_{a,p}(u). \label{E:Nbddgen}
+		\end{align}
+		It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{millet.sanz-sole:21:global} respectively. Now choose $a>0$ such that 
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
+		\]
+		This implies that the following interval is nonempty:
+		\[
+		\left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right].
+		\]
+		In addition, for any $p$ in this interval, we have that 
+		\[
+		\frac{\sqrt{p}L(\sigma)K}{a^{\rho/2}} \le \frac{1}{2},
+		\]
+		and we also have 
+		\[
+		\frac{\sqrt{p}}{a^{\rho/2}}  \le \frac{1}{2KL(\sigma)}.
+		\]
+		This along with \eqref{E:Nbddgen} implies that 
+		\begin{align*}
+		N_{a,p}(u) & \le 2 \begin{cases} 
+		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\end{cases} 
+		\\& \quad \quad + \frac{c(\sigma)}{L(\sigma)}
+		\end{align*}
+		and this is precisely \eqref{E:Nbdd}. Note that \eqref{E:Pnormtbdd} follows immediately from \eqref{E:Nbdd}.  
+	\end{proof}
+	
+	We will need to recall the following result proved in \cite{chen.hu.ea:19:nonlinear} in order to prove Proposition \ref{P:NormInc} below. 
+	
+	\begin{proposition}{\normalfont\cite[Proposition 2.1 and 2.2]{chen.hu:21:holder}}
+		\label{P:YInc}
+		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:theta}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
+		\begin{enumerate}
+			\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -d) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\[
+			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right).
+			\]
+			\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then for $0< \theta < (\Theta -d) \wedge 2$ there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\[
+			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^q + |x-z|^{\theta}\right),
+			\]
+			where 
+			\[
+			0 < q < \rho.
+			\]
+		\end{enumerate}
+	\end{proposition}
+	
+	\begin{remark}
+		In Proposition \ref{P:YInc} above, we may often ignore the dependence of $C$ on $\alpha, \beta, \gamma, \nu, d$ and just write $C(\theta, T)$. 
+	\end{remark}
+	
+	\begin{proposition}
+		\label{P:NormInc}
+		Let $a>0$ and suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$, the stochastic integral, $I(t,x)$, satisfies the following:
+		\begin{equation}
+		\label{E:NormInc_N(u)}
+		\frac{\Norm{I(t,x)-I(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
+		\end{equation}
+		where 
+		\[
+		\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{p}L(\sigma),
+		\]
+		and
+		\begin{enumerate}
+			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
+			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
+		\end{enumerate}
+		Moreover, for any 
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/
+			\rho}.
+		\]
+		and 
+		\[
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right]
+		\]
+		we have that 
+		\begin{equation}
+		\label{E:NormInc_cL}
+		\frac{\Norm{I(t,x)-I(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
+		\end{equation}
+	\end{proposition}
+	
+	\begin{proof}
+		Note that because of the initial conditions, we see that $\Norm{u(t,x) - u(r,z)}_p = \Norm{I(t,x) - I(r,z)}_p$. We now apply Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 4p \Norm{ \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2\sigma^2(u(s,y)) }_{p/2} \\
+		&\le 4p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Norm{\sigma^2(u(s,y)) }_{p/2}.
+		\end{align*} 
+		Now by applying the Lipchitz condition on $\sigma$ gives us that 
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \left( c^2(\sigma) + L^2(\sigma)\Norm{u(s,y)}_{p}^2\right) \\
+		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
+		& \qquad+ L^2(\sigma) \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \exp\left(2as\right)N_{a,p}^2(u)  \Bigg] \\
+		&\le 8p\Bigg[ c^2(\sigma)   \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2 \\
+		& \qquad+ L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u)  \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Bigg]. 
+		\end{align*}
+		We now apply Proposition \ref{P:YInc} to see that 
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \bigg[ c^2(\sigma)C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right)\\ 
+		& \qquad +  L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u) C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right) \bigg],
+		\end{align*}
+		where $C(\theta, T)$ is as in Proposition \ref{P:YInc}. Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$ yields
+		\begin{align*}
+		\Norm{I(t,x) - I(r,z)}_p &\le 2\sqrt{2C(\theta, T)p} \Big[ c(\sigma) + L(\sigma) \exp\left(aT \right)N_{a,p}(u) \Big]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}. 
+		\end{align*}
+		This proves \eqref{E:NormInc_N(u)}. It is clear that \eqref{E:NormInc_cL} follows directly from \eqref{E:NormInc_N(u)} and Proposition \ref{P:N(u)Bdd}. 
+	\end{proof}
+	
+	\begin{proposition} \label{P:Holder}
+		The stochastic integral, $I$, has a version, still denoted by $I$ that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0 < \eta_1 < q/2$ and $0 < \eta_2 < \theta/2$ where $0 < \theta < (\Theta -d) \wedge 2$ and 
+		\begin{enumerate}
+			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
+			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
+		\end{enumerate}
+		Moreover, if we consider
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+		\]
+		where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then  
+		\[
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\]
+	\end{proposition}
+	
+	\begin{proof}
+		Proposition \ref{P:NormInc} implies that 
+		\begin{equation}
+		\Norm{I(t,x) - I(r,z)}_p \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}.
+		\end{equation}
+		By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
+		
+		Next, note that by triangle inequality,
+		\begin{align*}
+		|u(t,x)|^p &\le 2^{p-1}\left( \Norm{J_0(\cdot,\circ)}_{\infty}^p + |u(t,x)-J_0(t,x)|^p \right) \\
+		&\le 2^{p-1}\left( \Norm{J_0(\cdot, \circ)}_{\infty}^p + \sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p \right) \\
+		&= 2^{p-1}\left( \Norm{J_0(\cdot, \circ)}_{\infty}^p + \sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p\right)
+		\end{align*}
+		Due to the continuity of $u$ on the compact set $[0,T] \times \bar{B}_R(0)$, there exists a point $(t_0,x_0) \in [0,T] \times \bar{B}_R(0)$ such that 
+		\[
+		\sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p = |I(t_0,x_0)|^p.
+		\]
+		Thus, for any $(t,x) \in [0,T] \times \bar{B}_R(0)$,
+		\[
+		|u(t,x)|^p \le 2^{p-1}\left( 1  + |I(t_0,x_0)|^p \right)
+		\] 
+		which in return implies that 
+		\[
+		\sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \le 2^{p-1}\left(1 + |I(t_0,x_0)|^p \right).
+		\]
+		Now by taking the expectation of both sides and applying Proposition \ref{P:NormInc} gives us 
+		\begin{align*}
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p, \theta, T)^p\left((2T)^{q/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
+		&= 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
+		\end{align*}
+		Now if we consider
+		\[
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+		\]
+		then by Proposition \ref{P:N(u)Bdd}, we have that 
+		\[
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\]
+	\end{proof}
+	
+	\begin{remark}
+		The H\"older continuity in time proven above in Proposition \ref{P:Holder} recovers the result proven by Foondun and Nane in \cite[Theorem 1.9]{foondun.nane:17:asymptotic} if we restrict ourself to the case where $\beta \in (0,1)$ and $\gamma = 1-\beta$. 
+	\end{remark}
+
+	
+	\subsection{Existence of a Global Solution with Superlinear Diffusion Coefficient}
+	
+	We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
+	\begin{equation}
+	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
+	\end{equation}
+	where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
+	\begin{equation}
+	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+	\end{equation}
+	where $\sigma_1 = c(\sigma) = \sigma(0)$.
+	
+	\begin{remark}
+		Because of the absence of the drift coefficient in \eqref{E:SupLinSPDE}, we may drop \cite[Assumption C1]{millet.sanz-sole:21:global}.
+	\end{remark}
+	
+	\begin{theorem}
+		Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$, there exists a random field solution to \eqref{E:SupLinSPDE} in $[-M,M]$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
+		\begin{equation}
+		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
+		\end{equation}
+	\end{theorem}
+	
+	\begin{proof}
+		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
+		\[
+		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+		\]
+		Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
+		\[
+		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
+		\]
+		Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SupLinSPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
+		
+		We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
+		\[
+		a > \left( 8 L^2(\sigma_N) K^2 \right)^{1/\rho} \quad \text{and} \quad p \in \left[ 2, \frac{a^{ \rho}}{4L^2(\sigma_N)K^2} \right].
+		\] 
+		Then Proposition \ref{P:Holder} implies that 
+		\begin{equation}
+		\label{E:u_NMomBdd}
+		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
+		\end{equation}
+		where we recall that 
+		\begin{equation}
+		\label{D:M1&2forSig_N}
+		\mathcal{M}_1 = \sqrt{p}\sigma_1 \quad \text{and} \quad \mathcal{M}_2(N) = \sqrt{pL(\sigma_N)} = \sqrt{p\sigma_2\ln(2N)^\delta}.
+		\end{equation}
+		We now use the above to prove the existence and uniqueness of \eqref{E:SupLinSPDE} with superlinear $\sigma$ satisfying \eqref{C:SigSupLin}. For any $T>0$ and $N \ge 2$ with $N\in \mathbb{N}$, we define the following stopping time:
+		\begin{equation}
+		\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
+		\end{equation}
+		The uniqueness of the solution and the local property of the stochastic integral imply that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
+		
+		We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
+		\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
+		\]
+		However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
+		\[
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
+		\]
+		Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
+		\begin{equation}
+		\label{E:SupLinMildSol}
+		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
+		\end{equation}
+		It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.
+		
+		We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
+		\begin{align*}
+		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)| \ge N \right) \\
+		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right).
+		\end{align*}
+		An application of \eqref{E:u_NMomBdd} gives 
+		\begin{align*}
+		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
+		&= \frac{2^{p-1} + C(p, \theta, T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
+		\end{align*}
+		The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
+		\begin{align*}
+		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
+		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to \infty,
+		\end{align*}
+		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
+	\end{proof}
+
+	\addcontentsline{toc}{section}{References}
+	\printbibliography[title={References}]
+%\begin{thebibliography}{999}
+%	%sample
+%	%\bibitem{Chen17Tran}% {{{ 3.
+%	%Chen, L. (2017).
+%	%\newblock Nonlinear stochastic time-fractional diffusion equations on $\R$: moments, H\"older regularity and intermittency.
+%	%\newblock {\em Trans. Amer. Math. Soc.} \textbf{369} (12) 8497--8535.
+%	\bibitem{CH2017}
+%	Chen L. and Huang J. (2017).
+%	\newblock Comparison Principle for SHE on $\R^d$.
+%	\newblock {\em The Annals of Probability} \textbf{Vol. 47, No. 2} 989 -- 1035.
+%	
+%	\bibitem{ChenHu21}
+%	Chen, L and Hu, G. (2021).
+%	\newblock H\"older regularity of the nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+%	\newblock{\em arXiv:2105.00891.}
+%	
+%	\bibitem{CHHH16}
+%	Chen, L., Hu, G., Hu, Y. and Huang, J. (2016)
+%	\newblock{Space-time fractional diffusions in Gaussian noisy environment}
+%	\newblock{\it Stochastics}, 89:1, 171--206.
+%	
+%	\bibitem{CHN19}% {{{ 5.
+%	Chen, L., Hu, Y., and Nualart, D. (2019).
+%	\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
+%	\newblock {\em Stochastic Process. Appl.} \textbf{129}, 5073--5112
+%	% }}}
+%	
+%	\bibitem{FN2016}
+%	Foondun, M and Nane E. (2016)
+%	\newblock{Asymptotic properties of some space-time fractional stochastic equations.}
+%	\newblock{\em Mathematische Zeitschrift} 2015, \textbf{287}, 493 -- 519
+%	
+%	\bibitem{FT2014}
+%	Foondun, M. and Tian, K. (2014)
+%	\newblock On some properties of a class of fractional stochastic heat equations.
+%	\newblock {\em arXiv:1404.6791v1}
+%	
+%	\bibitem{HHN13}
+%	Hu, Y., Huang, J. and Nualart, D. (2013)
+%	\newblock On H\"older continuity of the solution of stochastic wave
+%	equations
+%	\newblock {\it arXiv:1308.6607v1}
+%	
+%	\bibitem{Kilbas}
+%	\newblock H-Transforms: Theory and Applications 
+%	\newblock{\it An International Series of Monographs in Mathematics.}
+%	
+%	\bibitem{Kuo}
+%	Kuo, H. (2000)
+%	\newblock{\em Introduction to Stochastic Integration}
+%	\newblock Springer, Universitext
+%	
+%	\bibitem{Podlubny99}
+%	Podlubny, I. (1999).
+%	\newblock{\em Fractional Differential Equations.}
+%	\newblock Mathematics in Science and Engineering, Academic Press, Vol198 (1999).
+%	
+%	\bibitem{SoleMillet2021}
+%	Sanz-Sole, M. and Millet, A. (2021)
+%	\newblock{Global solutions to stochastic wave equations with superlinear coefficients.}
+%	\newblock {\em Stochastic Processes and their Applications}, Elsevier, 2021, 139, pp.175-211.
+%	
+%	\bibitem{Walsh89}
+%	Walsh, J. (1989)
+%	\newblock{\em An Introduction to Stochastic Partial Differential Equations.}
+%	\newblock \'Ecole d'\'et\'e de Probabilit\'es de Saint-Flour, XIV|1994. Lecture Notes in Math., vol. 1180, pp. 265-439. Springer, Berlin (1986).
+%\end{thebibliography}
+
+\end{document}

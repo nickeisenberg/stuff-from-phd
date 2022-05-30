@@ -418,19 +418,19 @@ This paper is organized as follows: In Section \ref{S:Example}, we will further 
 and \ref{S:mainproof}, respectively.
 \bigskip
 
-Throughout the paper, we will use $\Norm{X}_p $ to denote the $L^p(\Omega)$ norm, namely,
+We end this section by introducing some notation and formulas that we use throughout the paper. We will use $\Norm{X}_p $ to denote the $L^p(\Omega)$ norm, namely,
 $\left(\mathbb{E}(|X|^p)\right)^{1/p}$. We will also use the following factorization
 property of the heat kernel
 \begin{equation} \label{E:gsim}
   G(t,x)G(s,y)=G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
 \end{equation}
-which can be easily verified. Lastly, we remind the reader of the following spherical coordinate integration formula
+which can be easily verified. Next, we remind the reader of the following spherical coordinate integration formula
 	\[
 		\int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
 	\]
 which we will use often and where $\sigma(\mathbb{S}^{d-1})  = 2(\pi)^{d/2} / \Gamma(d/2)$.
 The convention of Fourier transform is given in Remark \ref{R:Fourier}
-below.
+below. Lastly, $\Gamma(z)$ will be used to denote the Gamma function. 
 
 % We reserve $C_d$ for the constant coming from the change of variable
 % to the spherical coordinates:
@@ -795,7 +795,7 @@ For $\alpha \in (0, 1/2)$, we introduce the following quantity which will now be
 
 \subsection{A discussion on Tessitore and Zabczyk's condition} \label{SS:TessZabz}
 
-In the setting of equation \eqref{E:SHE}, Tessitore and Zabczyk
+Under the setting of the whole space, $\R^d$, Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE} in
 $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
 L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$ and the solution
@@ -804,15 +804,15 @@ spectral density $\hat{f}$ satisfies
 \begin{equation} \label{E:CorTZ}
   \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in \cite[Theorem
-3.3]{tessitore.zabczyk:98:invariant}, in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
+see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in Theorem
+3.3 ({\em ibid.}), in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
 bounded in time), the following additional
 assumptions were imposed:
  \begin{equation} \label{E:TZspec}
    d\ge 3 \quad \text{and} \quad
    L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left|  \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\zeta) |\zeta|^{2-d} \ud \zeta ,
  \end{equation}
-where $\Gamma$ refers to the Gamma function; see Remark \ref{R:Fourier}. With these assumptions,
+where the convention of the Fourier transform is given in Remark \ref{R:Fourier}. With these assumptions,
 they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
 and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
 measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
@@ -869,26 +869,28 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 \begin{figure}
 	\centering
 	\includegraphics[scale=.9]{figs/fresnel.png}
-	\caption{A plot of  $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ for $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$ with $-8 \le \zeta \le 8$.}
+	\caption{A plot of  $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x)$ for $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$ with $-8 \le x \le 8$.}
 \end{figure}
 \begin{example} \label{Ex:Finv}
-One should note that the assumption that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ is nonnegative is quite strong and requires $\sqrt{\widehat{f}}$ to be non-negative definite, which may not be true even if $f$ is non-negative and non-negative definite. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then $f$ is non-negative and non-negative definite, which is shown in Example \ref{Ex:sqrt} below. We will now show that in this case, $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta)$ takes on both positive and negative values. Since $\sqrt{\widehat{f}(\xi)} = 2^{-1}\sqrt{\max\{2-|\xi|,0\}}$ is even, the inverse Fourier transform takes the following form:
+One should note that the assumption that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x)$ is nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong and may not be true even if $f$ is non-negative and non-negative definite. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then $f$ is non-negative and non-negative definite, which is shown in Example \ref{Ex:sqrt} below. We will now show that in this case, $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x)$ takes on both positive and negative values. Since $\sqrt{\widehat{f}(\xi)} = 2^{-1}\sqrt{\max\{2-|\xi|,0\}}$ is even, the inverse Fourier transform takes the following form:
 	\[
-		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) = 2 \int_0^2 2^{-1}\sqrt{2-x} \cos(x\: \zeta) \ud x.
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) = 2 \int_0^2 2^{-1}\sqrt{2-y} \cos(y\: x) \ud y.
 	\]
-For simplicity, we will only consider the case $\zeta>0$ and real. Therefore 
+For simplicity, we will only consider the case $x >0$ and real. Therefore 
 	\begin{align*}
-			\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) &= \int_0^2 \sqrt{x} \cos((2-x)\: \zeta) \ud x \\ 
-			& = 2 \int_0^{\sqrt{2}} x^2 \cos(2\zeta- \zeta x^2) \ud x \\
-			&= 2\cos(2\zeta) \int_0^{\sqrt{2}} x^2 \cos(\zeta x^2) \ud x  +2 \sin(2\zeta) \int_0^{\sqrt{2}} x^2 \sin(\zeta x^2) \ud x.
+			\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) &= 2 \int_0^{\sqrt{2}} y^2 \cos(2x- x y^2) \ud y \\
+			&= 2\cos(2x) \int_0^{\sqrt{2}} y^2 \cos(x y^2) \ud y  +2 \sin(2x) \int_0^{\sqrt{2}} y^2 \sin(x y^2) \ud y.
 	\end{align*}
-Where in the first equality we used the change of variables, $x' = 2 - x$ and in the second equality we used the the change of variables $x' = \sqrt{x}$. We now do an integration by parts to see that 
+Where in the first equality we used the change of variables, $y' = \sqrt{2 - y}$. We now do an integration by parts to see that 
 	\begin{align*}
-		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) &= - \cos(2y) \int_0 ^{\sqrt{2}} \frac{\sin(x^2 \zeta)}{\zeta} \ud x + \sin(2\zeta) \int_0 ^{\sqrt{2}} \frac{\cos(x^2 \zeta)}{\zeta} \ud x,
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) &= - \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(y^2 x)}{x} \ud y + \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(y^2 x)}{x} \ud y,
 	\end{align*}
-and lastly we apply the change of variables $x' = x\sqrt{2\zeta/\pi}$ too see 
+\begin{codes}
+	Integrate[(-Cos[2*x]Sin[y^2 * x]/x)+(Sin[2*x]Cos[y^2 * x] / x),{y,0,Sqrt[2]},Assumptions->x>=0]
+\end{codes}
+and lastly we apply the change of variables $y' = y\sqrt{2x/\pi}$ too see 
 	\[
-		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(\zeta) = \frac{ \sqrt{\frac{\pi}{2}}\left(-\cos(2\zeta)\mathcal{S}\left(\frac{2\sqrt{\zeta}}{\sqrt{\pi}}\right) + \sin(2\zeta) \mathcal{C}\left( \frac{2 \sqrt{\zeta}}{\sqrt{\pi}} \right) \right)}{ \zeta^{3/2} },
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) = \frac{ \sqrt{\frac{\pi}{2}}\left(-\cos(2x)\mathcal{S}\left(\frac{2\sqrt{x}}{\sqrt{\pi}}\right) + \sin(2x) \mathcal{C}\left( \frac{2 \sqrt{x}}{\sqrt{\pi}} \right) \right)}{ x^{3/2} },
 	\]
 where $\mathcal{S}$ and $\mathcal{C}$ are the Fresnel integrals (see \cite[7.2 (iii)]{olver.lozier.ea:10:nist}):
 	\[
