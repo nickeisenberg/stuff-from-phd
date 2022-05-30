@@ -180,7 +180,7 @@ denoted by $\widehat{f}(\ud \xi)$ \footnote{See Remark \ref{R:Fourier} for the c
 transform that is used in this paper.}. Moreover, in the case where $\Gamma$ has density $f$,
 namely, $\Gamma(\ud x)=f(x) \ud x$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi) \ud \xi$. The
 initial condition $\mu$ is a deterministic, locally finite, regular, signed Borel measure that
-satisfies the following integrability condition at the infinity (see \eqref{A:icon} below).
+satisfies the following integrability condition at infinity (see also \eqref{A:icon} below):
 \begin{equation*} 
   \int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x) < \infty \quad \text{for all $a>0$},
 \end{equation*}
@@ -233,13 +233,13 @@ can be found in Section \ref{SS:Weight}.
 Following  \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$
 on the Borel $\sigma$-field $\mathscr{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
 \begin{equation}\label{E:InvMeas}
-  \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
+  \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\varphi))(A) \; \eta(\ud \varphi),
   \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$},
 \end{equation}
-where we use the notation $u(t,x;\zeta)$ with a third argument to emphasize its dependence on the
-initial condition $u(0,\cdot)=\zeta$ and $\mathscr{L}(u(t,\cdot;\zeta))(A)$ denotes the law of the solution:
+where we use the notation $u(t,x;\varphi)$ with a third argument to emphasize its dependence on the
+initial condition $u(0,\cdot)=\varphi$ and $\mathscr{L}(u(t,\cdot;\varphi))(A)$ denotes the law of the solution:
 	\[
-		\mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
+		\mathscr{L}(u(t,\cdot;\varphi))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \varphi)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 	\]
 Due to the {\it Krylov-Bogoliubov theorem} (see, e.g.,
 \cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
@@ -263,7 +263,7 @@ probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; s
 \cite{assing.manthey:03:invariant,misiats.stanzhytskyi.ea:20:invariant,misiats.stanzhytskyi.ea:16:existence},
 a drift (or reaction-diffusion) term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help cancel the otherwise exponential growing moments. The absence of such a drift term in this paper
 makes the problem more challenging. In order to have moments bounded in time, as required in
-\eqref{E:BddMnt}, one has to first identify the exact conditions, under which the moments to
+\eqref{E:BddMnt}, one has to first identify the exact conditions under which the moments to
 \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem
 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More
 precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in
@@ -387,8 +387,7 @@ This theorem will be proved in Section \ref{S:Lrho}.
       tight, i.e., for any $\epsilon \in (0,1)$, there exists a compact set $\mathscr{K}\subset
       L^2_{\rho}(\R^d)$ such that
       \begin{equation} \label{E:cpt}
-        \mathscr{L}u(t,\cdot;\mu)(\mathcal{K})
-        :=  \mathbb{P}\left( u(t,\cdot;\mu) \in \mathscr{K}\: \right) \ge 1-\epsilon,
+        \mathscr{L}u(t,\cdot;\mu)(\mathcal{K}) \ge 1-\epsilon,
         \qquad \text{for all $t\ge \tau>0$};
       \end{equation}
     \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t > 0}$ in
@@ -531,7 +530,7 @@ The following proposition shows that for initial conditions with unbounded tails
 \eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
 
 \begin{proposition} \label{P:growtail}
-  Suppose that $\rho=\exp(-|x|)$, which is an admissible weight function. Let the initial condition
+  Suppose that $\rho(x)=\exp(-|x|)$, which is an admissible weight function. Let the initial condition
   $\mu$ be given as
   \begin{align*}
     \mu(\ud x) = |x|^\alpha \ud x \quad \text{with $\alpha>0$}.
@@ -818,7 +817,7 @@ and thus is bounded in probability, verifying the existence of an invariant meas
 measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
 \begin{remark} \label{R:Fourier}
-  The Fourier transform may be defined differently depending how to handle the $2\pi$ constant. In
+  The Fourier transform may be defined differently depending on how one would like to handle the $2\pi$ constant. In
   this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we use the convention
   that
   \begin{align} \label{E:Fourier}
@@ -838,7 +837,7 @@ measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly
   Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
   \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
   $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.})
-  corresponds to $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is condition (3.4) \cite{tessitore.zabczyk:98:invariant}, takes into account this difference therefore explaining the slightly
+  corresponds to $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the slightly
   different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it ibid.}).
 \end{remark}
 
@@ -866,7 +865,7 @@ Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
 our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$. 
 
-\begin{figure}
+\begin{figure}\label{Fig:fresnel}
 	\centering
 	\includegraphics[scale=.9]{figs/fresnel.png}
 	\caption{A plot of  $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x)$ for $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$ with $-8 \le x \le 8$.}
@@ -896,11 +895,11 @@ where $\mathcal{S}$ and $\mathcal{C}$ are the Fresnel integrals (see \cite[7.2 (
 	\[
 		\mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t. 
 	\]
-Thus even if $f$ is both non-negative and non-negative definite, we may still have problems with removing the absolute value sign. 
+Thus even if $f$ is both non-negative and non-negative definite, we may still have problems with removing the absolute value sign (see Figure \ref{Fig:fresnel}). 
 \end{example}
 \bigskip
 
-{\bf\noindent Case II:~} Suppose $\widehat{f}(\cdot)$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$. Then removing the absolute value in
+{\bf\noindent Case II:~} Suppose $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$. Then removing the absolute value in
 \eqref{E:TZspec} becomes tricky, which will be illustrated in the following example.
 
 \begin{example} \label{Ex:sqrt}
@@ -1358,7 +1357,7 @@ and the restarted SHE ($ t_0>0$).
        =  & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                              \\
        <  & \: +\infty.
   \end{align*}
-  But this follows immediately from \eqref{E:NormY}. Indeed
+  But this follows immediately from \eqref{E:NormY}. Indeed,
   \begin{align*}
     \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2
     \le & C \int_{\R^d} \ud y \;  G(t-s,x-y) J_0^2(s+t_0,y;\mu^*) \mathcal{H}_\alpha(s)                       \\
@@ -1530,11 +1529,11 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
     \qquad \left(\text{or equivalently} \quad
     2< \frac{1}{\alpha} < q < \frac{1}{64 L_b^2 \Upsilon(0)}\:\right),
   \end{align}
-  we can apply Proposition \ref{P:F-Comp} to see that the following set
+  we can apply Proposition \ref{P:F-Comp} to see that the set
   \begin{align*}
     \mathscr{K}_2 (\Lambda):=
-    \left\{(F_\alpha h)(t_0,x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}
-    \quad \text{with $\Lambda>0$}
+    \left\{(F_\alpha h)(t_0,x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\},
+    \quad \text{with } \Lambda>0,
   \end{align*}
   is relatively compact in $L_\rho^2(\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
   (\Lambda)$ as
