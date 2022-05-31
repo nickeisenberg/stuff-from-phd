@@ -264,7 +264,7 @@ where $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cit
 	\]
 and $\Gamma$ is the standard {\em Gamma-function}. 
 
-We mention that under the special case where $\alpha \in (1,2)$, $\beta \in (0,1]$ and $\gamma = 1 - \beta$, that $Z = Z^* = Y$, which is easily seen from their Fourier transforms given above. For that reason, let $Y$ denote the fundamental solution in this case. Moreover, under this case there is a probabilistic representation for $Y$ which is used by the authors in \cite{foondun.liu.ea:19:some, foondun.nane:17:asymptotic, mijena.nane:15:space-time, foondun.liu.ea:17:moment, mijena.nane:16:intermittence}.  Indeed, let $X_t$ denote a symmetric $\alpha$-stable process with density $p(t,x)$. Let $D=\{D_r, \: r \ge 0\}$ denote a $\beta$-stable subordinator and $E_t$ its first passage time. Then it is known that the density of the time changed processes $X_{E_t}$ is given by $Y(t,x)$ and we have that 
+We mention that under the special case where $\alpha \in (1,2)$, $\beta \in (0,1]$ and $\gamma = 1 - \beta$, that $Z = Z^* = Y$, which is easily seen from their Fourier transforms given above. We simply let $Y$ denote the fundamental solution for this case. Moreover, under this case there is a probabilistic representation for $Y$ which is used by the authors in \cite{foondun.liu.ea:19:some, foondun.nane:17:asymptotic, mijena.nane:15:space-time, foondun.liu.ea:17:moment, mijena.nane:16:intermittence}.  Indeed, let $X_t$ denote a symmetric $\alpha$-stable process with density $p(t,x)$. Let $D=\{D_r, \: r \ge 0\}$ denote a $\beta$-stable subordinator and $E_t$ its first passage time. Then it is known that the density of the time changed processes $X_{E_t}$ is given by $Y(t,x)$ and we have that 
 	\[
 		Y(t,x) = \int_0^\infty p(s,x)f_{E_t}(s) \: \ud s,
 	\]
@@ -276,17 +276,33 @@ where $G_\beta(\cdot)$ is the density function of $D_1$ and is smooth on the rea
 
 The goal of this paper is to prove the existence of a global solution to \eqref{E:SupLinSPDE}. The work is highly motivated by the recent work by Millet et al \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, no work on global existence of \eqref{E:SupLinSPDE} with a super-linear diffusion term has been done yet. However, the calculations are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. \bigskip
 
-Here is the main result of this chapter.
+Here is the main result of this chapter. The proof will be postponed until Section \ref{S:TMainSupLin} below.
 
 	\begin{theorem} \label{T:MainSupLin}
-	Suppose that $\sigma$ satisfies \eqref{C:SigSupLin} and the initial data are such that for each $\widehat{C}_T < \infty$ for and $T>0$. Then for any $R>0$ and $(t,x) \in [0,T] \times B_R(0)$, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times B_R(0))$. This solution is unique and satisfies 
+	Suppose that $\sigma$ satisfies \eqref{C:SigSupLin} and the initial data are Borel measurable functions such that for any $T>0$, $\widehat{C}_T < \infty$. Then for any $R>0$ and $(t,x) \in [0,T] \times \bar{B}_R(0)$, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times \bar{B}_R(0))$. This solution is unique and satisfies 
 	\begin{equation}
-	\sup_{t\in[0,T],\; |x| \le R} |u(t,x)| < \infty, a.s.
+	\sup_{t\in[0,T],\; |x| \le R} |u(t,x)| < \infty, \quad \text{almost surely.}
 	\end{equation}
 \end{theorem}
+
+The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument along with a series of truncations of the super-linear term, $\sigma$, in order to construct a solution of \eqref{E:SupLinSPDE}. Indeed, we define 	
+\[ \sigma_N(x) = \begin{cases}
+\sigma(x) & |x| \le N \\
+\text{continuous and constant} & |x| > N,
+	\end{cases}
+\]
+and then associate for each $N>0$, the corresponding global solution $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
+\[
+\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
+\]
+We prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. Because of the stopping-time argument, existence in $L^2(\Omega)$ is no longer guaranteed. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, then the solution may no longer satisfy the standard Ito isometry. 
 	
-	\section{Space-time White Noise}
-	In this section we study \eqref{E:SupLinSPDE} for driven by space-time white noise. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SupLinSPDE}, we will need to assume Dalang's condition:
+	\section{Globally Lipschitz Coefficient}
+	In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
+	\[
+	|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
+	\] 
+	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SupLinSPDE}, we will need to assume Dalang's condition:
 	\begin{equation}
 	\label{C:Dalang}
 	\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
@@ -306,12 +322,8 @@ Here is the main result of this chapter.
 	\label{D:theta}
 	\rho(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
 	\end{equation} 
-	\subsection{Globally Lipschitz Coefficient}
-	In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
-	\[
-	|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
-	\] 
-	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. We now state an existence and uniqueness result proven in \cite{chen.hu.ea:19:nonlinear}.
+
+We now state an existence and uniqueness result proven in \cite{chen.hu.ea:19:nonlinear}.
 	
 	\begin{theorem}
 		\label{T:SolveabilityGenLip}
@@ -351,7 +363,10 @@ Here is the main result of this chapter.
 	\begin{remark}
 		When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} G^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
 	\end{remark}
-	In the proof of the next proposition, we will use the following two facts:
+
+\subsection{Some moment bounds}
+
+In this section, we will proves some moment bounds and a continuity result for the solution with a globally Lipschitz diffusion term. In the proof of the next proposition, we will use the following two facts:
 	\begin{equation}
 	\label{E:SUPidentities}
 	\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
@@ -633,7 +648,7 @@ Here is the main result of this chapter.
 	\end{remark}
 
 	
-	\subsection{Proof of Theorem \ref{T:MainSupLin}}
+	\section{Proof of Theorem \ref{T:MainSupLin}} \label{S:TMainSupLin}
 	
 	\begin{proof}
 		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
@@ -694,7 +709,7 @@ Here is the main result of this chapter.
 		The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
 		\begin{align*}
 		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
-		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to \infty,
+		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to 0,
 		\end{align*}
 		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
 	\end{proof}
