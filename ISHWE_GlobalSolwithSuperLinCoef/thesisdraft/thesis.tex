@@ -228,7 +228,7 @@ In this paper we prove the existence of a global solution to the interpolated st
 	u(0,\cdot) = u_0(x), \quad \partial_t u(0,\cdot) = v_0(x)                                                                            & \beta \in (1,2),
 	\end{cases}
 	\end{equation}
-	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is taken to be space-time and the initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
+	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is taken to be space-time white and the initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
 	\begin{equation}
 	\label{C:SigSupLin}
 	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
@@ -274,7 +274,16 @@ where
 	\]
 where $G_\beta(\cdot)$ is the density function of $D_1$ and is smooth on the real line with $g_{\beta}(x) = 0$ for $x \le 0$.
 
-The goal of this paper is to prove the existence of a global solution to \eqref{E:SupLinSPDE}. The work is highly motivated by the recent work by Millet et al \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, no work on global existence of \eqref{E:SupLinSPDE} with a super-linear diffusion term has been done yet. However, the calculations are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. 
+The goal of this paper is to prove the existence of a global solution to \eqref{E:SupLinSPDE}. The work is highly motivated by the recent work by Millet et al \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, no work on global existence of \eqref{E:SupLinSPDE} with a super-linear diffusion term has been done yet. However, the calculations are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. \bigskip
+
+Here is the main result of this chapter.
+
+	\begin{theorem} \label{T:MainSupLin}
+	Suppose that $\sigma$ satisfies \eqref{C:SigSupLin} and the initial data are such that for each $\widehat{C}_T < \infty$ for and $T>0$. Then for any $R>0$ and $(t,x) \in [0,T] \times B_R(0)$, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times B_R(0))$. This solution is unique and satisfies 
+	\begin{equation}
+	\sup_{t\in[0,T],\; |x| \le R} |u(t,x)| < \infty, a.s.
+	\end{equation}
+\end{theorem}
 	
 	\section{Space-time White Noise}
 	In this section we study \eqref{E:SupLinSPDE} for driven by space-time white noise. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SupLinSPDE}, we will need to assume Dalang's condition:
@@ -574,8 +583,9 @@ The goal of this paper is to prove the existence of a global solution to \eqref{
 		\]
 		where $K$ is the constant from Proposition \ref{P:N(u)Bdd}, then  
 		\[
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1}\widehat{C}_T^p  + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right],
 		\]
+		where $\widehat{C}_T$ is defined in \eqref{E:HomogBdd}.
 	\end{proposition}
 	
 	\begin{proof}
@@ -583,30 +593,30 @@ The goal of this paper is to prove the existence of a global solution to \eqref{
 		\begin{equation}
 		\Norm{I(t,x) - I(r,z)}_p \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2e^{aT}N_{a,p}(u) \right]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}.
 		\end{equation}
-		By Kolmogorov's continuity theorem, there exists a version of $u$, which we denote by $u$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
+		By Kolmogorov's continuity theorem, there exists a version of $I$, which we denote by $I$, that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
 		
 		Next, note that by triangle inequality,
 		\begin{align*}
 		|u(t,x)|^p &\le 2^{p-1}\left( \Norm{J_0(\cdot,\circ)}_{\infty}^p + |u(t,x)-J_0(t,x)|^p \right) \\
-		&\le 2^{p-1}\left( \Norm{J_0(\cdot, \circ)}_{\infty}^p + \sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p \right) \\
-		&= 2^{p-1}\left( \Norm{J_0(\cdot, \circ)}_{\infty}^p + \sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p\right)
+		&\le 2^{p-1}\left( \widehat{C}_T^p + \sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p \right) \\
+		&= 2^{p-1}\left( \widehat{C}_T^p + \sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p\right),
 		\end{align*}
-		Due to the continuity of $u$ on the compact set $[0,T] \times \bar{B}_R(0)$, there exists a point $(t_0,x_0) \in [0,T] \times \bar{B}_R(0)$ such that 
+		where we recall that $\widehat{C}_T$ defined in \eqref{E:HomogBdd}. Due to the continuity of $I$ on the compact set $[0,T] \times \bar{B}_R(0)$, there exists a point $(t_0,x_0) \in [0,T] \times \bar{B}_R(0)$ such that 
 		\[
 		\sup_{t\in[0,T],\; |x| \le R} \: |I(t,x)|^p = |I(t_0,x_0)|^p.
 		\]
 		Thus, for any $(t,x) \in [0,T] \times \bar{B}_R(0)$,
 		\[
-		|u(t,x)|^p \le 2^{p-1}\left( 1  + |I(t_0,x_0)|^p \right)
+		|u(t,x)|^p \le 2^{p-1}\left( \widehat{C}_T^p  + |I(t_0,x_0)|^p \right)
 		\] 
 		which in return implies that 
 		\[
-		\sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \le 2^{p-1}\left(1 + |I(t_0,x_0)|^p \right).
+		\sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \le 2^{p-1}\left(\widehat{C}_T^p + |I(t_0,x_0)|^p \right).
 		\]
 		Now by taking the expectation of both sides and applying Proposition \ref{P:NormInc} gives us 
 		\begin{align*}
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] &\le  2^{p-1} + 2^{p-1}C(p, \theta, T)^p\left((2T)^{q/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
-		&= 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] &\le  2^{p-1}\widehat{C}_T^p  + 2^{p-1}C(p, \theta, T)^p\left((2T)^{q/2} + (2R)^{\theta /2}\right)^p\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right]^p \\
+		&= 2^{p-1}\widehat{C}_T^p  + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} N_{a,p}(u)^p\right].
 		\end{align*}
 		Now if we consider
 		\[
@@ -614,7 +624,7 @@ The goal of this paper is to prove the existence of a global solution to \eqref{
 		\]
 		then by Proposition \ref{P:N(u)Bdd}, we have that 
 		\[
-		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
+		\mathbb{E}\left[ \sup_{t\in[0,T],\; |x| \le R} |u(t,x)|^p \right] \le 2^{p-1}\widehat{C}_T^p  + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2^p e^{apT} \left(2 +  \frac{c(\sigma)}{L(\sigma)}\right)^p\right].
 		\]
 	\end{proof}
 	
@@ -623,28 +633,7 @@ The goal of this paper is to prove the existence of a global solution to \eqref{
 	\end{remark}
 
 	
-	\subsection{Existence of a Global Solution with Superlinear Diffusion Coefficient}
-	
-	We now impose the following condition on $\sigma$: As $|x|,|z| \to \infty$,
-	\begin{equation}
-	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
-	\end{equation}
-	where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
-	\begin{equation}
-	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
-	\end{equation}
-	where $\sigma_1 = c(\sigma) = \sigma(0)$.
-	
-	\begin{remark}
-		Because of the absence of the drift coefficient in \eqref{E:SupLinSPDE}, we may drop \cite[Assumption C1]{millet.sanz-sole:21:global}.
-	\end{remark}
-	
-	\begin{theorem}
-		Consider the initial conditions $u_0=1$ and $v_0=0$ and suppose that $\sigma$ satisfies \eqref{C:SigSupLin}. Then for any $M>0$, there exists a random field solution to \eqref{E:SupLinSPDE} in $[-M,M]$ denoted as $(u(t,x): (t,x) \in [0,T]\times[-M,M])$. This solution is unique and satisfies 
-		\begin{equation}
-		\sup_{t\in[0,T],\; x\in[-R,R]} |u(t,x)| < \infty, a.s.
-		\end{equation}
-	\end{theorem}
+	\subsection{Proof of Theorem \ref{T:MainSupLin}}
 	
 	\begin{proof}
 		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
@@ -694,12 +683,12 @@ The goal of this paper is to prove the existence of a global solution to \eqref{
 		
 		We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
 		\begin{align*}
-		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)| \ge N \right) \\
-		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right).
+		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)| \ge N \right) \\
+		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right).
 		\end{align*}
 		An application of \eqref{E:u_NMomBdd} gives 
 		\begin{align*}
-		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
+		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
 		&= \frac{2^{p-1} + C(p, \theta, T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
 		\end{align*}
 		The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
