@@ -419,17 +419,17 @@ and \ref{S:mainproof}, respectively.
 
 We end this section by introducing some notation and formulas that we use throughout the paper. We will use $\Norm{X}_p $ to denote the $L^p(\Omega)$ norm, namely,
 $\left(\mathbb{E}(|X|^p)\right)^{1/p}$. We will also use the following factorization
-property of the heat kernel
+property of the heat kernel,
 \begin{equation} \label{E:gsim}
   G(t,x)G(s,y)=G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
 \end{equation}
-which can be easily verified. Next, we remind the reader of the following spherical coordinate integration formula
+which can be easily verified. Next, the following spherical coordinate integration formula will be used often, 
 	\[
 		\int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
 	\]
-which we will use often and where $\sigma(\mathbb{S}^{d-1})  = 2(\pi)^{d/2} / \Gamma(d/2)$.
-The convention of Fourier transform is given in Remark \ref{R:Fourier}
-below. Lastly, $\Gamma(z)$ will be used to denote the Gamma function. 
+where $\sigma(\mathbb{S}^{d-1})  = 2(\pi)^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma function.
+Lastly, the convention of Fourier transform is given in Remark \ref{R:Fourier}
+below.
 
 % We reserve $C_d$ for the constant coming from the change of variable
 % to the spherical coordinates:
@@ -873,23 +873,23 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 \begin{example} \label{Ex:Finv}
 One should note that the assumption that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x)$ is nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong and may not be true even if $f$ is non-negative and non-negative definite. Indeed, suppose that $f$ was such that $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then $f$ is non-negative and non-negative definite, which is shown in Example \ref{Ex:sqrt} below. We will now show that in this case, $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x)$ takes on both positive and negative values. Since $\sqrt{\widehat{f}(\xi)} = 2^{-1}\sqrt{\max\{2-|\xi|,0\}}$ is even, the inverse Fourier transform takes the following form:
 	\[
-		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) = 2 \int_0^2 2^{-1}\sqrt{2-y} \cos(y\: x) \ud y.
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) = 2 \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi.
 	\]
-For simplicity, we will only consider the case $x >0$ and real. Therefore 
+For simplicity, we will only consider the case $x \ge 0$ and real, however, due to the evenness of cosine, the calculations for $x < 0$ are exactly the same. Therefore 
 	\begin{align*}
-			\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) &= 2 \int_0^{\sqrt{2}} y^2 \cos(2x- x y^2) \ud y \\
-			&= 2\cos(2x) \int_0^{\sqrt{2}} y^2 \cos(x y^2) \ud y  +2 \sin(2x) \int_0^{\sqrt{2}} y^2 \sin(x y^2) \ud y.
+			\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) &= 2 \int_0^{\sqrt{2}} \xi^2 \cos(2x- x \xi^2) \: \ud \xi \\
+			&= 2\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi  +2 \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi.
 	\end{align*}
-Where in the first equality we used the change of variables, $y' = \sqrt{2 - y}$. We now do an integration by parts to see that 
+Where in the first equality we used the change of variables, $\xi' = \sqrt{2 - \xi}$. We now do an integration by parts to see that 
 	\begin{align*}
-		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) &= - \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(y^2 x)}{x} \ud y + \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(y^2 x)}{x} \ud y,
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) &= - \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2 )}{x} \: \ud \xi + \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
 	\end{align*}
 \begin{codes}
 	Integrate[(-Cos[2*x]Sin[y^2 * x]/x)+(Sin[2*x]Cos[y^2 * x] / x),{y,0,Sqrt[2]},Assumptions->x>=0]
 \end{codes}
-and lastly we apply the change of variables $y' = y\sqrt{2x/\pi}$ too see 
+and lastly we apply the change of variables $\xi' = \sqrt{2x/\pi} \: \xi $ to conclude that 
 	\[
-		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) = \frac{ \sqrt{\frac{\pi}{2}}\left(-\cos(2x)\mathcal{S}\left(\frac{2\sqrt{x}}{\sqrt{\pi}}\right) + \sin(2x) \mathcal{C}\left( \frac{2 \sqrt{x}}{\sqrt{\pi}} \right) \right)}{ x^{3/2} },
+		\mathcal{F}^{-1}\left(\sqrt{\widehat{f}}\right)(x) = \frac{ \sqrt{\frac{\pi}{2}}\left(-\cos(2|x|)\mathcal{S}\left(\frac{2\sqrt{|x|}}{\sqrt{\pi}}\right) + \sin(2|x|) \mathcal{C}\left( \frac{2 \sqrt{|x|}}{\sqrt{\pi}} \right) \right)}{ |x|^{3/2} }, \quad \text{for all } x \in \R,
 	\]
 where $\mathcal{S}$ and $\mathcal{C}$ are the Fresnel integrals (see \cite[7.2 (iii)]{olver.lozier.ea:10:nist}):
 	\[
