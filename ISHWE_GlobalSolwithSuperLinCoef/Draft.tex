@@ -811,6 +811,14 @@ Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0
   	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  \le 
   	\frac{C }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } .
   	\]
+  \textcolor{blue}{typo? Recall that $\varphi(c \zeta) = c^{d-\lambda}\varphi(\zeta)$ and so when doing the substitution $\eta = \left(\frac{\nu}{2}t^{\beta} \right)^{1/\alpha} \zeta$ then we should get 
+  		\begin{align*}
+  			\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 } &= \frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \varphi\left( \left(\frac{\nu}{2}t^{\beta} \right)^{-1/\alpha}\eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } \\
+  			&= \frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \left(\frac{\nu}{2}t^{\beta} \right)^{(-d+\lambda)/\alpha} \varphi\left( \eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } \\
+  			&=\left(\frac{\nu}{2}\right)^{\frac{\lambda - 2d}{\alpha}}\frac{C  t^{2(\beta + \gamma -1)-\frac{2d\beta - \lambda \beta}{\alpha}}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \left(\frac{\nu}{2}t^{\beta} \right)^{(-d+\lambda)/\alpha} \varphi\left( \eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } 
+  		\end{align*}
+  	check this later
+   }
 The finiteness of the above integral follows from Assumption \ref{A:NoiseAssum1}.
   \end{proof}	
   	
@@ -1122,7 +1130,7 @@ where $\mu(\ud \xi) = \varphi(\xi) \ud \xi$. This completes the proof.
 	\end{proposition}
 
 	\begin{proof}
-By the Burkholder Davies Gundy inequality, we have that 
+The following proof follows closely the techniques presented in cite... . By the Burkholder Davies Gundy inequality, we have that 
 	\begin{align*}
 		\Norm{ I(t,x)-I(t,z) }_p^2 &\le 4p \Norm{ \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 f(y_1-y_2) \prod_{i=1}^2 (Y(t-s,x-y_i) - Y(t-s, z-y_i)\sigma(u(s,y_i)) }_{p/2} \\
 		& =: 4p \Norm{ Q }_{p/2} 
@@ -1138,7 +1146,7 @@ We now reorganize the integrand of $Q$ above by following \cite[Theorem 3.1]{HHN
 Now let $\xi = x-z$ and consider the following notation:
 	\begin{align*}
 	\Sigma_x(s,y) &= \sigma(u(s,x-y)), \quad \Sigma_{x,z}(s,y) = \sigma(u(s,x-y)) - \sigma(u(s,z-y)), \\
-	h_1(s,y_1,y_2) &= f(y_1,y_2) \Sigma_{x,z}(s,y_1)  \Sigma_{x,z}(s,y_2) \\
+	h_1(s,y_1,y_2) &= f(y_1 - y_2) \Sigma_{x,z}(s,y_1)  \Sigma_{x,z}(s,y_2) \\
 	h_2(s, y_1, y_2) &= [f(y_1 - y_2 + \xi) - f(y_1 - y_2)] \Sigma_x(s,y_2) \Sigma_{x,z}(s,y_1) \\ 
 	h_3(s, y_1, y_2) &= h_2(s, y_2, y_1) \\
 	h_4(s, y_1, y_2) &= [2f(y_1- y_2) - f(y_1 - y_2 + \xi) - f(y_1 - y_2 - \xi)]\Sigma_{x}(s,y) \Sigma_{x}(s,z).
@@ -1160,7 +1168,7 @@ where above $I_3$ is derived in the same way $I_2$ was derived. Now if we expand
 	\end{equation}
 where
 	\begin{equation}
-	Q_i = \int_0^t \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,y_1)Y(t-s,y_2) f(y_1-y_2) h_i(s, y_1, y_2).
+	Q_i = \int_0^t \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,y_1)Y(t-s,y_2)  h_i(s, y_1, y_2).
 	\end{equation}
 Thus 
 	\[
@@ -1174,15 +1182,29 @@ We now estimate each $\Norm{Q_i}_{p/2}$ separately.
 		& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} \int_0^t \ud s \; (t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha} \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
 		& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} (t)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}\int_0^t \ud s \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right],
 	\end{align*} 
-where the second inequality above follows from Lemma \ref{L:intYfYbdd}.
+where the second inequality above follows from Lemma \ref{L:intYfYbdd}. \textcolor{blue}{last line requires $2(\beta + \gamma -1) - \beta \lambda / \alpha > 0$. If we leave the $(t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}$ term in the integral then we may be able to assume the weaker condition that $2(\beta + \gamma -1) - \beta \lambda / \alpha > -1$, thus not excluding the SHE.}
 
 To bound the remaining $Q_i's$, we will need to consider the following truncations which will then allow us to apply Lemma \ref{L:Y_phiParseval}. For $k \ge 1$ we define $\Sigma_{x}^k(s,y) = \Sigma_{x}(s,y) 1_{\{\Sigma_{x}(s,y) \le k \}}$ and $\Sigma_{x,z}^k(s,y) = \Sigma_{x,z}(s,y) 1_{\{\Sigma_{x,z}(s,y) \le k \}}$ and then we define $Q_i^k$ the same as $Q_i$ but with $h_i$ replaced with $h_i^k$ where $h_i^k$ is defined by replacing $\Sigma_{x}(s,y) $ and $\Sigma_{x,z}(s,y) $ with $\Sigma_{x}^k(s,y)$ and $\Sigma_{x,z}^k(s,y)$ respectively in $h_i$.
 
 \textit{Upper Bound for $\Norm{Q_2^k}_{p/2}$.} We apply Lemma \ref{L:Y_phiParseval} with $\phi(y_2) = \Sigma_{x}^k(s,y_2)$ and $\psi(y_1) = \Sigma_{x,z}^k(s,y_1)$. Thus we have that up to a constant of $(2\pi)^{-d}$,
 	\[
-		Q_2^k = \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \overline{ \mathcal{F}(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot))(\xi) }\mathcal{F}(\Sigma_{x,z} Y(t-s,\cdot))(\xi)[e^{-i\xi \cdot \zeta}-1],
+		Q_2^k = \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \overline{ \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta) }\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)[e^{-i\xi \cdot \zeta}-1],
 	\]
-where we recall that $\zeta = x - z$. 
+where we recall that $\xi = x - z$. We now apply the the following to bounds: $|e^{-i\xi \cdot \zeta}-1| \le C |\xi|^{\gamma} |\zeta|^{\gamma}$ for any $\gamma \in [0,1]$ and some $C>0$ and $\sqrt{ab} \le \frac{1}{2}(a+b)$ for and $a,b > 0$. Indeed, for some $\gamma \in [0,1]$,
+	\begin{align*}
+		|Q_2^k| & \le C \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right| \left|\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)\right| |\xi|^{\gamma} |\zeta|^{\gamma} \\
+		&\le \int_0^t \ud s |\xi|^{\gamma} \left(\int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2 |\zeta|^{2\gamma} \right)^{1/2} \\
+		& \qquad \qquad \times \left( \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)\right|^2 \right)^{1/2} \\
+		& \le \frac{1}{2} \int_0^t \ud s |\xi|^{2\gamma} \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2\gamma} \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
+		& \qquad \qquad \times \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
+		& =: Q^k_{2,1} + Q^k_{2,2}.
+	\end{align*}
+As for $Q^k_{2,1}$,
+	\begin{align*}
+		\Norm{Q^k_{2,1}}_{p/2} &\le C |\xi|^{2\gamma} \sup_{(s,y) \in [0,T]\times \R^d} \Norm{\Sigma^k_{x,z}(s,y)}^2_{p} \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2\gamma} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+		&\le C |\xi|^{2\gamma} \left[c(\sigma) + L(\sigma) \sup_{(s,y) \in [0,T]\times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2\gamma} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 
+	\end{align*}
+which follows from the global Lipschitz assumption on $\sigma$.
 \end{proof}
 
 	\addcontentsline{toc}{section}{Bibliography}

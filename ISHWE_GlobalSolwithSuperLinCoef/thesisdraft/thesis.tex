@@ -255,8 +255,8 @@ u(t,x) = J_0(t,x) + I(t,x),
 The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86:introduction}) and the fundamental solution is a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through the Fox-H function, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
 	\begin{align*}
 		\mathcal{F}Z(t,\cdot)(\xi) &= t^{\lceil \beta \rceil -1} E_{\beta, \lceil \beta \rceil}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
-		\mathcal{F}Z^*(t,\cdot)(\xi) &= t^{\beta + \gamma  -1} E_{\beta, \beta + \gamma}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
-		\mathcal{F}Y(t,\cdot)(\xi) &= t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}(-2^{-1}\nu t^\beta |\xi|^\alpha),
+		\mathcal{F}Z^*(t,\cdot)(\xi) &= E_{\beta, 1}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
+		\mathcal{F}Y(t,\cdot)(\xi) &= t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}\left(-2^{-1}\nu t^\beta |\xi|^\alpha\right),
 	\end{align*}
 where $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
 	\[
@@ -298,34 +298,33 @@ and then associate for each $N>0$, the corresponding global solution $u_N(t,x)$,
 We prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. Because of the stopping-time argument, existence in $L^2(\Omega)$ is no longer guaranteed. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, then the solution may no longer satisfy the standard Ito isometry. 
 	
 	\section{Preliminary results}
+	
 	In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
-	\[
+	\begin{equation} \label{E:SupLinGlobalLip}
 	|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
-	\] 
-	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$. We assume that $L(\sigma)>0$. To establish the existence and uniqueness of random field solutions in the to \eqref{E:SupLinSPDE}, we will need to assume Dalang's condition:
+	\end{equation}
+	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$ an we assume that $L(\sigma)>0$. The equation \eqref{E:SupLinSPDE} under the assumption that $\sigma$ satisfies \eqref{E:SupLinGlobalLip} has been studied in \cite{chen.hu.ea:19:nonlinear} where they establish in Theorem 4.1 {\em ibid} the existence and uniqueness of global random field solutions. In order to do so, one needs to show {\em Dalang's condition}:
 	\begin{equation}
 	\label{C:Dalang}
 	\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
 	\end{equation} 
-	which is equivalent to
+	which is equivalent to (e.g. see Lemma 5.3 {\em ibid})
 	\begin{equation}
 	\label{E:DalangEquiv}
 	d < 2\alpha + \frac{\alpha}{\beta}\min\{2\gamma -1, 0\} =: \Theta,
 	\end{equation}
 	which is further equivalent to 
-	\begin{equation}
-	\label{E:DalangEquiv2}
+	\begin{equation} \label{E:DalangEquiv2}
 	\rho(d) > 0 \quad \text{and} \quad d < 2\alpha,
 	\end{equation}
 	where 
-	\begin{equation}
-	\label{D:theta}
+	\begin{equation} \label{D:rho}
 	\rho(x) := 2\beta + 2\gamma -1 -\beta x / \alpha.
 	\end{equation} 
 
-We now state an existence and uniqueness result proven in \cite{chen.hu.ea:19:nonlinear}.
+We now state the existence and uniqueness result proven in \cite{chen.hu.ea:19:nonlinear}.
 	
-	\begin{theorem}
+	\begin{theorem}{\cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}}
 		\label{T:SolveabilityGenLip}
 		Under \eqref{C:Dalang}, the SPDE \eqref{E:SupLinSPDE} has a unique (in the sense of versions) random field solution $\{u(t,x) : (t,x) \in (0,\infty) \times \R^d \}$ if the initial data are such that 
 		\begin{equation} \label{E:HomogBdd}
@@ -341,11 +340,14 @@ We now state an existence and uniqueness result proven in \cite{chen.hu.ea:19:no
 %		\end{enumerate}}
 		
 	\end{theorem}
-	\begin{lemma}{\normalfont \cite[Theorem 4.1 and Lemma 5.5]{chen.hu.ea:19:nonlinear}}
+
+We now state a lemma proven in \cite{chen.hu.ea:19:nonlinear} that calculates the $L^1(\R^d)$ and $L^2(\R^d)$ norms of the fundamental solutions. The lemma will be needed below in some of our calculations.
+
+	\begin{lemma}{\cite[Theorem 4.1 and Lemma 5.5]{chen.hu.ea:19:nonlinear}}
 		\label{L:1and2normYZ}
 		Assume that $d < 2\alpha$, $\beta \in (0,2)$, and $\gamma \ge 0$. Then 
 		\[
-		\int_{\R^d} Y(t,x) \ud x = t^{\beta+\gamma -1 }
+		\int_{\R^d} Y(t,x) \ud x = t^{\beta+\gamma -1 } \quad \text{and} \quad \int_{\R^d} Z(t,x) \ud x= t^{\lceil \beta \rceil -1}
 		\]
 		and
 		\[
@@ -357,11 +359,11 @@ We now state an existence and uniqueness result proven in \cite{chen.hu.ea:19:no
 		\]
 		Now further assume that $\beta \in (1,2)$, then 
 		\[
-		\int_{\R} Z(t,x) \ud x= t^{\lceil \beta \rceil -1} = t. 
+		\int_{\R^d} Z^*(t,x) \ud x= 1. 
 		\]
 	\end{lemma}
 	\begin{remark}
-		When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} G^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
+		When $\alpha = \beta = 2$,  $\gamma = 0$ and $d=1$ then Lemma \ref{L:1and2normYZ} gives us that $\int_{\R} Y^2(t,x) \ud x = t/2$ which coincides with the $L^2(\R)$ norm of the wave kernel. 
 	\end{remark}
 
 \subsection{Some moment bounds}
@@ -374,7 +376,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{millet.sanz-sole:21:global}}
 		\label{P:N(u)Bdd}
-		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and $\rho = \rho(d) > 0$, where $\rho(x)$ is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
+		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and $\rho = \rho(d) > 0$, where $\rho(x)$ is defined in \eqref{D:rho}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
 		\]
@@ -405,7 +407,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\begin{align*}
 		|J(t,x)|  &= \begin{cases} 
 		\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
-		\\	\left| (Z(t,\cdot) * v_0)(x) + \frac{\partial}{\partial t}(Z(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
+		\\	\left| (Z(t,\cdot) * v_0)(x) + (Z^*(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
 		\end{cases}
 		\\& \le \begin{cases}
 		t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
@@ -507,7 +509,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 	
 	\begin{proposition}{\normalfont\cite[Proposition 2.1 and 2.2]{chen.hu:21:holder}}
 		\label{P:YInc}
-		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:theta}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
+		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:rho}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
 		\begin{enumerate}
 			\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -d) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
 			\[
@@ -651,11 +653,11 @@ In this section, we will prove some moment bounds and a continuity result for th
 	\section{Proof of Theorem \ref{T:MainSupLin}} \label{S:TMainSupLin}
 	
 	\begin{proof}
-		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where 
+		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where in the case of $d=1$, 
 		\[
-		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}}.
+		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}},
 		\]
-		Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
+		and in higher dimensions $\sigma_N$ is defined similarly. Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
 		\[
 		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
 		\]
@@ -713,6 +715,69 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\end{align*}
 		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
 	\end{proof}
+
+\section{Some comments on a spatially colored noise}
+Consider equation \ref{E:SupLinSPDE} driven by a noise that is white in time and colored space. In other words, $W$ is a $0$-mean Gaussian process indexed on the space of Schwartz functions with the following covariance structure:
+	\begin{equation} \label{E:Colored} 
+	C(\phi, \psi) := \int_0^\infty \ud t \int_{\R^{d}}  \Gamma(\ud x) \; (\phi(t,\cdot)*\tilde{\psi}(t,\cdot))(x), \quad \tilde{\psi}(x) = \psi(-x).
+	\end{equation}
+As per usual, the tempered measure $\Gamma$ is non-negative and nonnegative definite and satisfies the following two conditions:
+	\begin{assumption} \label{A:NoiseAssum1} $\;$
+	\begin{enumerate}
+		\item the spectral measure $\mu$ is such that $\int_{\R^d} \frac{\mu(\ud \zeta)}{1 + |\zeta|^\alpha} < \infty$,
+		\item $\Gamma$ is absolutely continuous with respect to the Lebesgue measure and therefore has a density, $\Gamma(\ud x) = f(x) \ud x$. Furthermore, when this is the case, we may often write $\mu(\ud \zeta) = \varphi(\zeta) \ud \zeta$ where we have the relation $\varphi = \mathcal{F}f$,
+	\end{enumerate}
+	\end{assumption}
+
+\noindent Under this assumption, we may rewrite \eqref{E:Colored} as 
+\[
+C(\phi,\psi) = \int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(t,x) f(x-y) \psi(t,y)
+\]
+and by applying Placherel's identity, this further implies that 
+\[
+\int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(x) f(x-y) \psi(y) = (2 \pi)^{-d} \int_0^\infty \ud t \int_{\R^{2d}} \mu(\ud \zeta) \mathcal{F}(\phi(t,\cdot))(\zeta) \overline{\mathcal{F}(\psi(t,\cdot))(\zeta)}.
+\]
+
+We now prove a lemma which is a generalization of equation \eqref{C:Dalang} which accounts for the colored noise.
+
+	\begin{lemma}
+	\label{L:YfYbdd}
+	Suppose Assumption \ref{A:NoiseAssum1} holds. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
+	\begin{equation}
+	\label{E:YYfBdd}
+	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } < \infty
+	\end{equation}
+\end{lemma}
+\begin{proof}
+	Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
+	\[
+	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
+	\]
+	where $*$ denotes the spatial convolution. Now an application of Pareseval's identity gives us that 
+	\[
+	\int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u = \frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\zeta) \mathcal{F}(Y(t,\cdot)*f)(\zeta) \ud \zeta.
+	\]
+	Applying the translation property of the Fourier transform and \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear} gives us that 
+	\begin{align*}
+	\frac{1}{(2\pi)^d} 	\int_{\R^{d}} \mathcal{F}Y\left(t,\cdot-(x-y)\right)(\zeta) & \mathcal{F}(Y(t,\cdot)*f)(\zeta) \ud \xi \\
+	& = \frac{ t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}} \exp(-i(x-y)\zeta) E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\zeta|^\alpha}{2}\right)^2 \mu(\ud \zeta).
+	\end{align*}
+	Hence by taking the absoulte value on both sides and recalling the positivity of $f$, $Y$ and the Mittag-Leffler function we get that 
+	\begin{align*}
+	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le \frac{ t^{2(\beta + \gamma -1)} }{ (2\pi)^d } \int_{\R^{d}}  E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\zeta|^\alpha}{2}\right)^2 \mu(\ud \zeta).
+	\end{align*}
+	Now, by applying \cite[Theorem 1.6]{podlubny:99:fractional}, we see that there exists a $C>0$ depending only on $\beta$ and $\gamma$ such that 
+	\[
+	\frac{ t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2 \mu(\ud \zeta).\le 
+	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 } .
+	\]
+	Another change of variables implies that 
+	\[
+	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  \le 
+	\frac{C }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } .
+	\]
+	The finiteness of the above integral follows from Assumption \ref{A:NoiseAssum1}.
+\end{proof}	
 
 	\addcontentsline{toc}{section}{References}
 	\printbibliography[title={References}]
