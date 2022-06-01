@@ -126,10 +126,10 @@
 % }}}
 % }}}
 % {{{ Head: Title, Abstract, Keywords
-\title{Invariant measures for the stochastic heat equation on $\R^d$ without drift term}
-\author{Le Chen\\Auburn University\\\texttt{le.chen@auburn.edu}\\
-  \and
-    Nicholas Eisenberg\\Auburn University\\\texttt{nze0019@auburn.edu}
+\title{Invariant measures for the nonlinear stochastic heat equation\\  on $\R^d$ without any drift term}
+\author{
+  Le Chen           \\Auburn University\\\texttt{le.chen@auburn.edu}\\ \and
+  Nicholas Eisenberg\\Auburn University\\\texttt{nze0019@auburn.edu}
   }
 \date{\today}
 
@@ -138,19 +138,23 @@
 
 \begin{abstract}
   This paper deals with the long term behavior of the solution to the nonlinear stochastic heat
-  equation $\partial u /\partial t - \frac{1}{2}\Delta u= b(u)\dot{W}$ for a Lipschitz continuous
-  diffusion coefficient $b$, which is not necessarily bounded, such as $b(u)=u$. Using the theory of
-  the stochastic integral laid out by John Walsh, we provide conditions which will guarantee the
-  existence of an invariant measure for a broad range of initial conditions, which includes bounded
-  $L^2_\rho$ functions as well as the Dirac delta distribution $\delta_0$.
+  equation $\partial u /\partial t - \frac{1}{2}\Delta u= b(u)\dot{W}$, where $b$ is assumed to be
+  Lipschitz continuous and the noise $\dot{W}$ is a centered and spatially homogeneous Gaussian
+  noise that is white in time. Using the martingale theory or the random field approach for
+  stochastic partial differential equations laid out by John Walsh and Robert Dalang, we identify a
+  set of conditions on the initial data, the correlation measure and the weight function $\rho$,
+  which will together guarantee the existence of an invariant measure in the weighted space
+  $L^2_\rho(\R^d)$. In particular, our result allows the {\it parabolic Anderson model} (i.e., the
+  case when $\rho(u)=\lambda u$) starting from a Dirac delta measure.
 \end{abstract}
 \bigskip
 
 \noindent{\it \noindent MSC 2010 subject classification}: 60H15, 60H07, 60F05.
 \smallskip
 
-\noindent{\it Keywords}: Stochastic heat equation, parabolic Anderson model, invariant measure, Dirac delta initial condition.
-\smallskip
+\noindent{\it Keywords}: Stochastic heat equation, parabolic Anderson model, invariant measure,
+Dirac delta initial condition, weighted $L^2$ space, Mat\'ern class of correlation functions, Bessel
+kernel. \smallskip
 
 % \noindent{\it Running head:} Ergodicity and CLT for PAM.
 
@@ -210,13 +214,18 @@ integral}. We refer the interested readers to
 for more details of the set up. \\
 
 
-The aim of this paper is to investigate the conditions required to guarantee the existence of an invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
+The aim of this paper is to investigate the conditions required to guarantee the existence of an
+invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
 the ergodicity of the system. The existence of invariant measure under the setting of the entire
 space $\R^d$ has been much less studied. In addition to Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant}, with which we will follow closely in this paper, a
-few other papers that consider the whole space include \cite{assing.manthey:03:invariant, misiats.stanzhytskyi.ea:20:invariant,
-misiats.stanzhytskyi.ea:16:existence}. One thing to note is that the just mentioned papers use the theory of the stochastic integral developed by Daprato et al \cite{da-prato.zabczyk:14:stochastic} while we use the theory developed by Walsh \cite{walsh:86:introduction}. As far as we know, this is the first paper which handles proving the existence of an invariant measure using Walsh's theory. Lastly,  since the space $\R^d$ is not compact, one needs to work on a
-weighted space as in \cite{tessitore.zabczyk:98:invariant}:
+\cite{tessitore.zabczyk:98:invariant}, with which we will follow closely in this paper, a few other
+papers that consider the whole space include \cite{assing.manthey:03:invariant,
+misiats.stanzhytskyi.ea:20:invariant, misiats.stanzhytskyi.ea:16:existence}. One thing to note is
+that the just mentioned papers use the theory of the stochastic integral developed by Daprato et al
+\cite{da-prato.zabczyk:14:stochastic} while we use the theory developed by Walsh
+\cite{walsh:86:introduction}. As far as we know, this is the first paper which handles proving the
+existence of an invariant measure using Walsh's theory. Lastly, since the space $\R^d$ is not
+compact, one needs to work on a weighted space as in \cite{tessitore.zabczyk:98:invariant}:
 
 \begin{definition} \label{D:Rho}
   $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive,
@@ -233,19 +242,20 @@ $H:=L_\rho^2(\R^d)$ with $\langle f,g \rangle_\rho := \int_{\R^d}f(x)g(x)\rho(x)
 $\Norm{f}_\rho^2 :=\int_{\R^d}f(x)^2\rho(x) \: \ud x$. A continued discussion about the weight function
 can be found in Section \ref{SS:Weight}.
 
-Following  \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$
-on the Borel $\sigma$-field $\mathscr{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
+Following \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$ on the
+Borel $\sigma$-field $\mathscr{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
 \begin{equation}\label{E:InvMeas}
   \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\varphi))(A) \; \eta(\ud \varphi),
   \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$},
 \end{equation}
 where we use the notation $u(t,x;\varphi)$ with a third argument to emphasize its dependence on the
-initial condition $u(0,\cdot)=\varphi$ and $\mathscr{L}(u(t,\cdot;\varphi))(A)$ denotes the law of the solution:
+initial condition $u(0,\cdot)=\varphi$ and $\mathscr{L}(u(t,\cdot;\varphi))(A)$ denotes the law of
+the solution:
 	\[
 		\mathscr{L}(u(t,\cdot;\varphi))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \varphi)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 	\]
-Due to the {\it Krylov-Bogoliubov theorem} (see, e.g.,
-\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
+Due to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
+11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
 $\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct the
 invariant measure via
 \begin{equation} \label{E:InvMeasForm}
@@ -264,7 +274,8 @@ It is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, na
 probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. In
 \cite{assing.manthey:03:invariant,misiats.stanzhytskyi.ea:20:invariant,misiats.stanzhytskyi.ea:16:existence},
-a drift (or reaction-diffusion) term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help cancel the otherwise exponential growing moments. The absence of such a drift term in this paper
+a drift (or reaction-diffusion) term $f(x,u)$ is included in \eqref{E:SHE} in a crucial way to help
+cancel the otherwise exponential growing moments. The absence of such a drift term in this paper
 makes the problem more challenging. In order to have moments bounded in time, as required in
 \eqref{E:BddMnt}, one has to first identify the exact conditions under which the moments to
 \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem
@@ -923,11 +934,15 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
   \begin{center}
     \begin{tikzpicture}[scale=1, transform shape]
       \begin{axis}[
+        axis lines = left,
         xtick={-8,-4,0,4,8},
         ytick={0, 0.159, 0.300, 0.5},
         yticklabels={$0$, $\frac{1}{2\pi}$, $\frac{2 \sqrt{2}}{3\pi}$, $\frac{1}{2}$},
-        legend style={at={(1.42,1)},anchor=north},
-        % xmin=-8, xmax=8,
+        legend style={at={(1.0,0.9)},anchor=north},
+        legend style={draw=none},
+        % xmin=-8,
+        xmax=10,
+        ymax=0.55,
         ]
         % \addplot[smooth,domain=-9:9,dashed,thin] {0};
 
