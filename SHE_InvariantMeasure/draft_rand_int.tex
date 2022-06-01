@@ -154,6 +154,7 @@
 
 % \noindent{\it Running head:} Ergodicity and CLT for PAM.
 
+\setcounter{tocdepth}{2}
 \tableofcontents
 
 % }}}
@@ -794,29 +795,30 @@ For $\alpha \in (0, 1/2)$, we introduce the following quantity which will now be
   \ref{P:Bessel}.
 \end{proof}
 
-\subsection{A discussion on Tessitore and Zabczyk's condition} \label{SS:TessZabz}
+\subsection{A discussion on the conditions by Tessitore and Zabczyk} \label{SS:TessZabz}
 
 Under the setting of the whole space, $\R^d$, Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE} in
-$L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
+\cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE}
+in $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
 L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$ and the solution
 starting from $\varphi$ is bounded in probability in $L^2_{\widetilde \rho}(\R^d)$ and also that the
 spectral density $\hat{f}$ satisfies
 \begin{equation} \label{E:CorTZ}
   \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in Theorem
-3.3 ({\em ibid.}), in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
-bounded in time), the following additional
-assumptions were imposed:
+see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in Theorem 3.3 ({\em ibid.}), in order
+to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
+bounded in time), the following additional assumptions were imposed:
  \begin{equation} \label{E:TZspec}
    d\ge 3 \quad \text{and} \quad
-   L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left|  \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (\xi) |\xi|^{2-d} \ud \xi ,
+   L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|\right) (\xi) |\xi|^{2-d} \ud \xi ,
  \end{equation}
-where the convention of the Fourier transform is given in Remark \ref{R:Fourier}. With these assumptions,
-they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies \eqref{E:BddMnt}
-and thus is bounded in probability, verifying the existence of an invariant measure. Moreover, the
-measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
+where the convention of the Fourier transform is given in Remark \ref{R:Fourier}. With these
+assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies
+\eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant
+measure. Moreover, the measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$.
+Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a
+specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
 \begin{remark} \label{R:Fourier}
   The Fourier transform may be defined differently depending on how one would like to handle the $2\pi$ constant. In
@@ -846,7 +848,9 @@ measure takes the form of \eqref{E:InvMeasForm} above with $\varphi = 1$. Lastly
 Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. We may rewrite the integral
 in the second condition of \eqref{E:TZspec} as follows:
 \begin{align*}
-  \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) \right| * \left| \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right|\right) (x) |x|^{2-d} \ud x.
+  \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
+  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
+  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x.
 \end{align*}
 We now consider a couple of situations and give two examples that illustrate some of the
 difficulties caused by the square root that may arise. Before that, let us first introduce a
@@ -859,16 +863,17 @@ nonnegative and nonnegative definite function in $\R$:\bigskip
   \xi^{-2}\sin^2(\xi)\ge 0$.
 \end{example}
 
-{\bf\noindent Case I:~} If both $\mathcal{F}^{-1}\left[\sqrt{\widehat{f}(\cdot)}\right]$ and $\widehat{f}$ are strictly positive on $\R^d$, which is not a trivial assumption (see Example \ref{Ex:Finv} below), then
-there is no ambiguity when taking the square root and one can remove the absolute value to see
-that
+\subsubsection{Case I}
+If both $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big)$ and $\widehat{f}$ are strictly
+positive on $\R^d$, which is not a trivial assumption (see Example \ref{Ex:Finv} below), then there
+is no ambiguity when taking the square root and one can remove the absolute value to see that
 \begin{align*}
-\Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right) * \mathcal{F}^{-1}\left(\sqrt{ \widehat{f}\: }\right)\right) (x) |x|^{2-d} \ud x \\
+  \Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
   & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi)  |\xi|^{-2} \ud \xi
     = \left(2\pi\right)^{d/2}\Upsilon(0),
 \end{align*}
-where we have applied Plancherel's theorem (see \eqref{E:Plancherel}) and the Fourier transform
-for Riesz kernel (in the generalized sense):
+where we have applied Plancherel's theorem (see \eqref{E:Plancherel}) and the Fourier transform for
+Riesz kernel (in the generalized sense):
 \begin{align*}
   \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
   \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
@@ -1273,9 +1278,10 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
   \label{Fig:fresnel}
 \end{figure}
 
-{\bf\noindent Case II:~} Suppose $\widehat{f}$ is not strictly positive, but only nonnegative,
-namely, $\widehat{f}(\xi)=0$ for some $\xi\in\R^d$. Then removing the absolute value in
-\eqref{E:TZspec} becomes tricky, which will be illustrated in the following example.
+\subsubsection{Case II}
+If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for
+some $\xi\in\R^d$, then removing the absolute value in \eqref{E:TZspec} becomes tricky, which will
+be illustrated in the following example.
 
 \begin{example} \label{Ex:sqrt}
   Let $f$ and $g$ be given as Example \ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
