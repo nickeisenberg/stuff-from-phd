@@ -757,7 +757,7 @@ For the remainder of this paper, we will only consider the Gaussian noises that 
 		\begin{enumerate}
 			\item the spectral measure $\mu$ is such that $\int_{\R^d} \frac{\mu(\ud \zeta)}{1 + |\zeta|^\alpha} < \infty$,
 			\item $\Lambda$ is absolutely continuous with respect to the Lebesgue measure and therefore has a density, $\Lambda(\ud x) = f(x) \ud x$. Furthermore, when this is the case, we may often write $\mu(\ud \zeta) = \varphi(\zeta) \ud \zeta$ where we have the relation $\mathcal{F}\varphi = f$,
-			\item the correlation functions satisfies for some $\lambda \in (0,d)$ and for all $c>0$, $f(cx) = c^{-\lambda}f(x)$, which in return implies that $\varphi(cx) = c^{d- \lambda}\varphi(x)$.
+			\item the correlation functions satisfies for some $\lambda \in (0,d)$ and for all $c>0$, $f(cx) = c^{-\lambda}f(x)$, which in return implies that $\varphi(cx) = c^{-(d- \lambda)}\varphi(x)$.
 		\end{enumerate}
 	\end{assumption}
 
@@ -811,13 +811,12 @@ Now, by applying \cite[Theorem 1.6]{Podlubny99}, we see that there exists a $C>0
   	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  \le 
   	\frac{C }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } .
   	\]
-  \textcolor{blue}{typo? Recall that $\varphi(c \zeta) = c^{d-\lambda}\varphi(\zeta)$ and so when doing the substitution $\eta = \left(\frac{\nu}{2}t^{\beta} \right)^{1/\alpha} \zeta$ then we should get 
+  \textcolor{blue}{? Recall that $\varphi(c \zeta) = c^{-d+\lambda}\varphi(\zeta)$ and so when doing the substitution $\eta = \left(\frac{\nu}{2}t^{\beta} \right)^{1/\alpha} \zeta$ then we should get 
   		\begin{align*}
   			\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 } &= \frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \varphi\left( \left(\frac{\nu}{2}t^{\beta} \right)^{-1/\alpha}\eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } \\
-  			&= \frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \left(\frac{\nu}{2}t^{\beta} \right)^{(-d+\lambda)/\alpha} \varphi\left( \eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } \\
-  			&=\left(\frac{\nu}{2}\right)^{\frac{\lambda - 2d}{\alpha}}\frac{C  t^{2(\beta + \gamma -1)-\frac{2d\beta - \lambda \beta}{\alpha}}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \left(\frac{\nu}{2}t^{\beta} \right)^{(-d+\lambda)/\alpha} \varphi\left( \eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } 
+  			&= \frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \left(\frac{\nu}{2}t^{\beta} \right)^{(d-\lambda)/\alpha} \varphi\left( \eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 \left(\frac{\nu}{2}t^{\beta} \right)^{d/\alpha} } \\
+  			&=\left(\frac{\nu}{2}\right)^{\frac{-\lambda }{\alpha}}\frac{C  t^{2(\beta + \gamma -1)-\frac{\lambda \beta}{\alpha}}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \varphi\left( \eta\right)\ud \zeta }{\left(1+  \left|\eta \right|^\alpha \right)^2 } 
   		\end{align*}
-  	check this later
    }
 The finiteness of the above integral follows from Assumption \ref{A:NoiseAssum1}.
   \end{proof}	
