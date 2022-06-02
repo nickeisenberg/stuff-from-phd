@@ -1170,9 +1170,9 @@ where
 	Q_i = \int_0^t \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,y_1)Y(t-s,y_2)  h_i(s, y_1, y_2).
 	\end{equation}
 Thus 
-	\[
+	\begin{equation} \label{E:Ispaceinc}
 		\Norm{ I(t,x)-I(t,z) }_p^2 \le 4p \sum_{i=1}^4 \Norm{Q_i}_{p/2}.
-	\]
+	\end{equation}
 We now estimate each $\Norm{Q_i}_{p/2}$ separately.  
 
 \textit{Upper bound for $\Norm{Q_1}_{p/2}$.} Using the Lipschitz property of $\sigma$, Minkowski's inequality and the triangle inequality gives is 
@@ -1189,21 +1189,72 @@ To bound the remaining $Q_i's$, we will need to consider the following truncatio
 	\[
 		Q_2^k = \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \overline{ \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta) }\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)[e^{-i\xi \cdot \zeta}-1],
 	\]
-where we recall that $\xi = x - z$. We now apply the the following to bounds: $|e^{-i\xi \cdot \zeta}-1| \le C |\xi|^{\gamma} |\zeta|^{\gamma}$ for any $\gamma \in [0,1]$ and some $C>0$ and $\sqrt{ab} \le \frac{1}{2}(a+b)$ for and $a,b > 0$. Indeed, for some $\gamma \in [0,1]$,
+where we recall that $\xi = x - z$. We now apply the the following to bounds: $|e^{-i\xi \cdot \zeta}-1| \le C |\xi|^{r} |\zeta|^{r}$ for any $r \in [0,1]$ and some $C>0$ and $\sqrt{ab} \le \frac{1}{2}(a+b)$ for and $a,b > 0$. Indeed, for some $r \in [0,1]$,
 	\begin{align*}
-		|Q_2^k| & \le C \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right| \left|\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)\right| |\xi|^{\gamma} |\zeta|^{\gamma} \\
-		&\le \int_0^t \ud s |\xi|^{\gamma} \left(\int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2 |\zeta|^{2\gamma} \right)^{1/2} \\
+		|Q_2^k| & \le C \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right| \left|\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)\right| |\xi|^{r} |\zeta|^{r} \\
+		&\le \int_0^t \ud s |\xi|^{r} \left(\int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2 |\zeta|^{2r} \right)^{1/2} \\
 		& \qquad \qquad \times \left( \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)\right|^2 \right)^{1/2} \\
-		& \le \frac{1}{2} \int_0^t \ud s |\xi|^{2\gamma} \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2\gamma} \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
-		& \qquad \qquad \times \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
+		& \le \frac{1}{2} \int_0^t \ud s |\xi|^{2r} \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
+		& \qquad \qquad + \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
 		& =: Q^k_{2,1} + Q^k_{2,2}.
 	\end{align*}
-As for $Q^k_{2,1}$,
+As for $Q^k_{2,1}$\footnote{There is a comment made in \cite[Proposition 4.8]{SoleMillet2021} and cite th 3.2 hu huang nualart that minkowsi inequality is being used for the first inequality but it seems incorrect how they apply minkowski's and also unnecessary.},
 	\begin{align*}
-		\Norm{Q^k_{2,1}}_{p/2} &\le C |\xi|^{2\gamma} \sup_{(s,y) \in [0,T]\times \R^d} \Norm{\Sigma^k_{x,z}(s,y)}^2_{p} \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2\gamma} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
-		&\le C |\xi|^{2\gamma} \left[c(\sigma) + L(\sigma) \sup_{(s,y) \in [0,T]\times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2\gamma} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 
+		\Norm{Q^k_{2,1}}_{p/2} & \le C |\xi|^{2r} \Norm{\sup_{(s,y) \in [0,T]\times \R^d} \Sigma^k_{x,z}(s,y)  \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2}_{p/2} \\
+		&\le C |\xi|^{2r} \sup_{(s,y) \in [0,T]\times \R^d} \Norm{\Sigma^k_{x,z}(s,y)}^2_{p} \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+		&\le C |\xi|^{2r} \left[c(\sigma) + L(\sigma) \sup_{(s,y) \in [0,T]\times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 
 	\end{align*}
-which follows from the global Lipschitz assumption on $\sigma$.
+which follows from the global Lipschitz assumption on $\sigma$. Now as for $Q^k_{2,2}$,
+	\begin{align*}
+		\Norm{Q^k_{2,2}}_{p/2} & \le \int_0^t \ud s \sup_{y \in \R^d}\Norm{\Sigma^k_{x,z}(s,y)}_p^2 \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+		& \le C \int_0^t \ud s \sup_{y \in \R^d}\Norm{\Sigma^k_{x,z}(s,y)}_p^2   (t-s)^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \\
+		& \le C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) \int_0^t \ud s \:  (t-s)^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2  \\
+		&\le C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2,
+	\end{align*}
+	where in the second to last line we applied Lemma \ref{L:YfYbdd} and in the last line we assume that $2(\beta + \gamma -1)-\beta \lambda / \alpha \ge 0$. Summarizing the above gives us that 
+	\begin{align*}
+		\Norm{Q^k_2}_{p/2} &\le C |\xi|^{2r} \left[c(\sigma) + L(\sigma) \sup_{(s,y) \in [0,T]\times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+		& \qquad + C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2.
+	\end{align*}
+	Also by swapping $x$ and $z$ and noticing that $|e^{-i\xi \zeta} - 1| = |e^{i \xi \zeta} - 1|$ then the bound for $ \Norm{Q^k_3}_{p/2} $ with be the same as for $ \Norm{Q^k_2}_{p/2} $.
+	
+	Lastly, for $Q^k_4$ we have that after applying Lemma \ref{L:Y_phiParseval} with $\phi = \psi = \sum^k_x(s,\cdot)$,
+	\begin{align*}
+		|Q^k_4| &\le C \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \left|2 - e^{-i\xi \zeta} - e^{i\xi \zeta} \right| \left| \mathcal{F}\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)(\zeta) \right|^2 \\
+		&\le C |\xi|^{2r} \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)(\zeta) \right|^2 \\
+		&= C |\xi|^{2r} \int_0^t \ud s \int_{\R^d} \ud y \: g(y) \left[\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)*\left(\widetilde{\Sigma^k_x(s,\cdot) Y(t-s,\cdot)}\right)\right](y),
+	\end{align*}
+where $g = \mathcal{F}^{-1} \left(\mu(\cdot) |\cdot|^{2r} \right)$. Thus we see that 
+	\begin{align*}
+			\Norm{Q^k_4}_{p/2} &\le C |\xi|^{2r} \int_0^t \ud s \: \sup_{y \in \R^d} \Norm{\Sigma^k_x(s,y)}_{p}^2 \int_{\R^d} \ud y \: g(y) \left[\left( Y(t-s,\cdot)\right)*\left(\widetilde{ Y(t-s,\cdot)}\right)\right](y) \\
+			&= C|\xi|^{2r} \sup_{(s,y) \in [0,T] \times \R^d} \Norm{\Sigma^k_x(s,y)}_{p}^2 \int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+			&\le C|\xi|^{2r} \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2.
+	\end{align*}
+Thus taking \eqref{E:Ispaceinc} into consideration, we have that 
+	\begin{align*}
+		\Norm{I(t,x) - I(t,z)}_p^2 &\le C|\xi|^{2r} \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+		& \qquad  + C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2. 
+	\end{align*}
+Lastly we note that by the same techniques in Lemma \ref{L:YfYbdd}, we see that
+	\begin{align*}
+		\int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} & \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+		 &\le \int_0^t \ud s \: (t-s)^{2(\beta + \gamma -1)}\int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} E_{\beta, \beta + \gamma}\left(-2^{-1}\nu(t-s)^{\beta} |\zeta|^{\alpha}\right)^2 \\
+		 &\le C \int_0^t \ud s \: (t-s)^{2(\beta + \gamma -1)}\int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left(1+2^{-1}\nu(t-s)^{\beta} |\zeta|^{\alpha}\right)^{-2} \\
+		 &= C \int_0^t \ud s \: (t-s)^{2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha}}\int_{\R^d} \mu(\ud \zeta) \frac{|\zeta|^{2r}}{\left(1+ |\zeta|^{\alpha}\right)^{2}} ,
+	\end{align*}
+therefore,
+	\begin{align*}
+&\Norm{I(t,x) - I(t,z)}_p^2 \\
+&\le C|\xi|^{2r} \left(\int_{\R^d} \mu(\ud \zeta) \frac{|\zeta|^{2r}}{\left(1+ |\zeta|^{\alpha}\right)^{2}} \right) \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \:   (t-s)^{2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha}}\\
+& \qquad  + C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2,
+\end{align*}
+which requires us to assume that 
+	\[
+	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} >0
+	\quad \text{and} \quad
+	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha} > -1
+	\]
+
 \end{proof}
 
 	\addcontentsline{toc}{section}{Bibliography}
