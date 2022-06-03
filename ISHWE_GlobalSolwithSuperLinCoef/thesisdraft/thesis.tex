@@ -228,7 +228,7 @@ In this paper we prove the existence of a global solution to the interpolated st
 	u(0,\cdot) = u_0(x), \quad \partial_t u(0,\cdot) = v_0(x)                                                                            & \beta \in (1,2),
 	\end{cases}
 	\end{equation}
-	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is taken to be space-time white and the initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
+	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is taken to be space-time white, however some comments will be made in Section \ref{S:colorednoise} below about the current progress with a colored noise. The initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
 	\begin{equation}
 	\label{C:SigSupLin}
 	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
@@ -297,7 +297,7 @@ and then associate for each $N>0$, the corresponding global solution $u_N(t,x)$,
 \]
 We prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. Because of the stopping-time argument, existence in $L^2(\Omega)$ is no longer guaranteed. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, then the solution may no longer satisfy the standard Ito isometry. 
 	
-	\section{Preliminary results for a globally Lipschitz $\sigma$}
+	\section{Preliminary results for a globally Lipschitz drift term}
 	
 	In this section, we assume that the coefficient $\sigma$ is globally Lipschitz and therefore satisfies the following inequality:
 	\begin{equation} \label{E:SupLinGlobalLip}
@@ -716,48 +716,62 @@ In this section, we will prove some moment bounds and a continuity result for th
 		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
 	\end{proof}
 
-\section{Some comments and current progress with a spatially colored noise}
+\section{Some comments and current progress on a spatially colored noise} \label{S:colorednoise}
 Consider equation \ref{E:SupLinSPDE} driven by a noise that is white in time and colored space. In other words, $W$ is a $0$-mean Gaussian process indexed on the space of Schwartz functions with the following covariance structure:
 	\begin{equation} \label{E:Colored} 
 	C(\phi, \psi) := \int_0^\infty \ud t \int_{\R^{d}}  \Gamma(\ud x) \; (\phi(t,\cdot)*\tilde{\psi}(t,\cdot))(x), \quad \tilde{\psi}(x) = \psi(-x).
 	\end{equation}
-As per usual, the tempered measure $\Gamma$ is non-negative and nonnegative definite and satisfies the following three conditions:
+As per usual, the tempered measure $\Gamma$ is non-negative and nonnegative definite and when $\Gamma$ has density $f$, which will always be assumed for the remainder of this chapter (see Assumption \ref{A:RieszKernel} below), then we may rewrite \eqref{E:Colored} as the following:
+\[
+C(\phi,\psi) = \int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(t,x) f(x-y) \psi(t,y)
+\]
+and by applying Placherel's theorem, this further implies that 
+\[
+\int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(x) f(x-y) \psi(y) = (2 \pi)^{-d} \int_0^\infty \ud t \int_{\R^{2d}} \mu(\ud \zeta) \mathcal{F}(\phi(t,\cdot))(\zeta) \overline{\mathcal{F}(\psi(t,\cdot))(\zeta)}.
+\]
+We now impose some assumptions on $\Gamma$:
 	\begin{assumption} \label{A:NoiseAssum1} $\;$
 	\begin{enumerate}
-		\item the spectral measure $\mu$ is such that $\int_{\R^d} \frac{\mu(\ud \zeta)}{\left(1 + |\zeta|^\alpha\right)^2} < \infty$,
 		\item $\Gamma$ is absolutely continuous with respect to the Lebesgue measure and therefore has a density, $\Gamma(\ud x) = f(x) \ud x$. Furthermore, when this is the case, we may often write $\mu(\ud \zeta) = \varphi(\zeta) \ud \zeta$ where we have the relation $\varphi = \mathcal{F}f$,
+		\item the spectral measure $\mu$ is such that $\int_{\R^d} \frac{\mu(\ud \zeta)}{\left(1 + |\zeta|^\alpha\right)^2} < \infty$,
 		\item the spectral density, $\varphi$, satisfies the following scaling property: $\varphi(c\xi) = c^{-(d-\lambda)}\varphi(\xi)$ for some $\lambda >0$.
 	\end{enumerate}
 	\end{assumption}
 
 \begin{remark}
-	To the best of our knowledge, the only correlation function and spectral density that satisfies the conditions of Assumption \ref{A:NoiseAssum1} is the Riesz kernal with parameter $0<\Lambda<d $,
-	\[
-		f(x) = \frac{1}{|x|^{\Lambda}},
-	\]
-		and its fractional generalization,
-	\[
-		f(x) = \prod_{i=1}^k \frac{1}{|x_{(i)}|^{\Lambda_i}},
-	\]
-		for $0< \Lambda_i < d_i$ where $\sum_{i=1}^k d_i = d$ and $\sum_{i=1}^k \Lambda_i =: \Lambda \in (0,d)$ and $x_{(i)} = (x^i_1,\cdots,x^i_{d_i})$ where $x_{(i)}$ essentially partitions the coordinate $x=(x_1,\cdots, x_d)$. 
+	To the best of our knowledge, the only correlation function and spectral density that satisfies the conditions of Assumption \ref{A:NoiseAssum1}, specifically the third point, is the following fractional Riesz-type kernal:
+	\begin{equation}\label{E:RieszFracSupLin}
+		f(x) = \prod_{i=1}^k \frac{1}{|x_{(i)}|^{\Lambda_i}} \quad \text{and} \quad  \varphi(\xi) = \prod_{i=1}^k C_{\Lambda_i,d_i} |\xi_{(i)}|^{-(d_i-\Lambda_i)}.
+	\end{equation}
+		In \eqref{E:RieszFracSupLin}, $k \in \{1, \cdots , d\}$ and we partition the $d$-coordinates of $x=(x_1, \cdots, x_d)$ into $k$ distinct groups of size $d_i$ so that $d_1 + \cdots + d_k = d$ and $x_{(i)} = (x_{i_1} ,\cdots , x_{i_{d_i}})$ denotes the coordinates in the $i^{th}$ partition. Moreover, we take $0 < \Lambda_i < d_i$ and denote $\Lambda := \sum_{i=1}^k \Lambda_i$. Lastly, $C_{\Lambda_i, d_i}$ can be calculated as follows (see \cite[Example 1.5]{chen.eisenberg:22:interpolating}):
+		\[
+			 C_{\Lambda,d}     = \pi^{-d/2}2^{-\Lambda} \frac{\Gamma((d-\Lambda)/2)}{\Gamma(\Lambda/2)}.
+		\]. 
 \end{remark}
 
+\begin{example}\label{Eg:NoiseEg}
+	We have the following special cases of \eqref{E:RieszFracSupLin}:
+	\begin{enumerate}
+		\item Setting $k=1$ in \eqref{E:RieszFracSupLin} recovers the Riesz kernel case. In this case,
+	\begin{equation}\label{E:RieszNoiseSupLin}
+	f(x)  = |x|^{-\alpha} \quad \text{and} \quad
+	\varphi(x) = C_{\Lambda,d}|x|^{-(d-\Lambda)},
+	\end{equation}
+	where $0 < \Lambda < d$.
+	\item Setting $k=d$ in \eqref{E:RieszFracSupLin} recovers the following fractional noise: 
+	\begin{equation}\label{E:fracnoiseSupLin}
+	f(x)    = \prod_{i=1}^d |x_i|^{-\Lambda_i} \quad \text{and} \quad
+	\varphi(\xi) = \prod_{i=1}^d C_{\Lambda_i,1} |\xi_i|^{-(1-\Lambda_i)}
+	\end{equation}
+	The SHE with such noise was earlier studied by Hu
+	\cite{hu:01:heat}. 
+	\end{enumerate}
+\end{example}
+
 \begin{assumption} \label{A:RieszKernel}
-	Because of the above remark, we will assume that the correlation function is given by the Riesz kernel. In other words, for $\lambda \in (0,d)$:
-	\[
-	f(x) := \frac{1}{|x|^\lambda} \quad \text{and} \quad \varphi(x):= \mathcal{F}f(\xi) = \frac{K_f}{|\xi|^{d-\lambda}},
-	\]
-	where
-	\[
-	K_f     = \pi^{-d/2}2^{-\lambda} \frac{\Gamma((d-\lambda)/2)}{\Gamma(\lambda/2)}.
-	\]
-	Taking into consideration the first point from Assumption \ref{A:NoiseAssum1}, we must take 
+	Because of the above remark, we will assume that the correlation function is given by the Riesz kernel as in \eqref{E:RieszFracSupLin}. Taking into consideration the second point from Assumption \ref{A:NoiseAssum1}, we must assume that 
 	\[
 		0 < d- \Lambda < d \quad \text{and} \quad d-\Lambda + 2 \alpha > d,
-	\]
-	and since $\Lambda \in (0,d)$, this implies that
-	\[
-		0 < \Lambda < d \quad \text{and} \quad \Lambda < 2\alpha,
 	\]
 	or in other words,
 	\[
@@ -765,20 +779,11 @@ As per usual, the tempered measure $\Gamma$ is non-negative and nonnegative defi
 	\]
 \end{assumption}
 
-\noindent Under Assumption \ref{A:NoiseAssum1}, we may rewrite \eqref{E:Colored} as 
-\[
-C(\phi,\psi) = \int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(t,x) f(x-y) \psi(t,y)
-\]
-and by applying Placherel's identity, this further implies that 
-\[
-\int_0^\infty \ud t \int_{\R^{2d}} \ud x \ud y \; \phi(x) f(x-y) \psi(y) = (2 \pi)^{-d} \int_0^\infty \ud t \int_{\R^{2d}} \mu(\ud \zeta) \mathcal{F}(\phi(t,\cdot))(\zeta) \overline{\mathcal{F}(\psi(t,\cdot))(\zeta)}.
-\]
-
 We now prove a lemma which is a generalization of equation \eqref{C:Dalang} which accounts for the colored noise.
 
 	\begin{lemma}
 	\label{L:YfYbdd}
-	Suppose Assumption \ref{A:NoiseAssum1} holds. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$ we have that 
+	Suppose Assumption \ref{A:RieszKernel} holds. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$,
 	\begin{equation}
 	\label{E:YYfBdd}
 	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } < \infty
@@ -812,8 +817,10 @@ We now prove a lemma which is a generalization of equation \eqref{C:Dalang} whic
 	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  \le 
 	\frac{C }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } .
 	\]
-	The finiteness of the above integral follows from Assumption \ref{A:NoiseAssum1}.
+	The finiteness of the above integral follows from Assumption \ref{A:RieszKernel}.
 \end{proof}	
+
+\subsection{Existence and uniqueness of a global solution with a globally Lipschitz drift term}
 
 We will now prove existence and uniqueness of the solution of \eqref{E:SupLinSPDE} driven by a noise that is white in time and colored in space and when we take $\sigma$ to be globally Lipschitz,
 	\[
@@ -826,7 +833,7 @@ or if we take $c(\sigma) = \sigma(0)$,
 
 	\begin{theorem}
 	\label{T:ExisAndUniq}
-	Suppose that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ and in addition, suppose that $\lambda < 2 \alpha$. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SupLinSPDE} driven by $\dot{F}$ such that 
+	 Suppose that Assumption \ref{A:RieszKernel} holds, $\sigma$ is globally Lipschitz and that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SupLinSPDE} driven by $\dot{F}$ such that 
 	\[
 	u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
 	\]
@@ -868,20 +875,20 @@ or if we take $c(\sigma) = \sigma(0)$,
 \end{proof}
 
 \begin{remark}
-We must strengthen Assumptions \ref{A:NoiseAssum1} and \ref{A:RieszKernel} because of the need to require $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ in Theorem \ref{T:ExisAndUniq}. More precisely, we require that 
+We must strengthen Assumption \ref{A:RieszKernel} because of the need to require $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ in Theorem \ref{T:ExisAndUniq}. More precisely, we require that 
 	\[
 		\lambda < \frac{2 \alpha}{\beta}(\beta + \gamma -1) + \frac{\alpha}{\beta} = \frac{\alpha}{\beta} \left[ 2(\beta + \gamma) - 1 \right].
 	\]
-Therefore, Assumption \ref{A:RieszKernel} to require that 
+Therefore, this and Assumption \ref{A:RieszKernel} requires us to assume that 
 	\begin{equation} \label{A:RieszParam}
 		\Lambda < \min\left\{d, 2\alpha, \frac{\alpha}{\beta} \left[2(\beta + \gamma) -1\right] \right\},
 	\end{equation}
 which is the same condition that was assumed in \cite[Theorem 1.6]{chen.eisenberg:22:interpolating} where they studied \eqref{E:SupLinSPDE} but with a time-independent noise.
 \end{remark}
 
+\subsection{Some moment bounds for a globally Lipschitz drift term}
 We will now focus on proving some moment bounds that parallel those proved above in the space-time white noise case. 
 
-\subsection{Some moment bounds for a globally Lipschitz $\sigma$}
 	\begin{proposition}{\cite[Proposition 4.4]{millet.sanz-sole:21:global}}
 	Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and for this proof consider $\rho = \rho(\lambda)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
 	\[
