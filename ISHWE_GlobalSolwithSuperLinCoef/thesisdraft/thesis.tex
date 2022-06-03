@@ -771,12 +771,17 @@ We now impose some assumptions on $\Gamma$:
 \begin{assumption} \label{A:RieszKernel}
 	Because of the above remark, we will assume that the correlation function is given by the Riesz kernel as in \eqref{E:RieszFracSupLin}. Taking into consideration the second point from Assumption \ref{A:NoiseAssum1}, we must assume that 
 	\[
-		0 < d- \Lambda < d \quad \text{and} \quad d-\Lambda + 2 \alpha > d,
+		0 < d- \Lambda < d \quad \text{and} \quad d-\Lambda + 2 \alpha > d.
 	\]
-	or in other words,
+	However, as we will see in Theorem \ref{T:ExisAndUniq} below, we will also need to assume that 
 	\[
-		0 < \Lambda < \min\{d, 2\alpha\}.
+	\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1.
 	\]
+	Putting these three condition on $\Lambda$ together implies that we must assume the following: 
+	\begin{equation} \label{A:RieszParam}
+	\Lambda < \min\left\{d, 2\alpha, \frac{\alpha}{\beta} \left[2(\beta + \gamma) -1\right] \right\},
+	\end{equation}
+	which is the same condition that was given in \cite[Theorem 1.6]{chen.eisenberg:22:interpolating} where the existence and uniqueness of \eqref{E:SupLinSPDE} is proven but with a time-independent noise.
 \end{assumption}
 
 We now prove a lemma which is a generalization of equation \eqref{C:Dalang} which accounts for the colored noise.
@@ -833,7 +838,7 @@ or if we take $c(\sigma) = \sigma(0)$,
 
 	\begin{theorem}
 	\label{T:ExisAndUniq}
-	 Suppose that Assumption \ref{A:RieszKernel} holds, $\sigma$ is globally Lipschitz and that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SupLinSPDE} driven by $\dot{F}$ such that 
+	 Suppose that Assumption \ref{A:RieszKernel} holds, in particular the condition on $\Lambda$ in \eqref{A:RieszParam}, and that $\sigma$ is globally Lipschitz. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SupLinSPDE} driven by $\dot{F}$ such that 
 	\[
 	u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
 	\]
@@ -873,18 +878,6 @@ or if we take $c(\sigma) = \sigma(0)$,
 	\]
 	Since we assume that $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$, then the result follows from the discussion before the proof of \cite[Lemma 3.3]{walsh:86:introduction}. 
 \end{proof}
-
-\begin{remark}
-We must strengthen Assumption \ref{A:RieszKernel} because of the need to require $\lambda \beta / \alpha - 2(\beta + \gamma -1) < 1$ in Theorem \ref{T:ExisAndUniq}. More precisely, we require that 
-	\[
-		\lambda < \frac{2 \alpha}{\beta}(\beta + \gamma -1) + \frac{\alpha}{\beta} = \frac{\alpha}{\beta} \left[ 2(\beta + \gamma) - 1 \right].
-	\]
-Therefore, this and Assumption \ref{A:RieszKernel} requires us to assume that 
-	\begin{equation} \label{A:RieszParam}
-		\Lambda < \min\left\{d, 2\alpha, \frac{\alpha}{\beta} \left[2(\beta + \gamma) -1\right] \right\},
-	\end{equation}
-which is the same condition that was assumed in \cite[Theorem 1.6]{chen.eisenberg:22:interpolating} where they studied \eqref{E:SupLinSPDE} but with a time-independent noise.
-\end{remark}
 
 \subsection{Some moment bounds for a globally Lipschitz drift term}
 We will now focus on proving some moment bounds that parallel those proved above in the space-time white noise case. 
