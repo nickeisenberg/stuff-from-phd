@@ -883,7 +883,7 @@ or if we take $c(\sigma) = \sigma(0)$,
 We will now focus on proving some moment bounds that parallel those proved above in the space-time white noise case. 
 
 	\begin{proposition}{\cite[Proposition 4.4]{millet.sanz-sole:21:global}}
-	Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and for this proof consider $\rho = \rho(\lambda)$ which is defined in \eqref{D:theta}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
+	Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$ and suppose that Assumption \ref{A:RieszKernel} holds. Also, in this proof we consider $\rho = \rho(\lambda)$ which is defined in \eqref{D:rho}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
 	\[
 	a^\rho > \left( 8 L^2(\sigma)K^2\right).
 	\]
@@ -1015,7 +1015,50 @@ We will now focus on proving some moment bounds that parallel those proved above
 	Its easy to see that \eqref{E:ColorPMomBdd} follows directly from \eqref{E:ColorNbdd}. 
 \end{proof}
 
-We now state a lemma which will be used later on. 
+We now wish to prove a result similar to Proposition \ref{P:Holder} above. More precisely, we wish to find a uniform bound of the $p-th$ moment of the solution driven by a spatially colored noise and, in addition, we wish to prove the Holder continuity of the stochastic integral. 
+
+\begin{remark}
+	Note that in \cite{millet.sanz-sole:21:global}, that they prove the H\"older continuity of the solution, not just the stochastic integral. What makes this more challenging in the case of the ISHWE is that calculating a meaningful upper bound on the $L^1(\R^d)$ increments of the fundamental solution is very challenging. However, as we saw in Proposition \ref{P:YInc}, we do have a meaningful upper bound for the $L^2(\R^d)$ increments of the fundamental solution $Y$. 
+	
+	However, the due to the smoothness of $Z$ and $Z^*$, the solution to the homogeneous equation, $J_0(t,x)$, is continuous and so proving the H\"older regularity of just the stochastic integral term will suffice. Nevertheless, the next conjecture gives some additional assumptions on the initial conditions, $u_0$ and $v_0$, that may allow us to prove H\"older continuity of the solution itself rather than just the stochastic integral term.
+\end{remark}
+
+\begin{conjecture}
+	Suppose that the initial data satisfy 
+		\[
+			u_0, v_0 \in L^1(\R^d) \cap L^{\infty}(\R^d).
+		\]
+	Then we have the following:
+	\begin{equation}
+		\left| J_0(t,x) - J_0(s,y) \right| \le \text{Const.}\left(|x-y|^{k_1} + |t-s|^{k_2}\right)
+	\end{equation}
+\end{conjecture}
+
+\begin{proof}
+	We will just consider the case where $\beta \in (1,2)$ as this will include the case that $\beta \in (0,1]$. As for the time increments, we see that 
+	\begin{align*}
+		\left| \left( \left[Z(t,\cdot) - Z(s,\cdot)  \right]* v_0 \right)(x)\right| &\le \int_{\R^d} \left| Z(t,y) - Z(s,y) \right| |v_0(x-y)| \ud y \\
+		&\le \sqrt{\int_{\R^d} \left| Z(t,y) - Z(s,y) \right|^2 |v_0(x-y)| \ud y} \sqrt{ \int_{\R^d}  |v_0(y)| \ud y } \\
+		&\le \Norm{v_0}^{1/2}_{L^1(\R^d)} \Norm{v_0}^{1/2}_{L^{\infty}(\R^d)} \sqrt{\int_{\R^d} \left| Z(t,y) - Z(s,y) \right|^2 \ud y}.
+	\end{align*}
+Similarly we can show that 
+	\begin{align*}
+		\left| \left( \left[Z^*(t,\cdot) - Z^*(s,\cdot)  \right]* u_0 \right)(x)\right| & \le \Norm{u_0}^{1/2}_{L^1(\R^d)} \Norm{u_0}^{1/2}_{L^{\infty}(\R^d)} \sqrt{\int_{\R^d} \left| Z^*(t,y) - Z^*(s,y) \right|^2 \ud y}.
+	\end{align*}
+Now if we consider the spatial increments, then by the same arguments as above we see that  
+	\begin{align*}
+		\left| (Z(t,\cdot)*v_0)(x) - (Z(t,\cdot)*v_0)(y) \right| &\le \int_{\R^d} \left|Z(t,x-z) - Z(t,y-z)\right|  |v_0(z)| \ud z \\
+		&\le \Norm{v_0}^{1/2}_{L^{\infty}(\R^d)}  \Norm{u_0}^{1/2}_{L^1(\R^d)}\sqrt{ \int_{\R^d} \left|Z(t,x-z) - Z(t,y-z)\right|^2 \ud z },
+	\end{align*}
+and in addition,
+		\begin{align*}
+	\left| (Z^*(t,\cdot)*v_0)(x) - (Z^*(t,\cdot)*u_0)(y) \right| &\le \int_{\R^d} \left|Z^*(t,x-z) - Z^*(t,y-z)\right|  |u_0(z)| \ud z \\
+	&\le \Norm{u_0}^{1/2}_{L^{\infty}(\R^d)}  \Norm{u_0}^{1/2}_{L^1(\R^d)}\sqrt{ \int_{\R^d} \left|Z^*(t,x-z) - Z^*(t,y-z)\right|^2 \ud z }.
+	\end{align*}
+Thus, under the assumptions of this conjecture, it will suffice to calculate the $L^2(\R^d)$ increments in space and time of $Z$ and $Z^*$ which should not be a problem. 
+\end{proof}
+
+We now state a lemma which will be needed in the proof of the next proposition. 
 
 \begin{lemma}
 	\label{L:Y_phiParseval}
@@ -1037,8 +1080,37 @@ We now state a lemma which will be used later on.
 	where $\mu(\ud \xi) = \varphi(\xi) \ud \xi$. This completes the proof. 
 \end{proof}
 
+\begin{assumption}\label{A:stronger}
+	The following proposition will require us to again strenthen our assumption on the Riesz paramenter $\Lambda$. We now require that for some $0<r<1$, in addition to the assumptions in \eqref{A:RieszParam}, that
+	\[
+	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} >0
+	\quad \text{and} \quad
+	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha} > -1
+	\]
+	or in other words,
+	\[
+		\Lambda < \frac{\alpha}{\beta}[2(\beta+\gamma)-2] \quad \text{and} \quad \Lambda < \frac{\alpha}{\beta}[2(\beta + \gamma) - 1] - 2r.
+	\]
+	Hence the condition on $\Lambda$ becomes 
+	\begin{equation}\label{A:RieszParamStrong}
+		0< \Lambda < \min\{d, \:
+		2\alpha, \:
+		\frac{\alpha}{\beta}[2(\beta+\gamma)-2], \:
+		\frac{\alpha}{\beta}[2(\beta + \gamma) - 1] - 2r \}.
+	\end{equation}
+\end{assumption}
+
+\begin{remark}
+	Note that the additional assumption \eqref{A:RieszParamStrong} excludes the SHE, $\alpha = 2$, $\beta = 1$ and $\gamma=1$, as well as the popular case where $\gamma = 1 - \beta$.
+\end{remark}
+
 \begin{proposition}{ \cite[Proposition 4.8]{millet.sanz-sole:21:global}}
-	Statement...
+	Let $T>0$. Under Assumption \ref{A:stronger}, we have that for any $x,z \in \R^d$ and $0 \le t \le T$,
+		\begin{align*}
+	&\Norm{I(t,x) - I(t,z)}_p^2 \\
+	&\le C|x-z|^{2r} \left[\int_{\R^d} \mu(\ud \zeta) \frac{|\zeta|^{2r}}{\left(1+ |\zeta|^{\alpha}\right)^{2}} \right] \left[\int_0^t \ud s \:   (t-s)^{2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha}}\right] \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \\
+	& \qquad  + C \left[\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right]L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2.
+	\end{align*}
 \end{proposition}
 
 \begin{proof}
@@ -1094,7 +1166,7 @@ We now state a lemma which will be used later on.
 	& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} \int_0^t \ud s \; (t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha} \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
 	& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} (t)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}\int_0^t \ud s \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right],
 	\end{align*} 
-	where the second inequality above follows from Lemma \ref{L:YfYbdd}. \textcolor{blue}{last line requires $2(\beta + \gamma -1) - \beta \lambda / \alpha > 0$. If we leave the $(t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}$ term in the integral then we may be able to assume the weaker condition that $2(\beta + \gamma -1) - \beta \lambda / \alpha > -1$, thus not excluding the SHE.}
+	where the second inequality above follows from Lemma \ref{L:YfYbdd} and the last line requires $2(\beta + \gamma -1) - \beta \lambda / \alpha > 0$. 
 	
 	To bound the remaining $Q_i's$, we will need to consider the following truncations which will then allow us to apply Lemma \ref{L:Y_phiParseval}. For $k \ge 1$ we define $\Sigma_{x}^k(s,y) = \Sigma_{x}(s,y) 1_{\{\Sigma_{x}(s,y) \le k \}}$ and $\Sigma_{x,z}^k(s,y) = \Sigma_{x,z}(s,y) 1_{\{\Sigma_{x,z}(s,y) \le k \}}$ and then we define $Q_i^k$ the same as $Q_i$ but with $h_i$ replaced with $h_i^k$ where $h_i^k$ is defined by replacing $\Sigma_{x}(s,y) $ and $\Sigma_{x,z}(s,y) $ with $\Sigma_{x}^k(s,y)$ and $\Sigma_{x,z}^k(s,y)$ respectively in $h_i$.
 	
