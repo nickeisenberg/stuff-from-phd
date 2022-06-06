@@ -241,7 +241,7 @@ In this paper we prove the existence of a global solution to the interpolated st
 	\end{equation}
 	where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
 	\begin{equation}
-	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln(|x|)]^{\delta},
+	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln_+(|x|)]^{\delta},
 	\end{equation}
 	where $\sigma_1 = \sigma(0)$.
 	
@@ -261,17 +261,17 @@ u(t,x) = J_0(t,x) + I(t,x),
 I(t,x) = \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
 	\]
 
-The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86:introduction}) and the fundamental solution is a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through the Fox-H function, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
+The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86:introduction}) and the fundamental solution consists of a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through the {\em Fox-H function}, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
 	\begin{align*}
 		\mathcal{F}Z(t,\cdot)(\xi) &= t^{\lceil \beta \rceil -1} E_{\beta, \lceil \beta \rceil}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
 		\mathcal{F}Z^*(t,\cdot)(\xi) &= E_{\beta, 1}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
 		\mathcal{F}Y(t,\cdot)(\xi) &= t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}\left(-2^{-1}\nu t^\beta |\xi|^\alpha\right),
 	\end{align*}
-where we choose $\mathcal{F}f(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$ as the definition of the Fourier transform, $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
+where $\mathcal{F}f(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$ denotes the Fourier transform, $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
 	\[
 		E_{a,b}(z) := \sum_{k=0}^{\infty} \frac{z^k}{\Gamma(ak+b)}, \quad a>0, \: b>0,
 	\]
-and $\Gamma(\cdot)$ is the standard {\em Gamma-function}. 
+and $\Gamma(\cdot)$ is the standard {\em Gamma function}. 
 
 \begin{remark}
 We mention that under the special case where $\alpha \in (1,2)$, $\beta \in (0,1]$ and $\gamma = 1 - \beta$, that $Z = Z^* = Y$, which is easily seen from their Fourier transforms given above. Because of these equalities, we simply let $Y$ denote the fundamental solution under this situation. Moreover, under this case there is a probabilistic representation for $Y$ which is used by the authors in \cite{foondun.liu.ea:19:some, foondun.nane:17:asymptotic, mijena.nane:15:space-time, foondun.liu.ea:17:moment, mijena.nane:16:intermittence}.  Indeed, let $X_t$ denote a symmetric $\alpha$-stable process with density $p(t,x)$. Let $D=\{D_r, \: r \ge 0\}$ denote a $\beta$-stable subordinator and $E_t$ its first passage time. Then it is known that the density of the time changed processes $X_{E_t}$ is given by $Y(t,x)$ and we have that 
@@ -370,7 +370,7 @@ We now state a lemma proven in \cite{chen.hu.ea:19:nonlinear} that calculates th
 		\[
 		C_{\#} := \frac{2}{\Gamma(d/2)(4 \pi )^{d/2}} \int_0^\infty u^{d-1}E^2_{\beta,\beta + \gamma}(-u^\alpha) \ud u.
 		\]
-		Now further assume that $\beta \in (1,2)$, then 
+		Moreover, when $\beta \in (1,2)$ then 
 		\[
 		\int_{\R^d} Z^*(t,x) \ud x= 1. 
 		\]
@@ -403,14 +403,20 @@ In this section, we will prove some moment bounds and a continuity result for th
 		where
 		\begin{align*}
 		\mathcal{T}_0 = \mathcal{T}_0(a, \beta, u_0, v_0)  := \begin{cases} 
-		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+	 \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\ (ea)^{-1} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
 		\end{cases} 
 		\end{align*}
-		Moreover for any $T>0$,
+%		\begin{align*}
+%		\mathcal{T}_0 = \mathcal{T}_0(a, \beta, u_0, v_0)  := \begin{cases} 
+%		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+%		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+%		\end{cases} 
+%		\end{align*}
+		Moreover, for any $T>0$,
 		\begin{equation}
 		\label{E:Pnormtbdd}
-		\sup_{x\in\R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p, \; t\in[0,T].
+		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p
 		\end{equation}
 	\end{proposition}
 	\begin{proof}
@@ -421,22 +427,43 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\\	\left| (Z(t,\cdot) * v_0)(x) + (Z^*(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
 		\end{cases}
 		\\& \le \begin{cases}
-		t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
-		\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+		\Norm{u_0}_\infty & \beta \in (0,1]
+		\\ t\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
 		\end{cases} 
 		\end{align*}
-		Now using \eqref{E:SUPidentities}, we see that 
-		\begin{align}
+%		\begin{align*}
+%		|J_0(t,x)|  &= \begin{cases} 
+%		\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
+%		\\	\left| (Z(t,\cdot) * v_0)(x) + (Z^*(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
+%		\end{cases}
+%		\\& \le \begin{cases}
+%		t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
+%		\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+%		\end{cases} 
+%		\end{align*}
+		Now using \eqref{E:SUPidentities}, we see that
+				\begin{align}
 		N_{a,p}(J_0) &\le \begin{cases} 
-		\sup\limits_{t > 0, \: x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
-		\\ \sup\limits_{t > 0, \: x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+		\sup\limits_{t > 0, \: x\in\R}  \Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+		\\ \sup\limits_{t > 0, \: x\in\R} \left(  t\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
 		\end{cases} \nonumber \\
 		&= \begin{cases} 
-		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+	 \Norm{u_0}_\infty  & \beta \in (0,1]
+		\\(ea)^{-1} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
 		\end{cases} \nonumber \\
 		&= \mathcal{T}_0. \label{E:Jbdd}
-		\end{align}
+		\end{align} 
+%		\begin{align}
+%		N_{a,p}(J_0) &\le \begin{cases} 
+%		\sup\limits_{t > 0, \: x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+%		\\ \sup\limits_{t > 0, \: x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+%		\end{cases} \nonumber \\
+%		&= \begin{cases} 
+%		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+%		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+%		\end{cases} \nonumber \\
+%		&= \mathcal{T}_0. \label{E:Jbdd}
+%		\end{align}
 		
 		Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
 		\begin{align*}
@@ -466,18 +493,18 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\end{align*}
 		We now do a change of variables and again recall the definition of the Gamma function to see that 
 		\begin{align*}
-		\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au}(u)^{\rho -1} \\
+		\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au} u^{\rho -1} \\
 		& = \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\rho \right)}{ (2a)^{\rho}}
 		\end{align*}
-		where the last line is true if Dalang's condition \cite{chen.hu.ea:19:nonlinear} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
+		where the last line is true if Dalang's condition \eqref{E:DalangEquiv2} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
 		\begin{align}
 		N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#}  }{\rho}} \left(\frac{\rho}{2ea}\right)^{\rho/2} +  L(\sigma)N_{a,p}(u) \sqrt{\frac{8pC_{\#} \Gamma\left( \rho \right)}{(2a)^\rho} }. \label{E:SoleMil3.9}
 		\end{align}
 		To simplify things, we now let 
 		\begin{align*}
-		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#}  }{\rho}} \left(\frac{\rho}{2e}\right)^{\rho/2}, \sqrt{\frac{8C_{\#} \Gamma\left( \rho \right) }{2^{\rho}}}  \Bigg\}
+		K&:= \max\Bigg\{\sqrt{\frac{8C_{\#}  }{\rho}} \left(\frac{\rho}{2e}\right)^{\rho/2}, \sqrt{\frac{8C_{\#} \Gamma\left( \rho \right) }{2^{\rho}}}  \Bigg\}.
 		\end{align*}
-		then,
+		Then we may bound $N_{a,p}(I)$ by the following:
 		\begin{align}
 		\label{E:Ibdd}
 		N_{a,p}(I) &\le\frac{K \sqrt{p}}{a^{\rho/2}}\left( c(\sigma) + L(\sigma)N_{a,p}(u) \right).
@@ -486,7 +513,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\begin{align}
 		N_{a,p}(u) & \le \mathcal{T}_0   + K\frac{\sqrt{p}c(\sigma)}{a^{\rho/2} }  + K  \frac{\sqrt{p}L(\sigma)}{a^{\rho/2}} N_{a,p}(u). \label{E:Nbddgen}
 		\end{align}
-		It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{millet.sanz-sole:21:global} respectively. Now choose $a>0$ such that 
+		Note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{millet.sanz-sole:21:global} respectively. Now choose $a>0$ such that 
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
 		\]
@@ -511,15 +538,15 @@ In this section, we will prove some moment bounds and a continuity result for th
 	
 	We will need to recall the following result proved in \cite{chen.hu.ea:19:nonlinear} in order to prove Proposition \ref{P:NormInc} below. 
 	
-	\begin{proposition}{\normalfont\cite[Proposition 2.1 and 2.2]{chen.hu:21:holder}}
+	\begin{proposition}{\normalfont\cite[Propositions 2.1 and 2.2]{chen.hu:21:holder}}
 		\label{P:YInc}
-		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:rho}. Then $Y(t,x) = Y_{\alpha, \beta, \gamma, d}(t,x)$ satisfies the following:
+		Suppose that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, and \eqref{E:DalangEquiv} holds. Consider $\rho = \rho(d)$ which is defined above in \eqref{D:rho}. Then $Y(t,x)$ satisfies the following:
 		\begin{enumerate}
 			\item \label{P:YIncCase1}  Suppose that $0< \theta < (\Theta -d) \wedge 2$ where $\Theta$ is given in \eqref{E:DalangEquiv}, $0< t,r \le T$ for some $T>0$, $\beta \le 1$ and $\gamma \le \lceil \beta \rceil - \beta$. Then there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
 			\[
 			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^\rho + |x-z|^{\theta}\right).
 			\]
-			\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and \eqref{E:DalangEquiv} holds then for $0< \theta < (\Theta -d) \wedge 2$ there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
+			\item \label{P:YIncCase2} If we only assume that $\alpha \in (0,2]$, $\beta \in (0,2)$, $\gamma>0$, $0< t,r \le T$ for some $T>0$ and that \eqref{E:DalangEquiv} holds, then for $0< \theta < (\Theta -d) \wedge 2$, there exists some $C := C(\alpha, \beta, \gamma, \nu, d, \theta, T)$ such that
 			\[
 			\int_0^T \ud s \int_{\R^d} \ud y |Y(t-s,x-y) - Y(r-s,z-y)|^2 \le C \left(|t-r|^q + |x-z|^{\theta}\right),
 			\]
@@ -534,7 +561,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	
 	\begin{proposition}
 		\label{P:NormInc}
-		Let $a>0$ and suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Then for any $x,z \in \R$, $p\ge 2$ and for any $T>0$ with $t\in [0,T]$, the stochastic integral, $I(t,x)$, satisfies the following:
+		Suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Then for all $x,z \in \R$, $a>0$, $p\ge 2$ and for all $T>0$ with $t\in [0,T]$, the stochastic integral, $I(t,x)$, satisfies the following:
 		\begin{equation}
 		\label{E:NormInc_N(u)}
 		\frac{\Norm{I(t,x)-I(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
@@ -543,19 +570,14 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\[
 		\mathcal{M}_1 = \sqrt{p}c(\sigma) \quad \text{and} \quad\mathcal{M}_2 =\sqrt{p}L(\sigma),
 		\]
-		and
-		\begin{enumerate}
-			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
-			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
-		\end{enumerate}
-		Moreover, for any 
+		and $q \in (0, \rho]$ (resp. $q \in (0, \rho)$) under Case \ref{P:YIncCase1} (resp. Case \ref{P:YIncCase2}) of Proposition \ref{P:YInc}. Moreover, if we consider the case when 
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/
 			\rho}
 \quad \text{and} \quad
 		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
 		\]
-		we have that 
+		then we have that 
 		\begin{equation}
 		\label{E:NormInc_cL}
 		\frac{\Norm{I(t,x)-I(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} \left( 2 +  \frac{c(\sigma)}{L(\sigma)} \right)\right].
@@ -589,12 +611,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	\end{proof}
 	
 	\begin{proposition} \label{P:Holder}
-		The stochastic integral, $I$, has a version, still denoted by $I$ that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0 < \eta_1 < q/2$ and $0 < \eta_2 < \theta/2$ where $0 < \theta < (\Theta -d) \wedge 2$ and 
-		\begin{enumerate}
-			\item $0< q \le \rho$ under Case \ref{P:YIncCase1} of Proposition \ref{P:YInc},
-			\item $0 < q < \rho$ under Case \ref{P:YIncCase2} of Proposition \ref{P:YInc}.
-		\end{enumerate}
-		Moreover, if we consider
+		The stochastic integral, $I$, has a version, still denoted by $I$ that is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space with $0 < \eta_1 < q/2$ and $0 < \eta_2 < \theta/2$ where $0 < \theta < (\Theta -d) \wedge 2$ and $q \in (0, \rho]$ (resp. $q \in (0, \rho)$) under Case \ref{P:YIncCase1} (resp. Case \ref{P:YIncCase2}) of Proposition \ref{P:YInc}. Moreover, if we consider the case when
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} \quad \text{and} \quad 	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
 		\]
@@ -718,7 +735,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
 		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to 0,
 		\end{align*}
-		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem \ref{T:MainSupLin}. 
+		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of Theorem \ref{T:MainSupLin}. 
 	\end{proof}
 
 \section{Some comments and current progress on a spatially colored noise} \label{S:colorednoise}
@@ -908,10 +925,16 @@ We will now focus on proving some moment bounds that parallel those proved above
 	where
 	\begin{align*}
 	\mathcal{T}_0 = \begin{cases} 
-	(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-	\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+		\Norm{u_0}_\infty  & \beta \in (0,1]
+	\\ (ea)^{-1} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
 	\end{cases} 
 	\end{align*}
+%	\begin{align*}
+%	\mathcal{T}_0 = \begin{cases} 
+%	(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
+%	\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
+%	\end{cases} 
+%	\end{align*}
 	Moreover for any $T>0$,
 	\begin{equation}
 	\label{E:ColorPMomBdd}
@@ -920,15 +943,15 @@ We will now focus on proving some moment bounds that parallel those proved above
 \end{proposition}
 
 \begin{proof}
-	We note that $\mathcal{N}_{a,p}(J)$ has the same upper bound as in Proposition \ref{P:N(u)Bdd} above. In other words,
+	We note that $\mathcal{N}_{a,p}(J_0)$ has the same upper bound as in Proposition \ref{P:N(u)Bdd} above. In other words,
 	\[
-	\mathcal{N}_{a,p}(J) \le \begin{cases}
+	\mathcal{N}_{a,p}(J_0) \le \mathcal{T}_0 =  \begin{cases}
 	\Norm{u_0}_{\infty} & \beta \in (0,1] \\
 	(ea)^{-1}\Norm{v_0}_{\infty} + \Norm{u_0}_{\infty} & \beta \in (1,2)
 	\end{cases}.
 	\]
 	
-	We know work to find an upper bound for $\mathcal{N}_{a,p}(I)$. The Burkholder-Davies-Gundy inequality and H\"older's inequality imply that 
+	We now work to find an upper bound for $\mathcal{N}_{a,p}(I)$. The Burkholder-Davies-Gundy inequality and H\"older's inequality imply that 
 	\begin{align*}
 	\Norm{I(t,x)}_p^2 & \le 4p \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 Y(t-s,x-y_1)f(x-y)Y(t-s,x-y_2) \Norm{\sigma(u(s,y_1))}_p\Norm{\sigma(u(s,y_2))}_p.
 	\end{align*} 
