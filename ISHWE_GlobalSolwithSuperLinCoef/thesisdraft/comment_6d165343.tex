@@ -1,0 +1,66 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\RequirePackage{amsthm,amsmath,amssymb,amscd}
+\def\D{^{C}D_t^\alpha}
+\def\W{\mathbb{W}}
+\def\H{\mathbb{H}}
+\def\K{\mathbb{K}}
+\def\E{\mathbb{E}}
+\def\cL{\mathcal{L}}
+\def\R{\mathbb{R}}
+\def\ud{\text{d}}
+\begin{document}
+
+Here are comments for 6d165343 on the file -- {\it thesis.tex}:
+
+\begin{enumerate}
+  \item p. 2 the add ``and" after the centered equation for $J_0$.
+  \item p. 2, $\Gamma$ is the standard {\it Gamma-function} $\to$ $\Gamma(\cdot)$ is the standard Gamma function.
+  \item You may group the last paragraph in a remark.
+  \item p.3, line 2: give the two names for the references [MS21]. You use {\it et al} (with italic style) only when
+    there are more than three authors.
+  \item p. 2, the equation for $\sigma_N(x)$, the word "continuous and" is confusing. Should we just say that
+    \begin{align*}
+      \sigma_N(x) = \sigma\left(\left( 1 \wedge \frac{N}{|x|}\right )\: x \right).
+    \end{align*}
+  \item Last paragraph of Section 1, "It\^o" should be properly typed; I would say "the $L^2(\Omega)$ existence" with
+    "the".
+  % \item Can you extend Lemma 2.2 to include the case when $\beta=2$ (you may think $\alpha>0$)? I should be able to
+  % share with you a recent Ph.D. work co-supervised by me in this week or so, where the fundamental solutions are given
+  % for all cases $\beta\in (0,2]$, $\alpha>0$ and $\gamma\ge 0$.
+  \item Eq. (2.7), I would have $k>0$ and write the second part as
+    \begin{align*}
+      \sup_{t\ge 0} \int_0^t se^{-a s} \ud s = \int_0^\infty se^{-a s} \ud s = \frac{1}{a^2} \quad \text{for all $a>0$}
+    \end{align*}
+  \item Regarding Proposition 2.4:
+     \begin{enumerate}
+       \item Did you forgot subscript $0$ for $J$ in the beginning of the proof? There also misses a period at the end
+         of this centered equation. Check all thesis about such typos.
+       \item You may put the last two centered equation as one equation on p. 4.
+       \item You may remove [MS21, Proposition 3.2] since you are going to prove this one. But you may mention the
+         relation of this proposition with Proposition 3.2 of [MS21].
+       \item First centered equation in the proof, you forgot the period after $\beta\in(1,2)$
+       \item Eq. (2.10), $\sup_{t\ge 0}\sup_{x\in\R}$ should be $\displaystyle\sup_{t\ge 0,\:x\in\R^d}$.
+       \item It is cumbersome to put the two cases formula in other equations. Let's define the right-hand side of
+         (2.10) by $C_\beta$ and then simplify your presentation.
+     \end{enumerate}
+   \item Proposition 2.7, put two conditions on $a$ and $p$ in one line (there is an unnecessary period).
+   \item Regarding the proof of Theorem 1.1:
+     \begin{enumerate}
+       \item the Picard iteration should be written with $1$ replaced by $J_0(t,x)$ since you have equality here.
+         Moreover, the upper bound of $J_0(t,x)$ is function of $t$ in general even though we can make it uniform in
+         $x$. But since we do not consider asymptotics in $t$, for fixed $t\in [0,T]$, we can say that $|J_0(t,x)|\le
+         C_T$ so that when we carry out the upper bound moment estimates, there won't be any issues.
+       \item The last sentence: This completes the proof of Theorem 1.1.
+       \item The rate $\frac{\ln(2N)^{p\delta/2}}{N^p}$ makes one think the result is far from being sharp. we are using
+         polynomial to combat against logarithm. This is unfair even this does prove our results. Can you check [MS21]
+         and Dalang's original work to see if this is indeed the case? There have to be a lot room to improve such
+         result.
+       \item The two-line equation for $\mathbb{P}\left(\tau_N<T\right)$ can be made in one line; the next two-line
+         equation looks too wide. Try to improve the presentation of the paper.
+       \item At beginning of Section 4, always find a proper place to introduce your convention on Fourier transform.
+       \item Assumption 4.1, Use period at each end of items and capitalize the initial letter.
+     \end{enumerate}
+\end{enumerate}
+
+\end{document}
