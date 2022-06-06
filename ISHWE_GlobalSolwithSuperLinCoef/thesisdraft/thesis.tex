@@ -296,11 +296,15 @@ Here is the main result of this chapter. The proof will be postponed until Secti
 	\end{equation}
 \end{theorem}
 
-The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument along with a series of truncations of the super-linear term, $\sigma$, in order to construct a solution of \eqref{E:SupLinSPDE}. Indeed, in the case when $d=1$, we define 	
+The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument along with a series of truncations of the super-linear term, $\sigma$, in order to construct a solution of \eqref{E:SupLinSPDE}. Indeed, we define for $ N >0$,
+	\[
+			\sigma_N(x) = \sigma\left( \left(1 \wedge \frac{N}{|x|}\right) x \right).
+	\]
+Note that when $d = 1$, $\sigma_N$ reduces to the following:
 	\[
 		\sigma_N(x) = \sigma(x) \mathbf{1}_{\{ |x| \le N \}} + \sigma(N)\mathbf{1}_{ \{ x > N \}} + \sigma(-N)\mathbf{1}_{\{ x < -N\}},
 	\]
-and in higher dimensions, we define $\sigma$ similarly. Then we associate for each $N>0$, the corresponding global solution $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
+Then we associate for each $N>0$, the corresponding global solution $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
 \[
 \tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T,
 \]
@@ -649,14 +653,18 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	\section{Proof of Theorem \ref{T:MainSupLin}} \label{S:TMainSupLin}
 	
 	\begin{proof}
-		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where in the case of $d=1$, 
+		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where for any $N >0$,
 		\[
-		\sigma_N(x) = \sigma(x)\textbf{1}_{\{|x| \le N\}} + \sigma(N)\textbf{1}_{\{x  >N\}} + \sigma(-N)\textbf{1}_{\{x \le -N\}},
+			\sigma_N(x) = \sigma\left( \left(1 \wedge \frac{N}{|x|}\right) x \right)
 		\]
-		and in higher dimensions $\sigma_N$ is defined similarly. Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
+		Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
 		\[
-		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|.
+		|\sigma_N(x)| \le \sigma_1 + \sigma_2 \ln(2N)^{\delta}|x|,
 		\]
+		where $\sigma_1$ is chosen so that 
+			\[
+				\sup_{|x| \le N} |\sigma(x)| \le \sigma_1 < \infty.
+			\]
 		Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SupLinSPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
 		
 		We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
