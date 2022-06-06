@@ -714,7 +714,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	\end{proof}
 
 \section{Some comments and current progress on a spatially colored noise} \label{S:colorednoise}
-Consider equation \ref{E:SupLinSPDE} driven by a noise that is white in time and colored space. In other words, $W$ is a $0$-mean Gaussian process indexed on the space of Schwartz functions with the following covariance structure:
+Consider Equation \eqref{E:SupLinSPDE} driven by a noise that is white in time and colored space. In other words, $W$ is a centered Gaussian process indexed by the space of Schwartz functions with the following covariance structure:
 	\begin{equation} \label{E:Colored} 
 	C(\phi, \psi) := \int_0^\infty \ud t \int_{\R^{d}}  \Gamma(\ud x) \; (\phi(t,\cdot)*\tilde{\psi}(t,\cdot))(x), \quad \tilde{\psi}(x) = \psi(-x).
 	\end{equation}
@@ -785,10 +785,10 @@ We now prove a lemma which is a generalization of equation \eqref{C:Dalang} whic
 
 	\begin{lemma}
 	\label{L:YfYbdd}
-	Suppose Assumption \ref{A:RieszKernel} holds. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $x,y \in \R^d$,
+	Suppose Assumption \ref{A:RieszKernel} holds. Then there exists a constant $C(\beta,\gamma) =: C >0$ such that for any $t>0$ and $x,y \in \R^d$,
 	\begin{equation}
 	\label{E:YYfBdd}
-	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } < \infty
+	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w \le C \left( \frac{\nu}{2} \right)^{-\lambda / \alpha} t^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } < \infty.
 	\end{equation}
 \end{lemma}
 \begin{proof}
@@ -811,12 +811,12 @@ We now prove a lemma which is a generalization of equation \eqref{C:Dalang} whic
 	\end{align*}
 	Now, by applying \cite[Theorem 1.6]{podlubny:99:fractional}, we see that there exists a $C>0$ depending only on $\beta$ and $\gamma$ such that 
 	\[
-	\frac{ t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2 \mu(\ud \zeta).\le 
+	\frac{ t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  E_{\beta,\beta+\gamma}\left(-\frac{\nu t^\beta |\xi|^\alpha}{2}\right)^2 \mu(\ud \zeta) \le 
 	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 } .
 	\]
 	Another change of variables implies that 
 	\[
-	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  \le 
+	\frac{C  t^{2(\beta + \gamma -1)}}{ (2\pi)^d } \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ \frac{\nu}{2} t^\beta |\zeta|^\alpha \right)^2 }  =
 	\frac{C }{ (2\pi)^d } \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}  t^{2(\beta + \gamma -1)-\beta \lambda/\alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\xi|^\alpha\right)^2 } .
 	\]
 	The finiteness of the above integral follows from Assumption \ref{A:RieszKernel}.
@@ -835,7 +835,11 @@ or if we take $c(\sigma) = \sigma(0)$,
 
 	\begin{theorem}
 	\label{T:ExisAndUniq}
-	 Suppose that Assumption \ref{A:RieszKernel} holds, in particular the condition on $\Lambda$ in \eqref{A:RieszParam}, and that $\sigma$ is globally Lipschitz. Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SupLinSPDE} driven by $\dot{F}$ such that 
+	 Suppose that Assumption \ref{A:RieszKernel} holds and that $\sigma$ is globally Lipschitz. In addition, suppose the initial conditions are such that 
+	 \[
+	 	\sup_{t\ge 0, \: x \in \R^d} |J_0(t,x)| < \infty.
+	 \] 
+	 Then there exists a unique $L^2(\Omega)$-solution to \eqref{E:SupLinSPDE} driven by $\dot{W}$ as in \eqref{E:Colored} such that 
 	\[
 	u(t,x) = J_0(t,x) + I(t,x), \quad a.s.
 	\]
@@ -843,9 +847,9 @@ or if we take $c(\sigma) = \sigma(0)$,
 \begin{proof}
 	The proof follows the strategy laid out in Walsh \cite{walsh:86:introduction}. We start by defining 
 	\[
-	u_0(t,x) := J_0(t,x) \quad \text{and} \quad u_n(t,x) := J_0(t,x) + \int_0^t \int_{\R^d} Y(t-s,x-y) \sigma(u_n(s,y)) F(\ud s, \ud y). 
+	u_0(t,x) := J_0(t,x) \quad \text{and} \quad u_n(t,x) := J_0(t,x) + \int_0^t \int_{\R^d} Y(t-s,x-y) \sigma(u_n(s,y)) W(\ud s, \ud y). 
 	\]
-	In addition, we define 
+	where $ n \ge 1$. In addition, we define
 	\[
 	D_n(t,x) := \mathbb{E}\left| u_{n+1}(t,x) - u_n(t,x) \right|^2 \quad \text{and} \quad H_n(t) := \sup_{x \in \R^d} D_n(t,x).
 	\]
@@ -860,7 +864,7 @@ or if we take $c(\sigma) = \sigma(0)$,
 	Now note that by the Lipschitz property of $\sigma$, we have that  
 	\begin{align*}
 	\mathbb{E}\left(\mathbf{\Sigma}(s,y,n) \mathbf{\Sigma}(s,z,n)\right) &\le L^2_{\sigma} \mathbb{E} \left(|u_n(s,y)-u_{n-1}(s,y)||u_n(s,z)-u_{n-1}(s,z)|\right) \\
-	& \le L^2_{\sigma} \Norm{ u_n(s,y)-u_{n-1}(s,y) } \Norm{u_n(s,z)-u_{n-1}(s,z)} \\ 
+	& \le L^2_{\sigma} \Norm{ u_n(s,y)-u_{n-1}(s,y) }_2 \Norm{u_n(s,z)-u_{n-1}(s,z)}_2 \\ 
 	& \le L^2_{\sigma} \sqrt{D_{n-1}(s,y) D_{n-1}(s,z)} \\
 	& \le L^2_{\sigma} H_{n-1}(s).
 	\end{align*}
