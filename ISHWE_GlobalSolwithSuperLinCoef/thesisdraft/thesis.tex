@@ -228,13 +228,13 @@ In this paper we prove the existence of a global solution to the interpolated st
 	u(0,\cdot) = u_0(x), \quad \partial_t u(0,\cdot) = v_0(x)                                                                            & \beta \in (1,2),
 	\end{cases}
 	\end{equation}
-	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is a centered Gaussian noise that is taken to be white in time and colored in space. In other words, $W$ is a $0$-mean Gaussian processes on the space of Schwartz functions, $\mathscr{S}(\R^{d+1})$, with the following covariance functional:
+	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$, is a centered Gaussian noise that is taken to be white in time and colored in space. In other words, $W$ is a $0$-mean Gaussian processes on the space of Schwartz functions, $\mathscr{S}(\R^{d+1})$, with the following covariance functional:
 		\[
 			\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{2d}} \ud x \ud y \: \phi(x) \psi(y) \delta_0(x-y), \quad \phi, \psi \in \mathscr{S}(\R^{d+1}),
 		\]
-	where $\delta_0$ denotes the {\em Dirac delta distribution}. However, some comments will be made in Section \ref{S:colorednoise} below about the current progress with a colored noise. The initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. \
+	where $\delta_0$ denotes the {\em Dirac delta distribution}. In addition, some comments will be made in Section \ref{S:colorednoise} below about the current progress with a colored noise. 
 	
-	The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
+	The initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
 	\begin{equation}
 	\label{C:SigSupLin}
 	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
@@ -245,7 +245,7 @@ In this paper we prove the existence of a global solution to the interpolated st
 	\end{equation}
 	where $\sigma_1 = \sigma(0)$.
 	
-For any $T>0$ with $t \in [0,T]$ and $x \in \R^d$, the solution to \eqref{E:SupLinSPDE} is understood in the {\em mild} sense as the solution to the following stochastic integral equation:
+For any $T>0$, with $t \in [0,T]$ and $x \in \R^d$, the solution to \eqref{E:SupLinSPDE} is understood in the {\em mild} sense as the solution to the following stochastic integral equation:
 \[
 u(t,x) = J_0(t,x) + I(t,x),
 \]
@@ -290,7 +290,11 @@ The goal of this paper is to prove the existence and uniqueness of a global solu
 Here is the main result of this chapter. The proof will be postponed until Section \ref{S:TMainSupLin} below.
 
 	\begin{theorem} \label{T:MainSupLin}
-	Suppose that $\sigma$ satisfies \eqref{C:SigSupLin} and the initial data are Borel measurable functions. Then for any $R>0$ and $(t,x) \in [0,T] \times \bar{B}_R(0)$, where $\bar{B}_R(0)$ denotes the closed ball centered around the origin, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times \bar{B}_R(0))$. This solution is unique and satisfies 
+	Suppose that $\sigma$ satisfies \eqref{C:SigSupLin} and the initial data, $u_0$ and $v_0$, are Borel measurable functions and satisfy for all $T>0$,
+		\[
+			\sup_{(t, x) \in [0,T] \times \R^d} |J_0(t,x)| < \infty,
+		\]
+	 which is true if $u_0$ and $v_0$ are bounded. Then for any $R>0$ and $(t,x) \in [0,T] \times \bar{B}_R(0)$, where $\bar{B}_R(0)$ denotes the closed ball centered around the origin, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times \bar{B}_R(0))$. This solution is unique and satisfies 
 	\begin{equation}
 	\sup_{t\in[0,T],\; |x| \le R} |u(t,x)| < \infty, \quad \text{almost surely.}
 	\end{equation}
@@ -302,13 +306,13 @@ The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument a
 	\]
 Note that when $d = 1$, $\sigma_N$ reduces to the following:
 	\[
-		\sigma_N(x) = \sigma(x) \mathbf{1}_{\{ |x| \le N \}} + \sigma(N)\mathbf{1}_{ \{ x > N \}} + \sigma(-N)\mathbf{1}_{\{ x < -N\}},
+		\sigma_N(x) = \sigma(x) \mathbf{1}_{\{ |x| \le N \}} + \sigma(N)\mathbf{1}_{ \{ x > N \}} + \sigma(-N)\mathbf{1}_{\{ x < -N\}}.
 	\]
-Then we associate for each $N>0$, the corresponding global solution $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
+Then we associate for each $N>0$, the corresponding global solution to \eqref{E:SupLinSPDE} with $\sigma$ replaced my $\sigma_N$ as $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
 \[
 \tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T,
 \]
-and prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. Because of the stopping-time argument, $L^2(\Omega)$ existence is no longer guaranteed. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, the solution may no longer satisfy the standard \Ito isometry. 
+and prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. However, the stopping-time argument applied here will no longer guarantee the $L^2(\Omega)$ existence of the solution. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, the solution may no longer satisfy the standard \Ito isometry. 
 	
 	\section{Preliminary results for a globally Lipschitz drift term}
 	
@@ -316,7 +320,7 @@ and prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution 
 	\begin{equation} \label{E:SupLinGlobalLip}
 	|\sigma(x)| \le c(\sigma) + L(\sigma)|x|,
 	\end{equation}
-	where $c(\sigma) = \sigma(0)$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$ an we assume that $L(\sigma)>0$. The equation \eqref{E:SupLinSPDE} under the assumption that $\sigma$ satisfies \eqref{E:SupLinGlobalLip} has been studied in \cite{chen.hu.ea:19:nonlinear} where they establish in Theorem 4.1 {\em ibid} the existence and uniqueness of global random field solutions. In order to do so, one needs to show {\em Dalang's condition}:
+	where $c(\sigma) = |\sigma(0)|$ and $L(\sigma)$ is the Lipschitz constant of $\sigma$ and we assume that $L(\sigma)>0$. The equation \eqref{E:SupLinSPDE} under the assumption that $\sigma$ satisfies \eqref{E:SupLinGlobalLip} has been studied in \cite{chen.hu.ea:19:nonlinear} where they establish in Theorem 4.1 {\em ibid} the existence and uniqueness of global random field solutions. In order to do so, one needs to show {\em Dalang's condition}:
 	\begin{equation}
 	\label{C:Dalang}
 	\int_0^t \ud s \int_{\R^d} \ud y |Y(s,y)|^2 < \infty, \quad \text{for all } t>0,
@@ -398,7 +402,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		we have that 
 		\begin{equation}
 		\label{E:Nbdd}
-		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)}
+		N_{a,p}(u)  \le 2 \mathcal{T}_0 +  \frac{c(\sigma)}{L(\sigma)},
 		\end{equation}	
 		where
 		\begin{align*}
@@ -413,7 +417,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 %		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
 %		\end{cases} 
 %		\end{align*}
-		Moreover, for any $T>0$,
+		Moreover, for all $T>0$,
 		\begin{equation}
 		\label{E:Pnormtbdd}
 		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p
@@ -494,7 +498,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		We now do a change of variables and again recall the definition of the Gamma function to see that 
 		\begin{align*}
 		\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au} u^{\rho -1} \\
-		& = \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\rho \right)}{ (2a)^{\rho}}
+		& = \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\rho \right)}{ (2a)^{\rho}},
 		\end{align*}
 		where the last line is true if Dalang's condition \eqref{E:DalangEquiv2} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
 		\begin{align}
@@ -523,10 +527,8 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\]
 		In addition, for any $p$ in this interval, we have that 
 		\[
-		\frac{\sqrt{p}L(\sigma)K}{a^{\rho/2}} \le \frac{1}{2},
-		\]
-		and we also have 
-		\[
+		\frac{\sqrt{p}L(\sigma)K}{a^{\rho/2}} \le \frac{1}{2} 
+		\quad \text{and} \quad 
 		\frac{\sqrt{p}}{a^{\rho/2}}  \le \frac{1}{2KL(\sigma)}.
 		\]
 		This along with \eqref{E:Nbddgen} implies that 
@@ -585,7 +587,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	\end{proposition}
 	
 	\begin{proof}
-		Note that because of the initial conditions, we see that $\Norm{u(t,x) - u(r,z)}_p = \Norm{I(t,x) - I(r,z)}_p$. We now apply Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
+		We apply the Burkholder-Davies-Gundy inequality along with the triangle inequality, as was done in the proof of Proposition \ref{P:N(u)Bdd},  to see that
 		\begin{align*}
 		\Norm{I(t,x) - I(r,z)}_p^2 &\le 4p \Norm{ \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2\sigma^2(u(s,y)) }_{p/2} \\
 		&\le 4p \int_0^T \ud s \int_{\R^d} \ud y \left| Y(t-s,x-y) - Y(r-s,z-y) \right|^2  \Norm{\sigma^2(u(s,y)) }_{p/2}.
@@ -603,7 +605,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\Norm{I(t,x) - I(r,z)}_p^2 &\le 8p \bigg[ c^2(\sigma)C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right)\\ 
 		& \qquad +  L^2(\sigma) \exp\left(2aT \right)N_{a,p}^2(u) C(\theta, T)\left(|t-r|^{q} + |x-z|^{\theta}\right) \bigg],
 		\end{align*}
-		where $C(\theta, T)$ is as in Proposition \ref{P:YInc}. Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$ yields
+		where $C(\theta, T)$ is as in Proposition \ref{P:YInc}. Now by taking the square root of both sides and applying the identity $\sqrt{x+y} \le \sqrt{x} + \sqrt{y}$, we see that
 		\begin{align*}
 		\Norm{I(t,x) - I(r,z)}_p &\le 2\sqrt{2C(\theta, T)p} \Big[ c(\sigma) + L(\sigma) \exp\left(aT \right)N_{a,p}(u) \Big]\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}. 
 		\end{align*}
@@ -691,7 +693,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		Then Proposition \ref{P:Holder} implies that 
 		\begin{equation}
 		\label{E:u_NMomBdd}
-		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right]
+		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right],
 		\end{equation}
 		where we recall that 
 		\begin{equation}
@@ -704,7 +706,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\end{equation}
 		The uniqueness of the solution and the local property of the stochastic integral imply that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
 		
-		We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
+		We now momentarily assume that $\sup_N \tau_N = T$, which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
 		\[
 		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
 		\]
@@ -717,7 +719,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\label{E:SupLinMildSol}
 		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
 		\end{equation}
-		It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.
+		See the proof of \cite[Theorem 3.5]{millet.sanz-sole:21:global} for a comment pertaining to the issue that the solution no longer exists in $L^2(\Omega)$.  
 		
 		We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
 		\begin{align*}
