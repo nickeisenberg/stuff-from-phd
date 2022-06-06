@@ -228,7 +228,13 @@ In this paper we prove the existence of a global solution to the interpolated st
 	u(0,\cdot) = u_0(x), \quad \partial_t u(0,\cdot) = v_0(x)                                                                            & \beta \in (1,2),
 	\end{cases}
 	\end{equation}
-	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is taken to be space-time white, however some comments will be made in Section \ref{S:colorednoise} below about the current progress with a colored noise. The initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
+	where the fractional differential operators $\partial^\beta_t$, $(-\Delta)^{\alpha/2}$ and $I^\gamma_t$ respectively denote the {\em Caputo derivative}, the {\em fractional Laplacian} and the {\em Riemann-Liouville fractional integral operator}. The noise, $\dot{W}$ is a centered Gaussian noise that is taken to be white in time and colored in space. In other words, $W$ is a $0$-mean Gaussian processes on the space of Schwartz functions, $\mathscr{S}(\R^{d+1})$, with the following covariance functional:
+		\[
+			\mathbb{E}\left(W(\phi)W(\psi)\right) = \int_0^\infty \ud s \int_{\R^{2d}} \ud x \ud y \: \phi(x) \psi(y) \delta_0(x-y), \quad \phi, \psi \in \mathscr{S}(\R^{d+1}),
+		\]
+	where $\delta_0$ denotes the {\em Dirac delta distribution}. However, some comments will be made in Section \ref{S:colorednoise} below about the current progress with a colored noise. The initial data, $u_0$ and $v_0$, are assumed to be Borel measurable functions which are Bounded on $\R^d$. \
+	
+	The nonlinearity, $\sigma$, is {\em locally Lipschitz} in the sense that the following asymptotic relation holds as $|x|,|z| \to \infty$:
 	\begin{equation}
 	\label{C:SigSupLin}
 	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
@@ -244,13 +250,16 @@ For any $T>0$ with $t \in [0,T]$ and $x \in \R^d$, the solution to \eqref{E:SupL
 u(t,x) = J_0(t,x) + I(t,x),
 \]
 	where
-	\begin{align*}
-	J_0(t,x) &=\begin{cases} 
+	\[
+	J_0(t,x) =\begin{cases} 
 	[Z(t,\cdot)*u_0](x) & \beta \in (0,1]
 	\\	[Z(t,\cdot)*v_0](x) + [Z^*(t,\cdot)*u_0](x) & \beta \in (1,2)
 	\end{cases}
-	\\	I(t,x) &= \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
-	\end{align*}
+	\]
+	and
+	\[
+I(t,x) = \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
+	\]
 
 The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86:introduction}) and the fundamental solution is a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through the Fox-H function, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
 	\begin{align*}
@@ -258,12 +267,13 @@ The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86
 		\mathcal{F}Z^*(t,\cdot)(\xi) &= E_{\beta, 1}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
 		\mathcal{F}Y(t,\cdot)(\xi) &= t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}\left(-2^{-1}\nu t^\beta |\xi|^\alpha\right),
 	\end{align*}
-where $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
+where we choose $\mathcal{F}f(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$ as the definition of the Fourier transform, $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
 	\[
 		E_{a,b}(z) := \sum_{k=0}^{\infty} \frac{z^k}{\Gamma(ak+b)}, \quad a>0, \: b>0,
 	\]
-and $\Gamma$ is the standard {\em Gamma-function}. 
+and $\Gamma(\cdot)$ is the standard {\em Gamma-function}. 
 
+\begin{remark}
 We mention that under the special case where $\alpha \in (1,2)$, $\beta \in (0,1]$ and $\gamma = 1 - \beta$, that $Z = Z^* = Y$, which is easily seen from their Fourier transforms given above. Because of these equalities, we simply let $Y$ denote the fundamental solution under this situation. Moreover, under this case there is a probabilistic representation for $Y$ which is used by the authors in \cite{foondun.liu.ea:19:some, foondun.nane:17:asymptotic, mijena.nane:15:space-time, foondun.liu.ea:17:moment, mijena.nane:16:intermittence}.  Indeed, let $X_t$ denote a symmetric $\alpha$-stable process with density $p(t,x)$. Let $D=\{D_r, \: r \ge 0\}$ denote a $\beta$-stable subordinator and $E_t$ its first passage time. Then it is known that the density of the time changed processes $X_{E_t}$ is given by $Y(t,x)$ and we have that 
 	\[
 		Y(t,x) = \int_0^\infty p(s,x)f_{E_t}(s) \: \ud s,
@@ -273,8 +283,9 @@ where
 		f_{E_t}(s) = t \beta^{-1} x^{-1-1/\beta}g_{\beta}\left(tx^{-1/\beta} \right),
 	\]
 where $g_\beta(\cdot)$ is the density function of $D_1$ and is smooth on the real line with $g_{\beta}(x) = 0$ for $x \le 0$.
+\end{remark}
 
-The goal of this paper is to prove the existence and uniqueness of a global solution to \eqref{E:SupLinSPDE}. The work is highly motivated by the recent work by Millet et al \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, the only other work that we are aware of that is dedicated to proving some non-existence results of \eqref{E:SupLinSPDE} is \cite{asogwa.mijena.ea:20:blow-up}. So, to the best of our knowledge, this is the first work on proving the global existence of a solution to \eqref{E:SupLinSPDE} with a super-linear diffusion term (see Theorem \ref{T:MainSupLin} below). However, as we will see, the calculations given below are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. \bigskip 
+The goal of this paper is to prove the existence and uniqueness of a global solution to \eqref{E:SupLinSPDE}. The work is highly motivated by the recent work by Millet and Sanz-Sol\'e \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, the only other work that we are aware of that is dedicated to proving some non-existence results of \eqref{E:SupLinSPDE} is \cite{asogwa.mijena.ea:20:blow-up}. So, to the best of our knowledge, this is the first work on proving the global existence of a solution to \eqref{E:SupLinSPDE} with a super-linear diffusion term (see Theorem \ref{T:MainSupLin} below). However, as we will see, the calculations given below are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. \bigskip 
 
 Here is the main result of this chapter. The proof will be postponed until Section \ref{S:TMainSupLin} below.
 
@@ -285,17 +296,15 @@ Here is the main result of this chapter. The proof will be postponed until Secti
 	\end{equation}
 \end{theorem}
 
-The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument along with a series of truncations of the super-linear term, $\sigma$, in order to construct a solution of \eqref{E:SupLinSPDE}. Indeed, we define 	
-\[ \sigma_N(x) = \begin{cases}
-\sigma(x) & |x| \le N \\
-\text{continuous and constant} & |x| > N,
-	\end{cases}
-\]
-and then associate for each $N>0$, the corresponding global solution $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
+The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument along with a series of truncations of the super-linear term, $\sigma$, in order to construct a solution of \eqref{E:SupLinSPDE}. Indeed, in the case when $d=1$, we define 	
+	\[
+		\sigma_N(x) = \sigma(x) \mathbf{1}_{\{ |x| \le N \}} + \sigma(N)\mathbf{1}_{ \{ x > N \}} + \sigma(-N)\mathbf{1}_{\{ x < -N\}},
+	\]
+and in higher dimensions, we define $\sigma$ similarly. Then we associate for each $N>0$, the corresponding global solution $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
 \[
-\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T.
+\tau_N := \inf \left\{ t>0 : \sup_{|x| \le R} |u_N(t,x)| \ge N \right\} \wedge T,
 \]
-We prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. Because of the stopping-time argument, existence in $L^2(\Omega)$ is no longer guaranteed. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, then the solution may no longer satisfy the standard Ito isometry. 
+and prove that $\{t < \tau_N\} \uparrow \Omega$ and then show that the solution to \eqref{E:SupLinSPDE} exists pathwise for $\omega \in \Omega$. We remind the reader that in the case of a globally Lipschitz diffusion term, one usually proves that the solution exists as a limit in $L^2(\Omega)$. Because of the stopping-time argument, $L^2(\Omega)$ existence is no longer guaranteed. Moreover, because $L^2(\Omega)$ existence is no longer guaranteed, the solution may no longer satisfy the standard \Ito isometry. 
 	
 	\section{Preliminary results for a globally Lipschitz drift term}
 	
@@ -371,18 +380,16 @@ We now state a lemma proven in \cite{chen.hu.ea:19:nonlinear} that calculates th
 In this section, we will prove some moment bounds and a continuity result for the solution with a globally Lipschitz diffusion term. In the proof of the next proposition, we will use the following two facts:
 	\begin{equation}
 	\label{E:SUPidentities}
-	\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k \in \mathbb{N} \text{ and } \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
+	\sup_{t\ge0} t^ke^{-at} = k^k(ea)^{-k} \text{ for }k > 0 \quad \text{and} \quad \sup_{t \ge 0} \int_0^t s e^{-as} \ud s = a^{-2} \text{ for } a>0.
 	\end{equation}
 	
 	\begin{proposition}{\normalfont\cite[Proposition 3.2]{millet.sanz-sole:21:global}}
 		\label{P:N(u)Bdd}
 		Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$. Suppose that $d < 2 \alpha$ and $\rho = \rho(d) > 0$, where $\rho(x)$ is defined in \eqref{D:rho}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d) >0$ such that for any 
 		\[
-		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho}.
-		\]
-		and 
-		\[
-		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right].
+		a > \left( 8 L^2(\sigma)K^2\right)^{1/\rho} 
+		\quad \text{and} \quad
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
 		\]
 		we have that 
 		\begin{equation}
@@ -391,7 +398,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\end{equation}	
 		where
 		\begin{align*}
-		\mathcal{T}_0 = \begin{cases} 
+		\mathcal{T}_0 = \mathcal{T}_0(a, \beta, u_0, v_0)  := \begin{cases} 
 		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
 		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
 		\end{cases} 
@@ -405,25 +412,26 @@ In this section, we will prove some moment bounds and a continuity result for th
 	\begin{proof}
 		First we fix an $a>0$ and $p \in [2,\infty)$. Using Lemma \ref{L:1and2normYZ} we see that,
 		\begin{align*}
-		|J(t,x)|  &= \begin{cases} 
+		|J_0(t,x)|  &= \begin{cases} 
 		\left| (Z(t,\cdot) * u_0)(x)  \right| & \beta \in (0,1]
 		\\	\left| (Z(t,\cdot) * v_0)(x) + (Z^*(t,\cdot) * u_0)(x) \right| & \beta \in (1,2)
 		\end{cases}
 		\\& \le \begin{cases}
 		t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty & \beta \in (0,1]
-		\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\\ t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2).
 		\end{cases} 
 		\end{align*}
 		Now using \eqref{E:SUPidentities}, we see that 
 		\begin{align}
-		N_{a,p}(J) &\le \begin{cases} 
-		\sup_{t\ge 0}\sup_{x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
-		\\ \sup_{t\ge 0}\sup_{x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
-		\end{cases} \nonumber
-		\\ &= \begin{cases} 
+		N_{a,p}(J_0) &\le \begin{cases} 
+		\sup\limits_{t > 0, \: x\in\R}  t^{\lceil \beta \rceil -1}\Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+		\\ \sup\limits_{t > 0, \: x\in\R} \left(  t^{\lceil \beta \rceil -1}\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+		\end{cases} \nonumber \\
+		&= \begin{cases} 
 		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
-		\end{cases} \label{E:Jbdd}
+		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
+		\end{cases} \nonumber \\
+		&= \mathcal{T}_0. \label{E:Jbdd}
 		\end{align}
 		
 		Now we find an upper bound for $N_{a,p}(I)$. By simultaneously applying the Burkholder-Davies-Gundy inequality and triangle inequality, we get that  
@@ -472,11 +480,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\end{align}
 		Now by combining \eqref{E:Jbdd} and \eqref{E:Ibdd}, we see that 
 		\begin{align}
-		N_{a,p}(u) & \le \begin{cases} 
-		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2). 
-		\end{cases} 
-		\\& \quad \quad  + K\frac{\sqrt{p}c(\sigma)}{a^{\rho/2} }  + K  \frac{\sqrt{p}L(\sigma)}{a^{\rho/2}} N_{a,p}(u). \label{E:Nbddgen}
+		N_{a,p}(u) & \le \mathcal{T}_0   + K\frac{\sqrt{p}c(\sigma)}{a^{\rho/2} }  + K  \frac{\sqrt{p}L(\sigma)}{a^{\rho/2}} N_{a,p}(u). \label{E:Nbddgen}
 		\end{align}
 		It is important to note that if we now restrict ourselves to the case of $\alpha = \beta = 2$, $d=1$ and $\gamma =0$, then \eqref{E:SoleMil3.9} and \eqref{E:Nbddgen} recover \cite[(3.9) and (3.10)]{millet.sanz-sole:21:global} respectively. Now choose $a>0$ such that 
 		\[
@@ -496,11 +500,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\]
 		This along with \eqref{E:Nbddgen} implies that 
 		\begin{align*}
-		N_{a,p}(u) & \le 2 \begin{cases} 
-		(\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{u_0}_\infty  & \beta \in (0,1]
-		\\ (\lceil \beta \rceil - 1)^{\lceil \beta \rceil -1}(ea)^{1-\lceil \beta \rceil} \Norm{v_0}_\infty + \Norm{u_0}_\infty & \beta \in (1,2)
-		\end{cases} 
-		\\& \quad \quad + \frac{c(\sigma)}{L(\sigma)}
+		N_{a,p}(u) & \le 2 \mathcal{T}_0 + \frac{c(\sigma)}{L(\sigma)}
 		\end{align*}
 		and this is precisely \eqref{E:Nbdd}. Note that \eqref{E:Pnormtbdd} follows immediately from \eqref{E:Nbdd}.  
 	\end{proof}
@@ -525,10 +525,8 @@ In this section, we will prove some moment bounds and a continuity result for th
 			\]
 		\end{enumerate}
 	\end{proposition}
-	
-	\begin{remark}
-		In Proposition \ref{P:YInc} above, we may often ignore the dependence of $C$ on $\alpha, \beta, \gamma, \nu, d$ and just write $C(\theta, T)$. 
-	\end{remark}
+
+We now state and prove a proposition that will be used to prove the H\"older continuity of the stochastic integral, $I(t,x)$.
 	
 	\begin{proposition}
 		\label{P:NormInc}
@@ -549,11 +547,9 @@ In this section, we will prove some moment bounds and a continuity result for th
 		Moreover, for any 
 		\[
 		a > \left( 8 L^2(\sigma)K^2\right)^{1/
-			\rho}.
-		\]
-		and 
-		\[
-		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right]
+			\rho}
+\quad \text{and} \quad
+		p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
 		\]
 		we have that 
 		\begin{equation}
@@ -685,16 +681,16 @@ In this section, we will prove some moment bounds and a continuity result for th
 		
 		We now momentarily assume that $\sup_N \tau_N = T$ which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
 		\[
-		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
+		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
 		\]
 		However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
 		\[
-		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
+		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
 		\]
 		Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
 		\begin{equation}
 		\label{E:SupLinMildSol}
-		u(t,x) = 1 + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
+		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
 		\end{equation}
 		It is mentioned that the stochastic integrals are no longer defined in $L^2(\Omega)$. The extension of the integral is found in Dalang and Sanz-Sole's textbook that is not yet published.
 		
@@ -705,7 +701,8 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\end{align*}
 		An application of \eqref{E:u_NMomBdd} gives 
 		\begin{align*}
-		N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right) &\le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
+		N^{-p}\mathbb{E} & \left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right) \\
+		& \le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
 		&= \frac{2^{p-1} + C(p, \theta, T,R)\mathcal{M}_1^p }{N^p} + \frac{C(p,T,R) \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p }.
 		\end{align*}
 		The first term clearly converges to $0$ as $N\to \infty$. As for the second term, we expand using \eqref{D:M1&2forSig_N} to see that 
@@ -713,7 +710,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\frac{\mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p }{ N^p } &= \frac{\left(\sqrt{p\sigma_2\ln(2N)^\delta}\right)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{ \sqrt{p\sigma_2\ln(2N)^\delta} }\right)^p }{ N^p }  \\
 		&\sim \frac{ \ln(2N)^{p\delta/2} }{ N^p } \to 0,
 		\end{align*}
-		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem. 
+		where above we use the symbol $\sim$ to mean asymptotically equivalent as $N \to \infty$. This completes the proof of the Theorem \ref{T:MainSupLin}. 
 	\end{proof}
 
 \section{Some comments and current progress on a spatially colored noise} \label{S:colorednoise}
