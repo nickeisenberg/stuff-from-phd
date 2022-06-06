@@ -795,7 +795,7 @@ We now prove a lemma which is a generalization of equation \eqref{C:Dalang} whic
 	\end{equation}
 \end{lemma}
 \begin{proof}
-	Through a change of variables, we may write the left side of \eqref{E:YYfBdd} as the following:
+	Through the change of variables $u = z-y$ and $v = z-w$, we may write the left side of \eqref{E:YYfBdd} as the following:
 	\[
 	\int_{\R^{2d}} Y(t,x-z)Y(t,y-w)f(w-z) \; \ud z \ud w = \int_{\R^{d}} Y\left(t,u-(x-y)\right)(Y(t,\cdot)*f)(u) \; \ud u,
 	\]
@@ -882,7 +882,7 @@ or if we take $c(\sigma) = \sigma(0)$,
 \subsection{Some moment bounds for a globally Lipschitz drift term}
 We will now focus on proving some moment bounds that parallel those proved above in the space-time white noise case. 
 
-	\begin{proposition}{\cite[Proposition 4.4]{millet.sanz-sole:21:global}}
+	\begin{proposition}{\cite[Proposition 4.4]{millet.sanz-sole:21:global}} \label{P:Pmomubdd}
 	Let $u_0$ and $v_0$ be Borel functions satisfying $\Norm{u_0}_\infty + \Norm{v_0}_\infty < \infty$ and suppose that Assumption \ref{A:RieszKernel} holds. Also, in this proof we consider $\rho = \rho(\lambda)$ which is defined in \eqref{D:rho}. Then there exists a universal constant $K:=K(\alpha, \beta, \gamma,d, \lambda ) >0$ such that for any 
 	\[
 	a^\rho > \left( 8 L^2(\sigma)K^2\right).
@@ -940,9 +940,9 @@ We will now focus on proving some moment bounds that parallel those proved above
 	K_1 (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha},
 	\]
 	where 
-	\begin{equation*}
-	K_1 : = C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha},
-	\end{equation*}
+	\begin{equation} \label{E:K1}
+	K_1 : = C \left(\frac{\nu}{2}\right)^{-\lambda/\alpha}\left(\int_{\R^d} \frac{\mu(\ud \zeta)}{\left(1 + |\zeta|^{\alpha}\right)^2 }\right),
+	\end{equation}
 	and $C$ is as in Lemma \ref{L:YfYbdd}. In return, this gives us that 
 	\begin{align*}
 	\Norm{I(t,x)}_p^2 & \le  8p K_1 c(\sigma)^2 \int_0^t (t-s)^{2(\beta + \gamma -1)-\beta \lambda /\alpha} \ud s \\
@@ -1101,15 +1101,27 @@ We now state a lemma which will be needed in the proof of the next proposition.
 \end{assumption}
 
 \begin{remark}
-	Note that the additional assumption \eqref{A:RieszParamStrong} excludes the SHE, $\alpha = 2$, $\beta = 1$ and $\gamma=1$, as well as the popular case where $\gamma = 1 - \beta$.
+	Note that the additional assumption \eqref{A:RieszParamStrong} excludes the SHE, $\alpha = 2$, $\beta = 1$ and $\gamma=1$, as well as the popular case where $\gamma = 1 - \beta$. However it will include the fractional SHE in the sense that $\alpha = 2$, $\beta = 1$ and $\gamma > 0$. 
 \end{remark}
 
-\begin{proposition}{ \cite[Proposition 4.8]{millet.sanz-sole:21:global}}
+\begin{proposition}{ \cite[Proposition 4.8]{millet.sanz-sole:21:global}} \label{P:ISpaceInc}
 	Let $T>0$. Under Assumption \ref{A:stronger}, we have that for any $x,z \in \R^d$ and $0 \le t \le T$,
 		\begin{align*}
 	&\Norm{I(t,x) - I(t,z)}_p^2 \\
 	&\le C|x-z|^{2r} \left[\int_{\R^d} \mu(\ud \zeta) \frac{|\zeta|^{2r}}{\left(1+ |\zeta|^{\alpha}\right)^{2}} \right] \left[\int_0^t \ud s \:   (t-s)^{2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha}}\right] \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \\
-	& \qquad  + C \left[\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right]L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2.
+	& \qquad  + C \left[\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right]L^2(\sigma) T^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2.
+	\end{align*}
+	Moreover, recall $\rho$ and $K:=K(\alpha, \beta, \gamma,d, \lambda )$ defined in Proposition \ref{P:Pmomubdd}. Then for any 
+	\[
+	a^\rho > \left( 8 L^2(\sigma)K^2\right) 
+	\quad \text{and} \quad 
+	p \in \left[ 2, \frac{a^{\rho}}{4L^2(\sigma)K^2} \right],
+	\]
+	we have that 
+	\begin{align*}
+	&\Norm{I(t,x) - I(t,z)}_p^2 \\
+	&\le C|x-z|^{2r} \left[\int_{\R^d} \mu(\ud \zeta) \frac{|\zeta|^{2r}}{\left(1+ |\zeta|^{\alpha}\right)^{2}} \right] \left[\int_0^t \ud s \:   (t-s)^{2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha}}\right] \left[c(\sigma) + L(\sigma)\exp\left(aT\right) N_{a,p}(u) \right]^2 \\
+	& \qquad  + C \left[\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right]L^2(\sigma) T^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2.
 	\end{align*}
 \end{proposition}
 
@@ -1133,9 +1145,9 @@ We now state a lemma which will be needed in the proof of the next proposition.
 	h_1(s,y_1,y_2) &= f(y_1 - y_2) \Sigma_{x,z}(s,y_1)  \Sigma_{x,z}(s,y_2) \\
 	h_2(s, y_1, y_2) &= [f(y_1 - y_2 + \xi) - f(y_1 - y_2)] \Sigma_x(s,y_2) \Sigma_{x,z}(s,y_1) \\ 
 	h_3(s, y_1, y_2) &= h_2(s, y_2, y_1) \\
-	h_4(s, y_1, y_2) &= [2f(y_1- y_2) - f(y_1 - y_2 + \xi) - f(y_1 - y_2 - \xi)]\Sigma_{x}(s,y) \Sigma_{x}(s,z).
+	h_4(s, y_1, y_2) &= [2f(y_1- y_2) - f(y_1 - y_2 + \xi) - f(y_1 - y_2 - \xi)]\Sigma_{x}(s,y_1) \Sigma_{x}(s,y_2).
 	\end{align*}
-	With this notation along with a change of variables, we rewrite $I_1$ through $I_4$ as the following:
+	With this notation along with several change of variables, we rewrite $I_1$ through $I_4$ as the following:
 	\begin{align*}
 	I_1 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)\Sigma_x(s,y_1)\Sigma_x(s,y_2) \\
 	I_2 &= - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 - \xi)\Sigma_x(s,y_1)\Sigma_z(s,y_2) \\
@@ -1144,9 +1156,9 @@ We now state a lemma which will be needed in the proof of the next proposition.
 	I_3 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_2)\Sigma_{x,z}(s,y_1) \\
 	& \quad - \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2 + \xi)\Sigma_x(s,y_1)\Sigma_{x}(s,y_2) \\
 	I_4 &= \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)\Sigma_z(s,y_1)\Sigma_z(s,y_2) \\
-	& = \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)(\Sigma_{x,z}(s,y_1)-\Sigma_{x}(s,y_1)(\Sigma_{x,z}(s,y_2) - \Sigma_{x}(s,y_2)),
+	& = \int_0^t \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2)f(y_1-y_2)(\Sigma_{x,z}(s,y_1)-\Sigma_{x}(s,y_1)(\Sigma_{x,z}(s,y_2) - \Sigma_{x}(s,y_2)).
 	\end{align*}
-	where above $I_3$ is derived in the same way $I_2$ was derived. Now if we expand $I_4$ and regroup all the terms in $I_1 + \cdots I_4$, we get that 
+	In particular, in $I_1$ we let $y_1' = x - y_1$ and $y_2' = x - y_2$, in $I_2$ we let $y_1' = x - y_1$ and $y_2' = z - y_2$, $I_3$ is derived in the same as $I_2$ and lastly in $I_4$ we let $y_1' = z - y_1$ and $y_2' = z - y_2$. Now if we expand $I_4$ and regroup all the terms in $I_1 + \cdots I_4$, we get that 
 	\begin{equation}
 	Q = \sum_{i=1}^4 Q_i
 	\end{equation}
@@ -1163,16 +1175,16 @@ We now state a lemma which will be needed in the proof of the next proposition.
 	\textit{Upper bound for $\Norm{Q_1}_{p/2}$.} Using the Lipschitz property of $\sigma$, Minkowski's inequality and the triangle inequality gives is 
 	\begin{align*}
 	\Norm{Q_1}_{p/2} &\le L(\sigma)^2 \int_0^t \ud s \iint_{\R^{2d}} \ud y_1 \ud y_2 \; Y(t-s,y_1) Y(t-s, y_2) f(y_1 - y_2) \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
-	& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} \int_0^t \ud s \; (t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha} \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
-	& \le L(\sigma)^2C K_f \left(\frac{\nu}{2}\right)^{-\lambda/\alpha} (t)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}\int_0^t \ud s \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right],
+	& \le L(\sigma)^2 K_1 \int_0^t \ud s \; (t-s)^{2(\beta + \gamma -1) - \beta \lambda / \alpha} \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right] \\
+	& \le L(\sigma)^2 K_1 (t)^{2(\beta + \gamma -1) - \beta \lambda / \alpha}\int_0^t \ud s \left[\sup_{|z_1-z_2|=\xi} \Norm{u(s,z_1)-u(s,z_2)}_p^2\right],
 	\end{align*} 
-	where the second inequality above follows from Lemma \ref{L:YfYbdd} and the last line requires $2(\beta + \gamma -1) - \beta \lambda / \alpha > 0$. 
+	where the second inequality above follows from Lemma \ref{L:YfYbdd},  $K_1$ is defined in \eqref{E:K1}, and the last line requires $2(\beta + \gamma -1) - \beta \lambda / \alpha > 0$. 
 	
 	To bound the remaining $Q_i's$, we will need to consider the following truncations which will then allow us to apply Lemma \ref{L:Y_phiParseval}. For $k \ge 1$ we define $\Sigma_{x}^k(s,y) = \Sigma_{x}(s,y) 1_{\{\Sigma_{x}(s,y) \le k \}}$ and $\Sigma_{x,z}^k(s,y) = \Sigma_{x,z}(s,y) 1_{\{\Sigma_{x,z}(s,y) \le k \}}$ and then we define $Q_i^k$ the same as $Q_i$ but with $h_i$ replaced with $h_i^k$ where $h_i^k$ is defined by replacing $\Sigma_{x}(s,y) $ and $\Sigma_{x,z}(s,y) $ with $\Sigma_{x}^k(s,y)$ and $\Sigma_{x,z}^k(s,y)$ respectively in $h_i$.
 	
-	\textit{Upper Bound for $\Norm{Q_2^k}_{p/2}$.} We apply Lemma \ref{L:Y_phiParseval} with $\phi(y_2) = \Sigma_{x}^k(s,y_2)$ and $\psi(y_1) = \Sigma_{x,z}^k(s,y_1)$. Thus we have that up to a constant of $(2\pi)^{-d}$,
+	\textit{Upper Bound for $\Norm{Q_2^k}_{p/2}$.} We will follow closely the techniques presented in \cite[Theorem 3.2]{hu.huang.ea:16:on}. We apply Lemma \ref{L:Y_phiParseval} with $\phi(y_2) = \Sigma_{x}^k(s,y_2)$ and $\psi(y_1) = \Sigma_{x,z}^k(s,y_1)$. Thus we have that up to a constant of $(2\pi)^{-d}$,
 	\[
-	Q_2^k = \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \overline{ \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta) }\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)[e^{-i\xi \cdot \zeta}-1],
+	Q_2^k = \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \overline{ \mathcal{F}\left( \Sigma_{x}^k(s,\cdot)Y(t-s,\cdot) \right)(\zeta) }\mathcal{F}\left(\Sigma^k_{x,z}(s, \cdot) Y(t-s,\cdot)\right)(\zeta)[e^{-i\xi \cdot \zeta}-1],
 	\]
 	where we recall that $\xi = x - z$. We now apply the the following to bounds: $|e^{-i\xi \cdot \zeta}-1| \le C |\xi|^{r} |\zeta|^{r}$ for any $r \in [0,1]$ and some $C>0$ and $\sqrt{ab} \le \frac{1}{2}(a+b)$ for and $a,b > 0$. Indeed, for some $r \in [0,1]$,
 	\begin{align*}
@@ -1180,36 +1192,40 @@ We now state a lemma which will be needed in the proof of the next proposition.
 	&\le \int_0^t \ud s |\xi|^{r} \left(\int_{\R^d} \mu(\ud \zeta) \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2 |\zeta|^{2r} \right)^{1/2} \\
 	& \qquad \qquad \times \left( \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z} Y(t-s,\cdot)\right)(\zeta)\right|^2 \right)^{1/2} \\
 	& \le \frac{1}{2} \int_0^t \ud s |\xi|^{2r} \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(\Sigma_{x}^k(s,\cdot)Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
-	& \qquad \qquad + \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
+	& \qquad \qquad + \frac{1}{2} \int_0^t \ud s\int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left(\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)\right)(\zeta)\right|^2  \\
+	&= C |\xi|^{2r} \int_0^t \ud s \int_{\R^d} \ud y \: g(y) \left[\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)*\left(\widetilde{\Sigma^k_x(s,\cdot) Y(t-s,\cdot)}\right)\right](y) \\ 
+	& \qquad \qquad + C \int_0^t \ud s \int_{\R^d} \ud y \: f(y) \left[\left(\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)\right)*\left(\widetilde{\Sigma^k_{x,z}(s,\cdot) Y(t-s,\cdot)}\right)\right](y) \\ 
 	& =: Q^k_{2,1} + Q^k_{2,2}.
 	\end{align*}
-	As for $Q^k_{2,1}$\footnote{There is a comment made in \cite[Proposition 4.8]{millet.sanz-sole:21:global} and \cite[Theorem 3.2]{hu.huang.ea:14:on} that minkowsi inequality is being used for the first inequality but it seems incorrect how they apply minkowski's and also unnecessary.},
+where in the last inequality we applied Plancherel's theorem and $\widetilde{\psi}(x) = \psi(-x)$, $f$ is the correlation function of the noise and $g = \mathcal{F}^{-1} \left(\mu(\cdot) |\cdot|^{2r} \right)$.
+
+	As for $Q^k_{2,1}$,
 	\begin{align*}
-	\Norm{Q^k_{2,1}}_{p/2} & \le C |\xi|^{2r} \Norm{\sup_{(s,y) \in [0,T]\times \R^d} \Sigma^k_{x,z}(s,y)  \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2}_{p/2} \\
-	&\le C |\xi|^{2r} \sup_{(s,y) \in [0,T]\times \R^d} \Norm{\Sigma^k_{x,z}(s,y)}^2_{p} \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
-	&\le C |\xi|^{2r} \left[c(\sigma) + L(\sigma) \sup_{(s,y) \in [0,T]\times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 
+	\Norm{Q^k_{2,1}}_{p/2} & \le C |\xi|^{2r} \int_0^t \ud s \: \sup_{y \in \R^d} \Norm{\Sigma^k_x(s,y)}_{p}^2 \int_{\R^d} \ud y \: g(y) \left[ Y(t-s,\cdot)*\widetilde{ Y(t-s,\cdot)}h\right](y) \\
+	&= C|\xi|^{2r} \sup_{(s,y) \in [0,T] \times \R^d} \Norm{\Sigma^k_x(s,y)}_{p}^2 \int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
+	&\le C|\xi|^{2r} \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2.
 	\end{align*}
-	which follows from the global Lipschitz assumption on $\sigma$. Now as for $Q^k_{2,2}$,
+	which follows from the global Lipschitz assumption on $\sigma$. Now similarly for $Q^k_{2,2}$,
 	\begin{align*}
 	\Norm{Q^k_{2,2}}_{p/2} & \le \int_0^t \ud s \sup_{y \in \R^d}\Norm{\Sigma^k_{x,z}(s,y)}_p^2 \int_{\R^d} \mu(\ud \zeta)\left|\mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
 	& \le C \int_0^t \ud s \sup_{y \in \R^d}\Norm{\Sigma^k_{x,z}(s,y)}_p^2   (t-s)^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \\
 	& \le C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) \int_0^t \ud s \:  (t-s)^{2(\beta + \gamma -1)-\beta \lambda / \alpha} \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2  \\
 	&\le C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2,
 	\end{align*}
-	where in the second to last line we applied Lemma \ref{L:YfYbdd} and in the last line we assume that $2(\beta + \gamma -1)-\beta \lambda / \alpha \ge 0$. Summarizing the above gives us that 
+	where in the second to last line we applied Lemma \ref{L:YfYbdd} and in the last line we us the assumption that $2(\beta + \gamma -1)-\beta \lambda / \alpha \ge 0$. Summarizing the above gives us that 
 	\begin{align*}
 	\Norm{Q^k_2}_{p/2} &\le C |\xi|^{2r} \left[c(\sigma) + L(\sigma) \sup_{(s,y) \in [0,T]\times \R^d} \Norm{u(s,y)}_{p}\right]^2 \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \: |\zeta|^{2r} \left| \mathcal{F}\left(Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
 	& \qquad + C \left(\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right)L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2.
 	\end{align*}
-	Also by swapping $x$ and $z$ and noticing that $|e^{-i\xi \zeta} - 1| = |e^{i \xi \zeta} - 1|$ then the bound for $ \Norm{Q^k_3}_{p/2} $ with be the same as for $ \Norm{Q^k_2}_{p/2} $.
+	Also by swapping $x$ and $z$ and noticing that $|e^{-i\xi \zeta} - 1| = |e^{i \xi \zeta} - 1|$, the bound for $ \Norm{Q^k_3}_{p/2} $ will be the same as for $ \Norm{Q^k_2}_{p/2} $.
 	
-	Lastly, for $Q^k_4$ we have that after applying Lemma \ref{L:Y_phiParseval} with $\phi = \psi = \sum^k_x(s,\cdot)$,
+	Lastly, for $Q^k_4$ we have that after applying Lemma \ref{L:Y_phiParseval} with $\phi = \psi = \sum^k_x(s,\cdot)$ and in inequality $|1-\cos(\xi \zeta)| \le C |\xi|^{2r} |\zeta|^{2r}$ for any $0< r \le 1$,
 	\begin{align*}
 	|Q^k_4| &\le C \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) \left|2 - e^{-i\xi \zeta} - e^{i\xi \zeta} \right| \left| \mathcal{F}\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)(\zeta) \right|^2 \\
 	&\le C |\xi|^{2r} \int_0^t \ud s \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)(\zeta) \right|^2 \\
 	&= C |\xi|^{2r} \int_0^t \ud s \int_{\R^d} \ud y \: g(y) \left[\left(\Sigma^k_x(s,\cdot) Y(t-s,\cdot)\right)*\left(\widetilde{\Sigma^k_x(s,\cdot) Y(t-s,\cdot)}\right)\right](y),
 	\end{align*}
-	where $g = \mathcal{F}^{-1} \left(\mu(\cdot) |\cdot|^{2r} \right)$. Thus we see that 
+	where again $g = \mathcal{F}^{-1} \left(\mu(\cdot) |\cdot|^{2r} \right)$. Thus we see that 
 	\begin{align*}
 	\Norm{Q^k_4}_{p/2} &\le C |\xi|^{2r} \int_0^t \ud s \: \sup_{y \in \R^d} \Norm{\Sigma^k_x(s,y)}_{p}^2 \int_{\R^d} \ud y \: g(y) \left[\left( Y(t-s,\cdot)\right)*\left(\widetilde{ Y(t-s,\cdot)}\right)\right](y) \\
 	&= C|\xi|^{2r} \sup_{(s,y) \in [0,T] \times \R^d} \Norm{\Sigma^k_x(s,y)}_{p}^2 \int_0^t \ud s \: \int_{\R^d} \mu(\ud \zeta) |\zeta|^{2r} \left| \mathcal{F}\left( Y(t-s,\cdot)\right)(\zeta)\right|^2 \\
@@ -1233,15 +1249,122 @@ We now state a lemma which will be needed in the proof of the next proposition.
 	&\le C|\xi|^{2r} \left[\int_{\R^d} \mu(\ud \zeta) \frac{|\zeta|^{2r}}{\left(1+ |\zeta|^{\alpha}\right)^{2}} \right] \left[\int_0^t \ud s \:   (t-s)^{2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha}}\right] \left[c(\sigma) + L(\sigma)\sup_{(s,y) \in [0,T] \times \R^d} \Norm{u(s,y)}_{p}\right]^2 \\
 	& \qquad  + C \left[\int_{\R^{d}}  \frac{ \mu(\ud \zeta) }{\left(1+ |\zeta|^\alpha\right)^2 } \right]L^2(\sigma) t^{2(\beta + \gamma -1)-\beta \lambda / \alpha}\int_0^t \ud s \:  \sup_{|z_1-z_2| = |\xi| }\Norm{u(s,z_1) - u(s, z_2)}_p^2,
 	\end{align*}
-	which requires us to assume that 
+	which follows from the assumption that 
 	\[
 	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} >0
 	\quad \text{and} \quad
-	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha} > -1
+	2(\beta + \gamma -1) - \frac{\beta \lambda}{\alpha} - \frac{2r\beta}{\alpha} > -1.
 	\]
 	
 \end{proof}
 
+\begin{proposition}{\cite[Proposition 4.10]{millet.sanz-sole:21:global}}
+	Suppose Assumption \ref{A:stronger} holds true. Then for each $T>0$, there exists a constant $C(T,\rho)>0$ such that for any $p \ge 2$ and $t_1, t_2 \in [0,T]$ and $x \in \R^d$,
+		\begin{equation}
+			\Norm{I(t_2,x) - I(t_1,x)}_{p}^2 \le \cdots 
+		\end{equation}
+\end{proposition}
+
+\begin{proof}
+For any $x \in \R^d$ and $0 \le t_1, < t_2 \le T$, we may write the time increment of $I$ as follows:
+	\begin{align*}
+		 I(t_2, x) - I(t_1,x) &\le \int_0^{t_1} \int_{\R^d} \left(Y(t_2 - s, x-y) - Y(t_1 - s, x-y) \right) \sigma(u(s,y)) W(\ud s, \ud y) \\
+		 & \qquad + \int_{t_1}^{t_2} \int_{\R^d} Y(t_2-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y) \\
+		 &=: I_1(t_1, t_2, x) + I_2(t_1, t_2, x).
+	\end{align*}
+We now will work towards finding an upper bound for the $p-th$ moments of $I_1$ and $I_2$. Starting with $I_2$, we have that by the Burkholder-Davis-Gundy inequality that 
+	\begin{align*}
+		\Norm{I_2(t_1, t_2, x)}_p^2 & \le 4p \Norm{ \int_{t_1}^{t_2} \ud s \int_{\R^{2d}} \ud y_1 \ud y_1 f(y_1-y_2) \prod_{k=1}^2 Y(t_2-s,x-y_i) \sigma(u(s,y_i)) }_{p/2} \\
+		&\le 4p \left(\sup_{(s,y) \in [0,T]\times \R^d}\Norm{\sigma(u(s,y))}_p^2\right) \int_{t_1}^{t_2} \ud s \int_{\R^{2d}} \ud y_1 \ud y_1 f(y_1-y_2) \prod_{k=1}^2 Y(t_2-s,x-y_i)\\
+		&\le 4p K_1 \left[c(\sigma) + L(\sigma) \Norm{u(s,y)}_p\right]^2 \int_{t_1}^{t_2} \ud s \: (t_2-s)^{2(\beta + \gamma - 1) + \beta\Lambda / \alpha} \\
+		&= C_{2} \left[c(\sigma) + L(\sigma) \Norm{u(s,y)}_p\right]^2 (t_2-t_1)^{2(\beta + \gamma) - 1+ \beta\Lambda / \alpha}
+	\end{align*}
+	where  we have applied Lemma \ref{L:YfYbdd} in the third inequality above and 
+		\[
+			C_2 = \frac{4p K_1}{2(\beta + \gamma) - 1+ \beta\Lambda / \alpha}.
+		\]
+		
+	\textcolor{blue}{The remainder of this proof will show an issue when considering the space-time fractional equation. It will also point out an issue with Millet's {\em et al} \cite{millet.sanz-sole:21:global} proof of Proposition 4.10}
+	
+	Now as for $I_1$, we will apply the similar transfer of increment trick as was done in Proposition \ref{P:ISpaceInc}. The BDG-inequality shows that 
+	\begin{align*}
+		\Norm{I_1}_p^2 &\le 4p \bigg\Vert
+		\int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2\left[ Y(t_2 - s, x - y_1) - Y(t_1 - s, x- y_1) \right]  \sigma(u(s,y_1)) \\ 
+		& \qquad \times f(y_1 - y_2) \left[ Y(t_2 - s, x - y_2) - Y(t_1 - s, x- y_2) \right] \sigma(u(s,y_2))
+	\bigg\Vert_{p/2} \\
+	&= 4p \bigg\Vert
+	\int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(t_2 - s, x - y_1) Y(t_2 - s, x- y_2)  \sigma(u(s,y_1))  f(y_1 - y_2)\sigma(u(s,y_2)) \\
+	& \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(t_2 - s, x - y_1) Y(t_1 - s, x- y_2)  \sigma(u(s,y_1))  f(y_1 - y_2)\sigma(u(s,y_2)) \\
+	& \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(t_1 - s, x - y_1) Y(t_2 - s, x- y_2)  \sigma(u(s,y_1))  f(y_1 - y_2)\sigma(u(s,y_2)) \\
+	& \qquad \quad + \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(t_1 - s, x - y_1) Y(t_1 - s, x- y_2)  \sigma(u(s,y_1))  f(y_1 - y_2)\sigma(u(s,y_2))
+	\bigg\Vert_{p/2}.
+	\end{align*}
+We now introduce the following notation:
+	\[
+		h:= t_2-t_1 \quad \text{and} \quad \Sigma_{t,x}(s,y) := \sigma(u(t-s, x-y)).
+	\]
+With this and a change of variables, we may rewrite the above as the following:
+	\begin{align*}
+		\Norm{I_1}_p^2 &\le 4p \bigg\Vert
+		\int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(h + s, y_1) Y(h + s, y_2) f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)\\
+		& \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(h + s, y_1) Y( s, y_2) f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2) \\
+		& \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(s, y_1) Y( h+ s, y_2) f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)\\
+		& \qquad \quad + \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 Y(s, y_1) Y( s, y_2) f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)
+		\bigg\Vert_{p/2}.
+	\end{align*}
+Now by applying the scaling property of $Y$,
+	\[
+		Y(t,x) = t^{\beta + \gamma - 1 - d\beta / \alpha}Y(1,t^{-\beta / \alpha}x),
+	\]
+we see that
+	 \begin{align*}
+		 \Norm{I_1}_p^2 &\le 4p \bigg\Vert
+		 \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (h+s)^{2(\beta - \gamma - 1) - 2d\beta / \alpha} Y\left(1, \frac{y_1}{(h + s)^{\beta/\alpha}}\right) Y\left(1, \frac{y_2}{(h + s)^{\beta/\alpha}}\right) \\
+		 & \hspace{10em} \times f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)\\
+		 & \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (s(h+s))^{\beta - \gamma - 1 - d\beta / \alpha} Y\left(1, \frac{y_1}{(h + s)^{\beta/\alpha}}\right) Y\left(1, \frac{y_2}{ s^{\beta/\alpha}}\right) \\
+		 & \hspace{10em} \times f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)\\
+		 & \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (s(h+s))^{\beta - \gamma - 1 - d\beta /\alpha} Y\left(1, \frac{y_1}{ s^{\beta/\alpha}}\right) Y\left(1, \frac{y_2}{ (h+2)^{\beta/\alpha}}\right) \\
+		 & \hspace{10em} \times f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)\\
+		 & \qquad \quad + \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: s^{2(\beta - \gamma - 1) -2d\beta / \alpha} Y\left(1, \frac{y_1}{s^{\beta/\alpha}}\right) Y\left(1, \frac{y_2}{ s^{\beta/\alpha}}\right) \\
+		 & \hspace{10em} \times f(y_1 - y_2) \Sigma_{t_1, x}(s,y_1)  \Sigma_{t_1, x}(s,y_2)
+		 \bigg\Vert_{p/2}.
+	 \end{align*}
+We now apply another change of variables. For example, for the first integral above, we apply the following
+	\[
+		(y_1', y_2') = \left( \frac{y_1}{(h+s)^{\beta / \alpha}}, \frac{y_1}{(h+s)^{\beta / \alpha}}\right),
+	\]
+and for the remaining integrals we apply a similar change of variables. This yields the following:
+	\begin{align*}
+	\Norm{I_1}_p^2 &\le 4p \bigg\Vert
+	\int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (h+s)^{2(\beta - \gamma - 1)} Y\left(1, y_1 \right) Y\left(1, y_2 \right) \\
+	& \hspace{10em} \times f\left((h+s)^{\beta / \alpha}(y_1 - y_2)\right) \Sigma_{t_1, x}\left(s,(h+s)^{\beta / \alpha} y_1\right)  \Sigma_{t_1, x}\left(s, (h+s)^{\beta / \alpha} y_2\right)\\
+	& \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (s(h+s))^{\beta - \gamma - 1} Y\left(1, y_1 \right) Y\left(1, y_2 \right) \\
+	& \hspace{10em} \times f\left((h+s)^{\beta / \alpha}y_1 - s^{\beta/\alpha} y_2)\right) \Sigma_{t_1, x}\left(s,(h+s)^{\beta / \alpha} y_1\right)  \Sigma_{t_1, x}\left(s, s^{\beta / \alpha} y_2\right)\\
+	& \qquad \quad - \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (s(h+s))^{\beta - \gamma - 1} Y\left(1, y_1 \right) Y\left(1, y_2 \right) \\
+	& \hspace{10em} \times f\left(s^{\beta / \alpha}y_1 - (h+s)^{\beta/\alpha} y_2)\right) \Sigma_{t_1, x}\left(s, s^{\beta / \alpha} y_1\right)  \Sigma_{t_1, x}\left(s, (h+s)^{\beta / \alpha} y_2\right)\\
+	& \qquad \quad + \int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: s^{2(\beta - \gamma - 1)} Y\left(1, y_1 \right) Y\left(1, y_2 \right) \\
+	& \hspace{10em} \times f\left(s^{\beta / \alpha}(y_1 - y_2)\right) \Sigma_{t_1, x}\left(s, s^{\beta / \alpha} y_1\right)  \Sigma_{t_1, x}\left(s, s^{\beta / \alpha} y_2\right)
+	\bigg\Vert_{p/2}.
+	\end{align*}
+	
+\textcolor{blue}{This is where the problem begins for the space-time fractional equation.}
+If we continue as in the proof of \cite[Proposition 4.10]{millet.sanz-sole:21:global} then we would add and subtract some terms as we done to get $R_1$ through $R_4$ in the proof of Proposition 4.10 {\em ibid}. Doing this, the first term above would become the following:
+	\begin{align*}
+		&\int_0^{t_1} \ud s \int_{\R^{2d}} \ud y_1 \ud y_2 \: (h+s)^{2(\beta - \gamma - 1)} Y\left(1, y_1 \right) Y\left(1, y_2 \right) f\left((h+s)^{\beta / \alpha}(y_1 - y_2)\right) \\
+		& \qquad \times \left[ \Sigma_{t_1, x}\left(s,(h+s)^{\beta / \alpha} y_1\right) - \Sigma_{t_1, x}\left(s, s^{\beta / \alpha} y_1\right)\right] \left[\Sigma_{t_1, x}\left(s, (h+s)^{\beta / \alpha} y_2\right)- \Sigma_{t_1, x}\left(s, s^{\beta / \alpha} y_2\right)\right].
+	\end{align*}
+The reason that this is an issue is that in order to following the proof of \cite[Proposition 4.10]{millet.sanz-sole:21:global}, we would need that for $i \in \{1,2\}$,
+	\[
+		(h+s)^{\beta/\alpha}y_i - 	s^{\beta/\alpha}y_i = 	h^{\beta/\alpha}y_i,
+	\]
+which is the case when $\alpha = \beta = 2$.
+
+\textcolor{blue}{Problem with proof of  \cite[Proposition 4.10]{millet.sanz-sole:21:global}} However, this is also where there is a problem in \cite{millet.sanz-sole:21:global}. If you look at Equation (4.63) {\em ibid} then you will notice that there is the $|h| = |\bar{t} - t|$ term on the right hand side. It is claimed that this Equation (4.63) {\em ibid} follows from Equation (4.62) {\em ibid}. But if that were the case, then there is a missing $|y||z|$ term inside the integral in Equation (4.63) {\em ibid}. This is because 
+	\[
+		|(h+s)y - 	sy| = 	|h||y| \quad \text{and} \quad 	|(h+s)z - 	sz| = 	|h||z|,
+	\]
+and so $r$ in Equation (4.62) would become $|h||y|$ and $|h||z|$ respectively. In the proof of  \cite[Theorem]{hu.huang.ea:14:on}, this same issue arises but they argue that one can replace $y$ and $z$ with $y / |y|$ and $z / |z|$ but this argument relies on the fact that when $d=3$. I do not believe that this argument holds in general. In either case, whether $d=2$ or $d=3$ in \cite{millet.sanz-sole:21:global}, this issue is not addressed.
+\end{proof}
 	\addcontentsline{toc}{section}{References}
 	\printbibliography[title={References}]
 %\begin{thebibliography}{999}
