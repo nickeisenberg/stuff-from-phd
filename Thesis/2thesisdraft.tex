@@ -186,7 +186,7 @@ abbreviate=true]{biblatex}
 \TitlePage 
 
 \begin{abstract} 
-This thesis will consist of two main projects, Chapters \ref{Ch:ISHWEmom} and \ref{Ch:InvMeas}, and a smaller project in Chapter \ref{Ch:SupLin}. We will be studying a general space-time fraction stochastic partial differential equation in Chapters \ref{Ch:ISHWEmom} and \ref{Ch:SupLin} and in Chapter \ref{Ch:InvMeas} we will be studying the stochastic heat equation. The aim of this thesis is to prove properties including solvability, deriving exact moment asymptotics and proving the existence of an invariant measure.
+This thesis will consist of two main projects, Chapters \ref{Ch:ISHWEmom} and \ref{Ch:InvMeas}, and a smaller project in Chapter \ref{Ch:SupLin}. We will be studying a general space-time fractional stochastic partial differential equation in Chapters \ref{Ch:ISHWEmom} and \ref{Ch:SupLin} and the stochastic heat equation in Chapter \ref{Ch:InvMeas}, which is a special case of the just mentioned space-time fractional equation. The aim of this thesis is to handle the following: solvability of the equations, deriving exact moment asymptotics and proving the existence of an invariant measure.
 	
 In Chapter \ref{Ch:ISHWEmom}, we study a class of space-time fractional stochastic partial differential equations subject to some time-independent multiplicative Gaussian noise.
 We derive sharp conditions, under which a unique global $L^p(\Omega)$-solution exists for all
@@ -252,7 +252,7 @@ Lastly, I would like to thank both of my parents for always supporting me and be
 \vspace{-1cm} %Use when chapter name is long -reduce distance between title and chapter text
 The field of {\em stochastic partial differential equations} (SPDEs) is a relatively new field that has proven to be extremely useful. In the 1960's a Japanese mathematician named Kyosi Ito pioneered what would later be referred to as {\em Ito calculus}. This new and innovative material would then inspire other mathematicians, such as J. Walsh and R. Dalang, to set the framework for stochastic partial differential equations. Today, SPDEs is as active as ever and the field has even seen a Field's medal winner, Martin Hairer \cite{hairer:13:solving}, and several Nobel Memorial Prize in Economics winners, Myron Scholes and Robert Merton \footnote{Fischer Black would have also been Awarded the Nobel Memorial Prize in Economics but he passed away prior to the presentation of the award.} \cite{black.scholes:73:options}.
 
-Let's consider one application, which will lead us to the first project presented in Chapter \ref{Ch:ISHWEmom}. Consider the situation where an infinitesimally thin piece of wire is initially heated. Also suppose that there is no external source of heat. Can we model the temperature of the wire as a function of position and time? In other words, does there exist a function, $u(t,x)$, such that $u(t,x)$ gives the temperature of the wire at a position $x$ and at a time $t$? The answer is yes, and this scenario can be modeled by the well known heat equation: 
+Let's consider one application that will lead us to the first project presented in Chapter \ref{Ch:ISHWEmom}. Consider the situation where an infinitesimally thin piece of wire is initially heated. Also suppose that there is no external source of heat. Can we model the temperature of the wire as a function of position and time? In other words, does there exist a function, $u(t,x)$, such that $u(t,x)$ gives the temperature of the wire at a position $x$ and at a time $t$? The answer is yes, and this scenario can be modeled by the well known heat equation: 
 \[
 \begin{cases}
 \dfrac{\partial u}{\partial t}(t,x) = \dfrac{\partial^2 u}{\partial x^2}(t,x) & t \ge 0, \; x \in \R, \\
@@ -370,7 +370,7 @@ where $\partial^b_t $ is the {\em Caputo} derivative, $(-\Delta)^{a/2}$ is the {
 	\end{equation}
 where, because of the choice of noise, the stochastic integral above is the {\em Skorohod} integral \cite{nualart.nualart:18:introduction} and here $G = G_{a, b, r, \nu, d}$ is the fundamental solution which is given through the Fox H-function (see Figures \ref{Fig:FoxSurface} and \ref{Fig:FoxCross} and \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}). One can see that when $a=2$, $b=1$ and $r=0$ then \eqref{E:IntroISHWE} reduces to the stochastic heat equation and when $a=b=2$ and $r=0$ then it reduces to the stochastic wave equation.
 
-	   \begin{figure}[t]
+	\begin{figure}[t]
 	\centering
 	\begin{subfigure}[b]{0.32\textwidth}
 		\centering
@@ -405,6 +405,7 @@ where, because of the choice of noise, the stochastic integral above is the {\em
 	\label{Fig:FoxCross}
 \end{figure}
 
+
 An important key feature of the solution, which is due to the choice of noise and simplified initial conditions, is the following Wiener Chaos expansion of the solution:
 \begin{equation} \label{E:IntroISHWEwcexp}
 u(t,x) = 1 + \sum_{k=1}^\infty \theta^{k/2}I_k(f_k(\cdot,x,t)),
@@ -431,7 +432,7 @@ p \mapsto \E\left(|u(t,x)|^p\right).
 \]
 The calculation of these limits is a very long and lengthly process so we hold any further discussion until Chapter \ref{Ch:ISHWEmom}.
 
-However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if for any $p \ge 2$, $x \in \R^d$ and $t>0$, the $p^{th}$ moment, $\Norm{u(t,x)}_p$, exists. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for any $p \ge 2$ and $x \in \R^d$, the $p^{th}$ moment exists for $t<T_{1,p}$ and blows up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition, for any $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
+However, as for the solvability of \eqref{E:IntroISHWE}, we prove that the solution may uniquely exist either {\em globally} or {\em locally}. We say a global solution exists if for all $p \ge 2$, $x \in \R^d$ and $t>0$, the $p^{th}$ moment, $\Norm{u(t,x)}_p$, exists. On the other hand, we say that a local solution exists when there exists two times $T_{1,p} < T_{2,p}$ such that for all $p \ge 2$ and $x \in \R^d$, the $p^{th}$ moment exists for $t<T_{1,p}$ and blows up for $t > T_{2,p}$. We prove that $T_{1,2} = T_{2,2}$ and in addition, for all $p \ge 2$, we calculate $T_{1,p}$ and give precise conditions on when a solution will be global or local. It is worth mentioning that the calculation of the cutoff time, $T_{1,p}$, is only possible due to our ability to express the solution in terms of its Wiener Chaos expansion as in \eqref{E:IntroISHWEwcexp}.
 
 \subsection{A brief overview of Chapter \ref{Ch:SupLin}}
 In this chapter we will study the same space-time fractional SPDE as in the previous chapter, however, in this case we will assume the noise is space-time white and that the diffusion term exhibits the following super-linear growth property as $|x|,\: |z| \to \infty$:
@@ -445,13 +446,13 @@ where $\sigma_2, \delta >0$ and $\ln_+(z) := \ln(z \vee e)$ for $z >0$. Moreover
 where $J_0$ is the solution to the homogeneous equation (see \eqref{E:IntroGlobalMild} below). With these slight changes, the equation takes the following form:
 \begin{equation} \label{E:IntroISHWEGlobal}
 \begin{cases}
-\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sigma( u(t,x))\: \dot W(x) \right] & \text{$x\in \R^d$, $t>0$}, \\
+\left(\partial^b_t + \frac{\nu}{2}(-\Delta)^{a/2}\right)\: u(t,x) = I^r_t \left[\sigma( u(t,x))\: \dot W(t,x) \right] & \text{$x\in \R^d$, $t>0$}, \\
 u(0,\cdot) = u_0(\cdot)                                                                                                           & b \in (0,1],               \\
 u(0,\cdot) = u_0(\cdot), \quad \partial_t u(0,\cdot) = v_0(\cdot)                                                                            & b \in (1,2).
 \end{cases}
 \end{equation}
 
-As before, this is purely notational, and Equation \eqref{E:IntroISHWEGlobal} is legitimately as the following stochastic integral equation:
+As before, this is purely notational, and Equation \eqref{E:IntroISHWEGlobal} is legitimately viewed as the following stochastic integral equation:
 	\begin{equation}\label{E:IntroGlobalMild}
 u(t,x) = J_0(t,x) + I(t,x),
 	\end{equation}
@@ -467,13 +468,14 @@ and
 I(t,x) = \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
 \]
 
-The goal of this chapter is to prove the existence and uniqueness of a global solution to \eqref{E:IntroISHWEGlobal}. The work is highly motivated by the recent work by Millet and Sanz-Sol\'e \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, the only other work that we are aware of that is dedicated to proving some non-existence results of\eqref{E:IntroISHWEGlobal} is \cite{asogwa.mijena.ea:20:blow-up}. So, to the best of our knowledge, this is the first work on proving the global existence of a solution to \eqref{E:IntroISHWEGlobal} with a super-linear diffusion term (see Theorem \ref{T:MainSupLin} below). However, as we will see, the calculations given below are essentially identical to those performed in \cite{millet.sanz-sole:21:global} which is the cause for our motivation. \bigskip 
+The goal of this chapter is to prove the existence and uniqueness of a global solution to \eqref{E:IntroISHWEGlobal}  (see Theorem \ref{T:MainSupLin} below). The work is highly motivated by the recent work by Millet and Sanz-Sol\'e \cite{millet.sanz-sole:21:global}. It is a well studied phenomena that either a super-linear drift or diffusion term may cause blow-up of the solution. As for the stochastic heat equation, we direct the reader to \cite{foondun.nualart:21:osgood, mueller.sowers:93:blowup, dalang.khoshnevisan.ea:19:global, bonder.groisman:09:global}. On the other hand, the only other work that we are aware of that is dedicated to proving some non-existence results of \eqref{E:IntroISHWEGlobal} is \cite{asogwa.mijena.ea:20:blow-up}. So, to the best of our knowledge, this is the first work on proving the global existence of a solution to \eqref{E:IntroISHWEGlobal} with a super-linear diffusion term. However, as we will see, the calculations given below are essentially identical to those performed in \cite{millet.sanz-sole:21:global}, which is the cause for our motivation.
 
+We will end this section with some comments on trying to prove Theorem \ref{T:MainSupLin} below but for a noise that is white in time and colored in space. This problem was answered in \cite[Theorem 4.13]{millet.sanz-sole:21:global} for the stochastic wave equation where global existence and uniqueness is proven. The challenge with applying their techniques to the space-time fractional equation, as in \eqref{E:IntroISHWEGlobal}, comes from the increased complexity of the fundamental solutions. In particular, proving corresponding upper bounds for $R_1, \cdots, R_4$ from the proof of Theorem 4.10 {\em ibid} becomes less clear and will be saved for a future project. 
 
 \subsection{A brief overview of Chapter \ref{Ch:InvMeas}}
-In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior of the dynamical system and no ergodic behavior can exists without an invariant measure. Hence proving the existence of such a measure is a crucial starting point. 
+In the final chapter, we will turn our focus towards proving the existence of an invariant measure for the stochastic heat equation \eqref{E:introSHE} on the whole space $\R^d$. Equations such as the SHE can be used by researchers to describe dynamical systems. Moreover, there often is a strong need to know the ergodic behavior of the dynamical system and no ergodic behavior can exist without an invariant measure. Hence proving the existence of such a measure is a crucial starting point. 
 
-Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ (see Section \ref{SS:Weight}). We will see below in Theorem \ref{T:Lrho}, that the solution starting from $\mu$, which we denote as $u(t,\cdot; \mu)$, is almost surely in this weighted space for a broad range of initial data, which includes all bounded functions, some unbounded functions such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ and even measures such as the Dirac delta measure.
+Since we work on the whole space, one needs to introduce a positive, bounded and continuous weight $\rho \in L^1(\R^d)$ and the corresponding $\rho$-weighted space of square integrable functions $L^2_{\rho}(\R^d)$ (see Section \ref{SS:Weight}). We will see below in Theorem \ref{T:Lrho}, that the solution starting from the initial condition $\mu$, which we denote as $u(t,\cdot; \mu)$, is almost surely in this weighted space for a broad range of initial conditions, which includes all bounded functions, some unbounded functions such as $|x|^{-\alpha}$ with $0 < \alpha < d/2$ and even some measures such as the Dirac delta measure.
 
 A crucial property of the system that must be exhibited for an invariant measure to exist is the {\em Markov property}. Essentially this means that one must be able to stop and restart their system whenever they choose and that the system then must act the same as it would if it were allowed to run uninterrupted. It makes sense that the SHE would satisfy this property since heat always moves from hot to cold. Thus no matter when we restart our system, the transfer of heat will just continue as if nothing happened. 
 
@@ -566,7 +568,7 @@ We define the probability laws of the solution as
 	\[
 	\mathscr{L}(u(t,\cdot;\zeta))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \zeta)(\omega) \in A \right], \quad A\in \mathscr{B}(L^2_{\rho}(\R^d)),
 	\]
-where $\mathscr{B}(L^2_{\rho}(\R^d))$ denotes the Borel subsets of $L^2_{\rho}(\R^d)$. Because of the Markov property of the solution, the laws form a family of {\em Markovian transition functions}, $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$, for $\zeta \in L^2_{\rho}(\R^d)$. Moreover, the transition functions form a {\em transition semi-group} defined as follows:
+where $\mathscr{B}(L^2_{\rho}(\R^d))$ denotes the Borel subsets of $L^2_{\rho}(\R^d)$ and $\zeta$ is the initial condition. Because of the Markov property of the solution, the laws form a family of {\em Markovian transition functions}, $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$, for $\zeta \in L^2_{\rho}(\R^d)$. Moreover, the transition functions form a {\em transition semi-group} defined as follows:
 	\[
 		P_t\varphi(x) = \int_{L^2_{\rho}(\R^d)} P_t(x, \ud y) \varphi(y), \quad \varphi \in \mathcal{B}(L^2_{\rho}(\R^d)),
 	\]
@@ -597,12 +599,12 @@ Moreover, when one verifies the above steps, then by applying the Krylov–Bogol
 	\end{equation}
 where $\{T_n\}_{n\ge 1}$ is an appropriately chosen sequence with $T_n\uparrow \infty$ (see Theorem \ref{T:Main} below).
 
-Note that we already discussed that the first item above is satisfied in our setting. On the other hand, the second item will require some effort to show. A sufficient condition that is more easily verified which implies this boundedness condition is the following:
+Note that we already discussed that item 1 above is satisfied in our setting. On the other hand, the second item will require some effort to show. A sufficient condition that is more easily verified which implies this boundedness condition is the following:
 	\begin{align} \label{E:IntroBddMnt}
 	\sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
 	<\infty.
 	\end{align}
-We remind the reader that for the SHE, moments usually grow exponentially in time (e.g. see \cite[Theorem 1.3]{chen.kim:19:nonlinear}), and so for the above finiteness to occur, we will need additional assumptions (e.g. see Equation \eqref{E:U0finite} below). 
+We remind the reader that for the SHE, moments usually grow exponentially in time (e.g. see \cite[Theorem 1.3]{chen.kim:19:nonlinear}), and so for the above finiteness to occur, we will need additional assumptions (e.g. see \eqref{E:U0finite} below). 
 
 In fact, in order for Tessitore and Zabczyk to provide a specific scenario where an invariant measure exists (e.g. \cite[Theorem 3.3]{tessitore.zabczyk:98:invariant}), they had to significantly strengthen their assumptions and require the following:
  \begin{equation} \label{E:IntroTZspec}
