@@ -239,7 +239,7 @@ In this paper we prove the existence of a global solution to the interpolated st
 	\label{C:SigSupLin}
 	|\sigma(x)-\sigma(z)| \le \sigma_2|x-z|[\ln_+(|x-z|)]^{\delta},
 	\end{equation}
-	where $\sigma_2 , \delta >0$ and $\ln_+(z) = \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
+	where $\sigma_2 , \delta >0$ and $\ln_+(z) := \ln(z \vee e)$ for $z >0$. Further, this implies that as $|x| \to \infty$,
 	\begin{equation}
 	|\sigma(x)| \le \sigma_1 + \sigma_2|x|[\ln_+(|x|)]^{\delta},
 	\end{equation}
@@ -261,15 +261,15 @@ u(t,x) = J_0(t,x) + I(t,x),
 I(t,x) = \int_0^t \int_{\R^d} Y(t-s,x-y)\sigma(u(s,y)) W(\ud s, \ud y).
 	\]
 
-The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86:introduction}) and the fundamental solution consists of a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through the {\em Fox-H function}, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
+The stochastic integral above is a {\em Walsh integral} (e.g. see \cite{walsh:86:introduction}) and the fundamental solution consists of a triple, $\{Z, Z^*, Y\}$, and each member of the triple is defined through {\em Fox-H functions}, however, one can more compactly define them through their Fourier transforms \cite[Theorem 4.1]{chen.hu.ea:19:nonlinear}: 
 	\begin{align*}
 		\mathcal{F}Z(t,\cdot)(\xi) &= t^{\lceil \beta \rceil -1} E_{\beta, \lceil \beta \rceil}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
 		\mathcal{F}Z^*(t,\cdot)(\xi) &= E_{\beta, 1}\left(-2^{-1} \nu t^\beta |\xi|^{\alpha}\right), \\
 		\mathcal{F}Y(t,\cdot)(\xi) &= t^{\beta + \gamma-1}E_{\beta. \beta +\gamma}\left(-2^{-1}\nu t^\beta |\xi|^\alpha\right),
 	\end{align*}
-where $\mathcal{F}f(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$ denotes the Fourier transform, $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
+where we use $\mathcal{F}f(\xi) = \int_{\R^d} \exp(-i x \cdot \xi) f(x) \ud x$ to denote the Fourier transform, $E_{a, b}(z)$ denotes the {\em two-parameter Mittag-Leffler function} \cite{podlubny:99:fractional}:
 	\[
-		E_{a,b}(z) := \sum_{k=0}^{\infty} \frac{z^k}{\Gamma(ak+b)}, \quad a>0, \: b>0,
+		E_{a,b}(z) := \sum_{k=0}^{\infty} \frac{z^k}{\Gamma(ak+b)}, \quad a>0, \: b>0, \: z \in \mathbb{C},
 	\]
 and $\Gamma(\cdot)$ is the standard {\em Gamma function}. 
 
@@ -294,7 +294,7 @@ Here is the main result of this chapter. The proof will be postponed until Secti
 		\[
 			\sup_{(t, x) \in [0,T] \times \R^d} |J_0(t,x)| < \infty,
 		\]
-	 which is true if $u_0$ and $v_0$ are bounded. Then for any $R>0$ and $(t,x) \in [0,T] \times \bar{B}_R(0)$, where $\bar{B}_R(0)$ denotes the closed ball centered around the origin, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times \bar{B}_R(0))$. This solution is unique and satisfies 
+	 which is true if $u_0$ and $v_0$ are bounded. Then for any $R>0$ and $(t,x) \in [0,T] \times \bar{B}_R(0)$, where $\bar{B}_R(0)$ denotes the closed $d$-dimensional ball centered around the origin, there exists a random field solution to \eqref{E:SupLinSPDE} denoted as $(u(t,x): (t,x) \in [0,T] \times \bar{B}_R(0))$. This solution is unique and satisfies 
 	\begin{equation}
 	\sup_{t\in[0,T],\; |x| \le R} |u(t,x)| < \infty, \quad \text{almost surely.}
 	\end{equation}
@@ -374,7 +374,7 @@ We now state a lemma proven in \cite{chen.hu.ea:19:nonlinear} that calculates th
 		\[
 		C_{\#} := \frac{2}{\Gamma(d/2)(4 \pi )^{d/2}} \int_0^\infty u^{d-1}E^2_{\beta,\beta + \gamma}(-u^\alpha) \ud u.
 		\]
-		Moreover, when $\beta \in (1,2)$ then 
+		Moreover, when $\beta \in (1,2)$,
 		\[
 		\int_{\R^d} Z^*(t,x) \ud x= 1. 
 		\]
@@ -420,7 +420,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		Moreover, for all $T>0$,
 		\begin{equation}
 		\label{E:Pnormtbdd}
-		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p
+		\sup_{(t,x) \in [0,T] \times \R^d} \mathbb{E}(|u(t,x)|^p) \le \exp\left( a p t  \right) \left[ 2 \mathcal{T}_0 + \frac{ c(\sigma) }{L(\sigma)} \right]^p.
 		\end{equation}
 	\end{proposition}
 	\begin{proof}
@@ -448,8 +448,8 @@ In this section, we will prove some moment bounds and a continuity result for th
 		Now using \eqref{E:SUPidentities}, we see that
 				\begin{align}
 		N_{a,p}(J_0) &\le \begin{cases} 
-		\sup\limits_{t > 0, \: x\in\R}  \Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
-		\\ \sup\limits_{t > 0, \: x\in\R} \left(  t\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
+		\sup\limits_{t > 0, \: x\in\R^d}  \Norm{u_0}_\infty e^{-at} & \beta \in (0,1]
+		\\ \sup\limits_{t > 0, \: x\in\R^d} \left(  t\Norm{v_0}_\infty + \Norm{u_0}_\infty \right) e^{-at} & \beta \in (1,2)
 		\end{cases} \nonumber \\
 		&= \begin{cases} 
 	 \Norm{u_0}_\infty  & \beta \in (0,1]
@@ -484,7 +484,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\]
 		By applying Lemma \ref{L:1and2normYZ}, we can calculate the second integral as 
 		\[
-		\int_0^t \ud s \int_{\R} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\rho - 1}.
+		\int_0^t \ud s \int_{\R^d} \ud y \; e^{2as} Y^2(t-s,x-y) = C_{\#}\int_0^t \ud s \; e^{2as}(t-s)^{\rho - 1}.
 		\]
 		Putting this together gives us that 
 		\begin{align*}
@@ -500,7 +500,7 @@ In this section, we will prove some moment bounds and a continuity result for th
 		\Norm{I(t,x)}_p^2e^{-2at}  &\le \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) C_{\#} \int_0^\infty \ud u \; e^{-2au} u^{\rho -1} \\
 		& = \frac{8pc^2(\sigma)C_{\#} }{\rho} \; t^{\rho} e^{-2at} + 8pL^2(\sigma)N^2_{a,p}(u) \frac{C_{\#}\Gamma\left(\rho \right)}{ (2a)^{\rho}},
 		\end{align*}
-		where the last line is true if Dalang's condition \eqref{E:DalangEquiv2} holds. If we now apply \eqref{E:SUPidentities} and also recall that $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$, then we see that 
+		where the last line is true if Dalang's condition \eqref{E:DalangEquiv2} holds. If we now apply \eqref{E:SUPidentities} and also recall the subadditivity of the square root, namely $\sqrt{a+b} \le \sqrt{a} + \sqrt{b}$ for all $a,b \ge 0$, then we see that 
 		\begin{align}
 		N_{a,p}(I) &\le  c(\sigma)\sqrt{\frac{8pC_{\#}  }{\rho}} \left(\frac{\rho}{2ea}\right)^{\rho/2} +  L(\sigma)N_{a,p}(u) \sqrt{\frac{8pC_{\#} \Gamma\left( \rho \right)}{(2a)^\rho} }. \label{E:SoleMil3.9}
 		\end{align}
@@ -563,7 +563,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	
 	\begin{proposition}
 		\label{P:NormInc}
-		Suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Then for all $x,z \in \R$, $a>0$, $p\ge 2$ and for all $T>0$ with $t\in [0,T]$, the stochastic integral, $I(t,x)$, satisfies the following:
+		Suppose that $0< \theta < (\Theta -d) \wedge 2$ and $\rho = \rho(d) > 0$. Then for all $x,z \in \R^d$, $a>0$, $p\ge 2$ and for all $T>0$ with $t\in [0,T]$, the stochastic integral, $I(t,x)$, satisfies the following:
 		\begin{equation}
 		\label{E:NormInc_N(u)}
 		\frac{\Norm{I(t,x)-I(r,z)}_p}{\left(|t-r|^{q} + |x-z|^{\theta}\right)^{1/2}} \le 	C(p,\theta, T)\left[ \mathcal{M}_1 + \mathcal{M}_2 e^{aT} N_{a,p}(u)\right] ,
@@ -643,7 +643,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\]
 		Thus, for any $(t,x) \in [0,T] \times \bar{B}_R(0)$,
 		\[
-		|u(t,x)|^p \le 2^{p-1}\left( \widehat{C}_T^p  + |I(t_0,x_0)|^p \right)
+		|u(t,x)|^p \le 2^{p-1}\left( \widehat{C}_T^p  + |I(t_0,x_0)|^p \right),
 		\] 
 		which in return implies that 
 		\[
@@ -674,7 +674,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 	\begin{proof}
 		We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where for any $N >0$,
 		\[
-			\sigma_N(x) = \sigma\left( \left(1 \wedge \frac{N}{|x|}\right) x \right)
+			\sigma_N(x) = \sigma\left( \left(1 \wedge \frac{N}{|x|}\right) x \right).
 		\]
 		Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
 		\[
@@ -684,7 +684,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 			\[
 				\sup_{|x| \le N} |\sigma(x)| \le \sigma_1 < \infty.
 			\]
-		Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SupLinSPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
+		Hence we can apply Theorem \ref{T:SolveabilityGenLip} and see that there exists an unique solution of the truncated version of \eqref{E:SupLinSPDE}, which we denote by $u_N := \left\{ u_N(t,x) : (t,x) \in [0,T] \times \R^d \right\}$. In addition, Proposition \ref{P:Holder} implies that the solution has a version, still denoted by $u_N$, which is $\eta_1$-H\"older continuous in time and $\eta_2$-H\"older continuous in space  with $0<\eta_1 < q/2$ and $0<\eta_2 < \theta/2$.
 		
 		We will now apply Proposition \ref{P:Holder} to find an upper bound on the $p$-norm of $u_N$. For this, consider 
 		\[
@@ -693,7 +693,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		Then Proposition \ref{P:Holder} implies that 
 		\begin{equation}
 		\label{E:u_NMomBdd}
-		\mathbb{E}\left(\sup_{t\in[0,T],\; x\in[-R,R]} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right],
+		\mathbb{E}\left(\sup_{t\in[0,T],\; |x| \le  R} |u_N(t,x)|^p\right) \le 2^{p-1} + C(p, \theta, T,R)\left[\mathcal{M}_1^p + \mathcal{M}_2^p(N) \exp(apT)\left(2+ \frac{\sigma_1}{L(\sigma_N)}\right)\right],
 		\end{equation}
 		where we recall that 
 		\begin{equation}
@@ -706,27 +706,27 @@ We now state and prove a proposition that will be used to prove the H\"older con
 		\end{equation}
 		The uniqueness of the solution and the local property of the stochastic integral imply that on $\{t < \tau_N\}$, $u_N(t,x) = u_{N+k}(t,x)$ for any $k \in \mathbb{N}$. Hence, $(\tau_N)_{N \ge 2}$ is increasing and bounded above by $T$. 
 		
-		We now momentarily assume that $\sup_N \tau_N = T$, which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
+		We now momentarily assume that $\sup_N \tau_N = T$, which would imply that $\{t < \tau_N \} \uparrow \Omega$. On each $\{ t < \tau_N \}$, define $(u(t,x) : (t,x) \in [0,T) \times \R^d)$ by $u(t,x) = u_N(t,x)$ and hence $u(t,x) = u_{N+k}(t,x)$ for any $k\in \mathbb{N}$. This implies that on $\{ t < \tau_N \}$ 
 		\[
-		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
+		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R^d} \ud y \; Y(t-s,x-y) \sigma_N(u(s,y)) W(\ud s, \ud y).
 		\]
 		However, on $\{ t < \tau_N \}$, we have that $\sigma_N(u_N(t,x)) = \sigma(u(t,x))$ and so $u$ satisfies
 		\[
-		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
+		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R^d} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad \{ t < \tau_N \}.
 		\]
 		Lastly, since $\{ t < \tau_N \} \uparrow \Omega$, we conclude that 
 		\begin{equation}
 		\label{E:SupLinMildSol}
-		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R.
+		u(t,x) = J_0(t,x) + \int_0^t \ud s \int_{\R^d} \ud y \; Y(t-s,x-y) \sigma(u(s,y)) W(\ud s, \ud y), \quad (t,x) \in [0,T) \times \R^d.
 		\end{equation}
 		See the proof of \cite[Theorem 3.5]{millet.sanz-sole:21:global} for a comment pertaining to the issue that the solution no longer exists in $L^2(\Omega)$.  
 		
-		We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality
+		We now focus on proving that $\sup_N \tau_N = T$, or equivalently that $ \mathbb{P}\left(\tau_N <T\right) \to 0$ as $N \to \infty$. To do this, note that by Chebychev's inequality that
 		\begin{align*}
-		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)| \ge N \right) \\
-		& \le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right).
+		\mathbb{P}\left( \tau_N < T \right) &\le \mathbb{P}\left(\sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)| \ge N \right) 
+		\le N^{-p}\mathbb{E}\left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right).
 		\end{align*}
-		An application of \eqref{E:u_NMomBdd} gives 
+		Then an application of \eqref{E:u_NMomBdd} gives 
 		\begin{align*}
 		N^{-p}\mathbb{E} & \left( \sup_{t\in[0,T],\; |x| \le R} |u_N(t,x)|^p \right) \\
 		& \le N^{-p}\left(  2^{p-1} + C(p, \theta, T,R) \left[ \mathcal{M}_1^p + \mathcal{M}_2(N)^p \exp\{apT\} \left(2 +  \frac{\sigma_1}{L(\sigma_N)}\right)^p\right]\right) \\
