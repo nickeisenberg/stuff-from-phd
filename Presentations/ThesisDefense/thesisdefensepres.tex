@@ -295,7 +295,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		\]
 	\end{definition}
 
-\rdot This implies that the $\eta$-average of $x \mapsto P_t(x,\Gamma)$ is $\eta(\Gamma)$ and this is independent of time:
+\rdot This implies that the $\eta$-average of $x \mapsto P_t(x,\Gamma)$ is $\eta(\Gamma)$ and it is independent of time:
 \[
 	\text{AVG}_{\eta}\big[P_t(\cdot,\Gamma)\big] = \frac{1}{\eta(H)}\int_H P_t(x,\Gamma) \eta(\ud x) = \int_H P_t(x,\Gamma) \eta(\ud x) = \eta(\Gamma).
 \]
@@ -353,9 +353,9 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\begin{minipage}{1.8in}
 	\rdot Numerically it is suggested that for any $1<b<2$ and $a > 0$ that 
 		\[
-			\exp\left(-a|x|^b\right),
+			\exp\left(-a|x|^b\right)
 		\]
-	is not admissible, but this has not been proven. 
+	may not be admissible, but this has not been proven. 
 	\end{minipage}
 	\begin{minipage}{3in}
 		\centering
@@ -366,6 +366,9 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		}
 		\end{figure}
 	\end{minipage}
+% mathematica codes
+% f[x_,y_,t_] = (1/Sqrt[t])* Exp[-Abs[x-y]^2 / (2*t)]*Exp[-Abs[y]^(1.25)] 
+% Plot3D[NIntegrate[f[x,y,t] / Exp[-Abs[x]^(1.25)],{y,-Infinity,Infinity}],{x,-20,20}, {t, 0 ,5}]
 \end{frame} 
 
 \begin{frame}{The solution is almost surely $H$-valued.}
@@ -376,15 +379,57 @@ Let $\rho$ be an admissible weight and suppose that
 \]
 Now suppose our initial measure, $\mu$, satisfies the following:
 \[
-	\mathcal{G}_{\rho}(t;\mu) := \int_{\R^d} \left( \int_{\R^d} G(t,x-y) |\mu|(\ud y) \right)^2 \rho(x) \ud x < \infty.
+	\mathcal{G}_{\rho}(t;\mu) := \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+|\mu|)(\ud y) \right)^2 \rho(x) \ud x < \infty.
 \]
 Then for all $t > 0$,
 \[
 	\mathbb{E}\left( \Norm{u(t,\cdot;\mu)}^2_{\rho} \right) \le C\mathcal{G}_{\rho}(t;\mu) < \infty.
 \]
 	\end{theorem}
+
+\rdot We will give some permissible initial conditions and spectral densities below. 
 	
 \end{frame} 
+
+\begin{frame}{Invariant measures for the stochastic heat equation}
+	\rdot So the solution $u(t, \cdot;\mu)$ is $H$-valued for the Hilbert space  $H=L^2_{\rho}(\R^d)$. \vspace{.2in} \\
+	
+	\rdot Moreover, the Markov property of the solution \cite[Th 9.21]{DZ14} implies that 
+		\[
+			P_t(\zeta,\Gamma) := \mathscr{L}(u(t,\cdot;\zeta))(\Gamma), \quad \text{for all } \zeta \in H \text{ and } \Gamma \in \mathscr{B}(H)
+		\]
+		for a family of Markovian transition functions. \vspace{.3in}
+	
+	\begin{definition}
+		A measure $\eta$ is invariant for the stochastic heat equation if $\eta$ is invariant for the transition functions $P_t$. In other words, 
+			\[
+				P_t^*(\eta)(\Gamma) = \int_{H} P_t(\zeta, \Gamma) \eta(\ud \zeta) = \eta(\Gamma), \quad \text{for all } \Gamma \in \mathscr{B}(H).
+			\]
+	\end{definition}
+
+	
+\end{frame}
+
+\begin{frame}{Permissible initial conditions}
+	\begin{enumerate}
+	\item For any $\zeta \in L^{\infty}(\R^d)$ then for all $t \ge 0$
+		\[
+			\mathcal{G}_{\rho}(t;\mu) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
+		\]
+		
+	\item For $\delta_0(\cdot)$ and for all $ t > 0$,
+		\[
+			\mathcal{G}_{\rho}(t;\delta_0) \le \left(2 + G(t,0)^2\right) \Norm{\rho}_{L^1(\R^d)} < \infty.
+		\]
+	
+	\item Consider $|\cdot|^{-\lambda}$ for any $\lambda \in (0,d)$. Then for all $ t> 0$,
+		\[
+			\mathcal{G}_{\rho}(t;|\cdot|^{-\lambda}) \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
+		\] 
+	\end{enumerate}
+\rdot $\delta_0(\cdot) \not \in L^2_{\rho}(\R^d)$ but still permissible. \vspace{.2in} \\
+\rdot $|\cdot|^{-\lambda} \not \in L^2_{\rho}(\R^d)$ for $\lambda \in (d/2, d)$, however, it is still applicable.
+\end{frame}
 
 		\begin{frame}
 	\frametitle{References}
