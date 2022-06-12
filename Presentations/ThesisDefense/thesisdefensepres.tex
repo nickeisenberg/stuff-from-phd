@@ -314,7 +314,11 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		\]
 		to form a Markovian semigroup. \vspace{.2in} \\
 
-	\rdot Established theory given by DaPrato and Zabczyk \cite{DZ14} requires our solution, specifically $\zeta \mapsto u(t,\cdot;\zeta)$, to be almost surely $H$-valued for $t > 0$, otherwise $\mathscr{L}(u(t,\cdot;\zeta))(\Gamma) $ would not have too much meaning. \vspace{.2in} \\
+	\rdot Established theory by DaPrato and Zabczyk \cite{DZ14} requires the solution, 
+	\[
+	\zeta \mapsto u(t,\cdot;\zeta),
+	\]
+	 to be almost surely $H$-valued for $t > 0$ and $\zeta \in H$. \vspace{.2in} \\
 
 	\rdot So what is $H$? 
 	
@@ -373,6 +377,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 
 \begin{frame}{The solution is almost surely $H$-valued.}
 	\begin{theorem}
+
 Let $\rho$ be an admissible weight and suppose that
 \[
 	\Upsilon(0) = \int_{\R^d} \frac{\widehat{f}(\xi)}{|\xi|^2} \ud \xi < \infty \qquad \text{and} \qquad L_b^2 < \frac{1}{128 \Upsilon(0)}.
@@ -385,14 +390,15 @@ Then for all $t > 0$,
 \[
 	\mathbb{E}\left( \Norm{u(t,\cdot;\mu)}^2_{\rho} \right) \le C\mathcal{G}_{\rho}(t;\mu) < \infty.
 \]
+In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ such that
+	\[
+			\mathcal{G}_{\rho}(t;\zeta) \le 2\Norm{\rho}_{L^1(\R^d)} + 2C_T\Norm{\zeta}_{\rho} < \infty, \quad \text{for all } t \in [0,T]. 
+	\]
 	\end{theorem}
-
-\rdot We will give some permissible initial conditions and spectral densities below. 
-	
 \end{frame} 
 
 \begin{frame}{Invariant measures for the stochastic heat equation}
-	\rdot So the solution $u(t, \cdot;\mu)$ is $H$-valued for the Hilbert space  $H=L^2_{\rho}(\R^d)$. \vspace{.2in} \\
+	\rdot So the solution acts as an operator, mapping $H$ to $H$. \vspace{.2in} \\
 	
 	\rdot Moreover, the Markov property of the solution \cite[Th 9.21]{DZ14} implies that 
 		\[
@@ -406,8 +412,46 @@ Then for all $t > 0$,
 				P_t^*(\eta)(\Gamma) = \int_{H} P_t(\zeta, \Gamma) \eta(\ud \zeta) = \eta(\Gamma), \quad \text{for all } \Gamma \in \mathscr{B}(H).
 			\]
 	\end{definition}
+\end{frame}
 
+\begin{frame}{Convergence of measures}
+	\rdot Let $\mathscr{M}(H)$ and $C_b(H)$ denote the probability measures and bounded continuous functions on $H$. \vspace{.3in} \\
 	
+	\rdot For $\varphi \in C_b(H)$ and $\nu \in \mathscr{M}(H)$, 
+	\[
+		\langle \varphi, \nu \rangle = \int_{H} \varphi(\zeta) \nu(\ud \zeta).
+	\] \vspace{.1in}
+
+	\begin{definition}
+		We say $\nu_n$ converges {\em weakly} to $\eta$ in $\mathscr{M}(H)$ if 
+			\[
+				\langle \varphi, \nu_n \rangle \to 	\langle \varphi, \nu \rangle, \quad \text{as } n \to \infty.
+			\] 
+		We will use the notation, $\nu_n \to \nu$, to denote the weak convergence of measures. 
+	\end{definition}
+\end{frame}
+
+\begin{frame}{Some interesting results}
+	\begin{theorem}[DaPrato {\cite[Propositions 11.2 and 11.3]{DZ14}}]
+		If $\zeta_1, \zeta_2 \in H$ and $\eta_1, \eta_2 \in \mathscr{M}(H)$ are such that 
+		{\small
+			\[
+				\mathscr{L}\bigg( u(t,\cdot;\zeta_1) \bigg) \to \eta_1 \text{ as } t \to \infty
+				\quad \text{or} \quad 
+				\frac{1}{t_n} \int_0^{t_n} \mathscr{L}\bigg( u(s,\cdot;\zeta_2) \bigg) \ud s \to \eta_2 \text{ as } n \to \infty,
+			\] 
+		}
+		for some $t_n \uparrow \infty$, then both $\eta_1$ and $\eta_2$ are invariant. 
+	\end{theorem}
+
+	\begin{theorem}[DaPrato { \cite[Proposition 11.5]{DZ14} }]
+		Suppose $\eta$ is invariant for the stochastic heat equation and $\zeta \in H$ is random and $\mathscr{L}(\zeta) = \eta$. Then $\mathscr{L}\bigg(u(t,\cdot;\zeta)\bigg)$ is stationary:
+			\[
+				\mathbb{E}\bigg[\varphi_1\big(u(t_1+h,\cdot;\zeta)\big) \cdots \varphi_n\big(u(t_n+h,\cdot;\zeta)\big)\bigg]
+			\]
+		is independent of $h$ for any $n \in \mathbb{N}$ and $\varphi_i \in C_b(H)$.
+	\end{theorem}
+
 \end{frame}
 
 \begin{frame}{Permissible initial conditions}
@@ -470,6 +514,11 @@ Then for all $t > 0$,
 		G. DaPrato and J. Zabczyk (2014)
 		\newblock Stochastic Equations in Infinite Dimensions. 2nd Edition.
 		\newblock {\em  Cambridge University Press}
+		
+		\bibitem{TZ96}
+		G. Tessitore and J. Zabczyk (1996)
+		\newblock Invariant measures for the stochastic heat equation 
+		\newblock {Probability and Mathematical Statistics} 18, 2, 271--287
 		
 		\bibitem{Walsh}
 		J. Walsh (1986)
