@@ -31,6 +31,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
 \newcommand{\ud}{\ensuremath{\mathrm{d} }}
+\newcommand{\rnum}[1]{{\bf \textcolor{red}{(#1)}}}
 
 \newcommand{\mySeparateLine}{
 	\begin{center}
@@ -87,6 +88,7 @@ Invariant measures for the stochastic heat equation with no drift term
 \thispagestyle{empty}
 
 \newcommand{\rdot}{\tikz\draw[red,fill=red] (0,0) circle (.5ex); \;}
+
 
 \begin{document}
 	\frame{\titlepage}	
@@ -265,13 +267,16 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 \begin{frame}{Transition functions and their semigroup}
 \begin{definition}[Markovian Transition Functions]
 		\rdot Let $H$ be a Hilbert space and $\mathscr{B}(H)$ be the borel sets of $H$. \\
-		\rdot $\{ P_t(x,\Gamma): t \ge 0, x \in H, \Gamma \in \mathscr{B}(H) \}$ forms a family of {\em Markovian transition functions} if,
-		\begin{enumerate}
-			\item $x \mapsto P_t(x, \Gamma)$ if measurable,
-			\item $\Gamma \mapsto P_t(x, \Gamma)$ is a probability measure on $H$,
-			\item $P_{t+s}(x,\Gamma) = \int_{H} P_t(x,\ud y) P_s(y, \Gamma)$,
-			\item $P_0(x,\Gamma) = \textbf{1}_{\Gamma}(x)$.
-		\end{enumerate}
+		\rdot $\{ P_t(x,\Gamma): t \ge 0, x \in H, \Gamma \in \mathscr{B}(H) \}$ forms a family of {\em Markovian transition functions} if, \vspace{.1in}
+	
+	\rnum{1} $x \mapsto P_t(x, \Gamma)$ if measurable, \vspace{.1in} 
+	
+	\rnum{2} $\Gamma \mapsto P_t(x, \Gamma)$ is a probability measure on $H$, \vspace{.1in} 
+	
+	\rnum{3} $P_{t+s}(x,\Gamma) = \int_{H} P_t(x,\ud y) P_s(y, \Gamma)$, \vspace{.1in} 
+	
+	\rnum{4} $P_0(x,\Gamma) = \textbf{1}_{\Gamma}(x)$.
+
 \end{definition}
 
 \begin{definition}[Transition Semigroup]
@@ -431,7 +436,7 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 	\end{definition}
 \end{frame}
 
-\begin{frame}{Some interesting results}
+\begin{frame}{Some existence results}
 	\begin{theorem}[DaPrato {\cite[Propositions 11.2 and 11.3]{DZ14}}]
 		If $\zeta_1, \zeta_2 \in H$ and $\eta_1, \eta_2 \in \mathscr{M}(H)$ are such that 
 		{\small
@@ -872,25 +877,83 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 	\end{figure}
 \end{frame}
 
+\begin{frame}[t]
+\small
+	\rdot A simpler condition needs to be introduced in order to give a full example. \vspace{.05in}
+	
+	\rdot Recall that 
+	\[
+	\mathbb{E}\left(\Norm{u(t,\cdot;\mu)}_\rho\right) \le	C\mathcal{G}_{\rho}(t;\mu) := C\int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+|\mu|)(\ud y) \right)^2 \rho(x) \ud x 
+	\]
+
+	\begin{theorem}
+Suppose that the initial measure, $\mu$, the diffusion term, $b$, and the spectral density, $\widehat{f}$ satisfy 
+	\[
+		\Upsilon_\alpha (0) := \int_{\R^d} \frac{f(\xi) \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty , \quad \limsup_{t > 0} \mathcal{G}_{\rho}(t; \mu) < \infty, \quad \text{and} \quad L_b^2 < \frac{1}{2^7 \Upsilon(0)},
+	\]
+for some $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ and also for $\alpha = 0$. Then there exists an invariant measure for the stochastic heat equation. More precisely, the following weak limit exists for each $t_0 > 0$:
+	\[
+		\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg) \ud s \to \eta_{t_0},
+	\]
+where $\eta_{t_0}$ is the invariant measure. 
+	\end{theorem}
+	
+\rdot We will now give some permissible initial conditions and spectral densities. 
+\end{frame}
+
+\begin{frame}{Permissible spectral density}
+\rdot Recall that $\widehat{f}$ must satisfy both $\alpha = 0$ and $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$:
+	\[
+			\Upsilon_\alpha (0) := \int_{\R^d} \frac{f(\xi) \: \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty.
+	\]
+
+\rdot Recall that $d>3$ and so $\widehat{f}$ may have slow blow up at the origin but must have fast decay at $\pm \infty$ to counter act the thick tails of $|\xi|^{2(1-\alpha)}$. \vspace{.25in}
+
+\rdot This excludes the Riesz kernel. \vspace{.25in}
+
+\rdot However, the Bessel kernel has polynomial blowup at the origin and exponential decay at $\pm \infty$ and will be permissible.
+\end{frame} 
+
+\begin{frame}{Bessel Kernel}
+	\small
+	\rdot Let $f_s$ denote the Bessel kernel. When $0 < s < d$ we have that
+	\[
+		f_s(x) \sim \exp(-|x|/2) \text{ for } |x| > 2 \quad \text \quad f_s(x) \sim \frac{1}{|x|^{d-s+2}} \text{ for } |x| < 2.
+	\]
+	
+	\rdot The Fourier transform $\widehat{f}$ is given by $\widehat{f}(\xi) = (1+|\xi|^2)^{s/2}$.
+	
+	\begin{example}
+		When considering the Bessel kernel, direct calculation yields that for any $\alpha \in [0,1)$ and $s > d - 2(1-\alpha) > 0$ and $ d \ge 3$,
+			\[
+				\Upsilon_{\alpha}(0) = \frac{\Gamma\left( \frac{d}{2} - 1 + \alpha \right) \Gamma\left( \frac{s-d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \Gamma(s/2)},
+			\]
+		and when $\alpha = 0$, this simplifies to
+			\[
+				\Upsilon(0) = \frac{\Gamma\left( \frac{2 + s - d}{2} \right)}{2^{d-1} \pi^{d/2} (d-2)\Gamma(s/2)}.
+			\]
+	\end{example}
+\end{frame}
+
 \begin{frame}{Permissible initial conditions}
-	\begin{enumerate}
-	\item For any $\zeta \in L^{\infty}(\R^d)$ then for all $t \ge 0$
+
+		\rnum{1} For any $\zeta \in L^{\infty}(\R^d)$ then for all $t \ge 0$
 		\[
-			\mathcal{G}_{\rho}(t;\mu) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
+		\mathcal{G}_{\rho}(t;\mu) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
 		\]
 		
-	\item For $\delta_0(\cdot)$ and for all $ t > 0$,
+		\rnum{2} For $\delta_0(\cdot)$ and for all $ t > 0$,
 		\[
-			\mathcal{G}_{\rho}(t;\delta_0) \le \left(2 + G(t,0)^2\right) \Norm{\rho}_{L^1(\R^d)} < \infty.
+		\mathcal{G}_{\rho}(t;\delta_0) \le \left(2 + G(t,0)^2\right) \Norm{\rho}_{L^1(\R^d)} < \infty.
 		\]
-	
-	\item Consider $|\cdot|^{-\lambda}$ for any $\lambda \in (0,d)$. Then for all $ t> 0$,
+		
+		\rnum{3} Consider $|\cdot|^{-\lambda}$ for any $\lambda \in (0,d)$. Then for all $ t> 0$,
 		\[
-			\mathcal{G}_{\rho}(t;|\cdot|^{-\lambda}) \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
+		\mathcal{G}_{\rho}(t;|\cdot|^{-\lambda}) \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
 		\] 
-	\end{enumerate}
-\rdot $\delta_0(\cdot) \not \in L^2_{\rho}(\R^d)$ but still permissible. \vspace{.2in} \\
-\rdot $|\cdot|^{-\lambda} \not \in L^2_{\rho}(\R^d)$ for $\lambda \in (d/2, d)$, however, it is still applicable.
+
+	\rdot $\delta_0(\cdot) \not \in L^2_{\rho}(\R^d)$ but still permissible. \vspace{.2in} \\
+	\rdot $|\cdot|^{-\lambda} \not \in L^2_{\rho}(\R^d)$ for $\lambda \in (d/2, d)$, however, it is still applicable.
 \end{frame}
 
 		\begin{frame}
