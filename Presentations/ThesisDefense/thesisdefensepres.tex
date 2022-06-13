@@ -131,38 +131,38 @@ where $\tilde{\psi}(s,x) = \psi(s,-x)$. We have the following nomenclature. \vsp
  is referred to as the {\em spectral density}.
 \end{frame}
 
-\begin{frame}[t]
-	\begin{proposition}[DaPrato and Zabczyk {\cite[Propsition 4.19]{DZ14}}]
-		A space-time white noise, $dB$, is the distributional derivative of a Brownian sheet, $B(t,x)$.
-	\end{proposition}
-
-\begin{minipage}{2.5in}
-\begin{figure}[t]
-	\centering
-	\includegraphics[scale=.28]{figs/bsheet.png}
-\end{figure}
-\end{minipage}
-\begin{minipage}{2in}
-{\smaller {\bf White noise expansion DaPrato \cite{DZ14}} \\
-If $t \ge 0$ and $0 \le x \le \pi$ then,
-\begin{align*}
-B(t,x) = \sum_{n=0}^\infty \frac{\beta_n(t)}{n+\frac{1}{2}} \sqrt{\frac{2}{\pi}} \sin\left[\left( n + \frac{1}{2} \right) x\right]
-\end{align*}
-\vspace{.2in} \\
-{\bf Walsh \cite{Walsh}}
-\begin{align*}
- \int_t^{t + \delta_t} \int_x^{x + \delta_x} dB(\ud s, \ud y) 
-\sim \text{N}(0,\delta_t\delta_x)
-\end{align*}
-}
-\end{minipage}
-\begin{center}
-	{\bf Brownian Sheet Simulation (Walsh \cite{Walsh}):}
-
-$B(t,x) \sim B(t - \delta_t, x) + B(t, x- \delta_x) - B(t - \delta_t, x - \delta_x) + \text{N}(0, \delta_t \delta_x)$ \\
-$B(t,0) = B(0,x) = 0$ for all $t,x >0$.
-\end{center}
-\end{frame}
+%\begin{frame}[t]
+%	\begin{proposition}[DaPrato and Zabczyk {\cite[Propsition 4.19]{DZ14}}]
+%		A space-time white noise, $dB$, is the distributional derivative of a Brownian sheet, $B(t,x)$.
+%	\end{proposition}
+%
+%\begin{minipage}{2.5in}
+%\begin{figure}[t]
+%	\centering
+%	\includegraphics[scale=.28]{figs/bsheet.png}
+%\end{figure}
+%\end{minipage}
+%\begin{minipage}{2in}
+%{\smaller {\bf White noise expansion DaPrato \cite{DZ14}} \\
+%If $t \ge 0$ and $0 \le x \le \pi$ then,
+%\begin{align*}
+%B(t,x) = \sum_{n=0}^\infty \frac{\beta_n(t)}{n+\frac{1}{2}} \sqrt{\frac{2}{\pi}} \sin\left[\left( n + \frac{1}{2} \right) x\right]
+%\end{align*}
+%\vspace{.2in} \\
+%{\bf Walsh \cite{Walsh}}
+%\begin{align*}
+% \int_t^{t + \delta_t} \int_x^{x + \delta_x} dB(\ud s, \ud y) 
+%\sim \text{N}(0,\delta_t\delta_x)
+%\end{align*}
+%}
+%\end{minipage}
+%\begin{center}
+%	{\bf Brownian Sheet Simulation (Walsh \cite{Walsh}):}
+%
+%$B(t,x) \sim B(t - \delta_t, x) + B(t, x- \delta_x) - B(t - \delta_t, x - \delta_x) + \text{N}(0, \delta_t \delta_x)$ \\
+%$B(t,0) = B(0,x) = 0$ for all $t,x >0$.
+%\end{center}
+%\end{frame}
 
 \begin{frame}{Existence and uniqueness with space-time white noise}
 	\rdot A necessary condition for global existence, {\em Dalang's condition} \cite{Dal99}, is the following:
@@ -245,9 +245,6 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 \end{frame}
 
 \begin{frame}{Bounded moments in time}
-%	\rdot The above conditions only guarantee existence and uniqueness. \vspace{.1in} \\
-%	
-%	\rdot To ensure bounded second moments, we need to impose further restriction on the Lipschitz constant $L_b$ and on Dalang's condition
 	\begin{theorem}[Chen and Kim {\cite[Theorem 1.3 and Lemma 2.5]{CK19}}]
 		Suppose that we strengthen Dalang's condition and the Lipschitz assumption to the following:
 		\[
@@ -371,7 +368,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		\begin{figure}
 		\includegraphics[scale=.4]{figs/admis.png}
 		\caption{
-			Plot of $\frac{(G(t,\cdot)*\exp(-|\cdot|^{1.25}))(x) }{ \exp(-|x|^{1.25})} $
+			Plot of $x \mapsto \frac{(G(t,\cdot)*\exp(-|\cdot|^{1.25}))(x) }{ \exp(-|x|^{1.25})} $
 		}
 		\end{figure}
 	\end{minipage}
@@ -874,13 +871,12 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 		
 		\caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
 			positive and negative values.}
+		\rdot So a simpler condition must be formulated in order to give a full example. \vspace{.05in}
 	\end{figure}
 \end{frame}
 
 \begin{frame}[t]
 \small
-	\rdot A simpler condition needs to be introduced in order to give a full example. \vspace{.05in}
-	
 	\rdot Recall that 
 	\[
 	\mathbb{E}\left(\Norm{u(t,\cdot;\mu)}_\rho\right) \le	C\mathcal{G}_{\rho}(t;\mu) := C\int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+|\mu|)(\ud y) \right)^2 \rho(x) \ud x 
@@ -898,16 +894,40 @@ for some $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ and also for $\alpha = 
 where $\eta_{t_0}$ is the invariant measure. 
 	\end{theorem}
 	
-\rdot We will now give some permissible initial conditions and spectral densities. 
+\end{frame}
+
+\begin{frame}{A comment about $\Upsilon_{\alpha}(0) < \infty$}
+	\small
+	\rdot   $\Upsilon_{2\alpha}(0) < \infty$ implies H\"older continuity of the solution \cite{CH19}. \vspace{.1in}
+	
+	\rdot This condition may be slightly "weakened" to the following: 
+	\[
+	\mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi) \exp(-r|\xi|^2)< \infty \quad \text{for all } t > 0 \text{ and some } \alpha \in \left(0,\frac{1}{2}\right).
+	\]
+	\begin{lemma} We have the following relations between $\Upsilon_{\alpha}(0), \Upsilon(0)$ and $\mathcal{H}_{\alpha}(t)$: \vspace{.1in}
+		
+		\rnum{1} However, $\Upsilon_{2\alpha}(0) < \infty \implies \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
+		
+		\rnum{2} $\lim \limits_{t\to \infty} \mathcal{H}_{\alpha}(t) = \Gamma(1- 2\alpha) \Upsilon_{2\alpha}(0)$. \vspace{.1in}
+		
+		\rnum{3} When $\Upsilon(0) < \infty$ then $\Upsilon_{2\alpha}(0) < \infty \iff \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
+		
+		\rnum{4} When $\widehat{f}(\xi) = \widehat{f}(|\xi|)$ then $\mathcal{H}(t)$ takes the following form: 
+			\[
+				\mathcal{H}_{\alpha}(t) = \int_{\R^d} \ud \xi \: \frac{\widehat{f}(\xi)}{|\xi|^{2(1-2\alpha)}} \bigg(\Gamma(1-2\alpha)  - \Gamma(1-2\alpha, \: |\xi|^2t)\bigg),
+			\]
+		where $\Gamma(a,b)$ is the upper incomplete Gamma function. 
+	\end{lemma}	
+	
 \end{frame}
 
 \begin{frame}{Permissible spectral density}
-\rdot Recall that $\widehat{f}$ must satisfy both $\alpha = 0$ and $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$:
+\rdot Recall that $\widehat{f}$ must satisfy for both $\alpha = 0$ and $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ the following:
 	\[
 			\Upsilon_\alpha (0) := \int_{\R^d} \frac{f(\xi) \: \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty.
 	\]
 
-\rdot Recall that $d>3$ and so $\widehat{f}$ may have slow blow up at the origin but must have fast decay at $\pm \infty$ to counter act the thick tails of $|\xi|^{2(1-\alpha)}$. \vspace{.25in}
+\rdot Recall that $d\ge3$ and so $\widehat{f}$ may have slow blow up at the origin but must have fast decay at $\pm \infty$ to counter act the thick tails of $|\xi|^{2(1-\alpha)}$. \vspace{.25in}
 
 \rdot This excludes the Riesz kernel. \vspace{.25in}
 
@@ -924,19 +944,24 @@ where $\eta_{t_0}$ is the invariant measure.
 	\rdot The Fourier transform $\widehat{f}$ is given by $\widehat{f}(\xi) = (1+|\xi|^2)^{s/2}$.
 	
 	\begin{example}
-		When considering the Bessel kernel, direct calculation yields that for any $\alpha \in [0,1)$ and $s > d - 2(1-\alpha) > 0$ and $ d \ge 3$,
+		When considering the Bessel kernel, direct calculation yields that 
 			\[
 				\Upsilon_{\alpha}(0) = \frac{\Gamma\left( \frac{d}{2} - 1 + \alpha \right) \Gamma\left( \frac{s-d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \Gamma(s/2)},
 			\]
 		and when $\alpha = 0$, this simplifies to
 			\[
-				\Upsilon(0) = \frac{\Gamma\left( \frac{2 + s - d}{2} \right)}{2^{d-1} \pi^{d/2} (d-2)\Gamma(s/2)}.
+				\Upsilon(0) = \frac{\Gamma\left( \frac{2 + s - d}{2} \right)}{2^{d-1} \pi^{d/2} (d-2)\Gamma(s/2)},
+			\]
+		and we must assume that 
+			\[
+				0 < \alpha < 1 - \frac{(d-s)_+}{2} \quad \text{and} \quad s > d - 2 > 0.
 			\]
 	\end{example}
 \end{frame}
 
-\begin{frame}{Permissible initial conditions}
-
+\begin{frame} 
+	\textbf{Allowable Initial Conditions:}
+	
 		\rnum{1} For any $\zeta \in L^{\infty}(\R^d)$ then for all $t \ge 0$
 		\[
 		\mathcal{G}_{\rho}(t;\mu) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
@@ -950,15 +975,38 @@ where $\eta_{t_0}$ is the invariant measure.
 		\rnum{3} Consider $|\cdot|^{-\lambda}$ for any $\lambda \in (0,d)$. Then for all $ t> 0$,
 		\[
 		\mathcal{G}_{\rho}(t;|\cdot|^{-\lambda}) \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
-		\] 
+		\] \vspace{0in}
+		
+	\textbf{Non-permissible $L^2_{\rho}(\R^d)$-valued initial conditions:}	\vspace{.05in}
+	
+	\rnum{1} $\zeta(x) = |x|^{\alpha}$. When $\rho(x) = \exp(-|x|)$, then we can show that
+		\[
+			C_1(1+t^{\alpha}) \le \mathcal{G}_{\rho}(t;\zeta) \le C_2(1+t^{\alpha}).
+		\]
 
-	\rdot $\delta_0(\cdot) \not \in L^2_{\rho}(\R^d)$ but still permissible. \vspace{.2in} \\
-	\rdot $|\cdot|^{-\lambda} \not \in L^2_{\rho}(\R^d)$ for $\lambda \in (d/2, d)$, however, it is still applicable.
+\end{frame}
+
+\begin{frame}{Comments about the initial conditions}
+	\rdot Previous theory was only able to consider $\zeta \in H = L^2_{\rho}(\R^d)$ initial conditions as candidates for the following limit:
+		\[
+			\lim_{n \to \infty} \frac{1}{t_n} \int_0^{t_n} \mathscr{L}(u(s,\cdot;\zeta)) \ud s.
+		\]
+		
+	\rdot DaPrato - Can do little with a a lot \vspace{.1in}
+	
+	\rdot Walsh - Can do a lot with little (SHE is included in the "little") \vspace{.1in}
+	
+	\rdot We show that we may consider initial conditions, $\mu$, outside of $H$, but what is important is that $u(t_0,\cdot; \mu) \in H$ for any $t_0 >0$. \vspace{.1in}
+	
+	\rdot So because of the Markov property of the SHE \cite{DZ14}, we can associate with each $\mu$ outside of $H$ with a restarted equation:
+		\[
+			\mathscr{L}\bigg(u(t,\cdot;\mu)\bigg) = \mathscr{L}\bigg(u(t-t_0,\cdot;u(t_0,\cdot;\mu) \bigg) \quad \text{for all } t > t_0 > 0.
+		\] 
 \end{frame}
 
 		\begin{frame}
 	\frametitle{References}
-	\small
+	\scriptsize
 	
 	\begin{thebibliography}{999}
 		\bibitem{CD15}
@@ -980,12 +1028,20 @@ where $\eta_{t_0}$ is the invariant measure.
 		L. Chen and K. Kim (2019)
 		\newblock Nonlinear stochastic heat equation driven by a spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Mathematica Scientia} 39B(3), 645--668
-		
+			
 		\bibitem{DG2000}
 		A. Davie and J. Gaines (2000)
 		\newblock Convergence of numerical schemes for the solution of parabolic stochastic partial differential equations
 		\newblock{\em Mathematics of Computation} 70, 223, 121---134
-		
+	\end{thebibliography}
+	\end{frame}
+
+			\begin{frame}
+			\frametitle{References}
+			\scriptsize
+			
+			\begin{thebibliography}{999}
+				
 		\bibitem{Dal99}
 		R. Dalang (1999)
 		\newblock Extending the martingale measure stochastic integral with applications to spatially homogeneous s.p.d.e.'s
