@@ -215,7 +215,7 @@ for more details of this setup. \\
 
 The aim of this paper is to investigate the conditions required to guarantee the existence of an
 invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
-the ergodicity of the system. A schematic in order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially involves showing that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian transition functions} on some Hilbert space, $H$, and that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in the Hilbert space, $L^2_{\rho}(\R^d)$, which we now define.
+the ergodicity of the system. A schematic in order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially involves showing that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian transition functions} on some Hilbert space, $H$, and that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in the Hilbert space $L^2_{\rho}(\R^d)$, which we now define.
 
 \begin{definition} \label{D:Rho}
   $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive,
@@ -231,7 +231,7 @@ the ergodicity of the system. A schematic in order to do so has been established
   	\]
 \end{definition}
 
-From now on we will denote $H:=L^2_{\rho}(\R^d)$. In Corollary \ref{C:inclusion} below, we will see that the solution to \eqref{E:SHE} maps $H$ into $H$ in the sense that for each $\zeta \in H$, we have $x \mapsto u(t,x;\zeta)$ is almost surely $H$-valued where $u(t,x;\zeta)$ is the solution to \eqref{E:SHE} starting from $\zeta$. Moreover, we introduce a new condition, namely \eqref{E:G}, which shows that the solution to $\eqref{E:SHE}$ may also map measures that are outside of $H$ into $H$. Thus, this condition allows us to consider more general initial conditions while at the same time still operate in the same framework laid out by the authors in \cite{tessitore.zabczyk:98:invariant, da-prato.zabczyk:14:stochastic}. We provide some examples of permissible initial conditions that are outside of $H$ in Section \ref{S:Example} below. 
+From now on we will denote $H:=L^2_{\rho}(\R^d)$. In Corollary \ref{C:inclusion} below, we will see that the solution to \eqref{E:SHE} maps $H$ into $H$ in the sense that for each $\zeta \in H$ and for all $t>0$, we have the function $x \mapsto u(t,x;\zeta)$ almost surely in $H$, where we use the notation $u(t,x;\mu)$ to denote the solution to \eqref{E:SHE} starting from $\mu$. Moreover, we introduce a new condition, namely \eqref{E:G}, which shows that the solution to $\eqref{E:SHE}$ may also map measures that are outside of $H$ into $H$. Thus, this condition allows us to consider more general initial conditions while at the same time still operate in the same framework laid out by the authors in \cite{tessitore.zabczyk:98:invariant, da-prato.zabczyk:14:stochastic}.  We provide some examples of permissible initial conditions that are outside of $H$ in Section \ref{S:Example} below. 
 
 Following \cite[Section 11.1]{da-prato.zabczyk:14:stochastic}, a probability measure $\eta$ on the
 Borel $\sigma$-field $\mathscr{B}(H)$ is said to be {\it invariant} for \eqref{E:SHE} if
@@ -246,7 +246,7 @@ the solution:
 \end{align*}
 Due to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
 11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
-$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct the
+$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct an
 invariant measure via
 \begin{equation} \label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
@@ -261,21 +261,18 @@ Note that the uniqueness of the invariant measure is a much harder question; see
 \cite{hairer.mattingly:06:ergodicity}.
 
 The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely studied and as far as we know, this current article and Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the spatial domain is the whole space $\R^d$, the Lipschitz continuous diffusion term, $b(x,u)$, may be unbounded and there is no added drift term, $f(x,u)$. The challenge is proving \eqref{E:BddMnt} and it is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the
-probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g.,
-\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires added assumptions on either the initial conditions, the drift term $f$ or the diffusion term $b$ to combat this exponential growth in time of the moments.
+\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the spatial domain is the whole space $\R^d$, the Lipschitz continuous diffusion term, $b(x,u)$, may be unbounded in the second variable and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g., \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this exponential growth in time of the moments.
 
-For example, Assing and Manthey  \cite{assing.manthey:03:invariant} study the problem of showing the existence of an invariant measure for \eqref{E:SHE} on the whole space $\R^d$, but in order to combat the intermittency of the moments, they require an added a drift term, $f(u)$, which must satisfy the following dissipativity condition for all $u \in \R$:
-	\[
-		uf(u) \le C_1 - C_2|u|^2,
-	\]
-where $C_1, C_2 > 0$. Moreover, they allow for any bounded initial condition and their Lipschitz continuous diffusion term may be unbounded. 
+For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant, cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
+	\begin{equation} \label{E:dis}
+		\begin{cases} 
+			f(u) \le -k_1|u|^m + k_2 & u > 0 \\
+			f(u) \ge c_1|u|^m - c_2 & u < 0.
+		\end{cases} 
+	\end{equation}
+Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions, however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be considered. It is also worth noting that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} also require the above dissipativity condition \eqref{E:dis} along with a bounded initial condition, however they consider the case of an additive noise. 
 
-For another example, Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:16:existence} study the equation on the whole space and also allow for the absence of a drift term but they require that the initial condition be in $L^2(\R^d)$ and diffusion term be globally bounded in the sense that $|b(x,u)| < k < \infty$ for some $k > 0$ and all $(x,u) \in \R^d \times \R$. The same authors improve this result in \cite{misiats.stanzhytskyi.ea:20:invariant} by allowing the drift term to satisfy the following:
-	\[
-		|b(x,u_1) - b(x,u_2)| < \varphi(x)|u_1-u_1|,
-	\]
-where $\varphi$ is a bounded function in $L^2(\R^d)$. So in this case, $u \mapsto b(x,u)$ may be unbounded but it is now required that $x \mapsto b(x,u)$ must vanish as $|x| \to \infty$. Furthermore, in either case the restriction on the initial condition to be in $L^2(\R^d)$ is quite strong and it excludes the popular case $u(0,x) = 1$.  
+Aside from this current article and \cite{tessitore.zabczyk:98:invariant}, there are few works which do not require an added drift term with dissipativity as in \eqref{E:dis}. In lack of this condition, Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:16:existence, misiats.stanzhytskyi.ea:20:invariant} provide two results guaranteeing the existence of an invariant measure for the stochastic heat equation on the whole space $\R^d$. In \cite{misiats.stanzhytskyi.ea:16:existence}, they allow for a drift term, $f(x,u):\R^d \times \R \to \R$, such that for all $u \in \R$, $x \mapsto f(x,u)$ is bounded and decays fast enough to be in $L^1(\R^d)$, while for each $x\in\R^d$, $u \mapsto f(x,u)$ is only required to be Lipschitz continuous and thus is not required to satisfy \eqref{E:dis}. However, with the lack of dissipativity of $f$, they require the diffusion term to be globally bounded, thus excluding the popular case of the parabolic Anderson model, $b(u) = \lambda u$. In \cite{misiats.stanzhytskyi.ea:20:invariant} they again allow for the absence of a drift term, however  the diffusion term, $b(x,u)$, is allowed to grow linearly in $u$ for eaxh $x\in R^d$, but for each $\ud\in\R$, $x \mapsto b(x,u)$ must be bounded and decay fast enough to be in $L^2(\R^d)$.
 
 As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that considers the same set up, it a strong influence in the current work. We formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
 \begin{enumerate}
