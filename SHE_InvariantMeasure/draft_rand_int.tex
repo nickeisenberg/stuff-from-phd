@@ -282,7 +282,9 @@ for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \s
 	\]
 and thus the parabolic Anderson model is allowed. However, when $b$ does depend on $x$, then $x \mapsto b(x,u)$ will decay as $|x| \to \infty$ for each $u \in \R$ and this is a stronger assumption than the one in \eqref{E:lipcon}. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) = \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main} includes both of these initial conditions and we show this in Section \ref{S:Example}. 
 
-As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that considers the same set up, it a strong influence in the current work. We formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
+As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that considers the same set up, it is a strong influence in the current work. From a purely mathematical stand point, something interesting about this work is that all prior articles cited relating to the existence of invariant measures, including \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by DaPrato and Zabcyzy \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. Even though both theories have been shown to be more or less equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing work on its own.
+
+ The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
 \begin{enumerate}
 	\item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
 	the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
@@ -294,7 +296,7 @@ As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous d
 	\item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
 \end{enumerate}
 
-In order to have moments bounded in time, as required in \eqref{E:BddMnt}, one has to first identify the exact conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
+We now will introduce some conditions which will be used to verify \eqref{E:BddMnt}. In order to have moments bounded in time, one has to first identify the exact conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
@@ -320,10 +322,24 @@ one can further strengthen condition \eqref{E:Dalang-ab} to
   \quad  \text{for some $\alpha\in (0,1]$.}
 \end{equation}
 
+We use the convention that when $\alpha=0$, we simply drop it from the expression
+$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. We will also need the following
+slightly different condition:
+\begin{align} \label{E:Dalang-H}
+  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,}
+\end{align}
+where
+\begin{equation} \label{E:H}
+  \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
+\end{equation}
+As shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} implies condition
+\eqref{E:Dalang-H} and under condition \eqref{E:Dalang-00}, these two conditions become equivalent.
+The relations of these conditions are illustrated in Figure \ref{F:Dalang}.
+
 \begin{figure}[htpb]
 	\begin{center}
 		\usetikzlibrary{arrows.meta}
-		\begin{tikzpicture}[scale=1, x=6em, y=6em]
+		\begin{tikzpicture}[scale=.8, x=9em, y=6em]
 		% \tikzset{>=latex}
 		\def\inc{0.07}
 		\def\xo{1.2}
@@ -355,20 +371,6 @@ one can further strengthen condition \eqref{E:Dalang-ab} to
 	\label{F:Dalang}
 \end{figure}
 
-We use the convention that when $\alpha=0$, we simply drop it from the expression
-$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. We will also need the following
-slightly different condition:
-\begin{align} \label{E:Dalang-H}
-  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,}
-\end{align}
-where
-\begin{equation} \label{E:H}
-  \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
-\end{equation}
-As shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} implies condition
-\eqref{E:Dalang-H} and under condition \eqref{E:Dalang-00}, these two conditions become equivalent.
-The relations of these conditions are illustrated in Figure \ref{F:Dalang}.
-
 Note that the two conditions in \eqref{E:U0finite} guarantee the existence of the following
 non-empty open interval:
 \begin{align} \label{E:Interval}
@@ -382,11 +384,10 @@ We are now ready to state our two main results of the paper: Theorems \ref{T:Lrh
   Let $u(t,x;\mu)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that
   \begin{enumerate}[(i)]
     \item $\rho: \R^d \to \R_+$ is a nonnegative $L^1(\R^d)$ function;
-    \item the initial condition $\mu$ satisfies
+    \item for all $t > 0$, the initial condition $\mu$ satisfies $\mathcal{G}_{\rho}(t;\mu^*) < \infty$ where $\mu^* = 1 + |\mu|$ and
       \begin{equation} \label{E:G}
         \mathcal{G}_{\rho}(t;\mu)
-        := \int_{\R^d} J_0^2\left(t,x;1+|\mu|\right) \rho(x)\: \ud x< \infty
-        \quad \text{for all $t>0$};
+        := \int_{\R^d} J_0^2\left(t,x;\mu\right) \rho(x)\: \ud x ;
       \end{equation}
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in \eqref{E:U0finite}.
@@ -403,22 +404,22 @@ We are now ready to state our two main results of the paper: Theorems \ref{T:Lrh
 \begin{remark}\label{R:Condition}
 We would like to make a quick comment about the condition in \eqref{E:G}. First, because the heat kernel, the measure $1 + |\mu|$ and $\rho$ are all positive, then clearly we have that 
 	\[
-		\Norm{J_0(t,\cdot,|\mu|)}^2_{\rho}  = \int_{\R^d} J_0^2(t,x; |\mu|)\rho(x) \ud x \le \mathcal{G}_{\rho}(t;\mu).
+		\mathcal{G}_{\rho}(t,|\mu|) \le \mathcal{G}_{\rho}(t;\mu^*).
 	\]
 On the other hand, we have that 
 	\begin{align*}
-		\mathcal{G}_{\rho}(t;\mu) &= \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+ |\mu|)(\ud y)\right)^2\rho(x) \ud x \\
+		\mathcal{G}_{\rho}(t;\mu^*) &= \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+ |\mu|)(\ud y)\right)^2\rho(x) \ud x \\
 		&= \int_{\R^d} \big( 1+ J_0(t,x; |\mu|)\big)^2\rho(x) \ud x \\
-		&\le 2\bigg(\Norm{\rho}_{L^1(\R^d)} + \Norm{J_0(t,\cdot,|\mu|)}^2_{\rho} \bigg).
+		&\le 2\bigg(\Norm{\rho}_{L^1(\R^d)} +\mathcal{G}_{\rho}(t;|\mu|) \bigg).
 	\end{align*}
 Thus for all $t>0$, 
 	\[
-		\Norm{J_0(t,\cdot,|\mu|)}^2_{\rho} \le 
-		\mathcal{G}_{\rho}(t;\mu) \le 
-		C \bigg(1 + \Norm{J_0(t,\cdot,|\mu|)}^2_{\rho} \bigg),
+		\mathcal{G}_{\rho}(t;|\mu|) \le 
+		\mathcal{G}_{\rho}(t;\mu^*) \le 
+		C \bigg(1 + \mathcal{G}_{\rho}(t;|\mu|) \bigg),
 		\qquad \text{where } C = \max\{ 2\Norm{\rho}_{L^1(\R^d)}, 2 \},
 	\]
-and so the finiteness of \eqref{E:G} is equivalent to the finiteness of $\Norm{J_0(t,\cdot;|\mu|)}_{\rho}$. However, it will be notationally convenient to keep \eqref{E:G} the way it is. 
+and so the finiteness of $\mathcal{G}_{\rho}(t;\mu^*)$ is equivalent to the finiteness of $\mathcal{G}_{\rho}(t;|\mu|)$. However, it will be notationally convenient to consider $\mu^*$ instead of just $|\mu|$.
 \end{remark}
 
 We now state and prove a quick Corollary which shows that the solution to \eqref{E:SHE} starting from an $L^2_{\rho}(\R^d)$ initial condition with almost surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
@@ -556,11 +557,13 @@ The admissible condition \ref{E:aw} is needed in this paper due to the following
 \end{proposition}
 \subsection{Various initial conditions} \label{SS:Init}
 
+Recall from Remark \ref{R:Condition} that in order to verify both conditions \eqref{E:G} and \eqref{E:InitData}, then it suffices to just consider the term $\Norm{J_0(t,\cdot;|\mu|)}^2_{\rho}$.  
+
 \begin{example}[$L^\infty(\R^d)$ initial condition] \label{Ex:BddInit}
   We emphasize that if the initial condition $\mu$ is deterministic and is such that $\mu(\ud x) =
   \varphi(x)\ud x$ with $\varphi\in L^\infty(\R^d)$, then all conditions related to
   $\mathcal{G}_\rho(\cdot)$ in both Theorems \ref{T:Lrho} and \ref{T:Main} are trivially satisfied.
-  To be more precise, both conditions \eqref{E:G} and \eqref{E:InitData} hold because
+  To be more precise, both Conditions \eqref{E:G} and \eqref{E:InitData} hold because
   \begin{align*}
     \mathcal{G}_\rho(t;\varphi) \le \Norm{\varphi}_{L^\infty(\R^d)}^2 \Norm{\rho}_{L^1(\R^d)}< \infty
     \quad \text{uniformly for all $t\ge 0$.}
@@ -1439,16 +1442,16 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
 Now we are ready to prove Theorem \ref{T:Lrho}.
 
 \begin{proof}[Proof of Theorem \ref{T:Lrho}]
-  Under condition (iii), we can apply Fubini's Theorem and the moment bound \eqref{E:mb0} below to
+ Under condition (iii), we can apply Fubini's Theorem and the moment bound \eqref{E:mb0} below to
   see that for some constant $C>0$ independent of $t$, which may vary from line to line, that
   \begin{align*}
     \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
     % & = \E\left[\E \left(\int_{\R^d}\vert u\left(t,x;\mu\right) \vert^2 \rho(x)\ud x\bigg| \mathcal{F}_0\right) \right] \\
     & \le C\: \E \left[\int_{\R^d}\bigg(1+(G(t,\cdot) * |\mu|)(x)\bigg)^2\rho(x)\ud x\right]                              \\
     & = C \int_{\R^d}\E \left[\bigg( \Big(G(t,\cdot) *(1+|\mu|)\Big)(x) \bigg)^2\right]\rho(x)\ud x                     \\
-    & = C \:\mathcal{G}_{\rho}(t;\mu) < \infty.
+    & = C \:\mathcal{G}_{\rho}(t;\mu^*) < \infty,
   \end{align*}
-  This proves Theorem \ref{T:Lrho}.
+  where we recall that $\mu^*=1+|\mu|$. This proves Theorem \ref{T:Lrho}.
 \end{proof}
 
 \begin{remark}[Restarted SHE] \label{R:Restat}
