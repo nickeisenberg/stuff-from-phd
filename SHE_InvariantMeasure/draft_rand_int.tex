@@ -277,7 +277,19 @@ For another example, Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:16:existe
 	\]
 where $\varphi$ is a bounded function in $L^2(\R^d)$. So in this case, $u \mapsto b(x,u)$ may be unbounded but it is now required that $x \mapsto b(x,u)$ must vanish as $|x| \to \infty$. Furthermore, in either case the restriction on the initial condition to be in $L^2(\R^d)$ is quite strong and it excludes the popular case $u(0,x) = 1$.  
 
-As mentioned above, we work on the whole space and allow for a Lipschitz continuous diffusion term, $b(x,u)$ which may be unbounded in the second variable. The absence of such a drift term in this paper makes the problem more challenging. In order to have moments bounded in time, as required in \eqref{E:BddMnt}, one has to first identify the exact conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
+As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that considers the same set up, it a strong influence in the current work. We formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
+\begin{enumerate}
+	\item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
+	the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
+	initial condition. Here we give precise conditions on the initial condition, namely,
+	\eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
+	functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
+	\ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
+	the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
+	\item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
+\end{enumerate}
+
+In order to have moments bounded in time, as required in \eqref{E:BddMnt}, one has to first identify the exact conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
@@ -418,21 +430,20 @@ This theorem will be proved in Section \ref{S:Lrho}.
 
 This theorem will be proved in Section \ref{S:mainproof}.
 \bigskip
-
-The work by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} has a strong influence in
-the current work. We formulate and solve the problem using the random field language with some
-state-of-the-art moment estimates. The improvements over \cite{tessitore.zabczyk:98:invariant} consist
-of the following aspects:
-\begin{enumerate}
-  \item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
-    the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
-    initial condition. Here we give precise conditions on the initial condition, namely,
-    \eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
-    functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
-    \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
-    the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
-\end{enumerate}
+%The work by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} has a strong influence in
+%the current work. We formulate and solve the problem using the random field language with some
+%state-of-the-art moment estimates. The improvements over \cite{tessitore.zabczyk:98:invariant} consist
+%of the following aspects:
+%\begin{enumerate}
+%  \item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
+%    the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
+%    initial condition. Here we give precise conditions on the initial condition, namely,
+%    \eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
+%    functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
+%    \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
+%    the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
+%  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
+%\end{enumerate}
 
 This paper is organized as follows: In Section \ref{S:Example}, we further discuss our main results
 and provide some examples. In particular, in Section \ref{SS:Weight} we will extend the discussions
