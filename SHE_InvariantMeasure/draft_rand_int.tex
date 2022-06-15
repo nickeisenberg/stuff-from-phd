@@ -244,8 +244,34 @@ the solution:
 \begin{align*}
   \mathscr{L}(u(t,\cdot;\mu))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \mu)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 \end{align*}
-Due to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
-11.7]{da-prato.zabczyk:14:stochastic}), once the tightness of
+For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$, where $\zeta \in H$. Then we can define the {\em Markovian transition semi-group} corresponding to $P_t$ as 
+	\[
+		P_t\varphi(\zeta) = \int_{H} \varphi(y)P_t(\zeta, \ud y),
+	\]
+ where $\varphi \in C_b(H)$, and $C_b(H)$ denotes the space of bounded continuous function on $H$. Moreover, if we define $\mathcal{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in \mathcal{M}(H)$, we define $ P_t^*$ as follows:
+ 	\[
+	 	P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y),
+ 	\]
+ and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$ and $\nu \in \mathcal{M}(H)$,
+ 	\[
+ 		\langle \varphi, P_t^*\nu \rangle = \langle P_t\varphi, \nu \rangle
+ 	\]
+where,
+	\[
+		\langle \varphi, \nu \rangle := \int_{H} \varphi(y) \nu(\ud y) \qquad \text{for } \varphi \in H \text{ and } \nu \in \mathcal{M}(H).
+	\]
+	
+It can be shown that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with law $\nu$ that  $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case that $\zeta \in H$ is deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see \cite[Propostion 11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition 11.2]{da-prato.zabczyk:14:stochastic}, if one can show that there exists a $\zeta \in H$, either random or deterministic, and a $\eta \in \mathcal{M}(H)$ such that for each $\varphi \in C_b(H)$, the following limit exists:
+\begin{equation}\label{E:InvWeakLim}
+ 	\langle \varphi, P_t^*\nu \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty,
+ \end{equation}
+where $\nu \in \mathcal{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this said, it would be interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense that for all $\nu \in \mathcal{M}(H)$, \eqref{E:InvWeakLim} holds true for $\eta$ is fixed. According to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic}, in order to show this uniqueness, it suffices to consider only deterministic $\zeta \in H$, in other words, it suffices to show that there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in H$, the following limit holds true:
+\begin{equation}\label{E:InvDetLim}
+\langle \varphi, P_t^*\delta_{\zeta} \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty.
+\end{equation}
+
+However, even proving the existence of \eqref{E:InvDetLim} for one $\zeta \in H$ is challenging and this has not been able to be shown for the stochastic heat equation as in \eqref{E:SHE}. Instead, the strategy is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
+11.7]{da-prato.zabczyk:14:stochastic}), which says that once the tightness of
 $\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct an
 invariant measure via
 \begin{equation} \label{E:InvMeasForm}
@@ -255,10 +281,9 @@ for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. A critical step 
 tightness is to show that the following moment is uniformly bounded in time:
 \begin{align} \label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
-  <\infty.
-\end{align}
-Note that the uniqueness of the invariant measure is a much harder question; see, e.g.,
-\cite{hairer.mattingly:06:ergodicity}.
+  <\infty,
+\end{align} 
+and this will be the content of out Theorem \ref{T:Main} below.
 
 The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely studied and as far as we know, this current article and Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the spatial domain is the whole space $\R^d$, the Lipschitz continuous diffusion term, $b(x,u)$, may be unbounded in the second variable and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g., \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this exponential growth in time of the moments.
@@ -276,13 +301,13 @@ Aside from this current article and \cite{tessitore.zabczyk:98:invariant}, there
 	\[
 		|f(x,0)| \le \varphi(x) \qquad \text{and} \qquad |f(x,u_1) - f(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 	\]
-for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in L^2(\R^d) \cap L^{\infty}(\R^d)$, where $\rho$ is the admissible weight. Thus $f = 0$ is allowed. Moreover, they require the diffusion term, $b$, to satisfy the following:
+for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed. Moreover, they require the diffusion term, $b$, to satisfy the following:
 	\[
 		|b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 	\]
-and thus the parabolic Anderson model is allowed. However, when $b$ does depend on $x$, then $x \mapsto b(x,u)$ will decay as $|x| \to \infty$ for each $u \in \R$ and this is a stronger assumption than the one in \eqref{E:lipcon}. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) = \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main} includes both of these initial conditions and we show this in Section \ref{S:Example}. 
+and thus the parabolic Anderson model is allowed. However, when $b$ does depend on $x$, then  for each $u \in \R$, $x \mapsto b(x,u)$ must decay as $|x| \to \infty$ and this is a stronger assumption than the one in \eqref{E:lipcon}. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) = \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main} includes both of these initial conditions and we show this in Section \ref{S:Example}. 
 
-As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that considers the same set up, it is a strong influence in the current work. From a purely mathematical stand point, something interesting about this work is that all prior articles cited relating to the existence of invariant measures, including \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by DaPrato and Zabcyzy \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. Even though both theories have been shown to be more or less equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing work on its own.
+As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know of that considers the same set up, it is a strong influence in the current work. From a purely mathematical stand point, something interesting about this work is that all prior articles cited relating to the existence of invariant measures, including \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by DaPrato and Zabcyzy \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. Even though both theories have been shown to be more or less equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing on its own.
 
  The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
 \begin{enumerate}
@@ -300,9 +325,13 @@ We now will introduce some conditions which will be used to verify \eqref{E:BddM
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
-  & \text{and} \quad 64 L^2_{b}   <  \frac{1}{2\Upsilon(0)}\:.\label{E:Lipb}
+  & \text{and} \quad 64 L^2_{b}   <  \frac{1}{2\Upsilon(0)} \: , \label{E:Lipb}
 \end{align}
 \end{subequations}
+and moreover, these two conditions will guarantee the existence of the following non-empty open interval:
+\begin{align} \label{E:Interval}
+\left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
+\end{align}
 
 Note that condition \eqref{E:Dalang-00} is a strengthened version of {\it Dalang's condition}:
 \begin{align} \label{E:Dalang}
@@ -332,9 +361,7 @@ where
 \begin{equation} \label{E:H}
   \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
 \end{equation}
-As shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} implies condition
-\eqref{E:Dalang-H} and under condition \eqref{E:Dalang-00}, these two conditions become equivalent.
-The relations of these conditions are illustrated in Figure \ref{F:Dalang}.
+The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma \ref{L:yineq}, however, as is shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} will imply condition \eqref{E:Dalang-H}. Moreover, when we assume \eqref{E:Dalang-00} holds true, which will always be the case, then these two conditions become equivalent. The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as being more well recognized. The relations of these conditions are illustrated in Figure \ref{F:Dalang}. 
 
 \begin{figure}[htpb]
 	\begin{center}
@@ -371,20 +398,14 @@ The relations of these conditions are illustrated in Figure \ref{F:Dalang}.
 	\label{F:Dalang}
 \end{figure}
 
-Note that the two conditions in \eqref{E:U0finite} guarantee the existence of the following
-non-empty open interval:
-\begin{align} \label{E:Interval}
-  \left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
-\end{align}
-
 We are now ready to state our two main results of the paper: Theorems \ref{T:Lrho} and \ref{T:Main}. These theorems will be proved in Sections \ref{S:Lrho} and \ref{S:mainproof} respectively. 
 
 \begin{theorem} \label{T:Lrho}
   % Let $\mu(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
-  Let $u(t,x;\mu)$ be the solution to \eqref{E:SHE} starting from $\mu$. Assume that
+  Let $u(t,x;\mu)$ be the solution to \eqref{E:SHE} starting from $\mu$ which satisfies \eqref{A:icon}. Assume that
   \begin{enumerate}[(i)]
     \item $\rho: \R^d \to \R_+$ is a nonnegative $L^1(\R^d)$ function;
-    \item for all $t > 0$, the initial condition $\mu$ satisfies $\mathcal{G}_{\rho}(t;\mu^*) < \infty$ where $\mu^* = 1 + |\mu|$ and
+    \item for all $t > 0$, the initial condition $\mu$ satisfies $\mathcal{G}_{\rho}(t;|\mu|) < \infty$ where
       \begin{equation} \label{E:G}
         \mathcal{G}_{\rho}(t;\mu)
         := \int_{\R^d} J_0^2\left(t,x;\mu\right) \rho(x)\: \ud x ;
@@ -395,32 +416,12 @@ We are now ready to state our two main results of the paper: Theorems \ref{T:Lrh
   Then there exists an unique $L^2(\Omega)$-continuous solution $u(t,x)$ such that for some constant
   $C>0$, which does not depend on $t$, the following holds:
   \begin{equation} \label{E:uInLrho}
-    \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
-    \le C \mathcal{G}_{\rho}(t;\mu)
-    < \infty, \quad \text{for any } t > 0.
+    \E\left(\Norm{u(t,\cdot; \mu)}_{\rho}^2\right)
+    \le C \mathcal{G}_{\rho}(t; \mu^*)
+    < \infty, \quad \text{for any } t > 0.,
   \end{equation}
+  where $ \mu^* := 1 + |\mu|$.
 \end{theorem}
-
-\begin{remark}\label{R:Condition}
-We would like to make a quick comment about the condition in \eqref{E:G}. First, because the heat kernel, the measure $1 + |\mu|$ and $\rho$ are all positive, then clearly we have that 
-	\[
-		\mathcal{G}_{\rho}(t,|\mu|) \le \mathcal{G}_{\rho}(t;\mu^*).
-	\]
-On the other hand, we have that 
-	\begin{align*}
-		\mathcal{G}_{\rho}(t;\mu^*) &= \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+ |\mu|)(\ud y)\right)^2\rho(x) \ud x \\
-		&= \int_{\R^d} \big( 1+ J_0(t,x; |\mu|)\big)^2\rho(x) \ud x \\
-		&\le 2\bigg(\Norm{\rho}_{L^1(\R^d)} +\mathcal{G}_{\rho}(t;|\mu|) \bigg).
-	\end{align*}
-Thus for all $t>0$, 
-	\[
-		\mathcal{G}_{\rho}(t;|\mu|) \le 
-		\mathcal{G}_{\rho}(t;\mu^*) \le 
-		C \bigg(1 + \mathcal{G}_{\rho}(t;|\mu|) \bigg),
-		\qquad \text{where } C = \max\{ 2\Norm{\rho}_{L^1(\R^d)}, 2 \},
-	\]
-and so the finiteness of $\mathcal{G}_{\rho}(t;\mu^*)$ is equivalent to the finiteness of $\mathcal{G}_{\rho}(t;|\mu|)$. However, it will be notationally convenient to consider $\mu^*$ instead of just $|\mu|$.
-\end{remark}
 
 We now state and prove a quick Corollary which shows that the solution to \eqref{E:SHE} starting from an $L^2_{\rho}(\R^d)$ initial condition with almost surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
 
@@ -451,7 +452,7 @@ We now state and prove a quick Corollary which shows that the solution to \eqref
     \item the weight function $\tilde{\rho}$ and the initial condition satisfy the following
       condition:
       \begin{equation} \label{E:InitData}
-        \limsup_{t>0}\: \mathcal{G}_{\tilde{\rho}}(t;\mu) < \infty;
+        \limsup_{t>0}\: \mathcal{G}_{\tilde{\rho}}(t;|\mu|) < \infty;
       \end{equation}
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in \eqref{E:U0finite};
@@ -557,15 +558,13 @@ The admissible condition \ref{E:aw} is needed in this paper due to the following
 \end{proposition}
 \subsection{Various initial conditions} \label{SS:Init}
 
-Recall from Remark \ref{R:Condition} that in order to verify both conditions \eqref{E:G} and \eqref{E:InitData}, then it suffices to just consider the term $\Norm{J_0(t,\cdot;|\mu|)}^2_{\rho}$.  
-
 \begin{example}[$L^\infty(\R^d)$ initial condition] \label{Ex:BddInit}
   We emphasize that if the initial condition $\mu$ is deterministic and is such that $\mu(\ud x) =
   \varphi(x)\ud x$ with $\varphi\in L^\infty(\R^d)$, then all conditions related to
   $\mathcal{G}_\rho(\cdot)$ in both Theorems \ref{T:Lrho} and \ref{T:Main} are trivially satisfied.
   To be more precise, both Conditions \eqref{E:G} and \eqref{E:InitData} hold because
   \begin{align*}
-    \mathcal{G}_\rho(t;\varphi) \le \Norm{\varphi}_{L^\infty(\R^d)}^2 \Norm{\rho}_{L^1(\R^d)}< \infty
+    \mathcal{G}_\rho(t;|\varphi|) \le \Norm{\varphi}_{L^\infty(\R^d)}^2 \Norm{\rho}_{L^1(\R^d)}< \infty
     \quad \text{uniformly for all $t\ge 0$.}
   \end{align*}
 \end{example}
@@ -574,7 +573,7 @@ Recall from Remark \ref{R:Condition} that in order to verify both conditions \eq
   In this example, we study the case when the initial condition $\mu$ is the Dirac delta measure at
   zero, namely, $\delta_0$. Let $\rho$ be a nonnegative $L^1(\R^d)$ function. Since
   \begin{align*}
-    \mathcal{G}_\rho(t;\delta_0)
+    \mathcal{G}_\rho(t;|\delta_0|)
     = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
     \le G(t,0)^2 \Norm{\rho}_{L^1(\R^d)},
     \quad \text{for all $t>0$,}
@@ -619,7 +618,7 @@ The following proposition shows that for initial conditions with unbounded tails
   \end{align*}
   Then for some constants $C, C'>0$ that depend on $d$ and $\alpha$, it holds that
   \begin{align} \label{E:growtail}
-    C' (1+t^\alpha) \le \mathcal{G}_\rho(t;\mu) \le C (1+t^\alpha), \qquad \text{for all $t>0$}.
+    C' (1+t^\alpha) \le \mathcal{G}_\rho(t;|\mu|) \le C (1+t^\alpha), \qquad \text{for all $t>0$}.
   \end{align}
   In particular, this implies that condition \eqref{E:G} is satisfied, but condition
   \eqref{E:InitData} fails.
@@ -627,7 +626,7 @@ The following proposition shows that for initial conditions with unbounded tails
 \begin{proof}
   Notice that by scaling arguments,
   \begin{align*}
-    \mathcal{G}_\rho(t;\mu)
+    \mathcal{G}_\rho(t;|\mu|)
     & = \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x                                        \\
     & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x    \\
     & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
