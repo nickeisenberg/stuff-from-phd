@@ -215,7 +215,7 @@ for more details of this setup. \\
 
 The aim of this paper is to investigate the conditions required to guarantee the existence of an
 invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
-the ergodicity of the system. A schematic in order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially involves showing that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian transition functions} on some Hilbert space, $H$, and that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in the Hilbert space $L^2_{\rho}(\R^d)$, which we now define.
+the ergodicity of the system. A schematic in order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially involves showing the following: first that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian transition functions} on some Hilbert space, $H$, and the corresponding {\em Markovian semigroup} is Feller, and second that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in the Hilbert space $L^2_{\rho}(\R^d)$, which we now define.
 
 \begin{definition} \label{D:Rho}
   $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive,
@@ -244,33 +244,33 @@ the solution:
 \begin{align*}
   \mathscr{L}(u(t,\cdot;\mu))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \mu)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 \end{align*}
-For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$, where $\zeta \in H$. Then we can define the {\em Markovian transition semi-group} corresponding to $P_t$ as 
+For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$ where $\zeta \in H$ and $A \in \mathscr{B}(H)$. Then we can define the Markovian transition semi-group corresponding to $P_t$ as 
 	\[
-		P_t\varphi(\zeta) = \int_{H} \varphi(y)P_t(\zeta, \ud y),
+		P_t\varphi(\zeta) = \int_{H} \varphi(y)P_t(\zeta, \ud y), \qquad \text{for all } \varphi \in C_b(H),
 	\]
- where $\varphi \in C_b(H)$, and $C_b(H)$ denotes the space of bounded continuous function on $H$. Moreover, if we define $\mathcal{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in \mathcal{M}(H)$, we define $ P_t^*$ as follows:
+ where $C_b(H)$ denotes the space of bounded continuous function on $H$. Moreover, if we define $\mathscr{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in \mathscr{M}(H)$, we define the measure $ P_t^*\nu \in \mathscr{M}(H)$ as follows:
  	\[
-	 	P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y),
+	 	P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y), \qquad \text{for all } A \in \mathscr{B}(H),
  	\]
- and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$ and $\nu \in \mathcal{M}(H)$,
+ and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$ and $\nu \in \mathscr{M}(H)$,
  	\[
  		\langle \varphi, P_t^*\nu \rangle = \langle P_t\varphi, \nu \rangle
  	\]
 where,
 	\[
-		\langle \varphi, \nu \rangle := \int_{H} \varphi(y) \nu(\ud y) \qquad \text{for } \varphi \in H \text{ and } \nu \in \mathcal{M}(H).
+		\langle \varphi, \nu \rangle := \int_{H} \varphi(y) \nu(\ud y) \qquad \text{for } \varphi \in H \text{ and } \nu \in \mathscr{M}(H).
 	\]
 	
-It can be shown that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with law $\nu$ that  $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case that $\zeta \in H$ is deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see \cite[Propostion 11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition 11.2]{da-prato.zabczyk:14:stochastic}, if one can show that there exists a $\zeta \in H$, either random or deterministic, and a $\eta \in \mathcal{M}(H)$ such that for each $\varphi \in C_b(H)$, the following limit exists:
+It is known that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with law $\nu \in \mathscr{M}(H)$, that  $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case that $\zeta \in H$ is deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see \cite[Propostion 11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition 11.2]{da-prato.zabczyk:14:stochastic}, if one can show that there exists a $\zeta \in H$, either random or deterministic, and a $\eta \in \mathscr{M}(H)$ such that for each $\varphi \in C_b(H)$, the following limit exists:
 \begin{equation}\label{E:InvWeakLim}
  	\langle \varphi, P_t^*\nu \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty,
  \end{equation}
-where $\nu \in \mathcal{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this said, it would be interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense that for all $\nu \in \mathcal{M}(H)$, \eqref{E:InvWeakLim} holds true for $\eta$ is fixed. According to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic}, in order to show this uniqueness, it suffices to consider only deterministic $\zeta \in H$, in other words, it suffices to show that there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in H$, the following limit holds true:
+where $\nu \in \mathscr{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this said, it would be interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense that for all $\nu \in \mathscr{M}(H)$, \eqref{E:InvWeakLim} holds true for $\eta$ fixed. According to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic}, in order to show this uniqueness, it suffices to consider only deterministic $\zeta \in H$, in other words, it suffices to show that there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in H$, the following limit holds true:
 \begin{equation}\label{E:InvDetLim}
 \langle \varphi, P_t^*\delta_{\zeta} \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty.
 \end{equation}
 
-However, even proving the existence of \eqref{E:InvDetLim} for one $\zeta \in H$ is challenging and this has not been able to be shown for the stochastic heat equation as in \eqref{E:SHE}. Instead, the strategy is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
+However, Proposition \ref{P:growtail} below suggests that the limit in \eqref{E:InvDetLim} may not exist for all $\zeta \in H$, which implies that \eqref{E:InvWeakLim} may not exist for some $\nu \in \mathscr{M}(H)$. Thus uniqueness of the invariant measure, $\eta$, in this situation would resort to proving that for all pairs $(\nu,\widetilde{\eta}) \in \mathscr{M}(H) \times \mathscr{M}(H)$ such that the limit in \eqref{E:InvWeakLim} exists, $\widetilde{\eta} = \eta$ in each pair. Moreover, even verifying \eqref{E:InvDetLim} for one particular $\zeta \in H$ is challenging and this has not yet been done for the stochastic heat equation as in \eqref{E:SHE}. Instead, the common strategy is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
 11.7]{da-prato.zabczyk:14:stochastic}), which says that once the tightness of
 $\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct an
 invariant measure via
@@ -286,7 +286,7 @@ tightness is to show that the following moment is uniformly bounded in time:
 and this will be the content of out Theorem \ref{T:Main} below.
 
 The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely studied and as far as we know, this current article and Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the spatial domain is the whole space $\R^d$, the Lipschitz continuous diffusion term, $b(x,u)$, may be unbounded in the second variable and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g., \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this exponential growth in time of the moments.
+\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in \eqref{E:lipcon} and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g., \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this exponential growth in time of the moments.
 
 For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant, cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
 	\begin{equation} \label{E:dis}
@@ -307,7 +307,7 @@ for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \s
 	\]
 and thus the parabolic Anderson model is allowed. However, when $b$ does depend on $x$, then  for each $u \in \R$, $x \mapsto b(x,u)$ must decay as $|x| \to \infty$ and this is a stronger assumption than the one in \eqref{E:lipcon}. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) = \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main} includes both of these initial conditions and we show this in Section \ref{S:Example}. 
 
-As mentioned above, we consider the whole space $\R^d$, a Lipschitz continuous diffusion term, $b(x,u)$, which may be unbounded in the second variable and lastly we do not consider any drift term. As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know of that considers the same set up, it is a strong influence in the current work. From a purely mathematical stand point, something interesting about this work is that all prior articles cited relating to the existence of invariant measures, including \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by DaPrato and Zabcyzy \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. Even though both theories have been shown to be more or less equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing on its own.
+As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know of that considers the same set up as equation \eqref{E:SHE}, it is a strong influence in the current work. From a purely mathematical stand point, something interesting about this work is that all prior articles cited relating to the existence of invariant measures, including \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by DaPrato and Zabcyzk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. Even though both theories have been shown to be more or less equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing on its own.
 
  The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
 \begin{enumerate}
@@ -350,18 +350,8 @@ one can further strengthen condition \eqref{E:Dalang-ab} to
   \Upsilon_\alpha(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
   \quad  \text{for some $\alpha\in (0,1]$.}
 \end{equation}
-
 We use the convention that when $\alpha=0$, we simply drop it from the expression
-$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. We will also need the following
-slightly different condition:
-\begin{align} \label{E:Dalang-H}
-  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,}
-\end{align}
-where
-\begin{equation} \label{E:H}
-  \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
-\end{equation}
-The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma \ref{L:yineq}, however, as is shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} will imply condition \eqref{E:Dalang-H}. Moreover, when we assume \eqref{E:Dalang-00} holds true, which will always be the case, then these two conditions become equivalent. The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as being more well recognized. The relations of these conditions are illustrated in Figure \ref{F:Dalang}. 
+$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. 
 
 \begin{figure}[htpb]
 	\begin{center}
@@ -397,6 +387,17 @@ The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lem
 	
 	\label{F:Dalang}
 \end{figure}
+
+We will also need the following
+slightly different condition:
+\begin{align} \label{E:Dalang-H}
+  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,}
+\end{align}
+where
+\begin{equation} \label{E:H}
+  \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
+\end{equation}
+The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma \ref{L:yineq}, however, as is shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} will imply condition \eqref{E:Dalang-H}. Moreover, when we assume \eqref{E:Dalang-00} holds true, which will always be the case, then these two conditions become equivalent. The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as being more well recognized. The relations of these conditions are illustrated in Figure \ref{F:Dalang}. 
 
 We are now ready to state our two main results of the paper: Theorems \ref{T:Lrho} and \ref{T:Main}. These theorems will be proved in Sections \ref{S:Lrho} and \ref{S:mainproof} respectively. 
 
