@@ -3337,10 +3337,6 @@ Here is the main result of this chapter. The proof will be postponed until Secti
 
 The proof of Theorem \ref{T:MainSupLin} uses a standard stopping time argument along with a series of truncations of the super-linear term, $\sigma$, in order to construct a solution of \eqref{E:SupLinSPDE}. Indeed, we define for $ N >0$,
 \[
-\sigma_N(x) = \sigma\left( \left(1 \wedge \frac{N}{|x|}\right) x \right).
-\]
-Note that when $d = 1$, $\sigma_N$ reduces to the following:
-\[
 \sigma_N(x) = \sigma(x) \mathbf{1}_{\{ |x| \le N \}} + \sigma(N)\mathbf{1}_{ \{ x > N \}} + \sigma(-N)\mathbf{1}_{\{ x < -N\}}.
 \]
 Then we associate for each $N>0$, the corresponding global solution to \eqref{E:SupLinSPDE} with $\sigma$ replaced my $\sigma_N$ as $u_N(t,x)$, whose existence follows due to Theorem \ref{T:SolveabilityGenLip} below. We then define the stopping time $\tau_N$ as follows:
@@ -3709,7 +3705,7 @@ We now state and prove a proposition that will be used to prove the H\"older con
 \begin{proof}
 	We first solve a {\it truncated} version of \eqref{E:SupLinSPDE}. By this, we mean $\eqref{E:SupLinSPDE}$ with $\sigma$ replaced by $\sigma_N$ where for any $N >0$,
 	\[
-	\sigma_N(x) = \sigma\left( \left(1 \wedge \frac{N}{|x|}\right) x \right).
+	\sigma_N(x) = \sigma(x) \textbf{1}_{|x| \le N} + \sigma(N)\textbf{1}_{x > N} + \sigma(-N)\textbf{1}_{x< -N}.
 	\]
 	Note that since $\sigma$ satisfies \eqref{C:SigSupLin}, then $\sigma_N$ is Lipschitz continuous with Lipschitz constant $L(\sigma_N) := \sigma_2 \ln(2N)^{\delta}$. In other words, 
 	\[
