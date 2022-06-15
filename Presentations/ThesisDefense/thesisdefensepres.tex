@@ -386,11 +386,11 @@ Let $\rho$ be an admissible weight and suppose that
 \]
 Now suppose our initial measure, $\mu$, satisfies the following:
 \[
-	\mathcal{G}_{\rho}(t;\mu) := \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+|\mu|)(\ud y) \right)^2 \rho(x) \ud x < \infty.
+	\mathcal{G}_{\rho}(t;|\mu|) := \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (|\mu|)(\ud y) \right)^2 \rho(x) \ud x < \infty.
 \]
 Then for all $t > 0$,
 \[
-	\mathbb{E}\left( \Norm{u(t,\cdot;\mu)}^2_{\rho} \right) \le C\mathcal{G}_{\rho}(t;\mu) < \infty.
+	\mathbb{E}\left( \Norm{u(t,\cdot;\mu)}^2_{\rho} \right) \le C\mathcal{G}_{\rho}(t; 1 + |\mu|) < \infty.
 \]
 In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ such that
 	\[
@@ -409,7 +409,7 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 		for a family of Markovian transition functions. \vspace{.3in}
 	
 	\begin{definition}
-		A measure $\eta$ is invariant for the stochastic heat equation if $\eta$ is invariant for the transition functions $P_t$. In other words, 
+		A measure $\eta$ is {\em invariant} for the stochastic heat equation if $\eta$ is invariant for the transition functions $P_t$. In other words, 
 			\[
 				P_t^*(\eta)(\Gamma) = \int_{H} P_t(\zeta, \Gamma) \eta(\ud \zeta) = \eta(\Gamma), \quad \text{for all } \Gamma \in \mathscr{B}(H).
 			\]
@@ -911,12 +911,6 @@ where $\eta_{t_0}$ is the invariant measure.
 		\rnum{2} $\lim \limits_{t\to \infty} \mathcal{H}_{\alpha}(t) = \Gamma(1- 2\alpha) \Upsilon_{2\alpha}(0)$. \vspace{.1in}
 		
 		\rnum{3} When $\Upsilon(0) < \infty$ then $\Upsilon_{2\alpha}(0) < \infty \iff \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
-		
-		\rnum{4} When $\widehat{f}(\xi) = \widehat{f}(|\xi|)$ then $\mathcal{H}(t)$ takes the following form: 
-			\[
-				\mathcal{H}_{\alpha}(t) = \int_{\R^d} \ud \xi \: \frac{\widehat{f}(\xi)}{|\xi|^{2(1-2\alpha)}} \bigg(\Gamma(1-2\alpha)  - \Gamma(1-2\alpha, \: |\xi|^2t)\bigg),
-			\]
-		where $\Gamma(a,b)$ is the upper incomplete Gamma function. 
 	\end{lemma}	
 	
 \end{frame}
@@ -960,28 +954,29 @@ where $\eta_{t_0}$ is the invariant measure.
 \end{frame}
 
 \begin{frame} 
+	\small
 	\textbf{Allowable Initial Conditions:}
 	
 		\rnum{1} For any $\zeta \in L^{\infty}(\R^d)$ then for all $t \ge 0$
 		\[
-		\mathcal{G}_{\rho}(t;\mu) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
+		\mathbb{E}\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
 		\]
 		
 		\rnum{2} For $\delta_0(\cdot)$ and for all $ t > 0$,
 		\[
-		\mathcal{G}_{\rho}(t;\delta_0) \le \left(2 + G(t,0)^2\right) \Norm{\rho}_{L^1(\R^d)} < \infty.
+		\mathbb{E}\left(\Norm{u(t,\cdot; \delta_0)}_{\rho}^2\right) \le \left(2 + G(t,0)^2\right) \Norm{\rho}_{L^1(\R^d)} < \infty.
 		\]
 		
 		\rnum{3} Consider $|\cdot|^{-\lambda}$ for any $\lambda \in (0,d)$. Then for all $ t> 0$,
 		\[
-		\mathcal{G}_{\rho}(t;|\cdot|^{-\lambda}) \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
+		\mathbb{E}\left(\Norm{u(t,\cdot;|\cdot|^{-\lambda})}_{\rho}^2\right)  \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
 		\] \vspace{0in}
 		
 	\textbf{Non-permissible $L^2_{\rho}(\R^d)$-valued initial conditions:}	\vspace{.05in}
 	
 	\rnum{1} $\zeta(x) = |x|^{\alpha}$. When $\rho(x) = \exp(-|x|)$, then we can show that
 		\[
-			C_1(1+t^{\alpha}) \le \mathcal{G}_{\rho}(t;\zeta) \le C_2(1+t^{\alpha}).
+			C_1(1+t^{\alpha}) \le \mathcal{G}_{\rho}(t;|\zeta|) \le C_2(1+t^{\alpha}).
 		\]
 
 \end{frame}
