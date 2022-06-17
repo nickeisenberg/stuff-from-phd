@@ -185,21 +185,28 @@ sense) is also a nonnegative and nonnegative definite tempered measure, which is
 {\it spectral measure} and is denoted by $\widehat{f}(\ud \xi)$ \footnote{See Remark \ref{R:Fourier}
 for the convention of Fourier transform that is used in this paper.}. Moreover, in the case where
 $\Gamma$ has a density $f$, namely, $\Gamma(\ud x)=f(x) \ud x$, then $\widehat{f}(\ud \xi) =
-\widehat{f}(\xi) \ud \xi$. The initial condition, $\mu$, is a deterministic, locally finite, regular,
-signed Borel measure that satisfies the following integrability condition at infinity:
+\widehat{f}(\xi) \ud \xi$.
+
+The initial condition, $\mu$, is a deterministic, locally finite, regular, signed Borel measure that
+satisfies the following integrability condition at infinity:
 \begin{equation} \label{A:icon}
   \int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x) < \infty \quad \text{for all $a>0$},
 \end{equation}
-where $|\mu|=\mu_++\mu_-$ and $\mu=\mu_+-\mu_-$ refers to the {\it Hahn decomposition} of the measure
-$\mu$. The function $b(x,u)$ is uniformly bounded in the first
-variable and Lipschitz continuous in the second variable, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
+where $|\mu|=\mu_++\mu_-$ and $\mu=\mu_+-\mu_-$ refers to the {\it Hahn decomposition} of the
+measure $\mu$. Initial condition of this type, introduced in \cite{chen.dalang:15:moments*1} and
+further explored in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}, is called {\it rough
+initial condition}.
+
+The function $b(x,u)$ is uniformly bounded in the first variable and Lipschitz continuous in the
+second variable, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
 \begin{equation} \label{E:lipcon}
   |b(x,u)-b(x,v)| \le L_b |u-v| \quad \text{and} \quad
   |b(x,0)|        \le L_0       \quad \text{for all $u,v \in \R$ and $x \in \R^d.$ }
 \end{equation}
 In particular, our assumption allows the linear case $b(x,u) = \lambda u$, which is usually referred
-to as the \textit{parabolic Anderson model} (PAM); see \cite{carmona.molchanov:94:parabolic}. The SPDE
-\eqref{E:SHE} is understood in its {\it mild form}:
+to as the \textit{parabolic Anderson model} (PAM); see \cite{carmona.molchanov:94:parabolic}.
+
+The SPDE \eqref{E:SHE} is understood in its {\it mild form}:
 \begin{equation} \label{E:gmsol}
   u(t,x) = J_0(t,x;\mu)+ \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y),
 \end{equation}
@@ -210,45 +217,52 @@ where $G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\left(2t\right)^{-1}|x|^2\right)$ is
 is the solution to the homogeneous equation, and the stochastic integral is the {\it Walsh
 integral}. We refer the interested readers to
 \cite{walsh:86:introduction,dalang:99:extending,dalang.khoshnevisan.ea:09:minicourse,chen.kim:19:nonlinear}
-for more details of this setup. \\
+for more details of this setup. \bigskip
 
+The aim of this paper is to investigate the conditions required to guarantee the existence of an
+invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
+the ergodicity of the system. The general procedure has been laid out by Tessitore and Zabczyk
+\cite{tessitore.zabczyk:98:invariant}, which essentially involves two parts: firstly one needs to
+show that the laws of the solution to \eqref{E:SHE} form a family of {\em Markovian transition
+functions} on some Hilbert space, $H$, and the corresponding {\em Markovian semigroup} is Feller;
+and secondly one needs to establish that the moments of solution is bounded in time (see
+\eqref{E:BddMnt} below). For the second point, it requires some substantial work (see Theorems
+\ref{T:Lrho} and \ref{T:Main} below).  On the
+other hand, the first point has been shown to be true for our case of interest (see, e.g.,
+\cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). Now let us introduce our Hilbert space
+$H=L^2_{\rho}(\R^d)$.
 
-The aim of this paper is to investigate the conditions required to guarantee the existence of an invariant measure for
-the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system. A schematic in
-order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially
-involves showing the following: first that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian
-transition functions} on some Hilbert space, $H$, and the corresponding {\em Markovian semigroup} is Feller, and second
-that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in
-Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case
-of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in
-the Hilbert space $L^2_{\rho}(\R^d)$, which we now define.
 
 \begin{definition} \label{D:Rho}
-  $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive, bounded and continuous
-  function in $L^1(\R^d)$ such that for $T>0$, there exists a constant $C_\rho(T)$ such that
+  A function $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight function} if it is a
+  strictly positive, bounded, continuous, and $L^1(\R^d)$-integrable function such that for all
+  $T>0$, there exists a constant $C_\rho(T)$ such that
   \begin{equation} \label{E:aw}
     \big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x)
     \quad \text{for all $t\in[0,T]$ and $x\in\R^d$.}
   \end{equation}
-  Moreover, we denote by $L^2_{\rho}(\R^d)$ the corresponding Hilbert space of $\rho$-weighted square integrable
-  functions and we use $\langle \cdot, \cdot \rangle_{\rho}$ and $\Norm{\cdot}_{\rho}$ to denote the inner product and
-  norm on $L^2_{\rho}(\R^d)$:
-  	\[
-  		\langle f,g \rangle_{\rho} := \int_{\R^d} f(x) g(x) \rho(x) \ud x \quad \text{and} \quad \Norm{f}_{\rho} := \int_{\R^d} |f(x)|^2 \rho(x) \ud x.
-  	\]
+  Moreover, we denote by $L^2_{\rho}(\R^d)$ the corresponding Hilbert space of $\rho$-weighted
+  square integrable functions and we use $\langle \cdot, \cdot \rangle_{\rho}$ and
+  $\Norm{\cdot}_{\rho}$ to denote the inner product and norm on $L^2_{\rho}(\R^d)$:
+  \begin{align*}
+  		\langle f,g \rangle_{\rho} := \int_{\R^d} f(x) g(x) \rho(x) \ud x \quad \text{and} \quad
+      \Norm{f}_{\rho}            := \int_{\R^d} |f(x)|^2  \rho(x) \ud x.
+  \end{align*}
 \end{definition}
 
-From now on we will denote $H:=L^2_{\rho}(\R^d)$. In Corollary \ref{C:inclusion} below, we will see that the solution to
-\eqref{E:SHE} maps $H$ into $H$ in the sense that for each $\zeta \in H$ and for all $t>0$, we have the function $x
-\mapsto u(t,x;\zeta)$ almost surely in $H$, where we use the notation $u(t,x;\mu)$ to denote the solution to
-\eqref{E:SHE} starting from $\mu$. Moreover, we introduce a new condition, namely \eqref{E:G}, which shows that the
-solution to $\eqref{E:SHE}$ may also map measures that are outside of $H$ into $H$. Thus, this condition allows us to
-consider more general initial conditions while at the same time still operate in the same framework laid out by the
-authors in \cite{tessitore.zabczyk:98:invariant, da-prato.zabczyk:14:stochastic}.  We provide some examples of
-permissible initial conditions that are outside of $H$ in Section \ref{S:Example} below.
+From now on we will denote $H:=L^2_{\rho}(\R^d)$. In Corollary \ref{C:inclusion} below, we will see
+that the solution to \eqref{E:SHE} maps $H$ into $H$ in the sense that for each $\zeta \in H$ and
+for all $t>0$, we have the function $x \mapsto u(t,x;\zeta)$ almost surely in $H$, where we use the
+notation $u(t,x;\mu)$ to denote the solution to \eqref{E:SHE} starting from $\mu$. Moreover, we
+introduce a new condition, namely \eqref{E:G}, which shows that the solution to $\eqref{E:SHE}$ may
+also map measures that are outside of $H$ into $H$. Thus, this condition allows us to consider more
+general initial conditions while at the same time still operate in the same framework laid out by
+the authors in \cite{tessitore.zabczyk:98:invariant, da-prato.zabczyk:14:stochastic}.  We provide
+some examples of permissible initial conditions that are outside of $H$ in Section \ref{S:Example}
+below.
 
-A probability measure, $\eta$, on the Borel $\sigma$-field of $H$, which we denote as $\mathscr{B}(H)$, is said to be
-{\it invariant} for \eqref{E:SHE} if
+A probability measure, $\eta$, on the Borel $\sigma$-field of $H$, which we denote as
+$\mathscr{B}(H)$, is said to be {\it invariant} for \eqref{E:SHE} if
 \begin{equation}\label{E:InvMeas}
   \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
   \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$},
@@ -257,19 +271,20 @@ where $\mathscr{L}(u(t,\cdot;\mu))(A)$ denotes the law of the solution:
 \begin{align*}
   \mathscr{L}(u(t,\cdot;\mu))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \mu)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 \end{align*}
-For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$ where $\zeta \in H$ and $A \in
-\mathscr{B}(H)$. Then we can define the Markovian transition semi-group corresponding to $P_t$ as
+For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$ where $\zeta \in H$
+and $A \in \mathscr{B}(H)$. Then we can define the Markovian transition semi-group corresponding to
+$P_t$ as
 	\[
 		P_t\varphi(\zeta) = \int_{H} \varphi(y)P_t(\zeta, \ud y), \qquad \text{for all } \varphi \in C_b(H),
 	\]
- where $C_b(H)$ denotes the space of bounded continuous functions on $H$. Moreover, if we define $\mathscr{M}(H)$ as the
- space of probability measures on $H$, then for each $\nu \in \mathscr{M}(H)$, we define the measure $ P_t^*\nu \in
- \mathscr{M}(H)$ as follows:
+ where $C_b(H)$ denotes the space of bounded continuous functions on $H$. Moreover, if we define
+ $\mathscr{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in
+ \mathscr{M}(H)$, we define the measure $ P_t^*\nu \in \mathscr{M}(H)$ as follows:
  	\[
 	 	P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y), \qquad \text{for all } A \in \mathscr{B}(H),
  	\]
- and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$ and $\nu \in
- \mathscr{M}(H)$,
+ and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$
+ and $\nu \in \mathscr{M}(H)$,
  	\[
  		\langle \varphi, P_t^*\nu \rangle = \langle P_t\varphi, \nu \rangle
  	\]
@@ -278,71 +293,78 @@ where,
 		\langle \varphi, \nu \rangle := \int_{H} \varphi(y) \nu(\ud y) \qquad \text{for } \varphi \in H \text{ and } \nu \in \mathscr{M}(H).
 	\]
 
-It is known that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with law $\nu \in
-\mathscr{M}(H)$, that $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case that $\zeta \in H$ is
-deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see \cite[Propostion
-11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition 11.2]{da-prato.zabczyk:14:stochastic}, if one can
-show that there exists a $\zeta \in H$, either random or deterministic, and a $\eta \in \mathscr{M}(H)$ such that for
-each $\varphi \in C_b(H)$, the following limit exists:
+It is known that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with
+law $\nu \in \mathscr{M}(H)$, that $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case
+that $\zeta \in H$ is deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see
+\cite[Propostion 11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition
+11.2]{da-prato.zabczyk:14:stochastic}, if one can show that there exists a $\zeta \in H$, either
+random or deterministic, and a $\eta \in \mathscr{M}(H)$ such that for each $\varphi \in C_b(H)$,
+the following limit exists:
 \begin{equation}\label{E:InvWeakLim}
  	\langle \varphi, P_t^*\nu \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty,
  \end{equation}
-where $\nu \in \mathscr{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this said, it would be
-interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense that for all $\nu \in \mathscr{M}(H)$,
-\eqref{E:InvWeakLim} holds true for $\eta$ fixed. According to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic},
-in order to show this uniqueness, it suffices to consider only deterministic $\zeta \in H$, in other words, it suffices
-to show that there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in H$, the
-following limit holds true:
+where $\nu \in \mathscr{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this
+said, it would be interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense
+that for all $\nu \in \mathscr{M}(H)$, \eqref{E:InvWeakLim} holds true for $\eta$ fixed. According
+to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic}, in order to show this uniqueness, it
+suffices to consider only deterministic $\zeta \in H$, in other words, it suffices to show that
+there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in
+H$, the following limit holds true:
 \begin{equation}\label{E:InvDetLim}
 \langle \varphi, P_t^*\delta_{\zeta} \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty.
 \end{equation}
 
-However, Proposition \ref{P:growtail} below suggests that the limit in \eqref{E:InvDetLim} may not exist for all $\zeta
-\in H$, which implies that \eqref{E:InvWeakLim} may not exist for some $\nu \in \mathscr{M}(H)$. Thus uniqueness of the
-invariant measure, $\eta$, in this situation would resort to proving that for all pairs $(\nu,\widetilde{\eta}) \in
-\mathscr{M}(H) \times \mathscr{M}(H)$ such that the limit in \eqref{E:InvWeakLim} exists, $\widetilde{\eta} = \eta$ in
-each pair. Moreover, even verifying \eqref{E:InvDetLim} for one particular $\zeta \in H$ is challenging and this has not
-yet been done for the stochastic heat equation as in \eqref{E:SHE}. Instead, the common strategy, which we will follow
-in this paper, is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
-11.7]{da-prato.zabczyk:14:stochastic}), and this theorem implies that once the tightness of
-$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct an invariant measure via
+However, Proposition \ref{P:growtail} below suggests that the limit in \eqref{E:InvDetLim} may not
+exist for all $\zeta \in H$, which implies that \eqref{E:InvWeakLim} may not exist for some $\nu \in
+\mathscr{M}(H)$. Thus uniqueness of the invariant measure, $\eta$, in this situation would resort to
+proving that for all pairs $(\nu,\widetilde{\eta}) \in \mathscr{M}(H) \times \mathscr{M}(H)$ such
+that the limit in \eqref{E:InvWeakLim} exists, $\widetilde{\eta} = \eta$ in each pair. Moreover,
+even verifying \eqref{E:InvDetLim} for one particular $\zeta \in H$ is challenging and this has not
+yet been done for the stochastic heat equation as in \eqref{E:SHE}. Instead, the common strategy,
+which we will follow in this paper, is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g.,
+\cite[Theorem 11.7]{da-prato.zabczyk:14:stochastic}), and this theorem implies that once the
+tightness of $\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can
+construct an invariant measure via
 \begin{equation} \label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
 \end{equation}
-for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. A critical step in obtaining the tightness is to show
-that the following moment is uniformly bounded in time:
+for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. A critical step in obtaining the
+tightness is to show that the following moment is uniformly bounded in time:
 \begin{align} \label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
   <\infty,
 \end{align}
 and this will be the content of our Theorem \ref{T:Main} below.
 
-The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely studied and as far as
-we know, this current article and Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} are the only papers that
-have considered the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in
-\eqref{E:lipcon} and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is
-known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE}
-have a certain exponential growth in $t$; see, e.g.,
-\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires
-added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this
-exponential growth in time of the moments.
+The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely
+studied and as far as we know, this current article and Tessitore and Zabczyk
+\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the
+spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in \eqref{E:lipcon}
+and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is
+known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability
+moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g.,
+\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one
+typically requires some additional assumptions either on the initial conditions, or the noise, or
+the coefficients of \eqref{E:SHE}, or all of them in order to combat this exponential growth in time
+of the moments.
 
-For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant, cerrai:01:second,
-cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added to the right hand side of equation
-\eqref{E:SHE} and that this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as
-$|u| \to \infty$:
+For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant,
+cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added
+to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following
+dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
 	\begin{equation} \label{E:dis}
 		\begin{cases}
 			f(u) \le -k_1|u|^m + k_2 & u > 0 \\
-			f(u) \ge c_1|u|^m - c_2 & u < 0.
+			f(u) \ge c_1|u|^m - c_2  & u < 0.
 		\end{cases}
 	\end{equation}
-Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded spatial domain while
-Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole space $\R^d$. In addition, the just mentioned
-papers only allow for bounded initial conditions, however, an unbounded Lipschitz continuous diffusion term as in
-\eqref{E:lipcon} is allowed to be considered. It is also worth noting that Eckmann and Hairer
-\cite{eckmann.hairer:01:invariant} also require the above dissipativity condition \eqref{E:dis} along with a bounded
-initial condition, but they consider the case of an additive noise.
+Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded
+spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole
+space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions,
+however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be
+considered. It is also worth noting that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} also
+require the above dissipativity condition \eqref{E:dis} along with a bounded initial condition, but
+they consider the case of an additive noise.
 
 Several works which do not require an added drift term with dissipativity as in \eqref{E:dis}
 include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant,
@@ -360,17 +382,17 @@ Moreover, they require the diffusion term, $b$, to satisfy the following:
 \begin{align*}
   |b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 \end{align*}
-which excludes the parabolic Anderson model. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to
-be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) =
+which excludes the parabolic Anderson model. Lastly, Theorem 1.2 {\em ibid.} requires the initial
+condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) =
 \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main}
 includes both of these initial conditions and we show this in Section \ref{S:Example}.
 
 As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know
-of that considers the same set up as equation \eqref{E:SHE}, it is a strong influence in the current
+of that considers the same set up as equation \eqref{E:SHE}, it has a strong influence in the current
 work. From a purely mathematical stand point, something interesting about this work is that all
 prior articles cited relating to the existence of invariant measures, including
 \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by
-DaPrato and Zabcyzk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and
+\textcolor{magenta}{DaPrato and Zabcyzk} \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and
 solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some
 state-of-the-art moment estimates. Even though both theories have been shown to be more or less
 equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical
