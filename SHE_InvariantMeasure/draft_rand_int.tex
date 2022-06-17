@@ -213,45 +213,63 @@ integral}. We refer the interested readers to
 for more details of this setup. \\
 
 
-The aim of this paper is to investigate the conditions required to guarantee the existence of an
-invariant measure for the solution to \eqref{E:SHE}, which is a crucial step towards the study of
-the ergodicity of the system. A schematic in order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially involves showing the following: first that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian transition functions} on some Hilbert space, $H$, and the corresponding {\em Markovian semigroup} is Feller, and second that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in the Hilbert space $L^2_{\rho}(\R^d)$, which we now define.
+The aim of this paper is to investigate the conditions required to guarantee the existence of an invariant measure for
+the solution to \eqref{E:SHE}, which is a crucial step towards the study of the ergodicity of the system. A schematic in
+order to do so has been established by Tessitore and Zabcyzk \cite{tessitore.zabczyk:98:invariant}, which essentially
+involves showing the following: first that the laws of the solution of \eqref{E:SHE} form a family of {\em Markovian
+transition functions} on some Hilbert space, $H$, and the corresponding {\em Markovian semigroup} is Feller, and second
+that \eqref{E:BddMnt} below holds. The finiteness of \eqref{E:BddMnt} will require some work and we handle this in
+Theorems \ref{T:Lrho} and \ref{T:Main} below. On the other hand, the first point has been shown to be true for our case
+of interest (e.g. see \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). More preciously, the solution is Markovian in
+the Hilbert space $L^2_{\rho}(\R^d)$, which we now define.
 
 \begin{definition} \label{D:Rho}
-  $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive,
-  bounded and continuous function in $L^1(\R^d)$ such that for $T>0$, there exists a constant
-  $C_\rho(T)$ such that
+  $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight} if $\rho$ is a strictly positive, bounded and continuous
+  function in $L^1(\R^d)$ such that for $T>0$, there exists a constant $C_\rho(T)$ such that
   \begin{equation} \label{E:aw}
     \big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x)
     \quad \text{for all $t\in[0,T]$ and $x\in\R^d$.}
   \end{equation}
-  Moreover, we denote by $L^2_{\rho}(\R^d)$ the corresponding Hilbert space of $\rho$-weighted square integrable functions and we use $\langle \cdot, \cdot \rangle_{\rho}$ and $\Norm{\cdot}_{\rho}$ to denote the inner product and norm on $L^2_{\rho}(\R^d)$:
+  Moreover, we denote by $L^2_{\rho}(\R^d)$ the corresponding Hilbert space of $\rho$-weighted square integrable
+  functions and we use $\langle \cdot, \cdot \rangle_{\rho}$ and $\Norm{\cdot}_{\rho}$ to denote the inner product and
+  norm on $L^2_{\rho}(\R^d)$:
   	\[
   		\langle f,g \rangle_{\rho} := \int_{\R^d} f(x) g(x) \rho(x) \ud x \quad \text{and} \quad \Norm{f}_{\rho} := \int_{\R^d} |f(x)|^2 \rho(x) \ud x.
   	\]
 \end{definition}
 
-From now on we will denote $H:=L^2_{\rho}(\R^d)$. In Corollary \ref{C:inclusion} below, we will see that the solution to \eqref{E:SHE} maps $H$ into $H$ in the sense that for each $\zeta \in H$ and for all $t>0$, we have the function $x \mapsto u(t,x;\zeta)$ almost surely in $H$, where we use the notation $u(t,x;\mu)$ to denote the solution to \eqref{E:SHE} starting from $\mu$. Moreover, we introduce a new condition, namely \eqref{E:G}, which shows that the solution to $\eqref{E:SHE}$ may also map measures that are outside of $H$ into $H$. Thus, this condition allows us to consider more general initial conditions while at the same time still operate in the same framework laid out by the authors in \cite{tessitore.zabczyk:98:invariant, da-prato.zabczyk:14:stochastic}.  We provide some examples of permissible initial conditions that are outside of $H$ in Section \ref{S:Example} below. 
+From now on we will denote $H:=L^2_{\rho}(\R^d)$. In Corollary \ref{C:inclusion} below, we will see that the solution to
+\eqref{E:SHE} maps $H$ into $H$ in the sense that for each $\zeta \in H$ and for all $t>0$, we have the function $x
+\mapsto u(t,x;\zeta)$ almost surely in $H$, where we use the notation $u(t,x;\mu)$ to denote the solution to
+\eqref{E:SHE} starting from $\mu$. Moreover, we introduce a new condition, namely \eqref{E:G}, which shows that the
+solution to $\eqref{E:SHE}$ may also map measures that are outside of $H$ into $H$. Thus, this condition allows us to
+consider more general initial conditions while at the same time still operate in the same framework laid out by the
+authors in \cite{tessitore.zabczyk:98:invariant, da-prato.zabczyk:14:stochastic}.  We provide some examples of
+permissible initial conditions that are outside of $H$ in Section \ref{S:Example} below.
 
-A probability measure, $\eta$, on the Borel $\sigma$-field of $H$, which we denote as $\mathscr{B}(H)$, is said to be {\it invariant} for \eqref{E:SHE} if
+A probability measure, $\eta$, on the Borel $\sigma$-field of $H$, which we denote as $\mathscr{B}(H)$, is said to be
+{\it invariant} for \eqref{E:SHE} if
 \begin{equation}\label{E:InvMeas}
   \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
   \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$},
 \end{equation}
-where $\mathscr{L}(u(t,\cdot;\mu))(A)$ denotes the law of
-the solution:
+where $\mathscr{L}(u(t,\cdot;\mu))(A)$ denotes the law of the solution:
 \begin{align*}
   \mathscr{L}(u(t,\cdot;\mu))(A) = \mathbb{P} \left[ \omega \in \Omega: u(t,\cdot; \mu)(\omega) \in A \right], \quad A\in \mathscr{B}(H).
 \end{align*}
-For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$ where $\zeta \in H$ and $A \in \mathscr{B}(H)$. Then we can define the Markovian transition semi-group corresponding to $P_t$ as 
+For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$ where $\zeta \in H$ and $A \in
+\mathscr{B}(H)$. Then we can define the Markovian transition semi-group corresponding to $P_t$ as
 	\[
 		P_t\varphi(\zeta) = \int_{H} \varphi(y)P_t(\zeta, \ud y), \qquad \text{for all } \varphi \in C_b(H),
 	\]
- where $C_b(H)$ denotes the space of bounded continuous functions on $H$. Moreover, if we define $\mathscr{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in \mathscr{M}(H)$, we define the measure $ P_t^*\nu \in \mathscr{M}(H)$ as follows:
+ where $C_b(H)$ denotes the space of bounded continuous functions on $H$. Moreover, if we define $\mathscr{M}(H)$ as the
+ space of probability measures on $H$, then for each $\nu \in \mathscr{M}(H)$, we define the measure $ P_t^*\nu \in
+ \mathscr{M}(H)$ as follows:
  	\[
 	 	P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y), \qquad \text{for all } A \in \mathscr{B}(H),
  	\]
- and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$ and $\nu \in \mathscr{M}(H)$,
+ and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$ and $\nu \in
+ \mathscr{M}(H)$,
  	\[
  		\langle \varphi, P_t^*\nu \rangle = \langle P_t\varphi, \nu \rangle
  	\]
@@ -259,75 +277,138 @@ where,
 	\[
 		\langle \varphi, \nu \rangle := \int_{H} \varphi(y) \nu(\ud y) \qquad \text{for } \varphi \in H \text{ and } \nu \in \mathscr{M}(H).
 	\]
-	
-It is known that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with law $\nu \in \mathscr{M}(H)$, that  $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case that $\zeta \in H$ is deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see \cite[Propostion 11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition 11.2]{da-prato.zabczyk:14:stochastic}, if one can show that there exists a $\zeta \in H$, either random or deterministic, and a $\eta \in \mathscr{M}(H)$ such that for each $\varphi \in C_b(H)$, the following limit exists:
+
+It is known that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with law $\nu \in
+\mathscr{M}(H)$, that $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case that $\zeta \in H$ is
+deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see \cite[Propostion
+11.1]{da-prato.zabczyk:14:stochastic}). Moreover, by \cite[Proposition 11.2]{da-prato.zabczyk:14:stochastic}, if one can
+show that there exists a $\zeta \in H$, either random or deterministic, and a $\eta \in \mathscr{M}(H)$ such that for
+each $\varphi \in C_b(H)$, the following limit exists:
 \begin{equation}\label{E:InvWeakLim}
  	\langle \varphi, P_t^*\nu \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty,
  \end{equation}
-where $\nu \in \mathscr{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this said, it would be interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense that for all $\nu \in \mathscr{M}(H)$, \eqref{E:InvWeakLim} holds true for $\eta$ fixed. According to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic}, in order to show this uniqueness, it suffices to consider only deterministic $\zeta \in H$, in other words, it suffices to show that there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in H$, the following limit holds true:
+where $\nu \in \mathscr{M}(H)$ is the law of $\zeta$, then $\eta$ is invariant for $P_t$. With this said, it would be
+interesting to show whether $\eta$ in \eqref{E:InvWeakLim} is unique in the sense that for all $\nu \in \mathscr{M}(H)$,
+\eqref{E:InvWeakLim} holds true for $\eta$ fixed. According to \cite[Propostion 11.4]{da-prato.zabczyk:14:stochastic},
+in order to show this uniqueness, it suffices to consider only deterministic $\zeta \in H$, in other words, it suffices
+to show that there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in H$, the
+following limit holds true:
 \begin{equation}\label{E:InvDetLim}
 \langle \varphi, P_t^*\delta_{\zeta} \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty.
 \end{equation}
 
-However, Proposition \ref{P:growtail} below suggests that the limit in \eqref{E:InvDetLim} may not exist for all $\zeta \in H$, which implies that \eqref{E:InvWeakLim} may not exist for some $\nu \in \mathscr{M}(H)$. Thus uniqueness of the invariant measure, $\eta$, in this situation would resort to proving that for all pairs $(\nu,\widetilde{\eta}) \in \mathscr{M}(H) \times \mathscr{M}(H)$ such that the limit in \eqref{E:InvWeakLim} exists, $\widetilde{\eta} = \eta$ in each pair. Moreover, even verifying \eqref{E:InvDetLim} for one particular $\zeta \in H$ is challenging and this has not yet been done for the stochastic heat equation as in \eqref{E:SHE}. Instead, the common strategy, which we will follow in this paper, is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
+However, Proposition \ref{P:growtail} below suggests that the limit in \eqref{E:InvDetLim} may not exist for all $\zeta
+\in H$, which implies that \eqref{E:InvWeakLim} may not exist for some $\nu \in \mathscr{M}(H)$. Thus uniqueness of the
+invariant measure, $\eta$, in this situation would resort to proving that for all pairs $(\nu,\widetilde{\eta}) \in
+\mathscr{M}(H) \times \mathscr{M}(H)$ such that the limit in \eqref{E:InvWeakLim} exists, $\widetilde{\eta} = \eta$ in
+each pair. Moreover, even verifying \eqref{E:InvDetLim} for one particular $\zeta \in H$ is challenging and this has not
+yet been done for the stochastic heat equation as in \eqref{E:SHE}. Instead, the common strategy, which we will follow
+in this paper, is to resort to the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
 11.7]{da-prato.zabczyk:14:stochastic}), and this theorem implies that once the tightness of
-$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct an
-invariant measure via
+$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$ is established, one can construct an invariant measure via
 \begin{equation} \label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
 \end{equation}
-for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. A critical step in obtaining the
-tightness is to show that the following moment is uniformly bounded in time:
+for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. A critical step in obtaining the tightness is to show
+that the following moment is uniformly bounded in time:
 \begin{align} \label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
   <\infty,
-\end{align} 
+\end{align}
 and this will be the content of our Theorem \ref{T:Main} below.
 
-The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely studied and as far as we know, this current article and Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in \eqref{E:lipcon} and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g., \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this exponential growth in time of the moments.
+The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely studied and as far as
+we know, this current article and Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} are the only papers that
+have considered the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in
+\eqref{E:lipcon} and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is
+known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability moments to \eqref{E:SHE}
+have a certain exponential growth in $t$; see, e.g.,
+\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one typically requires
+added assumptions on either the initial conditions, the noise or the coefficients of \eqref{E:SHE} to combat this
+exponential growth in time of the moments.
 
-For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant, cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
+For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant, cerrai:01:second,
+cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added to the right hand side of equation
+\eqref{E:SHE} and that this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as
+$|u| \to \infty$:
 	\begin{equation} \label{E:dis}
-		\begin{cases} 
+		\begin{cases}
 			f(u) \le -k_1|u|^m + k_2 & u > 0 \\
 			f(u) \ge c_1|u|^m - c_2 & u < 0.
-		\end{cases} 
+		\end{cases}
 	\end{equation}
-Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions, however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be considered. It is also worth noting that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} also require the above dissipativity condition \eqref{E:dis} along with a bounded initial condition, but they consider the case of an additive noise. 
+Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded spatial domain while
+Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole space $\R^d$. In addition, the just mentioned
+papers only allow for bounded initial conditions, however, an unbounded Lipschitz continuous diffusion term as in
+\eqref{E:lipcon} is allowed to be considered. It is also worth noting that Eckmann and Hairer
+\cite{eckmann.hairer:01:invariant} also require the above dissipativity condition \eqref{E:dis} along with a bounded
+initial condition, but they consider the case of an additive noise.
 
-Several works which do not require an added drift term with dissipativity as in \eqref{E:dis} include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant, misiats.stanzhytskyi.ea:16:existence}. In the \cite[Theorem 1.2]{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an invariant measure for the stochastic heat equation on the whole space $\R^d$. More precisely, they allow for a drift term, $f(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2 \in \R$, 
-	\[
+Several works which do not require an added drift term with dissipativity as in \eqref{E:dis}
+include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant,
+misiats.stanzhytskyi.ea:16:existence}. In the \cite[Theorem
+1.2]{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an
+invariant measure for the stochastic heat equation on the whole space $\R^d$. More precisely, they
+allow for a drift term, $f(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2
+\in \R$,
+\begin{align*}
 		|f(x,0)| \le \varphi(x) \qquad \text{and} \qquad |f(x,u_1) - f(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
-	\]
-for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed. Moreover, they require the diffusion term, $b$, to satisfy the following:
-	\[
-		|b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
-	\]
-and thus the parabolic Anderson model is allowed. However, when $b$ does depend on $x$, then  for each $u \in \R$, $x \mapsto b(x,u)$ must decay as $|x| \to \infty$ and this is a stronger assumption than the one in \eqref{E:lipcon}. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) = \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main} includes both of these initial conditions and we show this in Section \ref{S:Example}. 
+\end{align*}
+for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in
+L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed.
+Moreover, they require the diffusion term, $b$, to satisfy the following:
+\begin{align*}
+  |b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
+\end{align*}
+and thus the parabolic Anderson model is allowed. However, when $b$ does depend on $x$, then for
+each $u \in \R$, $x \mapsto b(x,u)$ must decay as $|x| \to \infty$ and this is a stronger assumption
+than the one in \eqref{E:lipcon}. Lastly, Theorem 1.2 {\em ibid.} requires the initial condition to
+be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) =
+\delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main}
+includes both of these initial conditions and we show this in Section \ref{S:Example}.
 
-As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know of that considers the same set up as equation \eqref{E:SHE}, it is a strong influence in the current work. From a purely mathematical stand point, something interesting about this work is that all prior articles cited relating to the existence of invariant measures, including \cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by DaPrato and Zabcyzk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some state-of-the-art moment estimates. Even though both theories have been shown to be more or less equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing on its own.
+As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know
+of that considers the same set up as equation \eqref{E:SHE}, it is a strong influence in the current
+work. From a purely mathematical stand point, something interesting about this work is that all
+prior articles cited relating to the existence of invariant measures, including
+\cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by
+DaPrato and Zabcyzk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and
+solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some
+state-of-the-art moment estimates. Even though both theories have been shown to be more or less
+equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical
+sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing
+on its own.
 
  The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
 \begin{enumerate}
-	\item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
-	the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
-	initial condition. Here we give precise conditions on the initial condition, namely,
-	\eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
-	functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
-	\ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
-	the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-	\item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
+  \item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
+    the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
+    initial condition. Here we give precise conditions on the initial condition, namely,
+    \eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
+    functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
+    \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
+    the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
+  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density
+    $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due
+    to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no
+    specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
 \end{enumerate}
 
-We now will introduce some conditions and quantities that will be needed for our main results. In order to have moments bounded in time, one has to first identify the exact conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
+We now will introduce some conditions and quantities that will be needed for our main results. In
+order to have moments bounded in time, one has to first identify the exact conditions under which
+the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in
+\cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions
+are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge
+3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have
+to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
   & \text{and} \quad 64 L^2_{b}   <  \frac{1}{2\Upsilon(0)} \: .  \label{E:Lipb}
 \end{align}
 \end{subequations}
-Moreover, these two conditions will guarantee the existence of the following non-empty open interval:
+Moreover, these two conditions will guarantee the existence of the following non-empty open
+interval:
 \begin{align} \label{E:Interval}
 \left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
 \end{align}
@@ -350,7 +431,8 @@ one can further strengthen condition \eqref{E:Dalang-ab} to
   \quad  \text{for some $\alpha\in (0,1]$.}
 \end{equation}
 We use the convention that when $\alpha=0$, we simply drop it from the expression
-$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. The relations of these conditions are illustrated in Figure \ref{F:Dalang}. 
+$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. The relations of these
+conditions are illustrated in Figure \ref{F:Dalang}.
 
 \begin{figure}[htpb]
 	\begin{center}
@@ -379,16 +461,15 @@ $\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. The relatio
 		\node[] at (0.5*\xo+0.5*\xg,\yg) {\huge$\Leftarrow$};
 		\end{tikzpicture}
 	\end{center}
-	
+
 	\caption{Relations among conditions \eqref{E:Dalang}, \eqref{E:Dalang-ab}, \eqref{E:Dalang-a0} and
 		\eqref{E:Dalang-00}. Check also Lemma \ref{L:HUA} for the relation between $\Upsilon(0)<\infty$
 		and $\Upsilon_\alpha(0)<\infty$.}
-	
+
 	\label{F:Dalang}
 \end{figure}
 
-We will also need the following
-slightly different condition:
+We will also need the following slightly different condition:
 \begin{align} \label{E:Dalang-H}
   \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,}
 \end{align}
@@ -396,9 +477,14 @@ where
 \begin{equation} \label{E:H}
   \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
 \end{equation}
-The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma \ref{L:yineq}, however, as is shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} will imply condition \eqref{E:Dalang-H}. Moreover, when we assume \eqref{E:Dalang-00} holds true, which will always be the case, then these two conditions become equivalent. The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as being more well recognized.
+The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma \ref{L:yineq},
+however, as is shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} will imply condition
+\eqref{E:Dalang-H}. Moreover, when we assume \eqref{E:Dalang-00} holds true, which will always be
+the case, then these two conditions become equivalent. The quantity $\Upsilon_{\alpha}(0)$ has the
+benefit of being more compactly defined as well as being more well recognized.
 
-We are now ready to state our two main results of the paper: Theorems \ref{T:Lrho} and \ref{T:Main}. These theorems will be proved in Sections \ref{S:Lrho} and \ref{S:mainproof} respectively. 
+We are now ready to state our two main results of the paper: Theorems \ref{T:Lrho} and \ref{T:Main}.
+These theorems will be proved in Sections \ref{S:Lrho} and \ref{S:mainproof} respectively.
 
 \begin{theorem} \label{T:Lrho}
   % Let $\mu(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
@@ -423,22 +509,28 @@ We are now ready to state our two main results of the paper: Theorems \ref{T:Lrh
   where $ \mu^* := 1 + |\mu|$.
 \end{theorem}
 
-We now state and prove a quick Corollary which shows that the solution to \eqref{E:SHE} starting from a $L^2_{\rho}(\R^d)$ initial condition will almost surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
+We now state and prove a quick Corollary which shows that the solution to \eqref{E:SHE} starting
+from a $L^2_{\rho}(\R^d)$ initial condition will almost surely be in $L^2_{\rho}(\R^d)$ for all $t
+>0$.
 
 \begin{corollary} \label{C:inclusion}
-	Under the same assumptions of Theorem \ref{T:Lrho}, except with the additional assumption that $\rho$ is admissible and thus satisfies \eqref{E:aw}, the solution to $\eqref{E:SHE}$ almost surely exists in $L^2_{\rho}$ whenever the initial condition is also in $L^2_{\rho}(\R^d)$. 
+  Under the same assumptions of Theorem \ref{T:Lrho}, except with the additional assumption that
+  $\rho$ is admissible and thus satisfies \eqref{E:aw}, the solution to $\eqref{E:SHE}$ almost
+  surely exists in $L^2_{\rho}$ whenever the initial condition is also in $L^2_{\rho}(\R^d)$.
 \end{corollary}
 \begin{proof}
-	Let $\zeta \in L^2_{\rho}(\R^d)$. Then, by (ii) of Theorem \ref{T:Lrho}, it suffices to show the finiteness of $\mathcal{G}_{\rho}(t,;|\zeta|)$ for all $t>0$. Indeed,
+  Let $\zeta \in L^2_{\rho}(\R^d)$. Then, by (ii) of Theorem \ref{T:Lrho}, it suffices to show the
+  finiteness of $\mathcal{G}_{\rho}(t,;|\zeta|)$ for all $t>0$. Indeed,
 		\begin{align*}
 			\mathcal{G}_{\rho}(t,;|\zeta|) &= \int_{\R^d} \left( \int_{\R^d} G(t,x-y) |\zeta(y)| \ud y \right)^2 \rho(x) \ud (x) \\
 			&\le \int_{\R^d} \int_{\R^d} G(t,x-y) |\zeta(y)|^2 \ud y \rho(x) \ud (x),
 		\end{align*}
-		where we have applied H\'older's inequality. Now for any $t>0$, choose $T>t$ and let $C_{\rho}(T)$ be as in \eqref{E:aw}. Then,
+    where we have applied H\'older's inequality. Now for any $t>0$, choose $T>t$ and let
+    $C_{\rho}(T)$ be as in \eqref{E:aw}. Then,
 		\begin{align*}
 			\int_{\R^d} \int_{\R^d} G(t,x-y) |\zeta(y)|^2 \ud y \rho(x) \ud (x) &\le C_{\rho}(T) \Norm{\zeta}_{\rho}^2 < \infty.
 		\end{align*}
-	Since $t$ and $T$ are arbitrary then this completes the proof of the corollary.  
+  Since $t$ and $T$ are arbitrary then this completes the proof of the corollary.
 \end{proof}
 
 \begin{theorem} \label{T:Main}
@@ -536,7 +628,8 @@ Here are several examples of admissible weights (see Example in Section 2 of
   space $L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function
   with compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than
   those in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
-  condition \eqref{E:aw} excludes these two cases. Lastly, we should mention that numerical results will lead one to believe that the following functions are not admissible:
+  condition \eqref{E:aw} excludes these two cases. Lastly, we should mention that numerical results
+  will lead one to believe that the following functions are not admissible:
   \begin{equation*}
     \rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d,
     \quad \text{with $a>0$ and $b\in (1,2)$ fixed,}
@@ -611,8 +704,8 @@ The following proposition shows that for initial conditions with unbounded tails
 \eqref{E:G} may hold while condition \eqref{E:InitData} may fail.
 
 \begin{proposition} \label{P:growtail}
-  Suppose that $\rho(x)=\exp(-|x|)$, which is an admissible weight function. Let the initial condition
-  $\mu$ be given as
+  Suppose that $\rho(x)=\exp(-|x|)$, which is an admissible weight function. Let the initial
+  condition $\mu$ be given as
   \begin{align*}
     \mu(\ud x) = |x|^\alpha \ud x \quad \text{with $\alpha>0$}.
   \end{align*}
@@ -631,8 +724,9 @@ The following proposition shows that for initial conditions with unbounded tails
     & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x    \\
     & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
   \end{align*}
-  In the following, let $C_d$, $C_\alpha$, $C_\alpha'$, $C_{\alpha, d}$ and $C'_{\alpha, d}$ be generic constants that may depend on
-  $\alpha $ and $d$ and may change their value at each appearance. \bigskip
+  In the following, let $C_d$, $C_\alpha$, $C_\alpha'$, $C_{\alpha, d}$ and $C'_{\alpha, d}$ be
+  generic constants that may depend on $\alpha $ and $d$ and may change their value at each
+  appearance. \bigskip
 
   \noindent{\it Upper bound:~} Because
   \begin{align*}
@@ -644,8 +738,8 @@ The following proposition shows that for initial conditions with unbounded tails
   we see that
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
-    & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi \\
-    & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r        \\
+    & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi      \\
+    & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r \\
     & = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
     & = C'_{\alpha, d} (1+ t^\alpha)<\infty.
   \end{align*}
@@ -654,10 +748,10 @@ The following proposition shows that for initial conditions with unbounded tails
   \noindent{\it Lower bound:~} Now we prove the lower bound in \eqref{E:growtail}. Indeed,
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
-    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z \\
-    &  \ge {C_d} \int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
-    &  \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x \\
-    &  = \frac{C_d}{1+\alpha} \psi\left(|\xi|\right),
+    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z               \\
+    & \ge {C_d} \int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
+    & \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x                                 \\
+    & = \frac{C_d}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
   where, by considering three cases, we have
   \begin{align*}
@@ -678,8 +772,8 @@ The following proposition shows that for initial conditions with unbounded tails
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z \ge C_{\alpha, d} \sqrt{1+|\xi|^{2\alpha}}.
   \end{align*}
-  Then, by the same arguments as above for the upper bound, we obtain the lower bound in \eqref{E:growtail}. It remains to prove
-  \eqref{E:psi}, which will be proved in three cases.
+  Then, by the same arguments as above for the upper bound, we obtain the lower bound in
+  \eqref{E:growtail}. It remains to prove \eqref{E:psi}, which will be proved in three cases.
 
   When $r>2$, we see that
   \begin{align*}
@@ -702,8 +796,8 @@ The following proposition shows that for initial conditions with unbounded tails
     \inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2) }{\sqrt{1+4^\alpha}}>0.
   \end{align*}
 
-  Similarly, when $r\in (0,1]$, by differentiation, one finds that the function $\psi(r)$ is nonincreasing.
-  Hence, the minimum is achieved at $r=1$:
+  Similarly, when $r\in (0,1]$, by differentiation, one finds that the function $\psi(r)$ is
+  nonincreasing. Hence, the minimum is achieved at $r=1$:
   \begin{align*}
     \inf_{r\in(0,1]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1) }{\sqrt{2}}>0.
   \end{align*}
@@ -725,12 +819,13 @@ The following proposition shows that for initial conditions with unbounded tails
       \end{align*}
     \item there exists a constant $c(s,d)>0$ such that
       \begin{gather*}
-        \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2, \quad \text{with} \\
+        \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2,
+        \quad \text{with} \\
         H_s(x) =
         \begin{cases}
-          |x|^{s-d} + 1 + O(|x|^{s-d+2})                  & \text{for $0<s<d$,} \\
-          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,}   \\
-           1 + O(|x|^{s-d})                               & \text{for $s>d$;}
+          |x|^{s-d} + 1 + O(|x|^{s-d+2}) & \text{for $0<s<d$,} \\
+          \log\left(\frac{2}{|x|}\right) + 1 + O(|x|^{2}) & \text{for $s=d$,} \\
+           1 + O(|x|^{s-d}) & \text{for $s>d$;}
         \end{cases}
         \end{gather*}
       \item the Fourier transform of $f_s$ is strictly positive:
@@ -738,9 +833,9 @@ The following proposition shows that for initial conditions with unbounded tails
           \mathcal{F}f_s(\xi) = \frac{1}{(1+|\xi|^2)^{s/2}}.
         \end{equation}
   \end{enumerate}
-  Note that one can use \eqref{E:FB} as the definition of the Bessel kernel. Properties 1 and 4 ensure
-  that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$. From Property
-  4, we see that
+  Note that one can use \eqref{E:FB} as the definition of the Bessel kernel. Properties 1 and 4
+  ensure that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$. From
+  Property 4, we see that
     \begin{align*}
       \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
     \end{align*}
@@ -835,14 +930,17 @@ The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Da
     \Upsilon_\alpha(0) = \left(2\pi\right)^{-d} \int_{\R^d} \frac{\ud\xi}{|\xi|^{2(1-\alpha)}\left(1+|\xi|^2\right)^{s/2}}
     = \left(2\pi\right)^{-d} C_d \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r,
   \end{align*}
-  where $C_d:=\frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}$. Now by the change of variables $z=r^2/(1+r^2)$,
-  we can evaluate the above integral explicitly by transforming it to the Beta integral:
+  where $C_d:=\frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}$. Now by the change of variables
+  $z=r^2/(1+r^2)$, we can evaluate the above integral explicitly by transforming it to the Beta
+  integral:
   \begin{align*}
     \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r
      & = \frac{1}{2} \int_0^1 z^{d/2+\alpha-2}(1-z)^{(s-d)/2-\alpha}\ud z \\
      & = \frac{\Gamma\left(d/2-1+\alpha\right)\Gamma\left((s-d)/2+1-\alpha\right)}{2\Gamma(s/2)},
   \end{align*}
-  which is finite provided that $s>d-2(1-\alpha)>0$. This proves \eqref{E:UpsionB} and from this, we easily deduce \eqref{E:Upsilon_0} by letting $\alpha = 0$ in \eqref{E:UpsionB} and by applying the formula $\Gamma(z+1) = z\Gamma(z)$, which holds for $z\in \mathbb{C}$ such that $\Re(z)>0$.
+  which is finite provided that $s>d-2(1-\alpha)>0$. This proves \eqref{E:UpsionB} and from this, we
+  easily deduce \eqref{E:Upsilon_0} by letting $\alpha = 0$ in \eqref{E:UpsionB} and by applying the
+  formula $\Gamma(z+1) = z\Gamma(z)$, which holds for $z\in \mathbb{C}$ such that $\Re(z)>0$.
 
   It remains to prove \eqref{E:HaBS}, which then implies \eqref{E:HaB}. From \eqref{E:H} and by the
   spherical coordinate integration formula, for all $t>0$,
@@ -902,9 +1000,9 @@ Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not cal
 specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
 \begin{remark} \label{R:Fourier}
-  The Fourier transform may be defined differently depending on how one would like to handle the $2\pi$ constant. In
-  this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we use the convention
-  that
+  The Fourier transform may be defined differently depending on how one would like to handle the
+  $2\pi$ constant. In this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we
+  use the convention that
   \begin{align} \label{E:Fourier}
     \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
     \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
