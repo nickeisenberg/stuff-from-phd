@@ -340,7 +340,7 @@ The existence of an invariant measure under the setting of equation \eqref{E:SHE
 studied and as far as we know, this current article and Tessitore and Zabczyk
 \cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the
 spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in \eqref{E:lipcon}
-and there is no added drift term, $f(u(t,x))$. The challenge is proving \eqref{E:BddMnt} and it is
+and there is no added drift term, $g(x,u(t,x))$\footnote{When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$ to denote the correlation function in this paper, so we will use $g$ for the drift.}. The challenge is proving \eqref{E:BddMnt} and it is
 known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability
 moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one
@@ -349,13 +349,13 @@ the coefficients of \eqref{E:SHE}, or all of them in order to combat this expone
 of the moments.
 
 For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant,
-cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $f(u):\R \to \R$, to be added
+cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $g(u):\R \to \R$, to be added
 to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following
 dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
 	\begin{equation} \label{E:dis}
 		\begin{cases}
-			f(u) \le -k_1|u|^m + k_2 & u > 0 \\
-			f(u) \ge c_1|u|^m - c_2  & u < 0.
+			g(u) \le -k_1|u|^m + k_2 & u > 0 \\
+			g(u) \ge c_1|u|^m - c_2  & u < 0.
 		\end{cases}
 	\end{equation}
 Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded
@@ -371,10 +371,10 @@ include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant,
 misiats.stanzhytskyi.ea:16:existence}. In the \cite[Theorem
 1.2]{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an
 invariant measure for the stochastic heat equation on the whole space $\R^d$. More precisely, they
-allow for a drift term, $f(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2
+allow for a drift term, $g(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2
 \in \R$,
 \begin{align*}
-		|f(x,0)| \le \varphi(x) \qquad \text{and} \qquad |f(x,u_1) - f(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
+		|g(x,0)| \le \varphi(x) \qquad \text{and} \qquad |g(x,u_1) - g(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 \end{align*}
 for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in
 L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed.
@@ -391,8 +391,7 @@ As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other
 of that considers the same set up as equation \eqref{E:SHE}, it has a strong influence in the current
 work. From a purely mathematical stand point, something interesting about this work is that all
 prior articles cited relating to the existence of invariant measures, including
-\cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by
-\textcolor{magenta}{DaPrato and Zabcyzk} \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and
+\cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by Da Prato and Zabcyzk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and
 solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some
 state-of-the-art moment estimates. Even though both theories have been shown to be more or less
 equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical
