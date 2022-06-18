@@ -720,10 +720,10 @@ Here are several examples of admissible weights (see Example in Section 2 of
            =  C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
            =  C \int_{0}^\infty  t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
   \end{align*}
-  Then by a scaling argument,
+  \textcolor{blue}{Then by applying the change of variables $r' = t^{-1/2}r$},
   \begin{align*}
-    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{b-1}\ud r
-           \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{b-1}\ud r
+    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{\textcolor{blue}{d}-1}\ud r
+           \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{\textcolor{blue}{d}-1}\ud r
            < \infty.
   \end{align*}
 
@@ -736,8 +736,8 @@ Here are several examples of admissible weights (see Example in Section 2 of
   Without loss of generality, we may assume below that $r\gg 1$. Denote $y=(y_1,\cdots, y_d) =
   (y_1,y_*)$ where $y_*\in\R^{d-1}$. Because $b /2\in (0,1)$, we see that
   \begin{align*}
-    | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{d /2}
-            \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{d/2}
+    | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{\textcolor{blue}{b} /2}
+            \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{\textcolor{blue}{b}/2}
             = |y_1|^b + |y_*|^b.
   \end{align*}
   Hence,
@@ -746,9 +746,10 @@ Here are several examples of admissible weights (see Example in Section 2 of
     & =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                \\
     & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - |y_1|^b)}         \\
     & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -|y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - |y_1|^b} \\
-    & =   C \int_\R e^{ - y^2 + r^b - |y-r|^b} \ud y  \\
+    & =  C \int_\R e^{ - y^2 + r^b - |y-r|^b} \ud y \\
     & \ge C \int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y.
   \end{align*}
+  
   Now denote $K(r):=\int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y$.
   \begin{align*}
       \lim_{r\to\infty} \frac{K(r)}{r^{b-1}}
