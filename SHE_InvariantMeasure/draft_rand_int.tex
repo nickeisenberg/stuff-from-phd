@@ -748,30 +748,34 @@ Here are several examples of admissible weights (see Example in Section 2 of
     & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -|y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - |y_1|^b} \\
     & \ge C \int_0^\infty  e^{ - (y-r)^2 + r^b - y^b} \ud y.
   \end{align*}
-  Now, set $g(y) = (y-r)^2 + y^b$ with $y,r>0$. By differentiation, we find that the function
-  achieve its minimum at $g'(y)=0$, namely,
+  Now, set $g(r) = r^b - (y-r)^2$ with $y>0$ and $r>0$. By differentiation, we find that the function
+  achieve its minimum at $g'(r)=0$, namely,
   \begin{align*}
-    g'(y) = -2(r-y) +b y^{b-1} = 0 \quad \Longleftrightarrow \quad r = y_0+ \frac{b}{2} y_0^{b-1},
+    g'(r) = b r^{b-1}-2(r-y) = 0 \quad \Longleftrightarrow \quad y = r_0 - \frac{b}{2} r_0^{b-1},
   \end{align*}
-  where we use $y_0$ or $ y_0(r)$ to denote the point where the function $g$ achieve minimum. Hence,
+  where we use $r_0$ or $r_0(y)$ to denote the point where the function $g$ achieve maximum. Hence,
   for all small $\epsilon\in(0,1)$,
   \begin{align*}
     I\left(1/2,x_r\right)
-    \ge C\int_{y_0-\epsilon}^{y_0+\epsilon} e^{-g(y) +r^b} \ud y
-    \approx C \epsilon \exp\left(-g\left(y_0(r)\right) +r^b\right).
+    \ge C\int_{y_0-\epsilon}^{y_0+\epsilon} e^{g(r) -y^b} \ud y
+    \approx C \epsilon \exp\left(g\left(r_0(y)\right) -y_0^b\right).
   \end{align*}
   It reduces to show that the above exponential goes to infinity as $r\to\infty$. Notice that
   \begin{align*}
-    g(y_0(r)) = (y_0(r) -r)^2 +y_0^b = \frac{b^2}{4} y_0^{2(b-1)} + y_0^{b},
+    g(r_0(y)) = r_0^b-(r_0(y) -y)^2
+              = r_0^{b}- \frac{b^2}{4} r_0^{2(b-1)},
   \end{align*}
   and because $b\in(1,2)$,
   \begin{align*}
-    r^b = \left( y_0+ \frac{b}{2} y_0^{b-1}\right)^b\ge y_0^b + \frac{b^b}{2^b} y_0^{b(b-1)}.
+    y_0^b =  \left(r_0 - \frac{b}{2} r_0^{b-1}\right)^b
+         \le r_0^b - \frac{b^b}{2^b} r_0^{b(b-1)}.
   \end{align*}
   Hence,
   \begin{align*}
-    r^b - g(y_0) \ge \frac{b^b}{2^b} y_0^{b(b-1)} - \frac{b^2}{4} y_0^{2(b-1)}.
+   g(r_0) - y_0^b  \ge \frac{b^b}{2^b} r_0^{b(b-1)} - \frac{b^2}{4} r_0^{2(b-1)}.
   \end{align*}
+
+ -----
 
   Hence,
   \begin{align*}
