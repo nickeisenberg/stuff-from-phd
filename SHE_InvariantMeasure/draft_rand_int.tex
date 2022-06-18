@@ -227,10 +227,9 @@ show that the laws of the solution to \eqref{E:SHE} form a family of {\em Markov
 functions} on some Hilbert space, $H$, and the corresponding {\em Markovian semigroup} is Feller;
 and secondly one needs to establish that the moments of solution is bounded in time (see
 \eqref{E:BddMnt} below). For the second point, it requires some substantial work (see Theorems
-\ref{T:Lrho} and \ref{T:Main} below).  On the
-other hand, the first point has been shown to be true for our case of interest (see, e.g.,
-\cite[Chapter 9]{da-prato.zabczyk:14:stochastic}). Now let us introduce our Hilbert space
-$H=L^2_{\rho}(\R^d)$.
+\ref{T:Lrho} and \ref{T:Main} below).  On the other hand, the first point has been shown to be true
+for our case of interest (see, e.g., \cite[Chapter 9]{da-prato.zabczyk:14:stochastic}) with the
+following weighted $L^2(\R^d)$ as our underlying Hilbert space:
 
 
 \begin{definition} \label{D:Rho}
@@ -274,25 +273,24 @@ where $\mathscr{L}(u(t,\cdot;\mu))(A)$ denotes the law of the solution:
 For notation, let us denote $P_t(\zeta, A) := \mathscr{L}(u(t,\cdot;\zeta))(A)$ where $\zeta \in H$
 and $A \in \mathscr{B}(H)$. Then we can define the Markovian transition semi-group corresponding to
 $P_t$ as
-	\[
+\begin{align*}
 		P_t\varphi(\zeta) = \int_{H} \varphi(y)P_t(\zeta, \ud y), \qquad \text{for all } \varphi \in C_b(H),
-	\]
- where $C_b(H)$ denotes the space of bounded continuous functions on $H$. Moreover, if we define
- $\mathscr{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in
- \mathscr{M}(H)$, we define the measure $ P_t^*\nu \in \mathscr{M}(H)$ as follows:
- 	\[
-	 	P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y), \qquad \text{for all } A \in \mathscr{B}(H),
- 	\]
- and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$
- and $\nu \in \mathscr{M}(H)$,
- 	\[
- 		\langle \varphi, P_t^*\nu \rangle = \langle P_t\varphi, \nu \rangle
- 	\]
+\end{align*}
+where $C_b(H)$ denotes the space of bounded continuous functions on $H$. Moreover, if we define
+$\mathscr{M}(H)$ as the space of probability measures on $H$, then for each $\nu \in
+\mathscr{M}(H)$, we define the measure $ P_t^*\nu \in \mathscr{M}(H)$ as follows:
+\begin{align*}
+  P_t^*\nu(A) = \int_{H} P_t(y,A) \nu(\ud y), \qquad \text{for all } A \in \mathscr{B}(H),
+\end{align*}
+and $P_t^*$ can be show to be the adjoint of $P_t$ in the sense that for all $\varphi \in C_b(H)$
+and $\nu \in \mathscr{M}(H)$,
+\begin{align*}
+  \langle \varphi, P_t^*\nu \rangle = \langle P_t\varphi, \nu \rangle
+\end{align*}
 where,
-	\[
+\begin{align*}
 		\langle \varphi, \nu \rangle := \int_{H} \varphi(y) \nu(\ud y) \qquad \text{for } \varphi \in H \text{ and } \nu \in \mathscr{M}(H).
-	\]
-
+\end{align*}
 It is known that for each $H$-valued and $\mathcal{F}_0$ measurable random variable, $\zeta$, with
 law $\nu \in \mathscr{M}(H)$, that $P_t(\zeta,\cdot) = P_t^*\nu(\cdot)$ and under the spacial case
 that $\zeta \in H$ is deterministic, then $P_t(\zeta,\cdot) = P_t^*\delta_{\zeta}(\cdot)$ (see
@@ -311,7 +309,7 @@ suffices to consider only deterministic $\zeta \in H$, in other words, it suffic
 there exists an $\eta$ such that for all $\varphi \in C_b(H)$ and for all deterministic $\zeta \in
 H$, the following limit holds true:
 \begin{equation}\label{E:InvDetLim}
-\langle \varphi, P_t^*\delta_{\zeta} \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty.
+  \langle \varphi, P_t^*\delta_{\zeta} \rangle \to \langle \varphi, \eta \rangle, \qquad \text{as } t \to \infty.
 \end{equation}
 
 However, Proposition \ref{P:growtail} below suggests that the limit in \eqref{E:InvDetLim} may not
@@ -334,71 +332,40 @@ tightness is to show that the following moment is uniformly bounded in time:
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right)
   <\infty,
 \end{align}
-and this will be the content of our Theorem \ref{T:Main} below.
+and this will be the content of our Theorem \ref{T:Main} below. \bigskip
 
-The existence of an invariant measure under the setting of equation \eqref{E:SHE} has been rarely
-studied and as far as we know, this current article and Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} are the only papers that have considered the case where the
-spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is as in \eqref{E:lipcon}
-and there is no added drift term, $g(x,u(t,x))$\footnote{When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$ to denote the correlation function in this paper, so we will use $g$ to for the drift.}. The challenge is proving \eqref{E:BddMnt} and it is
-known that the solution to \eqref{E:SHE} is usually {\it intermittent}, namely, the probability
-moments to \eqref{E:SHE} have a certain exponential growth in $t$; see, e.g.,
+
+In the literature, the existence of invariant measure of the stochastic heat equation is more
+commonly studied with a drift term and/or with the diffusion coefficient $b(\cdot)$ being bounded;
+see Section \ref{SS:Drift} for a brief account. On the contrary, the existence of an invariant
+measure under the settings of equation \eqref{E:SHE} has been rarely studied. To the best of our
+knowledge, this current article and the one by Tessitore and Zabczyk
+\cite{tessitore.zabczyk:98:invariant} are the only papers that consider the case where the spatial
+domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is globally Lipschitz in the second
+variable uniformly in the first variable (see \eqref{E:lipcon}), and there is no additional drift
+term. One of the challenges is to identify the minimal conditions so that the probability moments of
+the solution are bounded in time (see \eqref{E:BddMnt}). It is known that the solution to
+\eqref{E:SHE} is usually {\it intermittent}, namely, its moments possess a certain exponential
+growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one
-typically requires some additional assumptions either on the initial conditions, or the noise, or
-the coefficients of \eqref{E:SHE}, or all of them in order to combat this exponential growth in time
-of the moments.
+has to impose some additional assumptions either on the initial conditions, or the noise, or the
+coefficients of \eqref{E:SHE}, or all of them in order to combat this exponential growth in time of
+the moments.
 
-For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant,
-cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $g(u):\R \to \R$, to be added
-to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following
-dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
-	\begin{equation} \label{E:dis}
-		\begin{cases}
-			g(u) \le -k_1|u|^m + k_2 & u > 0 \\
-			g(u) \ge c_1|u|^m - c_2  & u < 0.
-		\end{cases}
-	\end{equation}
-Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded
-spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole
-space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions,
-however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be
-considered. It is also worth noting that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} also
-require the above dissipativity condition \eqref{E:dis} along with a bounded initial condition, but
-they consider the case of an additive noise.
-
-Several works which do not require an added drift term with dissipativity as in \eqref{E:dis}
-include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant,
-misiats.stanzhytskyi.ea:16:existence}. In the \cite[Theorem
-1.2]{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an
-invariant measure for the stochastic heat equation on the whole space $\R^d$. More precisely, they
-allow for a drift term, $g(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2
-\in \R$,
-\begin{align*}
-		|g(x,0)| \le \varphi(x) \qquad \text{and} \qquad |g(x,u_1) - g(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
-\end{align*}
-for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in
-L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed.
-Moreover, they require the diffusion term, $b$, to satisfy the following:
-\begin{align*}
-  |b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
-\end{align*}
-which excludes the parabolic Anderson model. Lastly, Theorem 1.2 {\em ibid.} requires the initial
-condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) =
-\delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main}
-includes both of these initial conditions and we show this in Section \ref{S:Example}.
 
 As Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} is the only other paper that we know
-of that considers the same set up as equation \eqref{E:SHE}, it has a strong influence in the current
-work. From a purely mathematical stand point, something interesting about this work is that all
-prior articles cited relating to the existence of invariant measures, including
-\cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by Da Prato and Zabczyk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and
-solve the problem using the random field language of Walsh \cite{walsh:86:introduction} with some
+of that considers the same set up as equation \eqref{E:SHE}, it has a strong influence in the
+current work. From a purely mathematical stand point, something interesting about this work is that
+all prior articles cited relating to the existence of invariant measures, including
+\cite{tessitore.zabczyk:98:invariant}, use the theory of the stochastic integral formulated by Da
+Prato and Zabczyk \cite{da-prato.zabczyk:14:stochastic}, while in this paper we formulate and solve
+the problem using the random field language of Walsh \cite{walsh:86:introduction} with some
 state-of-the-art moment estimates. Even though both theories have been shown to be more or less
 equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they appear quite different from a technical
 sense. Thus, initiating a crossover from one theory to the other, as this paper does, is appealing
 on its own.
 
- The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
+The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the following aspects.
 \begin{enumerate}
   \item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
     the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
@@ -616,11 +583,13 @@ property of the heat kernel,
 \begin{equation} \label{E:gsim}
   G(t,x)G(s,y)=G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
 \end{equation}
-which can be easily verified. Next, we will need the following spherical coordinate integration formula:
+which can be easily verified and has been used extensively and critically in
+\cite{chen.dalang:15:moments*1,chen.kim:19:nonlinear,chen.huang:19:comparison}. Next, we will need
+the following spherical coordinate integration formula:
 \begin{align*}
   \int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
 \end{align*}
-where $\sigma(\mathbb{S}^{d-1})  = 2(\pi)^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
+where $\sigma(\mathbb{S}^{d-1}) = 2(\pi)^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
 function. Lastly, the convention of Fourier transform is given in Remark \ref{R:Fourier} below.
 
 % We reserve $C_d$ for the constant coming from the change of variable
@@ -632,7 +601,73 @@ function. Lastly, the convention of Fourier transform is given in Remark \ref{R:
 
 
 \section{Discussion and Examples} \label{S:Example}
+
+\subsection{SHE with a drift term} \label{SS:Drift}
+
+{When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$
+to denote the correlation function in this paper, so we will use $g$ to for the drift.}.
+
+In the literature, the existence of invariant measure of the stochastic heat equation is more
+commonly studied with a drift term $g(x,u(t,x))$, namely,
+\begin{align} \label{E:Drift}
+  \left(\dfrac{\partial}{\partial t}-\dfrac{1}{2}\Delta\right) u(t,x)
+   = g(x,u(t,x)) +b(x,u(t,x))\dot W(t,x) \quad  \text{$x\in \mathcal{O}$, $t>0$},
+\end{align}
+For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant,
+cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $g(u):\R \to \R$, to be added
+to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following
+dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
+	\begin{equation} \label{E:dis}
+		\begin{cases}
+			g(u) \le -k_1|u|^m + k_2 & u > 0 \\
+			g(u) \ge c_1|u|^m - c_2  & u < 0.
+		\end{cases}
+	\end{equation}
+Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded
+spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole
+space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions,
+however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be
+considered. It is also worth noting that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} also
+require the above dissipativity condition \eqref{E:dis} along with a bounded initial condition, but
+they consider the case of an additive noise.
+
+Several works which do not require an added drift term with dissipativity as in \eqref{E:dis}
+include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant,
+misiats.stanzhytskyi.ea:16:existence}. In the \cite[Theorem
+1.2]{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an
+invariant measure for the stochastic heat equation on the whole space $\R^d$. More precisely, they
+allow for a drift term, $g(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2
+\in \R$,
+\begin{align*}
+		|g(x,0)| \le \varphi(x) \qquad \text{and} \qquad |g(x,u_1) - g(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
+\end{align*}
+for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in
+L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed.
+Moreover, they require the diffusion term, $b$, to satisfy the following:
+\begin{align*}
+  |b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
+\end{align*}
+which excludes the parabolic Anderson model. Lastly, Theorem 1.2 {\em ibid.} requires the initial
+condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) =
+\delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main}
+includes both of these initial conditions and we show this in Section \ref{S:Example}.
+
+
 \subsection{Weight functions} \label{SS:Weight}
+
+The admissible condition \ref{E:aw} is needed in this paper due to the following result:
+
+\begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
+  For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
+  \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$.
+  Moreover, if $\tilde{\rho}$ is another admissible weight such that
+  \begin{align*}
+    \int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
+  \end{align*}
+  then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
+  $L^2_\rho(\R^d)$.
+\end{proposition}
+
 Here are several examples of admissible weights (see Example in Section 2 of
 \cite{tessitore.zabczyk:98:invariant}):
 \begin{equation} \label{E:admRho}
@@ -647,27 +682,104 @@ Here are several examples of admissible weights (see Example in Section 2 of
   space $L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function
   with compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than
   those in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
-  condition \eqref{E:aw} excludes these two cases. Lastly, we should mention that numerical results
-  will lead one to believe that the following functions are not admissible:
-  \begin{equation*}
-    \rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d,
-    \quad \text{with $a>0$ and $b\in (1,2)$ fixed,}
-  \end{equation*}
-but a proof of this has not yet been given.
+  condition \eqref{E:aw} excludes these two cases. However, the following example is less obvious.
+%   Lastly, we should mention that numerical results
+%   will lead one to believe that the following functions are not admissible:
+%   \begin{equation*}
+%     \rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d,
+%     \quad \text{with $a>0$ and $b\in (1,2)$ fixed,}
+%   \end{equation*}
+% but a proof of this has not yet been given.
 \end{remark}
 
-The admissible condition \ref{E:aw} is needed in this paper due to the following result:
-
-\begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
-  For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
-  \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho$.
-  Moreover, if $\tilde{\rho}$ is another admissible weight such that
-  \begin{align*}
-    \int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
-  \end{align*}
-  then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
-  $L^2_\rho(\R^d)$.
+\begin{proposition}
+  $\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
+  \begin{equation*}
+    \rho_b(x) := \exp\left(-|x|^b\right), \quad x\in\R^d,
+    \quad \text{with $b>0$.}
+  \end{equation*}
 \end{proposition}
+\begin{proof}
+  From Definition \eqref{D:Rho}, we see that $\rho_b$ is admissible if and only if for all $T>0$,
+  \begin{align*}
+    \sup_{(t,x)\in[0,T]\times\R^d} \int_{\R^d} \left(2\pi t\right)^{-d/2} e^{-\frac{|x-y|^2}{2t} + (|x|^b - |y|^b)} \ud y <\infty.
+  \end{align*}
+  Denote the above integral by $I(t,x)$. We will use $C$ to denote a generic constant that does not
+  depend on $(t,x)$, which value may change at each occurrence.
+
+  We first assume that $b\in (0,1]$. In this case,
+  \begin{align*}
+    | x | ^b
+    = | x-y +y | ^b
+    \le \left(|x-y| + |y|\right)^b
+    \le |x-y|^b + |y|^b.
+  \end{align*}
+  Hence,
+  \begin{align*}
+    I(t,x) \le C \int_{\R^d} t^{-d/2} e^{-\frac{|x-y|^2}{2t} + |x-y|^b} \ud y
+           =  C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
+           =  C \int_{0}^\infty  t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
+  \end{align*}
+  Then by a scaling argument,
+  \begin{align*}
+    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{b-1}\ud r
+           \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{b-1}\ud r
+           < \infty.
+  \end{align*}
+
+  Next we assume that $b\in(1,2)$. We need to show that $\rho_b$ is not admissible. Without loss of
+  generality, we assume that $d\ge 2$. The case when $d=1$ is easier and can be proved in a similar
+  way as the proof below. It suffices to show that
+  \begin{align*}
+    \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r=(r,0,\cdots,0)\in\R^d$.}
+  \end{align*}
+  Without loss of generality, we may assume below that $r\gg 1$. Denote $y=(y_1,\cdots, y_d) =
+  (y_1,y_*)$ where $y_*\in\R^{d-1}$. Because $b /2\in (0,1)$, we see that
+  \begin{align*}
+    | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{d /2}
+            \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{d/2}
+            = |y_1|^b + |y_*|^b.
+  \end{align*}
+  Hence,
+  \begin{align*}
+    I\left(1/2,x_r\right)
+    & =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                \\
+    & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - |y_1|^b)}         \\
+    & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -|y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - |y_1|^b} \\
+    & \ge C \int_0^\infty  e^{ - (y-r)^2 + r^b - y^b} \ud y.
+  \end{align*}
+  Now, set $g(y) = (y-r)^2 + y^b$ with $y,r>0$. By differentiation, we find that the function
+  achieve its minimum at $g'(y)=0$, namely,
+  \begin{align*}
+    g'(y) = -2(r-y) +b y^{b-1} = 0 \quad \Longleftrightarrow \quad r = y_0+ \frac{b}{2} y_0^{b-1},
+  \end{align*}
+  where we use $y_0$ or $ y_0(r)$ to denote the point where the function $g$ achieve minimum. Hence,
+  for all small $\epsilon\in(0,1)$,
+  \begin{align*}
+    I\left(1/2,x_r\right)
+    \ge C\int_{y_0-\epsilon}^{y_0+\epsilon} e^{-g(y) +r^b} \ud y
+    \approx C \epsilon \exp\left(-g\left(y_0(r)\right) +r^b\right).
+  \end{align*}
+  It reduces to show that the above exponential goes to infinity as $r\to\infty$. Notice that
+  \begin{align*}
+    g(y_0(r)) = (y_0(r) -r)^2 +y_0^b = \frac{b^2}{4} y_0^{2(b-1)} + y_0^{b},
+  \end{align*}
+  and because $b\in(1,2)$,
+  \begin{align*}
+    r^b = \left( y_0+ \frac{b}{2} y_0^{b-1}\right)^b\ge y_0^b + \frac{b^b}{2^b} y_0^{b(b-1)}.
+  \end{align*}
+  Hence,
+  \begin{align*}
+    r^b - g(y_0) \ge \frac{b^b}{2^b} y_0^{b(b-1)} - \frac{b^2}{4} y_0^{2(b-1)}.
+  \end{align*}
+
+  Hence,
+  \begin{align*}
+    I(1/2,x_r) \ge C\int_0^\infty \: t^{-1/2} e^{ - \frac{|y-r|^2}{2t} + (r^b - y^b)}\ud y.
+  \end{align*}
+\end{proof}
+
+
 \subsection{Various initial conditions} \label{SS:Init}
 
 \begin{example}[$L^\infty(\R^d)$ initial condition] \label{Ex:BddInit}
