@@ -746,8 +746,17 @@ Here are several examples of admissible weights (see Example in Section 2 of
     & =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                \\
     & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - |y_1|^b)}         \\
     & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -|y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - |y_1|^b} \\
-    & \ge C \int_0^\infty  e^{ - (y-r)^2 + r^b - y^b} \ud y.
+    & =   C \int_\R e^{ - y^2 + r^b - |y-r|^b} \ud y  \\
+    & \ge C \int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y.
   \end{align*}
+  Now denote $K(r):=\int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y$.
+  \begin{align*}
+      \lim_{r\to\infty} \frac{K(r)}{r^{b-1}}
+      = \lim_{r\to\infty} \frac{b\int_0^r \left(r^{b-1}-(r-y)^{b-1}\right) e^{ - y^2 + r^b - (r-y)^b} \ud y}{r^{b-1}}
+  \end{align*}
+
+
+
   Now, set $g(r) = r^b - (y-r)^2$ with $y>0$ and $r>0$. By differentiation, we find that the function
   achieve its minimum at $g'(r)=0$, namely,
   \begin{align*}
