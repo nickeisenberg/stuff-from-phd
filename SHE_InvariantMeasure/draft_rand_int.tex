@@ -722,8 +722,8 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \end{align*}
   Then by applying the change of variables $r' = t^{-1/2}r$,
   \begin{align*}
-    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{\textcolor{blue}{d}-1}\ud r
-           \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{\textcolor{blue}{d}-1}\ud r
+    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{d-1}\ud r
+           \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}\ud r
            < \infty.
   \end{align*}
 
@@ -775,8 +775,23 @@ Here are several examples of admissible weights (see Example in Section 2 of
   Hence, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$
   blows up as  $r\to\infty$,  which completes the case  $b\in(1,2]$.
 
-  \textcolor{magenta}{Finally, we assume that $b>2$ ... Nick, can you bring your proof for this case
-  here to complete the picture?}
+Finally suppose that $b > 2$. Note that 
+	\begin{align*}
+		\int_{\R} e^{-y^2 +r^b - |y-r|^b} \ud y
+		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2- |y-r|^b} \\
+		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2} e^{-\frac{r^b}{2^b}} \\
+		 &= e^{(2^b -1)r^b / 2^b} \int_{r / 2}^{3r/2} e^{-y^2} \ud y \\
+		 & \ge e^{(2^b -1)r^b / 2^b} e^{-9r^2 / 4}.
+	\end{align*}
+Since $b>2$, then as $r \to \infty$, we see that
+	\[
+		\frac{(2^b -1)r^b}{2^b} - \frac{9r^2}{4} \to \infty.
+	\]
+Putting this all together gives us that
+	\[
+		I(1/2,x_r) \ge \int_{\R} e^{-y^2 +r^b - |y-r|^b} \ud y \ge e^{(2^b -1)r^b / 2^b} e^{-9r^2 / 4},
+	\]
+and so $I(1/2,x_r) \to \infty$ as $r \to \infty$. This completes the proof.
 \end{proof}
 
 
