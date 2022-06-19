@@ -770,8 +770,15 @@ Here are several examples of admissible weights (see Example in Section 2 of
     K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_0^r e^{ - y^2 + y^b } \frac{y}{(r-y)^{2-b}} \ud y         \\
           & \ge  e^{r^b-r^2} + b(b-1) \int_{r/2}^r e^{ - y^2 + y^b } \frac{y}{(r-y)^{2-b}} \ud y     \\
           & \ge  e^{r^b-r^2} + b(b-1) \int_{r/2}^r e^{ - y^2 + y^b } \frac{r /2}{(r /2)^{2-b}} \ud y \\
-          & =   e^{r^b-r^2} + 2^{b-2}b(b-1)r^{2-b} \int_{r/2}^r e^{ - y^2 + y^b } \ud y.
+          & =   \underbrace{e^{r^b-r^2}}_{\to 0}  + \underbrace{2^{b-2}b(b-1)r^{2-b}\int_{r/2}^r e^{ - y^2 + y^b } \ud y}_{\to 0}.
   \end{align*}
+  \textcolor{blue}{
+  I think both underlines terms go to $0$ as $r \to \infty$. Since $1 < b < 2$ then the first term will go to $0$. As for the second term, we have that 
+  	\[
+  		\int_{r/2}^r e^{ - y^2 + y^b } \ud y \le(r/2) e^{ - (r/2)^2 + (r/2)^b } \to 0.
+  	\]
+}
+  
   Hence, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$
   blows up as  $r\to\infty$,  which completes the case  $b\in(1,2]$.
 
