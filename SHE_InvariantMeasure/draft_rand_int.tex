@@ -720,24 +720,24 @@ Here are several examples of admissible weights (see Example in Section 2 of
            =  C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
            =  C \int_{0}^\infty  t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
   \end{align*}
-  \textcolor{blue}{Then by applying the change of variables $r' = t^{-1/2}r$},
+  Then by applying the change of variables $r' = t^{-1/2}r$,
   \begin{align*}
     I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{\textcolor{blue}{d}-1}\ud r
            \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{\textcolor{blue}{d}-1}\ud r
            < \infty.
   \end{align*}
 
-  Next we assume that $b\in(1,2)$. We need to show that $\rho_b$ is not admissible. Without loss of
+  Next we assume that $b\in(1,2]$. We need to show that $\rho_b$ is not admissible. Without loss of
   generality, we assume that $d\ge 2$. The case when $d=1$ is easier and can be proved in a similar
   way as the proof below. It suffices to show that
   \begin{align*}
     \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r=(r,0,\cdots,0)\in\R^d$.}
   \end{align*}
   Without loss of generality, we may assume below that $r\gg 1$. Denote $y=(y_1,\cdots, y_d) =
-  (y_1,y_*)$ where $y_*\in\R^{d-1}$. Because $b /2\in (0,1)$, we see that
+  (y_1,y_*)$ where $y_*\in\R^{d-1}$. Because $b /2\in (0,1]$, we see that
   \begin{align*}
-    | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{\textcolor{blue}{b} /2}
-            \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{\textcolor{blue}{b}/2}
+    | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
+            \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
             = |y_1|^b + |y_*|^b.
   \end{align*}
   Hence,
@@ -749,48 +749,34 @@ Here are several examples of admissible weights (see Example in Section 2 of
     & =  C \int_\R e^{ - y^2 + r^b - |y-r|^b} \ud y \\
     & \ge C \int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y.
   \end{align*}
-  
-  Now denote $K(r):=\int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y$.
+  Now denote $K(r):=\int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y$. Then,
+  \begin{align} \label{E_:K'}
+    K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y
+  \end{align}
+  Since $b\in (1,2]$, we see that
+  \begin{align} \label{E_:superadd}
+    r^b -(r-y)^b = (r-y +y)^b  - (r-y)^b \ge y^b.
+  \end{align}
+  Because $b-1\in(0,1]$, by the intermediate value theorem, we see that
   \begin{align*}
-      \lim_{r\to\infty} \frac{K(r)}{r^{b-1}}
-      = \lim_{r\to\infty} \frac{b\int_0^r \left(r^{b-1}-(r-y)^{b-1}\right) e^{ - y^2 + r^b - (r-y)^b} \ud y}{r^{b-1}}
+    r^{b-1} - (r-y)^{b-1} = (b-1) \frac{y}{\xi^{2-b}}, \quad \text{for some $\xi\in [r-y,r]$},
   \end{align*}
+  which implies that
+  \begin{align} \label{E_:IVT}
+    r^{b-1} - (r-y)^{b-1} \ge (b-1) \frac{y}{(r-y)^{2-b}}.
+  \end{align}
+  Plugging \eqref{E_:IVT} and \eqref{E_:superadd} back to \eqref{E_:K'} shows that
+  \begin{align*}
+    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_0^r e^{ - y^2 + y^b } \frac{y}{(r-y)^{2-b}} \ud y         \\
+          & \ge  e^{r^b-r^2} + b(b-1) \int_{r/2}^r e^{ - y^2 + y^b } \frac{y}{(r-y)^{2-b}} \ud y     \\
+          & \ge  e^{r^b-r^2} + b(b-1) \int_{r/2}^r e^{ - y^2 + y^b } \frac{r /2}{(r /2)^{2-b}} \ud y \\
+          & =   e^{r^b-r^2} + 2^{b-2}b(b-1)r^{2-b} \int_{r/2}^r e^{ - y^2 + y^b } \ud y.
+  \end{align*}
+  Hence, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$
+  blows up as  $r\to\infty$,  which completes the case  $b\in(1,2]$.
 
-
-
-  Now, set $g(r) = r^b - (y-r)^2$ with $y>0$ and $r>0$. By differentiation, we find that the function
-  achieve its minimum at $g'(r)=0$, namely,
-  \begin{align*}
-    g'(r) = b r^{b-1}-2(r-y) = 0 \quad \Longleftrightarrow \quad y = r_0 - \frac{b}{2} r_0^{b-1},
-  \end{align*}
-  where we use $r_0$ or $r_0(y)$ to denote the point where the function $g$ achieve maximum. Hence,
-  for all small $\epsilon\in(0,1)$,
-  \begin{align*}
-    I\left(1/2,x_r\right)
-    \ge C\int_{y_0-\epsilon}^{y_0+\epsilon} e^{g(r) -y^b} \ud y
-    \approx C \epsilon \exp\left(g\left(r_0(y)\right) -y_0^b\right).
-  \end{align*}
-  It reduces to show that the above exponential goes to infinity as $r\to\infty$. Notice that
-  \begin{align*}
-    g(r_0(y)) = r_0^b-(r_0(y) -y)^2
-              = r_0^{b}- \frac{b^2}{4} r_0^{2(b-1)},
-  \end{align*}
-  and because $b\in(1,2)$,
-  \begin{align*}
-    y_0^b =  \left(r_0 - \frac{b}{2} r_0^{b-1}\right)^b
-         \le r_0^b - \frac{b^b}{2^b} r_0^{b(b-1)}.
-  \end{align*}
-  Hence,
-  \begin{align*}
-   g(r_0) - y_0^b  \ge \frac{b^b}{2^b} r_0^{b(b-1)} - \frac{b^2}{4} r_0^{2(b-1)}.
-  \end{align*}
-
- -----
-
-  Hence,
-  \begin{align*}
-    I(1/2,x_r) \ge C\int_0^\infty \: t^{-1/2} e^{ - \frac{|y-r|^2}{2t} + (r^b - y^b)}\ud y.
-  \end{align*}
+  \textcolor{magenta}{Finally, we assume that $b>2$ ... Nick, can you bring your proof for this case
+  here to complete the picture?}
 \end{proof}
 
 
