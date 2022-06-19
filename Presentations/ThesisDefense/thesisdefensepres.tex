@@ -185,9 +185,9 @@ $B(t,0) = B(0,x) = 0$ for all $t,x >0$.
 	\begin{center}
 		$\lambda = 0$ \includegraphics[scale=.2]{figs/SHE0.png} \quad  $\lambda = 1$ \includegraphics[scale=.2]{figs/SHE1.png}
 	\end{center}
-\rdot Simulations done by using a finite difference scheme \cite{DG2000}. \\
-\rdot We partition (space) $[0,3]$ into $n_x$ pieces of size $\delta_x = 3 / n_x$. \\
-\rdot We partition (time) $[0, .2]$ into $n_t$ pieces of size $\delta_t = .2 / n_t$. \\
+\rdot Simulations done by using a finite difference scheme \cite{DG2000}. \vspace{.1in}\\
+\rdot We partition (space) $[0,3]$ into $n_x$ pieces of size $\delta_x = 3 / n_x$. \vspace{.1in}\\
+\rdot We partition (time) $[0, .2]$ into $n_t$ pieces of size $\delta_t = .2 / n_t$. \vspace{.1in}\\
 \rdot To control error, we assume $n_x^2 \delta_t < \frac{1}{2}$ which implies $n_t \gg n_x$.
 	\begin{align*}
 		u(t+\delta_t, x) &= u(t,x) + n_x^2 \delta_t \left( u(t, x + \delta_x) + u(t, x - \delta_x) -2 u(t,x) \right)  \\
@@ -289,7 +289,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\begin{definition}[Invariant measures]
 		\rdot A probability measure, $\eta$, on $H$ is said to be {\em invariant} for the transition functions $P_t$ if for all $\Gamma \in \mathscr{B}(H)$ and $t > 0$,
 		\[
-		P_t^*(\eta)(\Gamma) := \int_H P_t(x,\Gamma) \eta(\ud x) = \int_H P_0(x,\Gamma) \eta(\ud x) = \int_H \textbf{1}_{\Gamma}(x) \eta(\ud x) = \eta(\Gamma),
+		P_t^*(\eta)(\Gamma) := \textcolor{blue}{\int_H P_t(x,\Gamma) \eta(\ud x)} = \int_H P_0(x,\Gamma) \eta(\ud x) = \int_H \textbf{1}_{\Gamma}(x) \eta(\ud x) = \textcolor{blue}{\eta(\Gamma)},
 		\]
 		which is equivalent to,
 		\[
@@ -330,7 +330,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\begin{definition}[Admissible Weight]
 		A positive, bounded and continuous $L^1(\R^d)$ function, $\rho$, is an {\em admissible weight} if 
 			\[
-				\bigg( G(t,\cdot)*\rho(\cdot) \bigg)(x) \le C_{\rho} \rho(x), \qquad \text{for all } t \in [0,T].
+				\frac{\bigg( G(t,\cdot)*\rho(\cdot) \bigg)(x)}{\rho(x)} \le C_{\rho}, \qquad \text{for all } t \in [0,T] \text{ and } x \in \R^d.
 			\] 
 	\end{definition}
 
@@ -489,7 +489,7 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 		\end{align*}
 	Which is precisely Dalang's condition. \vspace{.2in}
 	
-	\rdot $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ is far too restrictive and no such examples of $f$ have been given.
+	\rdot $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ restrictive and is often hard to calculate.
 \end{frame}
 
 \begin{frame} $\;$ \\
@@ -902,7 +902,7 @@ where $\eta_{t_0}$ is the invariant measure.
 
 \begin{frame}{A comment about $\Upsilon_{\alpha}(0) < \infty$}
 	\small
-	\rdot   $\Upsilon_{2\alpha}(0) < \infty$ implies H\"older continuity of the solution \cite{CH19}. \vspace{.1in}
+	\rdot  For $\alpha \in (0,1/2)$, $\Upsilon_{2\alpha}(0) < \infty$ implies H\"older continuity of the solution \cite{CH19}. \vspace{.1in}
 	
 	\rdot This condition may be slightly "weakened" to the following: 
 	\[
