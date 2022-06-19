@@ -784,25 +784,25 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \begin{align*}
     |y|^b \le 2^{b/2-1}\left(|y_1|^b + |y_*|^b\right).
   \end{align*}
-  \textcolor{magenta}{By setting $c= 2^{b/2 -1}>1$}. Using this, we see that
+By setting $c := 2^{b/2 -1}>1$, we see that
 	\begin{align*}
-    I(1/2, x_r) &\ge \int_{\R} e^{-y^2 +r^b - \textcolor{magenta}{\frac{b-2}{2}} |y-r|^b} \ud y \\
-		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2- \frac{b-2}{2}|y-r|^b} \\
-		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2} e^{-\frac{(b-2)r^b}{2^{b+1}}} \\
-		 &= e^{(2^{b+1} -b+2)r^b / 2^b} \int_{r / 2}^{3r/2} e^{-y^2} \ud y \\
-		 & \ge e^{(2^{b+1} -b+2)r^b / 2^b} e^{-9r^2 / 4}.
+    I(1/2, x_r) &\ge \int_{\R} e^{-y^2 +r^b - c |y-r|^b} \ud y \\
+		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2- c|y-r|^b} \\
+		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2} e^{-c\frac{r^b}{2^{b}}} \\
+		 &= e^{(2^{b} -c)r^b / 2^b} \int_{r / 2}^{3r/2} e^{-y^2} \ud y \\
+		 & \ge e^{(2^{b} - c)r^b / 2^b} e^{-9r^2 / 4}.
 	\end{align*}
   Since $b>2$, we see that
 	\begin{align*}
-		2^{b+1} -b+2 > 2^{b+1} > 0,
+		2^{b} - c = 2^b - 2^{(b-2)/2} > 0,
 	\end{align*}
   and thus as $r \to \infty$,
 	\begin{align*}
-		\frac{(2^{b+1} -b +2)r^b}{2^b} - \frac{9r^2}{4} \to \infty.
+		\frac{(2^{b} -c)r^b}{2^b} - \frac{9r^2}{4} \to \infty.
 	\end{align*}
   Putting this all together gives us that
 	\begin{align*}
-		I(1/2,x_r) \ge \int_{\R} e^{-y^2 +r^b - \frac{b-2}{2}|y-r|^b} \ud y \ge e^{(2^{b+1} -b+2)r^b / 2^b} e^{-9r^2 / 4},
+		I(1/2,x_r) \ge \int_{\R} e^{-y^2 +r^b - c|y-r|^b} \ud y \ge e^{(2^{b} -c )r^b / 2^b} e^{-9r^2 / 4},
 	\end{align*}
   and so $I(1/2,x_r) \to \infty$ as $r \to \infty$. This completes the proof.
 \end{proof}
