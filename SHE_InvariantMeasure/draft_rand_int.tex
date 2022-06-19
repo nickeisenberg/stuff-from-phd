@@ -1213,6 +1213,29 @@ We now consider a couple of situations and give two examples that illustrate som
 difficulties that may arise because of the square root and absolute value. Before that, let us first introduce a
 nonnegative and nonnegative definite function in $\R$:\bigskip
 
+\textcolor{blue}{
+Tessitore's condition for the Bessel kernel, $f_s$, reduces down to $\Upsilon(0)$. First recall that 
+	\begin{align*}
+		\widehat{f}_s(\xi) = (1 + |\xi|^2)^{-s/2},
+	\end{align*}
+and so
+	\begin{align*}
+		\sqrt{\widehat{f}_s(\xi)} = (1+|\xi|^2)^{-(s/2)/2} = \widehat{f}_{s/2}(\xi).
+	\end{align*}
+Also, recall that $f_s$ is strictly positive. Thus up to some constant we have that 
+	\begin{align*}
+		&\int_{\R^d} \left(\left|
+		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right| * \left|
+		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
+		&= \int_{\R^d} \left(\left|
+		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right| * \left|
+		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
+		&= \int_{\R^d} \left(f_{s/2}* f_{s/2} \right) (x) |x|^{2-d} \ud x \\
+		&= \int_{\R^d} \mathcal{F}f_{s/2}(\xi) \mathcal{F}f_{s/2}(\xi) |x|^{-2} \ud \xi \\
+		&= \int_{\R^d} \frac{\mathcal{F}f_{s}(\xi)}{ |x|^{2}} \ud \xi		= \Upsilon(0)
+	\end{align*}
+}
+
 \begin{example} \label{Ex:nonnegative}
   Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then it is clear that $ \widehat{g}(\xi) =
   \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that
@@ -1238,7 +1261,6 @@ Riesz kernel (in the generalized sense):
 Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
 our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
-
 
 \begin{example} \label{Ex:Finv}
   One should note that the assumption that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is

@@ -354,24 +354,28 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	
 	\rdot One can show that the following is not admissible for any $a>0$,
 	\[
-		\exp\left(-a|x|^2\right), 
+		\exp\left(-a|x|^b\right), \quad \text{for all } b > 1.
 	\]
-	\begin{minipage}{1.8in}
-	\rdot Numerically it is suggested that for any $1<b<2$ and $a > 0$ that 
-		\[
-			\exp\left(-a|x|^b\right)
-		\]
-	may not be admissible, but this has not been proven. 
+\begin{center}
+\begin{minipage}{2.2in}
+		\centering
+\begin{figure}
+	\includegraphics[scale=.4]{figs/exp(|y|)admis.png}
+	\caption{
+		$x \mapsto \frac{(G(t,\cdot)*\exp(-|\cdot|))(x) }{ \exp(-|x|)} $
+	}
+\end{figure}
 	\end{minipage}
-	\begin{minipage}{3in}
+	\begin{minipage}{2.2in}
 		\centering
 		\begin{figure}
 		\includegraphics[scale=.4]{figs/admis.png}
 		\caption{
-			Plot of $x \mapsto \frac{(G(t,\cdot)*\exp(-|\cdot|^{1.25}))(x) }{ \exp(-|x|^{1.25})} $
+			$x \mapsto \frac{(G(t,\cdot)*\exp(-|\cdot|^{1.25}))(x) }{ \exp(-|x|^{1.25})} $
 		}
 		\end{figure}
 	\end{minipage}
+\end{center}
 % mathematica codes
 % f[x_,y_,t_] = (1/Sqrt[t])* Exp[-Abs[x-y]^2 / (2*t)]*Exp[-Abs[y]^(1.25)] 
 % Plot3D[NIntegrate[f[x,y,t] / Exp[-Abs[x]^(1.25)],{y,-Infinity,Infinity}],{x,-20,20}, {t, 0 ,5}]
@@ -885,7 +889,7 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 	\begin{theorem}
 Suppose that the initial measure, $\mu$, the diffusion term, $b$, and the spectral density, $\widehat{f}$ satisfy 
 	\[
-		\Upsilon_\alpha (0) := \int_{\R^d} \frac{f(\xi) \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty , \quad \limsup_{t > 0} \mathcal{G}_{\rho}(t; \mu) < \infty, \quad \text{and} \quad L_b^2 < \frac{1}{2^7 \Upsilon(0)},
+		\Upsilon_\alpha (0) := \int_{\R^d} \frac{\widehat{f}(\xi) \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty , \quad \limsup_{t > 0} \mathcal{G}_{\rho}(t; \mu) < \infty, \quad \text{and} \quad L_b^2 < \frac{1}{2^7 \Upsilon(0)},
 	\]
 for some $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ and also for $\alpha = 0$. Then there exists an invariant measure for the stochastic heat equation. More precisely, the following weak limit exists for each $t_0 > 0$:
 	\[
@@ -918,7 +922,7 @@ where $\eta_{t_0}$ is the invariant measure.
 \begin{frame}{Permissible spectral density}
 \rdot Recall that $\widehat{f}$ must satisfy for both $\alpha = 0$ and $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ the following:
 	\[
-			\Upsilon_\alpha (0) := \int_{\R^d} \frac{f(\xi) \: \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty.
+			\Upsilon_\alpha (0) := \int_{\R^d} \frac{\widehat{f}(\xi) \: \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty.
 	\]
 
 \rdot Recall that $d\ge3$ and so $\widehat{f}$ may have slow blow up at the origin but must have fast decay at $\pm \infty$ to counter act the thick tails of $|\xi|^{2(1-\alpha)}$. \vspace{.25in}
@@ -935,7 +939,7 @@ where $\eta_{t_0}$ is the invariant measure.
 		f_s(x) \sim \exp(-|x|/2) \text{ for } |x| > 2 \quad \text \quad f_s(x) \sim \frac{1}{|x|^{d-s+2}} \text{ for } |x| < 2.
 	\]
 	
-	\rdot The Fourier transform $\widehat{f}$ is given by $\widehat{f}(\xi) = (1+|\xi|^2)^{s/2}$.
+	\rdot The Fourier transform $\widehat{f}$ is given by $\widehat{f}(\xi) = (1+|\xi|^2)^{-s/2}$.
 	
 	\begin{example}
 		When considering the Bessel kernel, direct calculation yields that 
