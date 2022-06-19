@@ -733,13 +733,13 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \begin{align*}
     \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r=(r,0,\cdots,0)\in\R^d$.}
   \end{align*}
-  Without loss of generality, we may assume below that $r\gg 1$. Denote $y=(y_1,\cdots, y_d) =
+  Without loss of generality, we may assume below that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) =
   (y_1,y_*)$ where $y_*\in\R^{d-1}$. Because $b /2\in (0,1]$, we see that
-  \begin{align*}
+  \begin{align} \label{E_:y}
     | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
             \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
             = |y_1|^b + |y_*|^b.
-  \end{align*}
+  \end{align}
   Hence,
   \begin{align*}
     I\left(1/2,x_r\right)
@@ -753,36 +753,33 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \begin{align} \label{E_:K'}
     K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y
   \end{align}
-  Since $b\in (1,2]$, we see that
-  \begin{align} \label{E_:superadd}
-    r^b -(r-y)^b = (r-y +y)^b  - (r-y)^b \ge y^b.
-  \end{align}
+  % Since $b\in (1,2]$, we see that
+  % \begin{align} \label{E_:superadd}
+  %   r^b -(r-y)^b = (r-y +y)^b  - (r-y)^b \ge y^b.
+  % \end{align}
   Because $b-1\in(0,1]$, by the intermediate value theorem, we see that
   \begin{align*}
     r^{b-1} - (r-y)^{b-1} = (b-1) \frac{y}{\xi^{2-b}}, \quad \text{for some $\xi\in [r-y,r]$},
   \end{align*}
-  which implies that
-  \begin{align} \label{E_:IVT}
-    r^{b-1} - (r-y)^{b-1} \ge (b-1) \frac{y}{(r-y)^{2-b}}.
-  \end{align}
-  Plugging \eqref{E_:IVT} and \eqref{E_:superadd} back to \eqref{E_:K'} shows that
+  which implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y (r-y)^{b-2}$. Hence,
   \begin{align*}
-    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_0^r e^{ - y^2 + y^b } \frac{y}{(r-y)^{2-b}} \ud y         \\
-          & \ge  e^{r^b-r^2} + b(b-1) \int_{r/2}^r e^{ - y^2 + y^b } \frac{y}{(r-y)^{2-b}} \ud y     \\
-          & \ge  e^{r^b-r^2} + b(b-1) \int_{r/2}^r e^{ - y^2 + y^b } \frac{r /2}{(r /2)^{2-b}} \ud y \\
-          & =   \underbrace{e^{r^b-r^2}}_{\to 0}  + \underbrace{2^{b-2}b(b-1)r^{2-b}\int_{r/2}^r e^{ - y^2 + y^b } \ud y}_{\to 0}.
+    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } \frac{y}{(r-y)^{2-b}} \ud y \\
+          & \ge  b(b-1) \int_1^r e^{ - y^2 + r^b - (r-1)^b } \frac{1}{(r-1)^{2-b}} \ud y \\
+          & \ge  b(b-1)(r-1)^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
   \end{align*}
-  \textcolor{blue}{
-  I think both underlines terms go to $0$ as $r \to \infty$. Since $1 < b < 2$ then the first term will go to $0$. As for the second term, we have that 
-  	\[
-  		\int_{r/2}^r e^{ - y^2 + y^b } \ud y \le(r/2) e^{ - (r/2)^2 + (r/2)^b } \to 0.
-  	\]
-}
-  
-  Hence, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$
-  blows up as  $r\to\infty$,  which completes the case  $b\in(1,2]$.
+  By the intermediate value theorem, $r^b-(r-1)^b = b \xi^{b-1}$ with $\xi\in [r-1,r]$. Hence,
+  $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
+  \begin{align*}
+    K'(r) & \ge C (r-1)^{b-2} \exp\left(b (r-1)^{b-1}\right).
+  \end{align*}
+  Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$ blows up
+  as  $r\to\infty$,  which completes the case  $b\in(1,2]$. \bigskip
 
-Finally suppose that $b > 2$. Note that 
+
+  \textcolor{magenta}{Nick, you cannot use $I(1/2,x_r)$, because it depends on the fact that $b\in(1,2]$; see
+  \eqref{E_:y}.}
+
+  Finally suppose that $b > 2$. Note that
 	\begin{align*}
 		\int_{\R} e^{-y^2 +r^b - |y-r|^b} \ud y
 		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2- |y-r|^b} \\
