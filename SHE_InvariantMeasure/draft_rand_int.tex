@@ -762,13 +762,13 @@ Here are several examples of admissible weights (see Example in Section 2 of
   % \begin{align} \label{E_:superadd}
   %   r^b -(r-y)^b = (r-y +y)^b  - (r-y)^b \ge y^b.
   % \end{align}
-  Because $b-1\in(0,1]$, by the intermediate value theorem, we see that
+By the intermediate value theorem, we see that
   \begin{align*}
-    r^{b-1} - (r-y)^{b-1} = (b-1) \frac{y}{\xi^{2-b}}, \quad \text{for some $\xi\in [r-y,r]$},
+    r^{b-1} - (r-y)^{b-1} = (b-1) y \xi^{b-2}, \quad \text{for some $\xi\in [r-y,r]$},
   \end{align*}
-  Hence,
+  and since $b-1\in(0,1]$, this implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y r^{b-2}$. Hence,
   \begin{align*}
-    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } \frac{y}{r^{2-b}} \ud y \\
+    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \ud y \\
           & \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y \\
           & \ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
   \end{align*}
@@ -779,6 +779,22 @@ Here are several examples of admissible weights (see Example in Section 2 of
   \end{align*}
   Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$ blows up
   as  $r\to\infty$,  which completes the case  $b\in(1,2]$.
+
+\textcolor{blue}{
+Finally, suppose that $b > 2$. The proof of this case follows from the proof of the case when $1<b<2$, but with some minor changes?? For example, \eqref{E_:y} becomes
+\begin{align*}
+|y|^b \le 2^{b/2-1}\left(|y_1|^b + |y_*|^b\right).
+\end{align*}
+Thus by setting $c := 2^{b/2 -1}>1$, $K(r)$ and $K'(r)$ become the following:
+\begin{align*}
+	K(r) = \int_0^r  e^{ - y^2 + r^b - c(r-y)^b} \ud y,
+\end{align*}
+and
+\begin{align*}
+K'(r) = e^{ - y^2 + r^b} + b \int_0^r  e^{ - y^2 + r^b - c(r-y)^b}\left(r^{b-1} -c(r-y)^{b-1} \right)\ud y.
+\end{align*}
+The $c$ inside $\left(r^{b-1} -c(r-y)^{b-1} \right)$ makes it so we can no longer use the intermediate value theorem. 
+}
 
   Finally, suppose that $b > 2$. Note that in this case, \eqref{E_:y} becomes
   \begin{align*}
