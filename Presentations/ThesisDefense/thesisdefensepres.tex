@@ -122,9 +122,9 @@ G(t,x) = (2 \pi t)^{-d/2} \exp\left(- \frac{|x|^2}{2t} \right) \vspace{.1in}
 \]
 where $\tilde{\psi}(s,x) = \psi(s,-x)$. We have the following nomenclature. \vspace{.25in} 
 	
- \rdot {\em Space-time white noise}: $\Gamma(\ud x) = \delta_0(\ud x)$. \vspace{.15 in}
+ \rdot \textcolor{blue}{{\em Space-time white noise}}: $\Gamma(\ud x) = \delta_0(\ud x)$. \vspace{.15 in}
  
- \rdot {\em Time white and spatially colored:} $\Gamma(\ud x) = f(x)\ud x$ where $f$ is a non-negative and non-negative definite function referred to as the {\em Correlation function} and its Fourier transform,
+ \rdot \textcolor{blue}{{\em Time white and spatially colored}}: $\Gamma(\ud x) = f(x)\ud x$ where $f$ is a non-negative and non-negative definite function referred to as the {\em Correlation function} and its Fourier transform,
  	\[
  		\widehat{f}(\xi) := \mathcal{F}f(\xi) = \int_{\R^d} \exp\left(-i x \cdot \xi\right) f(x) \ud x,
  	\]
@@ -900,21 +900,6 @@ where $\eta_{t_0}$ is the invariant measure.
 	
 \end{frame}
 
-\begin{frame}{Strategy}
-	\rdot The strategy is to prove tightness of the laws: when given $\epsilon \in (0,1)$, to prove the existence of a compact set $\mathcal{K}$ such that 
-		\begin{align*}
-			\mathscr{L}u(t,\cdot;\mu)(\mathscr{K}) \ge 1- \epsilon \quad \text{for all } t \ge t_0 >0.
-		\end{align*}
-		
-	\rdot This implies that 
-		\begin{align*}
-			A_{t_n}:=\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\mathscr{K}) \ud s \ge \frac{1}{t_0} \int_{t_0}^{t_n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
-		\end{align*} 
-	and so the sequence of measures, $A_{t_n}$ is tight. \vspace{.1in} \\
-	
-	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure.
-\end{frame}
-
 \begin{frame}{A comment about $\Upsilon_{\alpha}(0) < \infty$}
 	\small
 	\rdot  For $\alpha \in (0,1/2)$, $\Upsilon_{2\alpha}(0) < \infty$ implies H\"older continuity of the solution \cite{CH19}. \vspace{.1in}
@@ -932,6 +917,21 @@ where $\eta_{t_0}$ is the invariant measure.
 		\rnum{3} When $\Upsilon(0) < \infty$ then $\Upsilon_{2\alpha}(0) < \infty \iff \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
 	\end{lemma}	
 	
+\end{frame}
+
+\begin{frame}{Strategy}
+	\rdot The strategy is to prove tightness of the laws: when given $\epsilon \in (0,1)$, to prove the existence of a compact set $\mathcal{K}$ such that 
+	\begin{align*}
+	\mathscr{L}u(t,\cdot;\mu)(\mathscr{K}) \ge 1- \epsilon \quad \text{for all } t \ge t_0 >0.
+	\end{align*}
+	
+	\rdot This implies that 
+	\begin{align*}
+	A_{t_n}:=\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\mathscr{K}) \ud s \ge \frac{1}{t_0} \int_{t_0}^{t_n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
+	\end{align*} 
+	and so the sequence of measures, $A_{t_n}$ is tight. \vspace{.2in} \\
+	
+	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure.
 \end{frame}
 
 \begin{frame}{Permissible spectral density}
@@ -1006,16 +1006,30 @@ where $\eta_{t_0}$ is the invariant measure.
 			\lim_{n \to \infty} \frac{1}{t_n} \int_0^{t_n} \mathscr{L}(u(s,\cdot;\zeta)) \ud s.
 		\]
 		
-	\rdot DaPrato - Can do little with a a lot \vspace{.1in}
 	
-	\rdot Walsh - Can do a lot with little (SHE is included in the "little") \vspace{.1in}
+	\begin{minipage}{2.5in}
+	\rdot Now $\mu \not \in H$ is now allowed  \\
 	
-	\rdot We show that we may consider initial conditions, $\mu$, outside of $H$, but what is important is that $u(t_0,\cdot; \mu) \in H$ for any $t_0 >0$. \vspace{.1in}
+	\rdot $u(t,\cdot;\mu) \in H$ for $t>0$ \\
 	
-	\rdot So because of the Markov property of the SHE \cite{DZ14}, we can associate with each $\mu$ outside of $H$ with a restarted equation:
-		\[
-			\mathscr{L}\bigg(u(t,\cdot;\mu)\bigg) = \mathscr{L}\bigg(u(t-t_0,\cdot;u(t_0,\cdot;\mu) \bigg) \quad \text{for all } t > t_0 > 0.
-		\] 
+	 \rdot The heat operator smooths \\
+	 
+	 \rdot For $t > t_0 > 0$, 
+	 \[ \mathscr{L}u(t,\cdot;\mu) = \mathscr{L} u(t-t_0,\cdot;u(t_0,\cdot;\mu)) \]
+	\end{minipage}
+	\begin{minipage}{2.3in}
+		\centering
+		\begin{figure}
+		\includegraphics[scale=.3]{figs/smoothing.png}
+		\caption{$u_t - u_{xx} = 0$ with a bumpy initial condition 
+		}
+	\end{figure}
+	\end{minipage}
+	
+%	\rdot So because of the Markov property of the SHE \cite{DZ14}, we can associate with each $\mu$ outside of $H$ with a restarted equation:
+%		\[
+%			\mathscr{L}\bigg(u(t,\cdot;\mu)\bigg) = \mathscr{L}\bigg(u(t-t_0,\cdot;u(t_0,\cdot;\mu) \bigg) \quad \text{for all } t > t_0 > 0.
+%		\] 
 \end{frame}
 
 		\begin{frame}
