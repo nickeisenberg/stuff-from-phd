@@ -32,6 +32,7 @@
 \newcommand{\Norm}[1]{\left\|  #1   \right\|}
 \newcommand{\ud}{\ensuremath{\mathrm{d} }}
 \newcommand{\rnum}[1]{{\bf \textcolor{red}{(#1)}}}
+\newcommand{\nobarfrac}{\genfrac{}{}{0pt}{}}
 
 \newcommand{\mySeparateLine}{
 	\begin{center}
@@ -289,7 +290,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\begin{definition}[Invariant measures]
 		\rdot A probability measure, $\eta$, on $H$ is said to be {\em invariant} for the transition functions $P_t$ if for all $\Gamma \in \mathscr{B}(H)$ and $t > 0$,
 		\[
-		P_t^*(\eta)(\Gamma) := \textcolor{blue}{\int_H P_t(x,\Gamma) \eta(\ud x)} = \int_H P_0(x,\Gamma) \eta(\ud x) = \int_H \textbf{1}_{\Gamma}(x) \eta(\ud x) = \textcolor{blue}{\eta(\Gamma)},
+		\textcolor{blue}{\int_H P_t(x,\Gamma) \eta(\ud x)} = \int_H P_0(x,\Gamma) \eta(\ud x) = \int_H \textbf{1}_{\Gamma}(x) \eta(\ud x) = \textcolor{blue}{\eta(\Gamma)},
 		\]
 		which is equivalent to,
 		\[
@@ -330,7 +331,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\begin{definition}[Admissible Weight]
 		A positive, bounded and continuous $L^1(\R^d)$ function, $\rho$, is an {\em admissible weight} if 
 			\[
-				\frac{\bigg( G(t,\cdot)*\rho(\cdot) \bigg)(x)}{\rho(x)} \le C_{\rho}, \qquad \text{for all } t \in [0,T] \text{ and } x \in \R^d.
+				\frac{\bigg( G(t,\cdot)*\rho(\cdot) \bigg)(x)}{\rho(x)} \le C_{\rho}(T), \qquad \text{for all } t \in [0,T] \text{ and } x \in \R^d.
 			\] 
 	\end{definition}
 
@@ -390,7 +391,7 @@ Let $\rho$ be an admissible weight and suppose that
 \]
 Now suppose our initial measure, $\mu$, satisfies the following:
 \[
-	\mathcal{G}_{\rho}(t;|\mu|) := \int_{\R^d} \left( \int_{\R^d} G(t,x-y) (|\mu|)(\ud y) \right)^2 \rho(x) \ud x < \infty.
+	\mathcal{G}_{\rho}(t;\textcolor{blue}{|\mu|}) := \int_{\R^d} \left( \int_{\R^d} G(t,x-y) \textcolor{blue}{|\mu|(\ud y)} \right)^2 \rho(x) \ud x < \infty.
 \]
 Then for all $t > 0$,
 \[
@@ -415,12 +416,12 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 	\begin{definition}
 		A measure $\eta$ is {\em invariant} for the stochastic heat equation if $\eta$ is invariant for the transition functions $P_t$. In other words, 
 			\[
-				P_t^*(\eta)(\Gamma) = \int_{H} P_t(\zeta, \Gamma) \eta(\ud \zeta) = \eta(\Gamma), \quad \text{for all } \Gamma \in \mathscr{B}(H).
+				\int_{H} P_t(\zeta, \Gamma) \eta(\ud \zeta) = 	\int_{H} \mathscr{L}(u(t,\cdot;\zeta))(\Gamma) \eta(\ud \zeta) = \eta(\Gamma), \quad \text{for all } \Gamma \in \mathscr{B}(H).
 			\]
 	\end{definition}
 \end{frame}
 
-\begin{frame}{Convergence of measures}
+\begin{frame}{Weak convergence of measures}
 	\rdot Let $\mathscr{M}(H)$ and $C_b(H)$ denote the probability measures and bounded continuous functions on $H$. \vspace{.3in} \\
 	
 	\rdot For $\varphi \in C_b(H)$ and $\nu \in \mathscr{M}(H)$, 
@@ -429,7 +430,7 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 	\] \vspace{.1in}
 
 	\begin{definition}
-		We say $\nu_n$ converges {\em weakly} to $\eta$ in $\mathscr{M}(H)$ if 
+		We say $\nu_n$ converges {\em weakly} to $\eta$ in $\mathscr{M}(H)$ if for all $\varphi \in C_b(H)$,
 			\[
 				\langle \varphi, \nu_n \rangle \to 	\langle \varphi, \nu \rangle, \quad \text{as } n \to \infty.
 			\] 
@@ -442,21 +443,32 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 		If $\zeta_1, \zeta_2 \in H$ and $\eta_1, \eta_2 \in \mathscr{M}(H)$ are such that 
 		{\small
 			\[
-				\mathscr{L}\bigg( u(t,\cdot;\zeta_1) \bigg) \to \eta_1 \text{ as } t \to \infty
+				\textcolor{red}{\mathscr{L}\bigg( u(t,\cdot;\zeta_1) \bigg) \to \eta_1 \text{ as } t \to \infty}
 				\quad \text{or} \quad 
-				\frac{1}{t_n} \int_0^{t_n} \mathscr{L}\bigg( u(s,\cdot;\zeta_2) \bigg) \ud s \to \eta_2 \text{ as } n \to \infty,
+				\textcolor{blue}{\frac{1}{t_n} \int_0^{t_n} \mathscr{L}\bigg( u(s,\cdot;\zeta_2) \bigg) \ud s \to \eta_2 \text{ as } n \to \infty},
 			\] 
 		}
 		for some $t_n \uparrow \infty$, then both $\eta_1$ and $\eta_2$ are invariant. 
-	\end{theorem}
+	\end{theorem} \vspace{.1in}
 
-	\begin{theorem}[DaPrato { \cite[Proposition 11.5]{DZ14} }]
-		Suppose $\eta$ is invariant for the stochastic heat equation and $\zeta \in H$ is random and $\mathscr{L}(\zeta) = \eta$. Then $\mathscr{L}\bigg(u(t,\cdot;\zeta)\bigg)$ is stationary:
-			\[
-				\mathbb{E}\bigg[\varphi_1\big(u(t_1+h,\cdot;\zeta)\big) \cdots \varphi_n\big(u(t_n+h,\cdot;\zeta)\big)\bigg]
-			\]
-		is independent of $h$ for any $n \in \mathbb{N}$ and $\varphi_i \in C_b(H)$.
-	\end{theorem}
+\rdot \textcolor{red}{Red} implies \textcolor{blue}{Blue} but not vice versa. \vspace{.1in} \\
+
+\rdot  For example, suppose $f(t) \to L$ as $t \to \infty$. Then for $\epsilon > 0$, there exists $N$ so for all $n>N$ we have the following:
+\[
+	\lim_{n \to \infty} \frac{1}{n} \int_0^n f(t) \ud t \: \nobarfrac{\le}{\ge} \: \lim_{n \to \infty} \frac{1}{n}\left( \int_0^N f(t) \ud t + \int_N^n L \pm \epsilon \: \ud t \right),
+\]
+thus,
+\[
+	L- \epsilon \le 	\lim_{n \to \infty} \frac{1}{n} \int_0^n f(t) \ud t \le L+\epsilon.
+\]
+
+%	\begin{theorem}[DaPrato { \cite[Proposition 11.5]{DZ14} }]
+%		Suppose $\eta$ is invariant for the stochastic heat equation and $\zeta \in H$ is random and $\mathscr{L}(\zeta) = \eta$. Then $\mathscr{L}\bigg(u(t,\cdot;\zeta)\bigg)$ is stationary:
+%			\[
+%				\mathbb{E}\bigg[\varphi_1\big(u(t_1+h,\cdot;\zeta)\big) \cdots \varphi_n\big(u(t_n+h,\cdot;\zeta)\big)\bigg]
+%			\]
+%		is independent of $h$ for any $n \in \mathbb{N}$ and $\varphi_i \in C_b(H)$.
+%	\end{theorem}
 
 \end{frame}
 
@@ -485,11 +497,11 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 				& = 	\int_{\R^d} \: |\xi|^{2-d} \left[\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right)  * \mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \right](\xi)  \: \ud \xi \\
 				&= K \int_{\R^d} \: |\xi|^{2-d} \left[\mathcal{F}^{-1}\left(\widehat{f} \: \right) \right](\xi)  \: \ud \xi \\
 				&= K \int_{\R^d} \: |\xi|^{2-d} f(\xi)  \: \ud \xi \\
-				& = K \int_{\R^d} \: |\xi|^{-2} \widehat{f}(\xi)  \: \ud \xi,
+				& = K \int_{\R^d} \: |\xi|^{-2} \widehat{f}(\xi)  \: \ud \xi = \Upsilon(0),
 		\end{align*}
-	Which is precisely Dalang's condition. \vspace{.2in}
+	which is precisely Dalang's condition. \vspace{.2in}
 	
-	\rdot $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ restrictive and is often hard to calculate.
+	\rdot $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ is restrictive.
 \end{frame}
 
 \begin{frame} $\;$ \\
@@ -900,6 +912,24 @@ where $\eta_{t_0}$ is the invariant measure.
 	
 \end{frame}
 
+\begin{frame}{$\widehat{f}(\xi)$ and $\Upsilon_{\alpha}(0)$}
+	\rdot It is easy to verify that $\widehat{f}(\xi) = \max\{ 2-|\xi|, 0 \}$ is allowable using our condition above. Indeed, for any $\alpha \in [0,1)$,
+	\begin{align*}
+		\Upsilon_{\alpha}(0) &= \int_{\R^d} \frac{\max\{ 2-|\xi|, 0 \}}{|\xi|^{2(1-\alpha)}} \ud \xi \\
+		&= \int_0^{\infty} \frac{\max\{ 2-r, 0 \}}{r^{2(1-\alpha)}} r^{d-1}\ud r \\
+		&= \int_0^{2}  \frac{2-r}{r^{2(1-\alpha)}} r^{d-1}\ud r \\
+		&= \int_0^2 2 r^{d-1-2(1-\alpha)} - r^{d-2(1-\alpha)} \ud r \\
+		&< \infty \text{ when }
+			\begin{cases}
+				\frac{d}{2} > 1 - \alpha & 0 < \alpha < 1 \\
+				\frac{d}{2} > 1 & \alpha = 0.
+			\end{cases}
+	\end{align*}
+\rdot Thus, $\frac{d}{2} > 1$, being the more restrictive condition, is what we need to assume. In other words, the spatial dimension must be $d >2$ which means $d \ge 3$.  
+	
+\end{frame} 
+
+
 \begin{frame}{A comment about $\Upsilon_{\alpha}(0) < \infty$}
 	\small
 	\rdot  For $\alpha \in (0,1/2)$, $\Upsilon_{2\alpha}(0) < \infty$ implies H\"older continuity of the solution \cite{CH19}. \vspace{.1in}
@@ -927,11 +957,19 @@ where $\eta_{t_0}$ is the invariant measure.
 	
 	\rdot This implies that 
 	\begin{align*}
-	A_{t_n}:=\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\mathscr{K}) \ud s \ge \frac{1}{t_0} \int_{t_0}^{t_n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
+	A_{n}(\textcolor{blue}{\mathscr{K}}):=\frac{1}{n} \int_{t_0}^{n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\textcolor{blue}{\mathscr{K}}) \ud s \ge \frac{1}{n} \int_{t_0}^{n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
 	\end{align*} 
-	and so the sequence of measures, $A_{t_n}$ is tight. \vspace{.2in} \\
+	and so the sequence of measures, $A_{n}$ is tight. \vspace{.15in} \\
 	
-	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure.
+	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure, $\eta$. Hence, there exists $(t_n) \uparrow \infty$ such that,
+		\[
+			A_{t_n} \to \eta 
+		\] \vspace{0in} 
+		
+	\rdot Unfortunately this does not imply that 
+		\[
+			\mathscr{L}u(t,\cdot ; \mu) \to \eta \quad \text{as } t \to \infty.
+		\]
 \end{frame}
 
 \begin{frame}{Permissible spectral density}
@@ -1010,9 +1048,9 @@ where $\eta_{t_0}$ is the invariant measure.
 	\begin{minipage}{2.5in}
 	\rdot Now $\mu \not \in H$ is now allowed  \\
 	
-	\rdot $u(t,\cdot;\mu) \in H$ for $t>0$ \\
+	\rdot The heat operator smooths \\
 	
-	 \rdot The heat operator smooths \\
+	\rdot $u(t,\cdot;\mu) \in H$ for $t>0$ \\
 	 
 	 \rdot For $t > t_0 > 0$, 
 	 \[ \mathscr{L}u(t,\cdot;\mu) = \mathscr{L} u(t-t_0,\cdot;u(t_0,\cdot;\mu)) \]
@@ -1021,7 +1059,7 @@ where $\eta_{t_0}$ is the invariant measure.
 		\centering
 		\begin{figure}
 		\includegraphics[scale=.3]{figs/smoothing.png}
-		\caption{$u_t - u_{xx} = 0$ with a bumpy initial condition 
+		\caption{$u_t - u_{xx} = 0$ with a bumpy initial condition
 		}
 	\end{figure}
 	\end{minipage}
