@@ -686,17 +686,11 @@ Here are several examples of admissible weights (see Example in Section 2 of
   space $L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function
   with compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than
   those in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
-  condition \eqref{E:aw} excludes these two cases. However, the following example is less obvious.
-%   Lastly, we should mention that numerical results
-%   will lead one to believe that the following functions are not admissible:
-%   \begin{equation*}
-%     \rho(x) = \exp\left(-a |x|^b\right), \quad x\in\R^d,
-%     \quad \text{with $a>0$ and $b\in (1,2)$ fixed,}
-%   \end{equation*}
-% but a proof of this has not yet been given.
+  condition \eqref{E:aw} excludes these two cases. However, the examples in the following
+  Proposition \ref{P:adm} seem to be less obvious.
 \end{remark}
 
-\begin{proposition}
+\begin{proposition} \label{P:adm}
   $\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
   \begin{equation*}
     \rho_b(x) := \exp\left(-|x|^b\right), \quad x\in\R^d,
@@ -731,96 +725,61 @@ Here are several examples of admissible weights (see Example in Section 2 of
            < \infty.
   \end{align*}
 
-  Next we assume that $b\in(1,2]$. We need to show that $\rho_b$ is not admissible. Without loss of
+  Next we assume that $b>1$. We need to show that $\rho_b$ is not admissible. Without loss of
   generality, we assume that $d\ge 2$. The case when $d=1$ is easier and can be proved in a similar
   way as the proof below. It suffices to show that
   \begin{align*}
-    \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r=(r,0,\cdots,0)\in\R^d$.}
+    \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r:=(r,0,\cdots,0)\in\R^d$.}
   \end{align*}
   Without loss of generality, we may assume below that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) =
-  (y_1,y_*)$ where $y_*\in\R^{d-1}$. Because $b /2\in (0,1]$, we see that
-  \begin{align} \label{E_:y}
+  (y_1,y_*)$ with $y_*\in\R^{d-1}$. Using the subadditivity (resp. convexity) of $(x+y)^{b/2}$ when
+  $b\in (1,2]$ (resp. $b>2$), we see that
+  \begin{align*} % \label{E_:y}
     | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
-            \le |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
-            = |y_1|^b + |y_*|^b.
-  \end{align}
+            \le c |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
+            =   c |y_1|^b + c |y_*|^b, \quad  c:= 1 \wedge 2^{b/2 -1}.
+  \end{align*}
   Hence,
   \begin{align*}
     I\left(1/2,x_r\right)
-    & =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                \\
-    & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - |y_1|^b)}         \\
-    & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -|y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - |y_1|^b} \\
-    & =  C \int_\R e^{ - y^2 + r^b - |y-r|^b} \ud y \\
-    & \ge C \int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y.
+    & =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                   \\
+    & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - c |y_1|^b)}          \\
+    & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -c |y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - c|y_1|^b} \\
+    & =  C \int_\R  e^{ - y^2 + r^b - c |y-r|^b} \ud y.
   \end{align*}
-
-  Now denote $K(r):=\int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y$. Then,
-  \begin{align} \label{E_:K'}
-    K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y
-  \end{align}
-  % Since $b\in (1,2]$, we see that
-  % \begin{align} \label{E_:superadd}
-  %   r^b -(r-y)^b = (r-y +y)^b  - (r-y)^b \ge y^b.
-  % \end{align}
-By the intermediate value theorem, we see that
+  Therefore,
+  \begin{align*}
+    I\left(1/2, x_r\right) \ge C K(r), \quad \text{with}\quad
+    K(r):=\int_0^r  e^{ - y^2 + r^b - (r-y)^b} \ud y.
+  \end{align*}
+  It suffices to show that $\lim_{r\to\infty}K(r)=\infty$, which is clear when $b>2$ because
+  \begin{align*}
+   K(r)
+    \ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
+    \ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
+    = \frac{r}{2} \exp\left(\left(1-2^{-1-b/2}\right)r^b -r^2\right),
+  \end{align*}
+  which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
+  \begin{align*} % \label{E_:K'}
+    K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y.
+  \end{align*}
+  By the intermediate value theorem, we see that
   \begin{align*}
     r^{b-1} - (r-y)^{b-1} = (b-1) y \xi^{b-2}, \quad \text{for some $\xi\in [r-y,r]$},
   \end{align*}
   and since $b-1\in(0,1]$, this implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y r^{b-2}$. Hence,
   \begin{align*}
     K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \ud y \\
-          & \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y \\
-          & \ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
+          & \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y
+            \ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
   \end{align*}
-  By the intermediate value theorem, $r^b-(r-1)^b = b \xi^{b-1}$ with $\xi\in [r-1,r]$. Hence,
-  $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
+  Another application of the intermediate value theorem shows that $r^b-(r-1)^b = b \xi^{b-1}$ with
+  $\xi\in [r-1,r]$. Hence, $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
   \begin{align*}
     K'(r) & \ge C r^{b-2} \exp\left(b (r-1)^{b-1}\right).
   \end{align*}
-  Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies that $K(r)$ blows up
-  as  $r\to\infty$,  which completes the case  $b\in(1,2]$.
-
-\textcolor{blue}{
-Finally, suppose that $b > 2$. The proof of this case follows from the proof of the case when $1<b<2$, but with some minor changes?? For example, \eqref{E_:y} becomes
-\begin{align*}
-|y|^b \le 2^{b/2-1}\left(|y_1|^b + |y_*|^b\right).
-\end{align*}
-Thus by setting $c := 2^{b/2 -1}>1$, $K(r)$ and $K'(r)$ become the following:
-\begin{align*}
-	K(r) = \int_0^r  e^{ - y^2 + r^b - c(r-y)^b} \ud y,
-\end{align*}
-and
-\begin{align*}
-K'(r) = e^{ - y^2 + r^b} + b \int_0^r  e^{ - y^2 + r^b - c(r-y)^b}\left(r^{b-1} -c(r-y)^{b-1} \right)\ud y.
-\end{align*}
-The $c$ inside $\left(r^{b-1} -c(r-y)^{b-1} \right)$ makes it so we can no longer use the intermediate value theorem. 
-}
-
-  Finally, suppose that $b > 2$. Note that in this case, \eqref{E_:y} becomes
-  \begin{align*}
-    |y|^b \le 2^{b/2-1}\left(|y_1|^b + |y_*|^b\right).
-  \end{align*}
-By setting $c := 2^{b/2 -1}>1$, we see that
-	\begin{align*}
-    I(1/2, x_r) &\ge \int_{\R} e^{-y^2 +r^b - c |y-r|^b} \ud y \\
-		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2- c|y-r|^b} \\
-		 &\ge e^{r^b} \int_{|y-r|<\frac{r}{2}} e^{-y^2} e^{-c\frac{r^b}{2^{b}}} \\
-		 &= e^{(2^{b} -c)r^b / 2^b} \int_{r / 2}^{3r/2} e^{-y^2} \ud y \\
-		 & \ge e^{(2^{b} - c)r^b / 2^b} e^{-9r^2 / 4}.
-	\end{align*}
-  Since $b>2$, we see that
-	\begin{align*}
-		2^{b} - c = 2^b - 2^{(b-2)/2} > 0,
-	\end{align*}
-  and thus as $r \to \infty$,
-	\begin{align*}
-		\frac{(2^{b} -c)r^b}{2^b} - \frac{9r^2}{4} \to \infty.
-	\end{align*}
-  Putting this all together gives us that
-	\begin{align*}
-		I(1/2,x_r) \ge \int_{\R} e^{-y^2 +r^b - c|y-r|^b} \ud y \ge e^{(2^{b} -c )r^b / 2^b} e^{-9r^2 / 4},
-	\end{align*}
-  and so $I(1/2,x_r) \to \infty$ as $r \to \infty$. This completes the proof.
+  Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies
+  that $K(r)$ blows up as  $r\to\infty$,  which completes the proof of Proposition \ref{P:adm}.
 \end{proof}
 
 
@@ -1214,7 +1173,7 @@ difficulties that may arise because of the square root and absolute value. Befor
 nonnegative and nonnegative definite function in $\R$:\bigskip
 
 \textcolor{blue}{
-Tessitore's condition for the Bessel kernel, $f_s$, reduces down to $\Upsilon(0)$. First recall that 
+Tessitore's condition for the Bessel kernel, $f_s$, reduces down to $\Upsilon(0)$. First recall that
 	\begin{align*}
 		\widehat{f}_s(\xi) = (1 + |\xi|^2)^{-s/2},
 	\end{align*}
@@ -1222,7 +1181,7 @@ and so
 	\begin{align*}
 		\sqrt{\widehat{f}_s(\xi)} = (1+|\xi|^2)^{-(s/2)/2} = \widehat{f}_{s/2}(\xi).
 	\end{align*}
-Also, recall that $f_s$ is strictly positive. Thus up to some constant we have that 
+Also, recall that $f_s$ is strictly positive. Thus up to some constant we have that
 	\begin{align*}
 		&\int_{\R^d} \left(\left|
 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right| * \left|
