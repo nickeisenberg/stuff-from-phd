@@ -1584,7 +1584,7 @@ The first integral on the right hand side is precisely the quantity in \eqref{E:
 	\begin{align*}
 		 (2\pi)^{-d} \int_{\R^d} \frac{f(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
 		 &= (2\pi)^{-2d} \int_{\R^d} \frac{\widehat{f}(\xi)}{|\xi|^{d-2(1-\alpha)}} \ud \xi \\
-		 &= (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(\frac{d}{2}\right)} \int_0^\infty \frac{r^{d-1}}{ (1+r^2)^{s_2 / 2} r^{2(1-\alpha)} } \ud r \\
+		 &= (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(\frac{d}{2}\right)} \int_0^\infty \frac{r^{d-1}}{ (1+r^2)^{s_2 / 2} \: r^{d - 2(1-\alpha)} } \ud r \\
 		 &= \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s_2 / 2\right) },
 	\end{align*}
 where we have applied Placherel's theorem in the first equality. Note that the finiteness of this integral will require us to assume that $d > s_2 > 2(1-\alpha) > 0$. Thus, if we combine this with \eqref{E:UpsionB}, we see that 
@@ -1597,6 +1597,40 @@ where we have applied Placherel's theorem in the first equality. Note that the f
 	\begin{align*} \label{E:RieszTypeCond}
 	s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
 	\end{align*}  
+\textcolor{blue}{
+Calculating $\mathcal{H}_{\alpha}(t)$: \\
+\begin{align*}
+	\mathcal{H}_{\alpha}(t) &= \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{r}_s(\xi) \exp\left(-r|\xi|^2\right) \\
+	&= \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s_1}(\xi) \exp\left(-r|\xi|^2\right) + \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s_2}(\xi) \exp\left(-r|\xi|^2\right).
+	\end{align*}
+The first term has already been handled. As for the second,
+	\begin{align*}
+	\int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s_2}(\xi) \exp\left(-r|\xi|^2\right) &= (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s_2}(\xi) \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} \\
+	& = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: (1 + |\xi|^2)^{-s_2 / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} 
+	\end{align*}
+where we used Plancherel's theorem, and the following identities:
+	\begin{align*}
+		\mathcal{F}\left(\exp(-|\cdot|^2)\right)(\xi) = \pi^{d/2} \exp\left(\frac{-|\xi|^2}{4}\right) \quad \text{and} \quad \mathcal{F}(f(a\cdot))(\xi) = \frac{1}{a^d}\mathcal{F}f(\xi / a).
+	\end{align*}
+Continuing, 
+	\begin{align*}
+	(2\pi)^{-d} \pi^{d/2} &\int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: (1 + |\xi|^2)^{-s_2 / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2}  \\
+	&= (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} \int_0^{\infty} \ud z \: z^{d-1} (1 + z^2)^{-s_2 / 2} \exp\left(-\frac{z^2}{4r}\right) \\
+	&= \frac{\Gamma(d/2)\pi^{d/2}}{ 2 (2\pi)^d } \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} I\left(\frac{1}{4r}\right),
+	\end{align*}
+	where 
+	\begin{align*}
+		I(r) = U\left(\frac{d}{2}, \frac{2+d-s_2}{2}, r\right).
+	\end{align*}
+As $r \to \infty$, $I(r) \sim r^{-d/2}$ thus as $r \to 0$, $I\left(\frac{1}{4r}\right) \sim (4r)^{d/2}$ (see \cite[13.2.6]{olver.lozier.ea:10:nist}). Hence, the above integral behave as follows:
+	\begin{align*}
+		\int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} I\left(\frac{1}{4r}\right) 
+		&\sim \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} r^{d/2} \\
+		&= \int_{0}^t \ud r \: r^{-2\alpha} \\
+		&= \frac{t^{1-2\alpha}}{1-2\alpha},
+	\end{align*}
+	which only requires $\alpha \in (0, 1/2)$. Something is wrong here as this is not bounded in $t$.
+}
 \subsection{Weight functions} \label{SS:Weight}
 
 The admissible condition \ref{E:aw} is needed in this paper due to the following result:
