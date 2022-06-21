@@ -985,7 +985,7 @@ where $\eta_{t_0}$ is the invariant measure.
 \rdot However, the Bessel kernel has polynomial blowup at the origin and exponential decay at $\pm \infty$ and will be permissible.
 \end{frame} 
 
-\begin{frame}{Bessel Kernel}
+\begin{frame}{Bessel kernel}
 	\small
 	\rdot Let $f_s$ denote the Bessel kernel. When $0 < s < d$ we have that
 	\[
@@ -1008,6 +1008,66 @@ where $\eta_{t_0}$ is the invariant measure.
 				0 < \alpha < 1 - \frac{(d-s)_+}{2} \quad \text{and} \quad s > d - 2 > 0.
 			\]
 	\end{example}
+\end{frame}
+
+\begin{frame}{Quick verification for the Bessel kernel}
+	\rdot Recall that \textcolor{blue}{$\Upsilon_{\alpha}(0) = C \int_{\R^d} \frac{\widehat{f}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi$} and \textcolor{blue}{$\widehat{f}(\xi) = (1+ |\xi|^2)^{-s/2}$}.
+	\begin{align*}
+	\Upsilon_{\alpha}(0) &= C\int_{\R^d} \frac{1}{|\xi|^{2(1-\alpha)}(1+|\xi|^2)^{s/2}} \ud \xi \\ 
+	&= C\int_{0}^{\infty} \frac{z^{d-1}}{z^{2(1-\alpha)}(1+z^2)^{s/2}} \ud z ,\\ 
+	\end{align*}
+	\rdot Now by the change of variables
+	$z=r^2/(1+r^2)$, we can evaluate the above integral explicitly by transforming it to the Beta
+	  \begin{align*}
+	C\int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r
+	& = C \int_0^1 z^{d/2+\alpha-2}(1-z)^{(s-d)/2-\alpha}\ud z \\
+	& = C\frac{\Gamma\left(d/2-1+\alpha\right)\Gamma\left((s-d)/2+1-\alpha\right)}{2\Gamma(s/2)},
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Riesz type kernel}
+	\rdot The $g_s$ denote the Riesz kernel for $0 < s < d$: $g_s(x) = |x|^{-s}$. \vspace{.2in}
+	
+	\rdot $g_s$ will not satisfy 
+	\[
+	\Upsilon(0) = C \int_{\R^d} \widehat{g}_s(\xi)|x|^{-2} \ud \xi = \int_{\R^d} |\xi|^{d-s} |\xi|^{-2} \ud \xi < \infty.
+	\] \vspace{.2in}
+	
+	\rdot Instead, we can use the following 
+		\[
+			\widehat{r}_s(\xi) := \widehat{r}_{s_1, s_2}(\xi) = \widehat{f}_{s_1}(\xi) + f_{s_2}(\xi),
+		\]
+	where $s_1>0$, $0 < s_2 < d$ and $f_{s_1}$ and $f_{s_2}$ are Bessel kernels. \vspace{.2in}
+	
+	\rdot $\widehat{r}_s$ has polynomial growth at the origin and polynomial decay at infinity: 	
+	\begin{align*} \widehat{r}_{s}(\xi) \sim
+	\begin{cases}
+	|\xi|^{-(d - s_2)} & |\xi| \to 0 \\
+	|\xi|^{-s_1} & |\xi| \to \infty,
+	\end{cases}
+	\end{align*}
+\end{frame}
+
+\begin{frame}{Riese type kernel}
+	\rdot Notice that 
+	\begin{align*}
+		\Upsilon_{\alpha}(0) &= \int_{\R^d} \frac{\widehat{r}_s(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
+		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
+		+ \int_{\R^d} \frac{f_{s_2}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
+		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
+		+ (2\pi)^{-d}\int_{\R^d} \frac{\widehat{f}_{s_2}(\xi)}{|\xi|^{d - 2(1-\alpha)}} \ud \xi
+	\end{align*}
+	
+	\rdot We can easily calculate that 
+		\begin{align*}
+	\Upsilon_{\alpha}(0) = 
+	\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)} 
+	+ \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2 / 2\right) } < \infty,
+	\end{align*}
+	where the finiteness requires us to assume that 
+	\begin{align*} \label{E:RieszTypeCond}
+	s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
+	\end{align*} 
 \end{frame}
 
 \begin{frame} 
