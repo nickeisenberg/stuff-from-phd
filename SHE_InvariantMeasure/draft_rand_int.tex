@@ -33,7 +33,8 @@
   tocloft, % spacing for tableofcontents
   calc,
   pgfplots,
-  pgfplotstable}
+  pgfplotstable,
+  xfrac}
 \usepackage[colorlinks,
      citecolor=blue,
      urlcolor=blue
@@ -593,7 +594,7 @@ the following spherical coordinate integration formula:
 \begin{align*}
   \int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
 \end{align*}
-where $\sigma(\mathbb{S}^{d-1}) = 2(\pi)^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
+where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
 function. Lastly, the convention of Fourier transform is given in Remark \ref{R:Fourier} below.
 
 % We reserve $C_d$ for the constant coming from the change of variable
@@ -1212,9 +1213,13 @@ and we easily see that $\Upsilon_{\alpha}(0) < \infty$ whenever $\frac{d}{2} >1-
 \end{example}
 
 \subsubsection{Case I}
-If both $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big)$ and $\widehat{f}$ are strictly
-positive on $\R^d$, which is not a trivial assumption (see Example \ref{Ex:Finv} below), then there
-is no ambiguity when taking the square root and one can remove the absolute value to see that
+\textcolor{magenta}{In this case, we assume that
+\begin{align} \label{E:Ff>0}
+  \text{both $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big)$ and $\widehat{f}$ are strictly positive on $\R^d$.}
+\end{align}
+This is not a trivial assumption (see Example \ref{Ex:Finv} below) and one can check that the Bessel
+kernels satisfy this condition. Under \eqref{E:Ff>0}, there} is no ambiguity when taking the square
+root and one can remove the absolute value to see that
 \begin{align*}
   \Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
   & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi)  |\xi|^{-2} \ud \xi
@@ -1230,16 +1235,18 @@ Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
 our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 
+One should note that the assumption that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is
+nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong
+and may not be true even if $f$ is non-negative and non-negative definite. See the following
+examples.
+
 \begin{example} \label{Ex:Finv}
-  One should note that the assumption that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is
-  nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong
-  and may not be true even if $f$ is non-negative and non-negative definite. Here is one example.
   Suppose that $d=1$ and $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example
   \ref{Ex:nonnegative}, both $f$ and $\widehat{f}$ are non-negative and non-negative definite and
   $f(x)=(2\pi)^{-1}x^{-2}\sin^2(x)$. We
   claim that
   \begin{align} \label{E:Claim}
-    \text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes on both positive and negative values.}
+    \text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes both positive and negative values.}
   \end{align}
   Indeed, for all $x\in\R$,
   \begin{align*}
@@ -1263,6 +1270,7 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
       = (8\pi)^{-1/2} |x|^{-3/2} \left(-\cos(2|x|)\mathcal{S}\left(\frac{2\sqrt{|x|}}{\sqrt{\pi}}\right) + \sin(2|x|) \mathcal{C}\left( \frac{2 \sqrt{|x|}}{\sqrt{\pi}} \right) \right), \quad x \in \R.
   \end{align*}
   This proves the claim in \eqref{E:Claim}; see also Figure \ref{Fig:fresnel} for some plots.
+
 \end{example}
 
 \begin{figure}[htbp]
@@ -1273,9 +1281,9 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
         axis lines = left,
         xtick={-8,-4,0,4,8},
         ytick={0, 0.159, 0.300, 0.5},
-        yticklabels={$0$, $\frac{1}{2\pi}$, $\frac{2 \sqrt{2}}{3\pi}$, $\frac{1}{2}$},
+        yticklabels={$0$, $\frac{1}{2\pi}$, $\frac{2 \sqrt{2}}{3\pi}$, $\sfrac{1}{2}$},
         legend style={at={(1.0,0.9)},anchor=north},
-        legend style={draw=none},
+        legend style={draw=none, legend cell align=left},
         % xmin=-8,
         xmax=10,
         ymax=0.55,
@@ -1449,7 +1457,7 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
         % }}}
         \addlegendentry{$f(x)=(2\pi)^{-1} x^{-2}\sin^2(x)$}
         \addplot[domain=-9:9,blue,thick,dashed] {0.25*max(2-abs(x),0)};
-        \addlegendentry{$\widehat{f}(\xi)=2^{ -2}\max\left(2-|\xi|,0\right)$}
+        \addlegendentry{$\widehat{f}(x)=2^{ -2}\max\left(2-|x|,0\right)$}
 
         % {{{ Inverse Fourier sqrt
         \addplot[smooth, thick] coordinates {
@@ -1628,6 +1636,29 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 
   \label{Fig:fresnel}
 \end{figure}
+
+\begin{example} \label{Ex:Finv-d}
+  From the one-dimension example in Example \ref{Ex:Finv}, one can construct a $d$-dimensional
+  counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
+  $\widehat{f}$, respectively, in Example \ref{Ex:Finv}. Then define
+  \begin{align*}
+    f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\R^d, \quad \text{and hence} \quad
+    \widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\R^d.
+  \end{align*}
+  From Example \ref{Ex:Finv}, we see that $\widehat{f}$ does not satisfy condition \eqref{E:Ff>0}.
+  In contrast, it is straightforward to verify that
+  \begin{align*}
+    \Upsilon_\alpha(0)
+    & = (2\pi)^{-d} \int_{\R^d} \frac{\prod_{i=1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
+      = (2\pi)^{-d} \frac{2 \pi^{d /2}}{\Gamma(d/2)}\int_0^{2} \left(2-r\right) r^{-2(1-\alpha)} r^{d-1} \ud r \\
+    & = \frac{4^{\alpha } \pi^{-d/2}}{(2 \alpha +d-2) (2\alpha +d-1) \Gamma\left(d/2\right)}, \quad
+    \text{provided $\alpha>1-d /2$,}
+  \end{align*}
+  and in particular, when $d=1$, this reduces to
+  \begin{align*}
+    \Upsilon_\alpha(0) = \frac{2^{2\alpha -1}}{\pi \alpha (2\alpha -1)}, \quad \text{provided $\alpha>1/2$}.
+  \end{align*}
+\end{example}
 
 \subsubsection{Case II}
 If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for
