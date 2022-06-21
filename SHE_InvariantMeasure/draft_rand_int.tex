@@ -657,132 +657,583 @@ condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 
 \delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main}
 includes both of these initial conditions and we show this in Section \ref{S:Example}.
 
+\subsection{The conditions for the spectral measures by Tessitore and Zabczyk} \label{SS:TessZabz}
 
-\subsection{Weight functions} \label{SS:Weight}
-
-The admissible condition \ref{E:aw} is needed in this paper due to the following result:
-
-\begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
-  For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
-  \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho(\R^d)$.
-  Moreover, if $\tilde{\rho}$ is another admissible weight such that
-  \begin{align*}
-    \int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
-  \end{align*}
-  then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
-  $L^2_\rho(\R^d)$.
-\end{proposition}
-
-Here are several examples of admissible weights (see Example in Section 2 of
-\cite{tessitore.zabczyk:98:invariant}):
-\begin{equation} \label{E:admRho}
-  \begin{aligned}
-    \rho(x) & = \exp(-a|x|), \quad               &  & a>0 \quad \text{and} \\
-    \rho(x) & = \left(1+|x|^a\right)^{-1}, \quad &  & a>d.
-  \end{aligned}
+Under the setting of the whole space, $\R^d$, Tessitore and Zabczyk
+\cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE}
+in $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
+L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$ and the solution
+starting from $\varphi$ is bounded in probability in $L^2_{\widetilde \rho}(\R^d)$ and also that the
+spectral density $\hat{f}$ satisfies
+\begin{equation} \label{E:CorTZ}
+\widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
+see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in Theorem 3.3 ({\em ibid.}), in order
+to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
+bounded in time), the following additional assumptions were imposed:
+\begin{equation} \label{E:TZspec}
+d\ge 3 \quad \text{and} \quad
+L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|\right) (\xi) |\xi|^{2-d} \ud \xi ,
+\end{equation}
+where the convention of the Fourier transform is given in Remark \ref{R:Fourier}. With these
+assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies
+\eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant
+measure. Moreover, the measure takes the form of \eqref{E:InvMeasForm} above with $\mu = 1$.
+Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a
+specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
-\begin{remark} \label{R:admRho}
-  The smaller the weight function $\rho(\cdot)$ (not necessarily admissible) is, the larger the
-  space $L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function
-  with compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than
-  those in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
-  condition \eqref{E:aw} excludes these two cases. However, the examples in the following
-  Proposition \ref{P:adm} seem to be less obvious.
+\begin{remark} \label{R:Fourier}
+	The Fourier transform may be defined differently depending on how one would like to handle the
+	$2\pi$ constant. In this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we
+	use the convention that
+	\begin{align} \label{E:Fourier}
+	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
+	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+	\end{align}
+	Hence, Plancherel's theorem takes the form of
+	\begin{align} \label{E:Plancherel}
+	\int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
+	\end{align}
+	Note that the authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their
+	convention of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that
+	the following convention has been used:
+	\begin{align*}
+	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
+	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+	\end{align*}
+	Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
+	\widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
+	$(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.}) corresponds to
+	$\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is
+	condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the
+	slightly different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it
+		ibid.}).
 \end{remark}
 
-\begin{proposition} \label{P:adm}
-  $\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
-  \begin{equation*}
-    \rho_b(x) := \exp\left(-|x|^b\right), \quad x\in\R^d,
-    \quad \text{with $b>0$.}
-  \end{equation*}
-\end{proposition}
-\begin{proof}
-  From Definition \eqref{D:Rho}, we see that $\rho_b$ is admissible if and only if for all $T>0$,
-  \begin{align*}
-    \sup_{(t,x)\in[0,T]\times\R^d} \int_{\R^d} \left(2\pi t\right)^{-d/2} e^{-\frac{|x-y|^2}{2t} + (|x|^b - |y|^b)} \ud y <\infty.
-  \end{align*}
-  Denote the above integral by $I(t,x)$. We will use $C$ to denote a generic constant that does not
-  depend on $(t,x)$, which value may change at each occurrence.
+Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. We may rewrite the integral
+in the second condition of \eqref{E:TZspec} as follows:
+\begin{align*}
+\Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
+\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
+\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x.
+\end{align*}
+We now consider a couple of cases and give two examples that illustrate some of the
+difficulties that may arise because of the square root and absolute value. Before that, let us first introduce a
+nonnegative and nonnegative definite function in $\R$:\bigskip
 
-  We first assume that $b\in (0,1]$. In this case,
-  \begin{align*}
-    | x | ^b
-    = | x-y +y | ^b
-    \le \left(|x-y| + |y|\right)^b
-    \le |x-y|^b + |y|^b.
-  \end{align*}
-  Hence,
-  \begin{align*}
-    I(t,x) \le C \int_{\R^d} t^{-d/2} e^{-\frac{|x-y|^2}{2t} + |x-y|^b} \ud y
-           =  C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
-           =  C \int_{0}^\infty  t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
-  \end{align*}
-  Then by applying the change of variables $r' = t^{-1/2}r$,
-  \begin{align*}
-    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{d-1}\ud r
-           \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}\ud r
-           < \infty.
-  \end{align*}
+% \textcolor{blue}{
+% Tessitore's condition for the Bessel kernel, $f_s$, reduces down to $\Upsilon(0)$. First recall that
+% 	\begin{align*}
+% 		\widehat{f}_s(\xi) = (1 + |\xi|^2)^{-s/2},
+% 	\end{align*}
+% and so
+% 	\begin{align*}
+% 		\sqrt{\widehat{f}_s(\xi)} = (1+|\xi|^2)^{-(s/2)/2} = \widehat{f}_{s/2}(\xi).
+% 	\end{align*}
+% Also, recall that $f_s$ is strictly positive. Thus up to some constant we have that
+% 	\begin{align*}
+% 		&\int_{\R^d} \left(\left|
+% 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right| * \left|
+% 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
+% 		&= \int_{\R^d} \left(\left|
+% 		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right| * \left|
+% 		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
+% 		&= \int_{\R^d} \left(f_{s/2}* f_{s/2} \right) (x) |x|^{2-d} \ud x \\
+% 		&= \int_{\R^d} \mathcal{F}f_{s/2}(\xi) \mathcal{F}f_{s/2}(\xi) |x|^{-2} \ud \xi \\
+% 		&= \int_{\R^d} \frac{\mathcal{F}f_{s}(\xi)}{ |x|^{2}} \ud \xi		= \Upsilon(0).
+% 	\end{align*}
+% 	\\
+% However, in the following we show that if $\widehat{f}(\xi) = \max\{2-|\xi|, 0\}$, then Tessitore's condition is to hard to calculate because the absolute value sign can't be removed. But this particular $\widehat{f}$ can be easily calculated with our condition \eqref{E:Dalang-00}. Indeed, up to a constant, we have that
+% 	\begin{align*}
+% 		\Upsilon_{\alpha}(0) = \int_{\R^d} \frac{\max\{2-|\xi|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi & = \int_0^{\infty} \max\{ 2-r,0 \}r^{-2(1-\alpha)} r^{d-1} \ud r \\
+% 		&= \int_0^{2} (2-r)r^{d-1-2(1-\alpha)} \ud r  \\
+% 		&= \int_0^{2} 2r^{d-1-2(1-\alpha)}-r^{d-2(1-\alpha)} \ud r,
+% 	\end{align*}
+% and we easily see that $\Upsilon_{\alpha}(0) < \infty$ whenever $\frac{d}{2} >1-\alpha $. When $\alpha = 0$ then this implies that $d\ge 3$. For $\alpha \in (0,1)$, it suffices to take $\alpha$ as close to $1$ as we need.
+% }
 
-  Next we assume that $b>1$. We need to show that $\rho_b$ is not admissible. Without loss of
-  generality, we assume that $d\ge 2$. The case when $d=1$ is easier and can be proved in a similar
-  way as the proof below. It suffices to show that
-  \begin{align*}
-    \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r:=(r,0,\cdots,0)\in\R^d$.}
-  \end{align*}
-  Without loss of generality, we may assume below that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) =
-  (y_1,y_*)$ with $y_*\in\R^{d-1}$. Using the subadditivity (resp. convexity) of $(x+y)^{b/2}$ when
-  $b\in (1,2]$ (resp. $b>2$), we see that
-  \begin{align*} % \label{E_:y}
-    | y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
-            \le c |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
-            =   c |y_1|^b + c |y_*|^b, \quad  c:= 1 \wedge 2^{b/2 -1}.
-  \end{align*}
-  Hence,
-  \begin{align*}
-    I\left(1/2,x_r\right)
-    & =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                   \\
-    & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - c |y_1|^b)}          \\
-    & =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -c |y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - c|y_1|^b} \\
-    & =  C \int_\R  e^{ - y^2 + r^b - c |y-r|^b} \ud y.
-  \end{align*}
-  Therefore,
-  \begin{align*}
-    I\left(1/2, x_r\right) \ge C K(r), \quad \text{with}\quad
-    K(r):=\int_0^r  e^{ - y^2 + r^b - c(r-y)^b} \ud y.
-  \end{align*}
-  It suffices to show that $\lim_{r\to\infty}K(r)=\infty$, which is clear when $b>2$ because
-  \begin{align*}
-   K(r)
-    \ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
-    \ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
-    = \frac{r}{2} \exp\left(\left(1-2^{-1-b/2}\right)r^b -r^2\right),
-  \end{align*}
-  which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
-  \begin{align*} % \label{E_:K'}
-    K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y.
-  \end{align*}
-  By the intermediate value theorem, we see that
-  \begin{align*}
-    r^{b-1} - (r-y)^{b-1} = (b-1) y \xi^{b-2}, \quad \text{for some $\xi\in [r-y,r]$},
-  \end{align*}
-  and since $b-1\in(0,1]$, this implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y r^{b-2}$. Hence,
-  \begin{align*}
-    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \ud y \\
-          & \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y
-            \ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
-  \end{align*}
-  Another application of the intermediate value theorem shows that $r^b-(r-1)^b = b \xi^{b-1}$ with
-  $\xi\in [r-1,r]$. Hence, $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
-  \begin{align*}
-    K'(r) & \ge C r^{b-2} \exp\left(b (r-1)^{b-1}\right).
-  \end{align*}
-  Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies
-  that $K(r)$ blows up as  $r\to\infty$,  which completes the proof of Proposition \ref{P:adm}.
-\end{proof}
+\begin{example} \label{Ex:nonnegative}
+	Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then it is clear that $ \widehat{g}(\xi) =
+	\xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that
+	$f$ is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
+	\xi^{-2}\sin^2(\xi)\ge 0$.
+\end{example}
 
+\subsubsection{Case I}
+In this case, we assume that
+\begin{align} \label{E:Ff>0}
+\text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f} >0 $ on $\R^d$.}
+\end{align}
+This is not a trivial assumption (see Examples \ref{Ex:Finv} and \ref{Ex:Finv-d} below), however one can
+check that the Bessel kernels satisfy this condition. Under \eqref{E:Ff>0}, there is no ambiguity
+when taking the square root and one can remove the absolute value to see that
+\begin{align*}
+\Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
+& = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi)  |\xi|^{-2} \ud \xi
+= \left(2\pi\right)^{d/2}\Upsilon(0),
+\end{align*}
+where we have applied Plancherel's theorem (see \eqref{E:Plancherel}) and the Fourier transform for
+Riesz kernel (in the generalized sense):
+\begin{align*}
+\mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
+\quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
+\end{align*}
+Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
+(2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
+our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
+
+%One should note that the assumption that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is
+%nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong
+%and may not be true even if $f$ is non-negative and non-negative definite. See the following
+%examples.
+
+The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ may not be non-negative even if $f$ is non-negative and non-negative definite, thus simply removing the absolute values in \eqref{E:TZspec} is no longer possible. 
+
+\begin{example} \label{Ex:Finv}
+	Suppose that $d=1$ and $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example
+	\ref{Ex:nonnegative}, both $f$ and $\widehat{f}$ are non-negative and non-negative definite and
+	$f(x)=(2\pi)^{-1}x^{-2}\sin^2(x)$. We
+	claim that
+	\begin{align} \label{E:Claim}
+	\text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes both positive and negative values.}
+	\end{align}
+	Indeed, for all $x\in\R$,
+	\begin{align*}
+	\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
+	& = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
+	= \frac{1}{\pi} \int_0^{\sqrt{2}} \xi^2 \cos\left(x\left(2-\xi^2\right)\right) \: \ud \xi  \\
+	& = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi  + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
+	& = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2 )}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
+	\end{align*}
+	where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ in the second equality and
+	in the last equality we have applied an integration by parts. By using the {\it Fresnel
+		integrals} (see, e.g., \cite[7.2 (iii)]{olver.lozier.ea:10:nist})
+	\begin{align*}
+	\mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
+	\mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
+	\end{align*}
+	the above expression can be further simplified via the change of variables $\xi' = \sqrt{2|x|/\pi}
+	\: \xi$ to
+	\begin{align*}
+	\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
+	= (8\pi)^{-1/2} |x|^{-3/2} \left(-\cos(2|x|)\mathcal{S}\left(\frac{2\sqrt{|x|}}{\sqrt{\pi}}\right) + \sin(2|x|) \mathcal{C}\left( \frac{2 \sqrt{|x|}}{\sqrt{\pi}} \right) \right), \quad x \in \R.
+	\end{align*}
+	This proves the claim in \eqref{E:Claim}; see also Figure \ref{Fig:fresnel} for some plots.
+\end{example}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{center}
+		\begin{tikzpicture}[scale=1, transform shape]
+		\begin{axis}[
+		axis lines = left,
+		xtick={-8,-4,0,4,8},
+		ytick={0, 0.159, 0.300, 0.5},
+		yticklabels={$0$, $\frac{1}{2\pi}$, $\frac{2 \sqrt{2}}{3\pi}$, $\sfrac{1}{2}$},
+		legend style={at={(1.0,0.9)},anchor=north},
+		legend style={draw=none, legend cell align=left},
+		% xmin=-8,
+		xmax=10,
+		ymax=0.55,
+		]
+		% \addplot[smooth,domain=-9:9,dashed,thin] {0};
+		
+		% {{{ Sinc
+		\addplot[domain=-9:9,red,thick] coordinates {
+			( -8.001,0.002432823286953949 )
+			( -7.901,0.0025438737134728592 )
+			( -7.800999999999999,0.0026079539418625837 )
+			( -7.701,0.0026213320142579343 )
+			( -7.600999999999999,0.0025821550165559203 )
+			( -7.5009999999999994,0.0024906227294374437 )
+			( -7.401,0.00234909155474499 )
+			( -7.300999999999999,0.0021621013460149494 )
+			( -7.201,0.0019363202666636112 )
+			( -7.100999999999999,0.001680405582745344 )
+			( -7.0009999999999994,0.0014047812821759637 )
+			( -6.901,0.0011213365012638092 )
+			( -6.800999999999999,0.0008430518273667448 )
+			( -6.701,0.0005835635245753582 )
+			( -6.600999999999999,0.00035667848826553106 )
+			( -6.5009999999999994,0.00017585516836534406 )
+			( -6.401,0.000053667711653983396 )
+			( -6.300999999999999,1.2720726207976823e-6 )
+			( -6.201,0.00002789375686314378 )
+			( -6.100999999999999,0.00014035713443167496 )
+			( -6.0009999999999994,0.0003426758564225485 )
+			( -5.901,0.0006357228116034111 )
+			( -5.800999999999999,0.0010169962789705433 )
+			( -5.700999999999999,0.001480496498286727 )
+			( -5.600999999999999,0.00201672384838161 )
+			( -5.5009999999999994,0.0026128062689099543 )
+			( -5.401,0.003252759582195788 )
+			( -5.300999999999999,0.003917880082258694 )
+			( -5.200999999999999,0.004587264287097178 )
+			( -5.100999999999999,0.005238446237433076 )
+			( -5.0009999999999994,0.0058481383164472895 )
+			( -4.901,0.006393057408427283 )
+			( -4.800999999999999,0.006850814454606368 )
+			( -4.700999999999999,0.007200842238934415 )
+			( -4.600999999999999,0.007425333669740383 )
+			( -4.5009999999999994,0.007510161023005499 )
+			( -4.401,0.007445745666168137 )
+			( -4.300999999999999,0.007227847750648969 )
+			( -4.200999999999999,0.006858246282234315 )
+			( -4.100999999999999,0.006345281857780303 )
+			( -4.0009999999999994,0.005704237171131473 )
+			( -3.900999999999999,0.004957534087349536 )
+			( -3.8009999999999993,0.004134730579773882 )
+			( -3.7009999999999996,0.0032723060091316676 )
+			( -3.600999999999999,0.0024132289632433244 )
+			( -3.5009999999999994,0.001606308014070545 )
+			( -3.400999999999999,0.0009053321133675948 )
+			( -3.3009999999999993,0.00036801375460334134 )
+			( -3.2009999999999987,0.00005475428626489342 )
+			( -3.100999999999999,0.000027256678591737287 )
+			( -3.0009999999999994,0.0003470164358733941 )
+			( -2.900999999999999,0.00107372603437282 )
+			( -2.8009999999999993,0.0022636320930730014 )
+			( -2.7009999999999987,0.003967887314026259 )
+			( -2.600999999999999,0.006230940950866248 )
+			( -2.5009999999999994,0.009089012098190241 )
+			( -2.400999999999999,0.012568689394647621 )
+			( -2.3009999999999993,0.01668569878780381 )
+			( -2.2009999999999987,0.021443877844817775 )
+			( -2.100999999999999,0.02683439077171419 )
+			( -2.0009999999999994,0.03283521292278903 )
+			( -1.900999999999999,0.03941090727057421 )
+			( -1.8009999999999993,0.04651270822547646 )
+			( -1.7009999999999987,0.05407892052761322 )
+			( -1.600999999999999,0.06203563288655326 )
+			( -1.5009999999999994,0.07029773783704628 )
+			( -1.400999999999999,0.07877024113784453 )
+			( -1.3009999999999993,0.08734983619528293 )
+			( -1.2009999999999987,0.09592671166698348 )
+			( -1.100999999999999,0.10438655380553113 )
+			( -1.0009999999999994,0.11261269943059007 )
+			( -0.9009999999999989,0.12048839083985655 )
+			( -0.8009999999999993,0.1278990806243089 )
+			( -0.7009999999999987,0.13473473234750544 )
+			( -0.6009999999999991,0.14089206245118208 )
+			( -0.5009999999999994,0.14627666958971366 )
+			( -0.4009999999999989,0.15080499986313772 )
+			( -0.30099999999999927,0.1544061000609773 )
+			( -0.20099999999999874,0.15702311595635107 )
+			( -0.10099999999999909,0.15861449877440564 )
+			( -0.0009999999999994458,0.1591548900402547 )
+			( 0.0990000000000002,0.1586356629000162 )
+			( 0.19900000000000162,0.15706510649154093 )
+			( 0.29900000000000126,0.15446824878921397 )
+			( 0.3990000000000009,0.15088632231941124 )
+			( 0.49900000000000055,0.14637588599584814 )
+			( 0.5990000000000002,0.1410076248166563 )
+			( 0.6990000000000016,0.1348648570674698 )
+			( 0.7990000000000013,0.12804178577404596 )
+			( 0.8990000000000009,0.12064153725409628 )
+			( 0.9990000000000006,0.11277403456977432 )
+			( 1.0990000000000002,0.10455375735150653 )
+			( 1.1990000000000016,0.0960974417591414 )
+			( 1.2990000000000013,0.08752177521547783 )
+			( 1.399000000000001,0.07894113997833622 )
+			( 1.4990000000000006,0.070465457639247 )
+			( 1.599000000000002,0.06219818331775087 )
+			( 1.6990000000000016,0.054234493765639914 )
+			( 1.7990000000000013,0.046659707944379146 )
+			( 1.899000000000001,0.039547972060097115 )
+			( 1.9990000000000006,0.03296123372682002 )
+			( 2.099000000000002,0.026948522091409535 )
+			( 2.1990000000000016,0.021545542616359 )
+			( 2.2990000000000013,0.016774587008063356 )
+			( 2.399000000000001,0.012644750725964176 )
+			( 2.4990000000000006,0.009152442831703102 )
+			( 2.599000000000002,0.006282165842513605 )
+			( 2.6990000000000016,0.004007536924909025 )
+			( 2.7990000000000013,0.00229251636350236 )
+			( 2.899000000000001,0.0010928048962725856 )
+			( 2.9990000000000006,0.00035736831968642875 )
+			( 3.099000000000002,0.00003004579755997701 )
+			( 3.1990000000000016,0.00005119758276101201 )
+			( 3.2990000000000013,0.0003593483706586067 )
+			( 3.399000000000001,0.0008927842019301681 )
+			( 3.4990000000000006,0.0015910636407466753 )
+			( 3.599000000000002,0.0023964077628005 )
+			( 3.6990000000000016,0.0032549381598431354 )
+			( 3.7990000000000013,0.004117737545113351 )
+			( 3.899000000000001,0.004941713452235223 )
+			( 3.9990000000000006,0.005690251772669383 )
+			( 4.099000000000002,0.006333653282109798 )
+			( 4.199000000000002,0.006849352673408142 )
+			( 4.299000000000001,0.007221925758074765 )
+			( 4.399000000000001,0.007442896247300105 )
+			( 4.4990000000000006,0.007510358720626126 )
+			( 4.599000000000002,0.007428438900773149 )
+			( 4.699000000000002,0.007206616066218059 )
+			( 4.799000000000001,0.006858935265808259 )
+			( 4.899000000000001,0.006403138898051334 )
+			( 4.9990000000000006,0.0058597481578703745 )
+			( 5.099000000000002,0.0052511248416607 )
+			( 5.199000000000002,0.004600543072479748 )
+			( 5.299000000000001,0.003931298723252897 )
+			( 5.399000000000001,0.003265881763437057 )
+			( 5.4990000000000006,0.00262523354104581 )
+			( 5.599000000000002,0.0020281072616718074 )
+			( 5.699000000000002,0.001490545776069436 )
+			( 5.799000000000001,0.0010254863827811726 )
+			( 5.899000000000001,0.0006424978400591682 )
+			( 5.9990000000000006,0.00034765030807791503 )
+			( 6.099000000000002,0.00014351464796635594 )
+			( 6.199000000000002,0.000029283517734928982 )
+			( 6.299000000000001,1.0031415744061362e-6 )
+			( 6.399000000000001,0.000051901585477685833 )
+			( 6.4990000000000006,0.00017279692570908398 )
+			( 6.599000000000002,0.00035256690231122526 )
+			( 6.699000000000002,0.0005786605394831377 )
+			( 6.799000000000001,0.0008376317967769518 )
+			( 6.899000000000001,0.0011156755752281488 )
+			( 6.9990000000000006,0.0013991473046539033 )
+			( 7.099000000000002,0.0016750488265366993 )
+			( 7.199000000000002,0.0019314652879756304 )
+			( 7.299000000000001,0.0021579401886549533 )
+			( 7.399000000000001,0.0023457784762423183 )
+			( 7.4990000000000006,0.0024882705603940292 )
+			( 7.599000000000002,0.0025808332023969515 )
+			( 7.699000000000002,0.0026210663274543553 )
+			( 7.799000000000001,0.0026087277946630874 )
+			( 7.899000000000001,0.002545630948073522 )
+			( 7.9990000000000006,0.0024354722734724237 )
+		};
+		% }}}
+		\addlegendentry{$f(x)=(2\pi)^{-1} x^{-2}\sin^2(x)$}
+		\addplot[domain=-9:9,blue,thick,dashed] {0.25*max(2-abs(x),0)};
+		\addlegendentry{$\widehat{f}(x)=2^{ -2}\max\left(2-|x|,0\right)$}
+		
+		% {{{ Inverse Fourier sqrt
+		\addplot[smooth, thick] coordinates {
+			( -8.001,0.003817069187384621 )
+			( -7.901,0.004948077138048389 )
+			( -7.800999999999999,0.005957811046570557 )
+			( -7.701,0.006801808668466622 )
+			( -7.600999999999999,0.0074404986050931095 )
+			( -7.5009999999999994,0.007840943784860886 )
+			( -7.401,0.007978394690811678 )
+			( -7.300999999999999,0.007837586127350618 )
+			( -7.201,0.007413718638216873 )
+			( -7.100999999999999,0.006713075435127593 )
+			( -7.0009999999999994,0.005753237591198206 )
+			( -6.901,0.004562873928589717 )
+			( -6.800999999999999,0.003181097034880563 )
+			( -6.701,0.0016563926804693992 )
+			( -6.600999999999999,0.000045146020877752114 )
+			( -6.5009999999999994,-0.001590196215914143 )
+			( -6.401,-0.0031832734225176566 )
+			( -6.300999999999999,-0.004666201063584027 )
+			( -6.201,-0.0059721237551125395 )
+			( -6.100999999999999,-0.007037843288640616 )
+			( -6.0009999999999994,-0.007806427222745081 )
+			( -5.901,-0.008229700640346704 )
+			( -5.800999999999999,-0.008270524026900735 )
+			( -5.700999999999999,-0.00790476405612329 )
+			( -5.600999999999999,-0.007122871354141625 )
+			( -5.5009999999999994,-0.005930989901804334 )
+			( -5.401,-0.004351536364332931 )
+			( -5.300999999999999,-0.0024232039259575767 )
+			( -5.200999999999999,-0.00020036367237724425 )
+			( -5.100999999999999,0.002248143367067824 )
+			( -5.0009999999999994,0.004840809376747679 )
+			( -4.901,0.007485822677447826 )
+			( -4.800999999999999,0.010083934145729704 )
+			( -4.700999999999999,0.012531751213342676 )
+			( -4.600999999999999,0.014725365775906895 )
+			( -4.5009999999999994,0.01656420714088009 )
+			( -4.401,0.017954999093295454 )
+			( -4.300999999999999,0.018815691755267223 )
+			( -4.200999999999999,0.019079234553318915 )
+			( -4.100999999999999,0.01869705655185513 )
+			( -4.0009999999999994,0.017642124789483123 )
+			( -3.900999999999999,0.015911460050341306 )
+			( -3.8009999999999993,0.013528002550263853 )
+			( -3.7009999999999996,0.010541737007346405 )
+			( -3.600999999999999,0.007030007049935302 )
+			( -3.5009999999999994,0.0030969723178389673 )
+			( -3.400999999999999,-0.0011278127494024957 )
+			( -3.3009999999999993,-0.005491692343202579 )
+			( -3.2009999999999987,-0.009822041117901928 )
+			( -3.100999999999999,-0.013930173136600981 )
+			( -3.0009999999999994,-0.017615940315939035 )
+			( -2.900999999999999,-0.02067290843983226 )
+			( -2.8009999999999993,-0.022893977332707104 )
+			( -2.7009999999999987,-0.02407729388733329 )
+			( -2.600999999999999,-0.024032292978945078 )
+			( -2.5009999999999994,-0.02258569239072328 )
+			( -2.400999999999999,-0.019587264108344292 )
+			( -2.3009999999999993,-0.014915205938662947 )
+			( -2.2009999999999987,-0.008480944428455815 )
+			( -2.100999999999999,-0.00023321239116280357 )
+			( -2.0009999999999994,0.009838738289648315 )
+			( -1.900999999999999,0.02170290596748294 )
+			( -1.8009999999999993,0.0352833821081619 )
+			( -1.7009999999999987,0.05046033000543576 )
+			( -1.600999999999999,0.06707113001279474 )
+			( -1.5009999999999994,0.08491268888984531 )
+			( -1.400999999999999,0.10374487729202315 )
+			( -1.3009999999999993,0.1232950263870252 )
+			( -1.2009999999999987,0.14326338307207942 )
+			( -1.100999999999999,0.16332939426840914 )
+			( -1.0009999999999994,0.1831586651906907 )
+			( -0.9009999999999989,0.20241041514060143 )
+			( -0.8009999999999993,0.2207452379420889 )
+			( -0.7009999999999987,0.23783296316315466 )
+			( -0.6009999999999991,0.2533604091321415 )
+			( -0.5009999999999994,0.26703881965624665 )
+			( -0.4009999999999989,0.2786107833024671 )
+			( -0.30099999999999927,0.2878564469369221 )
+			( -0.20099999999999874,0.2945988535866673 )
+			( -0.10099999999999909,0.2987082580668381 )
+			( -0.0009999999999994458,0.3001053015279998 )
+			( 0.0990000000000002,0.29876295731208347 )
+			( 0.19900000000000162,0.2947071943387846 )
+			( 0.29900000000000126,0.28801633967538115 )
+			( 0.3990000000000009,0.27881915791927214 )
+			( 0.49900000000000055,0.2672917004749534 )
+			( 0.5990000000000002,0.25365301168263127 )
+			( 0.6990000000000016,0.23815981005052952 )
+			( 0.7990000000000013,0.22110029063378403 )
+			( 0.8990000000000009,0.20278721807531874 )
+			( 0.9990000000000006,0.1835504982981551 )
+			( 1.0990000000000002,0.1637294297890097 )
+			( 1.1990000000000016,0.14366484248546818 )
+			( 1.2990000000000013,0.12369133330027068 )
+			( 1.399000000000001,0.1041298022988072 )
+			( 1.4990000000000006,0.08528048268668975 )
+			( 1.599000000000002,0.06741664143717203 )
+			( 1.6990000000000016,0.05077910613156309 )
+			( 1.7990000000000013,0.03557174808422779 )
+			( 1.899000000000001,0.02195802288578886 )
+			( 1.9990000000000006,0.010058638029713459 )
+			( 2.099000000000002,-0.00004961573703946895 )
+			( 2.1990000000000016,-0.008333866267748716 )
+			( 2.2990000000000013,-0.014804025099610152 )
+			( 2.399000000000001,-0.019510577428420127 )
+			( 2.4990000000000006,-0.022541387877197273 )
+			( 2.599000000000002,-0.024017638964368225 )
+			( 2.6990000000000016,-0.024089041207078127 )
+			( 2.7990000000000013,-0.022928471252533566 )
+			( 2.899000000000001,-0.020726206866197184 )
+			( 2.9990000000000006,-0.017683934734407606 )
+			( 3.099000000000002,-0.014008708744824414 )
+			( 3.1990000000000016,-0.009907032746353366 )
+			( 3.2990000000000013,-0.005579232983131978 )
+			( 3.399000000000001,-0.001214271824182093 )
+			( 3.4990000000000006,0.0030148634064358954 )
+			( 3.599000000000002,0.006955084108966468 )
+			( 3.6990000000000016,0.01047634847302212 )
+			( 3.7990000000000013,0.013473972100250975 )
+			( 3.899000000000001,0.01587006681208563 )
+			( 3.9990000000000006,0.017614100997363203 )
+			( 4.099000000000002,0.01868260197557976 )
+			( 4.199000000000002,0.019078046526706048 )
+			( 4.299000000000001,0.018827009192965684 )
+			( 4.399000000000001,0.017977658505876553 )
+			( 4.4990000000000006,0.016596708356281065 )
+			( 4.599000000000002,0.01476594485514683 )
+			( 4.699000000000002,0.012578457915475618 )
+			( 4.799000000000001,0.010134711253107408 )
+			( 4.899000000000001,0.007538584536305954 )
+			( 4.9990000000000006,0.004893517136095283 )
+			( 5.099000000000002,0.002298874604146539 )
+			( 5.199000000000002,-0.00015335297806290054 )
+			( 5.299000000000001,-0.0023814267769490752 )
+			( 5.399000000000001,-0.0043162328187769305 )
+			( 5.4990000000000006,-0.0059030967602637895 )
+			( 5.599000000000002,-0.007103003959947052 )
+			( 5.699000000000002,-0.007893210283957092 )
+			( 5.799000000000001,-0.008267250120896385 )
+			( 5.899000000000001,-0.008234368175256704 )
+			( 5.9990000000000006,-0.00781842011188186 )
+			( 6.099000000000002,-0.0070563034614563045 )
+			( 6.199000000000002,-0.005995993883001305 )
+			( 6.299000000000001,-0.0046942725326995964 )
+			( 6.399000000000001,-0.0032142376401147967 )
+			( 6.4990000000000006,-0.0016226972943811579 )
+			( 6.599000000000002,0.000012459131697669528 )
+			( 6.699000000000002,0.0016248164496881403 )
+			( 6.799000000000001,0.0031518276795062636 )
+			( 6.899000000000001,0.004536967292258031 )
+			( 6.9990000000000006,0.00573157579874873 )
+			( 7.099000000000002,0.006696341263233783 )
+			( 7.199000000000002,0.0074023782331208285 )
+			( 7.299000000000001,0.007831880379207368 )
+			( 7.399000000000001,0.007978339253663794 )
+			( 7.4990000000000006,0.007846337419529361 )
+			( 7.599000000000002,0.007450939234636234 )
+			( 7.699000000000002,0.006816716278844069 )
+			( 7.799000000000001,0.005976456344665158 )
+			( 7.899000000000001,0.004969614711354385 )
+			( 7.9990000000000006,0.003840573784180821 )
+		};
+		% }}}
+		\addlegendentry{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$}
+		\end{axis}
+		\end{tikzpicture}
+		
+	\end{center}
+	% \includegraphics[scale=.9]{figs/fresnel.png}
+	
+	\caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
+		positive and negative values.}
+	
+	\label{Fig:fresnel}
+\end{figure}
+
+The next example shows that the spectral density given in Example \ref{Ex:Finv} can be easily handled by the conditions we presented in Theorem \ref{T:Main}, namely showing the finiteness of $\Upsilon_{\alpha}(0)$. 
+\begin{example} \label{Ex:Finv-d}
+	From the one-dimension example in Example \ref{Ex:Finv}, one can construct a $d$-dimensional
+	counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
+	$\widehat{f}$, respectively, in Example \ref{Ex:Finv}. Then define
+	\begin{align*}
+	f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\R^d, \quad \text{and hence} \quad
+	\widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\R^d.
+	\end{align*}
+	From Example \ref{Ex:Finv}, we see that $\widehat{f}$ does not satisfy condition \eqref{E:Ff>0}.
+	In contrast, it is straightforward to verify that
+	\begin{align*}
+	\Upsilon_\alpha(0)
+	= C \int_{\R^d} \frac{\prod_{i=1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
+	\le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi
+	= C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
+	\end{align*}
+	Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
+	% and in particular, when $d=1$, this reduces to
+	% \begin{align*}
+	%   \Upsilon_\alpha(0) = \frac{2^{2\alpha -1}}{\pi \alpha (2\alpha -1)}, \quad \text{provided $\alpha>1/2$}.
+	% \end{align*}
+\end{example}
+
+\subsubsection{Case II}
+If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for
+some $\xi\in\R^d$, then removing the absolute value in \eqref{E:TZspec} becomes tricky, which will
+be illustrated in the following example.
+
+\begin{example} \label{Ex:sqrt}
+	Let $f$ and $g$ be given as Example \ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
+	only nonnegative (not strictly positive) with infinitely many zeros. Hence, when taking the square
+	root of $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive
+	and negative branches:
+	\begin{enumerate}
+		\item Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$ is preferable
+		since its inverse Fourier transform can be easily computed, which is equal to $g(x)$.
+		Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the absolute
+		value signs in \eqref{E:TZspec} do not pose any additional restrictions.
+		\item However, if one chooses the positive branches, namely,
+		$\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute
+		its Fourier transform. In general, some bad choices of the positive/negative branches may make
+		the conditions in \eqref{E:TZspec} fail. For example, such choice may turn
+		$\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value of a
+		distribution (unless it is a measure) may be problematic. Another issue that may arise is when
+		$\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative
+		values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up.
+	\end{enumerate}
+\end{example}
 
 \subsection{Various initial conditions} \label{SS:Init}
 
@@ -1110,580 +1561,165 @@ The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Da
   \ref{P:Bessel}.
 \end{proof}
 
-\subsection{The conditions for the spectral measures by Tessitore and Zabczyk} \label{SS:TessZabz}
+\subsection{Riesz type kernels}
+The necessity of the finiteness of $\Upsilon(0)$ excludes the Riesz kernel as a choice for the spectral density. However, we can still construct a kernel which has polynomial growth at the origin and polynomial decay at infinity, but with different rates. Indeed, let $s_1 >0$ and $0 < s_2 < d$ and consider the following kernel whose Fourier transform is given as follows:
+	\begin{align*}
+		\widehat{r}_{s}(\xi) := \widehat{r}_{s_1,s_2}(\xi) = \widehat{f}_{s_1}(\xi) + f_{s_2}(\xi),
+	\end{align*}
+where both $f_{s_1}$ and $f_{s_2}$ are Bessel kernels as in Section \ref{SS:Bassel}. It is easy to see that $r$ is both non-negative and non-negative definite which follows immediately from the linearity of the Fourier transform and the fact that the Bessel kernel is both non-negative and non-negative definite. Also, we easily deduce from properties (2) - (4) in Example \ref{Ex:Gamma+f} that 
+\begin{align*} \widehat{r}_{s}(\xi) \sim
+	\begin{cases}
+		|\xi|^{s_2 - d} & |\xi| \to 0 \\
+		|\xi|^{-s_1} & |\xi| \to \infty,
+	\end{cases}
+\end{align*}
+where we use $"\sim"$ to mean asymptotically equivalent. 
 
-Under the setting of the whole space, $\R^d$, Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE}
-in $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
-L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$ and the solution
-starting from $\varphi$ is bounded in probability in $L^2_{\widetilde \rho}(\R^d)$ and also that the
-spectral density $\hat{f}$ satisfies
-\begin{equation} \label{E:CorTZ}
-  \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
+This example gives another example of a kernel that is easily verifiable to be permissible under the conditions of our Theorem \ref{T:Main} above, while being very difficult to verify using \eqref{E:TZspec}. We will now calculate $\Upsilon_{\alpha}(0)$ for $\widehat{r}_s$, which will also show that the growth and decay rates at the origin and at infinity can not match. Indeed, for any $\alpha \in [0,1)$,
+	\begin{align*}
+		\Upsilon_{\alpha}(0) = (2\pi)^{-d}\int_{\R^d} \frac{\widehat{r}_s(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi = (2\pi)^{-d}\int_{\R^d} \frac{\widehat{f_{s_1}}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi + (2\pi)^{-d}\int_{\R^d} \frac{f_{s_2}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi.
+	\end{align*}
+The first integral on the right hand side is precisely the quantity in \eqref{E:UpsionB}. As for the second integral, 
+	\begin{align*}
+		 (2\pi)^{-d} \int_{\R^d} \frac{f(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
+		 &= (2\pi)^{-2d} \int_{\R^d} \frac{\widehat{f}(\xi)}{|\xi|^{d-2(1-\alpha)}} \ud \xi \\
+		 &= (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(\frac{d}{2}\right)} \int_0^\infty \frac{r^{d-1}}{ (1+r^2)^{s_2 / 2} r^{2(1-\alpha)} } \ud r \\
+		 &= \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s_2 / 2\right) },
+	\end{align*}
+where we have applied Placherel's theorem in the first equality. Note that the finiteness of this integral will require us to assume that $d > s_2 > 2(1-\alpha) > 0$. Thus, if we combine this with \eqref{E:UpsionB}, we see that 
+	\begin{align*}
+		\Upsilon_{\alpha}(0) = 
+		\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)} 
+		+ \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2 / 2\right) } < \infty,
+	\end{align*}
+	where the finiteness requires us to assume that 
+	\begin{align*} \label{E:RieszTypeCond}
+	s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
+	\end{align*}  
+\subsection{Weight functions} \label{SS:Weight}
+
+The admissible condition \ref{E:aw} is needed in this paper due to the following result:
+
+\begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
+	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
+	\big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho(\R^d)$.
+	Moreover, if $\tilde{\rho}$ is another admissible weight such that
+	\begin{align*}
+	\int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
+	\end{align*}
+	then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
+	$L^2_\rho(\R^d)$.
+\end{proposition}
+
+Here are several examples of admissible weights (see Example in Section 2 of
+\cite{tessitore.zabczyk:98:invariant}):
+\begin{equation} \label{E:admRho}
+\begin{aligned}
+\rho(x) & = \exp(-a|x|), \quad               &  & a>0 \quad \text{and} \\
+\rho(x) & = \left(1+|x|^a\right)^{-1}, \quad &  & a>d.
+\end{aligned}
 \end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in Theorem 3.3 ({\em ibid.}), in order
-to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
-bounded in time), the following additional assumptions were imposed:
- \begin{equation} \label{E:TZspec}
-   d\ge 3 \quad \text{and} \quad
-   L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|\right) (\xi) |\xi|^{2-d} \ud \xi ,
- \end{equation}
-where the convention of the Fourier transform is given in Remark \ref{R:Fourier}. With these
-assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies
-\eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant
-measure. Moreover, the measure takes the form of \eqref{E:InvMeasForm} above with $\mu = 1$.
-Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a
-specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
-\begin{remark} \label{R:Fourier}
-  The Fourier transform may be defined differently depending on how one would like to handle the
-  $2\pi$ constant. In this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we
-  use the convention that
-  \begin{align} \label{E:Fourier}
-    \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
-    \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
-  \end{align}
-  Hence, Plancherel's theorem takes the form of
-  \begin{align} \label{E:Plancherel}
-    \int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
-  \end{align}
-  Note that the authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their
-  convention of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that
-  the following convention has been used:
-  \begin{align*}
-    \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
-    \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
-  \end{align*}
-  Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
-  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
-  $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.}) corresponds to
-  $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is
-  condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the
-  slightly different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it
-  ibid.}).
+\begin{remark} \label{R:admRho}
+	The smaller the weight function $\rho(\cdot)$ (not necessarily admissible) is, the larger the
+	space $L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function
+	with compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than
+	those in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
+	condition \eqref{E:aw} excludes these two cases. However, the examples in the following
+	Proposition \ref{P:adm} seem to be less obvious.
 \end{remark}
 
-Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. We may rewrite the integral
-in the second condition of \eqref{E:TZspec} as follows:
-\begin{align*}
-  \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
-  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
-  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x.
-\end{align*}
-We now consider a couple of situations and give two examples that illustrate some of the
-difficulties that may arise because of the square root and absolute value. Before that, let us first introduce a
-nonnegative and nonnegative definite function in $\R$:\bigskip
-
-% \textcolor{blue}{
-% Tessitore's condition for the Bessel kernel, $f_s$, reduces down to $\Upsilon(0)$. First recall that
-% 	\begin{align*}
-% 		\widehat{f}_s(\xi) = (1 + |\xi|^2)^{-s/2},
-% 	\end{align*}
-% and so
-% 	\begin{align*}
-% 		\sqrt{\widehat{f}_s(\xi)} = (1+|\xi|^2)^{-(s/2)/2} = \widehat{f}_{s/2}(\xi).
-% 	\end{align*}
-% Also, recall that $f_s$ is strictly positive. Thus up to some constant we have that
-% 	\begin{align*}
-% 		&\int_{\R^d} \left(\left|
-% 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right| * \left|
-% 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
-% 		&= \int_{\R^d} \left(\left|
-% 		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right| * \left|
-% 		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
-% 		&= \int_{\R^d} \left(f_{s/2}* f_{s/2} \right) (x) |x|^{2-d} \ud x \\
-% 		&= \int_{\R^d} \mathcal{F}f_{s/2}(\xi) \mathcal{F}f_{s/2}(\xi) |x|^{-2} \ud \xi \\
-% 		&= \int_{\R^d} \frac{\mathcal{F}f_{s}(\xi)}{ |x|^{2}} \ud \xi		= \Upsilon(0).
-% 	\end{align*}
-% 	\\
-% However, in the following we show that if $\widehat{f}(\xi) = \max\{2-|\xi|, 0\}$, then Tessitore's condition is to hard to calculate because the absolute value sign can't be removed. But this particular $\widehat{f}$ can be easily calculated with our condition \eqref{E:Dalang-00}. Indeed, up to a constant, we have that
-% 	\begin{align*}
-% 		\Upsilon_{\alpha}(0) = \int_{\R^d} \frac{\max\{2-|\xi|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi & = \int_0^{\infty} \max\{ 2-r,0 \}r^{-2(1-\alpha)} r^{d-1} \ud r \\
-% 		&= \int_0^{2} (2-r)r^{d-1-2(1-\alpha)} \ud r  \\
-% 		&= \int_0^{2} 2r^{d-1-2(1-\alpha)}-r^{d-2(1-\alpha)} \ud r,
-% 	\end{align*}
-% and we easily see that $\Upsilon_{\alpha}(0) < \infty$ whenever $\frac{d}{2} >1-\alpha $. When $\alpha = 0$ then this implies that $d\ge 3$. For $\alpha \in (0,1)$, it suffices to take $\alpha$ as close to $1$ as we need.
-% }
-
-\begin{example} \label{Ex:nonnegative}
-  Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then it is clear that $ \widehat{g}(\xi) =
-  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that
-  $f$ is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
-  \xi^{-2}\sin^2(\xi)\ge 0$.
-\end{example}
-
-\subsubsection{Case I}
-In this case, we assume that
-\begin{align} \label{E:Ff>0}
-  \text{both $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big)$ and $\widehat{f}$ are strictly positive on $\R^d$.}
-\end{align}
-This is not a trivial assumption (see Examples \ref{Ex:Finv} and \ref{Ex:Finv-d} below) and one can
-check that the Bessel kernels satisfy this condition. Under \eqref{E:Ff>0}, there is no ambiguity
-when taking the square root and one can remove the absolute value to see that
-\begin{align*}
-  \Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
-  & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi)  |\xi|^{-2} \ud \xi
-    = \left(2\pi\right)^{d/2}\Upsilon(0),
-\end{align*}
-where we have applied Plancherel's theorem (see \eqref{E:Plancherel}) and the Fourier transform for
-Riesz kernel (in the generalized sense):
-\begin{align*}
-  \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
-  \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
-\end{align*}
-Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
-(2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
-our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
-
-One should note that the assumption that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is
-nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong
-and may not be true even if $f$ is non-negative and non-negative definite. See the following
-examples.
-
-\begin{example} \label{Ex:Finv}
-  Suppose that $d=1$ and $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example
-  \ref{Ex:nonnegative}, both $f$ and $\widehat{f}$ are non-negative and non-negative definite and
-  $f(x)=(2\pi)^{-1}x^{-2}\sin^2(x)$. We
-  claim that
-  \begin{align} \label{E:Claim}
-    \text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes both positive and negative values.}
-  \end{align}
-  Indeed, for all $x\in\R$,
-  \begin{align*}
-    \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
-    & = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
-      = \frac{1}{\pi} \int_0^{\sqrt{2}} \xi^2 \cos\left(x\left(2-\xi^2\right)\right) \: \ud \xi  \\
-    & = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi  + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
-    & = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2 )}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
-  \end{align*}
-  where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ in the second equality and
-  in the last equality we have applied an integration by parts. By using the {\it Fresnel
-  integrals} (see, e.g., \cite[7.2 (iii)]{olver.lozier.ea:10:nist})
-  \begin{align*}
-    \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
-    \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
-  \end{align*}
-  the above expression can be further simplified via the change of variables $\xi' = \sqrt{2|x|/\pi}
-  \: \xi$ to
-  \begin{align*}
-      \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
-      = (8\pi)^{-1/2} |x|^{-3/2} \left(-\cos(2|x|)\mathcal{S}\left(\frac{2\sqrt{|x|}}{\sqrt{\pi}}\right) + \sin(2|x|) \mathcal{C}\left( \frac{2 \sqrt{|x|}}{\sqrt{\pi}} \right) \right), \quad x \in \R.
-  \end{align*}
-  This proves the claim in \eqref{E:Claim}; see also Figure \ref{Fig:fresnel} for some plots.
-\end{example}
-
-\begin{figure}[htbp]
-  \centering
-  \begin{center}
-    \begin{tikzpicture}[scale=1, transform shape]
-      \begin{axis}[
-        axis lines = left,
-        xtick={-8,-4,0,4,8},
-        ytick={0, 0.159, 0.300, 0.5},
-        yticklabels={$0$, $\frac{1}{2\pi}$, $\frac{2 \sqrt{2}}{3\pi}$, $\sfrac{1}{2}$},
-        legend style={at={(1.0,0.9)},anchor=north},
-        legend style={draw=none, legend cell align=left},
-        % xmin=-8,
-        xmax=10,
-        ymax=0.55,
-        ]
-        % \addplot[smooth,domain=-9:9,dashed,thin] {0};
-
-        % {{{ Sinc
-        \addplot[domain=-9:9,red,thick] coordinates {
-          ( -8.001,0.002432823286953949 )
-          ( -7.901,0.0025438737134728592 )
-          ( -7.800999999999999,0.0026079539418625837 )
-          ( -7.701,0.0026213320142579343 )
-          ( -7.600999999999999,0.0025821550165559203 )
-          ( -7.5009999999999994,0.0024906227294374437 )
-          ( -7.401,0.00234909155474499 )
-          ( -7.300999999999999,0.0021621013460149494 )
-          ( -7.201,0.0019363202666636112 )
-          ( -7.100999999999999,0.001680405582745344 )
-          ( -7.0009999999999994,0.0014047812821759637 )
-          ( -6.901,0.0011213365012638092 )
-          ( -6.800999999999999,0.0008430518273667448 )
-          ( -6.701,0.0005835635245753582 )
-          ( -6.600999999999999,0.00035667848826553106 )
-          ( -6.5009999999999994,0.00017585516836534406 )
-          ( -6.401,0.000053667711653983396 )
-          ( -6.300999999999999,1.2720726207976823e-6 )
-          ( -6.201,0.00002789375686314378 )
-          ( -6.100999999999999,0.00014035713443167496 )
-          ( -6.0009999999999994,0.0003426758564225485 )
-          ( -5.901,0.0006357228116034111 )
-          ( -5.800999999999999,0.0010169962789705433 )
-          ( -5.700999999999999,0.001480496498286727 )
-          ( -5.600999999999999,0.00201672384838161 )
-          ( -5.5009999999999994,0.0026128062689099543 )
-          ( -5.401,0.003252759582195788 )
-          ( -5.300999999999999,0.003917880082258694 )
-          ( -5.200999999999999,0.004587264287097178 )
-          ( -5.100999999999999,0.005238446237433076 )
-          ( -5.0009999999999994,0.0058481383164472895 )
-          ( -4.901,0.006393057408427283 )
-          ( -4.800999999999999,0.006850814454606368 )
-          ( -4.700999999999999,0.007200842238934415 )
-          ( -4.600999999999999,0.007425333669740383 )
-          ( -4.5009999999999994,0.007510161023005499 )
-          ( -4.401,0.007445745666168137 )
-          ( -4.300999999999999,0.007227847750648969 )
-          ( -4.200999999999999,0.006858246282234315 )
-          ( -4.100999999999999,0.006345281857780303 )
-          ( -4.0009999999999994,0.005704237171131473 )
-          ( -3.900999999999999,0.004957534087349536 )
-          ( -3.8009999999999993,0.004134730579773882 )
-          ( -3.7009999999999996,0.0032723060091316676 )
-          ( -3.600999999999999,0.0024132289632433244 )
-          ( -3.5009999999999994,0.001606308014070545 )
-          ( -3.400999999999999,0.0009053321133675948 )
-          ( -3.3009999999999993,0.00036801375460334134 )
-          ( -3.2009999999999987,0.00005475428626489342 )
-          ( -3.100999999999999,0.000027256678591737287 )
-          ( -3.0009999999999994,0.0003470164358733941 )
-          ( -2.900999999999999,0.00107372603437282 )
-          ( -2.8009999999999993,0.0022636320930730014 )
-          ( -2.7009999999999987,0.003967887314026259 )
-          ( -2.600999999999999,0.006230940950866248 )
-          ( -2.5009999999999994,0.009089012098190241 )
-          ( -2.400999999999999,0.012568689394647621 )
-          ( -2.3009999999999993,0.01668569878780381 )
-          ( -2.2009999999999987,0.021443877844817775 )
-          ( -2.100999999999999,0.02683439077171419 )
-          ( -2.0009999999999994,0.03283521292278903 )
-          ( -1.900999999999999,0.03941090727057421 )
-          ( -1.8009999999999993,0.04651270822547646 )
-          ( -1.7009999999999987,0.05407892052761322 )
-          ( -1.600999999999999,0.06203563288655326 )
-          ( -1.5009999999999994,0.07029773783704628 )
-          ( -1.400999999999999,0.07877024113784453 )
-          ( -1.3009999999999993,0.08734983619528293 )
-          ( -1.2009999999999987,0.09592671166698348 )
-          ( -1.100999999999999,0.10438655380553113 )
-          ( -1.0009999999999994,0.11261269943059007 )
-          ( -0.9009999999999989,0.12048839083985655 )
-          ( -0.8009999999999993,0.1278990806243089 )
-          ( -0.7009999999999987,0.13473473234750544 )
-          ( -0.6009999999999991,0.14089206245118208 )
-          ( -0.5009999999999994,0.14627666958971366 )
-          ( -0.4009999999999989,0.15080499986313772 )
-          ( -0.30099999999999927,0.1544061000609773 )
-          ( -0.20099999999999874,0.15702311595635107 )
-          ( -0.10099999999999909,0.15861449877440564 )
-          ( -0.0009999999999994458,0.1591548900402547 )
-          ( 0.0990000000000002,0.1586356629000162 )
-          ( 0.19900000000000162,0.15706510649154093 )
-          ( 0.29900000000000126,0.15446824878921397 )
-          ( 0.3990000000000009,0.15088632231941124 )
-          ( 0.49900000000000055,0.14637588599584814 )
-          ( 0.5990000000000002,0.1410076248166563 )
-          ( 0.6990000000000016,0.1348648570674698 )
-          ( 0.7990000000000013,0.12804178577404596 )
-          ( 0.8990000000000009,0.12064153725409628 )
-          ( 0.9990000000000006,0.11277403456977432 )
-          ( 1.0990000000000002,0.10455375735150653 )
-          ( 1.1990000000000016,0.0960974417591414 )
-          ( 1.2990000000000013,0.08752177521547783 )
-          ( 1.399000000000001,0.07894113997833622 )
-          ( 1.4990000000000006,0.070465457639247 )
-          ( 1.599000000000002,0.06219818331775087 )
-          ( 1.6990000000000016,0.054234493765639914 )
-          ( 1.7990000000000013,0.046659707944379146 )
-          ( 1.899000000000001,0.039547972060097115 )
-          ( 1.9990000000000006,0.03296123372682002 )
-          ( 2.099000000000002,0.026948522091409535 )
-          ( 2.1990000000000016,0.021545542616359 )
-          ( 2.2990000000000013,0.016774587008063356 )
-          ( 2.399000000000001,0.012644750725964176 )
-          ( 2.4990000000000006,0.009152442831703102 )
-          ( 2.599000000000002,0.006282165842513605 )
-          ( 2.6990000000000016,0.004007536924909025 )
-          ( 2.7990000000000013,0.00229251636350236 )
-          ( 2.899000000000001,0.0010928048962725856 )
-          ( 2.9990000000000006,0.00035736831968642875 )
-          ( 3.099000000000002,0.00003004579755997701 )
-          ( 3.1990000000000016,0.00005119758276101201 )
-          ( 3.2990000000000013,0.0003593483706586067 )
-          ( 3.399000000000001,0.0008927842019301681 )
-          ( 3.4990000000000006,0.0015910636407466753 )
-          ( 3.599000000000002,0.0023964077628005 )
-          ( 3.6990000000000016,0.0032549381598431354 )
-          ( 3.7990000000000013,0.004117737545113351 )
-          ( 3.899000000000001,0.004941713452235223 )
-          ( 3.9990000000000006,0.005690251772669383 )
-          ( 4.099000000000002,0.006333653282109798 )
-          ( 4.199000000000002,0.006849352673408142 )
-          ( 4.299000000000001,0.007221925758074765 )
-          ( 4.399000000000001,0.007442896247300105 )
-          ( 4.4990000000000006,0.007510358720626126 )
-          ( 4.599000000000002,0.007428438900773149 )
-          ( 4.699000000000002,0.007206616066218059 )
-          ( 4.799000000000001,0.006858935265808259 )
-          ( 4.899000000000001,0.006403138898051334 )
-          ( 4.9990000000000006,0.0058597481578703745 )
-          ( 5.099000000000002,0.0052511248416607 )
-          ( 5.199000000000002,0.004600543072479748 )
-          ( 5.299000000000001,0.003931298723252897 )
-          ( 5.399000000000001,0.003265881763437057 )
-          ( 5.4990000000000006,0.00262523354104581 )
-          ( 5.599000000000002,0.0020281072616718074 )
-          ( 5.699000000000002,0.001490545776069436 )
-          ( 5.799000000000001,0.0010254863827811726 )
-          ( 5.899000000000001,0.0006424978400591682 )
-          ( 5.9990000000000006,0.00034765030807791503 )
-          ( 6.099000000000002,0.00014351464796635594 )
-          ( 6.199000000000002,0.000029283517734928982 )
-          ( 6.299000000000001,1.0031415744061362e-6 )
-          ( 6.399000000000001,0.000051901585477685833 )
-          ( 6.4990000000000006,0.00017279692570908398 )
-          ( 6.599000000000002,0.00035256690231122526 )
-          ( 6.699000000000002,0.0005786605394831377 )
-          ( 6.799000000000001,0.0008376317967769518 )
-          ( 6.899000000000001,0.0011156755752281488 )
-          ( 6.9990000000000006,0.0013991473046539033 )
-          ( 7.099000000000002,0.0016750488265366993 )
-          ( 7.199000000000002,0.0019314652879756304 )
-          ( 7.299000000000001,0.0021579401886549533 )
-          ( 7.399000000000001,0.0023457784762423183 )
-          ( 7.4990000000000006,0.0024882705603940292 )
-          ( 7.599000000000002,0.0025808332023969515 )
-          ( 7.699000000000002,0.0026210663274543553 )
-          ( 7.799000000000001,0.0026087277946630874 )
-          ( 7.899000000000001,0.002545630948073522 )
-          ( 7.9990000000000006,0.0024354722734724237 )
-        };
-        % }}}
-        \addlegendentry{$f(x)=(2\pi)^{-1} x^{-2}\sin^2(x)$}
-        \addplot[domain=-9:9,blue,thick,dashed] {0.25*max(2-abs(x),0)};
-        \addlegendentry{$\widehat{f}(x)=2^{ -2}\max\left(2-|x|,0\right)$}
-
-        % {{{ Inverse Fourier sqrt
-        \addplot[smooth, thick] coordinates {
-          ( -8.001,0.003817069187384621 )
-          ( -7.901,0.004948077138048389 )
-          ( -7.800999999999999,0.005957811046570557 )
-          ( -7.701,0.006801808668466622 )
-          ( -7.600999999999999,0.0074404986050931095 )
-          ( -7.5009999999999994,0.007840943784860886 )
-          ( -7.401,0.007978394690811678 )
-          ( -7.300999999999999,0.007837586127350618 )
-          ( -7.201,0.007413718638216873 )
-          ( -7.100999999999999,0.006713075435127593 )
-          ( -7.0009999999999994,0.005753237591198206 )
-          ( -6.901,0.004562873928589717 )
-          ( -6.800999999999999,0.003181097034880563 )
-          ( -6.701,0.0016563926804693992 )
-          ( -6.600999999999999,0.000045146020877752114 )
-          ( -6.5009999999999994,-0.001590196215914143 )
-          ( -6.401,-0.0031832734225176566 )
-          ( -6.300999999999999,-0.004666201063584027 )
-          ( -6.201,-0.0059721237551125395 )
-          ( -6.100999999999999,-0.007037843288640616 )
-          ( -6.0009999999999994,-0.007806427222745081 )
-          ( -5.901,-0.008229700640346704 )
-          ( -5.800999999999999,-0.008270524026900735 )
-          ( -5.700999999999999,-0.00790476405612329 )
-          ( -5.600999999999999,-0.007122871354141625 )
-          ( -5.5009999999999994,-0.005930989901804334 )
-          ( -5.401,-0.004351536364332931 )
-          ( -5.300999999999999,-0.0024232039259575767 )
-          ( -5.200999999999999,-0.00020036367237724425 )
-          ( -5.100999999999999,0.002248143367067824 )
-          ( -5.0009999999999994,0.004840809376747679 )
-          ( -4.901,0.007485822677447826 )
-          ( -4.800999999999999,0.010083934145729704 )
-          ( -4.700999999999999,0.012531751213342676 )
-          ( -4.600999999999999,0.014725365775906895 )
-          ( -4.5009999999999994,0.01656420714088009 )
-          ( -4.401,0.017954999093295454 )
-          ( -4.300999999999999,0.018815691755267223 )
-          ( -4.200999999999999,0.019079234553318915 )
-          ( -4.100999999999999,0.01869705655185513 )
-          ( -4.0009999999999994,0.017642124789483123 )
-          ( -3.900999999999999,0.015911460050341306 )
-          ( -3.8009999999999993,0.013528002550263853 )
-          ( -3.7009999999999996,0.010541737007346405 )
-          ( -3.600999999999999,0.007030007049935302 )
-          ( -3.5009999999999994,0.0030969723178389673 )
-          ( -3.400999999999999,-0.0011278127494024957 )
-          ( -3.3009999999999993,-0.005491692343202579 )
-          ( -3.2009999999999987,-0.009822041117901928 )
-          ( -3.100999999999999,-0.013930173136600981 )
-          ( -3.0009999999999994,-0.017615940315939035 )
-          ( -2.900999999999999,-0.02067290843983226 )
-          ( -2.8009999999999993,-0.022893977332707104 )
-          ( -2.7009999999999987,-0.02407729388733329 )
-          ( -2.600999999999999,-0.024032292978945078 )
-          ( -2.5009999999999994,-0.02258569239072328 )
-          ( -2.400999999999999,-0.019587264108344292 )
-          ( -2.3009999999999993,-0.014915205938662947 )
-          ( -2.2009999999999987,-0.008480944428455815 )
-          ( -2.100999999999999,-0.00023321239116280357 )
-          ( -2.0009999999999994,0.009838738289648315 )
-          ( -1.900999999999999,0.02170290596748294 )
-          ( -1.8009999999999993,0.0352833821081619 )
-          ( -1.7009999999999987,0.05046033000543576 )
-          ( -1.600999999999999,0.06707113001279474 )
-          ( -1.5009999999999994,0.08491268888984531 )
-          ( -1.400999999999999,0.10374487729202315 )
-          ( -1.3009999999999993,0.1232950263870252 )
-          ( -1.2009999999999987,0.14326338307207942 )
-          ( -1.100999999999999,0.16332939426840914 )
-          ( -1.0009999999999994,0.1831586651906907 )
-          ( -0.9009999999999989,0.20241041514060143 )
-          ( -0.8009999999999993,0.2207452379420889 )
-          ( -0.7009999999999987,0.23783296316315466 )
-          ( -0.6009999999999991,0.2533604091321415 )
-          ( -0.5009999999999994,0.26703881965624665 )
-          ( -0.4009999999999989,0.2786107833024671 )
-          ( -0.30099999999999927,0.2878564469369221 )
-          ( -0.20099999999999874,0.2945988535866673 )
-          ( -0.10099999999999909,0.2987082580668381 )
-          ( -0.0009999999999994458,0.3001053015279998 )
-          ( 0.0990000000000002,0.29876295731208347 )
-          ( 0.19900000000000162,0.2947071943387846 )
-          ( 0.29900000000000126,0.28801633967538115 )
-          ( 0.3990000000000009,0.27881915791927214 )
-          ( 0.49900000000000055,0.2672917004749534 )
-          ( 0.5990000000000002,0.25365301168263127 )
-          ( 0.6990000000000016,0.23815981005052952 )
-          ( 0.7990000000000013,0.22110029063378403 )
-          ( 0.8990000000000009,0.20278721807531874 )
-          ( 0.9990000000000006,0.1835504982981551 )
-          ( 1.0990000000000002,0.1637294297890097 )
-          ( 1.1990000000000016,0.14366484248546818 )
-          ( 1.2990000000000013,0.12369133330027068 )
-          ( 1.399000000000001,0.1041298022988072 )
-          ( 1.4990000000000006,0.08528048268668975 )
-          ( 1.599000000000002,0.06741664143717203 )
-          ( 1.6990000000000016,0.05077910613156309 )
-          ( 1.7990000000000013,0.03557174808422779 )
-          ( 1.899000000000001,0.02195802288578886 )
-          ( 1.9990000000000006,0.010058638029713459 )
-          ( 2.099000000000002,-0.00004961573703946895 )
-          ( 2.1990000000000016,-0.008333866267748716 )
-          ( 2.2990000000000013,-0.014804025099610152 )
-          ( 2.399000000000001,-0.019510577428420127 )
-          ( 2.4990000000000006,-0.022541387877197273 )
-          ( 2.599000000000002,-0.024017638964368225 )
-          ( 2.6990000000000016,-0.024089041207078127 )
-          ( 2.7990000000000013,-0.022928471252533566 )
-          ( 2.899000000000001,-0.020726206866197184 )
-          ( 2.9990000000000006,-0.017683934734407606 )
-          ( 3.099000000000002,-0.014008708744824414 )
-          ( 3.1990000000000016,-0.009907032746353366 )
-          ( 3.2990000000000013,-0.005579232983131978 )
-          ( 3.399000000000001,-0.001214271824182093 )
-          ( 3.4990000000000006,0.0030148634064358954 )
-          ( 3.599000000000002,0.006955084108966468 )
-          ( 3.6990000000000016,0.01047634847302212 )
-          ( 3.7990000000000013,0.013473972100250975 )
-          ( 3.899000000000001,0.01587006681208563 )
-          ( 3.9990000000000006,0.017614100997363203 )
-          ( 4.099000000000002,0.01868260197557976 )
-          ( 4.199000000000002,0.019078046526706048 )
-          ( 4.299000000000001,0.018827009192965684 )
-          ( 4.399000000000001,0.017977658505876553 )
-          ( 4.4990000000000006,0.016596708356281065 )
-          ( 4.599000000000002,0.01476594485514683 )
-          ( 4.699000000000002,0.012578457915475618 )
-          ( 4.799000000000001,0.010134711253107408 )
-          ( 4.899000000000001,0.007538584536305954 )
-          ( 4.9990000000000006,0.004893517136095283 )
-          ( 5.099000000000002,0.002298874604146539 )
-          ( 5.199000000000002,-0.00015335297806290054 )
-          ( 5.299000000000001,-0.0023814267769490752 )
-          ( 5.399000000000001,-0.0043162328187769305 )
-          ( 5.4990000000000006,-0.0059030967602637895 )
-          ( 5.599000000000002,-0.007103003959947052 )
-          ( 5.699000000000002,-0.007893210283957092 )
-          ( 5.799000000000001,-0.008267250120896385 )
-          ( 5.899000000000001,-0.008234368175256704 )
-          ( 5.9990000000000006,-0.00781842011188186 )
-          ( 6.099000000000002,-0.0070563034614563045 )
-          ( 6.199000000000002,-0.005995993883001305 )
-          ( 6.299000000000001,-0.0046942725326995964 )
-          ( 6.399000000000001,-0.0032142376401147967 )
-          ( 6.4990000000000006,-0.0016226972943811579 )
-          ( 6.599000000000002,0.000012459131697669528 )
-          ( 6.699000000000002,0.0016248164496881403 )
-          ( 6.799000000000001,0.0031518276795062636 )
-          ( 6.899000000000001,0.004536967292258031 )
-          ( 6.9990000000000006,0.00573157579874873 )
-          ( 7.099000000000002,0.006696341263233783 )
-          ( 7.199000000000002,0.0074023782331208285 )
-          ( 7.299000000000001,0.007831880379207368 )
-          ( 7.399000000000001,0.007978339253663794 )
-          ( 7.4990000000000006,0.007846337419529361 )
-          ( 7.599000000000002,0.007450939234636234 )
-          ( 7.699000000000002,0.006816716278844069 )
-          ( 7.799000000000001,0.005976456344665158 )
-          ( 7.899000000000001,0.004969614711354385 )
-          ( 7.9990000000000006,0.003840573784180821 )
-        };
-        % }}}
-        \addlegendentry{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$}
-    \end{axis}
-    \end{tikzpicture}
-
-  \end{center}
-  % \includegraphics[scale=.9]{figs/fresnel.png}
-
-  \caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
-  positive and negative values.}
-
-  \label{Fig:fresnel}
-\end{figure}
-
-\begin{example} \label{Ex:Finv-d}
-  From the one-dimension example in Example \ref{Ex:Finv}, one can construct a $d$-dimensional
-  counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
-  $\widehat{f}$, respectively, in Example \ref{Ex:Finv}. Then define
-  \begin{align*}
-    f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\R^d, \quad \text{and hence} \quad
-    \widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\R^d.
-  \end{align*}
-  From Example \ref{Ex:Finv}, we see that $\widehat{f}$ does not satisfy condition \eqref{E:Ff>0}.
-  In contrast, it is straightforward to verify that
-  \begin{align*}
-    \Upsilon_\alpha(0)
-     = C \int_{\R^d} \frac{\prod_{i=1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
-     \le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi
-     = C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
-  \end{align*}
-  Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
-  % and in particular, when $d=1$, this reduces to
-  % \begin{align*}
-  %   \Upsilon_\alpha(0) = \frac{2^{2\alpha -1}}{\pi \alpha (2\alpha -1)}, \quad \text{provided $\alpha>1/2$}.
-  % \end{align*}
-\end{example}
-
-\subsubsection{Case II}
-If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi)=0$ for
-some $\xi\in\R^d$, then removing the absolute value in \eqref{E:TZspec} becomes tricky, which will
-be illustrated in the following example.
-
-\begin{example} \label{Ex:sqrt}
-  Let $f$ and $g$ be given as Example \ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
-  only nonnegative (not strictly positive) with infinitely many zeros. Hence, when taking the square
-  root of $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive
-  and negative branches:
-  \begin{enumerate}
-    \item Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$ is preferable
-      since its inverse Fourier transform can be easily computed, which is equal to $g(x)$.
-      Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the absolute
-      value signs in \eqref{E:TZspec} do not pose any additional restrictions.
-    \item However, if one chooses the positive branches, namely,
-      $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute
-      its Fourier transform. In general, some bad choices of the positive/negative branches may make
-      the conditions in \eqref{E:TZspec} fail. For example, such choice may turn
-      $\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value of a
-      distribution (unless it is a measure) may be problematic. Another issue that may arise is when
-      $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative
-      values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up.
-  \end{enumerate}
-\end{example}
+\begin{proposition} \label{P:adm}
+	$\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
+	\begin{equation*}
+	\rho_b(x) := \exp\left(-|x|^b\right), \quad x\in\R^d,
+	\quad \text{with $b>0$.}
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+	From Definition \eqref{D:Rho}, we see that $\rho_b$ is admissible if and only if for all $T>0$,
+	\begin{align*}
+	\sup_{(t,x)\in[0,T]\times\R^d} \int_{\R^d} \left(2\pi t\right)^{-d/2} e^{-\frac{|x-y|^2}{2t} + (|x|^b - |y|^b)} \ud y <\infty.
+	\end{align*}
+	Denote the above integral by $I(t,x)$. We will use $C$ to denote a generic constant that does not
+	depend on $(t,x)$, which value may change at each occurrence.
+	
+	We first assume that $b\in (0,1]$. In this case,
+	\begin{align*}
+	| x | ^b
+	= | x-y +y | ^b
+	\le \left(|x-y| + |y|\right)^b
+	\le |x-y|^b + |y|^b.
+	\end{align*}
+	Hence,
+	\begin{align*}
+	I(t,x) \le C \int_{\R^d} t^{-d/2} e^{-\frac{|x-y|^2}{2t} + |x-y|^b} \ud y
+	=  C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
+	=  C \int_{0}^\infty  t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
+	\end{align*}
+	Then by applying the change of variables $r' = t^{-1/2}r$,
+	\begin{align*}
+	I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{d-1}\ud r
+	\le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}\ud r
+	< \infty.
+	\end{align*}
+	
+	Next we assume that $b>1$. We need to show that $\rho_b$ is not admissible. Without loss of
+	generality, we assume that $d\ge 2$. The case when $d=1$ is easier and can be proved in a similar
+	way as the proof below. It suffices to show that
+	\begin{align*}
+	\lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r:=(r,0,\cdots,0)\in\R^d$.}
+	\end{align*}
+	Without loss of generality, we may assume below that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) =
+	(y_1,y_*)$ with $y_*\in\R^{d-1}$. Using the subadditivity (resp. convexity) of $(x+y)^{b/2}$ when
+	$b\in (1,2]$ (resp. $b>2$), we see that
+	\begin{align*} % \label{E_:y}
+	| y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
+	\le c |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
+	=   c |y_1|^b + c |y_*|^b, \quad  c:= 1 \wedge 2^{b/2 -1}.
+	\end{align*}
+	Hence,
+	\begin{align*}
+	I\left(1/2,x_r\right)
+	& =   C \int_{\R^d} e^{- \left(\sum_{i=2}^{d} y_i^2\right)  - |y_1-r|^2 + (r^b - |y|^b)} \ud y                   \\
+	& \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- |y_*|^2 -|y_*|^b - |y_1-r|^2 + (r^b - c |y_1|^b)}          \\
+	& =   C \int_{\R^{d-1}}\ud y_* \: e^{- |y_*|^2 -c |y_*|^b } \int_\R \ud y_1\:  e^{ - |y_1-r|^2 + r^b - c|y_1|^b} \\
+	& =  C \int_\R  e^{ - y^2 + r^b - c |y-r|^b} \ud y.
+	\end{align*}
+	Therefore,
+	\begin{align*}
+	I\left(1/2, x_r\right) \ge C K(r), \quad \text{with}\quad
+	K(r):=\int_0^r  e^{ - y^2 + r^b - c(r-y)^b} \ud y.
+	\end{align*}
+	It suffices to show that $\lim_{r\to\infty}K(r)=\infty$, which is clear when $b>2$ because
+	\begin{align*}
+	K(r)
+	\ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
+	\ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
+	= \frac{r}{2} \exp\left(\left(1-2^{-1-b/2}\right)r^b -r^2\right),
+	\end{align*}
+	which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
+	\begin{align*} % \label{E_:K'}
+	K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y.
+	\end{align*}
+	By the intermediate value theorem, we see that
+	\begin{align*}
+	r^{b-1} - (r-y)^{b-1} = (b-1) y \xi^{b-2}, \quad \text{for some $\xi\in [r-y,r]$},
+	\end{align*}
+	and since $b-1\in(0,1]$, this implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y r^{b-2}$. Hence,
+	\begin{align*}
+	K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \ud y \\
+	& \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y
+	\ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
+	\end{align*}
+	Another application of the intermediate value theorem shows that $r^b-(r-1)^b = b \xi^{b-1}$ with
+	$\xi\in [r-1,r]$. Hence, $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
+	\begin{align*}
+	K'(r) & \ge C r^{b-2} \exp\left(b (r-1)^{b-1}\right).
+	\end{align*}
+	Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies
+	that $K(r)$ blows up as  $r\to\infty$,  which completes the proof of Proposition \ref{P:adm}.
+\end{proof}
 
 \section{Moment estimates -- Proof of Theorem \ref{T:Lrho}} \label{S:Lrho}
 We first state some known results and prove a moment bound in Corollary \ref{C:Mom}.
