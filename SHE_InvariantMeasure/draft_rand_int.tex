@@ -127,7 +127,7 @@
 % }}}
 % }}}
 % {{{ Head: Title, Abstract, Keywords
-\title{Invariant measures for the nonlinear stochastic heat equation\\  on $\R^d$ without any drift term}
+\title{Invariant measures for the nonlinear stochastic heat equation with no drift term}
 \author{
   Le Chen           \\Auburn University\\\texttt{le.chen@auburn.edu}\\ \and
   Nicholas Eisenberg\\Auburn University\\\texttt{nze0019@auburn.edu}
@@ -595,7 +595,8 @@ the following spherical coordinate integration formula:
   \int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
 \end{align*}
 where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
-function. Lastly, the convention of Fourier transform is given in Remark \ref{R:Fourier} below.
+function. We use ``$\sim$" to denote the standard asymptotically equivalent. Lastly, the convention
+of Fourier transform is given in Remark \ref{R:Fourier} below.
 
 % We reserve $C_d$ for the constant coming from the change of variable
 % to the spherical coordinates:
@@ -787,7 +788,7 @@ our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 %and may not be true even if $f$ is non-negative and non-negative definite. See the following
 %examples.
 
-The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ may not be non-negative even if $f$ is non-negative and non-negative definite, thus simply removing the absolute values in \eqref{E:TZspec} is no longer possible. 
+The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ may not be non-negative even if $f$ is non-negative and non-negative definite, thus simply removing the absolute values in \eqref{E:TZspec} is no longer possible.
 
 \begin{example} \label{Ex:Finv}
 	Suppose that $d=1$ and $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example
@@ -837,7 +838,7 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 		ymax=0.55,
 		]
 		% \addplot[smooth,domain=-9:9,dashed,thin] {0};
-		
+
 		% {{{ Sinc
 		\addplot[domain=-9:9,red,thick] coordinates {
 			( -8.001,0.002432823286953949 )
@@ -1006,7 +1007,7 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 		\addlegendentry{$f(x)=(2\pi)^{-1} x^{-2}\sin^2(x)$}
 		\addplot[domain=-9:9,blue,thick,dashed] {0.25*max(2-abs(x),0)};
 		\addlegendentry{$\widehat{f}(x)=2^{ -2}\max\left(2-|x|,0\right)$}
-		
+
 		% {{{ Inverse Fourier sqrt
 		\addplot[smooth, thick] coordinates {
 			( -8.001,0.003817069187384621 )
@@ -1175,17 +1176,17 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 		\addlegendentry{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$}
 		\end{axis}
 		\end{tikzpicture}
-		
+
 	\end{center}
 	% \includegraphics[scale=.9]{figs/fresnel.png}
-	
+
 	\caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
 		positive and negative values.}
-	
+
 	\label{Fig:fresnel}
 \end{figure}
 
-The next example shows that the spectral density given in Example \ref{Ex:Finv} can be easily handled by the conditions we presented in Theorem \ref{T:Main}, namely showing the finiteness of $\Upsilon_{\alpha}(0)$. 
+The next example shows that the spectral density given in Example \ref{Ex:Finv} can be easily handled by the conditions we presented in Theorem \ref{T:Main}, namely showing the finiteness of $\Upsilon_{\alpha}(0)$.
 \begin{example} \label{Ex:Finv-d}
 	From the one-dimension example in Example \ref{Ex:Finv}, one can construct a $d$-dimensional
 	counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
@@ -1392,10 +1393,10 @@ The following proposition shows that for initial conditions with unbounded tails
   \ref{P:growtail}.
 \end{proof}
 
-\subsection{Various spectral densities} \label{S:SpecDensities}
-\subsubsection{Bessel kernel and Mat\'ern class of correlation functions} \label{SS:Bassel}
+% \subsection{Various spectral densities} \label{S:SpecDensities}
+\subsection{Bessel kernel, Mat\'ern class of correlation functions, and beyond} \label{SS:Bassel}
 
-\begin{example}[Bessel kernel as a correlation function] \label{Ex:Gamma+f}
+\begin{example}[Bessel kernel] \label{Ex:Bessel}
   Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
   (see, e.g., Section 1.2.2 of \cite{grafakos:14:modern})
   \begin{enumerate}
@@ -1421,12 +1422,13 @@ The following proposition shows that for initial conditions with unbounded tails
         \end{equation}
   \end{enumerate}
   Note that one can use \eqref{E:FB} as the definition of the Bessel kernel. Properties 1 and 4
-  ensure that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$. From
-  Property 4, we see that
-    \begin{align*}
-      \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
-    \end{align*}
-    In the following, we will assume that $s>d-2$ and $d\ge 3$.
+  ensure that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$.
+  % From
+  % Property 4, we see that
+  %   \begin{align*}
+  %     \Upsilon(0)<\infty \quad \Longleftrightarrow \quad  s>d-2.
+  %   \end{align*}
+  %   In the following, we will assume that $s>d-2$ and $d\ge 3$.
 \end{example}
 
 \begin{example}[Mat\'ern class of correlation functions]
@@ -1455,16 +1457,14 @@ The following proposition shows that for initial conditions with unbounded tails
   to the case of the Bessel kernel with $s>d$.
 \end{example}
 
-% For $\alpha \in (0, 1/2)$, we introduce the following quantity which will now be needed throughout this article:
-% \begin{equation} \label{E:H}
-%   \mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2)
-% \end{equation}
 
 The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Dalang-00}, and
-\eqref{E:Dalang-H} reduce to for the Bessel kernel in terms of its parameters.
+\eqref{E:Dalang-H} reduce to for the Bessel kernel as the correlation function in terms of its
+parameters.
 
-\begin{proposition} \label{P:Bessel}
-  For the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in Example \ref{Ex:Gamma+f}, it holds that
+\begin{proposition}[Bessel kernel as correlation function] \label{P:Bessel}
+  If the correlation function $f$ is given by the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in
+  Example \ref{Ex:Bessel}, then
   \begin{align} \label{E:UpsionB}
     \Upsilon_{\alpha}(0) = \frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s-d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s/2\right)}
     \qquad \text{for all $s>d-2(1-\alpha)>0$,}
@@ -1474,13 +1474,13 @@ The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Da
      \Upsilon(0) = \frac{ \Gamma\left(\frac{2+s-d}{2}\right)}{2^{d-1} \pi^{d/2} (d-2)\Gamma(s/2)}
      \qquad \text{for all $s>d-2>0$.}
   \end{equation}
-   In addition,
+  In addition,
   \begin{gather}\label{E:HaB}
     \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad \Longleftrightarrow \quad
     0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
   \end{gather}
-  where $a_+ := \max(a,0)$.
-  Moreover, for $\alpha\in(0,1/2)$, we have the following asymptotic behavior of
+  where $a_+ := \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following asymptotic
+  behavior of
   $\mathcal{H}_\alpha(t)$ at $t\to 0$: % \renewcommand{\arraystretch}{2}
   \begin{align} \label{E:HaBS}
     \mathcal{H}_\alpha(t) = \left\{
@@ -1511,7 +1511,6 @@ The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Da
   $\gamma\approx 0.57721$ to {\em Euler's constant}; see, e.g., 5.2.2 and 5.2.3 on p. 136 of
   \cite{askey.roy:10:gamma}.
 \end{proposition}
-
 \begin{proof}
   By the spherical coordinate integration formula and \eqref{E:FB}, for all $\alpha\in[0,1)$,
   \begin{align*}
@@ -1542,9 +1541,9 @@ The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Da
   \end{align*}
   By \cite[13.4.4 on p.326]{olde-daalhuis:10:confluent}, $I(r)$ is equal to the {\it confluent
   hypergeometric function}:
-  \begin{align*}
+  \begin{align} \label{E:ConHyGe}
     I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
-  \end{align*}
+  \end{align}
   By 18.2.18 -- 13.2.22 on p. 323 {\it ibid.}, we see that \renewcommand{\arraystretch}{2}
   \begin{align*}
     I(r) = \left\{
@@ -1562,75 +1561,118 @@ The following proposition shows what conditions \eqref{E:Dalang-a0}, \eqref{E:Da
   \ref{P:Bessel}.
 \end{proof}
 
-\subsubsection{Riesz type kernels}
-The necessity of the finiteness of $\Upsilon(0)$ excludes the Riesz kernel as a choice for the spectral density. However, we can still construct a kernel which has polynomial growth at the origin and polynomial decay at infinity, but with different rates. Indeed, let $s_1 >0$ and $0 < s_2 < d$ and consider the following kernel whose Fourier transform is given as follows:
-	\begin{align*}
-		\widehat{r}_{s}(\xi) := \widehat{r}_{s_1,s_2}(\xi) = \widehat{f}_{s_1}(\xi) + f_{s_2}(\xi),
-	\end{align*}
-where both $f_{s_1}$ and $f_{s_2}$ are Bessel kernels as in Section \ref{SS:Bassel}. It is easy to see that $r$ is both non-negative and non-negative definite which follows immediately from the linearity of the Fourier transform and the fact that the Bessel kernel is both non-negative and non-negative definite. Also, we easily deduce from properties (2) - (4) in Example \ref{Ex:Gamma+f} that 
-\begin{align*} \widehat{r}_{s}(\xi) \sim
-	\begin{cases}
-		|\xi|^{s_2 - d} & |\xi| \to 0 \\
-		|\xi|^{-s_1} & |\xi| \to \infty,
-	\end{cases}
-\end{align*}
-where we use $"\sim"$ to mean asymptotically equivalent. 
+Similarly, one can use the Bessel kernel as the spectral density. In this case, we have the
+following proposition:
 
-This example gives another example of a kernel that is easily verifiable to be permissible under the conditions of our Theorem \ref{T:Main} above, while being very difficult to verify using \eqref{E:TZspec}. We will now calculate $\Upsilon_{\alpha}(0)$ for $\widehat{r}_s$, which will also show that the growth and decay rates at the origin and at infinity can not match. Indeed, for any $\alpha \in [0,1)$,
+\begin{proposition}[Bessel kernel as spectral density] \label{P:Bessel'}
+  Suppose that the spectral density $\widehat{f}$ is given by the Bessel kernel $f_s(\cdot)$ defined
+  in Example \ref{Ex:Bessel}, or equivalently (see \eqref{E:FB}), suppose that $f(x) =
+  (1+|x|)^{-s/2}$ for $s>0$. Then
+  \begin{align} \label{E:UpsionB'}
+    \Upsilon_{\alpha}(0)
+    = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) }
+    \qquad \text{for all $s>2(1-\alpha)>0$,}
+  \end{align}
+   and in particular when $\alpha = 0$, \eqref{E:UpsionB'} simplifies to the following:
+  \begin{equation} \label{E:Upsilon_0'}
+     \Upsilon(0) = \frac{2^{1-2 d}\pi^{-3d/2}}{(s-2)\Gamma\left(d/2\right)}
+     \qquad \text{for all $s>2$.}
+  \end{equation}
+  In addition,
+  \begin{gather}\label{E:HaB'}
+    \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad \Longleftrightarrow \quad
+    0<\alpha<\sfrac{1}{2} \quad \text{and} \quad s>0,
+  \end{gather}
+  where $a_+ := \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following asymptotic
+  \begin{align} \label{E:HaBS'}
+    \mathcal{H}_\alpha(t) \sim  \frac{t^{1-2\alpha}}{1-2\alpha}, \quad  \text{as $t\downarrow 0.$}
+  \end{align}
+\end{proposition}
+\begin{proof}
+  By similar arguments as Proposition \ref{P:Bessel}, we have that
 	\begin{align*}
-		\Upsilon_{\alpha}(0) = (2\pi)^{-d}\int_{\R^d} \frac{\widehat{r}_s(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi = (2\pi)^{-d}\int_{\R^d} \frac{\widehat{f_{s_1}}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi + (2\pi)^{-d}\int_{\R^d} \frac{f_{s_2}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi.
+     \Upsilon_{\alpha}(0)
+     & = (2\pi)^{-d} \int_{\R^d} \frac{f_s(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
+       = (2\pi)^{-2d} \int_{\R^d} \frac{\widehat{f}_s(\xi)}{|\xi|^{d-2(1-\alpha)}} \ud \xi                                                               \\
+     & = (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_0^\infty \frac{r^{d-1}}{ \left(1+r^2\right)^{s / 2} \: r^{d - 2(1-\alpha)} } \ud r
+       = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) },
 	\end{align*}
-The first integral on the right hand side is precisely the quantity in \eqref{E:UpsionB}. As for the second integral, 
+  which is finite provided $s>2(1-\alpha)$. This proves both \eqref{E:UpsionB'} and
+  \eqref{E:Upsilon_0'}. As for \eqref{E:HaB'},
 	\begin{align*}
-		 (2\pi)^{-d} \int_{\R^d} \frac{f(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
-		 &= (2\pi)^{-2d} \int_{\R^d} \frac{\widehat{f}(\xi)}{|\xi|^{d-2(1-\alpha)}} \ud \xi \\
-		 &= (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(\frac{d}{2}\right)} \int_0^\infty \frac{r^{d-1}}{ (1+r^2)^{s_2 / 2} \: r^{d - 2(1-\alpha)} } \ud r \\
-		 &= \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s_2 / 2\right) },
+        \mathcal{H}_\alpha(t)
+    & = \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s}(\xi) \exp\left(-r|\xi|^2\right)                                                    \\
+    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s}(\xi) \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} \\
+    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: (1 + |\xi|^2)^{-s / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2}\\
+    & = (2\pi)^{-d} \pi^{d/2}  \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_{0}^t \ud r \: r^{-2\alpha - d/2} \int_0^{\infty} \ud z \: z^{d-1} (1 + z^2)^{-s/2} \exp\left(-\frac{z^2}{4r}\right),
 	\end{align*}
-where we have applied Placherel's theorem in the first equality. Note that the finiteness of this integral will require us to assume that $d > s_2 > 2(1-\alpha) > 0$. Thus, if we combine this with \eqref{E:UpsionB}, we see that 
+  where we have used Plancherel's theorem and the following identities:
 	\begin{align*}
-		\Upsilon_{\alpha}(0) = 
-		\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)} 
+    \mathcal{F}\left(\exp(-|\cdot|^2)\right)(\xi) = \pi^{d/2} \exp\left(-4^{-1}|\xi|^2\right) \quad \text{and} \quad
+    \mathcal{F}(f(a\cdot))(\xi) = a^{-d}\mathcal{F}f(\xi / a).
+	\end{align*}
+  Then, by the same arguments as Proposition \ref{P:Bessel},
+	\begin{align*}
+        \mathcal{H}_\alpha(t)
+     & = 2^{-d} \int_{0}^t \ud r \: r^{-2\alpha - d/2} I\left(\frac{1}{4r}\right),
+      \quad \text{with $I(r) = U\left(\frac{d}{2}, \frac{2+d-s}{2}, r\right)$,}
+	\end{align*}
+  where $U$ is given in \eqref{E:ConHyGe}. As $r \to \infty$, $I(r) \sim r^{-d/2}$ thus as $r \to
+  0$, $I\left(\frac{1}{4r}\right) \sim (4r)^{d/2}$ (see 13.2.6 on p. 322 of
+  \cite{olver.lozier.ea:10:nist}). Hence, the above integral behave as follows:
+	\begin{align*}
+     \mathcal{H}_\alpha(t)
+     \sim \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} (4r)^{d/2}
+     = \int_{0}^t \ud r \: r^{-2\alpha}
+     = \frac{t^{1-2\alpha}}{1-2\alpha},
+	\end{align*}
+  provided $\alpha \in (0, 1/2)$. This proves both \eqref{E:HaB'} and \eqref{E:HaBS'}.
+\end{proof}
+
+
+The necessity of the finiteness of $\Upsilon(0)$ excludes the Riesz kernel as a choice for the
+spectral density. However, we can still construct a Riesz-type kernel which has polynomial growth at
+the origin and polynomial decay at infinity, but with different rates, using Propositions
+\ref{P:Bessel} and \ref{P:Bessel'}. This Riesz-type type kernel gives another example of a kernel
+that is easily verifiable to be permissible under the conditions of our Theorem \ref{T:Main} above,
+while being very difficult to verify using \eqref{E:TZspec}; see Example \ref{Ex:Riesz-T} for more
+details.
+
+\begin{example}[Riesz-type kernel] \label{Ex:Riesz-T}
+  For $s_1 >0$ and $0 < s_2 < d$, let $f_{s_1}$ and $f_{s_2}$ are Bessel kernels as in Example
+  \ref{Ex:Bessel}. Define
+  \begin{align*}
+    r(x):= f_{s_1}(x) + \widehat{f}_{s_2}(x) \quad \text{or equivalently} \quad
+    \widehat{r}(\xi):= \widehat{f}_{s_1}(x) + f_{s_2}(x).
+  \end{align*}
+  It is easy to see that $r(\cdot)$ is both non-negative and non-negative definite which follows
+  immediately from the linearity of the Fourier transform and the fact that the Bessel kernel is
+  both non-negative and non-negative definite. Also, we easily deduce from properties (2) - (4) in
+  Example \ref{Ex:Bessel} that
+  \begin{align*}
+    \widehat{r}(\xi) \sim
+    \begin{cases}
+      |\xi|^{s_2 - d} & |\xi| \to 0, \\
+      |\xi|^{-s_1}    & |\xi| \to \infty,
+    \end{cases}
+  \end{align*}
+  where we use $"\sim"$ to mean asymptotically equivalent. Propositions \ref{P:Bessel} and
+  \ref{P:Bessel'} imply that
+	\begin{align*}
+		\Upsilon_{\alpha}(0) =
+		\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
 		+ \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2 / 2\right) } < \infty,
 	\end{align*}
-	where the finiteness requires us to assume that 
+  provided that
 	\begin{align*} \label{E:RieszTypeCond}
-	s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
-	\end{align*}  
-\textcolor{blue}{
-Calculating $\mathcal{H}_{\alpha}(t)$: \\
-\begin{align*}
-	\mathcal{H}_{\alpha}(t) &= \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{r}_s(\xi) \exp\left(-r|\xi|^2\right) \\
-	&= \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s_1}(\xi) \exp\left(-r|\xi|^2\right) + \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s_2}(\xi) \exp\left(-r|\xi|^2\right).
+    s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
 	\end{align*}
-The first term has already been handled. As for the second,
-	\begin{align*}
-	\int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s_2}(\xi) \exp\left(-r|\xi|^2\right) &= (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s_2}(\xi) \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} \\
-	& = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: (1 + |\xi|^2)^{-s_2 / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} 
-	\end{align*}
-where we used Plancherel's theorem, and the following identities:
-	\begin{align*}
-		\mathcal{F}\left(\exp(-|\cdot|^2)\right)(\xi) = \pi^{d/2} \exp\left(\frac{-|\xi|^2}{4}\right) \quad \text{and} \quad \mathcal{F}(f(a\cdot))(\xi) = \frac{1}{a^d}\mathcal{F}f(\xi / a).
-	\end{align*}
-Continuing, 
-	\begin{align*}
-	(2\pi)^{-d} \pi^{d/2} &\int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: (1 + |\xi|^2)^{-s_2 / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2}  \\
-	&= (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} \int_0^{\infty} \ud z \: z^{d-1} (1 + z^2)^{-s_2 / 2} \exp\left(-\frac{z^2}{4r}\right) \\
-	&= \frac{\Gamma(d/2)\pi^{d/2}}{ 2 (2\pi)^d } \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} I\left(\frac{1}{4r}\right),
-	\end{align*}
-	where 
-	\begin{align*}
-		I(r) = U\left(\frac{d}{2}, \frac{2+d-s_2}{2}, r\right).
-	\end{align*}
-As $r \to \infty$, $I(r) \sim r^{-d/2}$ thus as $r \to 0$, $I\left(\frac{1}{4r}\right) \sim (4r)^{d/2}$ (see \cite[13.2.6]{olver.lozier.ea:10:nist}). Hence, the above integral behave as follows:
-	\begin{align*}
-		\int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} I\left(\frac{1}{4r}\right) 
-		&\sim \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} r^{d/2} \\
-		&= \int_{0}^t \ud r \: r^{-2\alpha} \\
-		&= \frac{t^{1-2\alpha}}{1-2\alpha},
-	\end{align*}
-	which only requires $\alpha \in (0, 1/2)$.
-}
+  In contrast, it is not clear how to compute $ \mathcal{F}\big(\sqrt{\widehat{r}}\:\big)$; see
+  condition \eqref{E:TZspec}.
+\end{example}
+
+
+
 \subsection{Weight functions} \label{SS:Weight}
 
 The admissible condition \ref{E:aw} is needed in this paper due to the following result:
@@ -1678,7 +1720,7 @@ Here are several examples of admissible weights (see Example in Section 2 of
 	\end{align*}
 	Denote the above integral by $I(t,x)$. We will use $C$ to denote a generic constant that does not
 	depend on $(t,x)$, which value may change at each occurrence.
-	
+
 	We first assume that $b\in (0,1]$. In this case,
 	\begin{align*}
 	| x | ^b
@@ -1698,7 +1740,7 @@ Here are several examples of admissible weights (see Example in Section 2 of
 	\le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}\ud r
 	< \infty.
 	\end{align*}
-	
+
 	Next we assume that $b>1$. We need to show that $\rho_b$ is not admissible. Without loss of
 	generality, we assume that $d\ge 2$. The case when $d=1$ is easier and can be proved in a similar
 	way as the proof below. It suffices to show that
