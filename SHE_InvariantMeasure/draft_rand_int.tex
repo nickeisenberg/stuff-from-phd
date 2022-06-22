@@ -376,9 +376,7 @@ The improvements over \cite{tessitore.zabczyk:98:invariant} consist of the follo
     \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
     the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
   \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density
-    $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{S:SpecDensities}. Recall that due
-    to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no
-    specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
+    $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}.
 \end{enumerate}
 
 We now will introduce some conditions and quantities that will be needed for our main results. In
@@ -557,25 +555,11 @@ from a $L^2_{\rho}(\R^d)$ initial condition will almost surely be in $L^2_{\rho}
 \end{theorem}
 
 \bigskip
-%The work by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} has a strong influence in
-%the current work. We formulate and solve the problem using the random field language with some
-%state-of-the-art moment estimates. The improvements over \cite{tessitore.zabczyk:98:invariant} consist
-%of the following aspects:
-%\begin{enumerate}
-%  \item Results in \cite{tessitore.zabczyk:98:invariant} allow essentially all bounded functions as
-%    the initial conditions, though Theorem 3.3 ({\it ibid.}) was proved only for the constant one
-%    initial condition. Here we give precise conditions on the initial condition, namely,
-%    \eqref{E:InitData}, which allows a much wider class of initial conditions, including unbounded
-%    functions and measures such as the Dirac delta measure; see Examples \ref{Ex:delta} and
-%    \ref{Ex:Riesz}. We emphasize that the Dirac delta initial measure plays a very prominent role in
-%    the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-%  \item We give a more easily verifiable condition in \eqref{E:Dalang-00} on the spectral density $\hat f$ and provide examples of suitable $\hat f$ in Section \ref{SS:Bassel}. Recall that due to the difficult nature of the condition (3.4) in \cite{tessitore.zabczyk:98:invariant}, no specific spectral densities were given. We further discuss this in Section \ref{SS:TessZabz}.
-%\end{enumerate}
 
 This paper is organized as follows: In Section \ref{S:Example}, we further discuss our main results
 and provide some examples. In particular, in Section \ref{SS:Weight} we will extend the discussion
 about the weight functions; in Section \ref{SS:Init} we show that our results could include a wider
-class of initial conditions; in Section \ref{S:SpecDensities} we give some explicit examples of the
+class of initial conditions; in Section \ref{SS:Bassel} we give some explicit examples of the
 correlation functions that satisfy \eqref{E:Dalang-a0}; in Section \ref{SS:TessZabz} we compare our
 conditions with those obtained by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}. The
 two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho} and
@@ -595,23 +579,15 @@ the following spherical coordinate integration formula:
   \int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
 \end{align*}
 where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
-function. We use ``$\sim$" to denote the standard asymptotically equivalent. Lastly, the convention
-of Fourier transform is given in Remark \ref{R:Fourier} below.
-
-% We reserve $C_d$ for the constant coming from the change of variable
-% to the spherical coordinates:
-% \begin{align*}
-%   C_d := \frac{2\pi^{d/2}}{\Gamma(d/2)}.
-% \end{align*}
-
+function. We use ``$\sim$" to denote the standard asymptotic equivalent relation. Lastly, the
+convention of Fourier transform is given in Remark \ref{R:Fourier} below.
 
 
 \section{Discussion and examples} \label{S:Example}
-
 \subsection{SHE with a drift term} \label{SS:Drift}
 
-{When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$
-to denote the correlation function in this paper, so we will use $g$ to for the drift.}.
+When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$
+to denote the correlation function in this paper, so we will use $g$ to for the drift.
 
 In the literature, the existence of invariant measure of the stochastic heat equation is more
 commonly studied with a drift term $g(x,u(t,x))$, namely,
@@ -722,37 +698,6 @@ We now consider a couple of cases and give two examples that illustrate some of 
 difficulties that may arise because of the square root and absolute value. Before that, let us first introduce a
 nonnegative and nonnegative definite function in $\R$:\bigskip
 
-% \textcolor{blue}{
-% Tessitore's condition for the Bessel kernel, $f_s$, reduces down to $\Upsilon(0)$. First recall that
-% 	\begin{align*}
-% 		\widehat{f}_s(\xi) = (1 + |\xi|^2)^{-s/2},
-% 	\end{align*}
-% and so
-% 	\begin{align*}
-% 		\sqrt{\widehat{f}_s(\xi)} = (1+|\xi|^2)^{-(s/2)/2} = \widehat{f}_{s/2}(\xi).
-% 	\end{align*}
-% Also, recall that $f_s$ is strictly positive. Thus up to some constant we have that
-% 	\begin{align*}
-% 		&\int_{\R^d} \left(\left|
-% 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right| * \left|
-% 		\mathcal{F}^{-1}\big(\sqrt{\widehat{f}_s\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
-% 		&= \int_{\R^d} \left(\left|
-% 		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right| * \left|
-% 		\mathcal{F}^{-1}\big(\widehat{f}_{s/2}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x \\
-% 		&= \int_{\R^d} \left(f_{s/2}* f_{s/2} \right) (x) |x|^{2-d} \ud x \\
-% 		&= \int_{\R^d} \mathcal{F}f_{s/2}(\xi) \mathcal{F}f_{s/2}(\xi) |x|^{-2} \ud \xi \\
-% 		&= \int_{\R^d} \frac{\mathcal{F}f_{s}(\xi)}{ |x|^{2}} \ud \xi		= \Upsilon(0).
-% 	\end{align*}
-% 	\\
-% However, in the following we show that if $\widehat{f}(\xi) = \max\{2-|\xi|, 0\}$, then Tessitore's condition is to hard to calculate because the absolute value sign can't be removed. But this particular $\widehat{f}$ can be easily calculated with our condition \eqref{E:Dalang-00}. Indeed, up to a constant, we have that
-% 	\begin{align*}
-% 		\Upsilon_{\alpha}(0) = \int_{\R^d} \frac{\max\{2-|\xi|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi & = \int_0^{\infty} \max\{ 2-r,0 \}r^{-2(1-\alpha)} r^{d-1} \ud r \\
-% 		&= \int_0^{2} (2-r)r^{d-1-2(1-\alpha)} \ud r  \\
-% 		&= \int_0^{2} 2r^{d-1-2(1-\alpha)}-r^{d-2(1-\alpha)} \ud r,
-% 	\end{align*}
-% and we easily see that $\Upsilon_{\alpha}(0) < \infty$ whenever $\frac{d}{2} >1-\alpha $. When $\alpha = 0$ then this implies that $d\ge 3$. For $\alpha \in (0,1)$, it suffices to take $\alpha$ as close to $1$ as we need.
-% }
-
 \begin{example} \label{Ex:nonnegative}
 	Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then it is clear that $ \widehat{g}(\xi) =
 	\xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that
@@ -783,12 +728,10 @@ Hence, the second condition in \eqref{E:TZspec} can be equivalently written as $
 (2\pi)^{d/2}\Upsilon(0)$. Comparing this with \eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
 our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 
-%One should note that the assumption that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is
-%nonnegative, or equivalently that $\sqrt{\widehat{f}}$ is non-negative definite, is quite strong
-%and may not be true even if $f$ is non-negative and non-negative definite. See the following
-%examples.
 
-The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ may not be non-negative even if $f$ is non-negative and non-negative definite, thus simply removing the absolute values in \eqref{E:TZspec} is no longer possible.
+The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ may not be
+non-negative even if $f$ is non-negative and non-negative definite, thus simply removing the
+absolute values in \eqref{E:TZspec} is no longer possible.
 
 \begin{example} \label{Ex:Finv}
 	Suppose that $d=1$ and $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example
@@ -800,18 +743,18 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 	\end{align}
 	Indeed, for all $x\in\R$,
 	\begin{align*}
-	\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
-	& = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
-	= \frac{1}{\pi} \int_0^{\sqrt{2}} \xi^2 \cos\left(x\left(2-\xi^2\right)\right) \: \ud \xi  \\
-	& = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi  + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
-	& = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2 )}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
+    \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
+    & = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
+      = \frac{1}{\pi} \int_0^{\sqrt{2}} \xi^2 \cos\left(x\left(2-\xi^2\right)\right) \: \ud \xi  \\
+    & = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi  + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
+    & = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2 )}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
 	\end{align*}
 	where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ in the second equality and
 	in the last equality we have applied an integration by parts. By using the {\it Fresnel
 		integrals} (see, e.g., \cite[7.2 (iii)]{olver.lozier.ea:10:nist})
 	\begin{align*}
-	\mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
-	\mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
+    \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
+    \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
 	\end{align*}
 	the above expression can be further simplified via the change of variables $\xi' = \sqrt{2|x|/\pi}
 	\: \xi$ to
@@ -1186,28 +1129,26 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 	\label{Fig:fresnel}
 \end{figure}
 
-The next example shows that the spectral density given in Example \ref{Ex:Finv} can be easily handled by the conditions we presented in Theorem \ref{T:Main}, namely showing the finiteness of $\Upsilon_{\alpha}(0)$.
+The next example shows that the spectral density given in Example \ref{Ex:Finv} can be easily
+handled by the conditions we presented in Theorem \ref{T:Main}, namely showing the finiteness of
+$\Upsilon_{\alpha}(0)$.
 \begin{example} \label{Ex:Finv-d}
-	From the one-dimension example in Example \ref{Ex:Finv}, one can construct a $d$-dimensional
-	counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
-	$\widehat{f}$, respectively, in Example \ref{Ex:Finv}. Then define
+  From the one-dimension example in Example \ref{Ex:Finv}, one can construct a $d$-dimensional
+  counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
+  $\widehat{f}$, respectively, in Example \ref{Ex:Finv}. Then define
 	\begin{align*}
-	f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\R^d, \quad \text{and hence} \quad
-	\widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\R^d.
+    f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\R^d, \quad \text{and hence} \quad
+    \widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\R^d.
 	\end{align*}
-	From Example \ref{Ex:Finv}, we see that $\widehat{f}$ does not satisfy condition \eqref{E:Ff>0}.
-	In contrast, it is straightforward to verify that
+  From Example \ref{Ex:Finv}, we see that $\widehat{f}_d(\cdot)$ does not satisfy condition
+  \eqref{E:Ff>0}. In contrast, it is straightforward to verify that
 	\begin{align*}
-	\Upsilon_\alpha(0)
-	= C \int_{\R^d} \frac{\prod_{i=1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
-	\le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi
-	= C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
+    \Upsilon_\alpha(0)
+    = C \int_{\R^d} \frac{\prod_{i=1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
+    \le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi
+    = C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
 	\end{align*}
-	Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
-	% and in particular, when $d=1$, this reduces to
-	% \begin{align*}
-	%   \Upsilon_\alpha(0) = \frac{2^{2\alpha -1}}{\pi \alpha (2\alpha -1)}, \quad \text{provided $\alpha>1/2$}.
-	% \end{align*}
+  Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
 \end{example}
 
 \subsubsection{Case II}
@@ -1394,7 +1335,7 @@ The following proposition shows that for initial conditions with unbounded tails
 \end{proof}
 
 % \subsection{Various spectral densities} \label{S:SpecDensities}
-\subsection{Bessel kernel, Mat\'ern class of correlation functions, and beyond} \label{SS:Bassel}
+\subsection{Bessel and other related kernels} \label{SS:Bassel}
 
 \begin{example}[Bessel kernel] \label{Ex:Bessel}
   Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
@@ -1509,7 +1450,7 @@ parameters.
   \end{align}
   where $\psi(x)=\frac{\ud}{\ud x}\log\Gamma(x)$ refers to the {\em digamma function} and
   $\gamma\approx 0.57721$ to {\em Euler's constant}; see, e.g., 5.2.2 and 5.2.3 on p. 136 of
-  \cite{askey.roy:10:gamma}.
+  \cite{olver.lozier.ea:10:nist}.
 \end{proposition}
 \begin{proof}
   By the spherical coordinate integration formula and \eqref{E:FB}, for all $\alpha\in[0,1)$,
@@ -1539,7 +1480,7 @@ parameters.
     & =: \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
     % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
   \end{align*}
-  By \cite[13.4.4 on p.326]{olde-daalhuis:10:confluent}, $I(r)$ is equal to the {\it confluent
+  By \cite[13.4.4 on p.326]{olver.lozier.ea:10:nist}, $I(r)$ is equal to the {\it confluent
   hypergeometric function}:
   \begin{align} \label{E:ConHyGe}
     I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
@@ -1639,7 +1580,7 @@ while being very difficult to verify using \eqref{E:TZspec}; see Example \ref{Ex
 details.
 
 \begin{example}[Riesz-type kernel] \label{Ex:Riesz-T}
-  For $s_1 >0$ and $0 < s_2 < d$, let $f_{s_1}$ and $f_{s_2}$ are Bessel kernels as in Example
+  For $s_1, s_2\in (0,d)$, let $f_{s_1}$ and $f_{s_2}$ be Bessel kernels as in Example
   \ref{Ex:Bessel}. Define
   \begin{align*}
     r(x):= f_{s_1}(x) + \widehat{f}_{s_2}(x) \quad \text{or equivalently} \quad
@@ -1650,14 +1591,19 @@ details.
   both non-negative and non-negative definite. Also, we easily deduce from properties (2) - (4) in
   Example \ref{Ex:Bessel} that
   \begin{align*}
+    r(x) \sim
+    \begin{cases}
+      |x|^{s_1-d} & |x| \to 0, \\
+      |x|^{-s_2} & |x| \to \infty,
+    \end{cases}
+    \quad \text{and} \quad
     \widehat{r}(\xi) \sim
     \begin{cases}
       |\xi|^{s_2 - d} & |\xi| \to 0, \\
-      |\xi|^{-s_1}    & |\xi| \to \infty,
+      |\xi|^{-s_1}    & |\xi| \to \infty.
     \end{cases}
   \end{align*}
-  where we use $"\sim"$ to mean asymptotically equivalent. Propositions \ref{P:Bessel} and
-  \ref{P:Bessel'} imply that
+  Propositions \ref{P:Bessel} and \ref{P:Bessel'} imply that
 	\begin{align*}
 		\Upsilon_{\alpha}(0) =
 		\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
@@ -1665,7 +1611,8 @@ details.
 	\end{align*}
   provided that
 	\begin{align*} \label{E:RieszTypeCond}
-    s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
+    0 < d - 2(1-\alpha) < s_1 < d  \qquad \text{and} \qquad
+    0 < 2(1-\alpha) < s_2 < d.
 	\end{align*}
   In contrast, it is not clear how to compute $ \mathcal{F}\big(\sqrt{\widehat{r}}\:\big)$; see
   condition \eqref{E:TZspec}.
