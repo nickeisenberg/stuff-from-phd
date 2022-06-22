@@ -73,16 +73,16 @@
 % {{{ Title page
 \title[About Beamer] %optional
 {
-Thesis Defense: \\ 
+Thesis Defense: \\
 Invariant measures for the stochastic heat equation with no drift term
-} 
+}
 
 \author[Arthur, Doe] % (optional, for multiple authors)
 {Nicholas Eisenberg}
 
 
 \date[VLC 2021] % (optional)
-{ \small March 29, 2022 
+{ \small March 29, 2022
 }
 
 \logo{\includegraphics[height=1cm]{overleaf-logo}}
@@ -92,7 +92,7 @@ Invariant measures for the stochastic heat equation with no drift term
 
 
 \begin{document}
-	\frame{\titlepage}	
+	\frame{\titlepage}
 	\setcounter{page}{1}
 
 	\begin{frame}{The stochastic heat equation}
@@ -105,7 +105,7 @@ Invariant measures for the stochastic heat equation with no drift term
 
 \rdot The Stochastic Heat Equation is interpreted as follows: \vspace{0in}
 \begin{align*}
-u(t,x) &= \int_{\R^d} G(t,x-y) \mu(\ud y) + \int_0^t \int_{\R^d}G(t-s,x-y)b(u(s,y))W(\ud s, \ud y) 
+u(t,x) &= \int_{\R^d} G(t,x-y) \mu(\ud y) + \int_0^t \int_{\R^d}G(t-s,x-y)b(u(s,y))W(\ud s, \ud y)
 \end{align*}
 where $G(t,x)$ is the heat kernel \vspace{0in}
 \[
@@ -117,14 +117,14 @@ G(t,x) = (2 \pi t)^{-d/2} \exp\left(- \frac{|x|^2}{2t} \right) \vspace{.1in}
 \end{frame}
 
 \begin{frame}[t]{The noise term $\dot{W}$}
-\rdot $W = \{W(\phi): \: \phi \in \mathscr{S}(\R^d) \}$ is a centered Gaussian process uniquely defined through the following covariance functional: 
+\rdot $W = \{W(\phi): \: \phi \in \mathscr{S}(\R^d) \}$ is a centered Gaussian process uniquely defined through the following covariance functional:
 \[
 	J(\phi, \psi) := \mathbb{E}\left[W(\phi)W(\psi)\right] = \int_0^\infty \ud s \int_{\R^d} \Gamma(\ud x) (\phi(s,\cdot)*\tilde{\psi}(s,\cdot))(x),
 \]
-where $\tilde{\psi}(s,x) = \psi(s,-x)$. We have the following nomenclature. \vspace{.25in} 
-	
+where $\tilde{\psi}(s,x) = \psi(s,-x)$. We have the following nomenclature. \vspace{.25in}
+
  \rdot \textcolor{blue}{{\em Space-time white noise}}: $\Gamma(\ud x) = \delta_0(\ud x)$. \vspace{.15 in}
- 
+
  \rdot \textcolor{blue}{{\em Time white and spatially colored}}: $\Gamma(\ud x) = f(x)\ud x$ where $f$ is a non-negative and non-negative definite function referred to as the {\em Correlation function} and its Fourier transform,
  	\[
  		\widehat{f}(\xi) := \mathcal{F}f(\xi) = \int_{\R^d} \exp\left(-i x \cdot \xi\right) f(x) \ud x,
@@ -152,7 +152,7 @@ B(t,x) = \sum_{n=0}^\infty \frac{\beta_n(t)}{n+\frac{1}{2}} \sqrt{\frac{2}{\pi}}
 \vspace{.2in} \\
 {\bf Walsh \cite{Walsh}}
 \begin{align*}
- \int_t^{t + \delta_t} \int_x^{x + \delta_x} dB(\ud s, \ud y) 
+ \int_t^{t + \delta_t} \int_x^{x + \delta_x} dB(\ud s, \ud y)
 \sim \text{N}(0,\delta_t\delta_x)
 \end{align*}
 }
@@ -169,17 +169,17 @@ $B(t,0) = B(0,x) = 0$ for all $t,x >0$.
 	\rdot A necessary condition for global existence, {\em Dalang's condition} \cite{Dal99}, is the following:
 	\[
 		\int_0^t \ud s \int_{\R^d} \ud y \: G^2(s,y) < \infty, \quad \forall t > 0.
-	\] 
+	\]
 	\rdot Direct calculations yields that,
 	\[
-		\int_0^t \ud s \int_{\R^d} \ud y \: G^2(s,y) = 
+		\int_0^t \ud s \int_{\R^d} \ud y \: G^2(s,y) =
 		\frac{\Gamma(d/2)}{2(2\pi)^d} \int_0^t \frac{1}{s^{d/2}} \ud s,
 	\]
 	which forces,
 	\[
 		d/2 < 1 \quad \iff \quad d < 2.
 	\]
-	\rdot Thus a global space-time white noise solution may only exist when the spatial dimension is $1$. 
+	\rdot Thus a global space-time white noise solution may only exist when the spatial dimension is $1$.
 \end{frame}
 
 \begin{frame}{$u_t - \frac{1}{2}u_{xx} = \lambda u \dot{W}$ with $u_0(x) = \delta_0(x)$ \hfill (white noise)}
@@ -202,7 +202,7 @@ $B(t,0) = B(0,x) = 0$ for all $t,x >0$.
 	\end{center}
 \rdot Notice the enlargement of the peaks as $\lambda$ increases. We have the following theorem. \vspace{.1in}
 \begin{theorem}[Chen and Dalang {\cite[Theorem 2.4]{CD15}}]
-	The second moments of the stochastic heat equation driven by space-time white noise grow exponentially in time. 
+	The second moments of the stochastic heat equation driven by space-time white noise grow exponentially in time.
 \end{theorem}
 \end{frame}
 
@@ -211,9 +211,9 @@ $B(t,0) = B(0,x) = 0$ for all $t,x >0$.
 		\[
 			\sup_{t\ge0} \Norm{u(t,x)}_2 < \infty, \qquad \text{where } \Norm{X}_p = \left[\mathbb{E}\left(|X|^p\right)\right]^{1/p}.
 		\]
-	
+
 	\rdot This is possible, however this will require us to only consider $d \ge 3$, and therefore we must only consider a spatially colored noise. \vspace{.2in}
-	
+
 	\rdot Recall from above, that the covariance of a spatially colored noise is given by the following:
 	\begin{align*}
  \mathbb{E}\left[W(\phi)W(\psi)\right] &= \int_0^\infty \ud s \int_{\R^d} \ud x \: f(x) (\phi(s,\cdot)*\tilde{\psi}(s,\cdot))(x) \\
@@ -221,7 +221,7 @@ $B(t,0) = B(0,x) = 0$ for all $t,x >0$.
  &= (2\pi)^{-d} \int_0^{\infty} \ud s \int_{\R^d} \ud \xi \: \widehat{f}(\xi) \mathcal{F}\phi(s,\xi) \overline{\mathcal{F}\psi(s,\xi)}
  \end{align*}
 \end{frame}
-	
+
 \begin{frame}{$u_t - \frac{1}{2}u_{xx} =  b(u) \dot{W}$ with $u(0,\cdot) = \mu(\cdot)$ \hfill (colored noise)}
 \begin{theorem}[Chen and Huang {\cite[Theorem 1.2]{CH19}}]
 There exists a unique global mild solution under the following:
@@ -235,7 +235,7 @@ There exists a unique global mild solution under the following:
 \rdot The initial measure, $\mu(\ud x)$ (resp. $\varphi(x) \ud x$), satisfies for some $a > 0$,
 \[
 \int_{\R^d} e^{-a|x|^2} |\mu|(\ud x) < \infty \quad \left(\text{resp. } \int_{\R^d} e^{-a|x|^2} |\varphi(x)|\ud x < \infty \right),
-\] 
+\]
 where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 
 \rdot The spectral density, $\widehat{f}$, satisfies {\it Dalang's condition for some $\beta >0$:}
@@ -250,13 +250,13 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		Suppose that we strengthen Dalang's condition and the Lipschitz assumption to the following:
 		\[
 		 \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \quad \text{and} \quad L^2_{b}   <  \frac{1}{128 \Upsilon(0)}.
-		\] 
+		\]
 		Then the following holds:
 		\begin{align*}
 			\Norm{u(t,x)}_2 &\le C_2\bigg[1 + \Big(G(t,\cdot) * |\mu|\Big)(x)\bigg]\\
 			 &=C_2\bigg[1 + \int_{\R^d} G(t,x-y) \: |\mu|(\ud y)\bigg], \quad \text{for all } t \ge 0.
 		\end{align*}
-	\end{theorem} 
+	\end{theorem}
 \rdot If $\mu = \delta_0$ then $\Norm{u(t,x)}_2 \le C_2\left[1 + (2 \pi t)^{-d/2}\right]$. \vspace{.1in} \\
 
 \rdot Later, it will suffice consider $\mu$ such that $\sup_{t\ge t_0} \Norm{u(t,x)}_2 < \infty$.
@@ -266,13 +266,13 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 \begin{definition}[Markovian Transition Functions]
 		\rdot Let $H$ be a Hilbert space and $\mathscr{B}(H)$ be the borel sets of $H$. \\
 		\rdot $\{ P_t(x,\Gamma): t \ge 0, x \in H, \Gamma \in \mathscr{B}(H) \}$ forms a family of {\em Markovian transition functions} if, \vspace{.1in}
-	
-	\rnum{1} $x \mapsto P_t(x, \Gamma)$ if measurable, \vspace{.1in} 
-	
-	\rnum{2} $\Gamma \mapsto P_t(x, \Gamma)$ is a probability measure on $H$, \vspace{.1in} 
-	
-	\rnum{3} $P_{t+s}(x,\Gamma) = \int_{H} P_t(x,\ud y) P_s(y, \Gamma)$, \vspace{.1in} 
-	
+
+	\rnum{1} $x \mapsto P_t(x, \Gamma)$ if measurable, \vspace{.1in}
+
+	\rnum{2} $\Gamma \mapsto P_t(x, \Gamma)$ is a probability measure on $H$, \vspace{.1in}
+
+	\rnum{3} $P_{t+s}(x,\Gamma) = \int_{H} P_t(x,\ud y) P_s(y, \Gamma)$, \vspace{.1in}
+
 	\rnum{4} $P_0(x,\Gamma) = \textbf{1}_{\Gamma}(x)$.
 
 \end{definition}
@@ -294,7 +294,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		\]
 		which is equivalent to,
 		\[
-			\int_H P_t\varphi(x) \eta(\ud x) = \int_H \varphi(x) \eta(\ud x), \qquad \text{for all } \varphi \in \mathcal{B}(H). 
+			\int_H P_t\varphi(x) \eta(\ud x) = \int_H \varphi(x) \eta(\ud x), \qquad \text{for all } \varphi \in \mathcal{B}(H).
 		\]
 	\end{definition}
 
@@ -310,29 +310,29 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		\mathscr{L}(u(t,\cdot;\zeta))(\Gamma) = \mathbb{P}\left[\omega \in \Omega : u(t,\cdot;\zeta) \in \Gamma\right], \quad \text{for all } \zeta \in H \text{ and } \Gamma \in \mathscr{B}(H),
 	\]
 	and for the mean time we are intentionally vague about $H$. \vspace{.2in} \\
-	
-	\rdot Our intention is for 
+
+	\rdot Our intention is for
 		\[
 			P_t(\zeta,\Gamma) := \mathscr{L}(u(t,\cdot;\zeta))(\Gamma)
 		\]
 		to form a Markovian semigroup. \vspace{.2in} \\
 
-	\rdot Established theory by DaPrato and Zabczyk \cite{DZ14} requires the solution, 
+	\rdot Established theory by DaPrato and Zabczyk \cite{DZ14} requires the solution,
 	\[
 	\zeta \mapsto u(t,\cdot;\zeta),
 	\]
 	 to be almost surely $H$-valued for $t > 0$ and $\zeta \in H$. \vspace{.2in} \\
 
-	\rdot So what is $H$? 
-	
+	\rdot So what is $H$?
+
 \end{frame}
 
 \begin{frame}{$H = L^2_{\rho}(\R^d)$: weighted square integrable functions}
 	\begin{definition}[Admissible Weight]
-		A positive, bounded and continuous $L^1(\R^d)$ function, $\rho$, is an {\em admissible weight} if 
+		A positive, bounded and continuous $L^1(\R^d)$ function, $\rho$, is an {\em admissible weight} if
 			\[
 				\frac{\bigg( G(t,\cdot)*\rho(\cdot) \bigg)(x)}{\rho(x)} \le C_{\rho}(T), \qquad \text{for all } t \in [0,T] \text{ and } x \in \R^d.
-			\] 
+			\]
 	\end{definition}
 
 	\begin{definition}[$L^2_{\rho}(\R^d)$]
@@ -340,7 +340,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 		\[
 			\Norm{\zeta}^2_{\rho} := \int_{\R^d} |\zeta(x)|^2 \rho(x) \ud x < \infty.
 		\]
-		Moreover, $H$ is a Hilbert space with inner product defined as 
+		Moreover, $H$ is a Hilbert space with inner product defined as
 		\[
 			\langle \zeta, \psi \rangle_{\rho} := \int_{\R^d} \zeta(x) \psi(x) \rho(x) \ud x.
 		\]
@@ -352,7 +352,7 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\[
 	\exp\left(-a|x|\right), \text{ for $a>0$} \qquad \text{and} \qquad \frac{1}{1+|x|^a}, \text{ for $a > d$}.
 	\]
-	
+
 	\rdot One can show that the following is not admissible for any $a>0$,
 	\[
 		\exp\left(-a|x|^b\right), \quad \text{for all } b > 1.
@@ -378,9 +378,9 @@ where $|\mu| = \mu^+ + \mu^-$ is the {\em Hahn decomposition}. \vspace{.2in}
 	\end{minipage}
 \end{center}
 % mathematica codes
-% f[x_,y_,t_] = (1/Sqrt[t])* Exp[-Abs[x-y]^2 / (2*t)]*Exp[-Abs[y]^(1.25)] 
+% f[x_,y_,t_] = (1/Sqrt[t])* Exp[-Abs[x-y]^2 / (2*t)]*Exp[-Abs[y]^(1.25)]
 % Plot3D[NIntegrate[f[x,y,t] / Exp[-Abs[x]^(1.25)],{y,-Infinity,Infinity}],{x,-20,20}, {t, 0 ,5}]
-\end{frame} 
+\end{frame}
 
 \begin{frame}{The solution is almost surely $H$-valued.}
 	\begin{theorem}
@@ -399,22 +399,22 @@ Then for all $t > 0$,
 \]
 In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ such that
 	\[
-			\mathcal{G}_{\rho}(t;\zeta) \le 2\Norm{\rho}_{L^1(\R^d)} + 2C_T\Norm{\zeta}_{\rho} < \infty, \quad \text{for all } t \in [0,T]. 
+			\mathcal{G}_{\rho}(t;\zeta) \le 2\Norm{\rho}_{L^1(\R^d)} + 2C_T\Norm{\zeta}_{\rho} < \infty, \quad \text{for all } t \in [0,T].
 	\]
 	\end{theorem}
-\end{frame} 
+\end{frame}
 
 \begin{frame}{Invariant measures for the stochastic heat equation}
 	\rdot So the solution acts as an operator, mapping $H$ to $H$. \vspace{.2in} \\
-	
-	\rdot Moreover, the Markov property of the solution \cite[Th 9.21]{DZ14} implies that 
+
+	\rdot Moreover, the Markov property of the solution \cite[Th 9.21]{DZ14} implies that
 		\[
 			P_t(\zeta,\Gamma) := \mathscr{L}(u(t,\cdot;\zeta))(\Gamma), \quad \text{for all } \zeta \in H \text{ and } \Gamma \in \mathscr{B}(H)
 		\]
 		for a family of Markovian transition functions. \vspace{.3in}
-	
+
 	\begin{definition}
-		A measure $\eta$ is {\em invariant} for the stochastic heat equation if $\eta$ is invariant for the transition functions $P_t$. In other words, 
+		A measure $\eta$ is {\em invariant} for the stochastic heat equation if $\eta$ is invariant for the transition functions $P_t$. In other words,
 			\[
 				\int_{H} P_t(\zeta, \Gamma) \eta(\ud \zeta) = 	\int_{H} \mathscr{L}(u(t,\cdot;\zeta))(\Gamma) \eta(\ud \zeta) = \eta(\Gamma), \quad \text{for all } \Gamma \in \mathscr{B}(H).
 			\]
@@ -423,8 +423,8 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 
 \begin{frame}{Weak convergence of measures}
 	\rdot Let $\mathscr{M}(H)$ and $C_b(H)$ denote the probability measures and bounded continuous functions on $H$. \vspace{.3in} \\
-	
-	\rdot For $\varphi \in C_b(H)$ and $\nu \in \mathscr{M}(H)$, 
+
+	\rdot For $\varphi \in C_b(H)$ and $\nu \in \mathscr{M}(H)$,
 	\[
 		\langle \varphi, \nu \rangle = \int_{H} \varphi(\zeta) \nu(\ud \zeta).
 	\] \vspace{.1in}
@@ -433,22 +433,22 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 		We say $\nu_n$ converges {\em weakly} to $\eta$ in $\mathscr{M}(H)$ if for all $\varphi \in C_b(H)$,
 			\[
 				\langle \varphi, \nu_n \rangle \to 	\langle \varphi, \nu \rangle, \quad \text{as } n \to \infty.
-			\] 
-		We will use the notation, $\nu_n \to \nu$, to denote the weak convergence of measures. 
+			\]
+		We will use the notation, $\nu_n \to \nu$, to denote the weak convergence of measures.
 	\end{definition}
 \end{frame}
 
 \begin{frame}{Some existence results}
 	\begin{theorem}[DaPrato {\cite[Propositions 11.2 and 11.3]{DZ14}}]
-		If $\zeta_1, \zeta_2 \in H$ and $\eta_1, \eta_2 \in \mathscr{M}(H)$ are such that 
+		If $\zeta_1, \zeta_2 \in H$ and $\eta_1, \eta_2 \in \mathscr{M}(H)$ are such that
 		{\small
 			\[
 				\textcolor{red}{\mathscr{L}\bigg( u(t,\cdot;\zeta_1) \bigg) \to \eta_1 \text{ as } t \to \infty}
-				\quad \text{or} \quad 
+				\quad \text{or} \quad
 				\textcolor{blue}{\frac{1}{t_n} \int_0^{t_n} \mathscr{L}\bigg( u(s,\cdot;\zeta_2) \bigg) \ud s \to \eta_2 \text{ as } n \to \infty},
-			\] 
+			\]
 		}
-		for some $t_n \uparrow \infty$, then both $\eta_1$ and $\eta_2$ are invariant. 
+		for some $t_n \uparrow \infty$, then both $\eta_1$ and $\eta_2$ are invariant.
 	\end{theorem} \vspace{.1in}
 
 \rdot \textcolor{red}{Red} implies \textcolor{blue}{Blue} but not vice versa. \vspace{.1in} \\
@@ -474,10 +474,10 @@ thus,
 
 \begin{frame}{Under what setup has an invariant measure been proven to exist?}
 	\rdot Research on invariant measures for $u_t - \frac{1}{2}\Delta u = \textcolor{red}{f(u)} + b(u)\dot{W}$ on the whole space with a globally Lipschitz $b$ is not vast. \vspace{.2in}
-	
+
 	\rdot Tessitore and Zabczyk \cite{TZ96} is the only other paper which studies $u_t - \frac{1}{2}\Delta u =  b(u)\dot{W}$ on the whole space with  with a globally Lipschitz $b$. \vspace{.2in}
-	
-	\rdot Tessitore and Zabczyk showed there exists an $\eta \in \mathscr{M}(H)$ such that,	
+
+	\rdot Tessitore and Zabczyk showed there exists an $\eta \in \mathscr{M}(H)$ such that,
 		\[
 			\frac{1}{t_n} \int_1^{t_n} \mathscr{L}\bigg(u(s,\cdot;1)\bigg) \ud s \to \eta, \quad \text{as } n \to \infty,
 		\]
@@ -487,11 +487,11 @@ thus,
 		\int_{\R^d} \: |\xi|^{2-d} \left[\left| \mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right)\: \right| * \left|\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \: \right| \right](\xi)  \: \ud \xi < \infty.
 		\]
 	}
-		
+
 \end{frame}
 
 \begin{frame}
-\rdot	If one could find a $f$ such that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ and $\widehat{f} \ge 0$ then 
+\rdot	If one could find a $f$ such that $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ and $\widehat{f} \ge 0$ then
 		\begin{align*}
 				\int_{\R^d} & \: |\xi|^{2-d} \left[\left| \mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right)\: \right| * \left|\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \: \right| \right](\xi)  \: \ud \xi \\
 				& = 	\int_{\R^d} \: |\xi|^{2-d} \left[\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right)  * \mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \right](\xi)  \: \ud \xi \\
@@ -500,23 +500,23 @@ thus,
 				& = K \int_{\R^d} \: |\xi|^{-2} \widehat{f}(\xi)  \: \ud \xi = \Upsilon(0),
 		\end{align*}
 	which is precisely Dalang's condition. \vspace{.2in}
-	
+
 	\rdot $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ is restrictive.
 \end{frame}
 
 \begin{frame} $\;$ \\
 	\rdot $\mathcal{F}^{-1}\left(\sqrt{\widehat{f}} \: \right) \ge 0$ requires $\sqrt{\widehat{f}}$ to be non-negative definite and this may not be true even is $\widehat{f}$ is non-negative and non-negative definite.
-	
+
 	\begin{example}
-		Consider the pair 
+		Consider the pair
 		\[
-		f(x) = (2\pi)^{-1}\sin(x^2)/x^2 
-		\quad \text{and} \quad 
+		f(x) = (2\pi)^{-1}\sin(x^2)/x^2
+		\quad \text{and} \quad
 		\widehat{f}(\xi) = \frac{1}{4} \max \{ 2-|\xi|, 0 \}.
-		\] 
-		Both $f$ and $\widehat{f}$ is clearly non-negative and thus both are non-negative definite. However, direct calculation shows that 
+		\]
+		Both $f$ and $\widehat{f}$ is clearly non-negative and thus both are non-negative definite. However, direct calculation shows that
 		\[
-		\mathcal{F}^{-1} \left( \sqrt{\widehat{f}} \: \right)(x) = 
+		\mathcal{F}^{-1} \left( \sqrt{\widehat{f}} \: \right)(x) =
 		\frac{ \sqrt{\frac{\pi}{2}}\left( -\cos(2x)\mathcal{S}\left(\frac{2 \sqrt{x}}{\sqrt{\pi}}\right) + \sin(2x) \mathcal{C}\left(\frac{2\sqrt{x}}{\sqrt{\pi}}\right) \right) }{ x^{3/2} }
 		\]
 	\end{example}
@@ -543,7 +543,7 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 			ymax=0.55,
 			]
 			% \addplot[smooth,domain=-9:9,dashed,thin] {0};
-			
+
 			% {{{ Sinc
 			\addplot[domain=-9:9,red,thick] coordinates {
 				( -8.001,0.002432823286953949 )
@@ -712,7 +712,7 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 			\addlegendentry{$f(x)=(2\pi)^{-1} x^{-2}\sin^2(x)$}
 			\addplot[domain=-9:9,blue,thick,dashed] {0.25*max(2-abs(x),0)};
 			\addlegendentry{$\widehat{f}(\xi)=2^{ -2}\max\left(2-|\xi|,0\right)$}
-			
+
 			% {{{ Inverse Fourier sqrt
 			\addplot[smooth, thick] coordinates {
 				( -8.001,0.003817069187384621 )
@@ -881,10 +881,10 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 			\addlegendentry{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$}
 			\end{axis}
 			\end{tikzpicture}
-			
+
 		\end{center}
 		% \includegraphics[scale=.9]{figs/fresnel.png}
-		
+
 		\caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
 			positive and negative values.}
 		\rdot So a simpler condition must be formulated in order to give a full example. \vspace{.05in}
@@ -893,13 +893,13 @@ Where $\mathcal{S}$ and $\mathcal{C}$ are the sine and cosine Fresnel integrals,
 
 \begin{frame}[t]
 \small
-	\rdot Recall that 
+	\rdot Recall that
 	\[
-	\mathbb{E}\left(\Norm{u(t,\cdot;\mu)}_\rho\right) \le	C\mathcal{G}_{\rho}(t;\mu) := C\int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+|\mu|)(\ud y) \right)^2 \rho(x) \ud x 
+	\mathbb{E}\left(\Norm{u(t,\cdot;\mu)}_\rho\right) \le	C\mathcal{G}_{\rho}(t;\mu) := C\int_{\R^d} \left( \int_{\R^d} G(t,x-y) (1+|\mu|)(\ud y) \right)^2 \rho(x) \ud x
 	\]
 
 	\begin{theorem}
-Suppose that the initial measure, $\mu$, the diffusion term, $b$, and the spectral density, $\widehat{f}$ satisfy 
+Suppose that the initial measure, $\mu$, the diffusion term, $b$, and the spectral density, $\widehat{f}$ satisfy
 	\[
 		\Upsilon_\alpha (0) := \int_{\R^d} \frac{\widehat{f}(\xi) \ud \xi}{|\xi|^{2(1-\alpha)}} < \infty , \quad \limsup_{t > 0} \mathcal{G}_{\rho}(t; \mu) < \infty, \quad \text{and} \quad L_b^2 < \frac{1}{2^7 \Upsilon(0)},
 	\]
@@ -907,9 +907,9 @@ for some $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ and also for $\alpha = 
 	\[
 		\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg) \ud s \to \eta_{t_0},
 	\]
-where $\eta_{t_0}$ is the invariant measure. 
+where $\eta_{t_0}$ is the invariant measure.
 	\end{theorem}
-	
+
 \end{frame}
 
 \begin{frame}{$\widehat{f}(\xi)$ and $\Upsilon_{\alpha}(0)$}
@@ -925,48 +925,48 @@ where $\eta_{t_0}$ is the invariant measure.
 				\frac{d}{2} > 1 & \alpha = 0.
 			\end{cases}
 	\end{align*}
-\rdot Thus, $\frac{d}{2} > 1$, being the more restrictive condition, is what we need to assume. In other words, the spatial dimension must be $d >2$ which means $d \ge 3$.  
-	
-\end{frame} 
+\rdot Thus, $\frac{d}{2} > 1$, being the more restrictive condition, is what we need to assume. In other words, the spatial dimension must be $d >2$ which means $d \ge 3$.
+
+\end{frame}
 
 
 \begin{frame}{A comment about $\Upsilon_{\alpha}(0) < \infty$}
 	\small
 	\rdot  For $\alpha \in (0,1/2)$, $\Upsilon_{2\alpha}(0) < \infty$ implies H\"older continuity of the solution \cite{CH19}. \vspace{.1in}
-	
-	\rdot This condition may be slightly "weakened" to the following: 
+
+	\rdot This condition may be slightly "weakened" to the following:
 	\[
 	\mathcal{H}_{\alpha}(t) := \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi) \exp(-r|\xi|^2)< \infty \quad \text{for all } t > 0 \text{ and some } \alpha \in \left(0,\frac{1}{2}\right).
 	\]
 	\begin{lemma} We have the following relations between $\Upsilon_{\alpha}(0), \Upsilon(0)$ and $\mathcal{H}_{\alpha}(t)$: \vspace{.1in}
-		
+
 		\rnum{1} However, $\Upsilon_{2\alpha}(0) < \infty \implies \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
-		
+
 		\rnum{2} $\lim \limits_{t\to \infty} \mathcal{H}_{\alpha}(t) = \Gamma(1- 2\alpha) \Upsilon_{2\alpha}(0)$. \vspace{.1in}
-		
+
 		\rnum{3} When $\Upsilon(0) < \infty$ then $\Upsilon_{2\alpha}(0) < \infty \iff \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
-	\end{lemma}	
-	
+	\end{lemma}
+
 \end{frame}
 
 \begin{frame}{Strategy}
-	\rdot The strategy is to prove tightness of the laws: when given $\epsilon \in (0,1)$, to prove the existence of a compact set $\mathcal{K}$ such that 
+	\rdot The strategy is to prove tightness of the laws: when given $\epsilon \in (0,1)$, to prove the existence of a compact set $\mathcal{K}$ such that
 	\begin{align*}
 	\mathscr{L}u(t,\cdot;\mu)(\mathscr{K}) \ge 1- \epsilon \quad \text{for all } t \ge t_0 >0.
 	\end{align*}
-	
-	\rdot This implies that 
+
+	\rdot This implies that
 	\begin{align*}
 	A_{n}(\textcolor{blue}{\mathscr{K}}):=\frac{1}{n} \int_{t_0}^{n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\textcolor{blue}{\mathscr{K}}) \ud s \ge \frac{1}{n} \int_{t_0}^{n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
-	\end{align*} 
+	\end{align*}
 	and so the sequence of measures, $A_{n}$ is tight. \vspace{.15in} \\
-	
+
 	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure, $\eta$. Hence, there exists $(t_n) \uparrow \infty$ such that,
 		\[
-			A_{t_n} \to \eta 
-		\] \vspace{0in} 
-		
-	\rdot Unfortunately this does not imply that 
+			A_{t_n} \to \eta
+		\] \vspace{0in}
+
+	\rdot Unfortunately this does not imply that
 		\[
 			\mathscr{L}u(t,\cdot ; \mu) \to \eta \quad \text{as } t \to \infty.
 		\]
@@ -983,7 +983,7 @@ where $\eta_{t_0}$ is the invariant measure.
 \rdot This excludes the Riesz kernel. \vspace{.25in}
 
 \rdot However, the Bessel kernel has polynomial blowup at the origin and exponential decay at $\pm \infty$ and will be permissible.
-\end{frame} 
+\end{frame}
 
 \begin{frame}{Bessel kernel}
 	\small
@@ -991,11 +991,11 @@ where $\eta_{t_0}$ is the invariant measure.
 	\[
 		f_s(x) \sim \exp(-|x|/2) \text{ for } |x| > 2 \quad \text \quad f_s(x) \sim \frac{1}{|x|^{d-s+2}} \text{ for } |x| < 2.
 	\]
-	
+
 	\rdot The Fourier transform $\widehat{f}$ is given by $\widehat{f}(\xi) = (1+|\xi|^2)^{-s/2}$.
-	
+
 	\begin{example}
-		When considering the Bessel kernel, direct calculation yields that 
+		When considering the Bessel kernel, direct calculation yields that
 			\[
 				\Upsilon_{\alpha}(0) = \frac{\Gamma\left( \frac{d}{2} - 1 + \alpha \right) \Gamma\left( \frac{s-d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \Gamma(s/2)},
 			\]
@@ -1003,7 +1003,7 @@ where $\eta_{t_0}$ is the invariant measure.
 			\[
 				\Upsilon(0) = \frac{\Gamma\left( \frac{2 + s - d}{2} \right)}{2^{d-1} \pi^{d/2} (d-2)\Gamma(s/2)},
 			\]
-		and we must assume that 
+		and we must assume that
 			\[
 				0 < \alpha < 1 - \frac{(d-s)_+}{2} \quad \text{and} \quad s > d - 2 > 0.
 			\]
@@ -1013,8 +1013,8 @@ where $\eta_{t_0}$ is the invariant measure.
 \begin{frame}{Quick verification for the Bessel kernel}
 	\rdot Recall that \textcolor{blue}{$\Upsilon_{\alpha}(0) = C \int_{\R^d} \frac{\widehat{f}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi$} and \textcolor{blue}{$\widehat{f}(\xi) = (1+ |\xi|^2)^{-s/2}$}.
 	\begin{align*}
-	\Upsilon_{\alpha}(0) &= C\int_{\R^d} \frac{1}{|\xi|^{2(1-\alpha)}(1+|\xi|^2)^{s/2}} \ud \xi \\ 
-	&= C\int_{0}^{\infty} \frac{z^{d-1}}{z^{2(1-\alpha)}(1+z^2)^{s/2}} \ud z ,\\ 
+	\Upsilon_{\alpha}(0) &= C\int_{\R^d} \frac{1}{|\xi|^{2(1-\alpha)}(1+|\xi|^2)^{s/2}} \ud \xi \\
+	&= C\int_{0}^{\infty} \frac{z^{d-1}}{z^{2(1-\alpha)}(1+z^2)^{s/2}} \ud z ,\\
 	\end{align*}
 	\rdot Now by the change of variables
 	$z=r^2/(1+r^2)$, we can evaluate the above integral explicitly by transforming it to the Beta
@@ -1027,19 +1027,19 @@ where $\eta_{t_0}$ is the invariant measure.
 
 \begin{frame}{Riesz type kernel}
 	\rdot The $g_s$ denote the Riesz kernel for $0 < s < d$: $g_s(x) = |x|^{-s}$. \vspace{.2in}
-	
-	\rdot $g_s$ will not satisfy 
+
+	\rdot $g_s$ will not satisfy
 	\[
 	\Upsilon(0) = C \int_{\R^d} \widehat{g}_s(\xi)|x|^{-2} \ud \xi = \int_{\R^d} |\xi|^{d-s} |\xi|^{-2} \ud \xi < \infty.
 	\] \vspace{.2in}
-	
-	\rdot Instead, we can use the following 
+
+	\rdot Instead, we can use the following
 		\[
 			\widehat{r}_s(\xi) := \widehat{r}_{s_1, s_2}(\xi) = \widehat{f}_{s_1}(\xi) + f_{s_2}(\xi),
 		\]
 	where $s_1>0$, $0 < s_2 < d$ and $f_{s_1}$ and $f_{s_2}$ are Bessel kernels. \vspace{.2in}
-	
-	\rdot $\widehat{r}_s$ has polynomial growth at the origin and polynomial decay at infinity: 	
+
+	\rdot $\widehat{r}_s$ has polynomial growth at the origin and polynomial decay at infinity:
 	\begin{align*} \widehat{r}_{s}(\xi) \sim
 	\begin{cases}
 	|\xi|^{-(d - s_2)} & |\xi| \to 0 \\
@@ -1049,48 +1049,48 @@ where $\eta_{t_0}$ is the invariant measure.
 \end{frame}
 
 \begin{frame}{Riese type kernel}
-	\rdot Notice that 
+	\rdot Notice that
 	\begin{align*}
 		\Upsilon_{\alpha}(0) &= \int_{\R^d} \frac{\widehat{r}_s(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
-		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
+		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
 		+ \int_{\R^d} \frac{f_{s_2}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
-		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi 
+		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
 		+ (2\pi)^{-d}\int_{\R^d} \frac{\widehat{f}_{s_2}(\xi)}{|\xi|^{d - 2(1-\alpha)}} \ud \xi
 	\end{align*}
-	
-	\rdot We can easily calculate that 
+
+	\rdot We can easily calculate that
 		\begin{align*}
-	\Upsilon_{\alpha}(0) = 
-	\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)} 
+	\Upsilon_{\alpha}(0) =
+	\frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left( \frac{s_1 -d}{2} + 1 - \alpha \right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
 	+ \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2 / 2\right) } < \infty,
 	\end{align*}
-	where the finiteness requires us to assume that 
+	where the finiteness requires us to assume that
 	\begin{align*} \label{E:RieszTypeCond}
 	s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
-	\end{align*} 
+	\end{align*}
 \end{frame}
 
-\begin{frame} 
+\begin{frame}
 	\small
 	\textbf{Allowable Initial Conditions:}
-	
+
 		\rnum{1} For any $\zeta \in L^{\infty}(\R^d)$ then for all $t \ge 0$
 		\[
 		\mathbb{E}\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right) \le \left(1+\Norm{\zeta}_{L^{\infty}(\R^d)}\right)^2 \Norm{\rho}_{L^1{\R^d}} < \infty.
 		\]
-		
+
 		\rnum{2} For $\delta_0(\cdot)$ and for all $ t > 0$,
 		\[
 		\mathbb{E}\left(\Norm{u(t,\cdot; \delta_0)}_{\rho}^2\right) \le \left(2 + G(t,0)^2\right) \Norm{\rho}_{L^1(\R^d)} < \infty.
 		\]
-		
+
 		\rnum{3} Consider $|\cdot|^{-\lambda}$ for any $\lambda \in (0,d)$. Then for all $ t> 0$,
 		\[
 		\mathbb{E}\left(\Norm{u(t,\cdot;|\cdot|^{-\lambda})}_{\rho}^2\right)  \le 2(1 + Ct^{-\lambda})\Norm{\rho}_{L^1(\R^d)} < \infty, \quad C = 2^{-\lambda} \left(\frac{\Gamma((d-\lambda)/2)}{\Gamma(d/2)}\right)^2,
 		\] \vspace{0in}
-		
+
 	\textbf{Non-permissible $L^2_{\rho}(\R^d)$-valued initial conditions:}	\vspace{.05in}
-	
+
 	\rnum{1} $\zeta(x) = |x|^{\alpha}$. When $\rho(x) = \exp(-|x|)$, then we can show that
 		\[
 			C_1(1+t^{\alpha}) \le \mathcal{G}_{\rho}(t;|\zeta|) \le C_2(1+t^{\alpha}).
@@ -1103,16 +1103,16 @@ where $\eta_{t_0}$ is the invariant measure.
 		\[
 			\lim_{n \to \infty} \frac{1}{t_n} \int_0^{t_n} \mathscr{L}(u(s,\cdot;\zeta)) \ud s.
 		\]
-		
-	
+
+
 	\begin{minipage}{2.5in}
 	\rdot Now $\mu \not \in H$ is now allowed  \\
-	
+
 	\rdot The heat operator smooths \\
-	
+
 	\rdot $u(t,\cdot;\mu) \in H$ for $t>0$ \\
-	 
-	 \rdot For $t > t_0 > 0$, 
+
+	 \rdot For $t > t_0 > 0$,
 	 \[ \mathscr{L}u(t,\cdot;\mu) = \mathscr{L} u(t-t_0,\cdot;u(t_0,\cdot;\mu)) \]
 	\end{minipage}
 	\begin{minipage}{2.3in}
@@ -1123,38 +1123,38 @@ where $\eta_{t_0}$ is the invariant measure.
 		}
 	\end{figure}
 	\end{minipage}
-	
+
 %	\rdot So because of the Markov property of the SHE \cite{DZ14}, we can associate with each $\mu$ outside of $H$ with a restarted equation:
 %		\[
 %			\mathscr{L}\bigg(u(t,\cdot;\mu)\bigg) = \mathscr{L}\bigg(u(t-t_0,\cdot;u(t_0,\cdot;\mu) \bigg) \quad \text{for all } t > t_0 > 0.
-%		\] 
+%		\]
 \end{frame}
 
 		\begin{frame}
 	\frametitle{References}
 	\scriptsize
-	
+
 	\begin{thebibliography}{999}
 		\bibitem{CD15}
 		L. Chen and R. Dalang (2015)
-		\newblock{Moments and growth indices for the nonlinear stochastic heat equation with rough initial conditions} 
+		\newblock{Moments and growth indices for the nonlinear stochastic heat equation with rough initial conditions}
 		\newblock {\em The Annals of Probability} 43, 6, 3006--3051
-		
-		\bibitem{CH19} 
+
+		\bibitem{CH19}
 		L. Chen and J. Huang
 		\newblock Comparison principle for stochastic heat equation on $\R^d$
 		\newblock {\em  Ann. Probab}, 47.2 (2019) 989--1035.
-		
-		\bibitem{CHN19} 
+
+		\bibitem{CHN19}
 		L. Chen, Y. Hu, D. Naulart (2019)
 		\newblock Nonlinear stochastic time-fractional slow and fast diffusion equations on $\R^d$.
 		\newblock {\em  Stochastic Processes and their Applications}, 129 5073--5112.
-		
+
 		\bibitem{CK19}
 		L. Chen and K. Kim (2019)
 		\newblock Nonlinear stochastic heat equation driven by a spatially colored noise: moments and intermittency.
 		\newblock {\em Acta Mathematica Scientia} 39B(3), 645--668
-			
+
 		\bibitem{DG2000}
 		A. Davie and J. Gaines (2000)
 		\newblock Convergence of numerical schemes for the solution of parabolic stochastic partial differential equations
@@ -1165,24 +1165,24 @@ where $\eta_{t_0}$ is the invariant measure.
 			\begin{frame}
 			\frametitle{References}
 			\scriptsize
-			
+
 			\begin{thebibliography}{999}
-				
+
 		\bibitem{Dal99}
 		R. Dalang (1999)
 		\newblock Extending the martingale measure stochastic integral with applications to spatially homogeneous s.p.d.e.'s
 		\newblock {\em  Electron. J. Probab.}
-		
+
 		\bibitem{DZ14}
 		G. DaPrato and J. Zabczyk (2014)
 		\newblock Stochastic Equations in Infinite Dimensions. 2nd Edition.
 		\newblock {\em  Cambridge University Press}
-		
+
 		\bibitem{TZ96}
 		G. Tessitore and J. Zabczyk (1996)
-		\newblock Invariant measures for the stochastic heat equation 
+		\newblock Invariant measures for the stochastic heat equation
 		\newblock {Probability and Mathematical Statistics} 18, 2, 271--287
-		
+
 		\bibitem{Walsh}
 		J. Walsh (1986)
 		\newblock Introduction to Stochastic Partial Differential Equations
