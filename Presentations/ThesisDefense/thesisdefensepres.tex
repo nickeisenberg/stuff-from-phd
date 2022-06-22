@@ -912,20 +912,18 @@ where $\eta_{t_0}$ is the invariant measure.
 
 \end{frame}
 
-\begin{frame}{$\widehat{f}(\xi)$ and $\Upsilon_{\alpha}(0)$}
-	\rdot It is easy to verify that $\widehat{f}(\xi) = \max\{ 2-|\xi|, 0 \}$ is allowable using our condition above. Indeed, for any $\alpha \in [0,1)$,
+\begin{frame}{$\widehat{f}(\xi)$ and $\Upsilon_{\alpha}(0)$} \small
+	\rdot It is easy to verify that  
+	\[ \widehat{f}(\xi) = \prod_{i=1}^d\max\{ 2-|\xi_i|, 0 \} \qquad \text{and} \qquad  f(x) := \prod_{i=1}^d (2\pi)^{-1}\sin(x_i^2)/x_i^2
+	\] 
+	are allowable using our condition above. Indeed, for any $\alpha \in [0,1)$,
 	\begin{align*}
-		\Upsilon_{\alpha}(0) &= \int_{\R^d} \frac{\max\{ 2-|\xi|, 0 \}}{|\xi|^{2(1-\alpha)}} \ud \xi \\
-		&= \int_0^{\infty} \frac{\max\{ 2-r, 0 \}}{r^{2(1-\alpha)}} r^{d-1}\ud r \\
-		&= \int_0^{2}  \frac{2-r}{r^{2(1-\alpha)}} r^{d-1}\ud r \\
-		&= \int_0^2 2 r^{d-1-2(1-\alpha)} - r^{d-2(1-\alpha)} \ud r \\
-		&< \infty \text{ when }
-			\begin{cases}
-				\frac{d}{2} > 1 - \alpha & 0 < \alpha < 1 \\
-				\frac{d}{2} > 1 & \alpha = 0.
-			\end{cases}
+    \Upsilon_\alpha(0) &= C \int_{\R^d} \frac{\prod_{i=1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi \\
+&\le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi \\
+&= C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
 	\end{align*}
-\rdot Thus, $\frac{d}{2} > 1$, being the more restrictive condition, is what we need to assume. In other words, the spatial dimension must be $d >2$ which means $d \ge 3$.
+	
+\rdot Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$
 
 \end{frame}
 
@@ -1055,7 +1053,8 @@ where $\eta_{t_0}$ is the invariant measure.
 		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
 		+ \int_{\R^d} \frac{f_{s_2}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
 		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
-		+ (2\pi)^{-d}\int_{\R^d} \frac{\widehat{f}_{s_2}(\xi)}{|\xi|^{d - 2(1-\alpha)}} \ud \xi
+		+ (2\pi)^{-d}..
+		\int_{\R^d} \frac{\widehat{f}_{s_2}(\xi)}{|\xi|^{d - 2(1-\alpha)}} \ud \xi
 	\end{align*}
 
 	\rdot We can easily calculate that
