@@ -132,39 +132,6 @@ where $\tilde{\psi}(s,x) = \psi(s,-x)$. We have the following nomenclature. \vsp
  is referred to as the {\em spectral density}.
 \end{frame}
 
-\begin{frame}[t]
-	\begin{proposition}[DaPrato and Zabczyk {\cite[Propsition 4.19]{DZ14}}]
-		A space-time white noise, $dB$, is the distributional derivative of a Brownian sheet, $B(t,x)$.
-	\end{proposition}
-
-\begin{minipage}{2.5in}
-\begin{figure}[t]
-	\centering
-	\includegraphics[scale=.28]{figs/bsheet.png}
-\end{figure}
-\end{minipage}
-\begin{minipage}{2in}
-{\smaller {\bf White noise expansion DaPrato \cite{DZ14}} \\
-If $t \ge 0$ and $0 \le x \le \pi$ then,
-\begin{align*}
-B(t,x) = \sum_{n=0}^\infty \frac{\beta_n(t)}{n+\frac{1}{2}} \sqrt{\frac{2}{\pi}} \sin\left[\left( n + \frac{1}{2} \right) x\right]
-\end{align*}
-\vspace{.2in} \\
-{\bf Walsh \cite{Walsh}}
-\begin{align*}
- \int_t^{t + \delta_t} \int_x^{x + \delta_x} dB(\ud s, \ud y)
-\sim \text{N}(0,\delta_t\delta_x)
-\end{align*}
-}
-\end{minipage}
-\begin{center}
-	{\bf Brownian Sheet Simulation (Walsh \cite{Walsh}):}
-
-$B(t,x) \sim B(t - \delta_t, x) + B(t, x- \delta_x) - B(t - \delta_t, x - \delta_x) + \text{N}(0, \delta_t \delta_x)$ \\
-$B(t,0) = B(0,x) = 0$ for all $t,x >0$.
-\end{center}
-\end{frame}
-
 \begin{frame}{Existence and uniqueness with space-time white noise}
 	\rdot A necessary condition for global existence, {\em Dalang's condition} \cite{Dal99}, is the following:
 	\[
@@ -180,6 +147,39 @@ $B(t,0) = B(0,x) = 0$ for all $t,x >0$.
 		d/2 < 1 \quad \iff \quad d < 2.
 	\]
 	\rdot Thus a global space-time white noise solution may only exist when the spatial dimension is $1$.
+\end{frame}
+
+\begin{frame}[t]
+	\begin{proposition}[DaPrato and Zabczyk {\cite[Propsition 4.19]{DZ14}}]
+		A space-time white noise, $dB$, is the distributional derivative of a Brownian sheet, $B(t,x)$.
+	\end{proposition}
+	
+	\begin{minipage}{2.5in}
+		\begin{figure}[t]
+			\centering
+			\includegraphics[scale=.28]{figs/bsheet.png}
+		\end{figure}
+	\end{minipage}
+	\begin{minipage}{2in}
+		{\smaller {\bf White noise expansion DaPrato \cite{DZ14}} \\
+			If $t \ge 0$ and $0 \le x \le \pi$ then,
+			\begin{align*}
+			B(t,x) = \sum_{n=0}^\infty \frac{\beta_n(t)}{n+\frac{1}{2}} \sqrt{\frac{2}{\pi}} \sin\left[\left( n + \frac{1}{2} \right) x\right]
+			\end{align*}
+			\vspace{.2in} \\
+			{\bf Walsh \cite{Walsh}}
+			\begin{align*}
+			\int_t^{t + \delta_t} \int_x^{x + \delta_x} dB(\ud s, \ud y)
+			\sim \text{N}(0,\delta_t\delta_x)
+			\end{align*}
+		}
+	\end{minipage}
+	\begin{center}
+		{\bf Brownian Sheet Simulation (Walsh \cite{Walsh}):}
+		
+		$B(t,x) \sim B(t - \delta_t, x) + B(t, x- \delta_x) - B(t - \delta_t, x - \delta_x) + \text{N}(0, \delta_t \delta_x)$ \\
+		$B(t,0) = B(0,x) = 0$ for all $t,x >0$.
+	\end{center}
 \end{frame}
 
 \begin{frame}{$u_t - \frac{1}{2}u_{xx} = \lambda u \dot{W}$ with $u_0(x) = \delta_0(x)$ \hfill (white noise)}
@@ -453,13 +453,13 @@ In particular, for any $\zeta \in H$ and for all $T>0$, there exists a $C_T$ suc
 
 \rdot \textcolor{red}{Red} implies \textcolor{blue}{Blue} but not vice versa. \vspace{.1in} \\
 
-\rdot  For example, suppose $f(t) \to L$ as $t \to \infty$. Then for $\epsilon > 0$, there exists $N$ so for all $n>N$ we have the following:
+\rdot  For example, suppose $\eta_t(A) \to \eta(A)$ as $t \to \infty$. Then for $\epsilon > 0$, there exists $N$ so for all $t>N$ we have the following:
 \[
-	\lim_{n \to \infty} \frac{1}{n} \int_0^n f(t) \ud t \: \nobarfrac{\le}{\ge} \: \lim_{n \to \infty} \frac{1}{n}\left( \int_0^N f(t) \ud t + \int_N^n L \pm \epsilon \: \ud t \right),
+	\lim_{n \to \infty} \frac{1}{n} \int_0^n \eta_t(A) \ud t \: \nobarfrac{\le}{\ge} \: \lim_{n \to \infty} \frac{1}{n}\left( \int_0^N \eta_t(A) \ud t + \int_N^n \eta(A) \pm \epsilon \: \ud t \right),
 \]
 thus,
 \[
-	L- \epsilon \le 	\lim_{n \to \infty} \frac{1}{n} \int_0^n f(t) \ud t \le L+\epsilon.
+	\eta(A) - \epsilon \le 	\lim_{n \to \infty} \frac{1}{n} \int_0^n \eta_t(A) \ud t \le \eta(A)+\epsilon.
 \]
 
 %	\begin{theorem}[DaPrato { \cite[Proposition 11.5]{DZ14} }]
@@ -905,11 +905,34 @@ Suppose that the initial measure, $\mu$, the diffusion term, $b$, and the spectr
 	\]
 for some $\alpha \in \left(2^7\Upsilon(0)L_b^2,1\right)$ and also for $\alpha = 0$. Then there exists an invariant measure for the stochastic heat equation. More precisely, the following weak limit exists for each $t_0 > 0$:
 	\[
-		\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg) \ud s \to \eta_{t_0},
+		\frac{1}{t_0} \int_{t_0}^{t_n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg) \ud s \to \eta_{t_0,\mu},
 	\]
 where $\eta_{t_0}$ is the invariant measure.
 	\end{theorem}
 
+\end{frame}
+
+\begin{frame}{Strategy}
+	\rdot The strategy is to prove tightness of the laws: when given $\epsilon \in (0,1)$, to prove the existence of a compact set $\mathcal{K}$ such that
+	\begin{align*}
+	\mathscr{L}u(t,\cdot;\mu)(\mathscr{K}) \ge 1- \epsilon \quad \text{for all } t \ge t_0 >0.
+	\end{align*}
+	
+	\rdot This implies that
+	\begin{align*}
+	A_{n}(\textcolor{blue}{\mathscr{K}}):=\frac{1}{n} \int_{t_0}^{n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\textcolor{blue}{\mathscr{K}}) \ud s \ge \frac{1}{n} \int_{t_0}^{n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
+	\end{align*}
+	and so the sequence of measures, $A_{n}$ is tight. \vspace{.15in} \\
+	
+	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure, $\eta$. Hence, there exists $(t_n) \uparrow \infty$ such that,
+	\[
+	A_{t_n} \to \eta
+	\] \vspace{0in}
+	
+	\rdot Unfortunately this does not imply that
+	\[
+	\mathscr{L}u(t,\cdot ; \mu) \to \eta \quad \text{as } t \to \infty.
+	\]
 \end{frame}
 
 \begin{frame}{$\widehat{f}(\xi)$ and $\Upsilon_{\alpha}(0)$} \small
@@ -945,29 +968,6 @@ where $\eta_{t_0}$ is the invariant measure.
 		\rnum{3} When $\Upsilon(0) < \infty$ then $\Upsilon_{2\alpha}(0) < \infty \iff \mathcal{H}_{\alpha}(t) < \infty$ for all $t > 0$. \vspace{.1in}
 	\end{lemma}
 
-\end{frame}
-
-\begin{frame}{Strategy}
-	\rdot The strategy is to prove tightness of the laws: when given $\epsilon \in (0,1)$, to prove the existence of a compact set $\mathcal{K}$ such that
-	\begin{align*}
-	\mathscr{L}u(t,\cdot;\mu)(\mathscr{K}) \ge 1- \epsilon \quad \text{for all } t \ge t_0 >0.
-	\end{align*}
-
-	\rdot This implies that
-	\begin{align*}
-	A_{n}(\textcolor{blue}{\mathscr{K}}):=\frac{1}{n} \int_{t_0}^{n + t_0} \mathscr{L}\bigg(u(s,\cdot;\mu)\bigg)(\textcolor{blue}{\mathscr{K}}) \ud s \ge \frac{1}{n} \int_{t_0}^{n + t_0} 1 - \epsilon \: \ud s  =1 - \epsilon,
-	\end{align*}
-	and so the sequence of measures, $A_{n}$ is tight. \vspace{.15in} \\
-
-	\rdot Every tight sequence of measures has a weakly convergent subsequence that converges to an invariant measure, $\eta$. Hence, there exists $(t_n) \uparrow \infty$ such that,
-		\[
-			A_{t_n} \to \eta
-		\] \vspace{0in}
-
-	\rdot Unfortunately this does not imply that
-		\[
-			\mathscr{L}u(t,\cdot ; \mu) \to \eta \quad \text{as } t \to \infty.
-		\]
 \end{frame}
 
 \begin{frame}{Permissible spectral density}
@@ -1028,14 +1028,15 @@ where $\eta_{t_0}$ is the invariant measure.
 
 	\rdot $g_s$ will not satisfy
 	\[
-	\Upsilon(0) = C \int_{\R^d} \widehat{g}_s(\xi)|x|^{-2} \ud \xi = \int_{\R^d} |\xi|^{d-s} |\xi|^{-2} \ud \xi < \infty.
-	\] \vspace{.2in}
+	\Upsilon(0) = C \int_{\R^d} \widehat{g}_s(\xi)|x|^{-2} \ud \xi = \int_{\R^d} |\xi|^{d-s} |\xi|^{-2} \ud \xi < \infty,
+	\] 
+	since this requires $d-s-2>d$ and $d-s-2<d$.\vspace{.2in}
 
 	\rdot Instead, we can use the following
 		\[
 			\widehat{r}_s(\xi) := \widehat{r}_{s_1, s_2}(\xi) = \widehat{f}_{s_1}(\xi) + f_{s_2}(\xi),
 		\]
-	where $s_1>0$, $0 < s_2 < d$ and $f_{s_1}$ and $f_{s_2}$ are Bessel kernels. \vspace{.2in}
+	where $0 < s_i < d$ for $i=1,2$ and $f_{s_1}$ and $f_{s_2}$ are Bessel kernels. \vspace{.2in}
 
 	\rdot $\widehat{r}_s$ has polynomial growth at the origin and polynomial decay at infinity:
 	\begin{align*} \widehat{r}_{s}(\xi) \sim
@@ -1046,14 +1047,14 @@ where $\eta_{t_0}$ is the invariant measure.
 	\end{align*}
 \end{frame}
 
-\begin{frame}{Riese type kernel}
+\begin{frame}{Riese type kernel} \small
 	\rdot Notice that
 	\begin{align*}
 		\Upsilon_{\alpha}(0) &= \int_{\R^d} \frac{\widehat{r}_s(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
 		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
 		+ \int_{\R^d} \frac{f_{s_2}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi \\
 		&= \int_{\R^d} \frac{\widehat{f}_{s_1}(\xi)}{|\xi|^{2(1-\alpha)}} \ud \xi
-		+ (2\pi)^{-d}..
+		+ (2\pi)^{-d}
 		\int_{\R^d} \frac{\widehat{f}_{s_2}(\xi)}{|\xi|^{d - 2(1-\alpha)}} \ud \xi
 	\end{align*}
 
@@ -1065,8 +1066,9 @@ where $\eta_{t_0}$ is the invariant measure.
 	\end{align*}
 	where the finiteness requires us to assume that
 	\begin{align*} \label{E:RieszTypeCond}
-	s_1 > d - 2(1-\alpha) > 0 \qquad \text{and} \qquad d > s_2 > 2(1-\alpha) > 0.
+	0<  d - 2(1-\alpha) < s_1 < d  \qquad \text{and} \qquad 0 < 2(1-\alpha) < s_2 < d.
 	\end{align*}
+	\rdot It is not clear how to calculate $\mathcal{F}^{-1}\left(\sqrt{\widehat{r}(\cdot)}\right)(x)$.
 \end{frame}
 
 \begin{frame}
@@ -1127,6 +1129,10 @@ where $\eta_{t_0}$ is the invariant measure.
 %		\[
 %			\mathscr{L}\bigg(u(t,\cdot;\mu)\bigg) = \mathscr{L}\bigg(u(t-t_0,\cdot;u(t_0,\cdot;\mu) \bigg) \quad \text{for all } t > t_0 > 0.
 %		\]
+\end{frame}
+
+\begin{frame} \Large \centering
+	\textcolor{blue}{Thank You!}
 \end{frame}
 
 		\begin{frame}
