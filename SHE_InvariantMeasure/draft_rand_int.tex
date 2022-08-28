@@ -321,7 +321,7 @@ Hilbert space as in \cite{tessitore.zabczyk:98:invariant}:
 % proving that for all pairs $(\nu,\widetilde{\eta}) \in \mathscr{M}(H) \times \mathscr{M}(H)$ such
 % that the limit in \eqref{E:InvWeakLim} exists, $\widetilde{\eta} = \eta$ in each pair. Moreover,
 % even verifying \eqref{E:InvDetLim} for one particular $\zeta \in H$ is challenging and this has not
-% yet been done for the stochastic heat equation as in \eqref{E:SHE}. 
+% yet been done for the stochastic heat equation as in \eqref{E:SHE}.
 
 Accordingly, we will prove the existence of invariant measure following the same strategy as in
 \cite{tessitore.zabczyk:98:invariant}: Let $\mathscr{L}(u(t,\cdot;\mu)$ denote the law of
@@ -447,8 +447,10 @@ can further strengthen condition \eqref{E:Dalang-ab} to
 \end{equation}
 We use the convention that when $\alpha=0$, we simply drop it from the expression
 $\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta)=\Upsilon_0(\beta)$. The relations of these
-conditions are illustrated in Figure \ref{F:Dalang}.
+conditions are illustrated in Figure \ref{F:Dalang}; one may also check Lemma \ref{L:HUA} for the
+relation between $\Upsilon(0)<\infty$ and $\Upsilon_\alpha(0)<\infty$.
 
+\setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
 \begin{figure}[htpb]
 	\begin{center}
 		\usetikzlibrary{arrows.meta}
@@ -469,7 +471,7 @@ conditions are illustrated in Figure \ref{F:Dalang}.
 		% \draw[thick] (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
 		% \draw[thick] (\inc,\yo) --++ (-2*\inc,0) node[left] {$\beta=0$};
 		% \draw[thick] (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
- 
+
 		\node[text width=13em, align = center] (01) at (\xo,\yg) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
 		\node[text width=13em, align = center] (00) at (\xo,\yo) {$\Upsilon(0)<\infty$\\ Condition \eqref{E:Dalang-00}};
 		\node[text width=13em, align = center] (10) at (\xg,\yo) {$\Upsilon_\alpha(0)<\infty$\\ Condition \eqref{E:Dalang-a0}};
@@ -481,11 +483,11 @@ conditions are illustrated in Figure \ref{F:Dalang}.
 	\end{center}
 
 	\caption{Relations among conditions \eqref{E:Dalang}, \eqref{E:Dalang-ab}, \eqref{E:Dalang-a0} and
-		\eqref{E:Dalang-00}. Check also Lemma \ref{L:HUA} for the relation between $\Upsilon(0)<\infty$
-		and $\Upsilon_\alpha(0)<\infty$.}
+  \eqref{E:Dalang-00}. }
 
 	\label{F:Dalang}
 \end{figure}
+
 
 We will also need the following slightly different condition:
 \begin{align} \label{E:Dalang-H}
@@ -498,11 +500,11 @@ where
 The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma \ref{L:yineq}
 below. As is shown in Lemma \ref{L:HUA} below, condition \eqref{E:Dalang-a0} will imply condition
 \eqref{E:Dalang-H}. However, if one assumes \eqref{E:Dalang-00}, then these two conditions become
-equivalent. 
+equivalent.
 % The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as
 % being more well recognized.
 
-We are now ready to state our two main results of the paper. 
+We are now ready to state our two main results of the paper.
 
 % Theorems \ref{T:Lrho} and \ref{T:Main}.
 % These theorems will be proved in Sections \ref{S:Lrho} and \ref{S:mainproof} respectively.
@@ -1015,8 +1017,8 @@ and the restarted SHE ($ t_0>0$).
   \begin{align*}
     I_1:= & \int_{\R^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:               \\
           & \times f(z_1-z_2) \left(  \prod_{i=1}^{2} G(s-r,y-z_i)\right)  \: \E\left(\prod_{i=1}^{2}b(z_i,v(r,z_i))\right) \\
-       =  & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                              \\
-       <  & \: +\infty.
+       =  & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2 < +\infty.
+       % <  & \: +\infty.
   \end{align*}
   But this follows immediately from \eqref{E:NormY}. Indeed,
   \begin{align*}
@@ -1301,7 +1303,7 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 \end{proof}
 
 \section{Discussion and examples} \label{S:Example}
-\subsection{SHE with a drift term} \label{SS:Drift}
+\subsection{Invariant measures for SHE with a drift term} \label{SS:Drift}
 
 % When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$
 % to denote the correlation function in this paper, so we will use $g$ to for the drift.
@@ -1310,19 +1312,20 @@ In the literature, the existence of invariant measure of the stochastic heat equ
 commonly studied with a drift term $g(x,u(t,x))$, namely,
 \begin{align} \label{E:Drift}
   \left(\dfrac{\partial}{\partial t}-\dfrac{1}{2}\Delta\right) u(t,x)
-   = g(x,u(t,x)) +b(x,u(t,x))\dot W(t,x) \quad  \text{$x\in \mathcal{O}$, $t>0$},
+   = g(x,u(t,x)) +b(x,u(t,x))\dot W(t,x) \quad  \text{$x\in \mathcal{O}$, $t>0$}.
 \end{align}
 For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant,
-cerrai:01:second, cerrai:06:asymptotic} require a drift coefficient, $g(u):\R \to \R$, to be added
-to the right hand side of equation \eqref{E:SHE} and that this term must satisfy the following
-dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
+brzezniak.gatarek:99:martingale, cerrai:01:second, cerrai:03:stochastic} require a drift
+coefficient, $g(u):\R \to \R$, to be added to the right hand side of equation \eqref{E:SHE} and that
+this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u|
+\to \infty$:
 	\begin{equation} \label{E:dis}
 		\begin{cases}
 			g(u) \le -k_1|u|^m + k_2 & u > 0 \\
 			g(u) \ge c_1|u|^m - c_2  & u < 0.
 		\end{cases}
 	\end{equation}
-Furthermore, Cerrai \cite{cerrai:01:second, cerrai:06:asymptotic} considered the case of a bounded
+Furthermore, Cerrai \cite{cerrai:01:second, cerrai:03:stochastic} considered the case of a bounded
 spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole
 space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions,
 however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be
