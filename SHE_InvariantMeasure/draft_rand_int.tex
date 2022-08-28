@@ -406,23 +406,24 @@ where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ deno
 function. We use ``$\sim$'' to denote the standard asymptotic equivalent relation. Lastly, the
 convention of Fourier transform is given in Remark \ref{R:Fourier} below.
 
+
 \section{Main results} \label{S:Main}
 
-We now will introduce some conditions and quantities that will be needed for our main results. In
-order to have moments bounded in time, one has to first identify the exact conditions under which
+We now will introduce some conditions and quantities that will be needed for our main results.
+
+In order to have moments bounded in time, one has to first identify the exact conditions under which
 the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in
 \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions
-are given. More precisely, for bounded second moments, one has to have the spatial dimension $d \ge
-3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have
-to satisfy the following two conditions:
+are given. More precisely, to have the second moment bounded in time, one has to have the spatial
+dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of
+$b(\cdot)$ have to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
   & \text{and} \quad 64 L^2_{b}   <  \frac{1}{2\Upsilon(0)} \: .  \label{E:Lipb}
 \end{align}
 \end{subequations}
-Moreover, these two conditions will guarantee the existence of the following non-empty open
-interval:
+These two conditions will guarantee the existence of the following non-empty open interval:
 \begin{align} \label{E:Interval}
 \left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
 \end{align}
@@ -438,8 +439,8 @@ Recall that in order to obtain the H\"older continuity of the solution, one need
   \Upsilon_\alpha(\beta) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+|\xi|^2\right)^{1-\alpha}}<\infty
   \quad \text{for some (hence all) $\beta>0$;}
 \end{align}
-see Theorem 1.8 of \cite{chen.huang:19:comparison} or \cite{sanz-sole.sarra:02:holder}. Similarly,
-one can further strengthen condition \eqref{E:Dalang-ab} to
+see \cite[Theorem 1.8]{chen.huang:19:comparison} or \cite{sanz-sole.sarra:02:holder}. Similarly, one
+can further strengthen condition \eqref{E:Dalang-ab} to
 \begin{equation} \label{E:Dalang-a0}
   \Upsilon_\alpha(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
   \quad  \text{for some $\alpha\in (0,1]$.}
@@ -458,21 +459,24 @@ conditions are illustrated in Figure \ref{F:Dalang}.
 		\def\yo{0.5}
 		\def\xg{3.7}
 		\def\yg{1.5}
-		\draw[] (\xo-0.9,0) -- (\xg+0.7,0);  % node[right] {$\alpha$};
-		\draw[] (\xo-0.9,2) -- (\xg+0.7,2);  % node[right] {$\alpha$};
-		\draw[] (0,\yo-0.3) -- (0,\yg+0.3); % node[above] {$\beta$};
-		\draw[] (4.7,\yo-0.3) -- (4.7,\yg+0.3); % node[above] {$\beta$};
-		\draw[thick] (\xo,\inc) --++ (0,-2*\inc) node[below] {$\alpha=0$};
-		\draw[thick] (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
-		\draw[thick] (\inc,\yo) --++ (-2*\inc,0) node[left] {$\beta=0$};
-		\draw[thick] (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
+
+		% \draw[] (\xo-0.9,0) -- (\xg+0.7,0);  % node[right] {$\alpha$};
+		% \draw[] (\xo-0.9,2) -- (\xg+0.7,2);  % node[right] {$\alpha$};
+		% \draw[] (0,\yo-0.3) -- (0,\yg+0.3); % node[above] {$\beta$};
+		% \draw[] (4.7,\yo-0.3) -- (4.7,\yg+0.3); % node[above] {$\beta$};
+
+		% \draw[thick] (\xo,\inc) --++ (0,-2*\inc) node[below] {$\alpha=0$};
+		% \draw[thick] (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
+		% \draw[thick] (\inc,\yo) --++ (-2*\inc,0) node[left] {$\beta=0$};
+		% \draw[thick] (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
+ 
 		\node[text width=13em, align = center] (01) at (\xo,\yg) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
 		\node[text width=13em, align = center] (00) at (\xo,\yo) {$\Upsilon(0)<\infty$\\ Condition \eqref{E:Dalang-00}};
 		\node[text width=13em, align = center] (10) at (\xg,\yo) {$\Upsilon_\alpha(0)<\infty$\\ Condition \eqref{E:Dalang-a0}};
 		\node[text width=13em, align = center] (11) at (\xg,\yg) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition \eqref{E:Dalang-ab}};
-		\node[] at (\xo,0.5*\yo+0.5*\yg) {\huge$\Uparrow$};
-		\node[] at (\xg,0.5*\yo+0.5*\yg) {\huge$\Uparrow$};
-		\node[] at (0.5*\xo+0.5*\xg,\yg) {\huge$\Leftarrow$};
+		\node[] at (\xo,0.5*\yo+0.5*\yg) {\Large$\Uparrow$};
+		\node[] at (\xg,0.5*\yo+0.5*\yg) {\Large$\Uparrow$};
+		\node[] at (0.5*\xo+0.5*\xg,\yg) {\Large$\Leftarrow$};
 		\end{tikzpicture}
 	\end{center}
 
