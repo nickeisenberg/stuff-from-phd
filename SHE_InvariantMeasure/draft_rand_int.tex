@@ -235,7 +235,7 @@ hand, the first point has been shown to be true for our case of interest (see, e
 9]{da-prato.zabczyk:14:stochastic}) with the following weighted $L^2(\R^d)$ space as our underlying
 Hilbert space as in \cite{tessitore.zabczyk:98:invariant}:
 
-\begin{definition} \label{D:Rho}
+\begin{definition}[\cite{tessitore.zabczyk:98:invariant}] \label{D:Rho}
   A function $\rho:\R^d\mapsto \R$ is called an \textit{admissible weight function} if it is a
   strictly positive, bounded, continuous, and $L^1(\R^d)$-integrable function such that for all
   $T>0$, there exists a constant $C_\rho(T)$ such that
@@ -1308,35 +1308,42 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 % When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$
 % to denote the correlation function in this paper, so we will use $g$ to for the drift.
 
-In the literature, the existence of invariant measure of the stochastic heat equation is more
-commonly studied with a drift term $g(x,u(t,x))$, namely,
+In this part, we give a brief account of the case when the SHE has a drift term which plays a
+crucial role in controlling the moments. The equation takes the following form:
 \begin{align} \label{E:Drift}
   \left(\dfrac{\partial}{\partial t}-\dfrac{1}{2}\Delta\right) u(t,x)
    = g(x,u(t,x)) +b(x,u(t,x))\dot W(t,x) \quad  \text{$x\in \mathcal{O}$, $t>0$}.
 \end{align}
-For example, to cancel the growth of the moments, the authors in \cite{assing.manthey:03:invariant,
-brzezniak.gatarek:99:martingale, cerrai:01:second, cerrai:03:stochastic} require a drift
-coefficient, $g(u):\R \to \R$, to be added to the right hand side of equation \eqref{E:SHE} and that
-this term must satisfy the following dissipativity condition for some $m,\: k_i, \: c_i>0$ as $|u|
-\to \infty$:
-	\begin{equation} \label{E:dis}
-		\begin{cases}
-			g(u) \le -k_1|u|^m + k_2 & u > 0 \\
-			g(u) \ge c_1|u|^m - c_2  & u < 0.
-		\end{cases}
-	\end{equation}
-Furthermore, Cerrai \cite{cerrai:01:second, cerrai:03:stochastic} considered the case of a bounded
-spatial domain while Assing and Manthey \cite{assing.manthey:03:invariant} considered the whole
-space $\R^d$. In addition, the just mentioned papers only allow for bounded initial conditions,
-however, an unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be
-considered. It is also worth noting that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} also
-require the above dissipativity condition \eqref{E:dis} along with a bounded initial condition, but
-they consider the case of an additive noise.
+The references below are far from being complete. The interested readers can find more references
+from the references below.
+
+
+The first case is that when the drift term $g(\cdot)$ in \eqref{E:Drift} satisfies certain
+dissipativity conditions, which push the solution towards zero; see, e.g.,
+\cite{assing.manthey:03:invariant, brzezniak.gatarek:99:martingale, cerrai:01:second,
+cerrai:03:stochastic, eckmann.hairer:01:invariant}. Such a ``negative'' drift term helps to cancel
+the growth of the moments. Here is one example of such drift term: for some $m,\: k_i, \: c_i>0$ as
+$|u| \to \infty$: 
+\begin{equation} \label{E:dis}
+  \begin{cases}
+    g(u) \le -k_1|u|^m + k_2 & u > 0, \\
+    g(u) \ge c_1|u|^m - c_2  & u < 0.
+  \end{cases}
+\end{equation}
+In particular, Cerrai \cite{cerrai:01:second, cerrai:03:stochastic} and Brze\'{z}niak and
+G\c{a}tarek \cite{brzezniak.gatarek:99:martingale} considered the case of a bounded spatial domain
+while Assing and Manthey \cite{assing.manthey:03:invariant} and Eckmann and Hairer
+\cite{eckmann.hairer:01:invariant} considered the whole space $\R^d$. 
+% In addition, the just mentioned papers only allow for bounded initial conditions, however, an
+% unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be considered. 
+Note that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} studied the additive noise case
+along with a bounded initial condition.
+% condition \eqref{E:dis} , but they consider the case of an additive noise.
 
 Several works which do not require an added drift term with dissipativity as in \eqref{E:dis}
 include Misiats {\em et al} \cite{misiats.stanzhytskyi.ea:20:invariant,
-misiats.stanzhytskyi.ea:16:existence}. In the \cite[Theorem
-1.2]{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an
+misiats.stanzhytskyi.ea:16:existence}. In Theorem 1.2 of
+\cite{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence of an
 invariant measure for the stochastic heat equation on the whole space $\R^d$. More precisely, they
 allow for a drift term, $g(x,u):\R^d \times \R \to \R$, such that for all $x \in \R^d$ and $u_1,u_2
 \in \R$,
@@ -1344,15 +1351,15 @@ allow for a drift term, $g(x,u):\R^d \times \R \to \R$, such that for all $x \in
 		|g(x,0)| \le \varphi(x) \qquad \text{and} \qquad |g(x,u_1) - g(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 \end{align*}
 for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in
-L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus $f = 0$ is allowed.
-Moreover, they require the diffusion term, $b$, to satisfy the following:
+L^2(\R^d) \cap L^{\infty}(\R^d)$ and $\rho$ is the admissible weight. Thus, $f \equiv 0$ is allowed.
+However, they require the following condition on the diffusion term $b$:
 \begin{align*}
   |b(x,u_1) - b(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 \end{align*}
 which excludes the parabolic Anderson model. Lastly, Theorem 1.2 {\em ibid.} requires the initial
-condition to be in $L^2(\R^d)$ and this excludes the popular cases of $u(0,x) = 1$ and $u(0,\cdot) =
-\delta_0(\cdot)$, where $\delta_0$ is the Dirac delta distribution. Our Theorem \ref{T:Main}
-includes both of these initial conditions and we show this in Section \ref{S:Example}.
+condition to be in $L^2(\R^d)$, which excludes the two important cases, $u(0,x) = 1$ and $u(0,\cdot)
+= \delta_0(\cdot)$. Our Theorem \ref{T:Main} includes both of these initial conditions; see Section
+\ref{S:Example}.
 
 \subsection{The conditions for the spectral measures by Tessitore and Zabczyk} \label{SS:TessZabz}
 
