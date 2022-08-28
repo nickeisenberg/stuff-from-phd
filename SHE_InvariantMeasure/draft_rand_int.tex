@@ -30,6 +30,7 @@
   calc,
   pgfplots,
   pgfplotstable,
+  makecell,
   xfrac}
 \usepackage[
      colorlinks,
@@ -1314,8 +1315,8 @@ crucial role in controlling the moments. The equation takes the following form:
   \left(\dfrac{\partial}{\partial t}-\dfrac{1}{2}\Delta\right) u(t,x)
    = g(x,u(t,x)) +b(x,u(t,x))\dot W(t,x) \quad  \text{$x\in \mathcal{O}$, $t>0$}.
 \end{align}
-The references below are far from being complete. The interested readers can find more references
-from the references below.
+The references in this subsection are far from being complete. The interested readers can find more
+references from the references below.
 
 The first case is when the drift term $g(\cdot)$ in \eqref{E:Drift} satisfies certain dissipativity
 conditions, which push the solution towards zero; see, e.g., \cite{assing.manthey:03:invariant,
@@ -1362,15 +1363,15 @@ condition to be in $L^2(\R^d)$, which excludes the two important cases, $u(0,x) 
 \subsection{The conditions for the spectral measures by Tessitore and Zabczyk} \label{SS:TessZabz}
 
 Under the setting of the whole space, $\R^d$, Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} prove the existence of an invariant measure for \eqref{E:SHE}
-in $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in L^2_{\rho}(\R^d) \cap
-L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$ and the solution
-starting from $\varphi$ is bounded in probability in $L^2_{\widetilde \rho}(\R^d)$ and also that the
-spectral density $\hat{f}$ satisfies
+\cite{tessitore.zabczyk:98:invariant} established the existence of an invariant measure for
+\eqref{E:SHE} in $L^2_{\rho}(\R^d)$ under the assumption that there exists a $\varphi \in
+L^2_{\rho}(\R^d) \cap L^2_{\widetilde\rho}(\R^d)$ where $\rho (\widetilde\rho)^{-1} \in L^1(\R^d)$
+and the solution starting from $\varphi$ is bounded in probability in $L^2_{\widetilde \rho}(\R^d)$
+and also that the spectral density $\hat{f}$ satisfies
 \begin{equation} \label{E:CorTZ}
 \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However as was illustrated in Theorem 3.3 ({\em ibid.}), in order
+see Hypothesis 2.1 ({\it ibid.}). However, as was illustrated in Theorem 3.3 ({\em ibid.}), in order
 to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
 bounded in time), the following additional assumptions were imposed:
 \begin{equation} \label{E:TZspec}
@@ -1378,16 +1379,16 @@ d\ge 3 \quad \text{and} \quad
 L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|\right) (\xi) |\xi|^{2-d} \ud \xi ,
 \end{equation}
 where the convention of the Fourier transform is given in Remark \ref{R:Fourier}. With these
-assumptions, they were able to prove that \eqref{E:SHE} starting from the constant $1$ satisfies
-\eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of an invariant
-measure. Moreover, the measure takes the form of \eqref{E:InvMeasForm} above with $\mu = 1$.
-Lastly we mention that due to its difficult nature, \eqref{E:TZspec} was not calculated for a
-specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
+assumptions, they were able to prove that \eqref{E:SHE} starting from the constant one initial
+condition satisfies \eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of
+an invariant measure via the construction \eqref{E:InvMeasForm}. Lastly we mention that due to its
+difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f}$ (see Examples
+\ref{Ex:Finv} and \ref{Ex:sqrt} below).
 
 \begin{remark} \label{R:Fourier}
-	The Fourier transform may be defined differently depending on how one would like to handle the
-	$2\pi$ constant. In this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we
-	use the convention that
+  The Fourier transform may be defined differently depending on how one handles the $2\pi$ constant.
+  In this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we use the convention
+  that
 	\begin{align} \label{E:Fourier}
 	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
 	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
@@ -1396,9 +1397,9 @@ specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 	\begin{align} \label{E:Plancherel}
 	\int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
 	\end{align}
-	Note that the authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their
-	convention of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that
-	the following convention has been used:
+  The authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their convention
+  of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that the
+  following convention has been used:
 	\begin{align*}
 	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
 	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
@@ -1409,8 +1410,24 @@ specific $\widehat{f}$ (see Examples \ref{Ex:Finv} and \ref{Ex:sqrt} below).
 	$\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is
 	condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the
 	slightly different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it
-		ibid.}).
+		ibid.}). We summarize these differences in Table \ref{T:Notation} below.
 \end{remark}
+
+\begin{table}[htpb]
+  \centering
+  \label{tab:label}
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{|c|c|c|} \hline
+                                                                      & Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}               & Current paper                                                                                                                                         \\ \hline
+  Fourier transform                                                   & $\mathcal{F}(f)=(2\pi)^{-d/2}\int_{\R^d} e^{-ix\cdot \xi}f(x)\ud x$       & $\mathcal{F}(f)=\int_{\R^d} e^{-ix\cdot \xi}f(x)\ud x$                                                                                                \\ \hline
+  Correlation function                                                & $\Gamma$                                                                  & $f$                                                                                                                                                   \\ \hline
+  Spectrum density                                                    & $\gamma$                                                                  & $\left(2\pi\right)^{-d/2}\widehat{f}$                                                                                                                 \\ \hline
+  \Gape[2em][1.5em]{Eq. (3.4) of \cite{tessitore.zabczyk:98:invariant}} & $\left|\widehat{\gamma^{1/2}}\right|*\left|\widehat{\gamma^{1/2}}\right|$ & $\left(2\pi\right)^{-3d/2}\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|$ \\ \hline
+  \end{tabular}
+  \medskip
+
+  \caption{Summary of notation differneces} \label{T:Notations}
+\end{table}
 
 Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. We may rewrite the integral
 in the second condition of \eqref{E:TZspec} as follows:
@@ -2052,8 +2069,8 @@ The following proposition shows that for initial conditions with unbounded tails
     \inf_{r\in(0,1]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1) }{\sqrt{2}}>0.
   \end{align*}
 
-  \noindent Combing the above three cases proves \eqref{E:psi}. This completes the proof of Proposition
-  \ref{P:growtail}.
+  \noindent Combing the above three cases proves \eqref{E:psi}. This completes the proof of
+  Proposition \ref{P:growtail}.
 \end{proof}
 
 % \subsection{Various spectral densities} \label{S:SpecDensities}
