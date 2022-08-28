@@ -354,9 +354,9 @@ moments of the solution are bounded in time (see \eqref{E:BddMnt}). It is known 
 growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one
 has to impose some additional assumptions either on the initial conditions, or the noise, or the
-coefficients of \eqref{E:SHE}, or all of them in order to control the growth of the moments.
-The moment formulas obtained in \cite{chen.huang:19:comparison,chen.kim:19:nonlinear} play an
-important role in this aspect.
+coefficients of \eqref{E:SHE}, or all of them in order to control the growth of the moments. The
+moment formulas obtained in \cite{chen.huang:19:comparison,chen.kim:19:nonlinear} play an important
+role in this context. 
 
 Here we would like to emphasize that we study the invariant measure using the Walsh random field
 approach \cite{walsh:86:introduction}, whereas such studies are mostly carried out under the
@@ -374,43 +374,20 @@ in the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11
 Regarding the noise, we give a more explicit condition --- \eqref{E:Dalang-00}, that is easy to
 verify, on the spectral density $\widehat{f}$ and present a few concrete examples (see Section
 \ref{SS:Bassel}). The detailed comparisons of our condition with those obtained by Tessitore and
-Zabyczyk \cite{tessitore.zabczyk:98:invariant} are given in Section \ref{SS:TessZabz}. Finally, in
-this paper we establish a factorization representation for the solution $u(t,x)$ to \eqref{E:SHE}
-(see Lemma \ref{L:Factorize}) under the random field framework; see Section \ref{S:Factor}. Note
-that such factorization lemma has been widely used in the framework of the stochastic evolution
-equation in Hilbert spaces; see Section \ref{S:Factor} for more details.\medskip
+Zabyczyk \cite{tessitore.zabczyk:98:invariant} are given in Section \ref{SS:TessZabz}.
 
-In the following, we will first present our main results in Section \ref{S:Main}. Then in Section
-\ref{S:Example}, we will make further discussions about our main results and provide examples in
-various aspects. In particular, in Section \ref{SS:Weight} we will extend the discussion about the
-weight functions; in Section \ref{SS:Init} we show that our results could include a wider class of
-initial conditions; in Section \ref{SS:Bassel} we give some explicit examples of the correlation
-functions that satisfy \eqref{E:Dalang-a0}; in Section \ref{SS:TessZabz} we compare our conditions
-with those obtained by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}. The two main
-Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho} and
-\ref{S:mainproof}, respectively. \bigskip
+Besides the above contributions, in this paper, we establish a factorization representation for the
+solution $u(t,x)$ to \eqref{E:SHE} (see Lemma \ref{L:Factorize}) under the random field framework;
+see Section \ref{S:Factor}. Note that such factorization lemma has been widely used in the framework
+of the stochastic evolution equation in Hilbert spaces; see Section \ref{S:Factor} for more
+details. Moreover, there is a miscellany of results in Section \ref{S:Example}, which may have
+independent interest. \medskip
 
-We conclude this introduction by introducing some notation and formulas that we use throughout the
-paper. We will use $\Norm{X}_p$ to denote the $L^p(\Omega)$ norm, namely,
-$\Norm{X}_p=\left(\mathbb{E}(|X|^p)\right)^{1/p}$. We will also use the following factorization
-property of the heat kernel,
-\begin{equation} \label{E:gsim}
-  G(t,x)G(s,y)=G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
-\end{equation}
-which can be easily verified and has been used extensively and critically in
-\cite{chen.dalang:15:moments*1,chen.kim:19:nonlinear,chen.huang:19:comparison}. Next, we will need
-the following spherical coordinate integration formula:
-\begin{align*}
-  \int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
-\end{align*}
-where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
-function. We use ``$\sim$'' to denote the standard asymptotic equivalent relation. Lastly, the
-convention of Fourier transform is given in Remark \ref{R:Fourier} below.
+Now we are ready to motivate the conditions that we use and present the main results.
 
+\subsection{Main results} \label{S:Main}
 
-\section{Main results} \label{S:Main}
-
-We now will introduce some conditions and quantities that will be needed for our main results.
+% We first introduce some conditions and quantities that will be needed for our main results.
 
 In order to have moments bounded in time, one has to first identify the exact conditions under which
 the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in
@@ -594,6 +571,42 @@ surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
 \end{theorem}
 
 This theorem will be proved in Section \ref{S:mainproof}.
+
+\subsection{Outline and notation}
+
+The paper is organized as follows: we will first present our main results in Section \ref{S:Main}.
+Then in Section \ref{S:Example}, we will make further discussions about our main results and provide
+examples in various aspects. In particular, in Section \ref{SS:Weight} we will extend the discussion
+about the weight functions; in Section \ref{SS:Init} we show that our results could include a wider
+class of initial conditions; in Section \ref{SS:Bassel} we give some explicit examples of the
+correlation functions that satisfy \eqref{E:Dalang-a0}; in Section \ref{SS:TessZabz} we compare our
+conditions with those obtained by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}. The
+two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho} and
+\ref{S:mainproof}, respectively. \bigskip
+
+We conclude this Introduction by introducing some notation and formulas that we use throughout the
+paper. We will use $\Norm{X}_p$ to denote the $L^p(\Omega)$ norm, namely,
+$\Norm{X}_p=\left(\mathbb{E}(|X|^p)\right)^{1/p}$. We will also use the following factorization
+property of the heat kernel,
+\begin{equation} \label{E:gsim}
+  G(t,x)G(s,y)=G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
+\end{equation}
+which can be easily verified and has been used extensively and critically in
+\cite{chen.dalang:15:moments*1,chen.kim:19:nonlinear,chen.huang:19:comparison}. Next, we will need
+the following spherical coordinate integration formula:
+\begin{align*}
+  \int_{\R^d} f(|x|) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
+\end{align*}
+where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
+function. We use ``$\sim$'' to denote the standard asymptotic equivalent relation. Lastly, the
+convention of Fourier transform is given by (see Remark \ref{R:Fourier})
+\begin{align} \label{E:Fourier}
+  \widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
+  \mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+\end{align}
+
+
+
 
 \section{Moment estimates -- Proof of Theorem \ref{T:Lrho}} \label{S:Lrho}
 We first state some known results and prove a moment bound in Corollary \ref{C:Mom}.
@@ -1306,9 +1319,6 @@ We are now ready to prove part (a) of Theorem \ref{T:Main}.
 \section{Discussion and examples} \label{S:Example}
 \subsection{Invariant measures for SHE with a drift term} \label{SS:Drift}
 
-% When present, authors usually denote the drift term as $f(x,u(t,x))$, however, we have already used $f$
-% to denote the correlation function in this paper, so we will use $g$ to for the drift.
-
 In this part, we give a brief account of the case when the SHE has a drift term which plays a
 crucial role in controlling the moments. The equation takes the following form:
 \begin{align} \label{E:Drift}
@@ -1322,7 +1332,7 @@ The first case is when the drift term $g(\cdot)$ in \eqref{E:Drift} satisfies ce
 conditions, which push the solution towards zero; see, e.g., \cite{assing.manthey:03:invariant,
 brzezniak.gatarek:99:martingale, cerrai:01:second, cerrai:03:stochastic,
 eckmann.hairer:01:invariant}. Such a ``negative'' drift term helps to cancel the growth of the
-moments. Here is one example of such drift term: for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$: 
+moments. Here is one example of such drift term: for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
 \begin{equation} \label{E:dis}
   \begin{cases}
     g(u) \le -k_1|u|^m + k_2 & u > 0, \\
@@ -1332,9 +1342,9 @@ moments. Here is one example of such drift term: for some $m,\: k_i, \: c_i>0$ a
 In particular, Cerrai \cite{cerrai:01:second, cerrai:03:stochastic} and Brze\'{z}niak and
 G\c{a}tarek \cite{brzezniak.gatarek:99:martingale} considered the case of a bounded spatial domain
 while Assing and Manthey \cite{assing.manthey:03:invariant} and Eckmann and Hairer
-\cite{eckmann.hairer:01:invariant} considered the whole space $\R^d$. 
+\cite{eckmann.hairer:01:invariant} considered the whole space $\R^d$.
 % In addition, the just mentioned papers only allow for bounded initial conditions, however, an
-% unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be considered. 
+% unbounded Lipschitz continuous diffusion term as in \eqref{E:lipcon} is allowed to be considered.
 Note that Eckmann and Hairer \cite{eckmann.hairer:01:invariant} studied the additive noise case
 along with a bounded initial condition.
 % condition \eqref{E:dis} , but they consider the case of an additive noise.
@@ -1388,15 +1398,8 @@ difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f
 \begin{remark} \label{R:Fourier}
   The Fourier transform may be defined differently depending on how one handles the $2\pi$ constant.
   In this paper (as in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we use the convention
-  that
-	\begin{align} \label{E:Fourier}
-	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
-	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
-	\end{align}
-	Hence, Plancherel's theorem takes the form of
-	\begin{align} \label{E:Plancherel}
-	\int_{\R^d} \psi(x) \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi.
-	\end{align}
+  given in \eqref{E:Fourier}. Hence, Plancherel's theorem takes the form of $\int_{\R^d} \psi(x)
+  \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$.
   The authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their convention
   of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that the
   following convention has been used:
@@ -1404,64 +1407,55 @@ difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f
 	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
 	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
 	\end{align*}
-	Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
-	\widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
-	$(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.}) corresponds to
-	$\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is
-	condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the
-	slightly different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it
-		ibid.}). We summarize these differences in Table \ref{T:Notation} below.
+  Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
+  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
+  $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.}) corresponds to
+  $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is
+  condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the
+  slightly different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it
+  ibid.}).
 \end{remark}
 
-\begin{table}[htpb]
-  \centering
-  \label{tab:label}
-  \renewcommand{\arraystretch}{1.2}
-  \begin{tabular}{|c|c|c|} \hline
-                                                                      & Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}               & Current paper                                                                                                                                         \\ \hline
-  Fourier transform                                                   & $\mathcal{F}(f)=(2\pi)^{-d/2}\int_{\R^d} e^{-ix\cdot \xi}f(x)\ud x$       & $\mathcal{F}(f)=\int_{\R^d} e^{-ix\cdot \xi}f(x)\ud x$                                                                                                \\ \hline
-  Correlation function                                                & $\Gamma$                                                                  & $f$                                                                                                                                                   \\ \hline
-  Spectrum density                                                    & $\gamma$                                                                  & $\left(2\pi\right)^{-d/2}\widehat{f}$                                                                                                                 \\ \hline
-  \Gape[2em][1.5em]{Eq. (3.4) of \cite{tessitore.zabczyk:98:invariant}} & $\left|\widehat{\gamma^{1/2}}\right|*\left|\widehat{\gamma^{1/2}}\right|$ & $\left(2\pi\right)^{-3d/2}\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|$ \\ \hline
-  \end{tabular}
-  \medskip
-
-  \caption{Summary of notation differneces} \label{T:Notations}
-\end{table}
-
-Recall the definition of $\mathcal{F}^{-1}$ in \eqref{E:Fourier} above. We may rewrite the integral
-in the second condition of \eqref{E:TZspec} as follows:
+Under our convention \eqref{E:Fourier} of Fourier transform, We may rewrite the integral in the
+second condition of \eqref{E:TZspec} as follows:
 \begin{align*}
-\Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
-\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
-\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x.
+  \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
+  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
+  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|  \right) (x) |x|^{2-d} \ud x.
 \end{align*}
-We now consider a couple of cases and give two examples that illustrate some of the
-difficulties that may arise because of the square root and absolute value. Before that, let us first introduce a
-nonnegative and nonnegative definite function in $\R$:\bigskip
+We now consider a couple of cases and give two examples that illustrate some difficulties that may
+arise because of the square root and absolute value. In particular, we will consider two cases:
+\begin{enumerate}
+  \item Case I:  $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f}>0$ on
+    $\R^d$;
+  \item Case II: $\widehat{f}$ is not strictly positive.
+\end{enumerate}
+
+Before that, let us first introduce a nonnegative and nonnegative definite function in $\R$:\bigskip
 
 \begin{example} \label{Ex:nonnegative}
-	Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then it is clear that $ \widehat{g}(\xi) =
-	\xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that
-	$f$ is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
-	\xi^{-2}\sin^2(\xi)\ge 0$.
+  Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then we have that $ \widehat{g}(\xi) =
+  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-|x|,0)$. It is clear that
+  $f$ is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi)= \widehat{g}(\xi)^2=
+  \xi^{-2}\sin^2(\xi)\ge 0$.
 \end{example}
+
 
 \subsubsection{Case I}
 In this case, we assume that
 \begin{align} \label{E:Ff>0}
-\text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f} >0 $ on $\R^d$.}
+  \text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f} >0 $ on $\R^d$.}
 \end{align}
 This is not a trivial assumption (see Examples \ref{Ex:Finv} and \ref{Ex:Finv-d} below), however one can
 check that the Bessel kernels satisfy this condition. Under \eqref{E:Ff>0}, there is no ambiguity
 when taking the square root and one can remove the absolute value to see that
 \begin{align*}
-\Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
-& = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi)  |\xi|^{-2} \ud \xi
-= \left(2\pi\right)^{d/2}\Upsilon(0),
+  \Gamma(d/2 -1)2^{d/2-2} & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
+                          & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi)  |\xi|^{-2} \ud \xi
+                            = \left(2\pi\right)^{d/2}\Upsilon(0),
 \end{align*}
-where we have applied Plancherel's theorem (see \eqref{E:Plancherel}) and the Fourier transform for
-Riesz kernel (in the generalized sense):
+where we have applied Plancherel's theorem and the Fourier transform for Riesz kernel (in the
+generalized sense):
 \begin{align*}
 \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
 \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
@@ -1510,7 +1504,7 @@ absolute values in \eqref{E:TZspec} is no longer possible.
 \begin{figure}[htbp]
 	\centering
 	\begin{center}
-		\begin{tikzpicture}[scale=1, transform shape]
+		\begin{tikzpicture}[scale=0.8, transform shape]
 		\begin{axis}[
 		axis lines = left,
 		xtick={-8,-4,0,4,8},
@@ -1899,27 +1893,26 @@ some $\xi\in\R^d$, then removing the absolute value in \eqref{E:TZspec} becomes 
 be illustrated in the following example.
 
 \begin{example} \label{Ex:sqrt}
-	Let $f$ and $g$ be given as Example \ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
-	only nonnegative (not strictly positive) with infinitely many zeros. Hence, when taking the square
-	root of $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive
-	and negative branches:
-	\begin{enumerate}
-		\item Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$ is preferable
-		since its inverse Fourier transform can be easily computed, which is equal to $g(x)$.
-		Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the absolute
-		value signs in \eqref{E:TZspec} do not pose any additional restrictions.
-		\item However, if one chooses the positive branches, namely,
-		$\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute
-		its Fourier transform. In general, some bad choices of the positive/negative branches may make
-		the conditions in \eqref{E:TZspec} fail. For example, such choice may turn
-		$\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value of a
-		distribution (unless it is a measure) may be problematic. Another issue that may arise is when
-		$\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative
-		values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up.
-	\end{enumerate}
+  Let $f$ and $g$ be given as Example \ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
+  only nonnegative (not strictly positive) with infinitely many zeros. Hence, when taking the square
+  root of $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive
+  and negative branches: (1) Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$
+  is preferable since its inverse Fourier transform can be easily computed, which is equal to
+  $g(x)$. Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the
+  absolute value signs in \eqref{E:TZspec} do not pose any additional restrictions. (2) However, if
+  one chooses the positive branches, namely,
+  $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute its
+  Fourier transform. In general, some bad choices of the positive/negative branches may make the
+  conditions in \eqref{E:TZspec} fail. For example, such choice may turn $\sqrt{\widehat{f}(\xi)}$
+  into a distribution, and then taking the absolute value of a distribution (unless it is a measure)
+  may be problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a
+  well-defined function, taking on both positive and negative values and after taking the absolute
+  value, the integral in \eqref{E:TZspec} may blow up.
 \end{example}
 
 \subsection{Various initial conditions} \label{SS:Init}
+
+In this part, we give some concrete examples of initial conditions.
 
 \begin{example}[$L^\infty(\R^d)$ initial condition] \label{Ex:BddInit}
   We emphasize that if the initial condition, $\mu$, is deterministic and is such that $\mu(\ud x) =
@@ -2058,23 +2051,19 @@ The following proposition shows that for initial conditions with unbounded tails
   \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
 
   When $r\in(1,2]$, elementary calculations show that the minimum of $\psi(r)$ is achieved at
-  $r=3/2$. Hence,
-  \begin{align*}
-    \inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2) }{\sqrt{1+4^\alpha}}>0.
-  \end{align*}
+  $r=3/2$. Hence, $\inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2)
+  }{\sqrt{1+4^\alpha}}>0$.
 
   Similarly, when $r\in (0,1]$, by differentiation, one finds that the function $\psi(r)$ is
-  nonincreasing. Hence, the minimum is achieved at $r=1$:
-  \begin{align*}
-    \inf_{r\in(0,1]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1) }{\sqrt{2}}>0.
-  \end{align*}
+  nonincreasing. Hence, the minimum is achieved at $r=1$, $\inf_{r\in(0,1]}
+  \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1) }{\sqrt{2}}>0$.
 
-  \noindent Combing the above three cases proves \eqref{E:psi}. This completes the proof of
-  Proposition \ref{P:growtail}.
+  Combing the above three cases proves \eqref{E:psi} and hence, Proposition \ref{P:growtail}.
 \end{proof}
 
-% \subsection{Various spectral densities} \label{S:SpecDensities}
 \subsection{Bessel and other related kernels} \label{SS:Bassel}
+
+In this part, we will make some explicit computations for Bessel and related kernels. 
 
 \begin{example}[Bessel kernel] \label{Ex:Bessel}
   Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
@@ -2358,11 +2347,10 @@ details.
   condition \eqref{E:TZspec}.
 \end{example}
 
-
-
 \subsection{Weight functions} \label{SS:Weight}
 
-The admissible condition \ref{E:aw} is needed in this paper due to the following result:
+In this part, we make some discussions on the weight functions. Firstly, the admissible condition
+\eqref{E:aw} is needed in this paper due to the following result:
 
 \begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
 	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
@@ -2375,8 +2363,8 @@ The admissible condition \ref{E:aw} is needed in this paper due to the following
 	$L^2_\rho(\R^d)$.
 \end{proposition}
 
-Here are several examples of admissible weights (see Example in Section 2 of
-\cite{tessitore.zabczyk:98:invariant}):
+Then, let us find out some concrete examples. As given in Section 2 of
+\cite{tessitore.zabczyk:98:invariant}, the following functions are admissible functions: 
 \begin{equation} \label{E:admRho}
 \begin{aligned}
 \rho(x) & = \exp(-a|x|), \quad               &  & a>0 \quad \text{and} \\
@@ -2392,6 +2380,8 @@ Here are several examples of admissible weights (see Example in Section 2 of
 	condition \eqref{E:aw} excludes these two cases. However, the examples in the following
 	Proposition \ref{P:adm} seem to be less obvious.
 \end{remark}
+
+The following proposition characterizes when a function of exponential type is admissible.
 
 \begin{proposition} \label{P:adm}
 	$\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
