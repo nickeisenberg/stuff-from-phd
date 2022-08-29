@@ -144,7 +144,7 @@
   approach for stochastic partial differential equations laid out by John Walsh and Robert Dalang,
   we identify a set of conditions on the initial data, the correlation measure and the weight
   function $\rho$, which will together guarantee the existence of an invariant measure in the
-  weighted space $L^2_\rho(\R^d)$. In particular, our result allows the {\it parabolic Anderson
+  weighted space $L^2_\rho(\R^d)$. In particular, our result includes the {\it parabolic Anderson
   model} (i.e., the case when $b(u)=\lambda u$) starting from the Dirac delta measure.
 \end{abstract}
 \bigskip
@@ -183,10 +183,9 @@ where $\psi$ and $\phi$ are continuous and rapidly decreasing functions, $\widet
 and nonnegative definite tempered measure on $\R^d$ that is commonly referred to as the {\it
 correlation measure}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a
 nonnegative and nonnegative definite tempered measure, which is usually called the {\it spectral
-measure} and is denoted by $\widehat{f}(\ud \xi)$ \footnote{See Remark \ref{R:Fourier} for the
-convention of Fourier transform that is used in this paper.}. Moreover, in the case where $\Gamma$
-has a density $f$, namely, $\Gamma(\ud x)=f(x) \ud x$, then $\widehat{f}(\ud \xi) = \widehat{f}(\xi)
-\ud \xi$.
+measure} and is denoted by $\widehat{f}(\ud \xi)$ (see \eqref{E:Fourier} for the convention of
+Fourier transform). Moreover, in the case where $\Gamma$ has a density $f$, namely, $\Gamma(\ud
+x)=f(x) \ud x$, we write $\widehat{f}(\ud \xi)$ as $\widehat{f}(\xi) \ud \xi$.
 
 The initial condition, $\mu$, is a deterministic, locally finite, regular, signed Borel measure that
 satisfies the following integrability condition at infinity:
@@ -221,15 +220,15 @@ integral}. We refer the interested readers to
 for more details of this setup. \bigskip
 
 The aim of this paper is to investigate the conditions required to guarantee the existence of an
-invariant measure for the solution to \eqref{E:SHE}. This is a crucial step for the study of the
+invariant measure for the solution to \eqref{E:SHE}, which is a crucial step for the study of the
 ergodicity of the system that requires the corresponding uniqueness. We direct the interested
 readers to \cite{cerrai:01:second,da-prato.zabczyk:96:ergodicity, da-prato.zabczyk:14:stochastic}
 for more details about the invariant measure, its existence/uniqueness, and the ergodicity of the
 system. The general procedure for finding the invariant measure, especially in the setting of
 \eqref{E:SHE}, has been laid out by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant},
-which involves two parts: firstly one needs to show that the laws of the solution to \eqref{E:SHE}
+which involves two parts: first one needs to show that the laws of the solution to \eqref{E:SHE}
 form a family of {\em Markovian transition functions} on some Hilbert space, $H$, and the
-corresponding {\em Markovian semigroup} is Feller; and secondly one needs to establish that the
+corresponding {\em Markovian semigroup} is Feller; and second one needs to establish that the
 moments of solution is bounded in time (see \eqref{E:BddMnt} below). For the second point, it
 requires some substantial work (see Theorems \ref{T:Lrho} and \ref{T:Main} below).  On the other
 hand, the first point has been shown to be true for our case of interest (see, e.g., \cite[Chapter
@@ -341,39 +340,38 @@ Then we apply the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
 for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. \medskip
 
 In the literature, the existence of invariant measure of the stochastic heat equation is more
-commonly studied with a drift term and often with the diffusion coefficient $b(\cdot)$ being
-bounded; we will postpone a brief review of this case to Section \ref{SS:Drift}. In contrast, the
-existence of an invariant measure under the settings of equation \eqref{E:SHE} has been rarely
-studied. To the best of our knowledge, this current article and the one by Tessitore and Zabczyk
-\cite{tessitore.zabczyk:98:invariant} are the only papers that consider the case where the spatial
-domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is globally Lipschitz in the second
-variable uniformly in the first variable (see \eqref{E:lipcon}), and there is no additional negative
-drift term to help. The major challenge is to identify the right conditions so that the probability
-moments of the solution are bounded in time (see \eqref{E:BddMnt}). It is known that the solution to
-\eqref{E:SHE} is usually {\it intermittent}, namely, its moments possess a certain exponential
-growth in $t$; see, e.g.,
+commonly studied with a drift term; we will postpone a brief review of this case to Section
+\ref{SS:Drift}. In contrast, the existence of an invariant measure under the settings of equation
+\eqref{E:SHE} has been rarely studied. To the best of our knowledge, this current article and the
+one by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant} are the only papers that consider
+the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$, is
+globally Lipschitz in the second variable uniformly in the first variable (see \eqref{E:lipcon}),
+and there is no additional negative drift term to help. The major challenge is to identify the right
+conditions so that the probability moments of the solution are bounded in time (see
+\eqref{E:BddMnt}). The solution to \eqref{E:SHE} is usually {\it intermittent}, namely, its moments
+possess a certain exponential growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one
 has to impose some additional assumptions either on the initial conditions, or the noise, or the
 coefficients of \eqref{E:SHE}, or all of them in order to control the growth of the moments. The
 moment formulas obtained in \cite{chen.huang:19:comparison,chen.kim:19:nonlinear} play an important
 role in this context. 
 
-Here we would like to emphasize that we study the invariant measure using the Walsh random field
-approach \cite{walsh:86:introduction}, whereas such studies are mostly carried out under the
-framework of the stochastic evolution in Hilbert spaces \cite{da-prato.zabczyk:14:stochastic}. Even
-though both theories are equivalent (see \cite{dalang.quer-sardanyons:11:stochastic}), the
-differences in many technical aspects are significant enough that we will see that, the random field
-approach can produce conditions that are more explicit and sharper. To be more precise, for the
-initial conditions, the results in \cite{tessitore.zabczyk:98:invariant} allow $L_\rho^2(\R^d)$
-functions to be initial conditions, although the authors proved their main result --- Theorem 3.3
-({\it ibid.}) --- only for the constant one initial condition. Here we give the precise conditions
-on the initial condition (see \eqref{E:InitData} below) which allows a much wider class of initial
-data, including unbounded functions and measures such as the Dirac delta measure (see Examples
+Here we emphasize that we study the invariant measure using the Walsh random field approach
+\cite{walsh:86:introduction}, whereas such studies are mostly carried out under the framework of the
+stochastic evolution in Hilbert spaces \cite{da-prato.zabczyk:14:stochastic}. Even though both
+theories are equivalent (see \cite{dalang.quer-sardanyons:11:stochastic}), the differences in many
+technical aspects are substantial enough that we will see that, the random field approach can
+produce conditions that are more explicit and sharper. To be more precise, for the initial
+conditions, the results in \cite{tessitore.zabczyk:98:invariant} allow $L_\rho^2(\R^d)$ functions to
+be initial conditions, although the authors proved their main result---Theorem 3.3 ({\it
+ibid.})---only for the constant one initial condition. Here we give the precise conditions on the
+initial condition (see \eqref{E:InitData} below) which allows a much wider class of initial data,
+including unbounded functions and measures such as the Dirac delta measure (see Examples
 \ref{Ex:delta} and \ref{Ex:Riesz}). Note that the Dirac delta initial measure plays a prominent role
 in the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-Regarding the noise, we give a more explicit condition --- \eqref{E:Dalang-00}, that is easy to
+Regarding the noise, we give a more explicit condition -- \eqref{E:Dalang-00}, that is easy to
 verify, on the spectral density $\widehat{f}$ and present a few concrete examples (see Section
-\ref{SS:Bassel}). The detailed comparisons of our condition with those obtained by Tessitore and
+\ref{SS:Bassel}). The comparisons of our condition with those obtained by Tessitore and
 Zabyczyk \cite{tessitore.zabczyk:98:invariant} are given in Section \ref{SS:TessZabz}.
 
 Besides the above contributions, in this paper, we establish a factorization representation for the
@@ -387,14 +385,13 @@ Now we are ready to motivate the conditions that we use and present the main res
 
 \subsection{Main results} \label{S:Main}
 
-% We first introduce some conditions and quantities that will be needed for our main results.
 
-In order to have moments bounded in time, one has to first identify the exact conditions under which
-the moments to \eqref{E:SHE} do not possess exponential growth. This question has been answered in
-\cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions
-are given. More precisely, to have the second moment bounded in time, one has to have the spatial
-dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of
-$b(\cdot)$ have to satisfy the following two conditions:
+As mentioned earlier, in order to have moments bounded in time, one should first identify the exact
+conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question
+has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and
+sufficient conditions are given. More precisely, to have the second moment bounded in time, one has
+to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and
+Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
@@ -824,12 +821,12 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
 and the restarted SHE ($ t_0>0$).
 
 \begin{lemma} \label{L:yineq}
-  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies \eqref{A:icon} and that
+  Suppose that $\mu$---the initial condition for $u$---satisfies \eqref{A:icon} and that
   $\widehat{f}$ satisfies Dalang's condition \eqref{E:Dalang}. Suppose that for some $\alpha\in
-  (0,1/2)$, $\mathcal{H}_\alpha(t)$ defined in \eqref{E:H} is finite for all $t>0$.
-  Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart}
-  and $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$
-  when $ t_0=0$. Then
+  (0,1/2)$, $\mathcal{H}_\alpha(t)$ defined in \eqref{E:H} is finite for all $t>0$. Fix an arbitrary
+  $ t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE \eqref{E:restart} and
+  $\dot{W}_{t_0}$ be the time-shifted noise (see \eqref{E:ShiftW}) when $t_0>0$ and let $v=u$ when $
+  t_0=0$. Then
   \begin{equation} \label{E:Y}
      Y_v(s,y) := \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
                = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
@@ -883,9 +880,7 @@ and the restarted SHE ($ t_0>0$).
 \end{remark}
 \begin{proof}
   In the proof, we use $C$ to denote a generic constant that may change its value at each
-  appearance. \bigskip
-
-  \noindent (1) We first prove \eqref{E:NormY}. By the Burkholder-Davis-Gundy inequality and
+  appearance. We first prove \eqref{E:NormY}. By the Burkholder-Davis-Gundy inequality and
   Minkowski's integral inequality, we see that
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2 \le
@@ -942,10 +937,9 @@ and the restarted SHE ($ t_0>0$).
     =   & \: 2^{2(1-\alpha)} \mathcal{H}_\alpha(s).
   \end{align*}
   Plugging the above bound back to \eqref{E_:NormY} proves \eqref{E:NormY}. \bigskip
-  \bigskip
 
-  \noindent (2--3) Part (2) is a direct consequence of Theorem \ref{T:ExUn}. It remains to prove
-  \eqref{E:yineq}. An application of Minkowski's inequality shows that
+  Part (2) is a direct consequence of Theorem \ref{T:ExUn}. It remains to prove \eqref{E:yineq}. An
+  application of Minkowski's inequality shows that
   \begin{align} \label{E:EYqr}
     \E\left( \Norm{Y_v(s,\cdot)}_{\rho}^q\right)
     = \Norm{\int_{\R^d} Y_v(s,y)^2\rho(y) \ud y }_{q/2}^{q/2}
@@ -1896,16 +1890,15 @@ be illustrated in the following example.
   root of $\widehat{f}(\xi)$ as in \eqref{E:TZspec}, one needs to wisely choose the correct positive
   and negative branches: (1) Clearly, the signed version $\sqrt{\widehat{f}(\xi)}=\xi^{-1}\sin(\xi)$
   is preferable since its inverse Fourier transform can be easily computed, which is equal to
-  $g(x)$. Moreover, because this inverse Fourier transform $g(x)$ is clearly nonnegative, the
-  absolute value signs in \eqref{E:TZspec} do not pose any additional restrictions. (2) However, if
-  one chooses the positive branches, namely,
-  $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute its
-  Fourier transform. In general, some bad choices of the positive/negative branches may make the
-  conditions in \eqref{E:TZspec} fail. For example, such choice may turn $\sqrt{\widehat{f}(\xi)}$
-  into a distribution, and then taking the absolute value of a distribution (unless it is a measure)
-  may be problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a
-  well-defined function, taking on both positive and negative values and after taking the absolute
-  value, the integral in \eqref{E:TZspec} may blow up.
+  $g(x)$. Moreover, because this inverse Fourier transform $g(x)$ is nonnegative, the absolute value
+  signs in \eqref{E:TZspec} do not pose any additional restrictions. (2) However, if one chooses the
+  positive branches, namely, $\sqrt{\widehat{f}(\xi)}=\left|\xi^{-1}\sin(\xi)\right|$, then it is
+  not clear how to compute its Fourier transform. In general, some bad choices of the
+  positive/negative branches may make the conditions in \eqref{E:TZspec} fail. For example, such
+  choice may turn $\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value
+  of a distribution (unless it is a measure) may be problematic. Another issue that may arise is
+  when $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative
+  values and after taking the absolute value, the integral in \eqref{E:TZspec} may blow up.
 \end{example}
 
 \subsection{Various initial conditions} \label{SS:Init}
@@ -1946,7 +1939,6 @@ In this part, we give some concrete examples of initial conditions.
     \le \left(G(t,\cdot)* |\cdot|^{-\alpha}\right)(0).
   \end{align*}
   On the other hand,
-  Hence,
   \begin{align*}
     \left(G(t,\cdot)* |\cdot|^{-\alpha}\right)(0)
     = \frac{2\pi^{d/2}}{\Gamma(d/2)}\times (2\pi t)^{-d/2} \int_0^\infty e^{-\frac{r^2}{2t}} r^{-\alpha + d-1} \ud r = C_* t^{-\alpha/2},
@@ -2041,12 +2033,11 @@ The following proposition shows that for initial conditions with unbounded tails
     & = C_\alpha \left(\frac{r-1}{1+r}\right)^\alpha
     = C_\alpha \left(1-\frac{2}{1+r}\right)^\alpha \ge C_\alpha \left(1-\frac{2}{3}\right)^\alpha.
   \end{align*}
-  Note that in the first inequality above, we have considered two
-  cases: $2\alpha \ge 1$ and $2 \alpha < 1$. When $2\alpha < 1$, we have used the concavity of
-  $x^{2\alpha}$, namely, $ (1 + r^{2\alpha})^{2\alpha} / 2 \le ((1+r)/2)^{2\alpha}$; when $2\alpha
-  \ge 1$, we have used the super-additiity of $x^{2\alpha}$: namely, that for $a,b>0$ that $
-  (a+b)^{2\alpha}\ge a^{2\alpha} + b^{2\alpha}$. This shows that $\inf_{r>2}
-  \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
+  Note that in the first inequality above, we have considered two cases: $2\alpha \ge 1$ and $2
+  \alpha < 1$. When $2\alpha < 1$, we have used the concavity of $x^{2\alpha}$, namely, $ (1 +
+  r^{2\alpha})^{2\alpha} / 2 \le ((1+r)/2)^{2\alpha}$; when $2\alpha \ge 1$, we have used the
+  super-additiity of $x^{2\alpha}$: namely, that for $a,b>0$ that $ (a+b)^{2\alpha}\ge a^{2\alpha} +
+  b^{2\alpha}$. Therefore, $\inf_{r>2} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
 
   When $r\in(1,2]$, elementary calculations show that the minimum of $\psi(r)$ is achieved at
   $r=3/2$. Hence, $\inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2)
@@ -2106,9 +2097,9 @@ In this part, we will make some explicit computations for Bessel and related ker
     K(x) = \phi \cdot (\alpha |x|)^\nu \mathcal{K}_\nu\left(\alpha |x|\right), \quad  \text{for
     $x\in\R^d$ with }\phi>0, \alpha>0, \nu >0 ,
   \end{align}
-  where $\mathcal{K}_\nu(\cdot)$ is the modified Bessel function of second type, and $\alpha$ and $\nu$
-  refer to the {\it scaling and smoothness parameters} respectively. From the inversion formula
-  (see p. 46 {\it ibid.}), one sees that
+  where $\mathcal{K}_\nu(\cdot)$ is the modified Bessel function of second type, and $\alpha$ and
+  $\nu$ refer to the {\it scaling and smoothness parameters}, respectively. From the inversion
+  formula (see p. 46 {\it ibid.}), one sees that
   \begin{align*}
     \mathcal{F}K(\xi) = (2\pi)^{d} \mathcal{F}^{-1} K(\xi) = (2\pi)^d f(|\xi|)
     \quad \text{with} \quad
@@ -2294,7 +2285,7 @@ following proposition:
      = \int_{0}^t \ud r \: r^{-2\alpha}
      = \frac{t^{1-2\alpha}}{1-2\alpha},
 	\end{align*}
-  provided $\alpha \in (0, 1/2)$. This proves both \eqref{E:HaB'} and \eqref{E:HaBS'}.
+  provided $\alpha \in (0, 1/2)$, which proves both \eqref{E:HaB'} and \eqref{E:HaBS'}.
 \end{proof}
 
 
@@ -2303,7 +2294,7 @@ spectral density. However, we can still construct a Riesz-type kernel which has 
 the origin and polynomial decay at infinity, but with different rates, using Propositions
 \ref{P:Bessel} and \ref{P:Bessel'}. This Riesz-type type kernel gives another example of a kernel
 that is easily verifiable to be permissible under the conditions of our Theorem \ref{T:Main} above,
-while being very difficult to verify using \eqref{E:TZspec}; see Example \ref{Ex:Riesz-T} for more
+while being demanding to verify using \eqref{E:TZspec}; see Example \ref{Ex:Riesz-T} for more
 details.
 
 \begin{example}[Riesz-type kernel] \label{Ex:Riesz-T}
@@ -2347,7 +2338,7 @@ details.
 
 \subsection{Weight functions} \label{SS:Weight}
 
-In this part, we make some discussions on the weight functions. Firstly, the admissible condition
+In this part, we make some discussions on the weight functions. First, the admissible condition
 \eqref{E:aw} is needed in this paper due to the following result:
 
 \begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
@@ -2361,7 +2352,7 @@ In this part, we make some discussions on the weight functions. Firstly, the adm
 	$L^2_\rho(\R^d)$.
 \end{proposition}
 
-Then, let us find out some concrete examples. As given in Section 2 of
+Second, let us find out some concrete examples. As given in Section 2 of
 \cite{tessitore.zabczyk:98:invariant}, the following functions are admissible functions: 
 \begin{equation} \label{E:admRho}
 \begin{aligned}
@@ -2443,7 +2434,7 @@ The following proposition characterizes when a function of exponential type is a
 	I\left(1/2, x_r\right) \ge C K(r), \quad \text{with}\quad
 	K(r):=\int_0^r  e^{ - y^2 + r^b - c(r-y)^b} \ud y.
 	\end{align*}
-	It suffices to show that $\lim_{r\to\infty}K(r)=\infty$, which is clear when $b>2$ because
+	It suffices to show that $\lim_{r\to\infty}K(r)=\infty$, which is true when $b>2$ because
 	\begin{align*}
 	K(r)
 	\ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
@@ -2474,9 +2465,9 @@ The following proposition characterizes when a function of exponential type is a
 \end{proof}
 
 \section*{Acknowledgements}
-L.C. would like to thank Sandra Cerrai for some useful discussions and pointing out the paper by
-Misiats, Stanzhytskyi, and Yip \cite{misiats.stanzhytskyi.ea:16:existence} during the conference ---
-{\it Frontier Probability Days 2018}.
+L.C. thanks Sandra Cerrai for some helpful discussions and for pointing out the paper by Misiats,
+Stanzhytskyi, and Yip \cite{misiats.stanzhytskyi.ea:16:existence} during the conference --
+\textit{Frontier Probability Days 2018}.
 
 
 % {{{ All references: New ones with biber
