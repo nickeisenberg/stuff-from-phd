@@ -1146,7 +1146,7 @@ In this part, we give a brief account of the case when the SHE has a drift term 
 crucial role in controlling the moments. The equation usually takes the following form:
 \begin{align}\label{E:Drift}
   \left(\dfrac{\partial}{\partial t}-\dfrac{1}{2}\Delta\right) u(t,x)
-   = g(x,u(t,x)) +b(x,u(t,x))\dot W(t,x) \quad \text{$x\in \mathcal{O}$, $t>0$}.
+   = g(x,u(t,x)) + b(x,u(t,x)) \dot W(t,x) \quad \text{$x\in \mathcal{O}$, $t>0$}.
 \end{align}
 The references in this part are far from being complete. The interested readers can find more
 references from the references below.
@@ -1234,23 +1234,33 @@ Examples~\ref{Ex:Finv} and~\ref{Ex:sqrt} below).
   (\textit{ibid.}).
 \end{remark}
 
-Under our convention~\eqref{E:Fourier} of Fourier transform, We may rewrite the integral in the
-second condition of~\eqref{E:TZspec} as follows:
-\begin{align*}
-  \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
-  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
-  \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|\right) (x) |x|^{2-d} \ud x.
-\end{align*}
-We now consider a couple of cases and give two examples that illustrate some difficulties that may
-arise because of the square root and absolute value. In particular, we will consider two cases:
-\begin{enumerate}
-  \item Case I: $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f}>0$ on
-    $\R^d$;
-  \item Case II: $\widehat{f}$ is not strictly positive.
-\end{enumerate}
+% Under our convention~\eqref{E:Fourier} of Fourier transform, We may rewrite the integral in the
+% second condition of~\eqref{E:TZspec} as follows:
+% \begin{align*}
+%   \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
+%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
+%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|\right) (x) |x|^{2-d} \ud x.
+% \end{align*}
 
-Before that, let us first introduce a nonnegative and nonnegative definite function in $\R$, that
-will be used several times in the rest of this subsection:
+If $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
+in~\eqref{E:TZspec} can be removed without ambiguity, which will reduce to our
+condition~\eqref{E:Dalang-00} up to a constant factor. However, when $\widehat{f}$ is only
+nonnegative and not strictly positive, finding the right square root of $\widehat{f}$ so that
+$\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative become tricky. This last point will be
+illustrated by the examples below. We first set up the notation in Example~\ref{Ex:nonnegative}.
+%
+% We now consider two cases (depending whether $\widehat{f}$ is strictly postive) and give some
+% examples to illustrate the potential difficulties that may arise because of the square root and
+% absolute value in~\eqref{E:TZspec}.
+%
+% Before that, let us first introduce a nonnegative and
+% nonnegative definite function in $\R$, that will be used several times in the rest of this
+% subsection:
+
+% In particular, we will consider two cases: \begin{enumerate} \item Case I:
+% $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f}>0$ on $\R^d$; \item Case
+% II: $\widehat{f}$ is not strictly positive. \end{enumerate}
+
 
 \begin{example}\label{Ex:nonnegative}
   Let $d = 1$ and $g(x) = \frac{1}{2}1_{[-1,1]}(x)$. Then we have that $ \widehat{g}(\xi) =
@@ -1259,39 +1269,39 @@ will be used several times in the rest of this subsection:
   = \xi^{-2}\sin^2 (\xi)\ge 0$.
 \end{example}
 
+% \subsubsection{Case I -- $\widehat{f}$ is strictly positive}
+% In this part, we assume that $\widehat{f}$ is strictly positive. If, in addition, 
+% \begin{align}\label{E:Ff>0}
+%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0,
+% \end{align}
+% then one can remove the absolute values in~\eqref{E:TZspec}. Note that~\eqref{E:Ff>0} is not a
+% trivial assumption (see Examples~\ref{Ex:Finv} and~\ref{Ex:Finv-d} below). However, one can check
+% that the Bessel kernels satisfy this condition.
 
-\subsubsection{Case I}
-In this case, we assume that
-\begin{align}\label{E:Ff>0}
-  \text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f} >0 $ on $\R^d$.}
-\end{align}
-This is not a trivial assumption (see Examples~\ref{Ex:Finv} and~\ref{Ex:Finv-d} below), however one
-can check that the Bessel kernels satisfy this condition. Under~\eqref{E:Ff>0}, there is no
-ambiguity when taking the square root and one can remove the absolute value to see that
-\begin{align*}
-  \Gamma(d/2 -1)2^{d/2-2} 
-  & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
-  & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi) |\xi|^{-2} \ud \xi
-    = \left(2\pi\right)^{d/2}\Upsilon(0),
-\end{align*}
-where we have applied Plancherel's theorem and the Fourier transform for Riesz kernel (in the
-generalized sense):
-\begin{align*}
-\mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
-\quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
-\end{align*}
-Hence, the second condition in~\eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
-(2\pi)^{d/2}\Upsilon(0)$. Comparing this with~\eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
-our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
+% Under~\eqref{E:Ff>0}, there is no ambiguity when
+% taking the square root and one can remove the absolute value to see that
+% \begin{align*}
+%   \Gamma(d/2 -1)2^{d/2-2} 
+%   & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) |x|^{2-d} \ud x \\
+%   & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi) |\xi|^{-2} \ud \xi
+%     = \left(2\pi\right)^{d/2}\Upsilon(0),
+% \end{align*}
+% where we have applied Plancherel's theorem and the Fourier transform for Riesz kernel (in the
+% generalized sense):
+% \begin{align*}
+% \mathcal{F}(|\cdot|^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} |\xi|^{-(d-\alpha)},
+% \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
+% \end{align*}
+% Hence, the second condition in~\eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
+% (2\pi)^{d/2}\Upsilon(0)$. Comparing this with~\eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
+% our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 
-The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ may not be
-non-negative even if $f$ is non-negative and non-negative definite, thus simply removing the
-absolute values in~\eqref{E:TZspec} is no longer possible.
+The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$.
 
 \begin{example}\label{Ex:Finv}
-  Suppose that $d = 1$ and $\widehat{f}(\xi) = 2^{-2}\max\{2-|\xi|,0\}$. Then as explained in
-  Example~\ref{Ex:nonnegative}, both $f$ and $\widehat{f}$ are non-negative and non-negative
-  definite and $f(x) = (2\pi)^{-1}x^{-2}\sin^2 (x)$. We claim that
+  Suppose that $d = 1$, $f(x) = (2\pi)^{-1}x^{-2}\sin^2 (x)$ and $\widehat{f}(\xi) =
+  2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example~\ref{Ex:nonnegative}, both $f$ and
+  $\widehat{f}$ are non-negative and non-negative definite. We claim that
 	\begin{align}\label{E:Claim}
 	\text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes both positive and negative values.}
 	\end{align}
@@ -1689,9 +1699,9 @@ absolute values in~\eqref{E:TZspec} is no longer possible.
 	\label{Fig:fresnel}
 \end{figure}
 
-The next example shows that the spectral density given in Example~\ref{Ex:Finv} can be easily
-handled by the conditions we presented in Theorem~\ref{T:Main}, namely showing the finiteness of
-$\Upsilon_{\alpha}(0)$.
+One the other hand, the next example shows that the spectral density given in Example~\ref{Ex:Finv}
+can be easily handled by the conditions we presented in Theorem~\ref{T:Main}, namely showing the
+finiteness of $\Upsilon_{\alpha}(0)$.
 \begin{example}\label{Ex:Finv-d}
   From the one-dimension example in Example~\ref{Ex:Finv}, one can construct a $d$-dimensional
   counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
@@ -1711,10 +1721,13 @@ $\Upsilon_{\alpha}(0)$.
   Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
 \end{example}
 
-\subsubsection{Case II}
-If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi) = 0$ for
-some $\xi\in\R^d$, then removing the absolute value in~\eqref{E:TZspec} becomes tricky, which will
-be illustrated in the following example.
+% \subsubsection{Case II -- $\widehat{f}$ is nonnegative but not strictly positive}
+% If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi) = 0$ for
+% some $\xi\in\R^d$, then removing the absolute value in~\eqref{E:TZspec} becomes tricky, which will
+% be illustrated in the following example.
+
+The next example illustrates the delicacy of choosing the right branches for the square root
+in~\eqref{E:TZspec}.
 
 \begin{example}\label{Ex:sqrt}
   Let $f$ and $g$ be given as Example~\ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
