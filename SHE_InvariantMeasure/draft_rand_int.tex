@@ -9,29 +9,31 @@
 % -------------------------------------------------
 % \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{amssymb,
-  nccmath,
-  geometry,
-  latexsym,
-  amsmath,
-  graphics,
-  fullpage,
-  epsfig,
-  amsthm,
-  relsize,
-  tikz,
-  amsfonts,
-  mathrsfs,
-  makeidx,
-  comment,
-  latexsym,
-  dcolumn,
-  tocloft, % spacing for tableofcontents
-  calc,
-  pgfplots,
-  pgfplotstable,
-  makecell,
-  xfrac}
+\usepackage{amssymb}
+\usepackage{nccmath}
+\usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{fullpage}
+\usepackage{epsfig}
+\usepackage{amsthm}
+\usepackage{relsize}
+\usepackage{tikz}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{comment}
+\usepackage{latexsym}
+\usepackage{dcolumn}
+\usepackage{tocloft} % spacing for tableofcontents
+\usepackage{calc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{makecell}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{mathtools}
 \usepackage[
      colorlinks,
      citecolor = blue,
@@ -141,7 +143,7 @@
   approach for stochastic partial differential equations laid out by John Walsh and Robert Dalang,
   we identify a set of conditions on the initial data, the correlation measure and the weight
   function $\rho$, which will together guarantee the existence of an invariant measure in the
-  weighted space $L^2_\rho(\R^d)$. In particular, our result includes the {\it parabolic Anderson
+  weighted space $L^2_\rho(\R^d)$. In particular, our result includes the \textit{parabolic Anderson
   model} (i.e., the case when $b(u)=\lambda u$) starting from the Dirac delta measure.
 \end{abstract}
 \bigskip
@@ -153,7 +155,7 @@
 Dirac delta initial condition, weighted $L^2$ space, Mat\'ern class of correlation functions, Bessel
 kernel. \smallskip
 
-% \noindent{\it Running head:} Ergodicity and CLT for PAM.
+% \noindent\textit{Running head:} Ergodicity and CLT for PAM.
 
 \setcounter{tocdepth}{2}
 \tableofcontents
@@ -179,7 +181,7 @@ where $\psi$ and $\phi$ are continuous and rapidly decreasing functions, $\widet
 \phi(-x)$, ``$*$'' refers to the convolution in the spatial variable, and $\Gamma$ is a nonnegative
 and nonnegative definite tempered measure on $\R^d$ that is commonly referred to as the {\it
 correlation measure}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a
-nonnegative and nonnegative definite tempered measure, which is usually called the {\it spectral
+nonnegative and nonnegative definite tempered measure, which is usually called the \textit{spectral
 measure} and is denoted by $\widehat{f}(\ud \xi)$ (see \eqref{E:Fourier} for the convention of
 Fourier transform). Moreover, in the case where $\Gamma$ has a density $f$, namely, $\Gamma(\ud
 x)=f(x) \ud x$, we write $\widehat{f}(\ud \xi)$ as $\widehat{f}(\xi) \ud \xi$.
@@ -189,9 +191,9 @@ satisfies the following integrability condition at infinity:
 \begin{equation}\label{A:icon}
   \int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x) < \infty \quad \text{for all $a>0$},
 \end{equation}
-where $|\mu|=\mu_++\mu_-$ and $\mu=\mu_+-\mu_-$ refers to the {\it Hahn decomposition} of the
+where $|\mu|=\mu_++\mu_-$ and $\mu=\mu_+-\mu_-$ refers to the \textit{Hahn decomposition} of the
 measure $\mu$. Initial condition of this type, introduced in \cite{chen.dalang:15:moments*1} and
-further explored in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}, is called {\it rough
+further explored in \cite{chen.kim:19:nonlinear,chen.huang:19:comparison}, is called \textit{rough
 initial condition}.
 
 The function $b(x,u)$ is uniformly bounded in the first variable and Lipschitz continuous in the
@@ -203,7 +205,7 @@ second variable, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
 In particular, our assumption allows the linear case $b(x,u) = \lambda u$, which is usually referred
 to as the \textit{parabolic Anderson model} (PAM) \cite{carmona.molchanov:94:parabolic}.
 
-The SPDE \eqref{E:SHE} is understood in its {\it mild form}:
+The SPDE \eqref{E:SHE} is understood in its \textit{mild form}:
 \begin{equation}\label{E:gmsol}
   u(t,x) = J_0(t,x;\mu)+ \int_0^t\int_{\R^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y),
 \end{equation}
@@ -211,7 +213,7 @@ where $G(t,x) = (2 \pi t)^{-d/2}\exp\left( -\left(2t\right)^{-1}|x|^2\right)$ is
 \begin{gather}\label{E:Ju}
    J_0(t,x) = J_0(t,x;\mu) := (G(t,\cdot) * \mu)(x) = \int_{\R^d} G(t,x-y) \mu(\ud y)
 \end{gather}
-is the solution to the homogeneous equation, and the stochastic integral is the {\it Walsh
+is the solution to the homogeneous equation, and the stochastic integral is the \textit{Walsh
 integral}. We refer the interested readers to
 \cite{chen.kim:19:nonlinear,dalang.khoshnevisan.ea:09:minicourse,dalang:99:extending,walsh:86:introduction}
 for more details of this setup. \bigskip
@@ -261,7 +263,7 @@ Hilbert space as in \cite{tessitore.zabczyk:98:invariant}:
 % below.
 %
 % A probability measure, $\eta$, on the Borel $\sigma$-field of $H$, which we denote as
-% $\mathscr{B}(H)$, is said to be {\it invariant} for \eqref{E:SHE} if
+% $\mathscr{B}(H)$, is said to be \textit{invariant} for \eqref{E:SHE} if
 % \begin{equation}\label{E:InvMeas}
 %   \eta(A) = \int_{H} \mathscr{L}(u(t,\cdot;\zeta))(A) \; \eta(\ud \zeta),
 %   \quad \text{for all $ t\ge 0$ and $A\in \mathscr{B}(H)$},
@@ -329,7 +331,7 @@ tightness result is to show that the following moment is uniformly bounded in ti
 \begin{align}\label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right) <\infty.
 \end{align}
-Then we apply the {\it Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
+Then we apply the \textit{Krylov-Bogoliubov theorem} (see, e.g., \cite[Theorem
 11.7]{da-prato.zabczyk:14:stochastic}) to construct an invariant measure via
 \begin{equation}\label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
@@ -345,7 +347,7 @@ the case where the spatial domain is the whole space $\R^d$, the diffusion term,
 globally Lipschitz in the second variable uniformly in the first variable (see \eqref{E:lipcon}),
 and there is no additional negative drift term to help. The major challenge is to identify the right
 conditions so that the probability moments of the solution are bounded in time (see
-\eqref{E:BddMnt}). The solution to \eqref{E:SHE} is usually {\it intermittent}, namely, its moments
+\eqref{E:BddMnt}). The solution to \eqref{E:SHE} is usually \textit{intermittent}, namely, its moments
 possess a certain exponential growth in $t$; see, e.g.,
 \cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason, one
 has to impose some additional assumptions either on the initial conditions, or the noise, or the
@@ -361,7 +363,7 @@ technical aspects are still substantial. As the random field approach enjoys the
 more explicit/sharper in many cases, we try to obtain conditions for the existence of invariant
 measure that are more explicit and sharper. To be more precise, for the initial conditions, the
 results in \cite{tessitore.zabczyk:98:invariant} allow $L_\rho^2(\R^d)$ functions to be initial
-conditions, although the authors proved their main result---Theorem 3.3 ({\it ibid.})---only for the
+conditions, although the authors proved their main result---Theorem 3.3 (\textit{ibid.})---only for the
 constant one initial condition. Here we give the precise conditions on the initial condition (see
 \eqref{E:InitData} below) which allows a wider class of initial data, including unbounded functions
 and measures such as the Dirac delta measure (see Examples \ref{Ex:delta} and \ref{Ex:Riesz}). Note
@@ -402,7 +404,7 @@ These two conditions will guarantee the existence of the following non-empty ope
 \left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
 \end{align}
 
-Note that condition \eqref{E:Dalang-00} is a strengthened version of {\it Dalang's condition}:
+Note that condition \eqref{E:Dalang-00} is a strengthened version of \textit{Dalang's condition}:
 \begin{align}\label{E:Dalang}
   \Upsilon(\beta) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta+ |\xi|^2} <\infty,
   \quad \text{for some (and hence) all $\beta>0$.}
@@ -612,7 +614,7 @@ We first state some known results and prove a moment bound in Corollary \ref{C:M
   Suppose that
   \begin{enumerate}[(i)]
    \item the initial deterministic measure $\mu$ satisfies \eqref{A:icon};
-   \item the spectral measure $\widehat{f}$ satisfies {\it Dalang's condition} \eqref{E:Dalang},
+   \item the spectral measure $\widehat{f}$ satisfies \textit{Dalang's condition} \eqref{E:Dalang},
   \end{enumerate}
   Then \eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
   is $L^2(\Omega)$ continuous and is adapted to the filtration $\{\mathcal{F}_t\}_{t\ge 0}$.
@@ -988,7 +990,7 @@ and the restarted SHE ($ t_0>0$).
     = & \int_0^t \int_{\R^d} W(\ud r,\ud z)G(t-r,x-z)b(z,v(r,z)) \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1}\label{E:Fubini_2}         \\
     = & \dfrac{\pi}{\sin(\alpha \pi)}\int_0^t  \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),\notag
   \end{align}
-  where the last step is the {\it Beta integral} which requires that $\alpha\in (0,1)$. It remains
+  where the last step is the \textit{Beta integral} which requires that $\alpha\in (0,1)$. It remains
   to justify the two applications of the stochastic Fubini's theorem (see Theorem 5.30 of Chapter
   one in \cite{dalang.khoshnevisan.ea:09:minicourse}, or also \cite{walsh:86:introduction} or
   Theorem 4.33 of \cite{da-prato.zabczyk:14:stochastic}) in \eqref{E:Fubini_1} and
@@ -1386,7 +1388,7 @@ and also that the spectral density $\hat{f}$ satisfies
 \begin{equation}\label{E:CorTZ}
 \widehat{f} \in L^p(\R^d) \quad \text{where } \frac{d-2}{d} < \frac{1}{p};
 \end{equation}
-see Hypothesis 2.1 ({\it ibid.}). However, as was illustrated in Theorem 3.3 ({\em ibid.}), in order
+see Hypothesis 2.1 (\textit{ibid.}). However, as was illustrated in Theorem 3.3 ({\em ibid.}), in order
 to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments uniformly
 bounded in time), the following additional assumptions were imposed:
 \begin{equation}\label{E:TZspec}
@@ -1406,7 +1408,7 @@ difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f
   given in \eqref{E:Fourier}. Hence, Plancherel's theorem takes the form of $\int_{\R^d} \psi(x)
   \phi(x)\ud x = (2\pi)^{-d} \int_{\R^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$.
   The authors in \cite{tessitore.zabczyk:98:invariant} did not explicitly mention their convention
-  of the Fourier transform. However, the proof of Theorem 3.3 ({\it ibid.}) suggests that the
+  of the Fourier transform. However, the proof of Theorem 3.3 (\textit{ibid.}) suggests that the
   following convention has been used:
 	\begin{align*}
 	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
@@ -1414,9 +1416,9 @@ difficult nature, \eqref{E:TZspec} was not calculated for a specific $\widehat{f
 	\end{align*}
   Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
   \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
-  $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ ({\it ibid.}) corresponds to
+  $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ (\textit{ibid.}) corresponds to
   $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation \eqref{E:TZspec}, which is
-  condition (3.4) ({\it ibid.}), takes into account this difference, therefore explaining the
+  condition (3.4) (\textit{ibid.}), takes into account this difference, therefore explaining the
   slightly different factor in front of the integral in \eqref{E:TZspec} from that in (3.4) ({\it
   ibid.}).
 \end{remark}
@@ -1492,7 +1494,7 @@ absolute values in \eqref{E:TZspec} is no longer possible.
     & = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2 )}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
 	\end{align*}
 	where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ in the second equality and
-	in the last equality we have applied an integration by parts. By using the {\it Fresnel
+	in the last equality we have applied an integration by parts. By using the \textit{Fresnel
 		integrals} (see, e.g., \cite[7.2 (iii)]{olver.lozier.ea:10:nist})
 	\begin{align*}
     \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
@@ -1992,7 +1994,7 @@ The following proposition shows that for initial conditions with unbounded tails
   generic constants that may depend on $\alpha $ and $d$ and may change their value at each
   appearance. \bigskip
 
-  \noindent{\it Upper bound:~} Because
+  \noindent\textit{Upper bound:~} Because
   \begin{align*}
     % \int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
@@ -2009,7 +2011,7 @@ The following proposition shows that for initial conditions with unbounded tails
   \end{align*}
   Hence, this proves the upper bound in \eqref{E:growtail}. \bigskip
 
-  \noindent{\it Lower bound:~} Now we prove the lower bound in \eqref{E:growtail}. Indeed,
+  \noindent\textit{Lower bound:~} Now we prove the lower bound in \eqref{E:growtail}. Indeed,
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
       \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z
@@ -2102,7 +2104,7 @@ In this part, we will make some explicit computations for Bessel and related ker
 \end{example}
 
 \begin{example}[Mat\'ern class of correlation functions]
-  The {\it Mat\'ern class of correlation functions} has been widely used in spatial statistics; one
+  The \textit{Mat\'ern class of correlation functions} has been widely used in spatial statistics; one
   may check the recent work \cite{loh.sun.ea:21:on} for references. Following Section 2.10 of
   \cite{stein:99:interpolation}, this class of correlation functions is given by
   \begin{align}\label{E:Matern}
@@ -2110,8 +2112,8 @@ In this part, we will make some explicit computations for Bessel and related ker
     $x\in\R^d$ with }\phi>0, \alpha>0, \nu >0 ,
   \end{align}
   where $\mathcal{K}_\nu(\cdot)$ is the modified Bessel function of second type, and $\alpha$ and
-  $\nu$ refer to the {\it scaling and smoothness parameters}, respectively. From the inversion
-  formula (see p. 46 {\it ibid.}), one sees that
+  $\nu$ refer to the \textit{scaling and smoothness parameters}, respectively. From the inversion
+  formula (see p. 46 \textit{ibid.}), one sees that
   \begin{align*}
     \mathcal{F}K(\xi) = (2\pi)^{d} \mathcal{F}^{-1} K(\xi) = (2\pi)^d f(|\xi|)
     \quad \text{with} \quad
@@ -2210,12 +2212,12 @@ parameters.
     & =: \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
     % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
   \end{align*}
-  By \cite[13.4.4 on p.326]{olver.lozier.ea:10:nist}, $I(r)$ is equal to the {\it confluent
+  By \cite[13.4.4 on p.326]{olver.lozier.ea:10:nist}, $I(r)$ is equal to the \textit{confluent
   hypergeometric function}:
   \begin{align}\label{E:ConHyGe}
     I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
   \end{align}
-  By 18.2.18 -- 13.2.22 on p. 323 {\it ibid.}, we see that \renewcommand{\arraystretch}{2}
+  By 18.2.18 -- 13.2.22 on p. 323 \textit{ibid.}, we see that \renewcommand{\arraystretch}{2}
   \begin{align*}
     I(r) = \left\{
       \begin{array}{lcl}
