@@ -354,44 +354,46 @@ possess a certain exponential growth in $t$; see, e.g.,
 has to impose some additional assumptions either on the initial conditions, or the noise, or the
 coefficients of \eqref{E:SHE}, or all of them in order to control the growth of the moments. The
 moment formulas obtained in \cite{chen.huang:19:comparison,chen.kim:19:nonlinear} play an important
-role in this context. 
+role in this context.
 
 Here we emphasize that we study the invariant measure using the Walsh random field approach
 \cite{walsh:86:introduction}, whereas such studies are mostly carried out under the framework of the
 stochastic evolution in Hilbert spaces \cite{da-prato.zabczyk:14:stochastic}. Even though both
 theories are equivalent (see \cite{dalang.quer-sardanyons:11:stochastic}), the differences in many
-technical aspects are substantial enough that we will see that, the random field approach can
-produce conditions that are more explicit and sharper. To be more precise, for the initial
-conditions, the results in \cite{tessitore.zabczyk:98:invariant} allow $L_\rho^2(\R^d)$ functions to
-be initial conditions, although the authors proved their main result---Theorem 3.3 ({\it
-ibid.})---only for the constant one initial condition. Here we give the precise conditions on the
-initial condition (see \eqref{E:InitData} below) which allows a much wider class of initial data,
-including unbounded functions and measures such as the Dirac delta measure (see Examples
-\ref{Ex:delta} and \ref{Ex:Riesz}). Note that the Dirac delta initial measure plays a prominent role
-in the study of the stochastic heat equation; see, e.g., \cite{amir.corwin.ea:11:probability}.
-Regarding the noise, we give a more explicit condition -- \eqref{E:Dalang-00}, that is easy to
-verify, on the spectral density $\widehat{f}$ and present a few concrete examples (see Section
-\ref{SS:Bassel}). The comparisons of our condition with those obtained by Tessitore and
-Zabyczyk \cite{tessitore.zabczyk:98:invariant} are given in Section \ref{SS:TessZabz}.
+technical aspects are still substantial. As the random field approach enjoys the properties of being
+more explicit/sharper in many cases, we try to obtain conditions for the existence of invariant
+measure that are more explicit and sharper. To be more precise, for the initial conditions, the
+results in \cite{tessitore.zabczyk:98:invariant} allow $L_\rho^2(\R^d)$ functions to be initial
+conditions, although the authors proved their main result---Theorem 3.3 ({\it ibid.})---only for the
+constant one initial condition. Here we give the precise conditions on the initial condition (see
+\eqref{E:InitData} below) which allows a wider class of initial data, including unbounded functions
+and measures such as the Dirac delta measure (see Examples \ref{Ex:delta} and \ref{Ex:Riesz}). Note
+that the Dirac delta initial measure plays a prominent role in the study of the stochastic heat
+equation; see, e.g., \cite{amir.corwin.ea:11:probability}. Regarding the noise, we give an explicit
+and easily verifiable condition--- \eqref{E:Dalang-00}---on the spectral density $\widehat{f}$ and
+present a few concrete examples (see Section \ref{SS:Bassel}). The comparisons of our condition with
+those obtained by Tessitore and Zabyczyk \cite{tessitore.zabczyk:98:invariant} are given in Section
+\ref{SS:TessZabz}.
 
-Besides the above contributions, in this paper, we establish a factorization representation for the
-solution $u(t,x)$ to \eqref{E:SHE} (see Lemma \ref{L:Factorize}) under the random field framework;
-see Section \ref{S:Factor}. Note that such factorization lemma has been widely used in the framework
-of the stochastic evolution equation in Hilbert spaces; see Section \ref{S:Factor} for more
-details. Moreover, there is a miscellany of results in Section \ref{S:Example}, which may have
-independent interest. \medskip
+% Besides the above contributions, in this paper, we establish
+
+Our proof relies on a factorization representation for the solution $u(t,x)$ to \eqref{E:SHE} (see
+Lemma \ref{L:Factorize}), which is obtained under the random field framework, whereas such
+factorization lemma has been widely used in the framework of the stochastic evolution equation in
+Hilbert spaces; see Section \ref{S:Factor} for more details. Finally, we point out that there is a
+miscellany of results in Section \ref{S:Example}, which may have independent interest. \medskip
 
 Now we are ready to motivate the conditions that we use and present the main results.
 
 \subsection{Main results} \label{S:Main}
 
-
-As mentioned earlier, in order to have moments bounded in time, one should first identify the exact
-conditions under which the moments to \eqref{E:SHE} do not possess exponential growth. This question
-has been answered in \cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and
-sufficient conditions are given. More precisely, to have the second moment bounded in time, one has
-to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and
-Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy the following two conditions:
+As mentioned earlier, in order to have moments bounded in time as in \eqref{E:BddMnt}, one should
+better first identify the exact conditions under which the second moments $\E\left(u(t,x)^2\right)$
+with $x$ fixed is bounded. This question has been answered in \cite[Theorem 1.3 and Lemma
+2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, to
+have the second moment bounded in time, one has to have the spatial dimension $d \ge 3$, and in
+addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy
+the following two conditions:
 \begin{subequations} \label{E:U0finite}
 \begin{align} \label{E:Dalang-00}
   & \Upsilon(0) := \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
@@ -571,15 +573,19 @@ This theorem will be proved in Section \ref{S:mainproof}.
 
 \subsection{Outline and notation}
 
-The paper is organized as follows: we will first present our main results in Section \ref{S:Main}.
-Then in Section \ref{S:Example}, we will make further discussions about our main results and provide
-examples in various aspects. In particular, in Section \ref{SS:Weight} we will extend the discussion
-about the weight functions; in Section \ref{SS:Init} we show that our results could include a wider
-class of initial conditions; in Section \ref{SS:Bassel} we give some explicit examples of the
-correlation functions that satisfy \eqref{E:Dalang-a0}; in Section \ref{SS:TessZabz} we compare our
-conditions with those obtained by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}. The
-two main Theorems \ref{T:Lrho} and \ref{T:Main} will be proved in Sections \ref{S:Lrho} and
-\ref{S:mainproof}, respectively. \bigskip
+The paper is organized as follows: we first prove Theorem \ref{T:Lrho} in Section \ref{S:Lrho}. Then
+in Section \ref{S:Factor}, we study the factorization lemma. Then we proceed to prove Theorem
+\ref{T:Main} in Section \ref{S:mainproof}. Finally, in Section \ref{S:Example} we make some further
+discussion on the main results and present various examples. In particular, in Section
+\ref{SS:Drift}, we give a brief review of the problem of finding invariant measures for SHE with a
+drift term; in Section \ref{SS:TessZabz}, we compare our conditions on the spectral density with
+those obtained by Tessitore and Zabczyk \cite{tessitore.zabczyk:98:invariant}; in Section
+\ref{SS:Init}, we show that our results could include a wider class of initial conditions; in
+Section \ref{SS:Bassel}, we carry out some explicit computations for the Bessel and related kernels
+as the correlation functions; finally, in Section \ref{SS:Weight}, we give examples of the
+admissible weight functions.
+
+\bigskip
 
 We conclude this Introduction by introducing some notation and formulas that we use throughout the
 paper. We will use $\Norm{X}_p$ to denote the $L^p(\Omega)$ norm, namely,
@@ -1129,7 +1135,18 @@ Finally, we characterize conditions \eqref{E:Dalang-a0} and \eqref{E:H} in the f
 \section{Tightness and construction -- Proof of Theorem \ref{T:Main}} \label{S:mainproof}
 \subsection{Proof of part (a) of Theorem \ref{T:Main}}
 
-We are now ready to prove part (a) of Theorem \ref{T:Main}.
+Before we start the proof of part (a) of Theorem \ref{T:Main}, we first recall the following result:
+
+\begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
+	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
+	\big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho(\R^d)$.
+	Moreover, if $\tilde{\rho}$ is another admissible weight such that
+	\begin{align*}
+	\int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
+	\end{align*}
+	then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
+	$L^2_\rho(\R^d)$.
+\end{proposition}
 
 \begin{proof}[Proof of Theorem \ref{T:Main} (a)]
   In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and let $t_0 = \tau/2$. Throughout the
@@ -1423,7 +1440,7 @@ arise because of the square root and absolute value. In particular, we will cons
 \end{enumerate}
 
 Before that, let us first introduce a nonnegative and nonnegative definite function in $\R$, that
-will be used several times in the rest of this subsection: 
+will be used several times in the rest of this subsection:
 
 \begin{example} \label{Ex:nonnegative}
   Let $d=1$ and $g(x)=\frac{1}{2}1_{[-1,1]}(x)$. Then we have that $ \widehat{g}(\xi) =
@@ -1988,20 +2005,20 @@ The following proposition shows that for initial conditions with unbounded tails
   we see that
   \begin{align*}
     \mathcal{G}_\rho(t;\mu)
-    & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi      \\
-    & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r \\
-    & = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)                                   \\
-    & = C'_{\alpha, d} (1+ t^\alpha)<\infty.
+    & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi
+    % & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r \\
+      = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)
+      = C'_{\alpha, d} (1+ t^\alpha)<\infty.
   \end{align*}
   Hence, this proves the upper bound in \eqref{E:growtail}. \bigskip
 
   \noindent{\it Lower bound:~} Now we prove the lower bound in \eqref{E:growtail}. Indeed,
   \begin{align*}
     \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
-    & \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z               \\
+      \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z
     & \ge {C_d} \int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
-    & \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x                                 \\
-    & = \frac{C_d}{1+\alpha} \psi\left(|\xi|\right),
+    & \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x
+      = \frac{C_d}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
   where, by considering three cases, we have
   \begin{align*}
@@ -2011,9 +2028,9 @@ The following proposition shows that for initial conditions with unbounded tails
       (2-r)^{\alpha+1} - (1-r)^{\alpha+1} & \text{if $0<r<1$},        \\
       (2-r)^{\alpha+1} + (r-1)^{\alpha+1} & \text{if $1\le r \le 2$}, \\
       (r-1)^{\alpha+1} - (r-2)^{\alpha+1} & \text{if $r > 2$},
-    \end{cases} \\
-    & = \text{sgn}(2-r)|r-2|^{\alpha+1} + \text{sgn}(r-1)|r-1|^{\alpha+1}.
+    \end{cases}
   \end{align*}
+  which is equal to $\text{sgn}(2-r)|r-2|^{\alpha+1} + \text{sgn}(r-1)|r-1|^{\alpha+1}$.
   We claim that
   \begin{align} \label{E:psi}
     \inf_{r\ge 0} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}>0.
@@ -2052,17 +2069,15 @@ The following proposition shows that for initial conditions with unbounded tails
 
 \subsection{Bessel and other related kernels} \label{SS:Bassel}
 
-In this part, we will make some explicit computations for Bessel and related kernels. 
+In this part, we will make some explicit computations for Bessel and related kernels.
 
 \begin{example}[Bessel kernel] \label{Ex:Bessel}
   Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
   (see, e.g., Section 1.2.2 of \cite{grafakos:14:modern})
   \begin{enumerate}
     \item $f_s(x)>0$ for all $x\in\R^d$ and $ \Norm{f_s}_{L^1(\R^d)}=1$;
-    \item there exists a constant $C(s,d)>0$ such that
-      \begin{align*}
-        f_s(x) \le C(s,d) \exp(-|x|/2) \quad \text{for} \quad |x| \ge 2;
-      \end{align*}
+    \item there exists a constant $C(s,d)>0$ such that $f_s(x) \le C(s,d) \exp(-|x|/2)$ for $|x|\ge
+      2$.
     \item there exists a constant $c(s,d)>0$ such that
       \begin{gather*}
         \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2,
@@ -2192,8 +2207,8 @@ parameters.
   spherical coordinate integration formula, for all $t>0$,
   \begin{align*}
     \mathcal{H}_{\alpha}(t)
-    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}     \\
-    & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
+      = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{ (1+|\xi|^2)^{s/2}}
+    % & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
     & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{d/2-1} \\
     & =: \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
     % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
@@ -2336,24 +2351,10 @@ details.
   condition \eqref{E:TZspec}.
 \end{example}
 
-\subsection{Weight functions} \label{SS:Weight}
+\subsection{Examples of admissible weight functions} \label{SS:Weight}
 
-In this part, we make some discussions on the weight functions. First, the admissible condition
-\eqref{E:aw} is needed in this paper due to the following result:
-
-\begin{proposition}[Proposition 2.1 of \cite{tessitore.zabczyk:98:invariant}] \label{P:weight}
-	For any admissible weight $\rho$, the operators on $L^2_\rho(\R^d)$ defined by $\varphi \mapsto
-	\big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho(\R^d)$.
-	Moreover, if $\tilde{\rho}$ is another admissible weight such that
-	\begin{align*}
-	\int_{\R^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
-	\end{align*}
-	then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\R^d)$ to
-	$L^2_\rho(\R^d)$.
-\end{proposition}
-
-Second, let us find out some concrete examples. As given in Section 2 of
-\cite{tessitore.zabczyk:98:invariant}, the following functions are admissible functions: 
+In this part, we give some examples of the admissible weight functions. As given in Section 2 of
+\cite{tessitore.zabczyk:98:invariant}, the following functions are admissible functions:
 \begin{equation} \label{E:admRho}
 \begin{aligned}
 \rho(x) & = \exp(-a|x|), \quad               &  & a>0 \quad \text{and} \\
@@ -2361,16 +2362,12 @@ Second, let us find out some concrete examples. As given in Section 2 of
 \end{aligned}
 \end{equation}
 
-\begin{remark} \label{R:admRho}
-	The smaller the weight function $\rho(\cdot)$ (not necessarily admissible) is, the larger the
-	space $L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function
-	with compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than
-	those in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
-	condition \eqref{E:aw} excludes these two cases. However, the examples in the following
-	Proposition \ref{P:adm} seem to be less obvious.
-\end{remark}
-
-The following proposition characterizes when a function of exponential type is admissible.
+The smaller the weight function $\rho(\cdot)$ (not necessarily admissible) is, the larger the space
+$L_\rho^2(\R^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function with
+compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than those
+in \eqref{E:admRho} (up to a constant). However, one can easily check that the admissible condition
+\eqref{E:aw} excludes these two cases. However, the examples in the following Proposition
+\ref{P:adm} seem to be less obvious:
 
 \begin{proposition} \label{P:adm}
 	$\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
