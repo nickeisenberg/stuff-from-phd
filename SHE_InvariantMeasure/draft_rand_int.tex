@@ -243,7 +243,7 @@ Hilbert space as in~\cite{tessitore.zabczyk:98:invariant}:
     \quad \text{for all $t\in[0,T]$ and $x\in\R^d$.}
   \end{equation}
   Moreover, we denote by $L^2_{\rho}(\R^d)$ the corresponding Hilbert space of $\rho$-weighted
-  square integrable functions and we use $\langle \cdot, \cdot \rangle_{\rho}$ and
+  square integrable functions, and we use $\langle \cdot, \cdot \rangle_{\rho}$ and
   $\Norm{\cdot}_{\rho}$ to denote the inner product and norm on $L^2_{\rho}(\R^d)$:
   \begin{align*}
   		\langle f,g \rangle_{\rho} \coloneqq \int_{\R^d} f(x) g(x) \rho(x) \ud x \quad \text{and} \quad
@@ -269,7 +269,7 @@ for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. \medskip
 In the literature, the existence of invariant measure of the stochastic heat equation is more
 commonly studied with a drift term; we will postpone a brief review of this case to
 Section~\ref{SS:Drift}. In contrast, the existence of an invariant measure under the settings of
-equation~\eqref{E:SHE} has been rarely studied. To the best of our knowledge, this current article
+equation~\eqref{E:SHE} has rarely been studied. To the best of our knowledge, this current article
 and the one by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant} are the only papers that
 consider the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$,
 is globally Lipschitz in the second variable uniformly in the first variable (see~\eqref{E:lipcon}),
@@ -319,9 +319,9 @@ As mentioned earlier, in order to have moments bounded in time as in~\eqref{E:Bd
 better first identify the sharp conditions under which the second moments $\E\left(u(t,x)^2\right)$
 with $x$ fixed is bounded. This question has been answered in~\cite[Theorem 1.3 and Lemma
 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, to
-have the second moment bounded in time, one has to have the spatial dimension $d \ge 3$, and in
-addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ have to satisfy
-the following two conditions:
+have the second moment bounded in time with $x$ fixed, one needs to have the spatial dimension $d \ge
+3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ need
+to satisfy the following two conditions:
 \begin{subequations}\label{E:U0finite}
 \begin{align}\label{E:Dalang-00}
   & \Upsilon(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
@@ -345,7 +345,7 @@ strengthen~\eqref{E:Dalang} in a different way. Indeed, what is required is that
   \Upsilon_\alpha(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+|\xi|^2\right)^{1-\alpha}}<\infty
   \quad \text{for some (hence all) $\beta>0$;}
 \end{align}
-see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder}. Similarly, one
+see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder}. Likewise, one
 can further strengthen condition~\eqref{E:Dalang-ab} to
 \begin{equation}\label{E:Dalang-a0}
   \Upsilon_\alpha(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
@@ -433,8 +433,8 @@ We are now ready to state our two main results of the paper.
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in~\eqref{E:U0finite}.
   \end{enumerate}
-  Then there exists an unique $L^2 (\Omega)$-continuous solution $u(t,x)$ such that for some
-  constant $C>0$, which does not depend on $t$, the following holds:
+  Then there exists a unique $L^2 (\Omega)$-continuous solution $u(t,x)$ such that for some constant
+  $C>0$, which does not depend on $t$, the following holds:
   \begin{equation}\label{E:uInLrho}
     \E\left(\Norm{u(t,\cdot; \mu)}_{\rho}^2\right)
     \le C \mathcal{G}_{\rho}(t; \mu^*)
@@ -610,8 +610,8 @@ Now we are ready to prove Theorem~\ref{T:Lrho}.
     u(t + t_0,x;\mu) \stackrel{\mathcal{L}}{=}
     u\left(t,x;u\left(t_0,\cdot;\mu\right)\right) \eqqcolon v(t,x),
   \end{align}
-  where $\mathcal{L}$ refers to the equality in law and we have used $v(t,x)$ to simplify the
-  notation. It is known that $v$ satisfies the following restarted SPDE:
+  where $\mathcal{L}$ refers to the equality in law. Then $v$ satisfies the following restarted
+  SPDE:
   \begin{equation}\label{E:restart}
     \begin{cases}
       \dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \R^d$ , $t>0$}, \\
@@ -683,8 +683,8 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
       \begin{align}\label{E:NormY}
         \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2 (s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
       \end{align}
-      where we remind the reader that $\mu^* \coloneqq 1 + |\mu|$ and we refer to Theorem~\ref{T:ExUn} for the function
-      $H\left(t;\gamma\right)$;
+      where we remind the reader that $\mu^* \coloneqq 1 + |\mu|$, and we refer to
+      Theorem~\ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
     \item under both conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
       $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(64
       L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$
@@ -708,17 +708,17 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
 \begin{remark}
   Condition~\eqref{E:GH-int'} is true for $t_0>0$ because $\mathcal{G}_\rho(t;\mu)$ is a continuous
   function for $t>0$ and $\mathcal{H}_\alpha(s)$ is continuous and bounded for $s\in [0,t]$ thanks
-  to~\eqref{E:H}. However, when $t_0 = 0$, the situation is much more trickier. For example, when the
+  to~\eqref{E:H}. However, when $t_0 = 0$, the situation is much trickier. For example, when the
   initial condition is the delta initial condition, we have that
   \begin{align*}
     \mathcal{G}_{\tilde{\rho}}(t;\delta_0)
     = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
     = G(2t,0) \int_{\R^d} G(t/2,x)\rho(x)\ud x
     < \infty,
-  \end{align*}
+  \end{align*} 
   where one can obtain the second equality via~\eqref{E:gsim}. Hence, when $s\to 0$,
-  $\mathcal{G}_{\tilde{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. On the other hand,
-  $\mathcal{H}_\alpha(s)$ goes to zero with a different rate. One needs to combine these two rates
+  $\mathcal{G}_{\tilde{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. Considering that
+  $\mathcal{H}_\alpha(s)$ goes to zero with a different rate, one needs to combine these two rates
   to check if condition~\eqref{E:GH-int'} holds. By introducing $t_0$ and restarting the heat
   equation, one can avoid this issue, that being the potential singularity of
   $\mathcal{G}_{\tilde{\rho}}$ at $s = 0$.
@@ -747,9 +747,9 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
     & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
     & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i = 1,2, \: r\in(0,s),
   \end{align}
-  where in the last step, we have used the fact that $H(t;\gamma)$ is a nondecreasing function; see
-  Lemma 2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting
-  $C_s \coloneqq H\left(s+t_0;32qL_b^2\right)$,
+  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see Lemma
+  2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
+  H\left(s+t_0;32qL_b^2\right)$,
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2
     & \le C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i = 1}^2 \bigg(G(s-r,y-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg)      \\
@@ -842,10 +842,10 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
   \begin{align*}
     I_1\coloneqq & \int_{\R^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:                \\
                  & \times f(z_1-z_2) \left(\prod_{i = 1}^{2} G(s-r,y-z_i)\right) \: \E\left(\prod_{i = 1}^{2}b(z_i,v(r,z_i))\right) \\
-       =         & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2 < +\infty.
+       =         & \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2 < +\infty,
        % < & \: +\infty.
   \end{align*}
-  But this follows immediately from~\eqref{E:NormY}. Indeed,
+  which follows immediately from~\eqref{E:NormY}. Indeed,
   \begin{align*}
     \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2
     \le & C \int_{\R^d} \ud y \; G(t-s,x-y) J_0^2 (s+t_0,y;\mu^*) \mathcal{H}_\alpha(s)                        \\
@@ -1020,7 +1020,7 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   to~\eqref{E:Dalang-00}, to see that $\Upsilon_{2\alpha}(0)<\infty$ if and only if~\eqref{E:H}
   holds. Therefore, both Lemmas~\ref{L:yineq} and~\ref{L:Factorize} (more precisely part (3) of
   Lemma~\ref{L:yineq}) are applicable. In particular, Lemma~\ref{L:Factorize} ensures that the
-  following factorization is well defined:
+  following factorization is well-defined:
   \begin{align}\label{E:Fact}
     v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
   \end{align}
@@ -1152,7 +1152,7 @@ The references in this part are far from being complete. The interested readers 
 references from the references below.
 
 The first case is when the drift term $g(\cdot)$ in~\eqref{E:Drift} satisfies certain dissipativity
-conditions, which push the solution towards zero; see, e.g.,~\cite{assing.manthey:03:invariant,
+conditions, which push the solution toward zero; see, e.g.,~\cite{assing.manthey:03:invariant,
 brzezniak.gatarek:99:martingale, cerrai:01:second, cerrai:03:stochastic,
 eckmann.hairer:01:invariant}. Such a ``negative'' drift term helps to cancel the growth of the
 moments. Here is one example of such drift term: for some $m,\: k_i, \: c_i>0$ as $|u| \to \infty$:
@@ -1173,7 +1173,7 @@ Several works which do not require an added drift term with dissipativity as
 in~\eqref{E:dis}~\cite{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the
 existence of an invariant measure for the stochastic heat equation on the whole space $\R^d$. More
 precisely, they allow for a drift term, $g(x,u):\R^d \times \R \to \R$, such that for all $x \in
-\R^d$ and $u_1,u_2 \in \R$,
+\R^d$ and $u_1$, $u_2 \in \R$,
 \begin{align*}
 		|g(x,0)| \le \varphi(x) \qquad \text{and} \qquad |g(x,u_1) - g(x,u_2)| \le L\varphi(x)|u_1 - u_2|,
 \end{align*}
@@ -1699,7 +1699,7 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 	\label{Fig:fresnel}
 \end{figure}
 
-One the other hand, the next example shows that the spectral density given in Example~\ref{Ex:Finv}
+On the other hand, the next example shows that the spectral density given in Example~\ref{Ex:Finv}
 can be easily handled by the conditions we presented in Theorem~\ref{T:Main}, namely showing the
 finiteness of $\Upsilon_{\alpha}(0)$.
 \begin{example}\label{Ex:Finv-d}
@@ -1732,18 +1732,19 @@ in~\eqref{E:TZspec}.
 \begin{example}\label{Ex:sqrt}
   Let $f$ and $g$ be given as Example~\ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
   only nonnegative (not strictly positive) with infinitely many zeros. Hence, when taking the square
-  root of $\widehat{f}(\xi)$ as in~\eqref{E:TZspec}, one needs to wisely choose the correct positive
-  and negative branches: (1) Clearly, the signed version $\sqrt{\widehat{f}(\xi)} = \xi^{-1}\sin(\xi)$
-  is preferable since its inverse Fourier transform can be easily computed, which is equal to
-  $g(x)$. Moreover, because this inverse Fourier transform $g(x)$ is nonnegative, the absolute value
-  signs in~\eqref{E:TZspec} do not pose any additional restrictions. (2) However, if one chooses the
-  positive branches, namely, $\sqrt{\widehat{f}(\xi)} = \left|\xi^{-1}\sin(\xi)\right|$, then it is
-  not clear how to compute its Fourier transform. In general, some bad choices of the
-  positive/negative branches may make the conditions in~\eqref{E:TZspec} fail. For example, such
-  choice may turn $\sqrt{\widehat{f}(\xi)}$ into a distribution, and then taking the absolute value
-  of a distribution (unless it is a measure) may be problematic. Another issue that may arise is
-  when $\sqrt{\widehat{f}(\xi)}$ is a well-defined function, taking on both positive and negative
-  values and after taking the absolute value, the integral in~\eqref{E:TZspec} may blow up.
+  root of $\widehat{f}(\xi)$ as in~\eqref{E:TZspec}, one needs to wisely select the correct positive
+  and negative branches: (1) Clearly, the signed version $\sqrt{\widehat{f}(\xi)} =
+  \xi^{-1}\sin(\xi)$ is preferable since its inverse Fourier transform can be easily computed, which
+  is equal to $g(x)$. Moreover, because this inverse Fourier transform $g(x)$ is nonnegative, the
+  absolute value signs in~\eqref{E:TZspec} do not pose any additional restrictions. (2) However, if
+  one chooses the positive branches, namely, $\sqrt{\widehat{f}(\xi)} =
+  \left|\xi^{-1}\sin(\xi)\right|$, then it is not clear how to compute its Fourier transform. In
+  general, some bad choices of the positive/negative branches may make the conditions
+  in~\eqref{E:TZspec} fail. For example, such choice may turn $\sqrt{\widehat{f}(\xi)}$ into a
+  distribution, and then taking the absolute value of a distribution (unless it is a measure) may be
+  problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a well-defined
+  function, taking on both positive and negative values and after taking the absolute value, the
+  integral in~\eqref{E:TZspec} may blow up.
 \end{example}
 
 \subsection{Various initial conditions}\label{SS:Init}
@@ -2226,8 +2227,8 @@ Proposition~\ref{P:adm} seem to be less obvious:
 	\end{align*}
 
   Next we assume that $b>1$. We need to show that $\rho_b$ is not admissible. Without loss of
-  generality, we assume that $d\ge 2$. The case when $d = 1$ is easier and can be proved in a
-  similar way as the proof below. It suffices to show that
+  generality, we assume that $d\ge 2$. The case when $d = 1$ is easier and can be proved similarly
+  as the proof below. It suffices to show that
 	\begin{align*}
     \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r:=(r,0,\cdots,0)\in\R^d$.}
 	\end{align*}
