@@ -46,7 +46,7 @@
 % {{{ check references
 % -------------------------------------------------
 % \usepackage{refcheck}
-\usepackage[notref,notcite]{showkeys}
+% \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
 % }}}
@@ -146,7 +146,8 @@
   weighted space $L^2_\rho(\R^d)$. In particular, our result includes the \textit{parabolic Anderson
   model} (i.e., the case when $b(u) = \lambda u$) starting from the Dirac delta measure.
 \end{abstract}
-\bigskip
+
+\smallskip
 
 \noindent{\textit{\noindent MSC 2010 subject classification}}: 60H15, 60H07, 60F05.
 \smallskip
@@ -154,8 +155,6 @@
 \noindent{\textit{Keywords}}: Stochastic heat equation, parabolic Anderson model, invariant measure,
 Dirac delta initial condition, weighted $L^2$ space, Mat\'ern class of correlation functions, Bessel
 kernel. \smallskip
-
-% \noindent\textit{Running head:} Ergodicity and CLT for PAM.
 
 \setcounter{tocdepth}{2}
 \tableofcontents
@@ -353,15 +352,16 @@ can further strengthen condition~\eqref{E:Dalang-ab} to
 \end{equation}
 We use the convention that when $\alpha = 0$, we simply drop it from the expression
 $\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta) = \Upsilon_0(\beta)$. The relations of these
-conditions are illustrated in Figure~\ref{F:Dalang}; one may also check Lemma~\ref{L:HUA} for the
-relation between $\Upsilon(0)<\infty$ and $\Upsilon_\alpha(0)<\infty$.
+conditions are illustrated in Figure~\ref{F:Dalang}.
+
+% one may also check Lemma~\ref{L:HUA} for the relation between $\Upsilon(0)<\infty$ and
+% $\Upsilon_\alpha(0)<\infty$.
 
 \setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
 \begin{figure}[htpb]
 \begin{center}
-		\usetikzlibrary{arrows.meta}
-
-\begin{tikzpicture}[scale = .8, x = 9em, y = 6em]
+  \usetikzlibrary{arrows.meta}
+  \begin{tikzpicture}[scale = .8, x = 9em, y = 6em]
 		% \tikzset{> = latex}
 		\newcommand\inc{0.07}
 		\newcommand\xo{1.2}
@@ -388,12 +388,9 @@ relation between $\Upsilon(0)<\infty$ and $\Upsilon_\alpha(0)<\infty$.
 		\node[] at (0.5*\xo+0.5*\xg,\yg) {\Large$\Leftarrow$};
 
 \end{tikzpicture}
-
 \end{center}
-
   \caption{Relations among conditions~\eqref{E:Dalang},~\eqref{E:Dalang-ab},~\eqref{E:Dalang-a0}
   and~\eqref{E:Dalang-00}.}
-
 	\label{F:Dalang}
 \end{figure}
 
@@ -407,7 +404,7 @@ where
   \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
 \end{equation}
 The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
-below. As is shown in Lemma~\ref{L:HUA} below, condition~\eqref{E:Dalang-a0} will imply
+below. As shown in Lemma~\ref{L:HUA} below, condition~\eqref{E:Dalang-a0} will imply
 condition~\eqref{E:Dalang-H}. However, if one assumes~\eqref{E:Dalang-00}, then these two conditions
 become equivalent.
 % The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as
@@ -415,11 +412,7 @@ become equivalent.
 
 We are now ready to state our two main results of the paper.
 
-% Theorems~\ref{T:Lrho} and~\ref{T:Main}.
-% These theorems will be proved in Sections~\ref{S:Lrho} and~\ref{S:mainproof} respectively.
-
 \begin{theorem}\label{T:Lrho}
-  % Let $\mu(\cdot)$ be an $\mathcal{F}_0$-measurable random variable and
   Let $u(t,x;\mu)$ be the solution to~\eqref{E:SHE} starting from $\mu$ which
   satisfies~\eqref{A:icon}. Assume that
   \begin{enumerate}[(i)]
@@ -516,8 +509,8 @@ with a drift term; in Section~\ref{SS:TessZabz}, we compare our conditions on th
 with those obtained by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}; in
 Section~\ref{SS:Init}, we show that our results could include a wider class of initial conditions;
 in Section~\ref{SS:Bassel}, we carry out some explicit computations for the Bessel and related
-kernels as the correlation functions; finally, in Section~\ref{SS:Weight}, we give examples of the
-admissible weight functions.
+kernels as the correlation functions; finally, in Section~\ref{SS:Weight}, we give a few examples of
+the admissible weight functions.
 
 \bigskip
 
@@ -1236,17 +1229,20 @@ an invariant measure via the construction~\eqref{E:InvMeasForm}.
   \textit{ibid.}
 \end{remark}
 
-% Under our convention~\eqref{E:Fourier} of Fourier transform, We may rewrite the integral in the
-% second condition of~\eqref{E:TZspec} as follows:
+% Under our convention~\eqref{E:Fourier}, the integral in the second condition of~\eqref{E:TZspec} can
+% be written as
 % \begin{align*}
 %   \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
 %   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
 %   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|\right) (x) |x|^{2-d} \ud x.
 % \end{align*}
 
-If $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
+In the following, we will focus on the second condition in~\eqref{E:TZspec}, which corresponds
+to~\eqref{E:U0finite}. We claim that the latter is much easier to check than that of the former. The
+square root and absolute value in~\eqref{E:TZspec} make their condition more restrictive. Indeed, if
+$\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
 in~\eqref{E:TZspec} can be removed without ambiguity, which will reduce to our
-condition~\eqref{E:Dalang-00} up to a constant factor. However, when $\widehat{f}$ is only
+condition~\eqref{E:U0finite} up to a constant factor. However, when $\widehat{f}$ is only
 nonnegative and not strictly positive, finding the right square root of $\widehat{f}$ so that
 $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative become tricky. This last point will be
 illustrated by the examples below. We first set up the notation in Example~\ref{Ex:nonnegative}.
@@ -1255,9 +1251,8 @@ illustrated by the examples below. We first set up the notation in Example~\ref{
 % examples to illustrate the potential difficulties that may arise because of the square root and
 % absolute value in~\eqref{E:TZspec}.
 %
-% Before that, let us first introduce a nonnegative and
-% nonnegative definite function in $\R$, that will be used several times in the rest of this
-% subsection:
+% Before that, let us first introduce a nonnegative and nonnegative definite function in $\R$, that
+% will be used several times in the rest of this subsection:
 
 % In particular, we will consider two cases: \begin{enumerate} \item Case I:
 % $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f}>0$ on $\R^d$; \item Case
@@ -1298,7 +1293,9 @@ illustrated by the examples below. We first set up the notation in Example~\ref{
 % (2\pi)^{d/2}\Upsilon(0)$. Comparing this with~\eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
 % our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 
-The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$.
+Up to a constant, one may replace $\mathcal{F}$ by $\mathcal{F}^{-1}$. The following example shows
+that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is signed and hence, the absolute value
+make spoil the oscillatory structure.
 
 \begin{example}\label{Ex:Finv}
   Suppose that $d = 1$, $f(x) = (2\pi)^{-1}x^{-2}\sin^2 (x)$ and $\widehat{f}(\xi) =
@@ -1315,9 +1312,8 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
     & = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
     & = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2)}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
   \end{align*}
-  where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ in the second equality and
-  in the last equality we have applied an integration by parts. By using the \textit{Fresnel
-  integrals} (see, e.g.,~\cite[7.2 (iii)]{olver.lozier.ea:10:nist})
+  where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ and an integration by parts.
+  By using the \textit{Fresnel integrals} (see, e.g.,~\cite[7.2 (iii)]{olver.lozier.ea:10:nist})
   \begin{align*}
     \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
     \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
@@ -1333,9 +1329,7 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 
 \begin{figure}[htbp]
 	\centering
-
 \begin{center}
-
 \begin{tikzpicture}[scale = 0.8, transform shape]
 \begin{axis}
 [
@@ -1690,30 +1684,24 @@ The following example shows that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\
 \end{axis}
 
 \end{tikzpicture}
-
-
 \end{center}
-	% \includegraphics[scale = .9]{figs/fresnel.png}
-
 	\caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
 		positive and negative values.}
-
 	\label{Fig:fresnel}
 \end{figure}
 
 On the other hand, the next example shows that the spectral density given in Example~\ref{Ex:Finv}
-can be easily handled by the conditions we presented in Theorem~\ref{T:Main}, namely showing the
-finiteness of $\Upsilon_{\alpha}(0)$.
+can be easily handled by our condition -- $\Upsilon_{\alpha}(0)<\infty$, i.e.,~\eqref{E:Dalang-a0}.
+
 \begin{example}\label{Ex:Finv-d}
-  From the one-dimension example in Example~\ref{Ex:Finv}, one can construct a $d$-dimensional
-  counterpart. Here is one way to do that. Let $f_1$ and $\widehat{f}_1$ be the $f$ and
-  $\widehat{f}$, respectively, in Example~\ref{Ex:Finv}. Then define
+  From the one-dimension case in Example~\ref{Ex:Finv}, one can construct a $d$-dimensional
+  counterpart: Let $f_1$ and $\widehat{f}_1$ be the $f$ and $\widehat{f}$, respectively, in
+  Example~\ref{Ex:Finv}. Then define
 	\begin{align*}
     f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\R^d, \quad \text{and hence} \quad
     \widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\R^d.
 	\end{align*}
-  From Example~\ref{Ex:Finv}, we see that $\widehat{f}_d(\cdot)$ does not satisfy
-  condition~\eqref{E:Ff>0}. In contrast, it is straightforward to verify that
+  It is straightforward to verify that
 	\begin{align*}
     \Upsilon_\alpha(0)
     = C \int_{\R^d} \frac{\prod_{i = 1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
@@ -2279,10 +2267,9 @@ Proposition~\ref{P:adm} seem to be less obvious:
 \end{proof}
 
 \section*{Acknowledgements}
-L.C. thanks Sandra Cerrai for some helpful discussions and for pointing out the paper by Misiats,
-Stanzhytskyi, and Yip~\cite{misiats.stanzhytskyi.ea:16:existence} during the conference --
-\textit{Frontier Probability Days 2018}.
-
+L.C. thanks Sandra Cerrai for some helpful discussions and for pointing out the
+reference~\cite{misiats.stanzhytskyi.ea:16:existence} during the conference -- \textit{Frontier
+Probability Days 2018}.
 
 % {{{All references: New ones with biber
 \addcontentsline{toc}{section}{References}
