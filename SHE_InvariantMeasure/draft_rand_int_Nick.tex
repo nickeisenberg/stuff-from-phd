@@ -35,7 +35,7 @@
 \usepackage{xfrac}
 \usepackage{mathtools}
 \usepackage[
-     colorlinks = true,
+     colorlinks,
      citecolor = blue,
      urlcolor = blue
      ]{hyperref}
@@ -45,7 +45,7 @@
 % -------------------------------------------------
 % {{{ check references
 % -------------------------------------------------
-\usepackage{refcheck}
+% \usepackage{refcheck}
 % \usepackage[notref,notcite]{showkeys}
 % \usepackage[notcite]{showkeys}
 % \usepackage{showkeys}
@@ -58,15 +58,25 @@
 % \usepackage{mathscinet}
 \DeclareTextCommand{\polhk}{OT4}{\k}
 \DeclareTextCommand{\polhk}{T1}{\k}
+
+% \setlength{\parskip}{0.5cm plus4mm minus3mm}
+% \usepackage[style = alphabetic, %authoryear
+%             bibstyle=authoryear,
+%             citestyle=authoryear,
+%             natbib=true,
+%             hyperref=true,
+%             backref=true,
+%             abbreviate=true]{biblatex}
 \usepackage[backend = biber,
-						% style = alphabetic,
-						style = numeric,
-						natbib = true,
-            sorting = nyt,
-            abbreviate = true,
-           ]{biblatex}
+     % style = alphabetic,
+     style = numeric,
+     hyperref = true,
+     backref = true,
+     natbib = true,
+     sorting = nyt,
+     abbreviate = true]{biblatex}
 \AtEveryBibitem{% Clean up the bibtex rather than editing it
- % \clearfield{doi}
+ \clearfield{doi}
  \clearfield{url}
  \clearfield{issn}
  \clearlist{location}
@@ -147,10 +157,7 @@ Dirac delta initial condition, weighted $L^2$ space, Mat\'ern class of correlati
 kernel. \smallskip
 
 \setcounter{tocdepth}{2}
-{
-  \hypersetup{linkcolor=black}
-  \tableofcontents
-}
+\tableofcontents
 
 % }}}
 \section{Introduction}
@@ -244,11 +251,10 @@ Hilbert space as in~\cite{tessitore.zabczyk:98:invariant}:
 \end{definition}
 
 Accordingly, we will prove the existence of the invariant measure following the same strategy as
-in~\cite{tessitore.zabczyk:98:invariant}. Let $\mathscr{L}(u(t,\cdot;\mu)$ denote the law of
-$u(t,\cdot)$ starting from $\mu$ at $t = 0$. We will first establish the tightness of
+in~\cite{tessitore.zabczyk:98:invariant}. Indeed, we use $\mathscr{L}(u(t,\cdot;\mu)$ to denote the law of
+$u(t,\cdot)$ starting from $\mu$ at $t = 0$ and first establish the tightness of
 $\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$. A critical step in obtaining this
-tightness result is to show that the following moment is uniformly bounded in time (see
-Theorem~\ref{T:Main}):
+tightness result is to show that the following moment is uniformly bounded in time (see Theorem~\ref{T:Main}):
 \begin{align}\label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right) <\infty.
 \end{align}
@@ -265,11 +271,11 @@ Section~\ref{SS:Drift}. In contrast, the existence of an invariant measure under
 equation~\eqref{E:SHE} has rarely been studied. To the best of our knowledge, this current article
 and the one by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant} are the only papers that
 consider the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$,
-is globally Lipschitz in the second variable, uniformly bounded in the first variable
-(see~\eqref{E:lipcon}) and there is no additional negative drift term to help. The major challenge
-is to identify the right conditions so that the probability moments of the solution are bounded in
-time (see~\eqref{E:BddMnt}). The solution to~\eqref{E:SHE} is usually \textit{intermittent}, namely,
-its moments possess a certain exponential growth in $t$; see,
+is globally Lipschitz in the second variable, uniformly bounded in the first variable (see~\eqref{E:lipcon})
+and there is no additional negative drift term to help. The major challenge is to identify the right
+conditions so that the probability moments of the solution are bounded in time
+(see~\eqref{E:BddMnt}). The solution to~\eqref{E:SHE} is usually \textit{intermittent}, namely, its
+moments possess a certain exponential growth in $t$; see,
 e.g.,~\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason,
 one has to impose some additional assumptions either on the initial conditions, or the noise, or the
 coefficients of~\eqref{E:SHE}, or all of them in order to control the growth of the moments. The
@@ -282,7 +288,7 @@ framework of the stochastic evolution in Hilbert spaces~\cite{da-prato.zabczyk:1
 though both theories are equivalent (see~\cite{dalang.quer-sardanyons:11:stochastic}), the
 differences in many technical aspects are still substantial. As the random field approach enjoys the
 properties of being more explicit/sharper in many cases, we try to obtain conditions for the
-existence of an invariant measure that are more explicit and sharper. To be more precise, for the
+existence of invariant an measure that are more explicit and sharper. To be more precise, for the
 initial conditions, the results in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\R^d)$
 functions, although the authors proved their main result---Theorem 3.3
 \textit{ibid.}---only for the constant one initial condition. Here we give the precise conditions on
@@ -309,17 +315,17 @@ Now we are ready to motivate the conditions that we use and present the main res
 \subsection{Main results}\label{S:Main}
 
 As mentioned earlier, in order to have moments bounded in time as in~\eqref{E:BddMnt}, one should
-better first identify the sharp conditions under which the second moments as a function of $t$, namely
-$t \mapsto \E\left(u(t,x)^2\right)$, with $x$ fixed, are bounded. This question has been answered
-in~\cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient
-conditions are given. More precisely, to have the second moment bounded in time with $x$ fixed, one
-needs to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and
-Lipschitz constant $L_b$ of $b(\cdot)$ need to satisfy the following two conditions:
+better first identify the sharp conditions under which the second moments as a function of t, namely $t \mapsto \E\left(u(t,x)^2\right)$,
+with $x$ fixed are bounded. This question has been answered in~\cite[Theorem 1.3 and Lemma
+2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, to
+have the second moment bounded in time with $x$ fixed, one needs to have the spatial dimension $d \ge
+3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ need
+to satisfy the following two conditions:
 \begin{subequations}\label{E:U0finite}
-\begin{gather}\label{E:Dalang-00}
-  \Upsilon(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \shortintertext{and}
-  64 L^2_{b} < \frac{1}{2\Upsilon(0)} \:. \label{E:Lipb}
-\end{gather}
+\begin{align}\label{E:Dalang-00}
+  & \Upsilon(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^2} <\infty \\
+  & \text{and} \quad 64 L^2_{b} < \frac{1}{2\Upsilon(0)} \:. \label{E:Lipb}
+\end{align}
 \end{subequations}
 These two conditions will guarantee the existence of the following non-empty open interval:
 \begin{align}\label{E:Interval}
@@ -390,10 +396,13 @@ conditions are illustrated in Figure~\ref{F:Dalang}.
 
 
 We will also need the following slightly different condition:
-\begin{gather}\label{E:Dalang-H}
-  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,} \shortintertext{where}
-  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2). \label{E:H}
-\end{gather}
+\begin{align}\label{E:Dalang-H}
+  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,}
+\end{align}
+where
+\begin{equation}\label{E:H}
+  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2).
+\end{equation}
 The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
 below. As shown in Lemma~\ref{L:HUA} below, condition~\eqref{E:Dalang-a0} will imply
 condition~\eqref{E:Dalang-H}. However, if one assumes~\eqref{E:Dalang-00}, then these two conditions
@@ -555,7 +564,7 @@ We first state some known results and prove a moment bound in Corollary~\ref{C:M
   (see also~\eqref{E:Interval}), then
   \begin{equation}\label{E:mb0}
     \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
-    \quad \text{for all $p$ such that $1/p \in \left(64 L_b^2\Upsilon(0),1\right)$},
+    \quad \text{for all $p$ such that } 1/p \in \left(64 L_b^2\Upsilon(0),1\right),
   \end{equation}
   where $C_p = \left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
   H(t;\gamma_p)^{1/2}<\infty$.
@@ -606,33 +615,35 @@ Now we are ready to prove Theorem~\ref{T:Lrho}.
   \begin{align}\label{E:ShiftW}
     \int_0^t \int_{\R^d} W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t+t_0} \int_{\R^d} W(\ud s, \ud y).
   \end{align}
-  Under the conditions in~\eqref{E:U0finite}, Theorem~\ref{T:ExUn} and~\eqref{E:eqLaw} imply
-  immediately that
-  \begin{align*}
+  Under the conditions in~\eqref{E:U0finite}, Theorem~\ref{T:ExUn} and~\eqref{E:eqLaw} imply immediately
+  that
+  \begin{align}\label{E:MomBddRst}
   \Norm{v(t,x)}_q = \Norm{u(t+t_0,x;\mu)}_q
                   \le C_q\bigg(1 + (G(t+t_0, \cdot)* |\mu|)(x) \bigg)
                   = C_q J_0(t+t_0,x; 1+|\mu|),
-  \end{align*}
+  \end{align}
   for all $q\ge 2$ and $t>0$, where the constant $C_q$ does not depend on $t$. Moreover, under the
   assumptions of Theorem~\ref{T:Lrho}, we have $v(0,\cdot)\in L_\rho^2 (\R^d)$ a.s. and
-  \begin{align*}
+  \begin{align}\label{E:MomRhoBddRst}
         \E\left(\Norm{v(t,x)}_\rho^2\right)
     = \E\left(\Norm{u(t+t_0,x;\mu)}_\rho^2\right)
     \le C \mathcal{G}_\rho(t+t_0;\mu^*)
     < \infty.
-  \end{align*}
+  \end{align}
 \end{remark}
 
 \section{A factorization lemma}\label{S:Factor}
 
 In this section, we establish a factorization lemma with corresponding moment estimates; see
 Lemmas~\ref{L:yineq} and~\ref{L:Factorize} below. This factorization lemma appeared
-in~\cite{da-prato.kwapien.ea:87:regularity}; check also Section~5.3.1
+in~\cite{da-prato.kwapien.ea:87:regularity}; check also Section 5.3.1
 of~\cite{da-prato.zabczyk:14:stochastic}. For $\alpha\in (0,1)$, $t>0$ and $x\in\R^d$, define
 formally
 \begin{align}\label{E:Ops}
-  \left(F_{\alpha} f\right)(t,x) & \coloneqq \int_0^{t} \int_{\R^d} (t-s)^{\alpha-1}G(t-s,x-y)f(s,y)\: \ud s \ud y \shortintertext{and}
-  \left(Y_{\alpha} f\right)(t,x) & \coloneqq \int_0^{t} \int_{\R^d} (t-s)^{-\alpha}G(t-s,x-y)f(s,y) W(\ud s,\ud y) \:.
+  \begin{aligned}
+    \left(F_{\alpha} f\right)(t,x) & \coloneqq \int_0^{t} \int_{\R^d} (t-s)^{\alpha-1}G(t-s,x-y)f(s,y)\: \ud s \ud y \quad \text{and} \\
+    \left(Y_{\alpha} f\right)(t,x) & \coloneqq \int_0^{t} \int_{\R^d} (t-s)^{-\alpha}G(t-s,x-y)f(s,y) W(\ud s,\ud y) \:.
+  \end{aligned}
 \end{align}
 
 For $F_\alpha$, the first step of the proof of~\cite[Theorem 3.1]{tessitore.zabczyk:98:invariant}
@@ -729,7 +740,8 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
     & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
     & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i = 1,2, \: r\in(0,s),
   \end{align}
-  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see Lemma~2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
+  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see 
+  \cite[Lemma 2.6]{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
   H\left(s+t_0;32qL_b^2\right)$,
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2
@@ -752,7 +764,6 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
   is nondecreasing in $t_0 $ whenever $s > r > 0$, we can replace the two appearances of $t_0$ in
   the exponent of the above inequality by zero to see that
   \begin{equation}\label{E_:NormY}
-    \hspace{-1em}
     \Norm{Y_v(s,y)}_q^2 \le C C_s (2\pi)^{-2d} J_0^2 (s + t_0,y;\mu^*) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
   \end{equation}
   Furthermore, by symmetry of $r(s-r)/s$ and the fact that $r(s-r)/s \ge r/2$ for all $r\in
@@ -806,7 +817,7 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
   The lemma is straightforward provided that one can switch the orders of stochastic and ordinary
   integrals:
   \begin{align}
-    \MoveEqLeft[4] \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag \\
+      & \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag                                                       \\
     = & \int_0^t \ud s\: (t-s)^{\alpha-1}\int_{\R^d} \ud y\: G(t-s,x-y) \notag                                                                \\
       & \times \int_0^s\: \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \notag                                      \\
     = & \int_0^t \ud s\: (t-s)^{\alpha-1} \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(t-r,x-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \label{E:Fubini_1} \\
@@ -836,7 +847,7 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
   \end{align*}
   Now we bound the three heat kernels using~\eqref{E:gsim} as follows:
   \begin{align*}
-     \MoveEqLeft G (t-s,x-y) \prod_{i = 1}^{2}G(s+t_0,y- z_i)\\
+     G & (t-s,x-y) \prod_{i = 1}^{2}G(s+t_0,y- z_i)                                                                                                              \\
        & = \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s,0\right)} \prod_{i = 1}^{2}G\left(s+t_0,y- z_i\right)                                                  \\
        & \le 2^d \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s),0\right)} \prod_{i = 1}^{2}G\left(2s+2t_0,y- z_i\right)                                         \\
        & = 2^d [4(t-s)]^{d/2} \prod_{i = 1}^{2}\bigg[ G\left(2s+2t_0,y- z_i\right)G\left(2(t-s),x-y\right)\bigg]                                                 \\
@@ -854,8 +865,7 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
   \end{align*}
   By the Cauchy Schwartz inequality,~\eqref{E:NormB} and because $\alpha\in (0,1/2)$,
   \begin{align*}
-    I_2\le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha}                                                        \\
-           & \times \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}\bigg(G(t-r,x-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg) \\
+    I_2\le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}\bigg(G(t-r,x-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg) \\
          = & C' \int_0^t \ud r \: (t-r)^{-\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}\bigg(G(t-r,x-z_i) J_0\left(r + t_0, z_i;\mu^*\right)\bigg).
   \end{align*}
   Now by the same arguments as those leading to~\eqref{E:NormY} (with $2\alpha$ there replaced by
@@ -995,10 +1005,10 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   \end{align*}
   is relatively compact in $L_\rho^2 (\R^d)$.
 
-  Assumption (iii), i.e.,~\eqref{E:U0finite}, implies that the interval $\left(64L_b^2 \Upsilon(0),
-  1/2\right)$ is not empty. Moreover, Assumption (iv), i.e.,~\eqref{E:Dalang-a0}, guarantees that
-  there exists a constant $\alpha$ in this interval, namely, $64L_b^2\Upsilon(0) <\alpha<1/2$, such
-  that~\eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e.,
+  Assumption (iii), i.e. \eqref{E:U0finite}, implies that the interval $\left(64L_b^2 \Upsilon(0),
+  1/2\right)$ is not empty. Moreover, Assumption (iv), i.e. \eqref{E:Dalang-a0}, guarantees that
+  there exists a constant $\alpha$ in this interval, namely $64L_b^2\Upsilon(0) <\alpha<1/2$, such
+  that~\eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e. 
   $\Upsilon_{2\alpha}(0)<\infty$. Now we can apply part (3) of Lemma~\ref{L:HUA}, thanks
   to~\eqref{E:Dalang-00}, to see that $\Upsilon_{2\alpha}(0)<\infty$ if and only if~\eqref{E:H}
   holds. Therefore, both Lemmas~\ref{L:yineq} and~\ref{L:Factorize} (more precisely part (3) of
@@ -1821,10 +1831,10 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
 
   \noindent\textit{Lower bound:~} Now we prove the lower bound in~\eqref{E:growtail}. Indeed,
   \begin{align*}
-    \MoveEqLeft \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
-      \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z \\
-    & \ge {C_d} \int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x
-      \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x
+    \int_{\R^d}G\left(1,z\right) |\xi-z|^\alpha \ud z
+      \ge \int_{\R^d}G\left(1,z\right) \big| |\xi| - |z| \big|^\alpha \ud z
+    & \ge {C_d} \int_0^\infty \big| |\xi| - x \big|^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x \\
+    & \ge C_d \int_1^2 \big| |\xi| - x \big|^\alpha \ud x
       = \frac{C_d}{1+\alpha} \psi\left(|\xi|\right),
   \end{align*}
   where, by considering three cases, we have
@@ -1888,7 +1898,7 @@ In this part, we will make some explicit computations for Bessel and related ker
     \item there exists a constant $c(s,d)>0$ such that
       \begin{gather*}
         \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad |x| \le 2,
-        \shortintertext{with}
+        \quad \text{with} \\
         H_s(x) =
         \begin{cases}
           |x|^{s-d} + 1 + O(|x|^{s-d+2}) & \text{for $0<s<d$,} \\
