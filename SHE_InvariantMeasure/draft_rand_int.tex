@@ -191,9 +191,9 @@ satisfies the following integrability condition at infinity:
   \int_{\R^d}\exp\left(-a|x|^2\right) |\mu|(\ud x) < \infty \quad \text{for all $a>0$},
 \end{equation}
 where $|\mu| = \mu_++\mu_-$ and $\mu = \mu_+-\mu_-$ refers to the \textit{Hahn decomposition} of the
-measure $\mu$. Initial condition of this type, introduced in~\cite{chen.dalang:15:moments*1} and
-further explored in~\cite{chen.kim:19:nonlinear,chen.huang:19:comparison}, is called \textit{rough
-initial condition}.
+measure $\mu$. Initial conditions of this type, introduced in~\cite{chen.dalang:15:moments*1} and
+further explored in~\cite{chen.kim:19:nonlinear,chen.huang:19:comparison}, are called \textit{rough
+initial conditions}.
 
 The function $b(x,u)$ is uniformly bounded in the first variable and Lipschitz continuous in the
 second variable, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
@@ -227,7 +227,7 @@ of~\eqref{E:SHE}, has been laid out by Tessitore and Zabczyk~\cite{tessitore.zab
 which involves two parts: first one needs to show that the laws of the solution to~\eqref{E:SHE}
 form a family of \emph{Markovian transition functions} on some Hilbert space, $H$, and the
 corresponding \emph{Markovian semigroup} is Feller; and second one needs to establish that the
-moments of solution is bounded in time (see~\eqref{E:BddMnt} below). For the second point, it
+moments of solution are bounded in time (see~\eqref{E:BddMnt} below). For the second point, it
 requires some substantial work (see Theorems~\ref{T:Lrho} and~\ref{T:Main} below). On the other
 hand, the first point has been shown to be true for our case of interest (see, e.g.,~\cite[Chapter
 9]{da-prato.zabczyk:14:stochastic}) with the following weighted $L^2 (\R^d)$ space as our underlying
@@ -250,9 +250,9 @@ Hilbert space as in~\cite{tessitore.zabczyk:98:invariant}:
   \end{align*}
 \end{definition}
 
-Accordingly, we will prove the existence of invariant measure following the same strategy as
-in~\cite{tessitore.zabczyk:98:invariant}: Let $\mathscr{L}(u(t,\cdot;\mu)$ denote the law of
-$u(t,\cdot)$ starting from $\mu$ at $t = 0$. We will first establish the tightness of
+Accordingly, we will prove the existence of the invariant measure following the same strategy as
+in~\cite{tessitore.zabczyk:98:invariant}. Indeed, we use $\mathscr{L}(u(t,\cdot;\mu)$ to denote the law of
+$u(t,\cdot)$ starting from $\mu$ at $t = 0$ and first establish the tightness of
 $\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$. A critical step in obtaining this
 tightness result is to show that the following moment is uniformly bounded in time (see Theorem~\ref{T:Main}):
 \begin{align}\label{E:BddMnt}
@@ -271,7 +271,7 @@ Section~\ref{SS:Drift}. In contrast, the existence of an invariant measure under
 equation~\eqref{E:SHE} has rarely been studied. To the best of our knowledge, this current article
 and the one by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant} are the only papers that
 consider the case where the spatial domain is the whole space $\R^d$, the diffusion term, $b(x,u)$,
-is globally Lipschitz in the second variable uniformly in the first variable (see~\eqref{E:lipcon}),
+is globally Lipschitz in the second variable, uniformly bounded in the first variable (see~\eqref{E:lipcon})
 and there is no additional negative drift term to help. The major challenge is to identify the right
 conditions so that the probability moments of the solution are bounded in time
 (see~\eqref{E:BddMnt}). The solution to~\eqref{E:SHE} is usually \textit{intermittent}, namely, its
@@ -288,9 +288,9 @@ framework of the stochastic evolution in Hilbert spaces~\cite{da-prato.zabczyk:1
 though both theories are equivalent (see~\cite{dalang.quer-sardanyons:11:stochastic}), the
 differences in many technical aspects are still substantial. As the random field approach enjoys the
 properties of being more explicit/sharper in many cases, we try to obtain conditions for the
-existence of invariant measure that are more explicit and sharper. To be more precise, for the
-initial conditions, the results in~\cite{tessitore.zabczyk:98:invariant} allow $L_\rho^2 (\R^d)$
-functions to be initial conditions, although the authors proved their main result---Theorem 3.3
+existence of invariant an measure that are more explicit and sharper. To be more precise, for the
+initial conditions, the results in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\R^d)$
+functions, although the authors proved their main result---Theorem 3.3
 \textit{ibid.}---only for the constant one initial condition. Here we give the precise conditions on
 the initial condition (see~\eqref{E:InitData} below) which allows a wider class of initial data,
 including unbounded functions and measures such as the Dirac delta measure (see
@@ -298,7 +298,7 @@ Examples~\ref{Ex:delta} and~\ref{Ex:Riesz}). Note that the Dirac delta initial m
 prominent role in the study of the stochastic heat equation; see,
 e.g.,~\cite{amir.corwin.ea:11:probability}. Regarding the noise, we give an explicit and easily
 verifiable condition---\eqref{E:Dalang-00}---on the spectral density $\widehat{f}$ and present a few
-concrete examples (see Section~\ref{SS:Bassel}). The comparisons of our condition with those
+concrete examples (see Section~\ref{SS:Bassel}). The comparisons of our conditions with those
 obtained by Tessitore and Zabyczyk~\cite{tessitore.zabczyk:98:invariant} are given in
 Section~\ref{SS:TessZabz}.
 
@@ -315,8 +315,8 @@ Now we are ready to motivate the conditions that we use and present the main res
 \subsection{Main results}\label{S:Main}
 
 As mentioned earlier, in order to have moments bounded in time as in~\eqref{E:BddMnt}, one should
-better first identify the sharp conditions under which the second moments $\E\left(u(t,x)^2\right)$
-with $x$ fixed is bounded. This question has been answered in~\cite[Theorem 1.3 and Lemma
+better first identify the sharp conditions under which the second moments as a function of t, namely $t \mapsto \E\left(u(t,x)^2\right)$,
+with $x$ fixed are bounded. This question has been answered in~\cite[Theorem 1.3 and Lemma
 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient conditions are given. More precisely, to
 have the second moment bounded in time with $x$ fixed, one needs to have the spatial dimension $d \ge
 3$, and in addition, the spectral measure $\hat{f}$ and Lipschitz constant $L_b$ of $b(\cdot)$ need
@@ -504,7 +504,7 @@ The paper is organized as follows: we first prove Theorem~\ref{T:Lrho} in Sectio
 in Section~\ref{S:Factor}, we study the factorization lemma. Then we proceed to prove
 Theorem~\ref{T:Main} in Section~\ref{S:mainproof}. Finally, in Section~\ref{S:Example} we make some
 further discussion on the main results and present various examples. In particular, in
-Section~\ref{SS:Drift}, we give a brief review of the problem of finding invariant measures for SHE
+Section~\ref{SS:Drift}, we give a brief review of the problem of finding invariant measures for the SHE
 with a drift term; in Section~\ref{SS:TessZabz}, we compare our conditions on the spectral density
 with those obtained by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}; in
 Section~\ref{SS:Init}, we show that our results could include a wider class of initial conditions;
@@ -564,13 +564,13 @@ We first state some known results and prove a moment bound in Corollary~\ref{C:M
   (see also~\eqref{E:Interval}), then
   \begin{equation}\label{E:mb0}
     \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*|\mu|)(x) \bigg),
-    \quad \text{for all $p$ such that} 1/p \in \left(64 L_b^2\Upsilon(0),1\right),
+    \quad \text{for all $p$ such that } 1/p \in \left(64 L_b^2\Upsilon(0),1\right),
   \end{equation}
   where $C_p = \left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
   H(t;\gamma_p)^{1/2}<\infty$.
 \end{corollary}
 \begin{proof}
-  Lemma 2.5 of~\cite{chen.kim:19:nonlinear} gives one sufficient condition, namely,
+  Lemma 2.5 of~\cite{chen.kim:19:nonlinear} gives one sufficient condition, namely
   $2\gamma_p\Upsilon(0)<1$, under which the function $H((t;\gamma_p)$ is bounded in $t$. Therefore,
   by taking into account the expression of $\gamma_p$ in Theorem~\ref{T:ExUn}, we see that as a
   direct consequence of~\eqref{E:mb}, whenever
@@ -740,8 +740,8 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
     & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
     & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i = 1,2, \: r\in(0,s),
   \end{align}
-  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see Lemma
-  2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
+  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see 
+  \cite[Lemma 2.6]{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
   H\left(s+t_0;32qL_b^2\right)$,
   \begin{align*}
     \Norm{Y_v(s,y)}_q^2
@@ -1005,10 +1005,10 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   \end{align*}
   is relatively compact in $L_\rho^2 (\R^d)$.
 
-  Assumption (iii), i.e.,~\eqref{E:U0finite}, implies that the interval $\left(64L_b^2 \Upsilon(0),
-  1/2\right)$ is not empty. Moreover, Assumption (iv), i.e.,~\eqref{E:Dalang-a0}, guarantees that
-  there exists a constant $\alpha$ in this interval, namely, $64L_b^2\Upsilon(0) <\alpha<1/2$, such
-  that~\eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e.,
+  Assumption (iii), i.e. \eqref{E:U0finite}, implies that the interval $\left(64L_b^2 \Upsilon(0),
+  1/2\right)$ is not empty. Moreover, Assumption (iv), i.e. \eqref{E:Dalang-a0}, guarantees that
+  there exists a constant $\alpha$ in this interval, namely $64L_b^2\Upsilon(0) <\alpha<1/2$, such
+  that~\eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e. 
   $\Upsilon_{2\alpha}(0)<\infty$. Now we can apply part (3) of Lemma~\ref{L:HUA}, thanks
   to~\eqref{E:Dalang-00}, to see that $\Upsilon_{2\alpha}(0)<\infty$ if and only if~\eqref{E:H}
   holds. Therefore, both Lemmas~\ref{L:yineq} and~\ref{L:Factorize} (more precisely part (3) of
@@ -1074,7 +1074,7 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   \end{align*}
   where the constant $\Theta$ does not depend on $t$. As we have seen from above, since
   $\Upsilon_{2\alpha}(0)<\infty$, we can apply Lemma~\ref{L:HUA} to bound $\mathcal{H}_{\alpha}(s)$
-  from above by the finite bound: $\left(2\pi\right)^d \Gamma(1-2\alpha) \Upsilon_{2\alpha}(0)$.
+  from above by the following finite bound: $\left(2\pi\right)^d \Gamma(1-2\alpha) \Upsilon_{2\alpha}(0)$.
   Hence, together with~\eqref{E:GtBdd}, we obtain the following upper bound for $I_1$ that is
   uniform in $t\ge \tau$:
   \begin{align*}
@@ -1244,7 +1244,7 @@ $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute 
 in~\eqref{E:TZspec} can be removed without ambiguity, which will reduce to our
 condition~\eqref{E:U0finite} up to a constant factor. However, when $\widehat{f}$ is only
 nonnegative and not strictly positive, finding the right square root of $\widehat{f}$ so that
-$\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative become tricky. This last point will be
+$\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative becomes tricky. This last point will be
 illustrated by the examples below. We first set up the notation in Example~\ref{Ex:nonnegative}.
 %
 % We now consider two cases (depending whether $\widehat{f}$ is strictly postive) and give some
