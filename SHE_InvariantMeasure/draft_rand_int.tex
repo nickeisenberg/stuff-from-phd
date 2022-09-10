@@ -67,9 +67,9 @@
            ]{biblatex}
 \AtEveryBibitem{% Clean up the bibtex rather than editing it
  % \clearfield{doi}
- \clearfield{url}
- \clearfield{issn}
- \clearlist{location}
+ % \clearfield{url}
+ % \clearfield{issn}
+ % \clearlist{location}
  \clearfield{month}
  \clearfield{series}
 
@@ -78,6 +78,8 @@
   \clearname{editor}
  }
 }
+\renewcommand*{\bibfont}{\fontsize{11}{11}}
+
 % \addbibresource{All.bib}
 \addbibresource{./draft_rand_int_biber.bib}
 % }}}
@@ -129,12 +131,12 @@
   This paper deals with the long term behavior of the solution to the nonlinear stochastic heat
   equation $\partial u /\partial t - \frac{1}{2}\Delta u = b(u)\dot{W}$, where $b$ is assumed to be
   a globally Lipschitz continuous function and the noise $\dot{W}$ is a centered and spatially
-  homogeneous Gaussian noise that is white in time. Using the martingale theory or the random field
-  approach for stochastic partial differential equations laid out by John Walsh and Robert Dalang,
-  we identify a set of conditions on the initial data, the correlation measure and the weight
-  function $\rho$, which will together guarantee the existence of an invariant measure in the
-  weighted space $L^2_\rho(\R^d)$. In particular, our result includes the \textit{parabolic Anderson
-  model} (i.e., the case when $b(u) = \lambda u$) starting from the Dirac delta measure.
+  homogeneous Gaussian noise that is white in time. Using the moment formulas obtained
+  in~\cite{chen.huang:19:comparison,chen.kim:19:nonlinear}, we identify a set of conditions on the
+  initial data, the correlation measure and the weight function $\rho$, which will together
+  guarantee the existence of an invariant measure in the weighted space $L^2_\rho(\R^d)$. In
+  particular, our result includes the \textit{parabolic Anderson model} (i.e., the case when $b(u) =
+  \lambda u$) starting from the Dirac delta measure.
 \end{abstract}
 
 \smallskip
@@ -252,8 +254,8 @@ Theorem~\ref{T:Main}):
 \begin{align}\label{E:BddMnt}
   \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right) <\infty.
 \end{align}
-Then we apply the \textit{Krylov-Bogoliubov theorem} (see, e.g.,~\cite[Theorem
-11.7]{da-prato.zabczyk:14:stochastic}) to construct an invariant measure via
+Then we will apply the \textit{Krylov-Bogoliubov theorem} (see,
+e.g.,~\cite[Theorem~11.7]{da-prato.zabczyk:14:stochastic}) to construct an invariant measure via
 \begin{equation}\label{E:InvMeasForm}
   \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
 \end{equation}
@@ -280,16 +282,15 @@ Here we emphasize that we study the invariant measure using the Walsh random fie
 approach~\cite{walsh:86:introduction}, whereas such studies are mostly carried out under the
 framework of the stochastic evolution in Hilbert spaces~\cite{da-prato.zabczyk:14:stochastic}. Even
 though both theories are equivalent (see~\cite{dalang.quer-sardanyons:11:stochastic}), the
-differences in many technical aspects are still substantial. As the random field approach enjoys the
-properties of being more explicit/sharper in many cases, we try to obtain conditions for the
-existence of an invariant measure that are more explicit and sharper. To be more precise, for the
-initial conditions, the results in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\R^d)$
-functions, although the authors proved their main result---Theorem 3.3
-\textit{ibid.}---only for the constant one initial condition. Here we give the precise conditions on
-the initial condition (see~\eqref{E:InitData} below) which allows a wider class of initial data,
-including unbounded functions and measures such as the Dirac delta measure (see
-Examples~\ref{Ex:delta} and~\ref{Ex:Riesz}). Note that the Dirac delta initial measure plays a
-prominent role in the study of the stochastic heat equation; see,
+differences in many technical aspects are still substantial. As the random field approach often
+produces results that are more explicit, we try to use this approach to obtain more precise
+conditions for the existence of an invariant measure. For the initial conditions, the results
+in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\R^d)$ functions, although the
+authors proved their main result---Theorem 3.3 \textit{ibid.}---only for the constant one initial
+condition. Here we give the precise conditions on the initial condition (see~\eqref{E:InitData}
+below) which allows a wider class of data, including unbounded functions and measures such as the
+Dirac delta measure (see Examples~\ref{Ex:delta} and~\ref{Ex:Riesz}). Note that the Dirac delta
+initial measure plays a prominent role in the study of the stochastic heat equation; see,
 e.g.,~\cite{amir.corwin.ea:11:probability}. Regarding the noise, we give an explicit and easily
 verifiable condition---\eqref{E:Dalang-00}---on the spectral density $\widehat{f}$ and present a few
 concrete examples (see Section~\ref{SS:Bassel}). The comparisons of our conditions with those
@@ -2128,7 +2129,7 @@ Example~\ref{Ex:Riesz-T} for more details.
     r(x) \sim
     \begin{cases}
       |x|^{s_1-d} & |x| \to 0, \\
-      |x|^{-s_2} & |x| \to \infty,
+      |x|^{-s_2}  & |x| \to \infty,
     \end{cases}
     \quad \text{and} \quad
     \widehat{r}(\xi) \sim
@@ -2157,10 +2158,10 @@ Example~\ref{Ex:Riesz-T} for more details.
 In this part, we give some examples of the admissible weight functions. As given in Section 2
 of~\cite{tessitore.zabczyk:98:invariant}, the following functions are admissible functions:
 \begin{equation}\label{E:admRho}
-\begin{aligned}
-\rho(x) & = \exp(-a|x|), \quad               &  & a>0 \quad \text{and} \\
-\rho(x) & = \left(1+|x|^a\right)^{-1}, \quad &  & a>d.
-\end{aligned}
+\begin{dcases}
+  \rho(x) = \exp(-a|x|)               & a>0, \\
+  \rho(x) = \left(1+|x|^a\right)^{-1} & a>d.
+\end{dcases}
 \end{equation}
 
 The smaller the weight function $\rho(\cdot)$ (not necessarily admissible) is, the larger the space
