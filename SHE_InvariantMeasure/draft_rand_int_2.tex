@@ -19,7 +19,6 @@
 \usepackage{epsfig}
 \usepackage{amsthm}
 \usepackage{relsize}
-\usepackage{tikz}
 \usepackage{amsfonts}
 \usepackage{mathrsfs}
 \usepackage{makeidx}
@@ -39,6 +38,9 @@
      citecolor = blue,
      urlcolor = blue
      ]{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
 \usepackage[ocgcolorlinks]{ocgx2}
 \usepackage[shortlabels]{enumitem}
 \excludecomment{codes}
@@ -272,12 +274,12 @@ Lipschitz in the second variable, uniformly bounded in the first variable (see~\
 there is no additional negative drift term to help. Recently, Gu and Li~\cite{gu.li:20:fluctuations}
 established the weak convergence of $u(t,\cdot)$ to $Z(\cdot)$ in $C(\R^d)$ with $Z(\cdot)$ being a
 stationary random field. The convergence in~\cite{gu.li:20:fluctuations} relies on the fact that the
-initial condition to be stationary, i.e., $\mu(\ud x) = \ud x$; see Remark 3.6 ({\it ibid.}) for
-some perturbations on the constant initial condition that can be made. The current paper follows
-largely the work by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}. The major challenge
-is to identify the right conditions so that the probability moments of the solution are bounded in
-time (see~\eqref{E:BddMnt}). The solution to~\eqref{E:SHE} is usually \textit{intermittent}, namely,
-its moments possess a certain exponential growth in $t$; see,
+initial condition to be stationary, i.e., $\mu(\ud x) = \ud x$; see Remark 3.6 {\it ibid.} for some
+perturbations on the constant initial condition that can be made. The current paper follows largely
+the work by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}. The major challenge is to
+identify the right conditions so that the probability moments of the solution are bounded in time
+(see~\eqref{E:BddMnt}). The solution to~\eqref{E:SHE} is usually \textit{intermittent}, namely, its
+moments possess a certain exponential growth in $t$; see,
 e.g.,~\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason,
 one has to impose some additional assumptions on the initial conditions, the noise, the coefficients
 of~\eqref{E:SHE}, and the weight function $\rho$ in order to control the growth of the moments in
@@ -352,8 +354,15 @@ can further strengthen condition~\eqref{E:Dalang-ab} to
   \quad \text{for some $\alpha\in (0,1]$.}
 \end{equation}
 We use the convention that when $\alpha = 0$, we simply drop it from the expression
-$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta) = \Upsilon_0(\beta)$. The relations of these
-conditions are illustrated in Figure~\ref{F:Dalang}.
+$\Upsilon_\alpha(\beta)$, i.e., $\Upsilon(\beta) = \Upsilon_0(\beta)$. We will also need the
+following slightly different condition:
+\begin{gather}\label{E:Dalang-H}
+  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,} \shortintertext{where}
+  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2). \label{E:H}
+\end{gather}
+The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
+below. The relations of these conditions are illustrated in Figure~\ref{F:Dalang}; see
+Lemma~\ref{L:HUA} for the proof:
 
 % one may also check Lemma~\ref{L:HUA} for the relation between $\Upsilon(0)<\infty$ and
 % $\Upsilon_\alpha(0)<\infty$.
@@ -361,52 +370,32 @@ conditions are illustrated in Figure~\ref{F:Dalang}.
 \setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
 \begin{figure}[htpb]
 \begin{center}
-  \usetikzlibrary{arrows.meta}
-  \begin{tikzpicture}[scale = .8, x = 9em, y = 6em]
+  \begin{tikzpicture}[scale = .8, node distance = 14em, >=stealth, auto]
 		% \tikzset{> = latex}
-		\newcommand\inc{0.07}
-		\newcommand\xo{1.2}
-		\newcommand\yo{0.5}
-		\newcommand\xg{3.7}
-		\newcommand\yg{1.5}
 
-		% \draw[] (\xo-0.9,0) -- (\xg+0.7,0); % node[right] {$\alpha$};
-		% \draw[] (\xo-0.9,2) -- (\xg+0.7,2); % node[right] {$\alpha$};
-		% \draw[] (0,\yo-0.3) -- (0,\yg+0.3); % node[above] {$\beta$};
-		% \draw[] (4.7,\yo-0.3) -- (4.7,\yg+0.3); % node[above] {$\beta$};
-
-		% \draw[thick] (\xo,\inc) --++ (0,-2*\inc) node[below] {$\alpha = 0$};
-		% \draw[thick] (\xg,\inc) --++ (0,-2*\inc) node[below] {$\alpha\in(0,1]$};
-		% \draw[thick] (\inc,\yo) --++ (-2*\inc,0) node[left] {$\beta = 0$};
-		% \draw[thick] (\inc,\yg) --++ (-2*\inc,0) node[left] {$\beta>0$};
-
-		\node[text width = 13em, align = center] (01) at (\xo,\yg) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
-		\node[text width = 13em, align = center] (00) at (\xo,\yo) {$\Upsilon(0)<\infty$\\ Condition \eqref{E:Dalang-00}};
-		\node[text width = 13em, align = center] (10) at (\xg,\yo) {$\Upsilon_\alpha(0)<\infty$\\ Condition \eqref{E:Dalang-a0}};
-		\node[text width = 13em, align = center] (11) at (\xg,\yg) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition \eqref{E:Dalang-ab}};
-		\node[] at (\xo,0.5*\yo+0.5*\yg) {\Large$\Uparrow$};
-		\node[] at (\xg,0.5*\yo+0.5*\yg) {\Large$\Uparrow$};
-		\node[] at (0.5*\xo+0.5*\xg,\yg) {\Large$\Leftarrow$};
+		\node[text width = 13em, align = center] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
+		\node[text width = 10em, align = center, right of = Dalang] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
+		\node at ($(Dalang)!0.56!(Factor)$) {\Large$\Leftarrow$};
+		\node[text width = 13em, align = center, below of = Dalang, yshift = 9em] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
+		\node[text width = 13em, align = center, right of = Phase] (InvMea) {$\Upsilon_\alpha(0)<\infty$\\ Condition~\eqref{E:Dalang-a0}};
+		\node at ($(Dalang)!0.5!(Phase)$) {\Large$\Uparrow$};
+		\node at ($(Factor)!0.5!(InvMea)$) {\Large$\Uparrow$};
+    \node[text width = 13em, align = center, right of = Factor] (Ha) {$H_{\alpha/2}(t)<\infty$, $\forall t>0$\\ Condition~\eqref{E:Dalang-H}};
+		\node[text width = 13em, align = center, right of = InvMea] (H8) {$\displaystyle\lim_{t \to \infty}H_{\alpha /2}(t)<\infty$};
+		\node at ($(Ha)!0.5!(H8)$) {\Large$\Uparrow$};
+		\node at ($(Ha)!0.5!(Factor)$) {\Large$\Leftrightarrow$};
+		\node at ($(H8)!0.5!(InvMea)$) {\Large$\Leftrightarrow$};
 
 \end{tikzpicture}
 \end{center}
-  \caption{Relations among conditions~\eqref{E:Dalang},~\eqref{E:Dalang-ab},~\eqref{E:Dalang-a0}
-  and~\eqref{E:Dalang-00}.}
-	\label{F:Dalang}
+
+  \caption{Relations among various conditions.}
+
+  \label{F:Dalang}
 \end{figure}
 
-
-We will also need the following slightly different condition:
-\begin{gather}\label{E:Dalang-H}
-  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in (0,1]$ and for all $t>0$,} \shortintertext{where}
-  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2). \label{E:H}
-\end{gather}
-The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
-below. As shown in Lemma~\ref{L:HUA} below, condition~\eqref{E:Dalang-a0} will imply
-condition~\eqref{E:Dalang-H}. However, if one assumes~\eqref{E:Dalang-00}, then these two conditions
-become equivalent.
-% The quantity $\Upsilon_{\alpha}(0)$ has the benefit of being more compactly defined as well as
-% being more well recognized.
+As shown in Lemma~\ref{L:HUA} below, if one assumes~\eqref{E:Dalang-00}, then the middle two and the
+right two conditions in Figure~\ref{F:Dalang} are all equivalent.
 
 We are now ready to state our two main results of the paper.
 
