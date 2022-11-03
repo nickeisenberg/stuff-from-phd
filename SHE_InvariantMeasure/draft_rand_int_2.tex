@@ -85,8 +85,8 @@
 }
 \renewcommand*{\bibfont}{\fontsize{11}{11}}
 
-% \addbibresource{All.bib}
-\addbibresource{./draft_rand_int_2_biber.bib}
+\addbibresource{All.bib}
+% \addbibresource{./draft_rand_int_2_biber.bib}
 % }}}
 % -------------------------------------------------
 % {{{ Environments and some setups
@@ -351,20 +351,29 @@ that for some $\alpha\in (0,1]$,
 \end{align}
 These three conditions are illustrated in Figure~\ref{F:Cond}.
 
-
+\bigskip
 \begin{figure}[htpb]
   \begin{center}
-  \begin{tikzpicture}[node distance = 15em, >=stealth, auto]
+  \begin{tikzpicture}[node distance = 8em, >=stealth, auto]
 		% \tikzset{> = latex}
+    \tikzset{MyNodeStyle/.style={align = center, draw, rounded corners = 0.5em}}
+    \tikzset{MyImplies/.style={
+        -Implies,
+        line width = 0.8pt,
+        double distance = 3.5pt,
+        shorten >= 10pt,
+        shorten <= 10pt,
+      }}
 
-		\node[text width = 12em, align = center, draw, dashed] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
-		\node[text width = 9em, align = center, right of = Dalang, draw, dotted] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
-		\node at ($(Dalang)!0.55!(Factor)$) {\Large$\Leftarrow$};
-		\node[text width = 8.8em, align = center, left of = Dalang, draw, dotted] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
-		\node at ($(Dalang)!0.55!(Phase)$) {\Large$\Rightarrow$};
-    \node[text width = 12em, align = center, below of = Factor, yshift = 11em] (a) {Factorization Lemma ~\ref{L:Factorize}};
-    \node[text width = 12em, align = center, below of = Phase,  yshift = 11em] (a) {Phase transition, moment pointwise bounded};
-
+		\node[text width = 12em, dashed, MyNodeStyle] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
+		\node[text width = 8.8em, below right of = Dalang, dotted, MyNodeStyle, xshift = 3em, yshift = 0.5em] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
+		% \node at ($(Dalang)!0.55!(Factor)$) {\Large$\Leftarrow$};
+		\node[text width = 8.8em, below left of = Dalang, dotted, MyNodeStyle, xshift = -3em, yshift = 0.5em] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
+		% \node at ($(Dalang)!0.55!(Phase)$) {\Large$\Rightarrow$};
+    \node[text width = 10em, align = center, below of = Factor, yshift = 4.0em] (a) {Factorization Lemma~\ref{L:Factorize}};
+    \node[text width = 10em, align = center, below of = Phase,  yshift = 4.0em] (a) {Phase transition/moment pointwise bounded};
+    \draw[MyImplies] (Factor) -- (Dalang);
+    \draw[MyImplies] (Phase) -- (Dalang);
   \end{tikzpicture}
   \end{center}
 
@@ -379,16 +388,17 @@ These three conditions are illustrated in Figure~\ref{F:Cond}.
   $L^2\left(\Omega\right)$-continuous solution; see~\cite{dalang:99:extending}. But Dalang's
   condition~\eqref{E:Dalang} along is sometimes too weak to derive some useful properties. Instead,
   the strengthened Dalang's condition~\eqref{E:Dalang-ab} is widely assumed in the literature. For
-  example, condition~\eqref{E:Dalang-ab} is used to derive the H\"older regularity of the solution
-  (see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder}). One may
-  also check the densely blowup solution obtained in~\cite{chen.huang.ea:19:dense} where Dalang's
+  example, condition~\eqref{E:Dalang-ab} is used to derive the H\"older regularity of the solution;
+  see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder} for the
+  random field approach and Theorem 2.3 of~\cite{peszat.zabczyk:97:stochastic} and Theorem 4.4
+  of~\cite{tessitore.zabczyk:98:invariant} for the infinite-dimensional SDE approach. One may also
+  check the densely blowup solution obtained in~\cite{chen.huang.ea:19:dense} where Dalang's
   condition~\eqref{E:Dalang} is satisfied but condition~\eqref{E:Dalang-ab} fails. As another
   example, condition~\eqref{E:Dalang-ab} is also required in order to derive the sample path
   comparison principle in~\cite{chen.huang:19:comparison}. As shown in Lemma~\ref{L:Factorize}
   below, condition~\eqref{E:Dalang-ab} guarantees a factorization of the solution, which plays a key
-  role in the tightness argument in the proof of the main result -- Theorem ~\ref{T:Main}.
+  role in the tightness argument in the proof of the main result -- Theorem~\ref{T:Main}.
 \end{remark}
-
 
 We are now ready to state our two main results of the paper.
 
@@ -396,7 +406,7 @@ We are now ready to state our two main results of the paper.
   Let $u(t,x;\mu)$ be the solution to~\eqref{E:SHE} starting from $\mu$ which
   satisfies~\eqref{A:icon}. Assume that
   \begin{enumerate}[(i)]
-    \item $\rho: \R^d \to \R_+$ is a nonnegative $L^1(\R^d)$ function;
+    \item $\rho: \R^d \to \R_+$ is a nonnegative $L^1 (\R^d)$ function;
     \item for all $t > 0$, the initial condition $\mu$ satisfies $\mathcal{G}_{\rho}(t;|\mu|) <
       \infty$ where
       \begin{equation}\label{E:G}
@@ -637,7 +647,7 @@ showed the following proposition:
 
 As for $Y_\alpha$, we have the following two lemmas, which hold for both the non-restarted SHE ($t_0
 = 0$) and the restarted SHE ($t_0 > 0$). We need first introduce some notation. Recall that Dalang's
-condition~\eqref{E:Dalang} can be strengthened condition ~\eqref{E:Dalang-ab}, which can be further
+condition~\eqref{E:Dalang} can be strengthened condition~\eqref{E:Dalang-ab}, which can be further
 strengthened to
 \begin{equation}\label{E:Dalang-a0}
   \Upsilon_\alpha(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
@@ -920,7 +930,7 @@ Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
 
   \end{tikzpicture}
 
-  \caption{Relations among various conditions where $\alpha\in (0,1)$ and  $\beta>0$.}
+  \caption{Relations among various conditions where $\alpha\in (0,1)$ and $\beta>0$.}
 
   \label{F:Dalang}
 \end{figure}
@@ -928,7 +938,7 @@ Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
 
 If we denote the first row of four conditions in Figure~\ref{F:Dalang} by $(a_1)$, $(a_2)$, $(a_3)$
 and $(a_4)$, and those in the second row by $(b_1)$, $(b_2)$, $(b_3)$ and $(b_4)$. The implications
-$(b_i)\Rightarrow (a_i)$ with $i=1,\dots, 4$ are clear. It remains to show the four equivalent
+$(b_i)\Rightarrow (a_i)$ with $i = 1,\dots, 4$ are clear. It remains to show the four equivalent
 relations. In particular, part (i) of Lemma~\ref{L:HUA} proves the bottom two equivalences in
 Figure~\ref{F:Dalang}, i.e., $(b_1)\Leftrightarrow (b_2)$ and $(b_3)\Leftrightarrow (b_4)$. The top
 two, i.e., $(a_1)\Leftrightarrow (a_2)$ and $(a_3)\Leftrightarrow (a_4)$, are covered by part (ii)
@@ -937,7 +947,7 @@ of Lemma~\ref{L:HUA}.
 \begin{lemma}\label{L:HUA}
   For all $\alpha\in [0,1)$, we have the following properties:
   \begin{enumerate}[(i)]
-    \item $\displaystyle \lim_{t\to\infty}\left(2\pi\right)^{-d}\mathcal{H}_{\alpha/2}(t)=
+    \item $\displaystyle \lim_{t\to\infty}\left(2\pi\right)^{-d}\mathcal{H}_{\alpha/2}(t) =
       \Gamma\left(1-\alpha\right) \Upsilon_{\alpha}(0)$;
     \item $\left(1-e^{-\beta t}\right) \Upsilon_\alpha(\beta) \le \mathcal{H}_{\alpha/2}(t) \le
       e^{\beta t}\: \Upsilon_\alpha(\beta)$ for all $t>0$ and $\beta>0$.
@@ -959,7 +969,7 @@ of Lemma~\ref{L:HUA}.
   \begin{align*}
     \mathcal{H}_{\alpha /2}(t)
     = \int_0^t \ud r r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r|\xi|^2}
-    = \int_0^t \ud r r^{-\alpha} e^{\beta r} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(|\xi|^2+\beta\right)}.
+    = \int_0^t \ud r r^{-\alpha} e^{\beta r} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(|\xi|^2 +\beta\right)}.
   \end{align*}
   By replacing $e^{\beta r}$ by $1$ and $e^{\beta t}$, we see that
   \begin{align*}
@@ -1226,7 +1236,7 @@ Hairer~\cite{eckmann.hairer:01:invariant} considered the whole space $\R^d$. Not
 Hairer~\cite{eckmann.hairer:01:invariant} studied the additive noise case along with a bounded
 initial condition.
 
-Several works which do not require an added drift term with dissipativity as in \eqref{E:dis}
+Several works which do not require an added drift term with dissipativity as in~\eqref{E:dis}
 include Misiats \textit{et
 al}~\cite{misiats.stanzhytskyi.ea:16:existence,misiats.stanzhytskyi.ea:20:invariant}. In the Theorem
 1.2 of~\cite{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence
@@ -1255,11 +1265,11 @@ exists a $\varphi \in L^2_{\rho}(\R^d) \cap L^2_{\widetilde\rho}(\R^d)$ where $\
 \in L^1 (\R^d)$ and the solution starting from $\varphi$ is bounded in probability in
 $L^2_{\widetilde \rho}(\R^d)$ and (2) that the spectral density $\hat{f}$ satisfies
 \begin{equation}\label{E:CorTZ}
-\widehat{f} \in L^p (\R^d) \quad \text{where $\frac{d-2}{d} < \frac{1}{p}$};
+\widehat{f} \in L^p (\R^d) \qquad \text{for some $p \in \left[1, d/(d-2)\right)$};
 \end{equation}
-see Hypothesis 2.1 \textit{ibid.} However, as was illustrated in Theorem 3.3 \textit{ibid.}, in
-order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or to have moments
-uniformly bounded in time), the following additional assumptions were imposed:
+see part (i) of Hypothesis 2.1 \textit{ibid.} However, as was illustrated in Theorem 3.3
+\textit{ibid.}, in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or
+to have moments uniformly bounded in time), the following additional assumptions were imposed:
 \begin{equation}\label{E:TZspec}
   d\ge 3 \quad \text{and} \quad
   L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left| \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\right|\right) (\xi) |\xi|^{2-d} \ud \xi ,
@@ -1293,18 +1303,14 @@ an invariant measure via the construction~\eqref{E:InvMeasForm}.
   \textit{ibid.}
 \end{remark}
 
-% Under our convention~\eqref{E:Fourier}, the integral in the second condition of~\eqref{E:TZspec} can
-% be written as
-% \begin{align*}
-%   \Gamma(d/2 -1)2^{d/2-2} \int_{\R^d} \left(\left|
-%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right| * \left|
-%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) \right|\right) (x) |x|^{2-d} \ud x.
-% \end{align*}
+Our condition~\eqref{E:Dalang-00} should be compared with the second condition in~\eqref{E:TZspec}.
+We will explain below why the former is more natural, easier to verify, and weaker than the latter.
 
-In the following, we will focus on the second condition in~\eqref{E:TZspec}, which corresponds
-to~\eqref{E:U0finite}. We claim that the latter is much easier to check than that of the former. The
-square root and absolute value in~\eqref{E:TZspec} make their condition more restrictive. Indeed, if
-$\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
+% In the following, we will focus on the second condition in~\eqref{E:TZspec}, which corresponds
+% to~\eqref{E:U0finite}. We claim that the latter is much easier to check than that of the former.
+%
+The square root and absolute value in~\eqref{E:TZspec} make their condition more restrictive.
+Indeed, if $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
 in~\eqref{E:TZspec} can be removed without ambiguity, which will reduce to our
 condition~\eqref{E:U0finite} up to a constant factor. However, when $\widehat{f}$ is only
 nonnegative and not strictly positive, finding the right square root of $\widehat{f}$ so that
@@ -2212,19 +2218,33 @@ Example~\ref{Ex:Riesz-T} for more details.
     \end{cases}
   \end{align*}
   Propositions~\ref{P:Bessel} and~\ref{P:Bessel'} imply that
-  \begin{align*}
-    \Upsilon_{\alpha}(0) =
-    \frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left(\frac{s_1 -d}{2} + 1 - \alpha\right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
-    + \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + \frac{s_2}{2}\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2 / 2\right)} < \infty,
-  \end{align*}
-  provided that
-	\begin{align*}\label{E:RieszTypeCond}
-    0 < d - 2(1-\alpha) < s_1 < d  \qquad \text{and} \qquad
-    0 < 2(1-\alpha) < s_2 < d.
-	\end{align*}
+  \begin{align}\label{E:RieszType-0}
+    \Upsilon(0) & =
+    \frac{\Gamma\left(d/2 -1\right) \Gamma\left((s_1 - d)/2 + 1\right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
+    + \frac{\Gamma\left(s_2/2 - 1\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2/2\right)} \qquad \text{and} \\
+    \Upsilon_{\alpha}(0) & =
+    \frac{\Gamma\left(d/2 -1 + \alpha\right) \Gamma\left((s_1 - d)/2 + 1 - \alpha\right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
+    + \frac{\Gamma\left(1 - \alpha\right) \Gamma\left( s_2/2 + \alpha - 1\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2/2\right)},
+    \label{E:RieszType}
+  \end{align}
+  which are finite provided that
+	\begin{align}\label{E:RieszTypeCond}
+    \begin{cases}
+      0 < d - 2(1-\alpha) < s_1 \\
+      0 < 2(1-\alpha) < s_2
+    \end{cases}
+    \text{and} \quad
+    \begin{cases}
+      0 < d - 2(1-\alpha) < s_1 \\
+      0 < 2(1-\alpha) < s_2
+    \end{cases},
+    \quad \text{respectively.}
+	\end{align}
   In contrast, it is not clear how to compute $\mathcal{F}\big(\sqrt{\widehat{r}}\:\big)$; see
-  condition~\eqref{E:TZspec}.
+  condition~\eqref{E:TZspec}. This is the case when neither condition~\eqref{E:Dalang-00} nor
+  condition~\eqref{E:Dalang-a0} implies each other.
 \end{example}
+
 
 \subsection{Examples of admissible weight functions}\label{SS:Weight}
 
