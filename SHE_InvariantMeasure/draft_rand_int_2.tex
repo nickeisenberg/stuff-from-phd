@@ -44,6 +44,7 @@
 \usepackage[ocgcolorlinks]{ocgx2}
 \usepackage[shortlabels]{enumitem}
 \excludecomment{codes}
+\setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
 % }}}
 % -------------------------------------------------
 % {{{ check references
@@ -83,8 +84,8 @@
 }
 \renewcommand*{\bibfont}{\fontsize{11}{11}}
 
-% \addbibresource{All.bib}
-\addbibresource{./draft_rand_int_2_biber.bib}
+\addbibresource{All.bib}
+% \addbibresource{./draft_rand_int_2_biber.bib}
 % }}}
 % -------------------------------------------------
 % {{{ Environments and some setups
@@ -340,66 +341,53 @@ Note that condition~\eqref{E:Dalang-00} is a strengthened version of \textit{Dal
   \Upsilon(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{\beta+ |\xi|^2} <\infty,
   \quad \text{for some (and hence) all $\beta>0$.}
 \end{align}
-Recall that in order to obtain the H\"older continuity of the solution, one needs to
-strengthen~\eqref{E:Dalang} in a different way. Indeed, what is required is that for some $\alpha\in
-(0,1]$,
+It turns out that besides condition~\eqref{E:Dalang-00} we need one more condition on the spectral
+measure $\widehat{f}$, which strengthens Dalang's condition~\eqref{E:Dalang} in a different way:
+that for some $\alpha\in (0,1]$,
 \begin{align}\label{E:Dalang-ab}
   \Upsilon_\alpha(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+|\xi|^2\right)^{1-\alpha}}<\infty
-  \quad \text{for some (hence all) $\beta>0$;}
+  \quad \text{for some (hence all) $\beta>0$.}
 \end{align}
-see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder}. Likewise, one
-can further strengthen condition~\eqref{E:Dalang-ab} to
-\begin{equation}\label{E:Dalang-a0}
-  \Upsilon_\alpha(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
-  \quad \text{for some $\alpha\in (0,1]$.}
-\end{equation}
-We will also need the following slightly different condition:
-\begin{gather}\label{E:Dalang-H}
-  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in [0,1)$ and for all $t>0$,} \shortintertext{where}
-  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2). \label{E:H}
-\end{gather}
-The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
-below. We use the convention that when $\alpha = 0$, we simply drop it from $\Upsilon_\alpha(\beta)$
-and $\mathcal{H}_{\alpha /2}(t)$, i.e., $\Upsilon(\beta) \coloneqq \Upsilon_0(\beta)$ and
-$\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$, The relations of these conditions are illustrated in
-Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
+These three conditions are illustrated in Figure~\ref{F:Cond}.
 
-% one may also check Lemma~\ref{L:HUA} for the relation between $\Upsilon(0)<\infty$ and
-% $\Upsilon_\alpha(0)<\infty$.
 
-% \setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
 \begin{figure}[htpb]
-  \hspace{-1em}
-  \begin{tikzpicture}[node distance = 11em, >=stealth, auto]
+  \begin{center}
+  \begin{tikzpicture}[node distance = 15em, >=stealth, auto]
 		% \tikzset{> = latex}
 
-		\node[text width = 10em, align = center] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's\\condition \eqref{E:Dalang}};
-		\node[text width = 10em, align = center, right of = Dalang] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
-		\node at ($(Dalang)!0.5!(Factor)$) {\Large$\Leftarrow$};
-		\node[text width = 10em, align = center, below of = Dalang, yshift = 5em] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
-		\node[text width = 10em, align = center, right of = Phase] (InvMea) {$\Upsilon_\alpha(0)<\infty$\\ Condition~\eqref{E:Dalang-a0}};
-		\node at ($(Dalang)!0.5!(Phase)$) {\Large$\Uparrow$};
-		\node at ($(Factor)!0.5!(InvMea)$) {\Large$\Uparrow$};
-    \node[text width = 10em, align = center, right of = Factor] (Ha) {$\mathcal{H}_{\frac{\alpha}{2}}(t)<\infty$\\ Condition~\eqref{E:Dalang-H}};
-		\node[text width = 10em, align = center, right of = InvMea] (H8) {$\displaystyle\lim_{t \to \infty}\mathcal{H}_{\frac{\alpha}{2}}(t)\!<\!\infty$};
-		\node at ($(Ha)!0.5!(H8)$) {\Large$\Uparrow$};
-		\node at ($(Ha)!0.5!(Factor)$) {\Large$\Leftrightarrow$};
-		\node at ($(H8)!0.5!(InvMea)$) {\Large$\Leftrightarrow$};
-		\node[text width = 10em, align = center, left of = Dalang] (H0) {$\mathcal{H}(t)<\infty$};
-		\node[text width = 10em, align = center, left of = Phase]  (H08) {$\displaystyle\lim_{t \to \infty}\mathcal{H}(t)\!<\!\infty$};
-		\node at ($(H0)!0.5!(H08)$) {\Large$\Uparrow$};
-		\node at ($(H0)!0.5!(Dalang)$) {\Large$\Leftrightarrow$};
-		\node at ($(H08)!0.5!(Phase)$) {\Large$\Leftrightarrow$};
+		\node[text width = 12em, align = center, draw, dashed] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
+		\node[text width = 9em, align = center, right of = Dalang, draw, dotted] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
+		\node at ($(Dalang)!0.55!(Factor)$) {\Large$\Leftarrow$};
+		\node[text width = 8.8em, align = center, left of = Dalang, draw, dotted] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
+		\node at ($(Dalang)!0.55!(Phase)$) {\Large$\Rightarrow$};
+    \node[text width = 12em, align = center, below of = Factor, yshift = 11em] (a) {Factorization Lemma ~\ref{L:Factorize}};
+    \node[text width = 12em, align = center, below of = Phase,  yshift = 11em] (a) {Phase transition, moment pointwise bounded};
 
-\end{tikzpicture}
+  \end{tikzpicture}
+  \end{center}
 
-  \caption{Relations among various conditions where $\alpha\in (0,1)$ and  $\beta>0$.}
+  \caption{Two conditions---\eqref{E:Dalang-00} and~\eqref{E:Dalang-ab}---on $\widehat{f}$ needed
+  for the main result --- Theorem~\ref{T:Main}.}
 
-  \label{F:Dalang}
+  \label{F:Cond}
 \end{figure}
 
-As shown in Lemma~\ref{L:HUA} below, if one assumes~\eqref{E:Dalang-00}, then the middle two and the
-right two conditions in Figure~\ref{F:Dalang} are all equivalent.
+\begin{remark}
+  Although Dalang's condition~\eqref{E:Dalang} assures the existence and uniqueness of an
+  $L^2\left(\Omega\right)$-continuous solution; see~\cite{dalang:99:extending}. But Dalang's
+  condition~\eqref{E:Dalang} along is sometimes too weak to derive some useful properties. Instead,
+  the strengthened Dalang's condition~\eqref{E:Dalang-ab} is widely assumed in the literature. For
+  example, condition~\eqref{E:Dalang-ab} is used to derive the H\"older regularity of the solution
+  (see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder}). One may
+  also check the densely blowup solution obtained in~\cite{chen.huang.ea:19:dense} where Dalang's
+  condition~\eqref{E:Dalang} is satisfied but condition~\eqref{E:Dalang-ab} fails. As another
+  example, condition~\eqref{E:Dalang-ab} is also required in order to derive the sample path
+  comparison principle in~\cite{chen.huang:19:comparison}. As shown in Lemma~\ref{L:Factorize}
+  below, condition~\eqref{E:Dalang-ab} guarantees a factorization of the solution, which plays a key
+  role in the tightness argument in the proof of the main result -- Theorem ~\ref{T:Main}.
+\end{remark}
+
 
 We are now ready to state our two main results of the paper.
 
@@ -471,7 +459,7 @@ surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in~\eqref{E:U0finite};
     \item for some $\alpha\in \left(2^7\Upsilon(0)L_b^2,1\right)$ (see~\eqref{E:Interval}), the
-      spectral measure $\widehat{f}$ satisfies~\eqref{E:Dalang-a0}.
+      spectral measure $\widehat{f}$ satisfies~\eqref{E:Dalang-ab}.
   \end{enumerate}
   Then we have that
   \begin{enumerate}[(a)]
@@ -492,16 +480,16 @@ This theorem will be proved in Section~\ref{S:mainproof}.
 \subsection{Outline and notation}
 
 The paper is organized as follows: we first prove Theorem~\ref{T:Lrho} in Section~\ref{S:Lrho}. Then
-in Section~\ref{S:Factor}, we study the factorization lemma. Then we proceed to prove
-Theorem~\ref{T:Main} in Section~\ref{S:mainproof}. Finally, in Section~\ref{S:Example} we make some
-further discussion on the main results and present various examples. In particular, in
-Section~\ref{SS:Drift}, we give a brief review of the problem of finding invariant measures for the SHE
-with a drift term; in Section~\ref{SS:TessZabz}, we compare our conditions on the spectral density
-with those obtained by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}; in
-Section~\ref{SS:Init}, we show that our results could include a wider class of initial conditions;
-in Section~\ref{SS:Bassel}, we carry out some explicit computations for the Bessel and related
-kernels as the correlation functions; finally, in Section~\ref{SS:Weight}, we give a few examples of
-the admissible weight functions.
+in Section~\ref{S:Factor}, we study the factorization lemma and explore the relations of various
+conditions on the spectral measure $\widehat{f}$. Then we proceed to prove Theorem~\ref{T:Main} in
+Section~\ref{S:mainproof}. Finally, in Section~\ref{S:Example} we make some further discussion on
+the main results and present various examples. In particular, in Section~\ref{SS:Drift}, we give a
+brief review of the problem of finding invariant measures for the SHE with a drift term; in
+Section~\ref{SS:TessZabz}, we compare our conditions on the spectral density with those obtained by
+Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}; in Section~\ref{SS:Init}, we show that
+our results could include a wider class of initial conditions; in Section~\ref{SS:Bassel}, we carry
+out some explicit computations for the Bessel and related kernels as the correlation functions;
+finally, in Section~\ref{SS:Weight}, we give a few examples of the admissible weight functions.
 
 \bigskip
 
@@ -623,9 +611,11 @@ Now we are ready to prove Theorem~\ref{T:Lrho}.
   \end{align*}
 \end{remark}
 
-\section{A factorization lemma}\label{S:Factor}
+\section{A factorization lemma and various conditions on spectral measure}\label{S:Factor}
 
-In this section, we establish a factorization lemma with corresponding moment estimates; see
+\subsection{A factorization lemma}
+
+In this part, we establish a factorization lemma with corresponding moment estimates; see
 Lemmas~\ref{L:yineq} and~\ref{L:Factorize} below. This factorization lemma appeared
 in~\cite{da-prato.kwapien.ea:87:regularity}; check also Section~5.3.1
 of~\cite{da-prato.zabczyk:14:stochastic}. For $\alpha\in (0,1)$, $t>0$ and $x\in\R^d$, define
@@ -644,8 +634,25 @@ showed the following proposition:
   $L^2_\rho(\R^d)$, is compact.
 \end{proposition}
 
-As for $Y_\alpha$, we have the following two lemmas, which hold for both the non-restarted SHE
-($t_0 = 0$) and the restarted SHE ($t_0 > 0$).
+As for $Y_\alpha$, we have the following two lemmas, which hold for both the non-restarted SHE ($t_0
+= 0$) and the restarted SHE ($t_0 > 0$). We need first introduce some notation. Recall that Dalang's
+condition~\eqref{E:Dalang} can be strengthened condition ~\eqref{E:Dalang-ab}, which can be further
+strengthened to
+\begin{equation}\label{E:Dalang-a0}
+  \Upsilon_\alpha(0) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\hat{f}(\ud \xi)}{|\xi|^{2(1-\alpha)}} <\infty
+  \quad \text{for some $\alpha\in (0,1]$.}
+\end{equation}
+We will also need the following slightly different condition:
+\begin{gather}\label{E:Dalang-H}
+  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in [0,1)$ and for all $t>0$,} \shortintertext{where}
+  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\R^d} \hat{f}(\ud \xi) \: \exp(-r|\xi|^2). \label{E:H}
+\end{gather}
+The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
+below. We use the convention that when $\alpha = 0$, we simply drop it from $\Upsilon_\alpha(\beta)$
+and $\mathcal{H}_{\alpha /2}(t)$, i.e., $\Upsilon(\beta) \coloneqq \Upsilon_0(\beta)$ and
+$\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
+
+
 
 \begin{lemma}\label{L:yineq}
   Suppose that $\mu$---the initial condition for $u$---satisfies~\eqref{A:icon} and that
@@ -771,7 +778,7 @@ As for $Y_\alpha$, we have the following two lemmas, which hold for both the non
     \E\left(\Norm{Y_v(s,\cdot)}_{\rho}^q\right)
     = \Norm{\int_{\R^d} Y_v(s,y)^2\rho(y) \ud y}_{q/2}^{q/2}
     \le \left(\int_{\R^d} \Norm{Y_v(s,y)}_q^2\rho(y) \ud y\right)^{q/2}.
-    % = \Norm{\Norm{Y(s,\cdot)}_q}_\rho^q.
+    % = \Norm{\Norm{Y(s,\clot)}_q}_\rho^q.
   \end{align}
   By the definition of $\mathcal{G}_{\rho}(t;\mu)$ in~\eqref{E:G} and by~\eqref{E:NormY}, we see
   that
@@ -881,14 +888,50 @@ Integrate[(t-s)^{a-1} (s-r)^{-2a},{s,r,t},Assumptions->{t>r>0,0<a<1/2}]
 
 \end{codes}
 
-Finally, we characterize conditions in Figure~\ref{F:Dalang}. If we denote the first row of four
-conditions in Figure~\ref{F:Dalang} by $(a_1)$, $(a_2)$, $(a_3)$ and $(a_4)$, and those in the
-second row by $(b_1)$, $(b_2)$, $(b_3)$ and $(b_4)$. The implications $(b_i)\Rightarrow (a_i)$ with
-$i=1,\dots, 4$ are clear. It remains to show the four equivalent relations. In particular, part (i)
-of Lemma~\ref{L:HUA} proves the bottom two equivalences in Figure~\ref{F:Dalang}, i.e.,
-$(b_1)\Leftrightarrow (b_2)$ and $(b_3)\Leftrightarrow (b_4)$. The top two, i.e.,
-$(a_1)\Leftrightarrow (a_2)$ and $(a_3)\Leftrightarrow (a_4)$, are covered by part (ii) of
-Lemma~\ref{L:HUA}.  
+
+\subsection{Relations of various conditions on spectral measure}
+
+The relations of various conditions on the spectral measure $\widehat{f}$ are illustrated in
+Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
+
+\begin{figure}[htpb]
+  \hspace{-1em}
+  \begin{tikzpicture}[node distance = 11em, >=stealth, auto]
+		% \tikzset{> = latex}
+
+		\node[text width = 10em, align = center] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's\\condition \eqref{E:Dalang}};
+		\node[text width = 10em, align = center, right of = Dalang] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
+		\node at ($(Dalang)!0.5!(Factor)$) {\Large$\Leftarrow$};
+		\node[text width = 10em, align = center, below of = Dalang, yshift = 5em] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
+		\node[text width = 10em, align = center, right of = Phase] (InvMea) {$\Upsilon_\alpha(0)<\infty$\\ Condition~\eqref{E:Dalang-a0}};
+		\node at ($(Dalang)!0.5!(Phase)$) {\Large$\Uparrow$};
+		\node at ($(Factor)!0.5!(InvMea)$) {\Large$\Uparrow$};
+    \node[text width = 10em, align = center, right of = Factor] (Ha) {$\mathcal{H}_{\frac{\alpha}{2}}(t)<\infty$\\ Condition~\eqref{E:Dalang-H}};
+		\node[text width = 10em, align = center, right of = InvMea] (H8) {$\displaystyle\lim_{t \to \infty}\mathcal{H}_{\frac{\alpha}{2}}(t)\!<\!\infty$};
+		\node at ($(Ha)!0.5!(H8)$) {\Large$\Uparrow$};
+		\node at ($(Ha)!0.5!(Factor)$) {\Large$\Leftrightarrow$};
+		\node at ($(H8)!0.5!(InvMea)$) {\Large$\Leftrightarrow$};
+		\node[text width = 10em, align = center, left of = Dalang] (H0) {$\mathcal{H}(t)<\infty$};
+		\node[text width = 10em, align = center, left of = Phase]  (H08) {$\displaystyle\lim_{t \to \infty}\mathcal{H}(t)\!<\!\infty$};
+		\node at ($(H0)!0.5!(H08)$) {\Large$\Uparrow$};
+		\node at ($(H0)!0.5!(Dalang)$) {\Large$\Leftrightarrow$};
+		\node at ($(H08)!0.5!(Phase)$) {\Large$\Leftrightarrow$};
+
+  \end{tikzpicture}
+
+  \caption{Relations among various conditions where $\alpha\in (0,1)$ and  $\beta>0$.}
+
+  \label{F:Dalang}
+\end{figure}
+
+
+If we denote the first row of four conditions in Figure~\ref{F:Dalang} by $(a_1)$, $(a_2)$, $(a_3)$
+and $(a_4)$, and those in the second row by $(b_1)$, $(b_2)$, $(b_3)$ and $(b_4)$. The implications
+$(b_i)\Rightarrow (a_i)$ with $i=1,\dots, 4$ are clear. It remains to show the four equivalent
+relations. In particular, part (i) of Lemma~\ref{L:HUA} proves the bottom two equivalences in
+Figure~\ref{F:Dalang}, i.e., $(b_1)\Leftrightarrow (b_2)$ and $(b_3)\Leftrightarrow (b_4)$. The top
+two, i.e., $(a_1)\Leftrightarrow (a_2)$ and $(a_3)\Leftrightarrow (a_4)$, are covered by part (ii)
+of Lemma~\ref{L:HUA}.
 
 \begin{lemma}\label{L:HUA}
   For all $\alpha\in [0,1)$, we have the following properties:
@@ -913,16 +956,16 @@ Lemma~\ref{L:HUA}.
   with $C\coloneqq \Gamma(1-\alpha)(2\pi)^d$. As for part (ii), notice that for all $t>0$ and
   $\beta>0$,
   \begin{align*}
-    \mathcal{H}_{\alpha /2}(t) 
+    \mathcal{H}_{\alpha /2}(t)
     = \int_0^t \ud r r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r|\xi|^2}
     = \int_0^t \ud r r^{-\alpha} e^{\beta r} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(|\xi|^2+\beta\right)}.
   \end{align*}
   By replacing $e^{\beta r}$ by $1$ and $e^{\beta t}$, we see that
   \begin{align*}
     I_\beta(t)
-    \le \mathcal{H}_{\alpha /2}(t) 
-    \le e^{\beta t} I_\beta(t), \quad \text{with} \quad 
-    I_\beta(t)\coloneqq 
+    \le \mathcal{H}_{\alpha /2}(t)
+    \le e^{\beta t} I_\beta(t), \quad \text{with} \quad
+    I_\beta(t)\coloneqq
     \int_0^t \ud r\: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(|\xi|^2+\beta\right)}
   \end{align*}
   Now integrate over $\ud r$ to see that
@@ -939,7 +982,7 @@ Lemma~\ref{L:HUA}.
   \end{align*}
   Notice that
   \begin{align*}
-    I_\alpha(t) 
+    I_\alpha(t)
     \le t^{-\alpha} \int_t^\infty \ud r \int_{\R^d} \widehat{f}(\ud\xi)e^{-r|\xi|^2}
     =   t^{-\alpha} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2} e^{-t|\xi|^2}
     \le t^{-\alpha} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2}
@@ -952,6 +995,11 @@ Lemma~\ref{L:HUA}.
   \end{align*}
   which proves part (iii). This completes the proof of Lemma~\ref{L:HUA}.
 \end{proof}
+
+\begin{remark}\label{R:4Equiv}
+  By Lemma~\ref{L:HUA} below, if one assumes~\eqref{E:Dalang-00}, which is the case for
+  Theorem~\ref{T:Main}, then all the right four conditions in Figure~\ref{F:Dalang} are equivalent.
+\end{remark}
 
 \section{Tightness and construction -- Proof of Theorem~\ref{T:Main}}\label{S:mainproof}
 \subsection{Proof of part (a) of Theorem~\ref{T:Main}}
@@ -1086,11 +1134,12 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
           \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
           \left(\mathcal{G}_{\tilde{\rho}}(s + t-t_0;\mu^*) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s,
   \end{align*}
-  where the constant $\Theta$ does not depend on $t$. As we have seen from above, since
-  $\Upsilon_{2\alpha}(0)<\infty$, we can apply Lemma~\ref{L:HUA} to bound $\mathcal{H}_{\alpha}(s)$
-  from above by the following finite bound: $\left(2\pi\right)^d \Gamma(1-2\alpha) \Upsilon_{2\alpha}(0)$.
-  Hence, together with~\eqref{E:GtBdd}, we obtain the following upper bound for $I_1$ that is
-  uniform in $t\ge \tau$:
+  where the constant $\Theta$ does not depend on $t$. As explained in Remark~\ref{R:4Equiv}, under
+  condition $\Upsilon(0)<\infty$ and condition~\eqref{E:Dalang-ab}, we have
+  $\Upsilon_{2\alpha}(0)<\infty$. Hence, we can apply Lemma~\ref{L:HUA} to bound
+  $\mathcal{H}_{\alpha}(s)$ from above by the finite bound: $\left(2\pi\right)^d \Gamma(1-2\alpha)
+  \Upsilon_{2\alpha}(0)$. Therefore, together with~\eqref{E:GtBdd}, we obtain the following upper
+  bound for $I_1$ that is uniform in $t\ge \tau$:
   \begin{align*}
     I_1 \le \dfrac{\sin^q (\alpha \pi)\Theta (2\pi)^{dq/2} t_0}{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left(\sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0).
   \end{align*}
