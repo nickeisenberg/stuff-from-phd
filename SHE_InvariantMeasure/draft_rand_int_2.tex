@@ -906,7 +906,6 @@ The relations of various conditions on the spectral measure $\widehat{f}$ are il
 Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
 
 \begin{figure}[htpb]
-  \hspace{-1em}
   \begin{tikzpicture}[node distance = 11em, >=stealth, auto]
 		% \tikzset{> = latex}
 
@@ -2121,17 +2120,17 @@ following proposition:
 
 \begin{proposition}[Bessel kernel as spectral density]\label{P:Bessel'}
   Suppose that the spectral density $\widehat{f}$ is given by the Bessel kernel $f_s(\cdot)$ defined
-  in Example~\ref{Ex:Bessel}, or equivalently (see~\eqref{E:FB}), suppose that $f(x) =
-  (1+|x|)^{-s/2}$ for $s>0$. Then
+  in Example~\ref{Ex:Bessel} (see~\eqref{E:FB}), or equivalently, suppose that the correlation
+  function $f(x)$ is given by $f(x) = \left(1+|x|^2\right)^{-s/2}$ for $s>0$. Then
   \begin{align}\label{E:UpsionB'}
     \Upsilon_{\alpha}(0)
     = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) }
-    \qquad \text{for all $s>2(1-\alpha)>0$,}
+    \qquad \text{for all $s\wedge d>2(1-\alpha)>0$,}
   \end{align}
    and in particular when $\alpha = 0$,~\eqref{E:UpsionB'} simplifies to the following:
   \begin{equation}\label{E:Upsilon_0'}
      \Upsilon(0) = \frac{2^{1-2 d}\pi^{-3d/2}}{(s-2)\Gamma\left(d/2\right)}
-     \qquad \text{for all $s>2$.}
+     \qquad \text{for all $s\wedge d>2$.}
   \end{equation}
   In addition,
   \begin{gather}\label{E:HaB'}
@@ -2152,14 +2151,17 @@ following proposition:
      & = (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_0^\infty \frac{r^{d-1}}{ \left(1+r^2\right)^{s / 2} \: r^{d - 2(1-\alpha)} } \ud r
        = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) },
 	\end{align*}
-  which is finite provided $s>2(1-\alpha)$. This proves both~\eqref{E:UpsionB'}
-  and~\eqref{E:Upsilon_0'}. As for~\eqref{E:HaB'},
+  which is finite provided $s>2(1-\alpha)$. Note that in the second equality in the above chain of
+  equalities, we need the condition $d>2(1-\alpha)$. This proves both~\eqref{E:UpsionB'}
+  and~\eqref{E:Upsilon_0'}.
+
+  As for~\eqref{E:HaB'},
 	\begin{align*}
         \mathcal{H}_\alpha(t)
-    & = \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s}(\xi) \exp\left(-r|\xi|^2\right)                                                    \\
-    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s}(\xi) \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} \\
-    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: (1 + |\xi|^2)^{-s / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2}\\
-    & = (2\pi)^{-d} \pi^{d/2} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_{0}^t \ud r \: r^{-2\alpha - d/2} \int_0^{\infty} \ud z \: z^{d-1} (1 + z^2)^{-s/2} \exp\left(-\frac{z^2}{4r}\right),
+    & = \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: f_{s}(\xi) \exp\left(-r|\xi|^2\right)                                                                 \\
+    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \widehat{f}_{s}(\xi) \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2}              \\
+    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\R^d} \ud \xi \: \left(1 + |\xi|^2\right)^{-s / 2} \exp\left(-\frac{|\xi|^2}{4r}\right) r^{-d/2} \\
+    & = (2\pi)^{-d} \pi^{d/2} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_{0}^t \ud r \: r^{-2\alpha - d/2} \int_0^{\infty} \ud z \: z^{d-1} \left(1 + z^2\right)^{-s/2} \exp\left(-\frac{z^2}{4r}\right),
 \end{align*}
   where we have used Plancherel's theorem and the following identities:
 	\begin{align*}
@@ -2172,8 +2174,8 @@ following proposition:
      & = 2^{-d} \int_{0}^t \ud r \: r^{-2\alpha - d/2} I\left(\frac{1}{4r}\right),
       \quad \text{with $I(r) = U\left(\frac{d}{2}, \frac{2+d-s}{2}, r\right)$,}
 	\end{align*}
-  where $U$ is given in~\eqref{E:ConHyGe}. As $r \to \infty$, $I(r) \sim r^{-d/2}$ thus as $r \to
-  0$, $I\left(\frac{1}{4r}\right) \sim (4r)^{d/2}$ (see 13.2.6 on p. 322
+  where $U$ is given in~\eqref{E:ConHyGe}. Since $I(r) \sim r^{-d/2}$ as $r \to \infty$, we see that
+  $I\left(\frac{1}{4r}\right) \sim (4r)^{d/2}$ as $r \to 0$ (see 13.2.6 on p. 322
   of~\cite{olver.lozier.ea:10:nist}). Hence, the above integral behave as follows:
 	\begin{align*}
      \mathcal{H}_\alpha(t)
