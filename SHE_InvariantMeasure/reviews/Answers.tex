@@ -1,0 +1,191 @@
+\documentclass[a4paper,11pt]{article}% {{{
+% -------------------------------------------------
+% {{{ Set up the page margins.
+% -------------------------------------------------
+\usepackage[margin=1in]{geometry}
+% \usepackage[headheig\label{key}ht = .5in, headsep = \baselineskip, top = 1in, left = 1in, right = 1in, textwidth = 7.52 in]{geometry}
+% \usepackage[text={6.5in,9.5in},centering]{geometry}
+% \usepackage[margin=1in]{geometry}
+% \setlength{\topmargin}{-0.25in}
+% }}}
+% -------------------------------------------------
+% {{{ Load Packages here
+% -------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb,
+  nccmath,
+  geometry,
+    latexsym,
+    amsmath,
+    graphics,
+    fullpage,
+    epsfig,
+    amsthm,
+    relsize,
+    tikz,
+    amsfonts,
+    mathrsfs,
+    makeidx,
+    comment,
+    latexsym,
+    dcolumn,
+    tocloft, % spacing for tableofcontents
+    calc}
+\usepackage[colorlinks,
+     citecolor=blue,
+     urlcolor=blue
+      ]{hyperref}
+\usepackage[shortlabels]{enumitem}
+\excludecomment{codes}
+% }}}
+% -------------------------------------------------
+% {{{ check references
+% -------------------------------------------------
+\usepackage{refcheck}
+% \usepackage[notref,notcite]{showkeys}
+% \usepackage[notcite]{showkeys}
+% \usepackage{showkeys}
+% }}}
+% -------------------------------------------------
+% {{{ Biber related
+% -------------------------------------------------
+\usepackage[strict=true,
+            style=english]{csquotes}
+% \usepackage{mathscinet}
+\DeclareTextCommand{\polhk}{OT4}{\k}
+\DeclareTextCommand{\polhk}{T1}{\k}
+
+% \setlength{\parskip}{0.5cm plus4mm minus3mm}
+% \usepackage[style=alphabetic, %authoryear
+%             bibstyle=authoryear,
+%             citestyle=authoryear,
+%             natbib=true,
+%             hyperref=true,
+%             backref=true,
+%             abbreviate=true]{biblatex}
+
+% \addbibresource{./draft_rand_int_biber.bib}
+% }}}
+% -------------------------------------------------
+% {{{ Environments and some setups
+% -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumptions}[theorem]{Assumption}
+
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{notation}[theorem]{Notation}
+
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+% }}}
+% -------------------------------------------------
+% {{{ Biber related
+% -------------------------------------------------
+\usepackage[strict = true,
+            style = english]{csquotes}
+% \usepackage{mathscinet}
+\DeclareTextCommand{\polhk}{OT4}{\k}
+\DeclareTextCommand{\polhk}{T1}{\k}
+\usepackage[backend = biber,
+						% style = alphabetic,
+						style = numeric,
+						natbib = true,
+            sorting = nyt,
+            maxbibnames=99,
+            abbreviate = true,
+           ]{biblatex}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearfield{doi}
+ \clearfield{url}
+ % \clearfield{issn}
+ % \clearlist{location}
+ \clearfield{month}
+ \clearfield{series}
+
+ \ifentrytype{book}{}{% Remove publisher and editor except for books
+  \clearlist{publisher}
+  \clearname{editor}
+ }
+}
+\renewcommand*{\bibfont}{\fontsize{11}{11}}
+
+\addbibresource{../All.bib}
+% \addbibresource{./draft_rand_int_2_biber.bib}
+% }}}
+% -------------------------------------------------
+% {{{ Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\lip}{\textup{Lip}_b}
+\newcommand{\liph}{\text{Lip}_{\widehat{\rho} }}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\Norm}[1]{\left\|  #1   \right\|}
+\newcommand{\rhoNorm}[1]{\left|  #1   \right|}
+\newcommand{\ud}{\ensuremath{ \mathrm{d} }}
+\newcommand*{\one}{ {{\rm 1\mkern-1.5mu}\!{\rm I} }}
+% }}}
+% }}}
+% {{{ Head: Title, Abstract, Keywords
+\title{Comments on the reviewing report for\\
+Invariant measures for the stochastic heat equation on $\R^d$ with no drift term}
+\author{Le Chen\\Auburn University\\\texttt{le.chen@auburn.edu}\\
+  \and
+    Nicholas Eisenberg\\Auburn University\\\texttt{nze0019@auburn.edu}
+  }
+\date{\today}
+
+\begin{document}
+  \maketitle
+ 
+  We thank the anonymous referee for careful reading of the paper, some helpful
+  comments, and especially pointing out the reference by Gu and
+  Li~\cite{gu.li:20:fluctuations}. In this revision, we have carefully taken
+  into all comments from the report. The list of major changes are as follows:
+
+	\begin{enumerate}
+    \item pages 3 -- 4, in the both paragraphs after Eq.~(1.9), we have included
+      the reference~\cite{gu.li:20:fluctuations} and made some comparison with
+      our current work. As a short summary, the focus of our paper is on the
+      conditions on the correlation function/measure and initial conditions in
+      order to guarantee the existence of invariant measures. The focus of the
+      paper~\cite{gu.li:20:fluctuations} is different, and convenient conditions
+      were made in~\cite{gu.li:20:fluctuations} for the correlation function,
+      which is assumed to be smooth function with compact support. The initial
+      condition in~\cite{gu.li:20:fluctuations} is essentially constant initial
+      data with some perturbation. In contrast, our conditions on both
+      correlation function/measure and initial conditions are much weaker; see
+      the main theorem -- Theorem 1.5 of the paper.
+    \item page 5, Figure 1 has been simplified and updated. We postponed the
+      conditions formulated using $\mathcal{H}_\alpha(t)$ back in Section 3.1
+      when it is first used.
+		\item page 5, Remark 1.2 has been added to comment on the including the
+      \textit{strengthened Dalang's condition} in our main theorem.
+		\item page 7, Remark 1.6 has been included to comment on our conditions on
+      the noise. Both this change and the previous one are related to one
+      comment from the referee about our additional assumption, namely, the
+      \textit{strengthened Dalang's condition}.
+		\item Section 3.2, Figure 2 and Remark 3.5 have been created to help the reader. 
+      We have also updated Lemma 3.6 accordingly to reflect the changes in items
+      2, 3, and 4 above.
+    \item In the Acknowledgment section, we include acknowledgment to Yu Gu
+      for the discussions on the reference~\cite{gu.li:20:fluctuations}.
+	\end{enumerate}
+
+
+% {{{All references: New ones with biber
+\addcontentsline{toc}{section}{References}
+\printbibliography[title = {References}]
+%}}}
+\end{document}
