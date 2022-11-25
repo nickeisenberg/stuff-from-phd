@@ -294,26 +294,28 @@ framework of the stochastic evolution in Hilbert spaces~\cite{da-prato.zabczyk:1
 though both theories are equivalent (see~\cite{dalang.quer-sardanyons:11:stochastic}), the
 differences in many technical aspects are still substantial. As the random field approach often
 produces results that are more explicit, we try to use this approach to obtain more precise
-conditions for the existence of an invariant measure. For the initial conditions, the results
-in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\R^d)$ functions, although the
-authors proved their main result---Theorem 3.3 \textit{ibid.}---only for the constant one initial
-condition. Here we give the precise conditions on the initial condition (see~\eqref{E:InitData}
-below) which allows a wider class of data, including unbounded functions and measures such as the
-Dirac delta measure (see Examples~\ref{Ex:delta} and~\ref{Ex:Riesz}). Note that the Dirac delta
-initial measure plays a prominent role in the study of the stochastic heat equation; see,
-e.g.,~\cite{amir.corwin.ea:11:probability}. Regarding the noise, we give an explicit and easily
-verifiable condition---\eqref{E:Dalang-00}---on the spectral density $\widehat{f}$ and present a few
-concrete examples (see Section~\ref{SS:Bassel}). The comparisons of our conditions with those
-obtained by Tessitore and Zabyczyk~\cite{tessitore.zabczyk:98:invariant} are given in
-Section~\ref{SS:TessZabz}.
-
-% Besides the above contributions, in this paper, we establish
-
-Our proof relies on a factorization representation for the solution $u(t,x)$ to~\eqref{E:SHE} (see
-Lemma~\ref{L:Factorize}), which is obtained under the random field framework, whereas such
-factorization lemma has been widely used in the framework of the stochastic evolution equation in
-Hilbert spaces; see Section~\ref{S:Factor} for more details. Finally, we point out that there is a
-miscellany of results in Section~\ref{S:Example}, which may have independent interest. \medskip
+conditions for the existence of an invariant measure. \textit{Firstly}, for the initial conditions,
+the results in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\R^d)$ functions,
+although the authors proved their main result---Theorem 3.3 \textit{ibid.}---only for the constant
+one initial condition. Here we give the precise conditions on the initial condition
+(see~\eqref{E:InitData} below) which allows a wider class of data, including unbounded functions and
+measures such as the Dirac delta measure (see Examples~\ref{Ex:delta} and~\ref{Ex:Riesz}). Note that
+the Dirac delta initial measure plays a prominent role in the study of the stochastic heat equation;
+see, e.g.,~\cite{amir.corwin.ea:11:probability}. \textit{Secondly}, regarding the noise, we identify
+the right conditions,~\eqref{E:Dalang-00} and~\eqref{E:Dalang-ab}, or
+equivalently~\eqref{E:SpectralCond}, on the noise to ensure the existence of the invariant measure.
+Our conditions are explicit, easy to verify, and in a compact form (see~\eqref{E:SpectralCond}).
+Although they are not necessary and sufficient conditions, we believe these conditions are towards
+to the optimal conditions; see Remark~\ref{R:CompactForm}. Note that the correlation function in Gu
+and Li~\cite{gu.li:20:fluctuations} is assumed to be a smooth function with compact support. The
+comparisons of our conditions with those obtained by Tessitore and
+Zabyczyk~\cite{tessitore.zabczyk:98:invariant} are given in Section~\ref{SS:TessZabz}.
+\textit{Thirdly}, our proof relies on a factorization representation for the solution $u(t,x)$
+to~\eqref{E:SHE} (see Lemma~\ref{L:Factorize}), which is obtained under the random field framework,
+whereas such factorization lemma has been widely used in the framework of the stochastic evolution
+equation in Hilbert spaces; see Section~\ref{S:Factor} for more details. \textit{Finally}, we point
+out that there is a miscellany of results in Section~\ref{S:Example}, which may have independent
+interest. \medskip
 
 Now we are ready to motivate the conditions that we use and present the main results.
 
@@ -349,7 +351,8 @@ that for some $\alpha\in (0,1]$,
   \Upsilon_\alpha(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+|\xi|^2\right)^{1-\alpha}}<\infty
   \quad \text{for some (hence all) $\beta>0$.}
 \end{align}
-These three conditions are illustrated in Figure~\ref{F:Cond}.
+In some literature, condition~\eqref{E:Dalang-ab} is called the \textit{strengthened Dalang's
+condition}. These three conditions are illustrated in Figure~\ref{F:Cond}.
 
 \bigskip
 \begin{figure}[htpb]
@@ -361,17 +364,17 @@ These three conditions are illustrated in Figure~\ref{F:Cond}.
         -Implies,
         line width = 0.8pt,
         double distance = 3.5pt,
-        shorten >= 10pt,
-        shorten <= 10pt,
+        shorten >= 15pt,
+        shorten <= 15pt,
       }}
 
 		\node[text width = 12em, dashed, MyNodeStyle] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's condition \eqref{E:Dalang}};
-		\node[text width = 8.8em, below right of = Dalang, dotted, MyNodeStyle, xshift = 3em, yshift = 0.5em] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Condition~\eqref{E:Dalang-ab}};
+		\node[text width = 10.8em, below right of = Dalang, dotted, MyNodeStyle, xshift = 3em, yshift = -0.3em] (Factor) {$\Upsilon_\alpha(\beta)<\infty$\\ Strengthened Dalang's condition~\eqref{E:Dalang-ab}};
 		% \node at ($(Dalang)!0.55!(Factor)$) {\Large$\Leftarrow$};
-		\node[text width = 8.8em, below left of = Dalang, dotted, MyNodeStyle, xshift = -3em, yshift = 0.5em] (Phase) {$\Upsilon(0)<\infty$\\ Condition~\eqref{E:Dalang-00}};
+		\node[text width = 8.8em, below left of = Dalang, dotted, MyNodeStyle, xshift = -3em, yshift = -0.3em] (Phase) {$\Upsilon(0)<\infty$\\ Phase transition condition~\eqref{E:Dalang-00}};
 		% \node at ($(Dalang)!0.55!(Phase)$) {\Large$\Rightarrow$};
-    \node[text width = 10em, align = center, below of = Factor, yshift = 4.0em] (a) {Factorization Lemma~\ref{L:Factorize}};
-    \node[text width = 10em, align = center, below of = Phase,  yshift = 4.0em] (a) {Phase transition/moment pointwise bounded};
+    \node[text width = 10em, align = center, below of = Factor, yshift = 4.5em] (a) {Factorization Lemma~\ref{L:Factorize}};
+    \node[text width = 10em, align = center, below of = Phase,  yshift = 4.5em] (a) {Moment pointwise boundedness};
     \draw[MyImplies] (Factor) -- (Dalang);
     \draw[MyImplies] (Phase) -- (Dalang);
   \end{tikzpicture}
@@ -386,7 +389,7 @@ These three conditions are illustrated in Figure~\ref{F:Cond}.
 \begin{remark}
   Although Dalang's condition~\eqref{E:Dalang} assures the existence and uniqueness of an
   $L^2\left(\Omega\right)$-continuous solution; see~\cite{dalang:99:extending}. But Dalang's
-  condition~\eqref{E:Dalang} along is sometimes too weak to derive some useful properties. Instead,
+  condition~\eqref{E:Dalang} alone is sometimes too weak to derive some useful properties. Instead,
   the strengthened Dalang's condition~\eqref{E:Dalang-ab} is widely assumed in the literature. For
   example, condition~\eqref{E:Dalang-ab} is used to derive the H\"older regularity of the solution;
   see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder} for the
@@ -470,7 +473,8 @@ surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in~\eqref{E:U0finite};
     \item for some $\alpha\in \left(2^7\Upsilon(0)L_b^2,1\right)$ (see~\eqref{E:Interval}), the
-      spectral measure $\widehat{f}$ satisfies~\eqref{E:Dalang-ab}.
+      spectral measure $\widehat{f}$ satisfies the strengthened Dalang's
+      condition~\eqref{E:Dalang-ab}.
   \end{enumerate}
   Then we have that
   \begin{enumerate}[(a)]
@@ -487,6 +491,23 @@ surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
 \end{theorem}
 
 This theorem will be proved in Section~\ref{S:mainproof}.
+
+\begin{remark}\label{R:CompactForm}
+  The conditions on the spectral measure $\widehat{f}$ for the existence of an invariant measure are
+  given by conditions (iii) and (iv) of Theorem \ref{T:Main}, which can be summarized in the
+  following more compact form (thanks to Lemma~\ref{L:HUA} below):
+  \begin{align}\label{E:SpectralCond}
+    \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2 \wedge |\xi|^{2(1-\alpha)}}<\infty,
+    \quad \text{for some $\alpha\in \left(2^7\Upsilon(0)L_b^2,1\right)$.}
+  \end{align}
+  Even though condition~\eqref{E:SpectralCond} is not the necessary and sufficient condition for the
+  existence of an invariant measure, it is almost the optimal condition. In particular, as proved
+  in~\cite{chen.kim:19:nonlinear}, if $\Upsilon(0) = \infty$, namely, condition (iii) of
+  Theorem~\ref{T:Main} fails, then no matter how small the level of the noise is, the solution is
+  always intermittent, i.e., the second moment Lyapunov exponent of the solution is always strictly
+  positive. Note that intermittency is another way to characterize the chaotic behavior of the
+  underlying system that is far from equilibrium.
+\end{remark}
 
 \subsection{Outline and notation}
 
@@ -943,6 +964,11 @@ Figure~\ref{F:Dalang}, i.e., $(b_1)\Leftrightarrow (b_2)$ and $(b_3)\Leftrightar
 two, i.e., $(a_1)\Leftrightarrow (a_2)$ and $(a_3)\Leftrightarrow (a_4)$, are covered by part (ii)
 of Lemma~\ref{L:HUA}.
 
+\begin{remark}\label{R:4Equiv}
+  By Lemma~\ref{L:HUA} below, if one assumes~\eqref{E:Dalang-00}, which is the case for
+  Theorem~\ref{T:Main}, then all the right four conditions in Figure~\ref{F:Dalang} are equivalent.
+\end{remark}
+
 \begin{lemma}\label{L:HUA}
   For all $\alpha\in [0,1)$, we have the following properties:
   \begin{enumerate}[(i)]
@@ -1006,10 +1032,6 @@ of Lemma~\ref{L:HUA}.
   which proves part (iii). This completes the proof of Lemma~\ref{L:HUA}.
 \end{proof}
 
-\begin{remark}\label{R:4Equiv}
-  By Lemma~\ref{L:HUA} below, if one assumes~\eqref{E:Dalang-00}, which is the case for
-  Theorem~\ref{T:Main}, then all the right four conditions in Figure~\ref{F:Dalang} are equivalent.
-\end{remark}
 
 \section{Tightness and construction -- Proof of Theorem~\ref{T:Main}}\label{S:mainproof}
 \subsection{Proof of part (a) of Theorem~\ref{T:Main}}
@@ -2355,7 +2377,9 @@ Proposition~\ref{P:adm} seem to be less obvious:
 \section*{Acknowledgements}
 L.C. thanks Sandra Cerrai for some helpful discussions and for pointing out the
 reference~\cite{misiats.stanzhytskyi.ea:16:existence} during the conference -- \textit{Frontier
-Probability Days 2018}.
+Probability Days 2018}. L.C. also thanks Yu Gu for some helpful discussions regarding the stationary
+limit obtained in~\cite{gu.li:20:fluctuations} during the \textit{Workshop: Stochastic PDEs \&
+Related Topics}, Nov. 14--16, 2022 at Brin Mathematics Research Center, University of Maryland. 
 
 % {{{All references: New ones with biber
 \addcontentsline{toc}{section}{References}
