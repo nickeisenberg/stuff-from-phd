@@ -202,11 +202,11 @@ I_{\beta}(t) = \int_{\R^d} \frac{1}{(1 + |\xi|^2)^{1-\alpha}}\left( 1 - e^{-t(|\
 \]
 All I am able to show is the following:
 
-\begin{align*}
-I_{\beta}(t) &= \int_0^t \ud r r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi) e^{-r(|\xi|^2 + \beta)} \\
-&= \int_{\R^d}  \widehat{f}(\ud \xi) \int_0^t \ud r r^{-\alpha}  e^{-r(|\xi|^2 + \beta)} \\
-&= \int_{\R^d}  \frac{\widehat{f}(\ud \xi)}{(|\xi|^2 + \beta)^{1-\alpha} } \int_0^{t(|\xi|^2 + \beta)} \ud r r^{-\alpha} e^{-r}
-\end{align*}
+\begin{align}
+I_{\beta}(t) &= \int_0^t \ud r r^{-\alpha} \int_{\R^d} \widehat{f}(\ud \xi) e^{-r(|\xi|^2 + \beta)} \nonumber\\
+&= \int_{\R^d}  \widehat{f}(\ud \xi) \int_0^t \ud r r^{-\alpha}  e^{-r(|\xi|^2 + \beta)} \nonumber \\
+&= \int_{\R^d}  \frac{\widehat{f}(\ud \xi)}{(|\xi|^2 + \beta)^{1-\alpha} } \int_0^{t(|\xi|^2 + \beta)} \ud r r^{-\alpha} e^{-r} \label{E:Ibeta}
+\end{align}
 where the last line is from, the substitution $r = r(|\xi|^2 + \beta)$. Thus by denoting $\Gamma(s, x) = \int_x^\infty t^{1-s} e^{-t} \ud t$, this is equivalent to
 \[
 I_{\beta}(t) \le \int_{\R^d}  \frac{\widehat{f}(\ud \xi)}{(|\xi|^2 + \beta)^{1-\alpha} } \left( \Gamma(1 - \alpha) - \Gamma(1 - \alpha,t(|\xi|^2 + \beta) ) \right)
@@ -224,6 +224,18 @@ and thus
 I_{\beta}(t) \le  \Gamma(1 - \alpha)\int_{\R^d}  \frac{\widehat{f}(\ud \xi)}{(|\xi|^2 + \beta)^{1-\alpha} } =   \Gamma(1 - \alpha) \Upsilon_\alpha(\beta).
 \]
 However, I am unable to show the lower bound as $\left( \Gamma(1 - \alpha) - \Gamma(1 - \alpha,t(|\xi|^2 + \beta) ) \right) \to 0$ as $|\xi| \to 0$.
+
+\textcolor{blue}{Why is the following true?
+	\[
+	I_{\beta}(t) = \int_{\R^d} \frac{1}{(1 + |\xi|^2)^{1-\alpha}}\left( 1 - e^{-t(|\xi|^2 + \beta)} \right) \hat{f}(\ud \xi).
+	\]
+I have only been able to show that \eqref{E:Ibeta} is true, ie, that
+\begin{align*}
+	I_{\beta}(t) &= \int_{\R^d}  \frac{\widehat{f}(\ud \xi)}{(|\xi|^2 + \beta)^{1-\alpha} } \int_0^{t(|\xi|^2 + \beta)} \ud r r^{-\alpha} e^{-r} \\
+	&= \int_{\R^d}  \frac{\widehat{f}(\ud \xi)}{(|\xi|^2 + \beta)^{1-\alpha} } \left( \Gamma(1 - \alpha) - \Gamma(1 - \alpha,t(|\xi|^2 + \beta) ) \right)
+\end{align*}
+}
+`
 
 
 \end{document}
