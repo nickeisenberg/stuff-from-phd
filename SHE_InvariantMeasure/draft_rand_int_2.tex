@@ -974,11 +974,11 @@ of Lemma~\ref{L:HUA}.
   \begin{enumerate}[(i)]
     \item $\displaystyle \lim_{t\to\infty}\left(2\pi\right)^{-d}\mathcal{H}_{\alpha/2}(t) =
       \Gamma\left(1-\alpha\right) \Upsilon_{\alpha}(0)$;
-    \item \textcolor{magenta}{$\gamma\left(1-\alpha,t\beta\right) \left(2\pi\right)^d \Upsilon_\alpha(\beta) \le
+    \item $\gamma\left(1-\alpha,t\beta\right) \left(2\pi\right)^d \Upsilon_\alpha(\beta) \le
       \mathcal{H}_{\alpha/2}(t) \le \Gamma\left(1-\alpha\right) \left(2\pi\right)^d
       \Upsilon_\alpha(\beta)$ for all $t>0$ and $\beta>0$, where $\gamma(s,x)\coloneqq \int_0^x
       t^{s-1} e^{-t}\ud t$ refers to the incomplete gamma function
-      (see~\cite{olver.lozier.ea:10:nist}).}
+      (see~\cite{olver.lozier.ea:10:nist}).
     \item if $\Upsilon(0)<\infty$, then $\mathcal{H}_{\alpha/2}(t)<\infty$ for all $t>0$ implies
       that $\Upsilon_\alpha(0)<\infty$.
   \end{enumerate}
@@ -1007,10 +1007,10 @@ of Lemma~\ref{L:HUA}.
     I_\beta(t)\coloneqq
     \int_0^t \ud r\: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(|\xi|^2+\beta\right)}
   \end{align*}
-  \textcolor{magenta}{ Notice that
+   Notice that
   \begin{align*}
     I_\beta(t)
-    = \int_{\R^d} \frac{1}{\left(1+|\xi|^2\right)^{1-\alpha}} \widehat{f}(\ud\xi)
+    = \int_{\R^d} \frac{1}{\left(\beta+|\xi|^2\right)^{1-\alpha}} \widehat{f}(\ud\xi)
       \int_{0}^{t\left(|\xi|^2 + \beta\right)} r^{-\alpha} e^{-r} \ud r,
   \end{align*}
   from which we see that
@@ -1020,7 +1020,7 @@ of Lemma~\ref{L:HUA}.
     \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{\infty} r^{-\alpha} e^{-r} \ud r.
   \end{align*}
   Then by the definition of the (incomplete) gamma function, we obtain the inequalities in part
-(ii).} As for part (iii), for any $t>0$, by splitting the $\ud r$ integral in~\eqref{E:Fubini} into
+(ii). As for part (iii), for any $t>0$, by splitting the $\ud r$ integral in~\eqref{E:Fubini} into
 two parts, we see that
   \begin{align*}
     C \Upsilon_{\alpha}(0) & = \int_0^\infty \ud r \: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)\exp\left(-r|\xi|^2\right) = \mathcal{H}_{\alpha/2}(t) + I_\alpha(t), \quad \text{with} \\
@@ -2393,6 +2393,6 @@ Related Topics}, Nov. 14--16, 2022 at Brin Mathematics Research Center, Universi
 
 % {{{All references: New ones with biber
 \addcontentsline{toc}{section}{References}
-\printbibliography[title = {References}]
+%\printbibliography[title = {References}]
 %}}}
 \end{document}
