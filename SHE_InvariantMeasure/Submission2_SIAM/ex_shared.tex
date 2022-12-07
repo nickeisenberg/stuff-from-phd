@@ -10,6 +10,45 @@
 \usepackage{graphicx}
 \usepackage{epstopdf}
 \usepackage{algorithmic}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{nccmath}
+% \usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{fullpage}
+\usepackage{epsfig}
+\usepackage{relsize}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+% \usepackage{comment}
+\usepackage{latexsym}
+\usepackage{dcolumn}
+% \usepackage{tocloft} % spacing for tableofcontents
+\usepackage{calc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{makecell}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{url}
+\usepackage{mathtools}
+% \usepackage[
+%      colorlinks = true,
+%      citecolor = blue,
+%      urlcolor = blue
+%      ]{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+\usepackage[ocgcolorlinks]{ocgx2}
+\usepackage[shortlabels]{enumitem}
+% \excludecomment{codes}
+
+\setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
 \ifpdf
   \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
 \else
@@ -21,30 +60,92 @@
 
 % Used for creating new theorem and remark environments
 \newsiamremark{remark}{Remark}
+\newsiamremark{example}{Example}
 \newsiamremark{hypothesis}{Hypothesis}
 \crefname{hypothesis}{Hypothesis}{Hypotheses}
 \newsiamthm{claim}{Claim}
 
+% -------------------------------------------------
+% {{{ Environments and some setups
+% -------------------------------------------------
+% \theoremstyle{plain}
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+%
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{hypothesis}[theorem]{Hypothesis}
+% \newtheorem{assumptions}[theorem]{Assumption}
+%
+% \newtheorem{remark}[theorem]{Remark}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{notation}[theorem]{Notation}
+%
+% \numberwithin{equation}{section}
+% \allowdisplaybreaks
+% }}}
+
+
+% -------------------------------------------------
+% {{{ Biber related
+% -------------------------------------------------
+\usepackage[strict = true,
+            style = english]{csquotes}
+% \usepackage{mathscinet}
+\DeclareTextCommand{\polhk}{OT4}{\k}
+\DeclareTextCommand{\polhk}{T1}{\k}
+\usepackage[backend = biber,
+						% style = alphabetic,
+						style = numeric,
+						natbib = true,
+            sorting = nyt,
+            maxbibnames=99,
+            abbreviate = true,
+           ]{biblatex}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearfield{doi}
+ \clearfield{url}
+ % \clearfield{issn}
+ % \clearlist{location}
+ \clearfield{month}
+ \clearfield{series}
+
+ \ifentrytype{book}{}{% Remove publisher and editor except for books
+  \clearlist{publisher}
+  \clearname{editor}
+ }
+}
+\renewcommand*{\bibfont}{\fontsize{11}{11}}
+
+% \addbibresource{All.bib}
+\addbibresource{./draft_rand_int_2_biber.bib}
+% }}}
+
 % Sets running headers as well as PDF title and authors
-\headers{An Example Article}{D. Doe, P. T. Frank, and J. E. Smith}
+% \headers{Invariant measure for SHE}{L. Chen and N. Eisenberg}
 
 % Title. If the supplement option is on, then "Supplementary Material"
 % is automatically inserted before the title.
-\title{An Example Article\thanks{Submitted to the editors DATE.
-\funding{This work was funded by the Fog Research Institute under contract no.~FRI-454.}}}
+\title{Invariant measures for the nonlinear stochastic heat equation with no drift term\thanks{Submitted to the editors Dec. 12, 2022.
+\funding{This work (L.C.) was partially supported by the \textit{Travel Support for Mathematicians} from the \textit{Simons Foundation}.}}}
 
 % Authors: full names plus addresses.
-\author{Dianne Doe\thanks{Imagination Corp., Chicago, IL 
-  (\email{ddoe@imag.com}, \url{http://www.imag.com/\string~ddoe/}).}
-\and Paul T. Frank\thanks{Department of Applied Mathematics, Fictional University, Boise, ID 
-  (\email{ptfrank@fictional.edu}, \email{jesmith@fictional.edu}).}
-\and Jane E. Smith\footnotemark[3]}
+\author{
+  Le Chen\thanks{Department of Mathematics and Statistics, Auburn University, Auburn, Alabama, USA.
+  (L.C.: \email{le.chen@auburn.edu}, \url{http://webhome.auburn.edu/\~lzc0090};
+   N.E.: \email{nze0019@auburn.edu} and \email{nickeisenberg@gmail.com}).}
+  \and
+  Nicholas Eisenberg\footnotemark[2]
+}
 
 \usepackage{amsopn}
 \DeclareMathOperator{\diag}{diag}
 
 
-%%% Local Variables: 
+%%% Local Variables:
 %%% mode:latex
 %%% TeX-master: "ex_article"
-%%% End: 
+%%% End:
