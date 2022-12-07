@@ -19,8 +19,161 @@
 \newcommand{\ud}{\ensuremath{\mathrm{d}}}
 \newcommand*{\one}{{{\rm 1\mkern-1.5mu}\!{\rm I}}}
 
-\input{ex_shared.tex}
+% \input{ex_shared.tex}
+% {{{ From ex_shared.tex
 
+% SIAM Shared Information Template
+% This is information that is shared between the main document and any
+% supplement. If no supplement is required, then this information can
+% be included directly in the main document.
+
+
+% Packages and macros go here
+\usepackage{lipsum}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{algorithmic}
+
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+\usepackage{nccmath}
+% \usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{graphics}
+% \usepackage{fullpage}
+\usepackage{epsfig}
+\usepackage{relsize}
+% \usepackage{amsfonts}
+\usepackage{mathrsfs}
+% \usepackage{makeidx}
+% \usepackage{comment}
+\usepackage{latexsym}
+\usepackage{dcolumn}
+% \usepackage{tocloft} % spacing for tableofcontents
+\usepackage{calc}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{makecell}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{url}
+% \usepackage[
+%      colorlinks = true,
+%      citecolor = blue,
+%      urlcolor = blue
+%      ]{hyperref}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, calc}
+\usepackage[ocgcolorlinks]{ocgx2}
+\usepackage[shortlabels]{enumitem}
+% \excludecomment{codes}
+
+\setlength{\abovecaptionskip}{0pt plus 0pt minus 2pt}
+\ifpdf
+  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+% Add a serial/Oxford comma by default.
+\newcommand{\creflastconjunction}{, and~}
+
+% Used for creating new theorem and remark environments
+\newsiamremark{remark}{Remark}
+\newsiamremark{example}{Example}
+\newsiamremark{hypothesis}{Hypothesis}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\newsiamthm{claim}{Claim}
+% \newsiamthm{definition}{Definition}
+
+% -------------------------------------------------
+% {{{ Environments and some setups
+% -------------------------------------------------
+% \theoremstyle{plain}
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+%
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{hypothesis}[theorem]{Hypothesis}
+% \newtheorem{assumptions}[theorem]{Assumption}
+%
+% \newtheorem{remark}[theorem]{Remark}
+% \newtheorem{conjecture}[theorem]{Conjecture}
+% \newtheorem{example}[theorem]{Example}
+% \newtheorem{notation}[theorem]{Notation}
+%
+% \numberwithin{equation}{section}
+% \allowdisplaybreaks
+% }}}
+
+
+% -------------------------------------------------
+% {{{ Biber related
+% -------------------------------------------------
+\usepackage[strict = true,
+            style = english]{csquotes}
+% \usepackage{mathscinet}
+\DeclareTextCommand{\polhk}{OT4}{\k}
+\DeclareTextCommand{\polhk}{T1}{\k}
+\usepackage[backend = biber,
+						% style = alphabetic,
+						style = numeric,
+						natbib = true,
+            sorting = nyt,
+            maxbibnames=99,
+            abbreviate = true,
+           ]{biblatex}
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearfield{doi}
+ \clearfield{url}
+ % \clearfield{issn}
+ % \clearlist{location}
+ \clearfield{month}
+ \clearfield{series}
+
+ \ifentrytype{book}{}{% Remove publisher and editor except for books
+  \clearlist{publisher}
+  \clearname{editor}
+ }
+}
+\renewcommand*{\bibfont}{\fontsize{11}{11}}
+
+% \addbibresource{All.bib}
+\addbibresource{./draft_rand_int_2_biber.bib}
+% }}}
+
+% Sets running headers as well as PDF title and authors
+\headers{Invariant measure for SHE}{L. Chen and N. Eisenberg}
+
+% Title. If the supplement option is on, then "Supplementary Material"
+% is automatically inserted before the title.
+\title{Invariant measures for the nonlinear stochastic heat equation with no drift term\thanks{Submitted to the editors Dec. 12, 2022.
+\funding{This work (L.C.) was partially supported by the \textit{Travel Support for Mathematicians} from the \textit{Simons Foundation}.}}}
+
+% Authors: full names plus addresses.
+\author{
+  Le Chen\thanks{Department of Mathematics and Statistics, Auburn University, Auburn, Alabama, USA.
+  (L.C.: \email{le.chen@auburn.edu}, \url{http://webhome.auburn.edu/\~lzc0090};
+   N.E.: \email{nze0019@auburn.edu} and \email{nickeisenberg@gmail.com}).}
+  \and
+  Nicholas Eisenberg\footnotemark[2]
+}
+
+\usepackage{amsopn}
+\DeclareMathOperator{\diag}{diag}
+
+
+%%% Local Variables:
+%%% mode:latex
+%%% TeX-master: "ex_article"
+%%% End:
+% }}}
 % Optional PDF information
 \ifpdf
 \hypersetup{
@@ -361,14 +514,14 @@ surely be in $L^2_{\rho}(\R^d)$ for all $t >0$.
   Choose and fix an arbitrary $\zeta \in L^2_{\rho}(\R^d)$ and set $\zeta^* = 1+|\zeta|$. It is clear
   that $\zeta^*\in L^2_\rho(\R^d)$. By (ii) of Theorem~\ref{T:Lrho}, it suffices to show the
   finiteness of $\mathcal{G}_{\rho}(t,;\zeta^*)$ for all $t>0$. Indeed, by H\"older's inequality,
+  $\mathcal{G}_{\rho}(t,;\zeta^*)$ is equal to
   \begin{align*}
-        \mathcal{G}_{\rho}(t,;\zeta^*)
-     = \int_{\R^d} \left(\int_{\R^d} G(t,x-y) \zeta^* (y) \ud y\right)^2 \rho(x) \ud x
-    \le \int_{\R^d} \int_{\R^d} G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x.
+     \int_{\R^d} \left(\int_{\R^d} G(t,x-y) \zeta^* (y) \ud y\right)^2 \rho(x) \ud x
+     \le \iint_{\R^{2d}} G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x.
   \end{align*}
   Now for any $t>0$, choose $T>t$ and let $C_{\rho}(T)$ be as in~\eqref{E:aw}. Then,
   \begin{align*}
-      \int_{\R^d} \int_{\R^d} G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x
+    \iint_{\R^{2d}}G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x
     = \int_{\R^d} \left(G(t,\cdot)*\rho\right)(y) |\zeta(y)|^2 \ud y
     \le C_{\rho}(T) \Norm{\zeta^*}_{\rho}^2 < \infty.
   \end{align*}
@@ -549,7 +702,7 @@ Now we are ready to prove Theorem~\ref{T:Lrho}.
   \begin{align*}
   \Norm{v(t,x)}_q = \Norm{u(t+t_0,x;\mu)}_q
                   \le C_q\bigg(1 + (G(t+t_0, \cdot)* |\mu|)(x) \bigg)
-                  = C_q J_0(t+t_0,x; 1+|\mu|),
+                  = C_q J_0(t+t_0,x; \mu^*),
   \end{align*}
   for all $q\ge 2$ and $t>0$, where the constant $C_q$ does not depend on $t$. Moreover, under the
   assumptions of Theorem~\ref{T:Lrho}, we have $v(0,\cdot)\in L_\rho^2 (\R^d)$ a.s. and
@@ -612,11 +765,12 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   $\dot{W}_{t_0}$ be the time-shifted noise (see~\eqref{E:ShiftW}) when $t_0>0$ and let $v = u$ when
   $t_0 = 0$. Then
   \begin{equation}\label{E:Y}
-     Y_v(s,y) \coloneqq \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y)
-               = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
+    \begin{aligned}
+      Y_v(s,y) & \coloneqq \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y) \\
+               & = \int_0^s \int_{\R^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
+    \end{aligned}
   \end{equation}
   has the following properties:
-
   \begin{enumerate}[(1)]
     \item for all $q\ge 2$, $s>0$, $y\in\R^d$,
       \begin{align}\label{E:NormY}
@@ -624,12 +778,12 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
       \end{align}
       where we remind the reader that $\mu^* \coloneqq 1 + |\mu|$, and we refer to
       Theorem~\ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
-    \item under both conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
+    \item under conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
       $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(64
       L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$
       in~\eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge
       0}H\left(t;32qL_b^2\right)<\infty$;
-    \item under both conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
+    \item under conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
       $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(64
       L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and $L^1 (\R^d)$-function $\rho$,
       there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend
@@ -686,21 +840,24 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
     & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
     & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i = 1,2, \: r\in(0,s),
   \end{align}
-  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see Lemma~2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
+  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see
+  Lemma~2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
   H\left(s+t_0;32qL_b^2\right)$,
   \begin{align*}
-    \Norm{Y_v(s,y)}_q^2
-    & \le C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i = 1}^2 \bigg(G(s-r,y-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg)      \\
+    % \MoveEqLeft 
+    & \Norm{Y_v(s,y)}_q^2                                                                                                                                                      \\
+    & \le C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i = 1}^2 G(s-r,y-z_i) J_0\left(r + t_0,z_i;\mu^*\right)                  \\
     & = C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2) \iint_{\R^{2d}} \ud z_1\ud z_2                                      \\
     & \quad \times f(z_1-z_2) \prod_{i = 1}^{2} \bigg(G(s-r,y-z_i)G(r + t_0,z_i-\sigma_i) \bigg)                                                                               \\
     & = C C_s\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}} \mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0,y-\sigma_2)                         \\
     & \quad \times\iint_{\R^{2d}} \ud z_1\ud z_2 f(z_1-z_2) \prod_{i = 1}^2 G\left(\frac{(r+t_0)(s-r)}{s + t_0}, z_i-\sigma_i\frac{r + t_0}{s + t_0}-\frac{s-r}{s+t_0}y\right) \\
-    & \le C C_s(2\pi)^{-2d} \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}}\mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0, y-\sigma_2)          \\
-    & \quad \times \int_{\R^d} \widehat{f}(\ud \xi) \exp\left(-\frac{(r + t_0)(s-r)}{s+ t_0}|\xi|^2\right),
+    & \le C C_s\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\R^{2d}}\mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0, y-\sigma_2)                       \\
+    & \quad \times (2\pi)^{-2d} \int_{\R^d} \widehat{f}(\ud \xi) \exp\left(-\frac{(r + t_0)(s-r)}{s+ t_0}|\xi|^2\right),
   \end{align*}
-  where we have applied~\eqref{E:gsim} and Plancherel's theorem. Hence,
+  where we have applied~\eqref{E:gsim} and Plancherel's theorem. Hence, $\Norm{Y_v(s,y)}_q^2$ is
+  bounded from above by
   \begin{align*}
-   \Norm{Y_v(s,y)}_q^2 \le C C_s (2\pi)^{-2d} J_0^2\left(s + t_0,y;\mu^*\right) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}|\xi|^2\right).
+    C C_s (2\pi)^{-2d} J_0^2\left(s + t_0,y;\mu^*\right) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}|\xi|^2\right).
   \end{align*}
   Because the function
   \begin{align*}
@@ -708,10 +865,12 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   \end{align*}
   is nondecreasing in $t_0 $ whenever $s > r > 0$, we can replace the two appearances of $t_0$ in
   the exponent of the above inequality by zero to see that
-  \begin{equation}\label{E_:NormY}
-    \hspace{-1em}
-    \Norm{Y_v(s,y)}_q^2 \le C C_s (2\pi)^{-2d} J_0^2 (s + t_0,y;\mu^*) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
-  \end{equation}
+  \begin{align}\label{E_:NormY}
+    \begin{aligned}
+      \Norm{Y_v(s,y)}_q^2 \le & C C_s (2\pi)^{-2d} J_0^2 (s + t_0,y;\mu^*) \\
+                              & \times \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\R^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}|\xi|^2\right).
+    \end{aligned}
+  \end{align}
   Furthermore, by symmetry of $r(s-r)/s$ and the fact that $r(s-r)/s \ge r/2$ for all $r\in
   [0,s/2]$, we see that the above double integral is bounded by
   \begin{align*}
@@ -748,11 +907,11 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   to the restarted SHE~\eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise
   (see~\eqref{E:ShiftW}) when $t_0>0$ and let $v = u$ when $ t_0 = 0$. Then the following
   factorization holds
-  \begin{equation*}
+  \begin{multline*}
     \dfrac{\sin(\alpha \pi)}{\pi}
-    \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s
+    \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s\\
     = \int_0^t \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),
-  \end{equation*}
+  \end{multline*}
   for all $t>0$ and $x\in\R^d$. As a consequence,
   \begin{equation}\label{E:1fac}
     v(t,x) = \left[G(t, \cdot) * u(t_0,\cdot; \mu)\right](x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t,x),
@@ -786,20 +945,20 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   \end{align*}
   which follows immediately from~\eqref{E:NormY}. Indeed,
   \begin{align*}
-    \int_{\R^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2
-    \le & C \int_{\R^d} \ud y \; G(t-s,x-y) J_0^2 (s+t_0,y;\mu^*) \mathcal{H}_\alpha(s)                        \\
-     =  & C \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \; G(t-s,x-y)\iint_{\R^{2d}}\mu^* (\ud z_1)\mu^* (\ud z_2) \\
-        & \times G\left(s+t_0,y-z_1\right)G\left(s+t_0,y-z_2\right).
+    \int_{\R^d}\ud y \: &\: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                                       \\
+    \le                 &\: C \int_{\R^d} \ud y \; G(t-s,x-y) J_0^2 (s+t_0,y;\mu^*) \mathcal{H}_\alpha(s)                        \\
+    =                   &\: C \mathcal{H}_\alpha(s) \int_{\R^d} \ud y \; G(t-s,x-y)\iint_{\R^{2d}}\mu^* (\ud z_1)\mu^* (\ud z_2) \\
+                        &\: \times G\left(s+t_0,y-z_1\right)G\left(s+t_0,y-z_2\right).
   \end{align*}
   Now we bound the three heat kernels using~\eqref{E:gsim} as follows:
   \begin{align*}
-     \MoveEqLeft G (t-s,x-y) \prod_{i = 1}^{2}G(s+t_0,y- z_i)\\
-       & = \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s,0\right)} \prod_{i = 1}^{2}G\left(s+t_0,y- z_i\right)                                                  \\
-       & \le 2^d \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s),0\right)} \prod_{i = 1}^{2}G\left(2s+2t_0,y- z_i\right)                                         \\
-       & = 2^d [4(t-s)]^{d/2} \prod_{i = 1}^{2}\bigg[ G\left(2s+2t_0,y- z_i\right)G\left(2(t-s),x-y\right)\bigg]                                                 \\
-       & = 2^{2d} (t-s)^{d/2} \prod_{i = 1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},y-\frac{s+t_0}{t+t_0}(x- z_i)\right)\right] \\
-       & \le 2^{2d} (t-s)^{d/2} \prod_{i = 1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},0\right)\right]                           \\
-       & \le C_{t,s,t_0} \prod_{i = 1}^{2} G\left(2(t+t_0),x- z_i\right).
+    G & (t-s,x-y) \prod_{i = 1}^{2}G(s+t_0,y- z_i)                                                                                                              \\
+      & = \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s,0\right)} \prod_{i = 1}^{2}G\left(s+t_0,y- z_i\right)                                                  \\
+      & \le 2^d \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s),0\right)} \prod_{i = 1}^{2}G\left(2s+2t_0,y- z_i\right)                                         \\
+      & = 2^d [4(t-s)]^{d/2} \prod_{i = 1}^{2}\bigg[ G\left(2s+2t_0,y- z_i\right)G\left(2(t-s),x-y\right)\bigg]                                                 \\
+      & = 2^{2d} (t-s)^{d/2} \prod_{i = 1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},y-\frac{s+t_0}{t+t_0}(x- z_i)\right)\right] \\
+      & \le 2^{2d} (t-s)^{d/2} \prod_{i = 1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},0\right)\right]                           \\
+      & \le C_{t,s,t_0} \prod_{i = 1}^{2} G\left(2(t+t_0),x- z_i\right).
   \end{align*}
   Therefore, $I_1\le C_{t,s,t_0} \: \mathcal{H}_{\alpha}(s) \: J_0^2\left(2(t+t_0),x;\mu^*\right)
   <\infty$. \bigskip
@@ -813,7 +972,7 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   \begin{align*}
     I_2\le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha}                                                        \\
            & \times \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}\bigg(G(t-r,x-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg) \\
-         = & C' \int_0^t \ud r \: (t-r)^{-\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}\bigg(G(t-r,x-z_i) J_0\left(r + t_0, z_i;\mu^*\right)\bigg).
+         = & C' \int_0^t \ud r \: (t-r)^{-\alpha} \iint_{\R^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}G(t-r,x-z_i) J_0\left(r + t_0, z_i;\mu^*\right).
   \end{align*}
   Now by the same arguments as those leading to~\eqref{E:NormY} (with $2\alpha$ there replaced by
   $\alpha$), we see that
@@ -845,7 +1004,10 @@ The relations of various conditions on the spectral measure $\widehat{f}$ are il
 Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
 
 \begin{figure}[htpb]
+  \begin{center}
+\resizebox{\linewidth}{0.22\linewidth}{%
   \begin{tikzpicture}[node distance = 11em, >=stealth, auto]
+
 		% \tikzset{> = latex}
 
 		\node[text width = 10em, align = center] (Dalang) {$\Upsilon(\beta)<\infty$\\ Dalang's\\condition \eqref{E:Dalang}};
@@ -855,8 +1017,8 @@ Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
 		\node[text width = 10em, align = center, right of = Phase] (InvMea) {$\Upsilon_\alpha(0)<\infty$\\ Condition~\eqref{E:Dalang-a0}};
 		\node at ($(Dalang)!0.5!(Phase)$) {\Large$\Uparrow$};
 		\node at ($(Factor)!0.5!(InvMea)$) {\Large$\Uparrow$};
-    \node[text width = 10em, align = center, right of = Factor] (Ha) {$\mathcal{H}_{\frac{\alpha}{2}}(t)<\infty$\\ Condition~\eqref{E:Dalang-H}};
-		\node[text width = 10em, align = center, right of = InvMea] (H8) {$\displaystyle\lim_{t \to \infty}\mathcal{H}_{\frac{\alpha}{2}}(t)\!<\!\infty$};
+    \node[text width = 10em, align = center, right of = Factor] (Ha) {$\mathcal{H}_{\alpha/2}(t)<\infty$\\ Condition~\eqref{E:Dalang-H}};
+		\node[text width = 10em, align = center, right of = InvMea] (H8) {$\displaystyle\lim_{t \to \infty}\mathcal{H}_{\alpha/2}(t)\!<\!\infty$};
 		\node at ($(Ha)!0.5!(H8)$) {\Large$\Uparrow$};
 		\node at ($(Ha)!0.5!(Factor)$) {\Large$\Leftrightarrow$};
 		\node at ($(H8)!0.5!(InvMea)$) {\Large$\Leftrightarrow$};
@@ -867,7 +1029,8 @@ Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
 		\node at ($(H08)!0.5!(Phase)$) {\Large$\Leftrightarrow$};
 
   \end{tikzpicture}
-
+}
+  \end{center}
   \caption{Relations among various conditions where $\alpha\in (0,1)$ and $\beta>0$.}
 
   \label{F:Dalang}
@@ -947,9 +1110,9 @@ two parts, we see that
   Notice that
   \begin{align*}
     I_\alpha(t)
-    \le t^{-\alpha} \int_t^\infty \ud r \int_{\R^d} \widehat{f}(\ud\xi)e^{-r|\xi|^2}
-    =   t^{-\alpha} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2} e^{-t|\xi|^2}
-    \le t^{-\alpha} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2}
+    &\le t^{-\alpha} \int_t^\infty \ud r \int_{\R^d} \widehat{f}(\ud\xi)e^{-r|\xi|^2}
+    =   t^{-\alpha} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2} e^{-t|\xi|^2}\\
+    &\le t^{-\alpha} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{|\xi|^2}
     =   \frac{\left(2\pi\right)^d}{t^{\alpha}} \Upsilon(0).
   \end{align*}
   Therefore,
@@ -1053,16 +1216,16 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   \end{align*}
   is relatively compact in $L_\rho^2 (\R^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
   (\Lambda)$ as
-  \begin{align*}
-    \mathscr{K} (\Lambda)
-    & \coloneqq \mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
-    & = \left\{\big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(t_0, x): \:\Norm{y}_{\tilde{\rho}}
-    \le \Lambda \quad \text{and}\quad\Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
-  \end{align*}
+  \begin{multline*}
+    \mathscr{K} (\Lambda) \coloneqq \mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
+    = \left\{\big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(t_0, x): \:\Norm{y}_{\tilde{\rho}}
+    \le \Lambda~\text{and}~\Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\R^d\right)\right)} \le \Lambda \right\}.
+  \end{multline*}
 
   Notice that from the factorization formula~\eqref{E:Fact},
   \begin{align*}
-    \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
+    \MoveEqLeft
+    \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]\\
     & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
     + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\tilde{\rho}} > \Lambda \right] \\
     & \eqqcolon I_1+I_2.
@@ -1106,11 +1269,9 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   Combining these two upper bounds, we see that
   \begin{align*}
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
-    \le
-    \dfrac{\sin^q (\alpha \pi)\Theta (2\pi)^{dq/2} t_0}{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left(\sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0)
-    +
-    \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)
-    <\infty,
+    \le & \phantom{+}\dfrac{\sin^q (\alpha \pi)\Theta (2\pi)^{dq/2} t_0}{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left(\sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0) \\
+        & + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)                                                                                                                                 \\
+    <   & +\infty,
   \end{align*}
   with the upper bound holding uniformly for all $t\ge \tau$. Hence, for any $\epsilon>0$, by
   choosing $\Lambda > 0$ big enough such that
@@ -1137,12 +1298,12 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   \end{align*}
   We claim that the family of laws $U(T,\cdot)$ for $T > 0$ is tight in $L^2_{\rho}(\R^d)$. Indeed,
   for any $\epsilon\in (0,1)$, by part (a), there exists a compact set $\mathcal{K}\in L_\rho^2
-  (\R^d)$ such that~\eqref{E:cpt} holds. This implies that
+  (\R^d)$ such that~\eqref{E:cpt} holds. Hence, for all $T>0$, it holds that
   \begin{align*}
     U(T)\left(\mathcal{K}\right)
     & = \frac{1}{T} \int_{\tau}^{T + \tau} \mathscr{L}(u(t,\cdot;\mu))\left(\mathcal{K}\right) \; \ud t
       \ge \frac{1}{T} \int_{\tau}^{T + \tau} (1-\epsilon) \; \ud t
-      = 1-\epsilon, \quad \text{for all $T>0$}.
+      = 1-\epsilon.
   \end{align*}
 
   Let $\{T_n\}_{n\in \mathbb{N}}$ be any deterministic sequence such that $T_n\uparrow \infty$.
@@ -1206,7 +1367,7 @@ condition to be in $L^2 (\R^d)$, which excludes the two important cases, $u(0,x)
 $u(0,\cdot) = \delta_0(\cdot)$. Our Theorem~\ref{T:Main} includes both of these initial conditions;
 see Section~\ref{SS:Init}.
 
-\subsection{The conditions for the spectral measures by Tessitore and Zabczyk}\label{SS:TessZabz}
+\subsection{The conditions for spectral measures by Tessitore and Zabczyk}\label{SS:TessZabz}
 
 Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant} established the existence of an
 invariant measure for~\eqref{E:SHE} in $L^2_{\rho}(\R^d)$ under the assumptions that (1) there
@@ -1240,8 +1401,8 @@ an invariant measure via the construction~\eqref{E:InvMeasForm}.
   of the Fourier transform. However, the proof of Theorem 3.3 \textit{ibid.} suggests that the
   following convention has been used:
 	\begin{align*}
-	\widehat{\phi}(\xi)      = \mathcal{F}\phi(\xi) := (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
-	\mathcal{F}^{-1}\psi(x) := (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+    \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) & \coloneqq (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad \\
+    \mathcal{F}^{-1}\psi(x)                    & \coloneqq (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
 	\end{align*}
   Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
   \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
@@ -1317,13 +1478,13 @@ that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is signed and hence
 make spoil the oscillatory structure.
 
 \begin{example}\label{Ex:Finv}
-  Suppose that $d = 1$, $f(x) = (2\pi)^{-1}x^{-2}\sin^2 (x)$ and $\widehat{f}(\xi) =
+  Suppose that $d = 1$. Set $f(x) = (2\pi)^{-1}x^{-2}\sin^2 (x)$. Hence, $\widehat{f}(\xi) =
   2^{-2}\max\{2-|\xi|,0\}$. Then as explained in Example~\ref{Ex:nonnegative}, both $f$ and
   $\widehat{f}$ are non-negative and non-negative definite. We claim that
 	\begin{align}\label{E:Claim}
 	\text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes both positive and negative values.}
 	\end{align}
-	Indeed, for all $x\in\R$,
+  Indeed, for all $x\in\R$,
 	\begin{align*}
     \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
     & = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
@@ -1337,13 +1498,14 @@ make spoil the oscillatory structure.
     \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
     \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
 	\end{align*}
-	the above expression can be further simplified via the change of variables $\xi' = \sqrt{2|x|/\pi}
-	\: \xi$ to
+  the above expression can be further simplified via the change of variables $\xi' = \sqrt{2|x|/\pi}
+  \: \xi$ to
 	\begin{align*}
 	\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
-	= (8\pi)^{-1/2} |x|^{-3/2} \left(-\cos(2|x|)\mathcal{S}\left(\frac{2\sqrt{|x|}}{\sqrt{\pi}}\right) + \sin(2|x|) \mathcal{C}\left( \frac{2 \sqrt{|x|}}{\sqrt{\pi}} \right) \right), \quad x \in \R.
+	= (8\pi)^{-1/2} |x|^{-3/2} \left(-\cos(2|x|)\mathcal{S}\left(\frac{2\sqrt{|x|}}{\sqrt{\pi}}\right) + \sin(2|x|) \mathcal{C}\left( \frac{2 \sqrt{|x|}}{\sqrt{\pi}} \right) \right),
 	\end{align*}
-  This proves the claim in \eqref{E:Claim}; see also Figure~\ref{Fig:fresnel} for some plots.
+  for all $x\in\R$. This proves the claim in \eqref{E:Claim}; see also Figure~\ref{Fig:fresnel} for
+  some plots.
 \end{example}
 
 \begin{figure}[htbp]
@@ -1723,9 +1885,9 @@ can be easily handled by our condition -- $\Upsilon_{\alpha}(0)<\infty$, i.e.,~\
   It is straightforward to verify that
 	\begin{align*}
     \Upsilon_\alpha(0)
-    = C \int_{\R^d} \frac{\prod_{i = 1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi
-    \le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi
-    = C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
+    & = C \int_{\R^d} \frac{\prod_{i = 1}^d\max\{2-|\xi_i|,0\}}{|\xi|^{2(1-\alpha)}} \ud \xi\\
+    & \le C \int_{|\xi|\le 2\sqrt{d}} \frac{2^d}{|\xi|^{2(1-\alpha)}} \ud \xi
+      = C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
 	\end{align*}
   Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
 \end{example}
@@ -1780,8 +1942,8 @@ In this part, we give some concrete examples of initial conditions.
     \le G(t,0)^2 \Norm{\rho}_{L^1 (\R^d)},
     \quad \text{for all $t>0$,}
   \end{align*}
-  we see that both conditions~\eqref{E:G} and~\eqref{E:InitData} are satisfied. In particular,
-  $\limsup_{t>0} \mathcal{G}_\rho(t;\delta_0) = 0$.
+  both conditions~\eqref{E:G} and~\eqref{E:InitData} are satisfied. In particular, $\limsup_{t>0}
+  \mathcal{G}_\rho(t;\delta_0) = 0$.
 \end{example}
 
 
@@ -1821,11 +1983,11 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
   In particular, this implies that condition~\eqref{E:G} is satisfied, but condition~\eqref{E:InitData} fails.
 \end{proposition}
 \begin{proof}
-  Notice that by scaling arguments, $\mathcal{G}_\rho(t;|\mu|)$ is equal to
+  Notice that by scaling arguments,
   \begin{align*}
-    &   \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x
-    % & = \int_{\R^d}t^\alpha \left(\int_{\R^d}G\left(1,\frac{x}{\sqrt{t}}-z\right) |z|^\alpha \ud z\right)^2 e^{-|x|} \ud x    \\
-      = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
+    \mathcal{G}_\rho(t;|\mu|)
+      & =  \int_{\R^d} \left(\int_{\R^d}G(t,x-y) |y|^\alpha \ud y\right)^2 e^{-|x|} \ud x \\
+      & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) |z|^\alpha \ud z\right)^2 e^{-\sqrt{t}|\xi|} \ud \xi.
   \end{align*}
   In the following, let $C_d$, $C_\alpha$, $C_\alpha'$, $C_{\alpha, d}$ and $C'_{\alpha, d}$ be
   generic constants that may depend on $\alpha $ and $d$ and may change their value at each
@@ -1838,15 +2000,14 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
     \le C_\alpha \int_{\R^d}G\left(1,z\right) \left(|\xi|^\alpha + |z|^\alpha\right) \ud z
     \le C_\alpha' \left(1+|\xi|^\alpha\right),
   \end{align*}
-  we see that
+  we see that $\mathcal{G}_\rho(t;\mu)$ is bounded from above by
   \begin{align*}
-    \mathcal{G}_\rho(t;\mu)
-    & \le C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi
+    & C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+|\xi|^{2\alpha}\right) e^{-\sqrt{t}|\xi|} \ud \xi
     % & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r \\
       = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)
-      = C'_{\alpha, d} (1+ t^\alpha)<\infty,
+      = C'_{\alpha, d} (1+ t^\alpha),
   \end{align*}
-  which proves the upper bound in~\eqref{E:growtail}. \medskip
+  the far right-hand of which is finite. This proves the upper bound in~\eqref{E:growtail}. \medskip
 
   \noindent\textit{Lower bound:~} Now we prove the lower bound in~\eqref{E:growtail}. Indeed,
   \begin{align*}
@@ -1944,11 +2105,11 @@ In this part, we will make some explicit computations for Bessel and related ker
   \end{align}
   where $\mathcal{K}_\nu(\cdot)$ is the modified Bessel function of second type, and $\alpha$ and
   $\nu$ refer to the \textit{scaling and smoothness parameters}, respectively. From the inversion
-  formula (see p. 46 \textit{ibid.}), one sees that
+  formula (see p. 46 \textit{ibid.}), one sees that, for all $\xi\in\R^d$,
   \begin{align*}
     \mathcal{F}K(\xi) = (2\pi)^{d} \mathcal{F}^{-1} K(\xi) = (2\pi)^d f(|\xi|)
     \quad \text{with} \quad
-    f(\xi) = \frac{2^{\nu-1} \phi \Gamma\left(\nu +d/2\right)\alpha^{2\nu}}{\pi^{d/2}\left(\alpha^2+|\xi|^2\right)^{\nu+d/2}}, \quad \xi\in\R^d.
+    f(\xi) = \frac{2^{\nu-1} \phi \Gamma\left(\nu +d/2\right)\alpha^{2\nu}}{\pi^{d/2}\left(\alpha^2+|\xi|^2\right)^{\nu+d/2}}.
   \end{align*}
   Comparing the above expression with~\eqref{E:FB}, we see that the class of Bessel kernels $f_s$,
   with $s>d-2$ and $d\ge 3$, includes the Mat\'ern class~\eqref{E:Matern} as a special case under
@@ -2037,7 +2198,7 @@ parameters.
   spherical coordinate integration formula, for all $t>0$,
   \begin{align*}
     \mathcal{H}_{\alpha}(t)
-      = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{(1+|\xi|^2)^{s/2}}
+    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\R^d} \ud \xi \; \frac{\exp(-r|\xi|^2)}{(1+|\xi|^2)^{s/2}} \\
     % & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
     & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{d/2-1} \\
     & \eqqcolon \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
@@ -2070,7 +2231,7 @@ following proposition:
 
 \begin{proposition}[Bessel kernel as spectral density]\label{P:Bessel'}
   Suppose that the spectral density $\widehat{f}$ is given by the Bessel kernel $f_s(\cdot)$ defined
-  in Example~\ref{Ex:Bessel} (see~\eqref{E:FB}), or equivalently, suppose that the correlation
+  in Example~\ref{Ex:Bessel} (see~\eqref{E:FB}), or in other words, suppose that the correlation
   function $f(x)$ is given by $f(x) = \left(1+|x|^2\right)^{-s/2}$ for $s>0$. Then
   \begin{align}\label{E:UpsionB'}
     \Upsilon_{\alpha}(0)
@@ -2241,7 +2402,7 @@ Proposition~\ref{P:adm} seem to be less obvious:
 	Hence,
 	\begin{align*}
     I(t,x) \le C \int_{\R^d} t^{-d/2} e^{-\frac{|x-y|^2}{2t} + |x-y|^b} \ud y
-    = C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
+    % = C \int_{\R^d} t^{-d/2} e^{-\frac{|y|^2}{2t} + |y|^b} \ud y
     = C \int_{0}^\infty t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
 	\end{align*}
 	Then by applying the change of variables $r' = t^{-1/2}r$,
@@ -2257,15 +2418,15 @@ Proposition~\ref{P:adm} seem to be less obvious:
 	\begin{align*}
     \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r:=(r,0,\cdots,0)\in\R^d$.}
 	\end{align*}
-  Without loss of generality, we may assume below that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) =
-  (y_1,y_*)$ with $y_*\in\R^{d-1}$. Using the subadditivity (resp. convexity) of $(x+y)^{b/2}$ when
-  $b\in (1,2]$ (resp. $b>2$), we see that
+  Without loss of generality, we may assume that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) = (y_1,y_*)$
+  with $y_*\in\R^{d-1}$. Using the subadditivity (resp. convexity) of $(x+y)^{b/2}$ when $b\in
+  (1,2]$ (resp. $b>2$), we see that
 	\begin{align*} % \label{E_:y}
 	| y | ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
 	\le c |y_1|^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
-	=   c |y_1|^b + c |y_*|^b, \quad  c:= 1 \wedge 2^{b/2 -1}.
+	=   c |y_1|^b + c |y_*|^b,
 	\end{align*}
-	Hence,
+  where $c \coloneqq 1 \wedge 2^{b/2 -1}$. Hence,
 	\begin{align*}
     I\left(1/2,x_r\right)
     & = C \int_{\R^d} e^{- \left(\sum_{i = 2}^{d} y_i^2\right) - |y_1-r|^2 + (r^b - |y|^b)} \ud y               \\
@@ -2274,14 +2435,14 @@ Proposition~\ref{P:adm} seem to be less obvious:
     & = C \int_\R e^{- y^2 + r^b - c |y-r|^b} \ud y
       \ge C \int_0^r e^{- y^2 + r^b - c |y-r|^b} \ud y \eqqcolon C K(r).
   \end{align*}
-	It suffices to show that $\lim_{r\to\infty}K(r) = \infty$, which is true when $b>2$ because
+  It suffices to show that $\lim_{r\to\infty}K(r) = \infty$, which is true when $b>2$ because
   \begin{align*}
     K(r)
-    \ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
-    \ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
-    = \frac{r}{2} \exp\left(\left(1-2^{-1-b/2}\right)r^b -r^2\right),
+    & \ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
+      \ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
+    = \frac{r}{2} e^{ \left(1-2^{-1-b/2}\right)r^b -r^2 },
 	\end{align*}
-	which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
+  which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
 	\begin{align*} % \label{E_:K'}
 	K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y.
 	\end{align*}
