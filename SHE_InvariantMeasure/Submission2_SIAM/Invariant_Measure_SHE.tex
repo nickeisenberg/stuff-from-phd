@@ -144,8 +144,8 @@
 }
 \renewcommand*{\bibfont}{\fontsize{11}{11}}
 
-\addbibresource{../All.bib}
-% \addbibresource{./draft_rand_int_2_biber.bib}
+% \addbibresource{../All.bib}
+\addbibresource{./Invariant_Measure_SHE_biber.bib}
 % }}}
 
 % Sets running headers as well as PDF title and authors
@@ -911,15 +911,14 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   to the restarted SHE~\eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise
   (see~\eqref{E:ShiftW}) when $t_0>0$ and let $v = u$ when $ t_0 = 0$. Then the following
   factorization holds
-  \begin{multline*}
-    \dfrac{\sin(\alpha \pi)}{\pi}
-    \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s\\
-    = \int_0^t \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),
-  \end{multline*}
-  for all $t>0$ and $x\in\R^d$. As a consequence,
+  \begin{align*}
+    \MoveEqLeft
+    \dfrac{\sin(\alpha \pi)}{\pi}  \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \\
+      & = \int_0^t \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),
+  \end{align*}
+  for all $t>0$ and $x\in\R^d$. As a consequence, for all $t>0$ and $x\in\R^d$,
   \begin{equation}\label{E:1fac}
-    v(t,x) = \left[G(t, \cdot) * u(t_0,\cdot; \mu)\right](x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t,x),
-    \quad \text{for all $t>0$ and $x\in\R^d$}.
+    v(t,x) = \left[G(t, \cdot) * u(t_0,\cdot; \mu)\right](x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t,x).
   \end{equation}
 \end{lemma}
 \begin{proof}
@@ -2155,7 +2154,7 @@ parameters.
     \mathcal{H}_\alpha(t) = \left\{
       \begin{array}{lcl}
         \begin{aligned}
-          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right)}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}  t^{(s-d)/2+1-2\alpha}                  \\[1em]
+          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right) t^{(s-d)/2+1-2\alpha}}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}                   \\[1em]
           \quad - \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}              t^{1-2\alpha}                          \\[1em]
           +                                                                                        O\left(t^{(s-d)/2+2(1-\alpha)}\right), \\[1.2em]
         \end{aligned}
@@ -2169,10 +2168,10 @@ parameters.
             \frac{\pi ^{d/2}}{(1-2 \alpha) \Gamma \left(d/2\right)}t^{1-2\alpha}\log\left(\frac{1}{t}\right)                                    \\[1em]
            +\frac{\pi ^{d/2} \left(1- (1-2 \alpha) \left[\psi(d/2)+2\gamma\right]\right)}{(1-2 \alpha)^2 \Gamma \left(d/2\right)}t^{1-2 \alpha} \\[1em]
            +O\left(t^2\log(t)\right),                                                                                                           \\[1.2em]
-        \end{aligned}                                                                                                           & s=d     & \text{\em(\ref{E:HaBS}-b)} \\ [1em]
-        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}t^{1-2\alpha} + O\left(t^{(s-d)/2+1-2\alpha}\right), & d<s<d+2 & \text{\em(\ref{E:HaBS}-c)} \\ [1.5em]
-        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2   & \text{\em(\ref{E:HaBS}-d)} \\ [1.5em]
-        \dfrac{\pi^{d/2}}{(1-2\alpha)\Gamma\left(d/2+1\right)}t^{1-2\alpha}  + O\left(t^{2(1-\alpha)}\right),                   & s>d+2   & \text{\em(\ref{E:HaBS}-e)} \\ [1.5em]
+        \end{aligned}                                                                                                           & s=d     & \text{\em(\ref{E:HaBS}-b)} \\[1em]
+        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)t^{1-2\alpha}}{(1-2\alpha)\Gamma(s/2)} + O\left(t^{\frac{s-d}{2} +1-2\alpha}\right), & d<s<d+2 & \text{\em(\ref{E:HaBS}-c)} \\[1.5em]
+        \dfrac{\pi^{d/2}t^{1-2\alpha} }{(1-2\alpha)\Gamma\left(d/2+1\right)} + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2   & \text{\em(\ref{E:HaBS}-d)} \\[1.5em]
+        \dfrac{\pi^{d/2}t^{1-2\alpha} }{(1-2\alpha)\Gamma\left(d/2+1\right)} + O\left(t^{2(1-\alpha)}\right),                   & s>d+2   & \text{\em(\ref{E:HaBS}-e)} \\[1.5em]
       \end{array}
       \right.
   \end{align}
@@ -2217,11 +2216,11 @@ parameters.
   \begin{align*}
     I(r) = \left\{
       \begin{array}{lcl}
-        \dfrac{\Gamma\left((d-s)/2\right)}{\Gamma(d/2)}r^{(s-d)/2}+\dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2+1}\right) & d-2<s<d & \text{\small 18.2.18}, \\
-        -\dfrac{1}{\Gamma(d/2)}\left(\log(r) + \psi(d/2) + 2\gamma \right) +O\left(r\log(r)\right)                                               & s=d     & \text{\small 18.2.19}, \\
-        \dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2}\right)                                                              & d<s<d+2 & \text{\small 18.2.20}, \\
-        \dfrac{1}{\Gamma\left(d/2+1\right)} + O\left(r\log(r)\right)                                                                             & s=d+2   & \text{\small 18.2.21}, \\
-        \dfrac{\Gamma\left((s-d)/2\right)}{\Gamma(s/2)} + O\left(r\right)                                                                        & s>d+2   & \text{\small 18.2.22}. \\
+        \dfrac{\Gamma\left(\frac{d-s}{2}\right)r^{\frac{s-d}{2}}}{\Gamma(d/2)}+\dfrac{\Gamma\left(\frac{s-d}{2}\right)}{\Gamma(s/2)} + O\left(r^{\frac{s-d}{2}+1}\right) & d-2<s<d & \text{\small 18.2.18}, \\
+        -\dfrac{1}{\Gamma(d/2)}\left(\log(r) + \psi(d/2) + 2\gamma \right) +O\left(r\log(r)\right)                                                                       & s=d     & \text{\small 18.2.19}, \\
+        \dfrac{\Gamma\left(\frac{s-d}{2}\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2}\right)                                                                                & d<s<d+2 & \text{\small 18.2.20}, \\
+        \dfrac{1}{\Gamma\left(d/2+1\right)} + O\left(r\log(r)\right)                                                                                                     & s=d+2   & \text{\small 18.2.21}, \\
+        \dfrac{\Gamma\left(\frac{s-d}{2}\right)}{\Gamma(s/2)} + O\left(r\right)                                                                                          & s>d+2   & \text{\small 18.2.22}. \\
       \end{array}
       \right.
   \end{align*}
