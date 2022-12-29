@@ -6,6 +6,35 @@
 import re
 import subprocess
 
+# Check arguments and set variables
+import argparse
+parser = argparse.ArgumentParser(description='Extract tikz figures from a LaTeX file')
+parser.add_argument('-i', '--input', help='input LaTeX file', required=False)
+parser.add_argument('-s', '--show', help='Show figure pdf files using zathura', required=False)
+args = parser.parse_args()
+
+# Parser an boolean argument given to show
+if args.show:
+    if args.show.lower() in ['true', 't', 'yes', 'y', '1']:
+        show = True
+    else:
+        show = False
+
+# Test if argument, args.input is given, if not given, give a default value; if
+# given, test if the file is readable. In any case, use the variable
+# MainTexFile to store the filename.
+if args.input:
+    MainTexFile = args.input
+else:
+    MainTexFile = 'Invariant_Measure_SHE.tex'
+
+try:
+    f = open(MainTexFile, 'r')
+    f.close()
+except IOError:
+    print('File not found or not readable')
+
+
 # Open the LaTeX file and read its contents into a string
 with open('Invariant_Measure_SHE.tex', 'r') as f:
     contents = f.read()
@@ -36,8 +65,18 @@ for i, figure in enumerate(tikz_figures):
 # Create a standalone LaTeX file for each TikZ figure
 for i, figure in enumerate(tikz_figures):
     with open(f'figure_{i+1}.tex', 'w') as f:
-        f.write(f'\\documentclass[varwidth=\\maxdimen]{{standalone}}\n\\input{{CommonPreamble.tex}}\n\\begin{{document}}\n\\begin{{tikzpicture}}{figure}\\end{{tikzpicture}}\n\\end{{document}}')
+        f.write(f'\
+\\documentclass[varwidth=\\maxdimen]{{standalone}}\n\
+\\input{{CommonPreamble.tex}}\n\
+\\begin{{document}}\n\
+\\begin{{tikzpicture}}\n\
+    {figure}\n\
+\\end{{tikzpicture}}\n\
+\\end{{document}}\
+')
 
 # Compile each TikZ file into an EPS file
 for i, figure in enumerate(tikz_figures):
     subprocess.run(['pdflatex', f'figure_{i+1}.tex'])
+    if show:
+        subprocess.Popen(['zathura', f'figure_{i+1}.pdf'], start_new_session=True)
