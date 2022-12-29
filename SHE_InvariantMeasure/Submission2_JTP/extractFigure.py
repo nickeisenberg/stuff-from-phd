@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # By Le Chen
 # chenle02@gmail.com / le.chen@auburn.edu
-#
+# 2022-12-29
 
 import re
 import subprocess
 
 # Check arguments and set variables
 import argparse
-parser = argparse.ArgumentParser(description='Extract tikz figures from a LaTeX file')
+parser = argparse.ArgumentParser(description='Extract tikz figures from a LaTeX file to form standalone files.')
 parser.add_argument('-i', '--input', help='input LaTeX file', required=False)
 parser.add_argument('-s', '--show', help='Show figure pdf files using zathura', required=False)
 args = parser.parse_args()
