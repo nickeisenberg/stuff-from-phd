@@ -7,7 +7,7 @@ import re
 import subprocess
 
 # Open the LaTeX file and read its contents into a string
-with open('./Invariant_Measure_SHE.tex', 'r') as f:
+with open('Invariant_Measure_SHE.tex', 'r') as f:
     contents = f.read()
 
 # Find all the TikZ figures in the file using a regular expression
@@ -36,18 +36,8 @@ for i, figure in enumerate(tikz_figures):
 # Create a standalone LaTeX file for each TikZ figure
 for i, figure in enumerate(tikz_figures):
     with open(f'figure_{i+1}.tex', 'w') as f:
-        f.write(f'\\documentclass[varwidth=\\maxdimen]{{standalone}}\n\\usepackage{{tikz}}\n\\begin{{document}}\n\\begin{{tikzpicture}}{figure}\\end{{tikzpicture}}\n\\end{{document}}')
-
-# # Compile each TikZ file into an EPS file
-# for i, figure in enumerate(tikz_figures):
-#     subprocess.run(['pdflatex', f'figure_{i+1}.tex'])
-#     subprocess.run(['pdf2eps', f'figure_{i+1}.pdf'])
+        f.write(f'\\documentclass[varwidth=\\maxdimen]{{standalone}}\n\\input{{Invariant_Measure_SHE.tex}}\n\\begin{{document}}\n\\begin{{tikzpicture}}{figure}\\end{{tikzpicture}}\n\\end{{document}}')
 
 # Compile each TikZ file into an EPS file
-for i, (figure, label) in enumerate(zip(tikz_figures, labels)):
-    subprocess.run(['pdflatex', f'-Dfigurelabel={label}', f'figure_{i+1}.tex'])
-    subprocess.run(['pdf2eps', f'figure_{i+1}.pdf'])
-
-# Print the captions and labels for each figure
-for i, (caption, label) in enumerate(zip(captions, labels)):
-    print(f'Figure {i+1}: caption={caption}, label={label}')
+for i, figure in enumerate(tikz_figures):
+    subprocess.run(['pdflatex', f'figure_{i+1}.tex'])
