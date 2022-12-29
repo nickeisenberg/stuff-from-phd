@@ -36,7 +36,7 @@ for i, figure in enumerate(tikz_figures):
 # Create a standalone LaTeX file for each TikZ figure
 for i, figure in enumerate(tikz_figures):
     with open(f'figure_{i+1}.tex', 'w') as f:
-        f.write(f'\\documentclass[varwidth=\\maxdimen]{{standalone}}\n\\input{{Invariant_Measure_SHE.tex}}\n\\begin{{document}}\n\\begin{{tikzpicture}}{figure}\\end{{tikzpicture}}\n\\end{{document}}')
+        f.write(f'\\documentclass[varwidth=\\maxdimen]{{standalone}}\n\\input{{CommonPreamble.tex}}\n\\begin{{document}}\n\\begin{{tikzpicture}}{figure}\\end{{tikzpicture}}\n\\end{{document}}')
 
 # Compile each TikZ file into an EPS file
 for i, figure in enumerate(tikz_figures):
