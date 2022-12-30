@@ -112,24 +112,31 @@
 \usepackage[shortlabels]{enumitem}
 % \usepackage[square,sort,comma]{natbib}
 % \bibpunct{(}{)}{,}{a}{}{,}
+% \usepackage[comma,authoryear,round]{natbib}
+
+\numberwithin{equation}{section}
+
+% \renewcommand{\thefigure}{\arabic{figure}} 
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
 % }}}
 
 
 %% as per the requirement new theorem styles can be included as shown below
 \theoremstyle{thmstyleone}%
-\newtheorem{theorem}{Theorem}%  meant for continuous numbers
-%%\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
 %% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
 \newtheorem{proposition}[theorem]{Proposition}%
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 
 \theoremstyle{thmstyletwo}%
-\newtheorem{example}{Example}%
+\newtheorem{example}{Example}[section]%
 \newtheorem{remark}{Remark}%
 
 \theoremstyle{thmstylethree}%
-\newtheorem{definition}{Definition}%
+\newtheorem{definition}{Definition}[section]%
 
 \raggedbottom
 %%\unnumbered% uncomment this for unnumbered level heads
@@ -1005,8 +1012,8 @@ of Lemma~\ref{L:HUA}.
   nondecreasing. By Fubini's theorem,
   \begin{align}\label{E:Fubini}
     \lim_{t\to\infty}\mathcal{H}_{\alpha/2}(t)
-    & = \int_0^\infty \ud r \: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2}
-      = \Gamma(1-\alpha) \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\lvert\xi\rvert^{2\left(1-\alpha\right)}}
+    & = \int_0^\infty \ud r \: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2} \notag \\
+    & = \Gamma(1-\alpha) \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\lvert\xi\rvert^{2\left(1-\alpha\right)}}
       = C \Upsilon_{\alpha}(0),
   \end{align}
   with $C\coloneqq \Gamma(1-\alpha)(2\pi)^d$. As for part (ii), notice that for all $t>0$ and
@@ -1297,8 +1304,10 @@ see part (i) of Hypothesis 2.1 \textit{ibid.} However, as was illustrated in The
 \textit{ibid.}, in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or
 to have moments uniformly bounded in time), the following additional assumptions were imposed:
 \begin{equation}\label{E:TZspec}
-  d\ge 3 \quad \text{and} \quad
+  \begin{gathered}
+  d\ge 3 \quad \text{and} \quad \\
   L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\BR^d} \left(\lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \rvert * \lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\rvert\right) (\xi) \lvert \xi \rvert^{2-d} \ud \xi ,
+  \end{gathered}
 \end{equation}
 where the convention of the Fourier transform is given in Remark~\ref{R:Fourier}. With these
 assumptions, they were able to prove that~\eqref{E:SHE} starting from the constant one initial
@@ -2029,14 +2038,6 @@ Proposition~\ref{P:adm} seem to be less obvious:
 \end{proof}
 
 \backmatter
-
-\bmhead{Supplementary information}
-
-If your article has accompanying supplementary file/s please state so here.
-
-Authors reporting data from electrophoretic gels and blots should supply the full unprocessed scans for key as part of their Supplementary information. This may be requested by the editorial team/s if it is missing.
-
-Please refer to Journal-level guidance for any specific requirements.
 
 \bmhead{Acknowledgments}
 
