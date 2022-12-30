@@ -19,6 +19,8 @@ if args.show:
         show = True
     else:
         show = False
+else:
+    show = False
 
 # Test if argument, args.input is given, if not given, give a default value; if
 # given, test if the file is readable. In any case, use the variable
@@ -67,7 +69,7 @@ for i, figure in enumerate(tikz_figures):
     with open(f'figure_{i+1}.tex', 'w') as f:
         f.write(f'\
 \\documentclass[varwidth=\\maxdimen]{{standalone}}\n\
-\\input{{CommonPreamble.tex}}\n\
+\\input{{extractFigure.tex}}\n\
 \\begin{{document}}\n\
 \\begin{{tikzpicture}}\n\
     {figure}\n\
