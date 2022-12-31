@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{amssymb, latexsym, amsmath, graphics, fullpage, epsfig, amsthm, relsize, pgf, tikz, amsfonts, makeidx, latexsym, ifthen, hyperref, calc}
 %\usepackage{eucal} this is a different font than \mathcal{•}
+
 \usetikzlibrary{arrows}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{remark}{Remark}[section]
@@ -23,6 +24,11 @@
 \usepackage{dcolumn}
 \newcolumntype{2}{D{.}{}{2.0}}
 \usepackage{multicol}
+
+\usepackage{xr-hyper}
+\usepackage{hyperref}
+\externaldocument{Invariant_Measure_SHE_JPT}
+
 \numberwithin{equation}{section}
 
 \newcommand{\lip}{\textup{Lip}_b}
@@ -50,10 +56,10 @@
 \fancyhead[R]{
 {\bf \large Le Chen$^\dagger$ and Nicholas Eisenberg$^*$} \\
 {\it  Auburn University,\\
-Department of Mathematics and Statistics, \\		
+Department of Mathematics and Statistics, \\
 Auburn, Alabama, USA. \\
 Email: \href{mailto:le.chen@auburn.edu}{le.chen@auburn.edu}$^\dagger$ \\
-\href{mailto:nickeisenberg@gmail.com}{nickeisenberg@gmail.com}$^*$ or 
+\href{mailto:nickeisenberg@gmail.com}{nickeisenberg@gmail.com}$^*$ or
 \href{mailto:nze0019@auburn.edu}{nze0019@auburn.edu}$^*$}}
 }
 
@@ -72,33 +78,76 @@ $ $
 \vspace{.7in}
 
 \noindent{\bf To} \\
-{\it Journal of Theoretical Probability,} \hfill \today 
+{\it Journal of Theoretical Probability,} \hfill \today
 
 \vspace{1em}
 
-Dear Editor,
+\noindent{Dear Editor},
 
 \vspace{1em}
 
-In this paper we investigate the conditions required to guarantee the existence of an invariant measure to the stochastic heat equation on the whole space $\R^d$ for $d \ge 3$ with an unbounded Lipschitz diffusion term $b$. Namely, $\partial_tu(t,x) - 1/2 \Delta_x u(t,x) = b(u(t,x))\dot{W}$ with the initial condition $u(0, \cdot) = \mu(\cdot)$ and where the Gaussian noise, $\dot{W}$, is white in time and colored in space. The major challenge to the problem is finding conditions which guarantee that the probability moments of the solution are bounded in time and it is often the case that authors require the addition of a drift term to the equation which help control the usual exponential growth of the moments in time \cite{misiats.stanzhytskyi.ea:16:existence, misiats.stanzhytskyi.ea:20:invariant, assing.manthey:03:invariant}. We do not consider such a drift term and the literature for such a set up is far more scarce than when considering the added drift term.
+In this paper we investigate the conditions required to guarantee the existence of an invariant
+measure to the stochastic heat equation on the whole space $\R^d$ with an unbounded Lipschitz
+diffusion term $b$. To be more precise, we study
+\begin{align*}
+  \partial_tu(t,x) - \frac{1}{2} \Delta u(t,x) = b(u(t,x))\dot{W}(t,x),
+\end{align*}
+with the initial condition $u(0, \cdot) = \mu(\cdot)$, where $\dot{W}$ is the centered Gaussian
+noise that is white in time and colored in space. The major challenge to the problem is finding
+conditions which guarantee that the probability moments of the solution in a weighted $L^2(\R^d)$
+space are bounded in time, which is often the case when some additional drift terms to the equation
+are imposed to help control the usual exponential growth of the moments in
+time~\cite{misiats.stanzhytskyi.ea:16:existence, misiats.stanzhytskyi.ea:20:invariant,
+assing.manthey:03:invariant}. We do not have such a drift term and the literature for such a set up
+is far more scarce than when considering the added drift term. An immediate consequence of no drift
+term in our equation is that the spatial dimension $d$ has to be at least $3$, i.e., $d\ge 3$.
 
 \vspace{.5em}
 
-Our paper is inspired by \cite{tessitore.zabczyk:98:invariant} where they prove existence of an invariant measure under the same setting of our paper, ie on the whole space and with an unbounded and Lipschitz diffusion term, when the initial condition is the constant $1$. However, their techniques essentially allow for all bounded functions. Moreover, they impose a hard to verify condition on their noise which often is too complicated to verify for many cases of interest.
+Our paper is mostly inspired by Tessitore and Zabczyk's work~\cite{tessitore.zabczyk:98:invariant},
+where they prove existence of an invariant measure under the same setting as ours, i.e., on the
+whole space and with an unbounded and Lipschitz diffusion term. \textit{The first contribution} of
+our paper is more general initial conditions, including the important Dirac delta initial data. Note
+that in~\cite{tessitore.zabczyk:98:invariant}, only the constant initial condition is considered,
+even though their techniques essentially allow for all bounded functions. We emphasize that the
+Dirac delta measure plays an important role in the asymptotic analysis for stochastic heat equation;
+see, e.g., the work of~\cite{amir.corwin.ea:11:probability}. \textit{The second contribution}
+is clean conditions on the spectral density of the noise. Indeed, the conditions on the spectral
+density ({\it ibid.}) are not easy to verify in practice. We identify the following clean and near
+optimal condition:
+\begin{align*}
+  \int_{\R^d} \frac{\widehat{f}(\ud \xi)}{|\xi|^2 \wedge |\xi|^{2(1-\alpha)}} <\infty,
+  \quad \text{for some $\alpha\in (0,1)$,}
+\end{align*}
+where $f$ is the correlation function of the noise and $\widehat{f}$ is its Fourier transform --- the
+so-called spectral density; see Remark~\ref{R:CompactForm} of the manuscript for more details.
+
 
 \vspace{.5em}
 
-We expand on this by verifying the existence of an invariant measure for a wider class of initial conditions which include unbounded functions and measures such as the Dirac delta measure. Moreover, we provide explicit and easy to verify conditions on the noise which allow for the existence of an invariant measure and we give several examples as well. We note that our improvements are due to the fact that we work under the random field framework of Walsh \cite{walsh:86:introduction} where as in the past, this problem has usually been studied under the theory of the stochastic integral laid out by DaPrato and Zabcyzyk \cite{da-prato.zabczyk:14:stochastic}. While both theories have been shown to be equivalent \cite{dalang.quer-sardanyons:11:stochastic}, they both offer their own unique set of tools to work with.
+% We expand on this by verifying the existence of an invariant measure for a wider class of initial
+% conditions which include unbounded functions and measures such as the Dirac delta measure.
+% Moreover, we provide explicit and easy to verify conditions on the noise which allow for the
+% existence of an invariant measure and we give several examples as well.
 
- \vspace{1em}
+Our improvements are due to the fact that we work under the random field framework of
+Walsh~\cite{walsh:86:introduction}, while in the past, this problem has usually been studied under
+the theory of the stochastic differential equation in the infinite-dimensional setting laid out by
+Da Prato and Zabcyzyk~\cite{da-prato.zabczyk:14:stochastic}. While both theories have been shown to
+be equivalent~\cite{dalang.quer-sardanyons:11:stochastic}, they both offer their own unique set of
+tools to work with. Especially the random field framework provides sharper moment estimates on the
+moments of the solution, which is crucial to our analysis.
 
-Thank you very much for handling our paper. 
+\vspace{1em}
+
+We hope that the content and contributions of the paper fit well the journal and we look forward to
+hearing from you. Thank you very much for handling our paper.
 
 \vspace{0.5cm}
 {\textbf{Sincerely,}} \\
 \vspace{0.25cm}
 
-\textit{Le Chen} and \textit{Nicholas Eisenberg}
+\noindent\textit{Le Chen} and \textit{Nicholas Eisenberg}
 
 \begin{thebibliography}{31}
 	% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
@@ -142,7 +191,7 @@ Thank you very much for handling our paper.
 	\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
 	\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
 	\csname PreBibitemsHook\endcsname
-	
+
 	%%% 11
 	\bibitem{tessitore.zabczyk:98:invariant}
 	\begin{barticle}
@@ -155,7 +204,7 @@ Thank you very much for handling our paper.
 		(\byear{1998})
 	\end{barticle}
 	\endbibitem
-	
+
 	%%% 15
 	\bibitem{dalang.quer-sardanyons:11:stochastic}
 	\begin{barticle}
@@ -169,7 +218,7 @@ Thank you very much for handling our paper.
 		\doiurl{10.1016/j.exmath.2010.09.005}
 	\end{barticle}
 	\endbibitem
-	
+
 	%%% 7
 	\bibitem{walsh:86:introduction}
 	\begin{bchapter}
@@ -185,7 +234,7 @@ Thank you very much for handling our paper.
 		\doiurl{10.1007/BFb0074920}
 	\end{bchapter}
 	\endbibitem
-	
+
 	%%% 10
 	\bibitem{da-prato.zabczyk:14:stochastic}
 	\begin{bbook}
@@ -202,7 +251,23 @@ Thank you very much for handling our paper.
 		\doiurl{10.1017/CBO9781107295513}
 	\end{bbook}
 	\endbibitem
-	
+
+  %%% 16
+  \bibitem{amir.corwin.ea:11:probability}
+  \begin{barticle}
+    \bauthor{\bsnm{Amir}, \binits{G.}},
+    \bauthor{\bsnm{Corwin}, \binits{I.}},
+    \bauthor{\bsnm{Quastel}, \binits{J.}}:
+    \batitle{Probability distribution of the free energy of the continuum directed
+      random polymer in {$1+1$} dimensions}.
+    \bjtitle{Comm. Pure Appl. Math.}
+    \bvolume{64}(\bissue{4}),
+    \bfpage{466}--\blpage{537}
+    (\byear{2011}).
+    \doiurl{10.1002/cpa.20347}
+  \end{barticle}
+  \endbibitem
+
 	%%% 27
 	\bibitem{misiats.stanzhytskyi.ea:16:existence}
 	\begin{barticle}
@@ -218,7 +283,7 @@ Thank you very much for handling our paper.
 		\doiurl{10.1007/s10959-015-0606-z}
 	\end{barticle}
 	\endbibitem
-	
+
 	%%% 28
 	\bibitem{misiats.stanzhytskyi.ea:20:invariant}
 	\begin{barticle}
@@ -234,7 +299,7 @@ Thank you very much for handling our paper.
 		\doiurl{10.1080/17442508.2019.1691212}
 	\end{barticle}
 	\endbibitem
-	
+
 	%%% 23
 	\bibitem{assing.manthey:03:invariant}
 	\begin{barticle}
@@ -249,6 +314,6 @@ Thank you very much for handling our paper.
 		\doiurl{10.1016/S0304-4149(02)00211-9}
 	\end{barticle}
 	\endbibitem
-	
+
 \end{thebibliography}
 \end{document}
