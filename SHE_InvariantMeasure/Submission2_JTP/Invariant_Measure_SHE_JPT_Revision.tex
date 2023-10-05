@@ -603,6 +603,27 @@ We first state some known results and prove a moment bound in Corollary~\ref{C:M
   is $L^2 (\Omega)$ continuous and is adapted to the filtration $\{\mathcal{F}_t\}_{t\ge 0}$.
 \end{theorem}
 
+% We first introduce some notation following \cite{CK15SHE}.
+Denote
+\begin{align}\label{E:k}
+  k(t):=\int_{\R^d}f(z)G(t,z)\ud z.
+\end{align}
+By the Fourier transform, this function can be written in the following form
+\begin{align}\label{E:k2}
+  k(t):=(2\pi)^{-d} \int_{\R^d}\hat{f}(\ud\xi)\exp\left(-\frac{t|\xi|^2}{2}\right).
+\end{align}
+Define $h_0(t):=1$ and for $n\ge 1$,
+\begin{align}\label{E:hn}
+   h_n(t)= \int_0^t \ud s \: h_{n-1}(s) k(t-s).
+\end{align}
+Let
+\begin{align}\label{E:H}
+   H(t;\gamma) \coloneqq \sum_{n=0}^\infty \gamma^n h_n(t),\qquad\text{for all $\gamma\ge 0$.}
+\end{align}
+This function is defined through the correlation function $f$. The following lemma
+tells us that this function has an exponential bound.
+
+
 \begin{theorem}[Theorem 1.7 of~\cite{chen.huang:19:comparison}]\label{T:ExUn}
   Under the assumptions of Theorem~\ref{T:Solve}, for any $t>0$, $x \in \BR^d$ and $p \ge 2$, the
   solution to~\eqref{E:SHE}, $u(t,x)$, given by~\eqref{E:gmsol} is in $L^p (\Omega)$ and
