@@ -1,0 +1,2602 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 %%
+%% Please do not use \input{...} to include other tex files.       %%
+%% Submit your LaTeX manuscript as one .tex document.              %%
+%%                                                                 %%
+%% All additional figures and files should be attached             %%
+%% separately and not embedded in the \TeX\ document itself.       %%
+%%                                                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%\documentclass[referee,sn-basic]{sn-jnl}% referee option is meant for double line spacing
+
+%%=======================================================%%
+%% to print line numbers in the margin use lineno option %%
+%%=======================================================%%
+
+%%\documentclass[lineno,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%======================================================%%
+%% to compile with pdflatex/xelatex use pdflatex option %%
+%%======================================================%%
+
+%%\documentclass[pdflatex,sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+
+%%\documentclass[sn-basic]{sn-jnl}% Basic Springer Nature Reference Style/Chemistry Reference Style
+\documentclass[sn-mathphys]{sn-jnl}% Math and Physical Sciences Reference Style
+%%\documentclass[sn-aps]{sn-jnl}% American Physical Society (APS) Reference Style
+%%\documentclass[sn-vancouver]{sn-jnl}% Vancouver Reference Style
+%%\documentclass[sn-apa]{sn-jnl}% APA Reference Style
+%%\documentclass[sn-chicago]{sn-jnl}% Chicago-based Humanities Reference Style
+%%\documentclass[sn-standardnature]{sn-jnl}% Standard Nature Portfolio Reference Style
+%%\documentclass[default]{sn-jnl}% Default
+%%\documentclass[default,iicol]{sn-jnl}% Default with double column layout
+
+%%%% Standard Packages
+%%<additional latex packages if required can be included here>
+%%%%
+
+%%%%%=============================================================================%%%%
+%%%%  Remarks: This template is provided to aid authors with the preparation
+%%%%  of original research articles intended for submission to journals published
+%%%%  by Springer Nature. The guidance has been prepared in partnership with
+%%%%  production teams to conform to Springer Nature technical requirements.
+%%%%  Editorial and presentation requirements differ among journal portfolios and
+%%%%  research disciplines. You may find sections in this template are irrelevant
+%%%%  to your work and are empowered to omit any such section if allowed by the
+%%%%  journal you intend to submit to. The submission guidelines and policies
+%%%%  of the journal take precedence. A detailed User Manual is available in the
+%%%%  template package for technical guidance.
+%%%%%=============================================================================%%%%
+
+\jyear{2021}%
+
+
+% -------------------------------------------------
+% {{{ Define short hand symbols.
+% -------------------------------------------------
+\newcommand{\lip}{\textup{Lip}_b}
+\newcommand{\liph}{\text{Lip}_{\tilde{\rho} }}
+\newcommand{\BR}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+% \newcommand{\e}{\mathrm{e}}
+\newcommand{\Norm}[1]{\left\| #1 \right\|}
+\newcommand{\rhoNorm}[1]{\lvert #1 \rvert}
+\newcommand{\ud}{\ensuremath{\mathrm{d}}}
+\newcommand*{\one}{{{\rm 1\mkern-1.5mu}\!{\rm I}}}
+% }}}
+
+
+% -------------------------------------------------
+% {{{ Packages
+% -------------------------------------------------
+\usepackage{lipsum}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+% \usepackage{algorithmic}
+
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+% \usepackage{nccmath}
+% \usepackage{geometry}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{graphics}
+% \usepackage{fullpage}
+\usepackage{epsfig}
+\usepackage{relsize}
+% \usepackage{amsfonts}
+\usepackage{mathrsfs}
+% \usepackage{makeidx}
+% \usepackage{comment}
+\usepackage{latexsym}
+\usepackage{dcolumn}
+% \usepackage{tocloft} % spacing for tableofcontents
+\usepackage{calc}
+% \usepackage{pgfplots}
+% \usepackage{pgfplotstable}
+\usepackage{makecell}
+\usepackage{mathtools}
+\usepackage{xfrac}
+\usepackage{url}
+% \usepackage[
+%      colorlinks = true,
+%      citecolor = blue,
+%      urlcolor = blue
+%      ]{hyperref}
+
+% \usepackage{tikz}
+% \usetikzlibrary{arrows.meta, calc}
+% \usepackage[ocgcolorlinks]{ocgx2}
+\usepackage[shortlabels]{enumitem}
+% \usepackage[square,sort,comma]{natbib}
+% \bibpunct{(}{)}{,}{a}{}{,}
+% \usepackage[comma,authoryear,round]{natbib}
+
+\usepackage[T1]{fontenc}
+
+\numberwithin{equation}{section}
+
+% \renewcommand{\thefigure}{\arabic{figure}} 
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+% }}}
+
+
+%% as per the requirement new theorem styles can be included as shown below
+\theoremstyle{thmstyleone}%
+%\newtheorem{theorem}{Theorem}%  meant for continuous numbers
+\newtheorem{theorem}{Theorem}[section]% meant for sectionwise numbers
+%% optional argument [theorem] produces theorem numbering sequence instead of independent numbers for Proposition
+\newtheorem{proposition}[theorem]{Proposition}%
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}[section]%
+\newtheorem{remark}{Remark}[section]%
+
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}[section]%
+
+\raggedbottom
+%%\unnumbered% uncomment this for unnumbered level heads
+
+\begin{document}
+
+\title[Invariant measures for SHE]{Invariant measures for the nonlinear stochastic heat equation with no drift term}
+
+%%=============================================================%%
+%% Prefix	-> \pfx{Dr}
+%% GivenName	-> \fnm{Joergen W.}
+%% Particle	-> \spfx{van der} -> surname prefix
+%% FamilyName	-> \sur{Ploeg}
+%% Suffix	-> \sfx{IV}
+%% NatureName	-> \tanm{Poet Laureate} -> Title after name
+%% Degrees	-> \dgr{MSc, PhD}
+%% \author*[1,2]{\pfx{Dr} \fnm{Joergen W.} \spfx{van der} \sur{Ploeg} \sfx{IV} \tanm{Poet Laureate}
+%%                 \dgr{MSc, PhD}}\email{iauthor@gmail.com}
+%%=============================================================%%
+
+\author[1]{\fnm{Le} \sur{Chen}}\email{le.chen@auburn.edu}
+
+\author*[1]{\fnm{Nicholas} \sur{Eisenberg}}\email{nze0019@auburn.edu}\email{nickeisenberg@gmail.com}
+% \equalcont{These authors contributed equally to this work.}
+
+\affil[1]{\orgdiv{Department of Mathematics and Statistics},
+  \orgname{Auburn University},
+  \orgaddress{\street{221 Parker Hall},
+  \city{Auburn},
+  \postcode{36849},
+  \state{Alabama},
+  \country{USA}}}
+
+% \affil[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{10587}, \state{State}, \country{Country}}}
+%
+% \affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+
+%%==================================%%
+%% sample for unstructured abstract %%
+%%==================================%%
+
+\abstract{
+  This paper deals with the long term behavior of the solution to the nonlinear stochastic heat
+  equation $\frac{\partial u}{\partial t} - \frac{1}{2}\Delta u = b(u)\dot{W}$, where $b$ is assumed
+  to be a globally Lipschitz continuous function and the noise $\dot{W}$ is a centered and spatially
+  homogeneous Gaussian noise that is white in time. We identify a set of nearly optimal conditions
+  on the initial data, the correlation measure of the noise, and the weight function $\rho$, which
+  together guarantee the existence of an invariant measure in the weighted space
+  $L^2_\rho(\mathbb{R}^d)$. In particular, our result covers the \textit{parabolic Anderson model}
+  (i.e., the case when $b(u) = \lambda u$) starting from the Dirac delta measure.
+}
+
+%%================================%%
+%% Sample for structured abstract %%
+%%================================%%
+
+% \abstract{\textbf{Purpose:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+%
+% \textbf{Methods:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+%
+% \textbf{Results:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.
+%
+% \textbf{Conclusion:} The abstract serves both as a general introduction to the topic and as a brief, non-technical summary of the main results and their implications. The abstract must not include subheadings (unless expressly permitted in the journal's Instructions to Authors), equations or citations. As a guide the abstract should not exceed 200 words. Most journals do not set a hard limit however authors are advised to check the author instructions for the journal they are submitting to.}
+
+\keywords{
+Stochastic heat equation, parabolic Anderson model, invariant measure, Dirac delta initial
+condition, weighted $L^2$ space, Mat\'ern class of correlation functions, Bessel kernel.
+}
+
+%%\pacs[JEL Classification]{D8, H51}
+
+\pacs[MSC Classification]{
+  60H15, 35H60, 37L40
+}
+% 60H15: Stochastic partial differential equations
+% 35H60: Stochastic analysis on infinite-dimensional spaces
+% 37L40: Invariant measures for infinite-dimensional dissipative dynamical systems
+
+\maketitle
+
+\section{Introduction}
+In this paper, we study the following \textit{nonlinear stochastic heat equation} (SHE):
+\begin{equation}\label{E:SHE}
+    \begin{cases}
+     \dfrac{\partial u}{\partial t}(t,x)-\dfrac{1}{2}\Delta u(t,x) = b(x,u(t,x))\dot W(t,x) & \text{$x\in \BR^d$, $t>0$}, \\
+     u(0,\cdot) = \mu(\cdot).
+   \end{cases}
+\end{equation}
+The noise, $\dot{W}(t,x)$, is a centered Gaussian noise that is white in time and homogeneously
+colored in space defined on a complete probability space $(\Omega, \mathcal{F}, \mathbb{P})$ with
+the natural filtration $\{\mathcal{F}_t \}_{t\ge 0}$ generated by the noise. Its covariance
+structure is given by
+\begin{align}\label{E:Cor}
+  J(\psi,\phi) \coloneqq \E \left[ W\left(\psi\right) W\left(\phi\right) \right]
+  = \int_0^\infty \ud s \int_{\BR^d} \Gamma(\ud x)(\psi(s,\cdot)*\widetilde{\phi}(s,\cdot))(x),
+\end{align}
+where $\psi$ and $\phi$ are continuous and rapidly decreasing functions, $\widetilde{\phi}(x)
+\coloneqq \phi(-x)$, ``$*$'' refers to the convolution in the spatial variable, and $\Gamma$ is a
+nonnegative and nonnegative definite tempered measure on $\BR^d$ that is commonly referred to as the
+\textit{correlation measure}. The Fourier transform of $\Gamma$ (in the generalized sense) is also a
+nonnegative and nonnegative definite tempered measure, which is usually called the \textit{spectral
+measure} and is denoted by $\widehat{f}(\ud \xi)$ (see~\eqref{E:Fourier} for the convention of
+Fourier transform). Moreover, in the case where $\Gamma$ has a density $f$, namely, $\Gamma(\ud x) =
+f(x) \ud x$, we write $\widehat{f}(\ud \xi)$ as $\widehat{f}(\xi) \ud \xi$.
+
+The initial condition, $\mu$, is a deterministic, locally finite, regular, signed Borel measure that
+satisfies the following integrability condition at infinity:
+\begin{equation}\label{A:icon}
+  \int_{\BR^d}\exp\left(-a\lvert x\rvert^2\right) \lvert \mu\rvert(\ud x) < \infty \quad \text{for all $a>0$},
+\end{equation}
+where $\lvert\mu\rvert = \mu_+ + \mu_-$ and $\mu = \mu_+-\mu_-$ refers to the \textit{Hahn
+decomposition} of the measure $\mu$. Initial conditions of this type, introduced
+in~\cite{chen.dalang:15:moments*1} and further explored
+in~\cite{chen.kim:19:nonlinear,chen.huang:19:comparison}, are called \textit{rough initial
+conditions}.
+
+The function $b(x,u)$ is uniformly bounded in the first variable and Lipschitz continuous in the
+second variable, i.e., for some constants $L_b>0$ and $L_0\ge 0$,
+\begin{equation}\label{E:lipcon}
+  \lvert b(x,u)-b(x,v) \rvert \le L_b \lvert u-v \rvert \quad \text{and} \quad
+  \lvert b(x,0)\rvert         \le L_0       \quad \text{for all $u,v \in \BR$ and $x \in \BR^d.$ }
+\end{equation}
+In particular, our assumption allows the linear case $b(x,u) = \lambda u$, which is usually referred
+to as the \textit{parabolic Anderson model} (PAM)~\cite{carmona.molchanov:94:parabolic}.
+
+The SPDE~\eqref{E:SHE} is understood in its \textit{mild form}:
+\begin{equation}\label{E:gmsol}
+  u(t,x) = J_0(t,x;\mu)+ \int_0^t\int_{\BR^d}b(y,u(s,y))G(t-s,x-y)W(\ud s,\ud y),
+\end{equation}
+where $G(t,x) = (2 \pi t)^{-d/2}\exp\left(-\left(2t\right)^{-1}\lvert x\rvert^2\right)$ is the heat kernel,
+\begin{gather}\label{E:Ju}
+   J_0(t,x) = J_0(t,x;\mu) \coloneqq (G(t,\cdot) * \mu)(x) = \int_{\BR^d} G(t,x-y) \mu(\ud y)
+\end{gather}
+is the solution to the homogeneous equation, and the stochastic integral is the \textit{Walsh
+integral}. We refer the interested readers
+to~\cite{chen.kim:19:nonlinear,dalang.khoshnevisan.ea:09:minicourse,dalang:99:extending,walsh:86:introduction}
+for more details of this setup. \bigskip
+
+The aim of this paper is to investigate the conditions required to guarantee the existence of an
+invariant measure for the solution to~\eqref{E:SHE}, which is a crucial step for the study of the
+ergodicity of the system that requires the corresponding uniqueness. We direct the interested
+readers to~\cite{cerrai:01:second,da-prato.zabczyk:96:ergodicity, da-prato.zabczyk:14:stochastic}
+for more details about the invariant measure, its existence/uniqueness, and the ergodicity of the
+system. The general procedure for finding the invariant measure, especially in the setting
+of~\eqref{E:SHE}, has been laid out by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant},
+which involves two parts: first one needs to show that the laws of the solution to~\eqref{E:SHE}
+form a family of \emph{Markovian transition functions} on some Hilbert space, $H$, and the
+corresponding \emph{Markovian semigroup} is Feller; and second one needs to establish that the
+moments of solution are bounded in time (see~\eqref{E:BddMnt} below). For the second point, it
+requires some substantial work (see Theorems~\ref{T:Lrho} and~\ref{T:Main} below). On the other
+hand, the first point has been shown to be true for our case of interest (see, e.g.,~\cite[Chapter
+9]{da-prato.zabczyk:14:stochastic}) with the following weighted $L^2 (\BR^d)$ space as our underlying
+Hilbert space as in~\cite{tessitore.zabczyk:98:invariant}:
+
+\begin{definition}[\cite{tessitore.zabczyk:98:invariant}]\label{D:Rho}
+  A function $\rho:\BR^d\mapsto \BR$ is called an {\normalfont admissible weight function} if it is a
+  strictly positive, bounded, continuous, and $L^1 (\BR^d)$-integrable function such that for all
+  $T>0$, there exists a constant $C_\rho(T)$ such that
+  \begin{equation}\label{E:aw}
+    \big(G(t,\cdot)*\rho(\cdot)\big)(x) \le C_\rho(T) \rho(x)
+    \quad \text{for all $t\in[0,T]$ and $x\in\BR^d$.}
+  \end{equation}
+  Moreover, we denote by $L^2_{\rho}(\BR^d)$ the corresponding Hilbert space of $\rho$-weighted
+  square integrable functions, and we use $\langle \cdot, \cdot \rangle_{\rho}$ and
+  $\Norm{\cdot}_{\rho}$ to denote the inner product and norm on $L^2_{\rho}(\BR^d)$:
+  \begin{align*}
+  		\langle f,g \rangle_{\rho} \coloneqq \int_{\BR^d} f(x) g(x) \rho(x) \ud x \quad \text{and} \quad
+      \Norm{f}_{\rho} \coloneqq \int_{\BR^d} \lvert f(x)\rvert^2 \rho(x) \ud x.
+  \end{align*}
+\end{definition}
+
+Accordingly, we will prove the existence of the invariant measure following the same strategy as
+in~\cite{tessitore.zabczyk:98:invariant}. Let $\mathscr{L}(u(t,\cdot;\mu)$ denote the law of
+$u(t,\cdot)$ starting from $\mu$ at $t = 0$. We will first establish the tightness of
+$\{\mathscr{L}(u(t,\cdot;\mu)\}_{t>t_0}$ for some $ t_0\ge 0$. A critical step in obtaining this
+tightness result is to show that the following moment is uniformly bounded in time (see
+Theorem~\ref{T:Main}):
+\begin{align}\label{E:BddMnt}
+  \sup_{t>0} \E\left(\Norm{u(t,\cdot)}_{\rho}^2\right) <\infty.
+\end{align}
+Then we will apply the \textit{Krylov-Bogoliubov theorem} (see,
+e.g.,~\cite[Theorem~11.7]{da-prato.zabczyk:14:stochastic}) to construct an invariant measure via
+\begin{equation}\label{E:InvMeasForm}
+  \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
+\end{equation}
+for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. \medskip
+
+In the literature, the existence of an invariant measure for the stochastic heat equation is more
+commonly studied with a drift term; we will postpone a brief review of this case to
+Section~\ref{SS:Drift}. In contrast, the existence of an invariant measure under the setting of
+equation~\eqref{E:SHE} has been much less studied. Tessitore and
+Zabczyk~\cite{tessitore.zabczyk:98:invariant} established the existence of an invariant measure for
+the case where the spatial domain is the whole space $\BR^d$, the diffusion term, $b(x,u)$, is
+globally Lipschitz in the second variable, uniformly bounded in the first variable
+(see~\eqref{E:lipcon}) and there is no additional negative drift term to help. Recently, in the
+linear case, that is, the case when $b(u) = \lambda u$, Gu and Li~\cite{gu.li:20:fluctuations}
+established the weak convergence of $u(t,\cdot)$ to $Z(\cdot)$ in $C(\BR^d)$ with $Z(\cdot)$ being a
+stationary random field. The convergence in~\cite{gu.li:20:fluctuations} relies on the fact that the
+initial condition is to be stationary, i.e., $\mu(\ud x) = \ud x$; see Remark 3.6 {\it ibid.} for
+some perturbations that can be made on the constant initial condition. A similar stationary limit has
+also been obtained in Dunlap {\it et al}~\cite{dunlap.gu.ea:21:random}. The current paper follows
+largely the work by Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}. The major challenge
+is to identify the right conditions so that the probability moments of the solution are bounded in
+time (see~\eqref{E:BddMnt}). The solution to~\eqref{E:SHE} is usually \textit{intermittent}, namely,
+its moments possess a certain exponential growth in $t$; see,
+e.g.,~\cite{carmona.molchanov:94:parabolic,foondun.khoshnevisan:09:intermittence}. For that reason,
+one has to impose some additional assumptions on the initial conditions, the noise, the coefficients
+of~\eqref{E:SHE}, and the weight function $\rho$ in order to control the growth of the moments in
+$L^2\left((0,\infty); L_\rho^2(\BR^d)\right)$. The point-wise moment formulas obtained
+in~\cite{chen.huang:19:comparison,chen.kim:19:nonlinear} play an important role in this context.
+
+Here we emphasize that we study the invariant measure using the Walsh random field
+approach~\cite{walsh:86:introduction}, whereas such studies are mostly carried out under the
+framework of the stochastic evolution in Hilbert spaces~\cite{da-prato.zabczyk:14:stochastic}. Even
+though both theories are equivalent (see~\cite{dalang.quer-sardanyons:11:stochastic}), the
+differences in many technical aspects are still substantial. As the random field approach often
+produces results that are more explicit, we try to use this approach to obtain more precise
+conditions for the existence of an invariant measure. \textit{Firstly}, for the initial conditions,
+the results in~\cite{tessitore.zabczyk:98:invariant} allow for bounded $L_\rho^2 (\BR^d)$ functions,
+although the authors proved their main result---Theorem 3.3 \textit{ibid.}---only for the constant
+one initial condition. Here we give the precise conditions on the initial condition
+(see~\eqref{E:InitData} below) which allows a wider class of data, including unbounded functions and
+measures such as the Dirac delta measure (see Examples~\ref{Ex:delta} and~\ref{Ex:Riesz}). Note that
+the Dirac delta initial measure plays a prominent role in the study of the stochastic heat equation;
+see, e.g.,~\cite{amir.corwin.ea:11:probability}. \textit{Secondly}, regarding the noise, we identify
+the right conditions,~\eqref{E:Dalang-00} and~\eqref{E:Dalang-ab}, or
+equivalently~\eqref{E:SpectralCond}, on the noise to ensure the existence of an invariant measure.
+Our conditions are explicit, easy to verify, and in a compact form (see~\eqref{E:SpectralCond}).
+Although they are not necessary and sufficient conditions, we believe these conditions are towards
+to the optimal conditions; see Remark~\ref{R:CompactForm}. Note that the correlation function in Gu
+and Li~\cite{gu.li:20:fluctuations} is assumed to be a smooth function with compact support. The
+comparisons of our conditions with those obtained by Tessitore and
+Zabyczyk~\cite{tessitore.zabczyk:98:invariant} are given in Section~\ref{SS:TessZabz}.
+\textit{Thirdly}, our proof relies on a factorization representation for the solution $u(t,x)$
+to~\eqref{E:SHE} (see Lemma~\ref{L:Factorize}), which is obtained under the random field framework,
+whereas such factorization lemma has been widely used in the framework of the stochastic evolution
+equation in Hilbert spaces; see Section~\ref{S:Factor} for more details. \textit{Finally}, we point
+out a miscellany of results in Section~\ref{S:Example}, which may have independent interest.
+\medskip
+
+Now we are ready to motivate the conditions that we use and present the main results.
+
+\subsection{Main results}\label{S:Main}
+
+As mentioned earlier, in order to have moments bounded in time as in~\eqref{E:BddMnt}, one should
+better first identify the sharp conditions under which the second moments as a function of $t$, namely
+$t \mapsto \E\left(u(t,x)^2\right)$, with $x$ fixed, are bounded. This question has been answered
+in~\cite[Theorem 1.3 and Lemma 2.5]{chen.kim:19:nonlinear}, where necessary and sufficient
+conditions are given. More precisely, to have the second moment bounded in time with $x$ fixed, one
+needs to have the spatial dimension $d \ge 3$, and in addition, the spectral measure $\hat{f}$ and
+Lipschitz constant $L_b$ of $b(\cdot)$ need to satisfy the following two conditions:
+\begin{subequations}\label{E:U0finite}
+\begin{gather}\label{E:Dalang-00}
+  \Upsilon(0) \coloneqq \left(2\pi\right)^{-d} \int_{\BR^d} \frac{\hat{f}(\ud \xi)}{\lvert\xi\rvert^2} <\infty \shortintertext{and}
+  64 L^2_{b} < \frac{1}{2\Upsilon(0)} \:. \label{E:Lipb}
+\end{gather}
+\end{subequations}
+These two conditions will guarantee the existence of the following non-empty open interval:
+\begin{align}\label{E:Interval}
+\left(2^7 L_b^2 \Upsilon(0), 1\right) \ne \emptyset.
+\end{align}
+
+Note that condition~\eqref{E:Dalang-00} is a strengthened version of \textit{Dalang's condition}:
+\begin{align}\label{E:Dalang}
+  \Upsilon(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\BR^d} \frac{\hat{f}(\ud \xi)}{\beta+ \lvert\xi\rvert^2} <\infty,
+  \quad \text{for some (and hence) all $\beta>0$.}
+\end{align}
+It turns out that besides condition~\eqref{E:Dalang-00} we need one more condition on the spectral
+measure $\widehat{f}$, which strengthens Dalang's condition~\eqref{E:Dalang} in a different way:
+that for some $\alpha\in (0,1]$,
+\begin{align}\label{E:Dalang-ab}
+  \Upsilon_\alpha(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+\lvert\xi\rvert^2\right)^{1-\alpha}}<\infty
+  \quad \text{for some (hence all) $\beta>0$.}
+\end{align}
+In some literature, condition~\eqref{E:Dalang-ab} is called the \textit{strengthened Dalang's
+condition}. These three conditions are illustrated in Figure~\ref{F:Cond}.
+
+\bigskip
+\begin{figure}[htpb]
+  \begin{center}
+    \includegraphics[scale=0.9]{./figure_1.pdf}
+  \end{center}
+
+  \caption{Two conditions---\eqref{E:Dalang-00} and~\eqref{E:Dalang-ab}---on $\widehat{f}$ needed
+  for the main result --- Theorem~\ref{T:Main}.}
+
+  \label{F:Cond}
+\end{figure}
+
+\begin{remark}
+  Dalang's condition~\eqref{E:Dalang} assures the existence and uniqueness of an
+  $L^2\left(\Omega\right)$-continuous solution; see~\cite{dalang:99:extending}. But Dalang's
+  condition~\eqref{E:Dalang} alone is sometimes too weak to derive some useful properties. Instead,
+  the strengthened Dalang's condition~\eqref{E:Dalang-ab} is widely assumed in the literature. For
+  example, condition~\eqref{E:Dalang-ab} is used to derive the H\"older regularity of the solution;
+  see~\cite[Theorem 1.8]{chen.huang:19:comparison} or~\cite{sanz-sole.sarra:02:holder} for the
+  random field approach and Theorem 2.3 of~\cite{peszat.zabczyk:97:stochastic} and Theorem 4.4
+  of~\cite{tessitore.zabczyk:98:invariant} for the infinite-dimensional SDE approach. One may also
+  check the densely blowup solution obtained in~\cite{chen.huang.ea:19:dense} where Dalang's
+  condition~\eqref{E:Dalang} is satisfied but condition~\eqref{E:Dalang-ab} fails. As another
+  example, condition~\eqref{E:Dalang-ab} is also required in order to derive the sample path
+  comparison principle in~\cite{chen.huang:19:comparison}. As shown in Lemma~\ref{L:Factorize}
+  below, condition~\eqref{E:Dalang-ab} guarantees a factorization of the solution, which plays a key
+  role in the tightness argument in the proof of the main result -- Theorem~\ref{T:Main}.
+\end{remark}
+
+We are now ready to state our two main results of the paper.
+
+\begin{theorem}\label{T:Lrho}
+  Let $u(t,x;\mu)$ be the solution to~\eqref{E:SHE} starting from $\mu$ which
+  satisfies~\eqref{A:icon}. Assume that
+  \begin{enumerate}[(i)]
+    \item $\rho: \BR^d \to \BR_+$ is a nonnegative $L^1 (\BR^d)$ function;
+    \item for all $t > 0$, the initial condition $\mu$ satisfies $\mathcal{G}_{\rho}(t;\lvert\mu\rvert) <
+      \infty$ where
+      \begin{equation}\label{E:G}
+        \mathcal{G}_{\rho}(t;\mu)
+        \coloneqq \int_{\BR^d} J_0^2\left(t,x;\mu\right) \rho(x)\: \ud x;
+      \end{equation}
+    \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
+      conditions in~\eqref{E:U0finite}.
+  \end{enumerate}
+  Then there exists a unique $L^2 (\Omega)$-continuous solution $u(t,x)$ such that for some constant
+  $C>0$, which does not depend on $t$, the following holds:
+  \begin{equation}\label{E:uInLrho}
+    \E\left(\Norm{u(t,\cdot; \mu)}_{\rho}^2\right)
+    \le C \mathcal{G}_{\rho}(t; \mu^*)
+    < \infty, \quad \text{for any $t > 0$},
+  \end{equation}
+  where $ \mu^* \coloneqq 1 + \lvert\mu\rvert$.
+\end{theorem}
+
+This theorem will be proved in Section~\ref{S:Lrho}. We now state and prove a corollary which shows
+that the solution to~\eqref{E:SHE} starting from an $L^2_{\rho}(\BR^d)$ initial condition will almost
+surely be in $L^2_{\rho}(\BR^d)$ for all $t >0$.
+
+\begin{corollary}\label{C:inclusion}
+  Under the same assumptions of Theorem~\ref{T:Lrho}, if in addition $\rho$ is admissible (see
+  Definition~\ref{D:Rho}), then the solution $u(t,\cdot;\zeta)$ to $\eqref{E:SHE}$ almost surely
+  exists in $L^2_{\rho}(\BR^d)$ for all $t>0$, whenever the initial condition is also in
+  $L^2_{\rho}(\BR^d)$, i.e., $\zeta\in L^2_{\rho}(\BR^d)$.
+\end{corollary}
+\begin{proof}
+  Choose and fix an arbitrary $\zeta \in L^2_{\rho}(\BR^d)$ and set $\zeta^* = 1+\lvert\zeta\rvert$. It is clear
+  that $\zeta^*\in L^2_\rho(\BR^d)$. By (ii) of Theorem~\ref{T:Lrho}, it suffices to show the
+  finiteness of $\mathcal{G}_{\rho}(t,;\zeta^*)$ for all $t>0$. Indeed, by H\"older's inequality,
+  $\mathcal{G}_{\rho}(t,;\zeta^*)$ is equal to
+  \begin{align*}
+     \int_{\BR^d} \left(\int_{\BR^d} G(t,x-y) \zeta^* (y) \ud y\right)^2 \rho(x) \ud x
+     \le \iint_{\BR^{2d}} G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x.
+  \end{align*}
+  Now for any $t>0$, choose $T>t$ and let $C_{\rho}(T)$ be as in~\eqref{E:aw}. Then,
+  \begin{align*}
+    \iint_{\BR^{2d}}G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x
+    = \int_{\BR^d} \left(G(t,\cdot)*\rho\right)(y) \lvert\zeta(y)\rvert^2 \ud y
+    \le C_{\rho}(T) \Norm{\zeta^*}_{\rho}^2 < \infty.
+  \end{align*}
+  Since $t$ and $T$ are arbitrary, this completes the proof of the corollary.
+\end{proof}
+
+\begin{theorem}\label{T:Main}
+  Let $u(t,x)$ be the solution to~\eqref{E:SHE} starting from $\mu$ and let $\rho$ be an admissible
+  weight function. Assume that
+  \begin{enumerate}[(i)]
+    \item there exists another admissible weight $\tilde{\rho}$ such that
+      \begin{align}\label{E:rhorho}
+        \int_{\BR^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty;
+      \end{align}
+    \item the weight function $\tilde{\rho}$ and the initial condition satisfy the following
+      condition:
+      \begin{equation}\label{E:InitData}
+        \limsup_{t>0}\: \mathcal{G}_{\tilde{\rho}}(t;\lvert\mu\rvert) < \infty;
+      \end{equation}
+    \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
+      conditions in~\eqref{E:U0finite};
+    \item for some $\alpha\in \left(2^7\Upsilon(0)L_b^2,1\right)$ (see~\eqref{E:Interval}), the
+      spectral measure $\widehat{f}$ satisfies the strengthened Dalang's
+      condition~\eqref{E:Dalang-ab}.
+  \end{enumerate}
+  Then we have that
+  \begin{enumerate}[(a)]
+    \item for any $\tau>0$, the sequence of laws of $\{\mathcal{L}u(t,\cdot;\mu)\}_{t\ge \tau}$ is
+      tight, i.e., for any $\epsilon \in (0,1)$, there exists a compact set $\mathscr{K}\subset
+      L^2_{\rho}(\BR^d)$ such that
+      \begin{equation}\label{E:cpt}
+        \mathscr{L}u(t,\cdot;\mu)(\mathcal{K}) \ge 1-\epsilon,
+        \qquad \text{for all $t\ge \tau>0$};
+      \end{equation}
+    \item there exists an invariant measure for the laws $\{\mathcal{L}u(t,\cdot;\mu)\}_{t > 0}$ in
+      $L^2_\rho(\BR^d)$.
+  \end{enumerate}
+\end{theorem}
+
+This theorem will be proved in Section~\ref{S:mainproof}.
+
+\begin{remark}\label{R:CompactForm}
+  The conditions on the spectral measure $\widehat{f}$ for the existence of an invariant measure are
+  given by conditions (iii) and (iv) of Theorem \ref{T:Main}, which can be summarized in the
+  following more compact form (thanks to Lemma~\ref{L:HUA} below):
+  \begin{align}\label{E:SpectralCond}
+    \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\lvert \xi \rvert^2 \wedge \lvert \xi \rvert^{2(1-\alpha)}}<\infty,
+    \quad \text{for some $\alpha\in \left(2^7\Upsilon(0)L_b^2,1\right)$.}
+  \end{align}
+  Even though condition~\eqref{E:SpectralCond} is not the necessary and sufficient condition for the
+  existence of an invariant measure, it is almost the optimal condition. In particular, as proved
+  in~\cite{chen.kim:19:nonlinear}, if $\Upsilon(0) = \infty$, namely, condition (iii) of
+  Theorem~\ref{T:Main} fails, then no matter how small the level of the noise is, the solution is
+  always intermittent, i.e., the second moment Lyapunov exponent of the solution is always strictly
+  positive. Note that intermittency is another way to characterize the chaotic behavior of the
+  underlying system that is far from equilibrium.
+\end{remark}
+
+\subsection{Outline and notation}
+
+The paper is organized as follows: we first prove Theorem~\ref{T:Lrho} in Section~\ref{S:Lrho}. Then
+in Section~\ref{S:Factor}, we study the factorization lemma and explore the relations of various
+conditions on the spectral measure $\widehat{f}$. Then we proceed to prove Theorem~\ref{T:Main} in
+Section~\ref{S:mainproof}. Finally, in Section~\ref{S:Example} we make some further discussion on
+the main results and present various examples. In particular, in Section~\ref{SS:Drift}, we give a
+brief review of the problem of finding invariant measures for the SHE with a drift term; in
+Section~\ref{SS:TessZabz}, we compare our conditions on the spectral density with those obtained by
+Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant}; in Section~\ref{SS:Init}, we show that
+our results could include a wider class of initial conditions; in Section~\ref{SS:Bassel}, we carry
+out some explicit computations for the Bessel and related kernels as the correlation functions;
+finally, in Section~\ref{SS:Weight}, we give a few examples of the admissible weight functions.
+
+\bigskip
+
+We conclude this Introduction by introducing some notation and formulas that we use throughout the
+paper. We will use $\Norm{X}_p$ to denote the $L^p (\Omega)$ norm, namely,
+$\Norm{X}_p = \left(\mathbb{E}(\lvert X \rvert^p)\right)^{1/p}$. We will also use the following factorization
+property of the heat kernel,
+\begin{equation}\label{E:gsim}
+  G(t,x)G(s,y) = G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
+\end{equation}
+which can be easily verified and has been used extensively and critically
+in~\cite{chen.dalang:15:moments*1,chen.kim:19:nonlinear,chen.huang:19:comparison}. Next, we will
+need the following spherical coordinate integration formula:
+\begin{align*}
+  \int_{\BR^d} f(\lvert x \rvert) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
+\end{align*}
+where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
+function. We use ``$\sim$'' to denote the standard asymptotic equivalent relation. Lastly, the
+convention of Fourier transform is given by (see Remark~\ref{R:Fourier})
+\begin{align}\label{E:Fourier}
+  \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) \coloneqq \int_{\BR^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
+  \mathcal{F}^{-1}\psi(x) \coloneqq (2\pi)^{-d} \int_{\BR^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+\end{align}
+
+
+
+\section{Moment estimates -- Proof of Theorem~\ref{T:Lrho}}\label{S:Lrho}
+We first state some known results and prove a moment bound in Corollary~\ref{C:Mom}.
+
+\begin{theorem}[Theorem 1.2 of~\cite{chen.huang:19:comparison}]\label{T:Solve}
+  Suppose that
+  \begin{enumerate}[(i)]
+   \item the initial deterministic measure $\mu$ satisfies~\eqref{A:icon};
+   \item the spectral measure $\widehat{f}$ satisfies \textit{Dalang's condition}~\eqref{E:Dalang},
+  \end{enumerate}
+  Then~\eqref{E:SHE} has a unique random field solution starting from $\mu$. Moreover, the solution
+  is $L^2 (\Omega)$ continuous and is adapted to the filtration $\{\mathcal{F}_t\}_{t\ge 0}$.
+\end{theorem}
+
+\begin{theorem}[Theorem 1.7 of~\cite{chen.huang:19:comparison}]\label{T:ExUn}
+  Under the assumptions of Theorem~\ref{T:Solve}, for any $t>0$, $x \in \BR^d$ and $p \ge 2$, the
+  solution to~\eqref{E:SHE}, $u(t,x)$, given by~\eqref{E:gmsol} is in $L^p (\Omega)$ and
+  \begin{equation}\label{E:mb}
+    \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * \lvert\mu\rvert)(x)\big]H(t;\gamma_p)^{1/2},
+  \end{equation}
+  where $\bar{\varsigma} = L_0/L_b$, $\gamma_p = 32pL_b^2$ (see~\eqref{E:lipcon} for $L_0$ and $L_b$)
+  and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see~\cite{chen.huang:19:comparison} for
+  the expression of the function $H$).
+\end{theorem}
+
+\begin{corollary}\label{C:Mom}
+  Under the same setting as Theorem~\ref{T:ExUn}, if the two conditions in~\eqref{E:U0finite} hold
+  (see also~\eqref{E:Interval}), then
+  \begin{equation}\label{E:mb0}
+    \Norm{u(t,x)}_p \le C_p\bigg(1+ (G(t, \cdot)*\lvert\mu\rvert)(x) \bigg),
+    \quad \text{for all $p$ such that $1/p \in \left(64 L_b^2\Upsilon(0),1\right)$},
+  \end{equation}
+  where $C_p = \left(\sqrt{2}\vee \overline{\varsigma}\right)\sup_{t\ge 0}
+  H(t;\gamma_p)^{1/2}<\infty$.
+\end{corollary}
+\begin{proof}
+  Lemma 2.5 of~\cite{chen.kim:19:nonlinear} gives one sufficient condition, namely
+  $2\gamma_p\Upsilon(0)<1$, under which the function $H((t;\gamma_p)$ is bounded in $t$. Therefore,
+  by taking into account the expression of $\gamma_p$ in Theorem~\ref{T:ExUn}, we see that as a
+  direct consequence of~\eqref{E:mb}, whenever
+  \begin{equation}\label{E:pLip}
+     32 p L_b^2 < \frac{1}{2\Upsilon(0)},
+  \end{equation}
+  we have the $p$-th moment bounded as given in~\eqref{E:mb0}.
+\end{proof}
+
+
+Now we are ready to prove Theorem~\ref{T:Lrho}.
+
+\begin{proof}[Proof of Theorem~\ref{T:Lrho}]
+  Under condition (iii), we can apply Fubini's Theorem and the moment bound~\eqref{E:mb0} below to
+  see that for some constant $C>0$ independent of $t$, which may vary from line to line, that
+  \begin{align*}
+    \E\left(\Norm{u(t,\cdot;\mu)}_{\rho}^2\right)
+    % & = \E\left[\E \left(\int_{\BR^d}\vert u\left(t,x;\mu\right) \vert^2 \rho(x)\ud x\bigg| \mathcal{F}_0\right) \right] \\
+    & \le C\: \E \left[\int_{\BR^d}\bigg(1+(G(t,\cdot) * \lvert\mu\rvert)(x)\bigg)^2\rho(x)\ud x\right] \\
+    & = C \int_{\BR^d}\E \left[\bigg(\Big(G(t,\cdot) *(1+\lvert\mu\rvert)\Big)(x) \bigg)^2\right]\rho(x)\ud x \\
+    & = C \:\mathcal{G}_{\rho}(t;\mu^*) < \infty,
+  \end{align*}
+  where we recall that $\mu^* = 1+\lvert\mu\rvert$. This proves Theorem~\ref{T:Lrho}.
+\end{proof}
+
+\begin{remark}[Restarted SHE]\label{R:Restat}
+  Recall that the Markov property of the solution to~\eqref{E:SHE} implies that for any $t\ge
+  t_0>0$,
+  \begin{align}\label{E:eqLaw}
+    u(t + t_0,x;\mu) \stackrel{\mathcal{L}}{=}
+    u\left(t,x;u\left(t_0,\cdot;\mu\right)\right) \eqqcolon v(t,x),
+  \end{align}
+  where $\mathcal{L}$ refers to the equality in law. Then $v$ satisfies the following restarted
+  SPDE:
+  \begin{equation}\label{E:restart}
+    \begin{cases}
+      \dfrac{\partial v}{\partial t}(t,x)-\dfrac{1}{2}\Delta v(t,x) = b(x,v(t,x))\dot W_{t_0}(t,x) & \text{$x\in \BR^d$ , $t>0$}, \\
+      v(0,x) = u(t_0,x;\mu),                                                                       & x\in\BR^d,
+    \end{cases}
+  \end{equation}
+  where $\dot{W}_{t_0}(t,x) \coloneqq \dot{W}(t + t_0,x)$ denotes the time shifted noise, i.e.,
+  \begin{align}\label{E:ShiftW}
+    \int_0^t \int_{\BR^d} W_{t_0}(\ud s, \ud y) = \int_{t_0}^{t+t_0} \int_{\BR^d} W(\ud s, \ud y).
+  \end{align}
+  Under the conditions in~\eqref{E:U0finite}, Theorem~\ref{T:ExUn} and~\eqref{E:eqLaw} imply
+  immediately that
+  \begin{align*}
+  \Norm{v(t,x)}_q = \Norm{u(t+t_0,x;\mu)}_q
+                  \le C_q\bigg(1 + (G(t+t_0, \cdot)* \lvert\mu\rvert)(x) \bigg)
+                  = C_q J_0(t+t_0,x; \mu^*),
+  \end{align*}
+  for all $q\ge 2$ and $t>0$, where the constant $C_q$ does not depend on $t$. Moreover, under the
+  assumptions of Theorem~\ref{T:Lrho}, we have $v(0,\cdot)\in L_\rho^2 (\BR^d)$ a.s. and
+  \begin{align*}
+        \E\left(\Norm{v(t,x)}_\rho^2\right)
+    = \E\left(\Norm{u(t+t_0,x;\mu)}_\rho^2\right)
+    \le C \mathcal{G}_\rho(t+t_0;\mu^*)
+    < \infty.
+  \end{align*}
+\end{remark}
+
+\section{A factorization lemma and various conditions on spectral measure}\label{S:Factor}
+
+\subsection{A factorization lemma}
+
+In this part, we establish a factorization lemma with corresponding moment estimates; see
+Lemmas~\ref{L:yineq} and~\ref{L:Factorize} below. This factorization lemma appeared
+in~\cite{da-prato.kwapien.ea:87:regularity}; check also Section~5.3.1
+of~\cite{da-prato.zabczyk:14:stochastic}. For $\alpha\in (0,1)$, $t>0$ and $x\in\BR^d$, define
+formally
+\begin{align}\label{E:Ops}
+  \left(F_{\alpha} f\right)(t,x) & \coloneqq \int_0^{t} \int_{\BR^d} (t-s)^{\alpha-1}G(t-s,x-y)f(s,y)\: \ud s \ud y \shortintertext{and}
+  \left(Y_{\alpha} f\right)(t,x) & \coloneqq \int_0^{t} \int_{\BR^d} (t-s)^{-\alpha}G(t-s,x-y)f(s,y) W(\ud s,\ud y) \:.
+\end{align}
+
+For $F_\alpha$, the first step of the proof of~\cite[Theorem 3.1]{tessitore.zabczyk:98:invariant}
+showed the following proposition:
+\begin{proposition}\label{P:F-Comp}
+  Let $\rho$ and $\tilde{\rho}$ be given as in condition (i) of Theorem~\ref{T:Main}
+  (see~\eqref{E:rhorho}). For any $q>2$, $t_0>0$ and $\alpha \in (q^{-1},2^{-1})$, the operator
+  $F_\alpha$, as an operator from $L^q\big((0,t_0);\: L^2_{\tilde{\rho}}(\BR^d)\: \big)$ to
+  $L^2_\rho(\BR^d)$, is compact.
+\end{proposition}
+
+As for $Y_\alpha$, we have the following two lemmas, which hold for both the non-restarted SHE ($t_0
+= 0$) and the restarted SHE ($t_0 > 0$). We need first introduce some notation. Recall that Dalang's
+condition~\eqref{E:Dalang} can be strengthened condition~\eqref{E:Dalang-ab}, which can be further
+strengthened to
+\begin{equation}\label{E:Dalang-a0}
+  \Upsilon_\alpha(0) \coloneqq \left(2\pi\right)^{-d} \int_{\BR^d} \frac{\hat{f}(\ud \xi)}{\lvert\xi\rvert^{2(1-\alpha)}} <\infty
+  \quad \text{for some $\alpha\in (0,1]$.}
+\end{equation}
+We will also need the following slightly different condition:
+\begin{gather}\label{E:Dalang-H}
+  \mathcal{H}_{\alpha / 2} (t) < \infty \quad \text{for some $\alpha\in [0,1)$ and for all $t>0$,} \shortintertext{where}
+  \mathcal{H}_{\alpha}(t) \coloneqq \int_0^t \ud r \: r^{-2\alpha} \int_{\BR^d} \hat{f}(\ud \xi) \: \exp(-r\lvert\xi\rvert^2). \label{E:H}
+\end{gather}
+The quantity $\mathcal{H}_{\alpha}(t)$ will appear naturally in the proof of Lemma~\ref{L:yineq}
+below. We use the convention that when $\alpha = 0$, we simply drop it from $\Upsilon_\alpha(\beta)$
+and $\mathcal{H}_{\alpha /2}(t)$, i.e., $\Upsilon(\beta) \coloneqq \Upsilon_0(\beta)$ and
+$\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
+
+
+
+\begin{lemma}\label{L:yineq}
+  Suppose that $\mu$---the initial condition for $u$---satisfies~\eqref{A:icon} and that
+  $\widehat{f}$ satisfies Dalang's condition~\eqref{E:Dalang}. Suppose that for some $\alpha\in
+  (0,1/2)$, $\mathcal{H}_\alpha(t)$ defined in~\eqref{E:H} is finite for all $t>0$. Fix an arbitrary
+  $t_0\ge 0$. Let $v(t,x)$ be the solution to the restarted SHE~\eqref{E:restart} and
+  $\dot{W}_{t_0}$ be the time-shifted noise (see~\eqref{E:ShiftW}) when $t_0>0$ and let $v = u$ when
+  $t_0 = 0$. Then
+  \begin{equation}\label{E:Y}
+    \begin{aligned}
+      Y_v(s,y) & \coloneqq \left[Y_\alpha b\left(\circ, v(\cdot,\circ)\right)\right](s,y) \\
+               & = \int_0^s \int_{\BR^d} (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z)
+    \end{aligned}
+  \end{equation}
+  has the following properties:
+  \begin{enumerate}[(1)]
+    \item for all $q\ge 2$, $s>0$, $y\in\BR^d$,
+      \begin{align}\label{E:NormY}
+        \Norm{Y_v(s,y)}_q^2 \le H\left(s+t_0;32qL_b^2\right) \: J_0^2 (s + t_0,y;\mu^*)\: \mathcal{H}_\alpha(s)<\infty,
+      \end{align}
+      where we remind the reader that $\mu^* \coloneqq 1 + \lvert\mu\rvert$, and we refer to
+      Theorem~\ref{T:ExUn} for the function $H\left(t;\gamma\right)$;
+    \item under conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
+      $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(64
+      L_b^2 \Upsilon(0), \: \alpha\right)$, the function $H\left(t;32qL_b^2\right)$
+      in~\eqref{E:NormY} is uniformly bounded in $t\ge 0$, i.e., $\sup_{t\ge
+      0}H\left(t;32qL_b^2\right)<\infty$;
+    \item under conditions in~\eqref{E:U0finite}, if $\mathcal{H}_\alpha(t)$ is finite for some
+      $\alpha\in \left(64 L_b^2 \Upsilon(0),\: 1/2\right)$, then for any $q$ with $1/q\in \left(64
+      L_b^2 \Upsilon(0), \: \alpha\right)$ and for any nonnegative and $L^1 (\BR^d)$-function $\rho$,
+      there exists a constant $\Theta = \Theta\left(q,L_b,L_0,\alpha\right)$, which does not depend
+      on $t$, such that for $t>0$,
+      \begin{equation}\label{E:yineq}
+        \E \left(\int_0^{t} \Norm{Y_v(s,\cdot)}_{\rho}^q \ud s\right)
+        \le \Theta \int_0^t \left[\mathcal{G}_{\rho}(s + t_0;\mu^*)\: \mathcal{H}_\alpha(s)\right]^{q/2} \ud s,
+      \end{equation}
+      which is finite provided that
+    \begin{align}\label{E:GH-int'}
+      \int_{0}^t \left[\mathcal{G}_{\rho}(s + t_0;\mu)\:\mathcal{H}_\alpha(s)\right]^{q/2} \ud s <\infty.
+    \end{align}
+  \end{enumerate}
+\end{lemma}
+\begin{remark}
+  Condition~\eqref{E:GH-int'} is true for $t_0>0$ because $\mathcal{G}_\rho(t;\mu)$ is a continuous
+  function for $t>0$ and $\mathcal{H}_\alpha(s)$ is continuous and bounded for $s\in [0,t]$ thanks
+  to~\eqref{E:H}. However, when $t_0 = 0$, the situation is much trickier. For example, when the
+  initial condition is the delta initial condition, we have that
+  \begin{align*}
+    \mathcal{G}_{\tilde{\rho}}(t;\delta_0)
+    = \int_{\BR^d} G(t,x)^2 \rho(x) \ud x
+    = G(2t,0) \int_{\BR^d} G(t/2,x)\rho(x)\ud x
+    < \infty,
+  \end{align*}
+  where one can obtain the second equality via~\eqref{E:gsim}. Hence, when $s\to 0$,
+  $\mathcal{G}_{\tilde{\rho}}(s;\delta_0)$ blows up with a rate $s^{-d/2}$. Considering that
+  $\mathcal{H}_\alpha(s)$ goes to zero with a different rate, one needs to combine these two rates
+  to check if condition~\eqref{E:GH-int'} holds. By introducing $t_0$ and restarting the heat
+  equation, one can avoid this issue, that being the potential singularity of
+  $\mathcal{G}_{\tilde{\rho}}$ at $s = 0$.
+\end{remark}
+\begin{proof}
+  In the proof, we use $C$ to denote a generic constant that may change its value at each
+  appearance. We first prove~\eqref{E:NormY}. By the Burkholder-Davis-Gundy inequality and
+  Minkowski's integral inequality, we see that
+  \begin{align*}
+    \Norm{Y_v(s,y)}_q^2 \le
+    C \int_0^s \ud r \: (s-r)^{-2\alpha}
+    \iint_{\BR^{2d}} \ud z_1\ud z_2 \: & G(s-r,y-z_1) \Norm{b\left(z_1,v(r,z_1)\right)}_q \\
+    \times f(z_1-z_2)                  & G(s-r,y-z_2) \Norm{b\left(z_2,v(r,z_2)\right)}_q.
+  \end{align*}
+  Note that for the Lipschitz condition in~\eqref{E:lipcon}, we have that
+  \begin{gather*}
+    \lvert b\left(x,v\right) \rvert
+      \le \lvert b\left(x,v\right) - b\left(x,0\right)\rvert + \lvert b\left(x,0\right)\rvert \\
+      \le L_b \lvert v \rvert + L_0 \le C (1+\lvert v \rvert),\quad C \coloneqq L_b\vee L_0.
+  \end{gather*}
+  We apply this and the moment bound~\eqref{E:mb} to $\Norm{b(z_i, v(r,z_i))}_q$ above to see that
+  \begin{align}\label{E:NormB}
+    \Norm{b(z_i, v(r,z_i))}_q
+    & \le C\left(1+\Norm{v(r,z_i)}_q\right)                               \notag \\
+    & =   C\left(1+\Norm{u(r+t_0,z_i)}_q\right)                           \notag \\
+    & \le C H\left(r+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right)\notag \\
+    & \le C H\left(s+t_0;32qL_b^2\right) J_0\left(r + t_0,z_i;\mu^*\right), \quad i = 1,2, \: r\in(0,s),
+  \end{align}
+  where the last step is due to the fact that $H(t;\gamma)$ is a nondecreasing function; see
+  Lemma~2.6 of~\cite{chen.kim:19:nonlinear}. Therefore, by denoting $C_s \coloneqq
+  H\left(s+t_0;32qL_b^2\right)$,
+  \begin{align*}
+    % \MoveEqLeft
+    & \Norm{Y_v(s,y)}_q^2                                                                                                                                                      \\
+    & \le C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\BR^{2d}} \ud z_1\ud z_2\: f(z_1-z_2) \prod_{i = 1}^2 G(s-r,y-z_i) J_0\left(r + t_0,z_i;\mu^*\right)                  \\
+    & = C C_s \int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\BR^{2d}} \mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2) \iint_{\BR^{2d}} \ud z_1\ud z_2                                      \\
+    & \quad \times f(z_1-z_2) \prod_{i = 1}^{2} \bigg(G(s-r,y-z_i)G(r + t_0,z_i-\sigma_i) \bigg)                                                                               \\
+    & = C C_s\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\BR^{2d}} \mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0,y-\sigma_2)                         \\
+    & \quad \times\iint_{\BR^{2d}} \ud z_1\ud z_2 f(z_1-z_2) \prod_{i = 1}^2 G\left(\frac{(r+t_0)(s-r)}{s + t_0}, z_i-\sigma_i\frac{r + t_0}{s + t_0}-\frac{s-r}{s+t_0}y\right) \\
+    & \le C C_s\int_0^s \ud r \: (s-r)^{-2\alpha} \iint_{\BR^{2d}}\mu^* (\ud \sigma_1) \mu^* (\ud \sigma_2)\: G(s + t_0,y-\sigma_1)G(s + t_0, y-\sigma_2)                       \\
+    & \quad \times (2\pi)^{-2d} \int_{\BR^d} \widehat{f}(\ud \xi) \exp\left(-\frac{(r + t_0)(s-r)}{s+ t_0}\lvert\xi\rvert^2\right),
+  \end{align*}
+  where we have applied~\eqref{E:gsim} and Plancherel's theorem. Hence, $\Norm{Y_v(s,y)}_q^2$ is
+  bounded from above by
+  \begin{align*}
+    C C_s (2\pi)^{-2d} J_0^2\left(s + t_0,y;\mu^*\right) \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\BR^d} \widehat{f}(\ud \xi)\exp\left(-\frac{(r + t_0)(s-r)}{s + t_0}\lvert\xi\rvert^2\right).
+  \end{align*}
+  Because the function
+  \begin{align*}
+    t_0 \mapsto \frac{r + t_0}{s + t_0} = 1- \frac{s-r}{s+t_0} \quad \text{for $t_0 > 0$},
+  \end{align*}
+  is nondecreasing in $t_0 $ whenever $s > r > 0$, we can replace the two appearances of $t_0$ in
+  the exponent of the above inequality by zero to see that
+  \begin{align}\label{E_:NormY}
+    \begin{aligned}
+      \Norm{Y_v(s,y)}_q^2 \le & C C_s (2\pi)^{-2d} J_0^2 (s + t_0,y;\mu^*) \\
+                              & \times \int_0^s \ud r \: (s-r)^{-2\alpha} \int_{\BR^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(s-r)}{s}\lvert\xi\rvert^2\right).
+    \end{aligned}
+  \end{align}
+  Furthermore, by symmetry of $r(s-r)/s$ and the fact that $r(s-r)/s \ge r/2$ for all $r\in
+  [0,s/2]$, we see that the above double integral is bounded by
+  \begin{align*}
+    \le & \: 2\int_0^{s/2} \ud r \: r^{-2\alpha}\int_{\BR^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r}{2}\lvert\xi\rvert^2\right)      \\
+    =   & \: 2^{2(1-\alpha)} \int_0^{s/4} \ud r \: r^{-2\alpha}\int_{\BR^d} \widehat{f}(\ud \xi)\exp\left(-r\lvert\xi\rvert^2\right) \\
+    \le & \: 2^{2(1-\alpha)} \int_0^{s} \ud r \: r^{-2\alpha}\int_{\BR^d} \widehat{f}(\ud \xi)\exp\left(-r\lvert\xi\rvert^2\right)   \\
+    =   & \: 2^{2(1-\alpha)} \mathcal{H}_\alpha(s).
+  \end{align*}
+  Plugging the above bound back to~\eqref{E_:NormY} proves~\eqref{E:NormY}. \bigskip
+
+  Part (2) is a direct consequence of Theorem~\ref{T:ExUn}. It remains to prove~\eqref{E:yineq}. An
+  application of Minkowski's inequality shows that
+  \begin{align}\label{E:EYqr}
+    \E\left(\Norm{Y_v(s,\cdot)}_{\rho}^q\right)
+    = \Norm{\int_{\BR^d} Y_v(s,y)^2\rho(y) \ud y}_{q/2}^{q/2}
+    \le \left(\int_{\BR^d} \Norm{Y_v(s,y)}_q^2\rho(y) \ud y\right)^{q/2}.
+    % = \Norm{\Norm{Y(s,\clot)}_q}_\rho^q.
+  \end{align}
+  By the definition of $\mathcal{G}_{\rho}(t;\mu)$ in~\eqref{E:G} and by~\eqref{E:NormY}, we see
+  that
+  \begin{align*}
+    \int_{\BR^d}\Norm{Y_v(s,y)}_q^2 \: \rho(y)\ud y
+    & \le C \: \mathcal{G}_{\rho}(s + t_0;\mu^*) \mathcal{H}_\alpha(s).
+  \end{align*}
+  Plugging the above expression to the far right-hand side of~\eqref{E:EYqr} proves~\eqref{E:yineq}.
+  Finally, the finiteness of the upper bound in~\eqref{E:yineq} is guaranteed by
+  condition~\eqref{E:GH-int'}. This completes the proof of Lemma~\ref{L:yineq}.
+\end{proof}
+
+\begin{lemma}[Factorization lemma]\label{L:Factorize}
+  Suppose that $\mu$ --- the initial condition for $u$ --- satisfies~\eqref{A:icon} and
+  $\widehat{f}$ satisfies Dalang's condition~\eqref{E:Dalang}. Assume that condition~\eqref{E:H} is
+  satisfied for some $\alpha\in (0,1/2)$. Fix an arbitrary $ t_0\ge 0$. Let $v(t,x)$ be the solution
+  to the restarted SHE~\eqref{E:restart} and $\dot{W}_{t_0}$ be the time-shifted noise
+  (see~\eqref{E:ShiftW}) when $t_0>0$ and let $v = u$ when $ t_0 = 0$. Then the following
+  factorization holds
+  \begin{align*}
+    \MoveEqLeft
+    \dfrac{\sin(\alpha \pi)}{\pi}  \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \\
+      & = \int_0^t \int_{\BR^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),
+  \end{align*}
+  for all $t>0$ and $x\in\BR^d$. As a consequence, for all $t>0$ and $x\in\BR^d$,
+  \begin{equation}\label{E:1fac}
+    v(t,x) = \left[G(t, \cdot) * u(t_0,\cdot; \mu)\right](x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t,x).
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  The lemma is straightforward provided that one can switch the orders of stochastic and ordinary
+  integrals:
+  \begin{align}
+    \MoveEqLeft[4] \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag \\
+    = & \int_0^t \ud s\: (t-s)^{\alpha-1}\int_{\BR^d} \ud y\: G(t-s,x-y) \notag                                                                \\
+      & \times \int_0^s\: \int_{\BR^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \notag                                      \\
+    = & \int_0^t \ud s\: (t-s)^{\alpha-1} \int_0^s \int_{\BR^d} \: (s-r)^{-\alpha}G(t-r,x-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \label{E:Fubini_1} \\
+    = & \int_0^t \int_{\BR^d} W(\ud r,\ud z)G(t-r,x-z)b(z,v(r,z)) \int_r^t \ud s\: (s-r)^{-\alpha} (t-s)^{\alpha-1}\label{E:Fubini_2}          \\
+    = & \dfrac{\pi}{\sin(\alpha \pi)}\int_0^t \int_{\BR^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),\notag
+  \end{align}
+  where the last step is the \textit{Beta integral} which requires that $\alpha\in (0,1)$. It
+  remains to justify the two applications of the stochastic Fubini's theorem (see Theorem 5.30 of
+  Chapter one in~\cite{dalang.khoshnevisan.ea:09:minicourse}, or also~\cite{walsh:86:introduction}
+  or Theorem 4.33 of~\cite{da-prato.zabczyk:14:stochastic}) in~\eqref{E:Fubini_1}
+  and~\eqref{E:Fubini_2} in the following two steps. \bigskip
+
+  \textbf{\noindent Step 1.~} In this step, we justify the change of orders in~\eqref{E:Fubini_1}.
+  Note that $t, x$ and $s$ are fixed. It suffices to prove the following condition:
+  \begin{align*}
+    I_1\coloneqq & \int_{\BR^d}\ud y \: G(t-s,x-y) \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\BR^{2d}} \ud z_1\ud z_2\:                \\
+                 & \times f(z_1-z_2) \left(\prod_{i = 1}^{2} G(s-r,y-z_i)\right) \: \E\left(\prod_{i = 1}^{2}b(z_i,v(r,z_i))\right) \\
+       =         & \int_{\BR^d}\ud y \: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2 < +\infty,
+       % < & \: +\infty.
+  \end{align*}
+  which follows immediately from~\eqref{E:NormY}. Indeed,
+  \begin{align*}
+    \int_{\BR^d}\ud y \: &\: G(t-s,x-y) \Norm{Y_v(s,y)}_2^2                                                                       \\
+    \le                 &\: C \int_{\BR^d} \ud y \; G(t-s,x-y) J_0^2 (s+t_0,y;\mu^*) \mathcal{H}_\alpha(s)                        \\
+    =                   &\: C \mathcal{H}_\alpha(s) \int_{\BR^d} \ud y \; G(t-s,x-y)\iint_{\BR^{2d}}\mu^* (\ud z_1)\mu^* (\ud z_2) \\
+                        &\: \times G\left(s+t_0,y-z_1\right)G\left(s+t_0,y-z_2\right).
+  \end{align*}
+  Now we bound the three heat kernels using~\eqref{E:gsim} as follows:
+  \begin{align*}
+    G & (t-s,x-y) \prod_{i = 1}^{2}G(s+t_0,y- z_i)                                                                                                              \\
+      & = \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s,0\right)} \prod_{i = 1}^{2}G\left(s+t_0,y- z_i\right)                                                  \\
+      & \le 2^d \frac{G\left(2(t-s),x-y\right)^2}{G\left(4(t-s),0\right)} \prod_{i = 1}^{2}G\left(2s+2t_0,y- z_i\right)                                         \\
+      & = 2^d [4(t-s)]^{d/2} \prod_{i = 1}^{2}\bigg[ G\left(2s+2t_0,y- z_i\right)G\left(2(t-s),x-y\right)\bigg]                                                 \\
+      & = 2^{2d} (t-s)^{d/2} \prod_{i = 1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},y-\frac{s+t_0}{t+t_0}(x- z_i)\right)\right] \\
+      & \le 2^{2d} (t-s)^{d/2} \prod_{i = 1}^{2}\left[G\left(2(t+t_0),x- z_i\right)G\left(\frac{2(t-s)(s+t_0)}{t+t_0},0\right)\right]                           \\
+      & \le C_{t,s,t_0} \prod_{i = 1}^{2} G\left(2(t+t_0),x- z_i\right).
+  \end{align*}
+  Therefore, $I_1\le C_{t,s,t_0} \: \mathcal{H}_{\alpha}(s) \: J_0^2\left(2(t+t_0),x;\mu^*\right)
+  <\infty$. \bigskip
+
+  \textbf{\noindent Step 2.~} Similarly, as for~\eqref{E:Fubini_2}, we need to show that
+  \begin{align*}
+    I_2\coloneqq & \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha} \iint_{\BR^{2d}} \ud z_1\ud z_2\: \\
+                 & \times f(z_1-z_2) \left(\prod_{i = 1}^{2} G(t-r,x-z_i)\right) \: \E\left(\prod_{i = 1}^{2}b(z_i,v(r,z_i))\right) < \infty.
+  \end{align*}
+  By the Cauchy Schwartz inequality,~\eqref{E:NormB} and because $\alpha\in (0,1/2)$,
+  \begin{align*}
+    I_2\le & C \int_0^t \ud s \: (t-s)^{\alpha-1} \int_0^s \ud r\: (s-r)^{-2\alpha}                                                        \\
+           & \times \iint_{\BR^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}\bigg(G(t-r,x-z_i) J_0\left(r + t_0,z_i;\mu^*\right)\bigg) \\
+         = & C' \int_0^t \ud r \: (t-r)^{-\alpha} \iint_{\BR^{2d}} \ud z_1\ud z_2\:f(z_1-z_2) \prod_{i = 1}^{2}G(t-r,x-z_i) J_0\left(r + t_0, z_i;\mu^*\right).
+  \end{align*}
+  Now by the same arguments as those leading to~\eqref{E:NormY} (with $2\alpha$ there replaced by
+  $\alpha$), we see that
+  \begin{align*}
+    I_2 & \le C J_0^2\left(t,x; \mu^*\right) \int_0^t \ud r \: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud \xi)\exp\left(-\frac{r(t-r)}{t}\lvert\xi\rvert^2\right),
+  \end{align*}
+  which is finite by~\eqref{E:H} where we replace $\alpha$ with $\alpha/2$ and repeat the same steps
+  right after~\eqref{E_:NormY}. This completes the proof of Lemma~\ref{L:Factorize}.
+\end{proof}
+
+% \begin{codes}% Mathematica
+%
+% Integrate[(s-r)^{-a} (t-s)^{a-1},{s,r,t},Assumptions->{t>s>0}]
+%
+% Integrate[(t-s)^{a-1} (s-r)^{-2a},{s,r,t},Assumptions->{t>r>0,0<a<1/2}]
+%
+% \end{codes}
+%
+% \begin{codes}% Mathematica
+%
+%   Integrate[Exp[-s x],{s,0,Infinity}, Assumptions->x>0]
+%
+% \end{codes}
+
+
+\subsection{Relations of various conditions on spectral measure}
+
+The relations of various conditions on the spectral measure $\widehat{f}$ are illustrated in
+Figure~\ref{F:Dalang}; see Lemma~\ref{L:HUA} for the proof:
+
+\begin{figure}[htpb]
+  \includegraphics[scale=0.8]{./figure_2.pdf}
+  \caption{Relations among various conditions where $\alpha\in (0,1)$ and $\beta>0$.}
+  \label{F:Dalang}
+\end{figure}
+
+
+If we denote the first row of four conditions in Figure~\ref{F:Dalang} by $(a_1)$, $(a_2)$, $(a_3)$
+and $(a_4)$, and those in the second row by $(b_1)$, $(b_2)$, $(b_3)$ and $(b_4)$. The implications
+$(b_i)\Rightarrow (a_i)$ with $i = 1,\dots, 4$ are clear. It remains to show the four equivalent
+relations. In particular, part (i) of Lemma~\ref{L:HUA} proves the bottom two equivalences in
+Figure~\ref{F:Dalang}, i.e., $(b_1)\Leftrightarrow (b_2)$ and $(b_3)\Leftrightarrow (b_4)$. The top
+two, i.e., $(a_1)\Leftrightarrow (a_2)$ and $(a_3)\Leftrightarrow (a_4)$, are covered by part (ii)
+of Lemma~\ref{L:HUA}.
+
+\begin{remark}\label{R:4Equiv}
+  By Lemma~\ref{L:HUA} below, if one assumes~\eqref{E:Dalang-00}, which is the case for
+  Theorem~\ref{T:Main}, then all the right four conditions in Figure~\ref{F:Dalang} are equivalent.
+\end{remark}
+
+\begin{lemma}\label{L:HUA}
+  For all $\alpha\in [0,1)$, we have the following properties:
+  \begin{enumerate}[(i)]
+    \item $\displaystyle \lim_{t\to\infty}\left(2\pi\right)^{-d}\mathcal{H}_{\alpha/2}(t) =
+      \Gamma\left(1-\alpha\right) \Upsilon_{\alpha}(0)$;
+    \item $\gamma\left(1-\alpha,t\beta\right) \left(2\pi\right)^d \Upsilon_\alpha(\beta) \le
+      \mathcal{H}_{\alpha/2}(t) \le \Gamma\left(1-\alpha\right) \left(2\pi\right)^d
+      \Upsilon_\alpha(\beta)$ for all $t>0$ and $\beta>0$, where $\gamma(s,x)\coloneqq \int_0^x
+      t^{s-1} e^{-t}\ud t$ refers to the incomplete gamma function
+      (see~\cite{olver.lozier.ea:10:nist}).
+    \item if $\Upsilon(0)<\infty$, then $\mathcal{H}_{\alpha/2}(t)<\infty$ for all $t>0$ implies
+      that $\Upsilon_\alpha(0)<\infty$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  Fix $\alpha\in[0,1)$. For part (i), it is clear that the function $\mathcal{H}_\alpha(t)$ is
+  nondecreasing. By Fubini's theorem,
+  \begin{align}\label{E:Fubini}
+    \lim_{t\to\infty}\mathcal{H}_{\alpha/2}(t)
+    & = \int_0^\infty \ud r \: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2} \notag \\
+    & = \Gamma(1-\alpha) \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\lvert\xi\rvert^{2\left(1-\alpha\right)}}
+      = C \Upsilon_{\alpha}(0),
+  \end{align}
+  with $C\coloneqq \Gamma(1-\alpha)(2\pi)^d$. As for part (ii), notice that for all $t>0$ and
+  $\beta>0$,
+  \begin{align*}
+    \mathcal{H}_{\alpha /2}(t)
+    = \int_0^t \ud r r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2}
+    = \int_0^t \ud r r^{-\alpha} e^{\beta r} \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\left(\lvert\xi\rvert^2 +\beta\right)}.
+  \end{align*}
+  By replacing $e^{\beta r}$ by $1$ and $e^{\beta t}$, we see that
+  \begin{align*}
+    I_\beta(t)
+    \le \mathcal{H}_{\alpha /2}(t)
+    \le e^{\beta t} I_\beta(t), \quad \text{with} \quad
+    I_\beta(t)\coloneqq
+    \int_0^t \ud r\: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\left(\lvert\xi\rvert^2+\beta\right)}
+  \end{align*}
+   Notice that
+  \begin{align*}
+    I_\beta(t)
+    = \int_{\BR^d} \frac{1}{\left(\beta+\lvert\xi\rvert^2\right)^{1-\alpha}} \widehat{f}(\ud\xi)
+      \int_{0}^{t\left(\lvert\xi\rvert^2 + \beta\right)} r^{-\alpha} e^{-r} \ud r,
+  \end{align*}
+  from which we see that
+  \begin{align*}
+    \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{t \beta} r^{-\alpha} e^{-r} \ud r
+    \le I_\beta(t) \le
+    \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{\infty} r^{-\alpha} e^{-r} \ud r.
+  \end{align*}
+  Then by the definition of the (incomplete) gamma function, we obtain the inequalities in part
+(ii). As for part (iii), for any $t>0$, by splitting the $\ud r$ integral in~\eqref{E:Fubini} into
+two parts, we see that
+  \begin{align*}
+    C \Upsilon_{\alpha}(0) & = \int_0^\infty \ud r \: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)\exp\left(-r\lvert\xi\rvert^2\right) = \mathcal{H}_{\alpha/2}(t) + I_\alpha(t), \quad \text{with} \\
+    I_\alpha(t)            & \coloneqq \int_t^\infty \ud r \: r^{-\alpha} \int_{\BR^d} \widehat{f}(\ud\xi)\exp\left(-r\lvert\xi\rvert^2\right).
+  \end{align*}
+  Notice that
+  \begin{align*}
+    I_\alpha(t)
+    &\le t^{-\alpha} \int_t^\infty \ud r \int_{\BR^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2}
+    =   t^{-\alpha} \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\lvert\xi\rvert^2} e^{-t\lvert\xi\rvert^2}\\
+    &\le t^{-\alpha} \int_{\BR^d} \frac{\widehat{f}(\ud\xi)}{\lvert \xi \rvert^2}
+    =   \frac{\left(2\pi\right)^d}{t^{\alpha}} \Upsilon(0).
+  \end{align*}
+  Therefore,
+  \begin{align*}
+    \Upsilon_{\alpha}(0) \le \frac{\mathcal{H}_{\alpha/2}(t)}{(2\pi)^d\Gamma(1-\alpha)} +
+    \frac{\Upsilon(0)}{\Gamma\left(1-\alpha\right)t^{\alpha}} <\infty, \quad \text{for all $t>0$,}
+  \end{align*}
+  which proves part (iii). This completes the proof of Lemma~\ref{L:HUA}.
+\end{proof}
+
+\section{Tightness and construction -- Proof of Theorem~\ref{T:Main}}\label{S:mainproof}
+\subsection{Proof of part (a) of Theorem~\ref{T:Main}}
+
+Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall the following result:
+
+\begin{proposition}[Proposition 2.1 of~\cite{tessitore.zabczyk:98:invariant}]\label{P:weight}
+  For any admissible weight $\rho$, the operators on $L^2_\rho(\BR^d)$ defined by $\varphi \mapsto
+  \big(G(t,\cdot)*\varphi(\cdot)\big)(x)$ can be extended to a $C_0-semigroup$ on $L^2_\rho(\BR^d)$.
+  Moreover, if $\tilde{\rho}$ is another admissible weight such that
+	\begin{align*}
+	\int_{\BR^d}\dfrac{\rho(x)}{\tilde{\rho}(x)}\ud x < \infty,
+	\end{align*}
+	then for any $t>0$, the operators defined above are compact from $L^2_{\tilde{\rho}}(\BR^d)$ to
+	$L^2_\rho(\BR^d)$.
+\end{proposition}
+
+\begin{proof}[Proof of Theorem~\ref{T:Main} (a)]
+  In this proof, $u(t,x)$ refers to $u(t,x;\mu)$. Fix $\tau>0$ and let $t_0 = \tau/2$. Throughout the
+  proof, we have $t\ge \tau$. Let $v$ be the solution to~\eqref{E:restart} that is restarted from
+  $t- t_0$. Then (see Figure~\ref{F:RestartedSHE} for an illustration)
+  % \begin{align*}
+  %   v(t_0,\cdot) \stackrel{\mathcal{L}}{=} u(t,\cdot) \quad \text{for $t\ge\tau$}.
+  % \end{align*}
+
+  \begin{align}\label{E:RestaredSHE}
+    v_t\left(s,x\right) \stackrel{\mathcal{L}}{=} u\left(s,x; u\left(t-t_0,\cdot;\mu\right)\right) \quad \text{for $s \ge 0$ and $t\ge\tau$}.
+  \end{align}
+
+\begin{figure}[htpb]
+  \begin{center}
+    \includegraphics[scale=0.9]{./figure_3.pdf}
+  \end{center}
+  \caption{An illustration for the restarted SHE in~\eqref{E:RestaredSHE}.}
+  \label{F:RestartedSHE}
+\end{figure}
+
+  According to Assumption (i), we can choose and fix some admissible weight function $\tilde{\rho}$
+  such that~\eqref{E:rhorho} is satisfied. Hence, by Proposition~\ref{P:weight} below, the following
+  set
+  \begin{align*}
+    \mathscr{K}_1 (\Lambda) \coloneqq \left\{\big(G(t_0,\cdot)*y(\cdot)\big)(x): \:\:\Norm{y}_{\tilde{\rho}} \le \Lambda \right\}
+    \quad \text{with $\Lambda>0$}
+  \end{align*}
+  is relatively compact in $L_\rho^2 (\BR^d)$.
+
+  Assumption (iii), i.e.,~\eqref{E:U0finite}, implies that the interval $\left(64L_b^2 \Upsilon(0),
+  1/2\right)$ is not empty. Moreover, Assumption (iv), i.e.,~\eqref{E:Dalang-a0}, guarantees that
+  there exists a constant $\alpha$ in this interval, namely, $64L_b^2\Upsilon(0) <\alpha<1/2$, such
+  that~\eqref{E:Dalang-a0} holds with $\alpha$ replaced by $2\alpha$, i.e.,
+  $\Upsilon_{2\alpha}(0)<\infty$. Now we can apply part (3) of Lemma~\ref{L:HUA}, thanks
+  to~\eqref{E:Dalang-00}, to see that $\Upsilon_{2\alpha}(0)<\infty$ if and only if~\eqref{E:H}
+  holds. Therefore, both Lemmas~\ref{L:yineq} and~\ref{L:Factorize} (more precisely part (3) of
+  Lemma~\ref{L:yineq}) are applicable. In particular, Lemma~\ref{L:Factorize} ensures that the
+  following factorization is well-defined:
+  \begin{align}\label{E:Fact}
+    v(t_0,x) = \Big(G(t_0,\cdot) * u(t-t_0,\cdot)\Big)(x) +\dfrac{\sin(\alpha \pi)}{\pi} \left[F_\alpha Y_v\right](t_0,x).
+  \end{align}
+  Part (3) of Lemma~\ref{L:yineq} shows that for any $q$ in the following range,
+  \begin{align}\label{E:Choice}
+    64 L_b^2 \Upsilon(0) < \frac{1}{q} < \alpha <\frac{1}{2}
+    \qquad \left(\text{or equivalently} \quad
+    2< \frac{1}{\alpha} < q < \frac{1}{64 L_b^2 \Upsilon(0)}\:\right),
+  \end{align}
+  we can apply Proposition~\ref{P:F-Comp} to see that the set
+  \begin{align*}
+    \mathscr{K}_2 (\Lambda)\coloneqq
+    \left\{(F_\alpha h)(t_0,x): \Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\BR^d\right)\right)} \le \Lambda \right\},
+    \quad \text{with $\Lambda>0$},
+  \end{align*}
+  is relatively compact in $L_\rho^2 (\BR^d)$. Now for any $\Lambda>0$, define the set $\mathscr{K}
+  (\Lambda)$ as
+  \begin{multline*}
+    \mathscr{K} (\Lambda) \coloneqq \mathscr{K}_1 (\Lambda) + \mathscr{K}_2 (\Lambda) \\
+    = \left\{\big(G(t_0,\cdot)*y(\cdot)\big)(x)+(F_\alpha h)(t_0, x): \:\Norm{y}_{\tilde{\rho}}
+    \le \Lambda~\text{and}~\Norm{h}_{L^q\left((0,t_0);L^2_{\tilde{\rho}}\left(\BR^d\right)\right)} \le \Lambda \right\}.
+  \end{multline*}
+
+  Notice that from the factorization formula~\eqref{E:Fact},
+  \begin{align*}
+    \MoveEqLeft
+    \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]\\
+    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
+    + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\tilde{\rho}} > \Lambda \right] \\
+    & \eqqcolon I_1+I_2.
+  \end{align*}
+  By Chebyshev's inequality and~\eqref{E:uInLrho}, we see that
+  \begin{align*}
+    I_2\le\frac{1}{\Lambda^2} \mathbb{E}\left(\Norm{u(t-t_0,\cdot)}_{\tilde{\rho}}^2\right)
+    \le \frac{1}{\Lambda^2} \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu^*\right).
+    % \le \frac{1}{\Lambda^2} \sup_{t\ge \tau} \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu\right)
+    % = \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu\right)<\infty,
+  \end{align*}
+  Because $\mathcal{G}_{\tilde{\rho}}(t;\mu^*)$ is a continuous function for $t>0$, and because it
+  is also bounded at infinity, thanks to Assumption (ii) (see~\eqref{E:InitData}), we have that
+  \begin{align}\label{E:GtBdd}
+    \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu^*\right)
+    \le \sup_{t\ge \tau} \mathcal{G}_{\tilde{\rho}}\left(t-t_0;\mu^*\right)
+    = \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)<\infty.
+  \end{align}
+  Therefore, we can bound $I_2$ from above with a constant that does not depend on $t\ge \tau$,
+  namely,
+  \begin{align*}
+    I_2 \le\frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)<\infty.
+  \end{align*}
+
+  As for $I_1$, with the choice of $\alpha$ and $q$ in~\eqref{E:Choice}, one can apply Chebyshev's
+  inequality and part (3) of Lemma~\ref{L:yineq} to see that
+  \begin{align*}
+    I_1 & \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s
+          \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
+          \left(\mathcal{G}_{\tilde{\rho}}(s + t-t_0;\mu^*) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s,
+  \end{align*}
+  where the constant $\Theta$ does not depend on $t$. As explained in Remark~\ref{R:4Equiv}, under
+  condition $\Upsilon(0)<\infty$ and condition~\eqref{E:Dalang-ab}, we have
+  $\Upsilon_{2\alpha}(0)<\infty$. Hence, we can apply Lemma~\ref{L:HUA} to bound
+  $\mathcal{H}_{\alpha}(s)$ from above by the finite bound: $\left(2\pi\right)^d \Gamma(1-2\alpha)
+  \Upsilon_{2\alpha}(0)$. Therefore, together with~\eqref{E:GtBdd}, we obtain the following upper
+  bound for $I_1$ that is uniform in $t\ge \tau$:
+  \begin{align*}
+    I_1 \le \dfrac{\sin^q (\alpha \pi)\Theta (2\pi)^{dq/2} t_0}{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left(\sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0).
+  \end{align*}
+  Combining these two upper bounds, we see that
+  \begin{align*}
+    \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]
+    \le & \phantom{+}\dfrac{\sin^q (\alpha \pi)\Theta (2\pi)^{dq/2} t_0}{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left(\sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0) \\
+        & + \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)                                                                                                                                 \\
+    <   & +\infty,
+  \end{align*}
+  with the upper bound holding uniformly for all $t\ge \tau$. Hence, for any $\epsilon>0$, by
+  choosing $\Lambda > 0$ big enough such that
+  \begin{align*}
+    \dfrac{\sin^q (\alpha \pi)\Theta (2\pi)^{dq/2} t_0}{\Gamma\left(1-2\alpha\right)^{q/2}\pi^q \Lambda^q} \left(\sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)\right)^{q/2} \Upsilon_{2\alpha}^{q/2}(0)
+    +
+    \frac{1}{\Lambda^2} \sup_{t\ge t_0} \mathcal{G}_{\tilde{\rho}}\left(t;\mu^*\right)
+    < \epsilon,
+  \end{align*}
+  we can ensure that
+  \begin{align*}
+      \mathbb{P}\left(u(t,\cdot) \in \mathscr{K}(\Lambda)\right)
+    = \mathbb{P}\left(v(t_0,\cdot) \in \mathscr{K}(\Lambda)\right)
+    \ge 1- \epsilon, \quad \text{for all $t\ge \tau$,}
+  \end{align*}
+  which proves part (a) of Theorem~\ref{T:Main}.
+\end{proof}
+
+\subsection{Proof of part (b) of Theorem~\ref{T:Main}}
+\begin{proof}
+  Fix an arbitrary $\tau>0$ and denote
+  \begin{align*}
+    U(T) \coloneqq \dfrac{1}{T}\int_{\tau}^{T+\tau} \mathcal{L}\left(u(t,\cdot;\mu)\right)\: \ud t, \quad T>0.
+  \end{align*}
+  We claim that the family of laws $U(T,\cdot)$ for $T > 0$ is tight in $L^2_{\rho}(\BR^d)$. Indeed,
+  for any $\epsilon\in (0,1)$, by part (a), there exists a compact set $\mathcal{K}\in L_\rho^2
+  (\BR^d)$ such that~\eqref{E:cpt} holds. Hence, for all $T>0$, it holds that
+  \begin{align*}
+    U(T)\left(\mathcal{K}\right)
+    & = \frac{1}{T} \int_{\tau}^{T + \tau} \mathscr{L}(u(t,\cdot;\mu))\left(\mathcal{K}\right) \; \ud t
+      \ge \frac{1}{T} \int_{\tau}^{T + \tau} (1-\epsilon) \; \ud t
+      = 1-\epsilon.
+  \end{align*}
+
+  Let $\{T_n\}_{n\in \mathbb{N}}$ be any deterministic sequence such that $T_n\uparrow \infty$.
+  Since $\left\{U(T_n)\right\}_{n\ge 1}$ is a tight sequence of measures, then there exists a
+  subsequence $\{U\left(T_{n_m}\right)\}_{m\ge 1}$ that converges weakly to a measure, $\eta$, on
+  $L_\rho^2 (\BR^d)$ (e.g. see~\cite[Theorem 5.1]{billingsley:99:convergence}). Then one can apply
+  the Krylov-Bogoliubov existence theorem (see, e.g.,~\cite[Theorem
+  11.7]{da-prato.zabczyk:14:stochastic}) to conclude that the measure $\eta$ is an invariant measure
+  for $\mathscr{L}(u(t,\cdot;\mu))$, $t\ge \tau$. Finally, since $\tau$ can be arbitrarily close to
+  zero, one can conclude part (b) of Theorem~\ref{T:Main}.
+\end{proof}
+
+
+\section{Discussion and examples}\label{S:Example}
+\subsection{Invariant measures for SHE with a drift term}\label{SS:Drift}
+
+In this part, we give a brief account of the case when the SHE has a drift term which plays a
+crucial role in controlling the moments. The equation usually takes the following form:
+\begin{align}\label{E:Drift}
+  \left(\dfrac{\partial}{\partial t}-\dfrac{1}{2}\Delta\right) u(t,x)
+   = g(x,u(t,x)) + b(x,u(t,x)) \dot W(t,x) \quad \text{$x\in \mathcal{O}$, $t>0$}.
+\end{align}
+The references in this part are far from being complete. The interested readers can find more
+references from the references below.
+
+The first case is when the drift term $g(\cdot)$ in~\eqref{E:Drift} satisfies certain dissipativity
+conditions, which push the solution toward zero; see, e.g.,~\cite{assing.manthey:03:invariant,
+brzezniak.gatarek:99:martingale, cerrai:01:second, cerrai:03:stochastic,
+eckmann.hairer:01:invariant}. Such a ``negative'' drift term helps to cancel the growth of the
+moments. Here is one example of such drift term: for some $m,\: k_i, \: c_i>0$ as $\lvert u \rvert \to \infty$:
+\begin{equation}\label{E:dis}
+  \begin{cases}
+    g(u) \le -k_1\lvert u \rvert^m + k_2 & u > 0, \\
+    g(u) \ge c_1\lvert u \rvert^m - c_2  & u < 0.
+  \end{cases}
+\end{equation}
+In particular, Cerrai~\cite{cerrai:01:second, cerrai:03:stochastic} and Brze\'{z}niak and
+G\c{a}tarek~\cite{brzezniak.gatarek:99:martingale} considered the case of a bounded spatial domain,
+while Assing and Manthey~\cite{assing.manthey:03:invariant} and Eckmann and
+Hairer~\cite{eckmann.hairer:01:invariant} considered the whole space $\BR^d$. Note that Eckmann and
+Hairer~\cite{eckmann.hairer:01:invariant} studied the additive noise case along with a bounded
+initial condition.
+
+Several works which do not require an added drift term with dissipativity as in~\eqref{E:dis}
+include Misiats \textit{et
+al}~\cite{misiats.stanzhytskyi.ea:16:existence,misiats.stanzhytskyi.ea:20:invariant}. In the Theorem
+1.2 of~\cite{misiats.stanzhytskyi.ea:20:invariant}, they provide a result guaranteeing the existence
+of an invariant measure for the stochastic heat equation on the whole space $\BR^d$. More precisely,
+they allow for a drift term, $g(x,u):\BR^d \times \BR \to \BR$, such that for all $x \in \BR^d$ and
+$u_1$, $u_2 \in \BR$,
+\begin{align*}
+		\lvert g(x,0) \rvert \le \varphi(x) \qquad \text{and} \qquad
+    \lvert g(x,u_1) - g(x,u_2) \rvert \le L\varphi(x) \lvert u_1 - u_2 \rvert,
+\end{align*}
+for some $L>0$ where $\varphi(x)$ must decay fast enough such that $\varphi / \sqrt{\rho} \in
+L^2 (\BR^d) \cap L^{\infty}(\BR^d)$ and $\rho$ is the admissible weight. Thus, $f \equiv 0$ is allowed.
+However, they require the following condition on the diffusion term $b$:
+\begin{align*}
+  \lvert b(x,u_1) - b(x,u_2)\rvert \le L\varphi(x) \lvert u_1 - u_2 \rvert,
+\end{align*}
+which excludes the parabolic Anderson model. Lastly, Theorem 1.2 \textit{ibid.} requires the initial
+condition to be in $L^2 (\BR^d)$, which excludes the two important cases, $u(0,x) = 1$ and
+$u(0,\cdot) = \delta_0(\cdot)$. Our Theorem~\ref{T:Main} includes both of these initial conditions;
+see Section~\ref{SS:Init}.
+
+\subsection{The conditions for spectral measures by Tessitore and Zabczyk}\label{SS:TessZabz}
+
+Tessitore and Zabczyk~\cite{tessitore.zabczyk:98:invariant} established the existence of an
+invariant measure for~\eqref{E:SHE} in $L^2_{\rho}(\BR^d)$ under the assumptions that (1) there
+exists a $\varphi \in L^2_{\rho}(\BR^d) \cap L^2_{\widetilde\rho}(\BR^d)$ where $\rho/\widetilde\rho
+\in L^1 (\BR^d)$ and the solution starting from $\varphi$ is bounded in probability in
+$L^2_{\widetilde \rho}(\BR^d)$ and (2) that the spectral density $\hat{f}$ satisfies
+\begin{equation}\label{E:CorTZ}
+\widehat{f} \in L^p (\BR^d) \qquad \text{for some $p \in \left[1, d/(d-2)\right)$};
+\end{equation}
+see part (i) of Hypothesis 2.1 \textit{ibid.} However, as was illustrated in Theorem 3.3
+\textit{ibid.}, in order to apply this theorem to a specific initial condition in $L^2_{\rho}$ (or
+to have moments uniformly bounded in time), the following additional assumptions were imposed:
+\begin{equation}\label{E:TZspec}
+  \begin{gathered}
+  d\ge 3 \quad \text{and} \quad \\
+  L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\BR^d} \left(\lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \rvert * \lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\rvert\right) (\xi) \lvert \xi \rvert^{2-d} \ud \xi ,
+  \end{gathered}
+\end{equation}
+where the convention of the Fourier transform is given in Remark~\ref{R:Fourier}. With these
+assumptions, they were able to prove that~\eqref{E:SHE} starting from the constant one initial
+condition satisfies~\eqref{E:BddMnt} and thus is bounded in probability, verifying the existence of
+an invariant measure via the construction~\eqref{E:InvMeasForm}.
+
+% Lastly we mention that due to its difficult nature,~\eqref{E:TZspec} was not calculated for a
+% specific $\widehat{f}$ (see Examples~\ref{Ex:Finv} and~\ref{Ex:sqrt} below).
+
+\begin{remark}\label{R:Fourier}
+  The Fourier transform may be defined differently depending on how one handles the $2\pi$ constant.
+  In this paper (as in~\cite{chen.kim:19:nonlinear,chen.huang:19:comparison}), we use the convention
+  given in~\eqref{E:Fourier}. Hence, Plancherel's theorem takes the form of $\int_{\BR^d} \psi(x)
+  \phi(x)\ud x = (2\pi)^{-d} \int_{\BR^d} \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$.
+  The authors in~\cite{tessitore.zabczyk:98:invariant} did not explicitly mention their convention
+  of the Fourier transform. However, the proof of Theorem 3.3 \textit{ibid.} suggests that the
+  following convention has been used:
+	\begin{align*}
+    \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) & \coloneqq (2\pi)^{-d/2} \int_{\BR^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad \\
+    \mathcal{F}^{-1}\psi(x)                    & \coloneqq (2\pi)^{-d/2} \int_{\BR^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+	\end{align*}
+  Hence, Plancherel's theorem takes the form, $\int_{\BR^d} \psi(x) \phi(x)\ud x = \int_{\BR^d}
+  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
+  $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ \textit{ibid.} corresponds to
+  $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation~\eqref{E:TZspec}, which is
+  condition (3.4) \textit{ibid.}, takes into account this difference, therefore explaining the
+  slightly different factor in front of the integral in~\eqref{E:TZspec} from that in (3.4)
+  \textit{ibid.}
+\end{remark}
+
+Our condition~\eqref{E:Dalang-00} should be compared with the second condition in~\eqref{E:TZspec}.
+We will explain below why the former is more natural, easier to verify, and weaker than the latter.
+
+% In the following, we will focus on the second condition in~\eqref{E:TZspec}, which corresponds
+% to~\eqref{E:U0finite}. We claim that the latter is much easier to check than that of the former.
+%
+The square root and absolute value in~\eqref{E:TZspec} make their condition more restrictive.
+Indeed, if $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
+in~\eqref{E:TZspec} can be removed without ambiguity, which will reduce to our
+condition~\eqref{E:U0finite} up to a constant factor. However, when $\widehat{f}$ is only
+nonnegative and not strictly positive, finding the right square root of $\widehat{f}$ so that
+$\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative becomes tricky. This last point will be
+illustrated by the examples below. We first set up the notation in Example~\ref{Ex:nonnegative}.
+%
+% We now consider two cases (depending whether $\widehat{f}$ is strictly postive) and give some
+% examples to illustrate the potential difficulties that may arise because of the square root and
+% absolute value in~\eqref{E:TZspec}.
+%
+% Before that, let us first introduce a nonnegative and nonnegative definite function in $\BR$, that
+% will be used several times in the rest of this subsection:
+
+% In particular, we will consider two cases: \begin{enumerate} \item Case I:
+% $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f}>0$ on $\BR^d$; \item Case
+% II: $\widehat{f}$ is not strictly positive. \end{enumerate}
+
+
+\begin{example}\label{Ex:nonnegative}
+  Let $d = 1$ and $g(x) = \frac{1}{2}1_{[-1,1]}(x)$. Then we have that $ \widehat{g}(\xi) =
+  \xi^{-1}\sin(\xi)$. Now set $f(x) = \left(g*g\right)(x) = 2^{-2}\max(2-\lvert x \rvert,0)$. It is clear that
+  $f$ is nonnegative. It is also nonnegative-definite because $\widehat{f}(\xi) = \widehat{g}(\xi)^2
+  = \xi^{-2}\sin^2 (\xi)\ge 0$.
+\end{example}
+
+% \subsubsection{Case I -- $\widehat{f}$ is strictly positive}
+% In this part, we assume that $\widehat{f}$ is strictly positive. If, in addition,
+% \begin{align}\label{E:Ff>0}
+%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0,
+% \end{align}
+% then one can remove the absolute values in~\eqref{E:TZspec}. Note that~\eqref{E:Ff>0} is not a
+% trivial assumption (see Examples~\ref{Ex:Finv} and~\ref{Ex:Finv-d} below). However, one can check
+% that the Bessel kernels satisfy this condition.
+
+% Under~\eqref{E:Ff>0}, there is no ambiguity when
+% taking the square root and one can remove the absolute value to see that
+% \begin{align*}
+%   \Gamma(d/2 -1)2^{d/2-2}
+%   & \int_{\BR^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) \lvert x \rvert^{2-d} \ud x \\
+%   & = \frac{1}{(2\pi)^{3d/2}} \int_{\BR^d} \widehat{f}(\xi) \lvert \xi \rvert^{-2} \ud \xi
+%     = \left(2\pi\right)^{d/2}\Upsilon(0),
+% \end{align*}
+% where we have applied Plancherel's theorem and the Fourier transform for Riesz kernel (in the
+% generalized sense):
+% \begin{align*}
+% \mathcal{F}(\lvert \cdot \rvert^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} \lvert\xi\rvert^{-(d-\alpha)},
+% \quad \text{for $\alpha\in(0,d)$ and $\xi\in\BR^d$}.
+% \end{align*}
+% Hence, the second condition in~\eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
+% (2\pi)^{d/2}\Upsilon(0)$. Comparing this with~\eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
+% our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
+
+Up to a constant, one may replace $\mathcal{F}$ by $\mathcal{F}^{-1}$. The following example shows
+that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is signed and hence, the absolute value
+make spoil the oscillatory structure.
+
+\begin{example}\label{Ex:Finv}
+  Suppose that $d = 1$. Set $f(x) = (2\pi)^{-1}x^{-2}\sin^2 (x)$. Hence, $\widehat{f}(\xi) =
+  2^{-2}\max\{2-\lvert \xi \rvert,0\}$. Then as explained in Example~\ref{Ex:nonnegative}, both $f$ and
+  $\widehat{f}$ are non-negative and non-negative definite. We claim that
+	\begin{align}\label{E:Claim}
+	\text{$\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ takes both positive and negative values.}
+	\end{align}
+  Indeed, for all $x\in\BR$,
+	\begin{align*}
+    \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
+    & = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
+      = \frac{1}{\pi} \int_0^{\sqrt{2}} \xi^2 \cos\left(x\left(2-\xi^2\right)\right) \: \ud \xi \\
+    & = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
+    & = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2)}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
+  \end{align*}
+  where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ and an integration by parts.
+  By using the \textit{Fresnel integrals} (see, e.g.,~\cite[7.2 (iii)]{olver.lozier.ea:10:nist})
+  \begin{align*}
+    \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
+    \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
+	\end{align*}
+  the above expression can be further simplified via the change of variables $\xi' = \sqrt{2\lvert x \rvert/\pi}
+  \: \xi$ to
+	\begin{align*}
+    \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
+    = (8\pi)^{-1/2} \lvert x \rvert^{-3/2} \left(
+      -\cos(2\left\lvert x\right\rvert) \mathcal{S}\left(\frac{2\sqrt{\lvert x \rvert}}{\sqrt{\pi}}\right)
+      +\sin(2\left\lvert x\right\rvert) \mathcal{C}\left(\frac{2\sqrt{\lvert x \rvert}}{\sqrt{\pi}}\right)
+    \right),
+	\end{align*}
+  for all $x\in\BR$. This proves the claim in \eqref{E:Claim}; see also Figure~\ref{Fig:fresnel} for
+  some plots.
+\end{example}
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[scale=1]{./figure_4.pdf}
+  \end{center}
+	\caption{One example that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)$ assumes both
+		positive and negative values.}
+	\label{Fig:fresnel}
+\end{figure}
+
+On the other hand, the next example shows that the spectral density given in Example~\ref{Ex:Finv}
+can be easily handled by our condition -- $\Upsilon_{\alpha}(0)<\infty$, i.e.,~\eqref{E:Dalang-a0}.
+
+\begin{example}\label{Ex:Finv-d}
+  From the one-dimension case in Example~\ref{Ex:Finv}, one can construct a $d$-dimensional
+  counterpart: Let $f_1$ and $\widehat{f}_1$ be the $f$ and $\widehat{f}$, respectively, in
+  Example~\ref{Ex:Finv}. Then define
+	\begin{align*}
+    f_d(x) := \prod_{i=1}^d f_1(x_i), \quad x\in\BR^d, \quad \text{and hence} \quad
+    \widehat{f}_d(\xi) := \prod_{i=1}^d \widehat{f}_1(\xi_i), \quad \xi\in\BR^d.
+	\end{align*}
+  It is straightforward to verify that
+	\begin{align*}
+    \Upsilon_\alpha(0)
+    & = C \int_{\BR^d} \frac{\prod_{i = 1}^d\max\{2-\lvert \xi_i \rvert,0\}}{\lvert\xi\rvert^{2(1-\alpha)}} \ud \xi\\
+    & \le C \int_{\lvert\xi\rvert\le 2\sqrt{d}} \frac{2^d}{\lvert\xi\rvert^{2(1-\alpha)}} \ud \xi
+      = C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
+	\end{align*}
+  Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
+\end{example}
+
+% \subsubsection{Case II -- $\widehat{f}$ is nonnegative but not strictly positive}
+% If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi) = 0$ for
+% some $\xi\in\BR^d$, then removing the absolute value in~\eqref{E:TZspec} becomes tricky, which will
+% be illustrated in the following example.
+
+The next example illustrates the delicacy of choosing the right branches for the square root
+in~\eqref{E:TZspec}.
+
+\begin{example}\label{Ex:sqrt}
+  Let $f$ and $g$ be given as Example~\ref{Ex:nonnegative}. In this case, $\widehat{f}(\cdot)$ is
+  only nonnegative (not strictly positive) with infinitely many zeros. Hence, when taking the square
+  root of $\widehat{f}(\xi)$ as in~\eqref{E:TZspec}, one needs to wisely select the correct positive
+  and negative branches: (1) Clearly, the signed version $\sqrt{\widehat{f}(\xi)} =
+  \xi^{-1}\sin(\xi)$ is preferable since its inverse Fourier transform can be easily computed, which
+  is equal to $g(x)$. Moreover, because this inverse Fourier transform $g(x)$ is nonnegative, the
+  absolute value signs in~\eqref{E:TZspec} do not pose any additional restrictions. (2) However, if
+  one chooses the positive branches, namely, $\sqrt{\widehat{f}(\xi)} =
+  \lvert\xi^{-1}\sin(\xi)\rvert$, then it is not clear how to compute its Fourier transform. In
+  general, some bad choices of the positive/negative branches may make the conditions
+  in~\eqref{E:TZspec} fail. For example, such choice may turn $\sqrt{\widehat{f}(\xi)}$ into a
+  distribution, and then taking the absolute value of a distribution (unless it is a measure) may be
+  problematic. Another issue that may arise is when $\sqrt{\widehat{f}(\xi)}$ is a well-defined
+  function, taking on both positive and negative values and after taking the absolute value, the
+  integral in~\eqref{E:TZspec} may blow up.
+\end{example}
+
+\subsection{Various initial conditions}\label{SS:Init}
+
+In this part, we give some concrete examples of initial conditions.
+
+\begin{example}[Bounded initial condition]\label{Ex:BddInit}
+  We emphasize that if the initial condition, $\mu$, is deterministic and is such that $\mu(\ud x) =
+  \varphi(x)\ud x$ with $\varphi\in L^\infty(\BR^d)$, then all conditions related to
+  $\mathcal{G}_\rho(\cdot)$ in both Theorems~\ref{T:Lrho} and~\ref{T:Main} are trivially satisfied.
+  To be more precise, both Conditions~\eqref{E:G} and~\eqref{E:InitData} hold because
+  \begin{align*}
+    \mathcal{G}_\rho(t;\lvert \varphi \rvert) \le \Norm{\varphi}_{L^\infty(\BR^d)}^2 \Norm{\rho}_{L^1 (\BR^d)}< \infty
+    \quad \text{uniformly for all $t\ge 0$.}
+  \end{align*}
+\end{example}
+
+\begin{example}[Delta initial condition]\label{Ex:delta}
+  In this example, we study the case when the initial condition, $\mu$, is the Dirac delta measure
+  at zero, namely, $\delta_0$. Let $\rho$ be a nonnegative $L^1 (\BR^d)$ function. Since
+  \begin{align*}
+    \mathcal{G}_\rho(t;\lvert \delta_0 \rvert)
+    = \int_{\BR^d} G(t,x)^2 \rho(x) \ud x
+    \le G(t,0)^2 \Norm{\rho}_{L^1 (\BR^d)},
+    \quad \text{for all $t>0$,}
+  \end{align*}
+  both conditions~\eqref{E:G} and~\eqref{E:InitData} are satisfied. In particular, $\limsup_{t>0}
+  \mathcal{G}_\rho(t;\delta_0) = 0$.
+\end{example}
+
+
+\begin{example}[More initial conditions not in the weighted $L^2$ space]\label{Ex:Riesz}
+  In this example, we study the case when $\mu(\ud x) = \lvert x \rvert^{-\alpha}\ud x$ for some $\alpha\in
+  (0,d)$. It is clear that when $\alpha\in (d/2,d)$, $\mu\not\in L_\rho^2 (\BR^d)$. However, in this
+  case, we have
+  \begin{align*}
+    J_0(t,x) = \left(G(t,\cdot)* \lvert \cdot \rvert^{-\alpha}\right)(x)
+    \le \left(G(t,\cdot)* \lvert \cdot \rvert^{-\alpha}\right)(0).
+  \end{align*}
+  On the other hand,
+  \begin{align*}
+    \left(G(t,\cdot)* \lvert \cdot \rvert^{-\alpha}\right)(0)
+    = \frac{2\pi^{d/2}}{\Gamma(d/2)}\times (2\pi t)^{-d/2} \int_0^\infty e^{-\frac{r^2}{2t}} r^{-\alpha + d-1} \ud r = C_* t^{-\alpha/2},
+  \end{align*}
+  with $C_* = 2^{-\alpha/2}\Gamma\left((d-\alpha)/2\right)/\Gamma(d/2)$, which implies that
+  \begin{align*}
+    \mathcal{G}_\rho\left(t;\lvert \cdot \rvert^{-\alpha}\right)
+    \le \int_{\BR^d} J_0^2 (t,0) \rho(x) \ud x
+    = C_*^2 t^{-\alpha} \Norm{\rho}_{L^1 (\BR^d)},
+    \quad \text{for all $t>0$.}
+  \end{align*}
+  Therefore, we see that both conditions~\eqref{E:G} and~\eqref{E:InitData} are satisfied.
+\end{example}
+
+The following proposition shows that for initial conditions with unbounded tails,
+condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
+
+\begin{proposition}\label{P:growtail}
+  Suppose that $\rho(x) = \exp(-\lvert x \rvert)$, which is an admissible weight function. Let the initial
+  condition $\mu$ be given as $\mu(\ud x) = \lvert x \rvert^\alpha \ud x$ with $\alpha>0$. Then for some
+  constants $C, C'>0$ that depend on $d$ and $\alpha$, it holds that
+  \begin{align}\label{E:growtail}
+    C' (1+t^\alpha) \le \mathcal{G}_\rho(t;\lvert \mu \rvert) \le C (1+t^\alpha), \qquad \text{for all $t>0$}.
+  \end{align}
+  In particular, this implies that condition~\eqref{E:G} is satisfied, but condition~\eqref{E:InitData} fails.
+\end{proposition}
+\begin{proof}
+  Notice that by scaling arguments,
+  \begin{align*}
+    \mathcal{G}_\rho(t;\lvert \mu \rvert)
+      & =  \int_{\BR^d} \left(\int_{\BR^d}G(t,x-y) \lvert y \rvert^\alpha \ud y\right)^2 e^{-\lvert x \rvert} \ud x \\
+      & = \int_{\BR^d}t^{\alpha+d/2} \left(\int_{\BR^d}G\left(1,\xi-z\right) \lvert z \rvert^\alpha \ud z\right)^2 e^{-\sqrt{t}\lvert\xi\rvert} \ud \xi.
+  \end{align*}
+  In the following, let $C_d$, $C_\alpha$, $C_\alpha'$, $C_{\alpha, d}$ and $C'_{\alpha, d}$ be
+  generic constants that may depend on $\alpha $ and $d$ and may change their value at each
+  appearance. \medskip
+
+  \noindent\textit{Upper bound:~} Because
+  \begin{align*}
+    % \int_{\BR^d}G\left(1,\xi-z\right) \lvert z \rvert^\alpha \ud z
+    \int_{\BR^d}G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ud z
+    \le C_\alpha \int_{\BR^d}G\left(1,z\right) \left(\lvert\xi\rvert^\alpha + \lvert z \rvert^\alpha\right) \ud z
+    \le C_\alpha' \left(1+\lvert\xi\rvert^\alpha\right),
+  \end{align*}
+  we see that $\mathcal{G}_\rho(t;\mu)$ is bounded from above by
+  \begin{align*}
+    & C_\alpha \int_{\BR^d}t^{\alpha+d/2} \left(1+\lvert\xi\rvert^{2\alpha}\right) e^{-\sqrt{t}\lvert\xi\rvert} \ud \xi
+    % & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r \\
+      = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)
+      = C'_{\alpha, d} (1+ t^\alpha),
+  \end{align*}
+  the far right-hand of which is finite. This proves the upper bound in~\eqref{E:growtail}. \medskip
+
+  \noindent\textit{Lower bound:~} Now we prove the lower bound in~\eqref{E:growtail}. Indeed,
+  \begin{align*}
+    \MoveEqLeft \int_{\BR^d}G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ud z
+      \ge \int_{\BR^d}G\left(1,z\right) \lvert \lvert\xi\rvert - \lvert z \rvert \rvert^\alpha \ud z \\
+    & \ge {C_d} \int_0^\infty \lvert \lvert\xi\rvert - x \rvert^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x
+      \ge C_d \int_1^2 \lvert \lvert\xi\rvert - x \rvert^\alpha \ud x
+      = \frac{C_d}{1+\alpha} \psi\left(\lvert\xi\rvert\right),
+  \end{align*}
+  where, by considering three cases, we have
+  \begin{align*}
+    \psi(r)
+    & =
+    \begin{cases}
+      (2-r)^{\alpha+1} - (1-r)^{\alpha+1} & \text{if $0<r<1$},        \\
+      (2-r)^{\alpha+1} + (r-1)^{\alpha+1} & \text{if $1\le r \le 2$}, \\
+      (r-1)^{\alpha+1} - (r-2)^{\alpha+1} & \text{if $r > 2$},
+    \end{cases}
+  \end{align*}
+  which is equal to $\text{sgn}(2-r)\lvert r-2 \rvert^{\alpha+1} + \text{sgn}(r-1) \lvert r-1 \rvert^{\alpha+1}$.
+  We claim that
+  \begin{align}\label{E:psi}
+    \inf_{r\ge 0} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}>0.
+  \end{align}
+  With~\eqref{E:psi}, we have that
+  \begin{align*}
+    \int_{\BR^d}G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ud z \ge C_{\alpha, d} \sqrt{1+\lvert\xi\rvert^{2\alpha}}.
+  \end{align*}
+  Then, by the same arguments as above for the upper bound, we obtain the lower bound
+  in~\eqref{E:growtail}. It remains to prove~\eqref{E:psi}, which will be proved in three cases.
+
+  When $r>2$, we see that
+  \begin{align*}
+    \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}}
+    & \ge C_\alpha \frac{(r-1)^{\alpha+1}-(r-2)^{\alpha+1}}{(1+r)^\alpha}
+      \ge C_\alpha \frac{(r-1)^{\alpha}(r-1)-(r-1)^{\alpha}(r-2)}{(1+r)^\alpha} \\
+    & = C_\alpha \left(\frac{r-1}{1+r}\right)^\alpha
+      = C_\alpha \left(1-\frac{2}{1+r}\right)^\alpha \ge C_\alpha \left(1-\frac{2}{3}\right)^\alpha.
+  \end{align*}
+  Note that in the first inequality above, we have considered two cases: $2\alpha \ge 1$ and $2
+  \alpha < 1$. When $2\alpha < 1$, we have used the concavity of $x^{2\alpha}$, namely, $ (1 +
+  r^{2\alpha})^{2\alpha} / 2 \le ((1+r)/2)^{2\alpha}$; when $2\alpha \ge 1$, we have used the
+  super-additivity of $x^{2\alpha}$: namely, that for $a,b>0$ that $ (a+b)^{2\alpha}\ge a^{2\alpha}
+  + b^{2\alpha}$. Therefore, $\inf_{r>2} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} >0$.
+
+  When $r\in(1,2]$, elementary calculations show that the minimum of $\psi(r)$ is achieved at
+  $r = 3/2$. Hence, $\inf_{r\in(1,2]} \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(3/2)
+}{\sqrt{1+4^\alpha}}>0$.
+
+  Similarly, when $r\in (0,1]$, by differentiation, one finds that the function $\psi(r)$ is
+  nonincreasing. Hence, the minimum is achieved at $r = 1$, $\inf_{r\in(0,1]}
+  \frac{\psi(r)}{\sqrt{1+r^{2\alpha}}} \ge \frac{\psi(1)}{\sqrt{2}}>0$.
+
+  Combing the above three cases proves~\eqref{E:psi} and hence, Proposition~\ref{P:growtail}.
+\end{proof}
+
+\subsection{Bessel and other related kernels}\label{SS:Bassel}
+
+In this part, we will make some explicit computations for Bessel and related kernels.
+
+\begin{example}[Bessel kernel]\label{Ex:Bessel}
+  Let $f_s$ denote the Bessel kernel with a strictly positive parameter $s>0$. It is known that
+  (see, e.g., Section 1.2.2 of~\cite{grafakos:14:modern})
+  \begin{enumerate}
+    \item $f_s(x)>0$ for all $x\in\BR^d$ and $ \Norm{f_s}_{L^1 (\BR^d)} = 1$;
+    \item there exists a constant $C(s,d)>0$ such that $f_s(x) \le C(s,d) \exp(-\lvert x \rvert/2)$ for $\lvert x \rvert\ge
+      2$.
+    \item there exists a constant $c(s,d)>0$ such that
+      \begin{gather*}
+        \frac{1}{c(s,d)} \le \frac{f_s(x)}{H_s(x)} \le c(s,d) \quad \text{for} \quad \lvert x \rvert \le 2,
+        \shortintertext{with}
+        H_s(x) =
+        \begin{cases}
+          \lvert x \rvert^{s-d} + 1 + O(\lvert x \rvert^{s-d+2}) & \text{for $0<s<d$,} \\
+          \log\left(\frac{2}{\lvert x \rvert}\right) + 1 + O(\lvert x \rvert^{2}) & \text{for $s = d$,} \\
+           1 + O(\lvert x \rvert^{s-d}) & \text{for $s>d$;}
+        \end{cases}
+        \end{gather*}
+      \item the Fourier transform of $f_s$ is strictly positive:
+        \begin{equation}\label{E:FB}
+          \mathcal{F}f_s(\xi) = \frac{1}{(1+\lvert\xi\rvert^2)^{s/2}}.
+        \end{equation}
+  \end{enumerate}
+  Note that one can use~\eqref{E:FB} as the definition of the Bessel kernel. Properties 1 and 4
+  ensure that $f_s$ is a nonnegative and nonnegative-definite tempered measure for all $s>0$.
+\end{example}
+
+\begin{example}[Mat\'ern class of correlation functions]
+  The \textit{Mat\'ern class of correlation functions} has been widely used in spatial statistics;
+  one may check the recent work~\cite{loh.sun.ea:21:on} for references. Following Section 2.10
+  of~\cite{stein:99:interpolation}, this class of correlation functions is given by
+  \begin{align}\label{E:Matern}
+    K(x) = \phi \cdot (\alpha \lvert x \rvert)^\nu \mathcal{K}_\nu\left(\alpha \lvert x \rvert\right), \quad \text{for
+    $x\in\BR^d$ with $\phi>0$, $\alpha>0$, $\nu >0$},
+  \end{align}
+  where $\mathcal{K}_\nu(\cdot)$ is the modified Bessel function of second type, and $\alpha$ and
+  $\nu$ refer to the \textit{scaling and smoothness parameters}, respectively. From the inversion
+  formula (see p. 46 \textit{ibid.}), one sees that, for all $\xi\in\BR^d$,
+  \begin{align*}
+    \mathcal{F}K(\xi) = (2\pi)^{d} \mathcal{F}^{-1} K(\xi) = (2\pi)^d f(\lvert\xi\rvert)
+    \quad \text{with} \quad
+    f(\xi) = \frac{2^{\nu-1} \phi \Gamma\left(\nu +d/2\right)\alpha^{2\nu}}{\pi^{d/2}\left(\alpha^2+\lvert\xi\rvert^2\right)^{\nu+d/2}}.
+  \end{align*}
+  Comparing the above expression with~\eqref{E:FB}, we see that the class of Bessel kernels $f_s$,
+  with $s>d-2$ and $d\ge 3$, includes the Mat\'ern class~\eqref{E:Matern} as a special case under
+  the following choice of parameters:
+  \begin{align*}
+    \alpha = 1,\quad \nu = (s-d)/2,\quad \text{and} \quad \phi = 2^{(2-d-s)/2} \pi^{-d/2} \Gamma(s /2)^{-1}.
+  \end{align*}
+  Note that the requirement of the smoothness parameter $\nu>0$ for the Mat\'ern class corresponds
+  to the case of the Bessel kernel with $s>d$.
+\end{example}
+
+
+The following proposition shows what conditions~\eqref{E:Dalang-a0},~\eqref{E:Dalang-00},
+and~\eqref{E:Dalang-H} reduce to for the Bessel kernel as the correlation function in terms of its
+parameters.
+
+\begin{proposition}[Bessel kernel as correlation function]\label{P:Bessel}
+  If the correlation function $f$ is given by the Bessel kernel $f_s(\cdot)$ with $s>0$ defined in
+  Example~\ref{Ex:Bessel}, then
+  \begin{align}\label{E:UpsionB}
+    \Upsilon_{\alpha}(0) = \frac{\Gamma\left(\frac{d}{2} -1 + \alpha\right) \Gamma\left(\frac{s-d}{2} + 1 - \alpha\right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s/2\right)}
+    \qquad \text{for all $s>d-2(1-\alpha)>0$,}
+  \end{align}
+   and in particular when $\alpha = 0$,~\eqref{E:UpsionB} simplifies to the following:
+  \begin{equation}\label{E:Upsilon_0}
+     \Upsilon(0) = \frac{\Gamma\left(\frac{2+s-d}{2}\right)}{2^{d-1} \pi^{d/2} (d-2)\Gamma(s/2)}
+     \qquad \text{for all $s>d-2>0$.}
+  \end{equation}
+  In addition,
+  \begin{gather}\label{E:HaB}
+    \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad \Longleftrightarrow \quad
+    0<\alpha<\frac{1}{2} - \frac{(d-s)_+}{4}\quad \text{and} \quad s>d-2>0,
+  \end{gather}
+  where $a_+ \coloneqq \max(a,0)$. Moreover, for $\alpha\in(0,1/2)$, we have the following asymptotic
+  behavior of
+  $\mathcal{H}_\alpha(t)$ at $t\to 0$: % \renewcommand{\arraystretch}{2}
+  \begin{align}\label{E:HaBS}
+    \hspace{-1em}
+    \mathcal{H}_\alpha(t) = \left\{
+      \begin{array}{lcl}
+        \begin{aligned}
+          \dfrac{\pi^{d/2} \Gamma\left((d-s)/2\right) t^{(s-d)/2+1-2\alpha}}{\left((s-d)/2+1-2\alpha\right)\Gamma(d/2)}                   \\[1em]
+          \quad - \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)}{(1-2\alpha)\Gamma(s/2)}              t^{1-2\alpha}                          \\[1em]
+          +                                                                                        O\left(t^{(s-d)/2+2(1-\alpha)}\right), \\[1.2em]
+        \end{aligned}
+        &
+        \begin{gathered}
+         d-2<s<d    \\
+         \text{and} \\
+         \alpha < \frac{1}{2} -\frac{1}{4}(d-s)
+       \end{gathered} & \text{\em(\ref{E:HaBS}-a)} \\
+        \begin{aligned}
+            \frac{\pi ^{d/2}}{(1-2 \alpha) \Gamma \left(d/2\right)}t^{1-2\alpha}\log\left(\frac{1}{t}\right)                                    \\[1em]
+           +\frac{\pi ^{d/2} \left(1- (1-2 \alpha) \left[\psi(d/2)+2\gamma\right]\right)}{(1-2 \alpha)^2 \Gamma \left(d/2\right)}t^{1-2 \alpha} \\[1em]
+           +O\left(t^2\log(t)\right),                                                                                                           \\[1.2em]
+        \end{aligned}                                                                                                           & s=d     & \text{\em(\ref{E:HaBS}-b)} \\[1em]
+        \dfrac{\pi^{d/2}\Gamma\left((s-d)/2\right)t^{1-2\alpha}}{(1-2\alpha)\Gamma(s/2)} + O\left(t^{\frac{s-d}{2} +1-2\alpha}\right), & d<s<d+2 & \text{\em(\ref{E:HaBS}-c)} \\[1.5em]
+        \dfrac{\pi^{d/2}t^{1-2\alpha} }{(1-2\alpha)\Gamma\left(d/2+1\right)} + O\left(t^{2(1-\alpha)}\log(t)\right),            & s=d+2   & \text{\em(\ref{E:HaBS}-d)} \\[1.5em]
+        \dfrac{\pi^{d/2}t^{1-2\alpha} }{(1-2\alpha)\Gamma\left(d/2+1\right)} + O\left(t^{2(1-\alpha)}\right),                   & s>d+2   & \text{\em(\ref{E:HaBS}-e)} \\[1.5em]
+      \end{array}
+      \right.
+  \end{align}
+  where $\psi(x) = \frac{\ud}{\ud x}\log\Gamma(x)$ refers to the \emph{digamma function} and
+  $\gamma\approx 0.57721$ to \emph{Euler's constant}; see, e.g., 5.2.2 and 5.2.3 on p. 136
+  of~\cite{olver.lozier.ea:10:nist}.
+\end{proposition}
+\begin{proof}
+  By the spherical coordinate integration formula and~\eqref{E:FB}, for all $\alpha\in[0,1)$,
+  \begin{align*}
+    \Upsilon_\alpha(0) = \left(2\pi\right)^{-d} \int_{\BR^d} \frac{\ud\xi}{\lvert\xi\rvert^{2(1-\alpha)}\left(1+\lvert\xi\rvert^2\right)^{s/2}}
+    = \left(2\pi\right)^{-d} C_d \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r,
+  \end{align*}
+  where $C_d\coloneqq \frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}$. Now by the change of variables
+  $z = r^2 /(1+r^2)$, we can evaluate the above integral explicitly by transforming it to the Beta
+  integral:
+  \begin{align*}
+    \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r
+     & = \frac{1}{2} \int_0^1 z^{d/2+\alpha-2}(1-z)^{(s-d)/2-\alpha}\ud z \\
+     & = \frac{\Gamma\left(d/2-1+\alpha\right)\Gamma\left((s-d)/2+1-\alpha\right)}{2\Gamma(s/2)},
+  \end{align*}
+  which is finite provided that $s>d-2(1-\alpha)>0$. This proves~\eqref{E:UpsionB} and from this, we
+  easily deduce~\eqref{E:Upsilon_0} by letting $\alpha = 0$ in~\eqref{E:UpsionB} and by applying the
+  formula $\Gamma(z+1) = z\Gamma(z)$, which holds for $z\in \mathbb{C}$ such that $\Re(z)>0$.
+
+  It remains to prove~\eqref{E:HaBS}, which then implies~\eqref{E:HaB}. From~\eqref{E:H} and by the
+  spherical coordinate integration formula, for all $t>0$,
+  \begin{align*}
+    \mathcal{H}_{\alpha}(t)
+    & = \int_0^t \ud r \; r^{-2\alpha} \int_{\BR^d} \ud \xi \; \frac{\exp(-r\lvert\xi\rvert^2)}{(1+\lvert\xi\rvert^2)^{s/2}} \\
+    % & = C_d \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud z \; \frac{\exp(-r z^2)}{(1+z^2)^{s/2}} z^{d-1} \\
+    & = \frac{C_d}{2} \int_0^t \ud r \; r^{-2\alpha} \int_0^\infty \ud u \; \exp(-r u)(1+u)^{-s/2} u^{d/2-1} \\
+    & \eqqcolon \frac{C_d \Gamma\left(d/2\right)}{2} \int_0^t \ud r \; r^{-2\alpha} I(r) = \pi^{d/2}\int_0^t \ud r \; r^{-2\alpha} I(r).
+    % & = C_d \int_0^t \ud r \; r^{-2\alpha+ (s-d) /2} \int_0^\infty \ud z \; \frac{\exp(-z^2)}{(r+z^2)^{s/2}} z^{d-1}.
+  \end{align*}
+  By~\cite[13.4.4 on p.326]{olver.lozier.ea:10:nist}, $I(r)$ is equal to the \textit{confluent
+  hypergeometric function}:
+  \begin{align}\label{E:ConHyGe}
+    I(r) =U\left(\frac{d}{2},\frac{2+d-s}{2},r\right).
+  \end{align}
+  By 18.2.18 -- 13.2.22 on p. 323 \textit{ibid.}, we see that \renewcommand{\arraystretch}{2}
+  \begin{align*}
+    I(r) = \left\{
+      \begin{array}{lcl}
+        \dfrac{\Gamma\left(\frac{d-s}{2}\right)r^{\frac{s-d}{2}}}{\Gamma(d/2)}+\dfrac{\Gamma\left(\frac{s-d}{2}\right)}{\Gamma(s/2)} + O\left(r^{\frac{s-d}{2}+1}\right) & d-2<s<d & \text{\small 18.2.18}, \\
+        -\dfrac{1}{\Gamma(d/2)}\left(\log(r) + \psi(d/2) + 2\gamma \right) +O\left(r\log(r)\right)                                                                       & s=d     & \text{\small 18.2.19}, \\
+        \dfrac{\Gamma\left(\frac{s-d}{2}\right)}{\Gamma(s/2)} + O\left(r^{(s-d)/2}\right)                                                                                & d<s<d+2 & \text{\small 18.2.20}, \\
+        \dfrac{1}{\Gamma\left(d/2+1\right)} + O\left(r\log(r)\right)                                                                                                     & s=d+2   & \text{\small 18.2.21}, \\
+        \dfrac{\Gamma\left(\frac{s-d}{2}\right)}{\Gamma(s/2)} + O\left(r\right)                                                                                          & s>d+2   & \text{\small 18.2.22}. \\
+      \end{array}
+      \right.
+  \end{align*}
+  Then integrating the right-hand side of the above expressions against $\pi^{d/2}r^{-2\alpha}\ud r$
+  over $[0,t]$ gives the five cases in~\eqref{E:HaBS}. This completes the proof of
+  Proposition~\ref{P:Bessel}.
+\end{proof}
+
+Similarly, one can use the Bessel kernel as the spectral density. In this case, we have the
+following proposition:
+
+\begin{proposition}[Bessel kernel as spectral density]\label{P:Bessel'}
+  Suppose that the spectral density $\widehat{f}$ is given by the Bessel kernel $f_s(\cdot)$ defined
+  in Example~\ref{Ex:Bessel} (see~\eqref{E:FB}), or in other words, suppose that the correlation
+  function $f(x)$ is given by $f(x) = \left(1+\lvert x \rvert^2\right)^{-s/2}$ for $s>0$. Then
+  \begin{align}\label{E:UpsionB'}
+    \Upsilon_{\alpha}(0)
+    = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) }
+    \qquad \text{for all $s\wedge d>2(1-\alpha)>0$,}
+  \end{align}
+   and in particular when $\alpha = 0$,~\eqref{E:UpsionB'} simplifies to the following:
+  \begin{equation}\label{E:Upsilon_0'}
+     \Upsilon(0) = \frac{2^{1-2 d}\pi^{-3d/2}}{(s-2)\Gamma\left(d/2\right)}
+     \qquad \text{for all $s\wedge d>2$.}
+  \end{equation}
+  In addition,
+  \begin{gather}\label{E:HaB'}
+    \mathcal{H}_\alpha(t) <\infty \quad \forall t>0 \quad \Longleftrightarrow \quad
+    0<\alpha<\frac{1}{2} \quad \text{and} \quad s>0.
+  \end{gather}
+ Moreover, for $\alpha\in(0,1/2)$, we have the following asymptotic
+  \begin{align}\label{E:HaBS'}
+    \mathcal{H}_\alpha(t) \sim \frac{t^{1-2\alpha}}{1-2\alpha}, \quad \text{as $t\downarrow 0.$}
+  \end{align}
+\end{proposition}
+\begin{proof}
+  By similar arguments as Proposition~\ref{P:Bessel}, we have that
+	\begin{align*}
+     \Upsilon_{\alpha}(0)
+     & = (2\pi)^{-d} \int_{\BR^d} \frac{f_s(\xi)}{\lvert\xi\rvert^{2(1-\alpha)}} \ud \xi
+       = (2\pi)^{-2d} \int_{\BR^d} \frac{\widehat{f}_s(\xi)}{\lvert\xi\rvert^{d-2(1-\alpha)}} \ud \xi                                                               \\
+     & = (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_0^\infty \frac{r^{d-1}}{ \left(1+r^2\right)^{s / 2} \: r^{d - 2(1-\alpha)} } \ud r
+       = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) },
+	\end{align*}
+  which is finite provided $s>2(1-\alpha)$. Note that in the second equality in the above chain of
+  equalities, we need the condition $d>2(1-\alpha)$. This proves both~\eqref{E:UpsionB'}
+  and~\eqref{E:Upsilon_0'}.
+
+  As for~\eqref{E:HaB'},
+	\begin{align*}
+        \mathcal{H}_\alpha(t)
+    & = \int_{0}^t \ud r \: r^{-2\alpha} \int_{\BR^d} \ud \xi \: f_{s}(\xi) \exp\left(-r\lvert\xi\rvert^2\right)                                                                 \\
+    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\BR^d} \ud \xi \: \widehat{f}_{s}(\xi) \exp\left(-\frac{\lvert\xi\rvert^2}{4r}\right) r^{-d/2}              \\
+    & = (2\pi)^{-d} \pi^{d/2} \int_{0}^t \ud r \: r^{-2\alpha} \int_{\BR^d} \ud \xi \: \left(1 + \lvert\xi\rvert^2\right)^{-s / 2} \exp\left(-\frac{\lvert\xi\rvert^2}{4r}\right) r^{-d/2} \\
+    & = (2\pi)^{-d} \pi^{d/2} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_{0}^t \ud r \: r^{-2\alpha - d/2} \int_0^{\infty} \ud z \: z^{d-1} \left(1 + z^2\right)^{-s/2} \exp\left(-\frac{z^2}{4r}\right),
+\end{align*}
+  where we have used Plancherel's theorem and the following identities:
+	\begin{align*}
+    \mathcal{F}\left(\exp(-\lvert \cdot \rvert^2)\right)(\xi) = \pi^{d/2} \exp\left(-4^{-1}\lvert\xi\rvert^2\right) \quad \text{and} \quad
+    \mathcal{F}(f(a\cdot))(\xi) = a^{-d}\mathcal{F}f(\xi / a).
+	\end{align*}
+  Then, by the same arguments as Proposition~\ref{P:Bessel},
+	\begin{align*}
+        \mathcal{H}_\alpha(t)
+     & = 2^{-d} \int_{0}^t \ud r \: r^{-2\alpha - d/2} I\left(\frac{1}{4r}\right),
+      \quad \text{with $I(r) = U\left(\frac{d}{2}, \frac{2+d-s}{2}, r\right)$,}
+	\end{align*}
+  where $U$ is given in~\eqref{E:ConHyGe}. Since $I(r) \sim r^{-d/2}$ as $r \to \infty$, we see that
+  $I\left(\frac{1}{4r}\right) \sim (4r)^{d/2}$ as $r \to 0$ (see 13.2.6 on p. 322
+  of~\cite{olver.lozier.ea:10:nist}). Hence, the above integral behave as follows:
+	\begin{align*}
+     \mathcal{H}_\alpha(t)
+     \sim \int_{0}^t \ud r \: r^{-2\alpha - \frac{d}{2}} (4r)^{d/2}
+     = \int_{0}^t \ud r \: r^{-2\alpha}
+     = \frac{t^{1-2\alpha}}{1-2\alpha},
+	\end{align*}
+  provided $\alpha \in (0, 1/2)$, which proves both~\eqref{E:HaB'} and~\eqref{E:HaBS'}.
+\end{proof}
+
+
+The necessity of the finiteness of $\Upsilon(0)$ excludes the Riesz kernel as a choice for the
+spectral density. However, we can still construct a Riesz-type kernel which has polynomial growth at
+the origin and polynomial decay at infinity, but with different rates, using
+Propositions~\ref{P:Bessel} and~\ref{P:Bessel'}. This Riesz-type type kernel gives another example
+of a kernel that is easily verifiable to be permissible under the conditions of our
+Theorem~\ref{T:Main} above, while being demanding to verify using~\eqref{E:TZspec}; see
+Example~\ref{Ex:Riesz-T} for more details.
+
+\begin{example}[Riesz-type kernel]\label{Ex:Riesz-T}
+  For $s_1, s_2\in (0,d)$, let $f_{s_1}$ and $f_{s_2}$ be Bessel kernels as in
+  Example~\ref{Ex:Bessel}. Define
+  \begin{align*}
+    r(x)\coloneqq f_{s_1}(x) + \widehat{f}_{s_2}(x) \quad \text{or equivalently} \quad
+    \widehat{r}(\xi)\coloneqq \widehat{f}_{s_1}(x) + f_{s_2}(x).
+  \end{align*}
+  It is easy to see that $r(\cdot)$ is both non-negative and non-negative definite which follows
+  immediately from the linearity of the Fourier transform and the fact that the Bessel kernel is
+  both non-negative and non-negative definite. Also, we easily deduce from properties (2) - (4) in
+  Example~\ref{Ex:Bessel} that
+  \begin{align*}
+    r(x) \sim
+    \begin{cases}
+      \lvert x \rvert^{s_1-d} & \lvert x \rvert \to 0, \\
+      \lvert x \rvert^{-s_2}  & \lvert x \rvert \to \infty,
+    \end{cases}
+    \quad \text{and} \quad
+    \widehat{r}(\xi) \sim
+    \begin{cases}
+      \lvert\xi\rvert^{s_2 - d} & \lvert\xi\rvert \to 0, \\
+      \lvert\xi\rvert^{-s_1}    & \lvert\xi\rvert \to \infty.
+    \end{cases}
+  \end{align*}
+  Propositions~\ref{P:Bessel} and~\ref{P:Bessel'} imply that
+  \begin{align}\label{E:RieszType-0}
+    \Upsilon(0) & =
+    \frac{\Gamma\left(d/2 -1\right) \Gamma\left((s_1 - d)/2 + 1\right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
+    + \frac{\Gamma\left(s_2/2 - 1\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2/2\right)} \qquad \text{and} \\
+    \Upsilon_{\alpha}(0) & =
+    \frac{\Gamma\left(d/2 -1 + \alpha\right) \Gamma\left((s_1 - d)/2 + 1 - \alpha\right)}{2^d \pi^{d/2} \: \Gamma(d/2)\:\Gamma\left(s_1/2\right)}
+    + \frac{\Gamma\left(1 - \alpha\right) \Gamma\left( s_2/2 + \alpha - 1\right)}{2^{2d} \pi^{3d/2} \: \Gamma(d/2) \: \Gamma\left(s_2/2\right)},
+    \label{E:RieszType}
+  \end{align}
+  which are finite provided that
+	\begin{align}\label{E:RieszTypeCond}
+    \begin{cases}
+      0 < d - 2(1-\alpha) < s_1 \\
+      0 < 2(1-\alpha) < s_2
+    \end{cases}
+    \text{and} \quad
+    \begin{cases}
+      0 < d - 2(1-\alpha) < s_1 \\
+      0 < 2(1-\alpha) < s_2
+    \end{cases},
+    \quad \text{respectively.}
+	\end{align}
+  In contrast, it is not clear how to compute $\mathcal{F}\big(\sqrt{\widehat{r}}\:\big)$; see
+  condition~\eqref{E:TZspec}. This is the case when neither condition~\eqref{E:Dalang-00} nor
+  condition~\eqref{E:Dalang-a0} implies each other.
+\end{example}
+
+
+\subsection{Examples of admissible weight functions}\label{SS:Weight}
+
+In this part, we give some examples of the admissible weight functions. As given in Section 2
+of~\cite{tessitore.zabczyk:98:invariant}, the following functions are admissible functions:
+\begin{equation}\label{E:admRho}
+\begin{dcases}
+  \rho(x) = \exp(-a\lvert x \rvert)               & a>0, \\
+  \rho(x) = \left(1+\lvert x \rvert^a\right)^{-1} & a>d.
+\end{dcases}
+\end{equation}
+
+The smaller the weight function $\rho(\cdot)$ (not necessarily admissible) is, the larger the space
+$L_\rho^2(\BR^d)$ is. For example, one may choose $\rho$ to be either a nonnegative function with
+compact support or the heat kernel itself $G(1,\cdot)$. In both cases, $\rho$ is smaller than those
+in~\eqref{E:admRho} (up to a constant). However, one can easily check that the admissible
+condition~\eqref{E:aw} excludes these two cases. However, the examples in the following
+Proposition~\ref{P:adm} seem to be less obvious:
+
+\begin{proposition}\label{P:adm}
+  $\rho_b(\cdot)$ is admissible if and only if $b\in (0,1]$ where
+	\begin{equation*}
+	\rho_b(x) \coloneqq \exp\left(-\lvert x \rvert^b\right), \quad x\in\BR^d,
+	\quad \text{with $b>0$.}
+	\end{equation*}
+\end{proposition}
+\begin{proof}
+  From Definition~\ref{D:Rho}, we see that $\rho_b$ is admissible if and only if for all $T>0$,
+	\begin{align*}
+	\sup_{(t,x)\in[0,T]\times\BR^d} \int_{\BR^d} \left(2\pi t\right)^{-d/2} e^{-\frac{\lvert x-y \rvert^2}{2t} + (\lvert x \rvert^b - \lvert y \rvert^b)} \ud y <\infty.
+	\end{align*}
+  Denote the above integral by $I(t,x)$. We will use $C$ to denote a generic constant that does not
+  depend on $(t,x)$, which value may change at each occurrence.
+
+	We first assume that $b\in (0,1]$. In this case,
+	\begin{align*}
+    \lvert  x  \rvert ^b
+    = \lvert  x-y +y  \rvert ^b
+    \le \left(\lvert x-y \rvert + \lvert y \rvert\right)^b
+    \le \lvert x-y \rvert^b + \lvert y \rvert^b.
+	\end{align*}
+	Hence,
+	\begin{align*}
+    I(t,x) \le C \int_{\BR^d} t^{-d/2} e^{-\frac{\lvert x-y \rvert^2}{2t} + \lvert x-y \rvert^b} \ud y
+    % = C \int_{\BR^d} t^{-d/2} e^{-\frac{\lvert y \rvert^2}{2t} + \lvert y \rvert^b} \ud y
+    = C \int_{0}^\infty t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
+	\end{align*}
+	Then by applying the change of variables $r' = t^{-1/2}r$,
+	\begin{align*}
+    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{d-1}\ud r
+    \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}\ud r
+    < \infty.
+	\end{align*}
+
+  Next we assume that $b>1$. We need to show that $\rho_b$ is not admissible. Without loss of
+  generality, we assume that $d\ge 2$. The case when $d = 1$ is easier and can be proved similarly
+  as the proof below. It suffices to show that
+	\begin{align*}
+    \lim_{r\to\infty} I(1/2,x_r) = \infty, \quad \text{where $x_r:=(r,0,\cdots,0)\in\BR^d$.}
+	\end{align*}
+  Without loss of generality, we may assume that $r\gg 2$. Denote $y=(y_1,\cdots, y_d) = (y_1,y_*)$
+  with $y_*\in\BR^{d-1}$. Using the subadditivity (resp. convexity) of $(x+y)^{b/2}$ when $b\in
+  (1,2]$ (resp. $b>2$), we see that
+	\begin{align*} % \label{E_:y}
+	\lvert  y  \rvert ^b =  \left(y_1^2+y_2^2+\cdots+y_d^2\right)^{b/2}
+	\le c \lvert y_1 \rvert^b + \left(y_2^2+\cdots+y_d^2\right)^{b/2}
+	=   c \lvert y_1 \rvert^b + c \lvert y_* \rvert^b,
+	\end{align*}
+  where $c \coloneqq 1 \wedge 2^{b/2 -1}$. Hence,
+	\begin{align*}
+    I\left(1/2,x_r\right)
+    & = C \int_{\BR^d} e^{- \left(\sum_{i = 2}^{d} y_i^2\right) - \lvert y_1-r \rvert^2 + (r^b - \lvert y \rvert^b)} \ud y                \\
+    & \ge C \int_{\BR^{d-1}}\ud y_* \int_\BR \ud y_1\: e^{- \lvert y_* \rvert^2 -\lvert y_* \rvert^b - \lvert y_1-r \rvert^2 + (r^b - c \lvert y_1 \rvert^b)}     \\
+    & = C \int_{\BR^{d-1}}\ud y_* \: e^{- \lvert y_* \rvert^2 -c \lvert y_* \rvert^b} \int_\BR \ud y_1\: e^{- \lvert y_1-r \rvert^2 + r^b - c\lvert y_1 \rvert^b} \\
+    & = C \int_\BR e^{- y^2 + r^b - c \lvert y-r \rvert^b} \ud y
+      \ge C \int_0^r e^{- y^2 + r^b - c \lvert y-r \rvert^b} \ud y \eqqcolon C K(r).
+  \end{align*}
+  It suffices to show that $\lim_{r\to\infty}K(r) = \infty$, which is true when $b>2$ because
+  \begin{align*}
+    K(r)
+    & \ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
+      \ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
+    = \frac{r}{2} e^{ \left(1-2^{-1-b/2}\right)r^b -r^2 },
+	\end{align*}
+  which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
+	\begin{align*} % \label{E_:K'}
+	K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y.
+	\end{align*}
+  By the intermediate value theorem, we see that $r^{b-1} - (r-y)^{b-1} = (b-1) y \xi^{b-2}$ for
+  some $\xi\in [r-y,r]$. Since $b-1\in(0,1]$, this implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y
+  r^{b-2}$. Hence,
+	\begin{align*}
+	K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \ud y \\
+	& \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y
+	\ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
+	\end{align*}
+  Another application of the intermediate value theorem shows that $r^b-(r-1)^b = b \xi^{b-1}$ with
+  $\xi\in [r-1,r]$. Hence, $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
+	\begin{align*}
+	K'(r) & \ge C r^{b-2} \exp\left(b (r-1)^{b-1}\right).
+	\end{align*}
+  Hence, for $r \gg 2$, $K'(r)$ is positive and unbounded as $r\to\infty$. Therefore, this implies
+  that $K(r)$ blows up as $r\to\infty$, which completes the proof of Proposition~\ref{P:adm}.
+\end{proof}
+
+\backmatter
+
+\bmhead{Acknowledgments}
+
+L.C. thanks Sandra Cerrai for some helpful discussions and for pointing out the
+reference~\cite{misiats.stanzhytskyi.ea:16:existence} during the conference -- \textit{Frontier
+Probability Days 2018}. L.C. also thanks Yu Gu for some helpful discussions regarding the stationary
+limit obtained in~\cite{gu.li:20:fluctuations} during the \textit{Workshop: Stochastic PDEs \&
+Related Topics}, Nov. 14--16, 2022 at Brin Mathematics Research Center, University of Maryland, and
+for pointing out the reference~\cite{dunlap.gu.ea:21:random}.
+
+\bmhead{Funding and competing interests}
+\begin{itemize}
+	\item Le Chen received the {\it Travel Support for Mathematicians} grant from the Simons Foundation.
+	\item Nicholas Eisenberg has no relevant competing interests to declare.
+	\item  Data sharing not applicable to this article as no datasets were generated or analysed during the current study.
+\end{itemize}
+
+%%===========================================================================================%%
+%% If you are submitting to one of the Nature Portfolio journals, using the eJP submission   %%
+%% system, please include the references within the manuscript file itself. You may do this  %%
+%% by copying the reference list from your .bbl file, paste it into the main manuscript .tex %%
+%% file, and delete the associated \verb+\bibliography+ commands.                            %%
+%%===========================================================================================%%
+
+% {{{All references: New ones with biber
+
+% \bibliography{Invariant_Measure_SHE_biber}% common bib file
+%% if required, the content of .bbl file can be included here once bbl is generated
+%%\input sn-article.bbl
+
+\begin{thebibliography}{31}
+	% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+	\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+	\ifx \binits  \undefined \def \binits#1{#1}\fi
+	\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+	\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+	\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+	\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+	\ifx \byear  \undefined \def \byear#1{#1}\fi
+	\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+	\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+	\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+	\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+	\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+	\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+	\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+	\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+	\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+	\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+	\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+	\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+	\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+	\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+	\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+	\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+	\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+	\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+	\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+	\ifx \barticle \undefined \def \barticle#1{#1}\fi
+	\bibcommenthead
+	\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+	\ifx \botherref \undefined \def \botherref #1{#1}\fi
+	\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+	\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+	\ifx \bbook \undefined \def \bbook#1{#1}\fi
+	\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+	\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+	\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+	\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+	\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+	\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+	\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem{chen.dalang:15:moments*1}
+\begin{barticle}
+	\bauthor{\bsnm{Chen}, \binits{L.}},
+	\bauthor{\bsnm{Dalang}, \binits{R.C.}}:
+	\batitle{Moments, intermittency and growth indices for the nonlinear fractional
+		stochastic heat equation}.
+	\bjtitle{Stoch. Partial Differ. Equ. Anal. Comput.}
+	\bvolume{3}(\bissue{3}),
+	\bfpage{360}--\blpage{397}
+	(\byear{2015}).
+	\doiurl{10.1007/s40072-015-0054-x}
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem{chen.kim:19:nonlinear}
+\begin{barticle}
+	\bauthor{\bsnm{Chen}, \binits{L.}},
+	\bauthor{\bsnm{Kim}, \binits{K.}}:
+	\batitle{Nonlinear stochastic heat equation driven by spatially colored noise:
+		moments and intermittency}.
+	\bjtitle{Acta Math. Sci. Ser. B (Engl. Ed.)}
+	\bvolume{39}(\bissue{3}),
+	\bfpage{645}--\blpage{668}
+	(\byear{2019}).
+	\doiurl{10.1007/s10473-019-0303-6}
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem{chen.huang:19:comparison}
+\begin{barticle}
+	\bauthor{\bsnm{Chen}, \binits{L.}},
+	\bauthor{\bsnm{Huang}, \binits{J.}}:
+	\batitle{Comparison principle for stochastic heat equation on {$\Bbb R^d$}}.
+	\bjtitle{Ann. Probab.}
+	\bvolume{47}(\bissue{2}),
+	\bfpage{989}--\blpage{1035}
+	(\byear{2019}).
+	\doiurl{10.1214/18-AOP1277}
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem{carmona.molchanov:94:parabolic}
+\begin{barticle}
+	\bauthor{\bsnm{Carmona}, \binits{R.A.}},
+	\bauthor{\bsnm{Molchanov}, \binits{S.A.}}:
+	\batitle{Parabolic {A}nderson problem and intermittency}.
+	\bjtitle{Mem. Amer. Math. Soc.}
+	\bvolume{108}(\bissue{518}),
+	\bfpage{125}
+	(\byear{1994}).
+	\doiurl{10.1090/memo/0518}
+\end{barticle}
+\endbibitem
+
+%%% 5
+\bibitem{dalang.khoshnevisan.ea:09:minicourse}
+\begin{bbook}
+	\bauthor{\bsnm{Dalang}, \binits{R.}},
+	\bauthor{\bsnm{Khoshnevisan}, \binits{D.}},
+	\bauthor{\bsnm{Mueller}, \binits{C.}},
+	\bauthor{\bsnm{Nualart}, \binits{D.}},
+	\bauthor{\bsnm{Xiao}, \binits{Y.}}:
+	\bbtitle{A Minicourse on Stochastic Partial Differential Equations}.
+	\bsertitle{Lecture Notes in Mathematics},
+	vol. \bseriesno{1962},
+	p. \bfpage{216}.
+	\bpublisher{Springer},
+	\blocation{Berlin}
+	(\byear{2009})
+\end{bbook}
+\endbibitem
+
+%%% 6
+\bibitem{dalang:99:extending}
+\begin{barticle}
+	\bauthor{\bsnm{Dalang}, \binits{R.C.}}:
+	\batitle{Extending the martingale measure stochastic integral with applications
+		to spatially homogeneous s.p.d.e.'s}.
+	\bjtitle{Electron. J. Probab.}
+	\bvolume{4},
+	\bfpage{629}--
+	(\byear{1999}).
+	\doiurl{10.1214/EJP.v4-43}
+\end{barticle}
+\endbibitem
+
+%%% 7
+\bibitem{walsh:86:introduction}
+\begin{bchapter}
+	\bauthor{\bsnm{Walsh}, \binits{J.B.}}:
+	\bctitle{An introduction to stochastic partial differential equations}.
+	In: \bbtitle{École D'été de Probabilités de {S}aint-{F}lour, {XIV}---1984}.
+	\bsertitle{Lecture Notes in Math.},
+	vol. \bseriesno{1180},
+	pp. \bfpage{265}--\blpage{439}.
+	\bpublisher{Springer},
+	\blocation{Berlin}
+	(\byear{1986}).
+	\doiurl{10.1007/BFb0074920}
+\end{bchapter}
+\endbibitem
+
+%%% 8
+\bibitem{cerrai:01:second}
+\begin{bbook}
+	\bauthor{\bsnm{Cerrai}, \binits{S.}}:
+	\bbtitle{Second Order {PDE}'s in Finite and Infinite Dimension}.
+	\bsertitle{Lecture Notes in Mathematics},
+	vol. \bseriesno{1762},
+	p. \bfpage{330}.
+	\bpublisher{Springer},
+	\blocation{Berlin}
+	(\byear{2001}).
+	\doiurl{10.1007/b80743}
+\end{bbook}
+\endbibitem
+
+%%% 9
+\bibitem{da-prato.zabczyk:96:ergodicity}
+\begin{bbook}
+	\bauthor{\bsnm{Da~Prato}, \binits{G.}},
+	\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
+	\bbtitle{Ergodicity for Infinite-dimensional Systems}.
+	\bsertitle{London Mathematical Society Lecture Note Series},
+	vol. \bseriesno{229},
+	p. \bfpage{339}.
+	\bpublisher{Cambridge University Press},
+	\blocation{Cambridge}
+	(\byear{1996}).
+	\doiurl{10.1017/CBO9780511662829}
+\end{bbook}
+\endbibitem
+
+%%% 10
+\bibitem{da-prato.zabczyk:14:stochastic}
+\begin{bbook}
+	\bauthor{\bsnm{Da~Prato}, \binits{G.}},
+	\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
+	\bbtitle{Stochastic Equations in Infinite Dimensions},
+	\bedition{2}nd edn.
+	\bsertitle{Encyclopedia of Mathematics and its Applications},
+	vol. \bseriesno{152},
+	p. \bfpage{493}.
+	\bpublisher{Cambridge University Press},
+	\blocation{Cambridge}
+	(\byear{2014}).
+	\doiurl{10.1017/CBO9781107295513}
+\end{bbook}
+\endbibitem
+
+%%% 11
+\bibitem{tessitore.zabczyk:98:invariant}
+\begin{barticle}
+	\bauthor{\bsnm{Tessitore}, \binits{G.}},
+	\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
+	\batitle{Invariant measures for stochastic heat equations}.
+	\bjtitle{Probab. Math. Statist.}
+	\bvolume{18}(\bissue{2, Acta Univ. Wratislav. No. 2111}),
+	\bfpage{271}--\blpage{287}
+	(\byear{1998})
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem{gu.li:20:fluctuations}
+\begin{barticle}
+	\bauthor{\bsnm{Gu}, \binits{Y.}},
+	\bauthor{\bsnm{Li}, \binits{J.}}:
+	\batitle{Fluctuations of a nonlinear stochastic heat equation in dimensions
+		three and higher}.
+	\bjtitle{SIAM J. Math. Anal.}
+	\bvolume{52}(\bissue{6}),
+	\bfpage{5422}--\blpage{5440}
+	(\byear{2020}).
+	\doiurl{10.1137/19M1296380}
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem{dunlap.gu.ea:21:random}
+\begin{barticle}
+	\bauthor{\bsnm{Dunlap}, \binits{A.}},
+	\bauthor{\bsnm{Gu}, \binits{Y.}},
+	\bauthor{\bsnm{Ryzhik}, \binits{L.}},
+	\bauthor{\bsnm{Zeitouni}, \binits{O.}}:
+	\batitle{The random heat equation in dimensions three and higher: the
+		homogenization viewpoint}.
+	\bjtitle{Arch. Ration. Mech. Anal.}
+	\bvolume{242}(\bissue{2}),
+	\bfpage{827}--\blpage{873}
+	(\byear{2021}).
+	\doiurl{10.1007/s00205-021-01694-9}
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem{foondun.khoshnevisan:09:intermittence}
+\begin{barticle}
+	\bauthor{\bsnm{Foondun}, \binits{M.}},
+	\bauthor{\bsnm{Khoshnevisan}, \binits{D.}}:
+	\batitle{Intermittence and nonlinear parabolic stochastic partial differential
+		equations}.
+	\bjtitle{Electron. J. Probab.}
+	\bvolume{14},
+	\bfpage{21548}--\blpage{568}
+	(\byear{2009}).
+	\doiurl{10.1214/EJP.v14-614}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem{dalang.quer-sardanyons:11:stochastic}
+\begin{barticle}
+	\bauthor{\bsnm{Dalang}, \binits{R.C.}},
+	\bauthor{\bsnm{Quer-Sardanyons}, \binits{L.}}:
+	\batitle{Stochastic integrals for spde's: a comparison}.
+	\bjtitle{Expo. Math.}
+	\bvolume{29}(\bissue{1}),
+	\bfpage{67}--\blpage{109}
+	(\byear{2011}).
+	\doiurl{10.1016/j.exmath.2010.09.005}
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem{amir.corwin.ea:11:probability}
+\begin{barticle}
+	\bauthor{\bsnm{Amir}, \binits{G.}},
+	\bauthor{\bsnm{Corwin}, \binits{I.}},
+	\bauthor{\bsnm{Quastel}, \binits{J.}}:
+	\batitle{Probability distribution of the free energy of the continuum directed
+		random polymer in {$1+1$} dimensions}.
+	\bjtitle{Comm. Pure Appl. Math.}
+	\bvolume{64}(\bissue{4}),
+	\bfpage{466}--\blpage{537}
+	(\byear{2011}).
+	\doiurl{10.1002/cpa.20347}
+\end{barticle}
+\endbibitem
+
+%%% 17
+\bibitem{sanz-sole.sarra:02:holder}
+\begin{bchapter}
+	\bauthor{\bsnm{Sanz-Solé}, \binits{M.}},
+	\bauthor{\bsnm{Sarrà}, \binits{M.}}:
+	\bctitle{Hölder continuity for the stochastic heat equation with spatially
+		correlated noise}.
+	In: \bbtitle{Seminar on {S}tochastic {A}nalysis, {R}andom {F}ields and
+		{A}pplications, {III} ({A}scona, 1999)}.
+	\bsertitle{Progr. Probab.},
+	vol. \bseriesno{52},
+	pp. \bfpage{259}--\blpage{268}.
+	\bpublisher{Birkhäuser},
+	\blocation{Basel}
+	(\byear{2002})
+\end{bchapter}
+\endbibitem
+
+%%% 18
+\bibitem{peszat.zabczyk:97:stochastic}
+\begin{barticle}
+	\bauthor{\bsnm{Peszat}, \binits{S.}},
+	\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
+	\batitle{Stochastic evolution equations with a spatially homogeneous {W}iener
+		process}.
+	\bjtitle{Stochastic Process. Appl.}
+	\bvolume{72}(\bissue{2}),
+	\bfpage{187}--\blpage{204}
+	(\byear{1997}).
+	\doiurl{10.1016/S0304-4149(97)00089-6}
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem{chen.huang.ea:19:dense}
+\begin{barticle}
+	\bauthor{\bsnm{Chen}, \binits{L.}},
+	\bauthor{\bsnm{Huang}, \binits{J.}},
+	\bauthor{\bsnm{Khoshnevisan}, \binits{D.}},
+	\bauthor{\bsnm{Kim}, \binits{K.}}:
+	\batitle{Dense blowup for parabolic {SPDE}s}.
+	\bjtitle{Electron. J. Probab.}
+	\bvolume{24},
+	\bfpage{11833}--
+	(\byear{2019}).
+	\doiurl{10.1214/19-ejp372}
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem{da-prato.kwapien.ea:87:regularity}
+\begin{barticle}
+	\bauthor{\bsnm{Da~Prato}, \binits{G.}},
+	\bauthor{\bsnm{Kwapień}, \binits{S.}},
+	\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
+	\batitle{Regularity of solutions of linear stochastic equations in {H}ilbert
+		spaces}.
+	\bjtitle{Stochastics}
+	\bvolume{23}(\bissue{1}),
+	\bfpage{1}--\blpage{23}
+	(\byear{1987}).
+	\doiurl{10.1080/17442508708833480}
+\end{barticle}
+\endbibitem
+
+%%% 21
+\bibitem{olver.lozier.ea:10:nist}
+\begin{bbook}
+	\bauthor{\bsnm{Olver}, \binits{F.W.J.}},
+	\bauthor{\bsnm{Lozier}, \binits{D.W.}},
+	\bauthor{\bsnm{Boisvert}, \binits{R.F.}},
+	\bauthor{\bsnm{Clark}, \binits{C.W.}}:
+	\bbtitle{N{IST} Handbook of Mathematical Functions},
+	p. \bfpage{951}.
+	\bpublisher{U.S. Department of Commerce, National Institute of Standards and
+		Technology; Cambridge University Press},
+	\blocation{Washington, DC/Cambridge}
+	(\byear{2010})
+\end{bbook}
+\endbibitem
+
+%%% 22
+\bibitem{billingsley:99:convergence}
+\begin{bbook}
+	\bauthor{\bsnm{Billingsley}, \binits{P.}}:
+	\bbtitle{Convergence of Probability Measures},
+	\bedition{2}nd edn.
+	\bsertitle{Wiley Series in Probability and Statistics: Probability and
+		Statistics},
+	p. \bfpage{277}.
+	\bpublisher{John Wiley \& Sons, Inc.},
+	\blocation{New York}
+	(\byear{1999}).
+	\doiurl{10.1002/9780470316962}
+\end{bbook}
+\endbibitem
+
+%%% 23
+\bibitem{assing.manthey:03:invariant}
+\begin{barticle}
+	\bauthor{\bsnm{Assing}, \binits{S.}},
+	\bauthor{\bsnm{Manthey}, \binits{R.}}:
+	\batitle{Invariant measures for stochastic heat equations with unbounded
+		coefficients}.
+	\bjtitle{Stochastic Process. Appl.}
+	\bvolume{103}(\bissue{2}),
+	\bfpage{237}--\blpage{256}
+	(\byear{2003}).
+	\doiurl{10.1016/S0304-4149(02)00211-9}
+\end{barticle}
+\endbibitem
+
+%%% 24
+\bibitem{brzezniak.gatarek:99:martingale}
+\begin{barticle}
+	\bauthor{\bsnm{Brzeźniak}, \binits{Z.}},
+	% \bauthor{\bsnm{Ga̧tarek}, \binits{D.}}:
+    \bauthor{\bsnm{G\k{a}tarek}, \binits{D.}}:
+	% \bauthor{\bsnm{Gatarek}, \binits{D.}}:
+	\batitle{Martingale solutions and invariant measures for stochastic evolution
+		equations in {B}anach spaces}.
+	\bjtitle{Stochastic Process. Appl.}
+	\bvolume{84}(\bissue{2}),
+	\bfpage{187}--\blpage{225}
+	(\byear{1999}).
+	\doiurl{10.1016/S0304-4149(99)00034-4}
+\end{barticle}
+\endbibitem
+
+%%% 25
+\bibitem{cerrai:03:stochastic}
+\begin{barticle}
+	\bauthor{\bsnm{Cerrai}, \binits{S.}}:
+	\batitle{Stochastic reaction-diffusion systems with multiplicative noise and
+		non-{L}ipschitz reaction term}.
+	\bjtitle{Probab. Theory Related Fields}
+	\bvolume{125}(\bissue{2}),
+	\bfpage{271}--\blpage{304}
+	(\byear{2003}).
+	\doiurl{10.1007/s00440-002-0230-6}
+\end{barticle}
+\endbibitem
+
+%%% 26
+\bibitem{eckmann.hairer:01:invariant}
+\begin{barticle}
+	\bauthor{\bsnm{Eckmann}, \binits{J.-P.}},
+	\bauthor{\bsnm{Hairer}, \binits{M.}}:
+	\batitle{Invariant measures for stochastic partial differential equations in
+		unbounded domains}.
+	\bjtitle{Nonlinearity}
+	\bvolume{14}(\bissue{1}),
+	\bfpage{133}--\blpage{151}
+	(\byear{2001}).
+	\doiurl{10.1088/0951-7715/14/1/308}
+\end{barticle}
+\endbibitem
+
+%%% 27
+\bibitem{misiats.stanzhytskyi.ea:16:existence}
+\begin{barticle}
+	\bauthor{\bsnm{Misiats}, \binits{O.}},
+	\bauthor{\bsnm{Stanzhytskyi}, \binits{O.}},
+	\bauthor{\bsnm{Yip}, \binits{N.K.}}:
+	\batitle{Existence and uniqueness of invariant measures for stochastic
+		reaction-diffusion equations in unbounded domains}.
+	\bjtitle{J. Theoret. Probab.}
+	\bvolume{29}(\bissue{3}),
+	\bfpage{996}--\blpage{1026}
+	(\byear{2016}).
+	\doiurl{10.1007/s10959-015-0606-z}
+\end{barticle}
+\endbibitem
+
+%%% 28
+\bibitem{misiats.stanzhytskyi.ea:20:invariant}
+\begin{barticle}
+	\bauthor{\bsnm{Misiats}, \binits{O.}},
+	\bauthor{\bsnm{Stanzhytskyi}, \binits{O.}},
+	\bauthor{\bsnm{Yip}, \binits{N.K.}}:
+	\batitle{Invariant measures for stochastic reaction-diffusion equations with
+		weakly dissipative nonlinearities}.
+	\bjtitle{Stochastics}
+	\bvolume{92}(\bissue{8}),
+	\bfpage{1197}--\blpage{1222}
+	(\byear{2020}).
+	\doiurl{10.1080/17442508.2019.1691212}
+\end{barticle}
+\endbibitem
+
+%%% 29
+\bibitem{grafakos:14:modern}
+\begin{bbook}
+	\bauthor{\bsnm{Grafakos}, \binits{L.}}:
+	\bbtitle{Modern {F}ourier Analysis},
+	\bedition{3}rd edn.
+	\bsertitle{Graduate Texts in Mathematics},
+	vol. \bseriesno{250},
+	p. \bfpage{624}.
+	\bpublisher{Springer},
+	\blocation{New York}
+	(\byear{2014}).
+	\doiurl{10.1007/978-1-4939-1230-8}
+\end{bbook}
+\endbibitem
+
+%%% 30
+\bibitem{loh.sun.ea:21:on}
+\begin{barticle}
+	\bauthor{\bsnm{Loh}, \binits{W.-L.}},
+	\bauthor{\bsnm{Sun}, \binits{S.}},
+	\bauthor{\bsnm{Wen}, \binits{J.}}:
+	\batitle{On fixed-domain asymptotics, parameter estimation and isotropic
+		{G}aussian random fields with {M}atérn covariance functions}.
+	\bjtitle{Ann. Statist.}
+	\bvolume{49}(\bissue{6}),
+	\bfpage{3127}--\blpage{3152}
+	(\byear{2021}).
+	\doiurl{10.1214/21-aos2077}
+\end{barticle}
+\endbibitem
+
+%%% 31
+\bibitem{stein:99:interpolation}
+\begin{bbook}
+	\bauthor{\bsnm{Stein}, \binits{M.L.}}:
+	\bbtitle{Interpolation of Spatial Data}.
+	\bsertitle{Springer Series in Statistics},
+	p. \bfpage{247}.
+	\bpublisher{Springer},
+	\blocation{New York}
+	(\byear{1999}).
+	\doiurl{10.1007/978-1-4612-1494-6}
+\end{bbook}
+\endbibitem
+
+\end{thebibliography}
+%% Default %%
+%%\input sn-sample-bib.tex%
+
+\end{document}
+%}}}
+
