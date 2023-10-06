@@ -118,7 +118,7 @@
 
 \numberwithin{equation}{section}
 
-% \renewcommand{\thefigure}{\arabic{figure}} 
+% \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\thefigure}{\thesection.\arabic{figure}}
 
 % }}}
@@ -305,8 +305,8 @@ Hilbert space as in~\cite{tessitore.zabczyk:98:invariant}:
   square integrable functions, and we use $\langle \cdot, \cdot \rangle_{\rho}$ and
   $\Norm{\cdot}_{\rho}$ to denote the inner product and norm on $L^2_{\rho}(\BR^d)$:
   \begin{align*}
-  		\langle f,g \rangle_{\rho} \coloneqq \int_{\BR^d} f(x) g(x) \rho(x) \ud x \quad \text{and} \quad
-      \Norm{f}_{\rho} \coloneqq \int_{\BR^d} \lvert f(x)\rvert^2 \rho(x) \ud x.
+  		\langle f,g \rangle_{\rho} \coloneqq \int_{\BR^d} \ud x \: f(x) g(x) \rho(x) \quad \text{and} \quad
+      \Norm{f}_{\rho} \coloneqq \int_{\BR^d} \ud x\: \lvert f(x)\rvert^2 \rho(x).
   \end{align*}
 \end{definition}
 
@@ -322,7 +322,7 @@ Theorem~\ref{T:Main}):
 Then we will apply the \textit{Krylov-Bogoliubov theorem} (see,
 e.g.,~\cite[Theorem~11.7]{da-prato.zabczyk:14:stochastic}) to construct an invariant measure via
 \begin{equation}\label{E:InvMeasForm}
-  \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \mathscr{L}(u(t,\cdot; \mu))(A) \ud t,
+  \eta(A) = \lim_{n \to \infty} \frac{1}{T_n} \int_{t_0}^{T_n + t_0} \ud t\: \mathscr{L}(u(t,\cdot; \mu))(A),
 \end{equation}
 for some sequence $\{T_n\}_{n\ge 1}$ with $T_n\uparrow \infty$. \medskip
 
@@ -456,7 +456,7 @@ We are now ready to state our two main results of the paper.
       \infty$ where
       \begin{equation}\label{E:G}
         \mathcal{G}_{\rho}(t;\mu)
-        \coloneqq \int_{\BR^d} J_0^2\left(t,x;\mu\right) \rho(x)\: \ud x;
+        \coloneqq \int_{\BR^d} \ud x\: J_0^2\left(t,x;\mu\right) \rho(x);
       \end{equation}
     \item the spectral measure $\widehat{f}$ and the Lipschitz constant $L_b$ satisfy the two
       conditions in~\eqref{E:U0finite}.
@@ -487,13 +487,13 @@ surely be in $L^2_{\rho}(\BR^d)$ for all $t >0$.
   finiteness of $\mathcal{G}_{\rho}(t,;\zeta^*)$ for all $t>0$. Indeed, by H\"older's inequality,
   $\mathcal{G}_{\rho}(t,;\zeta^*)$ is equal to
   \begin{align*}
-     \int_{\BR^d} \left(\int_{\BR^d} G(t,x-y) \zeta^* (y) \ud y\right)^2 \rho(x) \ud x
-     \le \iint_{\BR^{2d}} G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x.
+     \int_{\BR^d} \ud x \left(\int_{\BR^d} G(t,x-y) \zeta^* (y) \ud y\right)^2 \rho(x)
+     \le \iint_{\BR^{2d}} \ud x \ud y\:  G(t,x-y) \zeta^* (y)^2 \rho(x).
   \end{align*}
   Now for any $t>0$, choose $T>t$ and let $C_{\rho}(T)$ be as in~\eqref{E:aw}. Then,
   \begin{align*}
-    \iint_{\BR^{2d}}G(t,x-y) \zeta^* (y)^2 \rho(x) \ud y \ud x
-    = \int_{\BR^d} \left(G(t,\cdot)*\rho\right)(y) \lvert\zeta^*(y)\rvert^2 \ud y
+    \iint_{\BR^{2d}} \ud x \ud y\: G(t,x-y) \zeta^* (y)^2 \rho(x)
+    = \int_{\BR^d} \ud y \left(G(t,\cdot)*\rho\right)(y) \lvert\zeta^*(y)\rvert^2
     \le C_{\rho}(T) \Norm{\zeta^*}_{\rho}^2 < \infty.
   \end{align*}
   Since $t$ and $T$ are arbitrary, this completes the proof of the corollary.
@@ -575,19 +575,18 @@ property of the heat kernel,
   G(t,x)G(s,y) = G\left(\frac{ts}{t+s}, \frac{sx + ty}{t+s}\right)G\left(t+s, x-y\right),
 \end{equation}
 which can be easily verified and has been used extensively and critically
-in~\cite{chen.dalang:15:moments*1,chen.kim:19:nonlinear,chen.huang:19:comparison}. Next, we will
+in~\cite{chen.dalang:15:moments*1, chen.kim:19:nonlinear, chen.huang:19:comparison}. Next, we will
 need the following spherical coordinate integration formula:
 \begin{align*}
-  \int_{\BR^d} f(\lvert x \rvert) \ud x = \sigma(\mathbb{S}^{d-1}) \int_0^\infty f(r) r^{d-1} \ud r,
+  \int_{\BR^d} \ud x \: f(\lvert x \rvert) = \sigma(\mathbb{S}^{d-1}) \int_0^\infty \ud r\: f(r) r^{d-1},
 \end{align*}
 where $\sigma(\mathbb{S}^{d-1}) = 2\pi^{d/2} / \Gamma(d/2)$ and $\Gamma(x)$ denotes the Gamma
 function. We use ``$\sim$'' to denote the standard asymptotic equivalent relation. Lastly, the
 convention of Fourier transform is given by (see Remark~\ref{R:Fourier})
 \begin{align}\label{E:Fourier}
-  \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) \coloneqq \int_{\BR^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad
-  \mathcal{F}^{-1}\psi(x) \coloneqq (2\pi)^{-d} \int_{\BR^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+  \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) \coloneqq \int_{\BR^d} \ud x\: e^{-i x\cdot\xi} \phi(x) \quad \text{and} \quad
+  \mathcal{F}^{-1}\psi(x) \coloneqq (2\pi)^{-d} \int_{\BR^d} \ud \xi\: e^{i x\cdot\xi} \psi(\xi).
 \end{align}
-
 
 
 \section{Moment estimates -- Proof of Theorem~\ref{T:Lrho}}\label{S:Lrho}
@@ -603,26 +602,6 @@ We first state some known results and prove a moment bound in Corollary~\ref{C:M
   is $L^2 (\Omega)$ continuous and is adapted to the filtration $\{\mathcal{F}_t\}_{t\ge 0}$.
 \end{theorem}
 
-% We first introduce some notation following \cite{CK15SHE}.
-Denote
-\begin{align}\label{E:k}
-  k(t):=\int_{\R^d}f(z)G(t,z)\ud z.
-\end{align}
-By the Fourier transform, this function can be written in the following form
-\begin{align}\label{E:k2}
-  k(t):=(2\pi)^{-d} \int_{\R^d}\hat{f}(\ud\xi)\exp\left(-\frac{t|\xi|^2}{2}\right).
-\end{align}
-Define $h_0(t):=1$ and for $n\ge 1$,
-\begin{align}\label{E:hn}
-   h_n(t)= \int_0^t \ud s \: h_{n-1}(s) k(t-s).
-\end{align}
-Let
-\begin{align}\label{E:H}
-   H(t;\gamma) \coloneqq \sum_{n=0}^\infty \gamma^n h_n(t),\qquad\text{for all $\gamma\ge 0$.}
-\end{align}
-This function is defined through the correlation function $f$. The following lemma
-tells us that this function has an exponential bound.
-
 
 \begin{theorem}[Theorem 1.7 of~\cite{chen.huang:19:comparison}]\label{T:ExUn}
   Under the assumptions of Theorem~\ref{T:Solve}, for any $t>0$, $x \in \BR^d$ and $p \ge 2$, the
@@ -631,9 +610,26 @@ tells us that this function has an exponential bound.
     \Norm{u(t,x)}_p \le \big[\bar{\varsigma}+\sqrt{2}(G(t,\cdot) * \lvert\mu\rvert)(x)\big]H(t;\gamma_p)^{1/2},
   \end{equation}
   where $\bar{\varsigma} = L_0/L_b$, $\gamma_p = 32pL_b^2$ (see~\eqref{E:lipcon} for $L_0$ and $L_b$)
-  and the function $H(t;\gamma_p)$ is nondecreasing in $t$ (see~\cite{chen.huang:19:comparison} for
-  the expression of the function $H$).
+  and the function $H(t;\gamma_p)$ is defined in~\eqref{E:H} below.
 \end{theorem}
+
+% \textcolor{magenta}{
+\begin{remark}[Function $H(t;\gamma)$]\label{R:H}
+  Following~\cite{chen.kim:19:nonlinear, chen.huang:19:comparison}, set $k(t) \coloneqq
+  \int_{\BR^d}\ud z\: f(z)G(t,z)$, $h_0(t) \coloneqq 1$, and for $n\ge 1$, $h_n(t) \coloneqq
+  \int_0^t \ud s \: h_{n-1}(s) k(t-s)$. Define
+  \begin{align}\label{E:H}
+     H(t;\gamma) \coloneqq \sum_{n=0}^\infty \gamma^n h_n(t),\qquad\text{for all $\gamma\ge 0$.}
+  \end{align}
+  Note that $H(t;\gamma)$ is a functional of the correlation function $f$. It is a nondecreasing
+  function with an exponential upper bound (see Lemma~2.1 of~\cite{chen.huang:19:comparison}):
+  \begin{align*}
+    \limsup_{t\to\infty} \frac{1}{t} \log H(t;\gamma)
+    \le \inf \left\{\beta>0: \Upsilon\left(2\beta\right)<\frac{1}{2\gamma}\right\} .
+  \end{align*}
+\end{remark}
+% }
+
 
 \begin{corollary}\label{C:Mom}
   Under the same setting as Theorem~\ref{T:ExUn}, if the two conditions in~\eqref{E:U0finite} hold
