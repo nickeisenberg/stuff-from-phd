@@ -794,7 +794,7 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   initial condition is the delta initial condition, we have that
   \begin{align*}
     \mathcal{G}_{\tilde{\rho}}(t;\delta_0)
-    = \int_{\R^d}\ud x\: G(t,x)^2 \rho(x) 
+    = \int_{\R^d}\ud x\: G(t,x)^2 \rho(x)
     = G(2t,0) \int_{\R^d}\ud x\: G(t/2,x)\rho(x)
     < \infty,
   \end{align*}
@@ -874,14 +874,13 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   application of Minkowski's inequality shows that
   \begin{align}\label{E:EYqr}
     \E\left(\Norm{Y_v(s,\cdot)}_{\rho}^q\right)
-    = \Norm{\int_{\R^d} Y_v(s,y)^2\rho(y) \ud y}_{q/2}^{q/2}
-    \le \left(\int_{\R^d} \Norm{Y_v(s,y)}_q^2\rho(y) \ud y\right)^{q/2}.
-    % = \Norm{\Norm{Y(s,\clot)}_q}_\rho^q.
+    = \Norm{\int_{\R^d} \ud y\: Y_v(s,y)^2\rho(y)}_{q/2}^{q/2}
+    \le \left(\int_{\R^d} \ud y\: \Norm{Y_v(s,y)}_q^2\rho(y) \right)^{q/2}.
   \end{align}
   By the definition of $\mathcal{G}_{\rho}(t;\mu)$ in~\eqref{E:G} and by~\eqref{E:NormY}, we see
   that
   \begin{align*}
-    \int_{\R^d}\Norm{Y_v(s,y)}_q^2 \: \rho(y)\ud y
+    \int_{\R^d} \ud y\: \Norm{Y_v(s,y)}_q^2 \: \rho(y)
     & \le C \: \mathcal{G}_{\rho}(s + t_0;\mu^*) \mathcal{H}_\alpha(s).
   \end{align*}
   Plugging the above expression to the far right-hand side of~\eqref{E:EYqr} proves~\eqref{E:yineq}.
@@ -898,7 +897,7 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   factorization holds
   \begin{align*}
     \MoveEqLeft
-    \dfrac{\sin(\alpha \pi)}{\pi}  \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \\
+    \dfrac{\sin(\alpha \pi)}{\pi}  \int_0^t \ud s\: (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \\
       & = \int_0^t \int_{\R^d} G(t-r,x-z)b(z,v(r,z)) W_{t_0}(\ud r,\ud z),
   \end{align*}
   for all $t>0$ and $x\in\R^d$. As a consequence, for all $t>0$ and $x\in\R^d$,
@@ -910,7 +909,7 @@ $\mathcal{H}(t) \coloneqq \mathcal{H}_0(t)$.
   The lemma is straightforward provided that one can switch the orders of stochastic and ordinary
   integrals:
   \begin{align}
-    \MoveEqLeft[4] \int_0^t (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \ud s \notag \\
+    \MoveEqLeft[4] \int_0^t \ud s\: (t-s)^{\alpha-1}\left[G(t-s,\cdot)*Y_v(s,\cdot)\right](x) \notag \\
     = & \int_0^t \ud s\: (t-s)^{\alpha-1}\int_{\R^d} \ud y\: G(t-s,x-y) \notag                                                                \\
       & \times \int_0^s\: \int_{\R^d} \: (s-r)^{-\alpha}G(s-r,y-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \notag                                      \\
     = & \int_0^t \ud s\: (t-s)^{\alpha-1} \int_0^s \int_{\R^d} \: (s-r)^{-\alpha}G(t-r,x-z)b(z,v(r,z))W_{t_0}(\ud r,\ud z) \label{E:Fubini_1} \\
@@ -1038,8 +1037,8 @@ of Lemma~\ref{L:HUA}.
   $\beta>0$,
   \begin{align*}
     \mathcal{H}_{\alpha /2}(t)
-    = \int_0^t \ud r r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2}
-    = \int_0^t \ud r r^{-\alpha} e^{\beta r} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(\lvert\xi\rvert^2 +\beta\right)}.
+    = \int_0^t \ud r\: r^{-\alpha} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\lvert\xi\rvert^2}
+    = \int_0^t \ud r\: r^{-\alpha} e^{\beta r} \int_{\R^d} \widehat{f}(\ud\xi)e^{-r\left(\lvert\xi\rvert^2 +\beta\right)}.
   \end{align*}
   By replacing $e^{\beta r}$ by $1$ and $e^{\beta t}$, we see that
   \begin{align*}
@@ -1053,13 +1052,13 @@ of Lemma~\ref{L:HUA}.
   \begin{align*}
     I_\beta(t)
     = \int_{\R^d} \frac{1}{\left(\beta+\lvert\xi\rvert^2\right)^{1-\alpha}} \widehat{f}(\ud\xi)
-      \int_{0}^{t\left(\lvert\xi\rvert^2 + \beta\right)} r^{-\alpha} e^{-r} \ud r,
+      \int_{0}^{t\left(\lvert\xi\rvert^2 + \beta\right)} \ud r\: r^{-\alpha} e^{-r},
   \end{align*}
   from which we see that
   \begin{align*}
-    \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{t \beta} r^{-\alpha} e^{-r} \ud r
+    \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{t \beta} \ud r\: r^{-\alpha} e^{-r}
     \le I_\beta(t) \le
-    \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{\infty} r^{-\alpha} e^{-r} \ud r.
+    \left(2\pi\right)^d\Upsilon_\alpha(\beta) \int_{0}^{\infty} \ud r\: r^{-\alpha} e^{-r}.
   \end{align*}
   Then by the definition of the (incomplete) gamma function, we obtain the inequalities in part
 (ii). As for part (iii), for any $t>0$, by splitting the $\ud r$ integral in~\eqref{E:Fubini} into
@@ -1165,7 +1164,7 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   \begin{align*}
     \MoveEqLeft
     \mathbb{P} \left[ v(t_0,\cdot) \not \in \mathscr{K}(\Lambda) \right ]\\
-    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s\right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
+    & \le \mathbb{P}\left[ \left(\int_{0}^{t_0} \ud s\: \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \right)^{1/q} > \dfrac{\pi \Lambda}{\sin(\alpha \pi )} \right]
     + \mathbb{P}\left[ \Norm{u(t-t_0,\cdot)}_{\tilde{\rho}} > \Lambda \right] \\
     & \eqqcolon I_1+I_2.
   \end{align*}
@@ -1192,9 +1191,9 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
   As for $I_1$, with the choice of $\alpha$ and $q$ in~\eqref{E:Choice}, one can apply Chebyshev's
   inequality and part (3) of Lemma~\ref{L:yineq} to see that
   \begin{align*}
-    I_1 & \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q}\E \int_{0}^{t_0} \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q \: \ud s
-          \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0}
-          \left(\mathcal{G}_{\tilde{\rho}}(s + t-t_0;\mu^*) \mathcal{H}_{\alpha}(s)\right)^{q/2} \ud s,
+    I_1 & \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q}\E \left[\int_{0}^{t_0} \ud s\: \Norm{Y_v(s,\cdot)}_{\tilde{\rho}}^q\right] \\
+        & \le \dfrac{\sin^q (\alpha \pi)}{\pi^q \Lambda^q} \Theta\int_0^{t_0} \ud s
+          \left(\mathcal{G}_{\tilde{\rho}}(s + t-t_0;\mu^*) \mathcal{H}_{\alpha}(s)\right)^{q/2},
   \end{align*}
   where the constant $\Theta$ does not depend on $t$. As explained in Remark~\ref{R:4Equiv}, under
   condition $\Upsilon(0)<\infty$ and condition~\eqref{E:Dalang-ab}, we have
@@ -1233,15 +1232,15 @@ Before we start the proof of part (a) of Theorem~\ref{T:Main}, we first recall t
 \begin{proof}
   Fix an arbitrary $\tau>0$ and denote
   \begin{align*}
-    U(T) \coloneqq \dfrac{1}{T}\int_{\tau}^{T+\tau} \mathcal{L}\left(u(t,\cdot;\mu)\right)\: \ud t, \quad T>0.
+    U(T) \coloneqq \dfrac{1}{T}\int_{\tau}^{T+\tau} \ud t\: \mathcal{L}\left(u(t,\cdot;\mu)\right), \quad T>0.
   \end{align*}
   We claim that the family of laws $U(T,\cdot)$ for $T > 0$ is tight in $L^2_{\rho}(\R^d)$. Indeed,
   for any $\epsilon\in (0,1)$, by part (a), there exists a compact set $\mathcal{K}\in L_\rho^2
   (\R^d)$ such that~\eqref{E:cpt} holds. Hence, for all $T>0$, it holds that
   \begin{align*}
     U(T)\left(\mathcal{K}\right)
-    & = \frac{1}{T} \int_{\tau}^{T + \tau} \mathscr{L}(u(t,\cdot;\mu))\left(\mathcal{K}\right) \; \ud t
-      \ge \frac{1}{T} \int_{\tau}^{T + \tau} (1-\epsilon) \; \ud t
+    & = \frac{1}{T} \int_{\tau}^{T + \tau}  \ud t\; \mathscr{L}(u(t,\cdot;\mu))\left(\mathcal{K}\right)
+      \ge \frac{1}{T} \int_{\tau}^{T + \tau}\ud t\;  (1-\epsilon)
       = 1-\epsilon.
   \end{align*}
 
@@ -1324,7 +1323,7 @@ to have moments uniformly bounded in time), the following additional assumptions
 \begin{equation}\label{E:TZspec}
   \begin{gathered}
   d\ge 3 \quad \text{and} \quad \\
-  L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \left(\lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \rvert * \lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\rvert\right) (\xi) \lvert \xi \rvert^{2-d} \ud \xi ,
+  L_b^{-2}> \frac{\Gamma(d/2 -1)2^{d/2-2}}{(2\pi)^{2d}} \int_{\R^d} \ud \xi\left(\lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big) \rvert * \lvert \mathcal{F}\big(\sqrt{\widehat{f}\:}\:\:\big)\rvert\right) (\xi) \lvert \xi \rvert^{2-d} ,
   \end{gathered}
 \end{equation}
 where the convention of the Fourier transform is given in Remark~\ref{R:Fourier}. With these
@@ -1344,11 +1343,11 @@ an invariant measure via the construction~\eqref{E:InvMeasForm}.
   of the Fourier transform. However, the proof of Theorem 3.3 \textit{ibid.} suggests that the
   following convention has been used:
 	\begin{align*}
-    \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) & \coloneqq (2\pi)^{-d/2} \int_{\R^d} e^{-i x\cdot\xi} \phi(x)\ud x \quad \text{and} \quad \\
-    \mathcal{F}^{-1}\psi(x)                    & \coloneqq (2\pi)^{-d/2} \int_{\R^d} e^{i x\cdot\xi} \psi(\xi)\ud \xi.
+    \widehat{\phi}(\xi) = \mathcal{F}\phi(\xi) & \coloneqq (2\pi)^{-d/2} \int_{\R^d}\ud x \: e^{-i x\cdot\xi} \phi(x) \quad \text{and} \quad \\
+    \mathcal{F}^{-1}\psi(x)                    & \coloneqq (2\pi)^{-d/2} \int_{\R^d}\ud\xi\: e^{i x\cdot\xi} \psi(\xi).
 	\end{align*}
-  Hence, Plancherel's theorem takes the form, $\int_{\R^d} \psi(x) \phi(x)\ud x = \int_{\R^d}
-  \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}\ud \xi$, without the additional factor
+  Hence, Plancherel's theorem takes the form, $\int_{\R^d}\ud x\: \psi(x) \phi(x)= \int_{\R^d} \ud
+  \xi\: \widehat{\psi}(\xi) \overline{\widehat{\phi}(\xi)}$, without the additional factor
   $(2\pi)^{-d}$. In particular, the spectral density $\gamma$ \textit{ibid.} corresponds to
   $\left(2\pi\right)^{-d/2}\widehat{f}$ in this paper. Our equation~\eqref{E:TZspec}, which is
   condition (3.4) \textit{ibid.}, takes into account this difference, therefore explaining the
@@ -1359,9 +1358,6 @@ an invariant measure via the construction~\eqref{E:InvMeasForm}.
 Our condition~\eqref{E:Dalang-00} should be compared with the second condition in~\eqref{E:TZspec}.
 We will explain below why the former is more natural, easier to verify, and weaker than the latter.
 
-% In the following, we will focus on the second condition in~\eqref{E:TZspec}, which corresponds
-% to~\eqref{E:U0finite}. We claim that the latter is much easier to check than that of the former.
-%
 The square root and absolute value in~\eqref{E:TZspec} make their condition more restrictive.
 Indeed, if $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative, then the absolute values
 in~\eqref{E:TZspec} can be removed without ambiguity, which will reduce to our
@@ -1369,17 +1365,6 @@ condition~\eqref{E:U0finite} up to a constant factor. However, when $\widehat{f}
 nonnegative and not strictly positive, finding the right square root of $\widehat{f}$ so that
 $\mathcal{F}\big(\sqrt{\widehat{f}\:}\:\big)$ is nonnegative becomes tricky. This last point will be
 illustrated by the examples below. We first set up the notation in Example~\ref{Ex:nonnegative}.
-%
-% We now consider two cases (depending whether $\widehat{f}$ is strictly postive) and give some
-% examples to illustrate the potential difficulties that may arise because of the square root and
-% absolute value in~\eqref{E:TZspec}.
-%
-% Before that, let us first introduce a nonnegative and nonnegative definite function in $\R$, that
-% will be used several times in the rest of this subsection:
-
-% In particular, we will consider two cases: \begin{enumerate} \item Case I:
-% $\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0$ and $\widehat{f}>0$ on $\R^d$; \item Case
-% II: $\widehat{f}$ is not strictly positive. \end{enumerate}
 
 
 \begin{example}\label{Ex:nonnegative}
@@ -1389,32 +1374,6 @@ illustrated by the examples below. We first set up the notation in Example~\ref{
   = \xi^{-2}\sin^2 (\xi)\ge 0$.
 \end{example}
 
-% \subsubsection{Case I -- $\widehat{f}$ is strictly positive}
-% In this part, we assume that $\widehat{f}$ is strictly positive. If, in addition,
-% \begin{align}\label{E:Ff>0}
-%   \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\big) \ge 0,
-% \end{align}
-% then one can remove the absolute values in~\eqref{E:TZspec}. Note that~\eqref{E:Ff>0} is not a
-% trivial assumption (see Examples~\ref{Ex:Finv} and~\ref{Ex:Finv-d} below). However, one can check
-% that the Bessel kernels satisfy this condition.
-
-% Under~\eqref{E:Ff>0}, there is no ambiguity when
-% taking the square root and one can remove the absolute value to see that
-% \begin{align*}
-%   \Gamma(d/2 -1)2^{d/2-2}
-%   & \int_{\R^d} \left(\mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big) * \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)\right) (x) \lvert x \rvert^{2-d} \ud x \\
-%   & = \frac{1}{(2\pi)^{3d/2}} \int_{\R^d} \widehat{f}(\xi) \lvert \xi \rvert^{-2} \ud \xi
-%     = \left(2\pi\right)^{d/2}\Upsilon(0),
-% \end{align*}
-% where we have applied Plancherel's theorem and the Fourier transform for Riesz kernel (in the
-% generalized sense):
-% \begin{align*}
-% \mathcal{F}(\lvert \cdot \rvert^{-\alpha})(\xi) = \pi^{-d /2} 2^{-\alpha} \frac{\Gamma\left((d-\alpha)/2\right)}{\Gamma(\alpha /2)} \lvert\xi\rvert^{-(d-\alpha)},
-% \quad \text{for $\alpha\in(0,d)$ and $\xi\in\R^d$}.
-% \end{align*}
-% Hence, the second condition in~\eqref{E:TZspec} can be equivalently written as $L_b^{-2}>
-% (2\pi)^{d/2}\Upsilon(0)$. Comparing this with~\eqref{E:Lipb}, namely, $L_b^{-2}> 128 \Upsilon(0)$,
-% our condition is sharper when $d> \frac{14\log(2)}{\log(2\pi)} \approx 5.28$.
 
 Up to a constant, one may replace $\mathcal{F}$ by $\mathcal{F}^{-1}$. The following example shows
 that $\mathcal{F}^{-1}\big(\sqrt{\widehat{f\:}}\:\:\big)(x)$ is signed and hence, the absolute value
@@ -1430,16 +1389,16 @@ make spoil the oscillatory structure.
   Indeed, for all $x\in\R$,
 	\begin{align*}
     \mathcal{F}^{-1}\big(\sqrt{\widehat{f}\:}\:\:\big)(x)
-    & = \frac{2}{2\pi} \int_0^2 2^{-1}\sqrt{2-\xi} \cos(x \xi) \: \ud \xi
-      = \frac{1}{\pi} \int_0^{\sqrt{2}} \xi^2 \cos\left(x\left(2-\xi^2\right)\right) \: \ud \xi \\
-    & = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \xi^2 \cos(x \xi^2) \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \xi^2 \sin(x \xi^2) \: \ud \xi \\
-    & = - \frac{1}{\pi} \cos(2x) \int_0 ^{\sqrt{2}} \frac{\sin(x \xi^2)}{x} \: \ud \xi + \frac{1}{\pi} \sin(2x) \int_0 ^{\sqrt{2}} \frac{\cos(x \xi^2)}{x} \: \ud \xi,
+    & = \frac{2}{2\pi} \int_0^2 \ud \xi \: 2^{-1}\sqrt{2-\xi} \cos(x \xi)
+      = \frac{1}{\pi} \int_0^{\sqrt{2}} \ud\xi\: \xi^2 \cos\left(x\left(2-\xi^2\right)\right)  \\
+    & = \frac{1}{\pi}\cos(2x) \int_0^{\sqrt{2}} \ud\xi\: \xi^2 \cos(x \xi^2) + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \ud\xi\: \xi^2 \sin(x \xi^2) \\
+    & = - \frac{1}{\pi} \cos(2x) \int_0^{\sqrt{2}} \ud\xi\: \frac{\sin(x \xi^2)}{x} + \frac{1}{\pi} \sin(2x) \int_0^{\sqrt{2}} \ud\xi\: \frac{\cos(x \xi^2)}{x},
   \end{align*}
   where we have applied the change of variables $\xi' = \sqrt{2 - \xi}$ and an integration by parts.
   By using the \textit{Fresnel integrals} (see, e.g.,~\cite[7.2 (iii)]{olver.lozier.ea:10:nist})
   \begin{align*}
-    \mathcal{S}(z) = \int_0^{z} \sin\left(\frac{\pi t^2}{2}\right) \ud t \quad \text{and} \quad
-    \mathcal{C}(z) = \int_0^z \cos\left(\frac{\pi t^2}{2}\right) \ud t,
+    \mathcal{S}(z) = \int_0^{z} \ud t\: \sin\left(\frac{\pi t^2}{2}\right) \quad \text{and} \quad
+    \mathcal{C}(z) = \int_0^z \ud t\: \cos\left(\frac{\pi t^2}{2}\right),
 	\end{align*}
   the above expression can be further simplified via the change of variables $\xi' = \sqrt{2\lvert x \rvert/\pi}
   \: \xi$ to
@@ -1477,17 +1436,12 @@ can be easily handled by our condition -- $\Upsilon_{\alpha}(0)<\infty$, i.e.,~\
   It is straightforward to verify that
 	\begin{align*}
     \Upsilon_\alpha(0)
-    & = C \int_{\R^d} \frac{\prod_{i = 1}^d\max\{2-\lvert \xi_i \rvert,0\}}{\lvert\xi\rvert^{2(1-\alpha)}} \ud \xi\\
-    & \le C \int_{\lvert\xi\rvert\le 2\sqrt{d}} \frac{2^d}{\lvert\xi\rvert^{2(1-\alpha)}} \ud \xi
-      = C \int_{0}^{2\sqrt{d}} \frac{r^{d-1}}{r^{2(1-\alpha)}} \ud r.
+    & = C \int_{\R^d} \ud\xi\: \frac{\prod_{i = 1}^d\max\{2-\lvert \xi_i \rvert,0\}}{\lvert\xi\rvert^{2(1-\alpha)}} \\
+    & \le C \int_{\lvert\xi\rvert\le 2\sqrt{d}} \ud\xi\: \frac{2^d}{\lvert\xi\rvert^{2(1-\alpha)}}
+      = C \int_{0}^{2\sqrt{d}} \ud r\: \frac{r^{d-1}}{r^{2(1-\alpha)}}.
 	\end{align*}
   Hence, if $\alpha > 1-d /2$, then $\Upsilon_\alpha(0)<\infty$.
 \end{example}
-
-% \subsubsection{Case II -- $\widehat{f}$ is nonnegative but not strictly positive}
-% If $\widehat{f}$ is not strictly positive, but only nonnegative, namely, $\widehat{f}(\xi) = 0$ for
-% some $\xi\in\R^d$, then removing the absolute value in~\eqref{E:TZspec} becomes tricky, which will
-% be illustrated in the following example.
 
 The next example illustrates the delicacy of choosing the right branches for the square root
 in~\eqref{E:TZspec}.
@@ -1530,7 +1484,7 @@ In this part, we give some concrete examples of initial conditions.
   at zero, namely, $\delta_0$. Let $\rho$ be a nonnegative $L^1 (\R^d)$ function. Since
   \begin{align*}
     \mathcal{G}_\rho(t;\lvert \delta_0 \rvert)
-    = \int_{\R^d} G(t,x)^2 \rho(x) \ud x
+    = \int_{\R^d} \ud x\: G(t,x)^2 \rho(x)
     \le G(t,0)^2 \Norm{\rho}_{L^1 (\R^d)},
     \quad \text{for all $t>0$,}
   \end{align*}
@@ -1550,12 +1504,12 @@ In this part, we give some concrete examples of initial conditions.
   On the other hand,
   \begin{align*}
     \left(G(t,\cdot)* \lvert \cdot \rvert^{-\alpha}\right)(0)
-    = \frac{2\pi^{d/2}}{\Gamma(d/2)}\times (2\pi t)^{-d/2} \int_0^\infty e^{-\frac{r^2}{2t}} r^{-\alpha + d-1} \ud r = C_* t^{-\alpha/2},
+    = \frac{2\pi^{d/2}}{\Gamma(d/2)}\times (2\pi t)^{-d/2} \int_0^\infty \ud r\: e^{-\frac{r^2}{2t}} r^{-\alpha + d-1} = C_* t^{-\alpha/2},
   \end{align*}
   with $C_* = 2^{-\alpha/2}\Gamma\left((d-\alpha)/2\right)/\Gamma(d/2)$, which implies that
   \begin{align*}
     \mathcal{G}_\rho\left(t;\lvert \cdot \rvert^{-\alpha}\right)
-    \le \int_{\R^d} J_0^2 (t,0) \rho(x) \ud x
+    \le \int_{\R^d} \ud x\: J_0^2 (t,0) \rho(x)
     = C_*^2 t^{-\alpha} \Norm{\rho}_{L^1 (\R^d)},
     \quad \text{for all $t>0$.}
   \end{align*}
@@ -1578,8 +1532,8 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
   Notice that by scaling arguments,
   \begin{align*}
     \mathcal{G}_\rho(t;\lvert \mu \rvert)
-      & =  \int_{\R^d} \left(\int_{\R^d}G(t,x-y) \lvert y \rvert^\alpha \ud y\right)^2 e^{-\lvert x \rvert} \ud x \\
-      & = \int_{\R^d}t^{\alpha+d/2} \left(\int_{\R^d}G\left(1,\xi-z\right) \lvert z \rvert^\alpha \ud z\right)^2 e^{-\sqrt{t}\lvert\xi\rvert} \ud \xi.
+      & = \int_{\R^d} \ud x \: \left(\int_{\R^d}G(t,x-y) \lvert y \rvert^\alpha \ud y\right)^2 e^{-\lvert x \rvert} \\
+      & = t^{\alpha+d/2} \int_{\R^d} \ud\xi\: \left(\int_{\R^d}\ud z \: G\left(1,\xi-z\right) \lvert z \rvert^\alpha\right)^2 e^{-\sqrt{t}\lvert\xi\rvert}.
   \end{align*}
   In the following, let $C_d$, $C_\alpha$, $C_\alpha'$, $C_{\alpha, d}$ and $C'_{\alpha, d}$ be
   generic constants that may depend on $\alpha $ and $d$ and may change their value at each
@@ -1587,15 +1541,13 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
 
   \noindent\textit{Upper bound:~} Because
   \begin{align*}
-    % \int_{\R^d}G\left(1,\xi-z\right) \lvert z \rvert^\alpha \ud z
-    \int_{\R^d}G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ud z
-    \le C_\alpha \int_{\R^d}G\left(1,z\right) \left(\lvert\xi\rvert^\alpha + \lvert z \rvert^\alpha\right) \ud z
+    \int_{\R^d} \ud z\: G\left(1,z\right) \lvert \xi-z \rvert^\alpha
+    \le C_\alpha \int_{\R^d} \ud z\: G\left(1,z\right) \left(\lvert\xi\rvert^\alpha + \lvert z \rvert^\alpha\right)
     \le C_\alpha' \left(1+\lvert\xi\rvert^\alpha\right),
   \end{align*}
   we see that $\mathcal{G}_\rho(t;\mu)$ is bounded from above by
   \begin{align*}
-    & C_\alpha \int_{\R^d}t^{\alpha+d/2} \left(1+\lvert\xi\rvert^{2\alpha}\right) e^{-\sqrt{t}\lvert\xi\rvert} \ud \xi
-    % & = C_{\alpha, d}\int_{0}^{\infty}t^{\alpha+d/2} \left(1+r^{2\alpha}\right) e^{-\sqrt{t}r}r^{d-1} \ud r \\
+    & C_\alpha t^{\alpha+d/2} \int_{\R^d} \ud \xi\: \left(1+\lvert\xi\rvert^{2\alpha}\right) e^{-\sqrt{t}\lvert\xi\rvert}
       = C_{\alpha, d} \left(t^\alpha \Gamma(d) + \Gamma(d+2\alpha)\right)
       = C'_{\alpha, d} (1+ t^\alpha),
   \end{align*}
@@ -1603,10 +1555,10 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
 
   \noindent\textit{Lower bound:~} Now we prove the lower bound in~\eqref{E:growtail}. Indeed,
   \begin{align*}
-    \MoveEqLeft \int_{\R^d}G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ud z
-      \ge \int_{\R^d}G\left(1,z\right) \lvert \lvert\xi\rvert - \lvert z \rvert \rvert^\alpha \ud z \\
-    & \ge {C_d} \int_0^\infty \lvert \lvert\xi\rvert - x \rvert^\alpha e^{-\frac{x^2}{2}}x^{d-1}\ud x
-      \ge C_d \int_1^2 \lvert \lvert\xi\rvert - x \rvert^\alpha \ud x
+    \MoveEqLeft \int_{\R^d}  \ud z\: G\left(1,z\right) \lvert \xi-z \rvert^\alpha
+      \ge \int_{\R^d} \ud z\: G\left(1,z\right) \lvert \lvert\xi\rvert - \lvert z \rvert \rvert^\alpha \\
+    & \ge {C_d} \int_0^\infty \ud x\: \big\lvert \left\lvert\xi\right\rvert - x \big\rvert^\alpha e^{-\frac{x^2}{2}}x^{d-1}
+      \ge C_d \int_1^2 \ud x\: \big\lvert \lvert\xi\rvert - x \big\rvert^\alpha
       = \frac{C_d}{1+\alpha} \psi\left(\lvert\xi\rvert\right),
   \end{align*}
   where, by considering three cases, we have
@@ -1626,7 +1578,7 @@ condition~\eqref{E:G} may hold while condition~\eqref{E:InitData} may fail.
   \end{align}
   With~\eqref{E:psi}, we have that
   \begin{align*}
-    \int_{\R^d}G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ud z \ge C_{\alpha, d} \sqrt{1+\lvert\xi\rvert^{2\alpha}}.
+    \int_{\R^d} \ud z\: G\left(1,z\right) \lvert \xi-z \rvert^\alpha \ge C_{\alpha, d} \sqrt{1+\lvert\xi\rvert^{2\alpha}}.
   \end{align*}
   Then, by the same arguments as above for the upper bound, we obtain the lower bound
   in~\eqref{E:growtail}. It remains to prove~\eqref{E:psi}, which will be proved in three cases.
@@ -1772,14 +1724,14 @@ parameters.
   By the spherical coordinate integration formula and~\eqref{E:FB}, for all $\alpha\in[0,1)$,
   \begin{align*}
     \Upsilon_\alpha(0) = \left(2\pi\right)^{-d} \int_{\R^d} \frac{\ud\xi}{\lvert\xi\rvert^{2(1-\alpha)}\left(1+\lvert\xi\rvert^2\right)^{s/2}}
-    = \left(2\pi\right)^{-d} C_d \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r,
+    = \left(2\pi\right)^{-d} C_d \int_0^\infty \frac{ \ud r\: r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}},
   \end{align*}
   where $C_d\coloneqq \frac{2\pi^{d/2}}{\Gamma\left(d/2\right)}$. Now by the change of variables
   $z = r^2 /(1+r^2)$, we can evaluate the above integral explicitly by transforming it to the Beta
   integral:
   \begin{align*}
-    \int_0^\infty \frac{r^{d-1}}{r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}} \ud r
-     & = \frac{1}{2} \int_0^1 z^{d/2+\alpha-2}(1-z)^{(s-d)/2-\alpha}\ud z \\
+    \int_0^\infty \frac{r^{d-1}}{\ud r\: r^{2(1-\alpha)}\left(1+r^2\right)^{s/2}}
+     & = \frac{1}{2} \int_0^1 \ud z\: z^{d/2+\alpha-2}(1-z)^{(s-d)/2-\alpha} \\
      & = \frac{\Gamma\left(d/2-1+\alpha\right)\Gamma\left((s-d)/2+1-\alpha\right)}{2\Gamma(s/2)},
   \end{align*}
   which is finite provided that $s>d-2(1-\alpha)>0$. This proves~\eqref{E:UpsionB} and from this, we
@@ -1849,9 +1801,9 @@ following proposition:
   By similar arguments as Proposition~\ref{P:Bessel}, we have that
 	\begin{align*}
      \Upsilon_{\alpha}(0)
-     & = (2\pi)^{-d} \int_{\R^d} \frac{f_s(\xi)}{\lvert\xi\rvert^{2(1-\alpha)}} \ud \xi
-       = (2\pi)^{-2d} \int_{\R^d} \frac{\widehat{f}_s(\xi)}{\lvert\xi\rvert^{d-2(1-\alpha)}} \ud \xi                                                               \\
-     & = (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_0^\infty \frac{r^{d-1}}{ \left(1+r^2\right)^{s / 2} \: r^{d - 2(1-\alpha)} } \ud r
+     & = (2\pi)^{-d}  \int_{\R^d} \ud\xi\: \frac{f_s(\xi)}{\lvert\xi\rvert^{2(1-\alpha)}}
+       = (2\pi)^{-2d} \int_{\R^d} \frac{\ud \xi \: \widehat{f}_s(\xi)}{\lvert\xi\rvert^{d-2(1-\alpha)}} \\
+     & = (2\pi)^{-2d} \frac{2 \pi^{d/2}}{\Gamma\left(d/2\right)} \int_0^\infty \frac{\ud r\: r^{d-1}}{ \left(1+r^2\right)^{s / 2} \: r^{d - 2(1-\alpha)}}
        = \frac{\Gamma\left(1 - \alpha\right) \Gamma\left(\alpha - 1 + s/2\right)}{2^{2d} \pi^{3d/2} \Gamma(d/2)\Gamma\left(s/2\right) },
 	\end{align*}
   which is finite provided $s>2(1-\alpha)$. Note that in the second equality in the above chain of
@@ -1979,7 +1931,7 @@ Proposition~\ref{P:adm} seem to be less obvious:
 \begin{proof}
   From Definition~\ref{D:Rho}, we see that $\rho_b$ is admissible if and only if for all $T>0$,
 	\begin{align*}
-	\sup_{(t,x)\in[0,T]\times\R^d} \int_{\R^d} \left(2\pi t\right)^{-d/2} e^{-\frac{\lvert x-y \rvert^2}{2t} + (\lvert x \rvert^b - \lvert y \rvert^b)} \ud y <\infty.
+	\sup_{(t,x)\in[0,T]\times\R^d} \int_{\R^d} \ud y\: \left(2\pi t\right)^{-d/2} e^{-\frac{\lvert x-y \rvert^2}{2t} + (\lvert x \rvert^b - \lvert y \rvert^b)} <\infty.
 	\end{align*}
   Denote the above integral by $I(t,x)$. We will use $C$ to denote a generic constant that does not
   depend on $(t,x)$, which value may change at each occurrence.
@@ -1993,14 +1945,15 @@ Proposition~\ref{P:adm} seem to be less obvious:
 	\end{align*}
 	Hence,
 	\begin{align*}
-    I(t,x) \le C \int_{\R^d} t^{-d/2} e^{-\frac{\lvert x-y \rvert^2}{2t} + \lvert x-y \rvert^b} \ud y
-    % = C \int_{\R^d} t^{-d/2} e^{-\frac{\lvert y \rvert^2}{2t} + \lvert y \rvert^b} \ud y
-    = C \int_{0}^\infty t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1} \ud r.
+    I(t,x)
+    \le C \int_{\R^d} \ud y\: t^{-d/2} e^{-\frac{\lvert x-y \rvert^2}{2t} + \lvert x-y \rvert^b}
+    = C \int_0^\infty \ud r\: t^{-d/2} e^{-\frac{r^2}{2t} + r^b} r^{d-1}.
 	\end{align*}
 	Then by applying the change of variables $r' = t^{-1/2}r$,
 	\begin{align*}
-    I(t,x) \le C \int_0^\infty e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{d-1}\ud r
-    \le C \int_0^\infty e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}\ud r
+    I(t,x)
+    \le C \int_0^\infty \ud r\: e^{-\frac{r^2}{2} + t^{b/2} r^b} r^{d-1}
+    \le C \int_0^\infty \ud r\: e^{-\frac{r^2}{2} + T^{b/2} r^b} r^{d-1}
     < \infty.
 	\end{align*}
 
@@ -2021,30 +1974,30 @@ Proposition~\ref{P:adm} seem to be less obvious:
   where $c \coloneqq 1 \wedge 2^{b/2 -1}$. Hence,
 	\begin{align*}
     I\left(1/2,x_r\right)
-    & = C \int_{\R^d} e^{- \left(\sum_{i = 2}^{d} y_i^2\right) - \lvert y_1-r \rvert^2 + (r^b - \lvert y \rvert^b)} \ud y                \\
+    & =   C \int_{\R^d} \ud y\: e^{- \left(\sum_{i = 2}^{d} y_i^2\right) - \lvert y_1-r \rvert^2 + (r^b - \lvert y \rvert^b)}                                     \\
     & \ge C \int_{\R^{d-1}}\ud y_* \int_\R \ud y_1\: e^{- \lvert y_* \rvert^2 -\lvert y_* \rvert^b - \lvert y_1-r \rvert^2 + (r^b - c \lvert y_1 \rvert^b)}     \\
-    & = C \int_{\R^{d-1}}\ud y_* \: e^{- \lvert y_* \rvert^2 -c \lvert y_* \rvert^b} \int_\R \ud y_1\: e^{- \lvert y_1-r \rvert^2 + r^b - c\lvert y_1 \rvert^b} \\
-    & = C \int_\R e^{- y^2 + r^b - c \lvert y-r \rvert^b} \ud y
-      \ge C \int_0^r e^{- y^2 + r^b - c \lvert y-r \rvert^b} \ud y \eqqcolon C K(r).
+    & =   C \int_{\R^{d-1}}\ud y_* \: e^{- \lvert y_* \rvert^2 -c \lvert y_* \rvert^b} \int_\R \ud y_1\: e^{- \lvert y_1-r \rvert^2 + r^b - c\lvert y_1 \rvert^b} \\
+    & =   C \int_\R  \ud y\: e^{- y^2 + r^b - c \lvert y-r \rvert^b}
+      \ge C \int_0^r \ud y\: e^{- y^2 + r^b - c \lvert y-r \rvert^b} \eqqcolon C K(r).
   \end{align*}
   It suffices to show that $\lim_{r\to\infty}K(r) = \infty$, which is true when $b>2$ because
   \begin{align*}
     K(r)
-    & \ge \int_{r/2}^{r} e^{-y^2 +r^b - c (r-y)^b} \ud y
-      \ge \int_{r/2}^{r} e^{-r^2 +r^b - c (r/2)^b} \ud y
+    & \ge \int_{r/2}^{r} \ud y\: e^{-y^2 +r^b - c (r-y)^b}
+      \ge \int_{r/2}^{r} \ud y\: e^{-r^2 +r^b - c (r/2)^b}
     = \frac{r}{2} e^{ \left(1-2^{-1-b/2}\right)r^b -r^2 },
 	\end{align*}
   which blows up as $r\to \infty$. Hence, we may assume that $b\in (1,2]$. In this case, $c=1$ and
-	\begin{align*} % \label{E_:K'}
-	K'(r) = e^{r^b-r^2} + b \int_0^r e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right) \ud y.
+	\begin{align*}
+    K'(r) = e^{r^b-r^2} + b \int_0^r \ud y\: e^{ - y^2 + r^b - (r-y)^b} \left(r^{b-1}-(r-y)^{b-1}\right).
 	\end{align*}
   By the intermediate value theorem, we see that $r^{b-1} - (r-y)^{b-1} = (b-1) y \xi^{b-2}$ for
   some $\xi\in [r-y,r]$. Since $b-1\in(0,1]$, this implies that $r^{b-1} - (r-y)^{b-1} \ge (b-1) y
   r^{b-2}$. Hence,
 	\begin{align*}
-	K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \ud y \\
-	& \ge  b(b-1)r^{b-2} \int_1^r e^{ - y^2 + r^b - (r-1)^b }  \ud y
-	\ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 e^{ - y^2 } \ud y.
+    K'(r) & \ge  e^{r^b-r^2} + b(b-1) \int_1^r \ud y\: e^{ - y^2 + r^b - (r-y)^b } y r^{b-2} \\
+          & \ge  b(b-1)r^{b-2} \int_1^r \ud y\: e^{ - y^2 + r^b - (r-1)^b }
+            \ge  b(b-1)r^{b-2} e^{r^b-(r-1)^b}\int_1^2 \ud y\: e^{ - y^2 }.
 	\end{align*}
   Another application of the intermediate value theorem shows that $r^b-(r-1)^b = b \xi^{b-1}$ with
   $\xi\in [r-1,r]$. Hence, $r^b-(r-1)^b \ge b (r-1)^{b-1}$ and then
