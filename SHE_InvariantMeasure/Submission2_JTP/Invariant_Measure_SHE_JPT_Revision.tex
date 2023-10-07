@@ -164,7 +164,7 @@
 
 % \affil[2]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{10587}, \state{State}, \country{Country}}}
 %
-% \affil[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
+% \affil\left[3]{\orgdiv{Department}, \orgname{Organization}, \orgaddress{\street{Street}, \city{City}, \postcode{610101}, \state{State}, \country{Country}}}
 
 %%==================================%%
 %% sample for unstructured abstract %%
@@ -231,7 +231,7 @@ f(x) \ud x$, we write $\widehat{f}(\ud \xi)$ as $\widehat{f}(\xi) \ud \xi$.
 The initial condition, $\mu$, is a deterministic, locally finite, regular, signed Borel measure that
 satisfies the following integrability condition at infinity:
 \begin{equation}\label{A:icon}
-  \int_{\R^d}\exp\left(-a\lvert x\rvert^2\right) \lvert \mu\rvert(\ud x) < \infty \quad \text{for all $a>0$},
+  \int_{\R^d} \left\lvert\mu\right\rvert(\ud x) \exp\left(-a\lvert x\rvert^2\right) < \infty \quad \text{for all $a>0$},
 \end{equation}
 where $\lvert\mu\rvert = \mu_+ + \mu_-$ and $\mu = \mu_+-\mu_-$ refers to the \textit{Hahn
 decomposition} of the measure $\mu$. Initial conditions of this type, introduced
@@ -254,7 +254,7 @@ The SPDE~\eqref{E:SHE} is understood in its \textit{mild form}:
 \end{equation}
 where $G(t,x) = (2 \pi t)^{-d/2}\exp\left(-\left(2t\right)^{-1}\lvert x\rvert^2\right)$ is the heat kernel,
 \begin{gather}\label{E:Ju}
-   J_0(t,x) = J_0(t,x;\mu) \coloneqq (G(t,\cdot) * \mu)(x) = \int_{\R^d} G(t,x-y) \mu(\ud y)
+   J_0(t,x) = J_0(t,x;\mu) \coloneqq (G(t,\cdot) * \mu)(x) = \int_{\R^d} \mu(\ud y)\:  G(t,x-y)
 \end{gather}
 is the solution to the homogeneous equation, and the stochastic integral is the \textit{Walsh
 integral}. We refer the interested readers
@@ -392,7 +392,7 @@ Note that condition~\eqref{E:Dalang-00} is a strengthened version of \textit{Dal
 \end{align}
 It turns out that besides condition~\eqref{E:Dalang-00} we need one more condition on the spectral
 measure $\widehat{f}$, which strengthens Dalang's condition~\eqref{E:Dalang} in a different way:
-that for some $\alpha\in (0,1]$,
+that for some $\alpha\in (0,1\right]$,
 \begin{align}\label{E:Dalang-ab}
   \Upsilon_\alpha(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+\lvert\xi\rvert^2\right)^{1-\alpha}}<\infty
   \quad \text{for some (hence all) $\beta>0$.}
@@ -1997,7 +1997,7 @@ Proposition~\ref{P:adm} seem to be less obvious:
 
 L.C. thanks Sandra Cerrai for some helpful discussions and for pointing out the
 reference~\cite{misiats.stanzhytskyi.ea:16:existence} during the conference -- \textit{Frontier
-Probability Days 2018}. L.C. also thanks Yu Gu for some helpful discussions regarding the stationary
+Probability Days 2018}. L.C. also thanks Yu Gu for some hlpful discussions regarding the stationary
 limit obtained in~\cite{gu.li:20:fluctuations} during the \textit{Workshop: Stochastic PDEs \&
 Related Topics}, Nov. 14--16, 2022 at Brin Mathematics Research Center, University of Maryland, and
 for pointing out the reference~\cite{dunlap.gu.ea:21:random}. Both authors would like to thank the
