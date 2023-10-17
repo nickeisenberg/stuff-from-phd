@@ -395,14 +395,17 @@ Note that condition~\eqref{E:Dalang-00} is a strengthened version of \textit{Dal
   \quad \text{for some (and hence) all $\beta>0$.}
 \end{align}
 It turns out that besides condition~\eqref{E:Dalang-00} we need one more condition on the spectral
-measure $\widehat{f}$, which strengthens Dalang's condition~\eqref{E:Dalang} in a different way:
-that for some $\alpha\in \left(0,1\right]$,
+measure $\widehat{f}$, which strengthens Dalang's condition~\eqref{E:Dalang} in a different
+way\footnote{In~\cite{chen.huang.ea:19:dense}, the authors constructed a spectral measure
+$\widehat{f}$ such that $\Upsilon(0)<\infty$ and $\Upsilon_\alpha(\beta) = \infty$ for all
+$\alpha\in(0,1)$.}: that for some $\alpha\in \left(0,1\right]$,
 \begin{align}\label{E:Dalang-ab}
   \Upsilon_\alpha(\beta) \coloneqq \left(2\pi\right)^{-d} \int_{\R^d} \frac{\widehat{f}(\ud\xi)}{\left(\beta+\lvert\xi\rvert^2\right)^{1-\alpha}}<\infty
   \quad \text{for some (hence all) $\beta>0$.}
 \end{align}
 In some literature, condition~\eqref{E:Dalang-ab} is called the \textit{strengthened Dalang's
-condition}. These three conditions are illustrated in Figure~\ref{F:Cond}.
+condition}. These three conditions are illustrated in Figure~\ref{F:Cond}. The subtlety of these
+conditions is also illustrated in Example~\ref{Ex:Riesz-T} and Figure~\ref{F:Riesz-Type} below.
 
 \bigskip
 \begin{figure}[htpb]
@@ -410,17 +413,18 @@ condition}. These three conditions are illustrated in Figure~\ref{F:Cond}.
     \includegraphics[scale=0.9]{./figure_1.pdf}
   \end{center}
 
-  \caption{Two conditions---\eqref{E:Dalang-00} and~\eqref{E:Dalang-ab}---on $\widehat{f}$, or
-  equivalent condition~\eqref{E:SpectralCond}, needed for the main result---Theorem~\ref{T:Main},}
+  \caption{Conditions on the spectral measure $\widehat{f}$ and their implications.}
 
   \label{F:Cond}
 \end{figure}
-\cite{chen.kim:20:stochastic}
 
 
 \begin{remark}
   Dalang's condition~\eqref{E:Dalang} assures the existence and uniqueness of an
-  $L^2\left(\Omega\right)$-continuous solution; see~\cite{dalang:99:extending}. But Dalang's
+  $L^2\left(\Omega\right)$-continuous solution; see~\cite{dalang:99:extending}. Moreover, Dalang's
+  condition alone is sufficient for the \textit{weak sample path comparison
+  principle}~\cite{chen.huang:19:comparison} and the \textit{stochastic comparison
+  principle}~\cite{chen.kim:20:stochastic, joseph.khoshnevisan.ea:17:strong}. But Dalang's
   condition~\eqref{E:Dalang} alone is sometimes too weak to derive some useful properties. Instead,
   the strengthened Dalang's condition~\eqref{E:Dalang-ab} is widely assumed in the literature. For
   example, condition~\eqref{E:Dalang-ab} is used to derive the H\"older regularity of the solution;
@@ -2074,9 +2078,10 @@ anonymous referee for his/her helpful comments and suggestions.
 % \bibliography{All.bib}
 % \printbibliography[title = {References}]
 
+
 %% BioMed_Central_Bib_Style_v1.01
 
-\begin{thebibliography}{33}
+\begin{thebibliography}{34}
 % BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
 \ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
 \ifx \binits  \undefined \def \binits#1{#1}\fi
@@ -2189,7 +2194,7 @@ anonymous referee for his/her helpful comments and suggestions.
 \bsertitle{Lecture Notes in Mathematics},
 vol. \bseriesno{1962},
 p. \bfpage{216}.
-\bpublisher{Springer},
+\bpublisher{Springer}, 
 (\byear{2009}).
 \bcomment{Held at the University of Utah, Salt Lake City, UT, May 8--19, 2006,
   Edited by Khoshnevisan and Firas Rassoul-Agha}
@@ -2220,7 +2225,7 @@ In: \bbtitle{\'{E}cole D'\'{e}t\'{e} de Probabilit\'{e}s de {S}aint-{F}lour,
 \bsertitle{Lecture Notes in Math.},
 vol. \bseriesno{1180},
 pp. \bfpage{265}--\blpage{439}.
-\bpublisher{Springer},
+\bpublisher{Springer}, 
 (\byear{1986}).
 \doiurl{10.1007/BFb0074920}.
 \burl{https://doi.org/10.1007/BFb0074920}
@@ -2235,7 +2240,7 @@ pp. \bfpage{265}--\blpage{439}.
 \bsertitle{Lecture Notes in Mathematics},
 vol. \bseriesno{1762},
 p. \bfpage{330}.
-\bpublisher{Springer},
+\bpublisher{Springer}, 
 (\byear{2001}).
 \doiurl{10.1007/b80743}.
 \bcomment{A probabilistic approach}.
@@ -2252,7 +2257,7 @@ p. \bfpage{330}.
 \bsertitle{London Mathematical Society Lecture Note Series},
 vol. \bseriesno{229},
 p. \bfpage{339}.
-\bpublisher{Cambridge University Press, Cambridge},
+\bpublisher{Cambridge University Press, Cambridge}, 
 (\byear{1996}).
 \doiurl{10.1017/CBO9780511662829}.
 \burl{https://doi.org/10.1017/CBO9780511662829}
@@ -2269,7 +2274,7 @@ p. \bfpage{339}.
 \bsertitle{Encyclopedia of Mathematics and its Applications},
 vol. \bseriesno{152},
 p. \bfpage{493}.
-\bpublisher{Cambridge University Press, Cambridge},
+\bpublisher{Cambridge University Press, Cambridge}, 
 (\byear{2014}).
 \doiurl{10.1017/CBO9781107295513}.
 \burl{https://doi.org/10.1017/CBO9781107295513}
@@ -2367,52 +2372,6 @@ p. \bfpage{493}.
 \endbibitem
 
 %%% 17
-\bibitem{chen.kim:20:stochastic}
-\begin{barticle}
-\bauthor{\bsnm{Chen}, \binits{L.}},
-\bauthor{\bsnm{Kim}, \binits{K.}}:
-\batitle{Stochastic comparisons for stochastic heat equation}.
-\bjtitle{Electron. J. Probab.}
-\bvolume{25},
-\bfpage{140}--\blpage{38}
-(\byear{2020}).
-\doiurl{10.1214/20-ejp541}
-\end{barticle}
-\endbibitem
-
-%%% 18
-\bibitem{sanz-sole.sarra:02:holder}
-\begin{bchapter}
-\bauthor{\bsnm{Sanz-Sol\'{e}}, \binits{M.}},
-\bauthor{\bsnm{Sarr\`a}, \binits{M.}}:
-\bctitle{H\"{o}lder continuity for the stochastic heat equation with spatially
-  correlated noise}.
-In: \bbtitle{Seminar on {S}tochastic {A}nalysis, {R}andom {F}ields and
-  {A}pplications, {III} ({A}scona, 1999)}.
-\bsertitle{Progr. Probab.},
-vol. \bseriesno{52},
-pp. \bfpage{259}--\blpage{268}.
-\bpublisher{Birkh\"{a}user, Basel},
-(\byear{2002})
-\end{bchapter}
-\endbibitem
-
-%%% 19
-\bibitem{peszat.zabczyk:97:stochastic}
-\begin{barticle}
-\bauthor{\bsnm{Peszat}, \binits{S.}},
-\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
-\batitle{Stochastic evolution equations with a spatially homogeneous {W}iener
-  process}.
-\bjtitle{Stochastic Process. Appl.}
-\bvolume{72}(\bissue{2}),
-\bfpage{187}--\blpage{204}
-(\byear{1997}).
-\doiurl{10.1016/S0304-4149(97)00089-6}
-\end{barticle}
-\endbibitem
-
-%%% 20
 \bibitem{chen.huang.ea:19:dense}
 \begin{barticle}
 \bauthor{\bsnm{Chen}, \binits{L.}},
@@ -2428,7 +2387,69 @@ pp. \bfpage{259}--\blpage{268}.
 \end{barticle}
 \endbibitem
 
+%%% 18
+\bibitem{chen.kim:20:stochastic}
+\begin{barticle}
+\bauthor{\bsnm{Chen}, \binits{L.}},
+\bauthor{\bsnm{Kim}, \binits{K.}}:
+\batitle{Stochastic comparisons for stochastic heat equation}.
+\bjtitle{Electron. J. Probab.}
+\bvolume{25},
+\bfpage{140}--\blpage{38}
+(\byear{2020}).
+\doiurl{10.1214/20-ejp541}
+\end{barticle}
+\endbibitem
+
+%%% 19
+\bibitem{joseph.khoshnevisan.ea:17:strong}
+\begin{barticle}
+\bauthor{\bsnm{Joseph}, \binits{M.}},
+\bauthor{\bsnm{Khoshnevisan}, \binits{D.}},
+\bauthor{\bsnm{Mueller}, \binits{C.}}:
+\batitle{Strong invariance and noise-comparison principles for some parabolic
+  stochastic {PDE}s}.
+\bjtitle{Ann. Probab.}
+\bvolume{45}(\bissue{1}),
+\bfpage{377}--\blpage{403}
+(\byear{2017}).
+\doiurl{10.1214/15-AOP1009}
+\end{barticle}
+\endbibitem
+
+%%% 20
+\bibitem{sanz-sole.sarra:02:holder}
+\begin{bchapter}
+\bauthor{\bsnm{Sanz-Sol\'{e}}, \binits{M.}},
+\bauthor{\bsnm{Sarr\`a}, \binits{M.}}:
+\bctitle{H\"{o}lder continuity for the stochastic heat equation with spatially
+  correlated noise}.
+In: \bbtitle{Seminar on {S}tochastic {A}nalysis, {R}andom {F}ields and
+  {A}pplications, {III} ({A}scona, 1999)}.
+\bsertitle{Progr. Probab.},
+vol. \bseriesno{52},
+pp. \bfpage{259}--\blpage{268}.
+\bpublisher{Birkh\"{a}user, Basel}, 
+(\byear{2002})
+\end{bchapter}
+\endbibitem
+
 %%% 21
+\bibitem{peszat.zabczyk:97:stochastic}
+\begin{barticle}
+\bauthor{\bsnm{Peszat}, \binits{S.}},
+\bauthor{\bsnm{Zabczyk}, \binits{J.}}:
+\batitle{Stochastic evolution equations with a spatially homogeneous {W}iener
+  process}.
+\bjtitle{Stochastic Process. Appl.}
+\bvolume{72}(\bissue{2}),
+\bfpage{187}--\blpage{204}
+(\byear{1997}).
+\doiurl{10.1016/S0304-4149(97)00089-6}
+\end{barticle}
+\endbibitem
+
+%%% 22
 \bibitem{balan.chen:18:parabolic}
 \begin{barticle}
 \bauthor{\bsnm{Balan}, \binits{R.M.}},
@@ -2443,7 +2464,7 @@ pp. \bfpage{259}--\blpage{268}.
 \end{barticle}
 \endbibitem
 
-%%% 22
+%%% 23
 \bibitem{da-prato.kwapien.ea:87:regularity}
 \begin{barticle}
 \bauthor{\bsnm{Da~Prato}, \binits{G.}},
@@ -2459,7 +2480,7 @@ pp. \bfpage{259}--\blpage{268}.
 \end{barticle}
 \endbibitem
 
-%%% 23
+%%% 24
 \bibitem{olver.lozier.ea:10:nist}
 \begin{bbook}
 \bauthor{\bsnm{Olver}, \binits{F.W.J.}},
@@ -2470,13 +2491,13 @@ pp. \bfpage{259}--\blpage{268}.
 p. \bfpage{951}.
 \bpublisher{U.S. Department of Commerce, National Institute of Standards and
   Technology, Washington, DC; Cambridge University Press, Cambridge},
-
+  
 (\byear{2010}).
 \bcomment{With 1 CD-ROM (Windows, Macintosh and UNIX)}
 \end{bbook}
 \endbibitem
 
-%%% 24
+%%% 25
 \bibitem{billingsley:99:convergence}
 \begin{bbook}
 \bauthor{\bsnm{Billingsley}, \binits{P.}}:
@@ -2485,7 +2506,7 @@ p. \bfpage{951}.
 \bsertitle{Wiley Series in Probability and Statistics: Probability and
   Statistics},
 p. \bfpage{277}.
-\bpublisher{John Wiley \& Sons, Inc., New York},
+\bpublisher{John Wiley \& Sons, Inc., New York}, 
 (\byear{1999}).
 \doiurl{10.1002/9780470316962}.
 \bcomment{A Wiley-Interscience Publication}.
@@ -2493,7 +2514,7 @@ p. \bfpage{277}.
 \end{bbook}
 \endbibitem
 
-%%% 25
+%%% 26
 \bibitem{assing.manthey:03:invariant}
 \begin{barticle}
 \bauthor{\bsnm{Assing}, \binits{S.}},
@@ -2508,7 +2529,7 @@ p. \bfpage{277}.
 \end{barticle}
 \endbibitem
 
-%%% 26
+%%% 27
 \bibitem{brzezniak.gatarek:99:martingale}
 \begin{barticle}
 \bauthor{\bsnm{Brze\'{z}niak}, \binits{Z.a.}},
@@ -2523,7 +2544,7 @@ p. \bfpage{277}.
 \end{barticle}
 \endbibitem
 
-%%% 27
+%%% 28
 \bibitem{cerrai:03:stochastic}
 \begin{barticle}
 \bauthor{\bsnm{Cerrai}, \binits{S.}}:
@@ -2537,7 +2558,7 @@ p. \bfpage{277}.
 \end{barticle}
 \endbibitem
 
-%%% 28
+%%% 29
 \bibitem{eckmann.hairer:01:invariant}
 \begin{barticle}
 \bauthor{\bsnm{Eckmann}, \binits{J.-P.}},
@@ -2552,7 +2573,7 @@ p. \bfpage{277}.
 \end{barticle}
 \endbibitem
 
-%%% 29
+%%% 30
 \bibitem{misiats.stanzhytskyi.ea:16:existence}
 \begin{barticle}
 \bauthor{\bsnm{Misiats}, \binits{O.}},
@@ -2568,7 +2589,7 @@ p. \bfpage{277}.
 \end{barticle}
 \endbibitem
 
-%%% 30
+%%% 31
 \bibitem{misiats.stanzhytskyi.ea:20:invariant}
 \begin{barticle}
 \bauthor{\bsnm{Misiats}, \binits{O.}},
@@ -2584,7 +2605,7 @@ p. \bfpage{277}.
 \end{barticle}
 \endbibitem
 
-%%% 31
+%%% 32
 \bibitem{grafakos:14:modern}
 \begin{bbook}
 \bauthor{\bsnm{Grafakos}, \binits{L.}}:
@@ -2593,14 +2614,14 @@ p. \bfpage{277}.
 \bsertitle{Graduate Texts in Mathematics},
 vol. \bseriesno{250},
 p. \bfpage{624}.
-\bpublisher{Springer},
+\bpublisher{Springer}, 
 (\byear{2014}).
 \doiurl{10.1007/978-1-4939-1230-8}.
 \burl{https://doi.org/10.1007/978-1-4939-1230-8}
 \end{bbook}
 \endbibitem
 
-%%% 32
+%%% 33
 \bibitem{loh.sun.ea:21:on}
 \begin{barticle}
 \bauthor{\bsnm{Loh}, \binits{W.-L.}},
@@ -2616,14 +2637,14 @@ p. \bfpage{624}.
 \end{barticle}
 \endbibitem
 
-%%% 33
+%%% 34
 \bibitem{stein:99:interpolation}
 \begin{bbook}
 \bauthor{\bsnm{Stein}, \binits{M.L.}}:
 \bbtitle{Interpolation of Spatial Data}.
 \bsertitle{Springer Series in Statistics},
 p. \bfpage{247}.
-\bpublisher{Springer},
+\bpublisher{Springer}, 
 (\byear{1999}).
 \doiurl{10.1007/978-1-4612-1494-6}.
 \bcomment{Some theory for Kriging}.
@@ -2632,6 +2653,7 @@ p. \bfpage{247}.
 \endbibitem
 
 \end{thebibliography}
+
 \end{document}
 %}}}
 
