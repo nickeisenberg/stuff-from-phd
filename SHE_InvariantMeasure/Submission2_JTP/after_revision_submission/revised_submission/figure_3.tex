@@ -1,0 +1,28 @@
+\documentclass[varwidth=\maxdimen]{standalone}
+\input{extractFigure.tex}
+\begin{document}
+\begin{tikzpicture}
+    [scale = 1, transform shape]
+      \tikzset{> = latex}
+      \draw [->] (-0.2,0) --++ (8.5,0) node[right] {$s$};
+      \draw[thick] (0,0) --++(0,0.2) --++(0,-0.4) node[below] {$0$};
+      \draw (1,0) --++(0,0.2) --++(0,-0.4) node[below] {$t_0$};
+      \draw (2,0) --++(0,0.2) --++(0,-0.4) node[below] {$\tau$};
+      \draw (4,0) --++(0,0.2) --++(0,-0.4) node[below] {$t-t_0$};
+      \draw (5,0) --++(0,0.2) --++(0,-0.4) node[below] {$t$};
+      \draw (6.5,0) --++(0,0.2) --++(0,-0.4) node[below] {$t-t_0+s$}
+            ++ (0,-0.7) node[below] (u1) {$u(t-t_0+s,x;\mu)$}
+            ++ (0,-0.6) node[below] {$||$}
+            ++ (0,-0.6) node[below] {$u\left(s,x;u(t-t_0,\cdot;\mu)\right)$};
+
+      \draw [->] (3.8,1) --++ (4.5,0) node[right] {$s$};
+      \draw[thick] (4,1) --++(0,-0.2) --++(0,0.4) node[above] {$0$};
+      \draw (5,1) --++(0,-0.2) --++(0,0.4) node[above] {$t_0$};
+      \draw (6.5,1) --++(0,-0.2) --++(0,0.4) node[above] {$s$} ++ (0,0.5) node[above] (v) {$v_t(s,x)$};
+
+      \draw[dotted] (6.5,0.2) -- (6.5,0.8);
+      \draw[dotted] (5,0.2) -- (5,0.8);
+      \draw[dotted] (4,0.2) -- (4,0.8);
+    
+\end{tikzpicture}
+\end{document}
